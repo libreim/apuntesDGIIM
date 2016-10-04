@@ -22,3 +22,47 @@ La informacion que encontramos en cada uno de estos archivos es:
 - __Mtab__: Es una lista de los sistemas de archivos que se encuentran montados. Este archivo no se edita.
 - __Fylesistems__: Es una lista de todos los sistemas de archivos que se encuentran disponibles.
 - __Mounts__: Es una lista de todos los sistemas de archivos que se encuentran montados ya sea manualmente o con el arraque del sistema.
+
+
+### Trabajo con sistemas de archivos
+
+#### Asignar un sistema de archivos a una partición
+
+
+Para crear un sistema de archivos en una partición (ext3,ext4) tenemos que usar la orden __mke2fs__. Tiene varias opciones interesantes como:
+* __-L__ para establecer una etiqueta a la partición
+* __-t *nombre particion*__ para establecer si queremos ext2,ext3,ext4.
+* __-T *tipo de uso*__ Para establecer qué tipo de uso queremos darle al Sistema de archivos.
+
+
+#### Configurar parámetros del Sistema de Archivos
+
+Para ajustar algunos parámetros de nuestro S.A. usamos la opción **tune2fs**.
+* __-l *dispositivo*__ nos da un listado con la información relevante de un S.A.
+
+* __-c max-mount-counts *dispositivo__ Establece el número máximo de montajes que se pueden realizar sin que se realice una comprobación de consistencia del S.A.
+
+* __-L *etiqueta* *dispositivo*__ Pone una etiqueta al S.A.
+
+* __-r *numero*__ indica el numero de bloques del sistema de archivos que queremos reservar para uso exclusivo de un usuario
+
+* __-u *username*__ indica el usuario que tendrá acceso a ese número de bloques asignado con __-r__
+
+
+### Orden Mount
+
+Nos permite montar un sistema de archivos, con una amplia gama de opciones, de las que hemos utilizado:
+* -o ro: Monta en sistema de archivos en solo lectura.
+* -o rw: Monta el sistema de archivos en lectura y escritura.
+Un ejemplo del formato utilizado para estas ordenes sería:
+
+```
+mount /dev/loop0 -o ro mnt/SA_ext3
+
+```
+
+Debemos tener en cuenta que para que esos sistemas de archivos se ejecuten en el arranque debemos añadirlos a /etc/fstab.
+añadiendo una linea de la siguiente manera:
+```
+/dev/loop0 /mnt/SA_ext3 ext3 ro 0 0
+```
