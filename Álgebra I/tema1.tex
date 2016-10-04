@@ -2,6 +2,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
 
+\providecommand{\rac}{\mathbb{Q}}
+\providecommand{\ent}{\mathbb{Z}}
+\providecommand{\sii}{\Leftrightarrow}
 %Gummi|065|=)
 \title{\textbf{Álgebra}}
 \date{}
@@ -29,7 +32,7 @@ Denominamos monoide multiplicativo a aquellos grupos abelianos que ademas cumple
 
 Llamaremos anillo aquellos conjuntos que cumplan todas las propiedades excepto la propiedad conmutativa para la multiplicación.\\
 
-\section{Propiedades de $\mathbb{Z}_{n}$.}
+\section{Definición de $\mathbb{Z}_{n}$.}
 
 LLamaremos $R_n:\mathbb{N} \rightarrow \mathbb{Z}_n$ a la aplicación definida como $R_n(a) = a - nq = a- nE(\frac{a}{n})$. Asi, definimos las siguientes propiedades:
 
@@ -45,10 +48,11 @@ Definimos las suma y el producto de $\mathbb{Z}_n$:
 \hspace*{0.6cm}- $a\otimes b = R_n(ab)$\\\\
 
 Es facil verificar que $\mathbb{Z}_n$ es u nanillo conmutativo con estas operaciones.\\
-Si A es un anillo conmutativo (a.c) $a \in A$ es una "unidad" o "invertible" si $\exists a^-1$ t.q. $ aa^-1 = 1$.\\ $U(A) = \{ a \in A$ t.q. a es una unidad\} = conjunto de las unidades de A.\\\\
+
+\textbf{Definicion}:
+Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}" o "\textbf{invertible}" si $\exists a^-1$ t.q. $ aa^-1 = 1$.\\ $U(A) = \{ a \in A$ t.q. a es una unidad\} = conjunto de las unidades de A.\\
 
 \textbf{Definicion}: Se dice que A es un \textbf{cuerpo} si siendo un anillo conmutativo, $U(A) = A - \{0\}$, es decir, $\exists a^-1$ $\forall a \in A$ con $a \neq 0$.\\
-
 
 Sea A un anillo conmutativo, y $a_1 ... a_n$ una lista de elementos de A.
 La propiedad de la \textbf{Asociatividad Generalizada} nos dice que:
@@ -58,13 +62,14 @@ Tambien definimos la propiedad \textbf{distributiva generalizada} como:\\
 
 \[(\sum_{i=0}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j\]\\\\
 
-Si A e sun anillo conmutativo y B es un subconjunto de A. Se dice que B es un subanillo de A ($B \leq A$) si se verifican:
+\textbf{Definicion}:
+Si A es un anillo conmutativo y B es un subconjunto de A. Se dice que B es un \textbf{subanillo} de A ($B \leq A$) si se verifican:
 \begin{itemize}
 \item $-1 \in B$
 \item B es cerrado para la suma y el producto.
 \end{itemize}
 
-\subsection{Ejemplos}
+\subsection{Ejemplos- Anillos de números cuadráticos}
 
 \begin{itemize}
 \item $\mathbb{Z}[\sqrt{n}]$ y $\mathbb{Q}[\sqrt{n}]$\\\\
@@ -73,11 +78,117 @@ Definimos este conjunto de la siguiente forma:\\
 
 Podemos definir tambien $\mathbb{Q}[\sqrt{n}]$ de la misma forma pero estando los coeficientes $a$ y $b$ en $\mathbb{Q}$. Además se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y que $\mathbb{Q}[\sqrt{n}]$ es un cuerpo.
 
+Definición: Si $\alpha = a+b\sqrt{n}\in \mathbb{Q}[\sqrt{n}]$ se define su conjugado como $\bar{\alpha} = a - b\sqrt{n}$. Este verifica que:
+\begin{enumerate}
+
+\item $ \over{(\alpha+ \beta)} $ = $\bar{\alpha} + \bar{\beta}$
+\item $\over{\alpha \beta}$ = $\bar{\alpha}\bar{\beta}$
+\item $\alpha = \bar{\alpha} \Leftrightarrow b = 0$
+	
+\end{enumerate} 
+
+Se define entonces la Norma $N(\alpha) = \alpha \bar{\alpha} = a^2 - nb^2 \in \rac $. Así:
+\begin{enumerate}
+	\item $N(\alpha \beta) = N(\alpha) * N(\beta)$
+	\item $N(\alpha) = 0 \sii \alpha = 0$
+\end{enumerate}
+
+\textbf{Proposición}.
+$\alpha \in a + b \sqrt{n} \in \ent[\sqrt{n]}$ es invertible $\sii$ $N(\alpha) \in \{-1,1\}$
+
 \item Anillos de series.\\
 Si A es un anillo conmutativo y X es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[x]] esta definido como:\begin{center}
 $A[[x]] = \{a = \sum_{i=1}^{n}a_i x^i = a_0 + a_1 x^1 + ... + a_n x^n\}$ $a_i \in A$\end{center}
 Y definimos la suma y el producto de la siguiente forma:\\
 \[(a+b) = \sum_{i=0}^{n}(a_i+b_i)x^i\]\[ (ab) = \sum_{k=0}^n\sum_{i=0}^{k}a_ib_{k-i}\]
 \end{itemize}
+
+Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo y $A[x]$ es un subanillo de $A[[x]]$  
+
+\section{Homomorfismo}
+
+Si $A,B$ son anillos conmutativos, una aplicacion $\varphi: A \to B$ es un homomorfismo si:
+
+\begin{enumerate}
+	\item $\varphi(1) = 1$
+	\item $\varphi(a+b) = \varphi(a) + \varphi(b)$
+	\item $\varphi(ab) = \varphi(a)  \varphi(b)$
+	
+\end{enumerate}
+
+Además, decimos que:
+
+\begin{enumerate}
+	\item Es monomorfismo si es inyectivo
+	\item Es epimorfismo si es sobreyectivo
+	\item Es isomorfismo si es biyectivo
+\end{enumerate}
+
+\textbf{Propiedades de los homomorfismos}
+
+\begin{itemize}
+
+\item $\varphi(0) = 0$
+
+\item $\varphi(-a) = -\varphi(a) $
+
+\item $\varphi(\sum_{i = 1}^n a_i) = \sum_{i = 1}^n\varphi(a_i)$. 
+
+$\varphi(\prod_{i = 1}^n a_i) = \prod_{i = 1}^n\varphi(a_i)$
+
+\item $\varphi(na) = n\varphi(a)$
+
+	
+\end{itemize}
+
+
+Ya sabemos que $Im(\varphi) = \{ \varphi(x): x \in A\} \leq B$ es un subanillo.
+
+Ahora, si $\varphi$ es monomorfismo, entonces la aplicación restringida:
+
+\[
+A \to Im(\varphi)\]
+\[
+a \mapsto \varphi(a)
+\]
+
+es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\varphi)$.\\
+
+
+\textbf{Ejemplo:} Se puede probar que $R_n: \ent \to \ent_n$ es un homomorfismo, llamado \emph{Homomorfismo de reducción módulo n}\\
+
+
+\textbf{Proposición}
+ Dado $A$ cualquier anillo conmutativo, conocido $A[x]$.
+ 
+ Si $\varphi:A \to B$ es homomorfismo de anillos conmutativos, entonces:
+ \[
+ \exists \varphi: A[x] \to B[x] : \varphi(\sum_i a_i x^i) = \sum_i\varphi(a_i) x^i
+ \]
+
+
+\textbf{Proposición (sustitución en un polinomio)}
+
+Si $A$ es cualquier conjunto y $a \in A$ entonces: existe un homomorfismo $E_a: A[x] \to A$ tal que $E_a(\sum_i a_i x^i) = \sum_i a_i a^i$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
