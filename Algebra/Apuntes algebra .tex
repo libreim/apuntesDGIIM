@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+
+%Gummi|065|=)
+\title{\textbf{Álgebra}}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Anillo conmutativo}
+
+Un conjunto A, en el que hay definidas dos operaciones; una aplicacion de adición y una aplicacion de multiplicación, tales que cumplen las siguientes propiedades:
+\begin{itemize}
+\item Asociativa: $a+(b+c) = (a+b)+c$\hspace{1cm} $a(bc) = (ab)c$
+\item Conmutativa: $a+b = b+a$ \hspace{1cm} $ab = ba$
+\item Existencia elemento neutro: $a+0 = a$ \hspace{1cm} $a*1 = a$
+\item Existencia del elemento opuesto: $a+(-a) = 0$
+\item Distributiva del producto en la suma: $a(b+c) = ab+ ac$
+
+\end{itemize}
+
+Con estas propiedades tenemos un anillo conmutativo.\\
+
+Denominamos un grupo conmutativo o abeliano a aquellos conjuntos que cumplen las propiedades. asociativa, conmutativa y existencia de elemento neutro para la suma, y existencia de elemento opuesto.\\
+
+Denominamos monoide multiplicativo a aquellos grupos abelianos que ademas cumplen las propiedades asociativas para la multiplicacion y existencia del elemento neutro para la multiplicación.\\
+
+Llamaremos anillo aquellos conjuntos que cumplan todas las propiedades excepto la propiedad conmutativa para la multiplicación.\\
+
+\section{Propiedades de $\mathbb{Z}_{n}$.}
+
+LLamaremos $R_n:\mathbb{N} \rightarrow \mathbb{Z}_n$ a la aplicación definida como $R_n(a) = a - nq = a- nE(\frac{a}{n})$. Asi, definimos las siguientes propiedades:
+
+\begin{itemize}
+\item Si $0 \leq a < n-1  \rightarrow R_n(a) = a$
+\item $\forall a,b \in \mathbb{N}, R_n(a+b) = R_n(R_n(a) + R_n(b))$\\$R_n(ab) = R_n(R_n(a)*R_n(b))$
+
+\end{itemize} 
+
+Definimos las suma y el producto de $\mathbb{Z}_n$:
+
+- $a\oplus b = R_n(a+b)$\\
+\hspace*{0.6cm}- $a\otimes b = R_n(ab)$\\\\
+
+Es facil verificar que $\mathbb{Z}_n$ es u nanillo conmutativo con estas operaciones.\\
+Si A es un anillo conmutativo (a.c) $a \in A$ es una "unidad" o "invertible" si $\exists a^-1$ t.q. $ aa^-1 = 1$.\\ $U(A) = \{ a \in A$ t.q. a es una unidad\} = conjunto de las unidades de A.\\\\
+
+\textbf{Definicion}: Se dice que A es un \textbf{cuerpo} si siendo un anillo conmutativo, $U(A) = A - \{0\}$, es decir, $\exists a^-1$ $\forall a \in A$ con $a \neq 0$.\\
+
+
+Sea A un anillo conmutativo, y $a_1 ... a_n$ una lista de elementos de A.
+La propiedad de la \textbf{Asociatividad Generalizada} nos dice que:
+$\forall m$ tal que $1 \leq m < n$ entonces: \[\sum_{i=1}^{n}a_i = (\sum_{i=1}^{m}a_i) + (\sum_{i=m+1}^{n}a_i)\]\[\prod_{i=1}^{n}a_i = (\prod_{i=1}^{m}a_i) + (\prod_{i=m+1}^{n}a_i)\]\\
+
+Tambien definimos la propiedad \textbf{distributiva generalizada} como:\\
+
+\[(\sum_{i=0}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j\]\\\\
+
+Si A e sun anillo conmutativo y B es un subconjunto de A. Se dice que B es un subanillo de A ($B \leq A$) si se verifican:
+\begin{itemize}
+\item $-1 \in B$
+\item B es cerrado para la suma y el producto.
+\end{itemize}
+
+\subsection{Ejemplos}
+
+\begin{itemize}
+\item $\mathbb{Z}[\sqrt{n}]$ y $\mathbb{Q}[\sqrt{n}]$\\\\
+Definimos este conjunto de la siguiente forma:\\
+\begin{center}$\mathbb{Z}[\sqrt{n}] = \{a+b\sqrt{n} \in \mathbb{C}$ : $a,b \in \mathbb{Z} \}$ $\leq \mathbb{C}$\end{center}
+
+Podemos definir tambien $\mathbb{Q}[\sqrt{n}]$ de la misma forma pero estando los coeficientes $a$ y $b$ en $\mathbb{Q}$. Además se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y que $\mathbb{Q}[\sqrt{n}]$ es un cuerpo.
+
+\item Anillos de series.\\
+Si A es un anillo conmutativo y X es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[x]] esta definido como:\begin{center}
+$A[[x]] = \{a = \sum_{i=1}^{n}a_i x^i = a_0 + a_1 x^1 + ... + a_n x^n\}$ $a_i \in A$\end{center}
+Y definimos la suma y el producto de la siguiente forma:\\
+\[(a+b) = \sum_{i=0}^{n}(a_i+b_i)x^i\]\[ (ab) = \sum_{k=0}^n\sum_{i=0}^{k}a_ib_{k-i}\]
+\end{itemize}
+
+\end{document}
