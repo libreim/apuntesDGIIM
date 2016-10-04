@@ -4,20 +4,17 @@ layout: default
 
 # ![apuntes](resources/hero.svg)
 
-Repositorio de apuntes del segundo curso del Doble Grado en Ingeniería Informática y Matemáticas de la Universidad de Granada.
+**ApuntesDGIIM** es un proyecto colaborativo llevado a cabo por alumnos del Doble Grado con la intención de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.
 
-# Estructuras de datos
+A continuación puedes encontrar apuntes compilados en PDF listos para descargar.
 
-# Sistemas operativos
+---
 
-# Estructuras de computadores
-
-# Álgebra I
-
-# Topología I
-
-## Tema 1
-
-## Tema 2
-
-# Análisis I
+| Asignatura  | T1  | T2  | T2  | T2  | T2  | T2  |
+|---|---|---|---|---|---|---|
+| Estructuras de datos  |   |   |   |   |   |   |
+| Sistemas operativos  |   |   |   |   |   |   |
+| Estructuras de computadores  |   |   |   |   |   |   |
+| Álgebra I  |   |   |   |   |   |   |
+| Topología I  |   |   |   |   |   |   |
+| Análisis I |   |   |   |   |   |   |
