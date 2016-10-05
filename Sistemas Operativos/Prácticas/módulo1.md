@@ -66,3 +66,26 @@ añadiendo una linea de la siguiente manera:
 ```
 /dev/loop0 /mnt/SA_ext3 ext3 ro 0 0
 ```
+### Orden Yum
+
+Los archivos de configuracion de Yum se encuentran en /etc/yum/yum.conf.
+Yum dispone de una amplica cantidad de acciones distintas, entre ellas estan:
+```
+# yum erase [paquete]       Permite eliminar un paquete.
+# yum install [paquete]     Permite instalar un paquete.
+# yum update [paquete]      Permite actualizar un paquete.
+```
+Con la orden “yum list installed” podemos ver aquellos paquetes que se encuentran instalados.
+Utilizando “yum erase [paquete]” podemos eliminar el paquete que queramos y luego utilizando “yum install [paquete]” podemos volver a instalarlo.
+
+### Orden Rpm
+
+Instalador de paquetes que se encuentran descargados en el equipo.
+Utilizando “rmp -i [direccion paquete]” o “rpm –install [direccion paquete]”, podemos instalar el paquete que deseemos.
+Para postrar la maxima información posible utilizaremos -v (muestra informacion relevante) y -h (muestra hash marks). De forma que para instalar el paquete:
+```
+# rpm -ivh [direccion del paquete]
+```
+Para desinstalarlo utilizaremos:
+```
+# rpm -e -v [paquete]```
