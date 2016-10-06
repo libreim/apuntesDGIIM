@@ -19,41 +19,41 @@
 
 \section*{Tema 1}
 
-Debemos definir primeramente cómo es la distancia usual en $R^n$:
+Debemos definir primeramente cómo es la distancia usual en $\mathbb{R}^n$:
 \[
-x,y \in R^n ; d(x,y) = \sqrt{\sum_{i=1}^n (y_i - x_i)^2}
+x,y \in \mathbb{R}^n ; d(x,y) = \sqrt{\sum_{i=1}^n (y_i - x_i)^2}
 \]
-Ahora, basándonos en esa distancia, daremos una primera noción de una función continua en $R^n$
+Ahora, basándonos en esa distancia, daremos una primera noción de una función continua en $\mathbb{R}^n$
 
 
-\subsection*{Continuidad en $R^n$}
-Sea $A \subset R, A \neq \emptyset$. Sea $f: A \to R^m$. Decimos que $f$ es continua en $a \in A; a = (a_1,...,a_n)$ si:
+\subsection*{Continuidad en $\mathbb{R}^n$}
+Sea $A \subset R, A \neq \emptyset$. Sea $f: A \to \mathbb{R}^m$. Decimos que $f$ es continua en $a \in A; a = (a_1,...,a_n)$ si:
 
 \[
-\forall \upvarepsilon > 0  \hspace{0.3cm}\exists \delta > 0 :\hspace{0.3cm} d_{R^n}(x,a)< \delta \hspace{0.2cm} ,\hspace{0.2cm} x \in A\hspace{0.3cm} \Rightarrow \hspace{0.3cm} d_{R^m}(f(x),f(a))< \upvarepsilon
+\forall \upvarepsilon > 0  \hspace{0.3cm}\exists \delta > 0 :\hspace{0.3cm} d_{\mathbb{R}^n}(x,a)< \delta \hspace{0.2cm} ,\hspace{0.2cm} x \in A\hspace{0.3cm} \Rightarrow \hspace{0.3cm} d_{\mathbb{R}^m}(f(x),f(a))< \upvarepsilon
 \]
 
 
 \subsection*{Bola abierta}
 
-Sea $x\in R^n$, $\upvarepsilon > 0$. Se define entonces la bola abierta de centro $x$ y radio $\upvarepsilon$ como:
+Sea $x\in \mathbb{R}^n$, $\upvarepsilon > 0$. Se define entonces la bola abierta de centro $x$ y radio $\upvarepsilon$ como:
 \[
-B(x,\upvarepsilon) = \{ y \in R^n : d(x,y) < \upvarepsilon\}
+B(x,\upvarepsilon) = \{ y \in \mathbb{R}^n : d(x,y) < \upvarepsilon\}
 \]
 
 
 
 \subsection*{Bola cerrada}
 
-Sea $x\in R^n$, $\upvarepsilon > 0$. Se define entonces la bola cerrada de centro $x$ y radio $\upvarepsilon$ como:
+Sea $x\in \mathbb{R}^n$, $\upvarepsilon > 0$. Se define entonces la bola cerrada de centro $x$ y radio $\upvarepsilon$ como:
 \[
-B(x,\upvarepsilon) = \{ y \in R^n : d(x,y) \leq \upvarepsilon\}
+\bar{B}(x,\upvarepsilon) = \{ y \in \mathbb{R}^n : d(x,y) \leq \upvarepsilon\}
 \]
 
 
 
 \subsection*{Abierto}
-Si $A\subset R^n$ podemos afirmar:
+Si $A\subset \mathbb{R}^n$, con la topología usual en $\mathbb{R}^n$ podemos afirmar:
 
 \[
 A \hspace{0.2cm} es \hspace{0.2cm}abierto \hspace{0.2cm}\Leftrightarrow \hspace{0.2cm} \forall a \in A, \exists \upvarepsilon > 0 : B(a,\upvarepsilon)\subset A
@@ -72,6 +72,8 @@ En un espacio métrico $(X,d)$
 	\item $X, \emptyset$ son abiertos
 
 \end{enumerate}
+
+Esto define una topología en $\mathbb{R}^n$.
 
 \subsection*{Punto Interior}
 
@@ -105,7 +107,7 @@ Es fácil ver que $\bar{A}$ es cerrado y que otra forma de definirlo es:
 \[
 \bar{A} = \bigcap \{F\in X: F \hspace{0.2cm} cerrado \hspace{0.2cm}y \hspace{0.2cm} A\subset F\}
 \]
-Por tanto, El cierre de A es el conjunto cerrado más pequeño que contiene a todos los cerrados que contienen al conjunto. De esta forma, si $A\subset X$ es cerrado $\Leftrightarrow$ $A = \bar{A}$
+Por tanto, El cierre de A es el conjunto cerrado más pequeño que contiene a todos los cerrados que contienen al conjunto. De esta forma, $A\subset X$ es cerrado $\Leftrightarrow$ $A = \bar{A}$
 
 
 
