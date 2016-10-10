@@ -64,4 +64,34 @@ Analizamos un ejemplo de un código de 30 líneas de las transparencias del prof
 
 * Cuando en los bucles haya i  =2, i*=4,i*=n... entonces la eficiencia será logaritmo en base n de lo que haya dentro del bucle.
 
+### Uso de Template.
+
+Nos permite seleccionar el tipo de dato que vamos a utilizar en tiempo de ejecución.
+Declarando:
+```c++
+template <class T, int n>
+
+class array_n {
+private:
+    T items[n];
+  };
+```
+Creando un objeto de esta clase de la forma:
+
+```c++
+array_n<int,1000> w
+
+```
+Creando un metodo de la forma:
+
+```c++
+template <class T>
+T VectorDinamico::componente(int i) const
+{
+  return datos[i];
+}
+```
+
+La compilación a la hora de usar templates es distinta a la que estamos acostumbrados. En lugar de hacer un _#include "clase.h"_ en el archivo _.cpp_, se incluirá el archivo _#include "clase.cpp"_ al final del archivo _.h_.
+
 ## Tema 2 - Abstracción.
