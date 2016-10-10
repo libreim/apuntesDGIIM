@@ -1,0 +1,122 @@
+% Created 2016-10-10 lun 11:05
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[left=2.5cm,top=2cm,right=2.5cm,bottom=2.5cm]{geometry}
+\usemintedstyle{manni}
+\setminted{linenos=true}
+\date{\today}
+\title{Apuntes Estructura de datos.}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.5.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+
+\section{Estructura de datos}
+\label{sec-1}
+\subsection{Tema 1 - Función de eficiencia.}
+\label{sec-1-1}
+El proceso que vamos a realiar es extraer la función que marca la eficiencia del código de nuestro programa.
+Existe una funcion "timer" que me permite ver el tiempo que ha transcurrido en una seccion del codigo que desee.
+\subsubsection{Notacion O grande.}
+\label{sec-1-1-1}
+Se dice que una f(n) = O(g(n)) si a partir de un m,  f(n)<= k · g(n), donde k es una constante.
+Para usar este tipo de comparación podemos utilizar simplificacion de funciones a su estructura básica.
+\subsubsection{Hallar la función de eficiencia.}
+\label{sec-1-1-2}
+
+Lo primero es dividir el codigo en trozos, y tenemos en cuenta que si:
+\begin{enumerate}
+\item Los troxos son independientes, la función de la union es O del máximo de las funciones de cada uno.
+\item Los trozos son anidados o dependientes, la función de la unión es O del producto de las funciones de cada uno.
+\end{enumerate}
+
+Teniendo en cuenta que cada accion cuenta como la unidad, es decir:
+
+\begin{minted}[]{c++}
+for(int i = 0; i < n; i++){
+  cout << "Lmao";
+}
+\end{minted}
+Serian n iteraciones de valor 1. Sabiendo que la iteracion i++ tambien es una operación pero no tiene sentido tenerlo en cuenta ya que 2n = O(n), de igual forma que la asignacióndel principio del bucle, y la comparación que se realiza, es decir, contaremos las operaciones simples como una única.
+
+\subsection{Análisis de sentencias}
+\label{sec-1-2}
+
+\subsubsection{Bucles}
+\label{sec-1-2-1}
+
+
+\subsubsection{Sentencias IF-ELSE}
+\label{sec-1-2-2}
+
+Es una sencencia en la que usamos la regla del máximo, ocurrirá el if o el else y el máximo de los 2 marca la eficiencia del bloque.
+
+Puede ser que la condición no sea una sentencia elemental, entonces habría que tenerla en cuenta, pero si es una sentencia trivial, la sentencia será O(1)
+
+
+\begin{minted}[]{c++}
+if(A[0][0]== 0)
+{
+  for(i = 0; i < n; i++)
+  {
+    for(j = 0; j < n; j++)
+    A[i][j] = 0;
+  }
+}
+else
+{
+  for(k = 0; k < n; k++)
+  {
+    A[k][k] = 1;
+  }
+}
+\end{minted}
+
+
+En este caso, tenemos que tomar máximo entre O(n$^{\text{2}}$) (lo que cuesta el if) y O(n)(lo que cuesta el else). Por ello, la eficiencia del código es O(n$^{\text{2}}$).
+
+\subsubsection{Bloques de Sentencias}
+\label{sec-1-2-3}
+En este caso, si tenemos bloques independientes se va tomando la regla del máximo para todos los bloques
+
+\subsubsection{Llamadas a funciones}
+\label{sec-1-2-4}
+
+Hay que mirar cuánto cuesta la llamada a la función, es muy importante para la ejecución del código.
+
+Analizamos un ejemplo de un código de 30 líneas de las transparencias del profesor.
+
+
+\begin{enumerate}
+\item Ejemplos
+\label{sec-1-2-4-1}
+
+Cuando en los bucles haya i  =2, i*=4,i*=n\ldots{} entonces la eficiencia será logaritmo en base n de lo que haya dentro del bucle.
+\end{enumerate}
+
+\subsection{Tema 2 - Abstracción.}
+\label{sec-1-3}
+% Emacs 24.5.1 (Org mode 8.2.10)
+\end{document}
