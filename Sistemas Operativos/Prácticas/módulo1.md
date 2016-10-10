@@ -1,4 +1,4 @@
-# Apuntes
+  # Apuntes
 
 ## Módulo 1.
 
@@ -112,4 +112,43 @@ Ahora, si queremos ponerle una cuota a un usuario usamos:
 ** edquota -t**
 Estableciendo así el periodo de gracia para el límite soft(están los límites soft y hard).
 
-* Usando **repquota <SA>** podemos ver la estadística de las cuotas para todos los usuarios 
+* Usando **repquota <SA>** podemos ver la estadística de las cuotas para todos los usuarios
+
+### Orden uptime , orden w
+Las opciones muestran salidas similares. Dan información sobre quién está conectado al sistema y qué están haciendo.
+
+Con **uptime** sólo da la cabecera, es decir, la hora actual, el tiempo que lleva en marcha la máquina, el nº de usuarios conectados y la caga media del sistema en los últimos 1,5 y 10 mins.
+
+Con **w** se muestra lo que muestra *uptime* mas qué usuarios están conectados y qué está haciendo cada uno, da más detalles sobre el sistema
+* Usando **-h** deja de mostrar lo que mostraba *uptime*
+
+#### Orden time
+Mide el tiempo de ejecución de un programa y muestra un recurso del uso de los recursos del sistema. Mide el tiempo de ejecución real, de usuario y de supervisor, asi que haciendo
+
+T_espera = real - usuario - supervisor
+
+Hallamos el tiempo de espera
+
+### Órdenes nice y renice
+
+1. con **nice** establecemos el valor de prioridad de un proceso a un valor distinto del que tiene por defecto. El rango es [-20-19]. Solo puede hacerlo el usuario root.
+
+2. Con **renice** alteramos el valor de la prioridad de uno o más procesos en ejecución.
+
+### Orden pstree
+
+Muestra los procesos en ejecución dibujados en forma de árbol. Opciones:
+
+* **-a** muestra los argumentos de la línea de órdenes
+
+* **-A** dibuja el árbol con caracteres ASCII
+
+* **-h** resalta el proceso actual y sus antepasados. Con **-H** especifica el proceso
+
+* **-l** usa un formato largo
+
+* **-n** ordena los procesos por PID. Con **-p** no muestra prioridad
+
+* **-u** muestra el uid de un proceso hijo si es distinto al de su padre.
+
+* **-Z** muestra información de seguridad
