@@ -64,6 +64,10 @@ Analizamos un ejemplo de un código de 30 líneas de las transparencias del prof
 
 * Cuando en los bucles haya i  =2, i*=4,i*=n... entonces la eficiencia será logaritmo en base n de lo que haya dentro del bucle.
 
+
+
+## Tema 2 - Abstracción.
+
 ### Uso de Template.
 
 Nos permite seleccionar el tipo de dato que vamos a utilizar en tiempo de ejecución.
@@ -94,4 +98,15 @@ T VectorDinamico::componente(int i) const
 
 La compilación a la hora de usar templates es distinta a la que estamos acostumbrados. En lugar de hacer un _#include "clase.h"_ en el archivo _.cpp_, se incluirá el archivo _#include "clase.cpp"_ al final del archivo _.h_.
 
-## Tema 2 - Abstracción.
+### Clase vector dinámico
+
+Vamos a estudiar una clase que tenga un vector de datos y el número de elementos.Un primer ejemplo con tipo de dato float sería:
+
+```c++
+class VectorDinamico{
+
+  float* datos;
+  int ns;
+}
+
+```
