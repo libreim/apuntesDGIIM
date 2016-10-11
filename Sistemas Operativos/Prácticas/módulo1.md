@@ -66,6 +66,17 @@ añadiendo una linea de la siguiente manera:
 ```
 /dev/loop0 /mnt/SA_ext3 ext3 ro 0 0
 ```
+
+Ahora, podemos también usar esto para obtener paquetes o archivos de nuestro ordenador(recordemos que estamos en una máquina virtual.
+Para ello, utilizamos la opción:
+
+```
+mount none/mnt -t hostfs -o [carpeta de nuestro PC.]
+```
+Ahora, para instalar un paquete debemos hacer:
+```
+rpm -i /mnt/[nombrepaquete]
+```
 ### Orden Yum
 
 Los archivos de configuracion de Yum se encuentran en /etc/yum/yum.conf.
@@ -152,3 +163,28 @@ Muestra los procesos en ejecución dibujados en forma de árbol. Opciones:
 * **-u** muestra el uid de un proceso hijo si es distinto al de su padre.
 
 * **-Z** muestra información de seguridad
+
+
+### Orden ps
+
+Nos da información sobre: User, PID, PPID(identificador del proceso padre), %CPU, %MEM, VSZ(tamaño virtual del proceso en KB), RSS(memoria real usada en KB), TTY(terminal asociado con el proceso), STAT(estado del proceso)
+Se suele ejecutar con las operaciones:
+* **-ef** , con la e significa todo proceso en el sistema y f muestra información completa.
+
+### Orden top
+Muestra la actividad del procesador en tiempo real, y sobre los procesos que aparecen podemos realizar varias opciones:
+* **r** Cambiar la prioridad del proceso
+* **k** matar o enviar señal
+* **N** ordena por PID
+* **P** ordena por CPU
+* **A** ordena por tiempo
+* **n** cambia el numero de procesos mostrados
+* **q** salir
+
+### Orden mpstat
+Muestra estadísticas del procesador junto con la media de datos mostrados. *sysstat* debe estar instalado en el sistema para poder ejecutarlo. Su sintaxis es(aunque se puede usar solo mpstat y funciona):
+
+*mpstat [intervalo] [numero]*
+
+## Control y gestión de memoria
+### Orden free
