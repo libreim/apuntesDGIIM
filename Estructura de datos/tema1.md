@@ -107,6 +107,36 @@ class VectorDinamico{
 
   float* datos;
   int ns;
+}```
+
+
+###  Iteradores
+
+Pretendemos hacer recorridos mucho más rápido. No volvermos a recorrer vectores haciendo v[i]. Usaremos los punteros para iterar, de la forma:
+
+```c++
+
+double *v = &a.
+double *p;
+double * fin;
+fin = v+n;
+for(p = v; p!= fin; ++p)
+  cout << *p << endl;
+```
+
+Definiremos incluso un nuevo tipo de dato llamado iterator, haciéndolo de la forma:
+
+```c++
+typedef double* iterator;
+iterator begin(double* v, int n){
+  return v;
+}
+iterator end(double* v, int n){
+  return v+n;
 }
 
+/**--------------------------*/
+iterator p;
+for(p=begin(v,n); p!=end(v,n);++p)
+  cout << *p << endl;
 ```
