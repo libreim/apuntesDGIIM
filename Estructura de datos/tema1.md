@@ -8,7 +8,7 @@ Para usar este tipo de comparación podemos utilizar simplificacion de funciones
 ### Hallar la función de eficiencia.
 
 Lo primero es dividir el codigo en trozos, y tenemos en cuenta que si:
-1. Los troxos son independientes, la función de la union es O del máximo de las funciones de cada uno.
+1. Los trozos son independientes, la función de la unión es O del máximo de las funciones de cada uno.
 2. Los trozos son anidados o dependientes, la función de la unión es O del producto de las funciones de cada uno.
 
 Teniendo en cuenta que cada accion cuenta como la unidad, es decir:
@@ -17,7 +17,7 @@ for(int i = 0; i < n; i++){
   cout << "Lmao";
 }
 ```
-Serian n iteraciones de valor 1. Sabiendo que la iteracion i++ tambien es una operación pero no tiene sentido tenerlo en cuenta ya que 2n = O(n), de igual forma que la asignacióndel principio del bucle, y la comparación que se realiza, es decir, contaremos las operaciones simples como una única.
+Serian n iteraciones de valor 1. Sabiendo que la iteracion i++ tambien es una operación pero no tiene sentido tenerlo en cuenta ya que 2n = O(n), de igual forma que la asignación del principio del bucle, y la comparación que se realiza, es decir, contaremos las operaciones simples como una única.
 
 ## Análisis de sentencias
 
@@ -46,7 +46,8 @@ else
   {
     A[k][k] = 1;
   }
-}```
+}
+```
 
 En este caso, tenemos que tomar máximo entre O(n^2) (lo que cuesta el if) y O(n)(lo que cuesta el else). Por ello, la eficiencia del código es O(n^2).
 
@@ -107,7 +108,8 @@ class VectorDinamico{
 
   float* datos;
   int ns;
-}```
+}
+```
 
 
 ###  Iteradores
@@ -123,6 +125,8 @@ fin = v+n;
 for(p = v; p!= fin; ++p)
   cout << *p << endl;
 ```
+
+#### Nota: en un compilador moderno, simplemente activando la optimización de código se consigue el mismo aumento en el rendimiento.
 
 Definiremos incluso un nuevo tipo de dato llamado iterator, haciéndolo de la forma:
 
