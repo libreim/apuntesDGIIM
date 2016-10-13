@@ -188,3 +188,80 @@ Muestra estadísticas del procesador junto con la media de datos mostrados. *sys
 
 ## Control y gestión de memoria
 ### Orden free
+Orden muy ligera que visualiza el uso actual de memoria. Informa de la memoria RAM de la computadora y de la memoria SWAP disponible
+* **-b** en bytes, **-k** en kilobytes, **-m** en megabytes, **-g** en gigabytes.
+* **-w** Produce un resultado más ancho
+* **-c**
+* **-l** muestra más detalles de alta y baja memoria
+
+### Orden watch
+Esta orden ejecuta un comando repetidamente y muestra la salida y los errores. Por defecto, se ejecuta cada dos segundos
+* **-n [intervalo]** cambia el intervalo de ejecución. No puede ser menor que 0.1 segundos.
+* **-g** Sale cuando la salida del comando cambia
+* **-e** se congela cuando hay un error en el comando y para salir se pulsa una tecla
+
+### Orden *vmstat*
+
+Supervisa el sistema mostrando información de memoria, de procesos, de E/S y de CPU. El porcentaje de tiempo de CPU del usuario viene en la columna *us*, el de tareas del sistema viene en la columna *sy* y el de no hacer nada en absoluto en la columna *id*
+
+* La columna *r* muestra cuantos procesos hay en cola de ejecución
+
+
+### Ampliación de ls
+
+Con ls, buscaremos ahora mostrar ciertos metadatos de los archivos. Para ello, usaremos las opciones.
+
+1. Opciones de formato de listado largo
+
+* **-l** Larga lista de metadatos de archivo para cada archivo
+* **-n** larga anterior pero sin los usuarios ni los grupos.
+* **-la** igual que *-l* pero no ignora los archivos ocultos
+* **-li** Larga lista incluyendo el campo: número de inodo()
+* **-lh** lista larga de los metadatos del archivo con los tamaños listados en Kbytes,Mbytes o Gbytes
+
+2. Opciones extras para el listado de formato largo.
+* **-X** ordena alfabeticamente por extensión
+* **-t** ordena por fecha de modificación
+* **-u** ordena por fecha de acceso
+* **-c** ordena por fecha de modificación de los metadatos
+
+También se pueden combinar algunas letras para ofrecer distintas salidas según lo que queramos.
+
+Delante de los permisos, aparece una letra. Esta letra indica:
+
+* **-** es un archivo regular
+* **d** es un Directorio
+* **l** es un enlace simbólico
+* **b** es un archivo especial de dispositivo de bloques
+* **c** archivo especial de dispositivo de caracteres
+* **p** archivo FIFO para comunicaciones entre procesos
+
+### Orden df
+Esta orden permite visualizar para cada Sistema de Archivos montado, información sobre su capacidad de almacenamiento total, el usado para almacenar y el espacio libre restante y el punto de montaje en la jerarquía de directorios.
+
+* **-i** sirve para visualizar la información sobre los inodos de cada SA montado.
+
+### Orden du
+Sirve para poder ver el espacio en disco que gasta un directorio de la jerarquía de directorios y todo el subárbol de la jerarquía que comienza en él.
+
+ - La última línea de la salida muestra la cantidad total de bloques de disco que utiliza el subárbol.
+  - du contabiliza el número de bloques de disco asignados estén o no ocupados.
+
+
+### Creación de enlaces simbólicos o duros
+
+Para crear estos enlaces, previamente usamos la orden:
+
+```
+ln [nombre archivo] [nombre enlace]
+```
+
+Se crean por defecto enlaces duros. Otras opciones son:
+
+* **--symbolic** crea un enlace simbólico
+* **-F** intenta crear un enlace duro a un directorio, aunque seguro que falla incluso con root.
+* **--P** hace enlaces duros directamente simbólicos.
+
+* **-v** imprime el nombre de los archivos que tienen un enlace.
+
+Los números que aparecen en la columna anterior al *username* son los valores del contador de enlaces, el número de enlaces duros a archivos para liberar el inodo cuando los nombres de archivo que usan ese inodo se eliminen.
