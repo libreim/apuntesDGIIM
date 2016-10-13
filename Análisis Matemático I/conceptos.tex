@@ -228,11 +228,53 @@ Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Consideremos un punto $x\in X
 
 
 
-\section{Sucesiones en $\mathbb{R}^N$}
+\section*{Definición de sucesión en $\mathbb{R}^N$.}
 
-\begin{ndef}[Convergencia de sucesiones en $\mathbb{R}^N$]
-$\dots \ \dots$
-\end{ndef}
+Una sucesión en $\mathbb{R}^N$ es una aplicación 
+
+\begin{align}
+&x : \mathbb{N} \longrightarrow { \mathbb{R}^N }\notag \\
+&\quad\;\; n \longmapsto { x(n) }\notag
+\end{align}
+
+A la que denotamos $x_n = x(n)$.
+
+\section*{Convergencia de sucesiones en $\mathbb{R}^N$.}
+
+De forma análoga a la convergencia de sucesiones en $\mathbb{R}$:
+
+\[
+	\{x_n\} \rightarrow x \iff \forall \varepsilon > 0\quad \exists m\in\mathbb{N} : n \ge m \implies d(x,x_n) < \varepsilon
+\]
+
+\begin{nprop}
+	Sean $x = (x^1, \dots, x^N)$ y $\{x_n\}$ con $x_n = (x^1_n, \dots, x^N_n)$.
+	
+	\[
+		\{x_n\} \rightarrow x \iff \{x^i_n\} \rightarrow x^i
+	\]
+\end{nprop}
+
+%\begin{proofs}
+%\fbox{$\impliedby$}
+
+%Para esta demostración vamos a usar la distancia del máximo en lugar de la usual (todas las distancias son equivalentes en $\mathbb{R}^N$).\\
+
+%Si $\forall i=1, ..., N$ tenemos que $\forall \varepsilon_i > 0\quad \exists m_i : n \ge m_i \implies |x^i_n - x^i| < \varepsilon_i$, se sigue que \[\displaystyle\max_{i=1,...,N} |x^i_n - x^i| < \displaystyle\max_{i=1,...,N} \varepsilon_i\]
+%luego $d_\infty(x_n, x) < \displaystyle\max_{i=1,...,N} \varepsilon_i$.
+%\end{proofs}
+
+\begin{nth} (de Bolzano-Weierstrass)
+Sea $\{x_n\}$ una sucesión en $\mathbb{R}^N$ acotada. Entonces $\exists \sigma : \mathbb{N} \longrightarrow \mathbb{N}$ creciente tal que $\{x_{\sigma(n)}\}$ es convergente.
+\end{nth}
+
+\begin{nth} (de Weierstrass)
+	Sea $f : A \subset \mathbb{R}^N \longrightarrow \mathbb{R}$ continua con $A$ compacto (?). Entonces existen $x_1,x_2$ tales que
+	\[
+		x_1 \le f(x) \le x_2\quad \forall x \in A 
+	\]
+\end{nth}
+
 
 
 \begin{ndef}
