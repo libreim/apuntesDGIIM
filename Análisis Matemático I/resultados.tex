@@ -1,0 +1,284 @@
+\documentclass[11pt,a4paper, titlepage]{article}
+
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman]{babel}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+
+% Meta
+\title{\textbf{Análisis Matemático I}\\ Doble Grado de Informática y Matemáticas}
+\author{}
+\date{\vspace{-4em}Curso 2016/17}
+
+
+% Custom
+\providecommand{\abs}[1]{\lvert#1\rvert}    % \abs{} para valor absoluto
+\setlength\parindent{0pt}       % no indentar
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % fracción grande
+\setlist{leftmargin=.5in}    % indentación para las listas
+
+
+% Environments
+
+%% dar nombre a teoremas y definiciones
+\makeatletter
+\def\th@plain{
+  \thm@notefont{}
+  \itshape
+}
+\def\th@definition{
+  \thm@notefont{}
+  \normalfont
+}
+\makeatother
+
+%% teoremas, definiciones, proposiciones y notas
+\theoremstyle{plain}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición} 
+\newtheorem*{props}{Propiedades}
+\theoremstyle{remark}
+\newtheorem*{nota}{Nota}
+\theoremstyle{definition}
+\newtheorem*{ndef}{Definición}
+
+%% listas ordenadas con (i), (ii), etc.
+\newenvironment{nlist}
+  {\begin{enumerate}\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+
+
+\begin{document}
+\maketitle
+
+\section{Topología de un espacio métrico.}
+
+
+\begin{ndef}[Espacio métrico]
+Consideremos un conjunto $X$ y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
+\begin{nlist}
+\item $d(x,y) \ge 0\ \ \forall x,y \in X$.
+\item $d(x,y) = 0 \iff x = y\ \ \forall x,y \in X$.
+\item $d(x,y) = d(y,x)\ \ \forall x,y \in X$.
+\item $d(x,y) \leq d(x,z) + d(z,y)\ \ \forall x,y,z \in X$.
+\end{nlist}
+Entonces, se dice que el par $(X,d)$ es un \emph{espacio métrico}.
+\end{ndef}
+
+
+
+\begin{nota}
+En $\mathbb{R}^N$, la distancia usual \textbf{(distancia euclídea)} viene dada por: $$d(x,y) = \sqrt{\sum_{i=1}^N (y_i - x_i)^2}\ \ \forall x,y\in \mathbb{R}^N.$$
+\end{nota}
+
+
+\begin{ndef}[Bola abierta]
+Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se llama \emph{bola abierta de centro $x$ y radio $\epsilon$} al conjunto $B(x,\epsilon) = \{ y\in X \ | \ d(x,y)<\epsilon\}$.
+\end{ndef}
+
+
+
+\begin{ndef}[Bola cerrada]
+De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\bar{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
+	
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto abierto]
+Sea $(X,d)$ un espacio métrico, y sea $A\subseteq X$. Decimos que \mbox{$A\ es\ abierto \iff \forall a \in A\ \exists \epsilon > 0: B(x,\epsilon) \subseteq A$}.	
+\end{ndef}
+
+
+
+\begin{nota}
+Sea $(X,d)$ un espacio métrico. Entonces, $\forall x \in X \ \forall \epsilon > 0$ se tiene que $B(x,\epsilon)$ es un conjunto abierto.
+\end{nota}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $Si\ \{A_\lambda \ | \ \lambda \in \Lambda \}$ es una familia de subconjuntos abiertos de $X$, entonces $\displaystyle \bigcup_{\lambda \in \Lambda} A_\lambda$ es abierto.
+
+\item Si $\{A_1,\dots, A_n\}$ es una familia finita de abiertos de $X$, entonces $\displaystyle \bigcap_{i=1}^n A_i$ es abierto.
+
+\item $X,\emptyset$ son abiertos.
+\end{nlist}
+\end{nprop}
+
+
+
+\begin{ndef}[Punto interior]
+Sea $(X,d)$ un espacio métrico, y consideremos $A\subseteq X$, $a\in A$. Se dice que $a$ \emph{es un punto interior de} $A$ si, y solo si, $\exists \epsilon_0 > 0: B(a,\epsilon_0)\subseteq A$.  Definimos $int(A) = \mathring{A} = \{ a\in A \ | \ a\ es\ punto\ interior\ de\ A\}$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $\mathring{A} \subseteq A$.
+
+\item $\mathring{A}$ es abierto.
+
+\item Si $B\subseteq A$ es un subconjunto abierto de $A$, entonces $B \subseteq \mathring{A}$. Es decir, $\mathring{A}$ es el abierto más grande contenido en $A$.
+
+\item $\displaystyle \mathring{A}  = \bigcup \{ B\subseteq A \ | \ B\ es\ abierto \}$.
+
+\item $A$ es abierto $\iff \mathring{A} =A$.
+
+\item Si $A\subseteq B$, entonces $\mathring{A} \subseteq \mathring{B}$.
+\end{nlist}
+\end{nprop}
+
+
+
+\begin{ndef}[Conjunto cerrado]
+Sea $(X,d)$ un espacio métrico, y $F\subseteq X$. Se dice que el conjunto $F\ es\ cerrado \iff X-F\ es\ abierto$.
+\end{ndef}
+
+
+
+\begin{nota}
+Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\bar{B}(x,\epsilon)$ es un conjunto cerrado.
+\end{nota}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $Si\ \{F_\lambda \ | \ \lambda \in \Lambda \}$ es una familia de cerrados de $X$, entonces $\displaystyle \bigcap_{\lambda \in \Lambda} F_\lambda$ es cerrado.
+
+\item Si $\{F_1,\dots, F_n\}$ es una familia finita de cerrados de $X$, entonces $\displaystyle \bigcup_{i=1}^n F_i$ es cerrado.
+
+\item $X,\emptyset$ son cerrados.
+\end{nlist}
+\end{nprop}
+
+
+
+\begin{ndef}[Clausura]
+Sea $(X,d)$ un espacio métrico. Se llama \textit{clausura o cierre de A} al conjunto $\bar{A} = X - int(X-A)$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las siguientes propiedades:
+\begin{nlist}
+\item $A \subseteq \bar{A}$.
+
+\item $\bar{A}$ es cerrado.
+
+\item Si $B\subseteq X$ es un subconjunto cerrado de $X$ tal que $A\subseteq B$, entonces $\bar{A} \subseteq B$. Es decir, $\bar{A}$ es el cerrado más pequeño que contiene a $A$.
+
+\item $\displaystyle \bar{A}  = \bigcap \{ F\subseteq X \ | \ F\ es\ cerrado\ y\ A\subseteq F \}$.
+
+\item $A$ es cerrado $\iff \bar{A} = A$.
+
+\item Si $A\subseteq B$, entonces $\bar{A} \subseteq \bar{B}$.
+\end{nlist}
+\end{nprop}
+
+
+
+\begin{ndef}[Frontera]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Llamamos \textit{frontera de A} al conjunto $\partial A = \bar{A}-\mathring{A}$.	
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifica lo siguiente:
+$x\in \partial A \iff \forall \epsilon > 0\ B(x,\epsilon)\cap A \neq \emptyset \ y\ B(x,\epsilon)\cap (X-A) \neq \emptyset$.
+\end{nprop}
+
+
+
+\begin{ndef}[Punto de acumulación]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Dado $x\in X$, decimos que \textit{x es punto de acumulación de} $A \iff \forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})\neq \emptyset$. Definimos $A' = \{ x\in X \ | \ x\ es\ punto\ de\ acumulaci\acute{o}n\ de\ A \}$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Consideremos un punto $x\in X$. Son equivalentes:
+
+\begin{nlist}
+\item x es punto de acumulación de A.
+\item $\exists \{a_n\}\subseteq A-\{x\}$ tal que $\{a_n\} \rightarrow x$.
+\item $\forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})$ es un conjunto infinito. 
+\end{nlist}
+\end{nprop}
+
+
+
+\newpage
+
+
+
+\section*{Definición de sucesión en $\mathbb{R}^N$.}
+
+Una sucesión en $\mathbb{R}^N$ es una aplicación 
+
+\begin{align}
+&x : \mathbb{N} \longrightarrow { \mathbb{R}^N }\notag \\
+&\quad\;\; n \longmapsto { x(n) }\notag
+\end{align}
+
+A la que denotamos $x_n = x(n)$.
+
+\section*{Convergencia de sucesiones en $\mathbb{R}^N$.}
+
+De forma análoga a la convergencia de sucesiones en $\mathbb{R}$:
+
+\[
+	\{x_n\} \rightarrow x \iff \forall \varepsilon > 0\quad \exists m\in\mathbb{N} : n \ge m \implies d(x,x_n) < \varepsilon
+\]
+
+\begin{nprop}
+	Sean $x = (x^1, \dots, x^N)$ y $\{x_n\}$ con $x_n = (x^1_n, \dots, x^N_n)$.
+	
+	\[
+		\{x_n\} \rightarrow x \iff \{x^i_n\} \rightarrow x^i
+	\]
+\end{nprop}
+
+%\begin{proofs}
+%\fbox{$\impliedby$}
+
+%Para esta demostración vamos a usar la distancia del máximo en lugar de la usual (todas las distancias son equivalentes en $\mathbb{R}^N$).\\
+
+%Si $\forall i=1, ..., N$ tenemos que $\forall \varepsilon_i > 0\quad \exists m_i : n \ge m_i \implies |x^i_n - x^i| < \varepsilon_i$, se sigue que \[\displaystyle\max_{i=1,...,N} |x^i_n - x^i| < \displaystyle\max_{i=1,...,N} \varepsilon_i\]
+%luego $d_\infty(x_n, x) < \displaystyle\max_{i=1,...,N} \varepsilon_i$.
+%\end{proofs}
+
+\begin{nth} (de Bolzano-Weierstrass)
+Sea $\{x_n\}$ una sucesión en $\mathbb{R}^N$ acotada. Entonces $\exists \sigma : \mathbb{N} \longrightarrow \mathbb{N}$ creciente tal que $\{x_{\sigma(n)}\}$ es convergente.
+\end{nth}
+
+\begin{nth} (de Weierstrass)
+	Sea $f : A \subset \mathbb{R}^N \longrightarrow \mathbb{R}$ continua con $A$ compacto (?). Entonces existen $x_1,x_2$ tales que
+	\[
+		x_1 \le f(x) \le x_2\quad \forall x \in A 
+	\]
+\end{nth}
+
+
+
+\begin{ndef}
+Sea $(X,d)$ un espacio métrico, y $a_n,x\in X$. Entonces, decimos que una distancia $d(a_n,x)$ tiende a $0 \iff \{a_n\} \rightarrow x$.
+\end{ndef}
+
+\end{document}
