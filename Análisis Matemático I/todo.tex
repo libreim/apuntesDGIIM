@@ -281,4 +281,33 @@ Sea $\{x_n\}$ una sucesión en $\mathbb{R}^N$ acotada. Entonces $\exists \sigma 
 Sea $(X,d)$ un espacio métrico, y $a_n,x\in X$. Entonces, decimos que una distancia $d(a_n,x)$ tiende a $0 \iff \{a_n\} \rightarrow x$.
 \end{ndef}
 
+\section*{Conjuntos conexos.}
+\begin{ndef} [Conjunto convexo]
+	Un conjunto $A\subset \mathbb{R}^N$ se dice \emph{convexo} si 
+	\[\forall x,y \in A {tx+(1-t)y : t\in [0,1]}\subset A\]
+\end{ndef}
+
+\begin{ndef}[Conjunto poligonalmente conexo]
+	$A\subset \mathbb{R}^N$ es \emph{poligonalmente conexo} si para todo par de puntos de $A$ existe una curva poligonal que los une, totalmente incluida en $A$.
+\end{ndef}
+
+\begin{ndef}[Conjunto arco-conexo]
+	$A\subset \mathbb{R}^N$ se dice \emph{arco-conexo}, o \emph{conexo por arcos} si
+	\[
+		\forall x,y \in A\quad \exists\varphi : [a,b] \longrightarrow \mathbb{R}^N \text{continua tal que}\; \varphi(a) = x, \varphi(b)=y, \varphi([a,b]) \subset A 
+	\]
+\end{ndef}
+
+\begin{nth}
+	\[
+	\emptyset \not= A \subset \mathbb{R}^N,\; f:A\longrightarrow \mathbb{R}^M \text{continua} \implies f(A)\; \text{es arco-conexo.}
+	\]
+\end{nth}
+
+\begin{proof}
+	\[X,Y\in f(A) \implies \exists x,y \in A : X=f(x), Y=f(y)\]
+	\[\implies \exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua } \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subset A\]
+	\[\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M\quad \psi(a) = X,\; \psi(b)=Y,\; \psi([a,b]) \subset f(A)\]
+\end{proof}
+
 \end{document}
