@@ -1,7 +1,19 @@
 # coding: utf-8
 task :default => [:algebra1]
-task :algebra1 => [".out/Álgebra I/tema1.pdf"]
 
+# Compilation rules
+task :algebra1 => [".out/Álgebra I/tema1.pdf"]
+task :analisis1 => [".out/Análisis Matemático I/apuntes.pdf",
+                    ".out/Análisis Matemático I/resultados.pdf"]
+task :ecomputadores => Dir[".out/Estructura de Computadores/*.md"].map(:pdf_for)
+task :edatos => [".out/Estructura de datos/tema1.pdf"]
+task :sistemas => [".out/Sistemas Operativos/repasoFS.pdf"]
+
+def pdf_for(f)
+  ".out/" + f.sub(/.([^.]*?)$/, ".pdf")
+end
+
+# Generating pdfs from Latex source
 def tex_for(f)
   f.sub(/.out\//, "").sub(/.pdf/, ".tex")
 end
