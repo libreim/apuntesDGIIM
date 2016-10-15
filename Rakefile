@@ -35,6 +35,12 @@ rule ".pdf" => ->(f){sources_for f, :md} do |t|
   sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
 end
 
+# Generate PDFs from Org-Mode sources with pandoc
+rule ".pdf" => ->(f){sources_for f, :org} do |t|
+  sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
+  sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
+end
+
 task :clean do |t|
   sh "rm .out -rf"
 end
