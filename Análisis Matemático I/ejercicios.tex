@@ -1,0 +1,79 @@
+\documentclass[11pt,a4paper, titlepage]{article}
+
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman]{babel}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{upgreek}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+
+% Info
+\title{\textbf{Análisis Matemático I}\\ Ejercicios resueltos\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
+\author{}
+\date{\vspace{-5em}Curso 2016/17}
+
+
+% Custom
+\providecommand{\abs}[1]{\lvert#1\rvert}    % \abs{} para valor absoluto
+\setlength\parindent{0pt}       % no indentar
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % fracción grande
+\setlist{leftmargin=.5in}    % indentación para las listas
+\let\epsilon\upvarepsilon    % letra épsilon redefinida
+\newcommand{\bm}[1]{\boldsymbol{#1}}    % comando para negrita en math mode
+
+
+% Environments
+
+%% dar nombre a teoremas y definiciones
+\makeatletter
+\def\th@plain{
+  \thm@notefont{}
+  \itshape
+}
+\def\th@definition{
+  \thm@notefont{}
+  \normalfont
+}
+\makeatother
+
+%% teoremas, definiciones, proposiciones y notas
+\theoremstyle{plain}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición} 
+\newtheorem*{props}{Propiedades}
+\theoremstyle{remark}
+\newtheorem*{nota}{Nota}
+\theoremstyle{definition}
+\newtheorem*{ndef}{Definición}
+
+%% listas ordenadas con (i), (ii), etc.
+\newenvironment{nlist}
+  {\begin{enumerate}\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+
+% Document
+\begin{document}
+\maketitle
+
+
+\section{Topología de un espacio métrico.}
+
+\textbf{Ejercicio.} Dado el conjunto $A = \{ (x,y)\in \mathbb{R}^2: 0 < x \le 1 \}$, ¿es abierto?
+
+\begin{proof}
+Tenemos que comprobar si $A$ es abierto, es decir, si es cierto que\\
+$\forall a \in A \ \ \exists s>0\ tal\ que\ B(a,s)\subset A$. Para ello, fijo $y \in \mathbb{R}$ y escojo $x_o = (1,y) \in A$. Además, tomo $s>0$ cualquiera. Veamos que hay puntos $z \in B(x_o, s)$ que no pertenecen a $A$.\\
+
+Sea $\displaystyle z = (1 + \frac{s}{2}, y)$. Entonces, se tiene que $\displaystyle d(z,x_o)= \sqrt{\left(\frac{s}{2}\right)^2 + 0} = \frac{s}{2} < s$, y por tanto $z \in B(x_o,s)$.\\
+
+Claramente $z\notin A$, pues $\displaystyle 1 + \frac{s}{2} > 1$. Así, concluimos que $z$ es un punto de $B(x_o,s)$ que no pertenece a $A$, por lo que $\displaystyle B(x_o,s) \not \subset A$, y $A$ no es abierto.\\
+
+\textbf{@ Antonio Coín.}
+
+\end{proof}
+
+\end{document}
