@@ -12,7 +12,7 @@ before_install:
   - |
     git config --global user.email "dgiimblog@gmail.com"
     git config --global user.name "dgiimbot"
-    git clone -b pdf https://${GITHUB_TOKEN}@github.com/fdavidcl/apuntesDGIIM.git .out
+    git clone -b pdf https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
 
 script: rake
 
