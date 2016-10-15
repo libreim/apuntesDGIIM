@@ -319,7 +319,7 @@ Sea $A \subseteq \mathbb{R}^N$. Decimos que $A$ \textit{está acotado} si, y sol
 
 
 
-\begin{ndef}
+\begin{ndef}[Sucesión acotada]
 Sea $\{x_n\}$ una sucesión de puntos de $R^N$. Entonces, decimos que $\{x_n\}$ \textit{está acotada} sí, y solo sí, $\{x_n\ | \ n\in \mathbb{N}\}$ está acotado.
 \end{ndef}
 
@@ -379,7 +379,7 @@ Además, se dice que $f$ es continua si lo es en todos sus puntos.
 
 
 \begin{nprop}[Caracterización de continuidad]
-Sea $\emptyset \ne A \subseteq \mathbb{R}^N$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, y $f:A\longrightarrow \mathbb{R}^M$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
 \end{nprop}
 
 
@@ -454,7 +454,7 @@ La misma definición se aplica para un espacio topológico $(X,\tau).$
 
 
 \begin{ndef}[Conjunto conexo]
-Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
 \end{ndef}
 
 
@@ -522,7 +522,7 @@ Sea $(X,d)$ un espacio métrico, $\emptyset \ne A \subseteq X$ compacto, y $f:A 
 
 
 \begin{nth}[Weierstrass generalizado]
-Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
+Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ compacto, y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
 \end{nth}
 
 

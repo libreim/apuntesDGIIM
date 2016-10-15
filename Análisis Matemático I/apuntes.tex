@@ -60,6 +60,13 @@
 \maketitle
 
 
+\section*{Introducción}
+
+El objetivo de este curso es el estudio de las funciones de varias variables, es decir, de funciones $f: \mathbb{R}^N \longrightarrow \mathbb{R}^M$. Para ello, empezaremos caracterizando el espacio $\mathbb{R}^N$, y proseguiremos intentando traspasar los resultados principales sobre funciones reales de variable real a nuestro campo de estudio, así como enunciando otros nuevos.\\
+
+Es por esto que es fundamental haber cursado con aprovechamiento las asignaturas de \emph{Cálculo I y II}, que tratan exclusivamente sobre funciones reales de variable real.\\
+
+Aunque nos centraremos en funciones en el espacio $\mathbb{R}^N$, muchos de los resultados que obtendremos son igual de válidos en un espacio métrico en general, e incluso en espacios topológicos.
 
 \section{Topología de un espacio métrico.}
 
@@ -138,7 +145,19 @@ Sea $(X,d)$ un espacio métrico, y sea $A\subseteq X$. Decimos que \mbox{$A\ es\
 Sea $(X,d)$ un espacio métrico. Entonces, $\forall x \in X \ \forall \epsilon > 0$ se tiene que $B(x,\epsilon)$ es un conjunto abierto.
 \end{nota}
 
-\newpage
+\begin{proof} \hfill 
+
+Sea $x \in B(x_0,\epsilon_0) $ arbitrario. Para demostrar que $B(x_0,\epsilon_0)$ es un abierto, tenemos que encontrar un $\epsilon > 0$ tal que $B(x,\epsilon) \subseteq B(x_0,\epsilon_0)  $, y por lo tanto comprobar que se verifica que $\forall y \in B(x,\epsilon) \Rightarrow y \in B(x_0,\epsilon_0).$ \\
+
+Sea $y \in B(x, \epsilon )$ cualquiera. Consideremos $r = d(x, x_0)$, y tomemos $\epsilon = \epsilon_0 - r$. Queremos demostrar que $y \in B(x_0, \epsilon_0)$. Para ello, veamos que $d(x_0, y) < \epsilon_0$. En efecto, por la desigualdad triangular se cumple que: $$d(x_0, y) \leq d(x,x_0) + d(x,y) < r + \epsilon = r + \epsilon_0 - r = \epsilon_0 $$
+
+Luego queda demostrado que $y \in B(x_0, \epsilon_0)$, y por tanto podemos afirmar que para todo punto $x \in B(x_0, \epsilon_0)$ se puede encontrar una bola abierta centrada en él, tal que todos sus puntos están en el conjunto de origen.\\
+
+\textbf{@ Pedro Bonilla.}
+
+\end{proof}
+
+
 
 \begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
@@ -305,6 +324,8 @@ Sea $A\subseteq \mathbb{R}^N$, $x\in \mathbb{R}^N$, y $\{x_n\}$ una sucesión de
 $$\{x_n\} \rightarrow x \iff \{x_n^j\} \rightarrow x^j.$$
 \end{nprop}
 
+
+
 %\begin{proofs}
 %\fbox{$\impliedby$}
 
@@ -312,6 +333,8 @@ $$\{x_n\} \rightarrow x \iff \{x_n^j\} \rightarrow x^j.$$
 
 %Si $\forall i=1, ..., N$ tenemos que $\forall \varepsilon_i > 0\quad \exists m_i : n \ge m_i \implies |x^i_n - x^i| < \varepsilon_i$, se sigue que \[\displaystyle\max_{i=1,...,N} |x^i_n - x^i| < \displaystyle\max_{i=1,...,N} \varepsilon_i\]
 %luego $d_\inf
+
+
 
 \begin{ndef}
 Sea $(X,d)$ un espacio métrico, y $x\in X$. Consideremos, para cada $n\in \mathbb{N}$, un punto $a_n \in X$. Entonces, decimos que $d(a_n,x) \rightarrow 0$ $\iff \{a_n\} \rightarrow x$.
@@ -325,7 +348,7 @@ Sea $A \subseteq \mathbb{R}^N$. Decimos que $A$ \textit{está acotado} si, y sol
 
 
 
-\begin{ndef}
+\begin{ndef}[Sucesión acotada]
 Sea $\{x_n\}$ una sucesión de puntos de $R^N$. Entonces, decimos que $\{x_n\}$ \textit{está acotada} sí, y solo sí, $\{x_n\ | \ n\in \mathbb{N}\}$ está acotado.
 \end{ndef}
 
@@ -385,7 +408,7 @@ Además, se dice que $f$ es continua si lo es en todos sus puntos.
 
 
 \begin{nprop}[Caracterización de continuidad]
-Sea $\emptyset \ne A \subseteq \mathbb{R}^N$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, y $f:A\longrightarrow \mathbb{R}^M$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
 \end{nprop}
 
 
@@ -410,6 +433,37 @@ Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
 \end{nlist}
 
 \end{nprop}
+
+\begin{proof} 
+Veamos las dos implicaciones:\\
+
+$\displaystyle \boxed{\Rightarrow}\ $ Supongamos $A \subseteq X$ un conjunto cerrado. Entonces, $X - A$ es abierto. Sea $\{x_n\}$ una sucesión de puntos de $A$ que converge a un $x\in X$. Para comprobar que, de hecho, $x\in A$, argumentamos por reducción al absurdo:\\
+
+\underline{Supongamos $x\notin A$}. Entonces, $x\in X - A$, y por ser este último conjunto abierto, encontramos un $\epsilon > 0\ tal\ que\ B(x,\epsilon)\subseteq (X-A)$. Pero por ser $x$ el límite de la sucesión $\{x_n\}$, se tiene que $\exists n_o \in \mathbb{N}: n\geq n_o \Rightarrow d(x_n,x)<\epsilon$. Es decir, a partir de cierto índice en adelante, $x_n \in B(x,\epsilon)\ con\ x_n \in A\ \forall n \in \mathbb{N}$. Esto se contradice con el hecho de que $B(x,\epsilon)\subseteq (X-A)$, pues encontramos en dicha bola puntos $x_n$ que no pertenecen a $X-A$.
+
+Por tanto, concluimos que $x\in A$.\\
+
+$\displaystyle \boxed{\Leftarrow}\ $ Sea $A\subseteq X$, y supongamos que se verifica que $\forall \{x_n\} \subseteq A\ tal\ que\ \{x_n\} \rightarrow x \in X,\ se\ tiene\ que\ x\in A$. Para ver que $A$ es cerrado, utilizaremos la siguiente caracterización de conjuntos cerrados:
+\vspace{0.5em}
+$$A\ es\ cerrado\ \iff \bar{A} = A $$
+
+Si recordamos, se define la frontera de $A$ como $\partial A = \bar{A} - \mathring{A}$. Por tanto, la equivalencia anterior quedaría así: $A\ es\ cerrado \iff \partial A \cup \mathring{A} = A$. Para comprobar esta última igualdad, veamos las dos inclusiones:
+
+\begin{description}
+\item $\displaystyle \boxed{\subseteq}\ $ Sabemos por la definición del conjunto de puntos interiores de $A$, que $\mathring{A} \subseteq A$. \\ Comprobemos entonces que $\partial A \subseteq A$:
+
+Sea $x\in \partial A$ cualquiera. Por una caracterización de la frontera de $A$, sabemos que $\forall \epsilon > 0\ B(x,\epsilon)\cap A \neq \emptyset$. Si tomamos $\epsilon = \frac{1}{n} > 0\ con \ n\in \mathbb{N}$, tenemos que $B(x,\frac{1}{n})\cap A \neq \emptyset$, es decir, $\exists a_n \in B(x,\frac{1}{n})\cap A\ tal\ que\ d(x,a_n)<\epsilon = \frac{1}{n}$. Podemos construir entonces, para cada $n \in \mathbb{N}$, la sucesión $\{a_n\}$.
+
+Así, se tiene que $0 < d(x,a_n) < \frac{1}{n}\ \forall n\in \mathbb{N}$, de donde concluimos que $d(x,a_n) \rightarrow 0$. Por definición, esto significa que $\{a_n\} \rightarrow x$, lo que por hipótesis implica, al ser $\{a_n\}$ una sucesión convergente de puntos de $A$, que  $x\in A$. Por tanto, se verifica que $\partial A \subseteq A$.
+
+\item $\displaystyle \boxed{\supseteq}\ $ Esta inclusión es trivial, pues sabemos que $A \subseteq \bar{A}$, y por tanto $A \subseteq \partial A \cup \mathring{A} = \bar{A}$.\\
+\end{description}
+
+De esta forma, queda probada la equivalencia.\\
+
+\textbf{@ Antonio Coín.}
+
+\end{proof}
 
 
 
@@ -460,7 +514,7 @@ La misma definición se aplica para un espacio topológico $(X,\tau).$
 
 
 \begin{ndef}[Conjunto conexo]
-Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
 \end{ndef}
 
 
@@ -469,11 +523,41 @@ Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equival
 Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.
 \end{nprop}
 
+\begin{proof}
+Sean $x,y \in A$, y supongamos sin pérdida de generalidad que $x \le y$. Sabemos que por ser $A$ arco-conexo, $\exists \varphi : [a,b] \longrightarrow \mathbb{R}$ función continua verificando: $$\varphi(a) = x;\quad \varphi(b) = y;\quad \varphi([a,b]) \subseteq A.$$
+
+Como $\varphi$ es una función continua definida en un intervalo cerrado y acotado, aplicamos el \textbf{teorema del valor intermedio} en $\mathbb{R}$, y obtenemos que $\varphi([a,b])$ es un intervalo. Por ser un intervalo, verificará que $\forall \alpha, \beta \in \varphi([a,b])\ con\ \alpha \le \beta,\ \ [\alpha,\beta] \subseteq \varphi([a,b])$.\\
+
+Por tanto, como $\varphi(a), \varphi(b) \in \varphi([a,b])$, concluimos que: $$[\varphi(a),\ \varphi(b)] = [x,y] \subseteq \varphi([a,b]) \subseteq A.$$
+
+Así, hemos demostrado que $\forall x,y \in A\ \ [x,y] \subseteq A$, y por tanto, $A$ es convexo.\\
+
+\textbf{@ Antonio Coín.}
+
+\end{proof}
+
 
 
 \begin{nprop}
 Sea $A \subseteq \mathbb{R}^N$ convexo. Entonces, $A$ es arco-conexo.
 \end{nprop}
+
+\begin{proof} \hfill \\
+Fijemos $x,y \in A$ arbitrarios, y construyamos la aplicación $\varphi: [0,1] \longrightarrow \mathbb{R}^N$ dada por: $$\varphi(t) = (1-t)x + ty\ \ \forall t\in [0,1]$$
+
+Una primera observación es que $\varphi([0,1]) = \{(1-t)x + ty: t \in [0,1]\} = [x,y] \subseteq A$ por ser $A$ convexo. También se desprende de la definición de $\varphi$ que $\varphi(0) = x$ y $\varphi(1) = y$.
+
+Para comprobar que $\varphi$ es continua, utilicemos la caracterización de la continuidad por sucesiones:\\
+
+Sea $\{x_n\} \subseteq [0,1]\ con\ \{x_n\} \rightarrow a \in [0,1]$. Entonces, $\{\varphi(x_n) \} = \{(1- x_n)x + x_n y\}$. \\Apliquemos ahora propiedades de las sucesiones convergentes, y obtenemos que: $$\{\varphi(x_n) \} \rightarrow (1-a)x + ay = \varphi(a).$$
+
+Entonces, $\forall \{x_n\} \subseteq [0,1]\ con\ \{x_n\} \rightarrow a \Rightarrow \{\varphi(x_n) \} \rightarrow \varphi(a)$, por lo que $\varphi$ es continua.\\
+
+Así, queda probado que $A$ es conexo por arcos.\\
+
+\textbf{@ Guillermo Galindo.}
+
+\end{proof}
 
 
 
@@ -534,7 +618,7 @@ Sea $(X,d)$ un espacio métrico, $\emptyset \ne A \subseteq X$ compacto, y $f:A 
 
 
 \begin{nth}[Weierstrass generalizado]
-Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
+Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ compacto, y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
 \end{nth}
 
 
@@ -544,9 +628,12 @@ Sea $\emptyset \ne A \subseteq \mathbb{R}^N$ arco conexo, y $f: A \longrightarro
 \end{nth}
 
 \begin{proof}
-	\[X,Y\in f(A) \implies \exists x,y \in A : X=f(x), Y=f(y)\]
-	\[\implies \exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua } \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subset A\]
-	\[\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M\quad \psi(a) = X,\; \psi(b)=Y,\; \psi([a,b]) \subset f(A)\]
+Sean $X,Y\in f(A)$. Entonces, $\exists x,y \in A : X=f(x), \ Y=f(y)$. Como $A$ es arco-conexo, $\exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua tal que}\ \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subseteq A$.\\
+
+
+Ahora, definimos $\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M$, que es continua por ser composición de funciones continuas. Entonces, se verifica que: $$\psi(a) = f(\varphi(a)) = f(x) = X;\quad \psi(b)= f(\varphi(b)) = f(y) = Y;\quad \psi([a,b]) = f(\varphi([a,b])) \subseteq f(A).$$
+
+Por tanto, queda probado que $A$ es arco-conexo en $\mathbb{R}^M$.
 \end{proof}
 
 
