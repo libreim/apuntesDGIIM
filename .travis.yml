@@ -6,9 +6,15 @@ rvm:
 git:
   submodules: false
 
+gems:
+  - pygmentize
+
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y git pandoc texlive-full
+  - sudo apt-get install -y pandoc texlive-full
+  - git clone https://github.com/gpoore/minted.git
+  - sudo mkdir -p /usr/share/texlive/texmf-dist/tex/latex/minted/
+  - sudo cp minted/source/minted.sty /usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
   - |
     git config --global user.email "dgiimblog@gmail.com"
     git config --global user.name "dgiimbot"
@@ -16,7 +22,7 @@ before_install:
 
 script: rake
 
-after_script:
+after_success:
   - |
     [ "${TRAVIS_PULL_REQUEST}" = "false" ] && (
     cd .out/
