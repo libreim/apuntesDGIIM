@@ -9,6 +9,16 @@ def sources_for f, type
   f.sub(".out/", "").sub(".pdf", ".#{type}")
 end
 
+def pandoc_rule *inputs
+  # Generate PDFs from several sources with pandoc
+  inputs.each do |i|
+    rule ".pdf" => ->(f){sources_for f, i} do |t|
+      sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
+      sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
+    end
+  end
+end
+
 task :default => [:algebra1, :analisis1, :ecomputadores, :edatos, :sistemas]
 
 # Compilation rules
@@ -29,17 +39,7 @@ rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   sh "rm -f *.log *.aux"
 end
 
-# Generate PDFs from Markdown sources with pandoc
-rule ".pdf" => ->(f){sources_for f, :md} do |t|
-  sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
-  sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
-end
-
-# Generate PDFs from Org-Mode sources with pandoc
-rule ".pdf" => ->(f){sources_for f, :org} do |t|
-  sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
-  sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
-end
+pandoc_rule :md, :org
 
 task :clean do |t|
   sh "rm .out -rf"
