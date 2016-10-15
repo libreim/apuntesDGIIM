@@ -1,0 +1,32 @@
+language: ruby
+
+rvm:
+ - 2.3.1
+
+git:
+  submodules: false
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y git pandoc texlive-full
+  - |
+    git config --global user.email "dgiimblog@gmail.com"
+    git config --global user.name "dgiimbot"
+    git clone -b pdf https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
+
+script: rake
+
+after_script:
+  - |
+    [ "${TRAVIS_PULL_REQUEST}" = "false" ] && (
+    cd .out/
+    git ls-files --deleted -z | xargs -0 git rm
+    git add *
+    git add . --all
+    git commit -m "Compiled PDFs at `date`"
+    git push origin pdf --quiet
+    )
+
+branches:
+  only:
+    - master
