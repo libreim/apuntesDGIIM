@@ -1,89 +1,277 @@
-\documentclass[11pt,a4paper, titlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Apuntes de la asignatura Análisis Matemático I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) por la base para la plantilla.
+% Mario Román (@M42) por la base para la portada.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% Packages
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman]{babel}
-\usepackage{amssymb, amsmath, amsthm}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
 \usepackage{upgreek}
-\usepackage[margin=1in]{geometry}
-\usepackage{enumitem}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
 
 
-% Info
-\title{\textbf{Análisis Matemático I}\\ Apuntes\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
-\author{}
-\date{\vspace{-5em}Curso 2016/17}
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
 
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
 
-% Custom
-\providecommand{\abs}[1]{\lvert#1\rvert}    % \abs{} para valor absoluto
-\setlength\parindent{0pt}       % no indentar
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % fracción grande
-\setlist{leftmargin=.5in}    % indentación para las listas
-\let\epsilon\upvarepsilon    % letra épsilon redefinida
-\newcommand{\bm}[1]{\boldsymbol{#1}}    % comando para negrita en math mode
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
 
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
-% Environments
-
-%% dar nombre a teoremas y definiciones
+% Redefinir entorno de demostración (reducir espacio superior)
 \makeatletter
-\def\th@plain{
-  \thm@notefont{}
-  \itshape
-}
-\def\th@definition{
-  \thm@notefont{}
-  \normalfont
-}
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
 \makeatother
 
-%% teoremas, definiciones, proposiciones y notas
-\theoremstyle{plain}
+
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
+}
+
+% Texto de la cabecera.
+\lhead{\subject}  % Izquierda.
+\chead{}            % Centro.
+\rhead{\docauthor}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
 \newtheorem*{nth}{Teorema}
-\newtheorem*{nprop}{Proposición} 
-\newtheorem*{props}{Propiedades}
-\theoremstyle{remark}
-\newtheorem*{nota}{Nota}
-\theoremstyle{definition}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
 \newtheorem*{ndef}{Definición}
 
-%% listas ordenadas con (i), (ii), etc.
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
-  {\begin{enumerate}\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
 
 
-% Document
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Análisis Matemático I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\Large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
 \begin{document}
-\maketitle
+
+\maketitle  % Título.
+\tableofcontents    % Índice
+\newpage
 
 
-\section*{Introducción}
 
-El objetivo de este curso es el estudio de las funciones de varias variables, es decir, de funciones $f: \mathbb{R}^N \longrightarrow \mathbb{R}^M$. Para ello, empezaremos caracterizando el espacio $\mathbb{R}^N$, y proseguiremos intentando traspasar los resultados principales sobre funciones reales de variable real a nuestro campo de estudio, así como enunciando otros nuevos.\\
+%----------------------------
+%   Introducción.
+%----------------------------
+\section*{Introducción.}
 
-Es por esto que es fundamental haber cursado con aprovechamiento las asignaturas de \emph{Cálculo I y II}, que tratan exclusivamente sobre funciones reales de variable real.\\
+El objetivo de este curso es el estudio de las funciones de varias variables, es decir, de funciones $f: \mathbb{R}^N \longrightarrow \mathbb{R}^M$. Para ello, empezaremos caracterizando el espacio $\mathbb{R}^N$, y proseguiremos intentando traspasar los resultados principales sobre funciones reales de variable real a nuestro campo de estudio, así como enunciando otros nuevos.
+
+Es por esto que es fundamental haber cursado con aprovechamiento las asignaturas de \emph{Cálculo I y II}, que tratan exclusivamente sobre funciones reales de variable real.
 
 Aunque nos centraremos en funciones en el espacio $\mathbb{R}^N$, muchos de los resultados que obtendremos son igual de válidos en un espacio métrico en general, e incluso en espacios topológicos.
 
+\newpage
+
+
+%--------------------------------------
+%   Topología de un espacio métrico.
+%--------------------------------------
 \section{Topología de un espacio métrico.}
 
-
-
+%%% El espacio métrico R^N.
 \subsection{Concepto de espacio métrico. El espacio métrico $\mathbb{R}^N$.}
 
-
-
 \begin{ndef}[Espacio métrico]
-Consideremos un conjunto $X$ y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
+Consideremos un conjunto $X$ cualquiera, y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
 
 \begin{nlist}
 \item $d(x,y) \ge 0\ \ \forall x,y \in X$.
+
 \item $d(x,y) = 0 \iff x = y\ \ \forall x,y \in X$.
+
 \item $d(x,y) = d(y,x)\ \ \forall x,y \in X$.
+
 \item $d(x,y) \leq d(x,z) + d(z,y)\ \ \forall x,y,z \in X. \quad \quad(desigualdad\ triangular)$
+
 \end{nlist}
 
 Entonces, se dice que el par $(X,d)$ es un \emph{espacio métrico}.
@@ -98,8 +286,10 @@ Existen otras distancias en $\mathbb{R}^N$. Las más destacadas son las siguient
 
 \begin{nlist}
 \item $\displaystyle d_1(x,y) = \sum_{i=1}^N \abs{x_i - y_i}\ \ \forall x,y \in \mathbb{R}^N$.
+
 \item $\displaystyle d_{\infty}(x,y) = m\acute{a}x \{\abs{x_i - y_i}: \ i=1,\dots,N \}\ \ \forall x,y\in \mathbb{R}^N$.
-\item $\displaystyle d_p(x,y) = \left( \sum_{i=1}^N \abs{x_i - y_i}^p \right)^{1/p}\ \ \forall x,y\in \mathbb{R}^N$.
+
+\item $\displaystyle d_p(x,y) = \left( \sum_{i=1}^N \abs{x_i - y_i}^p \right)^{1/p}\ \ \forall x,y\in \mathbb{R}^N$.\\
 \end{nlist}
 
 \end{nota}
@@ -107,20 +297,18 @@ Existen otras distancias en $\mathbb{R}^N$. Las más destacadas son las siguient
 
 
 \begin{ndef}
-Sean $(X,d)$ y $(X,d')$ dos espacios métricos sobre un mismo conjunto $X$. Se dice que las distancias $d$ y $d'$ son \textit{equivalentes} \mbox{$\iff \exists k_1,k_2 > 0 :\ k_1d(x,y)\le d'(x,y) \le k_2d(x,y)\ \ \forall x,y\in X$.}
+Sean $(X,d)$ y $(X,d')$ dos espacios métricos sobre un mismo conjunto $X$. Se dice que las distancias $d$ y $d'$ son \textit{equivalentes} si, y solo si, $$\exists k_1,k_2 > 0 :\ k_1d(x,y)\le d'(x,y) \le k_2d(x,y)\ \ \forall x,y\in X.$$
 \end{ndef}
 
 
 
 \begin{nprop}
-En $\mathbb{R}^N$, todas las distancias mencionadas anteriormente son equivalentes entre sí. En particular, la distancia euclídea es equivalente a todas ellas.\\
+En $\mathbb{R}^N$, todas las distancias mencionadas anteriormente son equivalentes entre sí. En particular, la distancia euclídea es equivalente a todas ellas.
 \end{nprop}
 
 
-
+%%% Conceptos topológicos.
 \subsection{Conceptos topológicos.} 
-
-
 
 \begin{ndef}[Bola abierta]
 Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se llama \emph{bola abierta de centro $x$ y radio $\epsilon$} al conjunto $B(x,\epsilon) = \{ y\in X \ | \ d(x,y)<\epsilon\}$.
@@ -130,7 +318,6 @@ Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se l
 
 \begin{ndef}[Bola cerrada]
 De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\bar{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
-	
 \end{ndef}
 
 
@@ -141,20 +328,16 @@ Sea $(X,d)$ un espacio métrico, y sea $A\subseteq X$. Decimos que \mbox{$A\ es\
 
 
 
-\begin{nota}
+\begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, $\forall x \in X \ \forall \epsilon > 0$ se tiene que $B(x,\epsilon)$ es un conjunto abierto.
-\end{nota}
+\end{nprop}
 
-\begin{proof} \hfill 
+\begin{proof}
 
-Sea $x \in B(x_0,\epsilon_0) $ arbitrario. Para demostrar que $B(x_0,\epsilon_0)$ es un abierto, tenemos que encontrar un $\epsilon > 0$ tal que $B(x,\epsilon) \subseteq B(x_0,\epsilon_0)  $, y por lo tanto comprobar que se verifica que $\forall y \in B(x,\epsilon) \Rightarrow y \in B(x_0,\epsilon_0).$ \\
+Sea $x \in B(x_0,\epsilon_0) $ arbitrario. Para demostrar que $B(x_0,\epsilon_0)$ es un abierto, tenemos que encontrar un $\epsilon > 0$ tal que $B(x,\epsilon) \subseteq B(x_0,\epsilon_0)  $, y por lo tanto comprobar que se verifica que $\forall y \in B(x,\epsilon) \Rightarrow y \in B(x_0,\epsilon_0).$
 
 Sea $y \in B(x, \epsilon )$ cualquiera. Consideremos $r = d(x, x_0)$, y tomemos $\epsilon = \epsilon_0 - r$. Queremos demostrar que $y \in B(x_0, \epsilon_0)$. Para ello, veamos que $d(x_0, y) < \epsilon_0$. En efecto, por la desigualdad triangular se cumple que: $$d(x_0, y) \leq d(x,x_0) + d(x,y) < r + \epsilon = r + \epsilon_0 - r = \epsilon_0 $$
-
-Luego queda demostrado que $y \in B(x_0, \epsilon_0)$, y por tanto podemos afirmar que para todo punto $x \in B(x_0, \epsilon_0)$ se puede encontrar una bola abierta centrada en él, tal que todos sus puntos están en el conjunto de origen.\\
-
-\textbf{@ Pedro Bonilla.}
-
+Luego queda demostrado que $y \in B(x_0, \epsilon_0)$, y por tanto podemos afirmar que para todo punto $x \in B(x_0, \epsilon_0)$ se puede encontrar una bola abierta centrada en él, tal que todos sus puntos están en el conjunto de origen.
 \end{proof}
 
 
@@ -209,9 +392,9 @@ Sea $(X,d)$ un espacio métrico, y $F\subseteq X$. Se dice que el conjunto $F\ e
 
 
 
-\begin{nota}
+\begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\bar{B}(x,\epsilon)$ es un conjunto cerrado.
-\end{nota}
+\end{nprop}
 
 
 
@@ -282,9 +465,13 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmacio
 
 \begin{nlist}
 \item $\mathring{A} = X - \overline{X-A}$
+
 \item $\bar{A} = A \cup \partial A$.
+
 \item $\bar{A} = A \cup A'$
+
 \item $\partial A \subseteq A'$
+
 \item $X = int(A) \cup \partial A \cup int(X-A)$. Además, la unión es disjunta dos a dos.
 \end{nlist}
 
@@ -293,10 +480,9 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmacio
 \newpage
 
 
-
-
-
-
+%--------------------------------------
+%   Sucesiones en R^N.
+%--------------------------------------
 \section{Sucesiones en $\mathbb{R}^N$.}
 
 
@@ -326,7 +512,7 @@ $$\{x_n\} \rightarrow x \iff \{x_n^j\} \rightarrow x^j.$$
 
 
 
-%\begin{proofs}
+%\begin{proof}
 %\fbox{$\impliedby$}
 
 %Para esta demostración vamos a usar la distancia del máximo en lugar de la usual (todas las distancias son equivalentes en $\mathbb{R}^N$).\\
@@ -354,9 +540,9 @@ Sea $\{x_n\}$ una sucesión de puntos de $R^N$. Entonces, decimos que $\{x_n\}$ 
 
 
 
-\begin{nota}
+\begin{nprop}
 Si una sucesión $\{x_n\} \subseteq \mathbb{R}^N$ es acotada, entonces $\forall i=1,\dots,n$ la sucesión $\{x_n^i\}$ es acotada (en $\mathbb{R}$).
-\end{nota}
+\end{nprop}
 
 
 
@@ -391,17 +577,15 @@ Sea $\{x_n\} \subseteq \mathbb{R}^N\ con\ \{x_n\} \rightarrow x \in \mathbb{R}^N
 \newpage
 
 
-
-
-
-
+%-----------------------------------
+%   Funciones continuas en R^N.
+%-----------------------------------
 \section{Funciones continuas en $\mathbb{R}^N$.}
 
 
 
 \begin{ndef}[Función continua]
 Sea $\emptyset \ne A\subseteq \mathbb{R}^N$, $f: A \longrightarrow \mathbb{R}^M$ y $a \in A$. Decimos que \textit{f es continua en $a$} si, y solo si: $$\forall \epsilon > 0\ \ \exists \delta > 0: \ x\in A, \ d(x,a)<\delta \Rightarrow d(f(x),f(a))<\epsilon.$$
-
 Además, se dice que $f$ es continua si lo es en todos sus puntos.	
 \end{ndef}
 
@@ -435,13 +619,13 @@ Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
 \end{nprop}
 
 \begin{proof} 
-Veamos las dos implicaciones:\\
+Veamos las dos implicaciones:
 
-$\displaystyle \boxed{\Rightarrow}\ $ Supongamos $A \subseteq X$ un conjunto cerrado. Entonces, $X - A$ es abierto. Sea $\{x_n\}$ una sucesión de puntos de $A$ que converge a un $x\in X$. Para comprobar que, de hecho, $x\in A$, argumentamos por reducción al absurdo:\\
+$\displaystyle \boxed{\Rightarrow}\ $ Supongamos $A \subseteq X$ un conjunto cerrado. Entonces, $X - A$ es abierto. Sea $\{x_n\}$ una sucesión de puntos de $A$ que converge a un $x\in X$. Para comprobar que, de hecho, $x\in A$, argumentamos por reducción al absurdo:
 
 \underline{Supongamos $x\notin A$}. Entonces, $x\in X - A$, y por ser este último conjunto abierto, encontramos un $\epsilon > 0\ tal\ que\ B(x,\epsilon)\subseteq (X-A)$. Pero por ser $x$ el límite de la sucesión $\{x_n\}$, se tiene que $\exists n_o \in \mathbb{N}: n\geq n_o \Rightarrow d(x_n,x)<\epsilon$. Es decir, a partir de cierto índice en adelante, $x_n \in B(x,\epsilon)\ con\ x_n \in A\ \forall n \in \mathbb{N}$. Esto se contradice con el hecho de que $B(x,\epsilon)\subseteq (X-A)$, pues encontramos en dicha bola puntos $x_n$ que no pertenecen a $X-A$.
 
-Por tanto, concluimos que $x\in A$.\\
+Por tanto, concluimos que $x\in A$.
 
 $\displaystyle \boxed{\Leftarrow}\ $ Sea $A\subseteq X$, y supongamos que se verifica que $\forall \{x_n\} \subseteq A\ tal\ que\ \{x_n\} \rightarrow x \in X,\ se\ tiene\ que\ x\in A$. Para ver que $A$ es cerrado, utilizaremos la siguiente caracterización de conjuntos cerrados:
 \vspace{0.5em}
@@ -456,13 +640,10 @@ Sea $x\in \partial A$ cualquiera. Por una caracterización de la frontera de $A$
 
 Así, se tiene que $0 < d(x,a_n) < \frac{1}{n}\ \forall n\in \mathbb{N}$, de donde concluimos que $d(x,a_n) \rightarrow 0$. Por definición, esto significa que $\{a_n\} \rightarrow x$, lo que por hipótesis implica, al ser $\{a_n\}$ una sucesión convergente de puntos de $A$, que  $x\in A$. Por tanto, se verifica que $\partial A \subseteq A$.
 
-\item $\displaystyle \boxed{\supseteq}\ $ Esta inclusión es trivial, pues sabemos que $A \subseteq \bar{A}$, y por tanto $A \subseteq \partial A \cup \mathring{A} = \bar{A}$.\\
+\item $\displaystyle \boxed{\supseteq}\ $ Esta inclusión es trivial, pues sabemos que $A \subseteq \bar{A}$, y por tanto $A \subseteq \partial A \cup \mathring{A} = \bar{A}$.
 \end{description}
 
-De esta forma, queda probada la equivalencia.\\
-
-\textbf{@ Antonio Coín.}
-
+De esta forma, queda probada la equivalencia.
 \end{proof}
 
 
@@ -471,17 +652,16 @@ De esta forma, queda probada la equivalencia.\\
 Sea $(X,d)$ un espacio métrico, y $A \subseteq X$. Entonces: $$A\ es\ compacto \iff A\ es\ cerrado\ y\ acotado.$$
 \end{nprop}
 
-\vspace{0.10em}
+
 
 \begin{nprop}
-Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.\\
+Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.
 \end{nprop}
 
 
 
+%%% Clasificación de conjuntos en R^N.
 \subsection{Clasificación de conjuntos en $\mathbb{R}^N$}
-
-
 
 \begin{ndef}[Conjunto convexo]
 Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
@@ -525,15 +705,10 @@ Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.
 
 \begin{proof}
 Sean $x,y \in A$, y supongamos sin pérdida de generalidad que $x \le y$. Sabemos que por ser $A$ arco-conexo, $\exists \varphi : [a,b] \longrightarrow \mathbb{R}$ función continua verificando: $$\varphi(a) = x;\quad \varphi(b) = y;\quad \varphi([a,b]) \subseteq A.$$
-
-Como $\varphi$ es una función continua definida en un intervalo cerrado y acotado, aplicamos el \textbf{teorema del valor intermedio} en $\mathbb{R}$, y obtenemos que $\varphi([a,b])$ es un intervalo. Por ser un intervalo, verificará que $\forall \alpha, \beta \in \varphi([a,b])\ con\ \alpha \le \beta,\ \ [\alpha,\beta] \subseteq \varphi([a,b])$.\\
+Como $\varphi$ es una función continua definida en un intervalo cerrado y acotado, aplicamos el \textbf{teorema del valor intermedio} en $\mathbb{R}$, y obtenemos que $\varphi([a,b])$ es un intervalo. Por ser un intervalo, verificará que $\forall \alpha, \beta \in \varphi([a,b])\ con\ \alpha \le \beta,\ \ [\alpha,\beta] \subseteq \varphi([a,b])$.
 
 Por tanto, como $\varphi(a), \varphi(b) \in \varphi([a,b])$, concluimos que: $$[\varphi(a),\ \varphi(b)] = [x,y] \subseteq \varphi([a,b]) \subseteq A.$$
-
-Así, hemos demostrado que $\forall x,y \in A\ \ [x,y] \subseteq A$, y por tanto, $A$ es convexo.\\
-
-\textbf{@ Antonio Coín.}
-
+Así, hemos demostrado que $\forall x,y \in A\ \ [x,y] \subseteq A$, y por tanto, $A$ es convexo.
 \end{proof}
 
 
@@ -544,19 +719,14 @@ Sea $A \subseteq \mathbb{R}^N$ convexo. Entonces, $A$ es arco-conexo.
 
 \begin{proof} \hfill \\
 Fijemos $x,y \in A$ arbitrarios, y construyamos la aplicación $\varphi: [0,1] \longrightarrow \mathbb{R}^N$ dada por: $$\varphi(t) = (1-t)x + ty\ \ \forall t\in [0,1]$$
-
 Una primera observación es que $\varphi([0,1]) = \{(1-t)x + ty: t \in [0,1]\} = [x,y] \subseteq A$ por ser $A$ convexo. También se desprende de la definición de $\varphi$ que $\varphi(0) = x$ y $\varphi(1) = y$.
 
-Para comprobar que $\varphi$ es continua, utilicemos la caracterización de la continuidad por sucesiones:\\
+Para comprobar que $\varphi$ es continua, utilicemos la caracterización de la continuidad por sucesiones:
 
 Sea $\{x_n\} \subseteq [0,1]\ con\ \{x_n\} \rightarrow a \in [0,1]$. Entonces, $\{\varphi(x_n) \} = \{(1- x_n)x + x_n y\}$. \\Apliquemos ahora propiedades de las sucesiones convergentes, y obtenemos que: $$\{\varphi(x_n) \} \rightarrow (1-a)x + ay = \varphi(a).$$
+Entonces, $\forall \{x_n\} \subseteq [0,1]\ con\ \{x_n\} \rightarrow a \Rightarrow \{\varphi(x_n) \} \rightarrow \varphi(a)$, por lo que $\varphi$ es continua.
 
-Entonces, $\forall \{x_n\} \subseteq [0,1]\ con\ \{x_n\} \rightarrow a \Rightarrow \{\varphi(x_n) \} \rightarrow \varphi(a)$, por lo que $\varphi$ es continua.\\
-
-Así, queda probado que $A$ es conexo por arcos.\\
-
-\textbf{@ Guillermo Galindo.}
-
+Así, queda probado que $A$ es conexo por arcos.
 \end{proof}
 
 
@@ -568,14 +738,12 @@ Sea $A\in \mathbb{R}^N$ arco-conexo. Entonces, $A$ es conexo.
 
 
 \begin{nprop}
-Sea $A\subseteq \mathbb{R}^N$ abierto y conexo por arcos. Entonces, $A$ es poligonalmente convexo.\\
+Sea $A\subseteq \mathbb{R}^N$ abierto y conexo por arcos. Entonces, $A$ es poligonalmente convexo.
 \end{nprop}
 
 
-
+%%% Continuidad en espacios topológicos. Topología inducida.
 \subsection{Continuidad en espacios topológicos. Topología inducida.}
-
-
 
 \begin{ndef}[Continuidad en espacios topológicos]
 Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, y sea $f:X\longrightarrow Y$. Entonces: $$f\ es\ continua \iff f^{-1}(B) \in \tau_x \ \ \forall B \in \tau_y.$$
@@ -606,7 +774,8 @@ Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, $A\subseteq X$, y $f:A
 \end{ndef}
 
 
-\vspace{0.7em}
+
+%%% Teoremas sobre funciones continuas en R^N.
 \subsection{Teoremas sobre funciones continuas en $\mathbb{R}^N$}
 
 
@@ -628,12 +797,11 @@ Sea $\emptyset \ne A \subseteq \mathbb{R}^N$ arco conexo, y $f: A \longrightarro
 \end{nth}
 
 \begin{proof}
-Sean $X,Y\in f(A)$. Entonces, $\exists x,y \in A : X=f(x), \ Y=f(y)$. Como $A$ es arco-conexo, $\exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua tal que}\ \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subseteq A$.\\
+Sean $X,Y\in f(A)$. Entonces, $\exists x,y \in A : X=f(x), \ Y=f(y)$. Como $A$ es arco-conexo, $\exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua tal que}\ \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subseteq A$.
 
 
 Ahora, definimos $\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M$, que es continua por ser composición de funciones continuas. Entonces, se verifica que: $$\psi(a) = f(\varphi(a)) = f(x) = X;\quad \psi(b)= f(\varphi(b)) = f(y) = Y;\quad \psi([a,b]) = f(\varphi([a,b])) \subseteq f(A).$$
-
-Por tanto, queda probado que $A$ es arco-conexo en $\mathbb{R}^M$.
+Por tanto, queda probado que $f(A)$ es arco-conexo en $\mathbb{R}^M$.
 \end{proof}
 
 

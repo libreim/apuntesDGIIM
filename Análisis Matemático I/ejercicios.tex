@@ -1,79 +1,214 @@
-\documentclass[11pt,a4paper, titlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Documento con ejercicios resueltos de la 
+% asignatura Análisis Matemático I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) por la base para la plantilla.
+% Mario Román (@M42) por la base para la portada.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% Packages
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman]{babel}
-\usepackage{amssymb, amsmath, amsthm}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
 \usepackage{upgreek}
-\usepackage[margin=1in]{geometry}
-\usepackage{enumitem}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
 
 
-% Info
-\title{\textbf{Análisis Matemático I}\\ Ejercicios resueltos\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
-\author{}
-\date{\vspace{-5em}Curso 2016/17}
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
 
-% Custom
-\providecommand{\abs}[1]{\lvert#1\rvert}    % \abs{} para valor absoluto
-\setlength\parindent{0pt}       % no indentar
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % fracción grande
-\setlist{leftmargin=.5in}    % indentación para las listas
-\let\epsilon\upvarepsilon    % letra épsilon redefinida
-\newcommand{\bm}[1]{\boldsymbol{#1}}    % comando para negrita en math mode
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 
-% Environments
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
 
-%% dar nombre a teoremas y definiciones
-\makeatletter
-\def\th@plain{
-  \thm@notefont{}
-  \itshape
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
 }
-\def\th@definition{
-  \thm@notefont{}
-  \normalfont
+
+% Texto de la cabecera.
+\lhead{\subject: Ejercicios resueltos}  % Izquierda.
+\chead{}            % Centro.
+\rhead{DGIIM}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
 }
-\makeatother
 
-%% teoremas, definiciones, proposiciones y notas
-\theoremstyle{plain}
-\newtheorem*{nth}{Teorema}
-\newtheorem*{nprop}{Proposición} 
-\newtheorem*{props}{Propiedades}
-\theoremstyle{remark}
-\newtheorem*{nota}{Nota}
-\theoremstyle{definition}
-\newtheorem*{ndef}{Definición}
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
 
-%% listas ordenadas con (i), (ii), etc.
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para los ejercicios
+\newtheoremstyle{exercise-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Ejercicios
+\theoremstyle{exercise-style}
+\newtheorem*{ejer}{Ejercicio}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
-  {\begin{enumerate}\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
 
 
-% Document
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Análisis Matemático I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\  \Large Ejercicios resueltos\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
 \begin{document}
-\maketitle
+
+\maketitle  % Título.
 
 
+%--------------------------------------------
+%   Topología de un espacio métrico
+%--------------------------------------------
 \section{Topología de un espacio métrico.}
 
-\textbf{Ejercicio.} Dado el conjunto $A = \{ (x,y)\in \mathbb{R}^2: 0 < x \le 1 \}$, ¿es abierto?
+\begin{ejer}
+Dado el conjunto $A = \{ (x,y)\in \mathbb{R}^2: 0 < x \le 1 \}$, ¿es abierto?
 
 \begin{proof}
 Tenemos que comprobar si $A$ es abierto, es decir, si es cierto que\\
-$\forall a \in A \ \ \exists s>0\ tal\ que\ B(a,s)\subset A$. Para ello, fijo $y \in \mathbb{R}$ y escojo $x_o = (1,y) \in A$. Además, tomo $s>0$ cualquiera. Veamos que hay puntos $z \in B(x_o, s)$ que no pertenecen a $A$.\\
+$\forall a \in A \ \ \exists s>0\ tal\ que\ B(a,s)\subset A$. Para ello, fijo $y \in \mathbb{R}$ y escojo $x_o = (1,y) \in A$. Además, tomo $s>0$ cualquiera. Veamos que hay puntos $z \in B(x_o, s)$ que no pertenecen a $A$.
 
-Sea $\displaystyle z = (1 + \frac{s}{2}, y)$. Entonces, se tiene que $\displaystyle d(z,x_o)= \sqrt{\left(\frac{s}{2}\right)^2 + 0} = \frac{s}{2} < s$, y por tanto $z \in B(x_o,s)$.\\
+Sea $\displaystyle z = (1 + \frac{s}{2}, y)$. Entonces, se tiene que $\displaystyle d(z,x_o)= \sqrt{\left(\frac{s}{2}\right)^2 + 0} = \frac{s}{2} < s$, y por tanto $z \in B(x_o,s)$.
 
-Claramente $z\notin A$, pues $\displaystyle 1 + \frac{s}{2} > 1$. Así, concluimos que $z$ es un punto de $B(x_o,s)$ que no pertenece a $A$, por lo que $\displaystyle B(x_o,s) \not \subset A$, y $A$ no es abierto.\\
+Claramente $z\notin A$, pues $\displaystyle 1 + \frac{s}{2} > 1$. Así, concluimos que $z$ es un punto de $B(x_o,s)$ que no pertenece a $A$, por lo que $\displaystyle B(x_o,s) \not \subseteq A$, y $A$ no es abierto. \qedhere
 
-\textbf{@ Antonio Coín.}
-
+%\textbf{@ Antonio Coín.}
 \end{proof}
+
+\end{ejer}
+
+
+
+
+
+
 
 \end{document}

@@ -1,82 +1,256 @@
-\documentclass[11pt,a4paper, titlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Documento con los principales resultados de la
+% asignatura Análisis Matemático I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) por la base para la plantilla.
+% Mario Román (@M42) por la base para la portada.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% Packages
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman]{babel}
-\usepackage{amssymb, amsmath, amsthm}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
 \usepackage{upgreek}
-\usepackage[margin=1in]{geometry}
-\usepackage{enumitem}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
 
 
-% Info
-\title{\textbf{Análisis Matemático I}\\ Teoremas, proposiciones, definiciones y propiedades\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
-\author{}
-\date{\vspace{-5em}Curso 2016/17}
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
 
-% Custom
-\providecommand{\abs}[1]{\lvert#1\rvert}    % \abs{} para valor absoluto
-\setlength\parindent{0pt}       % no indentar
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % fracción grande
-\setlist{leftmargin=.5in}    % indentación para las listas
-\let\epsilon\upvarepsilon    % letra épsilon redefinida
-\newcommand{\bm}[1]{\boldsymbol{#1}}    % comando para negrita en math mode
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 
-% Environments
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
 
-%% dar nombre a teoremas y definiciones
-\makeatletter
-\def\th@plain{
-  \thm@notefont{}
-  \itshape
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
 }
-\def\th@definition{
-  \thm@notefont{}
-  \normalfont
-}
-\makeatother
 
-%% teoremas, definiciones, proposiciones y notas
-\theoremstyle{plain}
+% Texto de la cabecera.
+\lhead{\subject: Principales resultados}  % Izquierda.
+\chead{}            % Centro.
+\rhead{DGIIM}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
 \newtheorem*{nth}{Teorema}
-\newtheorem*{nprop}{Proposición} 
-\newtheorem*{props}{Propiedades}
-\theoremstyle{remark}
-\newtheorem*{nota}{Nota}
-\theoremstyle{definition}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
 \newtheorem*{ndef}{Definición}
 
-%% listas ordenadas con (i), (ii), etc.
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
-  {\begin{enumerate}\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
 
 
-% Document
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Análisis Matemático I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\  \Large Teoremas, proposiciones y definiciones\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
 \begin{document}
-\maketitle
+
+\maketitle  % Título.
 
 
-
+%--------------------------------------
+%   Topología de un espacio métrico.
+%--------------------------------------
 \section{Topología de un espacio métrico.}
 
-
-
+%%% El espacio métrico R^N.
 \subsection{Concepto de espacio métrico. El espacio métrico $\mathbb{R}^N$.}
 
-
-
 \begin{ndef}[Espacio métrico]
-Consideremos un conjunto $X$ y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
+Consideremos un conjunto $X$ cualquiera, y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
 
 \begin{nlist}
 \item $d(x,y) \ge 0\ \ \forall x,y \in X$.
+
 \item $d(x,y) = 0 \iff x = y\ \ \forall x,y \in X$.
+
 \item $d(x,y) = d(y,x)\ \ \forall x,y \in X$.
+
 \item $d(x,y) \leq d(x,z) + d(z,y)\ \ \forall x,y,z \in X. \quad \quad(desigualdad\ triangular)$
+
 \end{nlist}
 
 Entonces, se dice que el par $(X,d)$ es un \emph{espacio métrico}.
@@ -91,8 +265,10 @@ Existen otras distancias en $\mathbb{R}^N$. Las más destacadas son las siguient
 
 \begin{nlist}
 \item $\displaystyle d_1(x,y) = \sum_{i=1}^N \abs{x_i - y_i}\ \ \forall x,y \in \mathbb{R}^N$.
+
 \item $\displaystyle d_{\infty}(x,y) = m\acute{a}x \{\abs{x_i - y_i}: \ i=1,\dots,N \}\ \ \forall x,y\in \mathbb{R}^N$.
-\item $\displaystyle d_p(x,y) = \left( \sum_{i=1}^N \abs{x_i - y_i}^p \right)^{1/p}\ \ \forall x,y\in \mathbb{R}^N$.
+
+\item $\displaystyle d_p(x,y) = \left( \sum_{i=1}^N \abs{x_i - y_i}^p \right)^{1/p}\ \ \forall x,y\in \mathbb{R}^N$.\\
 \end{nlist}
 
 \end{nota}
@@ -100,20 +276,18 @@ Existen otras distancias en $\mathbb{R}^N$. Las más destacadas son las siguient
 
 
 \begin{ndef}
-Sean $(X,d)$ y $(X,d')$ dos espacios métricos sobre un mismo conjunto $X$. Se dice que las distancias $d$ y $d'$ son \textit{equivalentes} \mbox{$\iff \exists k_1,k_2 > 0 :\ k_1d(x,y)\le d'(x,y) \le k_2d(x,y)\ \ \forall x,y\in X$.}
+Sean $(X,d)$ y $(X,d')$ dos espacios métricos sobre un mismo conjunto $X$. Se dice que las distancias $d$ y $d'$ son \textit{equivalentes} si, y solo si, $$\exists k_1,k_2 > 0 :\ k_1d(x,y)\le d'(x,y) \le k_2d(x,y)\ \ \forall x,y\in X.$$
 \end{ndef}
 
 
 
 \begin{nprop}
-En $\mathbb{R}^N$, todas las distancias mencionadas anteriormente son equivalentes entre sí. En particular, la distancia euclídea es equivalente a todas ellas.\\
+En $\mathbb{R}^N$, todas las distancias mencionadas anteriormente son equivalentes entre sí. En particular, la distancia euclídea es equivalente a todas ellas.
 \end{nprop}
 
 
-
+%%% Conceptos topológicos.
 \subsection{Conceptos topológicos.} 
-
-
 
 \begin{ndef}[Bola abierta]
 Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se llama \emph{bola abierta de centro $x$ y radio $\epsilon$} al conjunto $B(x,\epsilon) = \{ y\in X \ | \ d(x,y)<\epsilon\}$.
@@ -123,7 +297,6 @@ Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se l
 
 \begin{ndef}[Bola cerrada]
 De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\bar{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
-	
 \end{ndef}
 
 
@@ -134,11 +307,11 @@ Sea $(X,d)$ un espacio métrico, y sea $A\subseteq X$. Decimos que \mbox{$A\ es\
 
 
 
-\begin{nota}
+\begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, $\forall x \in X \ \forall \epsilon > 0$ se tiene que $B(x,\epsilon)$ es un conjunto abierto.
-\end{nota}
+\end{nprop}
 
-\newpage
+
 
 \begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
@@ -190,9 +363,9 @@ Sea $(X,d)$ un espacio métrico, y $F\subseteq X$. Se dice que el conjunto $F\ e
 
 
 
-\begin{nota}
+\begin{nprop}
 Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\bar{B}(x,\epsilon)$ es un conjunto cerrado.
-\end{nota}
+\end{nprop}
 
 
 
@@ -263,9 +436,13 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmacio
 
 \begin{nlist}
 \item $\mathring{A} = X - \overline{X-A}$
+
 \item $\bar{A} = A \cup \partial A$.
+
 \item $\bar{A} = A \cup A'$
+
 \item $\partial A \subseteq A'$
+
 \item $X = int(A) \cup \partial A \cup int(X-A)$. Además, la unión es disjunta dos a dos.
 \end{nlist}
 
@@ -274,10 +451,9 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmacio
 \newpage
 
 
-
-
-
-
+%--------------------------------------
+%   Sucesiones en R^N.
+%--------------------------------------
 \section{Sucesiones en $\mathbb{R}^N$.}
 
 
@@ -325,9 +501,9 @@ Sea $\{x_n\}$ una sucesión de puntos de $R^N$. Entonces, decimos que $\{x_n\}$ 
 
 
 
-\begin{nota}
+\begin{nprop}
 Si una sucesión $\{x_n\} \subseteq \mathbb{R}^N$ es acotada, entonces $\forall i=1,\dots,n$ la sucesión $\{x_n^i\}$ es acotada (en $\mathbb{R}$).
-\end{nota}
+\end{nprop}
 
 
 
@@ -362,17 +538,15 @@ Sea $\{x_n\} \subseteq \mathbb{R}^N\ con\ \{x_n\} \rightarrow x \in \mathbb{R}^N
 \newpage
 
 
-
-
-
-
+%-----------------------------------
+%   Funciones continuas en R^N.
+%-----------------------------------
 \section{Funciones continuas en $\mathbb{R}^N$.}
 
 
 
 \begin{ndef}[Función continua]
 Sea $\emptyset \ne A\subseteq \mathbb{R}^N$, $f: A \longrightarrow \mathbb{R}^M$ y $a \in A$. Decimos que \textit{f es continua en $a$} si, y solo si: $$\forall \epsilon > 0\ \ \exists \delta > 0: \ x\in A, \ d(x,a)<\delta \Rightarrow d(f(x),f(a))<\epsilon.$$
-
 Además, se dice que $f$ es continua si lo es en todos sus puntos.	
 \end{ndef}
 
@@ -411,17 +585,16 @@ Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
 Sea $(X,d)$ un espacio métrico, y $A \subseteq X$. Entonces: $$A\ es\ compacto \iff A\ es\ cerrado\ y\ acotado.$$
 \end{nprop}
 
-\vspace{0.10em}
+
 
 \begin{nprop}
-Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.\\
+Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.
 \end{nprop}
 
 
 
+%%% Clasificación de conjuntos en R^N.
 \subsection{Clasificación de conjuntos en $\mathbb{R}^N$}
-
-
 
 \begin{ndef}[Conjunto convexo]
 Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
@@ -457,8 +630,6 @@ La misma definición se aplica para un espacio topológico $(X,\tau).$
 Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
 \end{ndef}
 
-
-
 \begin{nprop}
 Sea $A\subseteq \mathbb{R}^N$. Entonces, se verifica lo siguiente:
 
@@ -472,14 +643,14 @@ Sea $A\subseteq \mathbb{R}^N$. Entonces, se verifica lo siguiente:
 
 
 \begin{nprop}
-Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.\\
+Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.
 \end{nprop}
 
 
 
+
+%%% Continuidad en espacios topológicos. Topología inducida.
 \subsection{Continuidad en espacios topológicos. Topología inducida.}
-
-
 
 \begin{ndef}[Continuidad en espacios topológicos]
 Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, y sea $f:X\longrightarrow Y$. Entonces: $$f\ es\ continua \iff f^{-1}(B) \in \tau_x \ \ \forall B \in \tau_y.$$
@@ -510,7 +681,8 @@ Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, $A\subseteq X$, y $f:A
 \end{ndef}
 
 
-\vspace{0.7em}
+
+%%% Teoremas sobre funciones continuas en R^N.
 \subsection{Teoremas sobre funciones continuas en $\mathbb{R}^N$}
 
 
