@@ -16,7 +16,8 @@ task :algebra1 => [".out/Álgebra I/tema1.pdf"]
 task :analisis1 => [".out/Análisis Matemático I/apuntes.pdf",
                     ".out/Análisis Matemático I/resultados.pdf"]
 task :ecomputadores => Dir["Estructura de Computadores/*.md"].map {|f| pdf_for f}
-task :edatos => [".out/Estructura de datos/tema1.pdf"]
+task :edatos => FileList["Estructura de datos/*.tex", "Estructura de datos/*.md"].map {|f| pdf_for f}
+
 task :sistemas => [".out/Sistemas Operativos/repasoFS.pdf"]
 
 # Generating pdfs from Latex sources
