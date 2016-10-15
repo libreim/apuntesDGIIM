@@ -14,17 +14,7 @@ before_install:
     git config --global user.name "dgiimbot"
     git clone -b pdf https://${GITHUB_TOKEN}@github.com/fdavidcl/apuntesDGIIM.git .out
 
-install:
-  - # chmod +x .travis/texlive-install.sh
-  - # .travis/texlive-install.sh
-  - # export PATH="$PATH:$HOME/texlive/bin/x86_64-linux"
-  - # tlmgr install wrapfig
-
-script:
-  - |
-    cd Análisis\ Matemático\ I
-    make
-    cd ..
+script: rake
 
 after_script:
   - |
