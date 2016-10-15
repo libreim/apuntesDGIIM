@@ -13,6 +13,14 @@ rule ".pdf" => ->(f){tex_for f} do |t|
   sh "rm -f *.log *.aux"
 end
 
+def sources_for f, type
+  f.sub(".out/", "").sub(".pdf", ".#{type}")
+end
+
+rule ".pdf" => ->(f){sources_for f, ".md"} do |t|
+  sh %(pandoc --latex-engine pdflatex #{t.source} -o #{t.name})
+end
+
 task :clean do |t|
   sh "rm .out -rf"
 end
