@@ -11,7 +11,7 @@
 
 
 % Info
-\title{\textbf{Análisis Matemático I}\\ Teoremas, proposiciones, definiciones y propiedades\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
+\title{\textbf{Análisis Matemático I}\\ Apuntes\\ \vspace{2em}\large{Doble Grado de Informática y Matemáticas}}
 \author{}
 \date{\vspace{-5em}Curso 2016/17}
 
@@ -305,7 +305,13 @@ Sea $A\subseteq \mathbb{R}^N$, $x\in \mathbb{R}^N$, y $\{x_n\}$ una sucesión de
 $$\{x_n\} \rightarrow x \iff \{x_n^j\} \rightarrow x^j.$$
 \end{nprop}
 
+%\begin{proofs}
+%\fbox{$\impliedby$}
 
+%Para esta demostración vamos a usar la distancia del máximo en lugar de la usual (todas las distancias son equivalentes en $\mathbb{R}^N$).\\
+
+%Si $\forall i=1, ..., N$ tenemos que $\forall \varepsilon_i > 0\quad \exists m_i : n \ge m_i \implies |x^i_n - x^i| < \varepsilon_i$, se sigue que \[\displaystyle\max_{i=1,...,N} |x^i_n - x^i| < \displaystyle\max_{i=1,...,N} \varepsilon_i\]
+%luego $d_\inf
 
 \begin{ndef}
 Sea $(X,d)$ un espacio métrico, y $x\in X$. Consideremos, para cada $n\in \mathbb{N}$, un punto $a_n \in X$. Entonces, decimos que $d(a_n,x) \rightarrow 0$ $\iff \{a_n\} \rightarrow x$.
@@ -460,19 +466,25 @@ Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equival
 
 
 \begin{nprop}
-Sea $A\subseteq \mathbb{R}^N$. Entonces, se verifica lo siguiente:
-
-\begin{nlist}
-\item $A$ es abierto y conexo por arcos $\Rightarrow$ $A$ es poligonalmente convexo.
-\item $A$ es convexo $\Rightarrow$ $A$ es arco-conexo.
-\item $A$ es arco-conexo $\Rightarrow$ $A$ es conexo.
-\end{nlist}
+Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.
 \end{nprop}
 
 
 
 \begin{nprop}
-Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.\\
+Sea $A \subseteq \mathbb{R}^N$ convexo. Entonces, $A$ es arco-conexo.
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $A\in \mathbb{R}^N$ arco-conexo. Entonces, $A$ es conexo.
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $A\subseteq \mathbb{R}^N$ abierto y conexo por arcos. Entonces, $A$ es poligonalmente convexo.\\
 \end{nprop}
 
 
@@ -530,6 +542,12 @@ Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ y $f: A 
 \begin{nth}[Valor Intermedio]
 Sea $\emptyset \ne A \subseteq \mathbb{R}^N$ arco conexo, y $f: A \longrightarrow \mathbb{R}^M$ continua. Entonces, $f(A)$ es arco-conexo en $\mathbb{R}^M$.
 \end{nth}
+
+\begin{proof}
+	\[X,Y\in f(A) \implies \exists x,y \in A : X=f(x), Y=f(y)\]
+	\[\implies \exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua } \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subset A\]
+	\[\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M\quad \psi(a) = X,\; \psi(b)=Y,\; \psi([a,b]) \subset f(A)\]
+\end{proof}
 
 
 
