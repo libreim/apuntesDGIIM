@@ -14,7 +14,8 @@ task :default => [:algebra1, :analisis1, :ecomputadores, :edatos, :sistemas]
 # Compilation rules
 task :algebra1 => [".out/Álgebra I/tema1.pdf"]
 task :analisis1 => [".out/Análisis Matemático I/apuntes.pdf",
-                    ".out/Análisis Matemático I/resultados.pdf"]
+                    ".out/Análisis Matemático I/resultados.pdf",
+                    ".out/Análisis Matemático I/ejercicios.pdf"]
 task :ecomputadores => Dir["Estructura de Computadores/*.md"].map {|f| pdf_for f}
 task :edatos => FileList["Estructura de datos/*.tex", "Estructura de datos/*.md"].map {|f| pdf_for f}
 
