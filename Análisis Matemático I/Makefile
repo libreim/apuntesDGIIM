@@ -4,4 +4,5 @@ TARGETS=$(addprefix ../.out/, $(addsuffix .pdf, $(basename $(SOURCES))))
 default: $(TARGETS)
 
 ../.out/%.pdf: %.tex
-	pdflatex $< -o $@
+	pdflatex $<
+	mv $(basename $<).pdf $@
