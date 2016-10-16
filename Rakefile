@@ -11,11 +11,18 @@ task :default => [
      ]
 
 #------------ Compilation tasks ------------#
+# A task must:
+#   - Generate a PDF file for each corresponding source (LaTeX, Markdown...) file
+#   - Replicate the same directory hierarchy inside the .out/ directory
+#   - Place the newly generated PDF file(s) inside .out/, in the same spots the
+#     sources hold in the hierarchy
+#
 # Ways to define a task:
 #
 #  1. Directly write the commands required:
 #       task :example do |t|
 #         sh "pdflatex apuntes.tex"
+#         sh "mkdir -p .out"
 #         sh "mv apuntes.pdf .out/"
 #       end
 #
