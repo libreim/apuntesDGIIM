@@ -12,7 +12,7 @@ gems:
 before_install:
   - sudo add-apt-repository -y ppa:texlive-backports/ppa
   - sudo apt-get update 
-  - sudo apt-get install -y pandoc texlive-base texlive-latex-extra python-pygments
+  - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra python-pygments texlive-fonts-recommended
   - |
     git config --global user.email "dgiimblog@gmail.com"
     git config --global user.name "dgiimbot"
