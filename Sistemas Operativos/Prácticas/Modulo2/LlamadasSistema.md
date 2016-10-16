@@ -867,28 +867,36 @@ Los datos miembros de la misma se explican a continuación:
   será bloqueada, a menos que se activen las opciones SA\_NODEFER o SA\_NOMASK.  
   Para asignar valores a *sa_mask* se utilizan las siguientes funciones:
 
-    + ~~~c
+    ~~~c
         int sigemptyset(sigset_t *set);
     ~~~
-      Inicializa a vacío un conjunto de señales (devuelve 0 si tiene éxito y –1 en caso contrario).
-    + ~~~c
+
+    Inicializa a vacío un conjunto de señales (devuelve 0 si tiene éxito y –1 en caso contrario).
+
+    ~~~c
         int sigfillset(sigset_t *set);
     ~~~
-      Inicializa un conjunto con todas las señales (devuelve 0 si tiene éxito y –1 en caso contrario).
-    + ~~~c
+
+    Inicializa un conjunto con todas las señales (devuelve 0 si tiene éxito y –1 en caso contrario).
+
+    ~~~c
         int sigismember(const sigset_t *set, int senyal);
     ~~~
-      Determina si una señal senyal pertenece a un conjunto de señales set
-      (devuelve 1 si la señal se encuentra dentro del conjunto, y 0 en caso contrario).
-    + ~~~c
+
+    Determina si una señal senyal pertenece a un conjunto de señales set (devuelve 1 si la señal se encuentra dentro del conjunto, y 0 en caso contrario).
+
+    ~~~c
         int sigaddset(sigset_t *set, int signo);
     ~~~
-      Añade una señal a un conjunto de señales set previamente inicializado (devuelve 0 si tiene
+
+    Añade una señal a un conjunto de señales set previamente inicializado (devuelve 0 si tiene
       éxito y –1 en caso contrario).
-    + ~~~c
+
+    ~~~c
         int sigdelset(sigset_t *set, int signo);
     ~~~
-      Elimina una señal signo de un conjunto de señales set (devuelve 0 si tiene éxito y –1 en caso contrario).
+
+    Elimina una señal signo de un conjunto de señales set (devuelve 0 si tiene éxito y –1 en caso contrario).
 
 - *sa_flags* especifica el conjunto de opciones que modifican el comportamiento de la señal.
   Es formado por el uso de la operación lógica OR de cero o más de las siguientes constantes:
