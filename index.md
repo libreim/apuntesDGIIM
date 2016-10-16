@@ -12,7 +12,7 @@ A continuación puedes encontrar apuntes compilados en PDF listos para descargar
 
 | Asignatura  | T1  | T2  | T2  | T2  | T2  | T2  |
 |---|---|---|---|---|---|---|
-| Estructuras de datos  |   |   |   |   |   |   |
+| Estructuras de datos  | [T1](https://github.com/libreim/apuntesDGIIM/raw/master/.out/Estructura%20de%20datos/tema1.pdf)  |   |   |   |   |   |
 | Sistemas operativos  |   |   |   |   |   |   |
 | Estructuras de computadores  |   |   |   |   |   |   |
 | Álgebra I  |   |   |   |   |   |   |
