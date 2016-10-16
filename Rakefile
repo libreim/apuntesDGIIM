@@ -38,7 +38,7 @@ task :sistemas => FileList["Sistemas Operativos/repasoFS.md", "Sistemas Operativ
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   begin
-    sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}")
+    2.times { sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}") }
     sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
     sh %(mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
     sh "rm -f *.log *.aux"
