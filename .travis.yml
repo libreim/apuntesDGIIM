@@ -10,12 +10,9 @@ gems:
   - pygmentize
 
 before_install:
+  - sudo add-apt-repository ppa:texlive-backports/ppa
   - sudo apt-get update
-  - sudo apt-get install -y pandoc texlive-full
-  - git clone https://github.com/gpoore/minted.git
-  - cp minted/source/minted.sty .
-  - sudo mkdir -p /usr/share/texmf-texlive/tex/latex/minted/
-  - sudo cp minted/source/minted.sty /usr/share/texmf-texlive/tex/latex/minted/minted.sty
+  - sudo apt-get install -y pandoc texlive-base texlive-extra
   - |
     git config --global user.email "dgiimblog@gmail.com"
     git config --global user.name "dgiimbot"
