@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# ![apuntes](resources/hero.svg)
+# ![apuntes](resources/hero.png)
 
 **ApuntesDGIIM** es un proyecto colaborativo llevado a cabo por alumnos del Doble Grado con la intención de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.
 
