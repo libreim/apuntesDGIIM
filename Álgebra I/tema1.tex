@@ -577,11 +577,65 @@ Como $\varphi$ es homomorfismo , eso es igual a:
 \end{proof}
 
 
+Sabemos que cada polinomio $f(x)$ constituye una función de evaluación $f(x) \in A[x]$
+\[
+f(x):B \to B
+\]
+\[
+\hspace{1cm}b \to f(b)
+\]
 
+Sin embargo, un polinomio es mucho más que la función de evaluación que él mismo define. Estudiaremos el caso $A[x_1,...,x_r]$
 
+\begin{ndef}[Polinomios de r variables con coeficientes en A]
+Sea A un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
+Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
+	
+\begin{proof}\hfill 
 
+\begin{itemize}
 
+	\item $r=1$:
+\[
+f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x_i \hspace{0.5cm} a_i \in A \hspace{0.5cm} \exists K: a_{i1} = 0 \hspace{0.3cm} \forall i > K
+\]
+	\item $r> 1$
 
+\[
+f(x_1,...,x_r) = \sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}: \hspace{0.3cm} \exists K: a_i,...,a_r  = 0 \iff i_s > K
+\]
+Ahora, si vemos que:
+\[
+f_{ir}(x_1,...,x_{r-1}) = \sum_{i1,...ir > 0} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir-1} \in A[x_1,...,x_{r-1}]
+\]
+Entonces:
+\[
+\sum_{ir \geq 0} f_{ir}(x_1,...,x_{r-1})x_r^{ir}= \sum_{ir \geq 0}(\sum_{i1,...,ir > 0}a_1,...,a_r x_1^{i1},...,x_{r-1}^{ir-1})x_r^{ir} = 
+\]
+\[
+=\sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}
+\]
+
+Ahora, definimos $g(x_1,...,x_r) = \sum_{i1,...ir} b_{i1},...,b_{ir} x_1^{i1},...,x_r^{ir}$. Ahora, sumamos:
+
+\[
+f(x_1,...,x_r)+g(x_1,...,x_r) = \sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir} + \sum_{i1,...ir} b_{i1},...,b_{ir} x_1^{i1},...,x_r^{ir} = 
+\]
+\[
+ = \sum_{i1,...,ir} (a_i+bi)x^{i1+ij}
+\]
+
+Ahora, podemos desarrollar de la misma forma el producto y ver que:
+
+\[
+(ax_1^{i1},...,x_r^{ir})(bx_1^{j1},...,x_r^{jr}) = abx_i^{i+j}x_2^{i_2+j_2}...x_r^{i_r+j_r}
+\]
+
+\end{itemize}
+Por lo que queda probado nuestro resultado.
+\end{proof}
+
+\end{ndef}
 
 
 
