@@ -33,12 +33,12 @@ task :analisis1 => [".out/Análisis Matemático I/apuntes.pdf",
 task :ecomputadores => Dir["Estructura de Computadores/*.md"].map {|f| pdf_for f}
 task :edatos => FileList["Estructura de datos/*.tex", "Estructura de datos/*.md"].map {|f| pdf_for f}
 
-task :sistemas => [".out/Sistemas Operativos/repasoFS.pdf"]
+task :sistemas => FileList["Sistemas Operativos/repasoFS.md", "Sistemas Operativos/Prácticas/Modulo2/LlamadasSistema.md"].map {|f| pdf_for f}
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   begin
-    sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}")
+    2.times { sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}") }
     sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
     sh %(mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
     sh "rm -f *.log *.aux"
