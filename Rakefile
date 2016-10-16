@@ -33,7 +33,7 @@ task :analisis1 => [".out/Análisis Matemático I/apuntes.pdf",
 task :ecomputadores => Dir["Estructura de Computadores/*.md"].map {|f| pdf_for f}
 task :edatos => FileList["Estructura de datos/*.tex", "Estructura de datos/*.md"].map {|f| pdf_for f}
 
-task :sistemas => [".out/Sistemas Operativos/repasoFS.pdf"]
+task :sistemas => FileList["Sistemas Operativos/repasoFS.md", "Sistemas Operativos/Prácticas/Modulo2/LlamadasSistema.md"].map {|f| pdf_for f}
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
