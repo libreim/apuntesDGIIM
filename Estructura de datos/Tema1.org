@@ -87,3 +87,87 @@ Analizamos un ejemplo de un código de 30 líneas de las transparencias del prof
  Cuando en los bucles haya i  =2, i*=4,i*=n... entonces la eficiencia será logaritmo en base n de lo que haya dentro del bucle.
 
 ** Tema 2 - Abstracción.
+*** Uso de Template.
+
+Nos permite seleccionar el tipo de dato que vamos a utilizar en tiempo de ejecución.
+Declarando:
+
+#+BEGIN_SRC c++
+template <class T, int n>
+
+class array_n {
+private:
+    T items[n];
+  };
+#+END_SRC
+
+Creando un objeto de esta clase de la forma:
+
+#+BEGIN_SRC c++
+array_n<int,1000> w
+
+#+END_SRC
+Creando un metodo de la forma:
+
+#+BEGIN_SRC c++
+template <class T>
+T VectorDinamico::componente(int i) const
+{
+  return datos[i];
+}
+#+END_SRC
+
+La compilación a la hora de usar templates es distinta a la que estamos acostumbrados. En lugar de hacer un _#include "clase.h"_ en el archivo _.cpp_, se incluirá el archivo _#include "clase.cpp"_ al final del archivo _.h_.
+
+*** Clase vector dinámico
+
+Vamos a estudiar una clase que tenga un vector de datos y el número de elementos.Un primer ejemplo con tipo de dato float sería:
+
+#+BEGIN_SRC c++
+class VectorDinamico{
+
+  float* datos;
+  int ns;
+}
+#+END_SRC
+
+
+***  Iteradores
+
+Pretendemos hacer recorridos mucho más rápido. No volvermos a recorrer vectores haciendo v[i]. Usaremos los punteros para iterar, de la forma:
+
+
+#+BEGIN_SRC c++
+
+double *v = &a.
+double *p;
+double * fin;
+fin = v+n;
+for(p = v; p!= fin; ++p)
+  cout << *p << endl;
+#+END_SRC
+
+ Nota: en un compilador moderno, simplemente activando la optimización de código se consigue el mismo aumento en el rendimiento.
+
+Definiremos incluso un nuevo tipo de dato llamado iterator, haciéndolo de la forma:
+
+#+BEGIN_SRC c++
+typedef double* iterator;
+iterator begin(double* v, int n){
+  return v;
+}
+iterator end(double* v, int n){
+  return v+n;
+}
+
+/**--------------------------*/
+iterator p;
+for(p=begin(v,n); p!=end(v,n);++p)
+  cout << *p << endl;
+#+END_SRC
+
+*** Pilas
+Son estructuras de datos lineales, secuencias de elementos dispuestos en una dimensión. Tienen estructura /LIFO/ (last in, first out)
+
+No usaremos el concepto de posición, sólo trabajaremos con el tope de la estructura. En realidad, sí podemos recorrerla pero debemos salvaguardar los elementos
+, pues para acceder al siguiente elemento tenemos que borrar el anterior.
