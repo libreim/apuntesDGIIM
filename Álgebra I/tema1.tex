@@ -637,8 +637,90 @@ Por lo que queda probado nuestro resultado.
 
 \end{ndef}
 
+\begin{ndef} \textbf{(A[x][y])}
+\hfill \\
+Definimos $f=\sum f_i y^i | f_i \in A[x] : f_i = \sum_j a_{ij}x^j$\\
+Luego, $f = \sum_i (\sum_j a_{ij}x^j)y^i = \sum_{i,j} a_{ij}x^iy^j$\\
+
+Ahora, tomamos $g =\sum_{i,j} b_{ij}x^iy^j$ y sumamos:
+
+\[
+f+g = \sum_{i,j}(a_{ij}+b_{ij})x^iy^j
+\]
+
+Y , si $A[x][y]$ es un anillo, vemos que la multiplicación se realiza:
+\[
+(a_{ij}x^iy^j)(b_{mn}x^my^n) = a_{ij}b_{mn} x^{i+m}y^{j+n}
+\]
 
 
+Además, como es un anillo conmutativo $\Rightarrow$ $A[x][y] = A[y][x] = A[x,y]$
 
+	
+\end{ndef}
+
+
+\begin{ndef}
+	$A[x_1,...,x_n] = A[x_1,...,x_{n-1}][x_n]$
+
+Se puede probar que $A[x_1,...,x_n] = A[x_{\sigma(1)},...,x_{\sigma(n)}]$ siendo $\sigma$ una permutación de $\{1,2,...,n \}$
+\end{ndef}
+
+\begin{nprop}
+	
+Si $\varphi :A \to B$ es un homomorfismo, $\forall(b_1,...,b_n) \in B^n$ la aplicación:
+
+\[
+\Phi:A[x_1,...x_n] \to B \iff \Phi:(\sum_{i1,...,in}a_1...a_nx^{i1}... x^{in}) = \sum_{i1,...,in}a_{i1}...a_{in}b^{i1}... b^{in} \in B
+\]
+
+es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un polinomio en n variables.
+
+\end{nprop}
+
+
+\begin{nprop}
+	Si $\varphi:A \to B$ es un homomorfismo, $\forall b \in B \exists ! $ homomorfismo definido como:
+	
+\[
+\Phi
+\]
+\end{nprop}
+
+
+FALTA TERMINAR ESTA PROPOSICIÓN Y LO DE MIS APUNTES "EN PARTICULAR"
+
+\begin{nprop}
+  Si $\varphi : A \longrightarrow B$ es un homomorfismo de anillos conmutativos, y $b_1,\cdots, b_r \in B$ una lista ordenada. Entonces
+  \[
+    \exists! \phi : A[x_1,\cdots,x_r] \longrightarrow B :\begin{cases}
+      \phi(a) = \varphi(a) & \forall a\in A\\
+      \phi(x_1) = b_1\\
+      \vdots\\
+      \phi(x_r) = b_r
+    \end{cases}
+  \]
+\end{nprop}
+
+\begin{proof}
+  Si $r=1$, ya está probado. Para $r>1$:
+  \[
+    \exists \psi : A[x_1,\cdots,x_r] \longrightarrow B : \begin{cases}
+      \psi(a) = \psi(a)\\
+      \psi(x_i) = b_i \forall i=1,\cdots,r-1
+    \end{cases}
+    
+    \exists \phi : A[x_1,\cdots,x_r] \longrightarrow B \begin{cases}
+      \phi(a) = \psi(a) = \varphi(a)\\
+      \phi(x_i) = \psi(x_i) = b_i \forall i=1,\cdots,r-1\\
+      \phi(x_r) = b_r
+    \end{cases}
+  \]
+  
+  ¿Es único?
+  \[
+    \phi(\sum_{i1,\cdots,ir} a_{1i}\cdots a_{ir} )
+  \]
+\end{proof}
 
 \end{document}
