@@ -1,4 +1,4 @@
-% Created 2016-10-10 lun 11:05
+% Created 2016-10-17 lun 09:36
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -118,5 +118,132 @@ Cuando en los bucles haya i  =2, i*=4,i*=n\ldots{} entonces la eficiencia será 
 
 \subsection{Tema 2 - Abstracción.}
 \label{sec-1-3}
+\subsubsection{Uso de Template.}
+\label{sec-1-3-1}
+
+Nos permite seleccionar el tipo de dato que vamos a utilizar en tiempo de ejecución.
+Declarando:
+
+\begin{minted}[]{c++}
+template <class T, int n>
+
+class array_n {
+private:
+    T items[n];
+  };
+\end{minted}
+
+Creando un objeto de esta clase de la forma:
+
+\begin{minted}[]{c++}
+array_n<int,1000> w
+\end{minted}
+Creando un metodo de la forma:
+
+\begin{minted}[]{c++}
+template <class T>
+T VectorDinamico::componente(int i) const
+{
+  return datos[i];
+}
+\end{minted}
+
+La compilación a la hora de usar templates es distinta a la que estamos acostumbrados. En lugar de hacer un \uline{\#include "clase.h"\_ en el archivo \_.cpp}, se incluirá el archivo \uline{\#include "clase.cpp"\_ al final del archivo \_.h}.
+
+\subsubsection{Clase vector dinámico}
+\label{sec-1-3-2}
+
+Vamos a estudiar una clase que tenga un vector de datos y el número de elementos.Un primer ejemplo con tipo de dato float sería:
+
+\begin{minted}[]{c++}
+class VectorDinamico{
+
+  float* datos;
+  int ns;
+}
+\end{minted}
+
+
+\subsubsection{Iteradores}
+\label{sec-1-3-3}
+
+Pretendemos hacer recorridos mucho más rápido. No volvermos a recorrer vectores haciendo v[i]. Usaremos los punteros para iterar, de la forma:
+
+
+\begin{minted}[]{c++}
+double *v = &a.
+double *p;
+double * fin;
+fin = v+n;
+for(p = v; p!= fin; ++p)
+  cout << *p << endl;
+\end{minted}
+
+Nota: en un compilador moderno, simplemente activando la optimización de código se consigue el mismo aumento en el rendimiento.
+
+Definiremos incluso un nuevo tipo de dato llamado iterator, haciéndolo de la forma:
+
+\begin{minted}[]{c++}
+typedef double* iterator;
+iterator begin(double* v, int n){
+  return v;
+}
+iterator end(double* v, int n){
+  return v+n;
+}
+
+/**--------------------------*/
+iterator p;
+for(p=begin(v,n); p!=end(v,n);++p)
+  cout << *p << endl;
+\end{minted}
+
+\subsubsection{Pilas}
+\label{sec-1-3-4}
+Son estructuras de datos lineales, secuencias de elementos dispuestos en una dimensión. Tienen estructura \emph{LIFO} (last in, first out)
+
+No usaremos el concepto de posición, sólo trabajaremos con el tope de la estructura. En realidad, sí podemos recorrerla pero debemos salvaguardar los elementos
+, pues para acceder al siguiente elemento tenemos que borrar el anterior.
+
+\begin{itemize}
+\item Para insertar un elemento, se inserta siempre al principio de la pila, añadiendo físicamente
+\item Para borrar un elemento, se elimina y el puntero que había al primero se lleva al segundo
+\item Como la pila no tiene recorridos, no tienen iteradores.
+\item Las funciones básicas son Tope, Poner, Quitar, Vaciar.
+\end{itemize}
+
+Hay que recordar que los elementos de la pila se guardan en orden contrario al que fueron insertados. Por tanto si los imprimimos, por ser de tipo \emph{LIFO} salen del 
+primero que hemos insertado al último.
+En la práctica, usaremos las pilas con Celdas Enlazadas.
+
+
+\begin{minted}[]{c++}
+#ifndef __PILA_H__
+#define __PILA_H__
+
+typedef char Tbase;
+
+struct CeldaPila{
+    Tbase elemento;
+    CeldaPila *sig;
+};
+
+class Pila{
+
+    CeldaPila *primera;
+
+  public:
+
+    Pila();
+    Pila(const Pila& p);
+    ~Pila();
+    Pila& operator= (const Pila& pila);
+
+    void poner(Tbase c);
+    void quitar();
+    Tbase tope() const;
+    bool vacia() const;
+};
+\end{minted}
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}

@@ -178,4 +178,45 @@ No usaremos el concepto de posición, sólo trabajaremos con el tope de la estru
 - Las funciones básicas son Tope, Poner, Quitar, Vaciar.
 
 Hay que recordar que los elementos de la pila se guardan en orden contrario al que fueron insertados. Por tanto si los imprimimos, por ser de tipo /LIFO/ salen del 
-primero que hemos insertado al último
+primero que hemos insertado al último.
+En la práctica, usaremos las pilas con Celdas Enlazadas.
+
+
+#+BEGIN_SRC c++
+
+#ifndef __PILA_H__
+#define __PILA_H__
+
+typedef char Tbase;
+
+struct CeldaPila{
+    Tbase elemento;
+    CeldaPila *sig;
+};
+
+class Pila{
+
+    CeldaPila *primera;
+
+  public:
+
+    Pila();
+    Pila(const Pila& p);
+    ~Pila();
+    Pila& operator= (const Pila& pila);
+
+    void poner(Tbase c);
+    void quitar();
+    Tbase tope() const;
+    bool vacia() const;
+};
+
+#+END_SRC
+
+*** Colas
+
+Una cola es una estructura de datos lineal en la que lso elementos se suprimen e insertan por extremos opuestos. Son estructuras /FIFO/. 
+En una cola, si tenemos dos elementos
+
+Usaremos el operador /%/, que transforma una estructura lineal en una linear circular.
+Al igual que en las colas, no tengo acceso a los elementos si no destruimos la cola.
