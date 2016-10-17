@@ -679,18 +679,42 @@ es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un p
 \end{nprop}
 
 
+
 \begin{nprop}
 	Si $\varphi:A \to B$ es un homomorfismo, $\forall b \in B \exists ! $ homomorfismo definido como:
 	
 \[
-\Phi
+\Phi:A[x] \to B : \begin{cases}
+	\Phi(a) = \varphi(a) \forall a \in A \\
+	\Phi(x) = b 
+\end{cases}
 \]
+\[
+\Phi(\sum a_i x_i) = \sum \Phi(a_i x_i) =  \sum \Phi(a_i) \Phi(x)^i = \sum \varphi(a_i) b^i
+\]
+
+Además, ya se probó que esto es un homomorfismo de anillos conmutativos.
+
 \end{nprop}
 
+\begin{ncor}
+	$A \leq B$ subanillo, $\forall b \in B$ $\exists !$ homomorfismo
+\[
+E_b: A[x] \to B: \begin{cases}
+E_a(a) = a \hspace{0.3cm} \forall a \in A\\
+E_b(x) = b
+	
+\end{cases}
+\] 
+\end{ncor}
 
-FALTA TERMINAR ESTA PROPOSICIÓN Y LO DE MIS APUNTES "EN PARTICULAR"
+\begin{nota}
+	Si $f(x)\in A[x]$ denota un polinomio de $A[x]$, notaremos: $E_b(f(x)) = f(b)$.
+	De la misma forma, si $f(x) = \sum a_i x^i \Rightarrow E_b(f(x)) = \sum a_i b^i$
+\end{nota}
 
-\begin{nprop}
+
+\begin{nprop}[Evaluación en r-variables]
   Si $\varphi : A \longrightarrow B$ es un homomorfismo de anillos conmutativos, y $b_1,\cdots, b_r \in B$ una lista ordenada. Entonces
   \[
     \exists! \phi : A[x_1,\cdots,x_r] \longrightarrow B :\begin{cases}
@@ -719,8 +743,126 @@ FALTA TERMINAR ESTA PROPOSICIÓN Y LO DE MIS APUNTES "EN PARTICULAR"
   
   ¿Es único?
   \[
-    \phi(\sum_{i1,\cdots,ir} a_{1i}\cdots a_{ir} )
+    \phi(\sum_{i1,\cdots,ir} a_{1i}\cdots a_{ir}x_1^{i1}\cdots x_r^{ir} )= \sum _{i1,\cdots,ir} \varphi(a_{i1}\cdots a_{ir})b_1^{i1}\cdots b_r^{ir}
   \]
 \end{proof}
+
+\begin{nprop}[Evaluación en subanillos r-variables]
+	Si $A\leq B, \forall b_1,\cdots,b_r \in B$ lista ordenada:
+	
+\[
+\exists ! E_{b_1,\cdots,b_r}: A[x_1,\cdots,x_r] \to B :
+\begin{cases}
+	a \to a\\
+	x_i \to b_i
+\end{cases}
+\]
+
+Se suele notar $f(x_1,\cdots,x_r) \to f(b_1,\cdots,b_r)$
+\end{nprop}
+
+\section{Dominio de Integridad}
+
+\begin{ndef}[Dominio de integridad]
+A es un dominio de integridad si verifica la propiedad:
+\[
+a \neq 0, b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \begin{cases}
+	a = 0\\
+	b = 0
+\end{cases}
+\]
+	
+\end{ndef}
+
+\begin{nprop}[Propiedad de simplificación]
+	
+A es un dominio de integridad $\iff$	$ax=ay$ con $a\neq 0 \Rightarrow x = y$
+\end{nprop}
+\begin{proof}
+	\boxed{\Rightarrow} $a(x-y) = 0$, por ser A dominio de integridad, $x-y = 0 \Rightarrow x=y$ \\
+	\boxed{\Leftarrow} $ab = 0$ con $a\neq 0 \Rightarrow b= 0$ pues $a0 = 0; ab = a0; b = 0;$
+\end{proof}
+
+\begin{ndef}[Divisor de 0]
+	$a\in A$ es divisor de 0 si $\exists b\neq 0 : ab = 0$
+\end{ndef}
+
+\begin{nprop}
+	Si A es un dominio de integridad $\Rightarrow$ el 0 es el único divisor de 0.
+	
+	Equivalentemente: A es dominio de integridad $\iff$ no tiene divisores de cero no nulos.
+\begin{nlist}
+	\item $A\leq B$ y $B$ es D.I. $\Rightarrow$ A es D.I.
+	\item Todo cuerpo es D.I.
+	\item Si $u \in U(A) \Rightarrow$ u no es divisor de 0 (Supongamos $u*b = 0 \Rightarrow u*u^{-1}*b = u^{-1}*0 \Rightarrow b=0$)
+\end{nlist}
+\end{nprop}
+
+\begin{nprop}
+	Si $|A|< \infty$, A es dominio de integridad $\iff$ A es un cuerpo
+\end{nprop}
+\begin{proof}
+	\boxed{\Leftarrow} Trivial\\
+	\boxed{\Rightarrow} $0 \neq a \in A$.
+Tomo $\{1,a,a^2,\cdots,a^n\} = \{a^n: n\in N\} \subseteq A$
+Como tiene cardinalidad finita: $\exists k \in N : a^n = a^{n+k}$.\\
+Pero, por ello: $a^n = a^n a^k; a^n * 1 = a^n * a^k$, luego $a^n$ no es 0 porque A es Dominio de integridad y por ser D.I entonces:
+\[
+1=a^k \begin{cases}
+	k = 1 \Rightarrow a = 1\\
+	k > 1 \Rightarrow a^{k-1}*a = 1
+	
+\end{cases}\]
+Con lo que $\exists$ inverso de a = $a^{k-1}$ y como a es un elemento cualquiera, todo elemento tiene inverso, luego es un cuerpo.
+\end{proof}
+
+
+\begin{nprop}
+	Todo D.I. es un subanillo de un cuerpo.
+\end{nprop}
+
+
+Primero, presentaremos otros conceptos:
+
+\begin{ndef}[Cuerpo de fracciones de un D.I.]
+Sea A un dominio de integridad con $|A| \geq 2$. Consideramos $A$x$A-\{0\} = \{(a,b), a,b \in A\hspace{0.3cm} | b\neq 0\}$
+
+\begin{ndef} Decimos que (a,b) es equivalente a (c,d):
+	$(a,b)\sim(c,d) \iff ad = bc$
+	
+Esta relación es reflexiva, simétrica y transitiva.
+\end{ndef}
+	
+Ahora, considero $a,b\in A \hspace{0.2cm}$. Llamo $\frac{a}{b} = \{(c,d)\hspace{0.2cm} c,d \in A : (c,d) \sim (a,b)\} \subseteq A$x$A-\{0\}$
+
+Y llamo a $\frac{a}{b}$ la fracción a entre b.
+
+\begin{ncor}
+	\[\frac{a}{b}= \frac{u}{v} \iff av = bu \iff (a,b) \sim (u,v)\]
+\end{ncor}
+\begin{proof}
+	
+	\boxed{\Rightarrow} $(a,b) \in \frac{a}{b} = \frac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
+	
+	\boxed{\Leftarrow} $(a,b) \sim (u,v)$
+\end{proof}
+\end{ndef}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
