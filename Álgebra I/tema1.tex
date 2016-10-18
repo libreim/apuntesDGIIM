@@ -844,13 +844,53 @@ Y llamo a $\frac{a}{b}$ la fracción a entre b.
 	
 	\boxed{\Rightarrow} $(a,b) \in \frac{a}{b} = \frac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
 	
-	\boxed{\Leftarrow} $(a,b) \sim (u,v)$
+	\boxed{\Leftarrow} $(a,b) \sim (u,v)$ Por la transitividad: $\frac{a}{b} \subseteq \frac{u}{v}$ y $\frac{u}{v} \subseteq \frac{a}{b} \Rightarrow \frac{a}{b}= \frac{u}{v}$
 \end{proof}
 \end{ndef}
 
+Ahora, llamamos $Q(A) = \{\frac{a}{b} | a,b \in A: \hspace{0.25cm} b\neq 0\}$ que es un conjunto de conjuntos, pues ya habíamos definido la fracción $\frac{a}{b}$ como un conjunto.
+
+Sobre él, definimos unas operaciones que nos permitirán ver que es un cuerpo:
+\begin{nlist}
+	\item Suma: \[\frac{a}{b}+ \frac{c}{d} = \frac{ad + cb}{bd}\]
+
+Ahora, como la fracción $\frac{a}{b}$ es un conjunto, hay que probar que el resultado es único, es decir:
+\[
+\frac{a}{b}= \frac{a'}{b'} \hspace{0.25cm}y\hspace{0.25cm} \frac{c}{d}= \frac{c'}{d'}  \Rightarrow ab' = a'b \hspace{0.25cm} y \hspace{0.25cm} cd' = c'd
+\]
+Hay que probar que se cumple:
+\[
+\frac{ad+cb}{bd} = \frac{a'd'+c'b'}{b'd'}
+\]
+Equivalementente, tenemos que probar que se cumple:
+\[
+b'd'(ad+cb) = bd(a'd'+c'b')
+\]
+
+Desarrollamos en la izquierda:
+\[
+b'd'(ad+cb) = b'd'ad + b'd'cb =^{(1)} a'bd'd + b'bc'd
+\]
+Donde en (1) hemos usado la equivalencia que habíamos dado de $ab' = a'b$ y $cd' = c'd$. Ahora, desarollamos el producto de la derecha y veremos que es igual al resultado obtenido
+
+\[
+bd(a'd'+c'b') = bda'd' + bdc'b' = a'bdd' + bb'c'd
+\]
+
+Probando la unicidad. 
+	
+    \item Producto: \[\frac{a}{b} \frac{c}{d} = \frac{ac}{bd}\]
+
+La unicidad del producto se hace desarrollando de la misma manera.
+\end{nlist}
 
 
 
+Para finalizar, se puede probar que es un cuerpo probando las propiedades de anillo conmutativo y que existe inverso para todo $\frac{a}{b}$.
+
+\begin{nprop}[Fracciones de denominador 1]
+	
+\end{nprop}
 
 
 
