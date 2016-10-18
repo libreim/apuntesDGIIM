@@ -131,10 +131,10 @@
 %---------------------------------------------------------------------------
 
 % Números enteros: \ent
-\providecommand{\ent}{\mathcal{Z}}
+\providecommand{\ent}{\mathbb{Z}}
 
 % Números racionales: \rac
-\providecommand{\rac}{\mathcal{Q}}
+\providecommand{\rac}{\mathbb{Q}}
 
 
 % Valor absoluto: \abs{}
@@ -889,20 +889,48 @@ La unicidad del producto se hace desarrollando de la misma manera.
 Para finalizar, se puede probar que es un cuerpo probando las propiedades de anillo conmutativo y que existe inverso para todo $\frac{a}{b}$.
 
 \begin{nprop}[Fracciones de denominador 1]
-	
+  Existe un homomorfismo
+  \begin{align}
+    i :& A \longrightarrow \mathbb{Q}(A)\notag\\
+     \quad  &a \longmapsto \frac{a}{1} = i(a)\notag
+  \end{align}
+
+  Que cumple que $i(a+b) = i(a)+i(b)$ y que $i(ab)=i(a)i(b)$, y además es un monomorfismo.
+  Así, $A \stackrel{i}{\cong} Img(i) = \{\frac{a}{1} : a\in A\}$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\frac{a}{1}$.
+  Con esta identificaión $\frac{a}{b} = \frac{a}{1}\frac{1}{b} = ab^{-1}$
 \end{nprop}
 
+\begin{nprop}
+  Sea $K$ un cuerpo y $A\le K$, $a,b\in A b\not=0$.
+  \begin{align}
+    \implies& a\in K \text{ y } b^{-1}\in K \implies ab^{-1}\in K\notag\\
+    \implies&\mathbb{Q}(A)\le K\notag
+  \end{align}
+\end{nprop}
+
+\begin{nota}
+ Sea $K$ un cuerpo. Entonces  $\mathbb{Q}(K)$ es el cuerpo más pequeño que contiene a $K$.
+\end{nota}
+
+\begin{nota}
+  $A \subseteq \mathbb{Q}(A), A=\text{D.I.} \implies \rac(\rac(A)) = \rac(A)$
+\end{nota}
 
 
+\begin{nprop}
+  Sea K un cuerpo, $A\le K$. Si $\forall \alpha\in K\quad \exists a\in A\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
+\end{nprop}
 
+\begin{proof}
+  $\alpha\in K,\; \exists a\in A \ne 0 : a\alpha=b\in A \implies \alpha = ba^{-1} = \frac{b}{a}\in \rac(A)$
+\end{proof}
 
-
-
-
-
-
-
-
+\begin{ejemplo}
+  $\ent[i] = \{a+bi : a,b\in \ent\} \le \rac[i] = \{a+bi : a,b\in \rac\} \implies \rac(\ent[i]) = \rac[i]$
+  \[
+    \alpha\in\rac[i]\implies\alpha=\frac{m}{n}+\frac{m'}{n'}i\; \implies \ent[i] \ni nn'\alpha = n'm+nm'i \in \ent[i]\notag
+  \]
+\end{ejemplo}
 
 
 \end{document}
