@@ -1,6 +1,5 @@
-  # Apuntes
+# Apuntes Módulo 1 Prácticas
 
-## Módulo 1.
 
 ### Archivos _/etc/passwd_ y _/etc/shadow_.
 
@@ -265,3 +264,54 @@ Se crean por defecto enlaces duros. Otras opciones son:
 * **-v** imprime el nombre de los archivos que tienen un enlace.
 
 Los números que aparecen en la columna anterior al *username* son los valores del contador de enlaces, el número de enlaces duros a archivos para liberar el inodo cuando los nombres de archivo que usan ese inodo se eliminen.
+
+### Demonios atd y cron
+
+* El demonio **atd** provoca la ejecución de una orden en un momento de tiempo especificado
+* El demonio **cron**
+
+Para conocer los Pids de estos demonios, recordamos que tenemos que hacer respectivamente:
+
+```
+ps aux | grep [proceso]
+```
+Y luego, para conocer información específica como el padre del proceso, qué terminal tienen asociado, etc utilizamos (sabiendo su PID con la orden anterior o con pidof nombreproceso)
+
+```
+ps -p [PID] -f
+```
+
+### Orden at
+La sintaxis completa es
+
+```
+at [-q queue] [-f <script>] [-mldbv] TIME
+```
+
+Al iniciarlo se entra en el menú y tienes que poner una orden y redirigirlo, pues no tiene una terminal de salida asociada.
+Ejemplo de ejecución
+
+```
+at 17:10
+at> ls ~ > listahome
+
+```
+
+Para ejecutarlo dentro de X tiempo, podemos poner at now, tomorrow, 3 days... y sumar otro tiempo. Por ejemplo:
+
+```
+at tomorrow + 3 days
+at now + 1 minutes
+```
+Si lo ponemos en una hora ya pasada, se ejecuta automáticamente.
+
+* Con la opción **-v** se mostrará la hora en la que será ejecutado el trabajo.
+* Para ejecutar un script usamos:
+```
+at -f <script> TIME
+```
+
+Tenemos una serie de utilidades para ver los procesos que tenemos hechos con at:
+
+1. **aqt** lista los procesos que tenemos para hacer en cola
+2. **atrm** elimina órdenes que se vayan a ejecutar más tarde.
