@@ -268,7 +268,7 @@ Los números que aparecen en la columna anterior al *username* son los valores d
 ### Demonios atd y cron
 
 * El demonio **atd** provoca la ejecución de una orden en un momento de tiempo especificado
-* El demonio **cron**
+* El demonio **cron** sirve para hacer estas ejecuciones pero de forma periódica
 
 Para conocer los Pids de estos demonios, recordamos que tenemos que hacer respectivamente:
 
@@ -315,3 +315,45 @@ Tenemos una serie de utilidades para ver los procesos que tenemos hechos con at:
 
 1. **aqt** lista los procesos que tenemos para hacer en cola
 2. **atrm** elimina órdenes que se vayan a ejecutar más tarde.
+
+
+Las salidas estándard(1) y de error (2) pueden ser redirigidas a donde quieras al usar at. Lo hacemos de la siguiente forma dentro del prompt de at:
+
+```
+[orden que queramos] . 1>>[directorio salida] 2>[directorio errores]
+```
+
+Además, at trabaja con colas de prioridad de la a a la z, podemos mandar un proceso a cualquier cola con *[-q queue]* como ya hemos visto.
+
+Los archivos de configuración /etc/at.deny y /etc/at.allow determinan qué usuarios pueden usar at. El de allow tiene una lista de los usuarios habilitados
+
+### Orden batch
+
+Esta orden equivale a *at* pero no especificamos la hora de ejecución, sino que se hará cuando la carga de trabajos del sistema esté bajo cierto umbral que se especifica al lanzara el demonio atd.
+
+### El demonio cron
+
+Sirve para ejecutar de forma periódica órdenes en el sistema.
+
+La especificación de las tareas a realizar se hacen con la orden **crontab** y archivos en formato crontab.
+
+#### Formato de archivos crontab:
+Cada línea puede tener el formato:
+
+```
+minuto hora dia(mes) mes dia(semana) orden
+```
+
+Cada uno de los campos puede tener:
+
+* Asterisco, indicando cualquier valor posible
+* Número entero
+* Dos enteros separados por un guión(un rango de valores)
+* Serie de enteros o rangos separados por coma, activando cualquier valor que aparece en la lista
+
+#### Orden crontab
+
+Instala, desinstala o lista trabajos que procesará el demonio cron. La sintaxis es:
+```
+crontab <archivo>
+```
