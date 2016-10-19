@@ -357,3 +357,26 @@ Instala, desinstala o lista trabajos que procesará el demonio cron. La sintaxis
 ```
 crontab <archivo>
 ```
+
+Opciones útiles:
+
+* **crontab -r** elimina los procesos que crontab fuera a ejecutar periódicamente
+
+* **crontab -l** da el contenido del archivo cron que se está ejecutando
+
+* **crontab -e** nos lleva a un editor para poder editar el archivo cron.
+
+
+###### Variables de entorno
+
+Cron tiene asignadas algunas variables de entorno que podemos usar como se usa una variable en los script normales. Algunas son:
+
+* *SHELL* establecida a /bin/bash
+* *LOGNAME*
+* *HOME*
+* *PATH*
+
+En estas variables no se pueden hacer sustituciones de otras variables, así que no podríamos realizar algo del estilo:
+```
+PATH=$HOME/SO:$PATH
+```
