@@ -900,6 +900,30 @@ Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \math
 	Para cualquier $\epsilon$ para el que se desee que se verifique la condición de la continuidad uniforme, basta tomar $\ddfrac{\epsilon}{2}$ en la continuidad.
 \end{proof}
 
+\begin{proof}[Demostración alternativa]
+	La condición para la continuidad uniforme es la siguiente:
+	\[
+		\forall \varepsilon > 0 \  \exists \delta > 0 \ \forall x, y \in A : d(x,y) < \delta \implies d (f(x) , f(y) ) < \varepsilon
+	\]
+	
+	Vamos a proceder por reducción al absurdo, para lo cual negamos esta condición:
+	\[
+		\exists \varepsilon_0 > 0 \ \forall \delta > 0 \ \exists x, y \in A : d (x,y) < \delta \wedge d (f(x) , f(y) ) \ge \varepsilon_0
+	\]
+	
+	Tomamos este $\epsilon_0$, lo que nos da, para cada $\delta>0$, un par de puntos $x$ e $y$ que cumplen la propiedad expresada arriba. Tomamos $\delta = \frac{1}{n} \ \forall n\in \mathbb{N}$. Esto nos da dos sucesiones $\{x_n\}$ e $\{y_n\}$ tales que
+	\[
+		d(x_n,y_n) < \frac{1}{n} \wedge d(f(x_n),f(y_n)) \ge \epsilon_0
+	\]
+	
+	Por ser A compacto, el teorema de Bolzano-Weierstrass nos da dos sucesiones parciales $\{x_{n_k}\}$ a $x_0$ e $\{y_{n_k}\}$ a $y_0$. Por tanto:
+	\[
+		d(x_{n_k},y_{n_k}) < \frac{1}{n_k} \wedge d(f(x_{n_k}),f(y_{n_k})) \ge \epsilon_0
+	\]
+	
+	Sin embargo, $\{x_{n_k}\}$ e $\{y_{n_k}\}$ convergen al mismo punto (por converger su distancia a cero), y como $f$ es continua, esta proposición no puede ser verdadera. Hemos llegado por tanto a una contradicción, luego $f$ debe ser uniformemente continua.
+\end{proof}
+
 
 
 
