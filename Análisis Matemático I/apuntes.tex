@@ -650,7 +650,18 @@ Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, $f:A \longrightarrow \mathbb{R}^M$
 Sea $(X,d)$ un espacio métrico, y sea $\emptyset \ne A \subseteq X$. $$A\ es\ compacto \iff \forall \{x_n\} \subseteq A\ \ \exists \{x_{\sigma(n)}\} \rightarrow x\in A.$$
 \end{ndef}
 
+\begin{ndef}[Recubrimiento abierto]
+	Sea $A \subseteq \mathbb{R}^N$. Se dice que una familia $\{O_i, i\in I\}$ de abiertos es un \emph{recubrimiento abierto} de $A$ si
+	\[
+		A \subseteq \bigcup_{i\in I} O_i
+	\]
+	
+	También, si $R_1$ y $R_2$ son recubrimientos abiertos de $A$ y $R_1 \subseteq R_2$, se dice que $R_1$ es un \emph{subrecubrimiento abierto} de $R_2$.
+\end{ndef}
 
+\begin{nprop}
+	Sea $A \subseteq \mathbb{R}^N$ compacto. Entonces existe un subrecubrimiento finito de $A$.
+\end{nprop}
 
 \begin{nprop}[Caracterización de cerrados]
 Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
