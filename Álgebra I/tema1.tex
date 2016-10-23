@@ -1012,4 +1012,42 @@ Propiedades elementales:
 \end{nlist}
 \end{ndef}
 
+\begin{ndef}[Dominios euclídeos]
+
+	Un dominio euclídeo es un dominio de integridad, A, tal que haya definida una función $\varphi: A- \{0\} \to \mathbb{N} $ verificando:
+
+\begin{nlist}
+	\item $\varphi(ab) \ge \varphi(a)$
+	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q,r \in A : a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$
+	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q \in A : a - bq = 0 \vee  \varphi(a-bq) < \varphi(b)$
+\end{nlist}	
+\end{ndef}
+
+\begin{nota}
+	Si A es dominio euclídeo, entonces: 
+$b/a \iff$ un resto de dividir a entre b es cero $\iff$ cualquier resto de dividir a entre b es 0 
+\end{nota}
+\begin{proof}
+	$\boxed{\implies}$ Por definicion de b/a, $\implies \exists c \in A$ tal que $a=bc$ y por ser A un dominio euclídeo, $\implies \exists q,r \in 		A : 	a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
+\\
+Supongamos $r \neq 0$, entonces $\varphi(r) < \varphi(b)$. 
+$$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
+$$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$  
+\end{proof}
+
+\begin{nth}[Teorema de Euclídes]
+
+	$\forall a,b \in \ent, b \neq 0, \exists q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < b$
+\end{nth}
+
+\begin{ncor}
+$\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
+\[
+\varphi(a) \begin{cases}
+	a  \quad \textup{si } a \ge 0\\
+	-a \quad \textup{si } a < 0
+	
+\end{cases}\]
+\end{ncor}
+
 \end{document}
