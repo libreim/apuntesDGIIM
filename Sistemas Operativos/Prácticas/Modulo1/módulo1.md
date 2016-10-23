@@ -39,7 +39,7 @@ La informacion que encontramos en cada uno de estos archivos es:
 
 - __Fstab__: Es una lista de los sistemas de archivos que se inician con el arranque del equipo, con una serie de información sobre cada uno de ellos. Aqui es donde el usuario puede editar información.
 - __Mtab__: Es una lista de los sistemas de archivos que se encuentran montados. Este archivo no se edita.
-- __Fylesistems__: Es una lista de todos los sistemas de archivos que se encuentran disponibles.
+- __Filesystems__: Es una lista de todos los sistemas de archivos que se encuentran disponibles.
 - __Mounts__: Es una lista de todos los sistemas de archivos que se encuentran montados ya sea manualmente o con el arraque del sistema.
 
 
