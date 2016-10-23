@@ -9,6 +9,26 @@ _Usuario(Login) : Contraseña : UID : GID : Nombre de usuario : Directorio de tr
 
 En el archivo __shadow__ se encuentran codificadas cada una de las contraseñas de los usuarios que aparecen en __passwd__, de forma que en el archivo passwd aparecerá una x en el campo de contraseña, indicando que esta se encuentra codificada en __shadow__.
 
+### Administración de usuarios.
+
+Es posible añadir, modificar y eliminar usuarios mediante las órdenes:
+* __useradd__: Añadir usuarios (Podemos añadir las opciones -p para modificar la contraseña o -d para elegir su /home)
+* __userdel__: Eliminar usuarios
+* __usermod__: Modificar la configuración de un usuario existente (comparte opciones con _useradd_ y añade otras como elegir el nuevo nombre de login con -l)
+* __newusers__: Lee un archivo y procede a la creación de usuarios en tanto a la información suministrada.
+
+Si no se especifican las opciones se tomarán los valores por defecto que se encuentan en los archivos _/etc/default/useradd_ y _/etc/login.defs._
+
+Cualquier usuario puede modificar su propia contraseña con la orden __passwd__ ya que no podrá usar las opciones anteriores si no es root
+
+### Administración de grupos.
+
+Se pueden administrar los grupos, y obtener información sobre estos mediante las órdenes:
+* __groupadd, groupdel, groupmod__: Para añadir,borrar y modificar grupos
+* __gpasswd  group __: Cambia la contraseña de un grupo
+* __gpasswd -a  user  group __: Añade un usuario a un grupo
+* __groups user, id user__: Proporciona los grupos a los que pertenece "user", además id proporciona su identificación
+
 ### Diferencia entre _fstab_, _mtab_, _filesystems_ y _mounts_.
 
 Los cuatro archivos citazos son archivos FHS que guardan diferente información relevante al mismo tema, la primera diferencia es donde se encuentran los archivos.
