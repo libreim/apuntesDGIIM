@@ -12,6 +12,7 @@ En el archivo __shadow__ se encuentran codificadas cada una de las contraseñas 
 ### Administración de usuarios.
 
 Es posible añadir, modificar y eliminar usuarios mediante las órdenes:
+
 * __useradd__: Añadir usuarios (Podemos añadir las opciones -p para modificar la contraseña o -d para elegir su /home)
 * __userdel__: Eliminar usuarios
 * __usermod__: Modificar la configuración de un usuario existente (comparte opciones con _useradd_ y añade otras como elegir el nuevo nombre de login con -l)
@@ -24,6 +25,7 @@ Cualquier usuario puede modificar su propia contraseña con la orden __passwd__ 
 ### Administración de grupos.
 
 Se pueden administrar los grupos, y obtener información sobre estos mediante las órdenes:
+
 * __groupadd, groupdel, groupmod__: Para añadir,borrar y modificar grupos
 * __gpasswd  group __: Cambia la contraseña de un grupo
 * __gpasswd -a  user  group __: Añade un usuario a un grupo
@@ -49,6 +51,7 @@ La informacion que encontramos en cada uno de estos archivos es:
 
 
 Para crear un sistema de archivos en una partición (ext3,ext4) tenemos que usar la orden __mke2fs__. Tiene varias opciones interesantes como:
+
 * __-L__ para establecer una etiqueta a la partición
 * __-t *nombre particion*__ para establecer si queremos ext2,ext3,ext4.
 * __-T *tipo de uso*__ Para establecer qué tipo de uso queremos darle al Sistema de archivos.
@@ -57,9 +60,10 @@ Para crear un sistema de archivos en una partición (ext3,ext4) tenemos que usar
 #### Configurar parámetros del Sistema de Archivos
 
 Para ajustar algunos parámetros de nuestro S.A. usamos la opción **tune2fs**.
+
 * __-l *dispositivo*__ nos da un listado con la información relevante de un S.A.
 
-* __-c max-mount-counts *dispositivo__ Establece el número máximo de montajes que se pueden realizar sin que se realice una comprobación de consistencia del S.A.
+* **-c max-mount-counts *dispositivo*** Establece el número máximo de montajes que se pueden realizar sin que se realice una comprobación de consistencia del S.A.
 
 * __-L *etiqueta* *dispositivo*__ Pone una etiqueta al S.A.
 
@@ -71,8 +75,10 @@ Para ajustar algunos parámetros de nuestro S.A. usamos la opción **tune2fs**.
 ### Orden Mount
 
 Nos permite montar un sistema de archivos, con una amplia gama de opciones, de las que hemos utilizado:
+
 * -o ro: Monta en sistema de archivos en solo lectura.
 * -o rw: Monta el sistema de archivos en lectura y escritura.
+
 Un ejemplo del formato utilizado para estas ordenes sería:
 
 ```
@@ -111,6 +117,7 @@ Utilizando “yum erase [paquete]” podemos eliminar el paquete que queramos y 
 ### Orden Rpm
 
 Instalador de paquetes que se encuentran descargados en el equipo. Ordenes útiles:
+
 * **-qa** Lo usamos para listar los paquetes
 * **-qli paquete** muestra la información de un paquete
 
@@ -147,9 +154,10 @@ Estableciendo así el periodo de gracia para el límite soft(están los límites
 ### Orden uptime , orden w
 Las opciones muestran salidas similares. Dan información sobre quién está conectado al sistema y qué están haciendo.
 
-Con **uptime** sólo da la cabecera, es decir, la hora actual, el tiempo que lleva en marcha la máquina, el nº de usuarios conectados y la caga media del sistema en los últimos 1,5 y 10 mins.
+* Con **uptime** sólo da la cabecera, es decir, la hora actual, el tiempo que lleva en marcha la máquina, el nº de usuarios conectados y la caga media del sistema en los últimos 1,5 y 10 mins.
 
-Con **w** se muestra lo que muestra *uptime* mas qué usuarios están conectados y qué está haciendo cada uno, da más detalles sobre el sistema
+* Con **w** se muestra lo que muestra *uptime* mas qué usuarios están conectados y qué está haciendo cada uno, da más detalles sobre el sistema
+
 * Usando **-h** deja de mostrar lo que mostraba *uptime*
 
 #### Orden time
@@ -192,6 +200,7 @@ Se suele ejecutar con las operaciones:
 
 ### Orden top
 Muestra la actividad del procesador en tiempo real, y sobre los procesos que aparecen podemos realizar varias opciones:
+
 * **r** Cambiar la prioridad del proceso
 * **k** matar o enviar señal
 * **N** ordena por PID
@@ -208,6 +217,7 @@ Muestra estadísticas del procesador junto con la media de datos mostrados. *sys
 ## Control y gestión de memoria
 ### Orden free
 Orden muy ligera que visualiza el uso actual de memoria. Informa de la memoria RAM de la computadora y de la memoria SWAP disponible
+
 * **-b** en bytes, **-k** en kilobytes, **-m** en megabytes, **-g** en gigabytes.
 * **-w** Produce un resultado más ancho
 * **-c**
@@ -215,8 +225,11 @@ Orden muy ligera que visualiza el uso actual de memoria. Informa de la memoria R
 
 ### Orden watch
 Esta orden ejecuta un comando repetidamente y muestra la salida y los errores. Por defecto, se ejecuta cada dos segundos
+
 * **-n [intervalo]** cambia el intervalo de ejecución. No puede ser menor que 0.1 segundos.
+
 * **-g** Sale cuando la salida del comando cambia
+
 * **-e** se congela cuando hay un error en el comando y para salir se pulsa una tecla
 
 ### Orden *vmstat*
@@ -239,6 +252,7 @@ Con ls, buscaremos ahora mostrar ciertos metadatos de los archivos. Para ello, u
 * **-lh** lista larga de los metadatos del archivo con los tamaños listados en Kbytes,Mbytes o Gbytes
 
 2. Opciones extras para el listado de formato largo.
+
 * **-X** ordena alfabeticamente por extensión
 * **-t** ordena por fecha de modificación
 * **-u** ordena por fecha de acceso
