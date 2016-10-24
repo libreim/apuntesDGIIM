@@ -131,10 +131,10 @@
 %---------------------------------------------------------------------------
 
 % Números enteros: \ent
-\providecommand{\ent}{\mathcal{Z}}
+\providecommand{\ent}{\mathbb{Z}}
 
 % Números racionales: \rac
-\providecommand{\rac}{\mathcal{Q}}
+\providecommand{\rac}{\mathbb{Q}}
 
 
 % Valor absoluto: \abs{}
@@ -844,25 +844,210 @@ Y llamo a $\frac{a}{b}$ la fracción a entre b.
 	
 	\boxed{\Rightarrow} $(a,b) \in \frac{a}{b} = \frac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
 	
-	\boxed{\Leftarrow} $(a,b) \sim (u,v)$
+	\boxed{\Leftarrow} $(a,b) \sim (u,v)$ Por la transitividad: $\frac{a}{b} \subseteq \frac{u}{v}$ y $\frac{u}{v} \subseteq \frac{a}{b} \Rightarrow \frac{a}{b}= \frac{u}{v}$
 \end{proof}
 \end{ndef}
 
+Ahora, llamamos $Q(A) = \{\frac{a}{b} | a,b \in A: \hspace{0.25cm} b\neq 0\}$ que es un conjunto de conjuntos, pues ya habíamos definido la fracción $\frac{a}{b}$ como un conjunto.
+
+Sobre él, definimos unas operaciones que nos permitirán ver que es un cuerpo:
+\begin{nlist}
+	\item Suma: \[\frac{a}{b}+ \frac{c}{d} = \frac{ad + cb}{bd}\]
+
+Ahora, como la fracción $\frac{a}{b}$ es un conjunto, hay que probar que el resultado es único, es decir:
+\[
+\frac{a}{b}= \frac{a'}{b'} \hspace{0.25cm}y\hspace{0.25cm} \frac{c}{d}= \frac{c'}{d'}  \Rightarrow ab' = a'b \hspace{0.25cm} y \hspace{0.25cm} cd' = c'd
+\]
+Hay que probar que se cumple:
+\[
+\frac{ad+cb}{bd} = \frac{a'd'+c'b'}{b'd'}
+\]
+Equivalementente, tenemos que probar que se cumple:
+\[
+b'd'(ad+cb) = bd(a'd'+c'b')
+\]
+
+Desarrollamos en la izquierda:
+\[
+b'd'(ad+cb) = b'd'ad + b'd'cb =^{(1)} a'bd'd + b'bc'd
+\]
+Donde en (1) hemos usado la equivalencia que habíamos dado de $ab' = a'b$ y $cd' = c'd$. Ahora, desarollamos el producto de la derecha y veremos que es igual al resultado obtenido
+
+\[
+bd(a'd'+c'b') = bda'd' + bdc'b' = a'bdd' + bb'c'd
+\]
+
+Probando la unicidad. 
+	
+    \item Producto: \[\frac{a}{b} \frac{c}{d} = \frac{ac}{bd}\]
+
+La unicidad del producto se hace desarrollando de la misma manera.
+\end{nlist}
 
 
 
+Para finalizar, se puede probar que es un cuerpo probando las propiedades de anillo conmutativo y que existe inverso para todo $\frac{a}{b}$.
+
+\begin{nprop}[Fracciones de denominador 1]
+  Existe un homomorfismo
+  \begin{align}
+    i :& A \longrightarrow \mathbb{Q}(A)\notag\\
+     \quad  &a \longmapsto \frac{a}{1} = i(a)\notag
+  \end{align}
+
+  Que cumple que $i(a+b) = i(a)+i(b)$ y que $i(ab)=i(a)i(b)$, y además es un monomorfismo.
+  Así, $A \stackrel{i}{\cong} Img(i) = \{\frac{a}{1} : a\in A\}$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\frac{a}{1}$.
+  Con esta identificaión $\frac{a}{b} = \frac{a}{1}\frac{1}{b} = ab^{-1}$
+\end{nprop}
+
+\begin{nprop}
+  Sea $K$ un cuerpo y $A\le K$, $a,b\in A b\not=0$.
+  \begin{align}
+    \implies& a\in K \text{ y } b^{-1}\in K \implies ab^{-1}\in K\notag\\
+    \implies&\mathbb{Q}(A)\le K\notag
+  \end{align}
+\end{nprop}
+
+\begin{nota}
+ Sea $K$ un cuerpo. Entonces  $\mathbb{Q}(K)$ es el cuerpo más pequeño que contiene a $K$.
+\end{nota}
+
+\begin{nota}
+  $A \subseteq \mathbb{Q}(A), A=\text{D.I.} \implies \rac(\rac(A)) = \rac(A)$
+\end{nota}
 
 
+\begin{nprop}
+  Sea K un cuerpo, $A\le K$. Si $\forall \alpha\in K\quad \exists a\in A\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
+\end{nprop}
 
+\begin{proof}
+  $\alpha\in K,\; \exists a\in A \ne 0 : a\alpha=b\in A \implies \alpha = ba^{-1} = \frac{b}{a}\in \rac(A)$
+\end{proof}
 
+\begin{ejemplo}
+  $\ent[i] = \{a+bi : a,b\in \ent\} \le \rac[i] = \{a+bi : a,b\in \rac\} \implies \rac(\ent[i]) = \rac[i]$
+  \[
+    \alpha\in\rac[i]\implies\alpha=\frac{m}{n}+\frac{m'}{n'}i\; \implies \ent[i] \ni nn'\alpha = n'm+nm'i \in \ent[i]\notag
+  \]
+\end{ejemplo}
 
+\begin{nprop}
+	Si $A$ es un D.I. $\implies$ $A[x]$ es un D.I. 
+\end{nprop}
 
+\begin{ndef}[Grado de un polinomio]
 
+Si $f=\sum a_i x^i \neq 0$ $\implies gr(f)=n\in \mathbb{N}$ si $a_n\neq 0$ y $a_m=0 \hspace{0.3cm} \forall m>n$ 
 
+El coeficiente $a_n$ se denomina coeficiente líder.
 
+\begin{itemize}
+	\item Si A es D.I, $f,g \in A[x]\implies gr(fg) = gr(f)+gr(g)$
+\end{itemize}
+	
+\end{ndef}
 
+\begin{ndef}[Divisibilidad en D.I.]
+	
+Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divisor de b, b es un múltiplo de a):
+\begin{align}
+	\iff& \exists c \in A : b = ac 
+\\
+	\iff& La \hspace{0.2cm} ecuacion \hspace{0.2cm} ax=b \hspace{0.2cm} tiene\hspace{0.2cm}solucion
+\\
+\iff& \frac{b}{a} \in A
+\end{align}
 
+\begin{proof}
+	$\boxed{\implies}$ Si a divide a b $\implies$ $\exists c: b=ac \implies \frac{b}{a} = \frac{ac}{a} = \frac{c}{1} = c \in A$\\
+	$\boxed{\Longleftarrow}$ si $\frac{b}{a}\in A \implies \frac{b}{c} = \frac{c}{1} \implies b = ac$
+\end{proof}
+\end{ndef}
+\textbf{Notación:} Si a divide a b, escribiremos $a/b$
 
+\begin{nlist}
+	\item Los divisores de 1 son las unidades del anillo, los elementos del grupo $U(A)$
+	\item Las unidades son divisores de todos los elementos del anillo.
+	\item Dado $a\in A$, los elementos $ua$ con $u\in U(A)$ se llaman \emph{asociados de a}.
+	\item Si $u\in U(A)$, $\forall a \in A$, $ua/a$
+	
+\end{nlist}
 
+\begin{ndef}
+	Los divisores triviales de un número son las unidades y sus asociados.
+\end{ndef}
+
+\begin{nprop}
+	Sean $a,b\neq 0$. Son equivalentes:
+	\begin{nlist}
+	\item a es asociado de b
+	\item b es asociado de a
+	\item $a/b \wedge b/a$ los asociados son los elementos que se dividen mutuamente
+	
+\end{nlist}
+\end{nprop}
+
+\begin{ndef}[Irreducible]
+	
+	Sea $a\in A, a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
+
+\begin{align}
+	\iff& si\hspace{0.2cm} b/a \implies b\in U(A) \vee b \sim a
+\\
+	\iff& si \hspace{0.2cm} a=bc \implies b\in U(A) \vee c \in U(A)
+\\
+	\iff& si \hspace{0.2cm} a=bc \implies a\sim b \vee c \sim a
+\\
+	\iff& si \hspace{0.2cm}a=bc \wedge b \notin U(A) \implies c \in U(A)
+\end{align}
+	
+Propiedades elementales:
+\begin{nlist}
+	\item Reflexión: $a/a$
+	\item Transitividad: $a/b \wedge b/c \implies a/c$
+	\item Si $a/b \vee a/c \implies a/bx +cy\hspace{0.2cm} \forall x,y \in A$ 
+	\item Si $a/b \implies \hspace{0.2cm} \forall c \hspace{0.2cm} a/bc$
+	\item Si $c\neq 0$ entonces $a/b \iff ac/bc$
+\end{nlist}
+\end{ndef}
+
+\begin{ndef}[Dominios euclídeos]
+
+	Un dominio euclídeo es un dominio de integridad, A, tal que haya definida una función $\varphi: A- \{0\} \to \mathbb{N} $ verificando:
+
+\begin{nlist}
+	\item $\varphi(ab) \ge \varphi(a)$
+	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q,r \in A : a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$
+	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q \in A : a - bq = 0 \vee  \varphi(a-bq) < \varphi(b)$
+\end{nlist}	
+\end{ndef}
+
+\begin{nota}
+	Si A es dominio euclídeo, entonces: 
+$b/a \iff$ un resto de dividir a entre b es cero $\iff$ cualquier resto de dividir a entre b es 0 
+\end{nota}
+\begin{proof}
+	$\boxed{\implies}$ Por definicion de b/a, $\implies \exists c \in A$ tal que $a=bc$ y por ser A un dominio euclídeo, $\implies \exists q,r \in 		A : 	a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
+\\
+Supongamos $r \neq 0$, entonces $\varphi(r) < \varphi(b)$. 
+$$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
+$$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$  
+\end{proof}
+
+\begin{nth}[Teorema de Euclídes]
+
+	$\forall a,b \in \ent, b \neq 0, \exists q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < b$
+\end{nth}
+
+\begin{ncor}
+$\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
+\[
+\varphi(a) \begin{cases}
+	a  \quad \textup{si } a \ge 0\\
+	-a \quad \textup{si } a < 0
+	
+\end{cases}\]
+\end{ncor}
 
 \end{document}

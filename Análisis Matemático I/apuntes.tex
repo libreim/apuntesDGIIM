@@ -650,7 +650,18 @@ Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, $f:A \longrightarrow \mathbb{R}^M$
 Sea $(X,d)$ un espacio métrico, y sea $\emptyset \ne A \subseteq X$. $$A\ es\ compacto \iff \forall \{x_n\} \subseteq A\ \ \exists \{x_{\sigma(n)}\} \rightarrow x\in A.$$
 \end{ndef}
 
+\begin{ndef}[Recubrimiento abierto]
+	Sea $A \subseteq \mathbb{R}^N$. Se dice que una familia $\{O_i, i\in I\}$ de abiertos es un \emph{recubrimiento abierto} de $A$ si
+	\[
+		A \subseteq \bigcup_{i\in I} O_i
+	\]
+	
+	También, si $R_1$ y $R_2$ son recubrimientos abiertos de $A$ y $R_1 \subseteq R_2$, se dice que $R_1$ es un \emph{subrecubrimiento abierto} de $R_2$.
+\end{ndef}
 
+\begin{nprop}
+	Sea $A \subseteq \mathbb{R}^N$ compacto. Entonces existe un subrecubrimiento finito de $A$.
+\end{nprop}
 
 \begin{nprop}[Caracterización de cerrados]
 Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
@@ -854,8 +865,64 @@ Por tanto, queda probado que $f(A)$ es arco-conexo en $\mathbb{R}^M$.
 Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \mathbb{R}^M$ continua. Entonces, $f(A)$ es conexo en $\mathbb{R}^M$.
 \end{nth}
 
+\begin{nth}[Heine-Cantor]
+	Sea $\emptyset\ne A \subseteq \mathbb{R}^N$ compacto, y $f : A \longrightarrow \mathbb{R}^N$ continua. Entonces f es uniformemente continua en $A$.
+\end{nth}
 
 
+\begin{proof}
+	$f$ es continua en A $\implies$ $f$ es continua en $a\;\; \forall a \in A$. Ahora, sea $\epsilon>0$ fijo.
+	\[
+	    \forall a \in A \quad \exists \delta = \delta_a > 0\;\; \forall x\in A\;\; d(x,a) < \delta_a \implies d(f(x),f(a))<\epsilon
+	\]
+
+	Tomamos un recubrimiento abierto de $A$, y como $A$ es compacto, encontramos un subrecubrimiento finito.
+	
+	\[
+		A \subseteq \bigcup_{a\in A} B(a, \frac{\delta_a}{2}) \implies \exists a_1,\dots,a_n \in A: A \subseteq \bigcup_{i=1}^n B\left(a_i, \frac{\delta_{a_i}}{2}\right)
+	\]
+	
+	Por esta última inclusión:
+	\[
+		\forall x\in A\quad \exists i \in \left \{ 1,\dots,n \right \} : x\in B\left(a_i,\frac{\delta_{a_i}}{2}\right)\cap A \implies f(x)\in B(f(a_i),\epsilon)
+	\]
+	
+	Sean $\delta = \min\left\{\ddfrac{\delta_{a_i}}{2} : i \in \left \{ 1,\dots,n \right \}\right\} > 0$ y $y\in A : d(x,y) < \delta < \delta_{a_i}$ para un $x\in A$ fijo. Tomamos el $a_i$ proporcionado por la proposición anterior para $x$.
+	\[
+		d(y,a_i) \le d(y,x)+d(x,a_i) < \delta_{a_i} \implies y\in B(a_i,\delta_{a_i}) \implies f(y) \in B(f(a_i), \epsilon)
+	\]
+	
+	Finalmente,
+	\[
+		d(f(x), f(y)) \le d(f(x),f(a_i)) + d(f(a_i), f(y)) < \epsilon
+	\]
+	
+	Para cualquier $\epsilon$ para el que se desee que se verifique la condición de la continuidad uniforme, basta tomar $\ddfrac{\epsilon}{2}$ en la continuidad.
+\end{proof}
+
+\begin{proof}[Demostración alternativa]
+	La condición para la continuidad uniforme es la siguiente:
+	\[
+		\forall \varepsilon > 0 \  \exists \delta > 0 \ \forall x, y \in A : d(x,y) < \delta \implies d (f(x) , f(y) ) < \varepsilon
+	\]
+	
+	Vamos a proceder por reducción al absurdo, para lo cual negamos esta condición:
+	\[
+		\exists \varepsilon_0 > 0 \ \forall \delta > 0 \ \exists x, y \in A : d (x,y) < \delta \wedge d (f(x) , f(y) ) \ge \varepsilon_0
+	\]
+	
+	Tomamos este $\epsilon_0$, lo que nos da, para cada $\delta>0$, un par de puntos $x$ e $y$ que cumplen la propiedad expresada arriba. Tomamos $\delta = \frac{1}{n} \ \forall n\in \mathbb{N}$. Esto nos da dos sucesiones $\{x_n\}$ e $\{y_n\}$ tales que
+	\[
+		d(x_n,y_n) < \frac{1}{n} \wedge d(f(x_n),f(y_n)) \ge \epsilon_0
+	\]
+	
+	Por ser A compacto, el teorema de Bolzano-Weierstrass nos da dos sucesiones parciales $\{x_{n_k}\}$ a $x_0$ e $\{y_{n_k}\}$ a $y_0$. Por tanto:
+	\[
+		d(x_{n_k},y_{n_k}) < \frac{1}{n_k} \wedge d(f(x_{n_k}),f(y_{n_k})) \ge \epsilon_0
+	\]
+	
+	Sin embargo, $\{x_{n_k}\}$ e $\{y_{n_k}\}$ convergen al mismo punto (por converger su distancia a cero), y como $f$ es continua, esta proposición no puede ser verdadera. Hemos llegado por tanto a una contradicción, luego $f$ debe ser uniformemente continua.
+\end{proof}
 
 
 
