@@ -90,7 +90,7 @@ Ahora, podemos también usar esto para obtener paquetes o archivos de nuestro or
 Para ello, utilizamos la opción:
 
 ```
-mount none/mnt -t hostfs -o [carpeta de nuestro PC.]
+mount none /mnt -t hostfs -o [carpeta de nuestro PC.]
 ```
 Ahora, para instalar un paquete debemos hacer:
 ```
