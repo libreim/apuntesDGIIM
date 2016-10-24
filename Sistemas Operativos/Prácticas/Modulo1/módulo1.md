@@ -47,11 +47,37 @@ La informacion que encontramos en cada uno de estos archivos es:
 
 ### Trabajo con sistemas de archivos
 
+Muchas veces, nos interesará crear una partición, un dispositivo virtual. Para ello, hacemos la orden:
+
+```
+mknod /dev/nombre
+```
+El nombre asignado suele ser /loop?/ con ? un número natural.
+
+Luego, para crear un archivo de X megas, hacemos la orden:
+
+```
+dd if=/dev/zero of=/root/nombrearchivo bs=Xk count=10000
+```
+
+Ojo con la posición de la X, podemos luego asignar un S.A. a ese archivo, pero antes debemos asociar el dispositivo que habiamos creado con el archivo que hemos creado, para ello realizamos:
+
+```
+losetup /dev/loop? /root/nombrearchivo
+```
+
+Más tarde podemos comprobar la configuración del disco virtual mediante:
+
+```
+fdisk -l /dev/loop?
+```
 #### Asignar un sistema de archivos a una partición
 
 
 Para crear un sistema de archivos en una partición (ext3,ext4) tenemos que usar la orden __mke2fs__. Tiene varias opciones interesantes como:
 
+
+* **-l** para hacerlo sobre un archivo
 * __-L__ para establecer una etiqueta a la partición
 * __-t *nombre particion*__ para establecer si queremos ext2,ext3,ext4.
 * __-T *tipo de uso*__ Para establecer qué tipo de uso queremos darle al Sistema de archivos.
