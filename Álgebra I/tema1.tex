@@ -136,6 +136,9 @@
 % Números racionales: \rac
 \providecommand{\rac}{\mathbb{Q}}
 
+% Números naturales: \nat
+\providecommand{\nat}{\mathbb{N}}
+
 
 % Valor absoluto: \abs{}
 \providecommand{\abs}[1]{\lvert#1\rvert}    
@@ -1049,5 +1052,70 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 	
 \end{cases}\]
 \end{ncor}
+\pagebreak
+
+Pasamos a demostrar el teorema de Euclídes.
+
+\begin{proof}
+Probaremos primero la unicidad. Supongamos 
+$$a=bq+r \quad \quad 0\leq r <\abs{b}$$   
+$$a=bq'+r' \quad \quad 0 \leq r' < \abs{b}$$ 
+
+distintos. Vamos a ver que $r=r'$ y $q=q'$
+
+\begin{itemize}
+	\item Si $r \neq r'$, supongamos $r > r' \implies 0 < r - r' < \abs{b}$
+Ahora: 
+
+$$ r-r' = a-bq + a +bq' = b(q-q')$$
+$$r-r' > 0 \implies r - r' = \abs{b(q-q')} = \abs{b}\abs{q-q'}$$
+
+Pero, como $q\neq q' \implies q-q' \neq 0$ y $q,q' \in \ent \implies \abs{q-q'} \geq 1 $, luego:
+
+$$ r-r' = \abs{b}\abs{q-q'} \geq \abs{b}$$
+
+Por lo que tenemos una contradicción con el comienzo de la suposición.
+
+	\item Ahora, si $r=r'\implies b(q-q') = 0$ y $b\neq 0 \implies q-q'=0 \implies q = q'$
+\end{itemize}
+
+Probamos ahora la existencia. Sean $a,b \geq 0$
+
+\begin{itemize}
+	\item Si $ a < b \implies a = 0*b + a$, luego $q=0$ y $r=a$, ya los tenemos
+	\item Si $a \geq b$, llamamos $R=\{a-bx: x\in \nat \quad a \geq bx\}\subseteq \nat$ que es no vacío, pues está al menos $x=1$.
+	
+	Ahora, por el Principio de buena ordenación, $R$ tiene mínimo. Tomo $r=min(R)$. 
+	
+$r=a+bq$ para cierto $q \in \nat$ y $ r \geq 0$
+
+Veremos ahora que $r < b$, llegando a una contradicción.
+
+Supongamos $ r \geq b\implies r' = r-b \geq 0 \implies r' = a-bq -b = a -b(q+1)\implies r' \in R$.
+
+Podemos ver que $r' < r$ (pues $r'=r-b$) $\implies $ está en $R$ y es menor que el mínimo, luego es una contradicción y tenemos que $r < b$
+
+\end{itemize}
+Por último, vamos a probar que $0 \leq r < \abs{b}$
+
+Supongamos: 
+\[
+r=0 \implies a=bq \begin{cases}
+	-a = b(-q)\\
+	-a = (-b)q \\
+	 a = (-b)(-q)\\	
+\end{cases}
+\]
+
+Ahora, supongamos $r > 0$:
+
+\begin{itemize}
+	\item $-a = b(-q) -r = b(-q) -b + b -r = b(-q-1) +(b-r)$ y como $0 < r < b \implies b > b-r > 0$
+	\item $-a = (-b)q -r = (-b)q + b - b -r = -b(q+1) + (b-r)$ y por el mismo motivo, $b > b-r > 0$
+	\item $a = (-b)(-q) +r \implies 0 < r < b = \abs{-b}$
+\end{itemize}
+
+De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
+\end{proof}
 
 \end{document}
