@@ -102,8 +102,8 @@ Para ajustar algunos parámetros de nuestro S.A. usamos la opción **tune2fs**.
 
 Nos permite montar un sistema de archivos, con una amplia gama de opciones, de las que hemos utilizado:
 
-* -o ro: Monta en sistema de archivos en solo lectura.
-* -o rw: Monta el sistema de archivos en lectura y escritura.
+* _-o ro_: Monta en sistema de archivos en solo lectura.
+* _-o rw_: Monta el sistema de archivos en lectura y escritura.
 
 Un ejemplo del formato utilizado para estas ordenes sería:
 
@@ -137,21 +137,20 @@ Yum dispone de una amplica cantidad de acciones distintas, entre ellas estan:
 #   yum install [paquete]    Permite instalar un paquete.
 #   yum update [paquete]     Permite actualizar un paquete.
 ```
-Con la orden “yum list installed” podemos ver aquellos paquetes que se encuentran instalados.
-Utilizando “yum erase [paquete]” podemos eliminar el paquete que queramos y luego utilizando “yum install [paquete]” podemos volver a instalarlo.
+Con la orden “*yum list installed*” podemos ver aquellos paquetes que se encuentran instalados.
+Utilizando “*yum erase [paquete]*” podemos eliminar el paquete que queramos y luego utilizando “*yum install [paquete]*” podemos volver a instalarlo.
 
 ### Orden Rpm
 
 Instalador de paquetes que se encuentran descargados en el equipo. Ordenes útiles:
 
-* **-qa** Lo usamos para listar los paquetes
+* _-qa_ Lo usamos para listar los paquetes
 * **-qli paquete** muestra la información de un paquete
 
-* “rmp **-i** [direccion paquete]” o “rpm –install [direccion paquete]”, podemos instalar el paquete que deseemos.
+* _rpm **-i** [direccion paquete]_ o _rpm –install [direccion paquete]_, podemos instalar el paquete que deseemos.
 
-* Para postrar la maxima información posible utilizaremos
-  ** -v ** (muestra informacion relevante)
-* **-h** (muestra hash marks). De forma que para instalar el paquete:
+* Para postrar la maxima información posible utilizaremos *-v* (muestra informacion relevante)
+* *-h* (muestra hash marks). De forma que para instalar el paquete:
 
 ```
 # rpm -ivh [direccion del paquete]
@@ -166,18 +165,25 @@ Para desinstalarlo utilizaremos:
 
 Para activar el uso de quota tenemos que usar:
 
-** quotaon -a**
+```
+quotaon -a
+```
 
 Ahora, si queremos ponerle una cuota a un usuario usamos:
 
-** edquota nombreusario **
+```
+edquota nombreusario
+```
 
-** edquota -t**
-Estableciendo así el periodo de gracia para el límite soft(están los límites soft y hard).
+```
+edquota -t
+```
+
+Estableciendo así el periodo de gracia para el límite soft (están los límites soft y hard).
 
 * Usando **repquota <SA>** podemos ver la estadística de las cuotas para todos los usuarios
 
-### Orden uptime , orden w
+### Orden uptime, orden w
 Las opciones muestran salidas similares. Dan información sobre quién está conectado al sistema y qué están haciendo.
 
 * Con **uptime** sólo da la cabecera, es decir, la hora actual, el tiempo que lleva en marcha la máquina, el nº de usuarios conectados y la caga media del sistema en los últimos 1,5 y 10 mins.
@@ -189,13 +195,13 @@ Las opciones muestran salidas similares. Dan información sobre quién está con
 #### Orden time
 Mide el tiempo de ejecución de un programa y muestra un recurso del uso de los recursos del sistema. Mide el tiempo de ejecución real, de usuario y de supervisor, asi que haciendo
 
-T_espera = real - usuario - supervisor
+*T_espera = real - usuario - supervisor*
 
 Hallamos el tiempo de espera
 
 ### Órdenes nice y renice
 
-1. con **nice** establecemos el valor de prioridad de un proceso a un valor distinto del que tiene por defecto. El rango es [-20-19]. Solo puede hacerlo el usuario root.
+1. Con **nice** establecemos el valor de prioridad de un proceso a un valor distinto del que tiene por defecto. El rango es [-20-19]. Solo puede hacerlo el usuario root.
 
 2. Con **renice** alteramos el valor de la prioridad de uno o más procesos en ejecución.
 
@@ -220,9 +226,9 @@ Muestra los procesos en ejecución dibujados en forma de árbol. Opciones:
 
 ### Orden ps
 
-Nos da información sobre: User, PID, PPID(identificador del proceso padre), %CPU, %MEM, VSZ(tamaño virtual del proceso en KB), RSS(memoria real usada en KB), TTY(terminal asociado con el proceso), STAT(estado del proceso)
-Se suele ejecutar con las operaciones:
-* **-ef** , con la e significa todo proceso en el sistema y f muestra información completa.
+Nos da la siguiente información de los procesos: *User, PID, PPID (identificador del proceso padre), %CPU, %MEM, VSZ (tamaño virtual del proceso en KB), RSS (memoria real usada en KB), TTY(terminal asociado con el proceso), STAT (estado del proceso).*
+
+Se suele ejecutar con las operaciones **-ef**. Con la e especificamos todos procesos en el sistema y f permite mostrar la información completa.
 
 ### Orden top
 Muestra la actividad del procesador en tiempo real, y sobre los procesos que aparecen podemos realizar varias opciones:
@@ -330,25 +336,26 @@ Los números que aparecen en la columna anterior al *username* son los valores d
 * El demonio **atd** provoca la ejecución de una orden en un momento de tiempo especificado
 * El demonio **cron** sirve para hacer estas ejecuciones pero de forma periódica
 
-Para conocer los Pids de estos demonios, recordamos que tenemos que hacer respectivamente:
+Para conocer los PIDs de estos demonios, recordamos que tenemos que hacer respectivamente:
 
 ```
 ps aux | grep [proceso]
 ```
-Y luego, para conocer información específica como el padre del proceso, qué terminal tienen asociado, etc utilizamos (sabiendo su PID con la orden anterior o con pidof nombreproceso)
+Y luego, para conocer información específica (como el padre del proceso, qué terminal tienen asociado, etc) utilizamos
 
 ```
 ps -p [PID] -f
 ```
+sabiendo su PID con la orden anterior o con *pidof nombreproceso*.
 
 ### Orden at
-La sintaxis completa es
+La sintaxis completa de esta orden es
 
 ```
 at [-q queue] [-f <script>] [-mldbv] TIME
 ```
 
-Al iniciarlo se entra en el menú y tienes que poner una orden y redirigirlo, pues no tiene una terminal de salida asociada.
+Al iniciarlo se entra en el menú y es necesario poner una orden y redirigirlo, pues no tiene una terminal de salida asociada.
 Ejemplo de ejecución
 
 ```
@@ -427,7 +434,7 @@ Opciones útiles:
 * **crontab -e** nos lleva a un editor para poder editar el archivo cron.
 
 
-###### Variables de entorno
+##### Variables de entorno
 
 Cron tiene asignadas algunas variables de entorno que podemos usar como se usa una variable en los script normales. Algunas son:
 
