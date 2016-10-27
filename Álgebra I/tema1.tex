@@ -1118,4 +1118,64 @@ Ahora, supongamos $r > 0$:
 De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
+--- 26/10/2016 --- (Revisar)
+
+Propiedades:
+\begin{itemize}
+	\item Si $(a,b)=1 $ y $a/bc \implies a/c$
+	\item Si $a/c$ , $b/c$ y $(a,b)=1 \implies ab/c$
+	\item Si $a/c \implies \exists x$ : $c=ax$. Y $b/c \implies b/ax$ con $(a,b)=1 \implies b/x \implies \exists y$ : $x=by$
+	Entonces: 
+	\[
+		\begin{cases}
+			c=ax \\
+			x=by \\
+		\end{cases} \implies c=aby \implies ab/c
+	\]
+	\item Si $(a,b)=1$ y $(a,c)=1 \iff (a,bc)=1$ \\
+	\begin{proof}
+	$\boxed{\implies}$ Sabiendo que: $(ac,bc)=c(a,b)=c$
+	
+	Tenemos que: $1=(a,c)=(a,(ac,bc))=((a,ac),bc)=(a(1,c),bc)=(a,bc)$, por tanto: $1=(a,bc)$
+	
+	$\boxed{\Longleftarrow}$ $1=(a,bc)=(a(1,c),bc)=((a,ac),bc)=(a,(ac,bc))=(a,c(a,b))=(\frac{a}{(a,b)}(a,b),c(a,b)=(a,b)(\frac{a}{(a,b)},c)=1 \implies (a,b)\in U(A)\implies (a,b)=1\implies (a,c)\in U(A)\implies (a,c)=1$
+\end{proof}
+	\item $(a,b)=(a-kb,b)$ $\forall k \in A$
+	\item Si $d/b$, $d/a \iff d/(a-kb)$ \\
+	\begin{proof}
+	$\boxed{\implies}$ Por la propiedad de combinación lineal se confirma.
+	
+	$\boxed{\Longleftarrow}$ Igual que la otra implicación pero tomando $a=(a-kb)+kb$
+	\end{proof}
+\end{itemize}
+
+\begin{nota}
+En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(\alpha)$ es un divisor propio de $N(\beta)$ en $\mathbb{Z}$.
+\end{nota}
+
+\begin{ndef}[Ideal/Ideal Principal]
+	En un anillo se llama ideal a un subconjunto suyo no vacío que es cerrado para la suma y para múltiplos. Dicho de otra manera: \\
+	Si A es un anillo conmutativo, un subconjunto $\emptyset \not= I\subseteq A$, es un ideal si:
+	\begin{nlist}
+		\item $a,b\in I \implies a+b\in I$
+		\item $a\in I \implies ax \in I$
+	\end{nlist}
+	Si $a\in A$, $aA=(a)=$\{$ax: x\in A$\} es el ideal principal generado por a.
+\end{ndef}
+\begin{ndef}[[DIP: Dominio de ideales principales]
+	Un DIP es un anillo en el cual todo ideal es principal.
+\end{ndef}
+\begin{nth}
+	Todo dominio euclideo es un dominio de ideales principales: $DE \implies DIP$
+\end{nth}
+\begin{proof}
+	Sea A un DE con función euclidea $\varphi: A-\{ 0 \} \longrightarrow \mathbb{N}$ y $I\subseteq A$ un ideal:
+	\begin{itemize}
+		\item Caso $I=\{ 0 \} = (0)= 0A \implies $ trivial
+		\item Consideremos $I\neq \{ 0\}$, $\emptyset \neq \{ \varphi (x): x\in I, x\neq 0\} \subseteq \mathbb{N}$, sea $\varphi (b)$ el mínimo de este conjunto, donde $b\in I, b\neq 0 \implies I=(b)$. Probamos esto con la doble inclusión:
+		$\boxed{\subseteq}$ $b\in I \implies (b)\subseteq I$ \\
+		$\boxed{\supseteq}$ $a\in I$; $\exists q,r\in A: a=bq+r$. Supongamos que $r\neq 0 \implies r=a-bq\in I$ con $\varphi (r) < \varphi (b)$, esto es imposible puesto que b es el mínimo, luego $r=0 \implies a\in (b) \implies I\subseteq (b)$
+	\end{itemize}
+\end{proof}
+
 \end{document}
