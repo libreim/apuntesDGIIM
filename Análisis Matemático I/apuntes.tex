@@ -244,6 +244,10 @@
 \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
 {\end{enumerate}}
 
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
 
 %---------------------------------------------------------------------------
 %   PÁGINA DE TÍTULO
@@ -925,8 +929,18 @@ Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \math
 \end{proof}
 
 
+\section{Límite funcional en $\mathbb{R}^N$.}
 
-
+\begin{ndef}[Límite funcional]
+	Sean $\emptyset \ne A \subseteq \mathbb{R}^N$, $a\in A'$ y $f: A \longrightarrow \mathbb{R}^M$. Entonces $f$ tiene límite $l$ en $x=a$, y se denota $\displaystyle\lim_{x\to a} f(x)$ si:
+	
+\[
+	\forall \epsilon>0\quad \exists \delta>0 : \begin{rcases}
+	0<d(x,a)<\delta\\
+	x\in A
+\end{rcases} \implies d(f(x), l) < \epsilon
+\]
+\end{ndef}
 
 
 
