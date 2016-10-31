@@ -1118,7 +1118,152 @@ Ahora, supongamos $r > 0$:
 De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
---- 26/10/2016 --- (Revisar)
+\begin{nth}
+		$\forall f,g \in A[x]$ donde $g \neq 0 $ y su coeficiente líder es una unidad de $A$, existen polinomios:
+	
+	\[
+	q,r \in A[x] : f = gq + r \quad con \quad
+	 \begin{cases}
+		r = 0\\
+		gr(r) < gr(g)
+	\end{cases}
+	\]
+	y que son únicos.
+\end{nth}
+\begin{proof}
+	
+	Sean : $f = \sum_{i=0}^n a_i x^i$ y $g = \sum_{i=0}^m b_i x^i$ con $b_m \in U(A)$
+	
+	\begin{itemize}
+	
+	\item Si $n< m \implies f = f * 0 + f \implies \exists q,r\in A[x] : f = gq+r$ con $g=0$ y $r = f$
+	
+	\item Si $n\geq m$, razonamos por inducción en $n=gr(f)$
+	\begin{itemize}
+	
+	\item Si $n=0 \implies m = 0$ por tanto $f=a_0$ y $g=b_0$ pero con $b_0 \in U(A)$
+	
+	De esta forma:
+	
+	\[
+	f = a_0 = \frac{a_0}{b_0}b_0 = \frac{a_0}{b_0}b_0 + 0 = g\frac{a_0}{b_0}
+	\]
+	
+	Podemos tomar como hemos visto $q=\frac{a_0}{b_0}$ y $r=0$ y ya tenemos el q y r que buscábamos.
+	
+	\item Si $n> 0$, haremos la inducción
+	
+	Vamos a considerar que $\frac{a_n}{b_m} = a_n b_m^{-1} \in A$ Tomamos entonces $x^{n-m}$.
+	
+	Consideramos $x^{n-m}g(x)$ y establecemos $f_1 = f - \frac{a_n}{b_m}x^{n-m}g$. Recordaremos esto como $(1)$.
+	
+	Entonces, podemos ver que $gr(f_1) < n$. Por hipótesis te inducción $\implies \exists q,r \in A[x] : f_1 = gq_1 + r$, que consideraremos como (2).
+	
+	Ahora, utilizando (1) y (2):
+	
+	 \[
+	 \implies f = f_1 +\frac{a_n}{b_m}x^{n-m}g = gq_1 + \frac{a_n}{b_m}x^{n-m}g\frac{a_n}{b_m}x^{n-m} +r = 
+	 \]
+	 
+	 \[
+	 g(q_1 + \frac{a_n}{b_m}x^{n-m}) + r
+	 \]
+	
+	Encontramos así el q y el r que queríamos, probando la existencia.
+	
+	Vamos a probar ahora la unicidad.
+	
+	Sea $f=gq+r$ y $f= gq' +r'$ con
+	\[
+    \begin{cases}
+		 r,r' \neq 0\\
+		  \quad o \\
+ gr(r) < m 
+ \\ gr(r') < m
+		   
+\end{cases}
+	\quad
+	\]
+	
+	Ahora, si $r\neq r'\implies r-r' \neq 0 \implies r-r' = g(q-q') \neq 0$
+	Vemos que $gr(r-r') = gr(g)+ gr(q-q')$.
+	
+ Como $q-q' \neq 0 \implies gr(q-q') \geq 0 $ y de esta forma: $gr(g)+ gr(q-q') \geq gr(g) = m$.
+ 
+ Sin embargo, habíamos dicho que $r,r'$ eran ambas de grado menor que m luego $gr(r-r') < m$, llegando a una contradicción y probando así el resultado.
+\end{itemize} 
+	
+	
+\end{itemize}
+\end{proof}
+
+\begin{ncor}
+	Si $K$ es un cuerpo, entonces $K[x]$ es un D.E con función euclídea:
+	
+	\[
+	gr: K[x] \to N
+	\]
+	
+(función que asigna a cada polinomio su grado)
+\end{ncor}
+
+\begin{nota}
+	Hacemos un el ejercicio de ver si $3x^2 +1$ es divisor de $2x^3 + 4x^2 +4x +3$ en $\ent _5[x]$. (Solución: El resto de la división es 0, con resultado de la división $= 2/3 x + 4/3$)
+\end{nota}
+
+
+\begin{nth}
+	Los anillos $Z[\sqrt{n}]$ para $n=2,3,-1,2$ son D.E. con función euclídea:
+	\[
+	\varphi: \ent[\sqrt{n}] \to \nat : \varphi(a+b\sqrt{n}) = \abs{N(a+b\sqrt{n})} = \abs{a^2 - nb^2}
+	\]
+	
+	
+\end{nth}
+\begin{proof}
+	Probaremos que $\forall \alpha, \beta \in \ent[\sqrt{n}]$ con $\beta \neq 0 \quad \quad \exists q,r \in \ent[\sqrt{n}] : \alpha = \beta q + r$ con $r=0$ ó $\abs{N(r)} < \abs{N(\beta)}$:
+	
+	\begin{itemize}
+	\item Si $\abs{N(\alpha)} < \abs{N(\beta)}$ Basta tomar $\alpha  = 0* \beta + \alpha$
+	
+	\item Si $\abs{N(\alpha)} \geq \abs{N(\beta)}$ consideramos entonces  $\frac{\alpha}{\beta} \in \rac[\sqrt{n}]$.
+	
+	Ahora, $\frac{\alpha}{\beta} = a_1 + a_2\sqrt{n}$ con $a_1, a_2 \in \rac $. Esos $a_1,a_2$ se obtienen usando el conjugado de $\beta$.
+	
+	Sean $q_1,q_2 \in \ent : \abs{a_1-q_1}\leq 1/2$ y $\abs{a_2-q_2}\leq 1/2$. Esto quiere decir que $q_1$ y $q_2$ son los enteros más cercanos a $a_1,a_2$ respectivamente.
+	
+	Sea $q=q_1+q_2\sqrt{n}$  y $r = \alpha - \beta q$.
+	
+	Tomo $\abs{N(r)} = \abs{N(\alpha - \beta q)} = \abs{N(\beta(\frac{\alpha}{\beta}+ q)} = \abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)}$
+	
+	Queremos probar que: $\abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)} < \abs{N(\beta)}$.
+	
+	Equivalentemente , queremos probar que:
+	
+	\[
+	  \abs{N(\frac{\alpha}{\beta}+ q)} < 1 \implies \abs{N(a_1+a_2\sqrt{n}-q_1 -q_2\sqrt{n})} = \abs{N((a_1-q_1) + (a_2-q_2)\sqrt{n})} = \]
+	  \[
+	 = \abs{(a_1-q_1)^2 - n(a_2-q_2)^2} = m \in \rac
+	 \]
+	 
+Vamos a probarlo para los casos que habíamos anunciado en el teorema, $n = -1,-2,2,3$
+
+\begin{itemize}
+	\item $n=-1 \implies m= (a_1-q_1)^2 +(a_2-q_2)^2 \leq 1/4 + 1/4 = 1/2 \implies \abs{m} < 1$
+	
+	\item $n=-2 \implies m = (a_1-q_1)^2 +2(a_2-q_2)^2 \leq 1/4 + 1/2 = 3/4 \implies \abs{m} < 1$
+	
+	\item $n=-2 \implies m = |(a_1-q_1)^2 -2(a_2-q_2)^2 |\implies -1/2 \leq m \leq 1/4 \implies \abs{m} < 1$
+	
+	\item $n=3 \implies m = |(a_1-q_1)^2 -3(a_2-q_2)^2| \implies -3/4 \leq m \leq 1/4 \implies \abs{m} < 1$
+\end{itemize}
+
+Por lo que queda probado el resultado para esos casos.
+	
+\end{itemize} 
+\end{proof}
+
+
 
 Propiedades:
 \begin{itemize}
