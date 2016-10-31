@@ -13,6 +13,7 @@
 % Pedro Bonilla (@pedrobn23)
 % Guillermo Galindo
 % Antonio Coín (@antcc)
+% Luis Rekteao (@Ludvins)
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) por la base para la plantilla.
@@ -102,6 +103,7 @@
 
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
+\usepackage{graphicx}
 
 
 %---------------------------------------------------------------------------
@@ -193,6 +195,11 @@
 \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
 {\end{enumerate}}
 
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
 
 %---------------------------------------------------------------------------
 %   PÁGINA DE TÍTULO
@@ -252,11 +259,61 @@ Claramente $z\notin A$, pues $\displaystyle 1 + \frac{s}{2} > 1$. Así, concluim
 \section{Conexión.}
 \begin{ejer} Dado el conjunto \emph{peine} de la siguiente forma, probar que es conexo:
 \[
-	P = \{ 0\} \times (0,1]
+	P = (\{ 0\} \times (0,1]) \cup ((0,1] \times \{0\}) \cup (\{\frac{1}{n} : n \in \mathbb{N}\} \times (0,1)) 
 \]
+
+\begin{center}
+\includegraphics[scale=0.4]{imagenes/peine.png}
+\end{center}
+
+\begin{proof}
+Para la demostración vamos a definir el siguiente conjunto:
+\[
+	S = ((0,1] \times \{0\}) \cup (\{\frac{1}{n} : n \in \mathbb{N}\} \times (0,1)) 
+\]
+Es decir, el mismo conjunto P quitandole el eje y. Siendo $\bar{S} = P \cup (0,0)$.
+De esta forma tenemos:
+\[
+S \subset P \subset \bar{S}
+\]
+
+Para demostrar este ejercicio utilizaremos la siguiente proposición:\\
+
+\begin{nprop}
+Sea A un conjunto conexo, y B tal que $A \subset B \subset \bar{A} \implies B$ es conexo.
+\end{nprop}
+
+\begin{proof}
+ Para la demostración probaremos su contrarecíproco, consistente en: B no es conexo $\implies$ A no es conexo.
+ 
+B no es conexo $\implies \exists O,O'$ abiertos $: \begin{cases}
+B \subset O\cup O'\\
+O \cap B \cap O' = \emptyset\\
+O \cap B \neq \emptyset \neq O' \cap B\\
+\end{cases}$
+ 
+ Debemos probar que los 3 resultados se cumplen para A. 
+ 
+ 1. $B \subset O \cup O' \implies A \subset B \subset O \cup O'$\\
+ 2. $B \cap (O\cap O') = \emptyset \implies \nexists x \in B$ tq $x \in O \cap O'$. \\
+ Entonces $\forall x \in A \implies x \in B \implies x \not\in O \cap O'$\\
+ 3. $O \cap B \neq \emptyset \implies O\cap \bar{A} \neq \emptyset \implies O\cap (A\cup fr(A) \neq \emptyset \implies (O\cap A)\cup (O\cap fr(A)) \neq \emptyset$
+ En este punto tenemos 3 posibilidades:\\
+  - El primer elemento de la union es distinto del vacio, en cuyo caso hemos acabado.\\
+  - Ambos elementos son distintos del vacio, en cuyo caso tambien queda demostrado.\\
+  - El segundo elemento de la unión es distinto del vacio. $\exists x \in O\cap fr(A) \implies \exists \epsilon > 0 : B(x,\epsilon) \in O$. Por estar en la frontera: $B(x,\epsilon)\cap A \neq \emptyset \implies \exists y \in B(x,\epsilon)\cap A \subset A \cap O$.\\\\
+  
+  Nota: La idea de esta demostración es que: dado un conjunto conexo, su unión con elementos que se encuentran cerca de el, sigue siendo conexa.
+  
+\end{proof}
+
+Teniendo esto demostrado, haciendo uso de la proposición y de que S es conexo (por ser arco-conexo). Queda demostrado que P es conexo.
+
+\end{proof}
+
 \end{ejer}
 
 
 
 
-\end{document}
+\end{document}	
