@@ -1268,6 +1268,36 @@ Por lo que queda probado el resultado para esos casos.
 \end{itemize} 
 \end{proof}
 
+\begin{ejemplo}
+Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo . Para ello, tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
+
+$$\abs{N(6+10i)}=36+100=136$$
+$$\abs{N(1+2i)}=1+4=5$$
+
+Como $1+2i$ tiene una norma menor que la norma $6+10i$ podemos hacer la división, para ello primero dividiremos como si fuesen numeros complejos normales para hallar nuestro número cociente que será de la forma $q=q_1+q_2i$:
+
+\[
+	\frac{6+10i}{1+2i}=\frac{(6+10i)(1-2i)}{(1+2i)(1-2i)}=\frac{6-12i+10i+20}{5}=\frac{26-2i}{5}=\frac{26}{5}-\frac{2}{5}i
+\]
+
+Tenemos que $5<\frac{26}{5}<6$ y $5$ es más cercano a $\frac{26}{5}$ que $6$ escogemos $q_1=5$ y por el mismo razonamiento $q_2=0$, de forma que $q=5+0i=5$. A continuación, para hallar el resto $r$ hacemos la siguiente operación:
+
+\[
+	r=\alpha-\beta \cdot q = 6+10i - (1+2i)(5)=6+10i-5-10i=1
+\]
+
+Finalmente, comprobamos que no nos hemos equivocado:
+\[
+	(6+10i)=5(1+2i)+1\\
+	\abs{N(1)}<\abs{1+2i} \implies 1<5
+\]
+
+Viéndose así que el ejemplo está correcto.
+
+\end{ejemplo}
+
+
+
 
 
 Propiedades:
