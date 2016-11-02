@@ -1299,6 +1299,18 @@ Viéndose así que el ejemplo está correcto.
 
 
 
+\begin{ndef}[Máximo común divisor]
+
+Dados $a,b \in A$ decimos que un elemento $d\in A$ es un mcd de a y b ($d=(a,b))$ si el conjunto de los divisores comunes a a y a b coinciden con el conjunto de los divisores de d. Esto es:
+
+\begin{nlist}
+	\item $d/a$ y $d/b$
+	\item Si $c/a$ y $c/b \implies c/d$ 
+\end{nlist} 
+	
+\end{ndef}
+
+\textbf{COMPROBAR SI ESTÁN TODAS LAS PROPIEDADES}
 
 Propiedades:
 \begin{itemize}
@@ -1333,6 +1345,9 @@ Propiedades:
 En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(\alpha)$ es un divisor propio de $N(\beta)$ en $\mathbb{Z}$.
 \end{nota}
 
+\begin{ejemplo}
+Realizamos un ejemplo en el que se puede probar que , usando la Nota anterior, 3 y $)1+\sqrt{5})$ son irreducibles	
+\end{ejemplo}
 \begin{ndef}[Ideal/Ideal Principal]
 	En un anillo se llama ideal a un subconjunto suyo no vacío que es cerrado para la suma y para múltiplos. Dicho de otra manera: \\
 	Si A es un anillo conmutativo, un subconjunto $\emptyset \not= I\subseteq A$, es un ideal si:
@@ -1343,7 +1358,6 @@ En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(
 	Si $a\in A$, $aA=(a)=$\{$ax: x\in A$\} es el ideal principal generado por a.
 \end{ndef}
 
-\newpage
 
 \begin{ndef}[[DIP: Dominio de ideales principales]
 	Un DIP es un anillo en el cual todo ideal es principal.
@@ -1360,5 +1374,135 @@ En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(
 		$\boxed{\supseteq}$ $a\in I$; $\exists q,r\in A: a=bq+r$. Supongamos que $r\neq 0 \implies r=a-bq\in I$ con $\varphi (r) < \varphi (b)$, esto es imposible puesto que b es el mínimo, luego $r=0 \implies a\in (b) \implies I\subseteq (b)$
 	\end{itemize}
 \end{proof}
+
+
+\begin{nth}
+	Si $A$ es un DIP, $\forall a,b \in A \quad \exists d = (a,b)$. Además, $\exists u,v \in A : d = au+bv$. A esta igualdad se le llama Identidad de Bezout, y u y v son los coeficientes de Bezout, que no son únicos.
+	
+\end{nth}
+
+\begin{proof}
+	Sea $\emptyset \ne I(a,b) = \{ax + by : x,y \in A\} \subseteq A$
+	
+	Vemos que:\\
+$(ax+by)+(ax'+by') = a(x+x') + b(y+y') \implies$ cerrado para la suma.\\
+$(ax+by)z = a(xz)+b(xz)\implies$ cerrado para el producto
+
+Ahora, como es un ideal $\implies \exists d\in A : I(a,b) = (d)$ con $(d)=\{dx: x \in A\}$.
+$d\in I(a,b) \implies \exists u,v \in A : d=au+bv$.
+
+Ahora, veamos que $d$ es mcd de a y b.\\
+$a\in I(a,b) \implies a \in (d) \implies d/a$\\
+$b\in I(a,b) \implies b \in (d) \implies b/d$
+
+Por lo que d es divisor común. Ahora, sea $c: c/a$ y $c/b \implies c/(au+bv=d) \implies c/d$.
+Hemos encontrado así un divisor común que es dividido por cualquier divisor común, por tanto es el mcd. 
+\end{proof}
+
+\section*{Ecuaciones diofánticas en D.I.P.}
+
+En cualquier anillo, llamamos ecuaciones diofánticas a aquellas que son de la forma:
+\[
+ax +by  = c
+\]
+\begin{nlist}
+	\item Sea $d=(a,b)\implies$ entonces la ecuación tiene solución $\iff d/c$
+	\item Supongamos que tiene solución. Supongamos también que $d= au+bv) \circledast$
+\[
+\frac{a}{d}= a' \quad,\quad \frac{b}{d}=b'\quad,\quad \frac{c}{d}=c'\implies da'x + db'y = dc' \implies d(a'x+b'y)=dc'\]
+\[ \implies a'x+b'y = c'
+\]
+Esta ecuación tiene las mismas soluciones que la ecuación diofántica inicial. Llamaremos a esta la ecuación 'reducida'.\\
+$\circledast\quad d/a ,\quad d/b \implies a=a'u +b 'v $. Podemos hallar así los coeficientes de Bezout.\\
+
+Como $c'= a'(c'u)+b'(c'v)$ y ahí tenemos una solución particular. Conociendo esta, podemos hallar TODAS las soluciones. Si llamamos$x_0 =c'u$ e $y_0 = c'v$
+
+\item Solución general \[\begin{cases}
+	x = x_0 +kb'\\
+	y= y_0 -kb'
+\end{cases} k\in A\]
+Si $(x_0,y_0)$ es la solución, entonces la solución general es el conjunto de los $(x,y)$ que hemos dado arriba
+\\
+\begin{proof}[Demostración de iii)]
+
+\[
+a'x + b'y = a'(x_0 +kb') + b'(y_o - kb') = a'x_0 + a'kb' + b'y_0 - a'kb' = 
+\]
+\[
+a'x_0 +b'y_0 = c'
+\]
+
+Suponer ahora que (x,y) es cualquier solución:$\implies a'x +b'y 0  c'$. Por hipótesis: $a'x_0 +b'y_0 = c'$. Si restamos esas dos ecuaciones queda: $a'(x-x_0) +b(y-y_0) = 0 \implies a'(x-x_0) = b(y_0-y)$. Denotamos a esta ecuación como 3.
+
+Ahora, $b'/(a'(x-x_0)$ pero $b'$ y $a'$ son primos entre sí, luego $b'/(x-x_0)\implies \quad \exists k \in A : (x-x_0) = kb'$. Llamamos a esta ecuación 1, y además despejando en ella vemos $x = x_0 + kb'$, una solución de x.
+
+Análogamente, podemos ver que $a/(b(y_0-y) \implies a/(y_0-y) \implies \exists h \in A: y_0 -y = a'h \implies y = y_0 - ha'$, solución de y. Llamamos a esa ecuación la 2.
+
+Falta probar que $k = h$, pero sustituyendo las ecuaciones 1 y 2 en 3, vemos que $a'kb'  = b'ha' \implies k = h$
+	
+\end{proof}
+
+\end{nlist}
+
+\begin{nprop}[Algoritmo de Euclides para el cálculo del MCD]
+Supongamos que tenemos dos elementos $a,b$ y queremos hallar su mcd.
+
+\begin{itemize}
+	
+	\item Si $b=0 \implies (a,b) = (a,0) = a$. Igual si $a=0$
+	
+	\item Si $a \ne 0 \ne b$
+	
+	Construimos una sucesión: $r_1,r_2,\cdots, r_n, \cdots , r_m, r_{m+1} = 0$.\\
+	Recordamos que A es un D.E con función euclídea $\varphi : A-\{0\} \to \nat $\\
+	Si $\varphi(a) \geq \varphi(b)\implies r_1 = a$ y $r_2 = b$. En el otro caso, lo hacemos al revés, es decir  $r_1 = b $ y $r_2 = a$.\\
+	Si $r_{n-1} \ne 0 \implies r_n= $ resto de dividir $r_{n-2}$ entre $r_{n-1} \implies$
+	
+	\[
+	r_{n-2} = r_{n-1}q_{n-2} + r_n \begin{cases}
+	 r_n = 0 \\
+	  \varphi(r_n) \leq \varphi(r_{n-1})
+\end{cases}
+	 \]
+La idea es ir reduciendo de la forma:
+\[ (a,b) = (r_1,r_2) = \cdots = (r_n,r_{n+1}) = \cdots = (r_m, r_{m+1}) = (r_m,0) = r_m\]
+Obteniendo los cocientes de la forma:
+\[\begin{cases}
+	r_{n-2} = au_{n-2} + bv_{n-2}\\
+
+r_{n-1} = au_{n-1} + bv_{n-1}\\
+
+r_{n-2} - r_{n-1}q_{n-2} = r_n = a(u_{n-2} - q_{n-2}u_{n-1}) + b(r_{n-2}-q_{n-2}v_{n-1)}\\
+\cdots \\
+
+d = r_m = au + bv
+\end{cases}
+\quad
+\]
+	
+	\end{itemize}
+\end{nprop}
+
+\begin{ejemplo}
+	Un agricultor lleva al mercado 80 sandías y 30 melones. La venta le ha sido rentable, pues ha vendido cada pieza por más de 3 euros, que es lo que le costó producirlos. Vuelve a casa con 600 euros. Calcular precio de sandías y melones.\\
+	(El ejercicio se resuelve resolviendo la ecuación diofántica $80x +30y = 600$ , hallando primero la solución general que viene dada por $x = -60 + 3k$ ; $y = 180 - 8k$ y luego tomando que x e y tienen que ser mayores que 3, viendo que la solución es que $k=22$).
+\end{ejemplo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
