@@ -254,6 +254,12 @@
 \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
 {\end{enumerate}}
 
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+
 
 %---------------------------------------------------------------------------
 %   PÁGINA DE TÍTULO
@@ -315,7 +321,7 @@ Un conjunto A es un anillo conmutativo si en él hay definidas dos operaciones; 
 \end{nota}
 
 
-\section{Caracterización de $\mathbb{Z}_{n}$.}
+\section*{Caracterización de $\mathbb{Z}_{n}$.}
 
 Llamaremos $R_n:\mathbb{N} \rightarrow \mathbb{Z}_n$ a la aplicación definida como:
 
@@ -383,7 +389,7 @@ Si A es un anillo conmutativo y B es un subconjunto de A. Se dice que B es un \t
 
 \newpage 
 
-\subsection{Ejemplos- Anillos de números cuadráticos}
+\subsection*{Anillos de números cuadráticos}
 
 \begin{itemize}
 \item $\mathbb{Z}[\sqrt{n}]$.
@@ -1019,6 +1025,7 @@ Propiedades elementales:
 \end{nlist}
 \end{ndef}
 
+\section{Dominios euclídeos}
 \begin{ndef}[Dominios euclídeos]
 
 	Un dominio euclídeo es un dominio de integridad, A, tal que haya definida una función $\varphi: A- \{0\} \to \mathbb{N} $ verificando:
@@ -1296,7 +1303,7 @@ Viéndose así que el ejemplo está correcto.
 
 \end{ejemplo}
 
-
+\section{Máximo Común divisor. Dominios de Ideales principales}
 
 
 \begin{ndef}[Máximo común divisor]
@@ -1310,10 +1317,49 @@ Dados $a,b \in A$ decimos que un elemento $d\in A$ es un mcd de a y b ($d=(a,b))
 	
 \end{ndef}
 
-\textbf{COMPROBAR SI ESTÁN TODAS LAS PROPIEDADES}
-
 Propiedades:
-\begin{itemize}
+\begin{nlist}
+
+	\item $(a,b) = (b,a)$
+	
+	\item Si $a \sim a'$ asociados y $b \sim b'$ también, $\implies (a,b) = (a',b')$
+	
+	\item $(a,b) = a \iff a/b$. En particular, $(a,0) = a \quad , \quad (a,1) = 1 \quad, \quad (a,u) = 1 \iff u \in U(A)$
+	
+	\item Si $(a,b) = 1$ , a y b se dicen \underline{primos relativos}
+	
+	\item $((a,b),c) = (a,(b,c)) = (a,b,c)$
+	\item $(ac,bc) = c(a,b)$\\
+	\begin{proof}
+	Primero, llamamos $(ac,bc) = e$ y $(a,b) = d$.\\
+	Si a,b o c son 0, se verifica trivialmente. Si no lo son:\\
+	\[
+	\begin{rcases}
+	d/a \implies dc/ac\\
+	d/b \implies dc/bc\\
+\end{rcases} \implies dc/e \implies \exists u \in A : e = dcu
+	\]
+	
+	$\begin{rcases}e / ac \implies \exists x \in A : ac = ex \implies ac = dcux \implies = a = dux\\
+	e/bc\implies \exists y \in A : bc = ey \implies bc = dcuy \implies b = duy\end{rcases} \implies \begin{rcases}du/a\\du/b\end{rcases} du/d \\\implies \exists v \in A : d = duv \stackrel{d\ne 0}{\implies} 1=uv \implies u\in U(A) \implies e \sim  dc$
+
+	
+\end{proof}
+
+	\item Si $c/a$ y $c/b\implies (\frac{a}{c},\frac{b}{c}) =  \frac{(a,b)}{c}$
+	
+	\item
+	$(\frac{a}{(a,b)}, \frac{b}{(a,b)}) = 1$
+	
+	\item Si $a/bc \implies a/(a,b)c$\\
+	\begin{proof}
+	Supongamos que $\exists x \in A : bc = ax  \implies (a,b)c = (ac,bc) = (ac,ax) = a(c,x) \implies a/(a,b)c$
+	
+\end{proof}
+
+\item Si $a/bc$ y $(a,b) = 1 \implies a/c$ 
+
+\item Si $a/c$ y $b/c$ y $(a,b) = 1 \implies ab/c$
 	\item Si $(a,b)=1 $ y $a/bc \implies a/c$
 	\item Si $a/c$ , $b/c$ y $(a,b)=1 \implies ab/c$
 	\item Si $a/c \implies \exists x$ : $c=ax$. Y $b/c \implies b/ax$ con $(a,b)=1 \implies b/x \implies \exists y$ : $x=by$
@@ -1339,7 +1385,7 @@ Propiedades:
 	
 	$\boxed{\Longleftarrow}$ Igual que la otra implicación pero tomando $a=(a-kb)+kb$
 	\end{proof}
-\end{itemize}
+\end{nlist}
 
 \begin{nota}
 En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(\alpha)$ es un divisor propio de $N(\beta)$ en $\mathbb{Z}$.
@@ -1348,6 +1394,8 @@ En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(
 \begin{ejemplo}
 Realizamos un ejemplo en el que se puede probar que , usando la Nota anterior, 3 y $)1+\sqrt{5})$ son irreducibles	
 \end{ejemplo}
+
+
 \begin{ndef}[Ideal/Ideal Principal]
 	En un anillo se llama ideal a un subconjunto suyo no vacío que es cerrado para la suma y para múltiplos. Dicho de otra manera: \\
 	Si A es un anillo conmutativo, un subconjunto $\emptyset \not= I\subseteq A$, es un ideal si:
