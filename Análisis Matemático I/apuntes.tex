@@ -945,10 +945,68 @@ Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \math
 
 
 
+\section{Funciones derivables en $\mathbb{R}^N$.}
+\subsection{Concepto de función derivable.}
 
+Sea $A$ un abierto de $\mathbb{R}^N$. Partimos de la siguiente observación:
+\[
+	\forall x_0 \in A\quad \exists \delta >0 : B(x_0, \delta) \subset A \implies \forall v \in \mathbb{R}^N\quad \exists \epsilon > 0 : [\; t \in (-\epsilon, \epsilon) \implies x_0+tv\in B(x_0,\delta)\;]
+\]
+ En particular, si $|v| = 1 \implies \epsilon = \delta$.
+ 
+\begin{ndef}[Función derivable] Sean $f : A \longrightarrow \mathbb{R}^M$, y $x_0\in A$. Se dice que $f$ es derivable en $x_0$, según Fréchet, si
+\[
+	\exists L\in Lin(\mathbb{R}^N, \mathbb{R}^M) : \lim_{x\to x_0} \frac{|f(x)-f(x_0)- L(x-x_0)|}{|x-x_0|} =0
+\]
 
+Notamos $Df(x_0) = L$.
+\end{ndef}
 
+\begin{nota}[1]\hfill
+	\begin{nlist}
+		\item El límite tiene sentido porque $x_0\in A'$.
+		\item El límite anterior es equivalente a $\lim_{y\to 0} \frac{|f(x_0+y)-f(x_0)-L(y)|}{|y|}$.
+	\end{nlist}
+\end{nota}
 
+\begin{nota}[2]
+	$A$ es abierto $\implies$ $L$ (si existe) es única. De aquí se exige que $A$ sea un abierto. 
+\end{nota}
+
+\begin{proof}[Demostración (Nota 2)]
+	Suponemos que $\exists L_1,L_2\in Lin(\mathbb{R}^N, \mathbb{R}^M)$ tales que 
+\[
+\lim_{x\to x_0} \frac{|f(x)-f(x_0)- L_1(x-x_0)|}{|x-x_0|} =0= \frac{|f(x)-f(x_0)- L_2(x-x_0)|}{|x-x_0|}
+\]
+
+Entonces, dado un $x\in A$:
+
+\begin{align}
+	\frac{|L_1(x-x_0) - L_2(x-x_0)|}{|x-x_0|} \le \frac{|f(x)-f(x_0)- L_1(x-x_0)|}{|x-x_0|} + \frac{|f(x)-f(x_0)- L_2(x-x_0)|}{|x-x_0|}\notag
+\end{align}
+
+\[
+\implies \lim_{x\to x_0} \frac{|(L_1-L_2)(x-x_0)|}{|x-x_0|} = 0
+\]
+(Terminar)
+\end{proof}
+
+\begin{nprop} En los mismos términos: si $f$ es derivable en $x_0$ $\implies$ $f$ es continua en $x_0$.
+	
+\end{nprop}
+
+\begin{proof} Para probar esta proposición, hay que probar que $\lim_{x\to x_0} (f(x)-f(x_0)) = 0$
+\[
+	\lim_{x\to x_0} (f(x)-f(x_0)) = \underbrace{\lim_{x\to x_0} (f(x)-f(x_0)-L(x-x_0))}_{=\;0 \text{ ($f$ derivable)}} + \underbrace{\lim_{x-x_0} L(-x_0)}_{=\; 0 \text{ ($L$ lineal $\implies$ continua)}} = 0
+\]
+\end{proof}
+
+\begin{ndef}[Derivada direccional]
+	Sea $v\in \mathbb{R}^N$, con $|v| = 1$. $f$ es derivable en $x_0$ en la dirección $v$ si:
+	\[
+		\exists \lim_{t\to 0} \frac{f(x_0+tv)-f(x_0)}{t} = D_v f(x_0)
+	\]
+\end{ndef}
 
 %%% Para la parte de límites:
 
