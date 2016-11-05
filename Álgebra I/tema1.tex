@@ -304,7 +304,7 @@ Un conjunto A es un anillo conmutativo si en él hay definidas dos operaciones; 
 \item Asociativa: $a+(b+c) = (a+b)+c$\hspace{1cm} $a(bc) = (ab)c$
 \item Conmutativa: $a+b = b+a$ \hspace{1cm} $ab = ba$
 \item Existencia elemento neutro: $a+0 = a$ \hspace{1cm} $a*1 = a$
-\item Existencia del elemento opuesto: $a+(-a) = 0$
+\item Existencia del elemento opuesto para la suma: $a+(-a) = 0$
 \item Distributiva del producto en la suma: $a(b+c) = ab+ ac$
 
 \end{nlist}
@@ -334,7 +334,7 @@ R_n(a) = a - nq = a- nE(\frac{a}{n})
 Para esta aplicación, definimos las siguientes propiedades:
 
 \begin{itemize}
-\item Si $0 \leq a < n-1  \rightarrow R_n(a) = a$
+\item Si $0 \leq a < n  \Rightarrow R_n(a) = a$
 \item $\forall a,b \in \mathbb{N}$
 
 \begin{itemize}
@@ -359,7 +359,7 @@ Una vez que tenemos definida una suma y producto con la aplicación $R_n$, defin
 Es fácil verificar que $\mathbb{Z}_n$ es un anillo conmutativo con estas operaciones.\\
 
 \begin{ndef}[Unidad]
-	Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}" o "\textbf{invertible}" si $\exists a^{-1}$ t.q. $ aa^{-1} = 1$.\\ $U(A) = \{ a \in A$ t.q. a es una unidad\} = conjunto de las unidades de A.\\
+	Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}" o "\textbf{invertible}" si $\exists a^{-1}$ t.q. $ aa^{-1} = 1$.\\ $U(A) = \{ a \in A$ : $a$ es una unidad\} = conjunto de las unidades de A.\\
 \end{ndef}
 
 
@@ -369,15 +369,15 @@ Es fácil verificar que $\mathbb{Z}_n$ es un anillo conmutativo con estas operac
 
 
 \begin{nprop}[Asociatividad generalizada]
-	Sea A un anillo conmutativo, y $a_1 ... a_n$ una lista de elementos de A.
+	Sea A un anillo conmutativo, y $a_1, ..., a_n$ una lista de elementos de A.
 La propiedad de la \textbf{asociatividad generalizada} nos dice que:
-$\forall m$ tal que $1 \leq m < n$ entonces: \[\sum_{i=1}^{n}a_i = (\sum_{i=1}^{m}a_i) + (\sum_{i=m+1}^{n}a_i)\]\[\prod_{i=1}^{n}a_i = (\prod_{i=1}^{m}a_i)(\prod_{i=m+1}^{n}a_i)\]\\
+$\forall m$ tal que $1 \leq m < n$ se verifican: \[\sum_{i=1}^{n}a_i = (\sum_{i=1}^{m}a_i) + (\sum_{i=m+1}^{n}a_i)\]\[\prod_{i=1}^{n}a_i = (\prod_{i=1}^{m}a_i)(\prod_{i=m+1}^{n}a_i)\]\\
 \end{nprop}
 
 
 \begin{ndef}[Distributividad generalizada]
 Definimos también la distributividad generalizada en un anillo como:
-	\[(\sum_{i=0}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j \hspace{1cm} \forall a,b\in A\]
+	\[(\sum_{i=1}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j \hspace{1cm} \forall a,b\in A\]
 \end{ndef}
 
 \begin{ndef}[Subanillo]
@@ -433,8 +433,8 @@ Se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y qu
 
 \item Anillos de series.
 \begin{ndef}
-	Si A es un anillo conmutativo y X es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[x]] esta definido como:\begin{center}
-$A[[x]] = \{a = \sum_{i=1}^{n}a_i x^i = a_0 + a_1 x^1 + ... + a_n x^n\}$ $a_i \in A$\end{center}
+	Si A es un anillo conmutativo y x es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[x]] esta definido como:\begin{center}
+$A[[x]] = \{a = \sum_{i=0}^{n}a_i x^i = a_0 + a_1 x^1 + ... + a_n x^n\}$ $a_i \in A$\end{center}
 Y definimos la suma y el producto de la siguiente forma:\\
 \[(a+b) = \sum_{i=0}^{n}(a_i+b_i)x^i\]\[ (ab) = \sum_{k=0}^n\sum_{i=0}^{k}a_ib_{k-i}\]
 \end{ndef}
@@ -478,6 +478,7 @@ $\varphi(\prod_{i = 1}^n a_i) = \prod_{i = 1}^n\varphi(a_i)$
 
 \item $\varphi(na) = n\varphi(a)$
 
+\item $\varphi(a^n) = \varphi(a)^n$
 	
 \end{itemize}
 
@@ -486,7 +487,6 @@ Ya sabemos que $Im(\varphi) = \{ \varphi(x): x \in A\} \leq B$ es un subanillo.
 
 \begin{nprop}
 	Si $\varphi$ es monomorfismo, entonces la aplicación restringida:
-
 \[
 A \to Im(\varphi)\]
 \[
@@ -502,10 +502,10 @@ es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\v
 \end{nota}
 
 
-\begin{nprop}[1]
+\begin{nprop}[Homomorfismo de cambio de coeficientes)(1]
  Dado $A$ cualquier anillo conmutativo, conocido $A[x]$.
  
- Si $\varphi:A \to B$ es homomorfismo de anillos conmutativos, entonces:
+ Si $\varphi:A \to B$ es un homomorfismo de anillos conmutativos, entonces:
  \[
  \exists \varphi: A[x] \to B[x] : \varphi\left(\sum_i a_i x^i\right) = \sum_i\varphi(a_i) x^i
  \]
@@ -515,17 +515,17 @@ es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\v
 
 \begin{nprop}[Sustición en un polinomio)(2]
 	
-Si $A$ es cualquier conjunto y $a \in A$ entonces: existe un homomorfismo $E_a: A[x] \to A$ tal que $E_a(\sum_i a_i x^i) = \sum_i a_i a^i$.
+Si $A$ es un anillo y $a \in A$ entonces: existe un homomorfismo $E_a: A[x] \to A$ tal que $E_a(\sum_i a_i x^i) = \sum_i a_i a^i$.
 	
 \end{nprop}
 
 \begin{nprop}[3]
-Si $A \leq B$ es un subanillo y $b\in B$, la aplicación $E_b:A[x] \to B$ definida como $E_b(\sum_i a_i x_i) = \sum_i a_i b^i$ es un homomorfismo
+Si $A \leq B$ es un subanillo y $b\in B$, la aplicación $E_b:A[x] \to B$ definida como $E_b(\sum_i a_i x^i) = \sum_i a_i b^i$ es un homomorfismo
 	
 \end{nprop}
 
 \begin{nprop}[Engloba a las anteriores]
-Si $\varphi:A \to B$ es un homomorfismo y $b\in B$, la aplicación $\Phi:A[x] \to B$ definida como $\Phi ( \sum_i a_i x_i) = \sum_i \varphi(a_i)b^i \in B$ es un homomorfismo 
+Si $\varphi:A \to B$ es un homomorfismo y $b\in B$, la aplicación $\Phi:A[x] \to B$ definida como $\Phi ( \sum_i a_i x^i) = \sum_i \varphi(a_i)b^i \in B$ es un homomorfismo 
 
 \end{nprop}
 
@@ -547,7 +547,7 @@ a \to a \to \varphi(a)
 De esta forma, tomamos $x\in B[x]$. Entonces:
 \begin{center}
 	$A[x]\to B[x]$\\
-	$\sum_i a_i x_i \to \sum_i \varphi(a_i)x_i$
+	$\sum_i a_i x^i \to \sum_i \varphi(a_i)x^i$
 \end{center}
 
 Que es justamente el enunciado de la primera proposición.
@@ -557,26 +557,26 @@ Que es justamente el enunciado de la primera proposición.
 Pasamos ahora a la demostración de la Proposición 4.
 
 
-Sean $f = \sum a_ix_i$ y $g = \sum b_i x_i \in A[x]$. Entonces: $f+g = \sum c_i x_i$ con $c_i = a_i + b_i$
+Sean $f = \sum a_i x^i$ y $g = \sum b_i x^i \in A[x]$. Entonces: $f+g = \sum c_i x^i$ con $c_i = a_i + b_i$
 
 Si ahora aplicamos $\Phi(f+g) = \sum \varphi(c_i)b^i = \sum \varphi(a_i + b_i)b^i$. 
 
 Como $\varphi$ es homomorfismo , eso es igual a:
  $\sum (\varphi(a_i) + \varphi(b_i))b^i$.
  
- Usando que $B$ es un anillo y por ello hay distributividad, eso es igual a: $\sum (\varphi(a_i)b^i + \varphi(b_i)b^i$.
+ Usando que $B$ es un anillo y por ello hay distributividad, eso es igual a: $\sum (\varphi(a_i)b^i + \varphi(b_i)b^i)$.
  
  Por la asociatividad generalizada eso es igual a: $\sum \varphi(a_i)b^i + \sum \varphi(b_i)b^i = \Phi(f) + \Phi(g)$ Por lo que queda probado para la suma.
  
  Ahora probaremos el producto:
  
- $fg = \sum c_i x^i$ con $c_i  = \sum_{i+j = n} a_ib_j$\\
+ $fg = \sum c_i x^i$ con $c_n  = \sum_{i+j = n} a_ib_j$\\
  
- Así: \[\Phi(f+g) = \sum_n\varphi(c_n)b^n = \sum \varphi(\sum_{i+j = n} a_ib_j)b^n = \sum_n ( \sum_{i+j = n} \varphi(a_i)\varphi(b_j))b^n\]
+ Así: \[\Phi(f*g) = \sum_n\varphi(c_n)b^n = \sum \varphi(\sum_{i+j = n} a_ib_j)b^n = \sum_n ( \sum_{i+j = n} \varphi(a_i)\varphi(b_j))b^n\]
  
  Desarrollamos por otro lado
  \[
- \Phi(f) + \Phi(g) = (\sum_i \varphi(a_i)b^i)(\sum_j \varphi(b_j)b^i) =^{(1)} \sum_{i,j} \varphi(a_i)b^i\varphi(b_j)b^j =^{(2)} \sum_{i,j} \varphi(a_ib_j)b^{i+j}=
+ \Phi(f) * \Phi(g) = (\sum_i \varphi(a_i)b^i)(\sum_j \varphi(b_j)b^j) =^{(1)} \sum_{i,j} \varphi(a_i)b^i\varphi(b_j)b^j =^{(2)} \sum_{i,j} \varphi(a_ib_j)b^{i+j}=
  \]
  
  \[
@@ -585,7 +585,7 @@ Como $\varphi$ es homomorfismo , eso es igual a:
  
  Donde en $(1)$ hemos usado la distributividad general y en $(2)$ hemos usado que estamos en un anillo conmutativo y que $\varphi$ es un homomorfismo. 
  
- Así, hemos llegado a dos expresiones que son iguales, probando así el resultado.
+ Hemos llegado a dos expresiones que son iguales, probando así el resultado.
  
 \end{proof}
 
@@ -610,7 +610,7 @@ Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
 
 	\item $r=1$:
 \[
-f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x_i \hspace{0.5cm} a_i \in A \hspace{0.5cm} \exists K: a_{i1} = 0 \hspace{0.3cm} \forall i > K
+f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x^i \hspace{0.5cm} a_i \in A \hspace{0.5cm} \exists K: a_{i1} = 0 \hspace{0.3cm} \forall i > K
 \]
 	\item $r> 1$
 
@@ -687,7 +687,7 @@ Se puede probar que $A[x_1,...,x_n] = A[x_{\sigma(1)},...,x_{\sigma(n)}]$ siendo
 Si $\varphi :A \to B$ es un homomorfismo, $\forall(b_1,...,b_n) \in B^n$ la aplicación:
 
 \[
-\Phi:A[x_1,...x_n] \to B \iff \Phi:(\sum_{i1,...,in}a_1...a_nx^{i1}... x^{in}) = \sum_{i1,...,in}a_{i1}...a_{in}b^{i1}... b^{in} \in B
+\Phi:A[x_1,...x_n] \to B \iff \Phi(\sum_{i1,...,in}a_{i1}...a_{in}x^{i1}... x^{in}) = \sum_{i1,...,in}a_{i1}...a_{in}b^{i1}... b^{in} \in B
 \]
 
 es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un polinomio en n variables.
@@ -697,16 +697,16 @@ es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un p
 
 
 \begin{nprop}
-	Si $\varphi:A \to B$ es un homomorfismo, $\forall b \in B \exists ! $ homomorfismo definido como:
+	Si $\varphi:A \to B$ es un homomorfismo, $\forall\  b \in B\  \exists ! $ homomorfismo definido como:
 	
 \[
 \Phi:A[x] \to B : \begin{cases}
-	\Phi(a) = \varphi(a) \forall a \in A \\
+	\Phi(a) = \varphi(a)\ \forall a \in A \\
 	\Phi(x) = b 
 \end{cases}
 \]
 \[
-\Phi(\sum a_i x_i) = \sum \Phi(a_i x_i) =  \sum \Phi(a_i) \Phi(x)^i = \sum \varphi(a_i) b^i
+\Phi(\sum a_i x^i) = \sum \Phi(a_i x^i) =  \sum \Phi(a_i) \Phi(x)^i = \sum \varphi(a_i) b^i
 \]
 
 Además, ya se probó que esto es un homomorfismo de anillos conmutativos.
@@ -733,7 +733,7 @@ E_b(x) = b
 \begin{nprop}[Evaluación en r-variables]
   Si $\varphi : A \longrightarrow B$ es un homomorfismo de anillos conmutativos, y $b_1,\cdots, b_r \in B$ una lista ordenada. Entonces
   \[
-    \exists! \phi : A[x_1,\cdots,x_r] \longrightarrow B :\begin{cases}
+    \exists!\ \phi : A[x_1,\cdots,x_r] \longrightarrow B :\begin{cases}
       \phi(a) = \varphi(a) & \forall a\in A\\
       \phi(x_1) = b_1\\
       \vdots\\
@@ -745,14 +745,14 @@ E_b(x) = b
 \begin{proof}
   Si $r=1$, ya está probado. Para $r>1$:
   \[
-    \exists \psi : A[x_1,\cdots,x_r] \longrightarrow B : \begin{cases}
+    \exists\ \psi : A[x_1,\cdots,x_{r-1}] \longrightarrow B : \begin{cases}
       \psi(a) = \psi(a)\\
-      \psi(x_i) = b_i \forall i=1,\cdots,r-1
+      \psi(x_i) = b_i & \forall i=1,\cdots,r-1
     \end{cases}
   \]
-  \[  \exists \phi : A[x_1,\cdots,x_r] \longrightarrow B \begin{cases}
+  \[  \exists\ \phi : A[x_1,\cdots,x_r] \longrightarrow B \begin{cases}
       \phi(a) = \psi(a) = \varphi(a)\\
-      \phi(x_i) = \psi(x_i) = b_i \forall i=1,\cdots,r-1\\
+      \phi(x_i) = \psi(x_i) = b_i &\forall i=1,\cdots,r-1\\
       \phi(x_r) = b_r
     \end{cases}
   \]
@@ -767,7 +767,7 @@ E_b(x) = b
 	Si $A\leq B, \forall b_1,\cdots,b_r \in B$ lista ordenada:
 	
 \[
-\exists ! E_{b_1,\cdots,b_r}: A[x_1,\cdots,x_r] \to B :
+\exists !\ E_{b_1,\cdots,b_r}: A[x_1,\cdots,x_r] \to B :
 \begin{cases}
 	a \to a\\
 	x_i \to b_i
@@ -780,9 +780,9 @@ Se suele notar $f(x_1,\cdots,x_r) \to f(b_1,\cdots,b_r)$
 \section{Dominio de Integridad}
 
 \begin{ndef}[Dominio de integridad]
-A es un dominio de integridad si verifica la propiedad:
+A (anillo conmutativo) es un dominio de integridad si verifica la propiedad:
 \[
-a \neq 0, b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \begin{cases}
+a \neq 0\ \wedge\ b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \begin{cases}
 	a = 0\\
 	b = 0
 \end{cases}
@@ -792,7 +792,7 @@ a \neq 0, b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \begin{case
 
 \begin{nprop}[Propiedad de simplificación]
 	
-A es un dominio de integridad $\iff$	$ax=ay$ con $a\neq 0 \Rightarrow x = y$
+A es un dominio de integridad $\iff$ se verifica: $ax=ay$ con $a\neq 0 \Rightarrow x = y$
 \end{nprop}
 \begin{proof}
 	\boxed{\Rightarrow} $a(x-y) = 0$, por ser A dominio de integridad, $x-y = 0 \Rightarrow x=y$ \\
