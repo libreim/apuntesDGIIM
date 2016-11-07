@@ -30,3 +30,8 @@ __add:__ Suma al registro de destino el src
 __inc:__ Incrementa en una unidad el registro indicando
 
     add %edx
+
+__cmp:__ Compara el contenido de dos registros __TODO: ¿Dónde guarda la información de la comparación?__
+
+
+__CORRIJAN: TODO: FIXME: jne:__ Salta a la subrutina indicada por la etiquetada si
