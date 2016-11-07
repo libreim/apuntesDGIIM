@@ -945,6 +945,18 @@ Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \math
 
 
 
+\begin{nprop}[Caracterización punto de acumulación]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Consideremos un punto $x\in X$. Son equivalentes:
+
+\begin{nlist}
+\item x es punto de acumulación de A.
+\item $\exists \{a_n\}\subseteq A-\{x\}$ tal que $\{a_n\} \rightarrow x$.
+\item $\forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})$ es un conjunto infinito. 
+\end{nlist}
+\end{nprop}
+
+
+
 \section{Funciones derivables en $\mathbb{R}^N$.}
 \subsection{Concepto de función derivable.}
 
@@ -997,28 +1009,43 @@ Entonces, dado un $x\in A$:
 
 \begin{proof} Para probar esta proposición, hay que probar que $\lim_{x\to x_0} (f(x)-f(x_0)) = 0$
 \[
-	\lim_{x\to x_0} (f(x)-f(x_0)) = \underbrace{\lim_{x\to x_0} (f(x)-f(x_0)-L(x-x_0))}_{=\;0 \text{ ($f$ derivable)}} + \underbrace{\lim_{x-x_0} L(-x_0)}_{=\; 0 \text{ ($L$ lineal $\implies$ continua)}} = 0
+	\lim_{x\to x_0} (f(x)-f(x_0)) = \underbrace{\lim_{x\to x_0} (f(x)-f(x_0)-L(x-x_0))}_{=\;0 \text{ ($f$ derivable)}} + \underbrace{\lim_{x-x_0} L(x-x_0)}_{=\; 0 \text{ ($L$ lineal $\implies$ continua)}} = 0
 \]
 \end{proof}
 
 \begin{ndef}[Derivada direccional]
 	Sea $v\in \mathbb{R}^N$, con $|v| = 1$. $f$ es derivable en $x_0$ en la dirección $v$ si:
 	\[
-		\exists \lim_{t\to 0} \frac{f(x_0+tv)-f(x_0)}{t} = D_v f(x_0)
+		\exists \lim_{t\to 0} \frac{f(x_0+tv)-f(x_0)}{t} = D_v f(x_0) \iff
 	\]
+	
+	\begin{center}
+	$\iff f_1,f_2,\cdots f_m$ derivable direccionalmente en $x_0$ en la dirección v. $\iff$
+	\[
+	\iff D_vf(x_0) = (D_vf_1(x_0),\cdots,D_vf_m(x_0))
+	\]
+\end{center}
 \end{ndef}
 
-%%% Para la parte de límites:
 
-%\begin{nprop}[Caracterización punto de acumulación]
-%Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Consideremos un punto %$x\in X$. Son equivalentes:
+\begin{nprop}
+	Sea $f$ derivable en $x_0\implies f$ derivable a lo largo de la dirección v y $D_vf(x_0) = Df(x_0)(v)$
+	\begin{proof}
+	$f$ derivable en $x_0$. Tomo $y=tv  $. Podemos ver entonces:
+	
+	\[
+	\lim_{t \to 0} \frac{f(x_0 +tv) - f(x_0) - Df(x_0)(tv)}{t} = 0 \implies
+	\]
+	\[
+	\implies \lim_{t \to 0} \abs{\frac{f(x_0 +tv) - f(x_0)}{t} - Df(x_0)(\frac{tv}{t})} \implies \lim_{t \to 0}\frac{f(x_0 +tv) -f(x_0)}{t} - Df(x_0)(v)
+	\]
+	\[
+	\implies \lim_{t \to 0}\frac{f(x_0 +tv) - f(x_0)}{t} = Df(x_0)(v)
+	\]
+Hemos probado que $\exists D_vf(x_0)$
+\end{proof}
+\end{nprop}
 
-%\begin{nlist}
-%\item x es punto de acumulación de A.
-%\item $\exists \{a_n\}\subseteq A-\{x\}$ tal que $\{a_n\} \rightarrow x$.
-%\item $\forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})$ es un conjunto infinito. 
-%\end{nlist}
-%\end{nprop}
 
 
 
