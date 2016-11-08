@@ -1551,20 +1551,109 @@ Si s vereifica que el conjunto de los múltiplos comunes a ambos es igual al con
 Del mismo modo se define para $[a_1, a_2, ..., a_r],r \in \mathbb{N}$.
 
 \textbf{Propiedades. }
-\begin{itemize}
+\begin{nlist}
 \item Si $a~a' \ y \ b~b' \Rightarrow [a,b]=[a',b']$
 \item $[a,b] = [b,a]$
 \item $[a,0] = 0$
 \item $[a,1] = a$
 \item $[a,[c,b]]= [[a,c],b] = [a,b,c]$
-\item $[ac,bc] =[a,b]c$
-\end{itemize}
+\item $[ac,bc] =[a,b]c$\\
+
+\begin{proof}[Demostración del último.]
+	
+	Supongamos que $c\ne 0$, pues si no es trivial.\\
+	Como $c/ab\implies c/[ca,cb] \implies \exists q \in A : [ac,bc] = cq\quad (1)$\\
+	Por otro lado, sea $m = [a,b]; \implies a/m \quad y \quad b/m \implies ac/mc \quad y \quad bc/mc \implies cq/mc$.\\
+	Como $c\ne 0 \implies q/m$.\\
+	Por otro lado, $ca/cq \quad y \quad cb/cq \implies$ como $c\ne 0 \implies a/q \quad y \quad b/q \implies m/q.$\\
+	Hemos llegado a que $q/m \quad y \quad m/q \implies $ son asociados $\implies q=[a,b]$.\\
+	Ahora, basta llevarnos esto a $(1)$ en esta demostración para ver que:\\ $[ac,bc] = c[a,b]$
+\end{proof}
+\end{nlist}
 \end{ndef}
 
 
+\begin{nprop}
+	Si A es un DIP $\implies \forall a,b \in A \quad \exists [a,b]$
+\end{nprop}
+\begin{proof}
+	Consideramos $aA = (a)$, el ideal principal generado por a. De la misma forma, consideramos $bA = (b)$, el ideal principal generado por b.\\
+	Ahora, tomamos $aA \cap bA \implies$ los números que están simultáneamente en los múltiplos de ambos.
+	Ahora, esto es cerrado para sumas y para productos, pr tanto tambien es un ideal.\\
+	Por último, por estar en un DIP $\implies$ el ideal es principal y por tanto:\\ $\implies aA\cap bA = mA \implies m = [a,b]$ 
+\end{proof}
 
 
+\begin{nth}
+	Sea A un DI en el cual $\exists(a,b) \forall a,b \in A.$ Entonces, $\exists [a,b] \forall a,b \in A $ y se verifica que: $[a,b](a,b) = ab$
+\end{nth}
+\begin{proof}
+	Sean $0 \ne a,b \in A$. Llamamos $d=(a,b) \implies \begin{cases}
+	a = a_1 d\\
+	b = b_1 d
+\end{cases}$
 
+Podemos observar que:
+
+\[
+m = \frac{ab}{d} = a_1b = ab_1
+\]
+De esta forma, nuestra prueba termina si comprobamos que $m = [a,b]$. Tenemos ya que claramente $a/m \quad y \quad b/m$\\
+Sea $m_1 = a/m_1 $ y $b/m_1$, tenemos que probar que $m/m_1$. Para esto, lo que hay que probar es que $(m,m_1) = m$.\\
+Para ello, vamos a llamarlo $k = (m,m_1) \implies k/m$. Llamo $d_1 = \frac{m}{k} \implies m =_{(1)} d_1k$ para un cierto $d_1$. Guardamos la igualdad de $(1)$ para usarla después.\\
+Ahora, lo que bastaría probar es que $d_1 \in U(A)$:\\
+Tenemos que $a/m$ y $a/m_1 \implies a /k \implies k = au$. Podemos hacer lo mismo con b para ver que $k = bv$.\\
+Ahora, usando la igualdad del principio ($m = a_1b = ab_1$) y el $(1)$ podemos ver que $\begin{rcases}
+	m = a_1b = kd_1 = bvd_1 \implies a_1 = vd_1\\
+m = ab_1 = kd_1 = aub_1  \implies  b_1 = ud_1
+\end{rcases} \implies \begin{rcases}
+	a = a_1d = vd_1 d\\
+b = b_1d = ud_1d
+\end{rcases} \implies d_1d/a \quad d_1d/b$
+
+
+$\implies d1_d /d \implies \exists x \in A : d = dd_1 x \implies 1 = d_1 x \implies d_1 \in U(A)$.\\
+$\implies m,k$ son asociados y como k era $mcd(m,m1) \implies$ m también lo es.
+\end{proof}
+
+\section*{Ecuaciones en Congruencias}
+Sea A un anillo, $I \subset A$ un ideal.$a,b \in A$ son 'congruentes módulo I' si $a-b \in A\\$(Equivalentemente, si $\exists x \in I : a = b+x$). La notaremos:
+\[
+a \equiv b mod(I) \quad o \quad a \equiv_ I b
+\]
+Otra notación. En un DIP $I(m) = mA$
+\[
+a \equiv bmod(A) \to^{notacion} a \equiv b mod(m) ( \iff m/a-b \iff a-b = qm)
+\]
+Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.\\
+
+\textbf{Propiedades}
+
+\begin{nlist}
+	\item $\equiv$ es una relación de equivalencia.\begin{itemize}
+	\item $a \equiv a$
+	\item $a \equiv b \iff b \equiv a$ (dem:$ a-b = (-1)(b-a) \in I$)
+	\item $a \equiv b$ y $b \equiv c \implies a \equiv c$ (dem: $a-b\in I, b-c \in I \implies a-c \in I$)
+\end{itemize}
+	
+	\item $a\equiv b \iff \forall c : a+ c \equiv b + c$
+	\item $a\equiv b$ y $c \equiv d \implies a+c \equiv b + d$ (dem: usando 2 y 1)
+	\item $a \equiv 0 \iff a \in I$
+	\item $a \equiv b \implies \forall c : ac  \equiv bc$
+	\item $a \equiv b$, $c \equiv d \implies ac \equiv bd$ (dem: 5 y luego uso 1)
+	\item $ac \equiv bc mod(mc) $ y $c \ne 0 \implies a\equiv b mod(m)$\\
+
+\begin{proof}
+	$ac \equiv bc mod(mc) \iff mc/(a-b)c \iff^{c\ne 0} m/a-b \iff a\equiv b mod(m)$
+\end{proof}
+	
+	\item Si $(c,m) = 1$, entonces: $ac\equiv bcmod(m) \iff a \equiv bmod(m)$\\
+	\begin{proof}
+	$ac\equiv bc \implies m/(a-b)c \implies$, como $(c,m) = 1 \implies m/a-b$
+\end{proof}
+	
+	
+\end{nlist}
 
 
 
