@@ -21,9 +21,17 @@ Algunos flags:
  `open("archivo",O_CREAT|O_TRUNC|O_WRONLY,S_IRUSR|S_IWUSR)`
 
 * **Read**, que lee una cantidad de bytes del archivo. Además, devuelve el número de bytes que ha leído, por lo que si le indicamos que lea *n* bytes y quedan sólo *m<n*, devolverá *m* y sólo podrá leer m.
-* **Write**, para escribir dentro del archivo. Puede ocurrir que se genere un vacío en el archivo si sólo tiene X bytes e intentamos escribir en la posición x+n con n> 1
+* **Write**, para escribir dentro del archivo fd, n_bytes desde buffer. Devuelve el número de bytes transferidos, -1 si hubo un error.
+Puede ocurrir que se genere un vacío en el archivo si sólo tiene X bytes e intentamos escribir en la posición x+n con n> 1.
+`write(int fd, void* buffer, unsigned n_bytes)`
 * **lseek** reposiciona el puntero de lectura de un archivo en una posición que se le puede indicar.
+Cambiamos la posición de lectura n bytes desde origen.
+`lseek(fd, long n, int origen)`
+Para que origen sea la posición actual utilizamos SEEK_SET.
+Devuelve la posición absoluta del puntero de lectura, -1 en caso de error.
 * **Close**, para cerrar el archivo. Si se sale del programa, se cierran todos los que haya abiertos.
+Recibe como parámetro un descriptor de fichero. Devuelve 0 si todo salió bien y 1 si hubo problemas.
+`close(int fd)`
 
 ### Metadatos (stat)
 
