@@ -12,6 +12,7 @@ Algunos flags:
    * O_CREAT: si el archivo no está creado, lo crea
    * O_TRUNC: abre el fichero y trunca su longitud a 0
    * O_WRONLY: abre el fichero en modo escritura
+   * O_RDWR: abre el fichero en modo lectura-escritura
 
   Algunos permisos:
    * S_IRUSR: el usuario tiene permiso de lectura
@@ -20,7 +21,8 @@ Algunos flags:
  Podemos indicar varios flags o permisos separándolos mediante |
  `open("archivo",O_CREAT|O_TRUNC|O_WRONLY,S_IRUSR|S_IWUSR)`
 
-* **Read**, que lee una cantidad de bytes del archivo. Además, devuelve el número de bytes que ha leído, por lo que si le indicamos que lea *n* bytes y quedan sólo *m<n*, devolverá *m* y sólo podrá leer m.
+* **Read**, que lee una cantidad de bytes del archivo. Además, devuelve el número de bytes que ha leído, por lo que si le indicamos que lea *n* bytes y quedan sólo *m<n*, devolverá *m* y sólo podrá leer m. En caso de error, devuelve -1.
+`read(int fd, void* buffer, unsigned byte)`
 * **Write**, para escribir dentro del archivo fd, n_bytes desde buffer. Devuelve el número de bytes transferidos, -1 si hubo un error.
 Puede ocurrir que se genere un vacío en el archivo si sólo tiene X bytes e intentamos escribir en la posición x+n con n> 1.
 `write(int fd, void* buffer, unsigned n_bytes)`
