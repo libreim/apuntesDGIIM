@@ -1646,7 +1646,7 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 \begin{proof}
 	$ac \equiv bc mod(mc) \iff mc/(a-b)c \iff^{c\ne 0} m/a-b \iff a\equiv b mod(m)$
 \end{proof}
-	
+	\newpage
 	\item Si $(c,m) = 1$, entonces: $ac\equiv bcmod(m) \iff a \equiv bmod(m)$\\
 	\begin{proof}
 	$ac\equiv bc \implies m/(a-b)c \implies$, como $(c,m) = 1 \implies m/a-b$
@@ -1656,7 +1656,37 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 \end{nlist}
 
 
+\begin{nprop}[Ecuaciones en congruencias]
 
+Estudiaremos la ecuación $ax \equiv b mod(m)$ (1)
+\begin{itemize}
+	\item Si $m = 0 \implies$ la ecuación es $ax = b$
+	\item Si $a = 0\implies $ la ecuación es $0x \equiv 0 mod(m) \implies$ tiene solución: todo el anillo
+	\item $a,b \ne 0$
+	\begin{enumerate}
+	
+	\item Si $d = (a,m)$ la ecuación tiene solución $\iff  d/b$\\
+	\begin{proof}
+	(1), tiene solución $\iff \exists x \in A : ax \equiv bmod(m) \iff \exists x \in A : m/ax-b \iff \exists x,y \in A : (ax-b) = my \iff \exists x,y \in A: ax -my  = b$, que es una ecuación diofántica, que sabemos ya que tiene solución $\iff d(a,m) y d/b$
+\end{proof}
+	\item  Supongamos que tiene solución. Consideramos $a'= \frac{a}{d}$, $b'= \frac{b}{d}$ y $m' = \frac{m}{d}$.
+	
+	Ahora, usando $(1) = da'x \equiv db'mod(dm')$, esta es equivalente a $a'x \equiv b' mod(m')$ a la que llamaremos (2). Esta es su reducida. Tiene las mismas soluciones pero $(a',m') = 1$.
+	
+	Podemos hallar los coeficientes de Bezout: $u,v \in A :  1 = a'u + b'v$. Esto nos lleva a ver que:
+	\[
+	a'u \equiv 1 mod(m') \implies a'ub' \equiv b' mod(m')
+	\]
+	Y así tenemos que $x_0 = ub'$ es una solución particular.
+	
+	\item La solución general es de la forma: $x = x_0 +km' \quad k \in A$. Equivalentemente, es de la forma $x \equiv x_0 mod(m')$\\
+	\begin{proof}
+	Si $x_0$ es una solución particular $\implies a'x_0 \equiv b'mod(m')$
+\end{proof}
+\end{enumerate}
+\end{itemize}
+	
+\end{nprop}
 
 
 
