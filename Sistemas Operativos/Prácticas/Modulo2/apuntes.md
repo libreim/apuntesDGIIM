@@ -37,4 +37,67 @@ Recibe como parámetro un descriptor de fichero. Devuelve 0 si todo salió bien 
 
 ### Metadatos (stat)
 
-Se trabajan principalmente con la orden **stat**.
+
+Vamos a ver las funciones de la familia stat, que contiene atributos de un archivo. Veremos cómo modificarlos. Sabemos que tenemos varios tipos de archivos, como pueden ser regulares, de directorio, especial de dispositivo de caracteres, especial de dispositivo de bloques(que representa los dispositivos o discos), FIFO para comunicación entre procesos, enlaces simbólicos o Socket, que se usa para la comunicación red entre procesos.
+
+**STAT** es el siguiente struct:
+
+```c++
+struct stat {
+dev_t st_dev; /* no de dispositivo (filesystem) */
+dev_t st_rdev; /* no de dispositivo para archivos especiales */
+ino_t st_ino; /* no de inodo */
+mode_t st_mode; /* tipo de archivo y mode (permisos) */
+nlink_t st_nlink; /* número de enlaces duros (hard) */
+uid_t st_uid; /* UID del usuario propietario (owner) */
+gid_t st_gid; /* GID del usuario propietario (owner) */
+off_t st_size; /* tamaño total en bytes para archivos regulares */
+unsigned long st_blksize; /* tamaño bloque E/S para el sistema de archivos*/
+unsigned long st_blocks; /* número de bloques asignados */
+time_t st_atime; /* hora último acceso */
+time_t st_mtime; /* hora última modificación */
+time_t st_ctime; /* hora último cambio */
+};
+
+```
+
+Tenemos que saber que **st_blocks** da el tamaño en bloques de 512 bytes.
+
+Existen también las siguientes macros para comprobar el tipo de fichero:
+
+S_ISLNK(st_mode) Verdadero si es un enlace simbólico (soft)
+S_ISREG(st_mode) Verdadero si es un archivo regular
+S_ISDIR(st_mode) Verdadero si es un directorio
+S_ISCHR(st_mode) Verdadero si es un dispositivo de caracteres
+S_ISBLK(st_mode) Verdadero si es un dispositivo de bloques
+S_ISFIFO(st_mode) Verdadero si es una cauce con nombre (FIFO)
+S_ISSOCK(st_mode) Verdadero si es un socket
+
+#### Permisos de acceso a archivos.
+El valor **st_mode** codifica el tipo de archivo y los permisos de acceso a este. Recordamos que hay 3 categorías : user, group y other para los permisos.
+
+Los permisos de lectura, ejecución y lectura se usan de forma distinta según la llamada al sistema:
+
+* Al abrir un archivo tenemos que tener permiso de ejecución en cada directorio mencionado en su ruta de acceso
+* El permiso de lectura para un directorio y el de ejecución para el mismo son cosas distintas. Leer un directorio es leer una lista de nombres de archivo del directorio, y permiso de ejecución es pasar a través de él.
+* El permiso de lectura de lectura para un archivo determina si podemos leer ese archivo, son los flags **O_RDONLY** y **O_RDWD** en la llamada open.
+* Debemos tener permiso de escritura para poder especificar el flag **O_TRUNC** en la llamada open. (*O_TRUNC* , que si un archivo ya existe, es regular y permite escritura, pone su longitud a 0 y si no, se ignora.)
+* Sólo se puede crear un archivo en un directorio si tenemos permisos de escritura y ejecución en él.Lo mismo para borrar un archivo.
+
+* El permiso de ejecución para un archivo debe estar activado para ejecutarlo
+
+#### El uso de **stat** y **lstat**
+
+1. **stat** muestra el estado de un archivo o de un sistema de archivos. Tiene varias opciones interesantes como son:
+
+* **-L**, que sigue los enlaces
+* **-f**, si es un sistema de archivos lo que queremos mostrar
+* **-c** usa un formato especificado para mostrarlo
+* **-t** muestra la información de forma concisa
+
+2. **lstat**. Sirve para mostrar el estado de un archivo. Su sintaxis en un programa de *C* es:
+
+```c
+#include <sys/stat.h>
+int lstat(const char* restrict path, struct stat *restict buf);
+```
