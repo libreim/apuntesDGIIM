@@ -1306,7 +1306,7 @@ Viéndose así que el ejemplo está correcto.
 
 \end{ejemplo}
 
-\section{Máximo Común divisor. Dominios de Ideales principales}
+\section{Máximo Común divisor. Dominios de Ideales principales. Ecuaciones Diofánticas en D.I.P}
 
 
 \begin{ndef}[Máximo común divisor]
@@ -1450,7 +1450,7 @@ Por lo que d es divisor común. Ahora, sea $c: c/a$ y $c/b \implies c/(au+bv=d) 
 Hemos encontrado así un divisor común que es dividido por cualquier divisor común, por tanto es el mcd. 
 \end{proof}
 
-\section*{Ecuaciones diofánticas en D.I.P.}
+\subsection{Ecuaciones diofánticas en D.I.P.}
 
 En cualquier anillo, llamamos ecuaciones diofánticas a aquellas que son de la forma:
 \[
@@ -1539,7 +1539,7 @@ d = r_m = au + bv
 	(El ejercicio se resuelve resolviendo la ecuación diofántica $80x +30y = 600$ , hallando primero la solución general que viene dada por $x = -60 + 3k$ ; $y = 180 - 8k$ y luego tomando que x e y tienen que ser mayores que 3, viendo que la solución es que $k=22$).
 \end{ejemplo}
 
-
+\section{Mínimo común múltiplo. Ecuaciones en congruencias.}
 \begin{ndef}[Mínimo común múltiplo]
 	Sea $a, b \in A =DI \\ m \in A $ es un mínimo común múltiplo de a y b, notando por $m = mcm(a,b) = [a,b]$  \\
 Si s vereifica que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de . Esto implica: 
@@ -1616,7 +1616,7 @@ $\implies d1_d /d \implies \exists x \in A : d = dd_1 x \implies 1 = d_1 x \impl
 $\implies m,k$ son asociados y como k era $mcd(m,m1) \implies$ m también lo es.
 \end{proof}
 
-\section*{Ecuaciones en Congruencias}
+\subsection{Ecuaciones en Congruencias}
 Sea A un anillo, $I \subset A$ un ideal.$a,b \in A$ son 'congruentes módulo I' si $a-b \in A\\$(Equivalentemente, si $\exists x \in I : a = b+x$). La notaremos:
 \[
 a \equiv b mod(I) \quad o \quad a \equiv_ I b
@@ -1655,7 +1655,7 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 	
 \end{nlist}
 
-
+\subsection{Ecuaciones en Congruencias}
 \begin{nprop}[Ecuaciones en congruencias]
 
 Estudiaremos la ecuación $ax \equiv b mod(m)$ (1)
@@ -1681,18 +1681,88 @@ Estudiaremos la ecuación $ax \equiv b mod(m)$ (1)
 	
 	\item La solución general es de la forma: $x = x_0 +km' \quad k \in A$. Equivalentemente, es de la forma $x \equiv x_0 mod(m')$\\
 	\begin{proof}
-	Si $x_0$ es una solución particular $\implies a'x_0 \equiv b'mod(m')$
+	Si $x_0$ es una solución particular $\implies a'x_0 \equiv b'mod(m')$\\
+	Si sustituimos $x_0$ por x pues son congruentes obtenemos: $a'x \equiv b' mod(m')$.\\
+	Vamos a suponer que:
+	\[
+	\begin{rcases}
+	a'x \equiv b' mod(m')\\
+	a' x_0 \equiv b' mod(m')
+\end{rcases} \implies a'x \equiv a'x_0 mod(m')
+	\]
+Por la transitividad. Pero $a'$ y $m'$ son primos entre sí, luego $x \equiv x_0 mod(m')$
 \end{proof}
+
+\item Diremos que una solución particular $x_1$ es óptima si $x_1 = 0$ ó $\varphi(x_1) < \varphi(m')$ siendo $\varphi$ la función euclídea de A.\\
+Si $x_0$ es cualquier solución particular, entonces:
+\[
+x_0 = m'q + x_1 \begin{cases}
+	x_1 = 0\\
+	o\\
+	\varphi(x_1) < \varphi(m')
+	
+\end{cases}
+\]
+Y $x_1$ es una solución parcial óptima. En este caso, la solución general óptima es: $x\equiv x_1 mod(m')$
 \end{enumerate}
 \end{itemize}
 	
 \end{nprop}
 
+\subsection{Sistemas de Ecuaciones en Congruencias}
 
+En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaciones en contruencias, que sabemos que se puede expresar de la forma:
 
+\[
+\begin{rcases}
+	a_1x \equiv b_1 mod(m1)\\
+	a_2x \equiv b_2 mod(m2)
+\end{rcases}(1) \begin{rcases}
+	x \equiv a mod(m)\\
+	x \equiv b mod(m)
+\end{rcases}(2)
+\]
 
+\begin{nth}[Teorema Chino]
+	El sistema tiene solución $\iff a \equiv b mod((m,n))$
+\end{nth}
+\begin{proof}
+	Sea $d=(m,n)$. \\
+	Si tomamos $x = a+km; \quad \exists k: a+km \equiv b mod(n) \iff km \equiv b-a mod(n) \iff d/b-a \iff b\equiv amod(d)$
+\end{proof}
 
+Ahora, supuesto que tiene solución, vamos a halar las soluciones particular y general del problema.\\
+Si $y_0$ es una solución particular de $my \equiv b-a mod(n)$, entonces su solución general es: $$y = y_0 + k\frac{n}{(m,n)} \quad k \in A$$
+Entonces $x_0 = a + my_0$ es una solución particular del sistema dado en (2) y por tanto la solución general de 2 viene dada por:
 
+\[
+x = am(y_0 +  k\frac{n}{(m,n)}) \quad k \in A
+\]
+\[
+ = a+my_0 + k \frac{mn}{(m,n)} = x_0 +k[m,n] \quad k \in A
+\]
+\[
+\implies x \equiv x_0 mod [m,n]
+\]
+Pero si $x_0 = [m,n]q + x_1$ con $x_1 = 0 $ ó $\varphi(x_1) < \varphi([m,n])$ entonces tenemos que $$x_0 \equiv x_1 mod([m,n])$$
+
+Y obtenemos que la solución general óptima de nuestro sistema es:
+\[
+x \equiv x_1 mod([m,n])
+\]
+
+\section{Anillos de Congruencias. Conjuntos Cocientes}
+
+Sea $A$ un anillo cualquiera. Sea también $I \subseteq A$ un Ideal de $A$.\\
+Sabemos que $a \equiv b mod(I) \iff a-b \in I$. Vamos a denotar:
+\[
+[a] = \{ b: b\equiv a mod(I)\} = \bar{a} = a + I
+\]
+Que sabemos que es un subconjunto de A y al que llamaremos la clase de congruencia de $a$.\\
+Denotaremos también:
+\[
+ A/I = \{[a]: a \in A\}
+\]
 
 
 
