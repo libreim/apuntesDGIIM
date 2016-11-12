@@ -1765,6 +1765,101 @@ Denotaremos también:
 \]
 
 
+\textbf{Propiedades}:\\
+\begin{itemize}
+	\item $  [a]=[b] \iff a \equiv b mod (I) $
+	\item $[a] + [b] = [a+b]$
+	\item $[a][b] = [ab] $
+	\item Si $[a] = [a']$ y $[b] = [b'] \implies \begin{cases}
+	[a+b] = [a' +b']\\
+	[ab] = [a'b']
+\end{cases}$\\
 
+\begin{proof}
+	$a\equiv_I a'$ y $b \equiv_I b' \implies \begin{cases}
+	a+b \equiv_I a'+b'\\
+	ab \equiv_I a'b'
+\end{cases}\implies \begin{cases}
+	[a+b] = [a'+b']\\
+	[ab] = [a'b']
+\end{cases}$
+\end{proof}
+	\item $[0] = I$
+\end{itemize}
+
+\begin{nprop}
+	Si $f_i:A \to B$ es un homomorfismo de anillo, $Img(g) = \{f(a): a \in A\} \leq B$ es un subanillo. Entonces, $Ker(f) = \{a \in A: f(a) = 0\}$ es un ideal.
+	\begin{proof}
+	Vamos a probar que este ideal es cerrado para sumas y para múltiplos. Para ello, en ambos casos usarmos que $f$ es un homomorfismo.
+	\[
+	f(a+b) = f(a)+f(b) = 0 + 0 = 0\]\[
+	f(ab) = f(a)f(b) = 0*0 = 0
+	\]
+\end{proof}
+Además, $f$ es un monomorfismo $\iff Ker(f) = 0$
+\begin{proof}
+	\boxed{\Rightarrow} Trivial\\
+	\boxed{\Leftarrow} Si $f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f)$ pero hemos dicho que $Ker(f) = 0 \implies a-b = 0 \implies a = b$
+\end{proof}
+\end{nprop}
+
+\begin{nth}[Teorema de Isomorfía]
+	Si $f:A \to B$ es un homomorfismo, se induce un isomorfismo de anillos:
+	\[
+	A/Ker(f) \cong Im(f)
+	\]
+	\[
+	F:[a] \longmapsto f(a)
+	\]
+	
+Además, $F$ está bien definida: es biyectiva y es un isomorfismo.
+
+\begin{proof}
+	Vamos a probar que está bien definida, que es un homomorfismo, inyectividad y sobreyectividad.
+	
+	Veamos primero que si $[a] = [b] \implies f(a) = f(b)$\\
+	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = xb$ Para algún $x\in Ker(f)$\\
+	$\implies f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b)$\\
+	
+	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
+	\begin{itemize}
+		\item $F([a]+[b]) = F([a+b]) = f(a+b)$ Pero como f es un homomorfismo por hipótesis $\implies f(a)+f(b) = F[a] + F[b]$
+		\item $F([a][b]) = F([ab]) = f(ab)$ pero f vuelve a ser un homomorfismo, luego $f(a)f(b) = F[a]F[b]$
+		\item $F(1) = f(1) = 1$
+\end{itemize}
+Probamos la inyectividad:\\
+Tomo $[a] \in Ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in Ker(f) \implies [a] = [0] = 0$
+\end{proof}
+
+\end{nth}
+
+\begin{nprop}
+	Sea $A$ un Dominio Euclídeo con función euclídea $\varphi :A-\{0\} \to \nat$ tal que en $A$ hay unicidad de cocientes y restos (Esto es: $\forall a,b \in A: b\ne 0 \implies \exists ! q,r\in A : a=bq+r \begin{cases}
+	r = 0 \\
+	\varphi(r) < \varphi(b)
+\end{cases}$). Si seleccionamos un $b \in A, b \ne 0$ tal que $\varphi(1) < \varphi(b)$ entonces:\\
+$\forall a \in A, R_b(a)=$ resto de dividir a entre b; $R_b(a) = r \iff \begin{cases}
+	a \equiv r mod(b)\\
+	r = 0 \quad o \quad \varphi(r) < \varphi(b)
+\end{cases}$
+Ahora, llamaremos: $$ A_b = \{ R_b(a): a \in A\} \subseteq A$$ que cumple:
+
+\begin{enumerate}
+	\item Si $r\in A_b \implies R_b(r) = r$
+	\item $R_b(a+a') = R_b(R_b(a) + R_b(a'))$\\
+	\begin{proof}
+	$R_b(a+a') \equiv a+a' \equiv_b R_b(a) +R_b(a') \equiv_b R_b(R_b(a) + R_b(a'))$
+\end{proof}
+	\item $R_b(aa') = R_b(R_b(a)R_b(a'))$
+\end{enumerate}
+
+Además, se define la suma y el producto de $r,r' \in A_b$ de la forma:
+\begin{itemize}
+	\item $r+r' = R_b(r+r')$
+	\item $rr' = R_b(rr')$
+\end{itemize}
+
+Con estas operaciones, $A_b$ es un anillo.
+\end{nprop}
 
 \end{document}
