@@ -1080,17 +1080,16 @@ distintos. Vamos a ver que $r=r'$ y $q=q'$
 \begin{itemize}
 	\item Si $r \neq r'$, supongamos $r > r' \implies 0 < r - r' < \abs{b}$
 Ahora: 
+$$ r-r' = a-bq - a +bq' = b(q' -q )$$
+$$r-r' > 0 \implies r - r' = \abs{b(q' -q)} = \abs{b}\abs{q' -q}$$
 
-$$ r-r' = a-bq - a +bq' = b(q-q')$$
-$$r-r' > 0 \implies r - r' = \abs{b(q-q')} = \abs{b}\abs{q-q'}$$
+Pero, como $q\neq q' \implies q'-q \neq 0$ y $q,q' \in \ent \implies \abs{q' -q} \geq 1 $, luego:
 
-Pero, como $q\neq q' \implies q-q' \neq 0$ y $q,q' \in \ent \implies \abs{q-q'} \geq 1 $, luego:
-
-$$ r-r' = \abs{b}\abs{q-q'} \geq \abs{b}$$
+$$ r-r' = \abs{b}\abs{q' -q} \geq \abs{b}$$
 
 Por lo que tenemos una contradicción con el comienzo de la suposición.
 
-	\item Ahora, si $r=r'\implies b(q-q') = 0$ y $b\neq 0 \implies q-q'=0 \implies q = q'$
+	\item Ahora, si $r=r'\implies b(q' -q) = 0$ y $b\neq 0 \implies q' -q=0 \implies q' -q$
 \end{itemize}
 
 Probamos ahora la existencia. Sean $a,b \geq 0$
