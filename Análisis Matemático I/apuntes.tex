@@ -1047,6 +1047,40 @@ Hemos probado que $\exists D_vf(x_0)$
 \end{nprop}
 
 
+%% Introducir definición alternativa (usando la definición de límite directamente).
+\section{Matriz asociada a $Df(x_0)$.}
+	Si $f : B \longrightarrow \mathbb{R}^M$, con $\emptyset \ne B \in \mathbb{R}^N$, la matriz asociada a $Df(x_0)$ es una matriz de orden $M \times N$, (que notaremos $A$ en lo sucesivo), como ya sabemos, por ser una aplicación lineal. Ahora, nuestro siguiente objetivo es encontrar esa matriz. Observemos cómo podemos obtenerla por filas, aplicándole los vectores de la base canónica:
+	
+	\[
+		e_i = (0, \dots, \stackrel{i)}{1}, \dots, 0) \implies Df(x_0)(e_i) = D_{e_i}f(x_0) = Ae_i = \begin{pmatrix}
+	a_{1i}\\ \vdots\\ a_{Mi}
+\end{pmatrix}
+	\]
 
+Tras esta observación, vamos a caracterizar cada elemento $a_{ji}$:
+
+\begin{align*}
+	D_{e_i}f(x_0) = \\\lim_{t\to 0} \frac{f(x_0+te_i)-f(x_0)}{t} = \\\lim_{t\to 0} \left(\frac{f_1(x_0+(0,\dots,\stackrel{i)}{t},\dots,0)-f_1(x_0)}{t},\right.\left.\cdots, \frac{f_M(x_0+(0,\dots,\stackrel{i)}{t},\dots,0)-f_M(x_0)}{t}\right)=\\
+	 \left(\lim_{t\to 0} \frac{f_1(x_0+(0,\dots,\stackrel{i)}{t},\dots,0)-f_1(x_0)}{t}, \cdots, \lim_{t\to 0} \frac{f_M(x_0+(0,\dots,\stackrel{i)}{t},\dots,0)-f_M(x_0)}{t}\right) =\\
+	 \left(D_{e_i}f_1(x_0, \dots, D_{e_i}f_M(x_0))\right) = \left(\frac{\partial f_1(x_0)}{\partial x_i}, \dots, \frac{\partial f_M(x_0)}{\partial x_i}\right) \implies a_{ji} = \frac{\partial f_j}{\partial x_i} (x_0)
+\end{align*}
+
+Por tanto, $A$ queda de la siguiente forma:
+
+\[
+	A = \begin{pmatrix}
+	\frac{\partial f_1(x_0)}{\partial x_1} (x_0) & \cdots & \frac{\partial f_1(x_0)}{\partial x_N} (x_0)\\
+	\vdots & \ddots & \vdots\\
+	\frac{\partial f_M(x_0)}{\partial x_1} (x_0) & \cdots & \frac{\partial f_M(x_0)}{\partial x_N} (x_0)
+\end{pmatrix}
+\]
+
+Deducimos que:
+
+\[
+	\exists \lim_{t\to 0} \frac{f(x_0+tv) - f(x_0)}{t} := D_vf(x_0) \iff f_1, \dots, f_M \text{ son derivables direc. en $x_0$ en la dir. $v$.}
+\]
+
+Además, $D_vf(x_0) = (D_vf_1(x_0), \dots, D_vf_M(x_0))$.
 
 \end{document}
