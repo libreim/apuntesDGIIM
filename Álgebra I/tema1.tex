@@ -917,7 +917,7 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
 \end{nprop}
 
 \begin{nprop}
-  Sea $K$ un cuerpo y $A\le K$, $a,b\in A b\not=0$.
+  Sea $K$ un cuerpo y $A\le K$, $a,b\in A\ (b\not=0)$.
   \begin{align}
     \implies& a\in K \text{ y } b^{-1}\in K \implies ab^{-1}\in K\notag\\
     \implies&\mathbb{Q}(A)\le K\notag
@@ -934,11 +934,11 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
 
 
 \begin{nprop}
-  Sea K un cuerpo, $A\le K$. Si $\forall \alpha\in K\quad \exists a\in A\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
+  Sea K un cuerpo, $A\le K$. Si $\forall\ \alpha\in K\quad \exists\ a\in A,\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
 \end{nprop}
 
 \begin{proof}
-  $\alpha\in K,\; \exists a\in A \ne 0 : a\alpha=b\in A \implies \alpha = ba^{-1} = \frac{b}{a}\in \rac(A)$
+  $\alpha\in K,\; \exists a \ne 0, a\in A : a\alpha=b\in A \implies \alpha = ba^{-1} = \frac{b}{a}\in \rac(A)$
 \end{proof}
 
 \begin{ejemplo}
@@ -959,7 +959,8 @@ Si $f=\sum a_i x^i \neq 0$ $\implies gr(f)=n\in \mathbb{N}$ si $a_n\neq 0$ y $a_
 El coeficiente $a_n$ se denomina coeficiente líder.
 
 \begin{itemize}
-	\item Si A es D.I, $f,g \in A[x]\implies gr(fg) = gr(f)+gr(g)$
+	\item Si A es D.I, $f,g \in A[x]\implies gr(fg) = gr(f)+gr(g)$\\
+	(Si no es D.I, tenemos que $gr(fg) \le gr(f)+gr(g)$)
 \end{itemize}
 	
 \end{ndef}
@@ -968,7 +969,7 @@ El coeficiente $a_n$ se denomina coeficiente líder.
 	
 Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divisor de b, b es un múltiplo de a):
 \begin{align}
-	\iff& \exists c \in A : b = ac 
+	\Rightarrow& \exists c \in A : b = ac 
 \\
 	\iff& La \hspace{0.2cm} ecuacion \hspace{0.2cm} ax=b \hspace{0.2cm} tiene\hspace{0.2cm}solucion
 \\
@@ -977,7 +978,7 @@ Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un diviso
 
 \begin{proof}
 	$\boxed{\implies}$ Si a divide a b $\implies$ $\exists c: b=ac \implies \frac{b}{a} = \frac{ac}{a} = \frac{c}{1} = c \in A$\\
-	$\boxed{\Longleftarrow}$ si $\frac{b}{a}\in A \implies \frac{b}{c} = \frac{c}{1} \implies b = ac$
+	$\boxed{\Longleftarrow}$ si $\frac{b}{a}\in A \implies \frac{b}{a} = \frac{c}{1} \implies b = ac$
 \end{proof}
 \end{ndef}
 \textbf{Notación:} Si a divide a b, escribiremos $a/b$
@@ -999,14 +1000,14 @@ Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un diviso
 	\begin{nlist}
 	\item a es asociado de b
 	\item b es asociado de a
-	\item $a/b \wedge b/a$ los asociados son los elementos que se dividen mutuamente
+	\item $a/b \wedge b/a$, los asociados son los elementos que se dividen mutuamente
 	
 \end{nlist}
 \end{nprop}
 
 \begin{ndef}[Irreducible]
 	
-	Sea $a\in A, a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
+	Sea $a\in A$(D.I), $a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
 
 \begin{align}
 	\iff& si\hspace{0.2cm} b/a \implies b\in U(A) \vee b \sim a
@@ -1054,7 +1055,7 @@ $$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$
 
 \begin{nth}[Teorema de Euclídes]
 
-	$\forall a,b \in \ent, b \neq 0, \exists q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < b$
+	$\forall a,b \in \ent, b \neq 0, \exists !q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < |b|$
 \end{nth}
 
 \begin{ncor}
@@ -1080,7 +1081,7 @@ distintos. Vamos a ver que $r=r'$ y $q=q'$
 	\item Si $r \neq r'$, supongamos $r > r' \implies 0 < r - r' < \abs{b}$
 Ahora: 
 
-$$ r-r' = a-bq + a +bq' = b(q-q')$$
+$$ r-r' = a-bq - a +bq' = b(q-q')$$
 $$r-r' > 0 \implies r - r' = \abs{b(q-q')} = \abs{b}\abs{q-q'}$$
 
 Pero, como $q\neq q' \implies q-q' \neq 0$ y $q,q' \in \ent \implies \abs{q-q'} \geq 1 $, luego:
