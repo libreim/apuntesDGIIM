@@ -50,7 +50,7 @@ Respecto a la seguridad, el acceso a Internet de los mismos es una de las princi
 
 Por otro lado, una **arquitectura micronúcleo** asigna sólo unas pocas funciones esenciales al núcleo. Ciertos procesos proporcionan otros servicios del sistema operativo, algunas veces denominados servidores. Esta técnica desacopla el núcleo y el desarrollo del servidor.
 
-**Multitheading** (multihilo) es una técnica en la cual un proceso, ejecutando una aplicación, se divide en una serie de hilos o threads que pueden ejecutar concurrentemente.
+**Multithreading** (multihilo) es una técnica en la cual un proceso, ejecutando una aplicación, se divide en una serie de hilos o threads que pueden ejecutar concurrentemente.
 
 Thread o hilo: Se trata de una unidad de trabajo. Incluye el contexto del procesador y su propia área de datos para una pila.
 
