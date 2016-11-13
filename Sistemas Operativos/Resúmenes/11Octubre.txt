@@ -1,0 +1,111 @@
+Resúmenes 11 de Octubre:
+
+Stallings 108-143:
+
+Descripción de procesos:
+
+Existen diversas definiciones del término proceso, algunas de ellas son: 
+
+• Un programa en ejecución. 
+
+• Una instancia de un programa ejecutado en un computador. 
+
+• La entidad que se puede asignar y ejecutar en un procesador. 
+
+• Una unidad de actividad que se caracteriza por la ejecución de una secuencia de instrucciones, 
+un estado actual, y un conjunto de recursos del sistema asociados.
+
+También se puede pensar en un proceso como en una entidad que consiste en un número de elementos. Los dos elementos esenciales serían el código de programa y un conjunto de datos asociados al código.
+
+Un proceso se puede caracterizar por:
+
+• Identificador. Un identificador único para distinguirlo del resto de procesos. 
+
+• Estado. Si el proceso está actualmente en ejecución. 
+
+• Prioridad: Nivel de prioridad conforme al resto de procesos. 
+
+• Contador de programa. La dirección de la siguiente instrucción del programa que se ejecutará. 
+
+• Punteros a memoria. Incluye los punteros al código de programa y los datos asociados a dicho proceso.
+
+• Datos de contexto. datos presentes en los registros del procesador cuando el proceso está ejecutándose. 
+
+• Información de estado de E/S.
+
+Un modelo de procesos de dos estados:
+
+La responsabilidad principal del sistema operativo es controlar la ejecución de los procesos; esto incluye determinar el patrón de entrelazado para la ejecución y asignar recursos a los procesos.
+
+Creación y terminación de procesos:
+
+Creación de un proceso: Cuando se va a añadir un nuevo proceso a aquellos que se están gestionando en un determinado momento, el sistema operativo construye las estructuras de datos que se usan para manejar el proceso y reserva el espacio de direcciones en memoria principal para el proceso. 
+
+Terminación de un proceso: Todo sistema debe proporcionar los mecanismos mediante los cuales un proceso indica su finalización. Un trabajo debe incluir una instrucción HALT o una llamada a un servicio de sistema operativo especifica para su terminación.
+
+Modelo de procesos en cinco estados:
+
+Una forma más natural para manejar esta situación es dividir el estado de No Ejecutando en dos 
+estados, Listo y Bloqueado.
+
+Estos cinco estados en el nuevo diagrama son los siguientes: 
+
+• Ejecutando. El proceso está actualmente en ejecución.
+
+• Listo o Preparado. Un proceso que se prepara para ejecutar cuando tenga oportunidad. 
+
+• Bloqueado. Un proceso que no puede ejecutar hasta que se cumpla un evento determinado o se complete una operación E/S. 
+
+• Nuevo. Un proceso que se acaba de crear y que aún no ha sido admitido en el grupo de procesos ejecutables por el sistema operativo.
+
+• Finalizado. Un proceso que ha sido liberado del grupo de procesos ejecutables por el sistema operativo, debido a que ha sido detenido o que ha sido abortado por alguna razón.
+
+Existen también tipos de eventos llevan a cada transición de estado para cada proceso; las posibles transiciones son las siguientes:
+
+• Null -> Nuevo. Se crea un nuevo proceso para ejecutar un programa. 
+
+• Nuevo -> Listo. El sistema operativo mueve a un proceso del estado nuevo al estado listo cuando éste se encuentre preparado para ejecutar un nuevo proceso. 
+
+• Listo -> Ejecutando. Cuando llega el momento de seleccionar un nuevo proceso para ejecutar, el sistema operativo selecciona uno los procesos que se encuentre en el estado Listo. 
+
+• Ejecutando -> Finalizado. el proceso actual en ejecución se finaliza por parte del sistema operativo tanto si el proceso indica que ha completado su ejecución como si éste se aborta. 
+
+• Ejecutando -> Listo. La razón más habitual para esta transición es que el proceso en ejecución haya alcanzado el máximo tiempo posible de ejecución de forma ininterrumpida. Es uno de los posibles motivos.
+
+• Ejecutando -> Bloqueado. Un proceso se pone en el estado Bloqueado si solicita algo por lo cual debe esperar. Una solicitud al sistema operativo se realiza habitualmente por medio de una llamada al sistema.
+
+• Bloqueado -> Listo. Un proceso en estado Bloqueado se mueve al estado Listo cuando sucede el evento por el cual estaba esperando. 
+
+• Listo/Bloqueado -> Finalizado. En algunos sistemas, un padre puede terminar la ejecución de un proceso hijo en cualquier momento. Órdenes abort o kill. Si un proceso padre finaliza, todos los hijos lo harán, finalización en cascada.
+
+Procesos Suspendidos:
+
+La necesidad de intercambio o swapping. Los tres principales estados descritos (Listo, Ejecutando, Bloqueado) proporcionan una forma sistemática de modelizar el comportamiento de los procesos y diseñar la implementación del sistema operativo.
+
+
+Stallings 158-172:
+
+Concepto y tipo de Hebras:
+
+Procesos tradicionales se dicen que es una tarea con una única hebra o hilo, lo que llamamos monohilo. Con dos características: 
+
+• Propiedad de recursos. Un proceso incluye un espacio de direcciones virtuales para el manejo de la imagen del proceso.
+
+• Planificación/ejecución. La ejecución de un proceso sigue una ruta de ejecución (traza) a través de uno o más programas. Esta ejecución puede estar intercalada con ese u otros procesos. 
+
+Multihilo: Multihilo se refiere a la capacidad de un sistema operativo de dar soporte a múltiples hilos de ejecución en un solo proceso.
+
+Estados de los hilos. Igual que con los procesos, los principales estados de los hilos son: Ejecutando, Listo y Bloqueado.
+
+Hay cuatro operaciones básicas relacionadas con los hilos que están asociadas con un cambio de  estado del hilo:
+
+• Creación. Cuando se crea un nuevo proceso, también se crea un hilo de dicho proceso. 
+
+• Bloqueo. Cuando un hilo necesita esperar por un evento se bloquea, almacenando los registros de usuario, contador de programa y punteros de pila.
+
+• Desbloqueo. Cuando sucede el evento por el que el hilo está bloqueado, el hilo se pasa a la cola de Listos. 
+
+• Finalización. Cuando se completa un hilo, se libera el bloque de control de hilo, su registro de contexto de ejecución y pila (ni siquiera eso).
+
+Sincronización de hilos. Todos los hilos de un proceso comparten el mismo espacio de direcciones y otros recursos, como por ejemplo, los archivos abiertos. Cualquier alteración de un recurso por cualquiera de los hilos, afecta al entorno del resto de los hilos del mismo proceso. Por tanto, es necesario sincronizar las actividades de los hilos para que no interfieran entre ellos o se corrompan.
+
