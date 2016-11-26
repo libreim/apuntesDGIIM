@@ -101,3 +101,104 @@ Los permisos de lectura, ejecución y lectura se usan de forma distinta según l
 #include <sys/stat.h>
 int lstat(const char* restrict path, struct stat *restict buf);
 ```
+
+# Llamadas al sistema relacionadas con el permiso de archivos
+
+## Llamada umask
+
+Esta fija la máscara de creación de permisos para el proceso y devuelve el valor que se ha establecido. Lo que hace es restar los permisos indicados en la llamada a umask.
+
+Por tanto, si hacemos *umask(0)*, se restará un 0 al crear el archivo y se creará por tanto con todos los permisos que tenga la función open por defecto.
+
+## Llamada chmod y fchmod
+
+Estas permiten cambiar los permisos de acceso para un archivo que existe en un sistema de archivos.
+La diferencia está en que **chmod** trabaja sobre un archivo especificado por su *pathname* y **fchmod** opera sobre un archivo abierto con open.
+
+Sus cabeceras son:
+
+``` c
+#include <sys/types.h>
+#include <sys/stat.h>
+int chmod(const char *path, mode_t mode);
+int fchmod(int fildes, mode_t mode);
+
+```
+
+Existen una serie de valores para modificar estos permisos, destacando:
+
+
+S_ISUID 04000 activar la asignación del UID del propietario al UID efectivo del proceso que
+ejecute el archivo.
+S_ISGID 02000 activar la asignación del GID del propietario al GID efectivo del proceso que
+ejecute el archivo.
+S_ISVTX 01000 activar sticky bit. En directorios significa un borrado restringido, es decir, un
+proceso no privilegiado no puede borrar o renombrar archivos del directorio
+salvo que tenga permiso de escritura y sea propietario. Por ejemplo se utiliza
+en el directorio /tmp.
+S_IRWXU 00700 user (propietario del archivo) tiene permisos de lectura, escritura y ejecución
+S_IRUSR 00400 lectura para el propietario (= S_IREAD no POSIX)
+S_IWUSR 00200 escritura para el propietario (= S_IWRITE no POSIX)
+S_IXUSR 00100 ejecución/búsqueda para el propietario (=S_IEXEC no POSIX)
+S_IRWXG 00070 group tiene permisos de lectura, escritura y ejecución
+S_IRGRP 00040 lectura para el grupo
+S_IWGRP 00020 escritura para el grupo
+S_IXGRP 00010 ejecución/búsqueda para el grupo
+S_IRWXO 00007 other tienen permisos de lectura, escritura y ejecución
+S_IROTH 00004 lectura para otros
+S_IWOTH 00002 escritura para otros
+S_IXOTH 00001 ejecución/búsqueda para otros
+
+
+# Funciones de manejo de directorios
+
+Tendremos que incluir la cabecera **<dirent.h>** y **<sys/types.h>**
+
+Existe una estructura llamada ***dirent*** que es la siguiente:
+```c
+struct dirent {
+long d_ino; /* número i-nodo */
+char d_name[256]; /* nombre del archivo */
+};
+```
+La usaremos más adelante.
+
+Las funciones más importantes al manejar directorios son:
+
+* **opendir(pathname)**, que devuelve un puntero a la estructura de tipo dir, llamado stream.Para llamarlo, tenemos que crear un arhivo de tipo DIR de la forma:
+
+```c
+DIR *opendir(char *dirname);
+```
+
+* **readdir(stream)**, que lee la entrada donde está situado el puntero de lectura de un directorio abierto. stream es el puntero a la estructura de tipo dir
+
+```c
+struc dirent *readdir(DIR *dirp)
+```
+
+* **closedir()** cierra el directorio
+
+```c
+int closedir(DIR *dirp)
+```
+* **seekdir()** sitúa el puntero de lectura de un directorio (usado en combinación con la siguiente)
+```c
+void seekdir(DIR *dirp, log loc)
+```
+
+* **telldir()** devuelve la posición del puntero de lectura de un directorio
+```c
+long telldir(DIR *dirp)
+```
+
+* **rewinddir()** posiciona el puntero de lectura al principio del directorio
+```c
+void rewinddir(DIR *dirp)
+```
+
+* **getcwd()** devuelve el directorio de trabajo actual para cada proceso
+
+* **chdir(pathname)** para cambiar a un directorio. 
+
+getcwd devuelve el directorio de trabajo actual para cada proceso.
