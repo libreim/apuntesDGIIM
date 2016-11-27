@@ -29,7 +29,7 @@ Estado. Si el proceso está actualmente corriendo, está en el estado en ejecuci
 
 ## CREACIÓN Y TERMINACIÓN DE PROCESOS
 
-**Creación de un proceso.** Cuando se va a crear un nuevo proceso el SO crea las estructuras de datos que se usan para manejar el proceso. La razones principales para la cración de un proceso son: nuevo proceso de lotes, sesión interactiva, creado por el sistema operativo para proporcionar un servicio y creado por un proceso existente. Cuando un proceso lanza otro, al primero se le denomina proceso padre, y al proceso creado se le denomina proceso hijo.
+**Creación de un proceso.** Cuando se va a crear un nuevo proceso el SO crea las estructuras de datos que se usan para manejar el proceso. La razones principales para la creación de un proceso son: nuevo proceso de lotes, sesión interactiva, creado por el sistema operativo para proporcionar un servicio y creado por un proceso existente. Cuando un proceso lanza otro, al primero se le denomina proceso padre, y al proceso creado se le denomina proceso hijo.
 
 **Terminación de procesos.** Todo sistema debe proporcionar los mecanismos mediante los cuales un proceso indica su finalización, o que ha completado su tarea. Un trabajo por lotes debe incluir una instrucción HALT o unallamada a un servicio de sistema operativo especifica para su terminación. Las razones comunes para la finalización de un proceso son: finalización normal, memoria no disponible, límite de tiempo, error de protección, violación de memoria, fallo en la E/S. La cola de los procesos es una lista de tipo FIFO.
 
@@ -160,7 +160,7 @@ modo puede modificarse?*** En lo referente la primera cuestión, existe típicam
 ## CREACIÓN DE PROCESOS
 
 **Pasos que llevan a la verdadera creación de un proceso.**
-Una vez que el sistema operativo decide, por cualquier motivo crear un proceso procederá de la siguiente manera:
+Una vez que el sistema operativo decide, por cualquier motivo, crear un proceso procederá de la siguiente manera:
 1. **Asignar un identificador de proceso único al proceso.** En este instante, se añade una nueva entrada a la tabla primaria de procesos, que contiene una entrada por proceso.
 2. **Reservar espacio para proceso.** Para ello, el sistema operativo debe conocer cuánta memoria se requiere para el espacio de direcciones privado (programas y datos) y para la pila de usuario. Si existe una parte del espacio direcciones compartido por este nuevo proceso, se fijan los enlaces apropiados. Por último, se debe reservar el espacio para el bloque de control de proceso (BCP).
 3. **Inicialización del bloque de control de proceso.** La parte de identificación de proceso del BCP contiene el identificador del proceso así como otros posibles identificadores. En la información de estado de proceso del BCP, habitualmente se inicializa con la mayoría de entradas a 0, excepto el contador de programa (fijado en el punto entrada del programa) y los punteros de pila de sistema (fijados para definir los límites de la pila del proceso). La parte de información de control de procesos se inicializa en base a los valores por omisión, considerando también los atributos que han sido solicitados para este proceso. Inicialmente, el proceso no debe poseer ningún recurso (dispositivos de E/S, ficheros) a menos que exista una indicación explícita de ello o que haya sido heredados del padre.
