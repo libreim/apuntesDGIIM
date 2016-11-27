@@ -256,7 +256,7 @@ La variable state de task_estruct especifica el estado actual de un proceso.
 
 # Modelo de procesos/hilos en Linux
 
-![Diagrama de estados]{imagenes/diagrama.png}
+![Diagrama de estados]{diagrama.png}
 
 # El árbol de procesos.
 
@@ -266,7 +266,7 @@ Cada *task_struct* tiene un puntero:
 2. A una lista de hijos (llamada children): struct list_head children
 3. A una lista de hermanos (llamada sibling): struct list_head sibling 
 
-![Arbol de procesos]{imagenes/diagrama2.png}
+![Arbol de procesos]{diagrama2.png}
 
 # Implementación de hilos en Linux 
 
