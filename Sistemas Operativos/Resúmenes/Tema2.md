@@ -134,7 +134,7 @@ El Despachador se activa cuando:
 
 Se pretende obtener buen rendimiento y servicio. Para saber si un proceso tiene un buen servicio definimos para un proceso P con tiempo de ráfaga(~quantum) t:
 
-a) Tiempo de Espera(T): tiempo desde que se remite una solicitud hasta que se produce la respuesta
+a) Tiempo de Respuesta(T): tiempo desde que se remite una solicitud hasta que se produce la respuesta
 
 b) Tiempo de espera(M): tiempo que ha estado un proceso en cola de preparados (T-t)
 
