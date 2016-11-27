@@ -51,7 +51,7 @@ El sistema operativo se reduce a un núcleo mínimo, se implementan la mayoría 
 
 * Su arquitectura facilita la extensibilidad, permitiendo agregar nuevos servicios en la misma área funcional.
 
-* No solo se pueden añadir nuevas características al SO, además las características existentes pueden eliminar para realizar una implementación más pequeña y eficiente.
+* No solo se pueden añadir nuevas características al SO, además las características existentes se pueden eliminar para realizar una implementación más pequeña y eficiente.
 
 * Todo o gran parte del código específico del procesador está en el microkernel.
 
