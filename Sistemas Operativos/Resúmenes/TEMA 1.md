@@ -159,7 +159,7 @@ En relación a la comunicación de computadores y redes de computadores, hay dos
 * Protocolos.
 * Arquitectura de comunicaciones o arquitectura de protocolos.
 
-Un **protocolo** se utiliza para comunicar entidades de diferentes sistemas. Lo que se comunica, cómo se comunica y cuándo se comunica, debe hacerse de acuerdo a unas convenciones entre las entidades involucradas. se pueden definir como un conjunto de reglas que gobiernan el intercambio de datos entre dos entidades. Los elementos principales de un protocolo son los siguientes:
+Un **protocolo** se utiliza para comunicar entidades de diferentes sistemas. Lo que se comunica, cómo se comunica y cuándo se comunica, debe hacerse de acuerdo a unas convenciones entre las entidades involucradas. Se pueden definir como un conjunto de reglas que gobiernan el intercambio de datos entre dos entidades. Los elementos principales de un protocolo son los siguientes:
 
 * **Sintaxis**: Incluye cosas tales como formatos de datos y niveles de señales.
 * **Semántica**: Incluye información de control para realizar coordinación y gestión de errores.
