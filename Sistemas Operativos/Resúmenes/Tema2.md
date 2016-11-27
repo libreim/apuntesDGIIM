@@ -185,7 +185,8 @@ Se estudian tres aspectos relacionados: Asignación de procesos a procesadores(C
    d) Planificación dinámica: La aplicación permite que varíe dinámicamente el número de hilos de un proceso y el SO ajusta la carga para usar mejor los procesadores.
 
 
-* Planificación de sistemas de tiempo real. Se enfoca según cuándo el sistema realice un análisis de viabilidad de la planificación (si puede atender a todos los eventos en su tiempo), si se realiza estática o dinámicamente o si el resultado del análisis produce un plan de planificación o no.
+* Planificación de sistemas de tiempo real. 
+Se enfoca según cuándo el sistema realice un análisis de viabilidad de la planificación (si puede atender a todos los eventos en su tiempo), si se realiza estática o dinámicamente o si el resultado del análisis produce un plan de planificación o no.
 Se utilizan enfoques estáticos dirigidos por una tabla(planificación que determina cuándo empezará cada tarea), estáticos expulsivos dirigidos por prioridad (sólo da prioridad a las tareas, no genera una planificación), enfoques dinámicos basados en plan(determina la viabilidad en tiempo de ejecución y se acepta si se pueden satisfacer sus restricciones de tiempo) y enfoques dinámicos de menor esfuerzo(sin análisis de viabilidad, se intenta cumplir los plazos y si no se cumple se aborta el proceso).
 
 ### Problema de inversión de prioridad
@@ -199,3 +200,101 @@ Para evitar el problema, se puede:
 2. Establecer un techo de prioridad (al proceso que se le asigna el recurso de uso exclusivo se le da una prioridad más alta)
 
 En ambos, la menos prioritaria vuelve a tener el valor de prioridad que tenía cuando libere el recurso.
+
+* Diseño e implementación de procesos e hilos en Linux
+
+Nos basamos en el kernel 2.6 de Linux.
+
+1. El núcleo identifica a los procesos por su PID
+2. En Linux, proceso es la entidad que se crea con la llamada al sistema *fork* (excepto el proceso 0) y clone.
+3. Procesos especiales que existen durante la vida del sistema; Proceso 0 (creado "a mano" cuando arranca el sistema, crea al proceso 1), Proceso 1 (Init, antecesor de cualquier proceso del sistema).
+
+## Linux: estructura task.
+
+El kernel almacena la lista de procesos como una lista circular doblemente enlazada (task list).
+Cada elemento es un descriptor de un proceso (PCB) definido en </include/linux/sched.h>
+
+```c
+struct task_struct { /// del kernel 2.6.24
+ volatile long state; /* -1 unrunnable, 0 runnable, >0 stopped */
+ /*...*/
+/* Informacion para planificacion */
+ int prio, static_prio, normal_prio;
+ struct list_head run_list;
+ const struct sched_class *sched_class;
+ struct sched_entity se;
+/*...*/
+ unsigned int policy;
+ cpumask_t cpus_allowed;
+ unsigned int time_slice;
+/*...*/
+//* Memoria asociada a la tarea */
+ struct mm_struct *mm, *active_mm;
+/*...*/
+ pid_t pid;
+/* Relaciones entre task_struct */
+ struct task_struct *parent; /* parent process */
+ struct list_head children; /* list of my children */
+ struct list_head sibling; /* linkage in my parent's children list */
+/* Informacion para planificacion y señales */
+ unsigned int rt_priority;
+ sigset_t blocked, real_blocked;
+ sigset_t saved_sigmask; /* To be restored with TIF_RESTORE_SIGMASK */
+ struct sigpending pending;
+/*...*/
+```
+# Estados de un proceso en Linux
+
+La variable state de task_estruct especifica el estado actual de un proceso.
+
+1. **Ejecucion** (TASK_RUNNING): Se corresponde con dos: ejecutándose o preparado para ejecutarse (en la cola de procesos preparados).
+2. **Interrumpible** (TASK_INTERRUPTIBLE): El proceso está bloqueado y sale de este estado cuando ocurre el suceso por el cual está bloqueado o porque le llegue una señal.
+3. **No interrumpible** (TASK_UNINTERRUPTIBLE): El proceso está bloqueado y sólo cambia´ra de estado cuando ocurra el suceso que esta esperando (no acepta señales).
+4. **Parado** (TASK_STOPPED): El proceso ha sido detenido y sólo puede reanudarse por la acción de otro proceso (por ejemplo, proceso parado mientras está siendo depurado).
+5. (TASK TRACED): El proceso está siendo traceado por otro proceso.
+6. **Zombie** (EXIT_ZOMBIE): El proceso ya no existe pero mantiene la entrada de la tabla de procesos hasta que el padre haga un wait (EXIT_DEAD).
+
+# Modelo de procesos/hilos en Linux
+
+![Diagrama de estados]{imagenes/diagrama.png}
+
+# El árbol de procesos.
+
+Cada *task_struct* tiene un puntero:
+
+1. A la *task_struct* de su padre: struct task_struct \*parent
+2. A una lista de hijos (llamada children): struct list_head children
+3. A una lista de hermanos (llamada sibling): struct list_head sibling 
+
+![Arbol de procesos]{imagenes/diagrama2.png}
+
+# Implementación de hilos en Linux 
+
+Desde el punto de vista del kernel no hay distincion entre hebra y proceso. Linux implementa el concepto de hebra como un proceso sin mas, que simplemente comparte recursos con otros procesos.
+Cada hebra tiene su propia *task_struct*.
+La llamada al sistema *clone* crea un nuevo proceso o hebra.
+```c 
+#include <sched.h>
+ int clone (int (*fn) (void *), void *child_stack, int flags, void *arg);
+```
+
+# Hebras Kernel
+
+Aveces es util que el kernel realice operaciones en segundo plano, para lo cual se crean hebras kernel.
+Las hebras kernel no tienen un espacio de direcciones (su puntero mm es NULL).
+Se ehecutan únicamente en el espacio del kernel.
+Son planificadas y pueden ser expropiadas.
+Se crean por el kernel al levantar el sistema, mediante una llamada a clone().
+Terminan cuando realizan una operacion do_exit o cuando otra parte del kernel provoca su finalización.
+
+# Creación de procesos.
+
+```c 
+fork() → clone() → do_fork() → copy_process() 
+```
+
+* Actuación de *copy_process*:
+
+1. Crea la estructura *thread_info (pila Kernel)* y la *task_struct* para el nuevo proceso con los valores de la tarea actual.
+2. Para los elementos de *task_struct* del hijo que deban tener valores distintos a los del padre, se les dan los valores iniciales correctos.
+3. Se establece el estado del hijo a *TASK_UNINTERRUPTINLE* mientras se realizan las restantes acciones.
