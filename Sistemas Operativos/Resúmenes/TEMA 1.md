@@ -1,4 +1,4 @@
-# TEMA 1. ESTRUCTURA DE LOS SOs
+# TEMA 1. ESTRUCTURA DE LOS SO
 
 ## Sistema monolítico
 
