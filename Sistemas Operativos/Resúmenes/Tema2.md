@@ -113,7 +113,7 @@ El planificador a largo plazo debe hacer una buena mezcla de trabajos pues si no
 
 ### Dispatcher
 
-El despachador es un módulo del SO que da el control de la CPU al proceso seleccionado por el planificador a corto plazo.Involucra cambio de contexto, cambio de modo a usuario y salto a la posición de memoria adecuada para la reanudación.
+El despachador es un módulo del SO que da el control de la CPU al proceso seleccionado por el planificador a corto plazo. Involucra cambio de contexto, cambio de modo a usuario y salto a la posición de memoria adecuada para la reanudación.
 
 La latencia de despacho es el tiempo que tarda un despachador en cambiar de proceso ejecutándose.
 
