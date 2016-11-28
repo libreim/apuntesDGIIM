@@ -171,7 +171,7 @@ Tabla comparativa de los cuatro primeros:
 
 |               | Apropiativo/no  apropiativo | Tiempo respuesta                                            | Efecto en procesos                   | Inanición | Otros                           |
 |---------------|-----------------------------|-------------------------------------------------------------|--------------------------------------|-----------|---------------------------------|
-| FSFC          | No apropiativo              | Alto si hay mucha diferencia entre los tiempos de ejecución | Penaliza procesos cortos y con E/S   | No        | Estado listo pasa a preparados  |
+| FCFS          | No apropiativo              | Alto si hay mucha diferencia entre los tiempos de ejecución | Penaliza procesos cortos y con E/S   | No        | Estado listo pasa a preparados  |
 | SJF           | No apropiativo              | Buen tiempo para procesos cortos. Discrimina los largos     | Penaliza procesos largos             | Posible   | En caso de igualdad se usa FCFS |
 | SRTF          | Apropiativo                 | Buen tiempo excepto procesos muy largos                     | Penaliza procesos largos             | Posible   |                                 |
 | Por prioridad | Puede ser ambas             |                                                             | No se ejecutan los de prioridad baja | Sí        |                                 |
