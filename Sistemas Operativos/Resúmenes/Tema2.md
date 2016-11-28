@@ -194,7 +194,6 @@ Se estudian tres aspectos relacionados: Asignación de procesos a procesadores(C
 
    d) Planificación dinámica: La aplicación permite que varíe dinámicamente el número de hilos de un proceso y el SO ajusta la carga para usar mejor los procesadores.
 
-
 * Planificación de sistemas de tiempo real.
 Se enfoca según cuándo el sistema realice un análisis de viabilidad de la planificación (si puede atender a todos los eventos en su tiempo), si se realiza estática o dinámicamente o si el resultado del análisis produce un plan de planificación o no.
 Se utilizan enfoques estáticos dirigidos por una tabla(planificación que determina cuándo empezará cada tarea), estáticos expulsivos dirigidos por prioridad (sólo da prioridad a las tareas, no genera una planificación), enfoques dinámicos basados en plan(determina la viabilidad en tiempo de ejecución y se acepta si se pueden satisfacer sus restricciones de tiempo) y enfoques dinámicos de menor esfuerzo(sin análisis de viabilidad, se intenta cumplir los plazos y si no se cumple se aborta el proceso).
@@ -219,7 +218,7 @@ Nos basamos en el kernel 2.6 de Linux.
 2. En Linux, proceso es la entidad que se crea con la llamada al sistema *fork* (excepto el proceso 0) y *clone*.
 3. Procesos especiales que existen durante la vida del sistema; Proceso 0 (creado "a mano" cuando arranca el sistema, crea al proceso 1), Proceso 1 (Init, antecesor de cualquier proceso del sistema).
 
-## Linux: estructura task.
+### Linux: estructura task.
 
 El kernel almacena la lista de procesos como una lista circular doblemente enlazada (task list).
 Cada elemento es un descriptor de un proceso (PCB) definido en </include/linux/sched.h>
@@ -253,7 +252,7 @@ struct task_struct { /// del kernel 2.6.24
  struct sigpending pending;
 /*...*/
 ```
-# Estados de un proceso en Linux
+## Estados de un proceso en Linux
 
 La variable state de task_estruct especifica el estado actual de un proceso.
 
@@ -264,7 +263,7 @@ La variable state de task_estruct especifica el estado actual de un proceso.
 5. (TASK TRACED): El proceso está siendo traceado por otro proceso.
 6. **Zombie** (EXIT_ZOMBIE): El proceso ya no existe pero mantiene la entrada de la tabla de procesos hasta que el padre haga un wait (EXIT_DEAD).
 
-## Modelo de procesos/hilos en Linux
+### Modelo de procesos/hilos en Linux
 
 ![Diagrama de estados]{diagrama.png}
 
@@ -278,7 +277,7 @@ Cada *task_struct* tiene un puntero:
 
 ![Arbol de procesos]{diagrama2.png}
 
-## Implementación de hilos en Linux
+### Implementación de hilos en Linux
 
 Desde el punto de vista del kernel no hay distinción entre hebra y proceso. Linux implementa el concepto de hebra como un proceso sin ms, que simplemente comparte recursos con otros procesos.
 Cada hebra tiene su propia *task_struct*.
@@ -289,7 +288,7 @@ La llamada al sistema *clone* crea un nuevo proceso o hebra.
  int clone (int (*fn) (void *), void *child_stack, int flags, void *arg);
 ```
 
-## Hebras Kernel
+### Hebras Kernel
 
 A veces es útil que el kernel realice operaciones en segundo plano, para lo cual se crean hebras kernel.
 Las hebras kernel no tienen un espacio de direcciones (su puntero mm es NULL).
@@ -317,7 +316,7 @@ fork() → clone() → do_fork() → copy_process()
 7. Se establece el estado del hijo a ```TASK_RUNNING```.
 8. Finalmente ```copy_process()```termina devolviendo un puntero a la ```task_struct``` del hijo.
 
-## Terminación de un proceso.
+### Terminación de un proceso.
 
 - Cuando un proceso termina, el *kernel* libera todos sus recursos y notifica al padre su terminación.
 - Normalmente un proceso termina cuando:
@@ -327,7 +326,7 @@ fork() → clone() → do_fork() → copy_process()
    2. Recibe una señal ante la que tiene la acción establecida de terminar.
 - El trabajo de liberación lo hace la función ```do_exit()``` definida en ```<linux/kernel/exit.c>```.
 
-### Actuación de ```do_exit()```:
+#### Actuación de ```do_exit()```:
 
 1. Activa el *flag* ```PF_EXITING``` del ```task_struct``` del proceso.
 2. Para cada recurso que esté utilizando el proceso, se decrementa el contador correspondiente que indica el número de procesos que lo está utilizando.
@@ -341,7 +340,7 @@ fork() → clone() → do_fork() → copy_process()
 
 Puesto que este es el último código que ejecuta un proceso, ```do_exit()``` nunca retorna.
 
-## Planificación de la *CPU* en Linux.
+### Planificación de la *CPU* en Linux.
 
 - Planificación modular: clases de planificación,
    1. Planificación de tiempo real.
@@ -370,20 +369,37 @@ Políticas manejadas por el planificador de tiempo real - `rt_sched_class`:
 
 Siempre se cumple que el proceso que está en ejecución es el más prioritario. El rango de valores para `static_prio` es [0,139], donde [0,99] suelen ser prioridades para procesos de tiempo real y [100,139] prioridades para los procesos normales o regulares.
 
-## El planificador periódico
+### El planificador periódico
 
 Se implementa en `scheduler_tick`, función llamada automáticamente por el kernel con frecuencia constante. Sus tareas principales son actualizar las estadísticas del kernel y activar el método de planificación periódico de la clase de planificación a que corresponde el proceso actual. Si hay que replanificar, el planificador de la clase concreta acttivará el flag `TIF_NEED_RESCHED` asociado al proceso en su `thread_info`, y provocará que se llame al planificador principal.
 
-## El planificador principal
+### El planificador principal
 
 Este planificador se implementa en la función `schedule`, invocada de forma explícita, cuando un proceso se bloquea o termina, en diversos puntos del kernel para tomar decisiones sobre asignación de la CPU.
 
 El kernel chequea el flag `TIF_NEED_RESCHED` del proceso actual al volver al espacio de usuario desde modo kernel y si está activo se invoca al schedule.
 
-## Actuación del `schedule`
+### Actuación del `schedule`
 
 1. El `schedule`, determina la actual `runqueue` y establece el puntero `prev` a la `task_struct` del proceso actual.
 2. Actualiza estadísticas y limpia el flag `TIF_NEED_RESCHED`.
 3. Si el proceso actual estaba en un estado `TASK_INTERRUPTIBLE` y ha recibido la señal que esperaba, se establece su estado a `TASK_RUNNING`.
 4. Llama a `pick_next_task` de la clase de planificación del proceso actual para que se seleccione el siguiente proceso a ejecutar, se establece `next` con el puntero a la `task_struct` de dicho proceso.
 5. Si hay cambio en la asignación de CPU, se realiza el cambio de contexto llamando a `contex_switch`.
+
+
+### Clase de planificación CFS
+
+Con esto se pretende repartir el tiempo de CPU para garantizar que todos los procesos se ejecutarán y asignarles un tiempo de CPU que dependa del número de procesos. Para cada proceso, el kernel calcula un peso: cuanto mayor sea la prioridad estática de un proceso, menor peso tendrá.
+* *vruntime* de una entidad es el tiempo virtual que un proceso ha consumido (se calcula con el tiempo de uso de CPU, prioridad y peso). Su valor se actualiza periódicamente, cuando llega un nuevo proceso o si se bloquea el proceso actual. Al elegir un proceso a ejecutar, se usa el que tenga menor vruntime y para ello CFS utiliza un red black tree (TDA que almacena nodos identificados por una clave para eficiente búsqueda).
+
+* Si un proceso va a bloquearse se añade a una cola asociada con la fuente del bloqueo y se establece su estado a TASK_INTERRUPTIBLE o TASK_NONINTERRUPTIBLE según convenga. Se elimina del rbtree de procesos ejecutables y se llama a schedule para que elija un proceso a ejecutar.
+* Si un proceso vuelve del estado bloqueado, se cambia su estado a ejecutable (TASK_RUNNING), se elimina de la cola de bloqueo y se añade al rbtree de procesos ejecutables.
+
+### Clase de planificación de tiempo real
+
+Es una clase definida como *rt_sched_class*. Los procesos de tiempo real son más prioritarios que los normales. Los de tiempo real quedan determinados por la prioridad que tienen al crearse, nos e modifica. Gracias a la planificación de tiempo real *SCHED_RR* y *SCHED_FIFO* Linux puede ser un sistema de tiempo real no estricto (*soft real-time*). Al crear un proceso tamibén se especifica la política de planificación, existe una llamada al sistema para cambiar la política asignada.
+
+### Particularidades en SMP
+
+En un entorno multiprocesador, el kernel debe repartir la carga bien entre las CPUs, tener en cuenta la afinidad tarea-cpu y ser capaz de migrar procesos entre CPUs. Periódicamente, el kernel debe comprobar si la carga está en equilibrio.
