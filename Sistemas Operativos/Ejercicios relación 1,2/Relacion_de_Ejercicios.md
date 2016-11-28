@@ -1,12 +1,12 @@
-# RELACION DE EJERCICIOS TEMAS 1 Y 2
+# RELACIÓN DE EJERCICIOS TEMAS 1 Y 2
 
 #### 1. Cuestiones sobre procesos, y asignación de CPU:
 
   * ***¿Es necesario que lo último que haga todo proceso antes de finalizar sea una llamada al sistema para finalizar? ¿Sigue siendo esto cierto en sistemas monoprogramados?***
 
-    Si es necesario, puesto que al finalizar un proceso, este debe informar al SO de que su ejecución ha acabado con el fin de que libere el espacio reservado y el PCB de dicho proceso para posteriormente llamar a otro proceso en estado preparado.
+    Sí, es necesario, puesto que al finalizar un proceso, este debe informar al SO de que su ejecución ha acabado con el fin de que libere el espacio reservado y el PCB de dicho proceso para posteriormente llamar a otro proceso en estado preparado.
 
-    Y en sistemas monoprogramados tambien es necesario puesto que igualmente (y con mas razón) el SO necesita conocer cuando termina el proceso para liberar su espacio de memoria e introducir un nuevo proceso en espera.
+    Y en sistemas monoprogramados tambien es necesario puesto que igualmente (y con mas razón) el SO necesita conocer cuándo termina el proceso para liberar su espacio de memoria e introducir un nuevo proceso en espera.
 
   * ***Cuando un proceso se bloquea, ¿deberá encargarse él directamente de cambiar el valor de su estado en el descriptor de proceso o PCB?***
 
@@ -117,7 +117,7 @@ Pero te siempre va a aumentando para cada proceso que se aleje más del primer p
 | D |   |   |   |   |   |   |   |   |   |   |  x |  x |  x |    |    |
 | E |   |   |   |   |   |   |   |   |   |   |    |    |    |  x |  x |
 
-  * Tiempo medio de respuesta: 12/5 = 2'4
+  * Tiempo medio de respuesta: 27/5 = 5'4
 
   A = 5 + 1 = 6
 
@@ -129,12 +129,12 @@ Pero te siempre va a aumentando para cada proceso que se aleje más del primer p
 
   E = 1 + 2 = 3
 
-  * Tiempo medio de espera: 27/5 = 5'4
+  * Tiempo medio de espera: 12/5 = 2'4
   A = 9 - 4 = 5
 
   B = 0
 
-  C = 5 - 1 =4
+  C = 5 - 1 = 4
 
   D = 10 - 8 = 2
 
