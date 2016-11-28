@@ -167,15 +167,15 @@ Este sistema penaliza a todos los procesos de la misma forma. Y las ráfagas muy
 
 * **Colas múltiples con realimentación**. Los procesos se pueden mover entre colas, pero requiere que definamos el número de colas, qué algoritmo de planificación hay en cada cola,un método para saber cuándo hay que cambiar un proceso de cola, otro para determinar en qué cola se introducirá un proceso y un algorimo de planificación entre colas. Sin embargo, mide el tiempo de ejecución del comportamiento real de los procesos. Es la más general, se usa en Unix, Linux, Windows...
 
-Tabla comparativa de los cuatro primeros:
+Tabla comparativa de los primeros:
 
-|               | Apropiativo/no  apropiativo | Tiempo respuesta                                            | Efecto en procesos                   | Inanición | Otros                           |
+|               | Apropiativo/ No  apropiativo | Tiempo respuesta                                            | Efecto en procesos                   | Inanición | Otros                           |
 |---------------|-----------------------------|-------------------------------------------------------------|--------------------------------------|-----------|---------------------------------|
 | FCFS          | No apropiativo              | Alto si hay mucha diferencia entre los tiempos de ejecución | Penaliza procesos cortos y con E/S   | No        | Estado listo pasa a preparados  |
 | SJF           | No apropiativo              | Buen tiempo para procesos cortos. Discrimina los largos     | Penaliza procesos largos             | Posible   | En caso de igualdad se usa FCFS |
 | SRTF          | Apropiativo                 | Buen tiempo excepto procesos muy largos                     | Penaliza procesos largos             | Posible   |                                 |
 | Por prioridad | Puede ser ambas             |                                                             | No se ejecutan los de prioridad baja | Sí        |                                 |
-| Round Robin   | Apropiativo                 | Buen tiempo para procesos cortos                            | Equitativo                           | No        | Expulsión basada en quantum     |
+| Round Robin   | Apropiativo                 | Penaliza a los procesos cortos si su quantum es muy grande  | Equitativo                           | No        | Expulsión basada en quantum     |
 
 
 ### Planificación en multiprocesadores
