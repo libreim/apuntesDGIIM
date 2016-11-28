@@ -134,7 +134,7 @@ El Despachador se activa cuando:
 
 Se pretende obtener buen rendimiento y servicio. Para saber si un proceso tiene un buen servicio definimos para un proceso P con tiempo de ráfaga(~quantum) t:
 
-a) Tiempo de Espera(T): tiempo desde que se remite una solicitud hasta que se produce la respuesta
+a) Tiempo de respuesta(T): tiempo desde que se remite una solicitud hasta que se produce la respuesta
 
 b) Tiempo de espera(M): tiempo que ha estado un proceso en cola de preparados (T-t)
 
@@ -167,6 +167,16 @@ Este sistema penaliza a todos los procesos de la misma forma. Y las ráfagas muy
 
 * **Colas múltiples con realimentación**. Los procesos se pueden mover entre colas, pero requiere que definamos el número de colas, qué algoritmo de planificación hay en cada cola,un método para saber cuándo hay que cambiar un proceso de cola, otro para determinar en qué cola se introducirá un proceso y un algorimo de planificación entre colas. Sin embargo, mide el tiempo de ejecución del comportamiento real de los procesos. Es la más general, se usa en Unix, Linux, Windows...
 
+Tabla comparativa de los cuatro primeros:
+
+|               | Apropiativo/no  apropiativo | Tiempo respuesta                                            | Efecto en procesos                   | Inanición | Otros                           |
+|---------------|-----------------------------|-------------------------------------------------------------|--------------------------------------|-----------|---------------------------------|
+| FSFC          | No apropiativo              | Alto si hay mucha diferencia entre los tiempos de ejecución | Penaliza procesos cortos y con E/S   | No        | Estado listo pasa a preparados  |
+| SJF           | No apropiativo              | Buen tiempo para procesos cortos. Discrimina los largos     | Penaliza procesos largos             | Posible   | En caso de igualdad se usa FCFS |
+| SRTF          | Apropiativo                 | Buen tiempo excepto procesos muy largos                     | Penaliza procesos largos             | Posible   |                                 |
+| Por prioridad | Puede ser ambas             |                                                             | No se ejecutan los de prioridad baja | Sí        |                                 |
+| Round Robin   | Apropiativo                 | Buen tiempo para procesos cortos                            | Equitativo                           | No        | Expulsión basada en quantum     |
+
 
 ### Planificación en multiprocesadores
 
@@ -185,7 +195,7 @@ Se estudian tres aspectos relacionados: Asignación de procesos a procesadores(C
    d) Planificación dinámica: La aplicación permite que varíe dinámicamente el número de hilos de un proceso y el SO ajusta la carga para usar mejor los procesadores.
 
 
-* Planificación de sistemas de tiempo real. 
+* Planificación de sistemas de tiempo real.
 Se enfoca según cuándo el sistema realice un análisis de viabilidad de la planificación (si puede atender a todos los eventos en su tiempo), si se realiza estática o dinámicamente o si el resultado del análisis produce un plan de planificación o no.
 Se utilizan enfoques estáticos dirigidos por una tabla(planificación que determina cuándo empezará cada tarea), estáticos expulsivos dirigidos por prioridad (sólo da prioridad a las tareas, no genera una planificación), enfoques dinámicos basados en plan(determina la viabilidad en tiempo de ejecución y se acepta si se pueden satisfacer sus restricciones de tiempo) y enfoques dinámicos de menor esfuerzo(sin análisis de viabilidad, se intenta cumplir los plazos y si no se cumple se aborta el proceso).
 
@@ -206,7 +216,7 @@ En ambos, la menos prioritaria vuelve a tener el valor de prioridad que tenía c
 Nos basamos en el kernel 2.6 de Linux.
 
 1. El núcleo identifica a los procesos por su PID
-2. En Linux, proceso es la entidad que se crea con la llamada al sistema *fork* (excepto el proceso 0) y clone.
+2. En Linux, proceso es la entidad que se crea con la llamada al sistema *fork* (excepto el proceso 0) y *clone*.
 3. Procesos especiales que existen durante la vida del sistema; Proceso 0 (creado "a mano" cuando arranca el sistema, crea al proceso 1), Proceso 1 (Init, antecesor de cualquier proceso del sistema).
 
 ## Linux: estructura task.
@@ -218,7 +228,7 @@ Cada elemento es un descriptor de un proceso (PCB) definido en </include/linux/s
 struct task_struct { /// del kernel 2.6.24
  volatile long state; /* -1 unrunnable, 0 runnable, >0 stopped */
  /*...*/
-/* Informacion para planificacion */
+/* Información para planificación */
  int prio, static_prio, normal_prio;
  struct list_head run_list;
  const struct sched_class *sched_class;
@@ -236,7 +246,7 @@ struct task_struct { /// del kernel 2.6.24
  struct task_struct *parent; /* parent process */
  struct list_head children; /* list of my children */
  struct list_head sibling; /* linkage in my parent's children list */
-/* Informacion para planificacion y señales */
+/* Información para planificación y señales */
  unsigned int rt_priority;
  sigset_t blocked, real_blocked;
  sigset_t saved_sigmask; /* To be restored with TIF_RESTORE_SIGMASK */
@@ -247,58 +257,59 @@ struct task_struct { /// del kernel 2.6.24
 
 La variable state de task_estruct especifica el estado actual de un proceso.
 
-1. **Ejecucion** (TASK_RUNNING): Se corresponde con dos: ejecutándose o preparado para ejecutarse (en la cola de procesos preparados).
-2. **Interrumpible** (TASK_INTERRUPTIBLE): El proceso está bloqueado y sale de este estado cuando ocurre el suceso por el cual está bloqueado o porque le llegue una señal.
-3. **No interrumpible** (TASK_UNINTERRUPTIBLE): El proceso está bloqueado y sólo cambia´ra de estado cuando ocurra el suceso que esta esperando (no acepta señales).
+1. **Ejecución** (TASK_RUNNING): Se corresponde con dos: ejecutándose o preparado para ejecutarse (en la cola de procesos preparados).
+2. **Interrumpible** (TASK_INTERRUPTIBLE): El proceso está bloqueado, sale de este estado cuando ocurre el suceso por el cual está bloqueado o porque le llegue una señal.
+3. **No interrumpible** (TASK_UNINTERRUPTIBLE): El proceso está bloqueado y sólo cambiará de estado cuando ocurra el suceso que esta esperando (no acepta señales).
 4. **Parado** (TASK_STOPPED): El proceso ha sido detenido y sólo puede reanudarse por la acción de otro proceso (por ejemplo, proceso parado mientras está siendo depurado).
 5. (TASK TRACED): El proceso está siendo traceado por otro proceso.
 6. **Zombie** (EXIT_ZOMBIE): El proceso ya no existe pero mantiene la entrada de la tabla de procesos hasta que el padre haga un wait (EXIT_DEAD).
 
-# Modelo de procesos/hilos en Linux
+## Modelo de procesos/hilos en Linux
 
 ![Diagrama de estados]{diagrama.png}
 
-# El árbol de procesos.
+## El árbol de procesos.
 
 Cada *task_struct* tiene un puntero:
 
 1. A la *task_struct* de su padre: struct task_struct \*parent
 2. A una lista de hijos (llamada children): struct list_head children
-3. A una lista de hermanos (llamada sibling): struct list_head sibling 
+3. A una lista de hermanos (llamada sibling): struct list_head sibling
 
 ![Arbol de procesos]{diagrama2.png}
 
-# Implementación de hilos en Linux 
+## Implementación de hilos en Linux
 
-Desde el punto de vista del kernel no hay distincion entre hebra y proceso. Linux implementa el concepto de hebra como un proceso sin mas, que simplemente comparte recursos con otros procesos.
+Desde el punto de vista del kernel no hay distinción entre hebra y proceso. Linux implementa el concepto de hebra como un proceso sin ms, que simplemente comparte recursos con otros procesos.
 Cada hebra tiene su propia *task_struct*.
 La llamada al sistema *clone* crea un nuevo proceso o hebra.
-```c 
+
+```c
 #include <sched.h>
  int clone (int (*fn) (void *), void *child_stack, int flags, void *arg);
 ```
 
-# Hebras Kernel
+## Hebras Kernel
 
-Aveces es util que el kernel realice operaciones en segundo plano, para lo cual se crean hebras kernel.
+A veces es útil que el kernel realice operaciones en segundo plano, para lo cual se crean hebras kernel.
 Las hebras kernel no tienen un espacio de direcciones (su puntero mm es NULL).
-Se ehecutan únicamente en el espacio del kernel.
+Se ejecutan únicamente en el espacio del kernel.
 Son planificadas y pueden ser expropiadas.
-Se crean por el kernel al levantar el sistema, mediante una llamada a clone().
+Los crea el kernel al levantar el sistema, mediante una llamada a *clone()*.
 Terminan cuando realizan una operacion do_exit o cuando otra parte del kernel provoca su finalización.
 
-# Creación de procesos.
+## Creación de procesos.
 
-```c 
-fork() → clone() → do_fork() → copy_process() 
+```c
+fork() → clone() → do_fork() → copy_process()
 ```
 
 * Actuación de *copy_process*:
 
-1. Crea la estructura *thread_info (pila Kernel)* y la *task_struct* para el nuevo proceso con los valores de la tarea actual.
+1. Crea la estructura *thread_info* (pila Kernel) y la *task_struct* para el nuevo proceso con los valores de la tarea actual.
 2. Para los elementos de *task_struct* del hijo que deban tener valores distintos a los del padre, se les dan los valores iniciales correctos.
 3. Se establece el estado del hijo a *TASK_UNINTERRUPTINLE* mientras se realizan las restantes acciones.
-4. Se establecen valores adecuados para los *flags* de la ```task_struct``` del hijo: 
+4. Se establecen valores adecuados para los *flags* de la `task_struct` del hijo:
    - *flag* ```PF_SUPERPRIV = 0``` (la tarea no usa privilegio de superusuario).
    - *flag* ```PF_FORKNOEXEC = 1``` (el proceso ha hecho *fork* pero no *exec*).
 5. Se llama a ```alloc_pid()``` para asignar un PID a la nueva tarea.
@@ -306,7 +317,7 @@ fork() → clone() → do_fork() → copy_process()
 7. Se establece el estado del hijo a ```TASK_RUNNING```.
 8. Finalmente ```copy_process()```termina devolviendo un puntero a la ```task_struct``` del hijo.
 
-# Terminación de un proceso.
+## Terminación de un proceso.
 
 - Cuando un proceso termina, el *kernel* libera todos sus recursos y notifica al padre su terminación.
 - Normalmente un proceso termina cuando:
@@ -316,7 +327,7 @@ fork() → clone() → do_fork() → copy_process()
    2. Recibe una señal ante la que tiene la acción establecida de terminar.
 - El trabajo de liberación lo hace la función ```do_exit()``` definida en ```<linux/kernel/exit.c>```.
 
-## Actuación de ```do_exit()```:
+### Actuación de ```do_exit()```:
 
 1. Activa el *flag* ```PF_EXITING``` del ```task_struct``` del proceso.
 2. Para cada recurso que esté utilizando el proceso, se decrementa el contador correspondiente que indica el número de procesos que lo está utilizando.
@@ -330,7 +341,7 @@ fork() → clone() → do_fork() → copy_process()
 
 Puesto que este es el último código que ejecuta un proceso, ```do_exit()``` nunca retorna.
 
-# Planificación de la *CPU* en Linux.
+## Planificación de la *CPU* en Linux.
 
 - Planificación modular: clases de planificación,
    1. Planificación de tiempo real.
@@ -341,3 +352,38 @@ Puesto que este es el último código que ejecuta un proceso, ```do_exit()``` nu
 - Cada clase de planificación usa una o varias políticas de planificación para gestionar sus procesos.
 - La planificación no opera únicamente sobre el concepto de proceso, sino que maneja conceptos más amplios en el sentido de manejar grupos de procesos: entidad de planificación.
 - Una entidad de planificación se representa mediante una instancia de la estructura ```sched_entity```.
+
+### Política de planificación
+
+`unsigned int policy;`     //política que se aplica al proceso
+
+El planificador `CFS-fair_sched_class` maneja varias políticas:
+* `SCHED_NORMAL`: se aplica a los procesos normales de tiempo compartido.
+* `SCHED_BATCH`: tareas menos importantes, menor prioridad. Son procesos batch con gran proporción de uso de CPU para cálculos.
+* `SCHED_IDLE`: tareas de tipo idle tienen una prioridad mínima para ser elegidas para asignación de CPU.
+
+Políticas manejadas por el planificador de tiempo real - `rt_sched_class`:
+* SCHED_RR: uso de una política Round-Robin.
+* `SCHED_FIFO`: uso de una política FCFS.
+
+#### Prioridades
+
+Siempre se cumple que el proceso que está en ejecución es el más prioritario. El rango de valores para `static_prio` es [0,139], donde [0,99] suelen ser prioridades para procesos de tiempo real y [100,139] prioridades para los procesos normales o regulares.
+
+## El planificador periódico
+
+Se implementa en `scheduler_tick`, función llamada automáticamente por el kernel con frecuencia constante. Sus tareas principales son actualizar las estadísticas del kernel y activar el método de planificación periódico de la clase de planificación a que corresponde el proceso actual. Si hay que replanificar, el planificador de la clase concreta acttivará el flag `TIF_NEED_RESCHED` asociado al proceso en su `thread_info`, y provocará que se llame al planificador principal.
+
+## El planificador principal
+
+Este planificador se implementa en la función `schedule`, invocada de forma explícita, cuando un proceso se bloquea o termina, en diversos puntos del kernel para tomar decisiones sobre asignación de la CPU.
+
+El kernel chequea el flag `TIF_NEED_RESCHED` del proceso actual al volver al espacio de usuario desde modo kernel y si está activo se invoca al schedule.
+
+## Actuación del `schedule`
+
+1. El `schedule`, determina la actual `runqueue` y establece el puntero `prev` a la `task_struct` del proceso actual.
+2. Actualiza estadísticas y limpia el flag `TIF_NEED_RESCHED`.
+3. Si el proceso actual estaba en un estado `TASK_INTERRUPTIBLE` y ha recibido la señal que esperaba, se establece su estado a `TASK_RUNNING`.
+4. Llama a `pick_next_task` de la clase de planificación del proceso actual para que se seleccione el siguiente proceso a ejecutar, se establece `next` con el puntero a la `task_struct` de dicho proceso.
+5. Si hay cambio en la asignación de CPU, se realiza el cambio de contexto llamando a `contex_switch`.

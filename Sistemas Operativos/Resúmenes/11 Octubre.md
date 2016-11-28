@@ -6,7 +6,7 @@
 
 # Descripción de procesos (Stalling 108-143)
 
-Los SO  se construyen en torno al concepto de proceso. Requisitos:
+Los SO se construyen en torno al concepto de proceso. Requisitos:
 
 * El sistema operativo debe intercalar la ejecución de múltiples procesos, para maximizar la utilización del procesador mientras se proporciona un tiempo de respuesta razonable.
 * El sistema operativo debe reservar recursos para los procesos conforme a una política específica (por ejemplo, ciertas funciones o aplicaciones son de mayor prioridad) mientras que al mismo tiempo evita interbloqueos.
@@ -19,12 +19,12 @@ Una unidad de actividad que se caracteriza por la ejecución de una secuencia de
 
 Mientras el proceso está en ejecución, este proceso se puede caracterizar por una serie de elementos que se almacenan en el ***PCB (“Process Control Blokc”)***, incluyendo los siguientes:
 * **Identificador**. Único asociado al proceso.
-Estado. Si el proceso está actualmente corriendo, está en el estado en ejecución.
-* **Prioridad**: Nivel de prioridad relativo al resto de procesos.
+* **Estado**. Si el proceso está actualmente corriendo, está en el estado en ejecución.
+* **Prioridad**. Nivel de prioridad relativo al resto de procesos.
 * **Contador de programa**. La dirección de la siguiente instrucción del programa que se ejecutará.
 * **Punteros a memoria**. Incluye los punteros al código de programa y los datos asociados a dicho proceso, además de cualquier bloque de memoria compartido con otros procesos.
 * **Datos de contexto**. Estos son datos que están presenten en los registros del procesador cuando el proceso está corriendo.
-* **Información de estado de E/S**. Incluye las peticiones de E/S pendientes, dispositivos de E/S…
+* **Información de estado de E/S**. Incluye las peticiones de E/S pendientes, dispositivos de E/S,...
 * **Información de auditoría**. Puede incluir la cantidad de tiempo de procesador y de tiempo de reloj utilizados, así como los límites de tiempo, registros contables, etc.
 
 ## CREACIÓN Y TERMINACIÓN DE PROCESOS
@@ -84,13 +84,13 @@ El SO debe utilizar las **tablas de E/S** para gestionar los dispositivos de E/S
 
 El sistema operativo si quiere manejar y controlar los procesos debe conocer dónde están localizados los procesos, y los atributos de los procesos que quiere gestionar.
 
-**Localización de los procesos.** Un proceso debe incluir un programa o un conjunto de programas a ejecutar. Asociados con estos programas existen unas posiciones de memoria para los datos de variables locales y globales y de cualquier constante definida. Así, un proceso debe consistir en una cantidad suficiente de memoria para almacenar el programa y datos del mismo. Adicionalmente, la se incluye una pila que se utiliza para registrar las llamadas a procedimientos y los parámetros pasados entre dichos procedimientos.
+**Localización de los procesos.** Un proceso debe incluir un programa o un conjunto de programas a ejecutar. Asociados con estos programas existen unas posiciones de memoria para los datos de variables locales y globales y de cualquier constante definida. Así, un proceso debe consistir en una cantidad suficiente de memoria para almacenar el programa y datos del mismo. Adicionalmente, se incluye una pila utilizada para registrar las llamadas a procedimientos y los parámetros pasados entre dichos procedimientos.
 
 Por último, cada proceso está asociado a un número de atributos que son utilizados por el SO para controlar el proceso. El conjunto de estos atributos es el BCP. Nos podemos referir al conjunto de programa, datos, pila, y atributos, como la imagen del proceso. La posición de la imagen del proceso dependerá del esquema de gestión de memoria que se utilice. En el caso más simple, la imagen del proceso se mantiene como un bloque de memoria contiguo, o continuo. Este bloque se mantiene en memoria secundaria, habitualmente disco. Para que el SO pueda gestionar el proceso, al menos una pequeña porción de su imagen se debe mantener en memoria principal. Para ejecutar el proceso, la imagen completa se debe cargar en memoria principal o al menos en memoria virtual. Asimismo, el SO necesita conocer la posición en disco de cada proceso y, para cada proceso que se encuentre en memoria principal, su posición en dicha memoria.
 
 Los sistemas operativos modernos suponen la existencia de un hardware de **paginación** que permite el uso de la memoria física no contigua, para dar soporte a procesos parcialmente residentes en la memoria principal. En esos casos, una parte de la imagen del proceso se puede encontrar en dicha memoria principal, con las restantes en memoria secundaria. De esta forma, las tablas mantenidas por sistema operativo deben mostrar la localización de cada página de la imagen del proceso. Hay una tabla primaria de procesos con una entrada por cada proceso. Cada entrada contiene, al menos, un puntero a la imagen del proceso. Si la imagen del proceso contiene múltiples bloques, esta información se mantiene directamente en la tabla principal del proceso o bien está disponible por referencias cruzadas entre las entradas de las tablas de memoria.
 
-**Atributos de proceso.** Cualquier sistema operativo multiprogramado de la actualidad requiere una gran cantidad de información para manejar cada proceso. Como quedó explicado, esta información se puede considerar que reside en el ***bloque de control del proceso (BCP).*** Los diferentes sistemas organizarán esta información de formas diferentes. Al final de este capítulo y en el próximo se muestran varios ejemplos. Por ahora, exploraremos simplemente el tipo de información que el SO puede utilizar, sin considerar cualquier detalle de cómo esta información está organizada.
+**Atributos de proceso.** Cualquier sistema operativo multiprogramado de la actualidad requiere una gran cantidad de información para manejar cada proceso. Como quedó explicado, esta información se puede considerar que reside en el ***bloque de control del proceso (BCP).*** Los diferentes sistemas organizarán esta información de formas diferentes. Por ahora, exploraremos simplemente el tipo de información que el SO puede utilizar, sin considerar cualquier detalle de cómo esta información está organizada.
 
 ## TABLA ELEMENTOS DE BCP
 
