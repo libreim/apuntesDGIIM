@@ -1862,4 +1862,178 @@ Además, se define la suma y el producto de $r,r' \in A_b$ de la forma:
 Con estas operaciones, $A_b$ es un anillo.
 \end{nprop}
 
+
+Se comprueba que si $f: A \to B$ es un isomorfismo, entonces:
+
+Si $a \in U(A)$,$\exists a^{-1}: aa^{-1} = 1\implies f(a)f(a^{-1}) = f(1) = 1 \implies f(a) \in U(B)$
+
+Así, surge la aplicación: $f: U(A) \to U(B)$ isomorfismo en la que si $b\in U(B) \implies \exists b^{-1} \in B : bb^{-1} = 1$
+
+
+Pero también:\\
+ $\begin{rcases}
+	\exists a \in A: f(a) = b\\
+	\exists a' \in A: f(a') = b'
+\end{rcases} f(aa') = f(a)f(a') =bb' = 1 \implies aa' = 1 \implies a \in U(A)$
+
+\begin{ndef}[Divisores de Cero]
+	Si a es divisor de cero de $A$, $\exists a'\ne 0 : aa' = 0 \implies f(a)f(a') = 0$ con $f(a') \ne 0 \implies f(a)$ es divisor de cero en $B$
+	
+	Análogamente surge el isomorfismo entre los divisores de cero de dos Anillos A y B:
+	$$f: DivCero(A) \to DivCero(B)$$ Si b es divisor de B y $b=f(a)$ para cierto $a \in A\implies  a \in $ D. Cero de A.
+	
+	$\implies \exists b' \ne 0 : bb' = 0$
+	
+	Luego:
+	
+	Si $b' = f(a)\implies f(a)f(a') =  \implies f(aa') = 0 \implies aa' = 0$ y con $a\ne 0 \implies a$ es divisor de cero de A.
+\end{ndef}
+
+\begin{nprop}
+		Sea A un D.E. con función euclídea $\varphi$ donde hay unicidad en cocientes y restos y si $m\in A: m\ne 0$ y $ \varphi(1) < \varphi(m)$.
+	
+		Consideramos $A_m = \{R_m(a): a \in A\}$ donde, como ya sabemos, $\begin{cases}
+	r+r' = R_m(r+r')\\
+	rr' = R_m(rr')
+\end{cases}$ Veamos que es un homomorfismo.\\
+\begin{proof}
+	$R_m(a+b) = R_m(a) + R_m(b) = R_m(R_m(a)+R_m(b))$ donde la primera suma es en A, la segunda es en $A_m$ y la tercera dentro del paréntesis vuelve a ser en $A$\\
+	$R_m(ab) = R_m(a)R_m(b) = R_m(R_m(a)R_m(b))$ luego el producto también está bien definido.\\
+	Por último: $R_m(1) = 1$ por $\varphi(1) < \varphi(m)$
+\end{proof}
+\end{nprop}
+Además, $Im(R_m) = A_m$ y $Ker(R_m) = (m) = mA = \{mx : x\in A\}$.
+
+También hay un isomorfismo:
+
+\[
+A/(m)  \cong A_m
+\]\[
+[a]\to R_m(a)
+\]\[
+[r] \leftarrow r
+\]
+
+De esta forma, pordemos llevarnos los problemas a otros anillos para facilitar su resolución.
+
+\begin{nprop}
+	\begin{nlist}
+	\item $[a] \in U(A/(m)) \iff (a,m) = 1 $
+	\item $a \in A_m$, entonces $a \in U(A_m) \iff (a,m) = 1$
+	\item Todo elemento de $A/(m)$ es una unidad o divisor de cero
+	\item Todo elemento de $A_m$ es una unidad o divisor de cero
+\end{nlist}
+\end{nprop}
+\begin{proof}
+	Vamos a probar i) y ii). Luego iii) e iv) son consecuencia del isomorfismo entre $A/(m)$ y $A_m$.\\
+	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1mod(m) \iff mcd(a,m) = 1$
+	
+	Sea $a \in A/(m) : a \notin U(A/(m)) \implies mcd(a,m) = d \ne 1$. Ahora, sea $a = da'$ y $m=dm'$
+	Pero m no divide a $m'$ pues en otro caso: $m'=mx \implies m = dmx \implies 1 = dx \implies d \in U(A)$, contradicción.
+	Ahora, tomo $[a][m'] = [am'] = [da'm] = [a'm] = [0]$ por ser un múltiplo de m, así que [a] es divisor de cero.
+\end{proof}
+
+\begin{ncor}
+	En las mismas condiciones:
+	
+	\begin{nlist}
+	\item m es irreducible
+	\item A/(m) ó $(A_m)$ es DI
+	\item A/(m) ó $(A_m)$ es un cuerpo
+\end{nlist}
+\end{ncor}
+\begin{proof}
+	$\boxed{3) \implies 2)}$ Todo cuerpo es un dominio de integridad.\\
+	$\boxed{2) \implies 3}$ Supongamos $[a] \in A/(m) $ si $[a] \ne [0]$ encones a es una unidad.
+	
+	$\boxed{1) \implies 3)}$ Sea $[a] \in A/(m), [a] \ne [0] = 0 \implies m$ no divide a a $\implies (a,m) = 1$ y como m es irreducible, sus únicos divisores son m y 1 salvo asociados. $\implies [a] \in U(A/(m))$
+	
+	$\boxed{2)\implies 1)}$ Supongamos que m no es irreducible $\implies m = ab$ con a y b divisores propios $\implies m$ no divide a a y m no divide a b $\implies [a] \ne 0 $ y $[b] \ne 0$ en $A/(m)$ pero $[a][b] = [ab] = [m] = [0] = 0$ y como [a] y [b] son distintos de cero, $\implies A/(m)$ no es DI por tanto tenemos una contradicción con la hipótesis.
+\end{proof}
+
+
+\section{AQUÍ FALTA CONTENIDO UN POCO UN POCO}
+
+
+\section{Función de Euler.}
+\[
+  \varphi : \mathbb{N}-\{0\} \longrightarrow \mathbb{N}  
+\]
+
+definida de la siguiente forma $\forall n\ge 1$:
+\[
+  \varphi(n) = |\{m\in \mathbb{N} : 1\le m \le n \text{ y } (m,n)=1\}|
+\]
+
+Que es igual al número de números menores que $n$ y primos con él.
+%\vspace{5mm}
+
+\begin{nprop}
+  Si $(m,n) = 1 \implies \varphi(mn) = \varphi(m)\varphi(n)$
+\end{nprop}
+
+Necesitamos algunos resultados para probar esto:
+
+\begin{ndef}[Anillo producto.]
+Si $A$ y $B$ son anillos:
+\[
+  A\times B = \{(a,b) : a\in A, b\in B\}
+\]
+
+Donde se definen:
+\begin{align*}
+  (a_1,b_1)+(a_2,b_2) &= (a_1+a_2, b_1+b_2)\\
+  (a_1,b_1)(a_2,b_2) &= (a_1a_2, b_1b_2)
+\end{align*}
+
+$U(A\times B) = U(A)\times U(B)$
+
+\end{ndef}
+
+\begin{nota} Un anillo producto nunca es un cuerpo.
+  
+\end{nota}
+
+\begin{nth}[Versión clásica del teorema chino del resto.]
+Si $(m,n)=1 \implies \mathbb{Z}_{mn} \cong \mathbb{Z}_m \times \mathbb{Z}_n \iff \mathbb{Z}_{|(mn)} = \mathbb{Z}_{|(m)} \times \mathbb{Z}_{|(n)}$ 
+\end{nth}
+
+\begin{proof}
+\begin{align*}
+f:& \mathbb{Z} \longrightarrow \mathbb{Z}_{|(m)}\times \mathbb{Z}_{|(n)}\text{ es un homomorfismo de anillos.}\\
+& a \longmapsto ([a]_m, [a]_n)
+\end{align*}
+
+Probaremos que es sobreyectivo:\\\\
+$([b]_m,[c]_n)$ ¿$\forall b,c \in \mathbb{Z}\quad \exists a \in \mathbb{Z} : [a]_m = [b]_m \text{ y } [a]_n = [c]_n$?
+
+¿$\forall b,c \in \mathbb{Z}\quad \exists a \in \mathbb{Z} : \begin{cases}
+  a \equiv b mod(m)\\
+  a \equiv c mod(n)
+\end{cases}$?$ \iff b \equiv c mod(m,n) \implies b \equiv_1 c$
+
+Sí es sobreyectiva.
+
+$ker(f) = (mn)$, pues $m$ y $n$ son primos entre sí. Ahora, como $f$ es sobreyectiva, por el teorema de isomorfía tenemos el resultado.
+\end{proof}
+
+\begin{ncor}
+  Si $(m,n) = 1 \implies \varphi(mn) = \varphi(m)\varphi(n)$
+\end{ncor}
+
+\begin{proof}
+  $\varphi(mn) = |U(\mathbb{Z}_{mn})| = |U(\mathbb{Z}_{|m}\times\mathbb{Z}_{|n})| = |U(\mathbb{Z}_{|m}) \times U(\mathbb{Z}_{|n})| = \varphi(m)\varphi(n)$
+\end{proof}
+\begin{nota}
+  Como sabemos (aunque no lo hayamos probado), si $n\in \mathbb{N}, n= p_1^{e_1}\dots p_n^{e_n} \text{ con } p_i \ne p_j,\; p_i\ \text{primo de $\mathbb{Z}$ (irreducible)}$. Así, $\varphi(n) = \varphi(p_1^{e_1})\dots\varphi(p_n^{e_n})$.
+  
+  $\varphi(p^e) = p^e(1-\frac{1}{p}) = p^e-p^{e-1}$
+\end{nota}
+
+
+
+
+
+
+
 \end{document}
