@@ -9,7 +9,7 @@ geometry: margin=1in
 ---
 
 ## Introducción
-### Ejecución del S.O.
+### Ejecución del SO
 
 El sistema operativo se puede ejecutar de dos formas:
 
@@ -91,7 +91,7 @@ El diagrama de estados por lotes es:
 * Cola(s) de bloqueados: Que esperan un suceso o una E/S
 
 
-### Planificador.
+### Planificador
 
 El planificador controla el uso de un recurso. Se encarga de asignar qué procesos van a ser ejecutados para cumplir los objetivos del sistema. Puede ser:
 
@@ -218,7 +218,7 @@ Nos basamos en el kernel 2.6 de Linux.
 2. En Linux, proceso es la entidad que se crea con la llamada al sistema *fork* (excepto el proceso 0) y *clone*.
 3. Procesos especiales que existen durante la vida del sistema; Proceso 0 (creado "a mano" cuando arranca el sistema, crea al proceso 1), Proceso 1 (Init, antecesor de cualquier proceso del sistema).
 
-### Linux: estructura task.
+### Linux: estructura task
 
 El kernel almacena la lista de procesos como una lista circular doblemente enlazada (task list).
 Cada elemento es un descriptor de un proceso (PCB) definido en </include/linux/sched.h>
@@ -267,7 +267,7 @@ La variable state de task_estruct especifica el estado actual de un proceso.
 
 ![Diagrama de estados]{diagrama.png}
 
-## El árbol de procesos.
+## El árbol de procesos
 
 Cada *task_struct* tiene un puntero:
 
@@ -297,7 +297,7 @@ Son planificadas y pueden ser expropiadas.
 Los crea el kernel al levantar el sistema, mediante una llamada a *clone()*.
 Terminan cuando realizan una operacion do_exit o cuando otra parte del kernel provoca su finalización.
 
-## Creación de procesos.
+## Creación de procesos
 
 ```c
 fork() → clone() → do_fork() → copy_process()
@@ -316,7 +316,7 @@ fork() → clone() → do_fork() → copy_process()
 7. Se establece el estado del hijo a ```TASK_RUNNING```.
 8. Finalmente ```copy_process()```termina devolviendo un puntero a la ```task_struct``` del hijo.
 
-### Terminación de un proceso.
+### Terminación de un proceso
 
 - Cuando un proceso termina, el *kernel* libera todos sus recursos y notifica al padre su terminación.
 - Normalmente un proceso termina cuando:
@@ -340,7 +340,7 @@ fork() → clone() → do_fork() → copy_process()
 
 Puesto que este es el último código que ejecuta un proceso, ```do_exit()``` nunca retorna.
 
-### Planificación de la *CPU* en Linux.
+### Planificación de la *CPU* en Linux
 
 - Planificación modular: clases de planificación,
    1. Planificación de tiempo real.
