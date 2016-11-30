@@ -2032,6 +2032,128 @@ $ker(f) = (mn)$, pues $m$ y $n$ son primos entre sí. Ahora, como $f$ es sobreye
 
 
 
+\section{AQUI FALTA MAS CONTENIDO}
+
+\section{Dominio de Factorización Única (DFU)}
+
+Un Dominio de Integridad A es llamado un DFU si $\forall a \in A, a\ne 0$ y $a\notin U(A)$, entonces $\exists$ irreducibles $q_1 ,...,q_r \in A : a = q_1 ...q_r$ tales que la factorización es esencialmente única en el sentido de que si $q_1' ,...,q_s' \in A $ con $q_j$ irreducible $\implies r = s$ y $\exists \sigma:\{1,...,r\} \cong \{1,...,r\}$ una permutación tal que si $q_i'$ es asociado con $q_{\sigma(1)}$
+
+\begin{ndef}[Conjunto representativo de los irreducibles de A]
+	Si A es un DFU, vamos a denotar $\mathcal{P}= $ un conjunto de representativos de los irreducibles de A. Entonces, $\forall p \in \mathcal{P}$ con p irreducible, entonces $\forall p, q \in \mathcal{P}$ no son asociados entre sí y $\forall p $ irreducible de A $ \exists q \in \mathcal{P} : p \sim q$   
+
+\end{ndef}
+
+Supongamos ahora que estamos en un DFU y hemos seleccionado un conjunto $\mathcal{P}$.
+
+Si tenemos un $a\in A, a \notin U(A), a \ne 0$ entonces por definición existirán $q_1 ,...,q_r \in A $ irreducibles tales que $a = q_1 ,...,q_r $. Entonces, $\forall i = 1,...,r \exists p_1,...,p_r \in \mathcal{P} : q_i = u_ip_i $ con $u_i \in U(A)$. Así, a se puede expresar como: $a = (u_1...u_r)p_1...p_r$ pero todos los $u_i$ son unidades del anillo, luego $\exists p_1,...,p_r \in \mathcal{P} $ y$ u \in U(A) : a = u(p_1...p_r)$. Esta descomposición es esencialmente única pero de forma más fuerte que antes. Además, es única salvo orden de escritura de los $p_i$
+
+\begin{ejemplo}
+	En $\ent$ el $-6$ se puede escribir como $(-1)*2*3$ ó como $(-1)*3*2$
+\end{ejemplo}
+
+Estos $p_i$ pueden repetirse, así que si agrupamos en términos obtenemos:
+
+$\forall a \in A, a \ne 0 \exists p_1,...,p_s \in \mathcal{P}$ con $p_i \ne p_j$, $e_1,...,e_s \in \ent$ y $ u \in U(A) : a = u(p_1^{e_1}...p_s^{e^s})$
+
+
+\begin{ndef}[]
+	Si $p\in \mathcal{P}$ y $a \in A, a \ne 0$ denotamos $e(p,a)$ como:
+	\begin{nlist}
+	\item exponente con que p aparece en la factorización de a, si aparece. $e(p_i,a) = e_i \quad i = 1,...,s$
+	\item 0 en otro caso. $e(p,a) = 0 \quad \forall p \notin \{p_1,...,p_r\}$
+
+\end{nlist}
+	
+	Vamos a asumir a partir de ahora que $a^0  = 1 $ en cualquier anillo. Así, podemos ver que:
+	
+	$$ a \in A, \quad a = u(\prod _{p \in \mathcal{P}}p^{e(p,a)})$$
+\end{ndef}
+
+\textbf{Propiedades:}
+\begin{nlist}
+	\item $e(p,ab) = e(p,a) + e(p,b)$.\\
+	
+	\begin{proof}
+	
+	Con el a anterior y $b= v(\prod _{p \in \mathcal{P}}p^{e(p,b)})$. Entonces $ab = uv(\prod _{p \in \mathcal{P}}p^{e(p,a)+ e(p,b)})$
+\end{proof}
+
+\item $a,c \ne 0$ y $a/c \iff \forall p \in \mathcal{P}, \quad e(p,a) \leq e(p,c)$\\
+
+\begin{proof}
+	$\boxed{\Rightarrow} \quad \exists b: c =ab \implies \forall p \in \mathcal{P}, \quad e(p,c) \leq e(p,ab) = e(p,a)+e(p,b) \geq e(p,a) $
+	
+	$\boxed{\Leftarrow} $ ¿Existe un b tal que $ab= c$? 
+	
+	Si c es: $c = v(\prod _{p \in \mathcal{P}}p^{e(p,b)})$
+	
+	Si tomamos $b = (u^{-1}v)(\prod _{p \in \mathcal{P}}p^{e(p,c) - e(p,a)}) $ Y multiplicamos por a por c, obtenemos b.
+\end{proof}
+\end{nlist}
+
+\begin{nprop}
+En cualquier DFU existen mcd y mcm de cualesquiera elementos. Así:
+
+\[
+\forall a,b \ne 0 \quad (a,b) = (\prod _{p \in \mathcal{P}}p^{min\{e(p,a),e(p,b)\}})
+\]
+\[
+[a,b] = (\prod _{p \in \mathcal{P}}p^{max\{e(p,a),e(p,b)\}})
+\]
+	
+\end{nprop}
+\begin{proof}
+	Probaremos el caso del mcd, el caso de mcd se hace de la misma forma.\\
+	Vamos a llamar $d=(a,b)$. $d$ divide a $a$ porque $e(p,d) = min \{e(p,a), e(p,b)\}$ y por tanto a $b$ también. Ahora, si tenemos un divisor común cualquiera , digamos $c \implies c/a$  y $c/b \implies e(p,c) \leq e(p,a),e(p,b) \implies e(p,c) \leq e(p,d) \implies c/d$ luego $d$ es el máximo común divisor.
+\end{proof}
+
+\begin{ndef}[Elemento Primo]
+	Si $A$ es un D.I. un elemento $p\in A , p \notin U(A), p \ne 0$ es llamado "primo" si se verifica la siguiente propiedad:
+	
+	Si p no divide a un elemento a ni a un elemento b $\implies $ p no divide a su producto.\\
+	Equivalentemente: si $p/ab \implies p/a$ o $p/b$  
+	
+\end{ndef}
+
+\begin{nprop}
+\begin{nlist}
+	\item Todo primo es irreducible
+	\item Si A es un DFU, entonces todo irreducible es primo.
+\end{nlist}
+\end{nprop}
+\begin{proof}
+	\begin{nlist}
+	\item Sea $p$ un elemento primo. Supongamos que $p=ab$, producto de dos elementos, bastaría ver que uno de ellos es un asociado solo. Ahora, como $p/p \implies p/ab \implies  p/a $ o $p/b \implies a \sim p$ o $b \sim p \implies $
+	
+	\item $p \in \mathcal{P}$, veamos que p es primo.
+	
+Supongamos que $p/ab$. Veamos que p divide a $a$ o a $b$. 
+Si $p/ab\implies e(p,ab) \geq 1$ pero sabemos que $e(p,ab) = e(p,a)+e(p,b) \implies e(p,a) \geq 1$ o $e(p,b) \geq 1$. Si ocurre lo primero, $p/a$ y si ocurre lo segundo $p/b$ luego si p divide a un producto, entonces p divide a uno de los dos elementos del producto.
+\end{nlist}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
