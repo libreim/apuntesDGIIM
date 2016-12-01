@@ -102,6 +102,7 @@
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage[hidelinks]{hyperref}
+\usepackage{float}
 
 
 %---------------------------------------------------------------------------
@@ -468,6 +469,37 @@ Luego una solución particular de nuestro problema es 4. Además, es la óptima 
 
 Ahora, las soluciones vendrán dadas por $4+k*5$ en $\ent_{20}$, luego son $\{4,9,14,19\}$.
 
+\underline{\textbf{2) 19x = 42 en el anillo $\ent_{50}$.}}
+
+Para empezar, tiene solución si y solo si $(19,50)=1$ divide a $42$, como resulta evidente a simple vista y lo que nos indica también que nuestro problema tiene exactamente una solución. Como de buenas a primeras no se ve ningún método de simplificación factible para llegar hasta nuestra solución y como estamos en un Dominio de Ideales Principales(DIP) podemos usar la Identidad de Bezout halllada apartir del Algoritmo de Euclides.
+
+\begin{figure}[H]
+\label{my-label}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{r} & \textbf{u} & \textbf{v} \\ \hline
+50         & 1          & 0          \\ \hline
+19         & 0          & 1          \\ \hline
+12         & 1         & -2          \\ \hline
+7          & -1         & 3          \\ \hline
+5          & 2          & -5         \\ \hline
+2          & -3         & 8          \\ \hline
+1          & 8          & -21        \\ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+Explicaremos en este caso como se obtienen los coeficientes de Bezout para el resto $7$ dejando claro que los demás restos se sacarán de forma recusirva utilizando el mismo método. Al dividir $19$ entre $12$ tenemos que:
+\[
+19=12(+1)+7 \implies 7=19(+1)+12(-1) \implies 7=19(+1)+(50(+1)+19(-2))(-1)\implies 7=50(-1)+19(+3)
+\]
+
+Podríamos decir, como $1=50(8)+18(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$. Sin embargo, este argumento es inválido puesto que $(42,50)=2(21,50)=2\ne1$. 
+En este caso, por suerte, la congruencia de $(42,50)=2$ es una de los restos hallados con el Algoritmo de Euclides por lo que sí podemos hacer el siguiente argumento:
+\[
+2=50(-3)+19(8) \implies 19(8)\equiv 2 mod(50) \stackrel{(21,50)=1}{\implies} 19(8+21)\equiv 42 mod(50)
+\]
+Luego, la conclusión es que $x=8*21=168\equiv_{50} 18$.
 
 \underline{\textbf{4) $5^{30}$ x = 2 en $\ent_7$ }}
 
