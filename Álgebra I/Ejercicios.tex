@@ -490,9 +490,10 @@ Para empezar, tiene solución si y solo si $(19,50)=1$ divide a $42$, como resul
 \end{center}
 \end{figure}
 Explicaremos en este caso como se obtienen los coeficientes de Bezout para el resto $7$ dejando claro que los demás restos se sacarán de forma recusirva utilizando el mismo método. Al dividir $19$ entre $12$ tenemos que:
-\[
-19=12(+1)+7 \implies 7=19(+1)+12(-1) \implies 7=19(+1)+(50(+1)+19(-2))(-1)\implies 7=50(-1)+19(+3)
-\]
+\begin{align*}
+19=12(+1)+7 \implies 7=19(+1)&+12(-1) \implies 7=19(+1)+(50(+1)+19(-2))(-1)\implies \\
+&\implies 7=50(-1)+19(+3)
+\end{align*}
 
 Podríamos decir, como $1=50(8)+18(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$. Sin embargo, este argumento es inválido puesto que $(42,50)=2(21,50)=2\ne1$. 
 En este caso, por suerte, la congruencia de $(42,50)=2$ es una de los restos hallados con el Algoritmo de Euclides por lo que sí podemos hacer el siguiente argumento:
