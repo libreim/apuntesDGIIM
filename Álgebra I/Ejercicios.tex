@@ -296,7 +296,7 @@
 
 
 
-\section*{Ejercicio 1.1 de la relación 3 - Comprobar si dos números son congruentes.}
+\section{Ejercicio 1 de la relación 3 - Comprobar si dos números son congruentes.}
 
 
 \textbf{Enunciado:}\textbf{ Discutir, usando congruencias, la validez de las siguientes afirmaciones:}
@@ -383,4 +383,137 @@ Vamos ver si : $a_n a_{n-1}...a_1a_0 \iff a_1 a_0 \equiv_4 0$.
 El número vendrá dado: $a_n*10^{n}+ a_{n-1}*10^{n-1} + ... + a_1 * 10 + a_0$.
 
 Pero, tomando todas la demás cifras menos las dos últimas, su suma es congruente con 0 módulo 4, luego  basta ver si los dos últimos es congruente con 0 módulo 4, pero eso es el enunciado, luego queda probado.
+
+
+\newpage
+\section{Ejercicio 6 de la relación 3.}
+
+\textbf{Enunciado: Antonio, Pepe y Juan son tres campesinos que principalmente se
+dedican al cultivo de la aceituna. Este año la producción de los olivos de
+Antonio fue tres veces la de los de Juan y la de Pepe cinco veces la de los
+de Juan. Los molinos a los que estos campesinos llevan la aceituna, usan
+recipientes de 25 litros el de Juan, 7 litros el de Antonio y 16 litros el de
+Pepe. Al envasar el aceite producido por los olivos de Juan sobraron 21
+litros, al envasar el producido por Antonio sobraron 3 litros y al envasar el
+producido por Pepe sobraron 11 litros. Sabiendo que la producción de Juan
+está entre 1000 y 2000 litros ¿cual fue la producción de cada uno de ellos?.}
+
+Vamos a plantear primero el problema: Vamos a llamar:
+\begin{enumerate}
+	\item A = 3J; P = 5J
+	\item La capacidad es: J = 25, A = 7 y P = 16.
+	\item Sobran: J = 21, A = 3, y P = 11.
+\end{enumerate}
+
+Así, el sistema a plantear es:
+
+\begin{itemize}
+	\item $J \equiv 21 mod(25)$
+	\item $A \equiv 3 mod(7) \equiv 3J$
+	\item $P \equiv 11 mod(16) \equiv 5J$
+\end{itemize}
+
+Por lo que el sistema resultante es
+
+\[
+\begin{rcases}
+	x \equiv 21 mod(25)\\
+	3x \equiv 3 mod(7)\\
+	5x \equiv 11 mod(16)
+\end{rcases}
+\]
+
+Tenemos que hacer transformaciones hasta llegar a dejar la $x$ sola en cada una de las ecuaciones en congruencia. Si las hacemos, la transformación es:
+
+
+
+\[
+\begin{rcases}
+	x \equiv 21 mod(25)\\
+	3x \equiv 3 mod(7)\\
+	5x \equiv 11 mod(16)
+\end{rcases} \implies \begin{cases}
+	 x \equiv 21 mod(25)\\
+	 x \equiv 1 mod(7)\\
+	 x \equiv 15 mod(16)
+\end{cases}
+\]
+Y este es el sistema final a resolver. Para ello, resolvemos dos primero y luego resolvemos esos dos con el siguiente. Resolvemos el de las dos primeras:
+
+Vemos que la primera ecuación es : $x = 21+y*25$ lo quenos lleva a la congruencia: $21 +y*25 \equiv 1 mod(7) \implies 4y \equiv 1 mod(7) \implies y \equiv 2 mod(7)$ por tanto la solución óptima es $y_0 = 2$ y ahora si $y=2$, eso implica que (volviendo a la x que habíamos despejado) $x_0 = 21+50 = 71$ y si volvemos a expresarlo como congruencias nos queda $x \equiv 71 mod(175)$. 
+
+Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
+\[
+\begin{cases}
+	x \equiv 71 mod(175)\\
+	x \equiv 15 mod(16)
+\end{cases}
+\]
+
+
+
+\section{ Ejercicio 1 de la relación 4.}
+
+\textbf{Enunciado:Resuelve las ecuaciones siguientes en los anillos que se indican:}
+
+\underline{\textbf{1) 12x = 8 en el anillo $\ent_{20}$ .}}
+
+Lo primero es comprobar si tiene solución. Para ello, tenemos que ver si $(20,12) = 4(5,3) = 4$ divide a 8, que sabemos que sí.
+
+Ahora, planteamos la ecuación en congruencias:
+	\[
+	12x \equiv 8 mod(20) \implies 3x \equiv 2 mod(5) \implies x \equiv 4 mod(5)
+	\]
+Luego una solución particular de nuestro problema es 4. Además, es la óptima pues $R_{20}(4) = 4$.
+
+Ahora, las soluciones vendrán dadas por $4+k*5$ en $\ent_{20}$, luego son $\{4,9,14,19\}$.
+
+
+\underline{\textbf{4) $5^{30}$ x = 2 en $\ent_7$ }}
+
+Podemos despejar un poco la ecuación viendo que:
+
+\[
+5^{30} \equiv_7 -2^{30} = 2^{30}
+\]
+
+Ahora, como 2 y 7 son primos entre sí, usamos la función $\varphi $ de Euler y vemos: $2^{\varphi(7)} = 2^6 \equiv_7 1$
+
+Luego resulta que $2^{30}\equiv_7 2^6 \equiv_7 1$
+
+Por lo que $x_0 = 2$ y la solución es $x=2$
+
+\section{Ejercicio 2 de la relación 4}
+
+Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:
+
+1) $\ent_{125}$
+
+Para ello, basta calcular $|U(\ent_{125})| = \varphi(125) = 125 *(1-1/5) = 100$, luego como tiene 100 unidades, tiene 25 divisores de cero.
+
+2) $\ent_{1000}$
+
+Volvemos a hacer lo mismo, $\varphi(1000) = 1000*(1-1/2)*(1-1/5) = 400$ y por tanto hay 600 divisores de cero.
+
+
+\section{Ejercicio 2 (parte 2 ) de la relación 4}
+
+\textbf{Enunciado: Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
+
+%Si $f(x)$ no es irreducible $\exists x-a : x-a/f \implies f(a) = 0$
+
+Vamos primero a describir los polinomios que hay:
+\[
+\mathcal{F}_9 =\ent_3[x]_{x^2+1}= \{0,1,2,x,x+1,x+2,2x,2x+1,2x+2\}
+\]
+Por tanto, este anillo tiene 9 polinomios:
+
+\underline{\textbf{1) Argumentar que $\mathcal{F}_9$ es un cuerpo}}
+
+Para ello, tenemos que ver si $x^2+1$ es un irreducible en $\ent_3[x]$. Vemos si tiene raíces, dándole los valores 0, 1 y 2 y vemos que en ningún caso el resultado es cero, por tanto es irreducible por la afirmación: Si $f(x)$ no es irreducible $\exists x-a : x-a/f \implies f(a) = 0$
+
+Entonces, $\mathcal{F}_9$ es un cuerpo.
+
+
+
 \end{document}
