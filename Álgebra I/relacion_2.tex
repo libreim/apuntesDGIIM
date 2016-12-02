@@ -1,0 +1,447 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Relación 2 de ejercicios de la asignatura Álgebra I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% Colaboradores:
+% Miguel Lentisco (@AlfaOmegaX)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) y Mario Román (@M42) por
+% las plantillas base.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%------------------------------------------------------------------------------
+%   ACKNOWLEDGMENTS
+%------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla básica de Latex en Español.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+%
+% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
+% estilo moderno pero serio.
+%
+% La plantilla se encuentra adaptada al español.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Plantilla de Trabajo
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% al castellano y a las necesidades de escribir informática y matemáticas.
+%
+% Editada por: Mario Román
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+
+
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Números enteros: \ent
+\providecommand{\ent}{\mathbb{Z}}
+
+% Números racionales: \rac
+\providecommand{\rac}{\mathbb{Q}}
+
+% Números naturales: \nat
+\providecommand{\nat}{\mathbb{N}}
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
+}
+
+% Texto de la cabecera.
+\lhead{\subject}  % Izquierda.
+\chead{}            % Centro.
+\rhead{\docauthor}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem*{ndef}{Definición}
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+
+
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Relación 2 - Álgebra I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\Large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+
+\section{Ejercicio 1}
+
+Ejercicio 1: Calcular las soluciones enteras positivas de la ecuación diofántica $ 138x + 30y = 12150 $.
+
+Tenemos la siguiente ecuación: $$ 138x + 30y = 12150 $$ Para resolverla deberemos calcular los coeficientes de Bezout, para ello realizamos la siguiente tabla:
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+Ésta es nuestra tabla inicial: ¿cómo la hemos hecho? \\
+Bien, tenemos una ecuación con 2 incógnitas y por tanto 2 coeficientes asociados a cada incógnita. En la tabla inicial ponemos el primer coeficiente con mayor norma (en este caso, con los enteros, es el que tiene mayor valor absoluto - el 138 en este ejercicio), y el menor en la segunda fila. A continuación ponemos como podemos ver en la tabla, en la primera fila (1 0) y en la segunda (0 1). Esto siempre es fijo.
+
+Vamos ahora con el siguiente paso: tenemos que dividir el primer coeficiente entre el segundo y el resto lo pondremos debajo de los coeficientes, es decir:
+
+$ 138 = 30 \cdot 4 + 18 $ \\
+El resto es 18 por lo que la tabla sería:
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+Ahora, ¿qué ponemos en los huecos a la izquierda? Muy facil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
+
+- Para el primero: $ -4 \cdot 0 + 1 = 0 + 1 = 1 $ \\
+- Para el segundo: $ -4 \cdot 1 + 0 = -4 $ \\
+
+Por lo que nos queda la siguiente tabla:
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+El proceso se ha de repetir hasta que obtengamos en las sucesivas divisiones resto 0. Ahora hacemos la
+división de 30 entre 18:
+
+$ 30 = 18 \cdot 1 + 12 $
+
+Con coeficientes: \\
+- Primero: $ -1 \cdot 1 + 0 = -1 + 0 = -1 $ \\
+- Segundo: $ -1 \cdot -4 + 1 = 4 + 1 = 5 $ \\
+
+La tabla ahora sería:
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5
+\end{tabular}
+\end{center}
+\end{table}
+
+Repetimos:
+
+$ 18 = 12 \cdot 1 + 6 $
+
+Con coeficientes: \\
+- Primero: $ -1 \cdot -1 + 1 = 1 + 1 = 2 $ \\
+- Segundo: $ -1 \cdot 5 + -4 = -5 + -4 = -9 $ \\
+
+La tabla ahora es:
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5 \\
+\hline
+6 & 2 & -9 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+Seguimos dividiendo:
+
+$ 12 = 6 \cdot 2 $
+
+Hemos llegado al resto 0, entonces paramos (no hace falta calcular aquí los coeficientes), por lo que
+nuestra tabla final es la siguiente:
+
+\begin{table}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5 \\
+\hline
+6 & 2 & -9 \\
+\hline
+0
+\end{tabular}
+\end{center}
+\end{table}
+
+Nota: los dos últimos coeficientes son los llamados coeficientes de Bezout (2 y -9)
+
+El siguiente paso que debemos tomar a continuación es ver si la ecuación tiene soluciones, ¿cómo lo sabemos? Pues cogemos el número anterior del 0, en nuestro caso es el 6 (qué es el máximo común divisor de  los coeficientes originales de nuestra ecuación) y si divide al término independiente también, entonces la ecuación tiene soluciones enteras.
+
+Dividimos todo entre 6:
+$$ 23x + 5y = 20250 $$
+Podemos ver que 20250 sigue siendo entero, luego la ecuación tiene soluciones enteras. Ahora veamos como
+obtener todas las soluciones posibles.
+
+Siempre se utiliza el siguiente esquema, primero va la incógnita con el primer coeficiente que se ha puesto en la tabla, nosotros hemos puesto el 138, luego va primero la "x". Entonces:
+
+$$ x = c' \cdot u + b' \cdot k $$
+
+Donde c' es el término independiente una vez se haya dividido por el mcd, en este caso (20250), u es el último coeficiente correspondiente (izquierda para el primero, derecha para el segundo), en este caso (2), b es el coeficiente de la otra incógnita una vez dividida ya por el mcd, es decir, tiene que ser el coeficiente de la y (5); finalmente, la k es un parámetro que puede ser cualquier valor del anillo (en este caso entero).
+
+Para el segundo coeficiente se hace lo mismo solo que con una ligera variación:
+
+$$ y = c' \cdot v - a' \cdot k $$
+
+Se hace lo mismo pero en vez de sumar con el coeficiente contrario, resta, es la única diferencia y hay que tener cuidado con no confundirnos en esto.
+
+Dicho esto, obtenemos nuestras ecuaciones generales:
+
+$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
+$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
+
+Ahora bien, aun no hemos acabado: nos piden las soluciones enteras POSITIVAS. Luego x e y tienen que ser mayor que 0, simplemente veamos las inecuaciones:
+
+$$ x > 0 \implies 40500 + 5k > 0 \implies -8100 < k$$
+$$ y > 0 \implies -182250 - 23k > 0 \implies -7923,91... > k \implies -7923 > k $$
+
+Entonces tenemos que las soluciones enteras positivas de la ecuación que nos daban son:
+$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
+$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
+$$ k \in \{ t \in \mathbb{Z} : -8100 < t < 7923 \} $$
+\end{document}
