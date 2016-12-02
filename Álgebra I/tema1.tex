@@ -1058,17 +1058,6 @@ $$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$
 	$\forall a,b \in \ent, b \neq 0, \exists !q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < |b|$
 \end{nth}
 
-\begin{ncor}
-$\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
-\[
-\varphi(a) \begin{cases}
-	a  \quad \textup{si } a \ge 0\\
-	-a \quad \textup{si } a < 0
-	
-\end{cases}\]
-\end{ncor}
-
-\ \\\\Pasamos a demostrar el teorema de Euclídes.
 
 \begin{proof}
 Probaremos primero la unicidad. Supongamos 
@@ -1089,24 +1078,24 @@ $$ r-r' = \abs{b}\abs{q' -q} \geq \abs{b}$$
 
 Por lo que tenemos una contradicción con el comienzo de la suposición.
 
-	\item Ahora, si $r=r'\implies b(q' -q) = 0$ y $b\neq 0 \implies q' -q=0 \implies q' -q$
+	\item Ahora, si $r=r'\implies b(q' -q) = 0$ y $b\neq 0 \implies q' -q=0 \implies q' =q$
 \end{itemize}
 
 Probamos ahora la existencia. Sean $a,b \geq 0$
 
 \begin{itemize}
-	\item Si $ a < b \implies a = 0*b + a$, luego $q=0$ y $r=a$, ya los tenemos
+	\item Si $ a < b \implies a = b*0 + a$, luego $q=0$ y $r=a$, ya los tenemos.
 	\item Si $a \geq b$, llamamos $R=\{a-bx: x\in \nat \quad a \geq bx\}\subseteq \nat$ que es no vacío, pues está al menos $x=1$.
 	
 	Ahora, por el Principio de buena ordenación, $R$ tiene mínimo. Tomo $r=min(R)$. 
 	
-$r=a+bq$ para cierto $q \in \nat$ y $ r \geq 0$
+$r=a+bq$ para cierto $q \in \nat$ y $ r \geq 0$.
 
 Veremos ahora que $r < b$, llegando a una contradicción.
 
 Supongamos $ r \geq b\implies r' = r-b \geq 0 \implies r' = a-bq -b = a -b(q+1)\implies r' \in R$.
 
-Podemos ver que $r' < r$ (pues $r'=r-b$) $\implies $ está en $R$ y es menor que el mínimo, luego es una contradicción y tenemos que $r < b$
+Podemos ver que $r' < r$ (pues $r'=r-b$) $\implies  r'$ está en $R$ y es menor que el mínimo, luego es una contradicción y tenemos que $r < b$
 
 \end{itemize}
 Por último, vamos a probar que $0 \leq r < \abs{b}$
@@ -1131,6 +1120,16 @@ Ahora, supongamos $r > 0$:
 De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
+\begin{ncor}
+$\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
+\[
+\varphi(a) \begin{cases}
+	a  \quad \textup{si } a \ge 0\\
+	-a \quad \textup{si } a < 0
+	
+\end{cases}\]
+\end{ncor}
+
 \begin{nth}
 		$\forall f,g \in A[x]$ donde $g \neq 0 $ y su coeficiente líder es una unidad de $A$, existen polinomios:
 	
@@ -1138,6 +1137,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	q,r \in A[x] : f = gq + r \quad con \quad
 	 \begin{cases}
 		r = 0\\
+		o\\
 		gr(r) < gr(g)
 	\end{cases}
 	\]
@@ -1172,12 +1172,12 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	
 	Consideramos $x^{n-m}g(x)$ y establecemos $f_1 = f - \frac{a_n}{b_m}x^{n-m}g$. Recordaremos esto como $(1)$.
 	
-	Entonces, podemos ver que $gr(f_1) < n$. Por hipótesis te inducción $\implies \exists q,r \in A[x] : f_1 = gq_1 + r$, que consideraremos como (2).
+	Entonces, podemos ver que $gr(f_1) < n$. Por hipótesis de inducción $\implies \exists q,r \in A[x] : f_1 = gq_1 + r$, que consideraremos como (2).
 	
 	Ahora, utilizando (1) y (2):
 	
 	 \[
-	 \implies f = f_1 +\frac{a_n}{b_m}x^{n-m}g = gq_1 + \frac{a_n}{b_m}x^{n-m}g\frac{a_n}{b_m}x^{n-m} +r = 
+	 \implies f = f_1 +\frac{a_n}{b_m}x^{n-m}g = gq_1 + \frac{a_n}{b_m}x^{n-m}g +r = 
 	 \]
 	 
 	 \[
@@ -1200,7 +1200,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	\quad
 	\]
 	
-	Ahora, si $r\neq r'\implies r-r' \neq 0 \implies r-r' = g(q-q') \neq 0$
+	Ahora, si $r\neq r'\implies r-r' \neq 0 \implies r-r' = g(q-q') \neq 0$.
 	Vemos que $gr(r-r') = gr(g)+ gr(q-q')$.
 	
  Como $q-q' \neq 0 \implies gr(q-q') \geq 0 $ y de esta forma: $gr(g)+ gr(q-q') \geq gr(g) = m$.
@@ -1216,7 +1216,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	Si $K$ es un cuerpo, entonces $K[x]$ es un D.E con función euclídea:
 	
 	\[
-	gr: K[x] \to N
+	gr: K[x]-\{0\} \to \nat
 	\]
 	
 (función que asigna a cada polinomio su grado)
@@ -1228,7 +1228,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 
 
 \begin{nth}
-	Los anillos $Z[\sqrt{n}]$ para $n=2,3,-1,2$ son D.E. con función euclídea:
+	Los anillos $\ent[\sqrt{n}]$ para $n=2,3,-1,2$ son D.E. con función euclídea:
 	\[
 	\varphi: \ent[\sqrt{n}] \to \nat : \varphi(a+b\sqrt{n}) = \abs{N(a+b\sqrt{n})} = \abs{a^2 - nb^2}
 	\]
@@ -1239,7 +1239,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	Probaremos que $\forall \alpha, \beta \in \ent[\sqrt{n}]$ con $\beta \neq 0 \quad \quad \exists q,r \in \ent[\sqrt{n}] : \alpha = \beta q + r$ con $r=0$ ó $\abs{N(r)} < \abs{N(\beta)}$:
 	
 	\begin{itemize}
-	\item Si $\abs{N(\alpha)} < \abs{N(\beta)}$ Basta tomar $\alpha  = 0* \beta + \alpha$
+	\item Si $\abs{N(\alpha)} < \abs{N(\beta)}$ Basta tomar $\alpha  =  \beta * 0 + \alpha$
 	
 	\item Si $\abs{N(\alpha)} \geq \abs{N(\beta)}$ consideramos entonces  $\frac{\alpha}{\beta} \in \rac[\sqrt{n}]$.
 	
@@ -1249,12 +1249,11 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 	
 	Sea $q=q_1+q_2\sqrt{n}$  y $r = \alpha - \beta q$.
 	
-	Tomo $\abs{N(r)} = \abs{N(\alpha - \beta q)} = \abs{N(\beta(\frac{\alpha}{\beta}+ q)} = \abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)}$
+	Tomo $\abs{N(r)} = \abs{N(\alpha - \beta q)} = \abs{N(\beta(\frac{\alpha}{\beta}+ q))} = \abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)}$
 	
 	Queremos probar que: $\abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)} < \abs{N(\beta)}$.
 	
 	Equivalentemente , queremos probar que:
-	
 	\[
 	  \abs{N(\frac{\alpha}{\beta}+ q)} < 1 \implies \abs{N(a_1+a_2\sqrt{n}-q_1 -q_2\sqrt{n})} = \abs{N((a_1-q_1) + (a_2-q_2)\sqrt{n})} = \]
 	  \[
@@ -1268,7 +1267,7 @@ Vamos a probarlo para los casos que habíamos anunciado en el teorema, $n = -1,-
 	
 	\item $n=-2 \implies m = (a_1-q_1)^2 +2(a_2-q_2)^2 \leq 1/4 + 1/2 = 3/4 \implies \abs{m} < 1$
 	
-	\item $n=-2 \implies m = |(a_1-q_1)^2 -2(a_2-q_2)^2 |\implies -1/2 \leq m \leq 1/4 \implies \abs{m} < 1$
+	\item $n=2 \implies m = |(a_1-q_1)^2 -2(a_2-q_2)^2 |\implies -1/2 \leq m \leq 1/4 \implies \abs{m} < 1$
 	
 	\item $n=3 \implies m = |(a_1-q_1)^2 -3(a_2-q_2)^2| \implies -3/4 \leq m \leq 1/4 \implies \abs{m} < 1$
 \end{itemize}
@@ -1279,7 +1278,7 @@ Por lo que queda probado el resultado para esos casos.
 \end{proof}
 
 \begin{ejemplo}
-Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo . Para ello, tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
+Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo $\ent[i]$. Para ello, tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
 
 $$\abs{N(6+10i)}=36+100=136$$
 $$\abs{N(1+2i)}=1+4=5$$
@@ -1325,11 +1324,11 @@ Propiedades:
 
 	\item $(a,b) = (b,a)$
 	
-	\item Si $a \sim a'$ asociados y $b \sim b'$ también, $\implies (a,b) = (a',b')$
+	\item Si $a \sim a'$ asociados y $b \sim b'$ también $\implies (a,b) = (a',b')$
 	
-	\item $(a,b) = a \iff a/b$. En particular, $(a,0) = a \quad , \quad (a,1) = 1 \quad, \quad (a,u) = 1 \iff u \in U(A)$
+	\item $(a,b) = a \iff a/b$. En particular, $(a,0) = a, \quad  \quad (a,1) = 1 \quad, \quad (a,u) = 1 \iff u \in U(A)$
 	
-	\item Si $(a,b) = 1$ , a y b se dicen \underline{primos relativos}
+	\item Si $(a,b) = 1$, a y b se dicen \underline{primos relativos}
 	
 	\item $((a,b),c) = (a,(b,c)) = (a,b,c)$
 	\item $(ac,bc) = c(a,b)$\\
@@ -1379,7 +1378,7 @@ Propiedades:
 	
 	Tenemos que: $1=(a,c)=(a,(ac,bc))=((a,ac),bc)=(a(1,c),bc)=(a,bc)$, por tanto: $1=(a,bc)$
 	
-	$\boxed{\Longleftarrow}$ $1=(a,bc)=(a(1,c),bc)=((a,ac),bc)=(a,(ac,bc))=(a,c(a,b))=(\frac{a}{(a,b)}(a,b),c(a,b)=(a,b)(\frac{a}{(a,b)},c)=1 \implies (a,b)\in U(A)\implies (a,b)=1\implies (a,c)\in U(A)\implies (a,c)=1$
+	$\boxed{\Longleftarrow}$ $1=(a,bc)=(a(1,c),bc)=((a,ac),bc)=(a,(ac,bc))=(a,c(a,b))=(\frac{a}{(a,b)}(a,b),c(a,b))=(a,b)(\frac{a}{(a,b)},c)=1 \implies (a,b)\in U(A)\implies (a,b)=1\implies (a,c)\in U(A)\implies (a,c)=1$
 \end{proof}
 	\item $(a,b)=(a-kb,b)$ $\forall k \in A$
 	\item Si $d/b$, $d/a \iff d/(a-kb)$ \\
@@ -1395,7 +1394,7 @@ En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(
 \end{nota}
 
 \begin{ejemplo}
-Realizamos un ejemplo en el que se puede probar que , usando la Nota anterior, 3 y $)1+\sqrt{5})$ son irreducibles	
+Realizamos un ejemplo en el que se puede probar que, usando la Nota anterior, 3 y $)1+\sqrt{5})$ son irreducibles	
 \end{ejemplo}
 
 
@@ -1410,14 +1409,14 @@ Realizamos un ejemplo en el que se puede probar que , usando la Nota anterior, 3
 \end{ndef}
 
 
-\begin{ndef}[[DIP: Dominio de ideales principales]
+\begin{ndef}[DIP: Dominio de ideales principales]
 	Un DIP es un anillo en el cual todo ideal es principal.
 \end{ndef}
 \begin{nth}
-	Todo dominio euclideo es un dominio de ideales principales: $DE \implies DIP$
+	Todo dominio euclídeo es un dominio de ideales principales: $DE \implies DIP$
 \end{nth}
 \begin{proof}
-	Sea A un DE con función euclidea $\varphi: A-\{ 0 \} \longrightarrow \mathbb{N}$ y $I\subseteq A$ un ideal:
+	Sea A un DE con función euclídea $\varphi: A-\{ 0 \} \longrightarrow \mathbb{N}$ y $I\subseteq A$ un ideal:
 	\begin{itemize}
 		\item Caso $I=\{ 0 \} = (0)= 0A \implies $ trivial
 		\item Consideremos $I\neq \{ 0\}$, $\emptyset \neq \{ \varphi (x): x\in I, x\neq 0\} \subseteq \mathbb{N}$, sea $\varphi (b)$ el mínimo de este conjunto, donde $b\in I, b\neq 0 \implies I=(b)$. Probamos esto con la doble inclusión:
@@ -1458,9 +1457,9 @@ ax +by  = c
 \]
 \begin{nlist}
 	\item Sea $d=(a,b)\implies$ entonces la ecuación tiene solución $\iff d/c$
-	\item Supongamos que tiene solución. Supongamos también que $d= au+bv) \circledast$
+	\item Supongamos que tiene solución. Supongamos también que $d= au+bv \circledast$
 \[
-\frac{a}{d}= a' \quad,\quad \frac{b}{d}=b'\quad,\quad \frac{c}{d}=c'\implies da'x + db'y = dc' \implies d(a'x+b'y)=dc'\]
+\frac{a}{d}= a',\quad \frac{b}{d}=b',\quad \frac{c}{d}=c'\implies da'x + db'y = dc' \implies d(a'x+b'y)=dc'\]
 \[ \implies a'x+b'y = c'
 \]
 Esta ecuación tiene las mismas soluciones que la ecuación diofántica inicial. Llamaremos a esta la ecuación 'reducida'.\\
@@ -1477,17 +1476,17 @@ Si $(x_0,y_0)$ es la solución, entonces la solución general es el conjunto de 
 \begin{proof}[Demostración de iii)]
 
 \[
-a'x + b'y = a'(x_0 +kb') + b'(y_o - kb') = a'x_0 + a'kb' + b'y_0 - a'kb' = 
+a'x + b'y = a'(x_0 +kb') + b'(y_o - ka') = a'x_0 + a'kb' + b'y_0 - a'kb' = 
 \]
 \[
 a'x_0 +b'y_0 = c'
 \]
 
-Suponer ahora que (x,y) es cualquier solución:$\implies a'x +b'y 0  c'$. Por hipótesis: $a'x_0 +b'y_0 = c'$. Si restamos esas dos ecuaciones queda: $a'(x-x_0) +b(y-y_0) = 0 \implies a'(x-x_0) = b(y_0-y)$. Denotamos a esta ecuación como 3.
+Suponer ahora que (x,y) es cualquier solución:$\implies a'x +b'y = c'$. Por hipótesis: $a'x_0 +b'y_0 = c'$. Si restamos esas dos ecuaciones queda: $a'(x-x_0) +b(y-y_0) = 0 \implies a'(x-x_0) = b(y_0-y)$. Denotamos a esta ecuación como 3.
 
-Ahora, $b'/(a'(x-x_0)$ pero $b'$ y $a'$ son primos entre sí, luego $b'/(x-x_0)\implies \quad \exists k \in A : (x-x_0) = kb'$. Llamamos a esta ecuación 1, y además despejando en ella vemos $x = x_0 + kb'$, una solución de x.
+Ahora, $b'/(a'(x-x_0))$ pero $b'$ y $a'$ son primos entre sí, luego $b'/(x-x_0)\implies \quad \exists k \in A : (x-x_0) = kb'$. Llamamos a esta ecuación 1, y además despejando en ella vemos $x = x_0 + kb'$, una solución de x.
 
-Análogamente, podemos ver que $a/(b(y_0-y) \implies a/(y_0-y) \implies \exists h \in A: y_0 -y = a'h \implies y = y_0 - ha'$, solución de y. Llamamos a esa ecuación la 2.
+Análogamente, podemos ver que $a/(b(y_0-y)) \implies a/(y_0-y) \implies \exists h \in A: y_0 -y = a'h \implies y = y_0 - ha'$, solución de y. Llamamos a esa ecuación la 2.
 
 Falta probar que $k = h$, pero sustituyendo las ecuaciones 1 y 2 en 3, vemos que $a'kb'  = b'ha' \implies k = h$
 	
@@ -1523,7 +1522,7 @@ Obteniendo los cocientes de la forma:
 
 r_{n-1} = au_{n-1} + bv_{n-1}\\
 
-r_{n-2} - r_{n-1}q_{n-2} = r_n = a(u_{n-2} - q_{n-2}u_{n-1}) + b(r_{n-2}-q_{n-2}v_{n-1)}\\
+r_{n-2} - r_{n-1}q_{n-2} = r_n = a(u_{n-2} - q_{n-2}u_{n-1}) + b(r_{n-2}-q_{n-2}v_{n-1})\\
 \cdots \\
 
 d = r_m = au + bv
@@ -1542,9 +1541,9 @@ d = r_m = au + bv
 \section{Mínimo común múltiplo. Ecuaciones en congruencias.}
 \begin{ndef}[Mínimo común múltiplo]
 	Sea $a, b \in A =DI \\ m \in A $ es un mínimo común múltiplo de a y b, notando por $m = mcm(a,b) = [a,b]$  \\
-Si s vereifica que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de . Esto implica: 
+Si se verifica que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de $m$. Esto implica: 
 \begin{enumerate}
-\item $a/b \ y \ b/m$
+\item $a/m \ y \ b/m$
 \item Si $a/c$ y $b/c \Rightarrow m/c$ \\
 \end{enumerate}
 
@@ -1552,7 +1551,7 @@ Del mismo modo se define para $[a_1, a_2, ..., a_r],r \in \mathbb{N}$.
 
 \textbf{Propiedades. }
 \begin{nlist}
-\item Si $a~a' \ y \ b~b' \Rightarrow [a,b]=[a',b']$
+\item Si $a\sim a' \ y \ b\sim b' \Rightarrow [a,b]=[a',b']$
 \item $[a,b] = [b,a]$
 \item $[a,0] = 0$
 \item $[a,1] = a$
@@ -1579,13 +1578,13 @@ Del mismo modo se define para $[a_1, a_2, ..., a_r],r \in \mathbb{N}$.
 \begin{proof}
 	Consideramos $aA = (a)$, el ideal principal generado por a. De la misma forma, consideramos $bA = (b)$, el ideal principal generado por b.\\
 	Ahora, tomamos $aA \cap bA \implies$ los números que están simultáneamente en los múltiplos de ambos.
-	Ahora, esto es cerrado para sumas y para productos, pr tanto tambien es un ideal.\\
+	Ahora, esto es cerrado para sumas y para productos, por tanto también es un ideal.\\
 	Por último, por estar en un DIP $\implies$ el ideal es principal y por tanto:\\ $\implies aA\cap bA = mA \implies m = [a,b]$ 
 \end{proof}
 
 
 \begin{nth}
-	Sea A un DI en el cual $\exists(a,b) \forall a,b \in A.$ Entonces, $\exists [a,b] \forall a,b \in A $ y se verifica que: $[a,b](a,b) = ab$
+	Sea A un DI en el cual $\exists(a,b) \quad \forall a,b \in A.$ Entonces, $\exists [a,b] \quad \forall a,b \in A $ y se verifica que: $[a,b](a,b) = ab$
 \end{nth}
 \begin{proof}
 	Sean $0 \ne a,b \in A$. Llamamos $d=(a,b) \implies \begin{cases}
@@ -1598,11 +1597,12 @@ Podemos observar que:
 \[
 m = \frac{ab}{d} = a_1b = ab_1
 \]
-De esta forma, nuestra prueba termina si comprobamos que $m = [a,b]$. Tenemos ya que claramente $a/m \quad y \quad b/m$\\
+De esta forma, nuestra prueba termina si comprobamos que $m = [a,b]$. Tenemos ya que claramente $a/m \quad y \quad b/m$\\.
+
 Sea $m_1 = a/m_1 $ y $b/m_1$, tenemos que probar que $m/m_1$. Para esto, lo que hay que probar es que $(m,m_1) = m$.\\
 Para ello, vamos a llamarlo $k = (m,m_1) \implies k/m$. Llamo $d_1 = \frac{m}{k} \implies m =_{(1)} d_1k$ para un cierto $d_1$. Guardamos la igualdad de $(1)$ para usarla después.\\
 Ahora, lo que bastaría probar es que $d_1 \in U(A)$:\\
-Tenemos que $a/m$ y $a/m_1 \implies a /k \implies k = au$. Podemos hacer lo mismo con b para ver que $k = bv$.\\
+Tenemos que $a/m$ y $a/m_1 \implies a /k \implies k = au$. Podemos hacer lo mismo con b para ver que $k = bv$. Esto ocurre para ciertos $u$ y $v$.\\
 Ahora, usando la igualdad del principio ($m = a_1b = ab_1$) y el $(1)$ podemos ver que $\begin{rcases}
 	m = a_1b = kd_1 = bvd_1 \implies a_1 = vd_1\\
 m = ab_1 = kd_1 = aub_1  \implies  b_1 = ud_1
@@ -1612,18 +1612,18 @@ b = b_1d = ud_1d
 \end{rcases} \implies d_1d/a \quad d_1d/b$
 
 
-$\implies d1_d /d \implies \exists x \in A : d = dd_1 x \implies 1 = d_1 x \implies d_1 \in U(A)$.\\
+$\implies d_1d /d \implies \exists x \in A : d = dd_1 x \implies 1 = d_1 x \implies d_1 \in U(A)$.\\
 $\implies m,k$ son asociados y como k era $mcd(m,m1) \implies$ m también lo es.
 \end{proof}
 
 \subsection{Ecuaciones en Congruencias}
-Sea A un anillo, $I \subset A$ un ideal.$a,b \in A$ son 'congruentes módulo I' si $a-b \in A\\$(Equivalentemente, si $\exists x \in I : a = b+x$). La notaremos:
+Sea A un anillo, $I \subset A$ un ideal. $a,b \in A$ son 'congruentes módulo I' si $a-b \in I\\$(Equivalentemente, si $\exists x \in I : a = b+x$). La notaremos:
 \[
 a \equiv b mod(I) \quad o \quad a \equiv_ I b
 \]
-Otra notación. En un DIP $I(m) = mA$
+Otra notación. En un DIP $I = (m) = mA$
 \[
-a \equiv bmod(A) \to^{notacion} a \equiv b mod(m) ( \iff m/a-b \iff a-b = qm)
+a \equiv bmod(mA) \to^{notacion} a \equiv b mod(m) ( \iff m/a-b \iff a-b = qm)
 \]
 Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.\\
 
@@ -1646,7 +1646,6 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 \begin{proof}
 	$ac \equiv bc mod(mc) \iff mc/(a-b)c \iff^{c\ne 0} m/a-b \iff a\equiv b mod(m)$
 \end{proof}
-	\newpage
 	\item Si $(c,m) = 1$, entonces: $ac\equiv bcmod(m) \iff a \equiv bmod(m)$\\
 	\begin{proof}
 	$ac\equiv bc \implies m/(a-b)c \implies$, como $(c,m) = 1 \implies m/a-b$
@@ -1667,7 +1666,7 @@ Estudiaremos la ecuación $ax \equiv b mod(m)$ (1)
 	
 	\item Si $d = (a,m)$ la ecuación tiene solución $\iff  d/b$\\
 	\begin{proof}
-	(1), tiene solución $\iff \exists x \in A : ax \equiv bmod(m) \iff \exists x \in A : m/ax-b \iff \exists x,y \in A : (ax-b) = my \iff \exists x,y \in A: ax -my  = b$, que es una ecuación diofántica, que sabemos ya que tiene solución $\iff d(a,m) y d/b$
+	(1), tiene solución $\iff \exists x \in A : ax \equiv bmod(m) \iff \exists x \in A : m/ax-b \iff \exists x,y \in A : (ax-b) = my \iff \exists x,y \in A: ax -my  = b$, que es una ecuación diofántica, que sabemos ya que tiene solución $\iff d =(a,m) \ y  \ d/b$
 \end{proof}
 	\item  Supongamos que tiene solución. Consideramos $a'= \frac{a}{d}$, $b'= \frac{b}{d}$ y $m' = \frac{m}{d}$.
 	
@@ -1711,7 +1710,7 @@ Y $x_1$ es una solución parcial óptima. En este caso, la solución general óp
 
 \subsection{Sistemas de Ecuaciones en Congruencias}
 
-En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaciones en contruencias, que sabemos que se puede expresar de la forma:
+En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaciones en congruencias, que sabemos que se puede expresar de la forma:
 
 \[
 \begin{rcases}
@@ -1719,7 +1718,7 @@ En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaci
 	a_2x \equiv b_2 mod(m2)
 \end{rcases}(1) \begin{rcases}
 	x \equiv a mod(m)\\
-	x \equiv b mod(m)
+	x \equiv b mod(n)
 \end{rcases}(2)
 \]
 
@@ -1731,12 +1730,12 @@ En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaci
 	Si tomamos $x = a+km; \quad \exists k: a+km \equiv b mod(n) \iff km \equiv b-a mod(n) \iff d/b-a \iff b\equiv amod(d)$
 \end{proof}
 
-Ahora, supuesto que tiene solución, vamos a halar las soluciones particular y general del problema.\\
+Ahora, supuesto que tiene solución, vamos a hallar las soluciones particular y general del problema.\\
 Si $y_0$ es una solución particular de $my \equiv b-a mod(n)$, entonces su solución general es: $$y = y_0 + k\frac{n}{(m,n)} \quad k \in A$$
 Entonces $x_0 = a + my_0$ es una solución particular del sistema dado en (2) y por tanto la solución general de 2 viene dada por:
 
 \[
-x = am(y_0 +  k\frac{n}{(m,n)}) \quad k \in A
+x = a +m(y_0 +  k\frac{n}{(m,n)}) \quad k \in A
 \]
 \[
  = a+my_0 + k \frac{mn}{(m,n)} = x_0 +k[m,n] \quad k \in A
@@ -2144,7 +2143,7 @@ En cualquier DFU existen mcd y mcm de cualesquiera elementos. Así:
 
 \begin{nprop}
 \begin{nlist}
-	\item Todo primo es irreducible
+	\item Todo primo es irreducible en cualquier anillo A
 	\item Si A es un DFU, entonces todo irreducible es primo.
 \end{nlist}
 \end{nprop}
@@ -2161,8 +2160,83 @@ Si $p/ab\implies e(p,ab) \geq 1$ pero sabemos que $e(p,ab) = e(p,a)+e(p,b) \impl
 
 
 
+\begin{nth}
+	Sea A un D.I. Entonces, son equivalentes:
+	\begin{nlist}
+	\item A es un DFU
+	\item \begin{enumerate}
+	\item Todo elemento no nulo ni unidad de A factoriza como producto de irreducibles
+	\item Todo irreducible de A es primo
+\end{enumerate}
+	\item \begin{enumerate}
+	\item Idem
+	\item $\forall a,b \in A \ , \exists \ mcd(a,b)$
+\end{enumerate}
+\end{nlist}
+\end{nth}
+\begin{proof}
+	Que $1\implies 2$ es trivial. Veamos que $2 \implies 1$
+	
+	Sea $a= p_1...p_r = q_1...q_s$ con $p_i,p_q$ irreducibles. Vamos a ver que $r=s$. Para ello, vamos a hacer una inducción en $r$.
+	
+	\begin{itemize}
+	\item Caso $r=1 \implies p_1 = q_1...q_r$. Ahora, ¿puede ser $s>1$?. Los $q$ no son unidades, pues son irreducibles, por tanto si s fuese mayor que 1 serían los divisores propios de $p_1$ pero eso no puede ocurrir porque $p_1$ es irreducible. No puede ocurrir, por tanto $s=1=r \implies p_1 = q_1$
+	
+	\item Si $r> 1$ y usando la hipótesis de inducción, entonces $s > 1$.
+	
+	Nos fijamos en $p_1$, que es claro que divide a $a\implies p/(q_1...q_s)\implies^{p_1 \ primo} \exists j : p_1 /q_j$ y reordenando podemos suponer que $p_1/q_1$.
+	
+	Esto implica que $p_1 \sim q_1 \implies \exists u \in U(A): q_1 = up_1$. Ahora nos podemos llevar la expresión a la igualdad de a($a= p_1...p_r = q_1...q_s$ ) $\implies p_1...p_r = up_1q_2...q_s $ y podemos reducir dividiendo por $p_1$ y nos queda $p_2...p_r = uq_2...q_s$. 
+	
+	Ahora, usando la hipótesis de inducción, nos queda en cada lado $r-1$ elementos y $s-1$ elementos y por tanto $r-1 =s-1\implies r=s$
+\end{itemize}
 
+Ahora, que $1 \implies 3$ es trivial. Como 1 y 2 son equivalentes, basta probar que $3 \implies 2$
 
+Queremos probar que todo irreducible es primo. Sea $p$ un irreducible. Supongamos que $p$ no divide ni a $a$ ni a $b$. Probaremos que entonces, no divide al producto $ab$
+
+Es fácil ver que $(p,a) = 1$ y que $(p,b) = 1$. Ahora, por la propiedad del mcd que asegura que:
+\[
+(a,b) = 1 \ y \ (a,c) = 1 \iff (a,bc) = 1
+\]
+
+Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$ no divide al produco y así $p$ es primo.
+\end{proof}
+
+	\textbf{Lema previo:} En un DIP, toda cadena ascendente de ideales es estacionaria. En otras palabras, si A es un DIP, $I_1 \subseteq I_2 \subseteq ... \subseteq I_{n}$ es una sucesión de ideales creciente respecto a la inclusión(cada uno está incluido en el siguiente). $\implies \exists m : I_m = I_{m+1} = ... = I_{m+k} \quad k \geq 1$.
+	
+	\begin{proof}[Demostración del lema.]
+	Podemos ver que: 
+	\[
+	I = U_{n\geq 1} I_n = \{a \in A : \exists n \ con \ a \in I_n\} \quad \forall a,b \in I \implies \exists n: a,b \in I_n\]\[ \implies a+b \in I_n \implies a+b \in I
+	\]
+	Por ello, I es un ideal y por estar en un DIP, es principal $\implies \exists a \in A : I = (a) = \{ax : x \in A\}$. Que es no vacío, pues $a \in I$.
+	
+	Si $a\in I$, en particular estará en alguno de los $I_i$ de la unión: $\implies \exists m : a \in I_m \implies (a) \subseteq I_m$, pero  $I = (a) \subseteq I_m \subseteq I_{m+k} \subseteq I \implies I_i = I_j$ para todo $i$ y $j$. 
+	
+\end{proof}
+
+\begin{nth}
+	Todo DIP es un DFU (Lo cual implica que todo DE es un DFU)
+\end{nth}
+\begin{proof}
+	Tenemos que probar que en un DIP todo elemento se puede descomponer como producto de irreducibles. Para ello, vamos a negar la tesis. Supongamos que estamos en un DIP y que en ese anillo existen elementos que no son unidades y no se pueden descomponer como producto de irreducibles.
+	
+	Supongamos que $a$ es un elemento de esa 'clase'. Entonces $\exists  \ a'$ divisor propio de $a$ que también es de esa 'clase de elementos'.
+	
+	Podemos asegurar que $a$ no es un irreducible, pues no admite factorización en irreducibles y si fuera irreducible, él mismo sería una factorización como irreducibles. $\implies \exists b,c : a = bc$ con b y c divisores propios. Entonces, uno de los dos (b ó c) no puede admitir una factorización como producto de irreducibles, pues si no, $a$ admitiría esa factorización. Entonces, llamamos $a'$ a $b$ o a $c$ según sea el que no admita esa factorización.
+	
+	Ahora, vamos a construir una sucesión $\{a_n\} \in A$ con $a_1 = a $. Cada elemento siguiente, es un divisor propio del anterior y es de la 'clase' que establecimos al principio (no es cero, ni una unidad, ni se puede factorizar en producto de irreducibles). Esto implica que $a_{n+1} = a_n'$ y $a_{n+1}$ no es sociado con $a_n$.
+	
+	Si consideramos los ideales principales generados por los elementos de esta sucesión, y podemos ver que (como $a_{n+1}$ es divisor de $a_n$:
+	
+	\[
+	\implies (a_1) \subset (a_2) \subset ... \subset (a_n) \subset (a_{n+1})	\]
+	
+	Y en esta acena no hay igualdades, pues si $(a_n) = (a_{n+1}) \implies a_{n+1} \in (a_n) \implies a_n/ a_{n+1}$ y esto no puede ocurrir.
+	
+	Pero esto contradice el lema que hemos visto anteriormente, por tanto hemos probado así que todos los elementos deben tener una factorización y por tanto estamos en un DFU.
+\end{proof}
 
 
 
