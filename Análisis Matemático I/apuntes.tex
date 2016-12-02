@@ -1081,4 +1081,125 @@ Deducimos que:
 
 Además, $D_vf(x_0) = (D_vf_1(x_0), \dots, D_vf_M(x_0))$.
 
+
+
+
+
+
+
+\section{FALTA MUCHO CONTENIDO}
+
+\begin{nprop}
+	Sea $L$ una aplicación lineal. Entonces L es derivable y $DL(a) = L$
+	
+\end{nprop}
+\begin{proof}
+	
+	Tomaremos:
+	\[
+	lim_{x\to a} \frac{||Lx -La - M(x-a)||}{||x-a||}= 0
+	\]
+	Entonces, tenemos que encontrar : $M: R^n \to R^m$ lineal para que sea derivable. Entonces, podemos tomar $L=M$ y como $L$ es lineal, es trivial que es verdad (por la linealidad de L) y esto implica que $L$ es derivable y $DL(a) = M = L$. 
+\end{proof}
+
+\begin{nprop}
+	Toda aplicación lineal es Lipschitziana. Si es Lipschitziana entonces es continua.
+\end{nprop}
+\begin{proof}
+	Como $L$ es lineal, entonces L es derivable y por tanto continua. Entonces:
+	\[
+	||Lx|| \leq M||x|| \quad \forall x \in R^n	
+	\]
+	\[
+	 ||Lx-Ly|| = ||L(x-y) || \leq M||x-y|| \implies L\ es \ Lipschitziana
+	\]
+\end{proof}
+
+
+\begin{nprop}
+	Si $L:R^n \to R^m$ lineal $\implies L $ es continua y $\exists M \geq 0: ||Lx||_{R^m} \leq M ||x||_{R^n} \quad \forall x \in R^n$
+\end{nprop}
+\begin{proof}
+	Si tomamos $L|_{S(0,1)}$ y vemos que es acotada, entonces podríamos definir: \[M = sup\{Lx : x \in S(0,1)\} \implies ||Lx|| \leq M \quad \forall ||x|| = 1 \implies ||L(x)|| = ||\ ||x||\ L(\frac{x}{||x||}) ||\] donde hemos usado que $L$ es lineal. Y esto implica: \[||\ ||x||\ || L(\frac{x}{||x||})|| || = ||x||\ || L(\frac{x}{||x||}) || \leq M||x|| \quad \forall x \in R^n-\{0\}\]
+\end{proof}
+
+
+\begin{nprop}
+	Si $\begin{rcases}
+	B: R^N x R^n \to R\\
+	Bilineal
+\end{rcases} B \ es \ continua$.
+
+Es más, $\exists M \geq 0 : |B(x,y)| \leq M||x||\||y|| \quad \forall x,y \in R^n$
+	
+	Se deja como ejercicio la demostración. Se debe usar que :
+	
+	\[
+	B(x,y) = ||x||\ ||y|| B(\frac{x}{||x||},\frac{y}{||y||}) 
+	\]
+	
+	Y tomar el $M = sup\{|B(x,y): ||x|| = 1 \ y \ ||y|| = 1\}$ y para ello necesito ver que $S_{R^n}(0,1)xS_{R^n}(0,1)\{(x,y) \in R^nxR^n : ||x|| = 1 \ y \ ||y|| = 1\}$ es compacto.
+	
+	Quién sería en este caso el candidato a $DB(x_0,y_0)(u,v) = D(x_0,v)+B(u,y_0)$.
+	
+\[
+\lim_{(x,y) \to (x_0,y_0)}\frac{|B(x,y) - B(x_0,y_0) - B(x_0,y-y_0) + B(x-x_0,y_0)}{||(x-x_0,y-y_0)||}
+\]
+\[
+\lim_{(x,y) \to (x_0,y_0)}\frac{|B(x,y) - B(x_0,y_0) - B(x_0,y) + B(x_0,y_0) - B(x,y_0) + B(x_0,y_0)|}{||(x-x_0,y-y_0)||}
+\]
+\[
+\lim_{(x,y) \to (x_0,y_0)}\frac{|B(x-x_0,y)- B(x-x_0,y_0)|}{||(x-x_0,y-y_0)||} = \lim_{(x,y) \to (x_0,y_0)}\frac{|B(x-x_0,y-y_0)|}{||(x-x_0,y-y_0)||}
+\]
+
+Y ahora, como $(x,y) \to (x_0,y_0) \implies (x-x_0,y-y_0) \to (0,0)$ y ahora si ponemos $(x-x_0,y-y_0) = (u,v)$
+
+\[
+ \lim_{(u,v) \to (0,0)}\frac{|B(u,v)|}{||(u,v)||} = 0
+\]
+
+Estudiando ese límite por cualquier método, nos saldría 0. Luego, tenemos que intentarlo pasando el problema a coordenadas polares o con algún otro método.
+\end{nprop}
+
+\begin{ejemplo}
+	Sea $f:R^2 \to R$ bilineal con $f(x,y) = xy$.
+	
+	Entonces, en un punto $(x_0,y_0)$:
+	
+	\[
+	\lim_{(x,y) \to (x_0, y_0)} \frac{|x(x,y) - f(x_0,y_0) - L(x-x_0, y-y_0)|}{||(x-x_0,y-y_0||} = 
+	\]
+	\[
+	 =  \lim_{(x,y) \to (x_0,y_0)} \frac{|xy-x_0y_0 - L(x-x_0,y-y_0)}{||(x-x_0,y-y_0||}
+	\]
+	
+	Pero, ¿cuál es esa $L$?. Si tomáramos $L(x-x_0,y-y_0) = y_0(x-x0) - x_0(y-y_0)$ en el numerador nos quedaría $|xy - x_0y_0 - y_0(x-x0) + x_0(y-y_0)| = |xy- x_0y_0 -y_0x -x_0y_0 - x_0y+x_0y_0 |= | (x-x_0)(y-y_0)|$. Y tenemos en el límite que:
+	\[
+	 = \lim_{(x,y) \to (x_0,y_0)} \frac{|(x-x_0)(y-y_0)|}{||(x-x_0,y-y_0))||} = 0
+	\]
+	Así, la derivada $Df(x_0,y_0)(u,v) = x_0v + y_0 u$
+\end{ejemplo}
+
+\begin{ejemplo}
+	Sea $g,f: R^n \to R^m$ derivable en $a \in R^n$. 
+	
+	Construyo $h: R^n \to R$ con $h(x) = < f(x), g(x)>$. Probar que es derivable:
+	
+	$h = B o (f,g)$ con $B(x,y) = <x,y> \quad \forall x,y \in R^n$
+	
+	La derivada de la h es:
+	\[
+	Dh(x_0)(x) = [DB(f(x_0)g(x_0) o D(f,g)(x_0)](x) =\]\[DB(f(x_0),g(x_0))[D(f,g)(x_0)(x)] = DB(f(x_0),g(x_0))*[Jacob(f)](x) = 
+	\]
+	\[
+	= B(f(x_0),[Jacob(g)(x)]) + B([Jacob(f)(x), g(x_0)] = \]
+	\[
+	 = B(f(x_0),Dg(x_0)(x)) + B(Df(x_0)(x),g(x_0)) = 
+	\]
+	\[
+	<f(x_0),Dg(x_0)(x) > + < Df(x_0)(x),g(x_0)>
+	\]
+	
+\end{ejemplo}
+
 \end{document}
