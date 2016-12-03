@@ -653,7 +653,7 @@ Por lo que $x_0 = 2$ y la solución es $x=2$
 
 \subsection{\LARGE{Ejercicio 2}}
 
-Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:
+\textbf{Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:}
 
 1) $\ent_{125}$
 
@@ -679,6 +679,63 @@ $$Recordaremos\ que\ los\ valores\ de\ \lambda\ en\ \varphi(\alpha)\ del\ tipo\ 
 4) $\ent_{1000}$
 
 Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{5}) = $\textbf{400 unidades} y por tanto hay \textbf{600 divisores de cero}.
+
+\subsection{\LARGE{Ejercicio 3}}
+
+\textbf{Enunciado: Determina si la igualdad a = b es cierta en los siguientes casos:}
+
+\textbf{\underline{1) $\mathbf{a = 9^{55^9}\ y\ b = 7^{70^{55}}\ en\ el\ anillo\ \ent_{21} }$}}
+\\\\ 
+Partiremos de que $9^{55^9} = 9^{495}$, pero podemos calcular la función $\varphi$ de euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
+
+Entonces: $\varphi(21) = 21\cdot\frac{2}{3}\cdot\frac{6}{7} = 12$
+
+Y esto quiere decir que $9^{495} \equiv_{21} 9^{495\%12}\equiv_{21}9^3 $
+
+Calculamos este valor:
+
+$9^1\equiv_{21}9$\quad;\quad$9^2\equiv_{21}18$\quad;\quad$\mathbf9^3\equiv_{21}$\textbf{15 = a}
+
+Y ahora hacemos lo propio para b = $7^{70^{55}}$
+\\ b es congruente con $7^{10^{55}}$ (usamos $\varphi(21)$ para esto)
+y $7^{10^{55}}\equiv_{21}7^{550}\equiv_{21}7^{550\%12}\equiv_{21}7^{16}$
+
+Pero $7^1\equiv_{21}7^2\equiv_{21}...\equiv_{21}\mathbf7^{\mathbf{16}}\equiv_{\mathbf{21}}$\textbf{7 = b} $\Rightarrow\ \mathbf{a \neq b}$
+\\\\\\
+\textbf{\underline{2) $\mathbf{a = 2^{5^{70}}\ y\ b = 5^{70^{2}}\ en\ el\ anillo\ \ent_{21} }$}}
+
+Podemos hacer uso de la función $\varphi$ del ejercicio anterior, pues estamos en el mismo anillo, así sólo tenemos que repetir el mismo proceso
+
+$2^{350}\equiv_{21}2^{350\%12}\equiv_{21}\mathbf{2^2\equiv_{21}4 = a}$
+
+Y por su parte para b:
+
+$5^{70^2} \equiv_{21} 5^{140} \equiv_{21} 5^{140\%12} \equiv_{21} \mathbf{5^5 \equiv_{21}17 = b} $
+
+Luego: $\mathbf{a \neq b}$
+\\\\\\
+\textbf{\underline{3) $\mathbf{a = 12{55^{70}}\ y\ b = 10^{70^{55}}\ en\ el\ anillo\ \ent_{21} }$}}
+
+Empezaremos calculando la función $\varphi(22)$ que nos será de utilidad en los siguientes ejercicios:
+
+$\varphi(22) = 22\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{11}) = 10$
+
+$a = 12^{55^{70}}\equiv_{22}12^{5^{70}}\equiv_{22}12^{350}\equiv_{22}\mathbf{12^{10} \equiv_{22}}$\textbf{12 = a}
+
+$b = 10^{70^{55}}\equiv_{22}7^{10^{50}}\equiv_{22}7^{550}\equiv_{22}\mathbf{7^{10}\equiv_{22} 12 = b}$
+
+Por lo tanto \textbf{a = b}.
+
+\textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{21} }$}}
+
+Para a obtenemos que $5^{5^{70}}\cdot11^{5^{70}}\equiv_{22}5^{10} \cdot 11^{10} \equiv_{22} 1 \cdot 11\equiv_{22}\mathbf{11 = a}$
+
+Y por su parte para b:
+
+$10^{70^{22}} \equiv_{22} 10^{10^{22}}\equiv_{22} 10^{220} \equiv_{22}\mathbf{10^{10}\equiv_{22}12=b}$
+
+Y por lo tanto $\mathbf{a \neq b}$
+
 
 
 \subsection{\LARGE{Ejercicio 2(segunda parte de la relacion)}} 
