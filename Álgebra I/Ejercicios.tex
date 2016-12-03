@@ -414,7 +414,7 @@ Como el ejercicio 1, procedemos a calcular el mcd y los coeficientes de Bezout:
 
 \begin{center}
 \begin{tabular}{c|cc}
-126 1 & 0 \\
+126 & 1 & 0 \\
 -46 & 0 & 1 \\
 \hline
 34 & 1 & 2 \\
@@ -480,7 +480,7 @@ Hacemos la tabla:
 
 \begin{center}
 \begin{tabular}{c|cc}
-5 1 & 0 \\
+5 & 1 & 0 \\
 2 & 0 & 1 \\
 \hline
 1 & 1 & -2 \\
@@ -488,6 +488,8 @@ Hacemos la tabla:
 0
 \end{tabular}
 \end{center}
+
+Nota: siempre que nos salga mcd = 1, entonces la ecuación tiene solución.
 
 División: $ 5 = 2 \cdot 2 + 1 $
 
@@ -506,7 +508,283 @@ $$ z \geq 2 \implies -42,6... \leq k \implies k \geq -42 $$
 $$ z \leq 36 \implies -31,3.. \geq k \implies k \leq -32 $$
 
 Luego k estará acotado así:
-$$ k \in \{ x \in \Z : -42 \leq x \leq -37 \} 
+$$ k \in \{ t \in \Z : -42 \leq t \leq -37 \}
+
+\subsection{\LARGE{Ejercicio 4}}
+
+\textbf{Llueve y, en un mercadillo improvisado en Moscú, un paraguas nos cuesta
+190 rublos. Disponemos solo de billetes de 3 rublos, y el vendedor solo de 5 rublos
+¿Podremos hacer la compra-venta? ¿Cómo?}
+
+Asignamos las siguientes variables: \\
+- x \equiv "nº de billetes de 3 rublos (pagados)" \\
+- y \equiv "nº de billetes de 5 rublos (devueltos)" \\
+
+Sabemos que 190 no es un múltiplo de 3, luego no podremos pagar exacto. Entonces sabemos claramente que tendremos que pagar más de
+190 y además que nos dará una vuelta, luego la ecuacion será:
+$$ 3x - 190 = 5y \implies 3x - 5y = 190 $$
+
+Hacemos la tabla (ojo, esta vez la y tiene mayor norma):
+
+\begin{center}
+\begin{tabular}{c|cc}
+-5 & 1 & 0 \\
+3 & 0 & 1 \\
+\hline
+-2 & 1 & -2 \\
+\hline
+1 & 1 & 2 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones: \\
+- $ -5 = 3 \cdot -1 + -2 $ \\
+- $ 3 = -2 \vdot -1 + 1 $ \\
+
+Y las ecuaciones generales:
+$$ y = 190 + 3k $$
+$$ x = 380 + 5k $$
+$$ k \in \Z $$
+
+Acotamos k, sabiendo que tenemos que poner como mínimo el valor del paraguas (64 billetes) y que al menos tienen que devolver un billete:
+$$ x \geq 64 \implies -63,2 \leq k \implies k \geq -63 $$
+$$ y \geq 1 \implies k \geq -63 $$
+
+Luego k estará acotado por:
+$$ k \in \{ t \in \Z : t \geq -63 \} $$
+
+En particular podremos hacer la compra-venta con k = -63, luego las soluciones más pequeñas serían: \\
+- x = 65 (billetes de 3 rublos entregados) \\
+- y = 1 (billetes de 5 rublos devueltos) \\
+
+\subsection{\LARGE{Ejercicio 5}}
+
+\textbf{En una torre eléctrica, se nos ha roto una pata de 4 m de altura. Para
+equilibrarlo provisionalmente, disponemos de 7 discos de madera de 50 cm de grosor
+y de otros 12 de 30 cm. ¿Cuál de las siguientes afirmaciones es verdadera? \\
+ - No podremos equilibrar la torre. \\
+ - Podremos equilibrar la torre, y de una única manera. \\
+ - Podremos equilibrar la torre, y de dos únicas maneras. \\
+ - Podremos equilibrar la torre, y de más de 2 maneras distintas.}
+
+Nombramos las variables: \\
+- x \equiv "nº de discos de 50cm" \\
+- y \equiv "nº de discos de 30cm" \\
+
+Y obtenemos la ecuación:
+$$ 50x + 30y = 400 \implies 5x + 3y = 40 $$
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+5 & 1 & 0 \\
+3 & 0 & 1 \\
+\hline
+2 & 1 & -1 \\
+\hline
+1 & -1 & 2 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: \\
+- $ 5 = 3 \cdot 1 + 2 $ \\
+- $ 3 = 2 \cdot 1 + 1 $ \\
+
+Y obtenemos las ecuaciones generales:
+$$ x = -40 + 3k $$
+$$ y = 80 - 5k $$ 
+$$ k \in \Z $$
+
+Acotamos la k, sabiendo que x e y deben ser positivos o 0; y además solo podemos usar 7 discos de 50cm y 12 de 30cm como máximo:
+$$ x \geq 0 \implies k \geq 13,3... \implies k \geq 14 $$
+$$ x \leq 7 \implies 15,66... \geq k \implies k \leq 15 $$
+$$ y \geq 0 \implies k \leq 16 $$
+$$ y \leq 12 \implies 13,6 \leq k \implies k \geq 14 $$
+
+Luego tenemos que k puede ser 14 o 15, por tanto tenemos dos soluciones:
+
+Primera solución: \\
+- x = 2 (discos de 50cm) \\
+- y = 10 (discos de 30cm) \\
+
+Segunda solución:
+- x = 5 (discos de 50cm) \\
+- y = 5 (discos de 30cm) \\
+
+\subsection{\LARGE{Ejercicio 6}}
+
+\textbf{En el mes pasado, hemos gastado 13 euros y 20 céntimos en 12 llamadas
+telefónicas a Alemania y Francia, y solo nos cobran el establecimiento de llamada.
+En las llamadas a Alemania nos cobran 15 céntimos más que a las de Francia.
+Recordamos que han sido más las llamadas a Francia que a Alemania, pero ¿cuántas
+llamadas hemos hecho a cada sitio y qué nos han cobrado por cada una?}
+
+Nombramos las variables: \\
+- x \equiv "nº de llamadas hechas a Francia" \\
+- y \equiv "nº de llamadas hechas a Alemania" \\
+- z \equiv "coste de una llamada a Francia" \\
+- z + 15 \equiv "coste de una llamada a Alemania" \\
+
+Tenemos las siguientes ecuaciones:
+$$ 1320 = (z + 15)y + xz $$
+$$ 12 = x + y $$
+
+Despejamos x, y sustituimos, obteniendo:
+$$ 1320 = 15y + 12z $$
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+15 & 1 & 0 \\
+12 & 0 & 1 \\
+\hline
+3 & 1 & -1 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: $ 15 = 12 \cdot 1 + 3 $
+
+Ecuación final:
+$$ 5y + 4z = 440 $$
+
+Ecuaciones generales, x se obtiene sustituyendo x:
+$$ y = 440 + 4k $$
+$$ z = -440 - 5k $$
+$$ x = -428 - 4k $$
+$$ k \in \Z $$
+
+Ahora acotamos la k, sabiendo que el coste de llamada debe ser mayor que 0, que las llamadas deben ser positivas y menor que 12. En concreto sabemos que debe haber más llamadas a Francia que a Alemania, luego el nº máximo de llamadas de Alemania debe ser 5, y el nº de llamadas mínimas de Francia 6:
+$$ z < 0 \implies k < -88 $$
+$$ y \geq 1 \implies -109,75 \leq k \implies k \geq -109 $$
+$$ y \leq 5 \implies -108,... \geq k \implies k \leq -109 $$
+$$ x \geq 6 \implies -108,... \geq k \implies k \leq -109 $$
+$$ x \leq 11 \implies -109,... \leq k \implies k \geq -109 $$
+
+Luego tenemos una única solución, k = -109, que nos da: \\
+- x = 8 (llamadas a Francia) \\
+- y = 4 (llamadas a Alemania) \\
+- z = 105 (cent. cuesta una llamada a Francia) \\
+- z + 15 = 120 (cent. cuesta una llamada a Alemania) \\
+
+\subsection{\LARGE{Ejercicio 7}}
+
+\textbf{Una persona va al supermercado y compra 12 cajas de vino, unas de
+blanco y otras de tinto, por 1200 euros. Si el blanco vale 30 euros más por caja que
+el tinto, y ha comprado el mínimo posible de tinto ¿Cu´antas cajas habrá comprado
+de cada uno?}
+
+Nombramos las variables: \\
+- x \equiv "nº de cajas de vino blanco" \\
+- y \equiv "nº de cajas de vino tinto" \\
+- z \equiv "precio por una caja de vinto tinto" \\
+- z + 30 \equiv "precio por una caja de vino blanco" \\
+
+Tenemos de esta manera dos ecuaciones:
+$$ 1200 = (z + 30)x + yz $$
+$$ 12 = x + y $$
+
+Despejando la y de la segunda ecuación y sustituyendo en la primera tenemos:
+$$ 30x + 12z = 1200 $$
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+30 & 1 & 0 \\
+12 & 0 & 1 \\
+\hline
+6 & 1 & -2 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: $ 30 = 12 \cdot 2 + 6 $
+
+La ecuación dividida sería:
+$$ 5x + 2z = 200 $$
+
+Y las ecuaciones generales (y se obtiene sustituyendo por x):
+$$ x = 200 + 12k $$
+$$ z = -400 - 30k $$
+$$ y = -188 - 12k $$
+$$ k \in \Z $$
+
+Acotando la k de manera que el precio de una caja debe ser positivo, al igual que el nº de cajas compradas (y menor que 12 - al menos debemos comprar una caja de cada tipo, y comprar 12 en total):
+$$ z > 0 \implies -13,33... > k \implies k \leq -14 $$
+$$ x \geq 1 \implies -16,... \leq k \implies k \geq -16 $$
+$$ x \leq 11 \implies -15,75 \geq k \implies k \leq -16 $$
+$$ y \geq 1 \implies -15,75 \geq k \implies k \leq -16 $$
+$$ y \leq 11 \implies -16,6 \leq k \implies k \geq -16 $$
+
+En concreto, tenemos que hay una única solución, k vale -16, luego las soluciones serían: \\
+- x = 8 (cajas de vino blanco compradas) \\
+- y = 4 (cajas de vino tinto compradas) \\
+- z = 80 (euros vale cada caja de vino tinto) \\
+- z + 30 = 110 (euros vale cada caja de vino blanco) \\
+
+\subsection{\LARGE{Ejercicio 8}}
+
+\textbf{Un vendedor en el mercado tiene un cesto de manzanas de (muy poco)
+más de mil. Haciendo grupos de 30 sobran 20 y haciendo grupos de 40 sobran 30.
+Hallar el número de manzanas que hay en el cesto.}
+
+Nombramos las siguientes variables: \\
+- x \equiv "nº de grupos de 30 manzanas" \\
+- y \equiv "nº de grupos de 40 manzanas" \\
+- z \equiv "nº de manzanas totales" \\
+
+Tenemos las siguientes ecuaciones:
+$$ z = 30x + 20 $$
+$$ z = 40y + 30 $$
+
+Luego igualando las ecuaciones tenemos:
+$$ 3x - 4y = 1 $$
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+-4 & 1 & 0 \\
+3 & 0 & 1 \\
+\hline
+-1 & 1 & 1 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: $ -4 = 3 \cdot -1 + -1 $
+
+La ecuación final sería:
+$$ -3x + 4y = -1 $$
+
+Y las ecuaciones generales (sustituyendo luego z, por alguna):
+$$ y = -1 - 3k $$
+$$ x = -1 - 4k $$
+$$ z = -10 - 120k $$
+$$ k \in \Z $$
+
+Acotamos x e y (los grupos deben ser positivos y al menos 1), y las manzanas totales (z) más de 1000:
+$$ x \geq 1 \implies -0,5 \geq k \implies k \leq -1 $$
+$$ y \geq 1 \implies -0,33... \geq k \implies k \leq -1 $$
+$$ z > 1000 \implies k < -8,41 \implies k \leq -9 $$
+
+Luego k será:
+$$ k \in \{ t \in \Z : t \leq -9 \}
+
+En concreto, la solución mínima k = -9, tenemos: \\
+- z = 1070 (manzanas en total) \\
+- x = 35 (grupos de 30 manzanas) \\
+- y = 26 (grupos de 40 manzanas) \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
