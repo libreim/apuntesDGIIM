@@ -779,12 +779,83 @@ $$ y \geq 1 \implies -0,33... \geq k \implies k \leq -1 $$
 $$ z > 1000 \implies k < -8,41 \implies k \leq -9 $$
 
 Luego k será:
-$$ k \in \{ t \in \Z : t \leq -9 \}
+$$ k \in \{ t \in \Z : t \leq -9 \} $$
 
 En concreto, la solución mínima k = -9, tenemos: \\
 - z = 1070 (manzanas en total) \\
 - x = 35 (grupos de 30 manzanas) \\
 - y = 26 (grupos de 40 manzanas) \\
+
+\subsection{\LARGE{Ejercicio 15 - 1 en $\Z [\sqrt{n}]$}}
+
+\textbf{En el anillo $\Z [\sqrt{n}]$, calcular \\
+	mcd($2-3\sqrt{-2},1+\sqrt{-2}$), mcm($2-3\sqrt{-2},1+\sqrt{-2}$).\\
+	b) En $\Z [\sqrt{n}]$, calcula mcd($3+\sqrt{3},2$) y mcm($3+\sqrt{3},2$).}
+	
+a) Calcularemos primero el mcd, para ello usaremos el método de la tabla que venimos haciendo
+desde siempre (ver ejercicio 1 de esta relación). Sin embargo, para calcular la norma tendremos
+que multiplicar el número por su conjugado, en general:
+
+$N(a+b\sqrt{n}) = (a+b\sqrt{n}) \cdot (a-b\sqrt{n}) = x^{2} - b^{2}n $
+
+Bien, ahora veamos quien tiene mayor norma: \\
+$ N(2-3\sqrt{-2}) = 4 - 9 \cdot (-2) = 4 + 18 = 22 $ \\
+$ N(1+\sqrt{-2}) = 1 - 1 \cdot (-2) = 3 $ \\
+
+Y hacemos la tabla, pero ¿cómo sacamos el resto y el cociente en $\Z[\sqrt{n}]$? Usemos de ejemplo la división
+que vamos a tener que hacer:
+$$ \frac{2-3\sqrt{-2}}{1+\sqrt{-2}} $$
+Lo que tenemos que hacer es multiplicar por el conjugado del denominador:
+$$ \frac{(2-3\sqrt{-2})(1-\sqrt{-2})}{(1+\sqrt{-2})(1-\sqrt{-2})} = \frac{-4-5\sqrt{-2}}{3} $$
+Hemos llegado a un número del tipo $a+b\sqrt{n}$, ahora tenemos que sacar el cociente. Para hacerlo
+solo debemos sacar la parte entera redondeando, es decir: \\
+$ \frac{-4}{3} = -1,333 \implies a = -1 $ \\
+$ \frac{-5}{3} = -1,666 \implies b = -2 $ \\
+Luego el cociente será: $ c = -1-2\sqrt{-2} $ \\
+Ahora para calcular el resto, sabemos que es el dividendo menos el divisor por el cociente, luego:
+$$ r = 2-3\sqrt{-2} + (1+\sqrt{-2})(-1-2\sqrt{-2}) = -1 $$
+
+Hemos acabado, la tabla sería:
+
+\begin{center}
+\begin{tabular}{c|cc}
+$ 2-3\sqrt{-2} $ & 1 & 0 \\
+$ 1+\sqrt{-2} $ & 0 & 1 \\
+\hline
+-1 & 1 & $ 1+2\sqrt{-2}$ \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Concluimos que el mcd($2-3\sqrt{-2},1+\sqrt{-2}$) = -1, ahora para hallar el mcm simplemente tenemos que: $ mcm(a,b) = \frac{ab}{mdc(a,b)} $. Luego:
+$$ mcm(2-3\sqrt{-2},1+\sqrt{-2}) = \frac{(2-3\sqrt{-2})(1+\sqrt{-2})}{-1} = -8+\sqrt{-2} $$
+
+b) Realizamos el mismo proceso que en a). Calculamos las normas: \\
+$ N(3+\sqrt{3}) = 9 - 3 = 6 $ \\
+$ N(2) = 4 $ \\
+
+La tabla quedaría:
+
+\begin{center}
+\begin{tabular}{c|cc}
+$ 3+\sqrt{3} $ & 1 & 0 \\
+2 & 0 & 1 \\
+\hline
+$ -1-\sqrt{3} $ & 1 & $ -2-\sqrt{3}$ \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+La primera división sería:
+$$ \frac{3+\sqrt{3}}{2} \implies q = 2+\sqrt{3}, r = -1-\sqrt{3} $$
+Y la segunda:
+$$ \frac{2}{-1-\sqrt{3}} = 1-\sqrt{3} \implies q = 1-\sqrt{3}, r = 0 $$
+
+Luego $ mcd(3+\sqrt{3},2) = 1-\sqrt{3} $, y entonces:
+$$ mcm(3+\sqrt{3},2) = \frac{(3+\sqrt{3})(2)}{1-\sqrt{3}} = -2\sqrt{3} $$
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
