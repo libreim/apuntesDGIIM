@@ -1,0 +1,180 @@
+
+\documentclass[13pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3cm]{geometry}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{float}
+
+
+
+
+
+\begin{document}
+\textbf{Ejercicio 4:} Una banda de 13 piratas se reparten N monedas de oro, pero le sobran 8. Dos mueren, las vuelven a repartir y sobran 3. Luego se ahogan 3 y sobran 5. ¿Cuál es la mínima cantidad posible N de monedas?\\
+
+\[
+	\begin{cases}
+	\text{N} \equiv 8\; \text{mod}(13)\\
+	\text{N} \equiv 3\; \text{mod}(11)\\
+	\text{N} \equiv 5\; \text{mod} (8)\\
+	\end{cases}
+\]
+
+Resolvemos el sistema formado por la primera y la tercera ecuación:
+
+N $\equiv$ 8 mod(13) $\rightarrow$ N = 8 + 13 $\cdot$ x
+
+Sustituimos en la tercera ecuación
+
+8 + 13 $\cdot$ x $\equiv$ 5 mod(8) $\rightarrow$ 5 $\cdot$ x $\equiv$ 5 mod(8) $\Rightarrow$ x $\equiv$ 1 mod(8) (Podemos simplificar el 5 por qué $\hspace*{0.5cm}$(5,8) = 1)
+
+$x_{0}$ = 1 $\Rightarrow$ $N_{0}$ 8 + 13 $\cdot$ 1 = 21 (Solución óptima)
+
+N $\equiv$ 21 mod(8 $\cdot$ 13) = 21 mod(104)\\
+
+Ahora, resolvemos el sistema con la ecuación anterior y la segunda del sistema inicial
+
+N $\equiv$ 21 mod(104) $\rightarrow$ 21 + 104 $\cdot$x
+
+21 + 104 $\cdot$ x $\equiv$ 3 mod(11) $\Rightarrow$ 10 + 5 $\cdot$ x $\equiv$ 3 mod(11) $\Rightarrow$ 5 $\cdot$ x $\equiv$ -7 mod(11) $\Rightarrow$ 5 $\cdot$ x $\equiv$ 4 mod(11)\\
+
+\begin{figure}[H]
+\begin{center}
+\caption{mcd}
+\label{my-label}
+\begin{tabular}[(b)]{|c|cc}
+\cline{1-1}
+\textbf{11} & 1                    & 0                    \\ \cline{1-1}
+\textbf{5}  & 0                    & 1                    \\ \cline{1-1}
+\textbf{1}           & 1                    & -2                   \\ \cline{1-1}
+\textbf{0}           & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \cline{1-1}
+\end{tabular}
+\end{center}
+\end{figure}
+
+1 = 1 $\cdot$ 11  + 5 $\cdot$ (-2) $\rightarrow$ 5 $\cdot$ (-2) $\equiv$1 mod(11)
+
+Multiplicamos por 4 y así obtendremos una solución particular
+
+5 $\cdot$ (-8) $\equiv$ 4 mod(11) $\Rightarrow$ $x_{0}$ = -8
+
+Sustituimos y nos queda $N_{0}$ = -811 
+
+N $\equiv$ -811 mod(1144) = 333 mod(1144) (donde 1144 = [11,104])
+
+N = 333 + 1144 $\cdot$ k\\
+
+Solución: La cantidad mínima de monedas sería cunado k vale 0. Entonces el número de monedas $\hspace*{0.5cm}$es 333\\
+
+
+
+\textbf{Ejercicio 6:} Antonio, Pepe y Juan son tres campesinos que principalmente se dedican al cultivo de la aceituna. Este año la producción de los olivos de Antonio fue tres veces la de los de Juan y la de Pepe cinco veces la de los de Juan. Los molinos a los que estos campesinos llevan la aceituna, usan recipientes de 25 litros el de Juan, 7 litros el de Antonio y 16 litros el de Pepe. Al envasar el aceite producido por los olivos de Juan sobraron 21 litros, al envasar el producido por Antonio sobraron 3 litros y al envasar el producido por Pepe sobraron 11 litros. Sabiendo que la producción de Juan está entre 1000 y 2000 litros ¿cual fue la producción de cada uno de ellos?.\\
+
+A $\rightarrow$ producción de Antonio 
+
+P $\rightarrow$ producción de Pepe 
+
+J $\rightarrow$ producción de Juan \\
+
+J  $\equiv$ 21 mod (25) 
+
+A $\equiv$ 3 mod(7) $\Rightarrow$ 3J $\equiv$ 3 mod(7) $\Rightarrow$ J $\equiv$ 1 mod(7) (Aquí podemos simplificar el 3 debido a que es \hspace*{0.5cm}primo con 7)
+
+P $\equiv$ 11 mod (16) $\Rightarrow$ 5J $\equiv$ 11 mod (16) 
+
+
+\begin{figure}[H]
+\begin{center}
+\caption{mcd}
+\label{my-label}
+\begin{tabular}[(b)]{|c|cc}
+\cline{1-1}
+\textbf{16} & 1                    & 0                    \\ \cline{1-1}
+\textbf{5}  & 0                    & 1                    \\ \cline{1-1}
+\textbf{1}           & 1                    & -3                   \\ \cline{1-1}
+\textbf{0}           & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \cline{1-1}
+\end{tabular}
+\end{center}
+\end{figure}
+
+
+1 = 1 $\cdot$1 6 + 5 $\cdot$ (-3) $\Rightarrow$ 5 $\cdot$ (-3) = 1 mod(16) $\rightarrow$ 5 $\cdot$ ((-3) $\cdot$ 11) $\equiv$ 1 mod(16)\\
+\hspace*{0.5cm}J $\equiv$ 15 mod(10)
+\\
+
+Así nos queda e sistema de ecuaciones de congruencia
+\[
+	\begin{cases}
+	\text{J} \equiv 21\; \text{mod}(25)\\
+	\text{J} \equiv 1\; \text{mod}(7)\\
+	\text{J} \equiv 15\; \text{mod}(16)\\
+\end{cases}
+\]
+\\
+
+Resolvemos el sistema formado por las dos primeras ecuaciones
+
+J $\equiv$ 21 mod(25) $\Rightarrow$ J = 21 + 25y
+
+Sustituimos en la segunda ecuación
+
+21 + 25y $\equiv$ 1 mod(7) $\Rightarrow$ 4y $\equiv$ 1 mod(7) $\Rightarrow$ y $\equiv$ 2 mod(7) $\Rightarrow$ $y_{0}$ = 2
+
+$J_{0}$ = 21 + 25 $\cdot$ 2 = 71  (solución óptima)
+
+J $\equiv$ 71 mod(175)  (donde 175 es el mcm entre 7 y 25)
+\\
+
+Resolvemos el sistema formado por la tercera ecuación y el resultado anterior
+
+J = 175y + 71
+
+Sustituimos en la segunda tercera ecuación
+
+175y + 71 $\equiv$ 15 mod(16) $\Rightarrow$ 175y $\equiv$ 56 mod(16) $\Rightarrow$ 15y $\equiv$ 8 mod(16)
+
+
+
+\begin{figure}[H]
+\begin{center}
+\caption{mcd}
+\label{my-label}
+\begin{tabular}[(b)]{|c|cc}
+\cline{1-1}
+\textbf{16} & 1                    & 0                    \\ \cline{1-1}
+\textbf{15}  & 0                    & 1                    \\ \cline{1-1}
+\textbf{1}           & 1                    & -1                   \\ \cline{1-1}
+\textbf{0}           & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \cline{1-1}
+\end{tabular}
+\end{center}
+\end{figure}
+
+1 = 16 + (-1) $\cdot$ 15
+
+1 = 16 + (-1)$\cdot$15 $\Rightarrow$ 15$\cdot$(-1) = 1 mod (16) $\rightarrow$ (-1) $\cdot$ (-1) $\equiv$ 1 mod(16) $\Rightarrow$ 1 $\equiv$ 1 mod(16)
+
+Multiplicamos por 8, el resto, para encontrar una solución particular:
+
+8 $\equiv$ 8 mod(16) $\Rightarrow$ $y_{0}$ = 8
+
+$J_{0}$ = 71 + 8 $\cdot$ 175 = 1471 (solución óptima)
+
+J = 1471 mod(16 $\cdot$ 175)= 1471 mod(2800)
+\\
+
+Los litros de la poducción anuales tienen que estar entre 1000 y 2000
+
+1000 \textless $\;$ 1471 + 2800 $\cdot$ k \textless $\;$ 2000 $\Rightarrow$ $\;$ k = 0
+\\
+
+Solución: La producción anual de los campesinos fue:
+
+Juan = 1471 litros
+
+Antonio = 1471 $\cdot$ 3 = 4413
+
+Pepe = 1471 $\cdot$ 5 = 7355
+
+
+\end{document}
