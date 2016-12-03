@@ -391,6 +391,122 @@ $$ x = 2025 \cdot 2 + 5 \cdot k = 4050 + 5k $$
 $$ y = 2025 \cdot -9 - 23 \cdot k = -18225 - 23k $$
 $$ k \in \{ t \in \mathbb{Z} : -810 < t < 792 \} $$
 
+\subsection{\LARGE{Ejercicio 2}}
+
+\textbf{“Cuarenta y seis náufragos cansados arribaron a una bella isla. Allí
+encontraron ciento veintiséis montones de cocos, de no más de cincuenta cada uno,
+y catorce cocos sueltos, y se los repartieron equitativamente...” (cuento del año
+850 a.c.). ¿Cuántos cocos había en cada montón?}
+
+Tenemos la siguiente información: \\
+- Hay 46 náufragos. \\
+- Hay 126 montones de cocos (en cada montón no hay mas de 50 cocos). \\
+- Hay 14 cocos sueltos. \\
+
+Denotamos: \\
+- x \equiv "nº de cocos que hay en cada montón" \\
+- y \equiv "nº de cocos que le tocan a cada náufrago" \\
+
+Sabemos que se repartieron equitaviamente, luego el número total de cocos que haya dividido entre el número de náufragos debe ser exacto. Esto es, el nº total de cocos (x \cdot 126 + 14) entre el número de náufragos (46) debe dar exacto (y). La ecuación sería:
+$$ 126x + 14 = 46y \implies 126x - 46y = -14 $$
+
+Como el ejercicio 1, procedemos a calcular el mcd y los coeficientes de Bezout:
+
+\begin{center}
+\begin{tabular}{c|cc}
+126 1 & 0 \\
+-46 & 0 & 1 \\
+\hline
+34 & 1 & 2 \\
+\hline
+-12 & 1 & 3 \\
+\hline
+10 & 3 & 8 \\
+\hline
+-2 & 4 & 11 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: \\
+$ 126 = -46 \cdot -2 + 34 $ \\
+$ -46 = 34 \cdot -1 + -12 $ \\
+$ 34 = -12 \cdot -2 + 10 $ \\
+$ -12 = 10 \cdot -1 + -2 $ \\
+
+Veamos facilmente que -14 es divisible entre -2, luego la ecuación tiene soluciones, veamos que tenemos:
+$$ -63x + 23y = 7 $$
+
+Y las siguientes ecuaciones generales:
+$$ x = 28 + 23k $$
+$$ y = 77 + 63k $$
+$$ k \in \Z $$
+
+Ahora acotamos las soluciones, ambas incógnitas deben ser positivas y además x no puede ser más de 50:
+$$ x > 0 \implies 0 < 28 + 23k \implies k > -1,21... \implies k \geq -1 $$
+$$ x \leq 50 \implies 50 \geq 28 + 23k \implies 0,95... > k \implies k \leq 0 $$
+$$ y > 0 \implies 77 + 63k > 0 \implies -1,2... < k \implies k \geq -1 $$
+
+Podemos ver facilmente que o bien k vale 0; o bien, -1. Luego las soluciones son:
+
+Primera solucion: \\
+x = 28 (cocos por montón) \\
+y = 77 (cocos a cada náufrago) \\
+
+Segunda solución: \\
+x = 5 (cocos por montón) \\
+y = 14 (cocos a cada náufrago) \\
+
+\subsection{\LARGE{Ejercicio 3}}
+
+\textbf{Disponemos de 15 euros para comprar 40 sellos de correos, de 10, 40, y
+60 céntimos y, al menos, necesitamos 2 de cada tipo ¿Cuántos sellos de cada clase
+podremos comprar?}
+
+Nombramos las siguientes variables: \\
+- x \equiv "nº de sellos de 10 cent. comprados" \\
+- y \equiv "nº de sellos de 40 cent. comprados" \\
+- z \equiv "nº de sellos de 60 cent. comprados" \\
+
+Disponemos de 15 euros (1500 cent.) para comprar estos 3 tipos de sellos, y además tenewmos que comprar 40 sellos en total. Tenemos entocnes:
+$$ 1500 = 10x + 40y + 60z $$
+$$ 40 = x + y + z $$
+
+Primero deberemos despejar una incógnita con la segunda ecuación (por ejemplo la z), quedando:
+$$ 5x + 2y = 90 $$
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+5 1 & 0 \\
+2 & 0 & 1 \\
+\hline
+1 & 1 & -2 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+División: $ 5 = 2 \cdot 2 + 1 $
+
+Ahora hacemos las ecuaciones generales (para obtener z basta sustituir x e y en la ecuación del principio):
+$$ x = 90 + 2k $$
+$$ y = -180 - 5k $$
+$$ z = 130 + 3k $$
+$$ k \in \Z $$
+
+Además sabemos que cada variable mínimo debe ser 2 y como máximo 36, luego:
+$$ x \geq 2 \implies k \geq -44 $$
+$$ x \leq 36 \implies k \leq -27 $$
+$$ y \geq 2 \implies -36,4 \geq k \implies k \leq -37 $$
+$$ y \leq 36 \implies -43,2 \leq k \implies k \geq -43 $$
+$$ z \geq 2 \implies -42,6... \leq k \implies k \geq -42 $$
+$$ z \leq 36 \implies -31,3.. \geq k \implies k \leq -32 $$
+
+Luego k estará acotado así:
+$$ k \in \{ x \in \Z : -42 \leq x \leq -37 \} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
