@@ -96,7 +96,7 @@
 \usepackage{geometry}            % Geometría de las páginas.
 
 % Símbolos y matemáticas.
-\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd, stmaryrd}
 \usepackage{upgreek}
 
 % Otros.
@@ -561,7 +561,7 @@ Sean $f = \sum a_i x^i$ y $g = \sum b_i x^i \in A[x]$. Entonces: $f+g = \sum c_i
 
 Si ahora aplicamos $\Phi(f+g) = \sum \varphi(c_i)b^i = \sum \varphi(a_i + b_i)b^i$. 
 
-Como $\varphi$ es homomorfismo , eso es igual a:
+Como $\varphi$ es homomorfismo, eso es igual a:
  $\sum (\varphi(a_i) + \varphi(b_i))b^i$.
  
  Usando que $B$ es un anillo y por ello hay distributividad, eso es igual a: $\sum (\varphi(a_i)b^i + \varphi(b_i)b^i)$.
@@ -1789,8 +1789,9 @@ Denotaremos también:
 \begin{nprop}
 	Si $f_i:A \to B$ es un homomorfismo de anillo, $Img(g) = \{f(a): a \in A\} \leq B$ es un subanillo. Entonces, $Ker(f) = \{a \in A: f(a) = 0\}$ es un ideal.
 	\begin{proof}
-	Vamos a probar que este ideal es cerrado para sumas y para múltiplos. Para ello, en ambos casos usarmos que $f$ es un homomorfismo.
+	Vamos a probar que este ideal es cerrado para sumas y para múltiplos. Para ello, en ambos casos usaremos que $f$ es un homomorfismo.
 	\[
+	Si f(a) = 0 \ y \ f(b) = 0,\]\[
 	f(a+b) = f(a)+f(b) = 0 + 0 = 0\]\[
 	f(ab) = f(a)f(b) = 0*0 = 0
 	\]
@@ -1811,13 +1812,13 @@ Además, $f$ es un monomorfismo $\iff Ker(f) = 0$
 	F:[a] \longmapsto f(a)
 	\]
 	
-Además, $F$ está bien definida: es biyectiva y es un isomorfismo.
+Además, $F$ está bien definida: es biyectiva y, por tanto, es un isomorfismo.
 
 \begin{proof}
-	Vamos a probar que está bien definida, que es un homomorfismo, inyectividad y sobreyectividad.
+	Vamos a probar que está bien definida (inyectividad y sobreyectividad) y que es un homomorfismo.
 	
 	Veamos primero que si $[a] = [b] \implies f(a) = f(b)$\\
-	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = xb$ Para algún $x\in Ker(f)$\\
+	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = xb$ para algún $x\in Ker(f)$\\
 	$\implies f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b)$\\
 	
 	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
@@ -1827,7 +1828,11 @@ Además, $F$ está bien definida: es biyectiva y es un isomorfismo.
 		\item $F(1) = f(1) = 1$
 \end{itemize}
 Probamos la inyectividad:\\
-Tomo $[a] \in Ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in Ker(f) \implies [a] = [0] = 0$
+Suponemos $F[a] = F[b] \implies f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f) \implies a \equiv bmod(Ker(f)) \implies [a] = [b]$.
+%Tomo $[a] \in Ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in Ker(f) \implies [a] = [0] = 0$
+
+Probamos la sobreyectividad:\\
+Sea $b \in Im(f) \implies \exists a \in A : f(a) = b \implies F[a] = f(a) = b$. Como $f$ es sobreyectiva, $\forall b \in Im(f), \ \exists [a]$ que se aplica en $b$.
 \end{proof}
 
 \end{nth}
@@ -1878,14 +1883,14 @@ Pero también:\\
 \begin{ndef}[Divisores de Cero]
 	Si a es divisor de cero de $A$, $\exists a'\ne 0 : aa' = 0 \implies f(a)f(a') = 0$ con $f(a') \ne 0 \implies f(a)$ es divisor de cero en $B$
 	
-	Análogamente surge el isomorfismo entre los divisores de cero de dos Anillos A y B:
+	Análogamente, surge el isomorfismo entre los divisores de cero de dos Anillos A y B:
 	$$f: DivCero(A) \to DivCero(B)$$ Si b es divisor de B y $b=f(a)$ para cierto $a \in A\implies  a \in $ D. Cero de A.
 	
 	$\implies \exists b' \ne 0 : bb' = 0$
 	
 	Luego:
 	
-	Si $b' = f(a)\implies f(a)f(a') =  \implies f(aa') = 0 \implies aa' = 0$ y con $a\ne 0 \implies a$ es divisor de cero de A.
+	Si $b' = f(a')\implies f(a)f(a') = 0 \implies f(aa') = 0 \implies aa' = 0$ y con $a'\ne 0 \implies a$ es divisor de cero de A.
 \end{ndef}
 
 \begin{nprop}
@@ -1908,14 +1913,14 @@ También hay un isomorfismo:
 \[
 A/(m)  \cong A_m
 \]\[
-[a]\to R_m(a)
+[a]\mapsto R_m(a)
 \]\[
-[r] \leftarrow r
+[r] \mapsfrom r
 \]
 
-De esta forma, pordemos llevarnos los problemas a otros anillos para facilitar su resolución.
+De esta forma, podemos llevarnos los problemas a otros anillos para facilitar su resolución.
 
-\begin{nprop}
+\begin{nprop} Sea $a \in A$
 	\begin{nlist}
 	\item $[a] \in U(A/(m)) \iff (a,m) = 1 $
 	\item $a \in A_m$, entonces $a \in U(A_m) \iff (a,m) = 1$
@@ -1924,16 +1929,16 @@ De esta forma, pordemos llevarnos los problemas a otros anillos para facilitar s
 \end{nlist}
 \end{nprop}
 \begin{proof}
-	Vamos a probar i) y ii). Luego iii) e iv) son consecuencia del isomorfismo entre $A/(m)$ y $A_m$.\\
-	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1mod(m) \iff mcd(a,m) = 1$
+	Vamos a probar i) y iii). Luego ii) y iv) son consecuencia del isomorfismo entre $A/(m)$ y $A_m$.\\
+	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1mod(m) \iff mcd(a,m) = 1$.
 	
 	Sea $a \in A/(m) : a \notin U(A/(m)) \implies mcd(a,m) = d \ne 1$. Ahora, sea $a = da'$ y $m=dm'$
-	Pero m no divide a $m'$ pues en otro caso: $m'=mx \implies m = dmx \implies 1 = dx \implies d \in U(A)$, contradicción.
-	Ahora, tomo $[a][m'] = [am'] = [da'm] = [a'm] = [0]$ por ser un múltiplo de m, así que [a] es divisor de cero.
+	Pero m no divide a $m'$ pues en otro caso: $m'=mx \implies m' = dm'x \implies 1 = dx \implies d \in U(A)$, contradicción.
+	Ahora, tomo $[a][m'] = [am'] = [da'm'] = [a'm'] = [0]$ por ser un múltiplo de m' (congruencia módulo m'), así que [a] es divisor de cero.
 \end{proof}
 
 \begin{ncor}
-	En las mismas condiciones:
+	En las mismas condiciones, son equivalentes:
 	
 	\begin{nlist}
 	\item m es irreducible
@@ -1942,22 +1947,22 @@ De esta forma, pordemos llevarnos los problemas a otros anillos para facilitar s
 \end{nlist}
 \end{ncor}
 \begin{proof}
-	$\boxed{3) \implies 2)}$ Todo cuerpo es un dominio de integridad.\\
-	$\boxed{2) \implies 3}$ Supongamos $[a] \in A/(m) $ si $[a] \ne [0]$ encones a es una unidad.
+	$\boxed{iii) \implies ii)}$ Todo cuerpo es un dominio de integridad.\\
+	$\boxed{ii) \implies iii)}$ Supongamos $[a] \in A/(m) $ si $[a] \ne [0]$ entonces, por la proposición anterior, $a$ es una unidad.
 	
-	$\boxed{1) \implies 3)}$ Sea $[a] \in A/(m), [a] \ne [0] = 0 \implies m$ no divide a a $\implies (a,m) = 1$ y como m es irreducible, sus únicos divisores son m y 1 salvo asociados. $\implies [a] \in U(A/(m))$
+	$\boxed{i) \implies iii)}$ Sea $[a] \in A/(m), [a] \ne [0] = 0 \implies m$ no divide a $a \implies (a,m) = 1$, como m es irreducible, sus únicos divisores son m y 1 salvo asociados $\implies [a] \in U(A/(m))$
 	
-	$\boxed{2)\implies 1)}$ Supongamos que m no es irreducible $\implies m = ab$ con a y b divisores propios $\implies m$ no divide a a y m no divide a b $\implies [a] \ne 0 $ y $[b] \ne 0$ en $A/(m)$ pero $[a][b] = [ab] = [m] = [0] = 0$ y como [a] y [b] son distintos de cero, $\implies A/(m)$ no es DI por tanto tenemos una contradicción con la hipótesis.
+	$\boxed{ii)\implies i)}$ Supongamos que m no es irreducible $\implies m = ab$ con a y b divisores propios $\implies m$ no divide a $a$ y m no divide a $b$ $\implies [a] \ne 0 $ y $[b] \ne 0$ en $A/(m)$ pero $[a][b] = [ab] = [m] = [0] = 0$ y como [a] y [b] son distintos de cero $\implies A/(m)$ no es DI, en contradicción con la hipótesis.
 \end{proof}
 
 En $\ent_n$ si $p \geq 2$ es un irreducible y $\ent_p $ es un cuerpo. En general, si $K$ es un cuerpo y $f(x) = \sum a_i x^i \in K[x]$ es de grado $n \implies K[x]_{f(x)}$
- es un cuerpo $\iff f(x)$ es irreducible con $K[x]_{f(x)} = \{b_0 +b_1 x + ... + b_{n-1}x^{n-1 :  b_i \in K} \}$
+ es un cuerpo $\iff f(x)$ es irreducible, con $K[x]_{f(x)} = \{b_0 +b_1 x + ... + b_{n-1}x^{n-1} :  b_i \in K \}$
 
 
-En particular, si $p$ es un irreducible de $\ent$ y $f(x)$ es un irreducible de $\ent_p[x]$ de grado $n \implies \ent_p[x]_{f(x)}$ es un cuerpo con $^np$ elementos. Lo notamos $F_pn = \ent_p[x]_{f(x)}$
+En particular, si $p$ es un irreducible de $\ent$ y $f(x)$ es un irreducible de $\ent_p[x]$ de grado $n \implies \ent_p[x]_{f(x)}$ es un cuerpo con $p^n$ elementos. Lo notamos $F_pn = \ent_p[x]_{f(x)}$
 
 Salvo isomorfismos es el único cuerpo con $p^n$ elementos , al variar p y n obtenemos todos los cuerpos finitos que existen.
-\subsection{Ecuaciones}
+\subsection{Ecuaciones en $\ent_n$}
 
 Vamos a intentar ahora encontrar una solución para una ecuación $ax = b$ en $\ent_n$ con $a \ne 0$.
 
@@ -1966,20 +1971,17 @@ Vamos a intentar ahora encontrar una solución para una ecuación $ax = b$ en $\
 	
 	\item Si tiene solución, tiene exactamente $d$ soluciones distintas.
 \end{enumerate}
+\section{REVISAR}
 \begin{proof}
-	$\ent_n \cong \ent/(n)\implies \exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff$
+	Utilizaremos el siguiente isomorfismo para simplificar esta prueba: $\ent_n \cong \ent/(n).\\
+	 \exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.\\
+	 Para demostrar 2., suponemos que d/b.\\
+	 Sean $a' = \frac{a}{b}, b' = \frac{b}{d}, n' = \frac{n}{d}$. Recuperamos la propiedad anterior, $a'x \equiv b'mod(n')$. De este expresión obtenemos la solución óptima: $x_0 : a'x_0 \equiv b'mod(n'), 0 \le x_0 \textless n'$. Siendo la solución general, $x \equiv x_0 mod(n')$.\\
+Ahora, si $x = x_0 + kn' \quad k \in \ent$, los $x$ que satisfacen nuestro problema original son los restos de estos elementos:\quad $\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\}$, si $k \in \ent, 0 \le k \textless d \implies x_0 + kn' \textless \frac{n}{d} + (d-1)\frac{n}{d} = \frac{dn}{d} = n$. Por tanto, estas son las únicas soluciones.
+
+Podemos expresar las soluciones como $\{ [x] \in \ent /(n) : x = x_0 + kn', k \in \ent\}$. Si $k \in \ent \ y \ k = qd + r \ con \ 0 \le r \textless d, \ x_0 + kn' = x_0 + (qd + r)n' = x_0 + rn' + qdn'= x_0 + rn' +qn \implies [x_0 + kn'] = [x_0 + rn']$. Las soluciones de la ecuación original serán $\{[x_0],\ [x_0 + n'],\ [x_0 +2n'],...,\ [x_0 + (d-1)n']\} \subseteq \ent /(n) \cong \ent _n, \forall r, 0 \le r \le d - 1.$
+$\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\} \subseteq \ent _n$
 \end{proof}
-\section{AQUÍ FALTA CONTENIDO UN POCO UN POCO}
-
-
-Ahora, si $x = x_0 + kn' \quad k \in $, los $x$ que satisfacen nuestro problema original son los restos de estos elementos:
-\[
-x_0 + ...........
-\]
-
-\section{AQUI FALTA MÁS CONTENIDO UN POQUITO}
-
-En la ecuación $ax = b$ de $\ent_n$, sabemos que tiene solucion si y solo si b divide a d. Supuesto que esto ocurra, si $n' = \frac{n}{d}$ existe una única solución $x_0$ en $0 \leq x_0 \leq n'$ y la ecuación tiene exactamente $d$ soluciones: $x_0,x_0+n',x_0+2n',...,x_0+(d-1)n'$
 
 \section{Función de Euler.}
 \[
@@ -1991,7 +1993,7 @@ definida de la siguiente forma $\forall n\ge 1$:
   \varphi(n) = |\{m\in \mathbb{N} : 1\le m \le n \text{ y } (m,n)=1\}|
 \]
 
-Que es igual al número de números menores que $n$ y primos con él.
+Que es igual al número de naturales menores que $n$ y primos con él.
 %\vspace{5mm}
 
 \begin{nprop}
