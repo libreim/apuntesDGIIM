@@ -360,15 +360,15 @@ Nota: los dos últimos coeficientes son los llamados coeficientes de Bezout (2 y
 El siguiente paso que debemos tomar a continuación es ver si la ecuación tiene soluciones, ¿cómo lo sabemos? Pues cogemos el número anterior del 0, en nuestro caso es el 6 (qué es el máximo común divisor de  los coeficientes originales de nuestra ecuación) y si divide al término independiente también, entonces la ecuación tiene soluciones enteras.
 
 Dividimos todo entre 6:
-$$ 23x + 5y = 20250 $$
-Podemos ver que 20250 sigue siendo entero, luego la ecuación tiene soluciones enteras. Ahora veamos como
+$$ 23x + 5y = 2025 $$
+Podemos ver que 2025 sigue siendo entero, luego la ecuación tiene soluciones enteras. Ahora veamos como
 obtener todas las soluciones posibles.
 
 Siempre se utiliza el siguiente esquema, primero va la incógnita con el primer coeficiente que se ha puesto en la tabla, nosotros hemos puesto el 138, luego va primero la "x". Entonces:
 
 $$ x = c' \cdot u + b' \cdot k $$
 
-Donde c' es el término independiente una vez se haya dividido por el mcd, en este caso (20250), u es el último coeficiente correspondiente (izquierda para el primero, derecha para el segundo), en este caso (2), b es el coeficiente de la otra incógnita una vez dividida ya por el mcd, es decir, tiene que ser el coeficiente de la y (5); finalmente, la k es un parámetro que puede ser cualquier valor del anillo (en este caso entero).
+Donde c' es el término independiente una vez se haya dividido por el mcd, en este caso (2025), u es el último coeficiente correspondiente (izquierda para el primero, derecha para el segundo), en este caso (2), b es el coeficiente de la otra incógnita una vez dividida ya por el mcd, es decir, tiene que ser el coeficiente de la y (5); finalmente, la k es un parámetro que puede ser cualquier valor del anillo (en este caso entero).
 
 Para el segundo coeficiente se hace lo mismo solo que con una ligera variación:
 
@@ -378,18 +378,18 @@ Se hace lo mismo pero en vez de sumar con el coeficiente contrario, resta, es la
 
 Dicho esto, obtenemos nuestras ecuaciones generales:
 
-$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
-$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
+$$ x = 2025 \cdot 2 + 5 \cdot k = 4050 + 5k $$
+$$ y = 2025 \cdot -9 - 23 \cdot k = -18225 - 23k $$
 
 Ahora bien, aun no hemos acabado: nos piden las soluciones enteras POSITIVAS. Luego x e y tienen que ser mayor que 0, simplemente veamos las inecuaciones:
 
-$$ x > 0 \implies 40500 + 5k > 0 \implies -8100 < k$$
-$$ y > 0 \implies -182250 - 23k > 0 \implies -7923,91... > k \implies -7923 > k $$
+$$ x > 0 \implies 4050 + 5k > 0 \implies -810 < k$$
+$$ y > 0 \implies -18225 - 23k > 0 \implies -792,391... > k \implies -792 > k $$
 
 Entonces tenemos que las soluciones enteras positivas de la ecuación que nos daban son:
-$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
-$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
-$$ k \in \{ t \in \mathbb{Z} : -8100 < t < 7923 \} $$
+$$ x = 2025 \cdot 2 + 5 \cdot k = 4050 + 5k $$
+$$ y = 2025 \cdot -9 - 23 \cdot k = -18225 - 23k $$
+$$ k \in \{ t \in \mathbb{Z} : -810 < t < 792 \} $$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
