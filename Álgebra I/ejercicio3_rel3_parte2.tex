@@ -1,0 +1,287 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Ejercicios de la asignatura Álgebra I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) y Mario Román (@M42) por
+% las plantillas base.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%------------------------------------------------------------------------------
+%   ACKNOWLEDGMENTS
+%------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla básica de Latex en Español.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+%
+% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
+% estilo moderno pero serio.
+%
+% La plantilla se encuentra adaptada al español.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Plantilla de Trabajo
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% al castellano y a las necesidades de escribir informática y matemáticas.
+%
+% Editada por: Mario Román
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+
+\usepackage{titlesec}
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Cambiar sections 
+
+
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Números enteros: \ent
+\providecommand{\ent}{\mathbb{Z}}
+
+% Números racionales: \rac
+\providecommand{\rac}{\mathbb{Q}}
+
+% Números naturales: \nat
+\providecommand{\nat}{\mathbb{N}}
+
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
+}
+
+% Texto de la cabecera.
+\lhead{\subject}  % Izquierda.
+\chead{}            % Centro.
+\rhead{\docauthor}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+
+
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Ejercicios resueltos Álgebra I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\Large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\section{\Huge{Relación 2}}
+
+\subsection{\LARGE{Ejercicio 3 (2ª parte de la relación)}}
+
+\textbf{Determinar los polinomios $f(x) \in \rac [x]$ de grado menor o igual que tres que satisfacen el sistema de congruencias}
+
+\[
+\begin{rcases}
+	f(x) \equiv x - 1\ mod(x^2+1)\\
+	f(x) \equiv x + 1\ mod(x^2+x+1)
+\end{rcases}
+\]
+
+En primer lugar, reescribimos la primera ecuación para sustituirla en la segunda. 
+$$f(x) \equiv x - 1\ mod(x^2+1) \implies f(x) = x-1 + (x^2+1)g(x)^\circledast$$
+
+Reemplazando lo obtenido, tenemos:
+$$x-1 + (x^2+1)g(x) \equiv x+1\ mod(x^2+x+1)$$ 
+Pasamos el x-1 restando:
+$$(x^2+1)g(x) \equiv 2\ mod(x^2+x+1)$$
+Resolvemos esta ecuación, que tendrá solución si, y solo si, $(x^2+1,\ x^2+x+1)/2$. Así, hallamos el mcd a través de la tablita correspondiente:
+
+
+\begin{center}
+\begin{tabular}{c|cc}
+$x^2+x+1$ & 1 & 0 \\
+$x^2+1$ & 0 & 1 \\
+$x$ & 1 & -1 \\
+1 & $-x$ & $x+1$\\
+0
+\end{tabular}
+\end{center}
+
+Obtenemos de esta forma que $(x^2+1,\ x^2+x+1) = 1$, que divide a 2, por tanto, habrá solución. Partiendo de la identidad de Bezout: $1 = (x^2+x+1)(-x) + (x^2+1)(x+1)$, la transformamos en una ecuación en congruencia (si vemos la ecuación como $(x^2+x+1)(x) = (x^2+1)(x+1) - 1$, por la definición de congruencia) $(x^2+1)(x+1) \equiv 1\ mod(x^2+x+1)$, multiplicando por 2, encontramos la g(x) buscada: $(x^2+1)(2x+2) \equiv 2\ mod(x^2+x+1)$.
+$g(x)=2x+2$.
+
+Sustituyendo en $^\circledast$ el polinomio g(x) recién encontrado llegaremos a $f_0$(x), solución parcial del sistema. 
+
+$$f_0(x) = x-1 + (x^2+1)g(x) = x-1 + (x^2+1)(2x+2) = 2x^3+2x^2+3x+1$$
+
+La solución general será $$f(x) \equiv f_0(x) mod[x^2+1,\ x^2+x+1]$$
+Calculamos el mcm:
+\[
+	[x^2+1,\ x^2+x+1] = \frac{(x^2+x+1)(x^2+1)}{1} =x^4+x^3+x^2+x+1
+\]
+
+Como el ejercicio pide aquellos polinomios de grado menor o igual que tres, nos basta con la solución parcial, ya que otras soluciones eran polinomios de grado superior al buscado.
+
+\textbf{Solución:} $f_0(x) = 2x^3+2x^2+3x+1$
+\end{document}
