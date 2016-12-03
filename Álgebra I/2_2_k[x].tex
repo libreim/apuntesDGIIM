@@ -1,0 +1,79 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=3.00cm, right=3.00cm, top=3.00cm, bottom=3.00cm]{geometry}
+
+\begin{document}
+	\begin{center}
+		\textbf{Relación 2 k[x]}
+	\end{center}
+	
+	\textbf{2. Calcular el máximo común divisor y el mínimo común múltiplo, en el anillo $Z_{3}$[x], de los polinomios $x^{4}+x^{3}-x-1$ y $x^{5}+x^{4} -x-1$. Encontrar todos los polinomios f (x) y g(x) en $Z_{3}$[x], con grado de g(x) igual a 7, tales que $(x^{4}+x^{3}-x-1)$ f(x)+$(x^{5}+x^{4} -x-1)$ g(x) = $x^{4}+x^{2}+1$ \\ }
+	
+	
+     \underline{Máximo común divisor} \\
+     
+     
+     \noindent{$x^{5}+x^{4} -x-1$  $ | $  \hspace{0.5cm} 1 \hspace{0.5cm}0 \\}
+     $x^{4}+x^{3}-x-1$ $ | $  \hspace{0.5cm} 0 \hspace{0.5cm}1 \\
+     $x^{2}-1 $ \hspace{1.4cm}$ | $  \hspace{0.5cm} 1 \hspace{0.5cm}-x \\
+     0
+     
+     Las divisiones realizadas han sido : \\
+     
+     $\bullet$ ($x^{5}+x^{4} -x-1$)/($x^{4}+x^{3}-x-1$) \\
+     
+     \noindent{Cociente: x} \\
+     Resto:  $x^{2}-1 $\\
+     
+     $\bullet$ ($x^{4}+x^{3}-x-1$)/($x^{2}-1 $) \\
+     
+      \noindent{Cociente: $x^{2}+x+1$ } \\
+      Resto:  0\\
+      
+      Así, el máximo común divisor es $x^{2}-1$ \\
+     
+     \underline{Mínimo común múltiplo} \\
+     
+     Usamos que [a,b]=$\displaystyle{\frac { ab }{ (a,b) } }$ \\
+     
+     ($x^{5}+x^{4} -x-1$)($x^{4}+x^{3}-x-1$) = $x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$ \\
+     
+     ($x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$)/($x^{2}-1$) = $x^{7}+2x^{6}+x^{4}+x^{2}-x+2$ \\
+     
+     Por lo tanto, el mínimo común múltiplo es $x^{7}+2x^{6}+x^{4}+x^{2}-x+2$ \\
+     
+     \underline{Ecuación diofántica} \\
+     
+     Dividiendo por el máximo común divisor la ecuación para obtener al reducida (vemos que tiene solución) queda: \\
+     
+     $(x^{2}+x+1)$ f(x)+$(x^{3}+x^{2}+x+1)$ g(x) = $x^{2}+2$ \\
+     
+     Aplicando la igualdad de Bezout (a partir de los cálculos del máximo común divisor): \\
+     
+     $(x^{2}+x+1)(-x)$+$(x^{3}+x^{2}+x+1)$ (1) = 1 \\
+     
+     $(x^{2}+x+1)$$(-x^{3}-2x)$+$(x^{3}+x^{2}+x+1)$ $(x^{2}+2)$ = $x^{2}+2$ \\
+     
+     Obtenemos como solución particular: \\
+     
+     $f_{0}$(x) = $-x^{3}-2x$ \\
+     
+     $g_{0}$(x) = $x^{2}+2$ \\
+     
+     La solución general quedaría: \\
+     
+     $f$(x) = $-x^{3}-2x +k(x)(x^{3}+x^{2}+x+1)$  \\
+     
+     $g$(x) = $x^{2}+2 -k(x)(x^{2}+x+1)$ \\
+     
+     Para cumplir la condición  g(x) igual a 7 observamos que el grado de k(x) tiene que ser igual a 5. De este modo, todas soluciones pedidas son las que se obtienen a partir de la general para todos los k(x) de $Z_{3}$[x] tal que gr(k(x)) = 5. 
+     
+     
+     
+     
+	
+\end{document}
