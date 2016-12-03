@@ -104,7 +104,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{float}
 
-
+\usepackage{titlesec}
 %---------------------------------------------------------------------------
 %   OPCIONES PERSONALIZADAS
 %---------------------------------------------------------------------------
@@ -126,6 +126,8 @@
 \makeatletter
 \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
 \makeatother
+
+% Cambiar sections 
 
 
 %---------------------------------------------------------------------------
@@ -188,68 +190,6 @@
 %   ENTORNOS PARA MATEMÁTICAS
 %---------------------------------------------------------------------------
 
-% Nuevo estilo para definiciones.
-\newtheoremstyle{definition-style} % Nombre del estilo.
-{10pt}               % Espacio por encima.
-{10pt}               % Espacio por debajo.
-{}                   % Fuente del cuerpo.
-{}                   % Identación.
-{\bf}                % Fuente para la cabecera.
-{.}                  % Puntuación tras la cabecera.
-{.5em}               % Espacio tras la cabecera.
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
-
-% Nuevo estilo para notas.
-\newtheoremstyle{remark-style} 
-{10pt}                
-{10pt}                
-{}                   
-{}                   
-{\itshape}          
-{.}                  
-{.5em}               
-{}                  
-
-% Nuevo estilo para teoremas y proposiciones.
-\newtheoremstyle{theorem-style}
-{10pt}                
-{10pt}                
-{\itshape}           
-{}                  
-{\bf}             
-{.}                
-{.5em}               
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\scshape}              
-{:}                 
-{.5em}               
-{}                   
-
-% Teoremas, proposiciones y corolarios.
-\theoremstyle{theorem-style}
-\newtheorem*{nth}{Teorema}
-\newtheorem*{nprop}{Proposición}
-\newtheorem{ncor}{Corolario}
-
-% Definiciones.
-\theoremstyle{definition-style}
-\newtheorem*{ndef}{Definición}
-
-% Notas.
-\theoremstyle{remark-style}
-\newtheorem*{nota}{Nota}
-
-% Ejemplos.
-\theoremstyle{example-style}
-\newtheorem*{ejemplo}{Ejemplo}
-
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
 {\begin{enumerate}
@@ -295,10 +235,171 @@
 \begin{document}
 \maketitle
 
+\section{\Huge{Relación 2}}
+
+\subsection{\LARGE{Ejercicio 1}}
+
+\textbf{Calcular las soluciones enteras positivas de la ecuación diofántica $ 138x + 30y = 12150 $.}
+
+Tenemos la siguiente ecuación: $$ 138x + 30y = 12150 $$ Para resolverla deberemos calcular los coeficientes de Bezout, para ello realizamos la siguiente tabla:
+
+\begin{center}
+	\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\end{tabular}
+
+\end{center}
+Ésta es nuestra tabla inicial: ¿cómo la hemos hecho? \\
+Bien, tenemos una ecuación con 2 incógnitas y por tanto 2 coeficientes asociados a cada incógnita. En la tabla inicial ponemos el primer coeficiente con mayor norma (en este caso, con los enteros, es el que tiene mayor valor absoluto - el 138 en este ejercicio), y el menor en la segunda fila. A continuación ponemos como podemos ver en la tabla, en la primera fila (1 0) y en la segunda (0 1). Esto siempre es fijo.
+
+Vamos ahora con el siguiente paso: tenemos que dividir el primer coeficiente entre el segundo y el resto lo pondremos debajo de los coeficientes, es decir:
+
+$ 138 = 30 \cdot 4 + 18 $ \\
+El resto es 18 por lo que la tabla sería:
 
 
-\section{Ejercicio 1 de la relación 3 - Comprobar si dos números son congruentes.}
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 \\
+\end{tabular}
+\end{center}
 
+Ahora, ¿qué ponemos en los huecos a la izquierda? Muy facil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
+
+- Para el primero: $ -4 \cdot 0 + 1 = 0 + 1 = 1 $ \\
+- Para el segundo: $ -4 \cdot 1 + 0 = -4 $ \\
+
+Por lo que nos queda la siguiente tabla:
+
+
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\end{tabular}
+\end{center}
+
+El proceso se ha de repetir hasta que obtengamos en las sucesivas divisiones resto 0. Ahora hacemos la
+división de 30 entre 18:
+
+$ 30 = 18 \cdot 1 + 12 $
+
+Con coeficientes: \\
+- Primero: $ -1 \cdot 1 + 0 = -1 + 0 = -1 $ \\
+- Segundo: $ -1 \cdot -4 + 1 = 4 + 1 = 5 $ \\
+
+La tabla ahora sería:
+
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5
+\end{tabular}
+\end{center}
+
+
+Repetimos:
+
+$ 18 = 12 \cdot 1 + 6 $
+
+Con coeficientes: \\
+- Primero: $ -1 \cdot -1 + 1 = 1 + 1 = 2 $ \\
+- Segundo: $ -1 \cdot 5 + -4 = -5 + -4 = -9 $ \\
+
+La tabla ahora es:
+
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5 \\
+\hline
+6 & 2 & -9 \\
+\end{tabular}
+\end{center}
+
+Seguimos dividiendo:
+
+$ 12 = 6 \cdot 2 $
+
+Hemos llegado al resto 0, entonces paramos (no hace falta calcular aquí los coeficientes), por lo que
+nuestra tabla final es la siguiente:
+
+
+\begin{center}
+\begin{tabular}{c|cc}
+138 & 1 & 0 \\
+30 & 0 & 1 \\
+\hline
+18 & 1 & -4 \\
+\hline
+12 & -1 & 5 \\
+\hline
+6 & 2 & -9 \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+
+Nota: los dos últimos coeficientes son los llamados coeficientes de Bezout (2 y -9)
+
+El siguiente paso que debemos tomar a continuación es ver si la ecuación tiene soluciones, ¿cómo lo sabemos? Pues cogemos el número anterior del 0, en nuestro caso es el 6 (qué es el máximo común divisor de  los coeficientes originales de nuestra ecuación) y si divide al término independiente también, entonces la ecuación tiene soluciones enteras.
+
+Dividimos todo entre 6:
+$$ 23x + 5y = 20250 $$
+Podemos ver que 20250 sigue siendo entero, luego la ecuación tiene soluciones enteras. Ahora veamos como
+obtener todas las soluciones posibles.
+
+Siempre se utiliza el siguiente esquema, primero va la incógnita con el primer coeficiente que se ha puesto en la tabla, nosotros hemos puesto el 138, luego va primero la "x". Entonces:
+
+$$ x = c' \cdot u + b' \cdot k $$
+
+Donde c' es el término independiente una vez se haya dividido por el mcd, en este caso (20250), u es el último coeficiente correspondiente (izquierda para el primero, derecha para el segundo), en este caso (2), b es el coeficiente de la otra incógnita una vez dividida ya por el mcd, es decir, tiene que ser el coeficiente de la y (5); finalmente, la k es un parámetro que puede ser cualquier valor del anillo (en este caso entero).
+
+Para el segundo coeficiente se hace lo mismo solo que con una ligera variación:
+
+$$ y = c' \cdot v - a' \cdot k $$
+
+Se hace lo mismo pero en vez de sumar con el coeficiente contrario, resta, es la única diferencia y hay que tener cuidado con no confundirnos en esto.
+
+Dicho esto, obtenemos nuestras ecuaciones generales:
+
+$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
+$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
+
+Ahora bien, aun no hemos acabado: nos piden las soluciones enteras POSITIVAS. Luego x e y tienen que ser mayor que 0, simplemente veamos las inecuaciones:
+
+$$ x > 0 \implies 40500 + 5k > 0 \implies -8100 < k$$
+$$ y > 0 \implies -182250 - 23k > 0 \implies -7923,91... > k \implies -7923 > k $$
+
+Entonces tenemos que las soluciones enteras positivas de la ecuación que nos daban son:
+$$ x = 20250 \cdot 2 + 5 \cdot k = 40500 + 5k $$
+$$ y = 20250 \cdot -9 - 23 \cdot k = -182250 - 23k $$
+$$ k \in \{ t \in \mathbb{Z} : -8100 < t < 7923 \} $$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\pagebreak
+\section{\Huge{Relación 3}}
+
+\subsection{\LARGE{Ejercicio 1}}
 
 \textbf{Enunciado:}\textbf{ Discutir, usando congruencias, la validez de las siguientes afirmaciones:}
 
@@ -386,9 +487,33 @@ El número vendrá dado: $a_n*10^{n}+ a_{n-1}*10^{n-1} + ... + a_1 * 10 + a_0$.
 Pero, tomando todas la demás cifras menos las dos últimas, su suma es congruente con 0 módulo 4, luego  basta ver si los dos últimos es congruente con 0 módulo 4, pero eso es el enunciado, luego queda probado.
 
 
-\newpage
-\section{Ejercicio 6 de la relación 3.}
+\subsection{\LARGE{Ejercicio 5}}
 
+Enunciado: En el anillo $Z[\sqrt3]$, resolver la congruencia.
+$$ (1+ \sqrt3)x \equiv 9 - 4\sqrt3 \ mod(2\sqrt3)$$
+
+Primero calculamos el máximo común divisor de $(1 + \sqrt 3)$ y $(2\sqrt3)$.\\
+$$ N(1 + \sqrt3) = \sqrt{1 + {(\sqrt3)}^{2}} = \sqrt{1 + 3} = 2 $$
+$$ N(2 \sqrt 3) = \sqrt{{(2\sqrt3)}^{2}} =  2\sqrt3 $$\\
+Como $N(1 + \sqrt3) < N(2 \sqrt 3)$ pondrémos primero $2 \sqrt3$\\ \\
+\begin{tabular}{lllll}
+\multicolumn{1}{l|}{$2\sqrt3$}    & 1 & 0 &  &  \\
+\multicolumn{1}{l|}{$1 + \sqrt3$} & 0 & 1 &  &  \\
+\multicolumn{1}{l|}{0} &   &   &  &  \\
+                                &   &   &  & 
+\end{tabular}
+
+Sabemos que el resto es 0 puesto que:\\
+$$ \frac{2 \sqrt3}{1 + \sqrt3} = \frac{(2\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{2 \sqrt3 - 6}{1 - 3} = \frac{2\sqrt3 - 6}{-2} = 3 - \sqrt3 $$
+Por lo tanto el cociente de esta división es $ 3 - \sqrt3 $ y de resto cero. Por lo tanto el m.c.d. de $(1 + \sqrt 3)$ y $(2\sqrt3)$ es $(1 + \sqrt 3)$. Veamos si $(1 + \sqrt 3)$ divide $ 9 -4 \sqrt3$.\\
+$$ \frac{9 - 4\sqrt3}{1 + \sqrt3} = \frac{(9 - 4\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{9 - 9\sqrt3 - 4\sqrt4 + 4{(\sqrt3)}^{2}}{1 - {(\sqrt3)}^{2} } = \frac{21 -13\sqrt3}{-2} = \frac{13\sqrt3 - 21}{2} = \frac{13}{2}\sqrt3 - \frac{21}{2}$$
+Por lo tanto el cociente la division es $q = 6$ y el resto es: \\
+$$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$ 
+Por lo tanto como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$ esta ecuación no tiene solución.
+
+
+
+\subsection{\LARGE{Ejercicio 6}}
 \textbf{Enunciado: Antonio, Pepe y Juan son tres campesinos que principalmente se
 dedican al cultivo de la aceituna. Este año la producción de los olivos de
 Antonio fue tres veces la de los de Juan y la de Pepe cinco veces la de los
@@ -453,7 +578,16 @@ Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
 
 
 
-\section{ Ejercicio 1 de la relación 4.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+\section{\Huge{Relación 4}}
+
+
+
+\subsection{ \LARGE{Ejercicio 1}}
 
 \textbf{Enunciado:Resuelve las ecuaciones siguientes en los anillos que se indican:}
 
@@ -517,7 +651,7 @@ Luego resulta que $2^{30}\equiv_7 2^6 \equiv_7 1$
 Por lo que $x_0 = 2$ y la solución es $x=2$
 
 
-\section{Ejercicio 2 de la relación 4}
+\subsection{\LARGE{Ejercicio 2}}
 
 Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:
 
@@ -547,7 +681,7 @@ $$Recordaremos\ que\ los\ valores\ de\ \lambda\ en\ \varphi(\alpha)\ del\ tipo\ 
 Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{5}) = $\textbf{400 unidades} y por tanto hay \textbf{600 divisores de cero}.
 
 
-\section{Ejercicio 2 (parte 2 ) de la relación 4}
+\subsection{\LARGE{Ejercicio 2(segunda parte de la relacion)}} 
 
 \textbf{Enunciado: Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
 
