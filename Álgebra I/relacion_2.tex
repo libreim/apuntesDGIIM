@@ -289,18 +289,17 @@
 
 \section{Ejercicio 1}
 
-Ejercicio 1: Calcular las soluciones enteras positivas de la ecuación diofántica $ 138x + 30y = 12150 $.
+\textbf{Calcular las soluciones enteras positivas de la ecuación diofántica $ 138x + 30y = 12150 $.}
 
 Tenemos la siguiente ecuación: $$ 138x + 30y = 12150 $$ Para resolverla deberemos calcular los coeficientes de Bezout, para ello realizamos la siguiente tabla:
-\begin{table}
+
 \begin{center}
-\begin{tabular}{c|cc}
+	\begin{tabular}{c|cc}
 138 & 1 & 0 \\
 30 & 0 & 1 \\
 \end{tabular}
-\end{center}
-\end{table}
 
+\end{center}
 Ésta es nuestra tabla inicial: ¿cómo la hemos hecho? \\
 Bien, tenemos una ecuación con 2 incógnitas y por tanto 2 coeficientes asociados a cada incógnita. En la tabla inicial ponemos el primer coeficiente con mayor norma (en este caso, con los enteros, es el que tiene mayor valor absoluto - el 138 en este ejercicio), y el menor en la segunda fila. A continuación ponemos como podemos ver en la tabla, en la primera fila (1 0) y en la segunda (0 1). Esto siempre es fijo.
 
@@ -309,7 +308,7 @@ Vamos ahora con el siguiente paso: tenemos que dividir el primer coeficiente ent
 $ 138 = 30 \cdot 4 + 18 $ \\
 El resto es 18 por lo que la tabla sería:
 
-\begin{table}
+
 \begin{center}
 \begin{tabular}{c|cc}
 138 & 1 & 0 \\
@@ -318,7 +317,6 @@ El resto es 18 por lo que la tabla sería:
 18 \\
 \end{tabular}
 \end{center}
-\end{table}
 
 Ahora, ¿qué ponemos en los huecos a la izquierda? Muy facil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
 
@@ -327,7 +325,7 @@ Ahora, ¿qué ponemos en los huecos a la izquierda? Muy facil, solo tenemos que 
 
 Por lo que nos queda la siguiente tabla:
 
-\begin{table}
+
 \begin{center}
 \begin{tabular}{c|cc}
 138 & 1 & 0 \\
@@ -336,7 +334,6 @@ Por lo que nos queda la siguiente tabla:
 18 & 1 & -4 \\
 \end{tabular}
 \end{center}
-\end{table}
 
 El proceso se ha de repetir hasta que obtengamos en las sucesivas divisiones resto 0. Ahora hacemos la
 división de 30 entre 18:
@@ -348,7 +345,7 @@ Con coeficientes: \\
 - Segundo: $ -1 \cdot -4 + 1 = 4 + 1 = 5 $ \\
 
 La tabla ahora sería:
-\begin{table}
+
 \begin{center}
 \begin{tabular}{c|cc}
 138 & 1 & 0 \\
@@ -359,7 +356,7 @@ La tabla ahora sería:
 12 & -1 & 5
 \end{tabular}
 \end{center}
-\end{table}
+
 
 Repetimos:
 
@@ -370,7 +367,7 @@ Con coeficientes: \\
 - Segundo: $ -1 \cdot 5 + -4 = -5 + -4 = -9 $ \\
 
 La tabla ahora es:
-\begin{table}
+
 \begin{center}
 \begin{tabular}{c|cc}
 138 & 1 & 0 \\
@@ -383,7 +380,6 @@ La tabla ahora es:
 6 & 2 & -9 \\
 \end{tabular}
 \end{center}
-\end{table}
 
 Seguimos dividiendo:
 
@@ -392,7 +388,7 @@ $ 12 = 6 \cdot 2 $
 Hemos llegado al resto 0, entonces paramos (no hace falta calcular aquí los coeficientes), por lo que
 nuestra tabla final es la siguiente:
 
-\begin{table}
+
 \begin{center}
 \begin{tabular}{c|cc}
 138 & 1 & 0 \\
@@ -407,7 +403,7 @@ nuestra tabla final es la siguiente:
 0
 \end{tabular}
 \end{center}
-\end{table}
+
 
 Nota: los dos últimos coeficientes son los llamados coeficientes de Bezout (2 y -9)
 
