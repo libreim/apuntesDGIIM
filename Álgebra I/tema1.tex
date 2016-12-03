@@ -1971,16 +1971,22 @@ Vamos a intentar ahora encontrar una solución para una ecuación $ax = b$ en $\
 	
 	\item Si tiene solución, tiene exactamente $d$ soluciones distintas.
 \end{enumerate}
-\section{REVISAR}
+
 \begin{proof}
-	Utilizaremos el siguiente isomorfismo para simplificar esta prueba: $\ent_n \cong \ent/(n).\\
-	 \exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.\\
-	 Para demostrar 2., suponemos que d/b.\\
+Utilizaremos el siguiente isomorfismo para simplificar esta prueba: $\ent_n \cong \ent/(n)$.\\
+\begin{enumerate}
+	\item $\exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.\\
+	
+	\item  Para demostrar 2., suponemos que d/b.\\
 	 Sean $a' = \frac{a}{b}, b' = \frac{b}{d}, n' = \frac{n}{d}$. Recuperamos la propiedad anterior, $a'x \equiv b'mod(n')$. De este expresión obtenemos la solución óptima: $x_0 : a'x_0 \equiv b'mod(n'), 0 \le x_0 \textless n'$. Siendo la solución general, $x \equiv x_0 mod(n')$.\\
 Ahora, si $x = x_0 + kn' \quad k \in \ent$, los $x$ que satisfacen nuestro problema original son los restos de estos elementos:\quad $\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\}$, si $k \in \ent, 0 \le k \textless d \implies x_0 + kn' \textless \frac{n}{d} + (d-1)\frac{n}{d} = \frac{dn}{d} = n$. Por tanto, estas son las únicas soluciones.
 
 Podemos expresar las soluciones como $\{ [x] \in \ent /(n) : x = x_0 + kn', k \in \ent\}$. Si $k \in \ent \ y \ k = qd + r \ con \ 0 \le r \textless d, \ x_0 + kn' = x_0 + (qd + r)n' = x_0 + rn' + qdn'= x_0 + rn' +qn \implies [x_0 + kn'] = [x_0 + rn']$. Las soluciones de la ecuación original serán $\{[x_0],\ [x_0 + n'],\ [x_0 +2n'],...,\ [x_0 + (d-1)n']\} \subseteq \ent /(n) \cong \ent _n, \forall r, 0 \le r \le d - 1.$
 $\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\} \subseteq \ent _n$
+\end{enumerate}
+	
+	
+	
 \end{proof}
 
 \section{Función de Euler.}
