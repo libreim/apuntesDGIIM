@@ -1975,8 +1975,7 @@ Vamos a intentar ahora encontrar una solución para una ecuación $ax = b$ en $\
 \begin{proof}
 Utilizaremos el siguiente isomorfismo para simplificar esta prueba: $\ent_n \cong \ent/(n)$.\\
 \begin{enumerate}
-	\item $\exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.\\
-	
+	\item $\exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.
 	\item  Para demostrar 2., suponemos que d/b.\\
 	 Sean $a' = \frac{a}{b}, b' = \frac{b}{d}, n' = \frac{n}{d}$. Recuperamos la propiedad anterior, $a'x \equiv b'mod(n')$. De este expresión obtenemos la solución óptima: $x_0 : a'x_0 \equiv b'mod(n'), 0 \le x_0 \textless n'$. Siendo la solución general, $x \equiv x_0 mod(n')$.\\
 Ahora, si $x = x_0 + kn' \quad k \in \ent$, los $x$ que satisfacen nuestro problema original son los restos de estos elementos:\quad $\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\}$, si $k \in \ent, 0 \le k \textless d \implies x_0 + kn' \textless \frac{n}{d} + (d-1)\frac{n}{d} = \frac{dn}{d} = n$. Por tanto, estas son las únicas soluciones.

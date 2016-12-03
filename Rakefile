@@ -35,7 +35,7 @@ task :default => [
 #       task :example => (pdf_for FileList["tema*.tex"])
 #
 #-------------------------------------------#
-task :algebra1 => (pdf_for "Álgebra I/tema1.tex")
+task :algebra1 => (pdf_for FileList["Álgebra I/*.tex"])
 task :analisis1 => (pdf_for FileList["Análisis Matemático I/*.tex"])
 task :ecomputadores => (pdf_for FileList["Estructura de Computadores/*.md"])
 task :edatos => (pdf_for FileList["Estructura de datos/*.tex", "Estructura de datos/*.md"])
