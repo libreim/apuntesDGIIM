@@ -284,4 +284,88 @@ Calculamos el mcm:
 Como el ejercicio pide aquellos polinomios de grado menor o igual que tres, nos basta con la solución parcial, ya que otras soluciones eran polinomios de grado superior al buscado.
 
 \textbf{Solución:} $f_0(x) = 2x^3+2x^2+3x+1$
+
+
+\section{\LARGE{Ejercicio 6}}\textbf{
+En el anillo $\mathbb{Z}$[i], resolver el siguiente sistema de congruencias:} 
+
+\[
+	\begin{cases}
+	x \equiv i\ \ \ \ \ \ \ \ mod\ (3)\\
+	x \equiv 1+i \ \ \ mod\ (3+2i)\\
+	x \equiv 3+2i \ \ mod\ (4+i)
+\end{cases}
+\]
+
+\emph{Resolución. \\ }
+
+Empezaremos resolviendo el sistema: 
+\[
+	\begin{cases}
+	x \equiv i\ \ \ \ \ \ \ \ mod\ (3)\\
+	x \equiv 1+i \ \ \ mod\ (3+2i)\\
+\end{cases}
+\]
+
+ Y para ello hallaremos la solución particular de $x \equiv i\ mod\ (3)$. Como i es una unidad del anillo, entonces $\forall a \in \mathbb{Z}[i] \Rightarrow (a,i) = i.$ Y los coeficientes de bezout son $0*3 + 1*i = 1$ de manera trivial. Entonces la solución general de la primera ecuación sería $x = i + 3*k$. \\
+ 
+ Ahora sustituimos x en la segunda ecuación, y nos queda la ecuación $i + 3k \equiv\ 1 +i\ mod (3+2i) $ de manera equivalente $3k\ \equiv\ 1\ mod\ (3+2i)$. Ahora sacaremos los coeficientes de bezout de 3 y 3+2i. Mira abajo. Entonces por ello sabemos que $3*(-1-i) \equiv -i\ mod (3+2i) $. Por ello una solución particular será $k=(-1-i)*-i=(i-1)$. Y la solución general para $k$ será por lo tanto $k = (i-1) + (3+2i)*k'$. \\
+ 
+ %jalp! nid jalp! como coloco esto bien???
+  \begin{table}[]
+\centering
+\caption{coeficientes de bezout}
+\label{my-label}
+\begin{tabular}{lllll}
+     & 3+2i & 3    &  &  \\
+3+2i & 1    & 0    &  &  \\
+3    & 0    & 1    &  &  \\
+-i   & 1    & -1-i &  & 
+\end{tabular}
+\end{table}
+%hasta aquí 
+ 
+Sustituimos la particular de k en la primera resolción y hayariamos $M = [3,3+2i]$ para hayar cada cuanto debemos hacer la repetición. Para calcular el m.c.m recordaremos que $(a,b)*[a,b]=ab \Rightarrow \frac{ab}{(a,b)} = [a,b].$ Entonces para nuestro caso particular $[3,3+2i] = \frac{9+6i}{-i}=9i-6$. Así pues la colución será:
+
+$$x = i + 3 (i-1) + k''(9i-6) = 4i-3+ k''(9i-6) $$
+Ahora cogemos el sistema:
+\[
+	\begin{cases}
+	x \equiv 4i-3 \ \ mod\ (9i-6) \\
+	x \equiv 3+2i \ \ mod\ (4+i)
+\end{cases}
+\]
+
+ Para resolverlo y hayar (por fin) la solución final haremos lo mismo: hayar la solución general de la primera ecuación (ya resuelta) y sustituir en la segunda, m.c.m de los módulos, y terminamos.\\
+ 
+ Solución primera ecuación: $4i-3+ k''(9i-6)$.\\
+ 
+ Sustituimos segunda: $4i-3+ k''(9i-6) \equiv 3+2i \ \ mod\ (4+i) \rightarrow 
+ (9i-6)k''\equiv 6-2i \ \ mod\ (4+i)$ \\
+ 
+ Hayamos coeficientes de bezout y M.C.D. (tabla adjunta arriba):  \\ 
+ 
+ Enunciamos solución particular y un indicio de la general: $Como\ (9i-6)(-2) \equiv i\ mod\ (4i-1) \Rightarrow $ 
+ $(9i-6)(-2)(-6i-2) \equiv i(-6i-2)\ mod\ (4i-1) \Rightarrow (9i-6)(12i+4) \equiv (6-2i)\ mod\ (4i-1) \Rightarrow k'' = (12i+4) + [9i-6,4+i] k''' $\\
+ 
+ Calculamos [9i-6,4+i]: $\frac{30i-33)}{i}=30-33i$\\ 
+ 
+ Solución general: $(12i+4) + (30-33i) k'''$
+\begin{table}[]
+\centering
+\caption{coficientes de bezout 2}
+\label{my-label}
+\begin{tabular}{lll}
+     & 9i-6 & 4+i  \\
+9i-6 & 1    & 0    \\
+4+i  & 0    & 1    \\
+2i   & 1    & 1-2i \\
+i    & -2   & 4i-1
+\end{tabular}
+\end{table}
+ 
+
+ 
+\end{document}
+
 \end{document}
