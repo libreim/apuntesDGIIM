@@ -269,7 +269,7 @@ El resto es 18 por lo que la tabla sería:
 \end{tabular}
 \end{center}
 
-Ahora, ¿qué ponemos en los huecos a la izquierda? Muy facil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
+Ahora, ¿qué ponemos en los huecos a la izquierda? Muy fácil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
 
 - Para el primero: $ -4 \cdot 0 + 1 = 0 + 1 = 1 $ \\
 - Para el segundo: $ -4 \cdot 1 + 0 = -4 $ \\
@@ -470,7 +470,7 @@ Nombramos las siguientes variables: \\
 - y $\equiv$ "nº de sellos de 40 cent. comprados" \\
 - z $\equiv$ "nº de sellos de 60 cent. comprados" \\
 
-Disponemos de 15 euros (1500 cent.) para comprar estos 3 tipos de sellos, y además tenewmos que comprar 40 sellos en total. Tenemos entocnes:
+Disponemos de 15 euros (1500 cent.) para comprar estos 3 tipos de sellos, y además tenemos que comprar 40 sellos en total. Tenemos entocnes:
 $$ 1500 = 10x + 40y + 60z $$
 $$ 40 = x + y + z $$
 
@@ -626,10 +626,10 @@ Recordamos que han sido más las llamadas a Francia que a Alemania, pero ¿cuán
 llamadas hemos hecho a cada sitio y qué nos han cobrado por cada una?}
 
 Nombramos las variables: \\
-- x $\equiv$ "nº de llamadas hechas a Francia" \\
-- y $\equiv$ "nº de llamadas hechas a Alemania" \\
-- z $\equiv$ "coste de una llamada a Francia" \\
-- z + 15 $\equiv$ "coste de una llamada a Alemania" \\
+- x $\equiv$ “nº de llamadas hechas a Francia" \\
+- y $\equiv$ “nº de llamadas hechas a Alemania" \\
+- z $\equiv$ “coste de una llamada a Francia" \\
+- z + 15 $\equiv$ “coste de una llamada a Alemania" \\
 
 Tenemos las siguientes ecuaciones:
 $$ 1320 = (z + 15)y + xz $$
@@ -784,10 +784,76 @@ En concreto, la solución mínima k = -9, tenemos: \\
 - x = 35 (grupos de 30 manzanas) \\
 - y = 26 (grupos de 40 manzanas) \\
 
+	\subsection{\LARGE{Ejercicio 10 - 2 en K[x]}}
+	\textbf{2. Calcular el máximo común divisor y el mínimo común múltiplo, en el anillo $Z_{3}$[x], de los polinomios $x^{4}+x^{3}-x-1$ y $x^{5}+x^{4} -x-1$. Encontrar todos los polinomios f (x) y g(x) en $Z_{3}$[x], con grado de g(x) igual a 7, tales que $(x^{4}+x^{3}-x-1)$ f(x)+$(x^{5}+x^{4} -x-1)$ g(x) = $x^{4}+x^{2}+1$ \\ }
+	
+	
+     \underline{Máximo común divisor} \\
+     
+	\begin{center}
+	\begin{tabular}{r|cc}
+	$x^{5}+x^{4} -x-1$ & 1 & 0 \\
+	$x^{4}+x^{3}-x-1$ & 0 & 1 \\
+	$x^{2}-1$ & 1 & -x \\
+	0
+	\end{tabular}
+	\end{center}
+     
+     Las divisiones realizadas han sido : \\
+     
+     $\bullet$ ($x^{5}+x^{4} -x-1$)/($x^{4}+x^{3}-x-1$) \\
+     
+     \noindent{Cociente: x} \\
+     Resto:  $x^{2}-1 $\\
+     
+     $\bullet$ ($x^{4}+x^{3}-x-1$)/($x^{2}-1 $) \\
+     
+      \noindent{Cociente: $x^{2}+x+1$ } \\
+      Resto:  0\\
+      
+      Así, el máximo común divisor es $x^{2}-1$ \\
+     
+     \underline{Mínimo común múltiplo} \\
+     
+     Usamos que [a,b]=$\displaystyle{\frac { ab }{ (a,b) } }$ \\
+     
+     ($x^{5}+x^{4} -x-1$)($x^{4}+x^{3}-x-1$) = $x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$ \\
+     
+    ($x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$)/($x^{2}-1$) = $x^{7}-x^{6}-x^{5}+x^{4}-x^{3}+x^{2}+x-1$ \\
+     
+Por lo tanto, el mínimo común múltiplo es $x^{7}-x^{6}-x^{5}+x^{4}-x^{3}+x^{2}+x-1$
+\ \\
+     
+     \underline{Ecuación diofántica} 
+     
+     Dividiendo por el máximo común divisor la ecuación para obtener al reducida (vemos que tiene solución) queda: \\
+     
+     $(x^{2}+x+1)$ f(x)+$(x^{3}+x^{2}+x+1)$ g(x) = $x^{2}+2$ \\
+     
+     Aplicando la igualdad de Bezout (a partir de los cálculos del máximo común divisor): \\
+     
+     $(x^{2}+x+1)(-x)$+$(x^{3}+x^{2}+x+1)$ (1) = 1 \\
+     
+     $(x^{2}+x+1)$$(-x^{3}-2x)$+$(x^{3}+x^{2}+x+1)$ $(x^{2}+2)$ = $x^{2}+2$ \\
+     
+     Obtenemos como solución particular: \\
+     
+     $f_{0}$(x) = $-x^{3}-2x$ \\
+     
+     $g_{0}$(x) = $x^{2}+2$ \\
+     
+     La solución general quedaría: \\
+     
+     $f$(x) = $-x^{3}-2x +k(x)(x^{3}+x^{2}+x+1)$  \\
+     
+     $g$(x) = $x^{2}+2 -k(x)(x^{2}+x+1)$ \\
+     
+     Para cumplir la condición  g(x) igual a 7 observamos que el grado de k(x) tiene que ser igual a 5. De este modo, todas soluciones pedidas son las que se obtienen a partir de la general para todos los k(x) de $Z_{3}$[x] tal que gr(k(x)) = 5. 
+
 \subsection{\LARGE{Ejercicio 15 - 1 en $\ent [\sqrt{n}]$}}
 
-\textbf{En el anillo $\ent [\sqrt{n}]$, calcular \\
-	mcd($2-3\sqrt{-2},1+\sqrt{-2}$), mcm($2-3\sqrt{-2},1+\sqrt{-2}$).\\
+\textbf{En el anillo $\ent [\sqrt{n}]$ calcular \\
+	a) mcd($2-3\sqrt{-2},1+\sqrt{-2}$), mcm($2-3\sqrt{-2},1+\sqrt{-2}$).\\
 	b) En $\ent [\sqrt{n}]$, calcula mcd($3+\sqrt{3},2$) y mcm($3+\sqrt{3},2$).}
 	
 a) Calcularemos primero el mcd, para ello usaremos el método de la tabla que venimos haciendo
@@ -809,7 +875,7 @@ Hemos llegado a un número del tipo $a+b\sqrt{n}$, ahora tenemos que sacar el co
 solo debemos sacar la parte entera redondeando, es decir: \\
 $ \frac{-4}{3} = -1,333 \implies a = -1 $ \\
 $ \frac{-5}{3} = -1,666 \implies b = -2 $ \\
-Luego el cociente será: $ c = -1-2\sqrt{-2} $ \\
+Luego el cociente será: $ q = -1-2\sqrt{-2} $ \\
 Ahora para calcular el resto, sabemos que es el dividendo menos el divisor por el cociente, luego:
 $$ r = 2-3\sqrt{-2} + (1+\sqrt{-2})(-1-2\sqrt{-2}) = -1 $$
 
@@ -827,7 +893,7 @@ $ 1+\sqrt{-2} $ & 0 & 1 \\
 \end{center}
 
 Concluimos que el mcd($2-3\sqrt{-2},1+\sqrt{-2}$) = -1, ahora para hallar el mcm simplemente tenemos que: $ mcm(a,b) = \frac{ab}{mdc(a,b)} $. Luego:
-$$ mcm(2-3\sqrt{-2},1+\sqrt{-2}) = \frac{(2-3\sqrt{-2})(1+\sqrt{-2})}{-1} = -8+\sqrt{-2} $$
+$$ [2-3\sqrt{-2},1+\sqrt{-2}] = \frac{(2-3\sqrt{-2})(1+\sqrt{-2})}{-1} = -8+\sqrt{-2} $$
 
 b) Realizamos el mismo proceso que en a). Calculamos las normas: \\
 $ N(3+\sqrt{3}) = 9 - 3 = 6 $ \\
