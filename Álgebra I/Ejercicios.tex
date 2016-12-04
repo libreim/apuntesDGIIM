@@ -10,10 +10,14 @@
 % Javier Sáez (@fjsaezm)
 % Daniel Pozo (@danipozodg)
 % Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo
 % Antonio Coín (@antcc)
 % Miguel Lentisco (@AlfaOmegaX)
-%
+% Sofía Almeida (@SofiaAlmeida)
+% Jesús Sánchez de Lechina (@jojelupipa)
+% Laura Gómez (@lauragg)
+% Johanna Capote (@jocaro97)
+% Antonio Martín (@amartinruiz23)
+% 
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
 % las plantillas base.
@@ -1074,31 +1078,62 @@ El número vendrá dado: $a_n*10^{n}+ a_{n-1}*10^{n-1} + ... + a_1 * 10 + a_0$.
 
 Pero, tomando todas la demás cifras menos las dos últimas, su suma es congruente con 0 módulo 4, luego  basta ver si los dos últimos es congruente con 0 módulo 4, pero eso es el enunciado, luego queda probado.
 
+\subsection{\LARGE{Ejercicio 4}}
+\textbf{Una banda de 13 piratas se reparten N monedas de oro, pero le sobran 8. Dos mueren, las vuelven a repartir y sobran 3. Luego se ahogan 3 y sobran 5. ¿Cuál es la mínima cantidad posible N de monedas?}\\
 
-\subsection{\LARGE{Ejercicio 5}}
+\[
+	\begin{cases}
+	\text{N} \equiv 8\; \text{mod}(13)\\
+	\text{N} \equiv 3\; \text{mod}(11)\\
+	\text{N} \equiv 5\; \text{mod} (8)\\
+	\end{cases}
+\]
 
-Enunciado: En el anillo $Z[\sqrt3]$, resolver la congruencia.
-$$ (1+ \sqrt3)x \equiv 9 - 4\sqrt3 \ mod(2\sqrt3)$$
+Resolvemos el sistema formado por la primera y la tercera ecuación:
 
-Primero calculamos el máximo común divisor de $(1 + \sqrt 3)$ y $(2\sqrt3)$.\\
-$$ N(1 + \sqrt3) = \sqrt{1 + {(\sqrt3)}^{2}} = \sqrt{1 + 3} = 2 $$
-$$ N(2 \sqrt 3) = \sqrt{{(2\sqrt3)}^{2}} =  2\sqrt3 $$\\
-Como $N(1 + \sqrt3) < N(2 \sqrt 3)$ pondrémos primero $2 \sqrt3$\\ \\
-\begin{tabular}{lllll}
-\multicolumn{1}{l|}{$2\sqrt3$}    & 1 & 0 &  &  \\
-\multicolumn{1}{l|}{$1 + \sqrt3$} & 0 & 1 &  &  \\
-\multicolumn{1}{l|}{0} &   &   &  &  \\
-                                &   &   &  & 
+N $\equiv$ 8 mod(13) $\rightarrow$ N = 8 + 13 $\cdot$ x
+
+Sustituimos en la tercera ecuación
+
+8 + 13 $\cdot$ x $\equiv$ 5 mod(8) $\rightarrow$ 5 $\cdot$ x $\equiv$ 5 mod(8) $\Rightarrow$ x $\equiv$ 1 mod(8) (Podemos simplificar el 5 porque $\hspace*{0.5cm}$(5,8) = 1)
+
+$x_{0}$ = 1 $\Rightarrow$ $N_{0}$ 8 + 13 $\cdot$ 1 = 21 (Solución óptima)
+
+N $\equiv$ 21 mod(8 $\cdot$ 13) = 21 mod(104)\\
+
+Ahora, resolvemos el sistema con la ecuación anterior y la segunda del sistema inicial
+
+N $\equiv$ 21 mod(104) $\rightarrow$ 21 + 104 $\cdot$x
+
+21 + 104 $\cdot$ x $\equiv$ 3 mod(11) $\Rightarrow$ 10 + 5 $\cdot$ x $\equiv$ 3 mod(11) $\Rightarrow$ 5 $\cdot$ x $\equiv$ -7 mod(11) $\Rightarrow$ 5 $\cdot$ x $\equiv$ 4 mod(11)\\
+
+\begin{figure}[H]
+\begin{center}
+\caption{mcd}
+\label{my-label}
+\begin{tabular}[(b)]{|c|cc}
+\cline{1-1}
+\textbf{11} & 1                    & 0                    \\ \cline{1-1}
+\textbf{5}  & 0                    & 1                    \\ \cline{1-1}
+\textbf{1}           & 1                    & -2                   \\ \cline{1-1}
+\textbf{0}           & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \cline{1-1}
 \end{tabular}
+\end{center}
+\end{figure}
 
-Sabemos que el resto es 0 puesto que:\\
-$$ \frac{2 \sqrt3}{1 + \sqrt3} = \frac{(2\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{2 \sqrt3 - 6}{1 - 3} = \frac{2\sqrt3 - 6}{-2} = 3 - \sqrt3 $$
-Por lo tanto el cociente de esta división es $ 3 - \sqrt3 $ y de resto cero. Por lo tanto el m.c.d. de $(1 + \sqrt 3)$ y $(2\sqrt3)$ es $(1 + \sqrt 3)$. Veamos si $(1 + \sqrt 3)$ divide $ 9 -4 \sqrt3$.\\
-$$ \frac{9 - 4\sqrt3}{1 + \sqrt3} = \frac{(9 - 4\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{9 - 9\sqrt3 - 4\sqrt4 + 4{(\sqrt3)}^{2}}{1 - {(\sqrt3)}^{2} } = \frac{21 -13\sqrt3}{-2} = \frac{13\sqrt3 - 21}{2} = \frac{13}{2}\sqrt3 - \frac{21}{2}$$
-Por lo tanto el cociente la division es $q = 6$ y el resto es: \\
-$$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$ 
-Por lo tanto como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$ esta ecuación no tiene solución.
+1 = 1 $\cdot$ 11  + 5 $\cdot$ (-2) $\rightarrow$ 5 $\cdot$ (-2) $\equiv$1 mod(11)
 
+Multiplicamos por 4 y así obtendremos una solución particular
+
+5 $\cdot$ (-8) $\equiv$ 4 mod(11) $\Rightarrow$ $x_{0}$ = -8
+
+Sustituimos y nos queda $N_{0}$ = -811 
+
+N $\equiv$ -811 mod(1144) = 333 mod(1144) (donde 1144 = [11,104])
+
+N = 333 + 1144 $\cdot$ k\\
+
+\textbf{Solución}: La cantidad mínima de monedas sería cunado k vale 0. Entonces el número de monedas es 333\\
 
 
 \subsection{\LARGE{Ejercicio 6}}
@@ -1112,7 +1147,7 @@ litros, al envasar el producido por Antonio sobraron 3 litros y al envasar el
 producido por Pepe sobraron 11 litros. Sabiendo que la producción de Juan
 está entre 1000 y 2000 litros ¿cual fue la producción de cada uno de ellos?.}
 
-Vamos a plantear primero el problema: Vamos a llamar:
+Vamos a plantear primero el problema. Llamamos:
 \begin{enumerate}
 	\item A = 3J; P = 5J
 	\item La capacidad es: J = 25, A = 7 y P = 16.
@@ -1165,6 +1200,30 @@ Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
 \]
 
 
+
+\subsection{\LARGE{Ejercicio 15 - 5 parte K[x] y $\ent\sqrt{n}$}}
+
+\textbf{En el anillo $Z[\sqrt3]$, resolver la congruencia.
+$$ (1+ \sqrt3)x \equiv 9 - 4\sqrt3 \ mod(2\sqrt3)$$}
+
+Primero calculamos el máximo común divisor de $(1 + \sqrt 3)$ y $(2\sqrt3)$.\\
+$$ N(1 + \sqrt3) = \sqrt{1 + {(\sqrt3)}^{2}} = \sqrt{1 + 3} = 2 $$
+$$ N(2 \sqrt 3) = \sqrt{{(2\sqrt3)}^{2}} =  2\sqrt3 $$\\
+Como $N(1 + \sqrt3) < N(2 \sqrt 3)$ pondremos primero $2 \sqrt3$\\ \\
+\begin{tabular}{lllll}
+\multicolumn{1}{l|}{$2\sqrt3$}    & 1 & 0 &  &  \\
+\multicolumn{1}{l|}{$1 + \sqrt3$} & 0 & 1 &  &  \\
+\multicolumn{1}{l|}{0} &   &   &  &  \\
+                                &   &   &  & 
+\end{tabular}
+
+Sabemos que el resto es 0 puesto que:\\
+$$ \frac{2 \sqrt3}{1 + \sqrt3} = \frac{(2\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{2 \sqrt3 - 6}{1 - 3} = \frac{2\sqrt3 - 6}{-2} = 3 - \sqrt3 $$
+Por lo tanto, el cociente de esta división es $ 3 - \sqrt3 $ y de resto cero. Quedando el mcd de $(1 + \sqrt 3)$ y $(2\sqrt3)$ es $(1 + \sqrt 3)$. Veamos si $(1 + \sqrt 3)$ divide $ 9 -4 \sqrt3$.\\
+$$ \frac{9 - 4\sqrt3}{1 + \sqrt3} = \frac{(9 - 4\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{9 - 9\sqrt3 - 4\sqrt4 + 4{(\sqrt3)}^{2}}{1 - {(\sqrt3)}^{2} } = \frac{21 -13\sqrt3}{-2} = \frac{13\sqrt3 - 21}{2} = \frac{13}{2}\sqrt3 - \frac{21}{2}$$
+El cociente la division es $q = 6$ y el resto es: \\
+$$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$ 
+Como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$. Esta ecuación no tiene solución.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1326,7 +1385,7 @@ Y por lo tanto $\mathbf{a \neq b}$
 
 
 
-\subsection{\LARGE{Ejercicio 2(segunda parte de la relacion)}} 
+\subsection{\LARGE{Ejercicio 5 - 2 en anillos de restos de K[x]}} 
 
 \textbf{Enunciado: Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
 
