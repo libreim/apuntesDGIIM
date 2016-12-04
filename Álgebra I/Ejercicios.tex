@@ -12,6 +12,7 @@
 % Pedro Bonilla (@pedrobn23)
 % Guillermo Galindo
 % Antonio Coín (@antcc)
+% Miguel Lentisco (@AlfaOmegaX)
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
@@ -856,6 +857,65 @@ $$ \frac{2}{-1-\sqrt{3}} = 1-\sqrt{3} \implies q = 1-\sqrt{3}, r = 0 $$
 Luego $ mcd(3+\sqrt{3},2) = 1-\sqrt{3} $, y entonces:
 $$ mcm(3+\sqrt{3},2) = \frac{(3+\sqrt{3})(2)}{1-\sqrt{3}} = -2\sqrt{3} $$
 
+\subsection{\LARGE{Ejercicio 16 - 2 en $\Z [\sqrt{n}]$}}
+
+\textbf{Probar que en el anillo $\Z[\sqrt{2}]$ el entero cuadrático $2+\sqrt{2}$ y su conjugado $2-\sqrt{2}$ son asociados.
+¿Quiénes son su máximo común divisor y su mínimo común múltiplo?}
+
+Bien, sabemos que dos elementos de un anillo son asociados si uno se divide al otro; es decir, x y y son asociados si x divide a y,
+e y divide a x.
+
+Veamos la norma de ambos elementos: \\
+- $N(2+\sqrt{2}) = 4 - 2 = 2 $ \\
+- $N(2-\sqrt{2}) = 4 - 2 = 2 $ \\
+
+Da igual cual dividamos entre cual, como vemos:
+$$ \sqrt{2+\sqrt{2}}{2-\sqrt{2}} = 3+2\sqrt{2} $$
+$$ \sqrt{2-\sqrt{2}}{2+\sqrt{2}} = 3-2\sqrt{2} $$
+
+Vemos que efectivamente son asociados, ya que uno se divide al otro. En este caso el máximo común divisor puede cogerse como
+cualquiera de los dos, y el mínimo común múltiplo sería el contrario al que hemos elegido.
+
+\subsection{\LARGE{Ejercicio 17 - 3 en $\Z [\sqrt{n}]$}}
+
+\texbf{a) Determinar un entero de Gauss $\alpha \in \Z[i]$, tal que al dividirlo por 3 da resto i, mientras su resto
+al dividirlo 3 + 2i es 1 + i. \\
+b) Determina enteros de Gauss $ x, y \in \Z[i]$, con $N(x) \leq 18$, tales que 4x + (3 + 3i)y = -1 + 5i}
+
+a) Simplemente realizamos las siguientes ecuaciones:
+$$ \alpha = 3x + i $$
+$$ \alpha = (3+2i)y + (1+i) $$
+E igualando:
+$$ 3x + (-3-2i)y = 1 $$
+
+Sacamos la norma: \\
+- $N(-3-2i) = 9 + 4 = 13 $ \\
+- $N(3) = 9 $ \\
+
+Hacemos la tabla:
+
+\begin{center}
+\begin{tabular}{c|cc}
+-2-2i & 1 & 0 \\
+3 & 0 & 1 \\
+\hline
+i & 1 & 1+i \\
+\hline
+0
+\end{tabular}
+\end{center}
+
+Divisiones hechas: 3-2i = (1-i)3 + i
+
+La ecuación final sería:
+$$ (-3i)x + (-2+3i)y = -i $$
+
+Como nos pide un entero de Gauss, basta que saquemos una solución particular, obteniendo:
+$$ y = -i $$
+$$ x = 1 -i $$
+$$ \alpha = 3-2i $$
+
+b)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
