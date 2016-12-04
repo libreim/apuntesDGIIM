@@ -273,7 +273,7 @@ El resto es 18 por lo que la tabla sería:
 \end{tabular}
 \end{center}
 
-Ahora, ¿qué ponemos en los huecos a la izquierda? Muy fácil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
+Ahora, ¿qué ponemos en los huecos a la derecha? Muy fácil, solo tenemos que coger el cociente de la división, negarlo, multiplicarlo por el número que tiene encima y sumarlo al número que tiene dos huecos por encima. Es decir, en este caso, tenemos el -4 (el cociente 4 negado):
 
 - Para el primero: $ -4 \cdot 0 + 1 = 0 + 1 = 1 $ \\
 - Para el segundo: $ -4 \cdot 1 + 0 = -4 $ \\
@@ -1302,6 +1302,9 @@ Por lo que $x_0 = 2$ y la solución es $x=2$
 
 \textbf{Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:}
 
+
+Antes de empezar hemos de tener en cuenta que en estos anillos todos los elementos son o unidades o divisores de cero sólo tenemos que restarle al cardinal del anillo el número de unidades para obtener el número de divisores de cero.
+
 1) $\ent_{125}$
 
 Para ello, basta calcular $|U(\ent_{125})| = \varphi(125) = 125 \cdot(1-\frac{1}{5}) = 100$, luego como tiene \textbf{100 unidades}, tiene \textbf{25 divisores de cero}.
@@ -1313,12 +1316,11 @@ Calculamos $\varphi(72) = 72\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{3}) = 36\cdot \
 
 3) $\ent_{88}$
 
-Siguiendo el proceso de antes calculamos la función $\phi$ de euler, la cual nos permitirá obtener el número de unidades de este anillo.
-Y teniendo en cuenta que en estos anillos todos los elementos son o unidades o divisores de cero sólo tenemos que restarle al cardinal del anillo el número de unidades para obtener el número de divisores de cero.
+Siguiendo el proceso de antes calculamos la función $\varphi$ de Euler, la cual nos permitirá obtener el número de unidades de este anillo.
 
 Así pues calculamos:
 
-$\varphi(88) = 88\cdot(1-\frac{1}{2}) = 44$, es decir, $|U(\ent_{88}) =$ \textbf{44 unidades} y por tanto hay $88-44=$ \textbf{44 divisores de cero}.
+$\varphi(88) = 88\cdot(1-\frac{1}{2})\cdot (1-\frac{1}{11}) = 40$, es decir, $|U(\ent_{88})| =$ \textbf{40 unidades} y por tanto hay $88-40=$ \textbf{48 divisores de cero}.
 
 $$Recordaremos\ que\ los\ valores\ de\ \lambda\ en\ \varphi(\alpha)\ del\ tipo\ (1-\frac{1}{\lambda})\ son\ los\ divisores\ irreducibles\ de\ \alpha$$
 
@@ -1331,13 +1333,15 @@ Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\fra
 
 \textbf{Enunciado: Determina si la igualdad a = b es cierta en los siguientes casos:}
 
+\emph{Como la interpretación de los paréntesis puede dar lugar a malinterpretaciones consideraremos en los dos primeros apartados la base como un número elevado a otro, y en los dos siguientes consideraremos una base que está elevada a un exponente el cual es base de otra potencia}
+
 \textbf{\underline{1) $\mathbf{a = 9^{55^9}\ y\ b = 7^{70^{55}}\ en\ el\ anillo\ \ent_{21} }$}}
 \\\\ 
 Partiremos de que $9^{55^9} = 9^{495}$, pero podemos calcular la función $\varphi$ de euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
 
 Entonces: $\varphi(21) = 21\cdot\frac{2}{3}\cdot\frac{6}{7} = 12$
 
-Y esto quiere decir que $9^{495} \equiv_{21} 9^{495\%12}\equiv_{21}9^3 $
+Y esto quiere decir que $9^{495} \equiv_{21} 9^{R_{12}(495)}\equiv_{21}9^3 $
 
 Calculamos este valor:
 
@@ -1345,7 +1349,7 @@ $9^1\equiv_{21}9$\quad;\quad$9^2\equiv_{21}18$\quad;\quad$\mathbf9^3\equiv_{21}$
 
 Y ahora hacemos lo propio para b = $7^{70^{55}}$
 \\ b es congruente con $7^{10^{55}}$ (usamos $\varphi(21)$ para esto)
-y $7^{10^{55}}\equiv_{21}7^{550}\equiv_{21}7^{550\%12}\equiv_{21}7^{16}$
+y $7^{10^{55}}\equiv_{21}7^{550}\equiv_{21}7^{R_{12}(550)}\equiv_{21}7^{16}$
 
 Pero $7^1\equiv_{21}7^2\equiv_{21}...\equiv_{21}\mathbf7^{\mathbf{16}}\equiv_{\mathbf{21}}$\textbf{7 = b} $\Rightarrow\ \mathbf{a \neq b}$
 \\\\\\
@@ -1353,15 +1357,15 @@ Pero $7^1\equiv_{21}7^2\equiv_{21}...\equiv_{21}\mathbf7^{\mathbf{16}}\equiv_{\m
 
 Podemos hacer uso de la función $\varphi$ del ejercicio anterior, pues estamos en el mismo anillo, así sólo tenemos que repetir el mismo proceso
 
-$2^{350}\equiv_{21}2^{350\%12}\equiv_{21}\mathbf{2^2\equiv_{21}4 = a}$
+$2^{350}\equiv_{21}2^{R_{12}(350)}\equiv_{21}\mathbf{2^2\equiv_{21}4 = a}$
 
 Y por su parte para b:
 
-$5^{70^2} \equiv_{21} 5^{140} \equiv_{21} 5^{140\%12} \equiv_{21} \mathbf{5^5 \equiv_{21}17 = b} $
+$5^{70^2} \equiv_{21} 5^{140} \equiv_{21} 5^{R_{12}(140)} \equiv_{21} \mathbf{5^5 \equiv_{21}17 = b} $
 
 Luego: $\mathbf{a \neq b}$
 \\\\\\
-\textbf{\underline{3) $\mathbf{a = 12{55^{70}}\ y\ b = 10^{70^{55}}\ en\ el\ anillo\ \ent_{21} }$}}
+\textbf{\underline{3) $\mathbf{a = 12^{55^{70}}\ y\ b = 10^{70^{55}}\ en\ el\ anillo\ \ent_{22} }$}}
 
 Empezaremos calculando la función $\varphi(22)$ que nos será de utilidad en los siguientes ejercicios:
 
@@ -1373,7 +1377,7 @@ $b = 10^{70^{55}}\equiv_{22}7^{10^{50}}\equiv_{22}7^{550}\equiv_{22}\mathbf{7^{1
 
 Por lo tanto \textbf{a = b}.
 
-\textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{21} }$}}
+\textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{22} }$}}
 
 Para a obtenemos que $5^{5^{70}}\cdot11^{5^{70}}\equiv_{22}5^{10} \cdot 11^{10} \equiv_{22} 1 \cdot 11\equiv_{22}\mathbf{11 = a}$
 
