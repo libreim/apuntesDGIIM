@@ -1466,14 +1466,31 @@ Afirmando en este caso que \textbf{a y b son iguales}
 
 
 \textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{22} }$}}
+%%
+Volvemos a hacer lo mismo que antes. Calculamos primero el valor de a:
 
-Para a obtenemos que $5^{5^{70}}\cdot11^{5^{70}}\equiv_{22}5^{10} \cdot 11^{10} \equiv_{22} 1 \cdot 11\equiv_{22}\mathbf{11 = a}$
+$5^{5^{70}} \equiv_{22} 5^{R_{\varphi(22)}(5^{70})}\equiv_{22}5^5\quad ;\quad (Observamos\ que\ R_{\varphi(22)}(5^{70}) = 5)$
 
-Y por su parte para b:
+Luego $5^5 \equiv_{22}1$
 
-$10^{70^{22}} \equiv_{22} 10^{10^{22}}\equiv_{22} 10^{220} \equiv_{22}\mathbf{10^{10}\equiv_{22}12=b}$
+$11^{5^{70}}\equiv_{22}\ ?\rightarrow$ No podemos usar $\varphi(22)$ pues 11 y 22 no son primos relativos, pero rápidamente apreciamos que:
 
-Y por lo tanto $\mathbf{a \neq b}$
+$11^x \equiv_{22} 11\ \forall\ x \in \mathbb{N}$
+
+Obteniendo como resultado \textbf{a = 11 · 1 = 11}
+
+Para b calculamos el producto de:
+
+$2^{70^{22}}\equiv_{22}2^{R_{10}(70^{22})}\equiv_{22}2^{10}\equiv_{22}12$
+ 
+\emph{(Como 2 y 22 son primos estudiamos las repeticiones de las potencias de 2 en $\ent_{22})$}
+
+$5^{70^{22}}\equiv_{22}5^{R_{10}(70^{22})\equiv_{22}1}$
+
+Con lo que nos queda \textbf{1 · 12 = 12 = b}
+
+Y finalizamos concluyendo que $\mathbf{a \neq b}$
+
 
 
 
