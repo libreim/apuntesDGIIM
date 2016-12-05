@@ -1391,14 +1391,35 @@ En este momento ya podemos calcular cuánto vale $3^{55^{70}}$, que es congruent
 
 $$3^1\equiv_{22}3\quad;\quad3^2\equiv_{22}9\quad;\quad3^3\equiv_{22}5\quad;\quad3^4\equiv_{22}15\quad;\quad \mathbf{3^5\equiv_{22}1}$$
 
-Y ahora calculamos b
-\ \\\\
+Y hacemos lo propio con $4^{50^{70}}$:
 
-$a = 12^{55^{70}}\equiv_{22}12^{5^{70}}\equiv_{22}12^{350}\equiv_{22}\mathbf{12^{10} \equiv_{22}}$\textbf{12 = a}
+No podemos proceder como en lo anterior haciendo uso de la función $\varphi$ de Euler, pues 4 y 22 no son primos relativos. En su lugar hay que operar de una manera más “rudimentaria”, hallando con qué frecuencia se repiten las potencias de 4 en este anillo.
 
-$b = 10^{70^{55}}\equiv_{22}7^{10^{50}}\equiv_{22}7^{550}\equiv_{22}\mathbf{7^{10}\equiv_{22} 12 = b}$
+$$4^1\equiv_{22}4\quad;\quad 4^2\equiv_{22}16\quad;\quad 4^3\equiv_{22}20\quad;\quad 4^4\equiv_{22}14\quad;\quad\mathbf{4^5\equiv_{22}12}\quad;\quad 4^6\equiv_{22}4$$
 
-Por lo tanto \textbf{a = b}.
+De esto sacamos que se repiten cada 5, o visto de otra manera, esto quiere decir que $4^{55^{70}}\equiv_{22} 4^{R_5(55^{70})} $, pero como $R_5(55) = 0 \Rightarrow 4^{55^{70}}\equiv_{22} 4^5$
+
+Uniendo ambos resultados vemos que el producto de esto nos queda $1\cdot 12 = \mathbf{12 = a}$ 
+
+
+Y ahora calculamos $b$:
+
+$10^{70^{55}} = 5^{70^{55}} \cdot 2^{70^{55}}$
+
+Repetimos el mismo o procedimiento, calculamos por separado el valor de cada uno de los términos y luego multiplicamos. Siguiendo el criterio de “si son primos relativos con 22 podemos usar la función $\varphi$ de Euler y si no tendremos que estudiar las repeticiones en las potencias”.
+
+De este modo obtenemos:
+
+$2^{70^{55}} \equiv_{22}2^{R_{10}(70^{50})} \Rightarrow \equiv_{22}\mathbf{2^{10}\equiv_{22}12}$ \emph{(Mediante repeticiones en las potencias)}
+
+$5^{70^{55}}\equiv_{22}5^{R_{\varphi(22)}(70^{55})}\equiv_{22}\mathbf{5^{10}\equiv_{22}1}$ \emph{(Mediante la función $\varphi$ de Euler)}
+
+Con lo que concluimos que el producto es:
+
+$$12 \cdot 1 = \mathbf{12 = b}  $$
+
+Afirmando en este caso que \textbf{a y b son iguales}
+
 
 \textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{22} }$}}
 
