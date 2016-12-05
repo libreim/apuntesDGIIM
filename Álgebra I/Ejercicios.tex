@@ -1276,12 +1276,9 @@ Explicaremos en este caso como se obtienen los coeficientes de Bezout para el re
 &\implies 7=50(-1)+19(+3)
 \end{align*}
 
-Podríamos decir, como $1=50(8)+18(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$. Sin embargo, este argumento es inválido puesto que $(42,50)=2(21,50)=2\ne1$. 
-En este caso, por suerte, la congruencia de $(42,50)=2$ es una de los restos hallados con el Algoritmo de Euclides por lo que sí podemos hacer el siguiente argumento:
-\[
-2=50(-3)+19(8) \implies 19(8)\equiv 2 mod(50) \stackrel{(21,50)=1}{\implies} 19(8+21)\equiv 42 mod(50)
-\]
-Luego, la conclusión es que $x=8*21=168\equiv_{50} 18$.
+A continuación, como $1=50(8)+18(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$.
+
+Luego, la conclusión es que $x=-21*42\equiv_{50}29*42=1218\equiv_{50} 18$.
 
 \underline{\textbf{4) $5^{30}$ x = 2 en $\ent_7$ }}
 
