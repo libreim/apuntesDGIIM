@@ -1335,7 +1335,7 @@ Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\fra
 
 \emph{Como la interpretación de los paréntesis puede dar lugar a malinterpretaciones consideraremos en los dos primeros apartados la base como un número elevado a otro, y en los dos siguientes consideraremos una base que está elevada a un exponente el cual es base de otra potencia}
 
-\textbf{\underline{1) $\mathbf{a = 9^{55^9}\ y\ b = 7^{70^{55}}\ en\ el\ anillo\ \ent_{21} }$}}
+\textbf{\underline{1) $\mathbf{a = (9^{55})^9\ y\ b = (7^{70})^{55}\ en\ el\ anillo\ \ent_{21} }$}}
 \\\\ 
 Partiremos de que $9^{55^9} = 9^{495}$, pero podemos calcular la función $\varphi$ de euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
 
@@ -1353,7 +1353,7 @@ y $7^{10^{55}}\equiv_{21}7^{550}\equiv_{21}7^{R_{12}(550)}\equiv_{21}7^{16}$
 
 Pero $7^1\equiv_{21}7^2\equiv_{21}...\equiv_{21}\mathbf7^{\mathbf{16}}\equiv_{\mathbf{21}}$\textbf{7 = b} $\Rightarrow\ \mathbf{a \neq b}$
 \\\\\\
-\textbf{\underline{2) $\mathbf{a = 2^{5^{70}}\ y\ b = 5^{70^{2}}\ en\ el\ anillo\ \ent_{21} }$}}
+\textbf{\underline{2) $\mathbf{a = (2^{5})^{70}\ y\ b = (5^{70})^{2}\ en\ el\ anillo\ \ent_{21} }$}}
 
 Podemos hacer uso de la función $\varphi$ del ejercicio anterior, pues estamos en el mismo anillo, así sólo tenemos que repetir el mismo proceso
 
@@ -1370,6 +1370,29 @@ Luego: $\mathbf{a \neq b}$
 Empezaremos calculando la función $\varphi(22)$ que nos será de utilidad en los siguientes ejercicios:
 
 $\varphi(22) = 22\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{11}) = 10$
+
+$a = 12^{55^{70}} = (3\cdot 4)^{55^{70}} = 3^{55^{70}} \cdot 4^{55^{70}}$
+
+Calculamos por separado cuánto vale cada uno de estos:
+
+$3^{55^{70}} \rightarrow$ Como 3 es primo relativo con 22 podemos hacer uso de la función $\varphi$(22), por lo que con el teorema de Euler obtenemos que:
+
+$3^{\varphi(22)}\equiv 1mod(22)$
+
+Y de esto deducimos que:
+
+$3^{55^{70}} \equiv_{22} 3^{R_{\varphi(22)}(55^{70})}$
+
+Aquí entonces tenemos que hallar cuál es la solución de $R_{10}(55^{70}) = R_{10}(5^{70})$
+Pero rápidamente observamos que $5^1\equiv_{10}...\equiv_{10}5^n\equiv_{10}5$
+ y por tanto $R_{10}(5^{70}) = 5$
+ 
+En este momento ya podemos calcular cuánto vale $3^{55^{70}}$, que es congruente con $3^5$
+
+$$3^1\equiv_{22}3\quad;\quad3^2\equiv_{22}9\quad;\quad3^3\equiv_{22}5\quad;\quad3^4\equiv_{22}15\quad;\quad \mathbf{3^5\equiv_{22}1}$$
+
+Y ahora calculamos b
+\ \\\\
 
 $a = 12^{55^{70}}\equiv_{22}12^{5^{70}}\equiv_{22}12^{350}\equiv_{22}\mathbf{12^{10} \equiv_{22}}$\textbf{12 = a}
 
