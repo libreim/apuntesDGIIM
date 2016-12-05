@@ -235,57 +235,6 @@
 \begin{document}
 \maketitle
 
-\section{\Huge{Relación 2}}
-
-\subsection{\LARGE{Ejercicio 3 (2ª parte de la relación)}}
-
-\textbf{Determinar los polinomios $f(x) \in \rac [x]$ de grado menor o igual que tres que satisfacen el sistema de congruencias}
-
-\[
-\begin{rcases}
-	f(x) \equiv x - 1\ mod(x^2+1)\\
-	f(x) \equiv x + 1\ mod(x^2+x+1)
-\end{rcases}
-\]
-
-En primer lugar, reescribimos la primera ecuación para sustituirla en la segunda. 
-$$f(x) \equiv x - 1\ mod(x^2+1) \implies f(x) = x-1 + (x^2+1)g(x)^\circledast$$
-
-Reemplazando lo obtenido, tenemos:
-$$x-1 + (x^2+1)g(x) \equiv x+1\ mod(x^2+x+1)$$ 
-Pasamos el x-1 restando:
-$$(x^2+1)g(x) \equiv 2\ mod(x^2+x+1)$$
-Resolvemos esta ecuación, que tendrá solución si, y solo si, $(x^2+1,\ x^2+x+1)/2$. Así, hallamos el mcd a través de la tablita correspondiente:
-
-
-\begin{center}
-\begin{tabular}{c|cc}
-$x^2+x+1$ & 1 & 0 \\
-$x^2+1$ & 0 & 1 \\
-$x$ & 1 & -1 \\
-1 & $-x$ & $x+1$\\
-0
-\end{tabular}
-\end{center}
-
-Obtenemos de esta forma que $(x^2+1,\ x^2+x+1) = 1$, que divide a 2, por tanto, habrá solución. Partiendo de la identidad de Bezout: $1 = (x^2+x+1)(-x) + (x^2+1)(x+1)$, la transformamos en una ecuación en congruencia (si vemos la ecuación como $(x^2+x+1)(x) = (x^2+1)(x+1) - 1$, por la definición de congruencia) $(x^2+1)(x+1) \equiv 1\ mod(x^2+x+1)$, multiplicando por 2, encontramos la g(x) buscada: $(x^2+1)(2x+2) \equiv 2\ mod(x^2+x+1)$.
-$g(x)=2x+2$.
-
-Sustituyendo en $^\circledast$ el polinomio g(x) recién encontrado llegaremos a $f_0$(x), solución parcial del sistema. 
-
-$$f_0(x) = x-1 + (x^2+1)g(x) = x-1 + (x^2+1)(2x+2) = 2x^3+2x^2+3x+1$$
-
-La solución general será $$f(x) \equiv f_0(x) mod[x^2+1,\ x^2+x+1]$$
-Calculamos el mcm:
-\[
-	[x^2+1,\ x^2+x+1] = \frac{(x^2+x+1)(x^2+1)}{1} =x^4+x^3+x^2+x+1
-\]
-
-Como el ejercicio pide aquellos polinomios de grado menor o igual que tres, nos basta con la solución parcial, ya que otras soluciones eran polinomios de grado superior al buscado.
-
-\textbf{Solución:} $f_0(x) = 2x^3+2x^2+3x+1$
-
-
 \section{\LARGE{Ejercicio 6}}\textbf{
 En el anillo $\mathbb{Z}$[i], resolver el siguiente sistema de congruencias:} 
 
