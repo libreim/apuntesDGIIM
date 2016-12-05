@@ -1,0 +1,79 @@
+\subsection{\LARGE{Parte 2. Ejercicio 1}}
+
+\textbf{(1). Probar el teorema de Ruffini:} \textit{si $f(x) \in A[x]$, entonces $f(a)$ es igual al resto de dividir $f(x)$ entre $x-a$}.\\
+
+\begin{proof}
+\hfill \\
+Si $A$ es un Dominio Euclídeo y $f(x) \in A[x]$, entonces $\exists q,r \in A$ tales que \\$f(x) = q(x-a) + r$, donde $r$ es el resto al dividir $f(x)$ por $x-a$.
+Entonces, evaluamos $f$ en $a$, y tenemos que $f(a) = (a-a)q + r = r$, como queríamos demostrar.
+\end{proof}
+
+\textit{Nota.} La tesis del teorema también puede expresarse como la siguiente congruencia: $f(x) \equiv f(a)\ mod\ (x-a)$.
+
+\textbf{(2). Encontrar un polinomio $\bm{f(x) \in \rac[x]}$ de grado 3 tal que:}
+
+\begin{itemize}[leftmargin=.15in]
+\item $f(0) = 6$
+\item $f(1) = 12$
+\item $f(x) \equiv (3x + 3)\ mod\ (x^2 + x + 1)$
+\end{itemize}
+
+\textit{Solución.}
+Primero, reescribimos las condiciones del enunciado en términos de congruencias, usando el teorema de Ruffini:
+
+\begin{itemize}[leftmargin=.15in]
+\item $f(x) \equiv 6\ mod\ (x)$
+\item $f(x) \equiv 12\ mod\ (x-1)$
+\item $f(x) \equiv (3x + 3)\ mod\ (x^2 + x + 1)$
+\end{itemize}
+
+Para resolver este sistema de tres congruencias, lo reducimos en primer lugar a un sistema de dos congruencias, tomando las dos primeras.
+
+Nos centramos en la ecuación $f(x) \equiv 6\ mod\ (x)$, que ya está resuelta: su solución general es $f(x) = 6 + g(x)\cdot x$, con $g(x) \in \rac[x]$. Sustituyendo en la segunda ecuación, nos quedaría $6 + g(x)\cdot x \equiv 12\ mod\ (x-1)$. Resolvamos ahora esta congruencia:
+
+Primero simplificamos la expresión, llegando a $g(x)\cdot x \equiv 6\ mod\ (x-1)$. Calculemos ahora el mcd $(x,x-1)$, calculando además los coeficientes de Bezout:
+
+\begin{center}
+\begin{tabular}{c|cc}
+\textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
+$x$           & 1          & 0           \\
+$x-1$         & 0          & 1           \\ 
+1             & 1          & -1          \\ 
+\end{tabular}
+\end{center} 
+
+Vemos que $(x,x-1) = 1$, y haciendo uso de la identidad de Bezout, nos queda que $1 = \bm{1}\cdot x + \bm{(-1)}\cdot (x-1)$. Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que $1\cdot x \equiv 1\ mod\ (x-1)$, y multiplicando por $6$ tenemos que $6\cdot x \equiv 6\ mod\ (x-1)$. Si comparamos esta expresión con la ecuación original, es evidente que $g_0(x) = 6$ es una solución particular. Entonces, $f_0(x) = 6 + 6x$ es una solución particular del sistema, y la solución general será: 
+\begin{equation} \label{eq:rel3_parte2_ej1_1}
+f(x) \equiv f_0(x)\ mod\ ([x,x+1]) \Rightarrow f(x) \equiv 6 + 6x\ mod\ (x^2 - x)
+\end{equation}
+
+Pasamos ahora a resolver, del mismo modo, el sistema formado por la tercera ecuación original, y la ecuación \eqref{eq:rel3_parte2_ej1_1}.
+
+La solución general de \eqref{eq:rel3_parte2_ej1_1} es $f(x) = (6 + 6x) + h(x)\cdot (x^2-x)$, con $h(x) \in \rac[x]$. Sustituyendo en la tercera ecuación y simplificando, nos quedaría $h(x)\cdot (x^2 - x) \equiv -3 -3x\ mod\ (x^2+x+1)$. Resolvamos ahora esta congruencia, calculando para ello $(x^2-x,x^2+x+1)$, y los coeficientes de Bezout:
+
+\begin{center}
+\begin{tabular}{c|cc}
+\textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
+$x^2-x$           & 1          & 0           \\
+$x^2+x+1$         & 0          & 1           \\ 
+$-2x-1$             & 1          & -1          \\ 
+$\frac{3}{4}$       & $\frac{1}{2}x + \frac{1}{4}$ & $\frac{-1}{2}x + \frac{3}{4}$
+\end{tabular}
+\end{center} 
+
+Vemos que $(x^2-x,x^2+x+1) = \frac{3}{4}$, y haciendo uso de la identidad de Bezout, nos queda lo siguiente: 
+$$\frac{3}{4} = \bm{(\frac{1}{2}x + \frac{1}{4})}\cdot (x^2-x) + \bm{(-\frac{1}{2}x + \frac{3}{4})}\cdot (x^2+x+1)$$ 
+
+Dividimos ahora la ecuación por $\frac{3}{4}$, y tenemos que:
+$$ 1 = \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x)+ \left(-\frac{2}{3}x + 1\right) \cdot (x^2+x+1)$$
+
+Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que: 
+$$\left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv 1\ mod\ (x^2+x+1)$$ 
+
+y ahora multiplicamos por $-3x-3$:
+$$(-3x-3)\cdot \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv -3x-3\ mod\ (x^2+x+1)$$ 
+
+Si comparamos esta expresión con la ecuación original, es evidente que una solución particular es $g_0(x) = (-3x-3)\cdot(\frac{2}{3}x + \frac{1}{3}) = -2x^2 -3x -1$. Podemos calcular una solución partícular óptima, ya que esta no lo es, sin más que calcular su resto al dividirla por $x^2 + x +1$, que es $1-x$. Entonces, $f_0(x) = 6 + 6x + (1-x)(x^2-x) = -x^3 + 2x^2 + 5x + 6$ es una solución particular del sistema, y la solución general será: 
+$$f(x) \equiv f_0(x)\ mod\ ([x^2-x,x^2+x+1]) \Rightarrow f(x) \equiv -x^3 + 2x^2 + 5x + 6\ mod\ (x^4 - x)$$
+
+Entonces, el polinomio pedido sería justamente $f(x) = -x^3 + 2x^2 + 5x + 6$, y podemos comprobar que, efectivamente, se cumplen las condiciones del enunciado.
