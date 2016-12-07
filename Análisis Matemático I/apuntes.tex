@@ -1180,10 +1180,11 @@ Estudiando ese límite por cualquier método, nos saldría 0. Luego, tenemos que
 	Así, la derivada $Df(x_0,y_0)(u,v) = x_0v + y_0 u$
 \end{ejemplo}
 
-\begin{ejemplo}
-	Sea $g,f: R^n \to R^m$ derivable en $a \in R^n$. 
+\begin{nprop}
+	Sea $g,f: R^n \to R^m$ derivable en $a \in R^n$. El producto escalar es derivable.
 	
-	Construyo $h: R^n \to R$ con $h(x) = < f(x), g(x)>$. Probar que es derivable:
+\begin{proof}
+		Construyo $h: R^n \to R$ con $h(x) = < f(x), g(x)>$. Probar que es derivable:
 	
 	$h = B o (f,g)$ con $B(x,y) = <x,y> \quad \forall x,y \in R^n$
 	
@@ -1199,7 +1200,109 @@ Estudiando ese límite por cualquier método, nos saldría 0. Luego, tenemos que
 	\[
 	<f(x_0),Dg(x_0)(x) > + < Df(x_0)(x),g(x_0)>
 	\]
+\end{proof}
 	
-\end{ejemplo}
+\end{nprop}
+
+\begin{nota}
+	La aplicación $R^n \to R$ que se lleva $y \to y^t \ \mathcal{H}f(c)y$  Forma cuadrática asociada a la aplicación bilineal $B:R^nxR^n \to R$ tal que $(y,z) \to y^t\mathcal{H}f(c)z$ la matriz Hessiana $\mathcal{H}f(c)$ es simétrica. Se puede pruede probar que:
+
+\textbf{Lema de Schwarz}
+
+$\forall i,j = 1,...,n$ con $i\ne j$
+\[
+\frac{\partial^2f}{\partial x_i \partial x_j}(x) = \frac{\partial^2 f}{\partial x_i \partial x_i}(x)
+\]
+\end{nota}
+
+\begin{nth}[Teorema de Taylor(Orden 2)]
+
+$A \subset R^n$ convexo  y abierto, $x_0 \in A$ y $f:A \to R\in \varphi^2(A)$
+
+$\forall x \in A : [x,x_0] \subset A \implies f(x) = f(x_0) + \frac{1}{1!}Df(x_0)(x-x_0)+ \frac{1}{2!}(x-x_0) + \mathcal{H}f(x)(x-x_0)$ con $c \in [x,x_0]$ siendo este el segmento que une $x \ con \ x_0$
+	
+
+\begin{nth}
+Sea $\empty \ne A \subset R^n \ abierto \ , \ x_0 \in A$ con $f:A \ to R$ de clase $C^2$
+\begin{enumerate}
+	\item $f$ tiene un maximo relativo en $x_0 \implies \begin{cases}
+	Df(x_0) = 0 \iff Jf(x_0) = 0\\
+	\mathcal{H}f(x_0) \ es \ semidefinida \ negativa
+\end{cases}$
+
+\item $\begin{rcases}
+	Df(x_0) = 0\\
+	\mathcal{H}f(x_0) \ es \ definida \ negativa
+\end{rcases} \implies $ f tiene un máximo relativo
+\end{enumerate}	
+\end{nth}
+
+
+\end{nth}
+\begin{proof} Probaremos 1 y 2: 
+	\begin{enumerate}
+	\item Como $f$ presenta un máximo relativo en $x_0\in A=abierto$ entonces $\exists r > 0 : B(x_0,r) \subseteq A $ y $f(x) \leq f(x_0) \ \forall x \in B(x_0,r)\subset A$. Por ello, ya sabemos que $Df(x_0) = 0$. Entonces, aplicamos Taylor $\forall x \in B(x_0,r)$ segmento que une $x$ con $x_0$ está contenido en $B(x_0,r) \subset A \implies $
+	\[
+	0 \geq f(x) - f(x_0) =  \frac{1}{2}(x-x_0)^t \mathcal{H}f(c)(x-x_0)
+	\]
+	Por tanto, podemos ver que 
+	\[
+	0 \geq (x-x_0)^t \mathcal{H}f(x_0)(x-x_0) \quad \forall x \in B(x_0,r)
+	\]
+	
+	Pues como la matriz hessiana está llena de las derivadas segundas en $c$, cuando $c \to x_0$ entonces $\mathcal{H}f(c) \to \mathcal{H}f(x_0)$.
+\[
+	0 \geq f(x) - f(x_0) =  \frac{1}{2}(x-x_0)^t \mathcal{H}f(c)(x-x_0) \iff \mathcal{H}f(c) \ semidefinida \ negativa
+	\]
+	\[
+	 \iff y^t\mathcal{H}f(c) \ y \leq 0 \quad \forall y \in B(0,r)
+	\]
+	Y como hemos dicho que cuando $c \to x_0$ entonces $\mathcal{H}f(c) \to \mathcal{H}f(x_0)$ entonces $0 \geq z^t \mathcal{H}f(x_0)z \quad \forall z \in R^n \implies 0 \geq <^t \mathcal{H}f(x_0)< \quad \forall z \in R^n$ y así la matriz Hessiana es semidefinida negativa.
+	
+	\item Como $f$ presenta un máximo relativo en $x_0\in A=abierto$ entonces $\exists r > 0 : B(x_0,r) \subseteq A $ y $f(x) \leq f(x_0) \ \forall x \in B(x_0,r)\subset A$. Por ello, ya sabemos que $Df(x_0) = 0$.Usando el teorema de Taylor, obtenemos que:
+	\[
+	f(x)-f(x_0) = \frac{1}{2!}(x-x_0)^t \mathcal{H}f(c)(x-x_0)
+	\]
+	La hipótesis que tenemos ahora es:
+	\[
+	z^t \mathcal{H}f(x_0)z < 0 \quad \forall z \in R^n-\{0\}
+	\]
+	Ahora, si el límite es menor estricto que cero implica que los números que se aproximen tienen que ser estrictamente menor que cero, por eso es definida negativa.
+	
+	Por tanto, tenemos que demostrar la implicación:
+	\[
+	\begin{rcases}
+	\mathcal{H}f(x_0) \ definida \ negativa\\
+	\mathcal{H}f(c) \to \mathcal{H}f(x_0) \ si (c \to x_0)
+\end{rcases} \implies \mathcal{H}f(c) \ definida \ negativa
+	\]
+
+	Y teniendo eso, podemos ver que
+	
+	\[
+	z^t \mathcal{H}f(c) < 0 \quad \forall z \in R^n-\{0\} \iff \forall x \in B(x_0,r)-\{x_0\}
+	\]
+	Y entonces:
+	\[
+	f(x) - f(x_0) =  \frac{1}{2}(x-x_0)\mathcal{H}f(c)(x-x_0) < 0 \implies f(x) < f(x_0) \forall x \in B(x_0,r)
+	\]
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}

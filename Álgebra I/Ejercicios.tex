@@ -999,7 +999,7 @@ b)
 
 Tenemos que reducir ambos números, hacemos las bases.
 
-$300^{207}\equiv 8^{207}mod(13) \equiv (2^3)^{207} mod(13) \equiv 2^{621}$
+$320^{207}\equiv 8^{207}mod(13) \equiv (2^3)^{207} mod(13) \equiv 2^{621}$
 
 Ahora, calculamos los restos de las potencias de 2, hasta ver cuándo se repite uno de los restos:
 
@@ -1019,7 +1019,7 @@ Ahora, como nos ha salido que la potencia es 13, aplicamos la función $\varphi$
 Por último, como tenemos los dos números en la misma base, tenemos que ver si los exponentes son congruentes módulo 12.
 
 \[
-621 \equiv_{12} 42 \implies 9 \equiv_{12} 8
+621 \equiv_{12} 42 \implies 9 \equiv_{12} 6	
 \]
 
 Por lo que no son congruentes módulo 12, luego los dos números iniciales no dan el mismo resto al dividirlos por 13.
@@ -1133,11 +1133,11 @@ N $\equiv$ -811 mod(1144) = 333 mod(1144) (donde 1144 = [11,104])
 
 N = 333 + 1144 $\cdot$ k\\
 
-\textbf{Solución}: La cantidad mínima de monedas sería cunado k vale 0. Entonces el número de monedas es 333\\
+\textbf{Solución}: La cantidad mínima de monedas sería cuando k vale 0. Entonces el número de monedas es 333\\
 
 
 \subsection{\LARGE{Ejercicio 6}}
-\textbf{Enunciado: Antonio, Pepe y Juan son tres campesinos que principalmente se
+\textbf{Antonio, Pepe y Juan son tres campesinos que principalmente se
 dedican al cultivo de la aceituna. Este año la producción de los olivos de
 Antonio fue tres veces la de los de Juan y la de Pepe cinco veces la de los
 de Juan. Los molinos a los que estos campesinos llevan la aceituna, usan
@@ -1283,7 +1283,7 @@ Como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$. Esta ecuación no tiene solución
 
 \subsection{ \LARGE{Ejercicio 1}}
 
-\textbf{Enunciado:Resuelve las ecuaciones siguientes en los anillos que se indican:}
+\textbf{Resuelve las ecuaciones siguientes en los anillos que se indican:}
 
 \underline{\textbf{1) 12x = 8 en el anillo $\ent_{20}$ .}}
 
@@ -1299,7 +1299,7 @@ Ahora, las soluciones vendrán dadas por $4+k*5$ en $\ent_{20}$, luego son $\{4,
 
 \underline{\textbf{2) 19x = 42 en el anillo $\ent_{50}$.}}
 
-Para empezar, tiene solución si y solo si $(19,50)=1$ divide a $42$, como resulta evidente a simple vista y lo que nos indica también que nuestro problema tiene exactamente una solución. Como de buenas a primeras no se ve ningún método de simplificación factible para llegar hasta nuestra solución y como estamos en un Dominio de Ideales Principales(DIP) podemos usar la Identidad de Bezout halllada apartir del Algoritmo de Euclides.
+Para empezar, tiene solución si, y solo si, $(19,50)=1$ divide a $42$, como resulta evidente a simple vista y lo que nos indica también que nuestro problema tiene exactamente una solución. Como de buenas a primeras no se ve ningún método de simplificación factible para llegar hasta nuestra solución y como estamos en un Dominio de Ideales Principales(DIP) podemos usar la Identidad de Bezout hallada a partir del Algoritmo de Euclides.
 
 \begin{figure}[H]
 \label{my-label}
@@ -1323,7 +1323,7 @@ Explicaremos en este caso como se obtienen los coeficientes de Bezout para el re
 &\implies 7=50(-1)+19(+3)
 \end{align*}
 
-A continuación, como $1=50(8)+18(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$.
+A continuación, como $1=50(8)+19(-21)$ tenemos que $19(-21)\equiv1 mod(50)$ luego solo tendríamos que multiplicar por $42$ y tendríamos que $19(-21*42)\equiv42 mod(50)$.
 
 Luego, la conclusión es que $x=-21*42\equiv_{50}29*42=1218\equiv_{50} 18$.
 
@@ -1344,7 +1344,7 @@ Por lo que $x_0 = 2$ y la solución es $x=2$
 
 \subsection{\LARGE{Ejercicio 2}}
 
-\textbf{Enunciado: Determina cuántas unidades y cuántos divisores de cero tienen los anillos:}
+\textbf{Determina cuántas unidades y cuántos divisores de cero tienen los anillos:}
 
 
 Antes de empezar hemos de tener en cuenta que en estos anillos todos los elementos son o unidades o divisores de cero sólo tenemos que restarle al cardinal del anillo el número de unidades para obtener el número de divisores de cero.
@@ -1375,13 +1375,13 @@ Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\fra
 
 \subsection{\LARGE{Ejercicio 3}}
 
-\textbf{Enunciado: Determina si la igualdad a = b es cierta en los siguientes casos:}
+\textbf{Determina si la igualdad a = b es cierta en los siguientes casos:}
 
-\emph{Como la interpretación de los paréntesis puede dar lugar a malinterpretaciones consideraremos en los dos primeros apartados la base como un número elevado a otro, y en los dos siguientes consideraremos una base que está elevada a un exponente el cual es base de otra potencia}
+\emph{Como la interpretación de los paréntesis puede dar lugar a malinterpretaciones consideraremos en los dos primeros apartados la base como un número elevado a otro, y en los dos siguientes consideraremos una base que está elevada a un exponente el cual es base de otra potencia.}
 
 \textbf{\underline{1) $\mathbf{a = (9^{55})^9\ y\ b = (7^{70})^{55}\ en\ el\ anillo\ \ent_{21} }$}}
 \\\\ 
-Partiremos de que $9^{55^9} = 9^{495}$, pero podemos calcular la función $\varphi$ de euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
+Partiremos de que $9^{55^9} = 9^{495}$, pero (como 9 y 21 son primos relativos) podemos calcular la función $\varphi$ de Euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
 
 Entonces: $\varphi(21) = 21\cdot\frac{2}{3}\cdot\frac{6}{7} = 12$
 
@@ -1427,7 +1427,7 @@ Y de esto deducimos que:
 
 $3^{55^{70}} \equiv_{22} 3^{R_{\varphi(22)}(55^{70})}$
 
-Aquí entonces tenemos que hallar cuál es la solución de $R_{10}(55^{70}) = R_{10}(5^{70})$
+Aquí entonces tenemos que hallar cuál es la solución de $R_{10}(55^{70}) = R_{10}(5^{70}).$
 Pero rápidamente observamos que $5^1\equiv_{10}...\equiv_{10}5^n\equiv_{10}5$
  y por tanto $R_{10}(5^{70}) = 5$
  
@@ -1465,21 +1465,39 @@ $$12 \cdot 1 = \mathbf{12 = b}  $$
 Afirmando en este caso que \textbf{a y b son iguales}
 
 
-\textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 7^{70^{22}}\ en\ el\ anillo\ \ent_{22} }$}}
+\textbf{\underline{4) $\mathbf{a = 5^{5^{70}} \cdot 11^{5^{70}}\ y\ b = 10^{70^{22}}\ en\ el\ anillo\ \ent_{22} }$}}\\
 
-Para a obtenemos que $5^{5^{70}}\cdot11^{5^{70}}\equiv_{22}5^{10} \cdot 11^{10} \equiv_{22} 1 \cdot 11\equiv_{22}\mathbf{11 = a}$
+%%
+Volvemos a hacer lo mismo que antes. Calculamos primero el valor de a:
 
-Y por su parte para b:
+$5^{5^{70}} \equiv_{22} 5^{R_{\varphi(22)}(5^{70})}\equiv_{22}5^5\quad ;\quad (Observamos\ que\ R_{\varphi(22)}(5^{70}) = 5)$
 
-$10^{70^{22}} \equiv_{22} 10^{10^{22}}\equiv_{22} 10^{220} \equiv_{22}\mathbf{10^{10}\equiv_{22}12=b}$
+Luego $5^5 \equiv_{22}1$
 
-Y por lo tanto $\mathbf{a \neq b}$
+$11^{5^{70}}\equiv_{22}\ ?\rightarrow$ No podemos usar $\varphi(22)$ pues 11 y 22 no son primos relativos, pero rápidamente apreciamos que:
+
+$11^x \equiv_{22} 11\ \forall\ x \in \mathbb{N}$
+
+Obteniendo como resultado \textbf{a = 11 · 1 = 11}
+
+Para b calculamos el producto de:
+
+$2^{70^{22}}\equiv_{22}2^{R_{10}(70^{22})}\equiv_{22}2^{10}\equiv_{22}12$
+ 
+\emph{(Como 2 y 22 son primos estudiamos las repeticiones de las potencias de 2 en $\ent_{22})$}
+
+$5^{70^{22}}\equiv_{22}5^{R_{10}(70^{22})}\equiv_{22}1$
+
+Con lo que nos queda \textbf{1 · 12 = 12 = b}
+
+Y finalizamos concluyendo que $\mathbf{a \neq b}$
+
 
 
 
 \subsection{\LARGE{Ejercicio 5 - 2 en anillos de restos de K[x]}} 
 
-\textbf{Enunciado: Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
+\textbf{Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
 
 %Si $f(x)$ no es irreducible $\exists x-a : x-a/f \implies f(a) = 0$
 

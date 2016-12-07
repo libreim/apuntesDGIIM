@@ -97,7 +97,7 @@
 
 % Símbolos y matemáticas.
 \usepackage{amssymb, amsmath, amsthm, amsfonts, amscd, stmaryrd}
-\usepackage{upgreek}
+%\usepackage{upgreek}
 
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
@@ -1228,7 +1228,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 
 
 \begin{nth}
-	Los anillos $\ent[\sqrt{n}]$ para $n=2,3,-1,2$ son D.E. con función euclídea:
+	Los anillos $\ent[\sqrt{n}]$ para $n=2,3,-1,-2$ son D.E. con función euclídea:
 	\[
 	\varphi: \ent[\sqrt{n}] \to \nat : \varphi(a+b\sqrt{n}) = \abs{N(a+b\sqrt{n})} = \abs{a^2 - nb^2}
 	\]
@@ -1305,7 +1305,7 @@ Viéndose así que el ejemplo está correcto.
 
 \end{ejemplo}
 
-\section{Máximo Común divisor. Dominios de Ideales principales. Ecuaciones Diofánticas en D.I.P}
+\section{Máximo Común divisor. Dominios de Ideales principales. Ecuaciones Diofánticas en D.I.P.}
 
 
 \begin{ndef}[Máximo común divisor]
@@ -1463,7 +1463,7 @@ ax +by  = c
 \[ \implies a'x+b'y = c'
 \]
 Esta ecuación tiene las mismas soluciones que la ecuación diofántica inicial. Llamaremos a esta la ecuación 'reducida'.\\
-$\circledast\quad d/a ,\quad d/b \implies d=a'u +b 'v $. Podemos hallar así los coeficientes de Bezout.\\
+$\circledast\quad d/a ,\quad d/b \implies 1=a'u +b 'v $. Podemos hallar así los coeficientes de Bezout.\\
 
 Como $c'= a'(c'u)+b'(c'v)$ y ahí tenemos una solución particular. Conociendo esta, podemos hallar TODAS las soluciones. Si llamamos $x_0 =c'u$ e $y_0 = c'v$
 
@@ -1825,7 +1825,7 @@ Además, $F$ está bien definida: es biyectiva y, por tanto, es un isomorfismo.
 	Vamos a probar que está bien definida (inyectividad y sobreyectividad) y que es un homomorfismo.
 	
 	Veamos primero que si $[a] = [b] \implies f(a) = f(b)$\\
-	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = xb$ para algún $x\in Ker(f)$\\
+	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = x+b$ para algún $x\in Ker(f)$\\
 	$\implies f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b)$\\
 	
 	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
@@ -2276,10 +2276,59 @@ Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$
 \end{proof}
 
 
+\begin{nprop}
+	Si $\alpha \in \ent[\sqrt n]$ es un divisor propio de $\beta$ en $\ent[\sqrt n]$ entonces $N(\alpha)$ es un divisor propio de $N(\beta)$ en $\ent[\sqrt n]$
+\end{nprop}
+\begin{proof}
+	Como $\alpha$ es un divisor de $\beta$ entonces $\exists \gamma \in \ent[\sqrt n] : \beta = \alpha \gamma \implies N(\beta) = N(\alpha)N(\gamma) \implies N(\alpha)/N(\beta)$.
+	
+	Ahora, la norma de $\alpha$ no puede ser ni 1, ni -1 pues si no sería una unidad y por tanto no sería divisor propio ni gamma puede ser un asociado pues si no, $\alpha$ sería un divisor propio también, luego $N(\alpha)$ tiene que ser un divisor propio de $N(\beta)$
 
+\end{proof}
+\begin{ncor}
+	Si $N(\alpha) = \pm p$ con $p $ un primo de $\ent, p\geq 2\implies \alpha$ es irreducible en $\ent[\sqrt n]$ 
+\end{ncor}
+\begin{ncor}
+	Si $\alpha$ es primo en $\ent[\sqrt n]\implies N(\alpha) = \pm p $ ó $\pm p^2$ con $p \geq 2 $ un primo de $\ent$. Además, si $N(\alpha) = \pm p^2 \implies \alpha \ y \ p$ son asociados en $\ent[\sqrt n]$
+\end{ncor}
+\begin{proof}
+	Supongamos que $\alpha \in \ent[\sqrt n]$ primo. Consideramos su norma: $N(\alpha)$ que no es ni 1 ni menos 1 pues si no sería una unidad. Así: $N(\alpha) = p_1...p_r$ con $p_i\in \ent$ primos, lo que implica que $\alpha \bar{\alpha} = p_1...p_r \implies \alpha/p_1...p_r $ pero $\alpha$ es primo, luego $\exists i \in \{1,...,2\}: \alpha / p_i \implies \exists p \geq 2 $ primo de $\ent$ tal que $\alpha / p \ en \ \ent[\sqrt n]$.
+	
+	Pero en tal caso, $N(\alpha)/N(p)$ por el resultado anterior. Esto implica $p = \alpha \beta \ con \ \beta \in \ent[\sqrt n] \implies p^2 = N(\alpha) N(\beta) \implies N(\alpha)/p^2 \implies N(\alpha) = \pm p$ ó $\pm p^2$, como queríamos
+\end{proof}
+\begin{nota}
+	Si estuviéramos en un DFU, ser irreducible y ser primo son equivalentes, luego estos enunciados valdrían igual para elementos primos.
+\end{nota}
 
+\begin{ejemplo}
+	Factorizar $2i$ y $11+7i$ en producto de irreducibles(primos por estar en un DFU).
+	
+	\begin{enumerate}
+	\item Primero, calcularemos su norma. $N(11+7i) = 11^2 + 7^2 = 170$
+	\item Factorizamos la norma en $\ent$. $170 = 2*85 = 2*5 *17$.
+	\item Ahora, los factores irreducibles serán los enteros de gauss cuya norma sea un primo o el cuadrado de un primo. Por tanto, un divisor de este número será un entero de gauss $Z[i]$ cuya norma sea un divisor de la norma de $11+7i$, por tanto su norma será 2,5 ó 17 o producto entre esos números.
+	\item  $N(a+bi) = a^2 +b^2 = 2 \iff a=\pm 1$ y $b= \pm 1\implies$ Los enteros de Gauss de norma 2 son: $1+i,1-i,-1+i,-1-i$, es decir $1+i$ y sus 3 asociados.
+	\item Ahora, tenemos que plantearnos si $1+i / 11+7i$, vemos que la división es: $11+7i/1+i = 9-2i\in \ent[i]$. Además, como $1+i$ tiene norma 2, que es un primo de $\ent$ luego ya tenemos un irreducible por el corolario 7. 
+	\item Tenemos que repetir el proceso para $9-2i$.
+	\item Su norma es $N(9-2i) = 5*17$ pues es el de antes quitándole el irreducible cuya norma vale 2.
+	\item Buscamos los enteros de Gauss cuya norma valga 5. $N(a+bi) = a^2 +b^2 = 5 \iff a = \pm 1$ y $b =\pm 2$ ó $a \pm 2$ y $b = \pm 1$.
+	
+	Estos son: $1+2i$ y sus asociados para el primer caso y $2+i$ y sus asociados para el segundo caso.
+	
+	\item Ahora, tenemos que ver si estos dividen a $9-2i$. 
+	\begin{itemize}
+	\item $9-2i/2+1  = \frac{16}{5} + \frac{13}{5}i \notin \ent[i]$
+	\item $9-2i /1+2i = 1-4i \in \ent[i]$
+\end{itemize}
 
+Por lo que tenemos que $11+7i = (1+i)(1+2i)(1-4i)$ y ahora tenemos justo 3 irreducibles con las normas que buscábamos, luego tenemos hecha la factorización en irreducibles.
+	
+\end{enumerate}
 
+Ahora, haciendo lo mismo para $2i$ vemos que $2i = (1+i)^2$.
+
+	
+\end{ejemplo}
 
 
 
