@@ -324,7 +324,7 @@ Un conjunto A es un anillo conmutativo si en él hay definidas dos operaciones; 
 \end{nota}
 
 
-\section*{Caracterización de $\mathbb{Z}_{n}$.}
+\section*{Caracterización de $\mathbb{Z}_{n}$}
 
 Llamaremos $R_n:\mathbb{N} \rightarrow \mathbb{Z}_n$ a la aplicación definida como:
 
@@ -359,7 +359,7 @@ Una vez que tenemos definida una suma y producto con la aplicación $R_n$, defin
 Es fácil verificar que $\mathbb{Z}_n$ es un anillo conmutativo con estas operaciones.\\
 
 \begin{ndef}[Unidad]
-	Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}" o "\textbf{invertible}" si $\exists a^{-1}$ t.q. $ aa^{-1} = 1$.\\ $U(A) = \{ a \in A$ : $a$ es una unidad\} = conjunto de las unidades de A.\\
+	Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}” o "\textbf{invertible}” si $\exists a^{-1}$ tal que $ aa^{-1} = 1$.\\ $U(A) = \{ a \in A$ : $a$ es una unidad\} = conjunto de las unidades de A.\\
 \end{ndef}
 
 
@@ -653,7 +653,7 @@ Por lo que queda probado nuestro resultado.
 
 \begin{ndef} \textbf{(A[x][y])}
 \hfill \\
-Definimos $f=\sum f_i y^i | f_i \in A[x] : f_i = \sum_j a_{ij}x^j$\\
+Definimos $f=\sum f_i y^i\ |\ f_i \in A[x] : f_i = \sum_j a_{ij}x^j$\\
 Luego, $f = \sum_i (\sum_j a_{ij}x^j)y^i = \sum_{i,j} a_{ij}x^iy^j$\\
 
 Ahora, tomamos $g =\sum_{i,j} b_{ij}x^iy^j$ y sumamos:
@@ -662,7 +662,7 @@ Ahora, tomamos $g =\sum_{i,j} b_{ij}x^iy^j$ y sumamos:
 f+g = \sum_{i,j}(a_{ij}+b_{ij})x^iy^j
 \]
 
-Y , si $A[x][y]$ es un anillo, vemos que la multiplicación se realiza:
+Y, si $A[x][y]$ es un anillo, vemos que la multiplicación se realiza:
 \[
 (a_{ij}x^iy^j)(b_{mn}x^my^n) = a_{ij}b_{mn} x^{i+m}y^{j+n}
 \]
@@ -746,7 +746,7 @@ E_b(x) = b
   Si $r=1$, ya está probado. Para $r>1$:
   \[
     \exists\ \psi : A[x_1,\cdots,x_{r-1}] \longrightarrow B : \begin{cases}
-      \psi(a) = \psi(a)\\
+      \psi(a) = \varphi(a)\\
       \psi(x_i) = b_i & \forall i=1,\cdots,r-1
     \end{cases}
   \]
@@ -1046,7 +1046,7 @@ Propiedades elementales:
 $b/a \iff$ un resto de dividir a entre b es cero $\iff$ cualquier resto de dividir a entre b es 0 
 \end{nota}
 \begin{proof}
-	$\boxed{\implies}$ Por definicion de b/a, $\implies \exists c \in A$ tal que $a=bc$ y por ser A un dominio euclídeo, $\implies \exists q,r \in 		A : 	a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
+	$\boxed{\implies}$ Por definición de b/a, $\implies \exists c \in A$ tal que $a=bc$ y por ser A un dominio euclídeo, $\implies \exists q,r \in 		A : 	a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
 \\
 Supongamos $r \neq 0$, entonces $\varphi(r) < \varphi(b)$. 
 $$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
@@ -1223,7 +1223,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 \end{ncor}
 
 \begin{nota}
-	Hacemos un el ejercicio de ver si $3x^2 +1$ es divisor de $2x^3 + 4x^2 +4x +3$ en $\ent _5[x]$. (Solución: El resto de la división es 0, con resultado de la división $= 2/3 x + 4/3$)
+	Hacemos el ejercicio de ver si $3x^2 +1$ es divisor de $2x^3 + 4x^2 +4x +3$ en $\ent _5[x]$. (Solución: El resto de la división es 0, con resultado de la división $= 2/3 x + 4/3$)
 \end{nota}
 
 
@@ -1253,7 +1253,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 	
 	Queremos probar que: $\abs{N(\beta)}\abs{N(\frac{\alpha}{\beta}+ q)} < \abs{N(\beta)}$.
 	
-	Equivalentemente , queremos probar que:
+	Equivalentemente, queremos probar que:
 	\[
 	  \abs{N(\frac{\alpha}{\beta}+ q)} < 1 \implies \abs{N(a_1+a_2\sqrt{n}-q_1 -q_2\sqrt{n})} = \abs{N((a_1-q_1) + (a_2-q_2)\sqrt{n})} = \]
 	  \[
@@ -1278,12 +1278,12 @@ Por lo que queda probado el resultado para esos casos.
 \end{proof}
 
 \begin{ejemplo}
-Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo $\ent[i]$. Para ello, tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
+Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo $\ent[i]$. Tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
 
 $$\abs{N(6+10i)}=36+100=136$$
 $$\abs{N(1+2i)}=1+4=5$$
 
-Como $1+2i$ tiene una norma menor que la norma $6+10i$ podemos hacer la división, para ello primero dividiremos como si fuesen numeros complejos normales para hallar nuestro número cociente que será de la forma $q=q_1+q_2i$:
+Como $1+2i$ tiene una norma menor que la norma $6+10i$ podemos hacer la división, primero dividiremos como si fuesen numeros complejos normales para hallar nuestro número cociente que será de la forma $q=q_1+q_2i$:
 
 \[
 	\frac{6+10i}{1+2i}=\frac{(6+10i)(1-2i)}{(1+2i)(1-2i)}=\frac{6-12i+10i+20}{5}=\frac{26-2i}{5}=\frac{26}{5}-\frac{2}{5}i
@@ -1326,7 +1326,7 @@ Propiedades:
 	
 	\item Si $a \sim a'$ asociados y $b \sim b'$ también $\implies (a,b) = (a',b')$
 	
-	\item $(a,b) = a \iff a/b$. En particular, $(a,0) = a, \quad  \quad (a,1) = 1 \quad, \quad (a,u) = 1 \iff u \in U(A)$
+	\item $(a,b) = a \iff a/b$. En particular, $(a,0) = a, \quad  \quad (a,1) = 1, \quad (a,u) = 1 \iff u \in U(A)$
 	
 	\item Si $(a,b) = 1$, a y b se dicen \underline{primos relativos}
 	
@@ -1342,7 +1342,7 @@ Propiedades:
 \end{rcases} \implies dc/e \implies \exists u \in A : e = dcu
 	\]
 	
-	$\begin{rcases}e / ac \implies \exists x \in A : ac = ex \implies ac = dcux \implies = a = dux\\
+	$\begin{rcases}e / ac \implies \exists x \in A : ac = ex \implies ac = dcux \implies a = dux\\
 	e/bc\implies \exists y \in A : bc = ey \implies bc = dcuy \implies b = duy\end{rcases} \implies \begin{rcases}du/a\\du/b\end{rcases} du/d \\\implies \exists v \in A : d = duv \stackrel{d\ne 0}{\implies} 1=uv \implies u\in U(A) \implies e \sim  dc$
 
 	
@@ -1394,7 +1394,7 @@ En $\mathbb{Z}[\sqrt{n}]$ si $\alpha$ es un divisor propio de $\beta \implies N(
 \end{nota}
 
 \begin{ejemplo}
-Realizamos un ejemplo en el que se puede probar que, usando la Nota anterior, 3 y $)1+\sqrt{5})$ son irreducibles	
+Realizamos un ejemplo en el que se puede probar que, usando la Nota anterior, 3 y $(1+\sqrt{5})$ son irreducibles	
 \end{ejemplo}
 
 
@@ -1471,7 +1471,7 @@ Como $c'= a'(c'u)+b'(c'v)$ y ahí tenemos una solución particular. Conociendo e
 	x = x_0 +kb'\\
 	y= y_0 -ka'
 \end{cases} k\in A\]
-Si $(x_0,y_0)$ es la solución, entonces la solución general es el conjunto de los $(x,y)$ que hemos dado arriba
+Si $(x_0,y_0)$ es la solución particular, entonces la solución general es el conjunto de los $(x,y)$ que hemos dado arriba.
 \\
 \begin{proof}[Demostración de iii)]
 
@@ -1538,7 +1538,7 @@ d = r_m = au + bv
 	(El ejercicio se resuelve resolviendo la ecuación diofántica $80x +30y = 600$ , hallando primero la solución general que viene dada por $x = -60 + 3k$ ; $y = 180 - 8k$ y luego tomando que x e y tienen que ser mayores que 3, viendo que la solución es que $k=22$).
 \end{ejemplo}
 
-\section{Mínimo común múltiplo. Ecuaciones en congruencias.}
+\section{Mínimo común múltiplo. Ecuaciones en congruencias}
 \begin{ndef}[Mínimo común múltiplo]
 	Sea $a, b \in A =DI \\ m \in A $ es un mínimo común múltiplo de a y b, notando por $m = mcm(a,b) = [a,b]$  \\
 Si se verifica que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de $m$. Esto implica: 
@@ -1630,17 +1630,18 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 \textbf{Propiedades}
 
 \begin{nlist}
-	\item $\equiv$ es una relación de equivalencia.\begin{itemize}
-	\item $a \equiv a$
-	\item $a \equiv b \iff b \equiv a$ (dem:$ a-b = (-1)(b-a) \in I$)
-	\item $a \equiv b$ y $b \equiv c \implies a \equiv c$ (dem: $a-b\in I, b-c \in I \implies a-c \in I$)
-\end{itemize}
+	\item $\equiv$ es una relación de equivalencia.
+	\begin{itemize}
+		\item $a \equiv a$
+		\item $a \equiv b \iff b \equiv a$ (dem:\ $a-b = (-1)(b-a) \in I$)
+		\item $a \equiv b$ y $b \equiv c \implies a \equiv c$ (dem:\ $a-b\in I, b-c \in I \implies a-c \in I$)
+	\end{itemize}
 	
 	\item $a\equiv b \iff \forall c : a+ c \equiv b + c$
-	\item $a\equiv b$ y $c \equiv d \implies a+c \equiv b + d$ (dem: usando 2 y 1)
+	\item $a\equiv b$ y $c \equiv d \implies a+c \equiv b + d$ (dem: usando $(ii)$ y $(i)$)
 	\item $a \equiv 0 \iff a \in I$
 	\item $a \equiv b \implies \forall c : ac  \equiv bc$
-	\item $a \equiv b$, $c \equiv d \implies ac \equiv bd$ (dem: 5 y luego uso 1)
+	\item $a \equiv b$, $c \equiv d \implies ac \equiv bd$ (dem:\ $(v)$ y luego uso\ $(i)$)
 	\item $ac \equiv bc mod(mc) $ y $c \ne 0 \implies a\equiv b mod(m)$\\
 
 \begin{proof}
@@ -2075,31 +2076,31 @@ $ker(f) = (mn)$, pues $m$ y $n$ son primos entre sí. Ahora, como $f$ es sobreye
 \begin{nth}
 	Si $(a,m)=1 \implies a^{\varphi(m)} = 1$ en $ \mathbb Z_{m}$ \hspace{0.5cm} $a \in \mathbb Z_{m} $
 
-Por tanto $ a^{\varphi(m)-1} = a^{-1} $ en $ \mathbb Z_{m} $
+Por tanto, $ a^{\varphi(m)-1} = a^{-1} $ en $ \mathbb Z_{m} $
 
 \end{nth}
 
 
-\begin{nth}[De Euler]
-	$ \forall a \in \mathbb Z $ si $(a,m) = 1 \implies a^{\varphi(m)} = 1 $ mod(m)
+\begin{nth}[Teorema de Euler]
+	$ \forall a \in \mathbb Z $ si $(a,m) = 1 \implies a^{\varphi(m)} \equiv 1 $ mod(m)
 \end{nth}
 
 
 \begin{nth}[Teorema pequeño de Fermat]
-	$ \forall a \in \mathbb Z $ $ a^{p} = a \cdot mod(p) $ si p es irreducible
+	Si p es irreducible, $ \forall a \in \mathbb Z, $ $ a^{p} \equiv a \cdot mod(p) $ 
 \end{nth}
 
 
 
 \begin{ncor}
-	Si p es irreducible $ \forall a \in \mathbb Z_{p} $	 \hspace{0.25cm} $ a^{p} = a $ en $ \mathbb Z_{p} $
+	Si p es irreducible, $ \forall a \in \mathbb Z_{p} $	 \hspace{0.25cm} $ a^{p} = a $ en $ \mathbb Z_{p} $
 \end{ncor}
 
 
 \begin{proof}
 	Partiendo de la hipótesis del teorema demostraremos el corolario:
 
-$ m = p $ $ a \neq 0 $ en  $ \mathbb Z_{p} \implies (a,p) = 1 \implies a^{\varphi(p)} = 1 $ en $ \mathbb Z_{p} $
+$ m = p, $ $ a \neq 0 $ en  $ \mathbb Z_{p}$ (si $a=0$ es trivial) $ \implies (a,p) = 1 \implies a^{\varphi(p)} = 1 $ en $ \mathbb Z_{p} $
 
 $ \varphi(p) = p(1-\frac{1}{p}) = p-1 \implies a^{p-1} = 1 $ en $ \mathbb Z_{p} \implies a^p=a $ en $ \mathbb Z_{p} $
 	
