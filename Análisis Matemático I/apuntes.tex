@@ -1207,12 +1207,139 @@ Estudiando ese límite por cualquier método, nos saldría 0. Luego, tenemos que
 \begin{nota}
 	La aplicación $R^n \to R$ que se lleva $y \to y^t \ \mathcal{H}f(c)y$  Forma cuadrática asociada a la aplicación bilineal $B:R^nxR^n \to R$ tal que $(y,z) \to y^t\mathcal{H}f(c)z$ la matriz Hessiana $\mathcal{H}f(c)$ es simétrica. Se puede pruede probar que:
 
-\textbf{Lema de Schwarz}
 
+\end{nota}
+
+\textbf{Lema de Schwarz}
+Sea $A\subset R^n$ no vacío, y $f$ una función de clase $\varphi^2(A)$
 $\forall i,j = 1,...,n$ con $i\ne j$
 \[
 \frac{\partial^2f}{\partial x_i \partial x_j}(x) = \frac{\partial^2 f}{\partial x_i \partial x_i}(x)
 \]
+\begin{proof}
+
+Vamos a hacer esta prueba para $N=2$.
+
+Si $(x,y) \in A \implies \exists h_0 \ , \ k_0 > 0 : \begin{rcases}
+	0 < h < h_0 \\
+	0 < k < k_0
+\end{rcases} \implies (x,y),(x+h,y),(x,y+k),(x+h,y+k) \in A$
+
+Podemos escribir:
+\[
+S_{k,h}(x) =[f(x+h,y+k) - f(x,y+k)] - [f(x+h,y) -f(x,y)]
+\]
+	
+Como $f$ es de clase 2, es de clase 1 y podemos usar el TVM para evaluar cuánto valen las diferencias que hemos expresado en $S_{k,h}(x)$. Esa diferencia se puede estimar como la derivada en el segmento aplicado al vector diferencia de esos dos puntos.
+\[
+TVM \implies Df(c)[(x+h-x,(y+k)-(y-k)] -Df(d)[(x+h-x,y-y)]= \frac{\partial f}{\partial x}(c)h - \frac{\partial f}{\partial x}(d)h
+\]
+Y podemos volver a usar el TVM pues sigue siendo de clase 1.
+
+Por otro lado, vemos que:
+\[
+S_{k,h}(x)= [f(x+h,y+k)-f(x+h,y)]-[f(x,y+k)-f(x,y)]
+\]
+Usando de nuevo el TVM obtenemos:
+\[
+\frac{\partial f}{\partial y}(e)k - \frac{\partial f}{\partial y}(g)k
+\]
+
+El teorema sin embargo no nos dice dónde están esos puntos y (por estar en $R^2$) tenemos que buscar que los puntos que nos de el TVM estén alineados.
+
+Supongamos que $c , d$ están siempre en la misma vertical. Entonces, usando el TVM para $\frac{\partial f}{\partial x}$:
+\[
+\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})(P)kh
+\]
+
+Y supongamos que $e,g$ están en la misma vertical. Usando el TVM para $\frac{\partial f}{\partial y}$
+\[
+\frac{\partial }{\partial x}(\frac{\partial f}{\partial y})(Q)hk
+\]
+Como ambos eran iguales, entonces:
+\[
+\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})(P)kh = \frac{\partial }{\partial x}(\frac{\partial f}{\partial y})(Q)hk \implies \frac{\partial}{\partial y}(\frac{\partial f}{\partial x})(P)=\frac{\partial }{\partial x}(\frac{\partial f}{\partial y})(Q)
+\]
+Si lo que hacemos es que $h \to 0 \implies x+h\to x$ y lo mismo con la $k$ y así $P,Q\to (x,y)$ y de esta forma:
+\[
+\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})(P) \to \frac{\partial^2 f}{\partial x \partial y}(x,y)
+\]
+\[
+\frac{\partial}{\partial x}(\frac{\partial f}{\partial y})(Q) \to \frac{\partial^2 f}{\partial y \partial x}(x,y)
+\]
+Y así, como eran iguales y tienden a lo mismo, tenemos que:
+\[
+\frac{\partial^2 f}{\partial x \partial y}(x,y) =  \frac{\partial^2 f}{\partial y \partial x}(x,y)
+\]
+
+Pero habíamos supuesto que c y d están siempre en la misma vertical. Ahora, lo que tendríamos que hacer es intentar haber usado sólamente una vez el TVM.
+Par ello, definimos:
+\[
+F_h(k) = f(x+h,y+k)-f(x,y+k)
+\]
+
+Con esta definición, tenemos $F_h(0) = f(x+h,y)-f(x,y)$ y ahora si hacemos:
+\[
+S_{k,h}(x) =[f(x+h,y+k) - f(x,y+k)] - [f(x+h,y) -f(x,y) = F_h(k) - F_h(0)
+\]
+
+Vamos a ver primero que
+\[
+F_h'(K) = [\frac{\partial f}{\partial x}(x+h,y+K)*0 + \frac{\partial f}{\partial y}(x+h,y+K)*1] - 
+\]
+\[
+\frac{\partial f}{\partial x}(x,y+K)*0 + \frac{\partial f}{ \partial y}(x,y+K)*1] = \frac{\partial f}{\partial y}(x+h,y+K) - \frac{\partial f}{\partial y}(x,y+K)
+\]
+Luego:
+\textbf{NO PUEDO COPIAR MÁS, COMPLETAR}
+
+\end{proof}
+\begin{proof}[Demostración para el caso general]
+	Tenemos $f:A \to R$ y $x=(x_1,...,x_i,...,x_j,...,x_n) \mapsto f(x_1,...,x_i,...,x_j,...,x_n)$.
+	
+	Definimos $g(s,t) = f(x_1,...,x_{i-i},s,...,x_{j-1},t,...,x_n)$
+	Si ahora hacemos
+	\[
+	\frac{\partial g}{\partial s \partial t}(x_i,x_j) = \frac{\partial^2 f}{\partial x_i \partial x_j}
+	\]
+	Y también:
+		\[
+	\frac{\partial g}{\partial t \partial s}(x_i,x_j) = \frac{\partial^2 f}{\partial x_j \partial x_i}
+	\]
+	
+	Y como lo teníamos probado para $N=2$, entonces ya tenemos que las dos son iguales pues $g$ es una función de $N=2$ variables.
+	
+
+\end{proof}
+
+\begin{nota}[Observación 1]. Si tenemos $f \in \varphi^k$, podríamos hacer:
+\[
+\frac{\partial^3 f}{\partial x_1 \partial x_2 \partial x_1} = \frac{\partial}{\partial x_1}(\frac{\partial}{\partial x_2}(\frac{\partial f}{\partial x_1})) = \frac{\partial}{\partial x_2 \partial x_1}(\frac{\partial f}{\partial x_1})
+\]
+Si desarrolláramos:
+\[
+\frac{\partial^3 f}{\partial x_1 \partial x_1 \partial x_2}
+\]
+Se podría ver que se llega a lo mismo e incluso podemos notarlo como:
+\[
+\frac{\partial^3 f}{\partial x_2^2 \partial x_1}
+\]
+\end{nota}
+\begin{nota}
+	Podemos escribir:
+	\[
+	D^{(\alpha_1,...,\alpha_n)}f = \frac{\partial^{|\alpha|}f}{\partial x_1^{\alpha_1}... \partial x_k^{\alpha_n}}
+	\]
+	Con $\alpha = (\alpha_1,...,\alpha_n) \in \mathcal{N}\cup \{0\}$. A esto se le llama multiíndice.
+	
+\end{nota}
+\begin{nota}
+	Si $v\in R^n$ con $|v| = 1 $ y $D_vf(a) = Df(a)(v)$. Así:
+	\[
+	D_{\frac{w}{|w|}}f(a) = (1/|w|)*Df(a)(w)
+	\]\[
+	|w|D_{\frac{w}{|w|}}f(a) = Df(a)(w)
+	\]
 \end{nota}
 
 \begin{nth}[Teorema de Taylor(Orden 2)]
@@ -1220,10 +1347,22 @@ $\forall i,j = 1,...,n$ con $i\ne j$
 $A \subset R^n$ convexo  y abierto, $x_0 \in A$ y $f:A \to R\in \varphi^2(A)$
 
 $\forall x \in A : [x,x_0] \subset A \implies f(x) = f(x_0) + \frac{1}{1!}Df(x_0)(x-x_0)+ \frac{1}{2!}(x-x_0) + \mathcal{H}f(x)(x-x_0)$ con $c \in [x,x_0]$ siendo este el segmento que une $x \ con \ x_0$
+
+\end{nth}
+
+\begin{nth}[Teorema de Taylor de orden n]
+Sea $\emptyset \ne A \subset R^{n}$ abierto, $a\in A$ y $f \in \varphi^{n+1}(A)$
+
+Entonces $\forall x \in A :$ el segmento que une $x$ con $a$ está contenido en A , se tiene que $\exists c $ en el segmento que une $x$ con $a$ tal que:
+\[
+f(x) = \sum_{|\alpha| = 0}^n \frac{D^\alpha f(a)}{\alpha !}(x-a)^\alpha + \sum_{|\alpha| = n+1}\frac{D^\alpha f(c)}{\alpha !}(x-a)^\alpha
+\]
+
 	
+\end{nth}
 
 \begin{nth}
-Sea $\empty \ne A \subset R^n \ abierto \ , \ x_0 \in A$ con $f:A \ to R$ de clase $C^2$
+Sea $\empty \ne A \subset R^n \ abierto \ , \ x_0 \in A$ con $f:A \to R$ de clase $C^2$
 \begin{enumerate}
 	\item $f$ tiene un maximo relativo en $x_0 \implies \begin{cases}
 	Df(x_0) = 0 \iff Jf(x_0) = 0\\
@@ -1237,8 +1376,6 @@ Sea $\empty \ne A \subset R^n \ abierto \ , \ x_0 \in A$ con $f:A \ to R$ de cla
 \end{enumerate}	
 \end{nth}
 
-
-\end{nth}
 \begin{proof} Probaremos 1 y 2: 
 	\begin{enumerate}
 	\item Como $f$ presenta un máximo relativo en $x_0\in A=abierto$ entonces $\exists r > 0 : B(x_0,r) \subseteq A $ y $f(x) \leq f(x_0) \ \forall x \in B(x_0,r)\subset A$. Por ello, ya sabemos que $Df(x_0) = 0$. Entonces, aplicamos Taylor $\forall x \in B(x_0,r)$ segmento que une $x$ con $x_0$ está contenido en $B(x_0,r) \subset A \implies $
