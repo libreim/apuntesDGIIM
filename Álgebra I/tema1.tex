@@ -2340,11 +2340,59 @@ Ahora, haciendo lo mismo para $2i$ vemos que $2i = (1+i)^2$.
 
 	
 \end{ejemplo}
+\begin{ejemplo}[2]
+	Vamos a factorizar 180 en $\ent[i\sqrt2]$. Para ello, vemos que $180 = 2^2 * 3^2 * 5$. Recordamos que en este anillo, $N(a+b\sqrt2) = a^2 +2b^2$ y $U(\ent[i\sqrt2]) = \pm 1$
+	
+	Ahora, como $N(2) = 4$, un divisor propio del 2 tendrá por norma un divisor propio del 4 en $\ent$. En $\ent$, sólo el 2 es divisor propio del 4. Por ello, tenemos que plantearnos la ecuación $a^2+2b^2 = 2$. Entonces, los únicos elementos que hay que tienen son $\sqrt{-2}$ y $-\sqrt2$. 
+	Ahora vemos si alguno de estos divide a 2:
+	\[
+	\frac{2}{\sqrt{-2}} =  \frac{2*(-\sqrt2}{\sqrt{-2}*(-\sqrt{-2})}= \frac{2(-\sqrt{-2})}{2} = -\sqrt{-2} \ \in \ent[i\sqrt2]
+	\]
+	Ahora, como $N(\sqrt{-2})=2$ que es un primo en $\ent \implies \sqrt{-2}$ es un primo de $\ent[\sqrt{-2}] = \ent[i\sqrt2]$ y por ello $2=-(\sqrt{-2})^2$.
+	
+	Seguimos, haciendo lo mismo con el 3. $N(3) = 9$. ¿Existen a y b : $a^2 + 2b^2 = 3$? Vemos que tomando $a=\pm 1$ y $b=\pm1$ se puede llegar a la igualdad. Es decir, tenemos los elementos: $\{1+\sqrt{-2}, \ 1-\sqrt{-2}, \ -1-\sqrt{-2}, \ - 1 + \sqrt{-2}\}$.
+	
+	Probamos dividiendo $3/(1+\sqrt{-2}) = 1 - \sqrt{-2}\implies 3 = (1+\sqrt{-2})(1-\sqrt{-2})$ y ambos son irreducibles.
+	
+	Hacemos lo mismo con el 5. Tenemos que discutir la ecuación: $a^2+2b^2 = 5$. Sin embargo, en este caso no hay ningún elemento que tenga solución luego 5 es primo en $\ent[i\sqrt2]$.
+	
+	Por tanto, la factorización de 180 en $\ent[i\sqrt2]$ es: $180 = (\sqrt{-2})^4*(1+\sqrt{-2})^2*5$
+\end{ejemplo}
+
+\begin{nota}[Ejemplo de anillo que no es un DFU] $\quad$
+
+Como ejemplo, vamos a probar que \textbf{\underline{$\ent[\sqrt{-5}]$ no es un DFU.}} En este anillo, $N(a+bi\sqrt5) = a^2 + 5b^2$ y $U(\ent[\sqrt{-5}])= \{\pm 1\}$
+
+Vamos a considerar el elemento $1+i\sqrt5$. Su norma es: $N(1+i\sqrt5) = (1+i\sqrt5)(1-i\sqrt5) = 6 = 2 * 3$. ¿Es este elemento irreducible?
+
+Vamos a plantearnos qué elementos del anillo $\ent$ tienen norma 2 o norma 3.
+\begin{itemize}
+	\item En la ecuación $a^2+5b^2= 2$ no hay soluciones en $\ent[i\sqrt5]$
+	\item En la ecuación $a^2+5b^2 = 3$ tampoco hay soluciones en este anillo.
+\end{itemize}
+	Como no tiene divisores propios, entoces este elemento es irreducible. Su conjugado , por el mismo motivo, también es un irreducible.
+	
+	Ahora, por la norma de $1+i\sqrt5$ hemos obtenido una factorización del 6 en producto de irreducibles. Pero el 6 también es $2*3$ en este anillo. Esta podría ser otra factorización en irreducibles de 6 en $\ent [i\sqrt5]$. El 2 no tiene ningún divisor propio en este anillo, pues es el único divisor de 4 en $\ent$ luego el 2 es irreducible en este anillo. Lo mismo ocurre con el 3.
+	
+	Por tanto, tenemos dos descomposiciones del 6 en producto de irreducibles, que no son iguales ni asociados luego este anillo no puede ser un DFU.
+	
+	Ahora, \underline{¿es 2 primo?}. Vemos que $2/6$, y $6 = (1+i\sqrt5)(1-i\sqrt5)$. Si fuese primo, necesitaríamos $2/1+i\sqrt5$ ó $2/1-i\sqrt5$ y eso no ocurre pues sus normas no se dividen en $\ent$ por tanto el 2 no es primo.
+\end{nota}
+
+\subsection{$\ent[x]$ es un DFU y no es un DIP}
+
+Vamos a estudiar ahora que este anillo es un DFU sin ser un DIP ni un DE.
+
+Bastaría de hecho tomar los elementos 2 y x para ver que $(2,x) = 1$ y no existen los coeficientes de Bezout para estos elementos, es decir:
+\[
+\nexists f,g \in \ent[x] : 1 = 2f(x)+ xg(x)
+\]
 
 
 
-
-
+\begin{nth}[Teorema de Gauss]
+	Si A es un DFU cualquiera $\implies A[x]$ es también un DFU.
+\end{nth}
 
 
 
