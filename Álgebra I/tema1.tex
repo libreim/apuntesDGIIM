@@ -2388,6 +2388,42 @@ Bastaría de hecho tomar los elementos 2 y x para ver que $(2,x) = 1$ y no exist
 \nexists f,g \in \ent[x] : 1 = 2f(x)+ xg(x)
 \]
 
+Vamos ahora a enunciar y a demostrar el Teorema de Gauss sobre los DFU. Sin embargo, antes debemos aclarar algunos conceptos.
+\begin{ndef}
+Si $f \in A[x], gr(f) \geq 1$, se define su contenido como el m.c.d. de sus coeficientes. Lo denotamos por $c(f)$. (Si $f= \sum a_i x_i \implies c(f) = mcd(a_0,...,a_n)$	)\\
+Se dice que $f$ es primitivo si $c(f) = 1$. El contenido es único salvo asociados.
+\end{ndef}
+\textbf{Lema.} $ \ c(af) = ac(f)$. Esta propiedad es consecuencia directa de que $(ab,ac) = a(b,c)$
+\textbf{Lema.} Todo $f: gr(f) \geq 1$ se puede factorizar de la forma $f = af'$ con $f'$ primitivo. Además, esta factorización es esencialmente única.
+\begin{proof}
+	Sea $f$ un polinomio y $a = c(f)$. Entonces, $a/a_i \ \forall i$. Tomamos $a_i' = \frac{a_i}{a} \in A$. Sea también $f' = \sum a_i'x^i$. Ahora, si tomáramos $af'= \sum aa_i' x^i = f \implies a = c(f) = c(af') = ac(f') \implies c(f') = 1$ simplificando por a, luego hemos encontrado una factorización $f=af'$.
+	
+	Además, podemos ver que la factorización es única. pues si $f=bg$ con $c(g)=1$ y $f=af'$, entonces $a = c(f) = b c(g) = b \implies g=f'$
+\end{proof}
+
+\textbf{Lema.} Todo $\phi, gr(\phi) \geq 1$ se puede factorizar de forma esencialmente única como $\phi = \frac{a}{b} f$ con $f$ primitivo.
+\begin{proof}
+	Sea $\phi = \sum \frac{a_i}{b_i} x^i$. Tomamos $b= \prod b_i \implies b_i/b \ \forall i \implies b_i /ba_i \ \forall i \implies b \phi = \sum \frac{ba_i}{b_i}x^i$ Pero el numerador es un múltiplo del denominador, luego $g = \sum \frac{ba_i}{b_i}x^i \in A[x]$.
+	
+	De esta forma, $b\phi = af \implies \phi = \frac{a}{b} f$.
+	
+	Además, veamos que es única. Sea ahora $\phi = \frac{c}{d} f'$ con $f'$ primitivo.$\implies \frac{a}{b} f = \frac{c}{d} f' \implies daf=bcf' \implies da = bc$ y $f=f'$
+\end{proof}
+
+Enunciaremos también un lema muy importante, el lema de Gauss.\\
+
+\textbf{Lema de Gauss.} Sea A un DFU. Si tenemos $f,g \in A\implies c(fg) = c(f)c(g)$. En particular, el producto de polinomios primitivos es primitivo.\\
+\begin{proof}
+	Sean $f= \sum a_i x^i $ y $g= \sum b_j x^j$ ambos en $A[x]$ y primitivos. Consideramos también su producto $fg = \sum c_k x^k$. Sabemos que  $c_k = \sum_{i+j=k}a_ib_j$. Negaremos la tesis e intentaremos llegar a una contradicción.
+	
+	Supongamos que $fg$ no es primitivo. Entonces, $c(fg) \ne 1$. Como A es un DFU, el contenido se podrá expresar como un producto de primos(irreducibles). Existirá al menos un primo que lo divida. $\exists p $ primo de $A$ con $p/c(fg) \implies p/c_k \ \forall k$. Sin embargo, ese p no puede dividir a $a_i \ \forall i$ pues f es primitivo. Por la misma razón, no puede dividir a todos los $b_i$. 
+	
+	Por tanto, sea $r$ el primer índice tal que $p$ no divide a $a_r$. Tomemos también $s$ el primer índice tal que $s$ no divide a $b_s$. Ahora, vamos a fijarnos en el coeficiente $c_{r+s}$ de $fg$. Este coeficiente se expresa como:
+	 \[c_{r+s} = \sum _{i+j=r+s}a_ib_j = \sum _{i+j =r+s \ \ i < r}a_ib_j + a_rb_s + \sum_{i+j=r \ \ i > r}a_ib_j\]
+	 De esta expresión, podemos ver que $p/c_{r+s}$, que $\forall i < r$ entonces $p/a_ib_j \implies p/\sum_{i+j =r+s \ \ i < r}a_ib_j$ por dividir a los $a_i$. Ocurre lo mismo con el mismo término pues p divide a $b_j$. Si despejáramos $a_rb_s$ que $p/a_rb_s$ pues divide a todos los factores, pero p es un primo, por tanto si divide a un producto tiene que dividir a alguno de los factores, pero como habíamos dicho que no divide a ninguno de los dos, hemos llegado a una contradicción y por tanto $fg$ es primitivo.
+	 
+	 Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es a y el de g es b luego $c(fg) = c(f)c(g)$ probando así el lema.
+\end{proof}
 
 
 \begin{nth}[Teorema de Gauss]
@@ -2396,8 +2432,12 @@ Bastaría de hecho tomar los elementos 2 y x para ver que $(2,x) = 1$ y no exist
 
 
 
-
-
+En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también sucede $A[x] \subseteq K[x]$. También vamos a notar:
+\begin{itemize}
+	\item $a,b,c.... \in A$
+	\item $f,g,h... \in A[x]$
+	\item $\phi,\psi, ... \in K[x]$
+\end{itemize}
 
 
 
