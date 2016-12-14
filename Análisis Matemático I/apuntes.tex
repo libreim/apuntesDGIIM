@@ -1439,10 +1439,27 @@ Sea $\empty \ne A \subset R^n \ abierto \ , \ x_0 \in A$ con $f:A \to R$ de clas
 	Se le llama campo de vectores.
 	\end{ndef}
 
+\textbf{Propeiedad de $\triangledown f$}.
 
-
-
-
+Sea $a \in R$ y $S =\{x \in A :f(x) = a\}$. Entonces, $\forall x_0 \in S \quad \triangledown f(x_0) \  \bot \ S$
+\begin{proof}
+	Sea $c : I \to R$ con $0 \in I$ una función derivable y $c(I)\subset S$ con $c(0)=x_0$. Ahora,
+	\[
+	c(t) \in S \quad \forall t \in I \iff f\circ c(t) = f(c(t) = c \implies 0 = (f\circ c)'(t) \implies 0 = Df(c(t))*c'(t)
+	\]
+	Donde en el último paso hemos usado la regla de la cadena y eso es igual a:
+	\[
+	Jf(c(t))*c'(t)= \triangledown f(c(t))*c'(t)
+	\]
+	Y dando a t el valor 0
+	\[
+	\implies \triangledown f(x_0)*c'(0) = 0
+	\]
+	Lo que implica la perpendicularidad del gradiente y S.
+\end{proof}
+\[
+\bigstar \bigstar \bigstar
+\]
 
 
 
