@@ -201,6 +201,10 @@
 \newtheorem*{nprop}{Proposición}
 \newtheorem{ncor}{Corolario}
 
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
 %---------------------------------------------------------------------------
 %   PÁGINA DE TÍTULO
 %---------------------------------------------------------------------------
@@ -313,6 +317,73 @@ Teniendo esto demostrado, haciendo uso de la proposición y de que S es conexo (
 
 \end{ejer}
 
+
+\begin{ejer}
+	Estudiar los máximos y mínimos relativos de la función $f: R^2 \to R$ dada por:
+	\begin{enumerate}
+	
+	\item $f(x,y)=x^2+y^2$. Tenemos que estudiar los puntos críticos de f. Para ello, estudiamos:
+	\[
+	\begin{rcases}
+	\frac{\partial f}{\partial x}(x,y) = 0\\
+	\frac{\partial f}{\partial y}(x,y) = 0
+\end{rcases} \implies \begin{rcases}
+	2x= 0\\
+	2y = 0\\
+\end{rcases}
+	\]
+	Ahí podemos obtener los puntos críticos, que como vemos es el (0,0). Ahora, tenemos que ver si es un máximo o un mínimo usando la matriz Hessiana, que se calcula derivando dos veces por cada variable.[REVISAR CÓMO SE OBTENDRÍA LA HESSIANA]
+	
+	Calculamos la matriz Hessiana y la evaluamos en el (0,0), el punto obtenido:
+	\[
+	Hf(x,y) = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} 
+	\]
+	Por tanto en el (0,0) también es esa matriz y queda ver que es definida positiva, pero eso es trivial por los determinante encajados. Por tanto, $f$ tiene un mínimo local en 0.
+	
+	\item $f(x,y) = -x^2-y^2$. Este apartado es igual, pero la matriz tendrá -2 en vez de 2 y por ello tendrá un máximo.
+	
+	\item $f(x,y) = x^2-y^2$. Estudiamos puntos críticos:
+	\[
+	\begin{rcases}
+	\frac{\partial f}{\partial x}(x,y) = 0\\
+	\frac{\partial f}{\partial y}(x,y) = 0
+\end{rcases} \implies \begin{rcases}
+	2x= 0\\
+	-2y = 0\\
+\end{rcases}
+	\]
+	
+	Por tanto, su matriz hessiana es:
+		\[
+	Hf(x,y) = \begin{pmatrix} 2 & 0 \\ 0 & -2 \end{pmatrix} 
+	\]
+	
+	Y esta matriz no es ni semidefinida positiva ni semidefinida negativa. Por tanto, en este caso el (0,0) no es ni máximo ni mínimo relativo.
+	Como no es ni máximo ni crítico pero su derivada es cero, se denomina punto de silla.
+	
+	\item $f(x,y)=x^2-xy+y^2$ Estudiamos puntos críticos:
+	\[
+	\begin{rcases}
+	\frac{\partial f}{\partial x}(x,y) = 0\\
+	\frac{\partial f}{\partial y}(x,y) = 0
+\end{rcases} \implies \begin{rcases}
+	2x -y= 0\\
+	2y-x = 0\\
+\end{rcases}
+	\]
+	
+	Resolvemos el sistema, y nos queda la solución (0,0) también como solución única.
+	
+	Por tanto, su matriz hessiana es:
+		\[
+	Hf(x,y) = \begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix} 
+	\]
+	
+	Como los determinantes encajados son positivos, la matriz hessiana es definida positiva por tanto (0,0) es un mínimo
+	
+	
+\end{enumerate}
+\end{ejer}
 
 
 
