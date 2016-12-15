@@ -1457,11 +1457,69 @@ Sea $a \in R$ y $S =\{x \in A :f(x) = a\}$. Entonces, $\forall x_0 \in S \quad \
 	\]
 	Lo que implica la perpendicularidad del gradiente y S.
 \end{proof}
-\[
-\bigstar \bigstar \bigstar
-\]
 
 
+\begin{ndef}
+	Sea $A\subset R^n$ abierto, no vacío y $a\in A$. Sea también $f\in \mathcal{C}^1(A,\mathbb{R})$. Tomamos las restricciones: $g_1,...,g_k \in \mathcal{C}^1(A,\mathcal{R})$.
+	Llamaremos:
+	\[
+	S=\{ x\in A:g_1(x)=...=g_k(x) = 0\}
+	\]
+	
+\end{ndef}
+
+	
+
+\begin{ndef}[Mínimo relativo condicionado]
+	Si $a$ es un punto de $S$, diremos que $f$ presenta un mínimo relativo en $A$ condicionado por las restricciones $g_1(x)=...=g_k(x) = 0$ si y solamente si :
+	\[
+	\exists \upvarepsilon_0 > 0 : f(a) \leq f(x) \quad \forall x \in A\cap B(a,\upvarepsilon_0) \cap S 
+	\]
+\end{ndef}
+
+
+
+\begin{nth}[de los Multiplicadores de Lagrange]
+	En las condiciones que hemos expuesto, las dos definiciones dadas que suponemos ciertas:
+	
+	Sea $a\in S$ en el que presenta un mínimo relativo condicionado a $S$, entonces $\exists \lambda_0,...,\lambda_k \in R:$
+	\begin{nlist}
+	\item $(\lambda_0,...,\lambda_k) \ne (0,...,0)$ y $\lambda_0 \geq 0$
+	\item  $\lambda_0\frac{\partial f}{\partial x_j}(a)+\sum_{i=1}^k \lambda_i \frac{\partial g_i}{\partial x_j}(a) = 0 \quad \forall j=1,...,N$
+\end{nlist}
+
+FALTARLA UN HUECO
+\end{nth}
+\begin{proof}
+	$\exists \upvarepsilon_0 : B(a,\upvarepsilon_0)\subset A $y $f(a) \leq f(x) \quad \forall x \in B(a,\upvarepsilon)\cap S$.
+	Vamos a hacer la prueba en dos pasos:
+	\begin{enumerate}
+	\item $\forall \upvarepsilon \in (0,\upvarepsilon_0) \ \exists M > 0 : f(x) + |x-a|^2 + M \sum_{i=1}^kg_i(x)^2 > f(a) \quad \forall |x-a|= \upvarepsilon$,
+	
+	Esta prueba se hará por contradicción. Es decir, probando:
+	
+	$\exists \upvarepsilon > 0 \ \ \forall M> 0 \ \ \exists x\in A: |x-a|=\upvarepsilon$ y $f(x) + |x-a|^2 + M \sum_{i=1}^kg_i(x)^2 \leq f(a) \quad \forall |x-a|= \upvarepsilon$.
+	
+	Ahora, si tomamos $M=n$, $\exists x_n \in A:$
+	\[
+	f(x_n) + |x_n-a|^2 + M \sum_{i=1}^kg_i(x_n)^2 \leq f(a) \quad \forall |x-a|= \upvarepsilon
+	\]
+	Y como $\{x_n\}$ está acotada, existirá $\sigma :N \to N: \{x_{\sigma(n)}\}\to x^{*}$, por lo que 
+	\[
+	|x^{*}-a|= \lim_{n\to \infty}|x_{\sigma(n)}-a| = \upvarepsilon
+	\]
+	Tenemos , tras varias transformaciones , que:
+	\[
+	\frac{f(x_{\sigma(n)})}{-\sigma(n)}+\frac{\upvarepsilon^2}{-\sigma(n)}-\frac{f(a)}{-\sigma(n)} \geq \sum_{i=1}^k g_i(x_{\sigma(n)})^2
+	\]
+	Pero ahora, los dos segundos términos de la izquierda del $\geq$ convergen a 0 si tomamos límites cuando $n\to \infty$ nos queda que:
+	$0 \geq \sum_i g_i (x^*)^2$ y por ello $x^* \in S$
+	
+	De esta forma, hemos obtenido que $f(x^*) \geq f(a)$ y que
+	
+	\textbf{FALTAN COSAS QUE NO HE COPIADO}
+\end{enumerate}
+\end{proof}
 
 
 
