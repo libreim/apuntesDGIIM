@@ -2440,8 +2440,86 @@ En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también suc
 \end{itemize}
 
 
+\section{AQUI FALTA UNA CLASE}
+
+\begin{ncor}
+	Si $f\in A[x]$ es irreducible en $A[x]$ con $gr(f) \geq 1\implies$ $f$ es primo en $A[x]$.
+\end{ncor}
+\begin{proof}
+	Supongamos que $f/gh$ en $A[x]\subseteq K[x]$. Como $f$ es irreducible en $A[x]$, lo  es en $K[x]$ y $K[x]$ es un DFU por ser K un cuerpo, entonces $f$ es primo en $K[x]$. Entonces, podemos asegurar que o bien $f/g$ o bien $f/h$ en $K[x]$.
+	
+	Para lo que sigue, supongamos que $f/g$ en $K[x]$ (Si quisiéramos para hacerlo para $h$, sólo habría que cambiar las letras). Entonces, $f\phi = g $ y $\phi = \frac{a}{b}f'$(1) con $f'$ un polinomio de $K[x]$ primitivo. Esto implica: $$\frac{a}{b}ff' \implies aff' = bg$$
+	
+	Ahora, calcularemos los contenidos aplicando el lema de Gauss. Como f y $f'$ son primitivos,
+	
+	$$ a c(f)c(f') = bc(g) \implies a = bc(g)$$
+	
+	Ahora, si nos llevamos esta igualdad a 1 obtenemos:
+	\[
+	bc(g)ff'=bg \implies f(c(g)f')g \implies f/g \ en \ A[x]
+	\]
+	Y por tanto, obtenemos que $f$ es primo.
+\end{proof}
+
+\begin{nota}
+	De esta forma, podemos ver por inducción que cualquier anillo de la forma $A[x_1,...,x_r] $ es un DFU si A es un DFU.
+\end{nota}
+\begin{nota}[2]
+	En $\ent$ hay infinitos primos. 
+
+\end{nota}
+
+Vamos a intentar ahora a buscar una factorización de un $f \in A[x]$. ¿Cuándo es f irreducible?
+
+ Sabemos que si $gr(f) = 0 \iff f = p \in A$ que sería irreducible si $p$ lo es en A.
+ 
+ Supongamos ahora que $f$ es irreducible en $A[x] \iff$ f es primitivo e irreducible en $K[x]$
+
+\begin{nota}
+	Si K es un cuerpo, todo polinomio de grado 1 es irreducible.
+	\begin{proof}
+	Supongamos que $\phi = \phi_1 \phi_2 \implies 1 = gr(\phi) =  gr(\phi_1)+gr(\phi_2) \implies \phi_1$ es una unidad o lo es $\phi_2$, luego necesariamente $\phi$ es irreducible.  
+\end{proof}
+\end{nota}
 
 
+\textbf{Ejercicio.} Factorizar $(120x+100)^2$ en $\ent[x]$.
 
+\[
+120x+100 = 20(6x+5) = 2^2*5*(6x+5)
+\]
+Pero, $6x+5$ es un polinomio de grado 1, irreducible en $\ent[x]$. Además, 2 y 5 son irreducibles en $\ent$, por tanto la factorización del polinomio al cuadrado es:
+\[
+2^4*5^2(6x+5)^2
+\]
 
+\begin{nota}
+	Si $K$ es un cuerpo, $\phi \in K[x]$ tiene un factor de grado 1 $\iff \phi$ tiene una raíz en $K$
+	\begin{proof}
+	$$\alpha x + \beta = \alpha(x-(frac{-\beta}{\alpha}) = \alpha(x - \gamma) \implies \alpha x+b/\phi \iff x-\gamma / \phi \iff^{Rufinni} \phi(\gamma) = 0$$
+	Donde $\gamma = \frac{-\beta}{\alpha}$
+\end{proof}
+\end{nota}
+
+\begin{nprop}
+	Sea $f=a_0+a_1x+...+a_nx^n \in A[x]$. Entonces $f$ tiene un factor irreducible de grado 1 en $K[x]$ si y solamente si tiene una raíz en $K$.
+	
+	Equivalentemente, si $(a,b)=1$ y $f(\frac{a}{b})=0 \iff bx-a/f$ en $A[x]$. En tal caso, esta posible raíz verifica que $a/a_0$ y $b/a_n$ en $A$.
+\end{nprop}
+\begin{proof}
+	Si tenemos que $f(\frac{a}{b})=0 \iff x-\frac{a}{b}/f$ en $K[x]$.
+	
+	$\boxed{\Rightarrow}$ Esto implica que $f=(x-\frac{a}{b})\phi$ con $\phi=\frac{c}{d}g$ con g primitivo, $$\implies f= \frac{c}{d}(x-\frac{a}{b})g = \frac{c}{bc}(bx-a)g \implies bdf=c(bx-a)$$
+	Y ahora si aplicamos contenidos:
+	\[
+	bdc(f)=c
+	\]
+	Y ahora volvemos a la igualdad anterior:
+	\[
+	f=(bx-a)(c(f)g)
+	\]
+	Y por tanto $bx-a/f$ en $A[x]$.
+	
+	$\boxed{\Leftarrow}$ Si $f=(bx-a)g \implies f(\frac{a}{b} = (b\frac{a}{b}-a)g(\frac{a}{b})=0$
+\end{proof}
 \end{document}
