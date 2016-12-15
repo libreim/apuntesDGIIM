@@ -126,7 +126,8 @@
 \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
 \makeatother
 
-
+% Aumentar el tamaño del interlineado
+\linespread{1.3}
 %---------------------------------------------------------------------------
 %   COMANDOS PERSONALIZADOS
 %---------------------------------------------------------------------------
@@ -343,7 +344,7 @@ Para esta aplicación, definimos las siguientes propiedades:
 \end{itemize}
 
 \end{itemize} 
-\pagebreak
+
 
 Una vez que tenemos definida una suma y producto con la aplicación $R_n$, definimos las suma y el producto de $\mathbb{Z}_n$.
 \begin{ndef}[Suma y producto en $\ent_n$] Se define la suma y el producto en $\ent_n$ de la forma:
@@ -390,7 +391,7 @@ Si A es un anillo conmutativo y B es un subconjunto de A. Se dice que B es un \t
 	
 \end{ndef}
 
-\newpage 
+\newpage
 
 \subsection*{Anillos de números cuadráticos}
 
@@ -613,7 +614,6 @@ Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
 f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x^i \hspace{0.5cm} a_i \in A \hspace{0.5cm} \exists K: a_{i1} = 0 \hspace{0.3cm} \forall i > K
 \]
 	\item $r> 1$
-
 \[
 f(x_1,...,x_r) = \sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}: \hspace{0.3cm} \exists K: a_i,...,a_r  = 0 \iff i_s > K
 \]
@@ -628,7 +628,7 @@ Entonces:
 \[
 =\sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}
 \]
-\newpage
+
 
 Ahora, definimos $g(x_1,...,x_r) = \sum_{i1,...ir} b_{i1},...,b_{ir} x_1^{i1},...,x_r^{ir}$. Ahora, sumamos:
 
@@ -679,8 +679,6 @@ Además, como es un anillo conmutativo $\Rightarrow$ $A[x][y] = A[y][x] = A[x,y]
 
 Se puede probar que $A[x_1,...,x_n] = A[x_{\sigma(1)},...,x_{\sigma(n)}]$ siendo $\sigma$ una permutación de $\{1,2,...,n \}$
 \end{ndef}
-
-\newpage
 
 \begin{nprop}
 	
