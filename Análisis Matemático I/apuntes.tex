@@ -1519,6 +1519,36 @@ FALTARLA UN HUECO
 	De esta forma, hemos obtenido que $f(x^*) \geq f(a)$ y que
 	
 	\textbf{FALTAN COSAS QUE NO HE COPIADO}
+	
+	
+	Hemos encontrado por ello $\forall \epsilon \in (0,\epsilon_0)$ un $M>0: f(x) + |x-a|^2 + M \sum_{i=1}^kg_i(x)^2 > f(a) \quad \forall |x-a|= \upvarepsilon$
+	\item  $\forall \epsilon \in (0,\epsilon_0) \ \ \exists x^\epsilon$ ( x depende de epsilon, no es x elevado a epsilon) verificando $|x^\epsilon -a| < \epsilon, \ \ \exists(\lambda_0^\epsilon,...,\lambda_k^\epsilon)\in \mathbb{R}^{k+1} : |(\lambda_0^{\epsilon},...,\lambda_k^\epsilon)|= 1$ y $$\lambda_0^\epsilon\{\frac{\partial f}{\partial x_j}(x^\epsilon) + 2(x_j^\epsilon -a_j\}+ \sum_i^k \lambda_i^\epsilon \frac{\partial g_i}{\partial x_j}(x^\epsilon) = 0$$
+	
+	Utilizando el paso 1, definiendo:
+	\[
+	F(x):=f(x) + |x-a|^2 + M \sum_{i=1}^kg_i(x)^2
+	\]
+	Por el teorema de Weierstrass, existe el mínimo de $F(x)$ en $\bar{B}(a,\epsilon)$. Es equivalente a decir:
+	\[
+	\exists x^\epsilon \in \bar{B}(x,\epsilon) : \ \ F(x^\epsilon)= Min F \ 
+	\]
+	Y además, por el paso 1:
+	\[
+	Min F \leq F(A) \leq F|_{\partial B(a,\epsilon)} \implies x^\epsilon \in B(a,\epsilon)
+	\]
+	Dicho de otra forma, $x^\epsilon$ es un mínimo relativo de F en $B(a,\epsilon)$
+	\[
+	 \implies \frac{\partial F}{\partial x_j}(x^\epsilon) = 0 \ \ \forall j=1,...,N
+	 \]
+	 \[
+	 \implies \frac{\partial f}{\partial x_j}(x^\epsilon) + 2(x_j^\epsilon -a_j) + M \sum_i^k 2 g_i(x^\epsilon)*\frac{\partial g_i}{\partial x_j}(x^\epsilon) = 0
+	 \]
+	
+	Esa es la derivada de F. Ahora, si dividiéramos esa derivada por:
+	\[
+	\frac{1}{\sqrt{1+\sum_i^k4M^2g_i(x^\epsilon)^2}}
+	\]
+	Lo haríamos de módulo 1.
 \end{enumerate}
 \end{proof}
 
