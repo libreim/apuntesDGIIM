@@ -2520,4 +2520,90 @@ Pero, $6x+5$ es un polinomio de grado 1, irreducible en $\ent[x]$. Además, 2 y 
 	
 	$\boxed{\Leftarrow}$ Si $f=(bx-a)g \implies f(\frac{a}{b} = (b\frac{a}{b}-a)g(\frac{a}{b})=0$
 \end{proof}
+
+Por tanto, en $K[x]$ todo polinomio de grado 1 es irreducible y es asociado a uno de la forma $x-\alpha$ con $x-\alpha/\phi(x)\iff \phi(\alpha) = 0$.
+
+Así, también en $A[x]$ Los polinomios irreducibles de grado 1 son los de la forma $bx-a$ con $(a,b)=1$ por lo que $(a,b)=1$ y $bx-a/f(x)\iff f(\frac{a}{b})= 0$.
+
+Si $f(x)= a_0+a_1x+...+a_nx^n$ y si $f(\frac{a}{b}) \implies a / a_0$ y $b/a_n$ en $A$.
+
+Esto lo podríamos ver como una condición de irreducibilidad, pues si un polinomio fuera irreducible, no podría tener ninguna raíz, pues carecen de factores de grado 1.
+
+\begin{ejemplo}
+	Consideremos el polinomio $f=6x^4+3x^2-18x^2+33x+21$ en $\ent[x]$.
+
+Lo primero que deberíamos hacer es buscar el contenido de este polinomio:
+\[
+c(f)=3(2x^4+x^3-6x^2+11x+7)
+\]
+El contenido de f es 3 y $f'=2x^4+x^3-6x^2+11x+7$. 3 es un primo en $\ent $ y por tanto lo es en $\ent[x]$ y por tanto nos centramos en el primitivo asociado. Aplicamos el criterio de la raíz. Las posibles raíces que el polinomio tuviera en $\rac$ serían $\{\pm 1, \pm \frac{1}{2}, \pm 7, \pm \frac{7}{2}\}$. Calculamos las imágenes de estos puntos para ver si alguno es cero:
+\[
+f'(1) = 2+1-6+11 + 7 \ne 0; \quad f'(-1) = 2-1-6-11+7 \ne 0;\]
+\[f'(\frac{-1}{2}) = 2*(1/2)-(1/2^3)-6*(1/4)-11*(1/2) + 7 = 0
+\]
+Y por tanto hemos encontrado una raíz, es decir:
+\[
+2x+1/f'(x) \ en \ \ent[x]
+\]
+Ahora, dividiremos $f'(x)$ entre $2x+1$ para reducirlo. Al dividirlo nos queda cociente $x^3-3x+7$ y resto 0. Por tanto, f nos queda factorizado como:
+
+\[
+f(x)=3*(2x+1)*(x^3-3x+7)
+\]
+Tenemos ya uno de grado 3, por tanto es irreducible si y solo si carece de raíces en $\rac$. Para ello, debemos buscar fracciones que sean divisores del 7, que son $\{\pm 1, \pm 7\}$ y haríamos sus imágenes por el polinomio $x^3-3x+7$ y vemos que ninguna da de resultado cero, por tanto estas no son raíces suyas y por tanto es irreducible en $\ent[x]$ y la factorización del polinomio en producto de primos sería justo la que acabamos de obtener.
+
+Ahora, 3 y $x^3-3x+7$ son mónicos, pero $2x+1$ no, pero podemos sacar factor común para hacerlo mónico y nos quedaría como resultado final:
+\[
+f(x)= 6(x+\frac{1}{2})(x^3-3x+7) \quad \in \rac[x]
+\]
+\end{ejemplo}
+\begin{ejemplo}[2]
+	Consideremos el polinomio: $20x^3 +10x^2-80x+30$. Para resolverlo, había que observar que su contenido es 10 y que por tanto:
+	\[
+	f=2*5*(2x^3+x^2-8x+3)
+	\]
+	Y por tanto habría que buscar sus raíces entre $\{\pm 1, \pm \frac{1}{2}, \pm 3 \pm \frac{3}{2}\}$ y veríamos que en $\frac{3}{2}$ el polinomio evaluado da cero, por tanto factoriza como:
+	\[
+	2*5*(2x-3)(x^2+2x+2) 
+	\]
+	Y podemos ver que $x^2+2x+2$ no tiene raíces y por tanto ese es el polinomio descompuesto en primos.
+\end{ejemplo}
+\begin{ejemplo}[3]
+	Consideremos el polinomio: $x^4+x^3+x^2+x+1$ en $\ent_2[x]$. ¿Este polinomio es irreducible?. Estamos en $\ent_2$, luego sustituyendo el 0 y el 1 vemos que no tiene de raíces. Como no tiene raíces no tiene factores de grado 1. 
+	
+	Ahora, si no fuese irreducible habría que descomponerlo como 2 factores de grado 2. Si dividimos por el polinomio $x^2+x+1$, que es irreducible en $\ent_2[x]$ el resto no es 0, luego no es divisible y por tanto el polinomio inicial ya es irreducible en $\ent_2[x]$.
+\end{ejemplo}
+
+\begin{nprop}[Criterio de Eisenstein]
+	Sea $f(x)=a_0+a_1x+...+a_nx^n \in A[x]$ primitivo y siendo $A$ un DFU.
+Si existe un primo $p\in A$ cumpliendose alguna de estas dos:
+	\begin{enumerate}
+	\item $p/a_i \ \ \forall i = 1,...,n-1$ y $p^2$ no divide a $a_0$ 
+	\item $p/a_i \ \ \forall i=1,...,n$ y $p^2$ no divide a $a_n$
+\end{enumerate}
+Entonces $f$ es irreducible.
+
+\end{nprop}
+\begin{proof}
+	Vamos a demostrarlo para el primer caso, la demostración para el segundo es equivalente. Vamos a negar la tesis y vemos qué ocurre.
+	
+	Supongamos que $f=(b_0+...+b_mx^m)(c_0+...+c_rx^r)$ con $r+m=n$ y $r,m \geq 1$. Entonces, $a_0=b_0c_0$ para que fuera el producto. Como $p$ es primo, tiene que dividir a $b_0$ o a $c_0$. Además, no puede dividir a ambos pues si no $p^2$ dividiría a $a_0$. Supongamos que $p/b_0$ y por tanto que no divide a $c_0$. 
+	
+	Supongamos también que $p$ no divide a $a_n$ pues si no, formaría parte del contenido. Además, como hemos obtenido una factorización, $a_n = b_mc_r$ y como $p$ no divide a $a_n$ entonces no divide ni a $b_m$ ni a $c_r$.
+	
+	Sea $i$ el primer índice tal que $p$ no divide a $b_i$. Es claro que $0<i\geq m < n$, que existirá pues al menos es el último. Como lo habíamos factorizado, entonces $a_i = b_ic_0+(b_{i-1}c_1+...+b_0c_i)$. Entonces, $p/b_j \ \ \forall j < i \implies p/b_ic_0$ pero $p$ es primo luego divide o a $b_i$ o a $c_0$, pero ya habíamos dicho que no dividía a ninguno de los dos anteriormente en la demostración , luego hemos llegado a una contradición.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
