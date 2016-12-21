@@ -2594,16 +2594,45 @@ Entonces $f$ es irreducible.
 	Sea $i$ el primer índice tal que $p$ no divide a $b_i$. Es claro que $0<i\geq m < n$, que existirá pues al menos es el último. Como lo habíamos factorizado, entonces $a_i = b_ic_0+(b_{i-1}c_1+...+b_0c_i)$. Entonces, $p/b_j \ \ \forall j < i \implies p/b_ic_0$ pero $p$ es primo luego divide o a $b_i$ o a $c_0$, pero ya habíamos dicho que no dividía a ninguno de los dos anteriormente en la demostración , luego hemos llegado a una contradición.
 \end{proof}
 
+\begin{ejemplo}
+	Podemos ver que $3x^7-70x^3+140 \in \ent[x]$ por el criterio de Eisenstein para el primo $p=5$, que divide a todos los coeficientes menos al coeficiente líder pero su cuadrado $p^2 = 25$ no divide a ninguno de los coeficientes. 
+\end{ejemplo}
+\begin{ejemplo}[2]
+	El polinomio : $y^3 + x^2y^2 +xy + x \in \ent[x,y]$, pues el primo $p=x$ divide a todos los coeficientes menos al líder y su cuadrado no divide a todos los coeficientes.
+\end{ejemplo}
 
+\begin{nprop}[Cambio de Anillo]
+	Sean A y B dominios de integridad(así, el grado del producto es el producto de los grados). Sea $\phi : A[x] \to B[x]$ un homomorfismo en el que $gr(\phi(f))  \leq gr(f)$.
+	
+	Si $f\in A[x] : gr(\phi(f))= gr(f)$ y $\phi(f)$ no tiene divisores de grado $r \implies f$ tampoco tiene divisores de grado $r$ 
+\end{nprop}
+\begin{proof}
+	Supongamos que $f=gh$ donde $gr(f) = n$, $gr(g) = r$ y $gr(h) = s$ con $r+s = n$.
+	Aplicamos entonces el homomorfismo:
+	\[
+	\phi(f) = \phi(gh) = \phi(g)\phi(h)
+	\]
+	Y ahora, $gr(\phi(f)) = n$, $gr(\phi(g)) \leq r$ y $gr(\phi(h)) \leq s$ y entonces implica que $gr(\phi(g)) = r$
+\end{proof}
+\begin{ejemplo}
+	$x^4+1$ es irreducible en $\ent[x]$.
+	
+	Si tomamos $\phi:\ent[x] \to \ent[x]$ que lleva $x \mapsto x+1$ el homomorfismo de evaluación en $x+1$. ($\phi(\sum a_i x^i) = \sum a_i (x+1)^i$).
+	
+	Así, $\phi(x^4+1) = (x+1)^4+1 = x^4 +4x^3 +6x^2 +4x + 2 \in \ent[x]$, que es irreducible por el criterio de Eisenstein para el primo $p=2$. Ahora, por el criterio del cambio de anillo, entonces $x^4+1$ es también irreducible en $\ent[x]$
+\end{ejemplo}
 
-
-
-
-
-
-
-
-
-
+\begin{nprop}[Criterio de reducción módulo un primo]
+	En las condiciones anteriores, consiste en aplicar el homomorfismo:
+	\[
+	R_p:\ent[x] \to \ent_p[x] : \quad R_p(\sum a_i x^i) =  \sum R_p(a_i) x^i \in \ent_p[x]
+	\]
+	Para utilizar este criterio, es muy útil conocer los irreducibles mónicos de los anillos $Z_p[x]$
+\end{nprop}
+\begin{ejemplo}
+	Sea $f = x^4 +3x^2 -2x +5 \in \ent[x]$. Si le aplicamos el criterio de reducción módulo un primo, en este caso el 2, el polinomio queda: $R_2(f) = x^4 + x^2 +1 \in \ent_2[x]$ y por el criterio de reducción, como este polinomio no tiene divisores de grado ni 1 ni 3 entonces podemos asegurar que $f$ tampoco los tiene.
+	
+	Si lo volvemos a hacer para el primo $p=3$, queda $R_3(f) = x^4 + x + 2 \in \ent_3[x]$ , que nos da exactamente la misma información que la reducción anterior. Como conocemos los mónicos de $\ent_3[x]$, dividimos este polinomio entres los 3 irreducibles mónicos de $\ent_3[x]$ y vemos que los restos son no nulos. Así, este polinomio es irreducible en $\ent_3[x]$ y por el criterio de reducción módulo un primo, el polinomio primero es irreducible en $\ent[x]$
+\end{ejemplo}
 
 \end{document}
