@@ -2227,12 +2227,12 @@ Si $p/ab\implies e(p,ab) \geq 1$ pero sabemos que $e(p,ab) = e(p,a)+e(p,b) \impl
 \end{nlist}
 \end{nth}
 \begin{proof}
-	Que $1\implies 2$ es trivial. Veamos que $2 \implies 1$
+	Que $(i)\implies (ii)$ es trivial. Veamos que $(ii) \implies (i)$
 	
-	Sea $a= p_1...p_r = q_1...q_s$ con $p_i,p_q$ irreducibles. Vamos a ver que $r=s$. Para ello, vamos a hacer una inducción en $r$.
+	Lo único que falta para probar que es un DFU es probar que las factorizaciones son únicas. Sea $a= p_1...p_r = q_1...q_s$ con $p_i,q_j$ irreducibles. Vamos a ver que $r=s$. Para ello, vamos a hacer una inducción en $r$.
 	
 	\begin{itemize}
-	\item Caso $r=1 \implies p_1 = q_1...q_r$. Ahora, ¿puede ser $s>1$?. Los $q$ no son unidades, pues son irreducibles, por tanto si s fuese mayor que 1 serían los divisores propios de $p_1$ pero eso no puede ocurrir porque $p_1$ es irreducible. No puede ocurrir, por tanto $s=1=r \implies p_1 = q_1$
+	\item Caso $r=1 \implies p_1 = q_1...q_s$. Ahora, ¿puede ser $s>1$? Los $q$ no son unidades, pues son irreducibles, por tanto, si $s$ fuese mayor que 1 serían los divisores propios de $p_1$, pero eso no puede ocurrir porque $p_1$ es irreducible. Como no se puede dar que $s>1$ $\implies$ $s=1=r \implies p_1 = q_1$
 	
 	\item Si $r> 1$ y usando la hipótesis de inducción, entonces $s > 1$.
 	
@@ -2243,7 +2243,7 @@ Si $p/ab\implies e(p,ab) \geq 1$ pero sabemos que $e(p,ab) = e(p,a)+e(p,b) \impl
 	Ahora, usando la hipótesis de inducción, nos queda en cada lado $r-1$ elementos y $s-1$ elementos y por tanto $r-1 =s-1\implies r=s$
 \end{itemize}
 
-Ahora, que $1 \implies 3$ es trivial. Como 1 y 2 son equivalentes, basta probar que $3 \implies 2$
+Ahora, que $(i) \implies (iii)$ es trivial. Como (i) y (ii) son equivalentes, basta probar que $(iii) \implies (ii)$
 
 Queremos probar que todo irreducible es primo. Sea $p$ un irreducible. Supongamos que $p$ no divide ni a $a$ ni a $b$. Probaremos que entonces, no divide al producto $ab$
 
@@ -2252,19 +2252,19 @@ Es fácil ver que $(p,a) = 1$ y que $(p,b) = 1$. Ahora, por la propiedad del mcd
 (a,b) = 1 \ y \ (a,c) = 1 \iff (a,bc) = 1
 \]
 
-Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$ no divide al produco y así $p$ es primo.
+Entonces, $(p,ab) = 1 \implies$ $p$ es primo relativo con el producto, por tanto, $p$ no divide al producto y así $p$ es primo.
 \end{proof}
 
-	\textbf{Lema previo:} En un DIP, toda cadena ascendente de ideales es estacionaria. En otras palabras, si A es un DIP, $I_1 \subseteq I_2 \subseteq ... \subseteq I_{n}$ es una sucesión de ideales creciente respecto a la inclusión(cada uno está incluido en el siguiente). $\implies \exists m : I_m = I_{m+1} = ... = I_{m+k} \quad k \geq 1$.
+	\textbf{Lema previo:} En un DIP, toda cadena ascendente de ideales es estacionaria. En otras palabras, si A es un DIP, $I_1 \subseteq I_2 \subseteq ... \subseteq I_{n}$ es una sucesión de ideales creciente respecto a la inclusión (cada uno está incluido en el siguiente). $\implies \exists m : I_m = I_{m+1} = ... = I_{m+k} \quad k \geq 1$.
 	
 	\begin{proof}[Demostración del lema.]
 	Podemos ver que: 
 	\[
 	I = U_{n\geq 1} I_n = \{a \in A : \exists n \ con \ a \in I_n\} \quad \forall a,b \in I \implies \exists n: a,b \in I_n\]\[ \implies a+b \in I_n \implies a+b \in I
 	\]
-	Por ello, I es un ideal y por estar en un DIP, es principal $\implies \exists a \in A : I = (a) = \{ax : x \in A\}$. Que es no vacío, pues $a \in I$.
+	Realizando la prueba análoga para el producto, I es un ideal y por estar en un DIP, es principal $\implies \exists a \in A : I = (a) = \{ax : x \in A\}$. Que es no vacío, pues $a \in I$.
 	
-	Si $a\in I$, en particular estará en alguno de los $I_i$ de la unión: $\implies \exists m : a \in I_m \implies (a) \subseteq I_m$, pero  $I = (a) \subseteq I_m \subseteq I_{m+k} \subseteq I \implies I_i = I_j$ para todo $i$ y $j$. 
+	Si $a\in I$, en particular estará en alguno de los $I_i$ de la unión $\implies \exists m : a \in I_m \implies (a) \subseteq I_m$, pero  $I = (a) \subseteq I_m \subseteq I_{m+k} \subseteq I \implies I_i = I_j$ para todo $i$ y $j$. 
 	
 \end{proof}
 
@@ -2272,32 +2272,32 @@ Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$
 	Todo DIP es un DFU (Lo cual implica que todo DE es un DFU)
 \end{nth}
 \begin{proof}
-	Tenemos que probar que en un DIP todo elemento se puede descomponer como producto de irreducibles. Para ello, vamos a negar la tesis. Supongamos que estamos en un DIP y que en ese anillo existen elementos que no son unidades y no se pueden descomponer como producto de irreducibles.
+	Tenemos que probar que en un DIP todo elemento se puede descomponer como producto de irreducibles. Para ello, vamos a negar la tesis. Supongamos que estamos en un DIP y que en ese anillo existen elementos distintos de cero que no son unidades y no se pueden descomponer como producto de irreducibles.
 	
-	Supongamos que $a$ es un elemento de esa 'clase'. Entonces $\exists  \ a'$ divisor propio de $a$ que también es de esa 'clase de elementos'.
+	Supongamos que $a$ es un elemento de esa “clase”. Entonces $\exists  \ a'$ divisor propio de $a$ que también es de esa “clase de elementos”.
 	
 	Podemos asegurar que $a$ no es un irreducible, pues no admite factorización en irreducibles y si fuera irreducible, él mismo sería una factorización como irreducibles. $\implies \exists b,c : a = bc$ con b y c divisores propios. Entonces, uno de los dos (b ó c) no puede admitir una factorización como producto de irreducibles, pues si no, $a$ admitiría esa factorización. Entonces, llamamos $a'$ a $b$ o a $c$ según sea el que no admita esa factorización.
 	
-	Ahora, vamos a construir una sucesión $\{a_n\} \in A$ con $a_1 = a $. Cada elemento siguiente, es un divisor propio del anterior y es de la 'clase' que establecimos al principio (no es cero, ni una unidad, ni se puede factorizar en producto de irreducibles). Esto implica que $a_{n+1} = a_n'$ y $a_{n+1}$ no es sociado con $a_n$.
+	Ahora, vamos a construir una sucesión $\{a_n\} \in A$ con $a_1 = a,\ a_{n+1}=a'_n$. Cada elemento siguiente, es un divisor propio del anterior y es de la “clase” que establecimos al principio (no es cero, ni una unidad, ni se puede factorizar en producto de irreducibles). Esto implica que $a_{n+1} = a_n'$ y $a_{n+1}$ no es sociado con $a_n$.
 	
-	Si consideramos los ideales principales generados por los elementos de esta sucesión, y podemos ver que (como $a_{n+1}$ es divisor de $a_n$:
+	Si consideramos los ideales principales generados por los elementos de esta sucesión, podemos ver que (como $a_{n+1}$ es divisor de $a_n$):
 	
 	\[
-	\implies (a_1) \subset (a_2) \subset ... \subset (a_n) \subset (a_{n+1})	\]
+	\implies (a_1) \subset (a_2) \subset ... \subset (a_n) \subset (a_{n+1}) \subset ...	\]
 	
-	Y en esta acena no hay igualdades, pues si $(a_n) = (a_{n+1}) \implies a_{n+1} \in (a_n) \implies a_n/ a_{n+1}$ y esto no puede ocurrir.
+	Y en esta cadena no hay igualdades, pues si $(a_n) = (a_{n+1}) \implies a_{n+1} \in (a_n) \implies a_n/ a_{n+1}$ y esto no puede ocurrir.
 	
 	Pero esto contradice el lema que hemos visto anteriormente, por tanto hemos probado así que todos los elementos deben tener una factorización y por tanto estamos en un DFU.
 \end{proof}
 
 
 \begin{nprop}
-	Si $\alpha \in \ent[\sqrt n]$ es un divisor propio de $\beta$ en $\ent[\sqrt n]$ entonces $N(\alpha)$ es un divisor propio de $N(\beta)$ en $\ent[\sqrt n]$
+	Si $\alpha \in \ent[\sqrt n]$ es un divisor propio de $\beta$ en $\ent[\sqrt n]$ entonces $N(\alpha)$ es un divisor propio de $N(\beta)$ en $\ent$
 \end{nprop}
 \begin{proof}
 	Como $\alpha$ es un divisor de $\beta$ entonces $\exists \gamma \in \ent[\sqrt n] : \beta = \alpha \gamma \implies N(\beta) = N(\alpha)N(\gamma) \implies N(\alpha)/N(\beta)$.
 	
-	Ahora, la norma de $\alpha$ no puede ser ni 1, ni -1 pues si no sería una unidad y por tanto no sería divisor propio ni gamma puede ser un asociado pues si no, $\alpha$ sería un divisor propio también, luego $N(\alpha)$ tiene que ser un divisor propio de $N(\beta)$
+	Ahora, la norma de $\alpha$ no puede ser ni 1, ni -1 pues si no sería una unidad y, por tanto, no sería divisor propio; $\alpha$ no puede ser un asociado pues si no, $\gamma$ sería un divisor propio también, luego $N(\alpha)$ tiene que ser un divisor propio de $N(\beta)$
 
 \end{proof}
 \begin{ncor}
@@ -2307,9 +2307,10 @@ Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$
 	Si $\alpha$ es primo en $\ent[\sqrt n]\implies N(\alpha) = \pm p $ ó $\pm p^2$ con $p \geq 2 $ un primo de $\ent$. Además, si $N(\alpha) = \pm p^2 \implies \alpha \ y \ p$ son asociados en $\ent[\sqrt n]$
 \end{ncor}
 \begin{proof}
-	Supongamos que $\alpha \in \ent[\sqrt n]$ primo. Consideramos su norma: $N(\alpha)$ que no es ni 1 ni menos 1 pues si no sería una unidad. Así: $N(\alpha) = p_1...p_r$ con $p_i\in \ent$ primos, lo que implica que $\alpha \bar{\alpha} = p_1...p_r \implies \alpha/p_1...p_r $ pero $\alpha$ es primo, luego $\exists i \in \{1,...,2\}: \alpha / p_i \implies \exists p \geq 2 $ primo de $\ent$ tal que $\alpha / p \ en \ \ent[\sqrt n]$.
+	Supongamos que $\alpha \in \ent[\sqrt n]$, primo. Consideramos su norma: $N(\alpha)$ que no es ni 1 ni -1 pues si no sería una unidad. Así: $N(\alpha) = p_1...p_r$ con $p_i\in \ent$ primos, lo que implica que $\alpha \bar{\alpha} = p_1...p_r \implies \alpha/p_1...p_r $ pero $\alpha$ es primo, luego $\exists i \in \{1,...,r\}: \alpha / p_i \implies \exists p \geq 2 $ primo de $\ent$ tal que $\alpha / p \ en \ \ent[\sqrt n]$.
 	
-	Pero en tal caso, $N(\alpha)/N(p)$ por el resultado anterior. Esto implica $p = \alpha \beta \ con \ \beta \in \ent[\sqrt n] \implies p^2 = N(\alpha) N(\beta) \implies N(\alpha)/p^2 \implies N(\alpha) = \pm p$ ó $\pm p^2$, como queríamos
+	 Esto implica $p = \alpha \beta \ con \ \beta \in \ent[\sqrt n] \implies p^2 = N(\alpha) N(\beta) \implies N(\alpha)/p^2 \implies N(\alpha) = \pm p$ ó $\pm p^2$, como queríamos.\\
+	 Si $N(\alpha) = p^2 \implies N(\beta) = 1 \implies \beta$ es una unidad $\implies \alpha$ y $p$ son asociados
 \end{proof}
 \begin{nota}
 	Si estuviéramos en un DFU, ser irreducible y ser primo son equivalentes, luego estos enunciados valdrían igual para elementos primos.
@@ -2321,8 +2322,8 @@ Entonces $(p,ab) = 1 \implies$ p es primo relativo con el producto por tanto $p$
 	\begin{enumerate}
 	\item Primero, calcularemos su norma. $N(11+7i) = 11^2 + 7^2 = 170$
 	\item Factorizamos la norma en $\ent$. $170 = 2*85 = 2*5 *17$.
-	\item Ahora, los factores irreducibles serán los enteros de gauss cuya norma sea un primo o el cuadrado de un primo. Por tanto, un divisor de este número será un entero de gauss $Z[i]$ cuya norma sea un divisor de la norma de $11+7i$, por tanto su norma será 2,5 ó 17 o producto entre esos números.
-	\item  $N(a+bi) = a^2 +b^2 = 2 \iff a=\pm 1$ y $b= \pm 1\implies$ Los enteros de Gauss de norma 2 son: $1+i,1-i,-1+i,-1-i$, es decir $1+i$ y sus 3 asociados.
+	\item Ahora, los factores irreducibles serán los enteros de Gauss cuya norma sea un primo o el cuadrado de un primo. Por tanto, un divisor de este número será un entero de Gauss $Z[i]$ cuya norma sea un divisor de la norma de $11+7i$, por tanto su norma será 2, 5 ó 17 o producto entre esos números.
+	\item  $N(a+bi) = a^2 +b^2 = 2 \iff a=\pm 1$ y $b= \pm 1.$ Los enteros de Gauss de norma 2 son: $1+i,1-i,-1+i,-1-i$, es decir $1+i$ y sus 3 asociados.
 	\item Ahora, tenemos que plantearnos si $1+i / 11+7i$, vemos que la división es: $11+7i/1+i = 9-2i\in \ent[i]$. Además, como $1+i$ tiene norma 2, que es un primo de $\ent$ luego ya tenemos un irreducible por el corolario 7. 
 	\item Tenemos que repetir el proceso para $9-2i$.
 	\item Su norma es $N(9-2i) = 5*17$ pues es el de antes quitándole el irreducible cuya norma vale 2.
