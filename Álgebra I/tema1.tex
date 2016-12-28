@@ -2348,10 +2348,10 @@ Ahora, haciendo lo mismo para $2i$ vemos que $2i = (1+i)^2$.
 \begin{ejemplo}[2]
 	Vamos a factorizar 180 en $\ent[i\sqrt2]$. Para ello, vemos que $180 = 2^2 * 3^2 * 5$. Recordamos que en este anillo, $N(a+b\sqrt2) = a^2 +2b^2$ y $U(\ent[i\sqrt2]) = \pm 1$
 	
-	Ahora, como $N(2) = 4$, un divisor propio del 2 tendrá por norma un divisor propio del 4 en $\ent$. En $\ent$, sólo el 2 es divisor propio del 4. Por ello, tenemos que plantearnos la ecuación $a^2+2b^2 = 2$. Entonces, los únicos elementos que hay que tienen son $\sqrt{-2}$ y $-\sqrt2$. 
+	Ahora, como $N(2) = 4$, un divisor propio del 2 tendrá por norma un divisor propio del 4 en $\ent$. En $\ent$, sólo el 2 es divisor propio del 4. Por ello, tenemos que plantearnos la ecuación $a^2+2b^2 = 2$. Entonces, los únicos elementos que hay que tienen son $\sqrt{-2}$ y $-\sqrt{-2}$. 
 	Ahora vemos si alguno de estos divide a 2:
 	\[
-	\frac{2}{\sqrt{-2}} =  \frac{2*(-\sqrt2}{\sqrt{-2}*(-\sqrt{-2})}= \frac{2(-\sqrt{-2})}{2} = -\sqrt{-2} \ \in \ent[i\sqrt2]
+	\frac{2}{\sqrt{-2}} =  \frac{2*(-\sqrt{-2})}{\sqrt{-2}*(-\sqrt{-2})}= \frac{2(-\sqrt{-2})}{2} = -\sqrt{-2} \ \in \ent[i\sqrt2]
 	\]
 	Ahora, como $N(\sqrt{-2})=2$ que es un primo en $\ent \implies \sqrt{-2}$ es un primo de $\ent[\sqrt{-2}] = \ent[i\sqrt2]$ y por ello $2=-(\sqrt{-2})^2$.
 	
@@ -2361,10 +2361,10 @@ Ahora, haciendo lo mismo para $2i$ vemos que $2i = (1+i)^2$.
 	
 	Hacemos lo mismo con el 5. Tenemos que discutir la ecuación: $a^2+2b^2 = 5$. Sin embargo, en este caso no hay ningún elemento que tenga solución luego 5 es primo en $\ent[i\sqrt2]$.
 	
-	Por tanto, la factorización de 180 en $\ent[i\sqrt2]$ es: $180 = (\sqrt{-2})^4*(1+\sqrt{-2})^2*5$
+	Por tanto, la factorización de 180 en $\ent[i\sqrt2]$ es: $180 = (\sqrt{-2})^4*(1+\sqrt{-2})^2*(1-\sqrt{-2})^2*5$
 \end{ejemplo}
 
-\begin{nota}[Ejemplo de anillo que no es un DFU] $\quad$
+\begin{ejemplo}[Ejemplo de anillo que no es un DFU] $\quad$
 
 Como ejemplo, vamos a probar que \textbf{\underline{$\ent[\sqrt{-5}]$ no es un DFU.}} En este anillo, $N(a+bi\sqrt5) = a^2 + 5b^2$ y $U(\ent[\sqrt{-5}])= \{\pm 1\}$
 
@@ -2375,14 +2375,14 @@ Vamos a plantearnos qué elementos del anillo $\ent$ tienen norma 2 o norma 3.
 	\item En la ecuación $a^2+5b^2= 2$ no hay soluciones en $\ent[i\sqrt5]$
 	\item En la ecuación $a^2+5b^2 = 3$ tampoco hay soluciones en este anillo.
 \end{itemize}
-	Como no tiene divisores propios, entoces este elemento es irreducible. Su conjugado , por el mismo motivo, también es un irreducible.
+	Como no tiene divisores propios, entoces este elemento es irreducible. Su conjugado, por el mismo motivo, también es un irreducible.
 	
 	Ahora, por la norma de $1+i\sqrt5$ hemos obtenido una factorización del 6 en producto de irreducibles. Pero el 6 también es $2*3$ en este anillo. Esta podría ser otra factorización en irreducibles de 6 en $\ent [i\sqrt5]$. El 2 no tiene ningún divisor propio en este anillo, pues es el único divisor de 4 en $\ent$ luego el 2 es irreducible en este anillo. Lo mismo ocurre con el 3.
 	
 	Por tanto, tenemos dos descomposiciones del 6 en producto de irreducibles, que no son iguales ni asociados luego este anillo no puede ser un DFU.
 	
-	Ahora, \underline{¿es 2 primo?}. Vemos que $2/6$, y $6 = (1+i\sqrt5)(1-i\sqrt5)$. Si fuese primo, necesitaríamos $2/1+i\sqrt5$ ó $2/1-i\sqrt5$ y eso no ocurre pues sus normas no se dividen en $\ent$ por tanto el 2 no es primo.
-\end{nota}
+	Ahora, el 2 es un irreducible, \underline{¿es 2 primo?} Vemos que $2/6$, y $6 = (1+i\sqrt5)(1-i\sqrt5)$. Si fuese primo, necesitaríamos $2/1+i\sqrt5$ ó $2/1-i\sqrt5$ y eso no ocurre pues sus normas no se dividen en $\ent$ por tanto el 2 no es primo.
+\end{ejemplo}
 
 \subsection{$\ent[x]$ es un DFU y no es un DIP}
 
@@ -2395,7 +2395,7 @@ Bastaría de hecho tomar los elementos 2 y x para ver que $(2,x) = 1$ y no exist
 
 Vamos ahora a enunciar y a demostrar el Teorema de Gauss sobre los DFU. Sin embargo, antes debemos aclarar algunos conceptos.
 \begin{ndef}
-Si $f \in A[x], gr(f) \geq 1$, se define su contenido como el m.c.d. de sus coeficientes. Lo denotamos por $c(f)$. (Si $f= \sum a_i x_i \implies c(f) = mcd(a_0,...,a_n)$	)\\
+Si $f \in A[x],\ gr(f) \geq 1$, se define su contenido como el m.c.d. de sus coeficientes. Lo denotamos por $c(f)$. (Si $f= \sum a_i x^i \implies c(f) = mcd(a_0,...,a_n)$	)\\
 Se dice que $f$ es primitivo si $c(f) = 1$. El contenido es único salvo asociados.
 \end{ndef}
 \textbf{Lema.} $ \ c(af) = ac(f)$. Esta propiedad es consecuencia directa de que $(ab,ac) = a(b,c)$
@@ -2403,33 +2403,34 @@ Se dice que $f$ es primitivo si $c(f) = 1$. El contenido es único salvo asociad
 \begin{proof}
 	Sea $f$ un polinomio y $a = c(f)$. Entonces, $a/a_i \ \forall i$. Tomamos $a_i' = \frac{a_i}{a} \in A$. Sea también $f' = \sum a_i'x^i$. Ahora, si tomáramos $af'= \sum aa_i' x^i = f \implies a = c(f) = c(af') = ac(f') \implies c(f') = 1$ simplificando por a, luego hemos encontrado una factorización $f=af'$.
 	
-	Además, podemos ver que la factorización es única. pues si $f=bg$ con $c(g)=1$ y $f=af'$, entonces $a = c(f) = b c(g) = b \implies g=f'$
+	Además, podemos ver que la factorización es única, pues si $f=bg$ con $c(g)=1$ y $f=af'$, entonces $a = c(f) = b c(g) = b \implies a=b$ y $g=f'$
 \end{proof}
 
-\textbf{Lema.} Todo $\phi, gr(\phi) \geq 1$ se puede factorizar de forma esencialmente única como $\phi = \frac{a}{b} f$ con $f$ primitivo.
+\textbf{Lema.} Todo $\phi,\ gr(\phi) \geq 1$ se puede factorizar de forma esencialmente única como $\phi = \frac{a}{b} f$ con $f$ primitivo.
 \begin{proof}
 	Sea $\phi = \sum \frac{a_i}{b_i} x^i$. Tomamos $b= \prod b_i \implies b_i/b \ \forall i \implies b_i /ba_i \ \forall i \implies b \phi = \sum \frac{ba_i}{b_i}x^i$ Pero el numerador es un múltiplo del denominador, luego $g = \sum \frac{ba_i}{b_i}x^i \in A[x]$.
 	
 	De esta forma, $b\phi = af \implies \phi = \frac{a}{b} f$.
 	
-	Además, veamos que es única. Sea ahora $\phi = \frac{c}{d} f'$ con $f'$ primitivo.$\implies \frac{a}{b} f = \frac{c}{d} f' \implies daf=bcf' \implies da = bc$ y $f=f'$
+	Además, veamos que es única. Sea ahora $\phi = \frac{c}{d} f'$ con $f'$ primitivo$\implies \frac{a}{b} f = \frac{c}{d} f' \implies daf=bcf' \implies da = bc$ y $f=f'$
 \end{proof}
 
 Enunciaremos también un lema muy importante, el lema de Gauss.\\
 
 \textbf{Lema de Gauss.} Sea A un DFU. Si tenemos $f,g \in A\implies c(fg) = c(f)c(g)$. En particular, el producto de polinomios primitivos es primitivo.\\
 \begin{proof}
-	Sean $f= \sum a_i x^i $ y $g= \sum b_j x^j$ ambos en $A[x]$ y primitivos. Consideramos también su producto $fg = \sum c_k x^k$. Sabemos que  $c_k = \sum_{i+j=k}a_ib_j$. Negaremos la tesis e intentaremos llegar a una contradicción.
+	Probaremos en primer lugar que el producto de polinomios primitivos es primitivo. Sean $f= \sum a_i x^i $ y $g= \sum b_j x^j$ ambos en $A[x]$ y primitivos. Consideramos también su producto $fg = \sum c_k x^k$. Sabemos que  $c_k = \sum_{i+j=k}a_ib_j$. Negaremos la tesis e intentaremos llegar a una contradicción.
 	
-	Supongamos que $fg$ no es primitivo. Entonces, $c(fg) \ne 1$. Como A es un DFU, el contenido se podrá expresar como un producto de primos(irreducibles). Existirá al menos un primo que lo divida. $\exists p $ primo de $A$ con $p/c(fg) \implies p/c_k \ \forall k$. Sin embargo, ese p no puede dividir a $a_i \ \forall i$ pues f es primitivo. Por la misma razón, no puede dividir a todos los $b_i$. 
+	Supongamos que $fg$ no es primitivo. Entonces, $c(fg) \ne 1$. Como A es un DFU, el contenido se podrá expresar como un producto de primos (irreducibles). Existirá al menos un primo que lo divida. $\exists p $ primo de $A$ con $p/c(fg) \implies p/c_k \ \forall k$. Sin embargo, ese p no puede dividir a $a_i \ \forall i$ pues f es primitivo. Por la misma razón, no puede dividir a todos los $b_i$. 
 	
 	Por tanto, sea $r$ el primer índice tal que $p$ no divide a $a_r$. Tomemos también $s$ el primer índice tal que $s$ no divide a $b_s$. Ahora, vamos a fijarnos en el coeficiente $c_{r+s}$ de $fg$. Este coeficiente se expresa como:
 	 \[c_{r+s} = \sum _{i+j=r+s}a_ib_j = \sum _{i+j =r+s \ \ i < r}a_ib_j + a_rb_s + \sum_{i+j=r \ \ i > r}a_ib_j\]
-	 De esta expresión, podemos ver que $p/c_{r+s}$, que $\forall i < r$ entonces $p/a_ib_j \implies p/\sum_{i+j =r+s \ \ i < r}a_ib_j$ por dividir a los $a_i$. Ocurre lo mismo con el mismo término pues p divide a $b_j$. Si despejáramos $a_rb_s$ que $p/a_rb_s$ pues divide a todos los factores, pero p es un primo, por tanto si divide a un producto tiene que dividir a alguno de los factores, pero como habíamos dicho que no divide a ninguno de los dos, hemos llegado a una contradicción y por tanto $fg$ es primitivo.
+	 De esta expresión, podemos ver que $p/c_{r+s}$, que $\forall i < r$ entonces $p/a_ib_j \implies p/\sum_{i+j =r+s}a_ib_j$ por dividir a los $a_i$. Ocurre lo mismo con el mismo término pues p divide a $b_j$. Si despejáramos $a_rb_s$ veríamos que $p/a_rb_s$ pues divide a todos los factores, pero p es un primo, por tanto si divide a un producto tiene que dividir a alguno de los factores, pero como habíamos dicho que no divide a ninguno de los dos, hemos llegado a una contradicción y por tanto $fg$ es primitivo.
 	 
-	 Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es a y el de g es b luego $c(fg) = c(f)c(g)$ probando así el lema.
+	 Ahora demostraremos c(fg) = c(f)c(g). Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es $a$ y el de g es $b$ luego $c(fg) = c(f)c(g)$ probando así el lema.
 \end{proof}
 
+\section{FALTA CONTENIDO}
 
 \begin{nth}[Teorema de Gauss]
 	Si A es un DFU cualquiera $\implies A[x]$ es también un DFU.
