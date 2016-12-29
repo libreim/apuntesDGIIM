@@ -2430,12 +2430,42 @@ Enunciaremos también un lema muy importante, el lema de Gauss.\\
 	 Ahora demostraremos c(fg) = c(f)c(g). Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es $a$ y el de g es $b$ luego $c(fg) = c(f)c(g)$ probando así el lema.
 \end{proof}
 
-\section{FALTA CONTENIDO}
+\section{REVISAR DESDE AQUÍ}
+\textbf{Lema.} 
+\begin{nlist}
+	\item Si $a \in A$, $a$ es irreducible en A[x] $\Leftrightarrow$ $a$ es irreducible en A.
+	\item Si $gr(f) \geq 1$, f es irreducible en A[x] $\Leftrightarrow$ f es primitivo y es irreducible en K[x]. 
+ \end{nlist}
+
+\begin{proof}
+$(i)$ Una factorización de un polinomio de grado 0 será irreducible si es irreducible en A. U(A[x]) = U(A)\\
+$(ii)$ $\displaystyle \boxed{\Rightarrow}\ $ Si f es irreduciblem el contenido tiene que ser o una unidad o un asociado. No puede ser asociado porque...
+Como c(f)/f, si f es irreducible $\Rightarrow$ c(f) = 1 $\Rightarrow$ f es primitivo. Vamos a probar que es irreducible en K[x]. Supongamos que f no es irreducible en K[x] $\Rightarrow$ f = $\phi \psi$ con $gr(\phi) \geq 1$ y $gr(\psi) \geq 1$
+$$
+ \left .
+      \begin{matrix} 
+        \phi =  \frac{a}{b}g : g\ es\ primitivo\\
+        \psi =  \frac{c}{d}h : h\ es\ primitivo
+      \end{matrix} 
+   \right \} 
+   \Longrightarrow \quad f = \frac{a}{b} \frac{c}{d} gh \Rightarrow bdf = acgh
+  $$
+  Aplicando contenidos sobre esta igualdad nos queda, $c(bdf) = c(acgh) \Rightarrow bdc(f) = acc(gh) \Rightarrow bd = ac \Rightarrow f = gh $ CONTRADICCIÓN f es irreducible, no podemos expresarlo como producto de dos no unidades.
+  
+$\displaystyle \boxed{\Leftarrow}\ $Suponemos que $f=gh$ en A[x], $g$ y $h$ no unidades. Entonces, $gr(g)$ y $gr(h)$ es mayor o igual que 1. (Suponemos $gr(g)=0$, $g = a \in A; f=ah \Rightarrow 1 = ac(h) \Rightarrow g=a \in U(A)=U(A[x])$, llegamos a una contradicción con la suposición inicial).  \\
+$f=gh$ se da en K[x] y muestra que f no es irreducible en K[x], contradicción con la hipótesis.
+En K[x] no hay irreducibles de grado 0, las constantes tienen inverso.
+\end{proof}
+
+\textit{Observación:} Sea $gr(\phi) \geq 1,\ \phi \in$ K[x], $\phi=\frac{a}{b}f$ con $f$ primitivo. $\phi$ es irreducible en K[x] $\Leftrightarrow$ f es irreducible en A[x].
 
 \begin{nth}[Teorema de Gauss]
-	Si A es un DFU cualquiera $\implies A[x]$ es también un DFU.
+	Si A es un DFU $\implies A[x]$ es también un DFU.
 \end{nth}
 
+\begin{proof}
+COMPLETAR
+\end{proof}
 
 
 En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también sucede $A[x] \subseteq K[x]$. También vamos a notar:
@@ -2444,9 +2474,6 @@ En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también suc
 	\item $f,g,h... \in A[x]$
 	\item $\phi,\psi, ... \in K[x]$
 \end{itemize}
-
-
-\section{AQUI FALTA UNA CLASE}
 
 \begin{ncor}
 	Si $f\in A[x]$ es irreducible en $A[x]$ con $gr(f) \geq 1\implies$ $f$ es primo en $A[x]$.
