@@ -2429,8 +2429,7 @@ Enunciaremos también un lema muy importante, el lema de Gauss.\\
 	 
 	 Ahora demostraremos c(fg) = c(f)c(g). Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es $a$ y el de g es $b$ luego $c(fg) = c(f)c(g)$ probando así el lema.
 \end{proof}
-
-\section{REVISAR DESDE AQUÍ}
+\newpage
 \textbf{Lema.} 
 \begin{nlist}
 	\item Si $a \in A$, $a$ es irreducible en A[x] $\Leftrightarrow$ $a$ es irreducible en A.
@@ -2450,21 +2449,28 @@ $$
    \right \} 
    \Longrightarrow \quad f = \frac{a}{b} \frac{c}{d} gh \Rightarrow bdf = acgh
   $$
-  Aplicando contenidos sobre esta igualdad nos queda, $c(bdf) = c(acgh) \Rightarrow bdc(f) = acc(gh) \Rightarrow bd = ac \Rightarrow f = gh $ CONTRADICCIÓN f es irreducible, no podemos expresarlo como producto de dos no unidades.
+  Aplicando contenidos sobre esta igualdad nos queda, $c(bdf) = c(acgh) \Rightarrow bdc(f) = acc(gh) \Rightarrow bd = ac \Rightarrow f = gh $ CONTRADICCIÓN f es irreducible y ninguno es unidad ya que el grado es mayor o igual que 1.
   
 $\displaystyle \boxed{\Leftarrow}\ $Suponemos que $f=gh$ en A[x], $g$ y $h$ no unidades. Entonces, $gr(g)$ y $gr(h)$ es mayor o igual que 1. (Suponemos $gr(g)=0$, $g = a \in A; f=ah \Rightarrow 1 = ac(h) \Rightarrow g=a \in U(A)=U(A[x])$, llegamos a una contradicción con la suposición inicial).  \\
 $f=gh$ se da en K[x] y muestra que f no es irreducible en K[x], contradicción con la hipótesis.
 En K[x] no hay irreducibles de grado 0, las constantes tienen inverso.
 \end{proof}
 
-\textit{Observación:} Sea $gr(\phi) \geq 1,\ \phi \in$ K[x], $\phi=\frac{a}{b}f$ con $f$ primitivo. $\phi$ es irreducible en K[x] $\Leftrightarrow$ f es irreducible en A[x].
+\textit{Observación:} Sea $\phi \in$ K[x], $gr(\phi) \geq$ 1, $\phi=\frac{a}{b}f$ con $f$ primitivo. $\phi$ es irreducible en K[x] $\Leftrightarrow$ f es irreducible en A[x].
 
 \begin{nth}[Teorema de Gauss]
 	Si A es un DFU $\implies A[x]$ es también un DFU.
 \end{nth}
 
 \begin{proof}
-COMPLETAR
+Sea $f \in$ A[x], $f \neq 0$ y $f \notin$ U(A[x])=U(A)
+\begin{itemize}
+	\item Caso $gr(f) = 0$. $f = a \in$ A, $a \neq 0$ y $a \notin$ U(A). Como A es un DFU, existen $p_1,...,p_r$ irreducibles de A (también de A[x]) tales que $a = p_1...p_r$
+	\item Caso $gr(f) \geq 1$ y $f$ primitivo. Existen $\phi_1,...,\phi_r \in$ K[x] irreducibles tales que $f=\phi_1...\phi_r$. $\phi_i = \frac{a_i}{b_i}f_i : f_i \in$ A[x], primitivo $\implies f = \frac{a}{b}f_1...f_r$ donde $a=\prod a_i,\ b=\prod b_i \implies bf = af_1...f_r$ $\implies^{(1)} b=a \implies f = f_1...f_r$. Por el lema anterior, como $f_i$ son irreducibles en K[x] y, además, son primitivos, $f_i$ son irreducibles en A[x].
+	\item Caso general, $gr(f) \geq 1$ y $f$ no primitivo. Tomamos $f=af'$
+con $f'$ primitivo. $c(f) = a \neq 0,\ a \notin$ U(A)\\
+$^{(1)}$ Como $f_i$ son primitivos
+\end{itemize} 
 \end{proof}
 
 
