@@ -2421,11 +2421,11 @@ Enunciaremos también un lema muy importante, el lema de Gauss.\\
 \begin{proof}
 	Probaremos en primer lugar que el producto de polinomios primitivos es primitivo. Sean $f= \sum a_i x^i $ y $g= \sum b_j x^j$ ambos en $A[x]$ y primitivos. Consideramos también su producto $fg = \sum c_k x^k$. Sabemos que  $c_k = \sum_{i+j=k}a_ib_j$. Negaremos la tesis e intentaremos llegar a una contradicción.
 	
-	Supongamos que $fg$ no es primitivo. Entonces, $c(fg) \ne 1$. Como A es un DFU, el contenido se podrá expresar como un producto de primos (irreducibles). Existirá al menos un primo que lo divida. $\exists p $ primo de $A$ con $p/c(fg) \implies p/c_k \ \forall k$. Sin embargo, ese p no puede dividir a $a_i \ \forall i$ pues f es primitivo. Por la misma razón, no puede dividir a todos los $b_i$. 
+	Supongamos que $fg$ no es primitivo. Entonces, $c(fg) \ne 1$. Como A es un DFU, el contenido se podrá expresar como un producto de primos (irreducibles). Existirá al menos un primo que lo divida. $\exists p $ primo de $A$ con $p/c(fg) \implies p/c_k \ \forall k$. Sin embargo, ese p no puede dividir a $a_i \ \forall i$ pues f es primitivo. Por la misma razón, no puede dividir a todos los $b_j$. 
 	
 	Por tanto, sea $r$ el primer índice tal que $p$ no divide a $a_r$. Tomemos también $s$ el primer índice tal que $s$ no divide a $b_s$. Ahora, vamos a fijarnos en el coeficiente $c_{r+s}$ de $fg$. Este coeficiente se expresa como:
 	 \[c_{r+s} = \sum _{i+j=r+s}a_ib_j = \sum _{i+j =r+s \ \ i < r}a_ib_j + a_rb_s + \sum_{i+j=r \ \ i > r}a_ib_j\]
-	 De esta expresión, podemos ver que $p/c_{r+s}$, que $\forall i < r$ entonces $p/a_ib_j \implies p/\sum_{i+j =r+s}a_ib_j$ por dividir a los $a_i$. Ocurre lo mismo con el mismo término pues p divide a $b_j$. Si despejáramos $a_rb_s$ veríamos que $p/a_rb_s$ pues divide a todos los factores, pero p es un primo, por tanto si divide a un producto tiene que dividir a alguno de los factores, pero como habíamos dicho que no divide a ninguno de los dos, hemos llegado a una contradicción y por tanto $fg$ es primitivo.
+	 De esta expresión, podemos ver que $p/c_{r+s}$, que $\forall i < r$ entonces $p/a_ib_j \implies p/\sum_{i+j =r+s}a_ib_j$ por dividir a los $a_i$. Ocurre lo mismo con el mismo en el término de $i > r $ pues p divide a $b_j$. Si despejáramos $a_rb_s$ veríamos que $p/a_rb_s$ pues divide a todos los sumandos, pero p es un primo, por tanto si divide a un producto tiene que dividir a alguno de los factores, pero como habíamos dicho que no divide a ninguno de los dos, hemos llegado a una contradicción y, por tanto, $fg$ es primitivo.
 	 
 	 Ahora demostraremos c(fg) = c(f)c(g). Podemos poner $f=af'$ con $f'$ primitivo e igual con $g=bg'$. Entonces $fg= abf'g'\implies c(fg)=c(abf'g') = abc(f'g')$ pero $f'$ y $g'$ son primitivos luego su contenido es 1. Así, el contenido de f es $a$ y el de g es $b$ luego $c(fg) = c(f)c(g)$ probando así el lema.
 \end{proof}
@@ -2438,9 +2438,9 @@ Enunciaremos también un lema muy importante, el lema de Gauss.\\
  \end{nlist}
 
 \begin{proof}
-$(i)$ Una factorización de un polinomio de grado 0 será irreducible si es irreducible en A. U(A[x]) = U(A)\\
-$(ii)$ $\displaystyle \boxed{\Rightarrow}\ $ Si f es irreduciblem el contenido tiene que ser o una unidad o un asociado. No puede ser asociado porque...
-Como c(f)/f, si f es irreducible $\Rightarrow$ c(f) = 1 $\Rightarrow$ f es primitivo. Vamos a probar que es irreducible en K[x]. Supongamos que f no es irreducible en K[x] $\Rightarrow$ f = $\phi \psi$ con $gr(\phi) \geq 1$ y $gr(\psi) \geq 1$
+$(i)$ Una factorización de un polinomio de grado 0 será irreducible si es irreducible en A (porque U(A[x]) = U(A)).\\
+$(ii)$ $\displaystyle \boxed{\Rightarrow}\ $ Si f es irreducible, el contenido tiene que ser o una unidad o un asociado. No puede ser asociado porque...
+Como c(f)/f, si f es irreducible $\Rightarrow$ c(f) = 1 $\Rightarrow$ f es primitivo. Vamos a probar que es irreducible en K[x] por contradicción. Supongamos que f no es irreducible en K[x] $\Rightarrow$ f = $\phi \psi$ con $gr(\phi) \geq 1$ y $gr(\psi) \geq 1$
 $$
  \left .
       \begin{matrix} 
