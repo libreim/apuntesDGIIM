@@ -2487,15 +2487,15 @@ En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también suc
 \begin{proof}
 	Supongamos que $f/gh$ en $A[x]\subseteq K[x]$. Como $f$ es irreducible en $A[x]$, lo  es en $K[x]$ y $K[x]$ es un DFU por ser K un cuerpo, entonces $f$ es primo en $K[x]$. Entonces, podemos asegurar que o bien $f/g$ o bien $f/h$ en $K[x]$.
 	
-	Para lo que sigue, supongamos que $f/g$ en $K[x]$ (Si quisiéramos para hacerlo para $h$, sólo habría que cambiar las letras). Entonces, $f\phi = g $ y $\phi = \frac{a}{b}f'$(1) con $f'$ un polinomio de $K[x]$ primitivo. Esto implica: $$\frac{a}{b}ff' \implies aff' = bg$$
+	Para lo que sigue, supongamos que $f/g$ en $K[x]$ (Si quisiéramos para hacerlo para $h$, sólo habría que cambiar las letras). Entonces, $f\phi = g $ y $\phi = \frac{a}{b}f'$ con $f'$ un polinomio de $K[x]$ primitivo. Esto implica: $$\frac{a}{b}ff'=g \implies aff' = bg(1)$$
 	
 	Ahora, calcularemos los contenidos aplicando el lema de Gauss. Como f y $f'$ son primitivos,
 	
 	$$ a c(f)c(f') = bc(g) \implies a = bc(g)$$
 	
-	Ahora, si nos llevamos esta igualdad a 1 obtenemos:
+	Ahora, si nos llevamos esta igualdad a (1) obtenemos:
 	\[
-	bc(g)ff'=bg \implies f(c(g)f')g \implies f/g \ en \ A[x]
+	bc(g)ff'=bg \implies f(c(g)f')=g \implies f/g \ en \ A[x]
 	\]
 	Y por tanto, obtenemos que $f$ es primo.
 \end{proof}
@@ -2510,9 +2510,9 @@ En lo sucesivo, vamos a notar $A\subseteq K = Q(A)$. De esta forma, también suc
 
 Vamos a intentar ahora a buscar una factorización de un $f \in A[x]$. ¿Cuándo es f irreducible?
 
- Sabemos que si $gr(f) = 0 \iff f = p \in A$ que sería irreducible si $p$ lo es en A.
+ Sabemos que $gr(f) = 0 \iff f = p \in A$ que sería irreducible si $p$ lo es en A.
  
- Supongamos ahora que $f$ es irreducible en $A[x] \iff$ f es primitivo e irreducible en $K[x]$
+ Supongamos ahora que $gr(f) \geq 1$, $f$ es irreducible en $A[x] \iff$ f es primitivo e irreducible en $K[x]$
 
 \begin{nota}
 	Si K es un cuerpo, todo polinomio de grado 1 es irreducible.
@@ -2527,7 +2527,7 @@ Vamos a intentar ahora a buscar una factorización de un $f \in A[x]$. ¿Cuándo
 \[
 120x+100 = 20(6x+5) = 2^2*5*(6x+5)
 \]
-Pero, $6x+5$ es un polinomio de grado 1, irreducible en $\ent[x]$. Además, 2 y 5 son irreducibles en $\ent$, por tanto la factorización del polinomio al cuadrado es:
+Pero, $6x+5$ es un polinomio de grado 1, primitivo en $\ent[x]$. Además, 2 y 5 son irreducibles en $\ent$, por tanto la factorización del polinomio al cuadrado es:
 \[
 2^4*5^2(6x+5)^2
 \]
@@ -2535,7 +2535,7 @@ Pero, $6x+5$ es un polinomio de grado 1, irreducible en $\ent[x]$. Además, 2 y 
 \begin{nota}
 	Si $K$ es un cuerpo, $\phi \in K[x]$ tiene un factor de grado 1 $\iff \phi$ tiene una raíz en $K$
 	\begin{proof}
-	$$\alpha x + \beta = \alpha(x-(frac{-\beta}{\alpha}) = \alpha(x - \gamma) \implies \alpha x+b/\phi \iff x-\gamma / \phi \iff^{Rufinni} \phi(\gamma) = 0$$
+	$$\alpha x + \beta = \alpha(x-(\frac{-\beta}{\alpha}) = \alpha(x - \gamma) \implies \alpha x+b/\phi \iff x-\gamma / \phi \iff^{Rufinni} \phi(\gamma) = 0$$
 	Donde $\gamma = \frac{-\beta}{\alpha}$
 \end{proof}
 \end{nota}
@@ -2543,41 +2543,41 @@ Pero, $6x+5$ es un polinomio de grado 1, irreducible en $\ent[x]$. Además, 2 y 
 \begin{nprop}
 	Sea $f=a_0+a_1x+...+a_nx^n \in A[x]$. Entonces $f$ tiene un factor irreducible de grado 1 en $K[x]$ si y solamente si tiene una raíz en $K$.
 	
-	Equivalentemente, si $(a,b)=1$ y $f(\frac{a}{b})=0 \iff bx-a/f$ en $A[x]$. En tal caso, esta posible raíz verifica que $a/a_0$ y $b/a_n$ en $A$.
+	Equivalentemente, $(a,b)=1$ y $f(\frac{a}{b})=0 \iff bx-a/f$ en $A[x]$. En tal caso, esta posible raíz verifica que $a/a_0$ y $b/a_n$ en $A$.
 \end{nprop}
 \begin{proof}
 	Si tenemos que $f(\frac{a}{b})=0 \iff x-\frac{a}{b}/f$ en $K[x]$.
 	
-	$\boxed{\Rightarrow}$ Esto implica que $f=(x-\frac{a}{b})\phi$ con $\phi=\frac{c}{d}g$ con g primitivo, $$\implies f= \frac{c}{d}(x-\frac{a}{b})g = \frac{c}{bc}(bx-a)g \implies bdf=c(bx-a)$$
-	Y ahora si aplicamos contenidos:
+	$\boxed{\Rightarrow}$ Esto implica que $f=(x-\frac{a}{b})\phi$ con $\phi=\frac{c}{d}g$ con $g \in$ A primitivo, $$\implies f= \frac{c}{d}(x-\frac{a}{b})g = \frac{c}{bd}(bx-a)g \implies bdf=c(bx-a)g$$
+	Si aplicamos contenidos:
 	\[
 	bdc(f)=c
 	\]
-	Y ahora volvemos a la igualdad anterior:
+	Volviendo a la igualdad anterior:
 	\[
 	f=(bx-a)(c(f)g)
 	\]
-	Y por tanto $bx-a/f$ en $A[x]$.
+	Por tanto, $bx-a/f$ en $A[x]$.
 	
-	$\boxed{\Leftarrow}$ Si $f=(bx-a)g \implies f(\frac{a}{b} = (b\frac{a}{b}-a)g(\frac{a}{b})=0$
+	$\boxed{\Leftarrow}$ Si $f=(bx-a)g \implies f(\frac{a}{b}) = (b\frac{a}{b}-a)g(\frac{a}{b})=0$
 \end{proof}
+\textbf{Criterio de la raíz:}
+En $K[x]$ todo polinomio de grado 1 es irreducible y es asociado a uno de la forma $x-\alpha$ con $x-\alpha/\phi(x)\iff \phi(\alpha) = 0$.
 
-Por tanto, en $K[x]$ todo polinomio de grado 1 es irreducible y es asociado a uno de la forma $x-\alpha$ con $x-\alpha/\phi(x)\iff \phi(\alpha) = 0$.
-
-Así, también en $A[x]$ Los polinomios irreducibles de grado 1 son los de la forma $bx-a$ con $(a,b)=1$ por lo que $(a,b)=1$ y $bx-a/f(x)\iff f(\frac{a}{b})= 0$.
+Así, también en $A[x]$ los polinomios irreducibles de grado 1 son los de la forma $bx-a$ con $(a,b)=1$ por lo que $(a,b)=1$ y $bx-a/f(x)\iff f(\frac{a}{b})= 0$.
 
 Si $f(x)= a_0+a_1x+...+a_nx^n$ y si $f(\frac{a}{b}) \implies a / a_0$ y $b/a_n$ en $A$.
 
 Esto lo podríamos ver como una condición de irreducibilidad, pues si un polinomio fuera irreducible, no podría tener ninguna raíz, pues carecen de factores de grado 1.
 
 \begin{ejemplo}
-	Consideremos el polinomio $f=6x^4+3x^2-18x^2+33x+21$ en $\ent[x]$.
+	Factorizar en producto de irreducibles el polinomio $f=6x^4+3x^3-18x^2+33x+21$ en $\ent[x]$.
 
 Lo primero que deberíamos hacer es buscar el contenido de este polinomio:
 \[
-c(f)=3(2x^4+x^3-6x^2+11x+7)
+f=3(2x^4+x^3-6x^2+11x+7)
 \]
-El contenido de f es 3 y $f'=2x^4+x^3-6x^2+11x+7$. 3 es un primo en $\ent $ y por tanto lo es en $\ent[x]$ y por tanto nos centramos en el primitivo asociado. Aplicamos el criterio de la raíz. Las posibles raíces que el polinomio tuviera en $\rac$ serían $\{\pm 1, \pm \frac{1}{2}, \pm 7, \pm \frac{7}{2}\}$. Calculamos las imágenes de estos puntos para ver si alguno es cero:
+El contenido de $f$ es 3 y $f'=2x^4+x^3-6x^2+11x+7$. 3 es un primo en $\ent $ y por tanto lo es en $\ent[x]$ y por tanto nos centramos en el primitivo asociado. Aplicamos el criterio de la raíz. Las posibles raíces que el polinomio tuviera en $\rac$ serían $\{\pm 1, \pm \frac{1}{2}, \pm 7, \pm \frac{7}{2}\}$. Calculamos las imágenes de estos puntos para ver si alguno es cero:
 \[
 f'(1) = 2+1-6+11 + 7 \ne 0; \quad f'(-1) = 2-1-6-11+7 \ne 0;\]
 \[f'(\frac{-1}{2}) = 2*(1/2)-(1/2^3)-6*(1/4)-11*(1/2) + 7 = 0
@@ -2593,13 +2593,13 @@ f(x)=3*(2x+1)*(x^3-3x+7)
 \]
 Tenemos ya uno de grado 3, por tanto es irreducible si y solo si carece de raíces en $\rac$. Para ello, debemos buscar fracciones que sean divisores del 7, que son $\{\pm 1, \pm 7\}$ y haríamos sus imágenes por el polinomio $x^3-3x+7$ y vemos que ninguna da de resultado cero, por tanto estas no son raíces suyas y por tanto es irreducible en $\ent[x]$ y la factorización del polinomio en producto de primos sería justo la que acabamos de obtener.
 
-Ahora, 3 y $x^3-3x+7$ son mónicos, pero $2x+1$ no, pero podemos sacar factor común para hacerlo mónico y nos quedaría como resultado final:
+Si nos planteamos la discusión en $\rac[x]$: 3 y $x^3-3x+7$ son mónicos, $2x+1$ no, pero podemos sacar factor común para hacerlo mónico y nos quedaría como resultado final:
 \[
 f(x)= 6(x+\frac{1}{2})(x^3-3x+7) \quad \in \rac[x]
 \]
 \end{ejemplo}
 \begin{ejemplo}[2]
-	Consideremos el polinomio: $20x^3 +10x^2-80x+30$. Para resolverlo, había que observar que su contenido es 10 y que por tanto:
+	Factorizaremos el polinomio: $20x^3 +10x^2-80x+30 \in \ent[x]$. Para resolverlo, había que observar que su contenido es 10 y que por tanto:
 	\[
 	f=2*5*(2x^3+x^2-8x+3)
 	\]
@@ -2610,7 +2610,7 @@ f(x)= 6(x+\frac{1}{2})(x^3-3x+7) \quad \in \rac[x]
 	Y podemos ver que $x^2+2x+2$ no tiene raíces y por tanto ese es el polinomio descompuesto en primos.
 \end{ejemplo}
 \begin{ejemplo}[3]
-	Consideremos el polinomio: $x^4+x^3+x^2+x+1$ en $\ent_2[x]$. ¿Este polinomio es irreducible?. Estamos en $\ent_2$, luego sustituyendo el 0 y el 1 vemos que no tiene de raíces. Como no tiene raíces no tiene factores de grado 1. 
+	Consideremos el polinomio: $x^4+x^3+x^2+x+1$ en $\ent_2[x]$. ¿Este polinomio es irreducible?. \\Estamos en $\ent_2$, luego sustituyendo el 0 y el 1 vemos que no tiene de raíces. Como no tiene raíces no tiene factores de grado 1. 
 	
 	Ahora, si no fuese irreducible habría que descomponerlo como 2 factores de grado 2. Si dividimos por el polinomio $x^2+x+1$, que es irreducible en $\ent_2[x]$ el resto no es 0, luego no es divisible y por tanto el polinomio inicial ya es irreducible en $\ent_2[x]$.
 \end{ejemplo}
