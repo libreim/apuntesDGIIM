@@ -966,7 +966,7 @@ Sea $A$ un abierto de $\mathbb{R}^N$. Partimos de la siguiente observación:
 \]
  En particular, si $|v| = 1 \implies \epsilon = \delta$.
  
-\begin{ndef}[Función derivable] Sean $f : A \longrightarrow \mathbb{R}^M$, y $x_0\in A$. Se dice que $f$ es derivable en $x_0$, según Fréchet, si
+\begin{ndef}[Función derivable] Sean $f : A \longrightarrow \mathbb{R}^M$ y $x_0\in A$. Se dice que $f$ es derivable en $x_0$, según Fréchet, si
 \[
 	\exists L\in Lin(\mathbb{R}^N, \mathbb{R}^M) : \lim_{x\to x_0} \frac{|f(x)-f(x_0)- L(x-x_0)|}{|x-x_0|} =0
 \]
@@ -976,7 +976,7 @@ Notamos $Df(x_0) = L$.
 
 \begin{nota}[1]\hfill
 	\begin{nlist}
-		\item El límite tiene sentido porque $x_0\in A'$.
+		\item El límite tiene sentido porque $x_0\in A$.
 		\item El límite anterior es equivalente a $\lim_{y\to 0} \frac{|f(x_0+y)-f(x_0)-L(y)|}{|y|}$.
 	\end{nlist}
 \end{nota}
@@ -998,9 +998,10 @@ Entonces, dado un $x\in A$:
 \end{align}
 
 \[
-\implies \lim_{x\to x_0} \frac{|(L_1-L_2)(x-x_0)|}{|x-x_0|} = 0
+\implies \lim_{x\to x_0} \frac{|(L_1-L_2)(x-x_0)|}{|x-x_0|} = 0 \implies \lim_{x\to x_0}|(L_1 -L_2)(x-x_0)|=0
 \]
-(Terminar)
+Como A es abierto, sea $y \in \mathbb{R}^N, y \neq 0 \implies x:=x_0+y \in B(x_0, \delta) \subset A$\\
+$$\lim_{x\to x_0}(L_1-L_2)(x-x_0)=0=\lim_{y\to 0}(L_1-L_2)(y)\implies L_1=L_2$$
 \end{proof}
 
 \begin{nprop} En los mismos términos: si $f$ es derivable en $x_0$ $\implies$ $f$ es continua en $x_0$.
