@@ -1,0 +1,412 @@
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+
+
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Aumentar el tamaño del interlineado
+\linespread{1.3}
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem*{ndef}{Definición}
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+\title{\textbf{Resúmenes Análisis}}
+\date{}
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\section{Conjuntos}
+\begin{ndef}[Punto de acumulación]
+
+Un punto x en un espacio métrico M es un punto de acumulación de un conjunto $A\subset M$ si todo conjunto abierto U que contiene a x también contiene a algún punto de A distinto de x.
+	
+\end{ndef}
+
+\begin{nth}
+	Un conjnuto $A\subset M$ es cerado $\iff$ todos los puntos de acumulación de A pertenecen a A.
+\end{nth}
+\section{Sucesiones}
+
+\begin{nprop}
+	Una sucesión $x_n$ en M converge a $x \in M \iff \ \ \forall \epsilon > 0 \ \ \exists N : \ \ k \geq N \implies d(x,x_k) < \epsilon$
+	
+	
+\end{nprop}
+
+\begin{nprop}
+	Sea $v_n \to v \in \mathbb{R}^n \iff$ cada sucesión de coordenadas converge a la coordenada correspondiente de $v$ como una sucesión en $\mathbb{R}$
+\end{nprop}
+
+\begin{nprop}
+	\begin{itemize}
+	\item Un conjunto $A\subset M$ es cerrado $\iff \forall x_n \in A $ con $x_n$ convergente, el límite es un elemento de A.
+	
+	\item Para un conjunto $B \subset M, \ \ x \in cl(B) \iff \ $ existe una sucesión $x_n\in B$ tal que $x_n \to x$
+
+\end{itemize}
+\end{nprop}
+
+\begin{proof}
+	Demostraremos el primero.\\
+	Sea A un conjunto cerrado y $x_n \to x$. Entonces x es un punto de acumulación de A. x es un punto de acumulación de A, pues cualquier vecindad de x contiene a $x_n\in A$. Ahora, como sabemos que A es cerrado si contiene a todos sus puntos de acumulación, A es cerrado y x es un punto de acumulación entonces $x\in A$.
+	
+De la misma forma, sea $x\in A$ un punto de acumulación de A y elegimos $x_n\in B(x, 1/n) \cap A$. De esta forma, $x_n \to x \ $ (pues $ \forall \epsilon > 0 \ \exists N \geq 1 /\epsilon
+$ con lo que $k\geq N \implies x_n \in B(x,\epsilon)$). Así, tenememos una sucesión de elementos de A que converge a un elemento de A, y su límite es un punto de acumulación, por tanto por el teorema anterior, A es cerrado.
+\end{proof}
+
+\begin{ndef}[Sucesión de Cauchy]
+	Una sucesión de Cauchy es una sucesión $x_n \in M$ tal que $\forall \epsilon > 0 \ \ \exists N$ tal que si $p,q \geq N$ entonces $d(x_p,x_q) < \epsilon $. M es completo $\iff$ toda sucesión de Cauchy en M converge a un punto de M.
+\end{ndef}
+
+\begin{nprop}
+Una sucesión convergente en un espacio normado o métrico está acotada.
+	
+\end{nprop}
+\begin{proof}
+	Sea $x_n \to x$, sabemos que $\exists N : d(x_n,x) < 1$ si $n \geq N$, así que $x_n \in B(x,1)$ si $n \geq N$. Basta tomar $R = max\{1,d(x_1,x),...,d(x_{N-1},x)\}$ y así $d(x,x_n) \leq R \ \forall n$ por lo que $x_n \in B(x,R) \ \forall n$ y así está acotada.
+\end{proof}
+
+\begin{nth}[Teorema de Bolzano Weierstrass]
+
+Sea $\{x_n\}$ una sucesión de $\mathbb{R}^N$ acotada. Entonces existe una sucesión parcial suya $\{x_{\sigma(n)}\}$ convergente.
+	
+\end{nth}
+
+\begin{proof}
+	Notaremos $x_n = (x_n^1, \dots, x_n^N)$. Como $\{x_n^1\}$ es acotada en $\mathbb{R}$, existe $\sigma_1 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma_1(n)}^1\}$ es convergente.
+
+Ahora, como $\{x_n^2\}$ es acotada, $\{x_{\sigma_1(n)}^2\}$ también es acotada, y existe $\sigma_2 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{(\sigma_2\circ\sigma_1)(n)}^1\}$ es convergente.
+
+Procediendo de esta forma con cada componente de $x_n$, obtenemos $\sigma_1, \dots, \sigma_N$, y\\ $\{x_{\sigma_1(n)}^1\}, \{x_{(\sigma_2\circ\sigma_1)(n)}^2\}, \dots, \{x_{(\sigma_N\circ\dots\circ\sigma_2\circ\sigma_1)(n)}^N\}$ sucesiones convergentes en $\mathbb{R}$. Al ser $\sigma_i$ estrictamente creciente $\forall i=1,\dots,N$, $\{x_{(\sigma_N(n)\circ\dots\circ\sigma_{i+1}\sigma_i\circ\dots\circ\sigma_1)(n)}^i\}$ también es convergente (toda sucesión parcial de una sucesión convergente es convergente).
+
+Así, tomando $\sigma = \sigma_1\circ\dots\circ\sigma_N$, $\{x_{\sigma(n)}\}$ es convergente.
+\end{proof}
+
+\begin{nprop}
+	\begin{nlist}
+	\item Toda sucesión convergente en un espacio métrico es una sucesión de Cauchy
+	\item Una sucesión de Cauchy enun espacio métrico debe estar acotada
+	\item Si una subsucesión de una sucesión de Cauchy converge a x, entonces la sucesión converge a x
+\end{nlist}
+\end{nprop}
+
+\begin{nth}[$\mathbb{R}^n$ es completo]
+	Una sucesión $x_n\in \mathbb{R}^n$ converge a un punto de $\mathbb{R}^N \iff $ es una sucesión de Cauchy
+\end{nth}
+\begin{proof}
+\boxed{\Leftarrow}\\
+Dado $\varepsilon > 0$, existe $m\in \mathbb{N}$ tal que si $n \ge m$ entonces $d(x_n, x) < \displaystyle\frac{\varepsilon}{2}$, y si $p,q \ge m$ entonces $d(x_p, x_q) \le d(x_p, x) + d(x, x_q) < \varepsilon $
+
+
+	\boxed{\Rightarrow}\\
+Como $\{x_n\}$ es de Cauchy, $\{x_n^i\}$ es de Cauchy $\forall i = 1,\dots,N$ (porque $|x_n^i-x_m^i| \le |x_n-x_m|$). $\implies$ $\{x_n^i\}\rightarrow x^i$ es convergente, por ser $\mathbb{R}$ completo. Luego $\{x_n\}$ es convergente.
+
+
+\end{proof}
+
+
+
+\section{Conjuntos Compactos y Conexos}
+
+\begin{ndef}[Compacto]
+	Un subconjunto A de un espacio métrico M es compacto si todo recubrimiento abierto de A contiene un recubrimiento finito.
+\end{ndef}
+
+\begin{ndef}[Otra definición de Compacto.]
+Sea $A \subset X$ con X espacio métrico.
+\begin{center}
+	A es compacto $\iff \forall \{x_n\} \subset A \ \ \exists \{x_{\sigma(n)}\}$ parcial de $\{x_n\}$ con $\{x_{\sigma(n)}\}\to x \in A$
+\end{center}	
+\end{ndef}
+
+\begin{nth}[Teorema de Heine-Borel]
+	
+	Un conjunto $A \subset \mathbb{R}^n$ es compacto $\iff$ es cerrado y acotado.
+\end{nth}
+\begin{proof}
+	\boxed{\Rightarrow}\\
+	Sunponemos que $A \subset \mathbb{R}^n$ es compacto. Entonces, por su definición, $\forall \{x_n\} \subset A \ \exists \{x_{\sigma(n)}\}$ parcial de $\{x_n\}$ con $\{x_{\sigma(n)}\} \to x \in A$. Supongamos que A no está acotado. Entonces, $\forall n \in \mathbb{N}, \ \exists a_n \in A : \ |a_n| \geq n$, por lo que $\{a_n\}$ no converge y por tanto $\sigma(n) \geq n \implies \{a_{\sigma(n)}\}$ no converge, por lo que A está acotado.
+	
+	Supongamos ahora que $\{x_n\} \to x \implies \exists \{x_{\sigma(n)}\} \to x \in A$, y como sabemos que si una sucesión es convergente todas sus parciales convergen al mismo límite, entonces eso implica que $\{x_n\}\to x \in A$ por lo que toda sucesión converge a un punto de A, y así A es cerrado.
+	\\
+	\boxed{\Leftarrow}\\
+	Supongamos ahora que A es cerrado y acotado. Sea $\{x_n\}$ una sucesión cualquiera de puntos de A.
+	
+	Como A es acotado, entonces $\exists R > 0 : \ \ A \subset B(0,R)$ . Además, como $x_n \subset A \ \forall n \implies |x_n| < R \ \forall n \in \mathbb{N}$, así $\{x_n\}$ es acotada.
+	
+	Como $\{x_n\}$ es acotada, por el teorema de Bolzano Weierstrass, $\exists \sigma \mathbb{N} \to \mathbb{N}$ estrictamente creciente con $\{x_{\sigma(n)}\}\to x \in \mathbb{R}^n$, y como $\{x_{\sigma(n)}\}$ es una subsucesión de puntos de A que converge a x y el conjunto A es cerrado, entonces el límite de esta sucesión está en A , es decir:
+	\[
+	\{x_{\sigma(n)}\}\to x \in A
+	\]
+Por lo que tenemos la definición de conjunto compacto.
+
+\end{proof}
+\begin{ndef}[Función continua]
+	Una aplicación $f:A \to M$ es continua si $x_n \to x \implies f(x_n) \to f(x)$ para toda sucesión $x_n$ convergente a un punto de A con $x_n\in A$
+\end{ndef}
+
+\begin{nprop}[Caracterización de continuidad]
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, y $f:A\longrightarrow \mathbb{R}^M$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
+\end{nprop}
+
+\begin{ndef}[Conjunto convexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Poligonalmente convexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{poligonalmente convexo} si  $\forall x,y \in A$ existe una poligonal que los une y no se sale de $A$. En otras palabras:  $A\ poligonalmente\ convexo \iff \exists \{x= a_0, a_1,\dots,a_k=y \}\subseteq A$ tal que: $$\bigcup_{i=1}^k [a_{i-1},a_i] \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto arco-conexo]
+Un conjunto $A \subseteq \mathbb{R}^N$ se dice \emph{arco-conexo(conexo por arcos)} si $\forall x,y \in A$ existe un camino incluido en $A$ que los une. En otras palabras,  $A\ es\ conexo\ por\ arcos \iff \exists \varphi:[a,b] \longrightarrow \mathbb{R}^N$ verificando: $$\varphi(a) = x;\quad \varphi(b) = y;\quad \varphi([a,b]) \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto no conexo]
+Decimos que un conjunto $A\in \mathbb{R}^N$ es \textit{NO conexo} si existen $U,\ V$ abiertos en $\mathbb{R}^N$ tales que: $$U \cap A \ne \emptyset;\quad V \cap A \ne \emptyset;\quad A \subseteq U \cup V;\quad A \cap U \cap V = \emptyset.$$
+\end{ndef}
+
+
+
+\begin{nota}
+La misma definición se aplica para un espacio topológico $(X,\tau).$
+\end{nota}
+
+
+
+\begin{ndef}[Conjunto conexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
+\end{ndef}
+
+\begin{nth}
+	Los conjuntos conexos por arcos son conexos.
+\end{nth}
+\begin{proof}
+Sean x,y dos puntes de A. Suponemos $x \leq y$ (si fuera al revés, cambiamos los nombres).
+
+Como A es arco conexo$\implies \exists \varphi:[a,b]\to \R$ continua con $\varphi(a) = x$	, $\varphi(b) = y$ y $\varphi([a,b])$ es un intervalo por el teorema del valor intermedio en R.
+
+Ahora, $\forall \ \alpha, \beta \in \varphi([a,b])$ con $\alpha \leq \beta \implies [\alpha,\beta ]  \subseteq \varphi([a,b]) $ y así tenemos $\varphi(a), \varphi(b) \in \varphi([a.b]) \implies [\varphi(a),\varphi(b)] = [x,y] \subseteq \varphi([a,b])\subseteq A$
+\end{proof}
+
+
+
+\section{Funciones continuas}
+
+\begin{ndef}[Límite]
+	Supongamos que $x_0$ es un punto de acumulación de A. Decimos que $b\in N$ es el límite de $f$ en $x_0$, denotado por:
+	\[
+	\lim{x\to x_0}f(x) = b
+	\]
+	Si para todo $\epsilon > 0  \ \exists \delta > 0 $ tal que $\forall x \in A$ que sea distinto de $x_0$ y $d(x_0,x)$, entonces $d'(f(x),b) < \epsilon$ 
+\end{ndef}
+
+\begin{ndef}[Función continua]
+	Una función $f:A \to B$ es continua en un punto $x_0$ de su dominio $\iff \forall \epsilon > 0 \ \ \exists > 0 : \ \forall x \in A$ que cumpla que $d(x,x_0)< \delta \implies d'(f(x),f(x_0)) < \epsilon$
+\end{ndef}
+
+\begin{nth}
+	Sea $f:A \to B$ continua y $K \subset A$ conexo. Entonces, $f(K)$ es conexo. Análogamente, si K es arco-conexo, entonces, f(K) es arco-conexo.
+\end{nth}
+
+\begin{nth}[Teorema de Weierstrass]
+Sea $f:A \to B$ continua y $K\subset A$ un compacto. Entonces, $f(K)$ es compacto.	
+\end{nth}
+\begin{proof}
+	Sea $\{x_n\}\subseteq K$ cualquiera. Entonces $\{f(x_n)\} \subseteq f(K)$. Como $K$ es compacto, existe $\sigma: \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma(n)}\} \rightarrow a\in K$. Luego, $\{f(x_{\sigma(n)})\}\rightarrow f(a)\in K$ y queda probado que $f(A)$ es compacto.
+\end{proof}
+
+\begin{nth}
+	Sean M,N,P espacios métricos y supongamos que $f:A\subset M \to N$ y $g: B \subset N \to P$ son transformaciones continuas tales que $f(A) \subset B$. Entonces, $g \cong f : A \subset M \to P $ es continua
+\end{nth}
+
+\begin{nth}[Teorema del máximo-mínimo]
+	Sea (M,d) un espacio métrico, $A\subset M$ y $f:A \to \R$ una función continua. Sea $K \subset A$ un conjunto compacto. Entonces f está acotada en K, es decir: $B=\{f(x) : x \in K\}\subset \R$ es un conjunto acotado. Además, existen puntos $x_0,x_1 \in K $ tales que $f(x_0) = inf(B)$ y $f(x_1) = sup(B)$. Decimos que sup(B) es el máximo de f en K e inf(B) el mínimo de f en K.
+\end{nth}
+\begin{nth}
+	[Teorema de los valores intermedios]
+Sean M un espacio métrico, $A\subset M$ y $f:A \to \R$ continua. Supongamos que $K\in A$ es conexo y que x,y $\in K$. Para cada número $c \in \R$ tal que $f(x) < c f(y)$ existe un punto $z \in K : f(z) = c$
+\end{nth}
+
+
+\subsection{Continuidad uniforme}
+
+\begin{ndef}[Uniformemente continua]
+	Sean (M,d) y (N,p) espacioes métricos, $A \subset M$ , $f:A \to N$ y $B \subset A$. Decimos que f es uniformemente continua en el conjunto B si $\forall \epsilon > 0 \ \exists \delta > 0 :  \ x,y \in B \ \ y \ \ d(x,y) < \delta \implies p(f(x),f(y)) < \epsilon$
+\end{ndef}
+
+\begin{nth}[Teorema de la continuidad uniforme. Teorema de Heine-Cantor.]
+	Sean $f:A \to N$ continua y $K\subset A $ un compacto. Entonces, f es uniformemente continua en K.
+\end{nth}
+\begin{proof}
+		La condición para la continuidad uniforme es la siguiente:
+	\[
+		\forall \varepsilon > 0 \  \exists \delta > 0 \ \forall x, y \in A : d(x,y) < \delta \implies d (f(x) , f(y) ) < \varepsilon
+	\]
+	
+	Vamos a proceder por reducción al absurdo, para lo cual negamos esta condición:
+	\[
+		\exists \varepsilon_0 > 0 \ \forall \delta > 0 \ \exists x, y \in A : d (x,y) < \delta \wedge d (f(x) , f(y) ) \ge \varepsilon_0
+	\]
+	
+	Tomamos este $\epsilon_0$, lo que nos da, para cada $\delta>0$, un par de puntos $x$ e $y$ que cumplen la propiedad expresada arriba. Tomamos $\delta = \frac{1}{n} \ \forall n\in \mathbb{N}$. Esto nos da dos sucesiones $\{x_n\}$ e $\{y_n\}$ tales que
+	\[
+		d(x_n,y_n) < \frac{1}{n} \wedge d(f(x_n),f(y_n)) \ge \epsilon_0
+	\]
+	
+	Por ser A compacto, el teorema de Bolzano-Weierstrass nos da dos sucesiones parciales $\{x_{n_k}\}$ a $x_0$ e $\{y_{n_k}\}$ a $y_0$. Por tanto:
+	\[
+		d(x_{n_k},y_{n_k}) < \frac{1}{n_k} \wedge d(f(x_{n_k}),f(y_{n_k})) \ge \epsilon_0
+	\]
+	
+	Sin embargo, $\{x_{n_k}\}$ e $\{y_{n_k}\}$ convergen al mismo punto (por converger su distancia a cero), y como $f$ es continua, esta proposición no puede ser verdadera. Hemos llegado por tanto a una contradicción, luego $f$ debe ser uniformemente continua.
+\end{proof}
+\end{document}
