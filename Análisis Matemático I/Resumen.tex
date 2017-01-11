@@ -365,7 +365,7 @@ Sea $f:A \to B$ continua y $K\subset A$ un compacto. Entonces, $f(K)$ es compact
 \end{proof}
 
 \begin{nth}
-	Sean M,N,P espacios métricos y supongamos que $f:A\subset M \to N$ y $g: B \subset N \to P$ son transformaciones continuas tales que $f(A) \subset B$. Entonces, $g \cong f : A \subset M \to P $ es continua
+	Sean M,N,P espacios métricos y supongamos que $f:A\subset M \to N$ y $g: B \subset N \to P$ son transformaciones continuas tales que $f(A) \subset B$. Entonces, $g \circ f : A \subset M \to P $ es continua
 \end{nth}
 
 \begin{nth}[Teorema del máximo-mínimo]
@@ -409,4 +409,154 @@ Sean M un espacio métrico, $A\subset M$ y $f:A \to \R$ continua. Supongamos que
 	
 	Sin embargo, $\{x_{n_k}\}$ e $\{y_{n_k}\}$ convergen al mismo punto (por converger su distancia a cero), y como $f$ es continua, esta proposición no puede ser verdadera. Hemos llegado por tanto a una contradicción, luego $f$ debe ser uniformemente continua.
 \end{proof}
+
+
+
+\section{Transformaciones diferenciables}
+
+\begin{ndef}
+	[Diferenciable]
+	Una transformación $f:A\subset \R^n \to \R^m$ es diferenciable en $x_0 \in A$ si existe una transformación lineal, denotada $Df(x_0): \R^n \to \R^m$ llamada diferencial de $f$ en $x_0$ tal que:
+	 \[
+	 \lim_{x\to x_0}\frac{||f(x)-f(x_0)-Df(x_0)(x-x_0)||}{||x-x_0||} = 0
+	 \]
+	 Donde $Df(x_0)(x-x_0)$ es el valor de la aplicación lineal aplicada al vector $(x-x0)$.\\
+	 
+	Equivalentemente, podemos decir que $\forall \epsilon > 0 \ \exists \delta > 0$ tal que si $x\in A $ y $||x-x_0||< \delta$ entonces:
+	\[
+	||f(x)-f(x_0) - Df(x_0)(x-x_0) ||  \leq \epsilon ||x-x_0||
+	\]
+\end{ndef}
+
+\begin{nth}[Matriz jacobiana de f]
+Sea $A\subset \R^n$ un conjunto abierto y $f:A \to \R^m$ es diferenciable en $A$. Entonces, las derivadas parciales $\frac{\partial f_j}{\partial x_i}$ existen y la matriz de la transformación lineal $Df(x)$ con respecto de las bases canónicas en $\R^n \ y \ \R^m$ es:
+\[
+\begin{pmatrix}
+ \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+ \vdots & \ddots&\vdots \\
+ \frac{\partial f_m}{\partial x_i} & \cdots & \frac{\partial f_m}{\partial x_n}
+\end{pmatrix} 
+\]
+donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la matriz jacobiana de f.
+	
+\end{nth}
+\begin{ndef}[Gradiente (caso $f:A \to R$)]
+	En el caso de que $f:A \to \R$, entonces $Df(x)$ es una matriz $1xn$. El vector cuyas componentes son iguales a las de $Df(x)$ se denomina gradiente de $f$ y se denota $\triangledown f$.
+	\[
+	\triangledown f = (\frac{\partial f}{\partial x_1},..., \frac{\partial f}{\partial x_n}
+	\]
+\end{ndef}
+
+\begin{nth}
+	Sean $A \subset \R^n$ un conjunto abierto y $f:A \subset R^n \to \R^m$. Si $f=(f_1,...,f_m)$ y cada $\frac{\partial f_j}{\partial x_i}$ existe y es continua en A, entonces $f$ es diferenciable en A
+\end{nth}
+
+\begin{ndef}[Derivada direccional]
+	Las derivadas parciales de una función miden su variación en las direcciones paralelas a los ejes. Las derivadas direccionales hacen lo mismo en otras direcciones.
+	
+	Sea f una función escalar definida en una vecindad de $x_0\in \R^n$ y sea $e\in \R^n$ un vector unitario, entonces:
+	\[
+	\frac{d}{dt}f(x_0+te)|_{t= 0} =  \lim_{t\to 0} \frac{f(x_0+te) -f(x_0)}{t}
+	\]
+	es la derivada direccional de $f$ en $x_0$ en la dirección e.
+	
+	Se puede afirmar que la derivada direccional en la dirección de e es igual a $Df(x_0)e$.
+\end{ndef}
+\begin{nprop}[Regla de la cadena]
+	Sea $A\subset \R^n$ abierto y $f:A \to \R^m$ diferenciable en $x_0 \in A$. Sean $B\subset \R^n$ abierto y $f(A) \subset B$ y $g:B \to \R^p$ diferenciable en $f(x_0)$. Entonces, la composición $g\circ f$ es diferenciable en $x_0$ y 
+	\[
+	D(g \circ f)(x_0) = Dg(f(x_0)) \circ Df(x_0)
+	\]
+\end{nprop} 
+
+
+\begin{nth}[Teorema del valor medio]
+	\begin{nlist}
+	\item Sea $f:A \subset \R^n\to \R$ diferenciable en un abierto A. $\forall x,y \in A$ tales que el segmento de recta que une x con y esté en A, existe un punto $c$ en ese segmento tal que:
+	\[
+	f(y)-f(x) = Df(c)(y-x)
+	\]
+	\item Sea $f:A \subset \R^n \to \R^m$ diferenciable en el conjunto abierto A. Supongamos que el segmento de recta que une x e y está contenido en A y $f=(f_1,...,f_m)$. Entonces, existen puntos $c_1,...,c_m$ en ese segmento tales que:
+	\[
+	f_i(y) - f_i(x) = Df_i(c_i)(y-x) \ \ \ i = 1,...,m
+	\]
+\end{nlist}
+\end{nth}
+\begin{proof}
+	Lo vamos a hacer para una función $f:A \subset \R^n \to \R$ y lo aplicamos luego a cada coordenada de f.
+	
+	Consideremos la función $h:[0,1] \to R$ definida por $h(t) = f((1-t)a +tb) \ \ \forall t \in [0,1]$ es continua en [0,1] y por la regla de la cadena es derivable en ]0,1[ con:
+	\[
+	h'(t) = Df((1-t)a +tb)(b-a)
+	\].
+	El TVM para funciones de $\R$ en $\R$ nos da un $t_0 \in ]0,1[$ tal que:
+	\[
+	f(b)-f(a) = h(1)-h(0) = h'(t_0) = Df((1-t_0)a+t_0b)(b-a)
+	\]
+	Si tomamos $c=(1-t_0)a+t_0b \in [a,b]$ obtenemos el $c$ que buscábamos.
+	
+\end{proof}
+
+\begin{nth}[Matriz Hessiana]
+	Sea $f:A\subset \R^n \to \R$ dos veces diferenciable en el conjunto abierto A. Entonces, la matriz $D^2f(x): \R^nx\R^n \to R$ en la base canónica está dada por:
+	\[
+	\begin{pmatrix}
+ \frac{\partial^2 f}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_1\partial x_n} \\
+ \vdots & \ddots&\vdots \\
+ \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n \partial x_n}
+\end{pmatrix} 
+	\]
+	donde cada derivada parcial está evaluada en el punto $x=(x_1,...,x_n)$
+\end{nth}
+
+\begin{nprop}
+	Si $f:A \to \R^m$ dos veces diferenciable en el conjunto abierto A con $D^2 f$ continua, entonces $D^2f$ es simétrica, es decir:
+	\[
+	\frac{\partial^2 f_k}{\partial x_i \partial x_j} =  \frac{\partial^2 f_k}{\partial x_j \partial x_i}
+	\]
+\end{nprop}
+
+\begin{nth}[Teorema de Taylor. Caso n=1]
+	Sea $A \subseteq \R^n$ abierto, $a \in A$ y $f:A \to \R$ con $f\in \mathcal{C}^2(A)$. Entonces, $\forall x \in A \ \exists c$ comprendido entre x y a tal que:
+	\[
+	f(x) = f(a) + \frac{Df(a)(x-a)}{1!} + \frac{(x-a)^t Hf(c)(x-a)}{2!}
+	\]
+	Donde (x-a) es un vector columna.
+\end{nth}
+
+
+\section{Máximos y mínimos}
+
+\begin{ndef}
+	Sea $f:A\subset \R^n \to \R$ donde A es abierto. Si existe una vecindad de $x_0 \in A$ en la que $f(x_0)$ es máximo, es decir si $f(x_0) \geq f(x) \ \forall x$ en la vecindad, entonces $x_0$ es un punto de máximo local y $f(x_0)$ es un máximo local de f. Análogamente se define un mínimo local de f. Un punto es extremo si es un máximo o un mínimo local de f. Un punto $x_0$ es un punto crítico si $f$ es diferenciable en ese punto y $Df(x_0) = 0$ siendo $x_0$ ese punto.
+\end{ndef}
+
+\begin{nth}
+	\begin{nlist}
+	\item Si $f:A \subset \R^n\to \R$ es una función $\mathcal{C}^2$ definida en un abierto A y $x_0$ es un punto crítico de f tal que $H_{x_0}(f)$ es definida negativa, entonces f tiene un máximo local en $x_0$.
+	\item Si f tiene un máximo local en $x_0$, entonces $H_{x_0}(f) $ es semidefinida negativa.
+\end{nlist}
+Para el caso del mínimo, reemplazamos negativa por positiva. La matriz hessiana, es la vista anteriormente.
+\end{nth}
+
+\section{Clasificación de matrices según su signo}
+ Si $A_k$ es el determinante del menor de orden K de una matriz A, entonces:
+ \begin{itemize}
+	\item A es definida positiva $\iff$ $A_k > 0 \ \forall k$
+	\item A es definida negativa $\iff$ $A_k > 0$ si K es par y $A_k < 0 $ si K es impar.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
