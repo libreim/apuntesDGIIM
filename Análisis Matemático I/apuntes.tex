@@ -145,6 +145,9 @@
 % Línea horizontal.
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
+% Renombrar la R de los reales
+
+\newcommand{\R}{\mathbb{R}}
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -1554,11 +1557,41 @@ FALTARLA UN HUECO
 \end{enumerate}
 \end{proof}
 
+\section{Teorema de la función inversa e implícita}
+\begin{nth}[Teorema de la función inversa. Caso N=1]
+	Sea $A\subset R$, $a \in A$ abierto y $f:A \to \R$. Supongamos que $f$ es de clase 1 y $f'(a) \ne 0$.\\
+	 Entonces, $\exists I $ un intervalo abierto con $I \subset A$ y $a \in I$, y $\exists J$ intervalo abierto con $J\subset \R$ con $f(a) \in J$ tal que $f|_I: I \to J$ es invertible si $g = (f|_U)^{-1} \implies g'(f(a)) = \frac{1}{f'(a)}$
+\end{nth}
 
+Ahora, como podemos ver una relación: 
+\[
+Df(a) \equiv Jf(a) = ( f'(a))
+\]
+Por lo que, el determinante de $Jf(a) \ne 0$, es decir que $Df(a)$ es invertible
+\begin{nth}[Teorema de la función inversa. Caso general.]
+	Sea $A \subset \R^n$ abierto y $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
+$Df(a): \R^n \to \R^n$ es invertible \\
+$\implies \exists U\subset A$ abierto y $\exists V$ abierto en $\R^n$ tales que $a\in U $, $f(a) \in V$ y $f|_U : U \to V$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: V \to U$ es de clase 1 y además:
+	\[
+	Dg(f(a)) = (Df(a))^{-1}
+	\]
+Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0)$
+Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^{-1}$
+\end{nth}
 
+El teorema de la función inversa lo usaremos si tenemos las mismas ecuaciones que incógnitas. Si tenemos menos ecuaciones que incógnitas, usaremos el teorema de la función implícita.
 
-
-
-
-
+\begin{nth}[Teorema de la función implícita]
+	Sea $A \subset \R^n x\R^m$ abierto y no vacío. Sea $F: A \to \R^n$ una función de clase 1. Fijando un $(x_0,y_0) \in A$ tal que $F(x_0,y_0) = 0$. Si:
+	\[
+	det(\begin{pmatrix}
+ \frac{\partial F_1}{\partial n_1}(x_0,y_0) & \cdots & \frac{\partial F_1}{\partial x_n}(x_0,y_0) \\
+ \cdots& & \cdots\\
+ 
+ \frac{\partial F_n}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_n}{\partial x_n} (x_0,y_0)
+\end{pmatrix}) \ne 0
+	\]
+	
+	Entonces, existe $U$ un entorno abierto de $x_0$ en $\R^n$ y también existe $V$ un entorno abierto de $y_0$ en $\R^m$ tal que $UxV \subset A$ y $\forall y \in V \ \ \exists! x \in U : F(x,y) = 0$
+\end{nth}
 \end{document}

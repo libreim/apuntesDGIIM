@@ -141,6 +141,9 @@
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 
+\newcommand{\R}{\mathbb{R}}
+
+
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
 %---------------------------------------------------------------------------
@@ -385,6 +388,79 @@ Teniendo esto demostrado, haciendo uso de la proposición y de que S es conexo (
 \end{enumerate}
 \end{ejer}
 
+\begin{ejer}[5 relación derivabilidad]
+	Sea $\Omega \subset \R^n$ abierto y $f:\Omega \to \R^n$ y $a\in \Omega$ con $Df(a) = 0$ ( es decir, $\triangledown f(a) = 0$) con $def(Hess f(a)) \ne 0$.
+	
+	Probar que $\exists U$ abierto en $\Omega$ tal que $a \in U$ tal que:
+	\[
+	\begin{rcases}
+	Df(x) = 0\\
+	x \in U
+\end{rcases} \iff x = a
+	\]
+\end{ejer}
+\begin{proof}[Solución]
+	Calculamos su hessiana:
+	\[
+	Hf(a) = \begin{pmatrix} \frac{\partial^2f(a)}{\partial^2x_1^2}& \cdots & \frac{\partial^2f(a)}{\partial x_1 \partial x_n} \\ \cdots & & \cdots \\ \frac{\partial^2f(a)}{\partial x_n \partial x_1}& \cdots & \frac{\partial^2f(a)}{\partial^2x_n^2} \end{pmatrix} = Jg(a) = J(\triangledown f)(a)
+	\]
+Y tenemos que $g:\Omega \to \R^n$, $g(x) = \triangledown f(x) = ( \frac{\partial f(x)}{\partial x_1}, \cdots , \frac{\partial f(x)}{\partial x_n})$.
 
+Ahora, como el determinante de la Hessiana de f en a es distinto de cero, por el Teorema de la función inversa aplicado a $g =  \triangledown f$, entonces $\exists U$ abierto en $\Omega$, $a\in U$ y también $\exists V$ abierto en $\R^n$ con $g(a) =  \triangledown f(a) \in V$
+tales que:
+
+$g = \triangledown f: U \to V$ biyectiva que lleva $a \mapsto g(a) =  \triangledown f(a) = 0$
+
+
+\end{proof}
+\begin{ejer}
+	Sea $f:\R^2 \to \R^2$ dada por $f(x,y) = (e^x cos(y),e^x sen(y)) = e^x(cosy,seny) \in \partial B(0,e^x)$. Probar que $f$ es localmente invertible en todo punto de $\R^2$
+\end{ejer}
+\begin{proof}[Solución]
+	Primero, es fácil ver que $f$ no es inyectiva en todo $\R^2,$pues basta ver que $f(x,y+2\pi) = f(x,y)$
+	
+	Lo único que tendríamos que hacer es ver que el determinante de $Jf (x_0,y_0)$.
+	\[
+det \begin{pmatrix} e^x cosy & -e^xseny \\ e^x seny & e^x cos y \end{pmatrix}  = e^x \ne 0
+	\]
+	Y como no es 0, la función es localmente invertible en el punto $x_0,y_0$ por el Teorema de la función inversa.
+
+\end{proof}
+\begin{ejer}[6 de la relación]
+
+\[
+\begin{rcases}
+	x^2 - y^2 -u^3 +v^4 = -4\\
+	2xy + y^2 -2u^2 -3v^2 = -8
+\end{rcases} = \begin{rcases}
+	x^2 - y^2 -u^3 +v^4  + 4= 0\\
+	2xy + y^2 -2u^2 -3v^2  + 8=  0
+\end{rcases}
+\]
+	Podemos considerarla como la función $F: \R^4 \to \R^2$ dada por\\
+	 $F(x,y,u,v) = (x^2 - y^2 -u^3 +v^4  + 4,2xy + y^2 -2u^2 -3v^2  + 8)$
+	 Y podemos ver la ecuación como $F(x,y,u,v) = (0,0)$.
+	 Tendremos que usar dos variables como parámetros, pues necesitaríamos 4 variables para resolver el sistema.
+	 Hacemos entonces la jacobiana de esta función:
+	 
+	 \[
+	 det\begin{pmatrix}
+ 2x & -2y \\
+ 2y & 2x+2y 
+\end{pmatrix} 
+	 \]
+	 Y habría que evaluar el determinante en el punto que nosotros habíamos tomado, que es una solución particular que sería : $x=2, y = 1,u = 2,v = 1$, por lo que sería ver el determinante de:
+	 \[
+	 \begin{pmatrix}
+ 4 & 2 \\
+ -2 & 0 
+\end{pmatrix} 
+	 \]
+, que es distinto de 0, por lo que por el teorema de la función implícita, existen U entorno abierto de (2,-1) en $\R^2$ y existe V entorno abierto de (2,1) en $\R^2$ tales que:
+\begin{enumerate}
+	\item UxV$\subset A = \R^2$
+	\item $\forall(u,v) \in V \ \ \exists ! (x,y) \in U : F(x,y,u,v) = (0,0)$
+\end{enumerate}
+\end{ejer}
 
 \end{document}	
