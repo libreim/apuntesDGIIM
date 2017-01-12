@@ -538,7 +538,7 @@ donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la ma
 	Sea $f:A\subset \R^n \to \R$ donde A es abierto. Si existe un entorno de $x_0 \in A$ en el que $f(x_0)$ es máximo, es decir si $f(x_0) \geq f(x) \ \forall x$ en el entorno, entonces $x_0$ es un punto de máximo local y $f(x_0)$ es un máximo local de $f$. Análogamente se define un mínimo local de $f$. Un punto es extremo si es un máximo o un mínimo local de $f$. Un punto $x_0$ es un punto crítico si $f$ es diferenciable en ese punto y $Df(x_0) = 0$.
 \end{ndef}
 
-\begin{nth}\hfill\\
+\begin{nth}\hfill
 	\begin{nlist}
 	\item Si $f:A \subset \R^n\to \R$ es una función $\mathcal{C}^2$ definida en un abierto A y $x_0$ es un punto crítico de f tal que $H_{x_0}(f)$ es definida negativa, entonces f tiene un máximo local en $x_0$.
 	\item Si f tiene un máximo local en $x_0$, entonces $H_{x_0}(f) $ es semidefinida negativa.
@@ -553,6 +553,32 @@ Para el caso del mínimo, reemplazamos negativa por positiva. La matriz hessiana
 	\item A es definida negativa $\iff$ $A_k > 0$ si K es par y $A_k < 0 $ si K es impar.
 \end{itemize}
 
+\section{Teorema de la función Inversa}
+\begin{nth}[Teorema de la función inversa. Caso general.]
+	Sea $A \subset \R^n$ abierto y $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
+$Df(a): \R^n \to \R^n$ es invertible \\
+$\implies \exists U\subset A$ abierto y $\exists V$ abierto en $\R^n$ tales que $a\in U $, $f(a) \in V$ y $f|_U : U \to V$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: V \to U$ es de clase 1 y además:
+	\[
+	Dg(f(a)) = (Df(a))^{-1}
+	\]
+Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0)$
+Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^{-1}$
+\end{nth}
+
+\section{Teorema de la función implícita}
+\begin{nth}[Teorema de la función implícita]
+	Sea $A \subset \R^n x\R^m$ abierto y no vacío. Sea $F: A \to \R^n$ una función de clase 1. Fijando un $(x_0,y_0) \in A$ tal que $F(x_0,y_0) = 0$. Si:
+	\[
+	det(\begin{pmatrix}
+ \frac{\partial F_1}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_1}{\partial x_n}(x_0,y_0) \\
+ \cdots& & \cdots\\
+ 
+ \frac{\partial F_n}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_n}{\partial x_n} (x_0,y_0)
+\end{pmatrix}) \ne 0
+	\]
+	
+	Entonces, existe $U$ un entorno abierto de $x_0$ en $\R^n$ y también existe $V$ un entorno abierto de $y_0$ en $\R^m$ tal que $UxV \subset A$ y $\forall y \in V \ \ \exists! x \in U : F(x,y) = 0$
+\end{nth}
 
 
 
