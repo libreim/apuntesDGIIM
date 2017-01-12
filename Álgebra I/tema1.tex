@@ -2762,5 +2762,199 @@ Si:
 \begin{nota}
 	Si permutamos dos filas, o dos columnas, las matrices inicial y final son equivalentes.
 \end{nota}
+
+\begin{ndef}
+	Una matriz $M \in \mathcal{M}_{mxn}$ que sea:
+		\[ \begin{pmatrix}
+ d_{11}&  &  & & \\
+ &  & \ddots &  &  \\
+ & & &d_{rr} &\\
+ & & & & 0 \\
+ & & & & & \ddots& \\
+ & & & &  & & 0 \\
+\end{pmatrix} \]
+ con $d_1,...,d_r \in A \ \ d_i \ne 0$ y $d_i / d_{i+1}$, en las posiciones (i,i) con $1 \leq i \leq r$ y 0 en todas las demás posiciones, se dice matriz Normalizada (Smith)
+\end{ndef}
+
+Vamos a explicar ahora un método a partir del cual, teniendo una matriz cualquiera podemos obtener una matriz normalizada que es equivalente a la primera. No olvidemos que estamos trabajando en Dominios euclídeos.
+
+Sea $A \in \mathcal{M}_{mxn}$. $A \ne 0$. Sea $\varphi:A -\{0\} \to \nat$ la función euclídea.
+
+Vamos a llamar $\varphi(M) = min\{\varphi(a_{ij}) : a_{ij} \ne 0\}$
+Primero, tomaremos un $a_{ij}$ donde la función euclídea tome el valor más pequeño que tome en toda la matriz. Ahora, por operaciones elementales podemos llevarlo a la posición $d_{11}$.
+
+Supongamos ahora que $a_{11}$ no divide a $a_{1k}$. como estamos en un dominio euclídeo, podemos expresar el cociente entre ellos como:
+\[
+a_{1k} = a_{11}q+ b_{1k}
+\]
+donde $b_{1k} \ne 0$ y $\varphi(b_{1k}) < \varphi(a_{11})$.
+
+Ahora, realizamos la operación:
+\[
+C_k \mapsto C_k - q C_1
+\]
+
+Reiteramos el proceso las veces que haga falta, hasta encontrarnos una matriz que sea de la forma $b_{ij}$. Ahora, si $b_{11}$ no divide a $b_{k1}$, entonces este último se expresará como $b_{k1} = b_{11}q' + c_{k1}$ con $c_{k1}\ne 0$ y $\varphi(c_{k1}) < \varphi(b_{11})$
+
+Entonces, realizamos la operación:
+\[
+F_k \mapsto F_k - q'F_1
+\]
+Volvemos a reiterar el procedimiento cuantas veces sea falta.
+
+Tras una serie de pasos, llegaremos a una matriz equivalente a la original en la que $b_{11}/b_{k1}$ y $b_{11}/b_{1k} \ \ \forall k$. LLegados a esta situación,por transformaciones elementales podemos obtener una matriz que sea del tipo:
+\[
+\begin{pmatrix}
+ b_{11} & 0 & \cdots & 0 \\
+ 0 & c_{22} & \cdots & c_{2n} \\
+ \vdots &  & \ddots& \\
+ 0 & c_{m2} & \cdots & c_{mn} \\
+\end{pmatrix} 
+\]
+
+Ahora, tenemos una matriz en la que $b_{11}/ c_{ij}$ para cada i y j. Ahora, lo que haremos es tomar la submatriz que empieza en $c_{22}$ y volveremos a realizar el mismo proceso.
+
+\begin{ejemplo}
+	Sea $A \in matrices$ tal que:
+	\[
+	\begin{pmatrix}
+ 14 & 10 \\
+ 22 & 14\\
+ 10 & 10\\ 
+\end{pmatrix} 
+	\]
+	Ahora, tomamos el numero que tenga la $\varphi$ menor, en este caso el 10 y hacemos transformaciones elementales para llevarlo a la primera posición.
+	\[\begin{pmatrix}
+ 14 & 10 \\
+ 22 & 14\\
+ 10 & 10\\ 
+\end{pmatrix} \mapsto^{C_2,C_1}
+	\begin{pmatrix}
+ 10 & 14 \\
+ 14 & 22\\
+ 10 & 10\\ 
+\end{pmatrix} \mapsto^{C_2 - C_1} \begin{pmatrix}
+ 14 & 4 \\
+ 22 & 8\\
+ 10 & 0\\ 
+\end{pmatrix}\mapsto^{C_2,C_1}
+\begin{pmatrix}
+ 4 & 10 \\
+ 8 & 14\\
+ 0 & 10\\ 
+\end{pmatrix}\mapsto^{C_2 - 2C_1}  \begin{pmatrix}
+ 4 & 2 \\
+ 8 & -2\\
+ 0 & 10\\ 
+\end{pmatrix}
+	\]
+	\[
+	\mapsto\begin{pmatrix}
+ 2 & 4 \\
+ -2 & 8\\
+ 10 & 0\\ 
+\end{pmatrix} \mapsto^{C_2-2C_1}
+\begin{pmatrix}
+ 2 & 0 \\
+ -2 & 12\\
+ 10 & -20\\ 
+\end{pmatrix}\mapsto^{F_2+F_1}
+\begin{pmatrix}
+ 2 & 0 \\
+ 0 & 12\\
+ 10 & -20\\ 
+\end{pmatrix} \mapsto^{F_3-F_1}  
+\begin{pmatrix}
+ 2 & 0 \\
+ 0 & 12\\
+ 0 & -20\\ 
+\end{pmatrix} 
+	\]
+	Y ahora, tendríamos que hacer lo mismo para la submatriz resultante:
+	\[
+	\begin{pmatrix}
+ 12 \\
+ -20 \\ 
+\end{pmatrix}\mapsto^{F_3+2F_2} 
+\begin{pmatrix}
+  4 \\
+ 12 \\ 
+\end{pmatrix}\mapsto^{F_3 - 3F_2}
+\begin{pmatrix}
+  4 \\
+ 0 \\ 
+\end{pmatrix}  
+	\]
+	Y nos queda la matriz :
+	\[
+	\begin{pmatrix}
+ 2 & 0 \\
+ 0 & 4\\
+ 0 & 0\\ 
+\end{pmatrix} 
+	\]
+	Que es equivalente a la inicial.
+\end{ejemplo}
+
+\begin{ndef}[Rango de la matriz]
+	El entero $r$ tla que $M$ tiene al menos un menor de orden $r$ no nulo y todos los de orden $r+1$ son nulos se llama Rango de la matriz.
+\end{ndef}
+
+Vamos a definir ahora $\Delta_s(M) = mcd\{$menores de orden s de M no nulos $\}$
+Así, $\Delta_1(M)$ sería el máximo común divisor de todos los $m_{ij}$. Ahora, con esta definición, podemos decir que:
+\[
+rg(M) = max\{s : \Delta_s(M) \ne 0\}
+\]
+Lo que implica que si $rg(M) = r \implies \Delta_1(M),...,\Delta_r(M)$ son $\ne 0$ y $\Delta_{r+1}(M),...$ son nulos.
+
+Sea $P \in \mathcal{M}_m(A)$. Construimos la matriz $PM\in \mathcal{M}_{mxn}(A)$(tenemos la matriz $M \in \mathcal{M}_{mxn}(A)$). Si miramos el elemento de PM en la posición $(k,j)$,este es: $\sum_{i=1}^n P_{ki}a_{ij}$. Así, la fila $k-$ésima de $PM$ es:
+\[
+(\sum_{i=1}^n P_{ki}a_{i1}, \cdots , \sum_{i=1}^n P_{ki}a_{in}) = \sum_{i=1}^n P_{ki}(a_{i1},\cdots , a_{in})
+\]
+Por tanto las filas de la matriz $PM$ son combinación lineal de la matriz M. Por tanto, también podemos afirmar que los menores de orden $s$ de la matriz PM son combinación lineal de los menores de orden $s$ de la matriz M.
+
+Si $P\in GL_m(A)\implies \Delta_s(PM) : \Delta_s(P^{-1}PM) = \Delta_s(M)$.
+
+Si $Q \in GL_m(A) \implies \Delta_s (M) = \Delta(MQ)$
+
+\begin{nota}
+	$\Delta(M) = \Delta(M^t)$. Del mismo modo, $\Delta_S(MQ) = \Delta_s((MQ)^t) =  \Delta_s (Q^tM^t) = \Delta_s (M^t) =  \Delta_s(M)$
+\end{nota}
+\section{KHAD'GAR :HAY QUE DETENER A GUL'DAN Y A LA LEGION}
+
+Si $M \sim M' \sim \begin{pmatrix}
+ d_{11}'&  &  & & \\
+ &  & \ddots &  &  \\
+ & & &d_{rr}' &\\
+ & & & & 0 \\
+ & & & & & \ddots& \\
+ & & & &  & & 0 \\
+\end{pmatrix}  \implies r = r'$
+
+Tenemos que $\Delta_1(M) = d_1 = \Delta_1 (M') = d_1' \implies d_1 = d_1'$ ; y si lo hacemos en general vemos que:
+\[
+\Delta_s(M) = d_1...d_s = A_s(M') = d_1'...d_s' \implies ds =  \frac{\Delta_s(M)}{\Delta_{s-1}(M)} =  \frac{\Delta_s(M')}{\Delta_{s-1}(M')} = d_s'
+\]
+
+\section{A-módulo}
+\begin{ndef}[A-módulo]
+	Es un conjunto no vacío M dotado de dos operacions:
+	\begin{itemize}
+	\item $MxM \to M$ tal que $(x,y) \mapsto x+y$ que es interna
+	\item $Ax M \to M$ tal que $(a,x) \mapsto ax$
+\end{itemize}
+que verifican las propiedades asociativa, conmutativa, elemento neutro y elemento opuesto. También verifican la distributiva respecto de la suma y respecto del producto, asociatividad del producto y neutro del producto.
+
+\end{ndef}
+Durante todo el apartado nos referiremos a $x, y,...$ como elementos de $M$ y a $a, b, ...$ como elementos de A.\\
+\textbf{Propiedades:}
+\begin{nlist}
+	\item Unicidad del 0 y del opuesto.
+	\item $0x = 0$ y $a0 = 0$
+	\item $(-a)x = -(ax) = a(-x)$
+	\item Si para una lista de elementos $(x_1,...,x_n)$ de M con al menos 2 elementos definimos su suma simultánea $\sum_i^n x_i$ por inducción:$ \sum_i^n x_i = (\sum_{i=0}^{n-1}x_i) +x_n$
+	\item $\forall i < r < n,$ entonces $\sum_i^n x_i = (\sum_{i=0}^{r}x_i) + (\sum_{i=r+1}^{n}x_i) $
+	\item $ (\sum_i^n a_i)(\sum_j^m x_i) = \sum_i^n \sum_j^m a_ix_j$
+\end{nlist}
 \end{document}
 
