@@ -26,9 +26,9 @@ medios.
   La entrada, salida y salida de error estándar están identificadas con los descriptores de archivo
   0, 1 y 2 respectivamente. En la librería **<unistd.h>** se encuentran las constantes símbolicas
   STDIN\_FILENO, STDOUT\_FILENO y STDERR\_FILENO que identifican los descriptores de archivo anteriores.
-- ***offset*** = ***current file offset*** = Entero no negativo característico de un archivo que mide mediante
-  el cual se indica el próximo Byte en el que se va a leer o escribir. Contiene, por tanto, el número
-  de Bytes ya leídos o escritor en el archivo. El ***offset*** aumenta mediante operaciones de lectura
+- ***offset*** = ***current file offset*** = Entero no negativo característico de un archivo que 
+  indica el próximo Byte en el que se va a leer o escribir. Contiene, por tanto, el número
+  de Bytes ya leídos o escritos en el archivo. El ***offset*** aumenta mediante operaciones de lectura
   y escritura sobre el archivo. También se puede cambiar manualmente mediante las llamadas al sistema
   recogidas como **seek**. Por defecto, el ***offset*** es inicializado a 0 al abrir el archivo a no ser
   que se indique lo contrario.
@@ -59,7 +59,7 @@ int errno;
 ~~~
 
 La función **perror** produce un mensaje de error en la salida de error estándar. Este mensaje
-describe el último error que se a encontrado al realizar una llamada al sistema o utilizar una
+describe el último error que se haya encontrado al realizar una llamada al sistema o utilizar una
 función de una librería.
 
 El mensaje mostrado consiste de la cadena proporcionada al llamar a perror, *s*, más dos puntos
