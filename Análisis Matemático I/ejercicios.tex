@@ -463,4 +463,131 @@ det \begin{pmatrix} e^x cosy & -e^xseny \\ e^x seny & e^x cos y \end{pmatrix}  =
 \end{enumerate}
 \end{ejer}
 
+
+
+\begin{ejer}
+	Sea $f:\R^2 \to \R$
+	$f(x,y) = 2x^2 -y^2 +4x+2y+1$.
+	
+	\textbf{Procedimiento}: Para estudiar los extremos relativos hacemos puntos criticos y eso nos lleva a un conjunto de puntos que tendremos que estudiar. Luego,si estudiamos el máximo o el mínimo absoluto en un compacto, tendremos probar que el máximo y el mínimo se alcanzan (T.W.) y sabiendo que son máximo o mínimos absolutos, si el punto estuviera en el interior sería un máximo o mínimo relativo luego tenemos que estudiar los puntos de los bordes estudiando las funciones que están definidas en un abierto(IMPORTANTE). Cuando tengamos los puntos que puedan ser puntos críticos, calculamos su valor por la función y afirmamos cuál es el máximo y cuál es el mínimo.\\
+	
+\textbf{Apartado a:}\\
+	 Estudiar extremos relativos y puntos de silla de f.
+	
+	Los puntos criticos de f son los puntos en los que el gradiente de f vale 0 ( $\triangledown f (x,y) = (0,0)0)$. Calculamos derivadas:
+	\[
+	\frac{\partial f}{\partial x}(x,y) = 4 x+ 4
+	\]\[
+	\frac{\partial f}{\partial y}(x,y) = -2y +2
+	\]
+	Por lo que tenemos que calcular las soluciones del sistema:
+	\[
+	\begin{rcases}
+	4x+4 = 0\\
+	-2y+2 = 0
+\end{rcases}
+	\]
+	Cuya solución es el punto (-1,1).
+	Estudiamos la matriz hessiana en ese punto para ver qué es.
+	
+	\[
+	Hesf(x,y) = \begin{pmatrix}
+ \frac{\partial^2f}{\partial x^2}(x,y) &  \frac{\partial^2f}{\partial x \partial y}(x,y) \\
+  \frac{\partial^2f}{\partial x \partial y}(x,y) &  \frac{\partial^2f}{\partial y^2}(x,y)
+\end{pmatrix}  =  \begin{pmatrix}
+  4& 0 \\
+ 0 & -2 
+\end{pmatrix} 
+	\]
+	Y el determinante de esa es -8 y además el primer determinante encajado es positivo, luego esa matriz no es ni definida positiva ni definida negativa luego tenemos que en (-1,1) hay un punto de silla (esta es su definición).
+	
+	\textbf{Apartado b:}
+	
+	Si llamamos T= triángulo cerrado de vértices (-3,0),(0,0) y (0,3) que es cerrado y acotado. Este T es compacto por ser cerrado y acotado por tanto, por el teorema de Weierstrass f alcanza un máximo valor y un mínimo en puntos de T.
+	Esto es un problema de extremos condicionados.
+	
+	Si estuvieran los puntos críticos que hemos encontrado antes dentro del triángulo, entonces serían extremos relativos y hemos visto antes que no tiene. Luego el máximo y mínimo absoluto de f en T no puede ser un punto interior a T. Hay que estudiarlos en la frontera de T.
+	
+	La frontera de T está constituida por los 3 segmentos que unen los 3 puntos del triángulo y los puntos, es decir, "6 partes". Esto es:
+	\[
+	\partial T = A_1 \cup A_2 \cup A_3 \cup (0,3) \cup (-3,0) \cup (0,0)
+	\]
+	Siendo:\\ $A_1 = \{ (0,y) : 0 < y < 3\}  = \{(x,y) \in (-3,0)x\R : x = 0\}$,\\
+	 $A_2 =\{(x,0) :  -3 < x < 0\} = \{(x,y) \in (-3,0)x \R : y = 0\}$  \\
+	 $A_3 =\{(x,x+3) :  -3< x < 0\} = \{(x,y)\in (-3,0)x\R :  y -x-3 = 0\}$.\\
+	
+	Ahora, al descomponerlo así podemos usar en cada fragmento el teorema de lso multiplicadores de Lagrange.
+	
+	Empezamos por $A_3$ . Definimos $g(x,y) = y-x-3$ y sabemos que los posibles extremos condicionados serían extremos de la Lagrangiana es decir, tienen que ser puntos críticos de la función: $f+\lambda g$ dependiendo de $\lambda$.
+	Esta función es:
+	\[
+	F(x,y,\lambda) = f(x,y) + \lambda g(x,y)
+	\]
+	E igualamos de nuevo el gradiente de esta función a 0:
+	\[
+	\frac{\partial F}{\partial x} =  \frac{\partial F}{\partial y} =\frac{\partial F}{\partial \lambda} = 0
+	\]
+	Obteniendo el sistema:
+	\[
+	\begin{rcases}
+	4x +4 - \lambda = 0\\
+	-2y +2 + \lambda = 0\\
+	 y-x-3 = 0
+\end{rcases}\implies  \begin{rcases}
+	x = 0\\
+	y = 3 \\
+\end{rcases}
+	\]
+	Pero el punto (0,3) no está en $A_3$, es un punto aparte luego no hay ningún extremo condicionado a la restricción de pertenecer a $A_3$. Si existiera un extremo relativo en ese segmento también sería extremo relativo sobre ese segmento, pero como hemos visto que no tiene, no puede haber extremo relativo.
+	
+	Hacemos lo mismo con $A_2$. En este caso $g(x,y) = y$ Nos queda el sistema:
+	\[
+	\begin{rcases}
+	4x +4  = 0\\
+	-2y +2 + \lambda = 0\\
+	 y = 0
+\end{rcases}\implies \begin{rcases}
+	x=-1\\
+	y = 0\\
+	\lambda = -2
+\end{rcases}
+	\]
+	Tenemos el punt (-1,0) que sí pertenece a $A_2$, por tanto este punto puede ser extremo relativo condicionado por la condición $y = 0$
+	
+	Repetimos el proceso para $A_1$. En este caso, $g(x,y) = x$. Volvemos a hacer el sistema y nos queda:
+	\[
+	\begin{rcases}
+	4x +4 +\lambda = 0\\
+	-2y +2  = 0\\
+	 x = 0
+\end{rcases}\implies \begin{rcases}
+	x=0\\
+	y = 1\\
+	\lambda = -4
+\end{rcases}
+	\]
+	Tenemos el punto(0,1) que sí está en este segmento.
+	
+	 Todo esto sirve para afirmar que el máximo y el mínimo de f en T es uno de estos puntos:
+	\[
+	(0,1),(-1,0),(0,0),(0,3),(-3,0)
+	\]
+	Ahora, sabiendo esto calculamos la f en cada uno de estos puntos y vemos cuáles son los extremos y hemos acabado.
+	
+	
+\end{ejer}
+
+
+\begin{ejer}
+	Tomemos la gráfica  $G\{(x,1/x): x > 0\}$ (gráfica de la función $y= 1/x$) .Probar que existe un punto en G tal que 
+\[
+d((0,0),(x,1/x) = Min\{d((0,0),(y,1/y) : y > 0\}
+\]
+
+Para ello, debemos definir
+\[
+f(y) = d((0,0),(x,1/x)) \ \ continua
+\]
+Si nos enfrentaramos a un ejercicio donde el conjunto no es compacto, un "truco" a seguir es coger un punto del conjunto al azar, y trazar la bola cerrada de distancia la del (0,0) a ese punto. Al tomar la interseccion entre el conjunto y esa bola cerrada, tenemos un conjunto cerrado, que nos aseguramos que contiene el mínimo.
+\end{ejer}
 \end{document}	
