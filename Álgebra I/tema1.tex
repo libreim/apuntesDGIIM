@@ -2956,5 +2956,72 @@ Durante todo el apartado nos referiremos a $x, y,...$ como elementos de $M$ y a 
 	\item $\forall i < r < n,$ entonces $\sum_i^n x_i = (\sum_{i=0}^{r}x_i) + (\sum_{i=r+1}^{n}x_i) $
 	\item $ (\sum_i^n a_i)(\sum_j^m x_i) = \sum_i^n \sum_j^m a_ix_j$
 \end{nlist}
+
+Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
+\begin{itemize}
+	\item $[x]+[y] = [x+y]$
+	\item $a[x] = [ax] = [a][x]$
+\end{itemize}
+
+\begin{ndef}[Submódulos]
+	Si M es un A-Módulo, un submódulo es $\emptyset \ne N \subseteq M$ que es cerrado para sumas ($x,y\in N \implies x+y \in N$) y para múltiplos($a\in A,\ x\in N \implies ax\in N$).
+	
+	Con estas operaciones de suma y producto restringidas, $N$ también es un A-módulo. Por tanto, todo submódulo es un módulo.
+\end{ndef}
+\begin{nprop}
+	Si $M_1,...,M_r \subseteq M$ son submódulos, existe siempre un módulo que los contiene. Se le llama le submódulo suma y se representa como:
+	\[
+	\sum_i^r M_i =\{\sum_i^r x_i : x_i \in M_i\}
+	\]
+	Además, se puede usar la conmutatividad de la suma y la asociatividad generalizada.
+
+\end{nprop}
+\begin{ndef}[Suma directa]
+	Se dice que la suma de $M_1,...,M_r$ es directa y se representa:
+	\[
+	\sum_i^r = \oplus_i^r M_i \ si \ (\sum_i^r x_i =  \sum_i^r y_i) \ con \ x_i,y_i \in M_i \iff xi = y_i	\]
+\end{ndef}
+\begin{ndef}[Sistema de generadores]
+	Si $x\in M$, siempre existe un submódulo de $M$ que es el menor submódulo que lo contiene. Más aún, que contiene al elemento $x$ y está contenido en cualquier otro submódulo que contenga a $x$. Se suele denotar como $Ax = \{ax : a \in A\}$ pues es donde están todos los múltiplos del elemento. Se le llama el submódulo cíclico de x. También se suele notar "(x)".
+\end{ndef}
+\begin{ndef}
+	Si $x_1,...,x_r \in M$, también existe un módulo $M$ que es el más pequeño módulo que los contiene. Este es:
+	\[
+	\sum Ax_i = \{\sum a_ix_i : a_i \in A\}
+	\]
+	Estos son combinaciones lineales de $x_1,...,x_r$, y se le llama submódulo generado por $x_1,...,x_n$, y se suele representar como $(x_1,...,x_n)$
+\end{ndef}
+\begin{nota}
+	Si $N=(x_1,...,x_r)$ y $N'= (y_1,...,y_s)$, entonces
+	\[
+	N \subseteq N' \iff x_i \ es \ c.l. \ de \ y_1,...,y_s \ \forall i
+	\]
+	Y $N=N'\iff$ todo $x_i$ es c.l. de $y_1,...,y_s$ y todo $y_j$ es c.l. de $x_1,...,x_r$
+\end{nota}
+\begin{ndef}
+	Si $x_1,...,x_r\in M : M = (x_1,...,x_r)$ se dice que $x_1,...,x_r$ es un sistema de generadores de M  y se dice que M es finitamente generado.
+\end{ndef}
+\begin{nprop}
+	Si A es un dominio euclídeo, todo submódulo de un módulo finitamente generado es finitamente generado.
+\end{nprop}
+\begin{ndef}
+	Un sistema de generadores $x_1,...,x_r$ de un módulo $M$ se dice que es una base si se verifica:
+	\[
+	\sum_i^r a_i x_i = \sum_i^n b_i x_i \iff a_i = b_i \ \forall i
+	\]
+	O, equivalentemente:
+	\[
+	\sum_i^r a_ix_i = 0 \iff a_i  = 0  \ \forall i
+	\]
+\end{ndef}
+\begin{ndef}[Linealmente independientes]
+	Un conjunto de elementos de un A-Módulo $x_1,...,x_r$ se dice que son l.i. si la única c.l. de ellos que da como resultado 0 es aquella en la que todos los coeficientes son cero.
+\end{ndef}
+\begin{nota}
+	En los A-módulos, es falso decir que todo A-módulo tiene una base o que todo sistema de generadores contiene a una base. Tampoco podemos hacer siempre que un conjunto linealmente independiente se pueda extender a una base.
+\end{nota}
+\begin{ndef}[Módulo Libre]
+	Un módulo que contenga una base se dice que es un módulo libre.
+\end{ndef}
 \end{document}
 
