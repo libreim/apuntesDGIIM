@@ -590,4 +590,37 @@ f(y) = d((0,0),(x,1/x)) \ \ continua
 \]
 Si nos enfrentaramos a un ejercicio donde el conjunto no es compacto, un "truco" a seguir es coger un punto del conjunto al azar, y trazar la bola cerrada de distancia la del (0,0) a ese punto. Al tomar la interseccion entre el conjunto y esa bola cerrada, tenemos un conjunto cerrado, que nos aseguramos que contiene el mínimo.
 \end{ejer}
+
+
+\begin{ejer}[26 de la relacion de derivabilidad]
+	Sea $\Omega \subset \R^n$ abierto y acotado . Sea $u \in \varphi(\bar{\Omega} \cup \varphi^2(\Omega)$.
+	
+	Apartado a:
+	
+	$\triangle u(x):= \sum_i^n \frac{\partial^u}{\partial x_i^2}(x) < 0 \ \forall x \in \Omega$ es la traza. Entonces, u no puede alcanzar su mínimo absoluto en $\bar{\Omega}$ en un punto de $\Omega$.
+	
+Nota:
+	$\Omega \subset \R^n$ abierto y acotado $\implies \begin{rcases}
+	cerrado \ + \ acotado = \ compacto \\
+	u \in \mathcal{C}(\bar{\Omega})
+\end{rcases}\implies $ u alcanza su maximo y minimo en $\bar{\Omega}$
+
+
+\begin{proof}[Solución apartado a:] \textbf{Este ejercicio es trivial.}\\
+	Supongamos que fuese falso, es decir:supongamos que el mínimo absoluto de $u$ en $\bar{\Omega}$ se alcanza en $a\in \Omega$ : $u(a) = min\{u(x): x \in \bar{\Omega}\}$, esto implica que $\exists r > 0 : B(a,r) \subset \Omega $ y $u(x) \geq u(a) \forall x \in B(a,r) \implies a$ es un mínimo relativo de u, por lo que:
+	\[
+	\frac{\partial u}{\partial x_i}(a) = 0 \quad \forall i = 1,...,N
+	\]
+	\[
+	\frac{\partial^2 u}{\partial x_i^2}(a) \geq 0 \implies \sum_i^n \frac{\partial^2u}{\partial x_i^2} \geq 0
+	\]
+	Y esto es una contradicción.
+\end{proof} 
+
+Apartado b:
+
+Si el $\triangle u(x) \leq 0 \quad \forall x \in \Omega \implies (min)_{x\in \bar{\Omega}} \ \ u(x) = (min)_{x \in \partial \Omega}  \ \ u(x)$.
+
+
+\end{ejer}
 \end{document}	
