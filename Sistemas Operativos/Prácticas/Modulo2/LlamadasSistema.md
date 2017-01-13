@@ -405,10 +405,10 @@ DIR *fdopendir(int fd);
 Crea un directorio de estructura tipo *DIR*, llamada *stream* de directorio,
 correspondiente al *pathname* dado por *name*. Devuelve el puntero a la estructura
 creada. El *stream* está posicionado en la primera entrada del directorio.
-El tipo *DIR* se encuentra en `<dirent.h>.
+El tipo *DIR* se encuentra en `<dirent.h>`.
 
 La función **fdopendir** es como **opendir** pero crea un *DIR* a partir del
-*fd* dado como argumento. EL *fd* es usadp internamente por la estructura
+*fd* dado como argumento. EL *fd* es usado internamente por la estructura
 y no debería ser modificado por el programa.
 
 ***Return:*** En caso de éxito, se devuelve el puntero a DIR.
@@ -426,7 +426,7 @@ struct dirent *readdir(DIR *dirp);
 
 Devuelve un puntero a una *struct dirent* representando la siguiente entrada en el
 stream del directorio proporcionado por el puntero *dirp*. La lectura se realiza    
-donde est situado el puntero de lectura del directorio dado. Dicho puntero pasa
+donde esté situado el puntero de lectura del directorio dado. Dicho puntero pasa
 a la siguiente entrada tras el proceso. Devuelve NULL al final del stream del
 directorio o si tuvo lugar un error.
 
@@ -457,7 +457,7 @@ valores de d_type son:
 - DT_SOCK     : This is a UNIX domain socket.
 - DT_UNKNOWN  : The file type is unknown.
 
-***Return:*** En caso de éxito, se el puntero a *dirent*. En caso de error, se devuelve -1 y
+***Return:*** En caso de éxito, se devuelve el puntero a *dirent*. En caso de error, se devuelve -1 y
 *errno* indica el correspondiente error.
 
 ***
