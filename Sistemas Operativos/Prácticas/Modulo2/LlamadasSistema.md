@@ -78,7 +78,8 @@ recomienda acceder a esta lista de forma independiente por posibles diferencias 
 
 ***
 
-# Sesion 1: Entradas y Salidas de Datos #
+\newpage
+# Sesión 1: Entradas y Salidas de Datos #
 
 En esta sesión se trabajan aquellas llamadas al sistema que permiten el manejo de archivos
 y la entrada y salida de datos mediante los mismos.
@@ -338,7 +339,8 @@ siendo los 12 últimos dedicados a permisos y los 4 anteriores al tipo de archiv
 
 ***
 
-# Sesion 2: Permisos y Directorios #
+\newpage
+# Sesión 2: Permisos y Directorios #
 
 ## umask ##
 
@@ -405,10 +407,10 @@ DIR *fdopendir(int fd);
 Crea un directorio de estructura tipo *DIR*, llamada *stream* de directorio,
 correspondiente al *pathname* dado por *name*. Devuelve el puntero a la estructura
 creada. El *stream* está posicionado en la primera entrada del directorio.
-El tipo *DIR* se encuentra en `<dirent.h>.
+El tipo *DIR* se encuentra en `<dirent.h>`.
 
 La función **fdopendir** es como **opendir** pero crea un *DIR* a partir del
-*fd* dado como argumento. EL *fd* es usadp internamente por la estructura
+*fd* dado como argumento. EL *fd* es usado internamente por la estructura
 y no debería ser modificado por el programa.
 
 ***Return:*** En caso de éxito, se devuelve el puntero a DIR.
@@ -426,7 +428,7 @@ struct dirent *readdir(DIR *dirp);
 
 Devuelve un puntero a una *struct dirent* representando la siguiente entrada en el
 stream del directorio proporcionado por el puntero *dirp*. La lectura se realiza    
-donde est situado el puntero de lectura del directorio dado. Dicho puntero pasa
+donde esté situado el puntero de lectura del directorio dado. Dicho puntero pasa
 a la siguiente entrada tras el proceso. Devuelve NULL al final del stream del
 directorio o si tuvo lugar un error.
 
@@ -457,12 +459,13 @@ valores de d_type son:
 - DT_SOCK     : This is a UNIX domain socket.
 - DT_UNKNOWN  : The file type is unknown.
 
-***Return:*** En caso de éxito, se el puntero a *dirent*. En caso de error, se devuelve -1 y
+***Return:*** En caso de éxito, se devuelve el puntero a *dirent*. En caso de error, se devuelve -1 y
 *errno* indica el correspondiente error.
 
 ***
 
-# Sesion 3: Procesos Hijos #
+\newpage
+# Sesión 3: Procesos Hijos #
 
 ## fork ##
 
@@ -610,6 +613,7 @@ de -1.
 
 ***
 
+\newpage
 # Sesión 4: Archivos Especiales, Cauces y Dup #
 
 ## mknod ##
@@ -690,7 +694,7 @@ archivo (no utilizado en dicho momento por ningún proceso) dicho archivo es
 eliminado. Si el archivo está siendo utilizado por algún proceso, permanecerá
 en el sistema hasta que finalice el último proceso que lo utiliza.
 
-Si el nombre es un *enlace simbólico* se remueve.
+Si el nombre es un *enlace simbólico*, este se elimina.
 
 Si el nombre se refiere a un socket, fifo o dispositivo, el nombre es eliminado
 pero puede seguir siendo utilizado por los procesos que lo tienen abierto.
@@ -754,10 +758,11 @@ no utilizado.
 Por otro lado, **dup2** hace que *newfd* sea el fd en el que se copie *oldfd*. Nótese lo siguiente:
 
 - Si *oldfd* no es un fd válido, entonces la llamada falla y *newfd* no es cerrado.
+- Si *newfd* ya estaba abierto, este es cerrado antes de ser reusado
 - Si *oldfd* es un fd válido y *newfd* tiene el mismo valor que *oldfd*, entonces **dup2**
   no hace nada y devuelve *newfd*.
 
-Despúes de uuna llamada exitosa de algunas de estas llamadas al sistema, el antiguo y el nuevo desciptor
+Despúes de una llamada exitosa de algunas de estas llamadas al sistema, el antiguo y el nuevo desciptor
 de archivo pueden ser usados independientemente.
 
 **dup3** es lo mismo que **dup2** salvando las posibles banderas.
@@ -774,6 +779,7 @@ dup2(fd[1],STDOUT_FILENO);
 
 ***
 
+\newpage
 # Sesión 5: Señales #
 
 En esta sección se tratan las llamadas al sistema relacionadas con el control y gestión de señales.
@@ -1019,6 +1025,7 @@ EINTR que indica que la llamada fue interrumpida por una señal).
 
 ***
 
+\newpage
 # Sesión 6: fcntl y Proyecciones de Memoria #
 
 ## fcntl ##
@@ -1200,6 +1207,7 @@ devuelve -1 y *errno* toma el valor correspondiente.
 
 ***
 
+\newpage
 # Sesión 7: Cliente-Servidor #
 
 ## getpid ##
