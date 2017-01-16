@@ -98,7 +98,7 @@ int open(const char *pathname, int flags, mode_t mode);
 int creat(const char *pathname, mode_t mode);
 ~~~
 
-Dado un *pathname* de un archivo, **open** devuelve el *fd* del mismo para
+Dado el *pathname* de un archivo, **open** devuelve el *fd* del mismo para
 poderlo utilizar con posteriores llamadas al sistema como **read**, **write**,
 **lseek**, etc. El *fd* sería el menor entero positivo no utilizado para esta
 labor.
@@ -137,7 +137,7 @@ aplicados mediante una operación OR lógica. Algunos *flags* son:
       escritura y ejecución.
     + S_IRUSR = 00400 = *user* tiene permiso de lectura.
     + S_IWUSR = 00200 = *user* tiene permiso de escritura.
-    + S_IXUSR = 00100 = *user*espondiente. tiene permiso de ejecución.
+    + S_IXUSR = 00100 = *user* tiene permiso de ejecución.
     + S_IRWXG = 00070 = *group* tiene permisos de lectura, escritura y ejecución.
     + S_IRGRP = 00040 = *group* tiene permiso de lectura.
     + S_IWGRP = 00020 = *group* tiene permiso de escritura.
@@ -234,7 +234,7 @@ o hole).
 - SEEK_SET : El *offset* del archivo se cambia al valor dado por *offset*.
 - SEEK_CUR : El *offset* del archivo se mantiene en el sitio actual más el número de
   Bytes indicado por *offset*.
-- SEEK_END : The *offset* se cambia al final del archivo más el número de Bytes
+- SEEK_END : El *offset* se cambia al final del archivo más el número de Bytes
   indicado por *offset*.
 - SEEK_DATA : Adjusta el *offset* a la siguiente localización del archivo mayor o igual
   que el dato contenido por *offset*. Si *offset* apunta a datos, entonces se asigna
@@ -260,7 +260,7 @@ int close(int fd);
 ~~~
 
 **close** cierra un descriptor de archivo de forma que este ya no refiere a ningún archivo.
-Cuaquier bloqueo en el archivo indicado por *fd* es removido.
+Cualquier bloqueo en el archivo indicado por *fd* es eliminado.
 
 Si el *fd* es el último descriptor de archivo apuntando a un archivo abierto por **open**
 los recursos asociados al mismo son liberados. Si, además, el archivo había sido objetivo
@@ -313,7 +313,7 @@ struct stat {
     blkcnt_t  st_blocks;  /* Número de bloques de 512B del archivo */
     time_t    st_atime;   /* Tiempo del último acceso */
     time_t    st_mtime;   /* Tiempo de la última modificación */
-    time_t    st_ctime;   /* Tiempo del último cambio de estado              */
+    time_t    st_ctime;   /* Tiempo del último cambio de estado */
 };
 ~~~
 
@@ -328,7 +328,7 @@ utilizando *st_mode* del *stat* obtenido:
 - S\_ISFIFO(st_mode) : Comprueba si es una cauce con nombre (FIFO).
 - S\_ISSOCK(st_mode) : Comprueba si es un socket.
 
-El valor *st_mode* codifica además los permisos del archivo, independientemente del
+El valor *st_mode* codifica también los permisos del archivo, independientemente del
 tipo de archivo que se trate, pudiendo comprobar si el archivo tiene determinados
 permisos mediante `st_mode & S_IPERMISO`, donde S_IPERMISO responde a un posible
 permiso de los indicados en **open**. *st_mode* utiliza 16 bits para esta codificación
