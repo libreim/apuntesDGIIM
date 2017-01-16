@@ -490,7 +490,7 @@ donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la ma
 \end{nlist}
 \end{nth}
 \begin{proof}
-	Lo vamos a hacer para una función $f:A \subset \R^n \to \R$ y lo aplicamos luego a cada coordenada de f.
+	Lo vamos a hacer para una función $f:A \subset \R^n \to \R$ y lo aplicamos luego a cada coordenada de $f$.
 	
 	Consideremos la función $h:[0,1] \to \R$ definida por $h(t) = f((1-t)a +tb) \ \ \forall t \in [0,1]$ es continua en [0,1] y por la regla de la cadena es derivable en ]0,1[ con:
 	\[
@@ -505,7 +505,7 @@ donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la ma
 \end{proof}
 
 \begin{nth}[Matriz Hessiana]
-	Sea $f:A\subset \R^n \to \R$ dos veces diferenciable en el conjunto abierto A. Entonces, la matriz $D^2f(x): \R^nx\R^n \to R$ en la base canónica está dada por:
+	Sea $f:A\subset \R^n \to \R$ dos veces diferenciable en el conjunto abierto A. Entonces, la matriz $D^2f(x): \R^n\times\R^n \to \R$ en la base canónica está dada por:
 	\[
 	\begin{pmatrix}
  \frac{\partial^2 f}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_1\partial x_n} \\
@@ -517,7 +517,7 @@ donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la ma
 \end{nth}
 
 \begin{nprop}
-	Si $f:A \to \R^m$ es dos veces diferenciable en el conjunto abierto A con $D^2 f$ continua, entonces $D^2f$ es simétrica, es decir:
+	Si $f:A \to \R^m$ es dos veces diferenciable en el conjunto abierto A con $D^2 f(x)$ continua $\forall x\in A$, entonces $D^2f(x)$ es simétrica $\forall x \in A$, es decir:
 	\[
 	\frac{\partial^2 f_k}{\partial x_i \partial x_j} =  \frac{\partial^2 f_k}{\partial x_j \partial x_i}
 	\]
@@ -555,29 +555,29 @@ Para el caso del mínimo, reemplazamos negativa por positiva. La matriz hessiana
 
 \section{Teorema de la función Inversa}
 \begin{nth}[Teorema de la función inversa. Caso general.]
-	Sea $A \subset \R^n$ abierto y $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
+	Sea $A \subset \R^n$ abierto, $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
 $Df(a): \R^n \to \R^n$ es invertible \\
 $\implies \exists U\subset A$ abierto y $\exists V$ abierto en $\R^n$ tales que $a\in U $, $f(a) \in V$ y $f|_U : U \to V$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: V \to U$ es de clase 1 y además:
 	\[
 	Dg(f(a)) = (Df(a))^{-1}
 	\]
-Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0)$
+Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0$
 Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^{-1}$
 \end{nth}
 
 \section{Teorema de la función implícita}
 \begin{nth}[Teorema de la función implícita]
-	Sea $A \subset \R^n x\R^m$ abierto y no vacío. Sea $F: A \to \R^n$ una función de clase 1. Fijando un $(x_0,y_0) \in A$ tal que $F(x_0,y_0) = 0$. Si:
+	Sea $A \subset \R^n \times\R^m$ abierto y no vacío. Sea $F: A \to \R^n$ una función de clase 1. Fijando un $(x_0,y_0) \in A$ tal que $F(x_0,y_0) = 0$. Si:
 	\[
-	det(\begin{pmatrix}
+	det\begin{pmatrix}
  \frac{\partial F_1}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_1}{\partial x_n}(x_0,y_0) \\
  \cdots& & \cdots\\
  
  \frac{\partial F_n}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_n}{\partial x_n} (x_0,y_0)
-\end{pmatrix}) \ne 0
+\end{pmatrix} \ne 0
 	\]
 	
-	Entonces, existe $U$ un entorno abierto de $x_0$ en $\R^n$ y también existe $V$ un entorno abierto de $y_0$ en $\R^m$ tal que $UxV \subset A$ y $\forall y \in V \ \ \exists! x \in U : F(x,y) = 0$
+	Entonces, existe $U$ un entorno abierto de $x_0$ en $\R^n$ y también existe $V$ un entorno abierto de $y_0$ en $\R^m$ tal que $U\times V \subset A$ y $\forall y \in V \ \ \exists! x \in U : F(x,y) = 0$
 \end{nth}
 
 
