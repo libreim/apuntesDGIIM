@@ -601,7 +601,7 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	
 	$f$ presenta un mínimo relativo en $a$ condicionado a $S$, luego
 	\[
-	\exists \varepsilon_0 >0 \text{ tal que } B(a, \varepsilon_0) \subseteq A \text{ y } f(a) \le f(x) \;\;\forall x\in B(a, \varepsilon_0)
+	\exists \varepsilon_0 >0 \text{ tal que } B(a, \varepsilon_0) \subseteq A \text{ y } f(a) \le f(x) \;\;\forall x\in B(a, \varepsilon_0)\cap S
 	\]
 	\boxed{Paso\hspace{1mm} 1}\hfill\\
 	Afirmamos que $\forall \varepsilon\in (0,\varepsilon_0)\ \exists M>0$ tal que
@@ -635,6 +635,27 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	
 	Y tomando límites:
 	\[0 \ge \sum_{i=1}^k g_i(x^*) \implies g_i(x^*) = 0 \ \ \forall i=1,\dots,k \implies x^*\in S\]
+	
+	Es decir, $x^*\in B(a,\epsilon_0)\cap S \implies f(x^*) \ge f(a)\quad (*)$. Sabemos que
+	\[
+		f(x_{\sigma(n)}) \le f(a) - \epsilon^2 -\underbrace{n\sum_{i=1}^k g_i(x_{\sigma(n)})^2}_{\ge 0 \text{ por (1)}}
+	\]
+	
+	Luego,
+	\[
+	f(x_{\sigma(n)}) \le f(a) - \epsilon^2 \implies f(x^*) \le f(a) - \epsilon^2 < f(a)
+	\]
+	
+	lo cual es una contradicción con (*), por lo que \textbf{queda probado el paso 1}.\\
+	
+	\boxed{Paso\hspace{1mm} 2}\hfill\\
+	Veamos que $\forall \epsilon\in (0,\epsilon_0)\ \exists x^{\epsilon\in A}$ que verifica que $\abs{x-a} < \epsilon$ y $\exists(\lambda^{\epsilon}_0, \dots, \lambda_k^{\epsilon})\in \mathbb{R}^{k+1}$ tal que
+	\[
+		\begin{cases}
+	\abs{(\lambda_0^{\epsilon}, \dots, \lambda_k^{\epsilon})} = 1\\
+	\lambda_0^{\epsilon}\left[\frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j)\right] + \sum_{i=1}^k \lambda_i^\epsilon \frac{\partial g_i}{\partial x_j}(x^{\epsilon})
+\end{cases}
+	\]
 	
 \end{proof}
 
