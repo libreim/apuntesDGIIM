@@ -143,6 +143,9 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+% Primera derivada parcial: \pder[f]{x}
+\newcommand{\pder}[2][]{\frac{\partial#1}{\partial#2}}
+
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -704,4 +707,56 @@ Ahora, tenemos que aclarar cuál de los menores vamos a coger de la matriz (1   
 Calcular $y'(0)$ e $y''(0)$ con y la función implícita una vez que la hemos calculado.
 \end{nlist}
 \end{proof}
+
+\begin{ejer}[14 de la relación de derivabilidad]
+Sea $F:\mathbb{R}^2 \longrightarrow \mathbb{R}$ la función dada por $F(x,y) = y + cosx + x + e^y \quad \forall(x,y)\in \mathbb{R}^2$.
+
+\textbf{Apartado d)}. Probar que $F(x,y)=2$ define a $y$ como función implícita diferenciable $C^{\infty}$ en un entorno de $(0,0)$. Además, calcular $y'(0)$ e $y''(0)$.
+
+\begin{proof}[Solución]
+Definimos $H:\mathbb{R}^2 \longrightarrow \mathbb{R}$ dada por $H(y,x)=F(y,x)-2$.
+
+\textbf{Observación 1.} $H$ es $C^{\infty}$, por ser suma de funciones $C^{\infty}$.\\
+\textbf{Observación 2.} $H(0,0) = 0 + cos0 + 0 + e^0 - 2 = 0$. Esto es condición indispensable para poder aplicar el \textit{teorema de la función implícita}.\\
+\textbf{Observación 3.} Vemos el conjunto de definición de $H$ como $\mathbb{R}^2 = \mathbb{R} \times \mathbb{R}$, donde la primera componente es "\textit{el parámetro"} ($y$), y la segunda componente es \textit{"la variable"} ($x$).
+
+El siguiente paso es comprobar que $\displaystyle \det \begin{pmatrix}
+	\pder[H]{y}(0,0)\\
+\end{pmatrix} \ne 0$:
+
+$$\pder[H]{y}(y,x) = 1 + e^y;\quad \det \begin{pmatrix}
+	\pder[H]{y}(0,0)\\
+\end{pmatrix} = \det \left( 1 + e^0 \right) = \det (2) = 2 \ne 0.$$
+
+Ahora, estamos en las condiciones de aplicar el \textbf{teorema de la función implícita} a $H$:
+$\exists U$ entorno abierto de $0$ en $\mathbb{R}$, $\exists V$ entorno abierto de $0$ en $\mathbb{R}$, tal que:
+
+\begin{enumerate}
+\item $U\times V \subseteq \mathbb{R}^2$
+\item $\forall x \in V \ \exists ! \ y \in U\ tal\ que \ H(y,x) = 0$
+\end{enumerate}
+
+Es decir, podemos definir la función $y:V \longrightarrow U$ que a cada $x\in V$ le hace corresponder un $y(x)\in U$, de tal forma que $H(y(x),x) = 0$. Además, el teorema garantiza que $y$ es $C^{\infty}$ por serlo $H$. Por tanto, hemos probado que $F(x,y)=2$ define a $y$ como función implícita $C^{\infty}$ en un entorno de $(0,0)$.
+
+\underline{Calculamos ahora $y'(0)$}. Sabemos que $y(0)=0$, pues $H(0,0) = 0$. También sabemos que, dado $x\in V$, la pareja $(y(x),x)$ es solución de la ecuación $H(y,x)=0$. Por tanto, se tiene que:
+\vspace{0.5em}
+$$y(x) + cosx + x + e^{y(x)} - 2 = 0$$
+
+Derivamos ahora la función con respecto a "la variable" $x$, obteniendo:
+\vspace{0.5em}
+$$y'(x) - senx + 1 + e^{y(x)}\cdot y'(x) = 0$$
+
+Por último, evaluamos en el punto $x=0$, que sabemos que es solución:
+$$y'(0) - sen0 + 1 + e^{y(0)}\cdot y'(0) = 0 \Rightarrow y'(0) + 1 + y'(0) = 0 \Rightarrow \bm{y'(0) = \frac{-1}{2}}$$
+
+\underline{Calculamos ahora $y''(0)$}. Sabiendo que $y'(0) = -1/2$, volvemos a derivar la expresión anterior, obteniendo:
+\vspace{0.5em}
+$$y''(x) - cosx + e^{y(x)}\cdot y''(x) + e^{y(x)}\cdot y'(x)= 0$$
+
+Por último, evaluamos en el punto $x=0$, que sabemos que es solución:
+$$y''(0) - cos0 + e^{y(0)}\left( y''(0) + y'(0) \right) = 0 \Rightarrow y''(0) - 1 + y''(0) - \frac{1}{2} = 0 \Rightarrow \bm{y''(0) = \frac{3}{4}}$$
+\end{proof}
+\end{ejer}
+
+
 \end{document}	
