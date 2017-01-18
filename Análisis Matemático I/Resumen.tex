@@ -581,9 +581,62 @@ Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^
 \end{nth}
 
 
+\section{Teorema de Lagrange.}
 
+\begin{nth} Sean $\emptyset \ne A \subset \mathbb{R}^N$ un abierto, $f\in \mathcal{C}^1(A, \R)$, $g_1, \dots, g_k \in \mathcal{C}^1(A,\R)$ ($k$ restricciones). Llamo $S = \{ x\in A :\ g_1(x) = \dots = g_k(x) = 0 \}$ y supongo $1\le k < N$.
+	
+Sea $a \in S$ tal que $f$ presenta un mínimo (respectivamente máximo) relativo condicionado a $S$. Entonces $\exists \lambda_0, \dots, \lambda_k\in \R$ que verifican:
 
+\begin{nlist}
+	\item $(\lambda_0, \dots, \lambda_k) \ne (0, \dots, 0)$, $\lambda_0 \ge 0$
+	\item $\lambda_0 \displaystyle\frac{\partial f}{\partial x_j}(a) + \sum_{i=1}^k \lambda_i \displaystyle\frac{\partial g_i}{\partial x_j} = 0 \quad \forall j=1,\dots, N$
+\end{nlist}
 
+Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ entonces puedo escoger $\lambda_0 = 1$.
+\end{nth}
+\begin{nota}Demostraremos el teorema para el caso en el que $f$ presente un mínimo relativo. Para la prueba con máximo en lugar de mínimo, basta aplicar el resultado a $-f$.
+	\end{nota}
+
+\begin{proof}[Demostración (método de penalización)]\hfill\\
+	
+	$f$ presenta un mínimo relativo en $a$ condicionado a $S$, luego
+	\[
+	\exists \varepsilon_0 >0 \text{ tal que } B(a, \varepsilon_0) \subseteq A \text{ y } f(a) \le f(x) \;\;\forall x\in B(a, \varepsilon_0)
+	\]
+	\boxed{Paso\hspace{1mm} 1}\hfill\\
+	Afirmamos que $\forall \varepsilon\in (0,\varepsilon_0)\ \exists M>0$ tal que
+	\[
+		f(x) + \abs{x-a}^2 + M\sum_{i=1}^k g_i(x)^2 > f(a)\ \forall x \text{ tal que } \abs{x-a} = \epsilon
+	\]
+	
+	Para probarlo, supongamos lo contrario. Entonces
+	\[
+		\exists\epsilon>0\ \ \forall M>0\ \ \exists x\in A : \abs{x-a} = \epsilon \text{ y } f(x) + \abs{x-a}^2 + M \sum_{i=1}^k g_i(x)^2 \le f(a)
+	\]
+	
+	Tomando $M = n\in \mathbb{N}$,
+	\[
+	\exists x_n\in A \text{ t.q. } \begin{cases}
+	\abs{x_n-a} = \epsilon\\
+	f(x_n) + \abs{x_n-a}^2+n\sum_{i=1}^k g_i(x_n)^2 \le f(a)
+\end{cases}
+	\]
+	
+	$\{x_n\}$ está acotada, pues $\abs{x_n-a} = \epsilon \ \ \forall n\in \mathbb{N}$. Luego existe $\{x_{\sigma(n)}\}$ sucesión parcial de $\{x_n\}$ tal que $\{x_{\sigma(n)}\}\to x^*$, y se verifica que $\abs{x^*-a} = \epsilon$ ($\abs{x^*-a} = \lim \abs{x_{\sigma(n)}-a} = \epsilon$).
+	
+	Reescribiendo tenemos que 
+	\[f(x_n) + \abs{x_n-a}^2-f(a) \le -n\sum_{i=1}^k g_i(x_n)^2\quad(1)
+	\]
+	
+	Dividiendo por $-n$ y tomando para cada $n$ $\sigma(n)$:
+	\[
+		\frac{f(x_\sigma(n))}{-\sigma(n)} + \frac{\epsilon^2}{-\sigma(n)}-\frac{f(a)}{-\sigma(n)} \ge \sum_{i=1}^k g_i(x_{\sigma(n)})^2
+	\]
+	
+	Y tomando límites:
+	\[0 \ge \sum_{i=1}^k g_i(x^*) \implies g_i(x^*) = 0 \ \ \forall i=1,\dots,k \implies x^*\in S\]
+	
+\end{proof}
 
 
 
