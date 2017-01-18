@@ -657,7 +657,7 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 \end{cases}
 	\]
 	
-	Recordemos: $f(a) = f(a)+\abs{a-a}^2+M\displaystyle\sum_{i=1}^k g_i(a)^2$.
+	Recordemos: $f(a) = f(a)+\abs{a-a}^2+M\displaystyle\sum_{i=1}^k g_i(a)^2$ (porque $a\in S$).
 	
 	Definimos $F(x) := f(x) + \abs{x-a}^2 + M\displaystyle\sum_{i=1}^k g_i(x)^2 \in \mathcal{C}^1$. Por el teorema de Weierstrass, $\exists \min_{\bar{B}(a,\epsilon)} F \implies x^{\epsilon}\in \bar{B}(a,\epsilon)$ tal que
 	\[
@@ -672,8 +672,13 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	\left[\frac{\partial f}{\partial x_j}(x^{\epsilon}) + 2(x_j^{\epsilon}-a_j)\right]+\sum_{i=1}^k M2g_i(x^{\epsilon})\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\quad \forall j=1,\dots,N
 	\]
 	
-	Ahora ajustamos las constantes
+	Ahora ajustamos las constantes, dividiendo por el módulo del vector de los candidatos a $\lambda_i$, que es $\sqrt{\underbrace{1}_{\lambda_0}+\underbrace{\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}_{\lambda_i}}$  ($\lambda_i$ son los candidatos).
 	
+\[
+	\frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\left( \frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j) \right)+\sum_{i=1}^k \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\ \ \forall j=1,\dots, N
+\]
+	
+	Ahora, escogemos $\lambda_0^{\epsilon} = \frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}$, $\lambda_i^{\epsilon} = \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\quad \forall i = 1,\dots,k$ y se verifica que $\abs{(\lambda_0^{\epsilon},\dots,\lambda_k^{\epsilon})} = 1$, y además $\lambda_0^\epsilon > 0$.
 \end{proof}
 
 
