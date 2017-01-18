@@ -653,14 +653,28 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	\[
 		\begin{cases}
 	\abs{(\lambda_0^{\epsilon}, \dots, \lambda_k^{\epsilon})} = 1\\
-	\lambda_0^{\epsilon}\left[\frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j)\right] + \sum_{i=1}^k \lambda_i^\epsilon \frac{\partial g_i}{\partial x_j}(x^{\epsilon})
+	\lambda_0^{\epsilon}\left[\displaystyle\frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j)\right] + \displaystyle\sum_{i=1}^k \lambda_i^\epsilon \frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0 \ \ \forall j=1,\dots,N
 \end{cases}
 	\]
 	
+	Recordemos: $f(a) = f(a)+\abs{a-a}^2+M\displaystyle\sum_{i=1}^k g_i(a)^2$.
+	
+	Definimos $F(x) := f(x) + \abs{x-a}^2 + M\displaystyle\sum_{i=1}^k g_i(x)^2 \in \mathcal{C}^1$. Por el teorema de Weierstrass, $\exists \min_{\bar{B}(a,\epsilon)} F \implies x^{\epsilon}\in \bar{B}(a,\epsilon)$ tal que
+	\[
+	F(x^{\epsilon}) = \min_{\bar{B}(a, \epsilon)} F \left( \le \underbrace{F(a)}_{=f(a)} \underbrace{<F\restriction_{\partial B(a,\epsilon)} (x)}_{\text{Paso 1}}\implies x^{\epsilon}\in B(a,\epsilon) \text{ (es interior)}  \right)
+	\]
+	
+	Por tanto $x$ es un mínimo relativo de $F$ en $B(a,\epsilon)$, que es un abierto, luego \[\displaystyle \frac{\partial F}{\partial x_j}(x^{\epsilon}) = 0<\quad \forall j=1,\dots, N\] 
+	
+	Y vemos que por el paso 1, además:
+	
+	\[
+	\left[\frac{\partial f}{\partial x_j}(x^{\epsilon}) + 2(x_j^{\epsilon}-a_j)\right]+\sum_{i=1}^k M2g_i(x^{\epsilon})\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\quad \forall j=1,\dots,N
+	\]
+	
+	Ahora ajustamos las constantes
+	
 \end{proof}
-
-
-
 
 
 
