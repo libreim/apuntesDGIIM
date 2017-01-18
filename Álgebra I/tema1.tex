@@ -3023,5 +3023,88 @@ Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
 \begin{ndef}[Módulo Libre]
 	Un módulo que contenga una base se dice que es un módulo libre.
 \end{ndef}
+
+\begin{ndef}
+	Si M, N son dos módulos, y $\varphi:M \to N$ una aplicación, la llamamos lineal u homomorfismo entre módulos si:
+	\[
+	\begin{rcases}
+	\varphi(x+y) = \varphi(x) + \varphi(y)\\
+	\varphi(ax) = a\varphi(x)
+\end{rcases} \iff \varphi(\sum_i^n a_ix_i) = \sum_i^n a_i \varphi(x_i)
+	\]
+	También puede ser un monomorfismo(si y solo si su núcleo es 0), epimorfismo o un isomorfismo.
+\end{ndef}
+\begin{ejemplo}
+	Si $m\in A$, $A/(m)$ es un A-módulo ( $[a]+[b] = [a+b]$ y $[a]b = [ab]$. Si A tiene unicidad de cocientes y restos($\ent,K[x]$), entonces $A_m$ es un A-módulo con $r+r' = R_m(r+r')$ y $ar = R_m(ar)$.
+	
+	Recordemos que existe un isomorfismo entre $A/(m) \cong A_m$ que lleva $[a] \mapsto R_m(a)$
+\end{ejemplo}
+
+\begin{ejemplo}[2]
+	Si $M_1,...,M_n$ son A-módulos, su "producto" $M_1 \times ... \times M_n =  \prod M_i$ es un A-módulo con $(x_1,...,x_n) + (y_1,...,y_n) = (x_1+y_1,...,x_n+y_n)$  y $a(x_1,...,x_n)= (ax_1,...,ax_n)$
+\end{ejemplo}
+\begin{nprop}
+	Supongamos que $M_1,...,M_n$ son submódulos de M y que $M = M_1 \oplus ... \oplus M_n = \oplus_i M_i$
+	Entonces, existe:
+	\begin{align}
+	\varphi:\prod_i M_i to M=\oplus_i M_i \\
+	(x_1,...,x_n) \mapsto x_1+...+x_n = \sum_i x_i
+\end{align}
+que es un isomorfismo.
+\end{nprop}	
+
+\section{Clasificación de los módulos finitamente generados sobre un Dominio Euclídeo.}
+
+Para comprenderlo mejor, vamos a ver primero un caso particular sencillo.
+\subsection{Módulos cíclicos}
+\begin{ndef}[Anulador minimal de M]
+	Si M es cualquier módulo, entonces
+	\[
+	\{a: ax = 0 \ \forall x \in M\}\subseteq A \ \  \text{es un ideal}
+	\]
+	Además, como estamos en un DE, todos los ideales son principales y por tanto este también lo es, así que existe un elemento que genera ese ideal al que se le llama anolador minimal de M, denotado por
+\[
+\mu(M)
+\]
+y que es único salvo asociados
+\end{ndef}
+
+También, dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. Este también es un ideal y también es principal. A este se le llama el anulador minimal de x y se le denota:
+\[
+\mu(x)
+\]
+
+\begin{nprop}
+	Si expresamos $M= (x_1,...,x_r) = Ax_1 + ...+ Ax_r \implies \mu(M) = mcm(\mu(x_1),...,\mu(x_r))$
+\end{nprop}
+\begin{proof}
+	$\forall i \ \mu(M)x_i = 0 \implies \forall i \ \ \mu(x_i) / \mu(M)$.
+	
+	Por tanto, si $a\in A: \mu(x_i)/a \ \forall i \implies ax_i = 0 \ \forall i \implies a\sum_i a_ix_i = \sum_i a_i(ax_i) = 0$
+	$\implies ax = 0 \ \forall x \in M \implies \mu(M) / a$
+\end{proof}
+
+En particular, si estamos en un módulo cíclico y tenemos por tanto un solo elemento, entonces $\mu(M) = \mu(x)$ salvo asociados.
+
+\begin{nota}
+	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, esa aplicación es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = \emptyset$ pues el anulador minimal es el cero, por tanto es un isomorfismo, $M \cong A$.
+\end{nota}
+
+\begin{nota}
+	Si $\mu(M) = \mu(x) \ne 0$, la aplicación $\varphi :A/\mu(x) \to M$ tal que $[a]\mapsto ax$ está bien definida ( si $a \equiv b mod(\mu(x)) \implies a = b+q\mu(x) \implies ax = bx +q\mu(x)x = bx$), es lineal, sobreyectiva e inyectiva (si $\varphi([a]) = 0 \implies ax = 0 \implies  \mu(x)/a \implies [a] = 0$) , por lo que
+	\[
+	M  \cong A/(\mu(M))
+	\]
+\end{nota}
+
+\begin{ndef}[Presentacion de M por generadores y relaciones]
+	Sea M un A-módulo finitamente generado. Se llama entonces "Presentación de M por generadores y relaciones" a toda expresión de la forma
+	\[
+	\langle x_1,...,x_n : \sum_i^n a_{i1}x_i = 0,...,\sum_i^n a_{im}x_i = 0 \rangle
+	\]
+	Donde $(x_1,...,x_n)$ es un sistema de generadores de $M$ y lo que hay a la derecha son relaciones de dependencia lineal entre ellos que son verificadas en el módulo tales que cualquier relación de dependencia entre $(x_1,...,x_n)$ es combinación lineal de las que aparecen en la presentación
+	
+\end{ndef}
+
 \end{document}
 

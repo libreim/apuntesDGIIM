@@ -623,4 +623,85 @@ Si el $\triangle u(x) \leq 0 \quad \forall x \in \Omega \implies (min)_{x\in \ba
 
 
 \end{ejer}
+
+\begin{ejer}[14 de la relación de derivabilidad]\hfill\\
+	Sea $f: \R^2 \to \R^2$ con $f(x,y) = (y+cosx,x+e^y)$\\
+	Sea $g: \R^2 \to \R$ con $g(t,u) = t+u$
+	\begin{nlist}
+	\item Calcular la matriz jacobiana de $F=gof$
+	\item Calcular la derivada direccional de $F$ en el punto $(0,0)$ a lo largo de la dirección $(2,-1)$
+	\item Calcular el valor máximo de la derivada direccional de $F$ en $(0,0)$
+	\item $F(x,y) = 2$ define a y como una función implícita diferenciable $\mathcal{C}^\infty$ en un entorno de (0,0).
+\end{nlist}
+\end{ejer}
+\begin{proof}[Solución]
+	\begin{nlist}
+	\item $F=g(f(x,y)) = g(y+cosx,x+e^y) = y+cosx+x+e^y$.
+	
+	Lo haremos usando la regla de la cadena. $DF(x,y) = Jg(f(x,y))Jf(x,y)$
+	\[
+	Jf(x,y)= \begin{pmatrix}
+ -senx & 1 \\
+ 1 & e^y 
+\end{pmatrix} = Jg(y+cosx,x+e^y)
+	\]
+	\[
+	Jg(f(x,y))=Jg(y+cosx,x+e^y) = (1,1)
+	\]
+	\[
+	Jg(f(x,y))Jf(x,y) = (1 \ \ \ 1)\begin{pmatrix}
+ -senx & 1 \\
+ 1 & e^y 
+\end{pmatrix} = (1- senx \ \ \ 1+e^y)
+	\]
+	
+	\item Vamos a calcular primero el vector unitario de (2,-1). $|(2,-1)| = 5 \implies (2/\sqrt5, -1/ \sqrt5)$. Ahora, tenemos
+	\[
+	D_{ (2/\sqrt5, -1/ \sqrt5)}F(0,0) = JF(0,0) \begin{pmatrix}
+ 2/\sqrt 5  \\
+ -1/\sqrt5
+\end{pmatrix} = 0 
+	\]
+	
+	\item \[
+	D_vF(0,0) = JF(0,0) v =  \triangledown F(0,0) v \leq \sqrt 5 \ \ \ \forall |v| = 1	\]
+	Es una cota superior por el lema de cauchy schwarz.
+	Ahora, \[
+	v = \frac{\triangledown F(0,0)}{|\triangledown F(0,0)|} \implies D_v F(0,0) = \triangledown F(0,0)  \frac{\triangledown F(0,0)}{|\triangledown F(0,0)|} = |\triangledown F(0,0)| = \sqrt 5
+	\]
+	
+	Podemos obtener como un resultado o propiedad:
+	
+	\begin{nprop}
+	Si $\triangledown F(a,b) \ne (0,0)$ entonces:
+	\[
+	D_{ \frac{-\triangledown F(a,b)}{|\triangledown F(a,b)|}}F(a,b) =  |\triangledown F(a,b)| \leq D_v F(a,b) \leq |\triangledown F(a,b)| = D_{ \frac{\triangledown F(a,b)}{|\triangledown F(a,b)|}}F(a,b) \ \ \ \forall |v| = 1
+	\]
+\end{nprop}
+
+Otra forma de haber hecho el ejercicio era mediante extremos condicionados:
+\[
+(1 \ \ 2) \begin{pmatrix}
+ v_1 \\
+ v_2 
+\end{pmatrix} 
+\]
+
+\item Lo haremos pensando en la función $H(x,y) =F(x,y)-2 = 0$, pues nos ayudará para usar el teorema de la función implicita. Ahora, la función H es de clase infinito pues es composición de dos funciones que son de clase infinito, por lo que podemos usar el teorema. Tenemos que comprobar que $H(0,0) = 0$, que se comprueba fácilmente.
+\[
+JH(x,y) = JF(x,y) = \begin{pmatrix}
+ 1-senx & e^y+1 \\
+ 
+\end{pmatrix} 
+\]
+\[
+JH(0,0)= \begin{pmatrix}
+ 1 & 2 \\
+\end{pmatrix} 
+\]
+Ahora, tenemos que aclarar cuál de los menores vamos a coger de la matriz (1   2), pues pueden ser la x o la y las funciones implícitas. Para ver cual cogeremos, usar una regla pnemotécnica.
+
+Calcular $y'(0)$ e $y''(0)$ con y la función implícita una vez que la hemos calculado.
+\end{nlist}
+\end{proof}
 \end{document}	

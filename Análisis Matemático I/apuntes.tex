@@ -1557,6 +1557,37 @@ FALTARLA UN HUECO
 \end{enumerate}
 \end{proof}
 
+\begin{nth}[Teorema del punto fijo de Banach o teorema de la contracción]
+	Supongamos que $E$ es un espacio métrico completo. Sea $G:E \to E$ que es una contracción, es decir una aplicación Lipschitziana con constante de Lipschit menor que 1:
+	\[
+	\exists c \in (0,1): \ \ d(G(x),G(y))\leq c d(x,y) \quad \forall x,y \in E
+	\]
+	Entonces, $\exists! x_o \in E$ tal que $x_o = G(x_o)$, es decir, $x_0$ es un punto fijo de G.
+	Además, se cumplen:
+	\begin{nlist}
+	\item Si tomo $y_1\in E$ y evalúo $G(y_1) = y_2 \in E$. Ahora, calculo $G(y_2) = y_3 \in E$. Así, tomamos sucesivamente $G(y_{n-1}) = y_n \in E$, lo que define una sucesión $\{y_n\}$ convergente tal que $\{y_n\}\to x_0$
+	\item \[
+	d(y,y_0) \leq \frac{d(y,G(y))}{1-c} \quad \forall y \in E
+	\]
+\end{nlist}
+\end{nth}
+\begin{proof}[]
+	Se deja propuesto como ejersisio.
+	Como indicación, habrá que probar
+	\[
+	d(y_{n+2},y_{n+1})=d(G(y_{n+1}),G(y_n)) \leq cd(y_{n+1},y_n)
+	\]
+	Tenemos que ver cuánto vale $d(y_m,y_n)\leq d(y_m,y_{m-1}) + d(y_{m-1},y_{m-2}) + ... + d(y_{n+1},y_n)$\\
+	Entonces:
+	\[
+	d(G(y_{n+1}),G(y_n)) \leq cd(y_{n+1},y_n) \leq ccd(y_n,y_{n-1}) \leq c...cd(y_2,y_1)
+	\]
+	De esta forma, la sucesión sería de Cauchy
+	La sucesión de $y_n$ es también convergente, por ser de Cauchy en un espacio métrico.
+	
+	Hay que terminar esta demostración a la que se llega a una contradicción a menos que $x=y$
+\end{proof}
+
 \section{Teorema de la función inversa e implícita}
 \begin{nth}[Teorema de la función inversa. Caso N=1]
 	Sea $A\subset R$, $a \in A$ abierto y $f:A \to \R$. Supongamos que $f$ es de clase 1 y $f'(a) \ne 0$.\\
@@ -1569,15 +1600,59 @@ Df(a) \equiv Jf(a) = ( f'(a))
 \]
 Por lo que, el determinante de $Jf(a) \ne 0$, es decir que $Df(a)$ es invertible
 \begin{nth}[Teorema de la función inversa. Caso general.]
-	Sea $A \subset \R^n$ abierto y $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
+	Sea $V \subset \R^n$ abierto y $a\in A$ y $f:V \to \R^n$ de clase 1. Si  
 $Df(a): \R^n \to \R^n$ es invertible \\
-$\implies \exists U\subset A$ abierto y $\exists V$ abierto en $\R^n$ tales que $a\in U $, $f(a) \in V$ y $f|_U : U \to V$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: V \to U$ es de clase 1 y además:
+$\implies \exists U\subset V$ abierto y $\exists W\subset\R^n$ abierto tales que $a\in U $, $f(a) \in W$ y $f|_U : U \to W$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: W \to U$ es de clase 1 y:
 	\[
 	Dg(f(a)) = (Df(a))^{-1}
 	\]
-Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0)$
+Recordemos que decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0)$
 Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^{-1}$
 \end{nth}
+\begin{proof}
+	El caso complicado de la demostración estaría en el caso en el que $0 = a$ y $f(a) = 0$. Ahora, si pudiéramos demostrar que la derivada es la aplicación identidad, entonces podremos demostrarlo en general. Lo que vamos  a probar es lo siguiente:
+	
+	\begin{nth}[Caso particular]
+		Sea $V \subset \R^n$ abierto y $0=a\in A$ ,y $f:V \to \R^n$ de clase 1 con $f(0) = 0$. Si  
+$Df(a): \R^n \to \R^n$ es invertible \\
+$\implies \exists U\subset V$ abierto y $\exists W\subset\R^n$ abierto tales que $0\in U $, $0 \in W$ y $f|_U : U \to W$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: W \to U$ es de clase 1 y:
+	\[
+	Dg(0) = I
+	\]
+\end{nth}
+\begin{proof}[Demostración del caso particular del teorema]\hfill \\
+Sea V un abierto de $\R^n$ con $0 \in V$. Como V es abierto, $2\delta > 0$ tal que $B(0,2\delta) \subset V$. Además, como f es de clase 1, su derivada es continua.
+Ahora, como $Df(0)=I$, $\forall \epsilon > 0 \ \exists \delta > 0$ tal que $B(0,2\delta) \subseteq V$ y $||Df(x)-I|| < \epsilon \ \forall x \in B(0,2\delta)$. Hay que recalcar que $\delta$ depende de $\epsilon$.Vamos a suponer también que para epsilon más pequeños, el delta será también más pequeño. De hecho, vamos a escribir $\delta(\epsilon)$
+
+\begin{nota}
+	[1]
+	Tomando ahora $r= 2\delta(\frac{1}{2}) \implies f$ es inyectiva en $B(0,r)$
+\end{nota}
+\begin{proof}[Demostración de la afirmación 1]\hfill \\
+Sean $x,y \in B(0,r)$ tales que $f(x) = f(y)$. Entonces, por el TVM, $\exists z \in B(0,r)$ tal que $f(x)-f(y) = Df(z)(x-y) \implies Df(z)(x-y) = 0$.\\
+Es fácil ver que $||Df(z) -I || < \frac{1}{2}$ pues $z \in B(0,r) = B(0,2\delta(\frac{1}{2})$\\
+	Ahora, si tomamos\\
+	$ 0=(y-x)*Df(z)(y-x) = (y-x)[Df(z)(y-x) -I(y-x) +(y-x)] = (y-x)[(Df(z)-I)(y-x) +(y-x)] = ||y-x||^2 +(y-x)(Df(z)-I)(y-x)$\\ 
+	Y , como es una aplicación lineal, usamos que es Lipschitziana y nos queda que eso es mayor o igual que
+y por la desigualdad de Cauchy Schwarz\\
+	$ ||y-x||^2 +(y-x)(Df(z)-I)(y-x) \geq || y-x||^2 - ||Df(z) -I|| \ || y-x||^2 \implies ||y-x|| = 0$ por lo que $x=y$, por lo que $f$ es inyectiva.
+
+
+\end{proof} %de la nota 1
+Ahora, tenemos que probar que es sobreyectiva, habría ver si $\forall h \in W$ $\ \exists x \in U =B(0,r) : \ \ f(x) = h$.
+Para empezar, podemos escribir eso como $x+f(x)-x = h \implies x = h+(x-f(x) \implies x = h +r(x)$ siendo $r(x)=(x-f(x))$ y luego, llamaremos $G(x) = h+r(x)$, quedándonos $x=G(x)$. Así, $G: U \to \R^n$ con U abierto de $\R^n$ y así lo que tendríamos que encontrar es un $x\in U$ tal que $G(x) = x$, y si existe a ese $x$ lo llamaremos punto fijo de G.
+
+Ahora, por el teorema del punto fijo de Banach o teorema de la contracción
+\end{proof} %del caso particular
+\end{proof} %del caso general
+
+
+
+
+
+
+
+
 
 El teorema de la función inversa lo usaremos si tenemos las mismas ecuaciones que incógnitas. Si tenemos menos ecuaciones que incógnitas, usaremos el teorema de la función implícita.
 
