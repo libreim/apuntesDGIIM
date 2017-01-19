@@ -678,7 +678,34 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	\frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\left( \frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j) \right)+\sum_{i=1}^k \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\ \ \forall j=1,\dots, N
 \]
 	
-	Ahora, escogemos $\lambda_0^{\epsilon} = \frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}$, $\lambda_i^{\epsilon} = \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\quad \forall i = 1,\dots,k$ y se verifica que $\abs{(\lambda_0^{\epsilon},\dots,\lambda_k^{\epsilon})} = 1$, y además $\lambda_0^\epsilon > 0$.
+	Ahora, escogemos $\lambda_0^{\epsilon} = \frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}$, $\lambda_i^{\epsilon} = \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\quad \forall i = 1,\dots,k$ y se verifica que $\abs{(\lambda_0^{\epsilon},\dots,\lambda_k^{\epsilon})} = 1$, y además $\lambda_0^\epsilon > 0$.\\
+	
+	\boxed{\text{Conclusión.}}\hfill\\
+	Escojo $\epsilon=\frac{\epsilon_0}{n},\ n\in \mathbb{N}-\{1\} \stackrel{\text{Paso 2}}{\implies} \exists(\lambda_0^n,\dots,\lambda_k^n)$ tales que
+	
+	\begin{nlist}
+	\item $\abs{x^n-a}<\frac{\epsilon_0}{n}$
+	\item $\abs{(\lambda_0^n,\dots,\lambda_k^n)} = 1,\ \lambda_0^n>0$
+	\item $\lambda_0^n\left[\frac{\partial f}{\partial x_j}(x^n)+2(x_j^n-a_j)\right]+\sum_{i=1}^k \lambda_i^n \frac{\partial g_i}{\partial x_j} (x^n) = 0 \quad \forall j=1,\dots,N$
+\end{nlist}
+
+Ahora, por (i), $\{x^n\}\to a$.
+En (ii) tenemos una sucesión acotada de vectores\\ $\stackrel{\text{Bolz.-Weierstrass}}{\implies}\ \exists \{(\lambda_0^{\sigma(n)},\dots,\lambda_k^{\sigma(n)})\}\to (\lambda_0,\dots,\lambda_k)$ con módulo 1 y $\lambda_0 \ge 0$.
+
+En (iii) reescribo sustituyendo $n$ por $\sigma(n)$:
+\[
+	\lambda_0^{\sigma(n)}\left[\frac{\partial f}{\partial x_j}(x^{\sigma(n)})+2(x_j^{\sigma(n)}-a_j)\right]+\sum_{i=1}^k \lambda_i^{\sigma(n)} \frac{\partial g_i}{\partial x_j} (x^{\sigma(n)}) = 0 \quad \forall j=1,\dots,N
+\]
+
+Y tomando límites:
+
+\[
+	\lambda_0\left[\frac{\partial f}{\partial x_j}(a)+0\right]+\sum_{i=1}^k \lambda_i \frac{\partial g_i}{\partial x_j} (a) = 0 \quad \forall j=1,\dots,N
+\]
+
+Donde $(\lambda_0,\dots,\lambda_k)\ne (0,\dots,0)$, porque $\abs{(\lambda_0,\dots,\lambda_k)} = 1$. \textbf{Queda probada la primera afirmación del teorema}.
+
+%Ahora, veamos que si $r(Jg(a)) = k\implies \lambda_0 \ne 0$
 \end{proof}
 
 
