@@ -371,7 +371,7 @@ Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se l
 
 
 \begin{ndef}[Bola cerrada]
-De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\bar{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
+De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\overline{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
 \end{ndef}
 
 
@@ -447,7 +447,7 @@ Sea $(X,d)$ un espacio métrico, y $F\subseteq X$. Se dice que el conjunto $F\ e
 
 
 \begin{nprop}
-Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\bar{B}(x,\epsilon)$ es un conjunto cerrado.
+Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\overline{B}(x,\epsilon)$ es un conjunto cerrado.
 \end{nprop}
 
 
@@ -468,7 +468,7 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedad
 
 
 \begin{ndef}[Clausura]
-Sea $(X,d)$ un espacio métrico. Se llama \textit{clausura o cierre de A} al conjunto $\bar{A} = X - int(X-A)$.
+Sea $(X,d)$ un espacio métrico. Se llama \textit{clausura o cierre de A} al conjunto $\overline{A} = X - int(X-A)$.
 \end{ndef}
 
 
@@ -476,19 +476,19 @@ Sea $(X,d)$ un espacio métrico. Se llama \textit{clausura o cierre de A} al con
 \begin{nprop}
 Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las siguientes propiedades:
 \begin{nlist}
-\item $A \subseteq \bar{A}$.
+\item $A \subseteq \overline{A}$.
 
-\item $\bar{A}$ es cerrado.
+\item $\overline{A}$ es cerrado.
 
-\item Si $B\subseteq X$ es un subconjunto cerrado de $X$ tal que $A\subseteq B$, entonces $\bar{A} \subseteq B$. Es decir, $\bar{A}$ es el cerrado más pequeño que contiene a $A$.
+\item Si $B\subseteq X$ es un subconjunto cerrado de $X$ tal que $A\subseteq B$, entonces $\overline{A} \subseteq B$. Es decir, $\overline{A}$ es el cerrado más pequeño que contiene a $A$.
 
-\item $\displaystyle \bar{A}  = \bigcap \{ F\subseteq X \ | \ F\ es\ cerrado\ y\ A\subseteq F \}$.
+\item $\displaystyle \overline{A}  = \bigcap \{ F\subseteq X \ | \ F\ es\ cerrado\ y\ A\subseteq F \}$.
 
-\item $A$ es cerrado $\iff \bar{A} = A$.
+\item $A$ es cerrado $\iff \overline{A} = A$.
 
-\item $\bar{\bar{A}} = \bar{A}.$
+\item $\overline{\overline{A}} = \overline{A}.$
 
-\item Si $A\subseteq B$, entonces $\bar{A} \subseteq \bar{B}$.
+\item Si $A\subseteq B$, entonces $\overline{A} \subseteq \overline{B}$.
 \end{nlist}
 
 \end{nprop}
@@ -496,7 +496,7 @@ Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las si
 
 
 \begin{ndef}[Frontera]
-Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Llamamos \textit{frontera de A} al conjunto $\partial A = \bar{A}-\mathring{A}$.	
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Llamamos \textit{frontera de A} al conjunto $\partial A = \overline{A}-\mathring{A}$.	
 \end{ndef}
 
 
@@ -520,9 +520,9 @@ Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmacio
 \begin{nlist}
 \item $\mathring{A} = X - \overline{X-A}$
 
-\item $\bar{A} = A \cup \partial A$.
+\item $\overline{A} = A \cup \partial A$.
 
-\item $\bar{A} = A \cup A'$
+\item $\overline{A} = A \cup A'$
 
 \item $X = int(A) \cup \partial A \cup int(X-A)$. Además, la unión es disjunta dos a dos.
 \end{nlist}
@@ -692,9 +692,9 @@ Por tanto, concluimos que $x\in A$.
 
 $\displaystyle \boxed{\Leftarrow}\ $ Sea $A\subseteq X$, y supongamos que se verifica que $\forall \{x_n\} \subseteq A\ tal\ que\ \{x_n\} \rightarrow x \in X,\ se\ tiene\ que\ x\in A$. Para ver que $A$ es cerrado, utilizaremos la siguiente caracterización de conjuntos cerrados:
 \vspace{0.5em}
-$$A\ es\ cerrado\ \iff \bar{A} = A $$
+$$A\ es\ cerrado\ \iff \overline{A} = A $$
 
-Si recordamos, se define la frontera de $A$ como $\partial A = \bar{A} - \mathring{A}$. Por tanto, la equivalencia anterior quedaría así: $A\ es\ cerrado \iff \partial A \cup \mathring{A} = A$. Para comprobar esta última igualdad, veamos las dos inclusiones:
+Si recordamos, se define la frontera de $A$ como $\partial A = \overline{A} - \mathring{A}$. Por tanto, la equivalencia anterior quedaría así: $A\ es\ cerrado \iff \partial A \cup \mathring{A} = A$. Para comprobar esta última igualdad, veamos las dos inclusiones:
 
 \begin{description}
 \item $\displaystyle \boxed{\subseteq}\ $ Sabemos por la definición del conjunto de puntos interiores de $A$, que $\mathring{A} \subseteq A$. \\ Comprobemos entonces que $\partial A \subseteq A$:
@@ -703,7 +703,7 @@ Sea $x\in \partial A$ cualquiera. Por una caracterización de la frontera de $A$
 
 Así, se tiene que $0 < d(x,a_n) < \frac{1}{n}\ \forall n\in \mathbb{N}$, de donde concluimos que $d(x,a_n) \rightarrow 0$. Por definición, esto significa que $\{a_n\} \rightarrow x$, lo que por hipótesis implica, al ser $\{a_n\}$ una sucesión convergente de puntos de $A$, que  $x\in A$. Por tanto, se verifica que $\partial A \subseteq A$.
 
-\item $\displaystyle \boxed{\supseteq}\ $ Esta inclusión es trivial, pues sabemos que $A \subseteq \bar{A}$, y por tanto $A \subseteq \partial A \cup \mathring{A} = \bar{A}$.
+\item $\displaystyle \boxed{\supseteq}\ $ Esta inclusión es trivial, pues sabemos que $A \subseteq \overline{A}$, y por tanto $A \subseteq \partial A \cup \mathring{A} = \overline{A}$.
 \end{description}
 
 De esta forma, queda probada la equivalencia.
@@ -1533,9 +1533,9 @@ FALTARLA UN HUECO
 	\[
 	F(x):=f(x) + |x-a|^2 + M \sum_{i=1}^kg_i(x)^2
 	\]
-	Por el teorema de Weierstrass, existe el mínimo de $F(x)$ en $\bar{B}(a,\epsilon)$. Es equivalente a decir:
+	Por el teorema de Weierstrass, existe el mínimo de $F(x)$ en $\overline{B}(a,\epsilon)$. Es equivalente a decir:
 	\[
-	\exists x^\epsilon \in \bar{B}(x,\epsilon) : \ \ F(x^\epsilon)= Min F \ 
+	\exists x^\epsilon \in \overline{B}(x,\epsilon) : \ \ F(x^\epsilon)= Min F \ 
 	\]
 	Y además, por el paso 1:
 	\[
@@ -1643,6 +1643,66 @@ Ahora, tenemos que probar que es sobreyectiva, habría ver si $\forall h \in W$ 
 Para empezar, podemos escribir eso como $x+f(x)-x = h \implies x = h+(x-f(x) \implies x = h +r(x)$ siendo $r(x)=(x-f(x))$ y luego, llamaremos $G(x) = h+r(x)$, quedándonos $x=G(x)$. Así, $G: U \to \R^n$ con U abierto de $\R^n$ y así lo que tendríamos que encontrar es un $x\in U$ tal que $G(x) = x$, y si existe a ese $x$ lo llamaremos punto fijo de G.
 
 Ahora, por el teorema del punto fijo de Banach o teorema de la contracción
+
+\textbf{Lema}.
+$\forall \epsilon \in (0,1/2)$ se tiene:
+\begin{nlist}
+	\item $f(\overline{B(0,\delta(\epsilon)}) \supseteq  B(0,\delta(\epsilon)/2)$
+	\item \[\begin{rcases}
+	h \in B(0, \delta(\epsilon)/2)\\
+	x \in \overline{B(0, \delta(\epsilon))} :  \ f(x) = h
+\end{rcases} \implies ||x-h|| \leq \frac{\epsilon}{1-\epsilon}||h||\]
+\end{nlist}
+
+\begin{proof}[Demostración del lema]
+	\begin{nlist}
+	\item Sea $h \in B(0, \delta(\epsilon)/2) $. Definimos $G(y) =  y-f(y) +h$, con $G: \overline{B(0, \delta(\epsilon)/2)} \to \R^n$.
+	
+	Si $x \text{ fijo } \in G \iff x = G(x) = x-f(x) +h \iff f(x) = h$. Definimos también $r(y):= y - f(y)$.
+	
+	Ahora, vamos entonces a probar que $G$ es una contracción para poder usar el teorema del punto fijo de Banach. Tenemos que:
+	\[
+	DG(y) = I - Df(y) = Dr(y)
+	\]
+	Y tenemos también que $||DG(y))|| \leq \epsilon \quad \forall y \in \overline{B(0, \delta(\epsilon)/2)}$, luego si hacemos $G(y) - G(\overline{y})$, eso es:
+	\[
+	||G(y) - G(\overline{y})|| \leq ||DG(z)||\ ||y-\bar{y}|| \leq \epsilon ||y-\bar{y}||
+	\]
+	Con $y,\bar{y} \in \overline{B(0, \delta(\epsilon)/2)} \implies  $ G es una contracción en $\overline{B(0, \delta(\epsilon)/2)}$
+	Y como el teorema del punto fijo de Banach dice que la función G va de un espacio métrico en el mismo, tenemos que probar que $G(\overline{B(0, \delta(\epsilon)/2)}) \subset \overline{B(0, \delta(\epsilon)/2)}$.
+	
+	Probamos esto, vemos que $G(0) = 0-f(0) + h = h$, y ahora $\forall x \in \overline{B(0, \delta(\epsilon)/2)} \quad ||G(x)|| \leq ||G(x)-G(0)|| +||G(0)||$, y como es una contraccion, tenemos que eso es $\leq ||x|| + || h || < \epsilon \delta(\epsilon) + \frac{\delta(\epsilon)}{2} < \delta (\epsilon)$, lo que significa que $G(x) \in B(0, \delta(\epsilon)/2)$
+	
+	Ahora, sí podemos usar el teorema del punto fijo de Banach, $\exists ! x \in \overline{B(0, \delta(\epsilon)/2)}: \ \ G(x) = x \implies f(x) = h$, como queriamos probar
+	\item Deducimos que $||x-h || \leq \frac{||h-G(x)||}{1-\epsilon} \frac{1}{1-\epsilon} || h - G(h)|| = \frac{1}{1-\epsilon} || -r(y)|| =  \frac{1}{1-\epsilon} || r(h)|| \frac{1}{1-\epsilon} || r(h) - r(0)|| \leq \frac{1}{1-\epsilon} \epsilon|| h|| = \frac{1}{1-\epsilon} ||h||$ 
+	
+	Y queda así probado el lema
+\end{nlist}
+\end{proof} %del lema
+
+Ahora, para probar que la f es biyectiva que era lo que queríamos probar del teorema de la función inversa, tenemos que fijar un epsilon que será cualquier número entre $0 $ y $1/2$, pues hemos obtenido un lema para ese rango de $\epsilon$.
+
+Consideramos el conjunto: $W = B(0, \delta(\epsilon)/2)$
+
+
+Podemos ver que $\delta(\epsilon) < \delta(1/2) < 2 \delta(1/2) = r$. Ahora, usando el primer apartado del lema obtenemos que:
+\[
+f(\overline{B(0,\delta(\epsilon)}) \supseteq B(0, \delta(\epsilon)/2)
+\]
+Y consideramos:
+\[
+U= B(0, \delta(\epsilon)) \cap f^{-1}(W)
+\]
+y, como f era inyectiva en la $B(0,r)$, si definimos: $f: U \to W$ es inyectiva porque es una restricción de la f inicial y es sobreyectiva por la definición de U.
+
+Así, hemos probado que $f|_U : U \to W$ es biyectiva, lo segundo que queríamos probar.
+
+Nos queda por último comprobar la derivabilidad de la función inversa. Habría que probar que:
+\[
+\lim_{h\to 0}\frac{||g(h) - g(0) -I(h) ||}{||h|| } = 0 \iff \lim_{h \to 0}\frac{||g(h) - h||}{||h||}
+\]
+
+
 \end{proof} %del caso particular
 \end{proof} %del caso general
 

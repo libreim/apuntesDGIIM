@@ -2920,7 +2920,7 @@ Si $Q \in GL_m(A) \implies \Delta_s (M) = \Delta(MQ)$
 \begin{nota}
 	$\Delta(M) = \Delta(M^t)$. Del mismo modo, $\Delta_S(MQ) = \Delta_s((MQ)^t) =  \Delta_s (Q^tM^t) = \Delta_s (M^t) =  \Delta_s(M)$
 \end{nota}
-\section{KHAD'GAR :HAY QUE DETENER A GUL'DAN Y A LA LEGION}
+\section{GUL'DAN HA MUERTO}
 
 Si $M \sim M' \sim \begin{pmatrix}
  d_{11}'&  &  & & \\
@@ -3105,6 +3105,289 @@ En particular, si estamos en un módulo cíclico y tenemos por tanto un solo ele
 	Donde $(x_1,...,x_n)$ es un sistema de generadores de $M$ y lo que hay a la derecha son relaciones de dependencia lineal entre ellos que son verificadas en el módulo tales que cualquier relación de dependencia entre $(x_1,...,x_n)$ es combinación lineal de las que aparecen en la presentación
 	
 \end{ndef}
+
+\begin{nprop}
+		Si 
+	\[
+	\langle x_1,...,x_n : \sum_i^n a_{i1}x_i = 0,...,\sum_i^n a_{im}x_i = 0 \rangle
+	\]
+	es una presentación del módulo M, la matriz:
+	\[
+	\begin{pmatrix}
+ a_{11} & \cdots & a_{1n}\\
+ \vdots & & \vdots\\
+ a_{m1} & \cdots & a_{mn} 
+\end{pmatrix} 
+	\]
+	cuyas filas son exactamente los coeficientes que aparecen en la presentación. A esta matriz $\mathcal{M}_R$ la llamamos matriz de relaciones de los generadores de M
+	
+	Decir entonces que las combinaciones lineales de la presentación son cero, es lo mismo que decir:
+	\[
+	\begin{pmatrix}
+ a_{11} & \cdots & a_{1n}\\
+ \vdots & & \vdots\\
+ a_{m1} & \cdots & a_{mn} 
+\end{pmatrix} \begin{pmatrix}
+ x_1  \\
+ \vdots\\
+ x_n 
+\end{pmatrix} =  \begin{pmatrix}
+ 0  \\
+ \vdots\\
+ 0
+\end{pmatrix} 
+	\]
+\end{nprop}
+
+	
+	Si tenemos un módulo $A^n$, podemos ver que este es libre y finitamente generado, además de que tiene una base (la canónica de $\mathbb{R}^n$. Vamos a considerar una aplicación $\varphi A^n \to M$ tal que $\varphi (a_1,...a_n) = a_1x_1+...+a_nx_n$. Esta aplicación es un epimorfirmo.
+
+\begin{nprop}
+	\[
+	\sum_i^n a_i x_i  = 0 \iff (a_1,...a_n) \in Ker(\varphi)
+	\]
+	En particular, que se verifiquen las relaciones de dependencia que aparecen en la presentación, significa que $F_1,...,F_m \in Ker(\varphi)$.
+	Y decir que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación significa que si $F((a_1,...a_n) \in Ker(\varphi) \implies F$ es combinación lineal de $F_1,...,F_m$, por tanto, estamos diciendo que
+	\[
+	Ker(\varphi) = (F_1,...,F_m)
+	\]
+\end{nprop}
+
+\begin{nota}
+	Es importante recordar que estos sistemas de generadores pueden ser sometidos a operaciones elementales sin dejar de ser sistemas de generadores. Las operaciones pueden ser:
+	\begin{itemize}
+	\item Permutar dos de ellos
+	\item Multiplicar uno por una unidad del anillo
+	\item Sumar a uno de ellos un múltiplo de otro.
+\end{itemize}
+Aún así, la matriz de relaciones se verá alterada y tendremos 'otra presentación distinta'
+\end{nota}
+
+Realizando estas operaciones, siempre podemos llegar a obtener la forma normal de Schmidt de una matriz.
+
+\begin{nprop}
+	$\forall M $, existe una presentación cuya matriz de relaciones está normalizada, que tiene la forma de una matriz de Schmidt. Es decir, de la forma:
+	\[
+	M : \langle \ \  y_1,...,y_n : \ d_1y_1 = 0 \ ,..., \ d_ry_r = 0 \ \  \rangle
+	\]
+	
+\end{nprop}
+Es más, si ahora consideráramos un nuevo epimorfismo $\varphi: A^n \to M$ tal que $\varphi (a_1,...a_n) 0 \sum a_i y_i$ y 
+\[
+Ker(\varphi): \ \langle d_1e_1 \ \ , .... , \ \ d_r e_r \ \ \rangle
+\]
+con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y lo demás son ceros).
+
+\begin{nprop}
+	Se puede comprobar que:
+	\[
+	ay_i = 0 \implies \varphi (ae_i) = 0 \implies ae_i \in Ker(\varphi) \implies ae_i = b_1d_1e_1+...+b_rd_re_r
+	\]
+	\[
+	\implies b_1d_1e_1+...+b_rd_re_r - ae_i = 0
+	\]
+	\begin{itemize}
+	\item  si $i>r \implies a = 0 \implies \mu(y_i) = 0$.
+	\item si $i \leq r \implies a = b_id_i$ pues son todos linealmente independientes $\implies d_i/a \implies \mu(y_i) = d_i$
+\end{itemize}
+\end{nprop}
+
+\begin{nprop}
+	$M \oplus_i AY_i$, todo elemento de M se expresa de forma única como combinación lineal de elementos de $A$
+\end{nprop}
+\begin{proof}
+	Supongamos que $\sum a_i y_i = 0 \implies \varphi(\sum a_i e_i ) = 0 \implies \sum a_ie_i \in Ker (\varphi) $\\
+	$\implies a_1e_1+...+ a_re_r+...+a_ne_n = b_1d_1e_1+...+b_rd_re_r \implies a_i = 0 \ \ \forall i > r$\\
+	$\implies a_iy_i = 0$
+	
+	Y si $i \leq r\implies a_i = b_id_i \implies a_iy_i = 0$
+\end{proof}
+También podemos decir si $d_1 = ... = d_s = 1 \implies y_1 = y_2 = ... = y_s = 0$ y por tanto tendríamos que:
+\[
+M = Ay_{s+1}  \oplus ... \oplus Ay_r \oplus ... \oplus Ay_n
+\]
+Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,r$ y cada $d_i/d_{i+1}$ y $\mu(y_{r+1}) = ... \mu(y_n) = 0$
+
+\begin{nprop}
+	En estas condiciones,
+	\[
+	M \cong Ay_{s+1} \times ... \times Ay_r \times ... \times Ay_n
+	\]
+	Siendo $Ay_{s+1},..., Ay_r$ módulos cíclicos y desde $r+1$ hasta $n$, $Ay_j$ es isomorfo al propio anillo, por lo que podemos decir que:
+	\[
+	M \cong Ad_{s+1}\times ... \times Ad_r \times A^{n-r}
+	\]
+\end{nprop}
+
+\begin{nota}
+	El hecho que hemos expuesto se conoce como el Teorema de estructura de módulos cíclicos
+\end{nota}
+A $n-r$ se le llama el rango del módulo y $d_{s+1},...,d_s$ es la lista de los factores invariantes del módulo M
+
+La unicidad de estos invariantes es consecuencia de la unicidad de los invariantes de la forma normal de Schmidt.
+
+\begin{ncor}
+	Para conocer un módulo, basta conocer la lista de sus factores y su rango.
+\end{ncor}
+\begin{ncor}
+	Si el rango de un módulo ($n-r$) es mayor quecero, entonces $\mu(M) = 0$.\\
+	
+	Si $n-r$ = 0, entonces $\mu(M) $ es el mayor de los factores invariantes, el $d_r$
+\end{ncor}
+
+A continuación, ilustraremos el teorema que hemos dado con ejemplos:
+
+\subsubsection{$\ent$-Módulos. Grupos abelianos.}
+
+Vamos a tratar de llevarnos los conceptos que hemos obtenido con el teorema de estructura al caso de los $\ent-$módulos.\\
+Si M es un $\ent$-módulo, $n\in \ent$ con $n>0$ y $x\in M$, entonces $nx = (\sum_i^n 1)x = \sum_i^n 1*x = \sum_i^n x$. Lo mismo podemos ver si lo hacemos con $n$ negativo.
+
+Entonces, un $\ent$-módulo es un grupo abeliano. Hablaremos de aquí en adelante de grupos abelianos, aunque sabremos que es lo mismo que un $\ent-$módulo.
+
+Si $M$ es un grupo abeliano y $x\in M$, entonces $\ent x = (x) = \{nx : n \in \ent  \}$.
+Tenemos también que $\mu(x) = d \iff dx = 0$ y $mx = 0 \implies d/m$.
+
+Si $M=\ent x$ y $\mu(x) = 0 \implies M \cong \ent$
+
+\begin{nth}[Teorema de estructura en grupos abelianos]\hfill \\
+	Para todo grupo abeliano finitamente generado $M$ existen enteros positivos $d_1,...,d_s$ con $d_i \geq 2$ tales que $d_i/d_{i+1}$ y existe un $r> 0$ tal que 
+	\[
+	M \cong \ent_{d_1} \times ... \times \ent_{d_s} \times \ent^n
+	\]
+	y a estos $d_i$ se les llama factores invariantes del grupo abeliano y $r$ es su rango.
+	A la descomposición que hemos obtenido se le llama descomposición cíclica del grupo abeliano.
+\end{nth}
+
+\begin{nprop}
+	Dos grupos abelianos son isomorfos $\iff$ tienen los mismos factores invariantes y el mismo rango. Por tanto, son isomorfos $\iff$ tienen la misma descomposición cíclica.
+\end{nprop}
+
+\begin{nprop}
+	$M$ es finito $\iff$ su rango es 0. En ese caso, el tamaño del grupo es el producto de sus invariantes  $|M| = d_1...d_s$ y en tal caso $\mu(M) = d_s$
+\end{nprop}
+\begin{nprop}
+	Si el rango de un módulo $M$ no es cero, entonces $\mu(M) =0$
+\end{nprop}
+
+\begin{ejemplo}
+	Un grupo abeliano $M$ está dado por:
+	\[
+	M: \langle \ x,y,z :  12x+26y+13z = 0  \ , \ 6x+12y+6z = 0 \ , \ 6x+26y+13z = 0 \ \rangle
+	\]
+	¿Cuál es la descomposición cíclica de este grupo?
+\end{ejemplo}
+\begin{proof}[Solución]
+	Lo primero que habría que hacer es construir la matriz de relaciones.
+	
+	\[
+	\begin{pmatrix}
+ 12 & 26 & 13 \\
+ 6 & 12 & 6 \\
+ 6 & 26 & 13 
+\end{pmatrix} 
+	\]
+	
+	Y ahora buscamos su forma normal de Schmidt, para ver cuál es el rango de esta matriz.
+	
+	\[
+	\begin{pmatrix}
+ 12 & 26 & 13 \\
+ 6 & 12 & 6 \\
+ 6 & 26 & 13 
+\end{pmatrix} \sim
+\begin{pmatrix}
+ 6 & 12 & 6 \\
+ 12 & 26 & 13 \\
+ 6 & 26 & 13 
+\end{pmatrix} \sim^{C_2 - 2C_1}
+\begin{pmatrix}
+ 6 & 0 & 6 \\
+ 12 & 2 & 13 \\
+ 6 & 14& 13 
+\end{pmatrix} 
+	\] 
+	Seguimos haciendo este método a llegar a una de la forma de Schmidt y nos queda la matriz:
+	\[
+	\begin{pmatrix}
+ 1 & 0 & 0 \\
+ 0 & 6 & 0 \\
+ 0 & 0 & 0 
+\end{pmatrix} 
+	\]
+	(comprobar si está bien).
+	
+	Así, los factores invariantes de la matriz son 1 y 6, y los factores invariantes de M serán , de los obtenidos de la matriz, los que no sean unidades, por lo que en este caso es el 6. Cuidado, porque si aparecieran dos 6, los factores invariantes serían $\{6,6\}$. 
+	
+	El rango de M, es el número de columnas nulas de esta matriz, que es 1. 
+	
+	Por tanto, la descomposición cíclica es:
+	\[
+	M \cong \ent_6 \times \ent
+	\]
+\end{proof}
+
+\begin{ejemplo}
+	Sea 
+	\[
+	M: \langle \ x,y,z :  2x+y+3z = 0  \ , \ 3x+6y-2z = 0 \ , \ 2x+4y+4z = 0 \ \rangle
+	\]
+	¿Cuál es la descomposición cíclica de este grupo?
+\end{ejemplo}
+\begin{proof}[Solución]:
+
+De nuevo, hallamos su matriz y le hacemos su forma normal de Schmidt
+	
+\[
+	\begin{pmatrix}
+ 2& 1  & 3 \\
+ 3 & 6 & -2 \\
+ 2 & 4 & 4 
+\end{pmatrix}  \sim 	\begin{pmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 48 
+\end{pmatrix} 
+\]
+Y hacemos el mismo procedimiento de antes para hallar sus invariantes (solo el 48), su rango (0) y su descomposición cíclica
+\[
+M \cong \ent_{48} 
+\]
+
+	
+\end{proof}
+
+\begin{nprop}
+	Si $(m,n) = 1 \implies \ent_{mn} \cong \ent_m \times \ent_n$.
+Si $d = p_1^{e_1}...p_r^{e_r}$ con $p_i$ primo distintos entre sí y $e_i \geq 1$, entonces:
+\[
+\ent_d \cong \ent_{p_1^{e_1}} \times ... \times \ent_{p_r^{e_r}}
+\]
+\end{nprop}
+
+\begin{nprop}
+	Si
+	\[
+	M \cong \ent_{d_1} \times ... \times \ent_{d_s} \times \ent^r
+	\]
+	con $d_i \geq 2 $ y $d_i / d_{i+1}$, entonces, la descomposición de invariantes en primos estará dada por los mismos primos pero si $d_i = p_1^{e_{i1}}...p_r{e_{ir}}$ y tenedremos $0 \leq e_{ij} \leq e_{i+1j}$
+	
+	Así, podemos tener:
+	\[
+	M \cong \prod_i^s \prod_j ^k \ent_{p_i^{e_{ij}}} \times \ent^r
+	\]
+	A la que llamamos descomposición cícica Primaria. En ella, la lista ${p_i^{e_{ij}}}$ es la lista de divisores elementales de $M$.
+\end{nprop}
+\begin{ejemplo}
+	Un grupo abeliano tiene como divisores elementales: $\{3,9,5,25,125 y 7\} $ (que son potencias de primos) y rango 0. Así, ese grupo es, en su descomposición primaria:
+	\[
+	\ent_3 \times \ent_9 \times \ent_5 \times \ent_{25} \times \ent_{125} \ent_7
+	\]
+	
+Sus invariantes serían $d_1 = 9*125*7 = 7875$, $d_2 = 3*5^2 = 75$, $d_3 = 5$ y ahora los ordenamos, quedando que: $d_3 = 9*125*7 = 7875$, $d_2 = 3*5^2 = 75$, $d_3 = 5$, por lo que su descomposición cíclica sería:
+\[
+\ent_5 \times \ent_{75} \times \ent_{7875}
+\]
+\end{ejemplo}
 
 \end{document}
 
