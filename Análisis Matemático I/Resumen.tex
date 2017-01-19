@@ -649,7 +649,7 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	lo cual es una contradicción con (*), por lo que \textbf{queda probado el paso 1}.\\
 	
 	\boxed{Paso\hspace{1mm} 2}\hfill\\
-	Veamos que $\forall \epsilon\in (0,\epsilon_0)\ \exists x^{\epsilon\in A}$ que verifica que $\abs{x-a} < \epsilon$ y $\exists(\lambda^{\epsilon}_0, \dots, \lambda_k^{\epsilon})\in \mathbb{R}^{k+1}$ tal que
+	Veamos que $\forall \epsilon\in (0,\epsilon_0)\ \exists x^{\epsilon}\in A$ que verifica que $\abs{x-a} < \epsilon$ y $\exists(\lambda^{\epsilon}_0, \dots, \lambda_k^{\epsilon})\in \mathbb{R}^{k+1}$ tal que
 	\[
 		\begin{cases}
 	\abs{(\lambda_0^{\epsilon}, \dots, \lambda_k^{\epsilon})} = 1\\
@@ -659,12 +659,12 @@ Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ en
 	
 	Recordemos: $f(a) = f(a)+\abs{a-a}^2+M\displaystyle\sum_{i=1}^k g_i(a)^2$ (porque $a\in S$).
 	
-	Definimos $F(x) := f(x) + \abs{x-a}^2 + M\displaystyle\sum_{i=1}^k g_i(x)^2 \in \mathcal{C}^1$. Por el teorema de Weierstrass, $\exists \min_{\bar{B}(a,\epsilon)} F \implies x^{\epsilon}\in \bar{B}(a,\epsilon)$ tal que
+	Definimos $F(x) := f(x) + \abs{x-a}^2 + M\displaystyle\sum_{i=1}^k g_i(x)^2 \in \mathcal{C}^1$. Por el teorema de Weierstrass, $\exists \min_{\bar{B}(a,\epsilon)} F \implies \exists x^{\epsilon}\in \bar{B}(a,\epsilon)$ tal que
 	\[
 	F(x^{\epsilon}) = \min_{\bar{B}(a, \epsilon)} F \left( \le \underbrace{F(a)}_{=f(a)} \underbrace{<F\restriction_{\partial B(a,\epsilon)} (x)}_{\text{Paso 1}}\implies x^{\epsilon}\in B(a,\epsilon) \text{ (es interior)}  \right)
 	\]
 	
-	Por tanto $x$ es un mínimo relativo de $F$ en $B(a,\epsilon)$, que es un abierto, luego \[\displaystyle \frac{\partial F}{\partial x_j}(x^{\epsilon}) = 0<\quad \forall j=1,\dots, N\] 
+	Por tanto $x^\epsilon$ es un mínimo relativo de $F$ en $B(a,\epsilon)$, que es un abierto, luego \[\displaystyle \frac{\partial F}{\partial x_j}(x^{\epsilon}) = 0<\quad \forall j=1,\dots, N\] 
 	
 	Y vemos que por el paso 1, además:
 	
