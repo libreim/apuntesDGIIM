@@ -1557,35 +1557,48 @@ FALTARLA UN HUECO
 \end{enumerate}
 \end{proof}
 
-\begin{nth}[Teorema del punto fijo de Banach o teorema de la contracción]
-	Supongamos que $E$ es un espacio métrico completo. Sea $G:E \to E$ que es una contracción, es decir una aplicación Lipschitziana con constante de Lipschit menor que 1:
-	\[
-	\exists c \in (0,1): \ \ d(G(x),G(y))\leq c d(x,y) \quad \forall x,y \in E
-	\]
-	Entonces, $\exists! x_o \in E$ tal que $x_o = G(x_o)$, es decir, $x_0$ es un punto fijo de G.
-	Además, se cumplen:
-	\begin{nlist}
-	\item Si tomo $y_1\in E$ y evalúo $G(y_1) = y_2 \in E$. Ahora, calculo $G(y_2) = y_3 \in E$. Así, tomamos sucesivamente $G(y_{n-1}) = y_n \in E$, lo que define una sucesión $\{y_n\}$ convergente tal que $\{y_n\}\to x_0$
-	\item \[
-	d(y,y_0) \leq \frac{d(y,G(y))}{1-c} \quad \forall y \in E
-	\]
+\textbf{Definición.} Sea $(E,||\cdot||)$ un espacio normado, y sea $G: E \longrightarrow E$. Decimos que $G$ es una \textit{contracción} si es Lipschitziana con constante de Lipschitz menor que 1, es decir, si $\exists c \in (0,1): \ || G(x) - G(y) || \ \le c||x-y|| \ \ \forall x, y \in E$.\\
+
+\textbf{Teorema (del punto fijo de Banach).}
+Sea $E$ un espacio de Banach (i.e, un espacio normado y completo), y sea $G:E\longrightarrow E$ una contracción. Entonces, $G$ tiene un único punto fijo, esto es, $\exists !\ x_0 \in E\ tal\ que\ x_0$ = G($x_0$). Además, se verifica lo siguiente: 
+
+\begin{nlist}
+\item $\forall y \in E$, si defino inductivamente $y_1 = y$, $y_n = G(y_{n-1})\ \forall n > 1$, entonces $\{y_n\} \rightarrow x_0$. 
+\item  $\displaystyle \forall y \in E \ \ ||y - x_o|| \le \frac{||y-G(y)||}{1-c}$
 \end{nlist}
-\end{nth}
-\begin{proof}[]
-	Se deja propuesto como ejersisio.
-	Como indicación, habrá que probar
-	\[
-	d(y_{n+2},y_{n+1})=d(G(y_{n+1}),G(y_n)) \leq cd(y_{n+1},y_n)
-	\]
-	Tenemos que ver cuánto vale $d(y_m,y_n)\leq d(y_m,y_{m-1}) + d(y_{m-1},y_{m-2}) + ... + d(y_{n+1},y_n)$\\
-	Entonces:
-	\[
-	d(G(y_{n+1}),G(y_n)) \leq cd(y_{n+1},y_n) \leq ccd(y_n,y_{n-1}) \leq c...cd(y_2,y_1)
-	\]
-	De esta forma, la sucesión sería de Cauchy
-	La sucesión de $y_n$ es también convergente, por ser de Cauchy en un espacio métrico.
-	
-	Hay que terminar esta demostración a la que se llega a una contradicción a menos que $x=y$
+\vspace{1em}
+
+\begin{proof} \hfill \\
+\underline{Probemos primero $(i)$, y la existencia del punto fijo.} 
+
+Por simplicidad, trabajaremos en un espacio métrico. La primera observación que hacemos es la siguiente: dado $n \in \mathbb{N}$, $n \ge 2$, y usando que $G$ es una contracción, se tiene que
+\begin{equation} \label{eq:1} \tag{$\ast$}
+d(y_{n+1}, y_{n}) = d(G(y_{n}), G(y_{n-1})) \le c\cdot d(y_{n}, y_{n-1}) \le \dots \le c^{n-1}\cdot d(y_{2}, y_{1})
+\end{equation}
+Entonces, dados $m,n \in \mathbb{N}$, $m > n$, podemos usar la desigualdad triangular, la desigualdad \eqref{eq:1}, y la fórmula de la suma de los primeros términos de una progresión geométrica, para ver que:
+$$0 < d(y_{m}, y_{n}) \leq d(y_m,y_{m-1}) + d(y_{m-1},y_{m-2}) + \cdots + d(y_ {n+1},y_{n})  \leq \left( \sum_{k=n-1}^{m-2}c^k \right) \cdot d(y_2,y_1) = $$ 
+\begin{equation} \label{eq:2} \tag{$\ast \ast$}
+= \frac{c^{n-1}(c^{m-n} - 1)}{c-1} \cdot d(y_2,y_1) = \left( \frac{c^{n-1}}{1-c} - \frac{c^{m-1}}{1-c} \right) \cdot d(y_2,y_1)
+\end{equation}
+
+Como sabemos también que para $c \in (0,1)$ la sucesion $\{\frac{c^{k-1}}{c-1}\} \rightarrow 0$, podemos decir que dicha sucesión es de Cauchy, pues $E$ es completo. Ahora, dado $\epsilon > 0$, escogemos $\epsilon / (d(y_2,y_1) + 1) > 0$, y usando \eqref{eq:2} tenemos que: $$ \exists n_{0} \in \mathbb{N} \ tal\ que\ m,n\geq n_{0} \implies d(y_{m}, y_{n}) \leq \left| \frac{c^{n-1}}{1-c} - \frac{c^{m-1}}{1-c} \right| \cdot d(y_2,y_1) < \frac{\epsilon}{d(y_2,y_1) + 1} \cdot d(y_2,y_1) < \epsilon $$ 
+
+Esto nos garantiza que $\{y_{n}\}$ es de Cauchy. Entonces, como el espacio $E$ es completo, tenemos que $\{y_n\}$ es convergente, es decir, $\exists x_0 \in E:\ \{y_{n}\}\rightarrow x_0$. Veamos ahora que $x_0$ es necesariamente un punto fijo de $G$.
+
+En efecto, por ser $x_0$ el límite de la sucesión, dado $\epsilon > 0, \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow d(y_n, x_0) =$ $= d(G(y_{n-1}),x_0) <  \epsilon$, lo que implica que $\{G(y_{n})\}\rightarrow x_0$. Pero $\{G(y_{n})\}\rightarrow G(x_0)$ por ser G continua (es Lipschitziana). Por tanto, $x_0 = G(x_0)$ por unicidad del límite.
+\vspace{0.5em}
+
+\underline{Veamos ahora la unicidad del punto fijo.}
+
+\vspace{0.5em}
+Supongamos que existe otro punto fijo $y_0 \in E$. Entonces, como $G$ es una contracción, se tendría que: 
+$$d(G(y_0),G(x_{0})) \le c\cdot d(y_0, x_0) \Rightarrow d(y_0, x_0) \le c \cdot d(y_0, x_0)\ con\ 0 < c < 1$$ Esto implica que $d(y_0,x_0) = 0 \Rightarrow x_0 = y_0$. Por tanto, si hay dos puntos fijos, han de ser necesariamente iguales.\\
+
+\underline{Por último, probemos $(ii)$.}
+
+Sea $y \in E$. Entonces, si tomamos $y_1$ = $y$ en la sucesión, se tiene que, usando \eqref{eq:2}: $$d(y,x_0) = \lim_{n\rightarrow \infty}d(y_1,y_n) \le \lim_{n\rightarrow \infty}\left(\sum_{k=0}^{n-2} c^k\right)\cdot d(y_1, y_2)= \lim_{n\rightarrow \infty}\left(\sum_{k=0}^{n-2} c^k\right)\cdot d(y, G(y)) = \frac{d(y, G(y))}{1-c} $$
+
+donde hemos usado la fórmula de la suma de los términos de una \textit{serie geométrica} de razón $0 < c < 1$.
 \end{proof}
 
 \section{Teorema de la función inversa e implícita}
