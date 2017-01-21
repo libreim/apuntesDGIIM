@@ -363,11 +363,8 @@ Ahora, $\forall \ \alpha, \beta \in \varphi([a,b])$ con $\alpha \leq \beta \impl
 Sea $f:A \to B$ continua y $K\subset A$ un compacto. Entonces, $f(K)$ es compacto.	
 \end{nth}
 \begin{proof}
-	Sea $\{x_n\}\subseteq K$ cualquiera. Entonces $\{f(x_n)\} \subseteq f(K)$. Como $K$ es compacto, existe $\sigma: \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma(n)}\} \rightarrow a\in K$. Luego, $\{f(x_{\sigma(n)})\}\rightarrow f(a)\in f(K)$ y queda probado que $f(A)$ es compacto.
+	Sea $\{y_n\}\subseteq f(K)$ una sucesión cualquiera en $f(K)$. Para demostrar que $f(K)$ es compacto debemos demostrar que $\{y_n\}$ tiene una subsucesión convergente a algún punto de $f(K)$. Sea $y_n$ = $f(x_n)$ con $x_n \in K$, por ser A compacto $\{x_n\}$ tiene una subsucesión $\{x_{\sigma(n)}\}$ convergente a un $a \in K$. Por lo tanto, $\{f(x_{\sigma(n)})\}$ convergente a un $f(a) \in f(K)$, siendo $\{f(x_{\sigma(n)})\}$ una subsucesión de $\{f(x_{n})\}$, es decir, de $\{y_n\}$.
 
-\begin{nota}
-	Para toda sucesión $\{y_n\}$ de puntos de $f(K)$, podemos tomar una sucesión $\{x_n\}\subset K$ tal que $f(x_n) = y_n\ \ \forall n\in \mathbb{N}$, pues $f$ es sobreyectiva en su imagen.
-\end{nota}
 \end{proof}
 
 \begin{nth}
