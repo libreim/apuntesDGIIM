@@ -770,7 +770,7 @@ Para probar el resultado, podemos considerar sin pérdida de generalidad que $f$
 
 Ahora, como $f$ es $C^1$ respecto de su segunda variable, tenemos que la función $\displaystyle\pder[f]{x}: D \longrightarrow \mathbb{R}$ es una función continua definida en un compacto. Por tanto, su imagen está acotada, y esto nos permite definir: $$M := sup \left\{ \left| \pder[f]{x}(s,x) \right|\colon (s,x) \in D\right\} \ge 0$$
 
-Fijamos $s \in [a,b]$, y consideramos la función $f_s(x):[c,d] \longrightarrow \mathbb{R}$ dada por $f_s(x) = f(s,x)$.\\ Es inmediato comprobar que $f_s$ es $C^1$, pues $f_s'(x) = \pder[f]{x}(s,x)$. Observamos también que si $y(s)=z(s)$, la proposición se cumple trivialmente para cualquier valor de $K$, por lo que podemos suponer $y(s) < z(s)$. Entonces, por el \textbf{teorema del valor medio} aplicado a $f_s$, tenemos que $\exists c \in [y(s), z(s)]$ verificando: $$|f_s(y(s)) - f_s(z(s))| = |f'_s(c)|\cdot|y(s)-z(s)|$$
+Fijamos $s \in [a,b]$, y consideramos la función $f_s(x):[c,d] \longrightarrow \mathbb{R}$ dada por $f_s(x) = f(s,x)$.\\ Es inmediato comprobar que $f_s$ es $C^1$, pues $f_s'(x) = \pder[f]{x}(s,x)$. Observamos también que si $y(s)=z(s)$, la proposición se cumple trivialmente para cualquier valor de $K$, por lo que podemos suponer $y(s) < z(s)$ (en otro caso, intercambiamos sus papeles). Entonces, por el \textbf{teorema del valor medio} aplicado a $f_s$, tenemos que $\exists c \in [y(s), z(s)]$ verificando: $$|f_s(y(s)) - f_s(z(s))| = |f'_s(c)|\cdot|y(s)-z(s)|$$
 
 De esta igualdad concluímos que: $$|f(s,y(s)) - f(s,z(s))| = \left|\pder[f]{x}(s,c)\right|\cdot|y(s)-z(s)| \le M\cdot|y(s)-z(s)|$$
 
