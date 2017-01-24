@@ -220,7 +220,7 @@ Sea $\{x_n\}$ una sucesión de $\mathbb{R}^N$ acotada. Entonces existe una suces
 \begin{proof}
 	Notaremos $x_n = (x_n^1, \dots, x_n^N)$. Como $\{x_n^1\}$ es acotada en $\mathbb{R}$, existe $\sigma_1 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma_1(n)}^1\}$ es convergente.
 
-Ahora, como $\{x_n^2\}$ es acotada, $\{x_{\sigma_1(n)}^2\}$ también es acotada, y existe $\sigma_2 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{(\sigma_2\circ\sigma_1)(n)}^1\}$ es convergente.
+Ahora, como $\{x_n^2\}$ es acotada, $\{x_{\sigma_1(n)}^2\}$ también es acotada, y existe $\sigma_2 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{(\sigma_2\circ\sigma_1)(n)}^2\}$ es convergente.
 
 Procediendo de esta forma con cada componente de $x_n$, obtenemos $\sigma_1, \dots, \sigma_N$, y\\ $\{x_{\sigma_1(n)}^1\}, \{x_{(\sigma_2\circ\sigma_1)(n)}^2\}, \dots, \{x_{(\sigma_N\circ\dots\circ\sigma_2\circ\sigma_1)(n)}^N\}$ sucesiones convergentes en $\mathbb{R}$. Al ser $\sigma_i$ estrictamente creciente $\forall i=1,\dots,N$, $\{x_{(\sigma_N(n)\circ\dots\circ\sigma_{i+1}\sigma_i\circ\dots\circ\sigma_1)(n)}^i\}$ también es convergente (toda sucesión parcial de una sucesión convergente es convergente).
 
