@@ -758,5 +758,28 @@ $$y''(0) - cos0 + e^{y(0)}\left( y''(0) + y'(0) \right) = 0 \Rightarrow y''(0) -
 \end{proof}
 \end{ejer}
 
+\begin{ejer}[Función lipschitziana respecto de una variable] \hfill
+
+En orden a probar el \textbf{teorema de Ascoli-Arzelá} (ó \textit{teorema de Picard-Lindelöf}) necesitábamos verificar que una cierta función $f$ cumplía la condición de Lipschitz respecto de su segunda variable, bajo la hipótesis de que $f$ era $C^1$. Sin embargo, basta que $f$ cumpla una condición menos restrictiva, como veremos.
+
+\textbf{Proposición.} Sea $f:\mathbb{R}^2 \longrightarrow \mathbb{R}$ una función continua, derivable respecto de su segunda variable, y verificando que $\pder[f]{x}(s,x)$ es continua. Sean $a,b \in \mathbb{R}$ con $a < b$, y consideremos dos funciones $y,z \in C([a,b],\mathbb{R})$. Entonces, se tiene que: $$\exists K > 0 : \ \ |f(s,y(s)) - f(s,z(s)) | \le K|y(s)-z(s)| \ \ \forall s \in [a,b]$$
+
+\begin{proof} \hfill
+
+Para probar el resultado, podemos considerar sin pérdida de generalidad que $f$ está definida en el conjunto $[a,b] \times \mathbb{R}$. Además, como $y,z$ son funciones continuas definidas en un compacto, sabemos que sus imágenes son compactas. Así, podemos definir $A = y([a,b]) \cup z([a,b])$, y afirmamos que $A$ es compacto, pues es unión finita de compactos. Por tanto, existirán números reales $c$ y $d$ tales que $c = \text{mín} A$ y $d = m\acute{a}x A$, con $c \le d$. Entonces, podemos restringir aún más el conjunto de definición de $f$, y consideramos que está definida en el compacto $D = [a,b]\times [c,d]$.
+
+Ahora, como $f$ es $C^1$ respecto de su segunda variable, tenemos que la función $\displaystyle\pder[f]{x}: D \longrightarrow \mathbb{R}$ es una función continua definida en un compacto. Por tanto, su imagen está acotada, y esto nos permite definir: $$M := sup \left\{ \left| \pder[f]{x}(s,x) \right|\colon (s,x) \in D\right\} \ge 0$$
+
+Fijamos $s \in [a,b]$, y consideramos la función $f_s(x):[c,d] \longrightarrow \mathbb{R}$ dada por $f_s(x) = f(s,x)$.\\ Es inmediato comprobar que $f_s$ es $C^1$, pues $f_s'(x) = \pder[f]{x}(s,x)$. Observamos también que si $y(s)=z(s)$, la proposición se cumple trivialmente para cualquier valor de $K$, por lo que podemos suponer $y(s) < z(s)$. Entonces, por el \textbf{teorema del valor medio} aplicado a $f_s$, tenemos que $\exists c \in [y(s), z(s)]$ verificando: $$|f_s(y(s)) - f_s(z(s))| = |f'_s(c)|\cdot|y(s)-z(s)|$$
+
+De esta igualdad concluímos que: $$|f(s,y(s)) - f(s,z(s))| = \left|\pder[f]{x}(s,c)\right|\cdot|y(s)-z(s)| \le M\cdot|y(s)-z(s)|$$
+
+Notemos que si $M=0$, sería $f'_s(x) = 0 \ \forall x \in [c,d]$, por lo que $f_s$ sería constante, y la proposición sería cierta para todo $K$ positivo. Es por esto que podemos suponer $M > 0$. Como $s$ era un punto arbitrario de $[a,b]$, queda probado el resultado, donde elegimos $K=M$.
+\end{proof}
+
+\textbf{Nota.} En el caso en que $f \in C^1(\mathbb{R}^2,\mathbb{R})$, podemos aplicar directamente el resultado anterior, pues sabemos que en particular $f$ es continua, y derivable respecto de su segunda variable con derivada continua.
+	
+\end{ejer}
+
 
 \end{document}	
