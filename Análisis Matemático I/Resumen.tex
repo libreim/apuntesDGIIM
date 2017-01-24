@@ -239,11 +239,11 @@ Así, tomando $\sigma = \sigma_1\circ\dots\circ\sigma_N$, $\{x_{\sigma(n)}\}$ es
 	Una sucesión $x_n\in \mathbb{R}^n$ converge a un punto de $\mathbb{R}^N \iff $ es una sucesión de Cauchy
 \end{nth}
 \begin{proof}\hfill\\
-\boxed{\Leftarrow}\\
+\boxed{\Rightarrow}\\
 Dado $\varepsilon > 0$, existe $m\in \mathbb{N}$ tal que si $n \ge m$ entonces $d(x_n, x) < \displaystyle\frac{\varepsilon}{2}$, y si $p,q \ge m$ entonces $d(x_p, x_q) \le d(x_p, x) + d(x, x_q) < \varepsilon $
 
 
-	\boxed{\Rightarrow}\\
+	\boxed{\Leftarrow}\\
 Como $\{x_n\}$ es de Cauchy, $\{x_n^i\}$ es de Cauchy $\forall i = 1,\dots,N$ (porque $|x_n^i-x_m^i| \le |x_n-x_m|$). $\implies$ $\{x_n^i\}\rightarrow x^i$ es convergente, por ser $\mathbb{R}$ completo. Luego $\{x_n\}$ es convergente.
 
 
