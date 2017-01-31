@@ -565,4 +565,155 @@ que este nodo, y todos los elementos de la derecha son mayores e
 iguales que este. Por lo general la desigualdad es estricta pues no
 hay claves repetidas para los nodos.
 
-Su tiempo de búsqueda es muy eficiente, del orden $O(log_2(n)$
+Su tiempo de búsqueda es muy eficiente, del orden $O(log_2(n)$. Sin
+embargo, las inserciones y borrados son muy ineficientes $O(n)$.
+
+
+### Árboles Binarios Parcialmente Ordenados (APO) ###
+
+Este arbol cumple la condición de que la etiqueta de cada nodo es
+menor o igual que las etiquetas de sus hijos, manteniéndose tan
+balanceado como sea posible.
+
+Es especialmente útil en los algoritmos de ordenación. Se usa un
+vector dinámico para su representación donde el elemento en la
+posición 0 sería la raíz, y el hijo izquierdo de un nodo M[k] si
+existe estará en la posición M[2k+1] mientras que el hijo derecho
+estaría en el M[2k+2].
+
+### Árboles Equilibrados (AVL) ###
+
+Los árboles AVL (Adison-Velskii Landis) son una versión optimizada de
+los ABB para poder mejorar las búsquedas en estos. Consiste en que,
+siendo árboles ABB tienen la propiedad además de que para ningún nodo
+las alturas de sus subárboles izquierdo y derecho difieran en más de
+una unidad.
+
+Sus operaciones de inserción y borrado tienen un orden de eficiencia logarítmico.
+
+
+\newpage
+
+# Tabla Hash #
+
+La tabla hash es una estructura que no opera por comparaciones entre
+valores clave, sino que para obtener la localización de una clave k
+usa directamente una función aplicada sobre la clave que nos
+proporciona la localización exacta donde se encuentra almacenada en la
+estructura sobre la que estemos trabajando.
+
+La principal complicación de estas funciones es encontrar funciones
+que cumplan que:
+
+$$f(i) = f(j) \Leftrightarrow i = j$$
+
+Por tanto hay que encontrar funciones hash que generen el menor número
+posible de colisiones y además diseñar métodos de resolución de
+colisiones para cuando estas se produzcan.
+
+
+## Funciones hash comunes ##
+
+Entre los tipos más comunes de funciones hash se encuentran:
+
+**1. Truncamiento:** Consiste en eliminar dígitos de la clave. Este
+tiene el problema de que las tablas deben de ser de un tamaño potencia
+de 10 y puede haber muchas colisiones. Existe una alternativa con el
+truncamiento a nivel de bit, cuyas tablas podrían adquirir un tamaño
+potencia de 2.
+
+**2. Plegado:** Consiste en dividir una clave en dos o más partes y
+sumarlas. Tiene el mismo inconveniente del tamaño que la función hash
+anterior.
+
+**3. Multiplicación:** Similar al plegado, pero en lugar de sumar, se
+multiplica. Puede combinarse con un truncamiento antes o después del
+producto para disminuir la probabilidad de las colisiones. Tiene dos
+variantes, el cuadrado del centro o el centro del cuadrado, ambas
+relacionadas con la selección de varias cifras y su cuadrado (y
+viceversa).
+
+**4. División - Resto:** Consiste en tomar el resto de la división de
+la clave entre el tamaño de la tabla:
+
+$$h(k) = k mod(M)$$
+
+Es un método simple que no requiere truncamiento y que permite que las
+tablas sean de tamaño arbitrario. El tamaño de la tabla debe de ser
+por lo menos igual que el número de claves y la mejor elección es
+tomar M como un número primo mayor que el número de claves.
+
+## Tratamiento de colisiones ##
+
+Prácticamente todos los tipos de funciones hash producen colisiones,
+por lo que es igual de importante encontrar un mecanismo para la
+ubicación de la clave que provocó la colisión de tal modo que después,
+en una operación de consulta, la búsqueda se realice eficientemente.
+
+Atendiendo a la estructura de datos elegida podemos usar:
+
+### Hashing abierto ###
+
+Para estructuras de datos dinámicas (listas). Es usado cuando no
+conocemos el número de elementos que vamos a ubicar en la tabla hash.
+
+Hay que construir para cada índice de la tabla una lista de claves
+sinónimas. Para ello usamos una lista dinámica, implementando la tabla
+como un vector estático de punteros a estas listas o bien como una
+lista dinámica de punteros.
+
+Se fija el tamaño a priori.
+
+La búsqueda se reduce a recorrer la lista oportuna.
+
+La inserción se utiliza siguiendo algún criterio de orden (LIFO,
+FIFO...).
+
+Tiene la ventaja de que la tabla puede tener un tamaño inferior al
+número de registros dada su naturaleza dinámica en la asignación. Pero
+por otro lado la desventaja que requiere un espacio adicional ocupado por
+los punteros que se necesitan para mantener las estructuras de tipo lista.
+
+\underline{Ejemplo:}
+
+El conjunto de números {23,45,16,26,40,14,5,12,9,25} con $f(x) = x\
+\%\ 13$:
+
+<p align="center">
+![Hashing abierto](pics/Hash abierto.png "Hash abierto listas y sinónimos")
+</p>
+
+
+### Hashing cerrado ###
+
+Usado en estructuras estáticas (vectores). Cuando sabemos exactamente
+cuantos elementos se ubicarán en la tabla hash.
+
+Utilizamos un vector como representación, y cuando se producza alguna
+colisión la resolveremos asignándole otro valor hash a la clave hasta
+que encontremos un hueco.
+
+Para esta reasignación de casillas tenemos varias posibilidades:
+
+1. **Prueba lineal:** Tal que $h_i(x) = (h(x)+i)\ \%\ M$ donde i es el
+   número de intento. Produce agrupamientos primarios.
+   
+2. **Prueba cuadrática:** $h_i(x) = h(x) + i^2$ donde i es el número
+   de intento. Produce agrupamientos dobles.
+   
+   
+3. **Hashing doble:** Usamos una segunda función hash $h'(x)$ con lo que
+   tendríamos $h_i(x) = (h(x) +i\cdot h'(x))\ \%\ M$. Esta función
+   $h'(x) nunca podrá tomar el valor 0.
+   
+
+La búsqueda se hacen siguiendo la misma secuencia que usó la función
+hash para la inserción. 
+
+Una vez que la tabla se llena se debe seleccionar un tamaño de tabla
+mayor que tambén sea primo y volver a insertar todas las claves (en
+sitios distintos, pues el tamaño cambia y por tanto la función
+hash). Este proceso se llama ***rehashing***.
+
+
+
