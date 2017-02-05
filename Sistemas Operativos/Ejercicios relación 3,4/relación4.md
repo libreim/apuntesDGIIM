@@ -226,19 +226,19 @@ Tenga en cuenta que:
 `00111111111101001`  
 
 Los 0 indican que el bloque correspondiente está vacío. Los 1 indican que el
-bloque correspondiente está ocupado.  
+bloque correspondiente está ocupado.
 
 **Ejercicio 9.** Un i-nodo de UNIX tiene 10 direcciones de disco para los diez
 primeros bloques de datos, y tres direcciones más para realizar una indexación a
 uno, dos y tres niveles. Si cada bloque índice tiene 256 direcciones de bloques
 de disco, cuál es el tamaño del mayor archivo que puede ser manejado, suponiendo
-que 1 bloque de disco es de 1KByte?  
+que 1 bloque de disco es de 1KByte?
 
 Tenemos que sumar por separado el tamaño máximo de un archivo direccionable por
 los 10 primeros bloques de datos y cada uno de los tamaños máximos
-correspondientes a la indexación de 1, 2 y 3 niveles.  
+correspondientes a la indexación de 1, 2 y 3 niveles.
 
-\(10 \cdot 1KB + 256 \cdot 1KB + 256^2 \cdot 1KB + 256^3 \cdot 1KB = 16.843.018KB = 16.843018GB\)  
+$(10 \cdot 1KB + 256 \cdot 1KB + 256^2 \cdot 1KB + 256^3 \cdot 1KB = 16.843.018KB = 16.843018GB)$
 
 **Ejercicio 10.** Sobre conversión de direcciones lógicas dentro de un archivo a
 direcciones físicas de disco. Estamos utilizando la estrategia de indexación a
@@ -250,7 +250,7 @@ archivo, es decir, tenemos en memoria los datos PRIMERBLOQUE y TAMAÑO. Calcule
 la sucesión de direcciones de bloque que se leen hasta llegar al bloque de datos que posee el citado carácter.  
 
 Como cada bloque ocupa 512B y cada puntero ocupa 4B, cada bloque índice puede
-direccionar \(\frac{512}{4} = 128B\). Como se trata de un esquema en indexación
+direccionar $(\frac{512}{4} = 128B)$. Como se trata de un esquema en indexación
 a tres niveles y tenemos ya el primer bloque en memoria,  necesitamos realizar
 tres accesos a disco. Esto quiere decir que es necesario conocer tres índices
 *i, j, k* para obtener el N-ésimo byte del archivo en cuestión.
@@ -262,7 +262,7 @@ tres accesos a disco. Esto quiere decir que es necesario conocer tres índices
 \[ k = \frac{N^{\prime \prime}}{512} \quad N^{\prime \prime \prime} = N^{\prime \prime} \% (512) \]
 
 Entonces, necesitamos traer de disco los bloques apuntados por las direcciones
-*i, j* y *k* y leer del bloque de datos con un desplazamiento igual a N<sup>&prime;&prime;&prime;</sup>.  
+*i, j* y *k* y leer del bloque de datos con un desplazamiento igual a N<sup>&prime;&prime;&prime;</sup>.
 
 **Ejercicio 11.** ¿Qué método de asignación de espacio en un sistema de archivos
 elegiría para maximizar la eficiencia en términos de velocidad de acceso, uso
