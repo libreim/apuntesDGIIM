@@ -2686,21 +2686,21 @@ Entonces $f$ es irreducible.
 
 
 \section{Matrices sobre Anillos conmutativos}
-Sea $K=$ un cuerpo, y consideremos $\mathcal{M}_{mxn}$ y  $\mathcal{M}_{n}$. Imaginemos ahora que $A\leq K$ es un subanillo. De esta forma, podemos concebir las matrices que están este en este conjunto : $\mathcal{M}_{mxn}(A)$ ó  $\mathcal{M}_{n(A)}$ .
+Sea $K$ un cuerpo, y consideremos $\mathcal{M}_{mxn}(K)$ y  $\mathcal{M}_{n}(K)$. Imaginemos ahora que $A\leq K$ es un subanillo. De esta forma, podemos concebir las matrices que están este en este conjunto: $\mathcal{M}_{mxn}(A)$ ó  $\mathcal{M}_{n}(A)$ .
 
-Así, si sumáramos dos matrices que estuvieran en  $\mathcal{M}_{mxn}(A)$, nos quedaría una matriz cuyas entradas están en el subanillo A. Lo mismo ocurre en la multiplicación. 
+Así, si sumáramos dos matrices que estuvieran en  $\mathcal{M}_{mxn}(A)$, nos quedaría una matriz cuyas entradas están en el subanillo A. Lo mismo ocurre con la multiplicación. 
 
 
 Podemos considerar también:
 \[
-GL_n(K) = U (\mathcal{M}_n(K)) = \{ M \in \mathcal{M}_n(K) :  \ \exists M^{-1} \in \mathcal{M}_n(K) \ \ con \ \ MM^{-1} = M^{-1}M\}
+GL_n(K) = U (\mathcal{M}_n(K)) = \{ M \in \mathcal{M}_n(K) :  \ \exists M^{-1} \in \mathcal{M}_n(K) \ \ con \ \ MM^{-1} = M^{-1}M = I_n\}
 \]
 
-Que sabemos que es igual al conjunto $\{M \in \mathcal{M}_n(K) : | M | \ne 0\}$. Ahora, podemos considerar como hemos hecho anteriormente, lo mismo pero en el subanillo A.
+Que sabemos que es igual al conjunto $\{M \in \mathcal{M}_n(K) : | M | \ne 0\}$. Ahora, podemos considerar, como hemos hecho anteriormente, lo mismo pero en el subanillo A.
 
 Dada $M \in \mathcal{M}_n(A)$, si $M \in GL_n(A)$, cumplirá que $MM^{-1} = I$, tomando determinantes vemos que: $|I|=|M||M^{-1}|$. El determinante de M y el determinante de $M^{-1}$ están en A, y es un producto de dos que da como resultado 1, por lo que podemos asegurar que $|M| \in U(A)$.
 
-Veámoslo al revés. Si $M\in \mathcal{M}_n(A)$ con $|M\in U(A)| \implies 1/|M| \in A$. Si consideramos la adjunta de M, esta también pertenece a $\mathcal{M}_n$ y por tanto $M \in GL_n(A)$ pues tiene una inversa cuyas entradas están todas en el subanillo A.
+Veámoslo al revés. Si $M\in \mathcal{M}_n(A)$ con $|M| \in U(A) \implies 1/|M| \in A$. Si consideramos la adjunta de M, esta también pertenece a $\mathcal{M}_n$ y por tanto $M \in GL_n(A)$ pues tiene una inversa cuyas entradas están todas en el subanillo A.
 Con todo esto, hemos deducido la siguiente proposición:
 
 \begin{nprop}
@@ -2711,8 +2711,12 @@ Con todo esto, hemos deducido la siguiente proposición:
 	El grupo lineal de $\ent$ es: $GL_n(Z) = \{M \in \mathcal{M}_n(A) :  |M| = \pm 1\}$
 \end{ejemplo}
 
+\begin{ejemplo}
+	El grupo lineal de $K[x]$ es: $GL_n(K[x]) = \{M \in \mathcal{M}_n(K[x]) :  |M| = k - \{0\} \},$ donde k es un polinomio de grado 0 no nulo.
+\end{ejemplo}
+
 \begin{ndef}[Matrices equivalentes]
-	Dos matrices M y N $\in \mathcal{M}_{mxn}(A)$ son equivalentes si $\exists P,Q \in GL_n(A)$ tal que
+	Dos matrices M y N $\in \mathcal{M}_{mxn}(A)$ son equivalentes si $\exists P\in GL_m(A), Q \in GL_n(A)$ tal que
 	\[
 	M = PNQ
 	\]
@@ -2721,16 +2725,15 @@ Estando en un cuerpo, dos matrices serán equivalentes $\iff$ tienen el mismo ra
 
 \begin{nth}[Teorema de la forma Normal de Smith]
 	Si A es un Dominio Euclídeo, toda matriz  $M \in \mathcal{M}_{mxn}(A)$ es equivalente a una de la forma:
-	\[ \left( \begin{array}{ccccc}
- d_{11}&  &  & & \\
- &   d_{22} & & \\
- &  & ... &  &  \\
- & & &d_{rr} &\\
- & & & & 0
- \end{array} \right)\]
-
-
-con $d_{11},...,d_{rr} \in A$ ubicados en la diagonal, donde $ 0 \leq r \leq min{m,n} $ y cada $d_{ii}\ne 0$ y $d_{ii}/ d_{i+1 \ i+1}$.  Además, estos $d_{11}, ...,d_{rr}$ son únicos para la clase de equivalencia de M y se llaman los \textbf{factores invariantes} de la matriz.
+		\[ \begin{pmatrix}
+			 d_{1}&  &  & & \\
+			 &  & \ddots &  &  \\
+			 & & &d_{r} &\\
+			 & & & & 0 \\
+			 & & & & & \ddots& \\
+			 & & & &  & & 0 \\
+		\end{pmatrix} \]
+con $d_{1},...,d_{r} \in A$ ubicados en la diagonal, donde $ 0 \leq r \leq min\{m,n\} $ y cada $d_{i}\ne 0$ y $d_{i}/ d_{i+1}$.  Además, estos $d_{1}, ...,d_{r}$ son únicos para la clase de equivalencia de M y se llaman los \textbf{factores invariantes} de la matriz.
 
 Dos matrices $M,N \in \mathcal{M}_{mxn}(A)$ son equivalentes $\iff$ tienen los mismos factores invariantes.
 \end{nth}
@@ -2739,19 +2742,19 @@ Sea esta matriz
 
 	\[P= \left( \begin{array}{ccccc}
  1&  &  & & \\
- &   ... & a & \\
- &  & ... &  &  \\
+ &   \ddots & & a \\
+ &  &  &  &  \\
  & & & & 1
  \end{array} \right)\]
-Que tiene en la posición $M_{ij}$ un elemento $a\in A$. Entonces, esta matriz es invertible y además su inversa es igual pero cambiando a por $-a$.
+Que tiene en la posición (i,j) un elemento $a\in A$. Entonces, esta matriz es invertible y además su inversa es igual pero cambiando $a$ por $-a$.
 
 Si:
 	\[ N =  \left( \begin{array}{c}
  F_1 \\
- ...\\
+ \vdots\\
  F_n
  \end{array} \right)   \]
- Y multiplicáramos $PN$, entonces quedaría $F_k' = F_k $ si $k \ne i$ con ese i el número de fila que tenía el elemento a y . Lo mismo ocurriría con las columnas si...\\
+ Y multiplicáramos $P_1N$, entonces quedaría $F_k' = F_k $ si $k \ne i$ con $i$ el número de fila que contenía el elemento $a$ y $F_i'=F_i+aF_j$. Lo mismo ocurriría con las columnas si...\\
 \textbf{FALTA CONTENIDO DE MATRICES, añadirla.}
  
 
@@ -2766,14 +2769,14 @@ Si:
 \begin{ndef}
 	Una matriz $M \in \mathcal{M}_{mxn}$ que sea:
 		\[ \begin{pmatrix}
- d_{11}&  &  & & \\
+ d_{1}&  &  & & \\
  &  & \ddots &  &  \\
- & & &d_{rr} &\\
+ & & &d_{r} &\\
  & & & & 0 \\
  & & & & & \ddots& \\
  & & & &  & & 0 \\
 \end{pmatrix} \]
- con $d_1,...,d_r \in A \ \ d_i \ne 0$ y $d_i / d_{i+1}$, en las posiciones (i,i) con $1 \leq i \leq r$ y 0 en todas las demás posiciones, se dice matriz Normalizada (Smith)
+ con $d_1,...,d_r \in A, \ \ d_i \ne 0$ y $d_i / d_{i+1}$, en las posiciones (i,i) con $1 \leq i \leq r$ y 0 en todas las demás posiciones, se dice matriz Normalizada (Smith).
 \end{ndef}
 
 Vamos a explicar ahora un método a partir del cual, teniendo una matriz cualquiera podemos obtener una matriz normalizada que es equivalente a la primera. No olvidemos que estamos trabajando en Dominios euclídeos.
@@ -2781,9 +2784,9 @@ Vamos a explicar ahora un método a partir del cual, teniendo una matriz cualqui
 Sea $A \in \mathcal{M}_{mxn}$. $A \ne 0$. Sea $\varphi:A -\{0\} \to \nat$ la función euclídea.
 
 Vamos a llamar $\varphi(M) = min\{\varphi(a_{ij}) : a_{ij} \ne 0\}$
-Primero, tomaremos un $a_{ij}$ donde la función euclídea tome el valor más pequeño que tome en toda la matriz. Ahora, por operaciones elementales podemos llevarlo a la posición $d_{11}$.
+Primero, tomaremos un $a_{ij}$ donde la función euclídea tome el valor más pequeño que tome en toda la matriz. Ahora, por operaciones elementales podemos llevarlo a la posición $(1,1)$.
 
-Supongamos ahora que $a_{11}$ no divide a $a_{1k}$. como estamos en un dominio euclídeo, podemos expresar el cociente entre ellos como:
+Supongamos ahora que $a_{11}$ no divide a $a_{1k}$, como estamos en un dominio euclídeo, podemos expresar el cociente entre ellos como:
 \[
 a_{1k} = a_{11}q+ b_{1k}
 \]
@@ -2794,15 +2797,25 @@ Ahora, realizamos la operación:
 C_k \mapsto C_k - q C_1
 \]
 
-Reiteramos el proceso las veces que haga falta, hasta encontrarnos una matriz que sea de la forma $b_{ij}$. Ahora, si $b_{11}$ no divide a $b_{k1}$, entonces este último se expresará como $b_{k1} = b_{11}q' + c_{k1}$ con $c_{k1}\ne 0$ y $\varphi(c_{k1}) < \varphi(b_{11})$
+		\[ \begin{pmatrix}
+			 a_{11} \hdots  a_{1k} \hdots \\
+			   \hdots &  \\
+		\end{pmatrix} 
+		\xrightarrow{C_k - qC_1}
+		\begin{pmatrix}
+			 a_{11} \hdots  b_{1k} \hdots \\
+			   \hdots &  \\
+		\end{pmatrix} 
+\]
+Reiteramos el proceso las veces que haga falta, hasta encontrarnos una matriz que sea de la forma $(b_{ij})$. Ahora, si $b_{11}$ no divide a $b_{k1}$, entonces este último se expresará como $b_{k1} = b_{11}q' + c_{k1}$ con $c_{k1}\ne 0$ y $\varphi(c_{k1}) < \varphi(b_{11})$
 
 Entonces, realizamos la operación:
 \[
 F_k \mapsto F_k - q'F_1
 \]
-Volvemos a reiterar el procedimiento cuantas veces sea falta.
+Volvemos a reiterar el procedimiento cuantas veces haga falta.
 
-Tras una serie de pasos, llegaremos a una matriz equivalente a la original en la que $b_{11}/b_{k1}$ y $b_{11}/b_{1k} \ \ \forall k$. LLegados a esta situación,por transformaciones elementales podemos obtener una matriz que sea del tipo:
+Tras una serie de pasos, llegaremos a una matriz equivalente a la original en la que $b_{11}/b_{k1}$ y $b_{11}/b_{1k} \ \ \forall k$. Llegados a esta situación, por transformaciones elementales podemos obtener una matriz que sea del tipo:
 \[
 \begin{pmatrix}
  b_{11} & 0 & \cdots & 0 \\
@@ -2812,80 +2825,85 @@ Tras una serie de pasos, llegaremos a una matriz equivalente a la original en la
 \end{pmatrix} 
 \]
 
-Ahora, tenemos una matriz en la que $b_{11}/ c_{ij}$ para cada i y j. Ahora, lo que haremos es tomar la submatriz que empieza en $c_{22}$ y volveremos a realizar el mismo proceso.
+Donde $b_{11}/ c_{ij}$ para cada $i$ y $j$. Ahora, lo que haremos es tomar la submatriz que empieza en $c_{22}$ y volveremos a realizar el mismo proceso.
 
 \begin{ejemplo}
-	Sea $A \in matrices$ tal que:
+	Sea $A \in \mathcal{M}_{3x2}$ tal que:
 	\[
+	A = 
 	\begin{pmatrix}
  14 & 10 \\
  22 & 14\\
  10 & 10\\ 
 \end{pmatrix} 
 	\]
-	Ahora, tomamos el numero que tenga la $\varphi$ menor, en este caso el 10 y hacemos transformaciones elementales para llevarlo a la primera posición.
+	Ahora, tomamos el número que tenga $\varphi$ menor, en este caso el 10 y hacemos transformaciones elementales para llevarlo a la primera posición.
 	\[\begin{pmatrix}
  14 & 10 \\
  22 & 14\\
  10 & 10\\ 
-\end{pmatrix} \mapsto^{C_2,C_1}
+\end{pmatrix} \xrightarrow{C_2,\ C_1}
 	\begin{pmatrix}
  10 & 14 \\
  14 & 22\\
  10 & 10\\ 
-\end{pmatrix} \mapsto^{C_2 - C_1} \begin{pmatrix}
- 14 & 4 \\
- 22 & 8\\
+\end{pmatrix} \xrightarrow{C_2\ -\ C_1} \begin{pmatrix}
+ 10 & 4 \\
+ 14 & 8\\
  10 & 0\\ 
-\end{pmatrix}\mapsto^{C_2,C_1}
+\end{pmatrix}\xrightarrow{C_2,\ C_1}
 \begin{pmatrix}
  4 & 10 \\
  8 & 14\\
  0 & 10\\ 
-\end{pmatrix}\mapsto^{C_2 - 2C_1}  \begin{pmatrix}
+\end{pmatrix}\xrightarrow{C_2\ -\ 2C_1}  \begin{pmatrix}
  4 & 2 \\
  8 & -2\\
  0 & 10\\ 
 \end{pmatrix}
 	\]
 	\[
-	\mapsto\begin{pmatrix}
+	\xrightarrow{C_2\ -\ C_1}
+	\begin{pmatrix}
  2 & 4 \\
  -2 & 8\\
  10 & 0\\ 
-\end{pmatrix} \mapsto^{C_2-2C_1}
+\end{pmatrix} \xrightarrow{C_2\ -\ 2C_1}
 \begin{pmatrix}
  2 & 0 \\
  -2 & 12\\
  10 & -20\\ 
-\end{pmatrix}\mapsto^{F_2+F_1}
+\end{pmatrix}\xrightarrow{F_2\ +\ F_1}
 \begin{pmatrix}
  2 & 0 \\
  0 & 12\\
  10 & -20\\ 
-\end{pmatrix} \mapsto^{F_3-F_1}  
+\end{pmatrix} \xrightarrow{F_3\ -\ F_1}  
 \begin{pmatrix}
  2 & 0 \\
  0 & 12\\
  0 & -20\\ 
 \end{pmatrix} 
 	\]
-	Y ahora, tendríamos que hacer lo mismo para la submatriz resultante:
+	Y ahora, tendríamos que hacer lo mismo atendiendo a la submatriz resultante:
 	\[
 	\begin{pmatrix}
- 12 \\
- -20 \\ 
-\end{pmatrix}\mapsto^{F_3+2F_2} 
+ 2 & 0 \\
+ 0 & 12 \\
+ 0 & -20 \\ 
+\end{pmatrix}\xrightarrow{F_3\ +\ 2F_2} 
 \begin{pmatrix}
-  4 \\
- 12 \\ 
-\end{pmatrix}\mapsto^{F_3 - 3F_2}
+  2 & 0 \\
+  0 & 4 \\
+  0 & 12 \\ 
+\end{pmatrix}\xrightarrow{F_3\ -\ 3F_2}
 \begin{pmatrix}
-  4 \\
- 0 \\ 
+  2 & 0 \\
+  0 & 4 \\
+  0 & 0 \\ 
 \end{pmatrix}  
 	\]
-	Y nos queda la matriz :
+	Y nos queda la matriz:
 	\[
 	\begin{pmatrix}
  2 & 0 \\
@@ -2897,25 +2915,25 @@ Ahora, tenemos una matriz en la que $b_{11}/ c_{ij}$ para cada i y j. Ahora, lo 
 \end{ejemplo}
 
 \begin{ndef}[Rango de la matriz]
-	El entero $r$ tla que $M$ tiene al menos un menor de orden $r$ no nulo y todos los de orden $r+1$ son nulos se llama Rango de la matriz.
-\end{ndef}
+	El entero $r$ tal que $M$ tiene al menos un menor de orden $r$ no nulo y todos los de orden $r+1$ son nulos se llama Rango de la matriz.
+\end{ndef} 
 
-Vamos a definir ahora $\Delta_s(M) = mcd\{$menores de orden s de M no nulos $\}$
-Así, $\Delta_1(M)$ sería el máximo común divisor de todos los $m_{ij}$. Ahora, con esta definición, podemos decir que:
+Vamos a definir ahora $\Delta_s(M) = mcd\{$menores de orden s de M no nulos$\}$
+Así, $\Delta_1(M)$ sería el máximo común divisor de todos los $m_{ij}$ (si $M$ está normalizada será $d_1$). Ahora, con esta definición, podemos decir que:
 \[
 rg(M) = max\{s : \Delta_s(M) \ne 0\}
 \]
 Lo que implica que si $rg(M) = r \implies \Delta_1(M),...,\Delta_r(M)$ son $\ne 0$ y $\Delta_{r+1}(M),...$ son nulos.
 
-Sea $P \in \mathcal{M}_m(A)$. Construimos la matriz $PM\in \mathcal{M}_{mxn}(A)$(tenemos la matriz $M \in \mathcal{M}_{mxn}(A)$). Si miramos el elemento de PM en la posición $(k,j)$,este es: $\sum_{i=1}^n P_{ki}a_{ij}$. Así, la fila $k-$ésima de $PM$ es:
+Sea $P \in \mathcal{M}_m(A)$. Construimos la matriz $PM\in \mathcal{M}_{mxn}(A)$ (tenemos la matriz $M \in \mathcal{M}_{mxn}(A)$). Si miramos el elemento de PM en la posición $(k,j)$, este es: $\sum_{i=1}^m p_{ki}a_{ij}$. Así, la fila $k-$ésima de $PM$ es:
 \[
-(\sum_{i=1}^n P_{ki}a_{i1}, \cdots , \sum_{i=1}^n P_{ki}a_{in}) = \sum_{i=1}^n P_{ki}(a_{i1},\cdots , a_{in})
+(\sum_{i=1}^m p_{ki}a_{i1}, \cdots , \sum_{i=1}^n p_{ki}a_{im}) = \sum_{i=1}^n p_{ki}(a_{i1},\cdots , a_{im})
 \]
-Por tanto las filas de la matriz $PM$ son combinación lineal de la matriz M. Por tanto, también podemos afirmar que los menores de orden $s$ de la matriz PM son combinación lineal de los menores de orden $s$ de la matriz M.
+Por tanto, las filas de la matriz $PM$ son combinación lineal de la matriz M. También podemos afirmar que los menores de orden $s$ de la matriz PM son combinación lineal de los menores de orden $s$ de la matriz M. Entonces, $\Delta_s(M)/\Delta_s(PM)$.
 
-Si $P\in GL_m(A)\implies \Delta_s(PM) : \Delta_s(P^{-1}PM) = \Delta_s(M)$.
+Si $P\in GL_m(A)\implies \Delta_s(PM) / \Delta_s(P^{-1}PM) = \Delta_s(M)$.
 
-Si $Q \in GL_m(A) \implies \Delta_s (M) = \Delta(MQ)$
+Si $Q \in GL_n(A) \implies \Delta_s (M) = \Delta(MQ)$
 
 \begin{nota}
 	$\Delta(M) = \Delta(M^t)$. Del mismo modo, $\Delta_S(MQ) = \Delta_s((MQ)^t) =  \Delta_s (Q^tM^t) = \Delta_s (M^t) =  \Delta_s(M)$
