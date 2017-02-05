@@ -8,7 +8,7 @@ toc: false
 fontsize: 12pt
 geometry: margin=1in
 ---
-$\small{Los autores no se hacen responsables de ningún fallo provocado o influido por estos ejercicios}$
+*Los autores no se hacen responsables de ningún fallo provocado o influido por estos ejercicios*
 
 # `Ayudadme a responder: 2, 14`
 
@@ -18,10 +18,14 @@ $\small{Los autores no se hacen responsables de ningún fallo provocado o influi
 
 ### 1. Sea  un  Sistema  Operativo  que  sólo  soporta  un  directorio  (es  decir,  todos  los  archivos existentes  estarán  al  mismo  nivel),  pero  permite  que  los  nombres  de  archivo  sean  de longitud  variable.  Apoyándonos  únicamente  en  los  servicios  proporcionados  por  este Sistema Operativo, deseamos construir una "utilidad" que "simule" un sistema jerárquico de archivos. ¿Es esto posible? ¿Cómo?
 
-Podríamos realizar la estructura jerarquica imponiedo el nombre de "directorios" y almacenandolos junto con archivos que referencien al resto de archivos almacenados por este, por ejemplo tener:
+Podríamos realizar la estructura jerárquica imponiedo el nombre de "directorios" y almacenándolos junto con archivos que referencien al resto de archivos almacenados por este, por ejemplo tener:
 Datos/
+
 Datos/altura.txt
+
 Datos/peso.txt
+
+*Alternativa:* Podemos añadir a cada nombre de archivo un índice (entero, carácter) que indique en que nivel se encuentra.
 
 ### 2. En un entorno multiusuario, cada usuario tiene un directorio inicial al entrar en el sistema a partir del cual puede crear archivos y subdirectorios. Surge, entonces, la necesidad de limitar  el tamaño  de este  directorio  para  impedir  que  el  usuario  consuma un  espacio de disco excesivo. ¿De qué forma el Sistema Operativo podría implementar la limitación de tamaño de un directorio?
 

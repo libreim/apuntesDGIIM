@@ -40,7 +40,7 @@ Marcos de página = $2^{12}$/$2^{10}$ = 4
 
 * ***c) Describe los fallos de página que tendrán lugar para cada intervalo de ejecución de los procesos, si la política de sustitución de páginas utilizada es LRU. Suponga que dicho algoritmo es de asignación variable y sustitución global.***
 
-***SOLUCION:***
+***SOLUCIÓN:***
 ```
 Proceso       Direcciones virtuales     PROCESO.PAGINA
 P1                  0-99                    1.1
