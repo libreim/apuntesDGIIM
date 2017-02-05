@@ -26,7 +26,7 @@ lenta, grande y barata.
 La **caché** es la memoria de acceso rápido de un ordenador, que guarda temporalmente los datos recientemente procesados. Es una copia que puede ser accedida más rápidamente que el original.
 La idea de este tipo de memoria es hacer los casos frecuentes eficientes, los caminos infrecuentes no importan tanto.
 Decimos que hay un **acierto de caché** si el item buscado está en la caché. Denominamos **fallo de caché** a que el item no esté en cachéy haya que realizar la operación completa (recuperar el bloque en el que se encuentra en la memoria principal y traerlo a la caché).
-$$ Tiempo de Acceso Efectivo (TAE) = Probabilidad_{acierto} * coste_{acierto} + Probabilidad_{fallo} * coste_{fallo} $$
+$$ Tiempo de Acceso Efectivo (TAE) = Probabilidad_{acierto} \cdot coste_{acierto} + Probabilidad_{fallo} \cdot coste_{fallo} $$
 
 Funciona porque los programas no son aleatorios,
 explotan la localidad (principio de localidad, sólo unas pocas porciones del proceso se necesitarán a lo largo de un periodo de tiempo corto).
