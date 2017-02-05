@@ -247,7 +247,7 @@ igual a 512 bytes, y el tamaño de puntero es de 4 bytes. Se recibe la solicitud
 por parte de un proceso de usuario de leer el carácter número N de determinado
 archivo. Suponemos que ya hemos leído la entrada del directorio asociada a este
 archivo, es decir, tenemos en memoria los datos PRIMERBLOQUE y TAMAÑO. Calcule
-la sucesión de direcciones de bloque que se leen hasta llegar al bloque de datos que posee el citado carácter.  
+la sucesión de direcciones de bloque que se leen hasta llegar al bloque de datos que posee el citado carácter.
 
 Como cada bloque ocupa 512B y cada puntero ocupa 4B, cada bloque índice puede
 direccionar $(\frac{512}{4} = 128B)$. Como se trata de un esquema en indexación
@@ -255,14 +255,14 @@ a tres niveles y tenemos ya el primer bloque en memoria,  necesitamos realizar
 tres accesos a disco. Esto quiere decir que es necesario conocer tres índices
 *i, j, k* para obtener el N-ésimo byte del archivo en cuestión.
 
-\[ i = \frac{N}{128 \cdot 128 \cdot 512} \quad N^{\prime} = N \% (128 \cdot 128 \cdot 512) \]
+$$ i = \frac{N}{128 \cdot 128 \cdot 512} \quad N^{\prime} = N \% (128 \cdot 128 \cdot 512) $$
 
-\[ j = \frac{N^{\prime}}{128 \cdot 512} \quad N^{\prime \prime} = N^{\prime} \% (128 \cdot 512) \]
+$$ j = \frac{N^{\prime}}{128 \cdot 512} \quad N^{\prime \prime} = N^{\prime} \% (128 \cdot 512) $$
 
-\[ k = \frac{N^{\prime \prime}}{512} \quad N^{\prime \prime \prime} = N^{\prime \prime} \% (512) \]
+$$ k = \frac{N^{\prime \prime}}{512} \quad N^{\prime \prime \prime} = N^{\prime \prime} \% (512) $$
 
 Entonces, necesitamos traer de disco los bloques apuntados por las direcciones
-*i, j* y *k* y leer del bloque de datos con un desplazamiento igual a N<sup>&prime;&prime;&prime;</sup>.
+*i, j* y *k* y leer del bloque de datos con un desplazamiento igual a $N^{\prime \prime \prime}$.
 
 **Ejercicio 11.** ¿Qué método de asignación de espacio en un sistema de archivos
 elegiría para maximizar la eficiencia en términos de velocidad de acceso, uso
@@ -273,7 +273,7 @@ a) modificados infrecuentemente, y accedidos frecuentemente de forma aleatoria
 
 b) modificados con frecuencia, y accedidos en su totalidad con cierta frecuencia
 
-c) modificados frecuentemente y accedidos aleatoriamente y frecuentemente.  
+c) modificados frecuentemente y accedidos aleatoriamente y frecuentemente.
 
 a) **Asignación contigua.** Como se accede infrecuentemente a ese archivo no es
 necesario mantener un método de asignación que permita modificarlo
@@ -287,4 +287,4 @@ posibilidad de modificar los datos. Esto es eficiente en espacio porque el
 archivo puede crecer dinámicamente sin necesidad de mantener los bloques en
 posiciones contiguas.
 
-c) **Asignación no contigua indexada.** La asignación no puede ser contigua porque necesitamos facilitar la modificación de los datos. Esto garantiza una modificación eficiente porque el archivo puede crecer dinámicamente sin necesidad de mantener los bloques en posiciones contiguas. Además, la indexación garantiza accesos aleatorios rápidos.
+c) **Asignación no contigua indexada.** La asignación no puede ser contigua porque necesitamos facilitar la modificación de los datos. Esto garantiza una modificación eficiente porque el archivo puede crecer dinámicamente sin necesidad de mantener los bloques en posiciones contiguas. Además, la indexación garantiza accesos aleatorios rápidos.
