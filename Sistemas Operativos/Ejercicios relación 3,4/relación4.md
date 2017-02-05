@@ -181,4 +181,4 @@ Porque un archivo puede tener varíos nombres dados por el mismo o incluso por d
 
 ### 17. Sea un directorio cualquiera en un sistema de archivos ext2 de Linux, por ejemplo, DirB. De él cuelgan algunos  archivos  que están en uso  por uno o  más procesos. ¿Es posible usar este directorio como punto de montaje? Justifíquelo.
 
-**duda** Diría que no se puede porque para montar todo el rollo de la tabla de archivos bien tendríamos que tener una base sin bloquear.
+Si se puede. No se podría en el caso de que el directorio en si fuese utilizado por un proceso, sin embargo en este caso al estar solo algún archivo se podría.
