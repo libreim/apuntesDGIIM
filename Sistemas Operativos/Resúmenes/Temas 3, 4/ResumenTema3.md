@@ -99,6 +99,24 @@ Las **direcciones lógicas**, que son las que genera la CPU se dividen en *núme
 
 Las **direcciones físicas** se dividen en *número de marco* (dirección base del marco donde está almacenada la página) y desplazamiento.
 
+
+La paginación se basa en tener en memoria principal las páginas que
+serán necesarias para el proceso. Para esto es importante tener un
+control sobre las páginas que están ya cargadas, y para llevarlo a
+cabo se usa una tabla de páginas, que recogerá información
+sobre cada página del proceso, si se encuentra cargada o no o si ha
+sido modificada.
+
+A veces los procesos son muy grandes y tienen tablas de páginas muy grandes
+y tenerlas cargadas en memoria sería un gasto considerable de espacio,
+por lo que las mismas tablas de páginas se ven sujetas a la memoria
+virtual. Para esto se usan esquemas de paginación de varios niveles,
+donde el número de páginas totales se divide entre el tamaño de una
+página para crear una tabla de primer nivel, en cada entrada de esta se
+apunta a una tabla de segundo nivel que guardará la información sobre
+las páginas del proceso.
+
+
 ### Tabla de páginas
 
 Cuando la CPU genere una dirección lógica será necesario traducirla a la dirección física correspondiente, la **tabla de páginas** mantiene información necesaria para realizar dicha traducción. Existe una tabla de páginas por proceso.
