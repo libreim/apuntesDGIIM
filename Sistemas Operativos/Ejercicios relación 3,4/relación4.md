@@ -148,10 +148,11 @@ respuesta realizada en base a la diapositiva 39
 
 total: 6 accesos
 
-# 14. `Que alguien copie el resultado`
+# 14. represente  gráficamente   cómo  y  dónde  quedaría   reflejada  y  almacenada  toda   la información  referente a  la  creación anterior de un  enlace  simbólico  y  absoluto  ("hard")  a un mismo archivo, pract1.
 
 En el enlace simbólico necesita un inodo nuevo, entrada de directorio y (a lo mejor) un bloque de datos. Sin embargo en el enlace duro esto último no sería necesario.
 
+**si alguien se siente con fuerza, que haga la representación gráfica**
 
 ### 15. En un  sistema de  archivos  ext2  (Linux),  ¿qué  espacio  total  (en  bytes)  se  requiere  para almacenar la información sobre la localización física de un archivo que ocupa 3 Mbytes?. Suponga que el tamaño de un  bloque lógico es de 1 Kbytes y se utilizan direcciones de 4 bytes. Justifique la solución detalladamente.
 La repuesta de las diapositivas es:
