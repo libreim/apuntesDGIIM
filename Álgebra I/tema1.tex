@@ -2686,7 +2686,7 @@ Entonces $f$ es irreducible.
 
 
 \section{Matrices sobre Anillos conmutativos}
-Sea $K$ un cuerpo, y consideremos $\mathcal{M}_{mxn}(K)$ y  $\mathcal{M}_{n}(K)$. Imaginemos ahora que $A\leq K$ es un subanillo. De esta forma, podemos concebir las matrices que están este en este conjunto: $\mathcal{M}_{mxn}(A)$ ó  $\mathcal{M}_{n}(A)$ .
+Sea $K$ un cuerpo, y consideremos $\mathcal{M}_{mxn}(K)$ y  $\mathcal{M}_{n}(K)$. Imaginemos ahora que $A\leq K$ es un subanillo. De esta forma, podemos concebir las matrices que están en este conjunto: $\mathcal{M}_{mxn}(A)$ ó  $\mathcal{M}_{n}(A)$ .
 
 Así, si sumáramos dos matrices que estuvieran en  $\mathcal{M}_{mxn}(A)$, nos quedaría una matriz cuyas entradas están en el subanillo A. Lo mismo ocurre con la multiplicación. 
 
@@ -2698,9 +2698,9 @@ GL_n(K) = U (\mathcal{M}_n(K)) = \{ M \in \mathcal{M}_n(K) :  \ \exists M^{-1} \
 
 Que sabemos que es igual al conjunto $\{M \in \mathcal{M}_n(K) : | M | \ne 0\}$. Ahora, podemos considerar, como hemos hecho anteriormente, lo mismo pero en el subanillo A.
 
-Dada $M \in \mathcal{M}_n(A)$, si $M \in GL_n(A)$, cumplirá que $MM^{-1} = I$, tomando determinantes vemos que: $|I|=|M||M^{-1}|$. El determinante de M y el determinante de $M^{-1}$ están en A, y es un producto de dos que da como resultado 1, por lo que podemos asegurar que $|M| \in U(A)$.
+Dada $M \in \mathcal{M}_n(A)$, si $M \in GL_n(A)$, cumplirá que $MM^{-1} = I$, tomando determinantes vemos que: $|I|=|M||M^{-1}|$. El determinante de M y el determinante de $M^{-1}$ están en A, y es un producto que da como resultado 1, por lo que podemos asegurar que $|M| \in U(A)$.
 
-Veámoslo al revés. Si $M\in \mathcal{M}_n(A)$ con $|M| \in U(A) \implies 1/|M| \in A$. Si consideramos la adjunta de M, esta también pertenece a $\mathcal{M}_n$ y por tanto $M \in GL_n(A)$ pues tiene una inversa cuyas entradas están todas en el subanillo A.
+Veámoslo al revés. Si $M\in \mathcal{M}_n(A)$ con $|M| \in U(A) \implies 1/|M| \in A$. Si consideramos la adjunta de M, esta también pertenece a $\mathcal{M}_n$ y, por tanto, $M \in GL_n(A)$ pues tiene una inversa cuyas entradas están todas en el subanillo A.
 Con todo esto, hemos deducido la siguiente proposición:
 
 \begin{nprop}
@@ -2711,7 +2711,7 @@ Con todo esto, hemos deducido la siguiente proposición:
 	El grupo lineal de $\ent$ es: $GL_n(Z) = \{M \in \mathcal{M}_n(A) :  |M| = \pm 1\}$
 \end{ejemplo}
 
-\begin{ejemplo}
+\begin{ejemplo}[2]
 	El grupo lineal de $K[x]$ es: $GL_n(K[x]) = \{M \in \mathcal{M}_n(K[x]) :  |M| = k - \{0\} \},$ donde k es un polinomio de grado 0 no nulo.
 \end{ejemplo}
 
@@ -2734,9 +2734,11 @@ Estando en un cuerpo, dos matrices serán equivalentes $\iff$ tienen el mismo ra
 			 & & & &  & & 0 \\
 		\end{pmatrix} \]
 con $d_{1},...,d_{r} \in A$ ubicados en la diagonal, donde $ 0 \leq r \leq min\{m,n\} $ y cada $d_{i}\ne 0$ y $d_{i}/ d_{i+1}$.  Además, estos $d_{1}, ...,d_{r}$ son únicos para la clase de equivalencia de M y se llaman los \textbf{factores invariantes} de la matriz.
-
-Dos matrices $M,N \in \mathcal{M}_{mxn}(A)$ son equivalentes $\iff$ tienen los mismos factores invariantes.
 \end{nth}
+
+\begin{ncor}
+	Dos matrices $M,N \in \mathcal{M}_{mxn}(A)$ son equivalentes $\iff$ tienen los mismos factores invariantes.
+\end{ncor}
 
 Sea esta matriz
 
@@ -2927,22 +2929,26 @@ Lo que implica que si $rg(M) = r \implies \Delta_1(M),...,\Delta_r(M)$ son $\ne 
 
 Sea $P \in \mathcal{M}_m(A)$. Construimos la matriz $PM\in \mathcal{M}_{mxn}(A)$ (tenemos la matriz $M \in \mathcal{M}_{mxn}(A)$). Si miramos el elemento de PM en la posición $(k,j)$, este es: $\sum_{i=1}^m p_{ki}a_{ij}$. Así, la fila $k-$ésima de $PM$ es:
 \[
-(\sum_{i=1}^m p_{ki}a_{i1}, \cdots , \sum_{i=1}^n p_{ki}a_{im}) = \sum_{i=1}^n p_{ki}(a_{i1},\cdots , a_{im})
+(\sum_{i=1}^m p_{ki}a_{i1}, \cdots , \sum_{i=1}^m p_{ki}a_{in}) = \sum_{i=1}^m p_{ki}(a_{i1},\cdots , a_{in})
 \]
 Por tanto, las filas de la matriz $PM$ son combinación lineal de la matriz M. También podemos afirmar que los menores de orden $s$ de la matriz PM son combinación lineal de los menores de orden $s$ de la matriz M. Entonces, $\Delta_s(M)/\Delta_s(PM)$.
 
-Si $P\in GL_m(A)\implies \Delta_s(PM) / \Delta_s(P^{-1}PM) = \Delta_s(M)$.
+Si $P\in GL_m(A)\implies \Delta_s(PM) / \Delta_s(P^{-1}PM) = \Delta_s(M) \implies \Delta_s(M) = \Delta_s(PM)$
 
 Si $Q \in GL_n(A) \implies \Delta_s (M) = \Delta(MQ)$
 
 \begin{nota}
-	$\Delta(M) = \Delta(M^t)$. Del mismo modo, $\Delta_S(MQ) = \Delta_s((MQ)^t) =  \Delta_s (Q^tM^t) = \Delta_s (M^t) =  \Delta_s(M)$
+	$\Delta(M) = \Delta(M^t)$. Del mismo modo, $\Delta_s(MQ) = \Delta_s((MQ)^t) =  \Delta_s (Q^tM^t) = \Delta_s (M^t) =  \Delta_s(M)$
 \end{nota}
 
+De las implicaciones anteriores, obtenemos como conclusión:
+
+$\forall \ P,\ Q \ \ \ \Delta_s(PMQ) = \Delta_s(M) \ \ \forall s \implies$ 
+si $M$ y $M'$ son equivalentes, entonces $\Delta_s(M) = \Delta_s(M') \ \forall s$\\
 Si $M \sim M' \sim \begin{pmatrix}
- d_{11}'&  &  & & \\
+ d_{1}'&  &  & & \\
  &  & \ddots &  &  \\
- & & &d_{rr}' &\\
+ & & &d_{r}' &\\
  & & & & 0 \\
  & & & & & \ddots& \\
  & & & &  & & 0 \\
@@ -2950,8 +2956,12 @@ Si $M \sim M' \sim \begin{pmatrix}
 
 Tenemos que $\Delta_1(M) = d_1 = \Delta_1 (M') = d_1' \implies d_1 = d_1'$ ; y si lo hacemos en general vemos que:
 \[
-\Delta_s(M) = d_1...d_s = A_s(M') = d_1'...d_s' \implies ds =  \frac{\Delta_s(M)}{\Delta_{s-1}(M)} =  \frac{\Delta_s(M')}{\Delta_{s-1}(M')} = d_s'
+\Delta_s(M) = d_1...d_s = \Delta_s(M') = d_1'...d_s' \implies d_s =  \frac{\Delta_s(M)}{\Delta_{s-1}(M)} =  \frac{\Delta_s(M')}{\Delta_{s-1}(M')} = d_s'
 \]
+
+\begin{nota}
+	Si el anillo es un cuerpo $\implies d_i = 1 \ \ \forall i$
+\end{nota}
 
 \section{A-módulo}
 \begin{ndef}[A-módulo]
