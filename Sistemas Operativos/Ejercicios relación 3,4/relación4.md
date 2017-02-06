@@ -10,7 +10,8 @@ geometry: margin=1in
 ---
 *Los autores no se hacen responsables de ningún fallo provocado o influido por estos ejercicios*
 
-# `Dudas con la 1, 6, 7, 8 y 15`
+# `Dudas con la 1, 8 y 15`
+# `Parte del dibujo del 14 sin hacer`
 
 (la diferencia entre los dos grupos es que los que tienen dudas están resueltos a media)
 
@@ -155,15 +156,8 @@ En el enlace simbólico necesita un inodo nuevo, entrada de directorio y (a lo m
 **si alguien se siente con fuerza, que haga la representación gráfica**
 
 ### 15. En un  sistema de  archivos  ext2  (Linux),  ¿qué  espacio  total  (en  bytes)  se  requiere  para almacenar la información sobre la localización física de un archivo que ocupa 3 Mbytes?. Suponga que el tamaño de un  bloque lógico es de 1 Kbytes y se utilizan direcciones de 4 bytes. Justifique la solución detalladamente.
-La repuesta de las diapositivas es:
 
-k + n + 3. Se busca colaborador que entienda a diapositiva 44 y se la explique a la comunidad que es k y que es n.
-
-La respuesta sacada en el grupo de clase es:
-
-Hay en total $3 \cdot 2^{10}$ bloques, y como un puntero ocupa 4Bytes, pues ocupará en total $12\cdot2^{10} bloques$
-
-Esta segunda respuesta parece de mayor fiabilidad.
+*Ahora lo cambiamos, estaba mal*
 
 ### 16. En  la  mayoría  de  los  sistemas  operativos,  el  modelo  para  manejar  un  archivo  es  el siguiente:
 
