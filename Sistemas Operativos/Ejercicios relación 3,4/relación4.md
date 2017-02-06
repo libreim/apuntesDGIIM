@@ -10,8 +10,6 @@ geometry: margin=1in
 ---
 *Los autores no se hacen responsables de ningún fallo provocado o influido por estos ejercicios*
 
-# `Ayudadme a responder: 2, 14`
-
 # `Dudas con la 1, 6, 7, 8 y 15`
 
 (la diferencia entre los dos grupos es que los que tienen dudas están resueltos a media)
@@ -29,7 +27,7 @@ Datos/peso.txt
 
 ### 2. En un entorno multiusuario, cada usuario tiene un directorio inicial al entrar en el sistema a partir del cual puede crear archivos y subdirectorios. Surge, entonces, la necesidad de limitar  el tamaño  de este  directorio  para  impedir  que  el  usuario  consuma un  espacio de disco excesivo. ¿De qué forma el Sistema Operativo podría implementar la limitación de tamaño de un directorio?
 
-
+Implementando el sistema de cutas visto en prácticas donde cada ususario tiene  asociado un número máximo de i-nodos y un número máximo de bloques.
 
 
 ### 3. En  la  siguiente  figura  se  representa  una  tabla  FAT.  Al  borde  de  sus  entradas  se  ha escrito,  como  ayuda  de  referencia,  el  número  correspondiente  al  bloque  en  cuestión. También  se  ha  representado  la  entrada  de  cierto  directorio.  Como  simplificación  del ejemplo,  suponemos  que  en  cada  entrada  del  directorio  se  almacena:  Nombre  de archivo/directorio, el  tipo  (F=archivo,  D=directorio),  la fecha de creación  y el  número  del bloque inicial.
@@ -150,9 +148,9 @@ respuesta realizada en base a la diapositiva 39
 
 total: 6 accesos
 
-# 14. `El catorce lo dejo como legado porque no tengo ni idea de el`
+# 14. `Que alguien copie el resultado`
 
-en  seri, pero que ni puta idea, brutal follada de ejercicio. ggwp.
+En el enlace simbólico necesita un inodo nuevo, entrada de directorio y (a lo mejor) un bloque de datos. Sin embargo en el enlace duro esto último no sería necesario.
 
 
 ### 15. En un  sistema de  archivos  ext2  (Linux),  ¿qué  espacio  total  (en  bytes)  se  requiere  para almacenar la información sobre la localización física de un archivo que ocupa 3 Mbytes?. Suponga que el tamaño de un  bloque lógico es de 1 Kbytes y se utilizan direcciones de 4 bytes. Justifique la solución detalladamente.
