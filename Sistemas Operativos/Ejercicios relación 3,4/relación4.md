@@ -10,7 +10,6 @@ geometry: margin=1in
 ---
 *Los autores no se hacen responsables de ningún fallo provocado o influido por estos ejercicios*
 
-# `Dudas con la 1, 8 y 15`
 # `Parte del dibujo del 14 sin hacer`
 
 (la diferencia entre los dos grupos es que los que tienen dudas están resueltos a media)
@@ -93,7 +92,7 @@ asi es mas comodillo pa tos
 
 ### 8. Algunos SO proporcionan una llamada al sistema (RENAME) para dar un nombre nuevo a un archivo existente ¿Existe alguna diferencia entre utilizar esta llamada para renombrar un  archivo  y  copiar  el  archivo  a  uno  nuevo,  con  el  nuevo  nombre  y  destruyendo  el antiguo?
 
-Se diferenciaría en la fecha de creación del archivo.
+La diferencia sería que rename sería muchísimo menos costosa dado que lo único que haría sería meterse en el i-nodo y cambiar en nodo mientras que en la otra habría que crear una estructura nueva integra.
 
 ### 9. Un i-nodo de UNIX tiene 10 direcciones de disco para los diez primeros bloques de datos, y  tres  direcciones  más  para  realizar  una  indexación  a  uno,  dos  y  tres  niveles.  Si  cada bloque  índice  tiene  256  direcciones  de  bloques  de  disco,  cuál  es  el  tamaño  del  mayor archivo que puede ser manejado, suponiendo que 1 bloque de disco es de 1KByte?
 
