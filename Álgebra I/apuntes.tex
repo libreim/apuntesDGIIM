@@ -1052,7 +1052,7 @@ $$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
 $$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$  
 \end{proof}
 
-\begin{nth}[Teorema de Euclídes]
+\begin{nth}[Teorema de Euclides]
 
 	$\forall a,b \in \ent, b \neq 0, \exists !q,r \in \ent$ tales que $a = bq + r $ con $0 \le r < |b|$
 \end{nth}
@@ -1120,7 +1120,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
 \begin{ncor}
-$\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
+$\ent$ es un dominio de Euclides con $\varphi = \abs{.}: \ent \to \nat$
 \[
 \varphi(a) \begin{cases}
 	a  \quad \textup{si } a \ge 0\\
@@ -1129,7 +1129,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 \end{cases}\]
 \end{ncor}
 
-\begin{nth}
+\begin{nth}[Teorema de Euclides para polinomios]
 		$\forall f,g \in A[x]$ donde $g \neq 0 $ y su coeficiente líder es una unidad de $A$, existen polinomios:
 	
 	\[
@@ -1167,7 +1167,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 	
 	\item Si $n> 0$, haremos la inducción
 	
-	Vamos a considerar que $\frac{a_n}{b_m} = a_n b_m^{-1} \in A$ Tomamos entonces $x^{n-m}$.
+	Vamos a considerar que $\frac{a_n}{b_m} = a_n b_m^{-1} \in A$. Tomamos entonces $x^{n-m}$.
 	
 	Consideramos $x^{n-m}g(x)$ y establecemos $f_1 = f - \frac{a_n}{b_m}x^{n-m}g$. Recordaremos esto como $(1)$.
 	
@@ -1226,7 +1226,7 @@ $\ent$ es un dominio de euclídes con $\varphi = \abs{.}: \ent \to \nat$
 \end{nota}
 
 
-\begin{nth}
+\begin{nth}[Teorema de Euclides, enteros cuadráticos]
 	Los anillos $\ent[\sqrt{n}]$ para $n=2,3,-1,-2$ son D.E. con función euclídea:
 	\[
 	\varphi: \ent[\sqrt{n}] \to \nat : \varphi(a+b\sqrt{n}) = \abs{N(a+b\sqrt{n})} = \abs{a^2 - nb^2}
@@ -3062,23 +3062,22 @@ Si $I \leq A$ es un ideal, si tomamos $M= A/I$, entonces se verfican:
 	También puede ser un monomorfismo (si y solo si su núcleo es 0), epimorfismo (es sobreyectiva) o un isomorfismo (es biyectiva).
 \end{ndef}
 \begin{ejemplo}
-	Si $m\in A$, $A/(m)$ es un A-módulo ( $[a]+[b] = [a+b]$ y $[a]b = [ab]$. Si A tiene unicidad de cocientes y restos($\ent,K[x]$), entonces $A_m$ es un A-módulo con $r+r' = R_m(r+r')$ y $ar = R_m(ar)$.
+	Si $m\in A$, $A/(m)$ es un A-módulo ( $[a]+[b] = [a+b]$ y $a[b] = [ab]$. Si A tiene unicidad de cocientes y restos ($\ent,K[x]$), entonces $A_m$ es un A-módulo con $r+r' = R_m(r+r')$ y $ar = R_m(ar)$.
 	
 	Recordemos que existe un isomorfismo entre $A/(m) \cong A_m$ que lleva $[a] \mapsto R_m(a)$
 \end{ejemplo}
 
 \begin{ejemplo}[2]
-	Si $M_1,...,M_n$ son A-módulos, su "producto" $M_1 \times ... \times M_n =  \prod M_i$ es un A-módulo con $(x_1,...,x_n) + (y_1,...,y_n) = (x_1+y_1,...,x_n+y_n)$  y $a(x_1,...,x_n)= (ax_1,...,ax_n)$
-\end{ejemplo}
-\begin{nprop}
-	Supongamos que $M_1,...,M_n$ son submódulos de M y que $M = M_1 \oplus ... \oplus M_n = \oplus_i M_i$
+	Si $M_1,...,M_n$ son A-módulos, su “producto" $M_1 \times ... \times M_n =  \prod M_i$ es un A-módulo con $(x_1,...,x_n) + (y_1,...,y_n) = (x_1+y_1,...,x_n+y_n)$  y $a(x_1,...,x_n)= (ax_1,...,ax_n)$
+	
+		Supongamos que $M_1,...,M_n$ son submódulos de M y que $M = M_1 \oplus ... \oplus M_n = \oplus_i M_i$
 	Entonces, existe:
 	\begin{align}
-	\varphi:\prod_i M_i to M=\oplus_i M_i \\
+	\varphi:\prod_i M_i \to M=\oplus_i M_i \\
 	(x_1,...,x_n) \mapsto x_1+...+x_n = \sum_i x_i
 \end{align}
 que es un isomorfismo.
-\end{nprop}	
+\end{ejemplo}
 
 \section{Clasificación de los módulos finitamente generados sobre un Dominio Euclídeo.}
 
@@ -3089,14 +3088,10 @@ Para comprenderlo mejor, vamos a ver primero un caso particular sencillo.
 	\[
 	\{a: ax = 0 \ \forall x \in M\}\subseteq A \ \  \text{es un ideal}
 	\]
-	Además, como estamos en un DE, todos los ideales son principales y por tanto este también lo es, así que existe un elemento que genera ese ideal al que se le llama anolador minimal de M, denotado por
-\[
-\mu(M)
-\]
-y que es único salvo asociados
+	al que llamamos anulador minimal de M, $\mu(M)$, que es único salvo asociados.
 \end{ndef}
 
-También, dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. Este también es un ideal y también es principal. A este se le llama el anulador minimal de x y se le denota:
+Dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. Este también es un ideal y, a su vez, es principal. A este se le llama el anulador minimal de x y se le denota:
 \[
 \mu(x)
 \]
@@ -3105,16 +3100,16 @@ También, dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subs
 	Si expresamos $M= (x_1,...,x_r) = Ax_1 + ...+ Ax_r \implies \mu(M) = mcm(\mu(x_1),...,\mu(x_r))$
 \end{nprop}
 \begin{proof}
-	$\forall i \ \mu(M)x_i = 0 \implies \forall i \ \ \mu(x_i) / \mu(M)$.
+	$\forall i \ \mu(M)x_i = 0 \implies \forall i=1,...,r, \ \ \mu(x_i) / \mu(M)$.
 	
 	Por tanto, si $a\in A: \mu(x_i)/a \ \forall i \implies ax_i = 0 \ \forall i \implies a\sum_i a_ix_i = \sum_i a_i(ax_i) = 0$
 	$\implies ax = 0 \ \forall x \in M \implies \mu(M) / a$
 \end{proof}
 
-En particular, si estamos en un módulo cíclico y tenemos por tanto un solo elemento, entonces $\mu(M) = \mu(x)$ salvo asociados.
+En particular, si estamos en un módulo cíclico (generado por un único elemento), entonces $\mu(M) = \mu(x)$ salvo asociados.
 
 \begin{nota}
-	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, esa aplicación es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = \emptyset$ pues el anulador minimal es el cero, por tanto es un isomorfismo, $M \cong A$.
+	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = 0$ (el anulador minimal es el cero), por tanto, es un isomorfismo, $M \cong A$.
 \end{nota}
 
 \begin{nota}
@@ -3127,9 +3122,9 @@ En particular, si estamos en un módulo cíclico y tenemos por tanto un solo ele
 \begin{ndef}[Presentacion de M por generadores y relaciones]
 	Sea M un A-módulo finitamente generado. Se llama entonces "Presentación de M por generadores y relaciones" a toda expresión de la forma
 	\[
-	\langle x_1,...,x_n : \sum_i^n a_{i1}x_i = 0,...,\sum_i^n a_{im}x_i = 0 \rangle
+	\langle x_1,...,x_n : \sum_{i=1}^n a_{i1}x_i = 0,...,\sum_{i=1}^n a_{im}x_i = 0 \rangle
 	\]
-	Donde $(x_1,...,x_n)$ es un sistema de generadores de $M$ y lo que hay a la derecha son relaciones de dependencia lineal entre ellos que son verificadas en el módulo tales que cualquier relación de dependencia entre $(x_1,...,x_n)$ es combinación lineal de las que aparecen en la presentación
+	Donde $(x_1,...,x_n)$ es un sistema de generadores de $M$ y las expresiones de la derecha son relaciones de dependencia lineal entre ellos verificadas en el módulo tales que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación
 	
 \end{ndef}
 
