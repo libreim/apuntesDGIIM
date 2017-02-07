@@ -3133,15 +3133,15 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 	\[
 	\langle x_1,...,x_n : \sum_i^n a_{i1}x_i = 0,...,\sum_i^n a_{im}x_i = 0 \rangle
 	\]
-	es una presentación del módulo M, la matriz:
+	es una presentación del módulo M, a la matriz:
 	\[
-	\begin{pmatrix}
+	\mathcal{M}_R = \begin{pmatrix}
  a_{11} & \cdots & a_{1n}\\
  \vdots & & \vdots\\
  a_{m1} & \cdots & a_{mn} 
 \end{pmatrix} 
 	\]
-	cuyas filas son exactamente los coeficientes que aparecen en la presentación. A esta matriz $\mathcal{M}_R$ la llamamos matriz de relaciones de los generadores de M
+	cuyas filas son exactamente los coeficientes que aparecen en la presentación la llamamos “matriz de relaciones de los generadores de M".
 	
 	Decir entonces que las combinaciones lineales de la presentación son cero, es lo mismo que decir:
 	\[
@@ -3162,14 +3162,14 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 \end{nprop}
 
 	
-	Si tenemos un módulo $A^n$, podemos ver que este es libre y finitamente generado, además de que tiene una base (la canónica de $\mathbb{R}^n$. Vamos a considerar una aplicación $\varphi A^n \to M$ tal que $\varphi (a_1,...a_n) = a_1x_1+...+a_nx_n$. Esta aplicación es un epimorfirmo.
+	Si tenemos un módulo $A^n$, podemos ver que este es libre y finitamente generado, además de que tiene una base (la canónica de $\mathbb{R}^n$). Vamos a considerar una aplicación $\varphi: A^n \to M$ tal que $\varphi:(a_1,...a_n) = a_1x_1+...+a_nx_n$. Esta aplicación es un epimorfirmo.
 
 \begin{nprop}
 	\[
-	\sum_i^n a_i x_i  = 0 \iff (a_1,...a_n) \in Ker(\varphi)
+	\sum_{i=1}^n a_i x_i  = 0 \iff (a_1,...,a_n) \in Ker(\varphi)
 	\]
 	En particular, que se verifiquen las relaciones de dependencia que aparecen en la presentación, significa que $F_1,...,F_m \in Ker(\varphi)$.
-	Y decir que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación significa que si $F((a_1,...a_n) \in Ker(\varphi) \implies F$ es combinación lineal de $F_1,...,F_m$, por tanto, estamos diciendo que
+	Y decir que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación significa que si $F=(a_1,...a_n) \in Ker(\varphi) \implies F$ es combinación lineal de $F_1,...,F_m$, por tanto, estamos diciendo que
 	\[
 	Ker(\varphi) = (F_1,...,F_m)
 	\]
@@ -3180,9 +3180,9 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 	\begin{itemize}
 	\item Permutar dos de ellos
 	\item Multiplicar uno por una unidad del anillo
-	\item Sumar a uno de ellos un múltiplo de otro.
+	\item Sumar a uno de ellos un múltiplo de otro
 \end{itemize}
-Aún así, la matriz de relaciones se verá alterada y tendremos 'otra presentación distinta'
+Aún así, la matriz de relaciones se verá alterada y tendremos `otra presentación distinta'
 \end{nota}
 
 Realizando estas operaciones, siempre podemos llegar a obtener la forma normal de Schmidt de una matriz.
