@@ -3182,21 +3182,21 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 	\item Multiplicar uno por una unidad del anillo
 	\item Sumar a uno de ellos un múltiplo de otro
 \end{itemize}
-Aún así, la matriz de relaciones se verá alterada y tendremos `otra presentación distinta'
+Aún así, la matriz de relaciones se verá alterada y tendremos “otra presentación distinta".
 \end{nota}
 
-Realizando estas operaciones, siempre podemos llegar a obtener la forma normal de Schmidt de una matriz.
+Realizando estas operaciones, siempre podemos llegar a obtener la forma normal de Smith de una matriz.
 
 \begin{nprop}
-	$\forall M $, existe una presentación cuya matriz de relaciones está normalizada, que tiene la forma de una matriz de Schmidt. Es decir, de la forma:
+	$\forall M $, existe una presentación cuya matriz de relaciones está normalizada (tiene la forma de una matriz de Smith). Es decir, es de la forma:
 	\[
 	M : \langle \ \  y_1,...,y_n : \ d_1y_1 = 0 \ ,..., \ d_ry_r = 0 \ \  \rangle
 	\]
 	
 \end{nprop}
-Es más, si ahora consideráramos un nuevo epimorfismo $\varphi: A^n \to M$ tal que $\varphi (a_1,...a_n) 0 \sum a_i y_i$ y 
+Es más, si ahora consideráramos un nuevo epimorfismo $\varphi: A^n \to M$ tal que $\varphi (a_1,...a_n) = \sum a_i y_i$ y 
 \[
-Ker(\varphi): \ \langle d_1e_1 \ \ , .... , \ \ d_r e_r \ \ \rangle
+Ker(\varphi)= \ \langle\  d_1e_1 \ \ , .... , \ \ d_r e_r \ \rangle
 \]
 con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y lo demás son ceros).
 
@@ -3215,7 +3215,7 @@ con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y 
 \end{nprop}
 
 \begin{nprop}
-	$M \oplus_i AY_i$, todo elemento de M se expresa de forma única como combinación lineal de elementos de $A$
+	$M \oplus_i Ay_i$, todo elemento de M se expresa de forma única como combinación lineal de elementos de $A$
 \end{nprop}
 \begin{proof}
 	Supongamos que $\sum a_i y_i = 0 \implies \varphi(\sum a_i e_i ) = 0 \implies \sum a_ie_i \in Ker (\varphi) $\\
@@ -3224,11 +3224,11 @@ con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y 
 	
 	Y si $i \leq r\implies a_i = b_id_i \implies a_iy_i = 0$
 \end{proof}
-También podemos decir si $d_1 = ... = d_s = 1 \implies y_1 = y_2 = ... = y_s = 0$ y por tanto tendríamos que:
+También podemos decir, si $d_1 = ... = d_s = 1 \implies y_1 = y_2 = ... = y_s = 0$ y, por tanto, tendríamos que:
 \[
 M = Ay_{s+1}  \oplus ... \oplus Ay_r \oplus ... \oplus Ay_n
 \]
-Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,r$ y cada $d_i/d_{i+1}$ y $\mu(y_{r+1}) = ... \mu(y_n) = 0$
+Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,r$ y cada $d_i/d_{i+1}$ y $\mu(y_{r+1}) = ... =\mu(y_n) = 0$
 
 \begin{nprop}
 	En estas condiciones,
@@ -3246,23 +3246,23 @@ Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,
 \end{nota}
 A $n-r$ se le llama el rango del módulo y $d_{s+1},...,d_s$ es la lista de los factores invariantes del módulo M
 
-La unicidad de estos invariantes es consecuencia de la unicidad de los invariantes de la forma normal de Schmidt.
+La unicidad de estos invariantes es consecuencia de la unicidad de los invariantes de la forma normal de Smith.
 
 \begin{ncor}
-	Para conocer un módulo, basta conocer la lista de sus factores y su rango.
+	Para conocer un módulo, basta conocer la lista de sus factores invariantes y su rango.
 \end{ncor}
 \begin{ncor}
-	Si el rango de un módulo ($n-r$) es mayor quecero, entonces $\mu(M) = 0$.\\
+	Si el rango de un módulo ($n-r$) es mayor que cero, entonces $\mu(M) = 0$.\\
 	
-	Si $n-r$ = 0, entonces $\mu(M) $ es el mayor de los factores invariantes, el $d_r$
+	Si $n-r$ = 0, entonces $\mu(M) $ es el mayor de los factores invariantes, el $d_r$.
 \end{ncor}
 
-A continuación, ilustraremos el teorema que hemos dado con ejemplos:
+A continuación, ilustraremos el teorema que hemos visto con varios ejemplos:
 
 \subsubsection{$\ent$-Módulos. Grupos abelianos.}
 
 Vamos a tratar de llevarnos los conceptos que hemos obtenido con el teorema de estructura al caso de los $\ent-$módulos.\\
-Si M es un $\ent$-módulo, $n\in \ent$ con $n>0$ y $x\in M$, entonces $nx = (\sum_i^n 1)x = \sum_i^n 1*x = \sum_i^n x$. Lo mismo podemos ver si lo hacemos con $n$ negativo.
+Si M es un $\ent$-módulo, $n\in \ent$ con $n>0$ y $x\in M$, entonces $nx = (\sum_{i=1}^n 1)x = \sum_{i=1}^n 1*x = \sum_{i=1}^n x$. Lo mismo podemos ver si lo hacemos con $n$ negativo.
 
 Entonces, un $\ent$-módulo es un grupo abeliano. Hablaremos de aquí en adelante de grupos abelianos, aunque sabremos que es lo mismo que un $\ent-$módulo.
 
