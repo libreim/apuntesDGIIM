@@ -9,12 +9,20 @@ layout: default
 A continuación puedes encontrar apuntes compilados en PDF listos para descargar.
 
 ---
+## Primer cuatrimestre
 
-| Asignatura  | T1  | T2  | T2  | T2  | T2  | T2  |
-|---|---|---|---|---|---|---|
-| Estructuras de datos  | [T1](https://github.com/libreim/apuntesDGIIM/raw/master/.out/Estructura%20de%20datos/Tema1.pdf)  |   |   |   |   |   |
-| Sistemas operativos  |   |   |   |   |   |   |
-| Estructuras de computadores  |   |   |   |   |   |   |
-| Álgebra I  |   |   |   |   |   |   |
-| Topología I  |   |   |   |   |   |   |
-| Análisis I |   |   |   |   |   |   |
+### Análisis Matemático I
+* [Apuntes completos](https://github.com/libreim/apuntesDGIIM/tree/master/.out/An%C3%A1lisis%20Matem%C3%A1tico%20I/apuntes.pdf)
+* [Resultados](https://github.com/libreim/apuntesDGIIM/tree/master/.out/An%C3%A1lisis%20Matem%C3%A1tico%20I/resultados.pdf)
+* [Ejercicios resueltos](https://github.com/libreim/apuntesDGIIM/tree/master/.out/An%C3%A1lisis%20Matem%C3%A1tico%20I/ejercicios.pdf)
+* [Resumen](https://github.com/libreim/apuntesDGIIM/blob/master/.out/An%C3%A1lisis%20Matem%C3%A1tico%20I/Resumen.pdf)
+
+### Estructuras de datos
+* [Tema 1](https://github.com/libreim/apuntesDGIIM/tree/master/.out/Estructura%20de%20datos/Tema1.pdf)
+* [Tema 2](https://github.com/libreim/apuntesDGIIM/tree/master/.out/Estructura%20de%20datos/Tema2.pdf)
+
+### [Sistemas Operativos](https://github.com/libreim/apuntesDGIIM/tree/master/.out/Sistemas%20Operativos)
+* [Resúmenes](https://github.com/libreim/apuntesDGIIM/tree/master/.out/Sistemas%20Operativos/Resúmenes)
+
+### Álgebra I
+* [Tema 1](https://github.com/libreim/apuntesDGIIM/tree/master/.out/%C3%81lgebra%20I/tema1.pdf)
