@@ -2979,12 +2979,12 @@ Durante todo el apartado nos referiremos a $x, y,...$ como elementos de $M$ y a 
 	\item Unicidad del 0 y del opuesto.
 	\item $0x = 0$ y $a0 = 0$
 	\item $(-a)x = -(ax) = a(-x)$
-	\item Si para una lista de elementos $(x_1,...,x_n)$ de M con al menos 2 elementos definimos su suma simultánea $\sum_i^n x_i$ por inducción:$ \sum_i^n x_i = (\sum_{i=0}^{n-1}x_i) +x_n$
-	\item $\forall i < r < n,$ entonces $\sum_i^n x_i = (\sum_{i=0}^{r}x_i) + (\sum_{i=r+1}^{n}x_i) $
+	\item Si para una lista de elementos $(x_1,...,x_n)$ de M con al menos 2 elementos definimos su suma simultánea $\sum_i^n x_i$ por inducción:$ \sum_i^n x_i = (\sum_{i=1}^{n-1}x_i) +x_n$
+	\item $\forall i < r < n,$ entonces $\sum_{i=1}^n x_i = (\sum_{i=1}^{r}x_i) + (\sum_{i=r+1}^{n}x_i) $
 	\item $ (\sum_i^n a_i)(\sum_j^m x_i) = \sum_i^n \sum_j^m a_ix_j$
 \end{nlist}
 
-Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
+Si $I \leq A$ es un ideal, si tomamos $M= A/I$, entonces se verfican:
 \begin{itemize}
 	\item $[x]+[y] = [x+y]$
 	\item $a[x] = [ax] = [a][x]$
@@ -2998,7 +2998,7 @@ Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
 \begin{nprop}
 	Si $M_1,...,M_r \subseteq M$ son submódulos, existe siempre un módulo que los contiene. Se le llama le submódulo suma y se representa como:
 	\[
-	\sum_i^r M_i =\{\sum_i^r x_i : x_i \in M_i\}
+	\sum_{i=1}^r M_i =\{\sum_{i=1}^r x_i : x_i \in M_i\}
 	\]
 	Además, se puede usar la conmutatividad de la suma y la asociatividad generalizada.
 
@@ -3006,49 +3006,49 @@ Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
 \begin{ndef}[Suma directa]
 	Se dice que la suma de $M_1,...,M_r$ es directa y se representa:
 	\[
-	\sum_i^r = \oplus_i^r M_i \ si \ (\sum_i^r x_i =  \sum_i^r y_i) \ con \ x_i,y_i \in M_i \iff xi = y_i	\]
+	\sum_{i=1}^r = \oplus_{i=1}^r M_i \ si \ (\sum_{i=1}^r x_i =  \sum_{i=1}^r y_i) \ con \ x_i,y_i \in M_i \iff x_i = y_i\ \forall i	\]
 \end{ndef}
-\begin{ndef}[Sistema de generadores]
-	Si $x\in M$, siempre existe un submódulo de $M$ que es el menor submódulo que lo contiene. Más aún, que contiene al elemento $x$ y está contenido en cualquier otro submódulo que contenga a $x$. Se suele denotar como $Ax = \{ax : a \in A\}$ pues es donde están todos los múltiplos del elemento. Se le llama el submódulo cíclico de x. También se suele notar "(x)".
+\begin{ndef}[Submódulo cíclico]
+	Si $x\in M$, siempre existe un submódulo de $M$ que es el menor submódulo que lo contiene. Más aún, que contiene al elemento $x$ y está contenido en cualquier otro submódulo que contenga a $x$. Se denota como $Ax = \{ax : a \in A\}$, pues es donde están todos los múltiplos del elemento. Se le llama el submódulo cíclico de x. También se suele notar “(x)”.
 \end{ndef}
 \begin{ndef}
-	Si $x_1,...,x_r \in M$, también existe un módulo $M$ que es el más pequeño módulo que los contiene. Este es:
+	Si $x_1,...,x_r \in M$, existe un módulo $M$ que es el más pequeño módulo que los contiene. Este es:
 	\[
-	\sum Ax_i = \{\sum a_ix_i : a_i \in A\}
+	\sum_{i=1}^r Ax_i = \{\sum_{i=1}^r a_ix_i : a_i \in A\}
 	\]
-	Estos son combinaciones lineales de $x_1,...,x_r$, y se le llama submódulo generado por $x_1,...,x_n$, y se suele representar como $(x_1,...,x_n)$
+	Estos son combinaciones lineales de $x_1,...,x_r$, se le llama submódulo generado por $x_1,...,x_r$ y se representa como $(x_1,...,x_r)$.
 \end{ndef}
 \begin{nota}
 	Si $N=(x_1,...,x_r)$ y $N'= (y_1,...,y_s)$, entonces
 	\[
-	N \subseteq N' \iff x_i \ es \ c.l. \ de \ y_1,...,y_s \ \forall i
+	N \subseteq N' \iff todo\ x_i \ es \ c.l de \ y_1,...,y_s \ \forall i
 	\]
-	Y $N=N'\iff$ todo $x_i$ es c.l. de $y_1,...,y_s$ y todo $y_j$ es c.l. de $x_1,...,x_r$
+	Y $N=N'\iff$ todo $x_i$ es combinación lineal de $y_1,...,y_s$ y todo $y_j$ es combinación lineal de $x_1,...,x_r$
 \end{nota}
-\begin{ndef}
+\begin{ndef}[Sistema de generadores]
 	Si $x_1,...,x_r\in M : M = (x_1,...,x_r)$ se dice que $x_1,...,x_r$ es un sistema de generadores de M  y se dice que M es finitamente generado.
 \end{ndef}
 \begin{nprop}
 	Si A es un dominio euclídeo, todo submódulo de un módulo finitamente generado es finitamente generado.
 \end{nprop}
 \begin{ndef}
-	Un sistema de generadores $x_1,...,x_r$ de un módulo $M$ se dice que es una base si se verifica:
+	Un sistema de generadores $x_1,...,x_r$ de un módulo $M$ es una base de $M$ si se verifica:
 	\[
-	\sum_i^r a_i x_i = \sum_i^n b_i x_i \iff a_i = b_i \ \forall i
+	\sum_{i=1}^r a_i x_i = \sum_{i=1}^r b_i x_i \iff a_i = b_i \ \forall i
 	\]
 	O, equivalentemente:
 	\[
-	\sum_i^r a_ix_i = 0 \iff a_i  = 0  \ \forall i
+	\sum_{i=1}^r a_ix_i = 0 \iff a_i  = 0  \ \forall i
 	\]
 \end{ndef}
 \begin{ndef}[Linealmente independientes]
-	Un conjunto de elementos de un A-Módulo $x_1,...,x_r$ se dice que son l.i. si la única c.l. de ellos que da como resultado 0 es aquella en la que todos los coeficientes son cero.
+	Un conjunto de elementos de un A-Módulo $x_1,...,x_r$ se dice que son linealmente independientes si la única combinación lineal de ellos que da como resultado 0 es aquella en la que todos los coeficientes son cero.
 \end{ndef}
 \begin{nota}
-	En los A-módulos, es falso decir que todo A-módulo tiene una base o que todo sistema de generadores contiene a una base. Tampoco podemos hacer siempre que un conjunto linealmente independiente se pueda extender a una base.
+	En los A-módulos, es falso decir que todo A-módulo tiene una base o que todo sistema de generadores contiene a una base. Tampoco podemos siempre extender un conjunto linealmente independiente a una base.
 \end{nota}
 \begin{ndef}[Módulo Libre]
-	Un módulo que contenga una base se dice que es un módulo libre.
+	Un módulo que contenga una base es un módulo libre.
 \end{ndef}
 
 \begin{ndef}
@@ -3057,9 +3057,9 @@ Además, si $I \leq A$ es un ideal, si hacemos $M= A/I$, entonces se verfican:
 	\begin{rcases}
 	\varphi(x+y) = \varphi(x) + \varphi(y)\\
 	\varphi(ax) = a\varphi(x)
-\end{rcases} \iff \varphi(\sum_i^n a_ix_i) = \sum_i^n a_i \varphi(x_i)
+\end{rcases} \iff \varphi(\sum_{i=1}^n a_ix_i) = \sum_{i=1}^n a_i \varphi(x_i)
 	\]
-	También puede ser un monomorfismo(si y solo si su núcleo es 0), epimorfismo o un isomorfismo.
+	También puede ser un monomorfismo (si y solo si su núcleo es 0), epimorfismo (es sobreyectiva) o un isomorfismo (es biyectiva).
 \end{ndef}
 \begin{ejemplo}
 	Si $m\in A$, $A/(m)$ es un A-módulo ( $[a]+[b] = [a+b]$ y $[a]b = [ab]$. Si A tiene unicidad de cocientes y restos($\ent,K[x]$), entonces $A_m$ es un A-módulo con $r+r' = R_m(r+r')$ y $ar = R_m(ar)$.
