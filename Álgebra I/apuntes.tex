@@ -435,14 +435,17 @@ Se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y qu
 
 \item Anillos de series.
 \begin{ndef}
-	Si A es un anillo conmutativo y x es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[x]] esta definido como:\begin{center}
-$A[[x]] = \{a = \sum_{i=0}^{n}a_i x^i = a_0 + a_1 x^1 + ... + a_n x^n\}$ $a_i \in A$\end{center}
+	Si A es un anillo conmutativo y $x$ es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[$x$]] esta definido como:\begin{center}
+$A[[x]] = \{a = \displaystyle\sum_{n\in \mathbb{N}} a_n x^n , a_n \in A\ \forall	n \in \mathbb{N}\}$\end{center}
 Y definimos la suma y el producto de la siguiente forma:\\
-\[(a+b) = \sum_{i=0}^{n}(a_i+b_i)x^i\]\[ (ab) = \sum_{k=0}^n\sum_{i=0}^{k}a_ib_{k-i}\]
+\[(a+b) = \sum_{n\in \mathbb{N}}(a_n+b_n)x^n\]
+
+\[ (ab) = \sum_{n=0}^\infty \left(\sum_{k=0}^n a_k b_{n-k}\right)x^n\]
+
 \end{ndef}
 \end{itemize}
 
-Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo y $A[x]$ es un subanillo de $A[[x]]$  
+Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo y $A[x]$ es un subanillo de $A[[x]]$ (los elementos de $A[x]$ son los de $A[[x]]$ para los que $a_n = 0$ a partir de un cierto $n\in \mathbb{N}$).
 
 \section{Homomorfismos}
 
@@ -515,7 +518,7 @@ es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\v
 	
 \end{nprop}
 
-\begin{nprop}[Sustición en un polinomio)(2]
+\begin{nprop}[Sustitución en un polinomio)(2]
 	
 Si $A$ es un anillo y $a \in A$ entonces: existe un homomorfismo $E_a: A[x] \to A$ tal que $E_a(\sum_i a_i x^i) = \sum_i a_i a^i$.
 	
@@ -543,7 +546,7 @@ Ahora, podemos ver que esa aplicación es como usar primero $\varphi$ para ir de
 A\to B \to B[x]
 \]
 \[
-a \to a \to \varphi(a)
+a \mapsto a \mapsto \varphi(a)
 \]
 
 De esta forma, tomamos $x\in B[x]$. Entonces:
@@ -597,13 +600,13 @@ Sabemos que cada polinomio $f(x)$ constituye una función de evaluación $f(x) \
 f(x):B \to B
 \]
 \[
-\hspace{1cm}b \to f(b)
+\hspace{1cm}b \mapsto f(b)
 \]
 
 Sin embargo, un polinomio es mucho más que la función de evaluación que él mismo define. Estudiaremos el caso $A[x_1,...,x_r]$
 
-\begin{ndef}[Polinomios de r variables con coeficientes en A]
-Sea A un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
+\begin{ndef}[Polinomios de $r$ variables con coeficientes en $A$]
+Sea $A$ un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
 Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
 	
 \begin{proof}\hfill 
@@ -616,7 +619,7 @@ f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x^i \hspace{0.5cm} a_i \in A \
 \]
 	\item $r> 1$
 \[
-f(x_1,...,x_r) = \sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}: \hspace{0.3cm} \exists K: a_i,...,a_r  = 0 \iff i_s > K
+f(x_1,...,x_r) = \sum_{i1,\dots,ir \ge 0} a_{i1,...,ir} x_1^{i1}...x_r^{ir}: \hspace{0.3cm} \exists K: a_i,...,a_r  = 0 \iff i_s > K
 \]
 Ahora, si vemos que:
 \[
@@ -652,7 +655,7 @@ Por lo que queda probado nuestro resultado.
 
 \end{ndef}
 
-\begin{ndef} \textbf{(A[x][y])}
+\begin{ndef} \textbf{($A[x][y]$)}
 \hfill \\
 Definimos $f=\sum f_i y^i\ |\ f_i \in A[x] : f_i = \sum_j a_{ij}x^j$\\
 Luego, $f = \sum_i (\sum_j a_{ij}x^j)y^i = \sum_{i,j} a_{ij}x^iy^j$\\
@@ -716,7 +719,7 @@ Además, ya se probó que esto es un homomorfismo de anillos conmutativos.
 	$A \leq B$ subanillo, $\forall b \in B$ $\exists !$ homomorfismo
 \[
 E_b: A[x] \to B: \begin{cases}
-E_a(a) = a \hspace{0.3cm} \forall a \in A\\
+E_b(a) = a \hspace{0.3cm} \forall a \in A\\
 E_b(x) = b
 	
 \end{cases}
@@ -724,12 +727,16 @@ E_b(x) = b
 \end{ncor}
 
 \begin{nota}
+	En la anterior definición, tendremos en cuenta que $x$ es un elemento concreto de $A[x]$ (el polinomio de grado uno con coeficientes cero y la unidad), no un elemento cualquiera de $A[x]$.
+\end{nota}
+
+\begin{nota}
 	Si $f(x)\in A[x]$ denota un polinomio de $A[x]$, notaremos: $E_b(f(x)) = f(b)$.
 	De la misma forma, si $f(x) = \sum a_i x^i \Rightarrow E_b(f(x)) = \sum a_i b^i$
 \end{nota}
 
 
-\begin{nprop}[Evaluación en r-variables]
+\begin{nprop}[Evaluación en $r$ variables]
   Si $\varphi : A \longrightarrow B$ es un homomorfismo de anillos conmutativos, y $b_1,\cdots, b_r \in B$ una lista ordenada. Entonces
   \[
     \exists!\ \phi : A[x_1,\cdots,x_r] \longrightarrow B :\begin{cases}
@@ -762,14 +769,14 @@ E_b(x) = b
   \]
 \end{proof}
 
-\begin{nprop}[Evaluación en subanillos r-variables]
+\begin{nprop}[Evaluación en subanillos $r$ variables]
 	Si $A\leq B, \forall b_1,\cdots,b_r \in B$ lista ordenada:
 	
 \[
 \exists !\ E_{b_1,\cdots,b_r}: A[x_1,\cdots,x_r] \to B :
 \begin{cases}
-	a \to a\\
-	x_i \to b_i
+	a \mapsto a\\
+	x_i \mapsto b_i
 \end{cases}
 \]
 
@@ -781,8 +788,8 @@ Se suele notar $f(x_1,\cdots,x_r) \to f(b_1,\cdots,b_r)$
 \begin{ndef}[Dominio de integridad]
 A (anillo conmutativo) es un dominio de integridad si verifica la propiedad:
 \[
-a \neq 0\ \wedge\ b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \begin{cases}
-	a = 0\\
+a \neq 0\ \wedge\ b \neq 0 \Rightarrow ab \neq 0 \iff si \hspace{0.1cm} ab=0 \implies \begin{cases}
+	a = 0,\text{ o}\\
 	b = 0
 \end{cases}
 \]
@@ -814,7 +821,7 @@ A es un dominio de integridad $\iff$ se verifica: $ax=ay$ con $a\neq 0 \Rightarr
 \end{nprop}
 
 \begin{nprop}
-	Si $|A|< \infty$, A es dominio de integridad $\iff$ A es un cuerpo
+	Si $A$ es finito, $A$ es dominio de integridad $\iff$ $A$ es un cuerpo
 \end{nprop}
 \begin{proof}
 	\boxed{\Leftarrow} Trivial\\
@@ -840,7 +847,7 @@ Con lo que $\exists$ inverso de a = $a^{k-1}$ y como a es un elemento cualquiera
 Primero, presentaremos otros conceptos:
 
 \begin{ndef}[Cuerpo de fracciones de un D.I.]
-Sea A un dominio de integridad con $|A| \geq 2$. Consideramos $A$x$A-\{0\} = \{(a,b), a,b \in A\hspace{0.3cm} | b\neq 0\}$
+Sea A un dominio de integridad con $|A| \geq 2$. Consideramos $A\times (A-\{0\}) = \{(a,b), a,b \in A\ |\ b\neq 0\}$
 
 \begin{ndef} Decimos que (a,b) es equivalente a (c,d):
 	$(a,b)\sim(c,d) \iff ad = bc$
@@ -848,22 +855,22 @@ Sea A un dominio de integridad con $|A| \geq 2$. Consideramos $A$x$A-\{0\} = \{(
 Esta relación es reflexiva, simétrica y transitiva.
 \end{ndef}
 	
-Ahora, considero $a,b\in A \hspace{0.2cm}$. Llamo $\frac{a}{b} = \{(c,d)\hspace{0.2cm} c,d \in A : (c,d) \sim (a,b)\} \subseteq A$x$A-\{0\}$
+Ahora, considero $a,b\in A \hspace{0.2cm}$. Llamo $\displaystyle\frac{a}{b} = \{(c,d)\hspace{0.2cm} c,d \in A : (c,d) \sim (a,b)\} \subseteq A$x$A-\{0\}$
 
-Y llamo a $\frac{a}{b}$ la fracción a entre b.
+Y llamo a $\displaystyle\frac{a}{b}$ la fracción $a$ entre $b$.
 
 \begin{ncor}
 	\[\frac{a}{b}= \frac{u}{v} \iff av = bu \iff (a,b) \sim (u,v)\]
 \end{ncor}
 \begin{proof}
 	
-	\boxed{\Rightarrow} $(a,b) \in \frac{a}{b} = \frac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
+	\boxed{\Rightarrow} $(a,b) \in \dfrac{a}{b} = \dfrac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
 	
-	\boxed{\Leftarrow} $(a,b) \sim (u,v)$ Por la transitividad: $\frac{a}{b} \subseteq \frac{u}{v}$ y $\frac{u}{v} \subseteq \frac{a}{b} \Rightarrow \frac{a}{b}= \frac{u}{v}$
+	\boxed{\Leftarrow} $(a,b) \sim (u,v)$ Por la transitividad: $\dfrac{a}{b} \subseteq \dfrac{u}{v}$ y $\dfrac{u}{v} \subseteq \dfrac{a}{b} \Rightarrow \dfrac{a}{b}= \dfrac{u}{v}$
 \end{proof}
 \end{ndef}
 
-Ahora, llamamos $Q(A) = \{\frac{a}{b} | a,b \in A: \hspace{0.25cm} b\neq 0\}$ que es un conjunto de conjuntos, pues ya habíamos definido la fracción $\frac{a}{b}$ como un conjunto.
+Ahora, llamamos $Q(A) = \left\{\dfrac{a}{b}\ |\ a,b \in A: \hspace{0.25cm} b\neq 0\right\}$ que es un conjunto de conjuntos, pues ya habíamos definido la fracción $\dfrac{a}{b}$ como un conjunto.
 
 Sobre él, definimos unas operaciones que nos permitirán ver que es un cuerpo:
 \begin{nlist}
@@ -933,7 +940,7 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
 
 
 \begin{nprop}
-  Sea K un cuerpo, $A\le K$. Si $\forall\ \alpha\in K\quad \exists\ a\in A,\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
+  Sea K un cuerpo, $A\le K$. Si $\forall\alpha\in K\quad \exists a\in A,\;\; a \not= 0 : a\alpha\in A \implies \rac(A)=K$
 \end{nprop}
 
 \begin{proof}
@@ -966,9 +973,9 @@ El coeficiente $a_n$ se denomina coeficiente líder.
 
 \begin{ndef}[Divisibilidad en D.I.]
 	
-Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divisor de b, b es un múltiplo de a):
+Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divisor de b, b es un múltiplo de a):
 \begin{align}
-	\Rightarrow& \exists c \in A : b = ac 
+	& \exists c \in A : b = ac 
 \\
 	\iff& La \hspace{0.2cm} ecuacion \hspace{0.2cm} ax=b \hspace{0.2cm} tiene\hspace{0.2cm}solucion
 \\
@@ -976,8 +983,8 @@ Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un diviso
 \end{align}
 
 \begin{proof}
-	$\boxed{\implies}$ Si a divide a b $\implies$ $\exists c: b=ac \implies \frac{b}{a} = \frac{ac}{a} = \frac{c}{1} = c \in A$\\
-	$\boxed{\Longleftarrow}$ si $\frac{b}{a}\in A \implies \frac{b}{a} = \frac{c}{1} \implies b = ac$
+	$\boxed{\implies}$ Si a divide a b $\implies$ $\exists c: b=ac \implies \dfrac{b}{a} = \dfrac{ac}{a} = \dfrac{c}{1} = c \in A$\\
+	$\boxed{\Longleftarrow}$ si $\dfrac{b}{a}\in A \implies \dfrac{b}{a} = \dfrac{c}{1} \implies b = ac$
 \end{proof}
 \end{ndef}
 \textbf{Notación:} Si a divide a b, escribiremos $a/b$
@@ -1006,7 +1013,7 @@ Sea A un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un diviso
 
 \begin{ndef}[Irreducible]
 	
-	Sea $a\in A$(D.I), $a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
+	Sea $a\in A$ (D.I), $a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
 
 \begin{align}
 	\iff& si\hspace{0.2cm} b/a \implies b\in U(A) \vee b \sim a
@@ -1066,7 +1073,7 @@ $$a=bq'+r' \quad \quad 0 \leq r' < \abs{b}$$
 distintos. Vamos a ver que $r=r'$ y $q=q'$
 
 \begin{itemize}
-	\item Si $r \neq r'$, supongamos $r > r' \implies 0 < r - r' < \abs{b}$
+	\item Si $r \neq r'$ ($\implies q\ne q'$), supongamos $r > r' \implies 0 < r - r' < \abs{b}$
 Ahora: 
 $$ r-r' = a-bq - a +bq' = b(q' -q )$$
 $$r-r' > 0 \implies r - r' = \abs{b(q' -q)} = \abs{b}\abs{q' -q}$$
@@ -1086,11 +1093,11 @@ Probamos ahora la existencia. Sean $a,b \geq 0$
 	\item Si $ a < b \implies a = b*0 + a$, luego $q=0$ y $r=a$, ya los tenemos.
 	\item Si $a \geq b$, llamamos $R=\{a-bx: x\in \nat \quad a \geq bx\}\subseteq \nat$ que es no vacío, pues está al menos $x=1$.
 	
-	Ahora, por el Principio de buena ordenación, $R$ tiene mínimo. Tomo $r=min(R)$. 
+	Ahora, por el principio de buena ordenación, $R$ tiene mínimo. Tomo $r=min(R)$. 
 	
 $r=a+bq$ para cierto $q \in \nat$ y $ r \geq 0$.
 
-Veremos ahora que $r < b$, llegando a una contradicción.
+Veremos ahora que $r < b$, por contradicción.
 
 Supongamos $ r \geq b\implies r' = r-b \geq 0 \implies r' = a-bq -b = a -b(q+1)\implies r' \in R$.
 
@@ -1120,7 +1127,7 @@ De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
 \begin{ncor}
-$\ent$ es un dominio de Euclides con $\varphi = \abs{.}: \ent \to \nat$
+$\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
 \[
 \varphi(a) \begin{cases}
 	a  \quad \textup{si } a \ge 0\\
@@ -1277,7 +1284,7 @@ Por lo que queda probado el resultado para esos casos.
 \end{proof}
 
 \begin{ejemplo}
-Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo $\ent[i]$. Tenemos que saber si se puede hacer dicha división o no y para ello averiguaremos la norma de ambos números.
+Vamos a tratar de dividir $\alpha=6+10i$ entre $\beta=1+2i$ en el anillo $\ent[i]$. Tenemos que saber si se puede hacer dicha división o no ($\varphi(ab) \ge \varphi(a)$) y para ello averiguaremos la norma de ambos números.
 
 $$\abs{N(6+10i)}=36+100=136$$
 $$\abs{N(1+2i)}=1+4=5$$
