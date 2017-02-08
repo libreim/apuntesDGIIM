@@ -2417,7 +2417,7 @@ Se dice que $f$ es primitivo si $c(f) = 1$. El contenido es único salvo asociad
 
 Enunciaremos también un lema muy importante, el lema de Gauss.\\
 
-\textbf{Lema de Gauss.} Sea A un DFU. Si tenemos $f,g \in A\implies c(fg) = c(f)c(g)$. En particular, el producto de polinomios primitivos es primitivo.\\
+\textbf{Lema de Gauss.} Sea A un DFU. Si tenemos $f,g \in A[x]\implies c(fg) = c(f)c(g)$. En particular, el producto de polinomios primitivos es primitivo.\\
 \begin{proof}
 	Probaremos en primer lugar que el producto de polinomios primitivos es primitivo. Sean $f= \sum a_i x^i $ y $g= \sum b_j x^j$ ambos en $A[x]$ y primitivos. Consideramos también su producto $fg = \sum c_k x^k$. Sabemos que  $c_k = \sum_{i+j=k}a_ib_j$. Negaremos la tesis e intentaremos llegar a una contradicción.
 	
@@ -2580,7 +2580,7 @@ f=3(2x^4+x^3-6x^2+11x+7)
 El contenido de $f$ es 3 y $f'=2x^4+x^3-6x^2+11x+7$. 3 es un primo en $\ent $ y por tanto lo es en $\ent[x]$ y por tanto nos centramos en el primitivo asociado. Aplicamos el criterio de la raíz. Las posibles raíces que el polinomio tuviera en $\rac$ serían $\{\pm 1, \pm \frac{1}{2}, \pm 7, \pm \frac{7}{2}\}$. Calculamos las imágenes de estos puntos para ver si alguno es cero:
 \[
 f'(1) = 2+1-6+11 + 7 \ne 0; \quad f'(-1) = 2-1-6-11+7 \ne 0;\]
-\[f'(\frac{-1}{2}) = 2*(1/2)-(1/2^3)-6*(1/4)-11*(1/2) + 7 = 0
+\[f'(\frac{-1}{2}) = 2*(1/2^4)-(1/2^3)-6*(1/4)-11*(1/2) + 7 = 0
 \]
 Y por tanto hemos encontrado una raíz, es decir:
 \[
@@ -2920,7 +2920,7 @@ Donde $b_{11}/ c_{ij}$ para cada $i$ y $j$. Ahora, lo que haremos es tomar la su
 	El entero $r$ tal que $M$ tiene al menos un menor de orden $r$ no nulo y todos los de orden $r+1$ son nulos se llama Rango de la matriz.
 \end{ndef} 
 
-Vamos a definir ahora $\Delta_s(M) = mcd\{$menores de orden s de M no nulos$\}$
+Vamos a definir ahora $\Delta_s(M) = mcd\{$determinante de los menores de orden s de M no nulos$\}$
 Así, $\Delta_1(M)$ sería el máximo común divisor de todos los $m_{ij}$ (si $M$ está normalizada será $d_1$). Ahora, con esta definición, podemos decir que:
 \[
 rg(M) = max\{s : \Delta_s(M) \ne 0\}
