@@ -2333,7 +2333,7 @@ Entonces, $(p,ab) = 1 \implies$ $p$ es primo relativo con el producto, por tanto
 	\begin{enumerate}
 	\item Primero, calcularemos su norma. $N(11+7i) = 11^2 + 7^2 = 170$
 	\item Factorizamos la norma en $\ent$. $170 = 2*85 = 2*5 *17$.
-	\item Ahora, los factores irreducibles serán los enteros de Gauss cuya norma sea un primo o el cuadrado de un primo. Por tanto, un divisor de este número será un entero de Gauss $Z[i]$ cuya norma sea un divisor de la norma de $11+7i$, por tanto su norma será 2, 5 ó 17 o producto entre esos números.
+	\item Ahora, los factores irreducibles serán los enteros de Gauss cuya norma sea un primo o el cuadrado de un primo. Por tanto, un divisor de este número será un entero de Gauss $Z[i]$ cuya norma sea un divisor de la norma de $11+7i$, por tanto su norma será 2, 5 ó 17.
 	\item  $N(a+bi) = a^2 +b^2 = 2 \iff a=\pm 1$ y $b= \pm 1.$ Los enteros de Gauss de norma 2 son: $1+i,1-i,-1+i,-1-i$, es decir $1+i$ y sus 3 asociados.
 	\item Ahora, tenemos que plantearnos si $1+i / 11+7i$, vemos que la división es: $11+7i/1+i = 9-2i\in \ent[i]$. Además, como $1+i$ tiene norma 2, que es un primo de $\ent$ luego ya tenemos un irreducible por el corolario 8. 
 	\item Tenemos que repetir el proceso para $9-2i$.
@@ -2990,9 +2990,9 @@ Durante todo el apartado nos referiremos a $x, y,...$ como elementos de $M$ y a 
 	\item Unicidad del 0 y del opuesto.
 	\item $0x = 0$ y $a0 = 0$
 	\item $(-a)x = -(ax) = a(-x)$
-	\item Si para una lista de elementos $(x_1,...,x_n)$ de M con al menos 2 elementos definimos su suma simultánea $\sum_i^n x_i$ por inducción:$ \sum_i^n x_i = (\sum_{i=1}^{n-1}x_i) +x_n$
+	\item Si para una lista de elementos $(x_1,...,x_n)$ de M con al menos 2 elementos definimos su suma simultánea $\sum_{i=1}^n x_i$ por inducción:$ \sum_{i=1}^n x_i = (\sum_{i=1}^{n-1}x_i) +x_n$
 	\item $\forall i < r < n,$ entonces $\sum_{i=1}^n x_i = (\sum_{i=1}^{r}x_i) + (\sum_{i=r+1}^{n}x_i) $
-	\item $ (\sum_i^n a_i)(\sum_j^m x_i) = \sum_i^n \sum_j^m a_ix_j$
+	\item $ (\sum_{i=1}^n a_i)(\sum_{j=1}^m x_i) = \sum_{i=1}^n \sum_{j=1}^m a_ix_j$
 \end{nlist}
 
 Si $I \leq A$ es un ideal, si tomamos $M= A/I$, entonces se verfican:
@@ -3007,7 +3007,7 @@ Si $I \leq A$ es un ideal, si tomamos $M= A/I$, entonces se verfican:
 	Con estas operaciones de suma y producto restringidas, $N$ también es un A-módulo. Por tanto, todo submódulo es un módulo.
 \end{ndef}
 \begin{nprop}
-	Si $M_1,...,M_r \subseteq M$ son submódulos, existe siempre un módulo que los contiene. Se le llama le submódulo suma y se representa como:
+	Si $M_1,...,M_r \subseteq M$ son submódulos, existe siempre un módulo que los contiene. Se le llama submódulo suma y se representa como:
 	\[
 	\sum_{i=1}^r M_i =\{\sum_{i=1}^r x_i : x_i \in M_i\}
 	\]
@@ -3099,10 +3099,10 @@ Para comprenderlo mejor, vamos a ver primero un caso particular sencillo.
 	\[
 	\{a: ax = 0 \ \forall x \in M\}\subseteq A \ \  \text{es un ideal}
 	\]
-	al que llamamos anulador minimal de M, $\mu(M)$, que es único salvo asociados.
+	a cuyo generador llamamos anulador minimal de M, $\mu(M)$, que es único salvo asociados.
 \end{ndef}
 
-Dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. Este también es un ideal y, a su vez, es principal. A este se le llama el anulador minimal de x y se le denota:
+Dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. Este también es un ideal y, a su vez, es principal. Al generador de este se le llama el anulador minimal de x y se le denota:
 \[
 \mu(x)
 \]
@@ -3120,7 +3120,7 @@ Dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. E
 En particular, si estamos en un módulo cíclico (generado por un único elemento), entonces $\mu(M) = \mu(x)$ salvo asociados.
 
 \begin{nota}
-	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = 0$ (el anulador minimal es el cero), por tanto, es un isomorfismo, $M \cong A$.
+	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = \{0\}$ (el anulador minimal es el cero), por tanto, es un isomorfismo, $M \cong A$.
 \end{nota}
 
 \begin{nota}
@@ -3131,7 +3131,7 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 \end{nota}
 
 \begin{ndef}[Presentacion de M por generadores y relaciones]
-	Sea M un A-módulo finitamente generado. Se llama entonces "Presentación de M por generadores y relaciones" a toda expresión de la forma
+	Sea M un A-módulo finitamente generado. Se llama entonces “Presentación de M por generadores y relaciones” a toda expresión de la forma
 	\[
 	\langle x_1,...,x_n : \sum_{i=1}^n a_{i1}x_i = 0,...,\sum_{i=1}^n a_{im}x_i = 0 \rangle
 	\]
@@ -3142,7 +3142,7 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 \begin{nprop}
 		Si 
 	\[
-	\langle x_1,...,x_n : \sum_i^n a_{i1}x_i = 0,...,\sum_i^n a_{im}x_i = 0 \rangle
+	\langle x_1,...,x_n : \sum_{i=1}^n a_{i1}x_i = 0,...,\sum_{i=1}^n a_{im}x_i = 0 \rangle
 	\]
 	es una presentación del módulo M, a la matriz:
 	\[
@@ -3241,7 +3241,7 @@ M = Ay_{s+1}  \oplus ... \oplus Ay_r \oplus ... \oplus Ay_n
 \]
 Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,r$ y cada $d_i/d_{i+1}$ y $\mu(y_{r+1}) = ... =\mu(y_n) = 0$
 
-\begin{nprop}
+\begin{nth}[Teorema de estructura de módulos cíclicos]
 	En estas condiciones,
 	\[
 	M \cong Ay_{s+1} \times ... \times Ay_r \times ... \times Ay_n
@@ -3250,12 +3250,9 @@ Y tenemos que $\mu(y_i) = d_i \in A$, no es cero ni unidad $\forall i = s+1,...,
 	\[
 	M \cong Ad_{s+1}\times ... \times Ad_r \times A^{n-r}
 	\]
-\end{nprop}
+\end{nth}
 
-\begin{nota}
-	El hecho que hemos expuesto se conoce como el Teorema de estructura de módulos cíclicos
-\end{nota}
-A $n-r$ se le llama el rango del módulo y $d_{s+1},...,d_s$ es la lista de los factores invariantes del módulo M
+A $n-r$ se le llama el rango del módulo y $d_{s+1},...,d_r$ es la lista de los factores invariantes del módulo M
 
 La unicidad de estos invariantes es consecuencia de la unicidad de los invariantes de la forma normal de Smith.
 
