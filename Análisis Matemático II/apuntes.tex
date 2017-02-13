@@ -312,6 +312,28 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo
 
 será una sucesión de funciones, y la notaremos $\{f_n\}$. Normalmente estas funciones serán continuas.
 
+\begin{ndef}[Convergencia punto a punto.]
+	\[
+		\{f_n\}\to f \text{ punto a punto } \iff \ \forall x\in A 
+	\]
+\end{ndef}
+
+
+\begin{ndef}[Convergencia uniforme.]
+	\[
+	\fn \to f \text{ uniformemente} \iff \forall \epsilon>0\ \exists K>0\ n\ge K \implies \abs{f_n(x)-f(x)} < \epsilon\ \forall x \in A
+	\]
+\end{ndef}
+
+\begin{nprop}
+	Si $\fn\to f \text{ uniformemente} \implies \fn \to f \text{ puntualmente}$. 
+	\begin{nota}
+	El recíproco no es cierto.
+\end{nota}
+\end{nprop}
+
+Algunos ejemplos de sucesiones de funciones:
+
 \begin{ejemplo}[1]
 	\[
 		f_n : [0,1] \to \R,\ f_n(x) = \begin{cases}
@@ -334,10 +356,62 @@ será una sucesión de funciones, y la notaremos $\{f_n\}$. Normalmente estas fu
 \end{ejemplo}
 
 
-\begin{ndef}[Convergencia punto a punto.]
+Vamos a estudiar la convergencia puntual de la sucesión del ejemplo (1):
+
+Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{1}{n}$, luego $f_n(x) = 0$. Por otra parte, $f_n(0) = 1\ \forall n\in \N$. Concluimos que
+
+\[
+	\fn\to f = \begin{cases}
+	1 & \text{ si } x=0\\
+	0 & \text{ en otro caso}
+\end{cases}
+\]
+
+Observamos que la convergencia puntual no preserva la continuidad de las funciones. Esto implicaría que, con esta definición de convergencia, el espacio de funciones continuas en un conjunto no sería completo. Además, podemos comprobar que $\fn$ no converge uniformemente a $f$.
+
+Ahora estudiemos la convergencia uniforme del ejemplo (3):
+
+\[
+\forall\epsilon>0\ \exists K>\dfrac{1}{\epsilon}\ \ n\ge K \implies \dfrac{\abs{sen(nx)}}{n} \le \dfrac{1}{n} \le \dfrac{1}{K} < \epsilon
+\]
+
+Vemos que converge uniformemente a cero. Lo importante para esta demostración, y lo que lo será en la mayoría de los casos de convergencia uniforme, es que podemos encontrar un $\epsilon_n$ tal que
+\[
+\abs{f_n(x)-f(x)} < \epsilon_n
+\]
+
+\begin{nth}
+	Sean $\emptyset \ne A \subseteq \R^N$, $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$.
 	\[
-		\{f_n\}\to f \text{ punto a punto } \iff \ \forall x\in A 
+	\fn \to f \text{ uniformemente } \implies f \text{ es continua}
 	\]
-\end{ndef}
+\end{nth}
+
+\begin{proof}
+	Fijamos $a\in A$. Dado $\epsilon>0$, como $\fn\to f$ uniformemente,
+	\[
+	\exists K>0\ n\ge K \implies \abs{f_n(y)-f(y)}<\epsilon\ \forall y\in A \implies \begin{cases}
+	\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}\\
+	\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}
+\end{cases}
+	\]
+	
+	Como además $f_n$ es continua para cada $n\in \N$,
+	\[
+	\exists \delta>0\ \begin{rcases}
+	\abs{x-a}<\delta\\
+	x\in A
+\end{rcases} \implies \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}
+	\] 
+	
+	Entonces,
+	
+	\[
+	\exists \delta>0\ \begin{rcases}
+	\abs{x-a}<\delta\\
+	x\in A
+\end{rcases} \implies \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon
+	\]
+\end{proof}
 
 \end{document}
