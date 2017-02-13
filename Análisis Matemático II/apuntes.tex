@@ -300,4 +300,41 @@
 \section*{Introducción.}
 
 
+\section{Convergencia uniforme y puntual.}
+De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$,
+
+\[
+	f_n : A \to \R^M\ \ \forall n \in \mathbb{N}
+\]
+
+será una sucesión de funciones, y la notaremos $\{f_n\}$. Normalmente estas funciones serán continuas.
+
+\begin{ejemplo}[1]
+	\[
+		f_n : [0,1] \to \R,\ f_n(x) = \begin{cases}
+	         0 & \text{si } x\ge \dfrac{1}{n}\\
+	         -nx+1 & \text{si } 0\le x < \dfrac{1}{n}
+\end{cases}
+	\]
+\end{ejemplo}
+
+\begin{ejemplo}[2]
+	\[
+	f_n : [0,1] \to \R,\ f_n(x) = x^n
+	\]
+\end{ejemplo}
+
+\begin{ejemplo}[3]
+	\[
+	f_n : [0,1] \to \R,\ f_n(x) = \dfrac{sen(nx)}{n}
+	\]
+\end{ejemplo}
+
+
+\begin{ndef}[Convergencia punto a punto.]
+	\[
+		\{f_n\}\to f \text{ punto a punto } \iff \ \forall x\in A 
+	\]
+\end{ndef}
+
 \end{document}
