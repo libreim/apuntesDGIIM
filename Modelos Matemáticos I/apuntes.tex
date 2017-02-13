@@ -307,7 +307,7 @@ En esta asignatura, intentaremos estudiar una serie de modelos que se dan en la 
 
 \section{Ecuaciones en diferencias de primer orden}
 
-Para motivar este tema, vamos a poner primero unos ejemplos de ecuacinoes en diferencias d eprimer orden.
+Para motivar este tema, vamos a poner primero unos ejemplos de ecuacinoes en diferencias de primer orden.
 
 \begin{enumerate}
 	\item Progresión geométrica, una ecuación de la forma:
@@ -315,7 +315,7 @@ Para motivar este tema, vamos a poner primero unos ejemplos de ecuacinoes en dif
 x_{n+1} =  \alpha x_n
 \]
 
-Para dar una solución, deberíamos establecer el valor de $x_n \ \forall n$. En este caso, una solución sería:
+Para dar una solución, deberíamos establecer el valor de $x_n$ de forma explícita. En este caso, una solución sería:
 \[
 x_n = \mathcal{C} \alpha^n
 \]
@@ -328,10 +328,15 @@ x_{n+1} = x_n + \beta
 \]
 donde una solución sería:
 \[
-x_n = x_0 + n\beta
+x_n = \mathcal{C} + n\beta
 \]
 
 \item La sucesión de Fibonacci es otro ejemplo de una ecuación en diferencias.
+
+\[
+x_{n+2} = x_{n+1} + x_{n}
+\]
+
 \end{enumerate}
 
 \begin{ndef}[Ecuación en diferencias]
@@ -349,7 +354,7 @@ Como ejemplo de cálculo de órdenes, podríamos que decir de la progresión ari
 \end{ndef}
 
 \begin{nota}
-	Una propiedad de las progresiones geométricas es que si la progresión converge, converge a 0. Si no converge, puede ser cíclica o diverger o ser alternada.
+	Una propiedad de las progresiones geométricas es que si la progresión converge, converge a 0. Si no converge, puede ser cíclica, divergente o alternada.
 \end{nota}
 
 \begin{ndef}[Ecuación en diferencias lineal]
@@ -375,7 +380,7 @@ Estas ecuaciones serán de orden 1 con coeficientes constantes.
 	\begin{nlist}
 	\item Si $\beta = 0$ es una progresión geométrica así que $x_n =  \mathcal{C} \alpha^n$
 	\item Si $\beta \ne 0$ y $\alpha  = 1$ entonces es una progresión aritmética, así que $x_n = \mathcal{C} + \beta$
-	\item Si $\beta \ne 0 $ y $\alpha \ne 1 $ entonces la ecuación tiene una única solución constante
+	\item Si $\beta \ne 0 $ y $\alpha \ne 1 $ entonces la ecuación tiene una solución constante:
 	\[
 	x_* = \frac{\beta}{1-\alpha}
 	\]
@@ -384,18 +389,21 @@ Estas ecuaciones serán de orden 1 con coeficientes constantes.
 \end{nprop}
 \begin{proof}
 	Probaremos la tercera, que es la que no es trivial.\\
-	Buscaremos entonces una solución constante $x_*$. Si es solución, debe verificar que $x_* =  \alpha x_* + \beta \implies  x_* \dfrac{\beta}{1 - \alpha}$
+	Buscaremos entonces una solución constante $x_*$. Si es solución, debe verificar que:
+\vspace{2cm}
+\\$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$
 \end{proof}
+
 \begin{ejemplo}
-	Comprobar si en el caso 3, una solución podría ser: $x_n = \alpha^n x_0 + \beta \sum_{i=0}^{n-1}\alpha^i$
+	Comprobar si en el caso 3, una solución podría ser: \[x_n = \alpha^n x_0 + \beta \sum_{i=0}^{n-1}\alpha^i\]
 \end{ejemplo}
 
-\begin{proof}
+\begin{nprop}
 	Si $\alpha \ne 1$, la sucesión $\{x_n\}$ es solución de la ecuación $\iff$ la sucesión $\{z_n\}$ definida por $z_n = x_n - x_*$ es solución de la ecuación:
 	\[
 	z_{n+1} =  \alpha z_n
 	\]
-\end{proof}
+\end{nprop}
 \begin{ejemplo}
 	Resuelva $x_{n+1} = -ix_n + 3$. Esto es una ecuación en diferencias de primer orden lineal no homogénea.
 	\begin{proof}[Solución]
@@ -406,7 +414,7 @@ Estas ecuaciones serán de orden 1 con coeficientes constantes.
 	
 	Calculamos ahora la ecuación homogénea asociada, esta es $z_{n+1} = -iz_n$ con $n \geq 0$. Así, $z_n =  \mathcal{C}(-i)^n$.
 	
-	Ahora, una solución de la ecuación inicial sería
+	Ahora, una solución de la ecuación inicial sería:
 	\[
 	x_n =  x_* +z_n = \frac{3}{1+i}+\mathcal{C}(-i)^n
 	\]
