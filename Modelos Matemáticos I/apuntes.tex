@@ -298,6 +298,119 @@
 %   Introducción.
 %----------------------------
 \section*{Introducción.}
+En esta asignatura, intentaremos estudiar una serie de modelos que se dan en la naturaleza y que explican cosas de 
 
 
+
+
+\newpage
+
+\section{Ecuaciones en diferencias de primer orden}
+
+Para motivar este tema, vamos a poner primero unos ejemplos de ecuacinoes en diferencias d eprimer orden.
+
+\begin{enumerate}
+	\item Progresión geométrica, una ecuación de la forma:
+\[
+x_{n+1} =  \alpha x_n
+\]
+
+Para dar una solución, deberíamos establecer el valor de $x_n \ \forall n$. En este caso, una solución sería:
+\[
+x_n = \mathcal{C} \alpha^n
+\]
+
+Donde $\mathcal{C}$ es una constante. Así, $x_0 = \mathcal{C}$.
+
+\item Progresión aritmética, es decir, una de la forma:
+\[
+x_{n+1} = x_n + \beta
+\]
+donde una solución sería:
+\[
+x_n = x_0 + n\beta
+\]
+
+\item La sucesión de Fibonacci es otro ejemplo de una ecuación en diferencias.
+\end{enumerate}
+
+\begin{ndef}[Ecuación en diferencias]
+	Una ecuación en diferencias es una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
+	\[
+	F(x_{n+k},\dots, x_n , n)= 0
+	\]
+donde $F$ es una función de varias variables, $\{x_n\}$ es una sucesión, las incógnitas y $k \geq 1 $ es el orden de la ecuación
+\end{ndef}
+
+Como ejemplo de cálculo de órdenes, podríamos que decir de la progresión aritmética y geométrica son de orden 1 y la sucesión de Fibonacci es de orden 2.
+
+\begin{ndef}[Resolución de una ecuación en diferencias]
+	Resolver una ecuación en diferencias es hallar la forma explícita de todas las sucesiones que satisfacen la igualdad, la solución general. Una solución concreta de la ecuación se llama solución particular y generalmente se obtiene a partir de $k$ condiciones iniciales en la solución general.
+\end{ndef}
+
+\begin{nota}
+	Una propiedad de las progresiones geométricas es que si la progresión converge, converge a 0. Si no converge, puede ser cíclica o diverger o ser alternada.
+\end{nota}
+
+\begin{ndef}[Ecuación en diferencias lineal]
+	Una ecuación en diferencias lineal viene dado por una ecuación de la forma:
+
+\[
+a_k(n)x_{n+k} + ... + a_0(n)x_n = b(n)
+\]
+Si $a_k(n)\ne 0 \ , \ n \geq 0$ se dice que es de orden $k$. Si $b(n) = 0$, se dice que la ecuación es homogénea.
+\end{ndef}
+
+
+\subsection{Ecuación en diferencias de primer orden lineal con coeficientes constantes}
+
+Una ecuación en diferencias de primer orden lineal será de la forma:
+\[
+x_{n+1} = \alpha x_n +  \beta \quad \alpha,\beta \in \mathbb{C}
+\]
+Estas ecuaciones serán de orden 1 con coeficientes constantes.
+
+\begin{nprop}
+	La solución de estas ecuaciones será:
+	\begin{nlist}
+	\item Si $\beta = 0$ es una progresión geométrica así que $x_n =  \mathcal{C} \alpha^n$
+	\item Si $\beta \ne 0$ y $\alpha  = 1$ entonces es una progresión aritmética, así que $x_n = \mathcal{C} + \beta$
+	\item Si $\beta \ne 0 $ y $\alpha \ne 1 $ entonces la ecuación tiene una única solución constante
+	\[
+	x_* = \frac{\beta}{1-\alpha}
+	\]
+	Esta solución satisfacerá la ecuación si no dependiera de $n$.
+\end{nlist}
+\end{nprop}
+\begin{proof}
+	Probaremos la tercera, que es la que no es trivial.\\
+	Buscaremos entonces una solución constante $x_*$. Si es solución, debe verificar que $x_* =  \alpha x_* + \beta \implies  x_* \dfrac{\beta}{1 - \alpha}$
+\end{proof}
+\begin{ejemplo}
+	Comprobar si en el caso 3, una solución podría ser: $x_n = \alpha^n x_0 + \beta \sum_{i=0}^{n-1}\alpha^i$
+\end{ejemplo}
+
+\begin{proof}
+	Si $\alpha \ne 1$, la sucesión $\{x_n\}$ es solución de la ecuación $\iff$ la sucesión $\{z_n\}$ definida por $z_n = x_n - x_*$ es solución de la ecuación:
+	\[
+	z_{n+1} =  \alpha z_n
+	\]
+\end{proof}
+\begin{ejemplo}
+	Resuelva $x_{n+1} = -ix_n + 3$. Esto es una ecuación en diferencias de primer orden lineal no homogénea.
+	\begin{proof}[Solución]
+	Primero, calculamos la solución constante: $x_n = x_*$ para $n \geq 0$. Esta es:
+	\[
+	x_* = -i x_* +3 \implies x_* = \frac{3}{1+i}
+	\]
+	
+	Calculamos ahora la ecuación homogénea asociada, esta es $z_{n+1} = -iz_n$ con $n \geq 0$. Así, $z_n =  \mathcal{C}(-i)^n$.
+	
+	Ahora, una solución de la ecuación inicial sería
+	\[
+	x_n =  x_* +z_n = \frac{3}{1+i}+\mathcal{C}(-i)^n
+	\]
+\end{proof}
+
+\end{ejemplo}
 \end{document}

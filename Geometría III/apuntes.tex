@@ -103,6 +103,8 @@
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage[hidelinks]{hyperref}
+\usepackage{pgfplots}
+
 
 
 %---------------------------------------------------------------------------
@@ -298,6 +300,78 @@
 %   Introducción.
 %----------------------------
 \section*{Introducción.}
+En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
+\newpage
 
+\section{El espacio afín}
+
+\subsection{El plano afín}
+Este plano, durante todo el contenido de los apuntes será el plano $\R^2$. Sabemos que en este plano podems representar un simple punto o un vector dentro de este plano(en este caso, es el plano vectorial). Daremos ahora por sabido todas las propiedades de los vectores.
+
+\begin{tikzpicture}
+	\begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
+		\addplot+(2,3);
+	\end{axis}
+\end{tikzpicture}
+
+Lo que haremos es transformas las propiedades de vectores en propiedades de puntos, veamos cómo unir estos dos conceptos.
+
+Sean p y q dos puntos del plano. Entonces, podemos transformarlos en un vector $u = pq = q-p$. De la misma forma, analíticamente podemos ver que si tenemos un punto p y le añadimos un vector $u$, obtenemos otro punto q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
+
+%Falta flechita encima de pq, y encima de u que indica vector
+
+
+\begin{ndef}[Combinación lineal de vectores]
+	Si $u_1,u_2,u_3$ son vectores y $\alpha_1,\alpha_2,\alpha_3$ son escalares, entonces:
+	\[
+	\alpha_1 u_1+ \alpha_2 u_2 + \alpha_3 u_3
+	\]
+	es una combinación lineal de vectores
+\end{ndef}
+Podemos también hacer combinaciones de puntos de la siguiente forma:
+\begin{ndef}[Combinaciones baricéntricas de puntos]
+	Si $p_1,...,p_n$ son puntos y $\alpha_1,...,\alpha_n \in R$ pesos de los puntos, que tienen la condición de que $\sum \alpha_i = 1$, entonces una combinación de puntos de la forma:
+	\[
+	p = \sum_{i=1}^n \alpha_i p_i
+	\]
+	Es un punto y se le llama combinación baricéntrica de puntos
+\end{ndef}
+\begin{proof}
+	Lo que haremos, es transformar los puntos en vectores y así la demostración será trivial.
+	
+	Restamos primero $p-p_1 = \sum \alpha_i(p_i-p_1)$, así tenemos el vector determinado por $p$ y $p_1$ y tenemos así una identidad de vectores, de la forma:
+	\[
+	pp_1 = \sum_{i=2}^n \alpha_i p_1p_i
+	\]
+	
+	Y llegamos así a que
+	\[
+	P = p_1 + \sum_2^n \alpha_i p1p_i
+	\]
+\end{proof}
+
+\begin{ndef}
+	Si los pesos $\alpha_i$ asignados a los puntos son todos positivos, llamaremos a su combinación una combinación convexa.
+\end{ndef}
+
+\begin{ndef}[Centro de gravedad de unos puntos]
+	Si $p_1,...,p_n$ son puntos y $\alpha_1,...,\alpha_n$ son sus pesos, entonces llamamos a
+	\[
+	\sum_{i=1}^n \alpha_ip_i
+	\]
+	el centro de gravedad de los puntos.
+\end{ndef}
+
+\begin{ndef}[Punto medio]
+Sean p y q dos puntos en el espacio afín. Entonces m es el punto medio entre p y q si está definido como:
+\[
+m = \dfrac{1}{2} p + \dfrac{1}{2}q = \dfrac{1}{2}(p+q)
+\]
+Otra forma de hablar de él es: si $u = pq$, entonces:
+\[
+m = \dfrac{1}{2}u + p
+\]
+
+\end{ndef}
 
 \end{document}
