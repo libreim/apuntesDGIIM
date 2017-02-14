@@ -316,7 +316,7 @@ Este plano, durante todo el contenido de los apuntes será el plano $\R^2$. Sabe
 
 Lo que haremos es transformas las propiedades de vectores en propiedades de puntos, veamos cómo unir estos dos conceptos.
 
-Sean p y q dos puntos del plano. Entonces, podemos transformarlos en un vector $u = pq = q-p$. De la misma forma, analíticamente podemos ver que si tenemos un punto p y le añadimos un vector $u$, obtenemos otro punto q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
+Sean p y q dos puntos del plano. Entonces, podemos transformarlos en un vector $\vec{u} = pq = q-p$. De la misma forma, analíticamente podemos ver que si tenemos un punto p y le añadimos un vector $\vec{u}$, obtenemos otro punto q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
 
 %Falta flechita encima de pq, y encima de u que indica vector
 
@@ -327,6 +327,10 @@ Sean p y q dos puntos del plano. Entonces, podemos transformarlos en un vector $
 	\alpha_1 u_1+ \alpha_2 u_2 + \alpha_3 u_3
 	\]
 	es una combinación lineal de vectores
+\end{ndef}
+
+\begin{ndef}[Razón de vectores proporcionales]
+	Si u,v son dos vectores proporcionales es decir $u = \lambda v$, entonces se llama a $\lambda$ la razón de esos vectores.
 \end{ndef}
 Podemos también hacer combinaciones de puntos de la siguiente forma:
 \begin{ndef}[Combinaciones baricéntricas de puntos]
@@ -373,5 +377,123 @@ m = \dfrac{1}{2}u + p
 \]
 
 \end{ndef}
+
+\subsection{Rectas afines}
+A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una recta afín.
+
+\begin{ndef}
+	Una recta vectorial es un subespacio vectorial de dimensión 1. Estas están generadas por un vector. De hecho, se notan como $L(v)$ con $v$ un vector.
+\end{ndef}
+
+\begin{nprop}
+	Una recta vectorial se puede formar haciendo una combinación de la forma: Si $p$ es un punto y $v$ un vector, entonces la recta $r$ viene dada por 
+	\[
+	r = p+L(v) = \{p + \lambda v : \lambda \in \R\}
+	\]
+	Además, notaremos a $L(v) = \vec{r}$.
+\end{nprop}
+\begin{ndef}
+	Si $v$ es un vector director, llamaremos variedad de dirección v a $L(v) = \vec{r}$.
+\end{ndef}
+
+\textbf{Propiedades:}
+\begin{itemize}
+	\item Si $q$ es un punto y $q\in r \implies r = q +L(v)$
+	\item Si $p,q$ son dos puntos, entonces por ellos pasa una recta y esta es única. Esta recta se nota : $r = p +L(\vec{pq})$\\
+	\begin{proof}
+	Si la recta $r$ pasa por $p$ y $q$, sea $s$ otra recta que pasa por ellos, entonces:
+	\[
+	s = p+L(\vec{pq}) = r
+	\]
+\end{proof}
+\end{itemize}
+
+\subsubsection{Posición relativa entre rectas}
+Según se encuentren en el plano afín, dos rectas $r$ y $s$ pueden ser:
+\begin{itemize}
+	\item Paralelas, notado $n//s \equiv \vec{r} = \vec{s}$
+	\item No paralelas, si sus vectores directores son linealmente independientes.
+\end{itemize}
+
+\begin{nth}
+	Si $r$, $s$ son dos rectas del plano afín, entonces:
+	\begin{nlist}
+	\item $r \nparallel s\implies r \cap s = $ un punto
+	\item $r \parallel s \implies r = s$ ó $r \cap s =  \emptyset$
+\end{nlist}
+\begin{proof}
+	\begin{nlist}
+	\item Si $u,v$ son los vectores directores de $r$ y $s$, entonces con los pares $\{u,v\}$ tenemos que $p+\lambda u = q + \mu v$ con $\lambda, \mu \in \R$
+y si $r = p +L(u)$ y $s=q+L(v)$, y $\vec{pq} = \lambda u - \mu v $ y por ello existen únicos $\lambda, \mu$.
+\end{nlist}
+\end{proof}
+\end{nth}
+
+\subsection{Triángulos}
+Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son sus vértices y las tres rectas que los unen.
+
+\begin{nprop}
+$A,B,C$ son puntos no alineados si $\vec{AB},\vec{AC}$ son linealmente independientes
+\end{nprop}
+
+% Posibilidad de hacer dibujo de triangulo con los 3 puntos y las 3 rectas
+
+\begin{nth}
+	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales. 
+	Si las rectas paralelas son: $AvC \parallel A_1C_1$ y $AvB \parallel A_1B_1$, por lo que las razones son:
+	\[
+	\frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
+	\]
+	Entonces, la pareja restante $CvB \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
+	\begin{proof}
+	Si los lados son paralelos, entonces los vectores directores son proporcionales.
+	
+	Si $w$ (el lado no mencionado del primer triangulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
+\end{proof}
+\end{nth}
+ 
+\begin{ndef}[Triángulo medio]
+	Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
+	\begin{nlist}
+	\item $A'B'C'$ es un triángulo
+	\item Los lados homólogos son paralelos y que el factor de proporcionalidad es: $-\dfrac{1}{2}$
+\end{nlist}\vspace{0.2cm}
+\begin{proof}
+
+	\begin{nlist}
+	\item Se hace viendo que si ABC no están alineados, estos 3 tampoco
+	\item Tenemos que: $A' = B/2 + C/2$, $B' = A/2+C/2$, $C' = A/2 + B/2$. Tenemos por tanto que: $\vec{A'B'} = B'-A' = \dfrac{1}{2}(A-B) = -\dfrac{1}{2} \vec{AB}$ y por tanto los lados homólogos son paralelos.
+
+Además, el factor es el número obtenido en la conversión, es decir $\dfrac{-1}{2}$.
+\end{nlist}
+\end{proof}
+\end{ndef}
+
+\begin{ndef}[Medianas de un triángulo]
+Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el punto medio del lado opuesto
+\end{ndef}
+\begin{ndef}[Baricentro de un triángulo]
+	El baricentro $G$ de un triángulo que viene dado por:
+	\[
+	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C
+	\]
+\end{ndef}
+
+\begin{nth}
+	Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
+	
+	\begin{nth}
+	Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
+	\[
+	\{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
+	\]
+	Entonces, sabemos que $G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C$ y veamos que este está en la mediana: Tenemos que ver la ecuación:
+	\[
+	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
+	\]
+	
+\end{nth}
+\end{nth}
+
 
 \end{document}
