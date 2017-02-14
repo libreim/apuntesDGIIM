@@ -428,13 +428,13 @@ $||f_n - f ||_{\infty} \rightarrow 0 \iff m\acute{a}x \ |f_n(x) - f(x)| \rightar
 \end{proof}
 \end{nprop}
 
-\begin{nprop}
-	$f_n \xrightarrow{c.u.} f \iff ||f_n -f ||_\infty \to 0 \iff f_n \xrightarrow{\mathcal{C}(A,R^M)}f$. Ahora, si $\{f_n\}$ es de Cauchy en $\mathcal{C}(A,R^M)$, sabemos que $\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies ||f_n - f_m ||_\infty = (sup)_{x\in A}|f_n(x)-f_m(x)| < \epsilon$ es equivalente a decir que:
+\begin{nth}[$\mathcal{C}(A,\R^M)$ es completo]
+	$f_n \xrightarrow{c.u.} f \iff ||f_n -f ||_\infty \to 0 \iff f_n \xrightarrow{\mathcal{C}(A,\R^M)}f$. Ahora, si $\{f_n\}$ es de Cauchy en $\mathcal{C}(A,\R^M)$, sabemos que $\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies ||f_n - f_m ||_\infty = sup_{x\in A}|f_n(x)-f_m(x)| < \epsilon$ es equivalente a decir que:
 	\[
-	\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies |f_n(x)-f_m(x)| < \epsilon
+	\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies |f_n(x)-f_m(x)| < \epsilon\ \forall x\in A
 	\]
 	
-\end{nprop}
+\end{nth}
 
 \begin{nth} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \xrightarrow {c.u} \int_a^b f $$
 
@@ -442,12 +442,12 @@ $||f_n - f ||_{\infty} \rightarrow 0 \iff m\acute{a}x \ |f_n(x) - f(x)| \rightar
 \end{proof}
 \end{nth}
 \begin{nth}
-	Supongamos que $f_n\in \mathcal{C}^1((a,b))$. Supongamos también que $ f_n(x) \to f(x \ \ \forall x \in (a,b)$
+	Supongamos que $f_n\in \mathcal{C}^1((a,b))$. Supongamos también que $ f_n(x) \to f(x) \ \ \forall x \in (a,b)$
 	Supongamos que: $f_n' \xrightarrow{c.u.} g $ en (a,b)
 	
 Entonces, $f \in \mathcal{C}^1((a,b))$ y $f' = g$
 \begin{proof}
-	Elegimos primer un $x_0 \in (a,b)$ fijo. Entonces, $f_n(x_0) \to f(x_0)$ por hipótesis.
+	Elegimos primero un $x_0 \in (a,b)$ fijo. Entonces, $f_n(x_0) \to f(x_0)$ por hipótesis.
 	Como $f_n'$ es continua, entonces, por el teorema fundamental del cálculo:
 	\[
 	f_n(x) = f_n(x_0) + \int_{x_0}^x f_n'(t)dt
@@ -456,7 +456,7 @@ Entonces, $f \in \mathcal{C}^1((a,b))$ y $f' = g$
 	\[
 		f_n(x) = f_n(x_0) + \int_{x_0}^x f_n'(t)dt \to f(x_0) + \int_{x_0}^x g(t) dt =: G(x)
 	\]
-	Ahora, G es de clase 1 por ser g(t) continua. Además, tenemos que $G(x_0) = f(x_0)$.
+	Ahora, $G$ es de clase 1 por ser $g(t)$ continua. Además, tenemos que $G(x_0) = f(x_0)$.
 	Por otro lado, $G' = g$.
 	
 	Además, tenemos que $f_n(x) \to G$ y también tiende a $f$ por hipótesis, por lo que tenemos necesariamente que: $\forall x \in (a,b) \ \ G(x) = f(x)$, o lo que es decir:
