@@ -405,17 +405,17 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	\]
 \end{nprop}
 \begin{proof}
-	Si $\{x_n\}_{n\geq 0}$ es solución de (1) $\implies \bar{x_{n+1}}= \alpha\bar{x_n}+\beta$
+	Si $\{x_n\}_{n\geq 0}$ es solución de (1) $\implies \bar{x}_{n+1}= \alpha\bar{x}_n+\beta$
 	
 	
-	Además, $\{x_*\}$ es solución de (1) $\implies \bar{x_{*}}= \alpha\bar{x_*}+\beta$
+	Además, $\{x_*\}$ es solución de (1) $\implies \bar{x}_{*}= \alpha\bar{x}_*+\beta$
 	
 	Ahora, restamos ambas y nos queda:
 	\[
-	\implies \bar{x_{n+1}}= \alpha\bar{x_n}+\beta
+	\bar{x}_{n+1} - \bar{x}_*= \alpha (\bar{x}_n - \bar{x}_*).
 	\]
-	Por lo que hemos obtenido una solución de la ecuación (2), pues si $\bar{z_n}= x_n - x_*\implies \bar{z_{n+1}}= \alpha \bar{z_n} \implies \{\bar{z_n}\}_{}$
-	ME falta aqui copiar toda la demostración
+	Por lo que hemos obtenido una solución de la ecuación (2), pues si $\bar{z}_n= \bar{x}_n - \bar{x}_*\implies \bar{z}_{n+1}= \alpha \bar{z}_n \implies \{\bar{z}_n\}_{}$
+	
 \end{proof}
 
 
@@ -446,17 +446,20 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	\[
 	x_{n+1} = \alpha x_n + \beta
 	\]
-	entonces la ecuación tiene tantas soluciones como valores posibles tenga la conidición inicial:
+	entonces la ecuación tiene tantas soluciones como valores posibles tenga la condición inicial:
 	\[
 	x_n = x_* + (x_0-x_*)\alpha^n , \ \ \ n=0,1,2...
 	\]
 	
 	\begin{proof}
-	Si $x_{n+1} = \alpha x_n + \beta$ y $\alpha \ne 1$, las soluciones de 1 por la proposición (2) son de la forma:
+	Si $x_{n+1} = \alpha x_n + \beta$ y $\alpha \ne 1$, las soluciones de son de la forma:
 	\[
 	x_n = x_*+z_n 
 	\]
-	con $z_n$ una solución homogénea asociada y $x_*$ una solución constante. Aqui falta la demostracion y eso
+	con $z_n$ una solución homogénea asociada y $x_*$ una solución constante.
+	\[
+	z_{n+1} = \alpha z_n \implies z_{n} = \mathcal{C}\alpha^n \implies z_n = (x_o - x_*)\alpha^n \implies x_n = x_o + (x_0 - x_*)\alpha^n
+	\]
 	
 \end{proof}
 
@@ -512,10 +515,11 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	\item Si $n=1$. Entonces, $\alpha = r(cos\theta +i\sen\theta)$, trivial.
 	\item Supuesto cierto para cierto $n$, lo demostraremos para $n+1$:
 	\[
-	\alpha^{n+1} = \alpha\alpha^n =  [r(cos\theta +i\sen\theta)] [r^n(cos\theta +i\sen\theta)]=
+	\alpha^{n+1} = \alpha\alpha^n =  [r(cos(\theta) +i\sen(\theta))] [r^n(cos(n\theta) +i\sen(n\theta))]=
 	\]
 	\[
-	r^{n+1}[cos\theta cosn\theta +i sent\theta cosn\theta + isenn\theta cos\theta - sen\theta senn\theta] = r^{n+1}[cos(\theta+n\theta)+isen(\theta+n\theta)]
+	r^{n+1}[cos(\theta) cos(n\theta) +i sen(\theta) cos(n\theta) + isen(n\theta) cos(\theta) - sen(\theta) sen(n\theta)] = \]
+	\[r^{n+1}[cos(\theta+n\theta)+isen(\theta+n\theta)] = r^{n+1}[cos((n+1)\theta)+isen((n+1)\theta)]
 	\]
 \end{enumerate}
 	
@@ -524,14 +528,14 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 
 \begin{nota}
 	Esto es porque un número complejo es de la forma $\alpha = a+bi$ = $r(cos\theta + i sin\theta)$.
-	Donde el módulo es $r=sqrt(a^2 + b^2)$ y $\theta$ es el ángulo, tal que $0 \leq \theta \leq 2\pi$.
+	Donde el módulo es $r=\sqrt{a^2 + b^2}$ y $\theta$ es el ángulo, tal que $0 \leq \theta \leq 2\pi$.
 	$(cos\theta + i sin\theta)$ tiene módulo 1.
 	
 \end{nota}
 
 \subsection{Comportamiento asintótico de las soluciones}
 Tendríamos en este caso que estudiar cómo se comporta la sucesión $\{\alpha^n\}$ con $\alpha \in \mathbb{C}$.
-\begin{nprop}
+\begin{nprop}\hfill
 \begin{nlist}
 	\item $|\alpha|< 1 \implies \{\alpha^n\}\to 0$
 	\item $|\alpha|> 1 \implies \{|\alpha|^n\}\to +\infty$
@@ -549,10 +553,22 @@ Ya sabemos que su solución sería:
 x_* +z_n = x_* + \mathcal{C}\alpha^n
 \]
 Por tanto tendríamos que estudiar cómo varía $\alpha^n$.
-COPIAR DIAPOSITIVA 16
+
 
 \begin{nth}[Comportamiento asintótico de las soluciones]
-	Las soluciones $\{x_n\}_{n\geq 0}$
+	Las soluciones $\{x_n\}_{n\geq0}$ de la ecuación:
+\[
+x_{n+1} = \alpha x_n + \beta
+\]
+
+verifican:
+
+\begin{itemize}
+\item Si $|\alpha| < 1$, se tiene que ${x_n} \to x_*$
+\item Si $|\alpha| > 1$, se tiene que ${x_n}$ diverge.
+\item Si $|\alpha| = 1$, entonces ${x_n}$ oscila alrededor de $x_*$, esto es, $x_n$ está en la circunferencia de centro $x_*$ y radio $|x_0 - x_*|$.
+\end{itemize}\vspace{0.5cm}
+
 	\begin{proof}
 	Si tenemos que:
 	\[
@@ -611,15 +627,9 @@ p_n = x_* + z_n = p_* + \mathcal{C}(\frac{-b}{d})^n
 x_* = \frac{\beta}{1-\alpha} = \frac{(c-a)/d}{(1-(-b/d)}= \frac{c-a}{b+d} = p_*
 \]
 Por tanto, tenemos que conseguir que $p_n \to p_*$ y para ello tenemos que conseguir que, como $p_{n+1} =p_* + \mathcal{C}(\frac{-b}{d})^n$, entonces tenemos que hacer que $|\dfrac{-b}{d}| < 1 \implies b < d$.
-Por ello, lo que tenemos en las rectas es que la pendiente (b) de la recta de la oferta sea menor que la pendiente de la demanda(d).
+Por ello, lo que tenemos en las rectas es que la pendiente (b) de la recta de la oferta sea menor que la pendiente de la demanda (d).
 
 
-\begin{tikzpicture}
-	\begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
-		\addplot+(2,3);
-		
-	\end{axis}
-\end{tikzpicture}
 
 
 \end{document}
