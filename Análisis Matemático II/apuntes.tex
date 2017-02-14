@@ -123,9 +123,9 @@
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
 % Redefinir entorno de demostración (reducir espacio superior)
-\makeatletter
-\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-\makeatother
+%\makeatletter
+%\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+%\makeatother
 
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
@@ -233,7 +233,7 @@
 
 % Teoremas, proposiciones y corolarios.
 \theoremstyle{theorem-style}
-\newtheorem*{nth}{Teorema}
+\newtheorem{nth}{Teorema}[section]
 \newtheorem*{nprop}{Proposición}
 \newtheorem{ncor}{Corolario}
 
@@ -317,7 +317,7 @@ En ocasiones denotaremos la convergencia puntual como $\fn \xrightarrow {c.p} f$
 
 \begin{ndef}[Convergencia uniforme.] Diremos que $\fn$ converge uniformemente a una función $f \in \mathcal{F}(A,\mathbb{R}^M)$ si se verifica:
 	\[
-	\forall \epsilon>0\ \exists n_0>0\ : n\ge n_0\implies \abs{f_n(x)-f(x)} < \epsilon\ \forall x \in A
+	\forall \epsilon>0\ \exists n_0 \in \mathbb{N}\ : n\ge n_0\implies \abs{f_n(x)-f(x)} < \epsilon\ \forall x \in A
 	\]
 \end{ndef}
 
@@ -334,7 +334,7 @@ Aunque ambas definiciones son muy parecidas, hay una diferencia clave. En la con
 \end{nota}
 \end{nprop}
 
-La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema:
+La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación.
 
 \begin{nth}
 	Sean $\emptyset \ne A \subseteq \R^N$, $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$.
@@ -346,7 +346,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 \begin{proof}
 	Fijamos $a\in A$. Dado $\epsilon>0$, como $\fn\to f$ uniformemente,
 	\[
-	\exists K>0\ n\ge K \implies \abs{f_n(y)-f(y)}<\epsilon\ \forall y\in A \implies \begin{cases}
+	\exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\epsilon\ \forall y\in A \implies \begin{cases}
 	\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}\\
 	\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}
 \end{cases}
@@ -354,7 +354,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 	
 	Como además $f_n$ es continua para cada $n\in \N$,
 	\[
-	\exists \delta>0\ \begin{rcases}
+	\exists \delta>0:\ \begin{rcases}
 	\abs{x-a}<\delta\\
 	x\in A
 \end{rcases} \implies \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}
@@ -409,7 +409,7 @@ Observamos que la convergencia puntual no preserva la continuidad de las funcion
 Ahora estudiemos la convergencia uniforme del ejemplo (3):
 
 \[
-\forall\epsilon>0\ \exists K>\dfrac{1}{\epsilon}\ \ n\ge K \implies \dfrac{\abs{sen(nx)}}{n} \le \dfrac{1}{n} \le \dfrac{1}{K} < \epsilon
+\forall\epsilon>0\ \exists K>\dfrac{1}{\epsilon}:\ \ n\ge K \implies \dfrac{\abs{sen(nx)}}{n} \le \dfrac{1}{n} \le \dfrac{1}{K} < \epsilon
 \]
 
 Vemos que converge uniformemente a cero. Lo importante para esta demostración, y lo que lo será en la mayoría de los casos de convergencia uniforme, es que podemos encontrar un $\epsilon_n$ (en este caso $\frac{1}{n}$) tal que
@@ -417,52 +417,80 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 \abs{f_n(x)-f(x)} < \epsilon_n
 \]
 
+\begin{nprop}[Caracterización de convergencia uniforme]
+	Sea $A \subseteq \mathbb{R}^N$, y sean $f_n: A \longrightarrow \mathbb{R}^M \ \forall n \in \mathbb{N}$. Entonces: $$\fn \xrightarrow {c.u} f \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ m,n \ge n_0 \Rightarrow |f_n(x) - f_m(x)| < \epsilon\ \ \forall x \in A$$
+	
+\begin{proof} \hfill \\
+\boxed{\Rightarrow}	 $\fn \xrightarrow {c.u} f \implies \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \Rightarrow |f_n(x) - f(x)| < \frac{\epsilon}{2}\ \forall x \in A$. Entonces, dados $m,n \ge n_0$ se tiene que: $$ |f_n(x) - f_m(x)| \le |f_n(x) - f(x) + |f_m(x) - f(x)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
+
+\boxed{\Leftarrow} Sea $x \in A$ fijo. Entonces, es claro que $\{f_n(x)\} \subseteq \mathbb{R}^M$ es una sucesión de Cauchy. Como $\mathbb{R}^M$ es completo, tenemos que $\{f_n(x)\} \xrightarrow {c.p} f(x)\ \forall x \in A$. Ahora, tomando límite cuando $m \to \infty$ en la expresión de la hipótesis, y teniendo en cuenta que el último $<$ se transforma en $\le$: $$\forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \implies |f_n(x) - f(x)| \le \frac{\epsilon}{2} < \epsilon\ \ \forall x \in A$$
+
+Es decir, $\fn \xrightarrow {c.u} f$.
+\end{proof}
+\end{nprop}
+
 \subsection{El espacio de funciones continuas}
 
 Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}), ||\cdot||_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$||f||_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
 
-\begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R})$, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f \iff \fn \xrightarrow {c.u} f$$
+\begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R})$, con $A$ compacto, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f\ en\ \mathcal{C}(A,\mathbb{R}) \iff \fn \xrightarrow {c.u} f$$
 
 \begin{proof} \hfill \\
 $||f_n - f ||_{\infty} \rightarrow 0 \iff m\acute{a}x \ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow m\acute{a}x \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
 \end{proof}
 \end{nprop}
 
-\begin{nth}[$\mathcal{C}(A,\R^M)$ es completo]
-	$f_n \xrightarrow{c.u.} f \iff ||f_n -f ||_\infty \to 0 \iff f_n \xrightarrow{\mathcal{C}(A,\R^M)}f$. Ahora, si $\{f_n\}$ es de Cauchy en $\mathcal{C}(A,\R^M)$, sabemos que $\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies ||f_n - f_m ||_\infty = sup_{x\in A}|f_n(x)-f_m(x)| < \epsilon$ es equivalente a decir que:
-	\[
-	\forall \epsilon > 0 \ \exists n_0 \in \mathbb{N} : n,m \geq n_0 \implies |f_n(x)-f_m(x)| < \epsilon\ \forall x\in A
-	\]
-	
+\begin{nth}[$\mathcal{C}(A,\R^M)$ es completo] En el espacio $\mathcal{C}(A,\mathbb{R})$, con $A$ compacto, también ser sucesión de Cauchy equivale a la convergencia uniforme, esto es: $$\fn\ es\ de\ Cauchy\ en\ \mathcal{C}(A,\mathbb{R}) \iff \fn \xrightarrow {c.u} f $$
+
+\begin{proof} El razonamiento es análogo al anterior, utilizando esta vez la caracterización de la continuidad uniforme vista anteriormente.
+\end{proof}
 \end{nth}
 
+Es importante recalcar que estamos suponiendo que el subconjunto $A$ es compacto. Podemos extender el resultado anterior, considerando el espacio $(\mathcal{C}_B(A,\mathbb{R}^M), \|\cdot\|_{\infty})$, donde: 
+
+$\mathcal{C}_B(A,\mathbb{R}^M) := \{ f:A \longrightarrow \mathbb{R}^M: \text{f es continua y acotada}\}$
+
+$\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
+
+\begin{nprop} El espacio $\mathcal{C}_B(A, \mathbb{R}^M)$ es un espacio de Banach, es decir, es un espacio normado y completo.
+
+%\begin{proof}
+	%%% Falta demostración
+%\end{proof}
+\end{nprop}
+
+\begin{nota}
+Si $A$ es compacto, entonces  $\mathcal{C}_B(A,\mathbb{R}^M) = \mathcal(A, \mathbb{R}^M)$.
+\end{nota}
+
+Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme con los conceptos de derivación e integración.
+
 \begin{nth} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \xrightarrow {c.u} \int_a^b f $$
+
+Equivalentemente, se tiene que: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int_a^b \lim_{n\rightarrow \infty} f_n$$
 
 \begin{proof} Dado $\displaystyle \epsilon >0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \frac{\epsilon}{b-a}\ \forall x \in [a,b]$. Entonces, $$\left| \int_a^b f_n - \int _a^b f \right| = \left| \int_a^b (f_n - f) \right| \le \int_a^b |f_n - f| < \int_a^b \frac{\epsilon}{b-a} = \epsilon$$
 \end{proof}
 \end{nth}
+
+
 \begin{nth}
-	Supongamos que $f_n\in \mathcal{C}^1((a,b))$. Supongamos también que $ f_n(x) \to f(x) \ \ \forall x \in (a,b)$
-	Supongamos que: $f_n' \xrightarrow{c.u.} g $ en (a,b)
+	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. \mbox{Supongamos que $ f_n(x) \to f(x)$} $\forall x \in (a,b)$, y supongamos también que: $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
 	
-Entonces, $f \in \mathcal{C}^1((a,b))$ y $f' = g$
 \begin{proof}
-	Elegimos primero un $x_0 \in (a,b)$ fijo. Entonces, $f_n(x_0) \to f(x_0)$ por hipótesis.
+	Elegimos primero un $x_0 \in (a,b)$ fijo. Entonces, $\{f_n(x_0)\} \to f(x_0)$ por hipótesis.
 	Como $f_n'$ es continua, entonces, por el teorema fundamental del cálculo:
 	\[
 	f_n(x) = f_n(x_0) + \int_{x_0}^x f_n'(t)dt
 	\]
-	Entonces, como  $f_n' \xrightarrow{c.u.} g $ en el intervalo cerrado de extremos $x_0$ y $x$ , por el Teorema 2 (el de las integrales), tenemos que:
+	Entonces, como  $\{f_n'\} \xrightarrow{c.u.} g $ en el intervalo cerrado de extremos $x_0$ y $x$, por el \textit{Teorema 1.3} tenemos que $\{f_n(x)\} \to G(x)\ \forall x \in (a,b)$, donde:
 	\[
-		f_n(x) = f_n(x_0) + \int_{x_0}^x f_n'(t)dt \to f(x_0) + \int_{x_0}^x g(t) dt =: G(x)
+	    G(x) = f(x_0) + \int_{x_0}^x g(t)dt
 	\]
-	Ahora, $G$ es de clase 1 por ser $g(t)$ continua. Además, tenemos que $G(x_0) = f(x_0)$.
-	Por otro lado, $G' = g$.
+	Es decir, $\{f_n(x)\}$ converge puntualmente en $(a,b)$ a $G(x)$. Ahora, $G$ es de clase 1 por ser $g(t)$ continua, y además, tenemos que $G(x_0) = f(x_0)$.
+	Por otro lado, es claro que $G' = g$.
 	
-	Además, tenemos que $f_n(x) \to G$ y también tiende a $f$ por hipótesis, por lo que tenemos necesariamente que: $\forall x \in (a,b) \ \ G(x) = f(x)$, o lo que es decir:
-	\[
-	f(x) = f(x_0) + \int_{x_0}^x g(t) dt = g
-	\]
+	Pero también $\{f_n(x)\} \xrightarrow {c.p} f$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1((a,b))$ y $f' = G' = g$.
 \end{proof}
 \end{nth}
 
