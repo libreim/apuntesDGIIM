@@ -299,14 +299,14 @@
 %----------------------------
 %   Introducción.
 %----------------------------
-\section*{Introducción.}
+\section*{Introducción}
 En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
 \newpage
 
 \section{El espacio afín}
 
 \subsection{El plano afín}
-Este plano, durante todo el contenido de los apuntes será el plano $\R^2$. Sabemos que en este plano podems representar un simple punto o un vector dentro de este plano(en este caso, es el plano vectorial). Daremos ahora por sabido todas las propiedades de los vectores.
+Este plano, durante todo el contenido de los apuntes, será el plano $\R^2$. Sabemos que podemos representar un simple punto o un vector dentro de este plano (en este caso, es el plano vectorial). Daremos ahora por sabido todas las propiedades de los vectores.
 
 \begin{tikzpicture}
 	\begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
@@ -314,66 +314,64 @@ Este plano, durante todo el contenido de los apuntes será el plano $\R^2$. Sabe
 	\end{axis}
 \end{tikzpicture}
 
-Lo que haremos es transformas las propiedades de vectores en propiedades de puntos, veamos cómo unir estos dos conceptos.
+Lo que haremos es transformar las propiedades de vectores en propiedades de puntos, veamos cómo unir estos dos conceptos.
 
-Sean p y q dos puntos del plano. Entonces, podemos transformarlos en un vector $\vec{u} = pq = q-p$. De la misma forma, analíticamente podemos ver que si tenemos un punto p y le añadimos un vector $\vec{u}$, obtenemos otro punto q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
-
-%Falta flechita encima de pq, y encima de u que indica vector
-
+Sean P y Q dos puntos del plano. Entonces, podemos transformarlos en un vector $\vec{u} = \overrightarrow{PQ} = Q-P$. De la misma forma, analíticamente podemos ver que si tenemos un punto P y le añadimos un vector $\vec{u}$, obtenemos otro punto Q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
 
 \begin{ndef}[Combinación lineal de vectores]
 	Si $u_1,u_2,u_3$ son vectores y $\alpha_1,\alpha_2,\alpha_3$ son escalares, entonces:
 	\[
 	\alpha_1 u_1+ \alpha_2 u_2 + \alpha_3 u_3
 	\]
-	es una combinación lineal de vectores
+	es una combinación lineal de vectores.
 \end{ndef}
 
 \begin{ndef}[Razón de vectores proporcionales]
-	Si u,v son dos vectores proporcionales es decir $u = \lambda v$, entonces se llama a $\lambda$ la razón de esos vectores.
+	Si $u$ y $v$ son dos vectores proporcionales es decir $u = \lambda v$, entonces se llama a $\lambda$ la razón de esos vectores.
+	Si los vectores no son proporcionales no podemos tratar este concepto.
 \end{ndef}
 Podemos también hacer combinaciones de puntos de la siguiente forma:
 \begin{ndef}[Combinaciones baricéntricas de puntos]
-	Si $p_1,...,p_n$ son puntos y $\alpha_1,...,\alpha_n \in R$ pesos de los puntos, que tienen la condición de que $\sum \alpha_i = 1$, entonces una combinación de puntos de la forma:
+	Si $P_1,...,P_n$ son puntos y $\alpha_1,...,\alpha_n \in \R$ pesos de los puntos, que cumplen que $\sum \alpha_i = 1$, entonces una combinación de puntos de la forma:
 	\[
-	p = \sum_{i=1}^n \alpha_i p_i
+	P = \sum_{i=1}^n \alpha_i p_i
 	\]
-	Es un punto y se le llama combinación baricéntrica de puntos
+	Es un punto y se le llama combinación baricéntrica de puntos.
 \end{ndef}
 \begin{proof}
 	Lo que haremos, es transformar los puntos en vectores y así la demostración será trivial.
 	
-	Restamos primero $p-p_1 = \sum \alpha_i(p_i-p_1)$, así tenemos el vector determinado por $p$ y $p_1$ y tenemos así una identidad de vectores, de la forma:
+	Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, así tenemos el vector determinado por $P$ y $P_1$ y una identidad de vectores, de la forma:
 	\[
-	pp_1 = \sum_{i=2}^n \alpha_i p_1p_i
+	P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
 	\]
 	
 	Y llegamos así a que
 	\[
-	P = p_1 + \sum_2^n \alpha_i p1p_i
+	P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
 	\]
 \end{proof}
 
-\begin{ndef}
+\begin{ndef}[Combinación convexa]
 	Si los pesos $\alpha_i$ asignados a los puntos son todos positivos, llamaremos a su combinación una combinación convexa.
 \end{ndef}
 
 \begin{ndef}[Centro de gravedad de unos puntos]
-	Si $p_1,...,p_n$ son puntos y $\alpha_1,...,\alpha_n$ son sus pesos, entonces llamamos a
+	Si $P_1,...,P_n$ son puntos y $\alpha_1,...,\alpha_n$ son sus pesos, entonces llamamos a
 	\[
-	\sum_{i=1}^n \alpha_ip_i
+	\sum_{i=1}^n \alpha_iP_i
 	\]
 	el centro de gravedad de los puntos.
 \end{ndef}
 
 \begin{ndef}[Punto medio]
-Sean p y q dos puntos en el espacio afín. Entonces m es el punto medio entre p y q si está definido como:
+Sean P y Q dos puntos en el espacio afín. Entonces $m$ es el punto medio entre P y Q si está definido como:
 \[
-m = \dfrac{1}{2} p + \dfrac{1}{2}q = \dfrac{1}{2}(p+q)
+m = \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
 \]
-Otra forma de hablar de él es: si $u = pq$, entonces:
+Otra forma de hablar de él es: si $u = PQ$, entonces:
 \[
-m = \dfrac{1}{2}u + p
+m = \dfrac{1}{2}u + P
 \]
 
 \end{ndef}
@@ -381,29 +379,29 @@ m = \dfrac{1}{2}u + p
 \subsection{Rectas afines}
 A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una recta afín.
 
-\begin{ndef}
+\begin{ndef}[Recta vectorial]
 	Una recta vectorial es un subespacio vectorial de dimensión 1. Estas están generadas por un vector. De hecho, se notan como $L(v)$ con $v$ un vector.
 \end{ndef}
 
 \begin{nprop}
-	Una recta vectorial se puede formar haciendo una combinación de la forma: Si $p$ es un punto y $v$ un vector, entonces la recta $r$ viene dada por 
+	Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por 
 	\[
-	r = p+L(v) = \{p + \lambda v : \lambda \in \R\}
+	r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
 	\]
 	Además, notaremos a $L(v) = \vec{r}$.
 \end{nprop}
-\begin{ndef}
-	Si $v$ es un vector director, llamaremos variedad de dirección v a $L(v) = \vec{r}$.
+\begin{ndef}[Variedad de dirección]
+	Si $v$ es un vector director, llamaremos variedad de dirección a $L(v) = \vec{r}$.
 \end{ndef}
 
 \textbf{Propiedades:}
 \begin{itemize}
-	\item Si $q$ es un punto y $q\in r \implies r = q +L(v)$
-	\item Si $p,q$ son dos puntos, entonces por ellos pasa una recta y esta es única. Esta recta se nota : $r = p +L(\vec{pq})$\\
+	\item Si $Q$ es un punto y $Q\in r \implies r = Q +L(v)$
+	\item Si $P,Q$ son dos puntos, entonces por ellos pasa una recta y esta es única. Esta recta se nota : $r = P +L(\overrightarrow{PQ})$\\
 	\begin{proof}
-	Si la recta $r$ pasa por $p$ y $q$, sea $s$ otra recta que pasa por ellos, entonces:
+	Si la recta $r$ pasa por $P$ y $Q$, sea $s$ otra recta que pasa por ellos, entonces:
 	\[
-	s = p+L(\vec{pq}) = r
+	s = P+L(\overrightarrow{PQ}) = r
 	\]
 \end{proof}
 \end{itemize}
@@ -411,8 +409,8 @@ A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una
 \subsubsection{Posición relativa entre rectas}
 Según se encuentren en el plano afín, dos rectas $r$ y $s$ pueden ser:
 \begin{itemize}
-	\item Paralelas, notado $n//s \equiv \vec{r} = \vec{s}$
-	\item No paralelas, si sus vectores directores son linealmente independientes.
+	\item Paralelas, notado $r\parallel s \equiv \vec{r} = \vec{s}$
+	\item No paralelas, notado $r\nparallel s \equiv$  sus vectores directores son linealmente independientes $\equiv u$ y $v$ es base.
 \end{itemize}
 
 \begin{nth}
@@ -423,8 +421,8 @@ Según se encuentren en el plano afín, dos rectas $r$ y $s$ pueden ser:
 \end{nlist}
 \begin{proof}
 	\begin{nlist}
-	\item Si $u,v$ son los vectores directores de $r$ y $s$, entonces con los pares $\{u,v\}$ tenemos que $p+\lambda u = q + \mu v$ con $\lambda, \mu \in \R$
-y si $r = p +L(u)$ y $s=q+L(v)$, y $\vec{pq} = \lambda u - \mu v $ y por ello existen únicos $\lambda, \mu$.
+	\item Si $u,v$ son los vectores directores de $r$ y $s$, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
+y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y, por ello, existen únicos $\lambda, \mu$.
 \end{nlist}
 \end{proof}
 \end{nth}
