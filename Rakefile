@@ -8,7 +8,8 @@ task :default => [
        :ecomputadores,
        :edatos,
        :sistemas,
-       :geometria3
+       :geometria3,
+       :modelos1
        # add your task here
      ]
 
@@ -44,6 +45,7 @@ task :edatos => (pdf_for FileList["Estructura de datos/*.tex", "Estructura de da
 task :sistemas => (pdf_for FileList["Sistemas Operativos/repasoFS.md", "Sistemas Operativos/Prácticas/Modulo2/LlamadasSistema.md", "Sistemas Operativos/Resúmenes/Temas 1, 2/*.md", "Sistemas Operativos/Resúmenes/Temas 3, 4/*.md", "Sistemas Operativos/Ejercicios relación 1,2/*.md", "Sistemas Operativos/Ejercicios relación 3,4/*.md"])
 task :analisis2 => (pdf_for FileList["Análisis Matemático II/*.tex"])
 task :geometria3 => (pdf_for FileList["Geometría III/*.tex"])
+task :modelos1 => (pdf_for FileList["Modelos Matemáticos I/*.tex"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
