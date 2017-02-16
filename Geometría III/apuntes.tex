@@ -428,8 +428,16 @@ y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y,
 \end{proof}
 \end{nth}
 
+
+
+
 \subsection{Triángulos}
 Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son sus vértices y las tres rectas que los unen.
+
+\begin {ndef}
+	Dos o más puntos $A_1, A_2, ... , A_n $ estan alineados $\iff$ existe una recta $r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n$
+\end{ndef}
+
 
 \begin{nprop}
 $A,B,C$ son puntos no alineados si $\vec{AB},\vec{AC}$ son linealmente independientes
@@ -439,11 +447,11 @@ $A,B,C$ son puntos no alineados si $\vec{AB},\vec{AC}$ son linealmente independi
 
 \begin{nth}
 	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales. 
-	Si las rectas paralelas son: $AvC \parallel A_1C_1$ y $AvB \parallel A_1B_1$, por lo que las razones son:
+	Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
 	\[
 	\frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
 	\]
-	Entonces, la pareja restante $CvB \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
+	Entonces, la pareja restante $C\vee B \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
 	\begin{proof}
 	Si los lados son paralelos, entonces los vectores directores son proporcionales.
 	
