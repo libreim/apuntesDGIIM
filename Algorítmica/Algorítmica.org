@@ -22,7 +22,7 @@
 
 La ciencia de la computación es el estudio de los Algoritmos, incluyendo sus propiedades, hardware, aspectos lingüísticos y aplicaciones.
 
-Podemos definir un */Algoritmo/* como una secuencia ordenada y finita de pasos no ambigüos tales que al llevarse a cabo, dará como resultado que se realice la tarea para la que se ha diseñado en un tiempo finito y con recursos limitados.
+Podemos definir un */Algoritmo/* como una secuencia ordenada y finita de pasos no ambiguos tales que al llevarse a cabo, dará como resultado que se realice la tarea para la que se ha diseñado en un tiempo finito y con recursos limitados.
 
 De esta forma, no podemos por ejemplo obtener la sucesión de /Fibonacci/ mediante un algoritmo pues esta es infinita.
 
