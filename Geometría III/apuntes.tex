@@ -304,7 +304,18 @@ En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos e
 \newpage
 
 \section{El espacio afín}
-
+\begin{ndef}[Espacio afín]
+Dado un conjunto $E$ no vacío diremos que es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
+$$\varphi: E \times E \rightarrow V$$
+$$(a,b) \mapsto \varphi(a,b)$$
+tal que se cumplan:
+\begin{itemize}
+\item Fijado un punto $a$ la aplicación $\varphi_a$ es biyectiva, es decir:
+$$\forall a \in E, v \in V, \exists! b \in E:\varphi(a,b)=v$$
+\item Se tiene la relación de Charles, es decir:
+$$\forall a, b, c \in E \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
+\end{itemize}
+\end{ndef}
 \subsection{El plano afín}
 Este plano, durante todo el contenido de los apuntes, será el plano $\R^2$. Sabemos que podemos representar un simple punto o un vector dentro de este plano (en este caso, es el plano vectorial). Daremos ahora por sabido todas las propiedades de los vectores.
 
