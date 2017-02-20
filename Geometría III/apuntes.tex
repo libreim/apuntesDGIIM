@@ -507,6 +507,8 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 \begin{nth}
 	Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
 	
+
+\end{nth}
 	\begin{nth}
 	Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
 	\[
@@ -518,7 +520,53 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 	\]
 	
 \end{nth}
-\end{nth}
+
+
+\subsection{Ecuaciones de una recta}
+Hemos visto una recta como un punto $A$ y un vector $\vec{v}$. Es decir, $r \equiv (x_0,y_0) +(x,y) : (x,y) \in L(v) \equiv (x_0+x,y_0+y) $.
+
+También por tanto podemos hacer una recta mediante dos puntos, tomando el vector que forman esos dos puntos y uno de ellos y teniendo la situación anterior.
+
+Las rectas vectoriales en el plano vectorial son siempre de la forma:
+\[
+\vec{r} \equiv (x,y) \in L : \alpha x + \beta y = 0 \text{  con $\alpha$ o $\beta$ distinto de 0}
+\]
+
+Si $r$ es una recta afín, entonces:
+\[
+r \equiv \alpha x + \beta y = \gamma
+\] con $\alpha$ o $\beta$ distintos de $0$ y $\alpha,\beta,\gamma \in \R$
+
+Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
+\begin{itemize}
+	\item $r \parallel r' \iff (\alpha,\beta), (\alpha',\beta') $ son linealmente dependientes. Es decir, si el determinante que forman es $0$
+	
+	\item $r \nparallel r'\iff (\alpha,\beta), (\alpha',\beta') $ no son linealmente dependientes. Es decir, si el determinante que forman no es $0$
+\end{itemize}
+
+\subsection{Cuadriláteros}
+
+\begin{ndef}
+	$ABCD$ es un cuadrilátero si está formado por cuatro puntos consecutivos no alineados 3 a 3.
+\end{ndef}
+
+\begin{ndef}[Lado]
+	Un lado es una recta que une dos vértices consecutivos.
+\end{ndef}
+
+\begin{ndef}[Paralelogramo]
+	Es un polígonoo en el que los lados opuestos son paralelos
+\end{ndef}
+\begin{nprop}
+	Sea ABCD un cuadrilátero. Entonces, son equivalentes:
+	\begin{nlist}
+	\item ABCD es un paralelogramo
+	\item $\vec{AB} = \vec{DC}$
+\end{nlist}
+\end{nprop}
+\begin{proof}\hfill
+	\boxed{\Rightarrow}
+\end{proof}
 
 
 \end{document}

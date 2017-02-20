@@ -629,7 +629,176 @@ x_* = \frac{\beta}{1-\alpha} = \frac{(c-a)/d}{(1-(-b/d)}= \frac{c-a}{b+d} = p_*
 Por tanto, tenemos que conseguir que $p_n \to p_*$ y para ello tenemos que conseguir que, como $p_{n+1} =p_* + \mathcal{C}(\frac{-b}{d})^n$, entonces tenemos que hacer que $|\dfrac{-b}{d}| < 1 \implies b < d$.
 Por ello, lo que tenemos en las rectas es que la pendiente (b) de la recta de la oferta sea menor que la pendiente de la demanda (d).
 
+\section{El model de Verhulst}
+
+Primero, estudiaremos un primer acercamiento que hubo a este modelo
+
+\subsection{La ecuación de Malthus}
+Vamos a estudiar ahora una ecuación que modeliza la evolución de la población de una determinada especie en un hábitat sin limitación de alimentos. Esta primera suposición ya no es real, pues siempre hay limitaciones.
+
+Vamos a llamar:
+\begin{itemize}
+	\item $P_n$ es el número de individuos en el periodo de tiempo $n$. $P_n\geq 0 $
+	\item $\alpha_n$ es la tasa de fertilidad o natalidad por individuo. $\alpha_n \in \R^+$
+	
+	De esta forma, $\alpha_n P_n$ será el número de nacimientos en el periodo n.
+	\item $\alpha_m$ es la tasa de mortalidad. $0 < \alpha_m < 1$, pues esta es un tanto por ciento y tenemos que:
+	
+	Así, $\alpha_m P_n$ será el número de muertes en el periodo n.
+\end{itemize}
+
+Una vez presentadas las incógnitas, podemos afirmar que la población en el siguiente periodo será:
+\[
+P_{n+1} = P_n + \alpha_n P_n - \alpha_m P_n \implies P_{n+1}=(1+\alpha_m-\alpha_m)P_n
+\]
+Esto es una ecuación en diferencias lineal de primer orden homogénea. En realidad, es una progresión geométrica y por tanto una solución es:
+\[
+P_n =\mathcal{C} (1+\alpha_n-\alpha_m)^n \ \ n \geq 0
+\]
+Pero esta constante es la población inicial, luego eso es equivalente a:
+\[
+P_n =P_0 (1+\alpha_n-\alpha_m)^n \ \ n \geq 0
+\]
+Vamos a llamar entonces a $(1+\alpha_n-\alpha_m) = R$ la razón de crecimiento.
+\begin{itemize}
+	\item $(1+\alpha_n-\alpha_m) > 1 \implies \{P_n\}\to +\infty$. Ahora, esto ocurrirá si y sólamente si $\alpha_n > \alpha_m$
+	
+	\item $(1+\alpha_n-\alpha_m) < 1 \implies \{P_n\}\to 0$. Del mismo modo, esto sólo ocurre si $\alpha_n < \alpha_m$
+	
+	\item $(1+\alpha_n-\alpha_m) = 1 \implies \{P_n\} \to P_0$. Que ocurre si y solo si $\alpha_n = \alpha_m$.
+\end{itemize}
+
+Se cumple siempre que $R = \dfrac{P_{n+1}}{P_n}$.
+
+\begin{ndef}[Razón de crecimiento]
+	Llamaremos razón de crecimiento a:
+	\[
+	\alpha = \alpha_n - \alpha_m
+	\]
+	Que representa la variación del tamaño de la población por individuo. Además, podemos ver despejando de la ecuación inicial que:
+	\[
+	\alpha = \dfrac{P_{n+1}-P_n}{P_n}
+	\]
+	
+\end{ndef}
+
+\subsection{El modelo de Verhulst}
+Esto quiso dar un arreglo a la ecuación de Malthus. Ahora, suponemos que en el hábitat hay un número máximo de individuos al que llamaremos $M$.
+
+Según Verhulst, la tasa de crecimiento es proporcional a $M-P_n$, esto es:
+\[
+\alpha = \dfrac{P_{n+1}-P_n}{P_n} = K (M-P_N) \quad K > 0
+\]
+
+De aquí, podemos ver fácilmente que si $P_n < M \implies P_{n+1} > P_n$, por lo que la población crece.
+
+También, si $P_n > M \implies P_{n+1} < P_n$, por lo que la población decrece.
+
+Por tanto, con el modelo de Verhulst desarrollando en la euación de Malthus la ecuación será:
+\[
+P_{n+1} = [(1+K(M-P_n)]P_n \implies P_{n+1} = (1+KM)P_n -KP_n^2
+\]
+Donde $KP_n^2$ lo llamaremos la \textbf{competencia entre individuos}.
+
+Esto es una ecuación en diferencias \textbf{no lineal} de primer orden y no homogénea. Aún no hemos explicado cómo se resuelven este tipo de ecuaciones, abordaremos este tema más adelante.
+
+Sin embargo, podemos hacer a la ecuación un cambio de variable haciendo que:
+\begin{itemize}
+	\item $(1+KM) = \mu$
+	\item $x_n = \dfrac{K}{1+Km}P_n$
+\end{itemize} 
+Y nos queda que:
+\[
+\dfrac{K}{1+Km}P_{n+1} = \dfrac{K}{1+Km}(1+KM)P_n ( 1 - \dfrac{K}{1+Km}P_n)
+\]
+Y con los términos anteriores esto nos queda como:
+\[
+x_{n+1} = \mu x_n(1-x_n)
+\]
+Esta ecuación es conocida como la \textbf{Ecuación Logística}.
+
+\section{Sistemas dinámicos discretos}
+
+\begin{ndef}
+	Un sistema dinámico discreto es la descripción formal de un fenómeno evolutivo en términos de una función cuya imagen está contenida en su dominio. Partiendo desde cualquier valor inicial admisible generaremos una sucesión de valores mediante la aplicación reiterada de la función dada. Lo notaremos SDD.
+\end{ndef}
+
+\begin{ndef}
+	Supongamos que $I \subset \R$ es un intervalo que contiene al menos dos puntos y $f:I \to I$ es una función continua. Entonces, al par $\{I,f\}$ se le llama un SDD de primer orden, autónomo y en forma normal. A $f$ se le llama función de evolución.
+\end{ndef}
+
+Con estas definiciones, podemos ver que si $x_0 \in I$ es un valor inicial, podemos generar:
+\[
+x_1 = f(x_0); \ x_2 = f(x_1) = f(f(x_0)); \ x_3 = f(x_2) = f(f(f(x_0))); \cdots
+\]
+
+Estos valores están bién definidoes pues $f(I) \subset I$ y la sucesión así definida es solución de la ecuación en diferencias:
+\[
+x_{n+1} = f(x_n) \quad n \geq 0
+\]
+\begin{ejemplo}
+	Tomemos $f(x) = cos(x)$, que es continua. Ahora, tenemos que tomar $I \subset \R$ tal que $f(I) \subset I$. Podemos tomar el intervali $I=[-1,1]$ en radianes por supuesto.
+	Si tomamos $X_0\in I$, podemos ver fácilmente que $x_{n+1}=f(x_n) \in I$, por lo que $\{[-1,1],cos(x)\}$ es un SDD.
+\end{ejemplo}
+
+\begin{nprop}La ecuación logística es un SDD, pues $f(x) = \mu x(1-x)$ es continua y $\exists I = [0,1]: f(I) \subset I$
+	
+\end{nprop}
+
+\begin{ejemplo}
+	Tenemos $f(x) = \dfrac{1}{2}x$, con $I = [0,1]$, $x_{n+1} = \dfrac{1}{2}x_n$. Esta función es continua (en particular es contractiva). $\{[0,1],f\}$ es un SDD.
+\end{ejemplo}
+\begin{ejemplo}
+	$f(x) = log(x)$, $I=(0,+\infty)$ no es un SDD pues $Im(f) \nsubseteq Dom(f)$
+\end{ejemplo}
+
+\begin{ndef}
+	UN SDD $\{I,f\}$ se dice lineal si $f$ es lineal, afín si $f$ es afín y no lineal si $f$ no es lineal ni afín.
+\end{ndef}
+
+Notación. En lo sucesivo, para denotar las sucesivas iteradas de $f$ usaremos que $f^n = f \circ f \circ f \cdots \circ f$
 
 
+\begin{ndef}[Órbita]
+	Dado un SDD $\{I,f\}$ y un $x_0\in I$, la sucesión definida por:
+	\[
+	\{x_0,\cdots, x_n , \cdots\} = \{x_0,f(x_0),f^2(x_0),\cdots, f^n(x_0), \cdots\}
+	\]
+	se denomina órbita o trayectoria del SDD $\{I,f\}$ asociada al valor inicial $x_0$ y se denota por $\gamma(I,f,x_0)$
+\end{ndef}
 
+\begin{ndef}
+	Al conjunto de todas las órbitas asociadas al SDD $\{I,f\}$  a todos los $x_0 \in I$ se le llama retrato de fase.
+\end{ndef}
+
+\begin{ndef}[Punto de equilibrio]
+	Un número $\alpha \in \R$ se dice que es un punto de equilibrio del SDD $\{I,f\}$ si:
+	\[
+	\alpha = f(\alpha) \ \ \ \alpha \in I
+	\]
+	Si tomamos como valor inicial un punto de equilibrio del SDD $x_0 = \alpha$ entonces la órbita resultante es constante y se denomina órbita estacionaria:
+	\[
+	\gamma(I,f,\alpha) = \{\alpha, \alpha, \cdots\}
+	\]
+\end{ndef}
+\begin{ejemplo}
+	Determine los puntos de equilibrio de la ecuación logística:
+	\[
+	x_{n+1} = \mu x_n(1-x_n)
+	\]
+	Aquí, $f(x) = \mu x(1-x)$, por lo que
+	 \[
+	\alpha = f(x) \implies \alpha = \mu \alpha (1-\alpha) \implies \alpha - \mu \alpha(1-\alpha) \implies \alpha[1-\mu(1-\alpha)]
+	\]
+	Por lo que las soluciones pueden ser:
+	\[
+	\begin{cases}
+	\alpha_1 = 0\\
+	1-\mu(1-\alpha) = 0 \xrightarrow{(1)} \alpha_2 = \dfrac{\mu -1}{\mu}
+\end{cases}
+	\]
+	Donde en (1) hemos despejado $\alpha$. Es claro que $\alpha_1 \in [0,1]$. Ahora, ¿$\alpha_2=  \dfrac{\mu -1}{\mu} \in [0,1] $?
+	
+	TERMINAR EL EJEMPLO
+\end{ejemplo}
 \end{document}
