@@ -1,18 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Apuntes de la asignatura Análisis Matemático II.
-% Doble Grado de Informática y Matemáticas.
-% Universidad de Granada.
-% Curso 2016/17.
-% 
-% 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo
-% Antonio Coín (@antcc)
-% Sofía Almeida (@SofiaAlmeida)
+% Plantilla para documentos de matemáticas.
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
@@ -22,7 +10,7 @@
 % https://github.com/libreim/apuntesDGIIM/
 %
 % Licencia:
-% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,9 +98,6 @@
 %   OPCIONES PERSONALIZADAS
 %---------------------------------------------------------------------------
 
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
 % Formato de texto.
 \linespread{1.1}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
@@ -123,16 +108,16 @@
 \fancyhf{}
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
-% Redefinir entorno de demostración (reducir espacio superior)
-%\makeatletter
-%\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-%\makeatother
-
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
+
+
 %---------------------------------------------------------------------------
 %   COMANDOS PERSONALIZADOS
 %---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
 
 % Valor absoluto: \abs{}
 \providecommand{\abs}[1]{\lvert#1\rvert}    
@@ -140,7 +125,7 @@
 % Fracción grande: \ddfrac{}{}
 \newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
-% Texto en negrita en modo matemática: \bm{}
+% Texto en negrita en modo matemáticas: \bm{}
 \newcommand{\bm}[1]{\boldsymbol{#1}}
 
 % Línea horizontal.
@@ -161,15 +146,15 @@
 
 % Cabecera del documento.
 \renewcommand\headrule{
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize 
-	\end{minipage}
+  \begin{minipage}{1\textwidth}
+	\hrule width \hsize 
+  \end{minipage}
 }
 
 % Texto de la cabecera.
-\lhead{\subject}  % Izquierda.
+\lhead{\subject}    % Izquierda.
 \chead{}            % Centro.
-\rhead{\docauthor}    % Derecha.
+\rhead{\docauthor}  % Derecha.
 
 % Pie de página del documento.
 \renewcommand\footrule{                                 
@@ -197,7 +182,7 @@
 {\bf}                % Fuente para la cabecera.
 {.}                  % Puntuación tras la cabecera.
 {.5em}               % Espacio tras la cabecera.
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera (actual: nombre en negrita).
 
 % Nuevo estilo para notas.
 \newtheoremstyle{remark-style} 
@@ -261,15 +246,16 @@
   {\left.\begin{aligned}}
   {\end{aligned}\right\rbrace}
 
+
 %---------------------------------------------------------------------------
 %   PÁGINA DE TÍTULO
 %---------------------------------------------------------------------------
 
 % Título del documento.
-\newcommand{\subject}{Asignatura}
+\newcommand{\subject}{Título del documento}
 
 % Autor del documento.
-\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+\newcommand{\docauthor}{Autor del documento}
 
 % Título
 \title{
@@ -284,19 +270,24 @@
 \author{\Large{\docauthor}}
 
 % Fecha.
-\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+\date{\vspace{-1.5em} \normalsize Fecha}
 
 
 %---------------------------------------------------------------------------
 %   COMIENZO DEL DOCUMENTO
 %---------------------------------------------------------------------------
+
+
 \begin{document}
 
-\maketitle  % Título.
-\tableofcontents    % Índice
+\maketitle          % Título.
+\tableofcontents    % Índice.
 \vfill
 \begin{center}
-\includegraphics{by-nc-sa.eps}
+\includegraphics{by-nc-sa.eps}  % Licencia.
 \end{center}
 \newpage
+
+
+
 \end{document}
