@@ -13,6 +13,7 @@
 % Guillermo Galindo
 % Antonio Coín (@antcc)
 % Sofía Almeida (@SofiaAlmeida)
+% Miguel Lentisco (@AlfaOmegaX)
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
@@ -550,26 +551,54 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Cuadriláteros}
 
 \begin{ndef}
-	$ABCD$ es un cuadrilátero si está formado por cuatro puntos consecutivos no alineados 3 a 3.
+	$ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $AvC$ y $BvD$.
 \end{ndef}
 
 \begin{ndef}[Lado]
-	Un lado es una recta que une dos vértices consecutivos.
+	Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $AvB$, $BvC$, $CvD$
+	y $DvA$.
 \end{ndef}
 
+\begin{ndef}[Diagonal]
+	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $AvC$ y $BvD$. 
+
+% Revisar
 \begin{ndef}[Paralelogramo]
-	Es un polígonoo en el que los lados opuestos son paralelos
+	Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
+	paralelogramo entonces $AvB$ es paralelo a $CvD$ y $BvC$ es paralelo a $DvA$. Además los paralelogramos cumplen que:
+	- Sea $V_{1} = AvB$, $V_{2} = BvC$, $V_{3} = CvD$, $V_{4} = DvA$ entonces:
+	\begin{nlist}
+	\item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
+	\item $V_{3} = \lambda V_{1} con \lambda \neq 0$
+	\item $V_{4} = \mu V_{2} con \mu \neq 0$
 \end{ndef}
 \begin{nprop}
 	Sea ABCD un cuadrilátero. Entonces, son equivalentes:
 	\begin{nlist}
 	\item ABCD es un paralelogramo
 	\item $\vec{AB} = \vec{DC}$
+	\item Las diagonales del cuadrilátero se cortan en su punto medio.
 \end{nlist}
 \end{nprop}
+% Falta revisar y 3) => 1)
 \begin{proof}\hfill
-	\boxed{\Rightarrow}
+	\boxed{1) \Rightarrow 2)}
+	Solo tenemos que fijarnos en lo que implica ser paralelogramo (ver propiedad arriba):
+	$V_{1} - V_{2} - V_{3} + V_{4} = 0 \Leftrightarrow V_{1} - V_{2} = V_{3} - V_{4} $
+	Sustituimos $V_{3} = \lambda V_{1}$ y $V_{4} = \mu V_{2}$:
+	$V_{1} - V_{2} = \lambda V_{1} - \mu V_{2}$
+	Como sabemos que $V_{1} y V_{2}$ unen 3 puntos que no están alineados, entonces sabemos que son linealmente independientes y por
+	tanto forman base, por esta razon, cualquier vector se forma como combinación lineal de ellos, con coeficientes únicos.
+	Concluyendo por tanto que entonces $\lambda = 1 y \mu = 1$
+	
+	\boxed{2) \Rightarrow 3)}
+	Tenemos que $B - A = C - D$, pasando los términos: 
+	$B + D = C + A$
+	Y ahora dividiendo todo entre 2:
+	$\frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A$
+	Con lo cual obtenemos los puntos medios de las diagonales que son iguales.
+	
+	\boxed{3) \Rightarrow 1)}
+	%Falta completar
 \end{proof}
-
-
 \end{document}
