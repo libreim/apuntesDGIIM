@@ -496,6 +496,25 @@ Equivalentemente, se tiene que: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int
 
 \section{Añadir apuntes diapositivas}
 
+% REVISAR
+% -----------------------------------
+\begin{nth}[Teorema - Criterio de Weierstrass]
+	Si existen constantes $ M_{n} $ positivas tales que $ |f_{n}(x)| \leq M_{n} $, $ \forall x \in A $ y la serie de numeros $ \sum_{n \leq 1}(M_{n}) $ es convergente, entonces la serie de funciones $ \sum_{n \leq 1}(f_{n}) $ es convergente uniformemente (y absolutamente) en A.
+	
+\begin{proof}
+	Por el criterio de Cauchy para la convergencia de una serie de números positivos (Cauchy aplicado a los $ M_{n} $):
+	$$ \forall \epsilon > 0 \exists n_{o} \in \mathds{N} : M_{n} + ... + M_{n+k} < \epsilon \forall n \geq n_{o}, \forall k \in \mathds{N} $$
+	
+	Usando que $ |f_{n}(x)| \leq M_{n} $, $ \forall x \in A $ y la desigualdad triangular obtenemos:
+	$$ |f_{n}(x) + ... + f_{n+k}(x)| \leq |f_{n}(x) + ... + |f_{n+k}(x)| \leq M_{n} + ... + M_{n+k} < \epsilon, \forall x \in A $$
+	
+	Y por tanto:
+	$$ \forall > 0 \exists n_{o} \in \mathds{N} : |f_{n}(x) + .... + f_{n+k}(x)| < \epsilon \forall n \geq n_{o}, \forall k \in \mathds{N} \forall x \in A $$
+	
+	Quedando que la serie de funciones es c.u. en A.
+\end{proof}
+% -----------------------------------
+
 Demostración Teorema diapositiva 11.
 Las sumas parciales seran una suma finita de funciones continuas, entonces estas sumas son continuas, y como la serie converge uniformemente, el limite es una función continua.
 
