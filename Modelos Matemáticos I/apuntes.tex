@@ -802,26 +802,90 @@ Notación. En lo sucesivo, para denotar las sucesivas iteradas de $f$ usaremos q
 	\]
 	Donde en (1) hemos despejado $\alpha$. Es claro que $\alpha_1 \in [0,1]$. Ahora, ¿$\alpha_2=  \dfrac{\mu -1}{\mu} \in [0,1] $?
 	
-	% REVISAR ESTILO 
-	% ---------------------------------------------
+
 	Obtenemos dos puntos de equilibrio:
 
-	$ \alpha_{1} = 0 \in [0,1] $
+	$ \alpha_{1} = 0 \in [0,1] $ y $ \alpha_{2}= \frac{\mu - 1}{\mu} $. Ahora, ¿cuándo $\alpha_2\in [0,1] $?
 
-	$ \alpha_{2}= \frac{\mu - 1}{\mu} $ ? $\in$ ? $ [0,1] $
+	Tenemos que: $ 0 \leq \frac{\mu - 1}{\mu} \leq 1 $ . Multiplicando por $\mu$ (podemos porque $\mu > 0$):
 
-	Tenemos que:
+	$$ 0 \leq \mu - 1 \leq \mu \Leftrightarrow -\mu \leq -1 \leq 0 \Leftrightarrow \mu \geq 1 \geq 0 $$
 
-	$ 0 \leq \frac{\mu - 1}{\mu} \leq 1 $
+	Luego obtenemos que si $\mu \geq 1 \implies \alpha_{2} \in [0,1] $
 
-	Multiplicando por $\mu$ (podemos porque $\mu > 0$):
-
-	$ 0 \leq \mu - 1 \leq \mu \Leftrightarrow -\mu \leq -1 \leq 0 \Leftrightarrow \mu \geq 1 \geq 0 $
-
-	Luego obtenemos que:
-
-	Si $\mu \geq 1 \Rightarrow \alpha_{2} \in [0,1] $
-	%-----------------------------------------------
-	%GRÁFICAS (?)
 \end{ejemplo}
+
+\begin{ndef}
+	En una ecuación en diferencias, un punto de equilibrio es un punto inicial $x_0= \alpha$ tal que la solución que genera es constante.
+\end{ndef}
+
+\begin{ejemplo}
+	Existen SDD que no tienen puntos de equilibrio. Por ejemplo, una $f(x)$ continua tal que la ecuación $x = f(x)$ no tiene solución. Por ejemplo, $f(x) = x+1$
+\end{ejemplo}
+
+\begin{ndef}
+	Dado un punto $x_0 \in I$, si $\exists k: f^k(x_0) = \alpha = f(\alpha)$,entonces su órbita se dice eventualmente estacionaria:
+	\[
+	\gamma(I,f,x_0) = \{x_0, f(x_0), \cdots f^{k-1}(x_0), \alpha, \cdots, \alpha\}
+	\]
+\end{ndef}
+\begin{nota}
+	Buscar puntos de equilibrio es equivalente a buscar intersecciones de la recta $y=x$ y la gráfica de $f$ que esten... FALTA ALGO
+	
+	
+\end{nota}
+\begin{nprop}
+	SI $\{I,f\}$ es un SDD, entonces $\{I,f^n\}$ también es un SDD.
+\end{nprop}
+
+\begin{nth}
+	Todo SDD $\{I,f\}$ donde $I$ sea cerrado y acotado entonces posee un punto de equilibrio.
+\end{nth}
+\begin{proof}
+	Es consecuencia del teorema de Bolzano. Sea $g(x) = f(x)-x :[a,b] \to \R$. Esta $g$ es continua y $g(a) = f(a)-a$. Pero estábamos en un SDD, luego $f:[a,b] \to [a,b]$ que lleva $a \to f(a) $ y $b \to(f(b)$. Si $f(a) = a $ ó $f(b) = b$, ya tenemos el punto fijo. De otra forma, tenemos que  $a \leq f(a) \leq b$.
+	Así que $g(a) > 0$. Si razonamos igual con $b$, tenemos que $g(b) < 0$. 
+	Por ello, por el teorema de Bolzano $\exists \alpha \in (a,b) : g(\alpha) = 0 \implies f(\alpha) = \alpha $ y tenemos el punto fijo.
+	
+
+\end{proof}
+\begin{nth}
+	Sea un SDD $\{I,f\}$ donde $I$ es cerrado y supongamos que $f$ es contractiva, es decir $0 < K < 1$ tal que:
+	\[
+	|f(x)-f(y)| \leq K |x-y| \ \ \forall x,y \in I
+	\]
+Entonces, existe un único punto de equilibrio en $f$
+\end{nth}
+
+\begin{proof}
+	Probaremos primero la unicidad. Supongamos que hay dos puntos fijos. Sean $\alpha_1, \alpha_2$ dos puntos fijos. Entonces,
+	 \[
+	|\alpha_1 - \alpha_2| = |f(\alpha_1)- f(\alpha_2)| \leq K |\alpha_1 - \alpha_2| < |\alpha_1 - \alpha_2|
+	\]
+	Donde en el $\leq$ hemos usado la contractividad de la función. Por lo que hemos llegado a una contradicción y el punto será único.
+	
+	Ahora, tomamos $x_0\in I$. Definimos $x _{n+1} = f(x_n) $ con $n\geq 0$. Así, tenemos $\{x_0,x_1,\cdots , x _{n+1}\}$. Tenemos que:
+	\[
+	|x _{n+1} - x _{n+2}| = |f(x_n) - f(x _{n+1})| \leq K |x_n - x _{n+1}|= K |f(x _{n-1})- f(x_n)| \leq K^2|x _{n-1}-x_n| \leq 
+	\]
+	\[
+	\leq \cdots \leq K^{n+1}|x_0 - x_1| \implies |x _{n+1}- x _{n+2}| \leq K^{n+1}|x_0-x_1| \to 0 \implies \{x_n\} \to l 
+	\]
+	Ahora, como $f(I)\subset I$ e $I$ es cerrado $\implies x_n \in I $. 
+	Hemos visto que $\exists \lim x_n = l \in I$, por tanto $l$ es un punto fijo de $f(x)$.
+	\[
+	l =  \lim_{n\to \infty}x_n = \lim_{n\to \infty}x_{n+1} = \lim_{n\to \infty}f(x_n) =^1 f(\lim_{n\to \infty}x_n) = f(l)  
+	\]
+	Donde en 1 hemos usado la continuidad de $f$.
+\end{proof}
+
+\begin{nth}
+	Sea el SDD $\{I,f\}$ donde $I$ es cerrado y supongamos que $f\in \mathcal{C}^1(I)$, verificando que $|f'(x)|< 1 \ \ \forall x \in I$. Entonces existe un único punto de equilibrio de $f$.
+\end{nth}
+
+\begin{ndef}
+	Un punto de equilibrio $\alpha$ de un SDD $\{I,f\}$ se dice que es:
+	\begin{itemize}
+	\item Estable, si $\forall \epsilon > 0 \ \ \exists \delta > 0 : ||$
+\end{itemize}
+\end{ndef}
 \end{document}

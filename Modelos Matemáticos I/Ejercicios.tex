@@ -1,0 +1,418 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Ejercicios de la asignatura Modelos Matemáticos I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+% Sofía Almeida (@SofiaAlmeida)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) y Mario Román (@M42) por
+% las plantillas base.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%------------------------------------------------------------------------------
+%   ACKNOWLEDGMENTS
+%------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla básica de Latex en Español.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+%
+% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
+% estilo moderno pero serio.
+%
+% La plantilla se encuentra adaptada al español.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Plantilla de Trabajo
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% al castellano y a las necesidades de escribir informática y matemáticas.
+%
+% Editada por: Mario Román
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+\usepackage{pgfplots}
+\usepackage{graphicx}            % Gráficos.
+
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Aumentar el tamaño del interlineado
+\linespread{1.3}
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Renombrar la R de los reales
+
+\newcommand{\R}{\mathbb{R}}
+
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
+}
+
+% Texto de la cabecera.
+\lhead{\subject}  % Izquierda.
+\chead{}            % Centro.
+\rhead{\docauthor}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem*{ndef}{Definición}
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Modelos Matemáticos I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\Large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+
+\maketitle  % Título.
+\begin{center}
+%\includegraphics{../Recursos/Plantillas/by-nc-sa.eps}  % Licencia.
+\end{center}
+\newpage
+
+
+%----------------------------
+%   Introducción.
+%----------------------------
+
+\section{Relación 1}
+\subsection{Ejercicio 2}
+
+Sea la ecuación:
+\[
+x _{n+1} =  1/3 x_n +2^n
+\]
+Hallar una solución del tipo $x_n=c2^n$. 
+
+Llo primero es ver que esta ecuación es una ecuación en diferencias de primer orden lineal no homogénea. Vamos a hallar el $c$ que nos piden. Entonces:
+\[
+c2^{n+1}= \dfrac{1}{3}c2^n+2^n  \implies 2^n[2c-c\dfrac{1}{3}-1] = 0
+\]
+\[
+2c-\dfrac{1}{3}c-1 = 0 \implies c = \dfrac{3}{5}
+\]
+Por tanto, la solución es: $x_n' =\dfrac{3}{5}2^n $, pero esta es una solución particular.
+
+Ahora, probaremos que $x_n$ es solución de la ecuación inicial $\iff z_n = x_n - x_n'$ donde $x_n'$ es una solución particular, es solución de:
+$z _{n+1} = \dfrac{1}{3} z_n$.
+
+Lo probamos:
+Que $x_n$ es solución de la inicial implica que $x _{n+1} =  \dfrac{1}{3} x_n +2^n$.
+Que $x_n'$ es solución de la inicial implica que $x _{n+1}' = \dfrac{1}{3}x_n' 2^n$.
+
+Si restamos estas dos obtenemos que:
+\[
+x _{n+1} - x _{n+1}' = \dfrac{1}{3}(x_n- x_n')
+\]
+Lo que implica que $z _{n+1} = x _{n+1} - x _{n+1}'$ y $z_n =(x_n- x_n') $
+
+Ahora, continuamos la resolución del ejercicio:
+\begin{enumerate}
+	\item Encontrar una solución particular de la ecuación inicial, $x_n' = \dfrac{3}{5}2^n$
+	\item Resolvemos la ecuación homogénea asociada
+	\[
+	z _{n+1} = \dfrac{1}{3}z_n  \implies z_n = K(\dfrac{1}{3})^n
+	\]
+	\item Usando el resultado:
+	\[
+	x_n = x_n' + z_n = \dfrac{3}{5}2^n+K(\dfrac{1}{3})^n
+	\]
+	\item Aplicamos la condición inicial $x_0 = 1$.
+	
+	
+\end{enumerate}
+Así, la solución es $x_n = \dfrac{3}{5}2^n +\dfrac{2}{5}(\dfrac{1}{3})^n$ con $n\geq 0$
+
+
+\subsection{Ejercicio 4}
+Llamaremos primero $x_n$ el número de clientes de $Paga^+$ en el año n.
+Llamaremos $y_n$ el número de clientes de $Paga^-$ en el año n.
+Ahora, tenemos que:
+\[
+\begin{rcases}
+	x _{n+1} =0.5 x_n + 0.25 y_n \\
+	y _{n+1} = 0.75 y_n +  0.5 x_n 
+\end{rcases}
+\]
+Sabemos que $x_n+y_n = 1$, que es el $100\%$ de los clientes. Podemos despejar así una en función de la otra y nos queda:
+\[
+x _{n+1} = 0.5 x_n + 0.25(1-x_n)
+\]
+Esta es una ecuación en diferencias de primer orden lineal no homogénea. Despejando, tenemos:
+\[
+x _{n+1} = 0.25 x_n +0.25 \implies x_n =  x^* + z_n \implies x_n =  \dfrac{0.25}{1-0.25} + K(0.25)^n
+\]
+Ahora, tenemos que tomar el límite pues nos piden el mercado a largo plazo. Esto es:
+\[
+\lim_{n\to \infty}x_n = \dfrac{0.25}{0.75} = \dfrac{1}{3}
+\]
+Podemos afirmar ahora que, asintóticamente , $\dfrac{1}{3}$ de los clientes estarán en $Paga^+$ y $\dfrac{2}{3}$ en $Paga^-$
+
+\subsection{Ejercicio 6}
+Vamos a llamar $A_n$ al número de empleados en el departamento $A$ en el año $n$. Del mismo modo, llamaremos $B_n$ a los del departamento $B$ en el año $n$. Si $0 \leq p \leq 1$  y $0 \leq q \leq 1$, tenemos que:
+\[
+\begin{rcases}
+	A _{n+1} = (1-p)A_n + qB_n\\
+	B _{n+1}= pA_n + (1-q)B_n
+\end{rcases}
+\]
+Y tenemos ahora que $A_n + B_n = M$, (aunque se podría tomar como 1) por lo que el sistema lo reducimos a una ecuación teniendo:
+\[
+A _{n+1} = (1-p)A_n +q(M-A_n)\implies A _{n+1} =(1-p-1)A_n +qM
+\]
+Teniendo de nuevo una ecuación en diferencias de primer orden lineal no homogénea. Así, su solución es:
+\[
+A_n = \dfrac{qM}{1-(1-p-q)} + K(1-p-q)^n
+\]
+Estudiamos primero la solución constante.
+\[
+A_* = \dfrac{qM}{1-(1-p-q)}= \dfrac{qM}{p+q}
+\]
+Impondremos que $p+q\ne 0$, al menos 1 trabajador cambiará de departamento.
+Nuestro término general es:
+\[
+A_n = \dfrac{qM}{p+q} + K(1-p-q)^n
+\]
+Estudiaremos esto a largo plazo. Tenemos que $-1 \leq 1-p-q < 1$. Tenemos que $|1-p-q| < 1$, por lo que:
+\[ \begin{cases}
+	\lim_{n \to \infty} A_n = \dfrac{qM}{p+q} = M \dfrac{q}{p+q}\\
+	\lim_{n \to \infty}B_n = \lim_{n\to \infty}(M-A_n) = M- M \dfrac{q}{p+q} = \dfrac{p}{p+q}M
+\end{cases}
+\]
+
+\subsection{Ejercicio 8}
+\begin{enumerate}
+	\item $X_n$ es el número de árboles en el año n.
+	\[
+	x _{n+1} = 0.9 x_n +K
+	\]
+	Esto tiende a la solución constante $x_* = \dfrac{K}{0.1}$
+\end{enumerate}
+
+\section{MACHASGASANALASTAMAGA}
+\end{document}
