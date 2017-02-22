@@ -237,7 +237,7 @@
 \theoremstyle{theorem-style}
 \newtheorem{nth}{Teorema}[section]
 \newtheorem*{nprop}{Proposición}
-\newtheorem{ncor}{Corolario}
+\newtheorem{ncor}{Corolario}[section]
 
 % Definiciones.
 \theoremstyle{definition-style}
@@ -472,7 +472,7 @@ $\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
 
 \begin{nprop} El espacio $\mathcal{C}_B(A, \mathbb{R}^M)$ es un espacio de Banach, es decir, es un espacio normado y completo.
 
-%%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
+%%% FALTA DEMOSTRACIÓN (PRADO) -----------------------------------------------------
 
 \end{nprop}
 
@@ -492,7 +492,7 @@ Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rig
 
 
 \begin{nth}
-	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. Supongamos que $ \{f_n(x)\} \to f(x)$ $\forall x \in (a,b)$, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
+	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. Supongamos que $ \{f_n(x)\} \to f(x)$ c.p. $\forall x \in (a,b)$, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
 	
 \begin{proof}
 	Elegimos primero un $x_0 \in (a,b)$ fijo. Entonces, $\{f_n(x_0)\} \to f(x_0)$ por hipótesis.
@@ -507,9 +507,24 @@ Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rig
 	Es decir, $\{f_n(x)\}$ converge puntualmente en $(a,b)$ a $G(x)$. Ahora, $G$ es de clase 1 por ser $g(t)$ continua, y además, tenemos que $G(x_0) = f(x_0)$.
 	Por otro lado, es claro que $G' = g$.
 	
-	Pero también $\{f_n(x)\} \xrightarrow {c.p} f$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1((a,b))$ y $f' = G' = g$.
+	Pero también $\{f_n(x)\} \xrightarrow {c.p} f(x)$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1((a,b))$ y $f' = G' = g$.
 \end{proof}
 \end{nth}
+
+\begin{ncor}
+	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f'(x) = g(x)\ \forall x \in (a,b)$.
+
+\begin{proof}
+	Probaremos únicamente que $\fn \to f$ uniformemente. El resto de la tesis se sigue de aplicar el \textit{Teorema 1.4}.
+	
+Sea $\epsilon > 0$. Por un lado, como $\{f'_n\}$ converge uniformemente, aplicamos el \textit{Criterio de Cauchy} para obtener un $k_1 \in \mathbb{N}$ tal que: $$p,q \ge k_1 \implies |f'_p(y) - f'_q(y)| < \frac{\epsilon}{2 (b-a)}$$
+Del mismo modo, como $\{f_n(\alpha)\}$ es una sucesión de vectores convergente, es de Cauchy, y obtenmos un $k_2 \in \mathbb{N}$ tal que: $$p,q \ge k_2 \implies |f_p(\alpha) - f_q(\alpha)| < \frac{\epsilon}{2}$$
+Ahora, defino $k := k_1 + k_2$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$: $$|f_p(x) - f_q(x)| \le |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_p(\alpha)| + |f_q(\alpha) - f_q(x)| + |f_p(\alpha) - f_q(\alpha)| \le \left|x-a \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)|$$ $$\le (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
+
+donde $z_x$ está en el intervalo abierto de extremos $a$ y $x$. Observemos que en este razonamiento, el valor de $m$ \textbf{no depende de $x$}, sino exclusivamente de quién sea $\epsilon$. Por tanto, por el \textit{Criterio de Cauchy}, se tiene que $\{f_n\}$ converge uniformemente en $(a,b)$.
+\end{proof}
+	
+\end{ncor}
 
 
 %--------------------------------------------------------------------------------
@@ -614,6 +629,7 @@ $$Si \sum_{n=1}^{\infty} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n=1}^{\infty} \ph
 \end{nth}
 
 %%% FALTA CRITERIO DE DIRICHLET ---------------------------------------------------------
+%%% ¿MÁS CRITERIOS? ---------------------------------------------------------------------
 
 \subsection{Series de potencias}
 
