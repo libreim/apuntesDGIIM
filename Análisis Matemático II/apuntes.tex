@@ -759,13 +759,18 @@ Recordemos que si una función $f \in \mathcal{C}^{\infty}$ cumple que $f(x) = \
 
 Por tanto, la pregunta que nos hacíamos equivale a preguntarse si toda función $\mathcal{C}^{\infty}$ se puede escribir como su suma de Taylor. La respuesta es que, en general, esto no es posible (ya vimos en el \textit{Teorema 2.8} que sí se cumple si todas las derivadas de $f$ están acotadas).
 
-Un contraejemplo sería la función $f: \mathbb{R} \longrightarrow \mathbb{R}$ dada por . Es claro que $f \in \mathcal{C}^{\infty}$ y que $f \ne 0$. Además, se tiene que $f(0) = 0$, y $f^{k)}(0) = 0\ \ \forall k \ge 1$. Si $f$ se escribiese como su suma de Taylor, tendríamos que, en el punto $a=0$: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}}{n!} \cdot x^n =  \sum_{n=0}^{\infty} \frac{0}{n!}\cdot x^n = 0\ \ \forall x \in \mathbb{R}$$
+Un contraejemplo sería la función $f: \mathbb{R} \longrightarrow \mathbb{R}$ dada por: $$f(x) = \begin{cases}
+	         e^{-1/x^2} & \text{si } x\ne 0\\
+	         0 & \text{si } x=0
+\end{cases}$$ Es claro que $f \in \mathcal{C}^{\infty}$ y que $f \ne 0$. Además, se tiene que $f(0) = 0$, y $f^{k)}(0) = 0\ \ \forall k \ge 1$. 
+
+Si $f$ se escribiese como su suma de Taylor, tendríamos que, en el punto $a=0$: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}}{n!} \cdot x^n =  \sum_{n=0}^{\infty} \frac{0}{n!}\cdot x^n = 0\ \ \forall x \in \mathbb{R}$$
 
 Lo cual es una contradicción, pues $f\ne 0$. Por tanto, $f$ no se puede escribir como suma de una serie de potencias.
 
 Las funciones que \textit{sí} se pueden escribir como suma de una serie de potencias tienen propiedades muy interesantes. Tanto es así, que dichas funciones tienen un nombre propio.
 
-\begin{ndef}[Funciones analíticas] Decimos que una función $f \in \mathcal{C}^{\infty}(A)$ es analítica si se puede escribir como su suma de Taylor, es decir, si se cumple que: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!}(x-a)^n\ \ \forall x \in A$$
+\begin{ndef}[Función analítica] Decimos que una función $f \in \mathcal{C}^{\infty}(A)$ es analítica si se puede escribir como su suma de Taylor, es decir, si se cumple que: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!}(x-a)^n\ \ \forall x \in A$$
 \end{ndef}
 
 
