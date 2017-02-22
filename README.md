@@ -1,4 +1,4 @@
-# ![apuntes](recursos/readme/hero.png)
+# ![apuntes](Recursos/readme/hero.png)
 
 Repositorio de apuntes del Doble Grado en Ingeniería Informática y Matemáticas de la Universidad de Granada.
 El objetivo de este repositorio es construir unos apuntes de referencia de forma colaborativa. Más información en 
