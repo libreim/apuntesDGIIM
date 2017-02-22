@@ -309,10 +309,10 @@
 \section*{Introducción.}
 %% Hay que completar la introducción
 
-\section{Convergencia uniforme y puntual.}
+\section{Convergencia uniforme y puntual}
 De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones, que notaremos $\{f_n\}$. Normalmente estas funciones serán continuas. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. 
 
-\begin{ndef}[Convergencia punto a punto.] Diremos que una sucesión de funciones $\fn$ converge puntualmente a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A \ \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
+\begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ converge puntualmente a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A \quad \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
 	\[
 		\forall x\in A\ \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \epsilon 
 	\]
@@ -321,9 +321,9 @@ En ocasiones denotaremos la convergencia puntual como $\fn \xrightarrow {c.p} f$
 \end{ndef}
 
 
-\begin{ndef}[Convergencia uniforme.] Diremos que $\fn$ converge uniformemente a una función $f \in \mathcal{F}(A,\mathbb{R}^M)$ si se verifica:
+\begin{ndef}[Convergencia uniforme] Diremos que $\fn$ converge uniformemente a una función $f \in \mathcal{F}(A,\mathbb{R}^M)$ si se verifica:
 	\[
-	\forall \epsilon>0\ \exists n_0 \in \mathbb{N}\ : n\ge n_0\implies \abs{f_n(x)-f(x)} < \epsilon\ \forall x \in A
+	\forall \epsilon>0 \quad \exists n_0 \in \mathbb{N}\ : n\ge n_0\implies \abs{f_n(x)-f(x)} < \epsilon \quad \forall x \in A
 	\]
 \end{ndef}
 
@@ -352,13 +352,13 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 \begin{proof}
 	Fijamos $a\in A$. Dado $\epsilon>0$, como $\fn\to f$ uniformemente,
 	\[
-	\exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\epsilon\ \forall y\in A \implies \begin{cases}
+	\exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\dfrac{\epsilon}{3}\ \forall y\in A \implies \begin{cases}
 	\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}\\
 	\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}
 \end{cases}
 	\]
 	
-	Como además $f_n$ es continua para cada $n\in \N$,
+	Como además, $f_n$ es continua para cada $n\in \N$,
 	\[
 	\exists \delta>0:\ \begin{rcases}
 	\abs{x-a}<\delta\\
@@ -373,6 +373,11 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 	x\in A
 \end{rcases} \implies \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon
 	\]
+	
+	Hemos probado que dado $\epsilon > 0$, $\exists \delta>0:\ \begin{rcases}
+	\abs{x-a}<\delta\\
+	x\in A
+	\end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$, por tanto, f es continua. 
 \end{proof}
 
 Algunos ejemplos de sucesiones de funciones:
@@ -437,9 +442,9 @@ Es decir, $\fn \xrightarrow {c.u} f$.
 
 \subsection{El espacio de funciones continuas}
 
-Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}), ||\cdot||_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$||f||_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
+Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}^M), ||\cdot||_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$||f||_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
 
-\begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R})$, con $A$ compacto, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f\ en\ \mathcal{C}(A,\mathbb{R}) \iff \fn \xrightarrow {c.u} f$$
+\begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f$$
 
 \begin{proof} \hfill \\
 $||f_n - f ||_{\infty} \rightarrow 0 \iff m\acute{a}x \ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow m\acute{a}x \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
@@ -481,7 +486,7 @@ Equivalentemente, se tiene que: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int
 
 
 \begin{nth}
-	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. \mbox{Supongamos que $ f_n(x) \to f(x)$} $\forall x \in (a,b)$, y supongamos también que: $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
+	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. \mbox{Supongamos que $ \{f_n(x)\} \to f(x)$} $\forall x \in (a,b)$, y supongamos también que: $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
 	
 \begin{proof}
 	Elegimos primero un $x_0 \in (a,b)$ fijo. Entonces, $\{f_n(x_0)\} \to f(x_0)$ por hipótesis.
