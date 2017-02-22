@@ -249,7 +249,7 @@
 
 % Ejemplos.
 \theoremstyle{example-style}
-\newtheorem*{ejemplo}{Ejemplo}
+\newtheorem{ejemplo}{Ejemplo}[section]
 
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
@@ -317,7 +317,7 @@
 %--------------------------------------------------------------------------------
 
 \section{Convergencia uniforme y puntual}
-De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones, que notaremos $\{f_n\}$. Normalmente estas funciones serán continuas. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. 
+De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones, que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. 
 
 \begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ converge puntualmente a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A \quad \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
 	\[
@@ -347,7 +347,7 @@ Aunque ambas definiciones son muy parecidas, hay una diferencia clave. En la con
 \end{nota}
 \end{nprop}
 
-La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación.
+La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas.
 
 \begin{nth}
 	Sean $\emptyset \ne A \subseteq \R^N$, $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$.
@@ -389,7 +389,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 
 Algunos ejemplos de sucesiones de funciones:
 
-\begin{ejemplo}[1]
+\begin{ejemplo}
 	\[
 		f_n : [0,1] \to \R,\ f_n(x) = \begin{cases}
 	         0 & \text{si } x\ge \dfrac{1}{n}\\
@@ -398,20 +398,20 @@ Algunos ejemplos de sucesiones de funciones:
 	\]
 \end{ejemplo}
 
-\begin{ejemplo}[2]
+\begin{ejemplo}
 	\[
 	f_n : [0,1] \to \R,\ f_n(x) = x^n
 	\]
 \end{ejemplo}
 
-\begin{ejemplo}[3]
+\begin{ejemplo}
 	\[
 	f_n : [0,1] \to \R,\ f_n(x) = \dfrac{sen(nx)}{n}
 	\]
 \end{ejemplo}
 
 
-Vamos a estudiar la convergencia puntual de la sucesión del ejemplo (1):
+Vamos a estudiar la convergencia puntual de la sucesión del ejemplo (1.1):
 
 Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{1}{n}$, luego $f_n(x) = 0$. Por otra parte, $f_n(0) = 1\ \forall n\in \N$. Concluimos que
 
@@ -424,7 +424,7 @@ Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{
 
 Observamos que la convergencia puntual no preserva la continuidad de las funciones. Esto implicaría que, con esta definición de convergencia, el espacio de funciones continuas en un conjunto no sería cerrado. Además, podemos comprobar que $\fn$ no converge uniformemente a $f$, pues en caso de hacerlo $f$ debería ser continua, por el teorema anterior.
 
-Ahora estudiemos la convergencia uniforme del ejemplo (3):
+Ahora estudiemos la convergencia uniforme del ejemplo (1.3):
 
 \[
 \forall\epsilon>0\ \exists K>\dfrac{1}{\epsilon}:\ \ n\ge K \implies \dfrac{\abs{sen(nx)}}{n} \le \dfrac{1}{n} \le \dfrac{1}{K} < \epsilon
@@ -544,6 +544,13 @@ S=\displaystyle \sum_{n=1}^{\infty} f_n \mbox{ puntualmente (resp. uniformemente
 \]
 \end{ndef}
 
+\begin{nprop}
+	Sea $\sum_{n \ge 0} f_n$ una serie de funciones definida en un conjunto $A \subseteq \mathbb{R}^N$. Si dicha serie converge uniformemente en un subconjunto $B \subseteq A$, entonces la sucesión $\fn$ converge a 0 uniformemente en $B$.
+	
+\begin{proof}
+Es claro que $\forall n \in \N,\ f_n = S_{n+1} - S_n$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que: $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to \infty} \{S_{n + 1}(x)\} = S - S = 0\quad \forall x \in B$$ \end{proof}
+\end{nprop}
+
 Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales, tenemos una relación directa de la convergencia de series con la continuidad, derivación e integración.
 
 
@@ -585,13 +592,6 @@ $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = 
 
 \subsection{Criterios de convergencia para series de funciones}
 
-\begin{nth}{Criterio de Abel.} Sean $ A \subset \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ una sucesión decreciente de funciones; es decir, $\phi_{n+1}(x) \leq \phi_n (x), \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M, \forall x \in A, \forall n \in \mathbb{N}.$ Si $\sum_{n=1}^{\infty} f_n(x)$ c. u. en A $\implies \sum_{n=1}^{\infty} \phi_n(x) \cdot f_n(x)$ c. u. en A.
-
-%%% FALTA DEMOSTRACIÓN ------------------------------------------------------------------
-\end{nth}
-
-%%% FALTA CRITERIO DE DIRICHLET ---------------------------------------------------------
-
 \begin{nth}[Criterio de Weierstrass]
 	Si existen constantes $ M_{n} $ positivas tales que $ |f_{n}(x)| \leq M_{n}\ \ \forall x \in A$ y la serie de números reales $ \sum_{n \ge 1}M_{n} $ es convergente, entonces la serie de funciones $ \sum_{n \ge 1}f_{n} $ es convergente uniformemente (y absolutamente) en A.
 	
@@ -609,20 +609,153 @@ $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = 
 \end{proof}
 \end{nth}
 
-%%% FALTA COMPLETAR CON DIAPOSITIVAS ---------------------------------------------------
+\begin{nth}[Criterio de Abel] Sean $ A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$
+$$Si \sum_{n=1}^{\infty} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n=1}^{\infty} \phi_n(x) f_n(x)\ c. u.\ en\ A.$$
+\end{nth}
+
+%%% FALTA CRITERIO DE DIRICHLET ---------------------------------------------------------
 
 \subsection{Series de potencias}
 
-¿Dada $f \in \mathcal{C}^{\infty}(I) \implies \exists {a_n} \ f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$? No.
+Un caso interesante de series de funciones lo constituyen las series de potencias, esto es, aquellas series en las que las funciones son potenciales: $$\sum_{n \ge 0} a_n(x-a)^n, \quad a_n, a \in \mathbb{R} \ \ \forall n \in \mathbb{N}$$
 
-$f \in \mathcal{C}^{infty}$ es analítica si $f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!}(x-a)^n$
+Veamos una característica importante de las series de potencias, que nos ayuda a determinar su carácter de convergencia.
+
+\begin{ndef}[Radio de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos su radio de convergencia $R \in [0, \infty]$ como: $$
+\frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|},$$
+\end{ndef}
+
+\begin{nota}
+	En la definición anterior, permitimos que $R = \infty$, tomando como convenio que $\frac{1}{0} = \infty$ y $\frac{1}{\infty} = 0$.
+\end{nota}
+
+\begin{ndef}[Disco de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos el disco de convergencia $D(a,R) := \{ x : |x-a| < R\}$. 
+\end{ndef}
+
+\begin{nota}
+	Si $R = \infty$, entonces $D(a,R) = \mathbb{R}$.
+\end{nota}
+
+El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones anteriores.
+
+\begin{nth}
+La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$  
+\begin{nlist}
+\item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$.
+\item no converge si $x\not\in \overline{D(a,R)}$.
+\end{nlist}
+
+\begin{proof} \hfill \\
+	\textit{(i)} Sea $R'<R$. Como $\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{|a_n|} < 1/R'$, si elegimos $R''\in (R',R)$, deducimos que $\exists n_0\geq 0$ tal que $\sqrt[n]{|a_n|} \leq 1/R''$, $\forall n\geq n_0$.
+
+Esto implica que
+\[
+\left| a_n (x-a)^n\right| = |a_n|\cdot|x-a|^n \leq \left(\frac{R'}{R''}\right)^n, \ \ \forall x\in D(a,R'), \ \forall n\geq n_0,
+\]
+y el primer apartado se concluye aplicando el criterio de Weierstrass.
+
+\textit{(ii)} Basta observar que si la serie $\sum_{n\geq 0} a_n (x-a)^n$ es convergente en un punto $x\not= a$, entonces $\left\{ a_n (x-a)^n \right\} \to 0$, y tomando $\epsilon = 1$ en la definición de convergencia tenemos que:
+\[
+\exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
+\]
+Y por tanto, $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
+
+Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
+\end{proof}
+\end{nth}
+
+Por último, veamos un teorema sobre derivación e integración de series de potencias. Para ello, notemos que si $R$ es el radio de convergencia de la serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$, podemos definir la función $S$ en $D(a,R)$ mediante: \[ 
+S(x):= \sum_{n= 0}^\infty a_n (x-a)^n
+, \ \ \forall x\in  D(a,R)
+\] 
+
+\begin{nth}
+Sea $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$ una serie de potencias. Entonces, se verifican las siguientes afirmaciones:	
+\begin{nlist}
+	\item La suma $S(x)=\displaystyle\sum_{n= 0}^\infty a_n (x-a)^n$ es una función $C^\infty$ en el disco de convergencia $D(a,R)$.
+\item $S'(x)= \displaystyle\sum_{n= 1}^\infty n a_n (x-a)^{n-1}$, esto es,
+\[
+\displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right) .
+\]
+\item 
+$\displaystyle \int_a^x S(y)\, dy =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
+\[
+\int_a^x  \sum_{n= 0}^\infty a_n (x-a)^n \, dx 
+=  \sum_{n= 0}^\infty \int_a^x a_n (x-a)^n \, dx.
+\]
+\end{nlist}
+
+%%% FALTA DEMOSTRAR EL TEOREMA ----------------------------------------------------
+\end{nth}
 
 
+\subsection{Funciones analíticas}
+
+Nos preguntamos ahora si cualquier función $C^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)\ y\ a \in I, \ \exists \{a_n\}\ tal\ que\ f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
 
 
+Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficiente para que una funci\'on $f\in C^\infty$ coincida con la suma de su serie de Taylor.
+
+\begin{nth}
+Si una funci\'on de clase $C^\infty$ en un intervalo $I$ verifica 
+\[
+\exists M>0 \ : \  |f^{n)}(x)|\leq M, \ \ \forall x\in I
+\]
+entonces 
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{n)} (a)}{n!} (x-a)^n , \ \ \forall x\in I.
+\]
+
+\begin{proof}
+	Fijamos $x \in I$, y observamos que las sumas parciales $S_k(x)$ de la serie son el polinomio de Taylor de orden $k$: 
+\[
+P_k(x) =  \sum_{n=0}^k \frac{f^{n)} (a)}{n!} (x-a)^n,
+\]
+Usando el teorema del resto, tendremos que $\exists c$ entre $x$ y $a$ tal que:
+\[
+|f(x)-S_k(x)| =\left| \frac{ f^{k+1)} (c)}{(k+1)!} (x-a)^{k+1}\right| \leq  M \frac{|x-a|^{k+1}}{(k+1)!} \to 0
+\]
+
+Es decir, la distancia entre $f$ y $S_n$ se hace tan pequeña como se quiera. Por tanto, hemos probado que $\displaystyle f(x) = \lim_{n \to \infty} \{S_n(x)\} = \sum_{n=0}^{\infty} \frac{f^{n)} (a)}{n!} (x-a)^n, \quad \forall x \in I$.
+\end{proof}
+\end{nth}
+Como consecuencia de este teorema, podemos escribir algunas funciones elementales como la suma de su serie de Taylor, en el punto $a = 0$.
+
+\begin{ejemplo}
+	$e^x = \displaystyle \sum_{n=0}^\infty  \frac{x^n}{n!}$. 
+\end{ejemplo}
+
+\begin{ejemplo}
+	$\sen x = \displaystyle \sum_{n=0}^\infty   \frac{(-1)^n x^{(2n+1)}}{(2n+1)!}$.
+\end{ejemplo}
+\begin{ejemplo}
+	$\cos x = \displaystyle \sum_{n=0}^\infty   \frac{(-1)^n x^{2n}}{(2n)!}$.
+\end{ejemplo}
 
 
+Sin embargo, no todas las funciones $C^{\infty}$ admiten una descomposición en sumas de funciones potenciales. Dada una serie de potencias, y usando el \textit{Teorema 2.7}, notemos lo siguiente:
 
+$\displaystyle S'(a) = \sum_{n=1}^{\infty} na_n(a-a)^{n-1} = a_1 \quad ; \quad S''(a) = \sum_{n=2}^{\infty} n(n-1)a_n(a-a)^{n-2} = 2a_2$ \quad ; \quad \dots
+
+En general, se demuestra por inducción que $S^{k)} (a) = k! \cdot a_k$. Es decir, fijado un $a$ y conocida la función $S$, se tiene que necesariamente $a_k = \frac{S^{k)}(a)}{k!}$.
+
+Recordemos que si una función $f \in \mathcal{C}^{\infty}$ cumple que $f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\ \forall x \in A$, dicha función es justamente lo que nos hemos referido como la suma de la serie, $S$. Pero acabamos de ver que, en ese caso, los $a_n$ están perfectamente determinados, y resulta que $f$ se escribiría como su suma de Taylor: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!} (x-a)^n$$
+
+Por tanto, la pregunta que nos hacíamos equivale a preguntarse si toda función $\mathcal{C}^{\infty}$ se puede escribir como su suma de Taylor. La respuesta es que, en general, esto no es posible (ya vimos en el \textit{Teorema 2.8} que sí se cumple si todas las derivadas de $f$ están acotadas).
+
+Un contraejemplo sería la función $f: \mathbb{R} \longrightarrow \mathbb{R}$ dada por . Es claro que $f \in \mathcal{C}^{\infty}$ y que $f \ne 0$. Además, se tiene que $f(0) = 0$, y $f^{k)}(0) = 0\ \ \forall k \ge 1$. Si $f$ se escribiese como su suma de Taylor, tendríamos que, en el punto $a=0$: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}}{n!} \cdot x^n =  \sum_{n=0}^{\infty} \frac{0}{n!}\cdot x^n = 0\ \ \forall x \in \mathbb{R}$$
+
+Lo cual es una contradicción, pues $f\ne 0$. Por tanto, $f$ no se puede escribir como suma de una serie de potencias.
+
+Las funciones que \textit{sí} se pueden escribir como suma de una serie de potencias tienen propiedades muy interesantes. Tanto es así, que dichas funciones tienen un nombre propio.
+
+\begin{ndef}[Funciones analíticas] Decimos que una función $f \in \mathcal{C}^{\infty}(A)$ es analítica si se puede escribir como su suma de Taylor, es decir, si se cumple que: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!}(x-a)^n\ \ \forall x \in A$$
+\end{ndef}
+
+
+%%% FALTAN APUNTES DEL DÍA 21/02/17 ------------------------------------------------
+%%% No sé si deberíamos crear una sección nueva, o incluírlos dentro del apartado 1.1
+%%% que trata sobre el espacio de las funciones continuas.
 
 
 
