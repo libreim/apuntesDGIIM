@@ -4,8 +4,8 @@
 % Doble Grado de Informática y Matemáticas.
 % Universidad de Granada.
 % Curso 2016/17.
-% 
-% 
+%
+%
 % Colaboradores:
 % Javier Sáez (@fjsaezm)
 % Daniel Pozo (@danipozodg)
@@ -35,7 +35,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Plantilla básica de Latex en Español.
 %
-% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp)
 %
 % Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
 % estilo moderno pero serio.
@@ -46,7 +46,7 @@
 
 %%%
 % Plantilla de Trabajo
-% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla
 % al castellano y a las necesidades de escribir informática y matemáticas.
 %
 % Editada por: Mario Román
@@ -83,7 +83,7 @@
 % Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
-\selectlanguage{spanish} 
+\selectlanguage{spanish}
 %\usepackage[T1]{fontenc}
 
 % Fuente utilizada.
@@ -137,7 +137,7 @@
 %---------------------------------------------------------------------------
 
 % Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}    
+\providecommand{\abs}[1]{\lvert#1\rvert}
 
 % Fracción grande: \ddfrac{}{}
 \newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
@@ -161,7 +161,7 @@
 % Cabecera del documento.
 \renewcommand\headrule{
 	\begin{minipage}{1\textwidth}
-		\hrule width \hsize 
+		\hrule width \hsize
 	\end{minipage}
 }
 
@@ -171,9 +171,9 @@
 \rhead{\docauthor}    % Derecha.
 
 % Pie de página del documento.
-\renewcommand\footrule{                                 
+\renewcommand\footrule{
 	\begin{minipage}{1\textwidth}
-		\hrule width \hsize   
+		\hrule width \hsize
 	\end{minipage}\par
 }
 
@@ -199,37 +199,37 @@
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
 
 % Nuevo estilo para notas.
-\newtheoremstyle{remark-style} 
-{10pt}                
-{10pt}                
-{}                   
-{}                   
-{\itshape}          
-{.}                  
-{.5em}               
-{}                  
+\newtheoremstyle{remark-style}
+{10pt}
+{10pt}
+{}
+{}
+{\itshape}
+{.}
+{.5em}
+{}
 
 % Nuevo estilo para teoremas y proposiciones.
 \newtheoremstyle{theorem-style}
-{10pt}                
-{10pt}                
-{\itshape}           
-{}                  
-{\bf}             
-{.}                
-{.5em}               
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+{10pt}
+{10pt}
+{\itshape}
+{}
+{\bf}
+{.}
+{.5em}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
 
 % Nuevo estilo para ejemplos.
 \newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\scshape}              
-{:}                 
-{.5em}               
-{}                   
+{10pt}
+{10pt}
+{}
+{}
+{\scshape}
+{:}
+{.5em}
+{}
 
 % Teoremas, proposiciones y corolarios.
 \theoremstyle{theorem-style}
@@ -272,7 +272,7 @@
 
 % Título
 \title{
-  \normalfont \normalsize 
+  \normalfont \normalsize
   \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
   \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
   \huge \subject\\ % Título.
@@ -355,12 +355,12 @@ Podemos también hacer combinaciones de puntos de la siguiente forma:
 \end{ndef}
 \begin{proof}
 	Lo que haremos, es transformar los puntos en vectores y así la demostración será trivial.
-	
+
 	Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, así tenemos el vector determinado por $P$ y $P_1$ y una identidad de vectores, de la forma:
 	\[
 	P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
 	\]
-	
+
 	Y llegamos así a que
 	\[
 	P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
@@ -399,7 +399,7 @@ A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una
 \end{ndef}
 
 \begin{nprop}
-	Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por 
+	Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por
 	\[
 	r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
 	\]
@@ -457,12 +457,12 @@ Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son su
 \begin{nprop}
 $A,B,C$ son puntos no alineados sii $\vec{AB},\vec{AC}$ son linealmente independientes.
 	\begin {proof}
-	
+
 	\boxed{\Rightarrow}
 		Si $si \nexists r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n \Rightarrow \nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v}) \Rightarrow \vec{AB} \neq \alpha * \vec{AC}, \alpha \in \mathbb{R}\ $ porque si no se daría el caso anterior.
 	\boxed{\Leftarrow}
 	\end {proof}
-	
+
 \end{nprop}
 
 % Posibilidad de hacer dibujo de triangulo con los 3 puntos y las 3 rectas
@@ -470,7 +470,7 @@ $A,B,C$ son puntos no alineados sii $\vec{AB},\vec{AC}$ son linealmente independ
 
 
 \begin{nth}
-	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales. 
+	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales.
 	Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
 	\[
 	\frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
@@ -478,11 +478,11 @@ $A,B,C$ son puntos no alineados sii $\vec{AB},\vec{AC}$ son linealmente independ
 	Entonces, la pareja restante $C\vee B \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
 	\begin{proof}
 	Si los lados son paralelos, entonces los vectores directores son proporcionales.
-	
+
 	Si $w$ (el lado no mencionado del primer triangulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
 \end{proof}
 \end{nth}
- 
+
 \begin{ndef}[Triángulo medio]
 	Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
 	\begin{nlist}
@@ -512,7 +512,7 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 
 \begin{nth}
 	Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
-	
+
 
 \end{nth}
 	\begin{nth}
@@ -524,7 +524,7 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 	\[
 	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
 	\]
-	
+
 \end{nth}
 
 
@@ -546,7 +546,7 @@ r \equiv \alpha x + \beta y = \gamma
 Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{itemize}
 	\item $r \parallel r' \iff (\alpha,\beta), (\alpha',\beta') $ son linealmente dependientes. Es decir, si el determinante que forman es $0$
-	
+
 	\item $r \nparallel r'\iff (\alpha,\beta), (\alpha',\beta') $ no son linealmente dependientes. Es decir, si el determinante que forman no es $0$
 \end{itemize}
 
@@ -557,12 +557,12 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ndef}
 
 \begin{ndef}[Lado]
-	Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $AvB$, $BvC$, $CvD$
-	y $DvA$.
+	Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $A \vee B$, $B \vee C$, $C \vee D$
+	y $D \vee A$.
 \end{ndef}
 
 \begin{ndef}[Diagonal]
-	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$. 
+	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 % Revisar
@@ -596,14 +596,14 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	Como sabemos que $V_{1} y V_{2}$ unen 3 puntos que no están alineados, entonces sabemos que son linealmente independientes y por
 	tanto forman base, por esta razon, cualquier vector se forma como combinación lineal de ellos, con coeficientes únicos.
 	Concluyendo por tanto que entonces $\lambda = 1 y \mu = 1$
-	
+
 	\boxed{2) \Rightarrow 3)}
-	Tenemos que $B - A = C - D$, pasando los términos: 
+	Tenemos que $B - A = C - D$, pasando los términos:
 	$B + D = C + A$
 	Y ahora dividiendo todo entre 2:
 	$\frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A$
 	Con lo cual obtenemos los puntos medios de las diagonales que son iguales.
-	
+
 	\boxed{3) \Rightarrow 1)}
 	%Falta completar
 \end{proof}
