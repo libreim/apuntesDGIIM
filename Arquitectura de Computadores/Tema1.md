@@ -58,12 +58,73 @@ Un proceso puede constar de múltibles **hebras** que controlan el flujo de cont
 En general, las operaciones de creación, destrucción, conmutación y comunicación en las hebras consumen menos tiempo.
 
 
-##  Computación paralela vs computación distribuida.
 
-+ En la computación paralela se estudian los aspectos  relacionados con el desarrollo y ejecución de aplicaciones en un sistema de múltiples procesadores/computadores visto externamente como una */unidad autónoma/*
 
-+ En la computación distribuida se estudian los aspectos en un sistema */distribuido*/, en una colección de recursos autónomos situados en distintas localizaciones físicas
+# Lección 2. Clasificación de estructuras paralelas
 
-## Computación grid
+## Computación paralela y computación distribuida
 
-Esta estudia los aspectos de desarrollo y ejecución de aplicaciones en una colección de recursos autónomos de múltplies dominios administrativos geográficamente
+La **computación paralela** estudia el desarollo y ejecución de
+aplicaciones en un sistema compuesto por múltiples cores/procesadores
+que es visto externamente como una unidad autónoma.
+
+Mientras que la **computación distribuida** estudia los aspectos del
+desarollo y ejecución de aplicaciones en un sistema distribuido, es
+decir, en una colección de recursos autónomos situados en distintas
+localizaciones físicas.
+
+Esta última puede ser a **baja escala**, si se encuentran situados en
+diversas localizaciones unidas por una misma infraestructura de red
+local. O bien **computación grid**, un conjunto de dominios
+administrativos distribuidos en distintas localidades geográficas y
+que están unidas con una infraestructura de telecomunicaciones.
+
+Ejemplos de esto son la *computación cloud*, que se desarrollan en un
+*sistema cloud*, un conjunto de recursos virtuales (pay-per-use y con
+interfaz de auto-servicio) que abstraen los recursos físicos
+utilizados, con recursos que son captados/liberados de manera
+inmediata, con acceso múltiple de clientes y con métodos de conexión
+estándar independientes de la plataforma de acceso.
+
+## Criterios de clasificación de computadores
+
+Por lo general la clasificación de computadores se basa en el número
+de núcleos que posean y operaciones que sean capaces de hacer, lo cual
+influye directamente en el precio.
+
+## Clasificación de Flynn 
+
+Se basa en el flujo de instrucciones, si son capaces de trabajar con
+una única instrucción o con varias y si son capaces de trabajar con un
+único flujo de datos o con varios.
+
+### SISD
+
+Existe un único flujo de datos y una única instrucción a ejecutar en
+cada instante
+**<!- (algo de único flujo de datos y una única instrucción, completar) -->**
+
+
+### SIMD
+
+La instrucción que se codifica va a cada uno de los procesadores (es
+la misma para todos), donde se le indica de dónde tiene que captar los
+datos, hace tantas operaciones como unidades de procesamiento se
+tengan.
+
+
+### MISD
+
+No es un sistema que se implemente en la realidad, cada unidad de
+control estaría conectada con una única unidad de procesamiento con
+cada flujo de datos.
+
+### MIMD
+
+Múltiples flujos de datos que permiten realizar múltiples 
+**<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
+
+
+
+
+
