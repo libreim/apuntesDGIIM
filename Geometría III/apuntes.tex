@@ -467,6 +467,8 @@ $A,B,C$ son puntos no alineados sii $\vec{AB},\vec{AC}$ son linealmente independ
 
 % Posibilidad de hacer dibujo de triangulo con los 3 puntos y las 3 rectas
 
+
+
 \begin{nth}
 	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales. 
 	Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
@@ -560,25 +562,29 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ndef}
 
 \begin{ndef}[Diagonal]
-	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $AvC$ y $BvD$. 
+	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$. 
+\end{ndef}
 
 % Revisar
 \begin{ndef}[Paralelogramo]
 	Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
-	paralelogramo entonces $AvB$ es paralelo a $CvD$ y $BvC$ es paralelo a $DvA$. Además los paralelogramos cumplen que:
-	- Sea $V_{1} = AvB$, $V_{2} = BvC$, $V_{3} = CvD$, $V_{4} = DvA$ entonces:
+	paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$. Además los paralelogramos cumplen que:
+	- Sea $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
 	\begin{nlist}
-	\item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
-	\item $V_{3} = \lambda V_{1} con \lambda \neq 0$
-	\item $V_{4} = \mu V_{2} con \mu \neq 0$
+		\item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
+		\item $V_{3} = \lambda V_{1} con \lambda \neq 0$
+		\item $V_{4} = \mu V_{2} con \mu \neq 0$
+	\end{nlist}
 \end{ndef}
+
+
 \begin{nprop}
 	Sea ABCD un cuadrilátero. Entonces, son equivalentes:
 	\begin{nlist}
-	\item ABCD es un paralelogramo
-	\item $\vec{AB} = \vec{DC}$
-	\item Las diagonales del cuadrilátero se cortan en su punto medio.
-\end{nlist}
+		\item ABCD es un paralelogramo
+		\item $\vec{AB} = \vec{DC}$
+		\item Las diagonales del cuadrilátero se cortan en su punto medio.
+	\end{nlist}
 \end{nprop}
 % Falta revisar y 3) => 1)
 \begin{proof}\hfill
@@ -601,4 +607,5 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	\boxed{3) \Rightarrow 1)}
 	%Falta completar
 \end{proof}
+
 \end{document}
