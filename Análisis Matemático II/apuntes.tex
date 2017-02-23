@@ -476,6 +476,17 @@ $\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
 
 \end{nprop}
 
+\begin{proof}
+	Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
+	\begin{itemize}
+\item Positividad. $\|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f \text{ es la función } 0$.
+\item Homogeneidad: $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
+\item Desigualdad triangular:
+$|f+g|_\infty \leq |f|_\infty + |g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
+para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
+\end{itemize}
+\end{proof}
+
 \begin{nota}
 Si $A$ es compacto, entonces  $\mathcal{C}_B(A,\mathbb{R}^M) = \mathcal{C}(A, \mathbb{R}^M)$.
 \end{nota}
