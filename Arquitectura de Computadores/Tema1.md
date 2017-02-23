@@ -56,3 +56,14 @@ Un **proceso** comprende el código del programa, y todo lo necesario para su ej
 Un proceso puede constar de múltibles **hebras** que controlan el flujo de control. Cada hebra tiene su propia pila, y también el contenido de los registros . Para comunicarse entre ellos, utilizan la memoria que comparten.
 
 En general, las operaciones de creación, destrucción, conmutación y comunicación en las hebras consumen menos tiempo.
+
+
+##  Computación paralela vs computación distribuida.
+
++ En la computación paralela se estudian los aspectos  relacionados con el desarrollo y ejecución de aplicaciones en un sistema de múltiples procesadores/computadores visto externamente como una */unidad autónoma/*
+
++ En la computación distribuida se estudian los aspectos en un sistema */distribuido*/, en una colección de recursos autónomos situados en distintas localizaciones físicas
+
+## Computación grid
+
+Esta estudia los aspectos de desarrollo y ejecución de aplicaciones en una colección de recursos autónomos de múltplies dominios administrativos geográficamente
