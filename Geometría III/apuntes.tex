@@ -455,12 +455,12 @@ Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son su
 
 
 \begin{nprop}
-$A,B,C$ son puntos no alineados sii $\vec{AB},\vec{AC}$ son linealmente independientes.
+$A,B,C$ son puntos no alineados  $ \iff \vec{AB},\vec{AC}$ son linealmente independientes.
 	\begin {proof}
 
 	\boxed{\Rightarrow}
-		Si $si \nexists r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n \Rightarrow \nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v}) \Rightarrow \vec{AB} \neq \alpha * \vec{AC}, \alpha \in \mathbb{R}\ $ porque si no se daría el caso anterior.
-	\boxed{\Leftarrow}
+		Si $\nexists r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n \Rightarrow \nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v}) \Rightarrow \vec{AB} \neq \alpha \cdot \vec{AC}, \alpha \in \mathbb{R}\ $ porque si no se daría el caso anterior. \\
+	\boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la recta (única) que proporcionan los puntos A y B, y los puntos A y C son la misma, luego $r = A + L(\vec{AB})  = A + L(\vec{AC})$ y entonces $\vec{AB}$ y $\vec{AC}$ serían linealmente dependientes. Como sabemos que $\vec{AB}$ y $\vec{AC}$ no lo son, por lo tanto A, B y C no están alineados.
 	\end {proof}
 
 \end{nprop}
@@ -553,7 +553,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Cuadriláteros}
 
 \begin{ndef}
-	$ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $AvC$ y $BvD$.
+	$ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 \begin{ndef}[Lado]
