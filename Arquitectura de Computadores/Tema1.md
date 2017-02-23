@@ -92,39 +92,37 @@ Por lo general la clasificación de computadores se basa en el número
 de núcleos que posean y operaciones que sean capaces de hacer, lo cual
 influye directamente en el precio.
 
-## Clasificación de Flynn 
+### Clasificación de Flynn
 
 Se basa en el flujo de instrucciones, si son capaces de trabajar con
 una única instrucción o con varias y si son capaces de trabajar con un
 único flujo de datos o con varios.
 
-### SISD
-
+#### SISD
+Single Instruction, Single Data.
 Existe un único flujo de datos y una única instrucción a ejecutar en
 cada instante
 **<!- (algo de único flujo de datos y una única instrucción, completar) -->**
 
 
-### SIMD
-
+#### SIMD
+Single Instruction, Multiple Data.
 La instrucción que se codifica va a cada uno de los procesadores (es
 la misma para todos), donde se le indica de dónde tiene que captar los
 datos, hace tantas operaciones como unidades de procesamiento se
 tengan.
 
 
-### MISD
-
+#### MISD
+Multiple Instruction, Single Data.
 No es un sistema que se implemente en la realidad, cada unidad de
 control estaría conectada con una única unidad de procesamiento con
 cada flujo de datos.
 
-### MIMD
-
-Múltiples flujos de datos que permiten realizar múltiples 
+#### MIMD
+Multiple Instruction, Multiple Data.
+Múltiples flujos de datos que permiten realizar múltiples
 **<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
 
-
-
-
-
+### Sistema de memoria
+Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los multiprocesadores todos los procesadores comparten el mismo espacio de direcciones. EL programador no necesita conocer dónde están almacenados los datos. En los multicomputadores cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red.
