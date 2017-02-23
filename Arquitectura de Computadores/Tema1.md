@@ -125,4 +125,4 @@ Múltiples flujos de datos que permiten realizar múltiples
 **<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
 
 ### Sistema de memoria
-Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los multiprocesadores todos los procesadores comparten el mismo espacio de direcciones. EL programador no necesita conocer dónde están almacenados los datos. En los multicomputadores cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red.
+Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los multiprocesadores todos los procesadores comparten el mismo espacio de direcciones. El programador no necesita conocer dónde están almacenados los datos. En los multicomputadores cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red.
