@@ -10,7 +10,7 @@
 % Javier Sáez (@fjsaezm)
 % Daniel Pozo (@danipozodg)
 % Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo
+% Guillermo Galindo(@guillegalor)
 % Antonio Coín (@antcc)
 % Sofía Almeida (@SofiaAlmeida)
 % Miguel Lentisco (@AlfaOmegaX)
@@ -289,6 +289,7 @@
 %---------------------------------------------------------------------------
 %   COMIENZO DEL DOCUMENTO
 %---------------------------------------------------------------------------
+\usepackage{amsmath}
 \begin{document}
 
 \maketitle  % Título.
@@ -587,7 +588,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 
 
-% Falta revisar y 3) => 1)
+%%% FALTA REVISAR Y 3) => 1)
 \begin{proof}\hfill
 	\boxed{1) \Rightarrow 2)}
 	Solo tenemos que fijarnos en lo que implica ser paralelogramo (ver propiedad arriba):
@@ -614,5 +615,45 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	
 	
 \end{proof}
+
+\subsection{Transformaciones}
+
+\begin{ndef}[Traslaciones]
+	Se define la traslacion de vector $v$ como $t_v: R^2 \rightarrow R^2$ con $t_v(P) = P + v$
+\end{ndef}
+
+\begin{nprop}
+	Se dan las siguientes propiedades:
+\begin{nlist}
+	\item $t_v \circ t_w = t_{v+w}$
+	\item $t_{v}^{-1} = t_{-v}$
+	\item $t_0 = I$
+\end{nlist}
+\end{nprop}
+
+\begin{ndef}[Afinidades(aplicaciones lineales biyectivas)]
+	Se define una afinidad f como una aplicacion $f:R^2 \rightarrow R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
+	x\\
+	y\\
+\end{pmatrix}$, $A =$ $\begin{pmatrix}
+	a & b\\
+	c & d\\
+\end{pmatrix}$
+y $b =$ $\begin{pmatrix}
+	b1\\
+	b2\\
+\end{pmatrix}$
+
+
+\end{ndef}
+
+\begin{nprop}
+Se dan las siguientes propiedades:
+\begin{nlist}
+	\item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
+	\item Sean f y g afinidades, entonces $g \circ f (x)$ es afinidad
+	%%% FALTA AÑADIR UNA PROPIEDAD SOBRE LA INVERSA
+\end{nlist}
+\end{nprop}
 
 \end{document}
