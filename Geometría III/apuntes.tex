@@ -125,6 +125,9 @@
 \fancyhf{}
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
 
+% Ruta donde buscar gráficos
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
+
 % Redefinir entorno de demostración (reducir espacio superior)
 \makeatletter
 \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
@@ -132,6 +135,8 @@
 
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
+
+
 %---------------------------------------------------------------------------
 %   COMANDOS PERSONALIZADOS
 %---------------------------------------------------------------------------
@@ -296,7 +301,7 @@
 \tableofcontents    % Índice
 \vfill
 \begin{center}
-\includegraphics{../Recursos/Plantillas/by-nc-sa.eps}  % Licencia.
+\includegraphics{by-nc-sa}  % Licencia.
 \end{center}
 \newpage
 
