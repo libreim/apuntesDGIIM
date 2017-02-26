@@ -542,8 +542,12 @@ donde $z_x$ está en el intervalo abierto de extremos $\alpha$ y $x$. Observemos
 En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de $\mathcal{C}(A,\mathbb{R}^M)$. Para ello, necesitamos primero definir ciertos conceptos el espacio de funciones continuas. Salvo que se especifique lo contrario, $A$ será un subconjunto compacto de $\mathbb{R}^N$.
 
 \begin{ndef}[Conjunto acotado]
-	Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es acotado si $\exists M > 0: \ \|f\|_{\infty} \le M \ \ \forall f \in B$.
+	Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es acotado (o equiacotado) si $\exists M > 0: \ \|f\|_{\infty} \le M \ \ \forall f \in B$.
 \end{ndef}
+
+\begin{nota}
+	Teniendo en cuenta la definición de la norma $\|\cdot\|_\infty$, el que $B$ sea acotado es equivalente a decir que $|f(x)|\le M,\ \forall x \in A,\ \forall f \in B$.
+\end{nota}
 
 \begin{ndef}[Conjunto equicontinuo]
     Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es equicontinuo si $$\forall \epsilon > 0\ \exists \delta > 0:\ \begin{rcases} |x-y| < \delta\\ x,y \in A \end{rcases} \implies |f(x) - f(y)| < \epsilon \quad \forall f \in B$$
@@ -575,6 +579,10 @@ Por otro lado, $\|f_n\|_{\infty} = \text{máx} \ \{ |f_n(x)|:\ x \in [0,1]\} = r
 Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B_{\infty}(0,r)}$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B_{\infty}(0,r)}$. Esto prueba que $\overline{B_{\infty}(0,r)}$ no es compacta.
 \end{ejemplo}
 
+\begin{ndef}[Sucesión acotada]
+	Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es acotada si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es acotado. 
+\end{ndef}
+
 \begin{ndef}[Sucesión equicontinua]
 	Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es equicontinua si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es equicontinuo. 
 \end{ndef}
@@ -587,7 +595,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 
 \begin{proof} Dividiremos la demostración en varios pasos.
 
-\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_\sigma(n)\} \to f$ puntualmente en $\mathbb{Q}\cap A$.  \textbf{COMPLETAR.}
+\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_\sigma(n)\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.  \textbf{COMPLETAR.}
 
 Notemos que en este paso no ha sido necesario utilizar la equicontinuidad.
 
