@@ -599,7 +599,17 @@ Como conclusión de este capítulo, presentamos el siguiente corolario, que nos 
 \begin{proof} \hfill \\
 	\boxed{\Rightarrow} Ya sabemos que un conjunto compacto de un espacio métrico es cerrado y acotado. Veamos que además es equicontinuo.
 	
-%%% COMPLETAR DEMOSTRACIÓN (EJERCICIO PRADO).
+Sea $\epsilon >0$ fijo. La familia $\{ B(f, \varepsilon/3) \, : \, f\in B\}$ ($B(f, \varepsilon/3)$ son bolas abiertas en $\mathcal{C}(A, \mathbb{R}^M))$ es un recubrimiento abierto de B puesto que $$B\subseteq \bigcup_{f\in B} B(f, \varepsilon/3).$$
+Luego, por la compacidad de $B,\ \exists f_1, \dots, f_n \in$ B tales que $$B \subseteq \displaystyle \bigcup_{i=1}^n B(f_i, \varepsilon/3).$$
+Observemos que para cualquier $f\in B(f_i, \varepsilon/3)$ se verifica que
+$|f(x)-f_i(x)| < \varepsilon/3 , \ \ \forall x\in A$. Además, como $A$ es compacto, cada una de las funciones continuas $f_i \ (i=1,\dots,n)$ será uniformemente continua. Por tanto, existirá para cada una de ellas un número $\delta_i>0$ tal que $$\left. \begin{array}{c} |x-y|<\delta_i \\ x,y\in A \end{array}  \right\} \Rightarrow |f_i(x)-f_i(y)| <\varepsilon/3$$
+Por consiguiente, si tomamos $\delta = \min \{\delta_i \, :\, i=1,\dots,n\} >0$, tendremos que cualquier $f\in B \subseteq \bigcup_{i=1}^n B(f_i, \varepsilon/3)$ debe pertenecer a una bola $B(f_i, \varepsilon/3)$ para algún $i\in\{1,\dots ,n\}$, y así si se tiene $$\left. \begin{array}{c} |x-y|<\delta \leq \delta_i \\ x,y\in A \end{array}  \right\}$$ 
+
+Entonces, es claro que $\displaystyle |f(x)-f(y)| \le |f(x)-f_i(x)|+|f_i(x)-f_i(y)|+|f_i(y)-f(y)| < \varepsilon/3+\varepsilon/3+\varepsilon/3<\varepsilon.$
+
+En resumen, hemos probado que para todo $\varepsilon >0$ existe $\delta >0$ tal que $$ \left. \begin{array}{c} |x-y|<\delta  \\ x,y\in A \end{array}  \right\} \Rightarrow |f(x)-f(y)| <\varepsilon , \ \ \forall f\in B$$
+
+Es decir, B es equicontinuo y la prueba está terminada.
 
     \boxed{\Leftarrow} Sea $\fn \subseteq B$. Es claro que $\fn$ es acotada y equicontinua, y aplicando el \textit{Teorema de Arzelá-Ascoli}, tenemos que $\exists \{f_{\sigma(n)}\} \to f \in \overline{B}$. Pero $B$ es cerrado, por lo que $\overline{B} = B$. Obtenemos así que de cualquier sucesión de puntos de $B$ es posible obtener una sucesión parcial convergente a un punto de $B$, por lo que $B$ es compacto.
 \end{proof}
