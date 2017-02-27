@@ -336,6 +336,20 @@ Por tanto, $f$ está acotada.
 \end{proof}
 \end{ejer}
 
+\begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
+
+\begin{sol}
+	Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \mathcal \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
+	Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
+	
+Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. En efecto, %%% COMPLETAR
+
+Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
+
+Por tanto, $\varphi$ es un homeomorfismo.
+\end{sol}	
+\end{ejer}
+
 \begin{ejer}
 	
 Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?. 
@@ -380,16 +394,15 @@ Como cada $f_n$ es continua y $f$ no es continua, no hay convergencia uniforme.
 
 \begin{ejer}
 	Estudiar el caracter de la siguientes series de funciones.
-\begin{itemize}
-\item $\sum_{n\geq1} \frac{sen(nx)^2}{n^2}$
+
 \item $\sum_{n\geq1} (\frac{x^n}{n!})^2 = \frac{x^{2n}}{(n!)^2}$
 \item $\sum_{n\geq1} \frac{1}{x^2+n^2}$
 \item $\sum_{k\geq1} \frac{x^k}{k^2}$
 \item $\sum_{k\geq1} k! x^k = \sum_{k\geq1} a_k x^k$
 \item $\forall x \in (-1,1) \ \ \ \ \frac{1}{(1-x)^2} = \sum_{k=1}^{\infty} kx^{k-1}$
-\end{itemize}
 
-1.\\
+$(i)\ \displaystyle \sum_{n\geq1} \frac{sen(nx)^2}{n^2}$
+
 $|sen(nx)| < 1 \implies \abs{\frac{sen(nx)^2}{n^2}} \leq \frac{1}{n^2}$.
 
 $\begin{rcases}
@@ -406,35 +419,6 @@ $\implies (\frac{x^{n}}{(n!)})^2$ es c.u en $[-M,M]$
 \\\\Por que,
 $lim \frac{\frac{M^{2(n+1)}}{(n+1)!)^2}}{\frac{M^{2n}}{(n!)^2}} = lim \frac{M^2}{(n+1)^2} = 0 < 1.$
 \end{ejer}
-
-\begin{ejer} Teorema de Divi.\\
-$A\subset \R^n$ compacto.\\
-$f_k : A \to R$ continua.
-
-$\begin{rcases}
-f_k \geq 0, \ f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A \ (\{f_k\} \ monotona \ \ convergente\\
-f_k(x) \to f(x) = 0\forall x \in A
-\end{rcases}$
-$\implies f_k \to 0$ c.u. en A
-
-Solución:
-
-$f_k(x) \to f(x)$ $\forall x \in A \implies\forall \ x \in A, \forall \epsilon >0 \ \ \exists k_x \in \N$ t.q. $k\geq k_x \implies |f_k(x) - f(x)| < \epsilon$
-$f_{k_x}$ cont. en A. $\implies f_{k_x}$ continua en x $\implies \exists U_x$ entorno abierto de x en A t.q. $ |f_{k_x}(y) - f_{k_x}(x)| < \epsilon$ $\forall y \in U_x$
-
-$A \subset \bigcup_{x\in A} U_x$ $\implies \{U_x | x\in A\}$ es un recub. por abiertos de A.
-Entonces, $\exists x_1,..,x_n \in A : A \bigcup_{i=1}^{n} U_{x_{i}}$
-Por cada $x_i$ existe un $k_{x_i}$ naturales.
-Sea $k_0 = max\{k_{x_1},...,k_{x_n}\}$\\
-Si $k \geq k_0 \implies f_k(x_i) = |f_k(x_i) - f(x_i)| < \epsilon/2$ y $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ $\forall y \in U_{x_i}$
-\\
-Sea $y \in A \implies \exists i \in \{1,..n\}$ t.q $ y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ $\implies f_{k_{x_i}}(x_i) < \epsilon/2$
-Sumando:
-$f_k(y) \geq f_{k_{x_i}}(y) \geq |f_{k_{x_i}} (x_i) + f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i) < \epsilon$
-
-Hemos probado que $\forall \epsilon > 0 \ \ \exists k_0$ (dep. de $\epsilon$ y $x_1,..., x_n \in \N$ t.q. $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$
-\end{ejer}
-
 
 \begin{ejer}
 Encontrar un ejemplo de una función que cumpla:\\
