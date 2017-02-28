@@ -358,8 +358,8 @@ Aunque ambas definiciones son muy parecidas, hay una diferencia clave. En la con
 El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la proposición anterior sí es cierto.
 
 \begin{nth}
-	
-Sea $A\subset \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+\label{1}
+Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
 \begin{nlist}
 	\item $f_k \geq 0$
@@ -385,6 +385,7 @@ En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (dep
 La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas.
 
 \begin{nth}
+\label{2}
 	Sean $\emptyset \ne A \subseteq \R^N$, $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$. Entonces, se tiene que
 	\[
 	\fn \to f \text{ uniformemente } \implies f \text{ es continua}
@@ -457,7 +458,7 @@ Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{
 \end{cases}
 \]
 
-Observamos que la convergencia puntual no preserva la continuidad de las funciones. Esto implicaría que, con esta definición de convergencia, el espacio de funciones continuas en un conjunto no sería cerrado. Además, podemos comprobar que $\fn$ no converge uniformemente a $f$, pues en caso de hacerlo $f$ debería ser continua, por el \textit{Teorema 1.1}.
+Observamos que la convergencia puntual no preserva la continuidad de las funciones. Esto implicaría que, con esta definición de convergencia, el espacio de funciones continuas en un conjunto no sería cerrado. Además, podemos comprobar que $\fn$ no converge uniformemente a $f$, pues en caso de hacerlo $f$ debería ser continua, por el \textit{Teorema \ref{2}}.
 
 Ahora estudiemos la convergencia uniforme del ejemplo (1.3):
 
@@ -490,7 +491,7 @@ $||f_n - f ||_{\infty} \rightarrow 0 \iff \underset{x \in A}{m\acute{a}x} \ |f_n
 \end{proof}
 \end{nprop}
 
-\begin{nth}[$\mathcal{C}(A,\R^M)$ es completo] En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, también ser sucesión de Cauchy equivale a la convergencia uniforme, esto es: $$\fn\ es\ de\ Cauchy\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f $$
+\begin{nth}[$\mathcal{C}(A,\R^M)$ es completo] \label{3} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, también ser sucesión de Cauchy equivale a la convergencia uniforme, esto es: $$\fn\ es\ de\ Cauchy\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f $$
 
 \begin{proof} El razonamiento es análogo al anterior, utilizando esta vez el criterio de Cauchy visto anteriormente.
 \end{proof}
@@ -520,7 +521,7 @@ Si $A$ es compacto, entonces  $\mathcal{C}_B(A,\mathbb{R}^M) = \mathcal{C}(A, \m
 
 Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme con los conceptos de derivación e integración.
 
-\begin{nth} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \xrightarrow {c.u} \int_a^b f $$
+\begin{nth} \label{4} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \xrightarrow {c.u} \int_a^b f $$
 
 Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int_a^b \lim_{n\rightarrow \infty} f_n$$
 
@@ -529,7 +530,7 @@ Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rig
 \end{nth}
 
 
-\begin{nth}
+\begin{nth} \label{5}
 	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. Supongamos que $ \{f_n(x)\} \to f(x)$ c.p. $\forall x \in (a,b)$, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
 	
 \begin{proof}
@@ -538,7 +539,7 @@ Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rig
 	\[
 	f_n(x) = f_n(x_0) + \int_{x_0}^x f_n'(t)dt
 	\]
-	Ahora, como  $\{f_n'\} \xrightarrow{c.u.} g $ en el intervalo cerrado de extremos $x_0$ y $x$, por el \textit{Teorema 1.3} tenemos que $\{f_n(x)\} \to G(x)\ \forall x \in (a,b)$, donde:
+	Ahora, como  $\{f_n'\} \xrightarrow{c.u.} g $ en el intervalo cerrado de extremos $x_0$ y $x$, por el \textit{Teorema \ref{4}} tenemos que $\{f_n(x)\} \to G(x)\ \forall x \in (a,b)$, donde:
 	\[
 	    G(x) = f(x_0) + \int_{x_0}^x g(t)dt
 	\]
@@ -550,14 +551,14 @@ Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rig
 \end{nth}
 
 \begin{ncor}
-	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b)$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f'(x) = g(x)\ \forall x \in (a,b)$.
+	Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g \in \mathcal C((a,b))$ en (a,b). Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f' = g$.
 
 \begin{proof}
-	Probaremos únicamente que $\fn \to f$ uniformemente. El resto de la tesis se sigue de aplicar el \textit{Teorema 1.4}.
+	Probaremos únicamente que $\fn \to f$ uniformemente. El resto de la tesis se sigue de aplicar el \textit{Teorema \ref{5}}.
 	
 Sea $\epsilon > 0$. Por un lado, como $\{f'_n\}$ converge uniformemente, aplicamos el \textit{Criterio de Cauchy} para obtener un $k_1 \in \mathbb{N}$ tal que: $$p,q \ge k_1 \implies |f'_p(y) - f'_q(y)| < \frac{\epsilon}{2 (b-a)}$$
-Del mismo modo, como $\{f_n(\alpha)\}$ es una sucesión de vectores convergente, es de Cauchy, y obtenemos un $k_2 \in \mathbb{N}$ tal que: $$p,q \ge k_2 \implies |f_p(\alpha) - f_q(\alpha)| < \frac{\epsilon}{2}$$
-Ahora, defino $K := k_1 + k_2$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$ y $p,q \ge K$: $$|f_p(x) - f_q(x)| \le |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_p(\alpha)| + |f_q(\alpha) - f_q(x)| + |f_p(\alpha) - f_q(\alpha)| \le \left|x-\alpha \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)|$$ $$< (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
+Del mismo modo, como $\{f_n(\alpha)\}$ es una sucesión de números reales convergente, es de Cauchy, y obtenemos un $k_2 \in \mathbb{N}$ tal que: $$p,q \ge k_2 \implies |f_p(\alpha) - f_q(\alpha)| < \frac{\epsilon}{2}$$
+Ahora, defino $K := k_1 + k_2$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$ y $p,q \ge K$: $$|f_p(x) - f_q(x)| = |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_q(x) - (f_p(\alpha) - f_q(\alpha))| + |f_p(\alpha) - f_q(\alpha)| $$ $$\le \left|x-\alpha \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)| < (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
 
 donde $z_x$ está en el intervalo abierto de extremos $\alpha$ y $x$. Observemos que en este razonamiento, el valor de $K$ \textbf{no depende de $x$}, sino exclusivamente de quién sea $\epsilon$. Por tanto, por el \textit{Criterio de Cauchy}, se tiene que $\{f_n\}$ converge uniformemente en $(a,b)$.
 \end{proof}
@@ -617,7 +618,7 @@ Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centrada
 
 Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado equivalente en $\mathcal{C}(A,\mathbb{R}^M)$.
 
-\begin{nth}[Arzelà-Ascoli] Toda sucesión de funciones en $\mathcal{C}(A,\mathbb{R}^M)$ que sea equicontinua y acotada admite una sucesión parcial convergente.
+\begin{nth}[Arzelà-Ascoli] \label{6} Toda sucesión de funciones en $\mathcal{C}(A,\mathbb{R}^M)$ que sea equicontinua y acotada admite una sucesión parcial convergente.
 
 %%% COMPLETAR DEMOSTRACIÓN (DIAPOSITIVAS) --------------------------------------
 
@@ -708,37 +709,37 @@ $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to 
 Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales, tenemos una relación directa de la convergencia de series con la continuidad, derivación e integración.
 
 
-\begin{nth}
+\begin{nth} \label{7}
 Si una serie  $\sum_{n\geq 1} f_n $ de funciones continuas $f_n$ es uniformemente convergente, entonces la funci\'on suma $\displaystyle \sum_{n=1}^{\infty} f_n $ es una funci\'on continua.
 
 \begin{proof}
-Como la serie es uniformemente convergente, tenemos que $\{S_n\} \to S$ uniformemente. Como las $f_n$ eran continuas, las funciones $S_n$ son continuas, por ser suma finita de funciones continuas. Por tanto, aplicando el teorema \textit{Teorema 1.1} a la sucesión de funciones $\{S_n\}$, tenemos que $S = \sum_{n=1}^{\infty} f_n$ es continua.
+Como la serie es uniformemente convergente, tenemos que $\{S_n\} \to S$ uniformemente. Como las $f_n$ eran continuas, las funciones $S_n$ son continuas, por ser suma finita de funciones continuas. Por tanto, aplicando el teorema \textit{Teorema \ref{2}} a la sucesión de funciones $\{S_n\}$, tenemos que $S = \sum_{n=1}^{\infty} f_n$ es continua.
 \end{proof}
 \end{nth}
 
 
-\begin{nth}
+\begin{nth} \label{8}
 Si la serie $\sum_{n\geq 1} f_n $ de funciones continuas $f_n:[a,b]\longrightarrow \mathbb R$ es uniformemente convergente, entonces 
 $
 \displaystyle \int_a^b \sum_{n=1}^{\infty} f_n (x) \, dx =  \sum_{n=1}^{\infty} \int_a^b f_n (x) \, dx  .
 $
 
 \begin{proof}
-Siguiendo la idea del teorema anterior, aplicamos el \textit{Teorema 1.3} a la sucesión de funciones $\{S_n\}$, y obtenemos que:
+Siguiendo la idea del teorema anterior, aplicamos el \textit{Teorema \ref{4}} a la sucesión de funciones $\{S_n\}$, y obtenemos que:
 
 $$\int_a^b \lim_{n \to \infty} S_n = \lim_{n \to \infty} \int_a^b S_n \Rightarrow \int_a^b \sum_{n=1}^{\infty} f_n = \lim_{k \to \infty} \sum_{n=1}^k \int_a^b f_n = \sum_{n =1}^{\infty} \int_a^b f_n$$
 \end{proof}
 \end{nth}
 
 
-\begin{nth}
+\begin{nth} \label{9}
 Si para $f_n\in \mathcal{C}^1(a,b)$  la serie  $\sum_{n\geq 1} f_n $ es  c.p.  en $(a,b)$ y  la serie  $ \sum_{n\geq 1} f'_n $ es  c.u. en (a,b), entonces la suma $\displaystyle \sum_{n=1}^{\infty} f_n $ es una funci\'on de  $\mathcal{C}^1(a,b)$ con 
 $
 \displaystyle \left( \sum_{n=1}^{\infty} f_n \right)' =  \sum_{n=1}^{\infty}  f'_n  .
 $
 
 \begin{proof}
-Claramente $S_n \in \mathcal{C}^1(a,b)\ \forall n \in \mathbb{N}$, y además tenemos que $\{S_n\}\ c.p.$ en $(a,b)$, y $\{S'_n\}\ c.u.$ en $(a,b)$, pues la derivada de una suma finita es la suma de las derivadas. Bajo estas hipótesis, podemos aplicar a $\{S_n\}$ el \textit{Teorema 1.4}, obteniendo que $S = \sum_{n=1}^{\infty} f_n \in \mathcal{C}^1(a,b)$, y además:
+Claramente $S_n \in \mathcal{C}^1(a,b)\ \forall n \in \mathbb{N}$, y además tenemos que $\{S_n\}\ c.p.$ en $(a,b)$, y $\{S'_n\}\ c.u.$ en $(a,b)$, pues la derivada de una suma finita es la suma de las derivadas. Bajo estas hipótesis, podemos aplicar a $\{S_n\}$ el \textit{Teorema \ref{5}}, obteniendo que $S = \sum_{n=1}^{\infty} f_n \in \mathcal{C}^1(a,b)$, y además:
 
 $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = \sum_{n=1}^{\infty} f'_n$$
 \end{proof}
@@ -746,7 +747,7 @@ $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = 
 
 \subsection{Criterios de convergencia para series de funciones}
 
-\begin{nth}[Criterio de Weierstrass]
+\begin{nth}[Criterio de Weierstrass] \label{10}
 	Si existen constantes $ M_{n} $ positivas tales que $ |f_{n}(x)| \leq M_{n}\ \ \forall x \in A$ y la serie de números reales $ \sum_{n \ge 1}M_{n} $ es convergente, entonces la serie de funciones $ \sum_{n \ge 1}f_{n} $ es convergente uniformemente (y absolutamente) en A.
 	
 \begin{proof}
@@ -763,11 +764,11 @@ $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = 
 \end{proof}
 \end{nth}
 
-\begin{nth}[Criterio de Abel] Sean $ A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
+\begin{nth}[Criterio de Abel] \label{11} Sean $ A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
 $$\sum_{n \ge 1} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n \ge 1} \phi_n(x) f_n(x)\ c. u.\ en\ A.$$
 \end{nth}
 
-\begin{nth}[Criterio de Dirichlet] Sea $A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
+\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
 
 Entonces, la serie $\displaystyle \sum_{n\ge 1} \phi_n(x)f_n(x)$ converge uniformemente en $A$.
 	
@@ -804,7 +805,7 @@ Veamos una característica importante de las series de potencias, que nos ayuda 
 
 El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones anteriores.
 
-\begin{nth}
+\begin{nth} \label{13}
 La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$  
 \begin{nlist}
 \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$.
@@ -835,7 +836,7 @@ S(x):= \sum_{n= 0}^\infty a_n (x-a)^n
 , \ \ \forall x\in  D(a,R)
 \] 
 
-\begin{nth}
+\begin{nth} \label{14}
 Sea $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$ una serie de potencias. Entonces, se verifican las siguientes afirmaciones:	
 \begin{nlist}
 	\item La suma $S(x)=\displaystyle\sum_{n= 0}^\infty a_n (x-a)^n$ es una función $\mathcal{C}^\infty$ en el disco de convergencia $D(a,R)$.
@@ -862,7 +863,7 @@ Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escr
 
 Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficiente para que una funci\'on $f\in \mathcal{C}^\infty$ coincida con la suma de su serie de Taylor.
 
-\begin{nth}
+\begin{nth} \label{15}
 Si una funci\'on de clase $\mathcal{C}^\infty$ en un intervalo $I$ verifica 
 \[
 \exists M>0 \ : \  |f^{n)}(x)|\leq M, \ \ \forall x\in I
@@ -899,7 +900,7 @@ Como consecuencia de este teorema, podemos escribir algunas funciones elementale
 \end{ejemplo}
 
 
-Sin embargo, no todas las funciones $\mathcal{C}^{\infty}$ admiten una descomposición en sumas de funciones potenciales. Dada una serie de potencias, y usando el \textit{Teorema 2.7}, notemos lo siguiente:
+Sin embargo, no todas las funciones $\mathcal{C}^{\infty}$ admiten una descomposición en sumas de funciones potenciales. Dada una serie de potencias, y usando el \textit{Teorema \ref{14}}, notemos lo siguiente:
 
 $\displaystyle S'(a) = \sum_{n=1}^{\infty} na_n(a-a)^{n-1} = a_1 \quad ; \quad S''(a) = \sum_{n=2}^{\infty} n(n-1)a_n(a-a)^{n-2} = 2a_2$ \quad ; \quad \dots
 
@@ -907,7 +908,7 @@ En general, se demuestra por inducción que $S^{k)} (a) = k! \cdot a_k$. Es deci
 
 Recordemos que si una función $f \in \mathcal{C}^{\infty}$ cumple que $f(x) = \sum_{n=0}^{\infty} a_n(x-a)^n\ \forall x \in A$, dicha función es justamente lo que nos hemos referido como la suma de la serie, $S$. Pero acabamos de ver que, en ese caso, los $a_n$ están perfectamente determinados, y resulta que $f$ se escribiría como su suma de Taylor: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!} (x-a)^n$$
 
-Por tanto, la pregunta que nos hacíamos equivale a preguntarse si toda función $\mathcal{C}^{\infty}$ se puede escribir como su suma de Taylor. La respuesta es que, en general, esto no es posible (ya vimos en el \textit{Teorema 2.8} que sí se cumple si todas las derivadas de $f$ están acotadas).
+Por tanto, la pregunta que nos hacíamos equivale a preguntarse si toda función $\mathcal{C}^{\infty}$ se puede escribir como su suma de Taylor. La respuesta es que, en general, esto no es posible (ya vimos en el \textit{Teorema \ref{15}} que sí se cumple si todas las derivadas de $f$ están acotadas).
 
 Un contraejemplo sería la función $f: \mathbb{R} \longrightarrow \mathbb{R}$ dada por: $$f(x) = \begin{cases}
 	         e^{-1/x^2} & \text{si } x\ne 0\\
