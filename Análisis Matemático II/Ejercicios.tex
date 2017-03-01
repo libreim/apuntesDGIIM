@@ -340,11 +340,18 @@ Por tanto, $f$ está acotada.
 \begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
 \begin{sol}
-	Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \mathcal \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
+	Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
 	Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
 	
-Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. En efecto, \textbf{COMPLETAR}
-%%% COMPLETAR ---------------------------------------------------------------
+Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$).
+
+\[
+\begin{array}{l}
+	\varphi'^{-1}(B_\infty(f, \epsilon)) = \{ x\in \mathcal{C}(A,\R^M) : \varphi'(x) = x + 	\tilde f \in B(f, \epsilon)\} =\\
+	\{ x\in \mathcal{C}(A,\R^M) : \|f-\tilde f-x\| < \epsilon\} = B(f-\tilde f,\epsilon)
+\end{array}
+\]
+
 
 Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 
