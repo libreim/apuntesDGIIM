@@ -5,7 +5,7 @@ geometry: margin=1.4in
 
 # Lección 1. Clasificación del paralelismo implícito en una aplicación.
 
-## Clasificación de paralelismo
+## Clasificación del paralelismo
 
 Según su naturaleza, podemos clasificar el paralelismo implícito en tres categorías.
 
@@ -53,7 +53,7 @@ Un computador puede aprovechar el paralelismo entre diferentes entidades de form
 
 Un **proceso** comprende el código del programa, y todo lo necesario para su ejecución (datos en pila, segmentos, registros, tabla de páginas, ...). Para comunicar procesos hay que usar llamadas al SO.
 
-Un proceso puede constar de múltibles **hebras** que controlan el flujo de control. Cada hebra tiene su propia pila, y también el contenido de los registros . Para comunicarse entre ellos, utilizan la memoria que comparten.
+Un proceso puede constar de múltibles **hebras** que controlan el flujo de control. Cada hebra tiene su propia pila, y también el contenido de los registros. Para comunicarse entre ellos, utilizan la memoria que comparten.
 
 En general, las operaciones de creación, destrucción, conmutación y comunicación en las hebras consumen menos tiempo.
 
