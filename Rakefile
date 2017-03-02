@@ -9,7 +9,8 @@ task :default => [
        :edatos,
        :sistemas,
        :geometria3,
-       :modelos1
+       :modelos1,
+       :acomputadores
        #:algoritmica
        # add your task here
      ]
@@ -48,6 +49,7 @@ task :analisis2 => (pdf_for FileList["Análisis Matemático II/*.tex"])
 task :geometria3 => (pdf_for FileList["Geometría III/*.tex"])
 task :modelos1 => (pdf_for FileList["Modelos Matemáticos I/*.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
+task :acomputadores => (pdf_for FileList["Arquitectura de Computadores/Tema*.md"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
