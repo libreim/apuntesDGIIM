@@ -305,10 +305,9 @@
 %   Introducción.
 %----------------------------
 \section*{Introducción.}
-En esta asignatura, intentaremos estudiar una serie de modelos que se dan en la naturaleza y que dan respuesta a las posibles cuestiones que nos podemos hacer en torno al comportamiento de estos problemas. Por ejemplo podremos estudiar cómo se desarrollará la población de una especie considerando unos recursos dados (finitos o infinitos), así como otros modelos que se ajustan a situaciones de la vida real.
+En esta asignatura, estudiaremos una serie de modelos que se dan en la naturaleza y que dan respuesta a las posibles cuestiones que nos podemos hacer en torno al comportamiento de estos problemas. Por ejemplo, podremos estudiar cómo se desarrollará la población de una especie considerando unos recursos dados (finitos o infinitos), así como otros modelos que se ajustan a situaciones de la vida real.
 
-%%% FALTA TERMINAR INTRODUCCIÓN
-----------------------------------------------------------------------------
+%%% FALTA TERMINAR INTRODUCCIÓN ----------------------------------------------------------------------------
 
 
 \newpage
@@ -886,11 +885,14 @@ Entonces, existe un único punto de equilibrio en $f$
 \begin{nth}
 	Sea el SDD $\{I,f\}$ donde $I$ es cerrado y supongamos que $f\in \mathcal{C}^1(I)$, verificando que $|f'(x)|< 1 \ \ \forall x \in I$. Entonces existe un único punto de equilibrio de $f$.
 \end{nth}
+%%% FALTA DEMOSTRACIÓN   -------------------------------------------------------
 
 \begin{ndef}
 	Un punto de equilibrio $\alpha$ de un SDD $\{I,f\}$ se dice que es:
 	\begin{itemize}
-	\item Estable, si $\forall \epsilon > 0 \ \ \exists \delta > 0 : ||$
+	\item Estable, si $\forall \epsilon > 0 \ \ \exists \delta > 0 : |x_0 - \alpha| < \delta$ y $x_n = f^n(x_0),\ n \in \mathbb{N},$ entonces se verifica $|x_n - \alpha| < \epsilon, \quad \forall n \in \mathbb{N}$.
+	\item Asintóticamente estable, si es estable y además $\exists \delta > 0 :$ si $|x_0 - \alpha| < \delta \implies \lim_{n\to \infty}x_n = \alpha$.
+	\item Inestable, si no es estable, esto es, $\exists \epsilon_0 > 0 : \forall \delta > 0\quad \exists x_0 \in I$ y $\exists n_0 \in \mathbb{N}$ tal que $|x_0 - \alpha| < \delta$ y $|x_{n_0} - \alpha| > \epsilon_0$.
 \end{itemize}
 \end{ndef}
 \end{document}
