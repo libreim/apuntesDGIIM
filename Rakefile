@@ -10,7 +10,7 @@ task :default => [
        :sistemas,
        :geometria3,
        :modelos1,
-       :acomputadores
+       :acomputadores,
        :pdoo
        #:algoritmica
        # add your task here
