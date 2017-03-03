@@ -129,22 +129,26 @@ Existen dos tipos de máquinas según esta clasificación: multiprocesadores y m
 
 **<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
 
-# Lección 2. Clasificación de estructuras paralelas
+# Lección 3. Evaluación de prestaciones de una arquitectura
 ##Tiempos de CPU
 
 ###Tiempo de CPU
 
-(Tcpu) = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
+Tcpu = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
 
 ###Ciclos por Instrucción
 
 CPI = Ciclos/NI
-Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion
-Así vemos que Tcpu = NI * CPI * Tciclo
 
+Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion
+Así vemos que:
+
+Tcpu = NI * CPI * Tciclo
 Tcpu = NI * (CPE / IPE) * Tciclo
 
-CPE: Número mínimo de ciclos transcurridos entre los
+####CPE:
+  Número mínimo de ciclos transcurridos entre los
 instantes instantes en que el procesador procesador puede emitir instrucciones instrucciones
-IPE: Instrucciones que pueden emitirse (para empezar su
+####IPE:
+  Instrucciones que pueden emitirse (para empezar su
 ejecución) cada vez que se produce dicha emisión
