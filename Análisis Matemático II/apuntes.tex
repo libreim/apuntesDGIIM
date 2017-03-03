@@ -625,7 +625,87 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 
 \begin{proof} Dividiremos la demostración en varios pasos.
 
-\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_\sigma(n)\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.  \textbf{COMPLETAR.}
+\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_\sigma(n)\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
+Recordemos que 
+\[
+A\cap \mathbb Q^N \mbox{ es numerable } \implies
+\exists \phi :\mathbb N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
+\]
+Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $).
+\[
+\{f_n \} \mbox{ equiacotada } \implies \exists M>0 \, : \, |f_n(x) |\leq M , \, \forall x\in A , \, \forall n\in \mathbb N.
+\]
+En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$ $\overset{\mbox{Bolz.Weierst.}}{\implies}$    $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrict. creciente tal que la subsuc. $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hac\'{\i}a un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
+\[
+\{ f_{\sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
+\]
+
+Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducimos de nuevo aplicando el teorema de Bolzano-Weierstrass que $\exists \sigma_2:\mathbb N \longrightarrow \mathbb N$ estrict. creciente tal que la subsuc. $\{ f_{\sigma_2 \circ\sigma_1 (n)} (r_2) \}$ de $\{ f_{\sigma_1 (n)} (r_2) \}$ es convergente hac\'{\i}a un vector que denotaremos como $f(r_2)$:
+\[
+\{ f_{\sigma_2 \circ \sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
+\]
+
+Por inducci\'on, 
+$
+\forall k\in\mathbb N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
+$ tal que
+\[
+\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
+\]
+\[
+\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1
+\]
+\[
+ \begin{array}{lllllll}
+{f_{\varphi_1 (1)}}& f_{\varphi_1 (2)} & f_{\varphi_1 (3)} & \dots &f_{\varphi_1 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_1
+ \\
+ f_{\varphi_2 (1)} & {f_{\varphi_2 (2)}} & f_{\varphi_2 (3)} & \dots &f_{\varphi_2 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_2
+ \\
+ f_{\varphi_3 (1)} & f_{\varphi_3 (2)} & {f_{\varphi_3 (3)}} & \dots &f_{\varphi_3 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_3
+ \\
+ \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
+ \\
+f_{\varphi_k (1)} & f_{\varphi_k (2)} & f_{\varphi_k (3)} & \dots &{f_{\varphi_k (k)}} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_k
+ \\
+ \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
+ \end{array}
+ \]
+Defino $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
+\[
+\sigma (n):= \varphi_n(n)= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
+\]
+
+Por inducción, 
+$
+\forall k\in\mathbb N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
+$ tal que
+\[
+\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
+\]
+
+Defino $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
+\[
+\sigma (n):= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
+\]
+Puesto que $\sigma_1, \dots \sigma_n$ son estrict. creciente, 
+\[
+\begin{aligned}
+\sigma (n) =& \sigma_n ( \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)) 
+\geq \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)
+\\
+\geq&\sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)= \sigma (n-1) =\sigma (n-1) , \ \forall n\geq 2
+\end{aligned}
+\]
+y $\sigma$ es estrictamente creciente; es decir,  $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsuc. de $\{f_n\}$. A\'un m\'as,
+\[
+\{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } 
+\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
+\]
+As\'{\i}, $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$, $\forall k\in\mathbb N$ y por tanto,
+\[
+\{f_{\sigma (n)} (r) \}_{n\in\mathbb N} \longrightarrow f(r), \ \forall r\in A\cap \mathbb Q^N.
+\]
+
 
 Notemos que en este paso no ha sido necesario utilizar la equicontinuidad.
 
@@ -635,7 +715,46 @@ Por ser $A$ compacto, todo recubrimiento de abiertos del conjunto $A$ admite un 
  
 Dado $x \in A$, por ser el anterior un subrecubrimiento finito de $A$, se tiene que\\ $\exists i \in \{1,\dots,k\}$ tal que $x \in B(r_i,\delta)$. Por tanto, $|x-r_i| <\delta$.
 
-\underline{Paso 3}. Concluímos probando que toda sucesión equicontinua que converja uniformemente en $\mathbb{Q}^N\cap A$ también converge uniformemente en $A$. \textbf{COMPLETAR}
+
+\underline{Paso 3}. Concluímos probando que toda sucesión equicontinua que converja uniformemente en $\mathbb{Q}^N\cap A$ también converge uniformemente en $A$.
+
+Ahora probamos que $g_n:= f_{\sigma (n)} $ converge uniformemente en $A$.
+Sea $\varepsilon>0$ fijo. Por la equicontinuidad de $f_n$, 
+$\exists\delta>0$ t.q. 
+\[
+\left.
+\begin{array}{c}
+|x-y| <\delta
+\\
+x,y\in A
+\end{array}
+\right\}
+ \implies |g_n(x)-g_n(y)|<\frac{\varepsilon}{3} , \ \forall n\in\mathbb N.
+\]
+
+Así, si para todo $x\in A$ consideramos el punto  $r_i\in A\cap \mathbb Q^N$ dado por el ejercicio, tendremos:
+\[
+\begin{aligned}
+|g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(r_i)| + |g_n(r_i)-g_m(r_i)|+|g_m(r_i)-g_n(x)|
+		\\
+		&<\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
++ \frac{\varepsilon}{3} .
+\end{aligned}
+\]
+
+
+
+Ya que cada sucesi\'on $\{ g_n(r_i)\}$ es convergente a $f(r_i)$ para cualquier $i\in \{ 1,\dots ,m\}$, cada una de estas $m$ sucesiones  es de Cauchy. En consecuencia, $\exists N\in\mathbb N$ ({dependiente solo de los puntos $r_i$ e independiente de $x$}) tal que
+\[
+n,m\geq N \implies |g_n(r_i)-g_m(r_i)| <\frac{\varepsilon}{3} , \ \forall i\in \{ 1,\dots ,m\}
+\]
+y as\'{\i}
+\[
+n,m\geq N \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
++ \frac{\varepsilon}{3} <\varepsilon , \ \ \forall x\in A
+\]
+es decir, $\{g_n\}$ es de Cauchy uniforme. Se concluye usando que $\mathcal{C}(A,\mathbb R^M )$ es completo.
+
 \end{proof}
 	
 \end{nth}
