@@ -126,3 +126,25 @@ Múltiples flujos de datos que permiten realizar múltiples
 
 ### Sistema de memoria
 Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los multiprocesadores todos los procesadores comparten el mismo espacio de direcciones. El programador no necesita conocer dónde están almacenados los datos. En los multicomputadores cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red.
+
+**<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
+
+# Lección 2. Clasificación de estructuras paralelas
+##Tiempos de CPU
+
+###Tiempo de CPU
+
+(Tcpu) = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
+
+###Ciclos por Instrucción
+
+CPI = Ciclos/NI
+Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion
+Así vemos que Tcpu = NI * CPI * Tciclo
+
+Tcpu = NI * (CPE / IPE) * Tciclo
+
+CPE: Número mínimo de ciclos transcurridos entre los
+instantes instantes en que el procesador procesador puede emitir instrucciones instrucciones
+IPE: Instrucciones que pueden emitirse (para empezar su
+ejecución) cada vez que se produce dicha emisión
