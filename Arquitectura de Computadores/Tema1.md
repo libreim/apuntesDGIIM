@@ -140,15 +140,15 @@ Tcpu = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
 
 CPI = Ciclos/NI
 
-Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion
+Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion.
 Así vemos que:
 
 Tcpu = NI * CPI * Tciclo
+
 Tcpu = NI * (CPE / IPE) * Tciclo
 
-####CPE:
-  Número mínimo de ciclos transcurridos entre los
+*CPE:* Número mínimo de ciclos transcurridos entre los
 instantes instantes en que el procesador procesador puede emitir instrucciones instrucciones
-####IPE:
-  Instrucciones que pueden emitirse (para empezar su
+
+*IPE:* Instrucciones que pueden emitirse (para empezar su
 ejecución) cada vez que se produce dicha emisión
