@@ -315,7 +315,7 @@
 %   Introducción.
 %--------------------------------------------------------------------------------
 
-\section*{Introducción.}
+\section*{Introducción}
 
 %%% FALTA COMPLETAR LA INTRODUCCIÓN ---------------------------------------------
 
@@ -421,7 +421,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 	Hemos probado que dado $\epsilon > 0$, $\exists \delta>0:\ \begin{rcases}
 	\abs{x-a}<\delta\\
 	x\in A
-	\end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$, por tanto, f es continua. 
+	\end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$, por tanto, $f$ es continua. 
 \end{proof}
 
 Veamos algunoss ejemplos de sucesiones de funciones:
@@ -480,6 +480,11 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 Es decir, $\fn \xrightarrow {c.u} f$.
 \end{proof}
 \end{nprop}
+
+
+%--------------------------------------------------------------------------------
+%   El espacio de funciones continuas.
+%--------------------------------------------------------------------------------
 
 \subsection{El espacio de funciones continuas}
 
@@ -567,9 +572,13 @@ donde $z_x$ está en el intervalo abierto de extremos $\alpha$ y $x$, y $f_{pq}(
 \end{ncor}
 
 
+%--------------------------------------------------------------------------------
+%   Compacidad en el espacio de funciones continuas.
+%--------------------------------------------------------------------------------
+
 \subsection{Conjuntos compactos de $\mathcal{C}(A, \mathbb{R}^M$)}
 
-En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de $\mathcal{C}(A,\mathbb{R}^M)$. Para ello, necesitamos primero definir ciertos conceptos el espacio de funciones continuas. Salvo que se especifique lo contrario, $A$ será un subconjunto compacto de $\mathbb{R}^N$.
+En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de $\mathcal{C}(A,\mathbb{R}^M)$. Para ello, necesitamos primero definir ciertos conceptos el espacio de funciones continuas. Salvo que se especifique lo contrario, $A$ será un subconjunto compacto de $\mathbb{R}^N$ en todo el apartado.
 
 \begin{ndef}[Conjunto acotado]
 	Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es acotado (o equiacotado) si $\exists M > 0: \ \|f\|_{\infty} \le M \ \ \forall f \in B$.
@@ -621,51 +630,48 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 
 \begin{nth}[Arzelà-Ascoli] \label{6} Toda sucesión de funciones en $\mathcal{C}(A,\mathbb{R}^M)$ que sea equicontinua y acotada admite una sucesión parcial convergente.
 
-%%% COMPLETAR DEMOSTRACIÓN (DIAPOSITIVAS) --------------------------------------
-
 \begin{proof} Dividiremos la demostración en varios pasos.
 
-\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_\sigma(n)\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
-Recordemos que 
+\underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
+Recordemos que, puesto que $\mathbb Q$ es numerable:
 \[
 A\cap \mathbb Q^N \mbox{ es numerable } \implies
 \exists \phi :\mathbb N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
 \]
-Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $).
+Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $). Por otra parte, observemos lo siguiente:
 \[
 \{f_n \} \mbox{ equiacotada } \implies \exists M>0 \, : \, |f_n(x) |\leq M , \, \forall x\in A , \, \forall n\in \mathbb N.
 \]
-En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$ $\overset{\mbox{Bolz.Weierst.}}{\implies}$    $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrict. creciente tal que la subsuc. $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hac\'{\i}a un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
+En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$, y por tanto podemos aplicar el \textit{Teorema de Bolzano-Weierstrass} para ver que $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hac\'{\i}a un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
 \[
 \{ f_{\sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
 \]
 
-Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducimos de nuevo aplicando el teorema de Bolzano-Weierstrass que $\exists \sigma_2:\mathbb N \longrightarrow \mathbb N$ estrict. creciente tal que la subsuc. $\{ f_{\sigma_2 \circ\sigma_1 (n)} (r_2) \}$ de $\{ f_{\sigma_1 (n)} (r_2) \}$ es convergente hac\'{\i}a un vector que denotaremos como $f(r_2)$:
+Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducimos de nuevo aplicando el \textit{Teorema de Bolzano-Weierstrass} que $\exists \sigma_2:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_2 \circ\sigma_1 (n)} (r_2) \}$ de $\{ f_{\sigma_1 (n)} (r_2) \}$ es convergente hac\'{\i}a un vector que denotaremos como $f(r_2)$:
 \[
-\{ f_{\sigma_2 \circ \sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
+\{ f_{\sigma_2 \circ \sigma_1 (n)} (r_2) \} \longrightarrow f(r_2).
 \]
 
-Por inducci\'on, 
+Por inducci\'on, concluimos que
 $
 \forall k\in\mathbb N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
 $ tal que
 \[
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
 \]
-\[
-\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1
-\]
+
+Si definimos $\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1$, podemos visualizar cada una de las sucesiones anteriores, cada una en una fila:
 \[
  \begin{array}{lllllll}
-{f_{\varphi_1 (1)}}& f_{\varphi_1 (2)} & f_{\varphi_1 (3)} & \dots &f_{\varphi_1 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_1
+{f_{\varphi_1 (1)}}& f_{\varphi_1 (2)} & f_{\varphi_1 (3)} & \dots &f_{\varphi_1 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_1
  \\
- f_{\varphi_2 (1)} & {f_{\varphi_2 (2)}} & f_{\varphi_2 (3)} & \dots &f_{\varphi_2 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_2
+ f_{\varphi_2 (1)} & {f_{\varphi_2 (2)}} & f_{\varphi_2 (3)} & \dots &f_{\varphi_2 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_2
  \\
- f_{\varphi_3 (1)} & f_{\varphi_3 (2)} & {f_{\varphi_3 (3)}} & \dots &f_{\varphi_3 (k)} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_3
+ f_{\varphi_3 (1)} & f_{\varphi_3 (2)} & {f_{\varphi_3 (3)}} & \dots &f_{\varphi_3 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_3
  \\
  \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
  \\
-f_{\varphi_k (1)} & f_{\varphi_k (2)} & f_{\varphi_k (3)} & \dots &{f_{\varphi_k (k)}} & \dots & \hspace{0.25cm} \mbox{ conv. en } r=r_k
+f_{\varphi_k (1)} & f_{\varphi_k (2)} & f_{\varphi_k (3)} & \dots &{f_{\varphi_k (k)}} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_k
  \\
  \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
  \end{array}
@@ -675,37 +681,24 @@ Defino $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
 \sigma (n):= \varphi_n(n)= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
 \]
 
-Por inducción, 
-$
-\forall k\in\mathbb N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
-$ tal que
-\[
-\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
-\]
-
-Defino $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
-\[
-\sigma (n):= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
-\]
-Puesto que $\sigma_1, \dots \sigma_n$ son estrict. creciente, 
+Puesto que $\sigma_1, \dots ,\sigma_n$ son estrictamente crecientes, 
 \[
 \begin{aligned}
-\sigma (n) =& \sigma_n ( \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)) 
+\sigma (n) = \ & \sigma_n ( \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)) 
 \geq \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)
 \\
-\geq&\sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)= \sigma (n-1) =\sigma (n-1) , \ \forall n\geq 2
+>& \ \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n-1) = \sigma (n-1) , \ \forall n\geq 2
 \end{aligned}
 \]
-y $\sigma$ es estrictamente creciente; es decir,  $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsuc. de $\{f_n\}$. A\'un m\'as,
+donde hemos usado que $\sigma_n(k) \ge k \ \forall k \in \mathbb{N}$, y también que la composición de funciones estrictamente crecientes es estrictamente creciente. Por tanto, $\sigma$ es estrictamente creciente; es decir,  $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsucesión de $\{f_n\}$. A\'un m\'as, es inmediato comprobar que
 \[
 \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } 
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
 \]
-As\'{\i}, $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$, $\forall k\in\mathbb N$ y por tanto,
+As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in\mathbb N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in \mathbb{N} \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
 \[
 \{f_{\sigma (n)} (r) \}_{n\in\mathbb N} \longrightarrow f(r), \ \forall r\in A\cap \mathbb Q^N.
 \]
-
 
 Notemos que en este paso no ha sido necesario utilizar la equicontinuidad.
 
@@ -715,12 +708,10 @@ Por ser $A$ compacto, todo recubrimiento de abiertos del conjunto $A$ admite un 
  
 Dado $x \in A$, por ser el anterior un subrecubrimiento finito de $A$, se tiene que\\ $\exists i \in \{1,\dots,k\}$ tal que $x \in B(r_i,\delta)$. Por tanto, $|x-r_i| <\delta$.
 
+\underline{Paso 3}. Concluímos probando que la sucesión $\{g_n\}$ converge uniformemente en $A$, donde $g_n := f_{\sigma(n)}$.
 
-\underline{Paso 3}. Concluímos probando que toda sucesión equicontinua que converja uniformemente en $\mathbb{Q}^N\cap A$ también converge uniformemente en $A$.
-
-Ahora probamos que $g_n:= f_{\sigma (n)} $ converge uniformemente en $A$.
-Sea $\varepsilon>0$ fijo. Por la equicontinuidad de $f_n$, 
-$\exists\delta>0$ t.q. 
+Sea $\epsilon>0$ fijo. Por la equicontinuidad de $f_n$, 
+$\exists\delta>0$ tal que
 \[
 \left.
 \begin{array}{c}
@@ -732,10 +723,10 @@ x,y\in A
  \implies |g_n(x)-g_n(y)|<\frac{\varepsilon}{3} , \ \forall n\in\mathbb N.
 \]
 
-Así, si para todo $x\in A$ consideramos el punto  $r_i\in A\cap \mathbb Q^N$ dado por el ejercicio, tendremos:
+Así, si para todo $x\in A$ consideramos el punto  $r_i\in A\cap \mathbb Q^N$ ($i \in \{1,\dots,k\}$) dado por el paso 2, tendremos:
 \[
 \begin{aligned}
-|g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(r_i)| + |g_n(r_i)-g_m(r_i)|+|g_m(r_i)-g_n(x)|
+|g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(r_i)| + |g_n(r_i)-g_m(r_i)|+|g_m(r_i)-g_m(x)|
 		\\
 		&<\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
 + \frac{\varepsilon}{3} .
@@ -744,17 +735,16 @@ Así, si para todo $x\in A$ consideramos el punto  $r_i\in A\cap \mathbb Q^N$ da
 
 
 
-Ya que cada sucesi\'on $\{ g_n(r_i)\}$ es convergente a $f(r_i)$ para cualquier $i\in \{ 1,\dots ,m\}$, cada una de estas $m$ sucesiones  es de Cauchy. En consecuencia, $\exists N\in\mathbb N$ ({dependiente solo de los puntos $r_i$ e independiente de $x$}) tal que
+Ya que cada sucesi\'on $\{ g_n(r_i)\}$ es convergente a $f(r_i)$ para cualquier $i\in \{ 1,\dots ,k\}$, cada una de estas $k$ sucesiones  es de Cauchy. En consecuencia, $\exists n_0\in\mathbb N$ ({dependiente solo de los puntos $r_i$ e independiente de $x$}) tal que
 \[
-n,m\geq N \implies |g_n(r_i)-g_m(r_i)| <\frac{\varepsilon}{3} , \ \forall i\in \{ 1,\dots ,m\}
+n,m\geq n_0 \implies |g_n(r_i)-g_m(r_i)| <\frac{\varepsilon}{3} , \ \forall i\in \{ 1,\dots ,k\}
 \]
 y as\'{\i}
 \[
-n,m\geq N \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
+n,m\geq n_0 \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
 + \frac{\varepsilon}{3} <\varepsilon , \ \ \forall x\in A
 \]
-es decir, $\{g_n\}$ es de Cauchy uniforme. Se concluye usando que $\mathcal{C}(A,\mathbb R^M )$ es completo.
-
+Puesto que en $\mathcal{C}(A,\mathbb R^M )$ la convergencia equivale a la convergencia uniforme, se concluye aplicando el \textit{Criterio de Cauchy} a la sucesión $\{g_n\} = \{f_{\sigma(n)}\}$.
 \end{proof}
 	
 \end{nth}
@@ -778,15 +768,17 @@ En resumen, hemos probado que para todo $\varepsilon >0$ existe $\delta >0$ tal 
 
 Es decir, B es equicontinuo y la prueba está terminada.
 
-    \boxed{\Leftarrow} Sea $\fn \subseteq B$. Es claro que $\fn$ es acotada y equicontinua, y aplicando el \textit{Teorema de Arzelá-Ascoli}, tenemos que $\exists \{f_{\sigma(n)}\} \to f \in \overline{B}$. Pero $B$ es cerrado, por lo que $\overline{B} = B$. Obtenemos así que de cualquier sucesión de puntos de $B$ es posible obtener una sucesión parcial convergente a un punto de $B$, por lo que $B$ es compacto.
+    \boxed{\Leftarrow} Sea $\fn \subseteq B$. Es claro que $\fn$ es acotada y equicontinua, y aplicando el \textit{Teorema de Arzelà-Ascoli}, tenemos que $\exists \{f_{\sigma(n)}\} \to f \in \overline{B}$. Pero $B$ es cerrado, por lo que $\overline{B} = B$. Obtenemos así que de cualquier sucesión de puntos de $B$ es posible obtener una sucesión parcial convergente a un punto de $B$, por lo que $B$ es compacto.
 \end{proof}
 	
 \end{ncor}
 
+\newpage
+
+
 %--------------------------------------------------------------------------------
 %   Series de funciones.
 %--------------------------------------------------------------------------------
-\newpage
 
 \section{Series de funciones}
 
@@ -802,9 +794,9 @@ Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathb
 Llamamos serie  de funciones $\sum_{n\geq 1} f_n$ al par formado por la sucesiones  $\{ f_n \}$ y $\{S_n\}$. Llamaremos a $f_n$ el t\'ermino general de la serie de funciones $\displaystyle\sum_{n\geq 1} f_n$.
 \end{ndef}
 
-\begin{ndef}[Convergencia de series de funciones]
-El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales $S_n$. Por tanto, tenemos de nuevo dos tipos de convergencia.
 
+El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales $S_n$. Por tanto, tenemos de nuevo dos tipos de convergencia.
+\begin{ndef}[Convergencia de series de funciones]
 Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subset \Omega$, diremos 
 $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\ c.p.\ en\ A.$$
 
@@ -821,7 +813,6 @@ S=\displaystyle \sum_{n=1}^{\infty} f_n \mbox{ puntualmente (resp. uniformemente
 	
 \begin{proof}
 Es claro que $\forall n \in \N,\ f_n = S_{n+1} - S_n$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que: 
-
 $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to \infty} \{S_{n + 1}(x)\} = S(x) - S(x) = 0\quad \forall x \in B$$
 \end{proof}
 \end{nprop}
@@ -860,7 +851,6 @@ $
 
 \begin{proof}
 Claramente $S_n \in \mathcal{C}^1(a,b)\ \forall n \in \mathbb{N}$, y además tenemos que $\{S_n\}\ c.p.$ en $(a,b)$, y $\{S'_n\}\ c.u.$ en $(a,b)$, pues la derivada de una suma finita es la suma de las derivadas. Bajo estas hipótesis, podemos aplicar a $\{S_n\}$ el \textit{Teorema \ref{5}}, obteniendo que $S = \sum_{n=1}^{\infty} f_n \in \mathcal{C}^1(a,b)$, y además:
-
 $$S' = \left( \sum_{n=1}^{\infty} f_n \right)' = \lim_{n \to \infty} \{S'_n\} = \sum_{n=1}^{\infty} f'_n$$
 \end{proof}
 \end{nth}
@@ -901,6 +891,11 @@ Veamos un ejemplo de aplicación de estos criterios.
 	
 Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibnitz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
 \end{ejemplo}
+
+
+%--------------------------------------------------------------------------------
+%   Series de potencias.
+%--------------------------------------------------------------------------------
 
 \subsection{Series de potencias}
 
@@ -976,6 +971,10 @@ $\displaystyle \int_a^x S(y)\, dy =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{
 \end{nth}
 
 
+%--------------------------------------------------------------------------------
+%   Funciones analíticas.
+%--------------------------------------------------------------------------------
+
 \subsection{Funciones analíticas}
 
 Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)\ y\ a \in I, \ \exists \{a_n\}\ tal\ que\ f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
@@ -1043,6 +1042,11 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \begin{ndef}[Función analítica] Decimos que una función $f \in \mathcal{C}^{\infty}(A)$ es analítica si se puede escribir como su suma de Taylor, es decir, si se cumple que: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(a)}{n!}(x-a)^n\ \ \forall x \in A$$
 \end{ndef}
+
+\newpage
+
+
+
 
 
 
