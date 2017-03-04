@@ -625,14 +625,14 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 \underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
 Recordemos que, puesto que $\mathbb Q$ es numerable:
 \[
-A\cap \mathbb Q^N \mbox{ es numerable } \implies
-\exists \phi :\mathbb N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
+A\cap \mathbb Q^N \mbox{ es numerable } \implies \exists N\subset \N \ \
+\exists \phi :N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
 \]
 Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $). Por otra parte, observemos lo siguiente:
 \[
 \{f_n \} \mbox{ equiacotada } \implies \exists M>0 \, : \, |f_n(x) |\leq M , \, \forall x\in A , \, \forall n\in \mathbb N.
 \]
-En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$, y por tanto podemos aplicar el \textit{Teorema de Bolzano-Weierstrass} para ver que $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hac\'{\i}a un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
+En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$, y por tanto podemos aplicar el \textit{Teorema de Bolzano-Weierstrass} para ver que $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hacia un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
 \[
 \{ f_{\sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
 \]
@@ -642,9 +642,9 @@ Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducim
 \{ f_{\sigma_2 \circ \sigma_1 (n)} (r_2) \} \longrightarrow f(r_2).
 \]
 
-Por inducci\'on, concluimos que
+Por inducci\'on, concluímos que
 $
-\forall k\in\mathbb N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
+\forall k\in N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
 $ tal que
 \[
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
@@ -685,7 +685,7 @@ donde hemos usado que $\sigma_n(k) \ge k \ \forall k \in \mathbb{N}$, y también
 \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } 
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
 \]
-As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in\mathbb N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in \mathbb{N} \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
+As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in \mathbb{N} \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
 \[
 \{f_{\sigma (n)} (r) \}_{n\in\mathbb N} \longrightarrow f(r), \ \forall r\in A\cap \mathbb Q^N.
 \]
