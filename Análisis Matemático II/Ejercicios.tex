@@ -337,6 +337,31 @@ Por tanto, $f$ está acotada.
 \end{proof}
 \end{ejer}
 
+\begin{ejer}
+\label{1}
+Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+
+\begin{nlist}
+	\item $f_k \geq 0$
+	\item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
+	\item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
+\end{nlist}
+
+Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
+
+\begin{proof}
+Como $f_k(x) \to 0\ \ \forall x \in A$, entonces:  $$\forall \ x \in A,\ \forall \epsilon >0\ \exists k_x \in \mathbb{N}:\ k\geq k_x \implies |f_k(x)| < \frac{\epsilon}{2}$$
+Por otro lado, como $f_{k_x}$ es continua en $A$, en particular $f_{k_x}$ es continua en $x$. Por tanto, $\exists U_x$ entorno abierto de $x$ en $A$ tal que $$|f_{k_x}(y) - f_{k_x}(x)| < \frac{\epsilon}{2}\ \ \forall y \in U_x$$
+Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,..,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},...,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
+
+Entonces, dado $k \ge k_0$ se tiene que $|f_k(x_i)| < \epsilon/2 \ \ \forall i = 1,\dots,n$. También se verifica, puesto que $f_{k{x_i}}$ es continua, que  $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ \ \ $\forall y \in U_{x_i}, \ \forall i = 1,\dots,n$.
+
+Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,..n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $f_{k_{x_i}}(x_i) < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
+
+En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,..., x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
+\end{proof}
+\end{ejer}
+
 \begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
 \begin{sol}
