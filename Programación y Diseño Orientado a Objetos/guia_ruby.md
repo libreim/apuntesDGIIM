@@ -24,13 +24,18 @@ con una pecularidad más, se va ejecutando **línea a línea** esto provoca que:
   en vez de eso se usa un **Rakefile**, que si te líabas mucho con el Makefile
   no te preocupes, la IDE está aquí para ayudarte, pero tenlo en cuenta.
 
-    5. Ten **mucho cuidado** si quieres separar una línea muy larga en varias,
+    5. Ten **mucho cuidado** cuando separes una sentencia muy larga en varias
+    líneas: la mayoría de veces Ruby detecta que "falta algo" en la línea y
+    pasa a la siguiente, lo detecta si hay expresiones con `and`, `or`,  ``,``
+    etc. En cualquier caso si quieres separar varias líneas
     puedes usar `\` para indicar que continua en la siguiente línea, por ejemplo:
 
-      ``` string = "line #1line #2line #3" ```
+      ```Ruby
+       string = "line #1line #2line #3"
+       ```
 
       Podemos ponerlo como:
-      ```
+      ```Ruby
          string = "line #1"\
          "line #2"\
          "line #3"
@@ -94,7 +99,7 @@ en caso de que no tenga parametros la función entonces no hace falta poner nada
 
  - Todas las clases deben tener un método `initialize` que sería lo que nosotros
  denominamos un **constructor** y es **ÚNICO**, luego veremos como crear varios
- constructores. Para evitar líos con Ruby, en PDOO vamos a darles un estado siempre a todas las variables en el `intialize` (aunque no es necesario realmente).
+ constructores. Para evitar líos con Ruby, en PDOO vamos a darles un estado siempre a todas las variables en el `intialize`.
 
  - Los datos miembro (**atributos**) siempre son privados y los métodos son públicos por defecto, **cuidado** porque que algo sea privado en Ruby tiene mucha fuerza:
 
@@ -111,3 +116,48 @@ en caso de que no tenga parametros la función entonces no hace falta poner nada
     - `attr_accesor :var` permite consultar/modificar el atributo var
     - `attr_reader :var` permite consultar el atributo var
     - `attr_writer :var` permite modificar el atributo var
+
+- Cabe añadir que la manera de hacer referencia a los atributos de la clase
+siempre se hace añadiendo una **arroba** antes, es decir: `@var`. Con esto nos
+evitamos que haya confusión con otras variables que se llamen igual.
+
+- Para **atributos estáticos**, es decir, atributos que son únicos de manera
+que todos los objetos de clase van a "compartir" ese atributo, si un objeto
+lo modifica entonces lo va a modificar para todos los demás objetos.
+
+- Para **métodos estáticos**, es decir, métodos que pueden ser llamados sin
+tener que crear un objeto (como es el `new`, que llamamos para crear un objeto)
+solo tenemos que poner `self.` antes del nombre del método, es decir:
+```Ruby
+  class MiClase
+
+    attr_accesor :var
+    attr_accesor :var_estatica
+
+    def initialize
+        @var = "hola"
+        @@var_estatica = 3
+    end
+
+    def self.metodo_estatico
+      puts "metodo_estatico"
+    end
+  end
+
+  MiClase.metodo_estatico     # Imprime "metodo_estatico"
+  miClase1 = MiClase.new      # Crea un objeto de clase MiClase
+  miClase2 = MiClase.new
+  miClase1.var_estatica = 1
+  puts miClase2.var_estatica  # Imprime "1"
+```
+
+- Como ya hemos visto cuando hacemos `new`, creamos un nuevo objeto, que lo que
+hace es llamar al método initialize donde tenemos que darle valor a los atributos.
+
+- Para ayudar a la legibilidad del código, aconsejo declarar los `attr_` al
+principio para tener claro los atributos de la clase, aunque luego todos van
+a aparecer en el `initialize` puedes ver rápidamente los atributos de la clase.
+
+# 3. Control de flujo
+
+  ## 1. If
