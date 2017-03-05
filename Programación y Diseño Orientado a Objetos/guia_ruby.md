@@ -158,6 +158,69 @@ hace es llamar al método initialize donde tenemos que darle valor a los atribut
 principio para tener claro los atributos de la clase, aunque luego todos van
 a aparecer en el `initialize` puedes ver rápidamente los atributos de la clase.
 
+- Dijimos antes que si solo podemos crear un único metodo `initialize` como
+podemos tener varios constructores. La idea es crear varios métodos estáticos
+`self.` que dentro llamen al `new.`, de esta manera tendremos el initialize
+que le paseremos todas los parámetros, y otros metodos (constructores) definiendo
+ya las variables que no pasamos. Además si queremos evitar que se use el
+constructor general `initialize` entonces tendremos que ponerle `private` para
+versiones de Ruby en 2.0, para anteriores pondremos `private_class_method :new`.
+
+  Ej. 1
+  ```Ruby
+    class MiClase
+
+      attr_reader :var1
+      attr_reader :var2
+      attr_reader :var3
+      attr_reader :var4
+
+      private def initialize(var1, var2, var3, var4)
+        @var1 = var1
+        @var2 = var2
+        @var3 = var3
+        @var4 = var4
+      end
+
+      def self.constructor1(var1, var2)
+        new(var1, var2, 3, 0)
+      end
+
+      def self.constructor2(var3, var4)
+        new([], 2, var3, var4)
+      end
+    end
+  ```
+
+  Ej. 2
+
+  ```Ruby
+    class MiClase
+
+      attr_reader :var1
+      attr_reader :var2
+      attr_reader :var3
+      attr_reader :var4
+
+      private_class_method :new
+
+      def initialize(var1, var2, var3, var4)
+        @var1 = var1
+        @var2 = var2
+        @var3 = var3
+        @var4 = var4
+      end
+
+      def self.constructor1(var1, var2)
+        new(var1, var2, 3, 0)
+      end
+
+      def self.constructor2(var3, var4)
+        new([], 2, var3, var4)
+      end
+    end
+  ```
+
 # 3. Control de flujo
 
   ## 1. If
