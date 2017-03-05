@@ -370,7 +370,9 @@ Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, 
 
 Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
 
-La demostración se puede consultar en el fichero \textit{Ejercicios}.
+\begin{proof}
+	Se puede consultar en \textit{[Ejercicios, p.4]}.
+\end{proof}
 \end{nth}
 
 La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas.
@@ -505,7 +507,7 @@ $\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
 
 %%% MEJORAR EL FORMATO PARA INDICAR DÓNDE SE ENCUENTRA EL EJERCICIO --------------
 
-	Puede consultarse en \textit{[Ejercicios.pdf, Ejercicio 1]}.
+	Puede consultarse en \textit{[Ejercicios, p.3]}.
 \end{proof}
 
 \end{nprop}
@@ -605,7 +607,7 @@ Por otro lado, $\|f_n\|_{\infty} = \text{máx} \ \{ |f_n(x)|:\ x \in [0,1]\} = r
 
 Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B}_{\infty}(0,r)$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B}_{\infty}(0,r)$. Esto prueba que $\overline{B}_{\infty}(0,r)$ no es compacta.
 
-Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluímos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios.pdf, Ejercicio 2]}.
+Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluímos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
 \end{ejemplo}
 
 \begin{ndef}[Sucesión acotada]
@@ -625,7 +627,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 \underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
 Recordemos que, puesto que $\mathbb Q$ es numerable:
 \[
-A\cap \mathbb Q^N \mbox{ es numerable } \implies \exists N\subset \N \ \
+A\cap \mathbb Q^N \mbox{ es numerable } \implies \exists N\subseteq \N: \ \
 \exists \phi :N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
 \]
 Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $). Por otra parte, observemos lo siguiente:
@@ -642,7 +644,7 @@ Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducim
 \{ f_{\sigma_2 \circ \sigma_1 (n)} (r_2) \} \longrightarrow f(r_2).
 \]
 
-Por inducci\'on, concluímos que
+Por inducci\'on, concluimos que
 $
 \forall k\in N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
 $ tal que
@@ -650,7 +652,7 @@ $ tal que
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
 \]
 
-Si definimos $\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1$, podemos visualizar cada una de las sucesiones anteriores, cada una en una fila:
+Si definimos $\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1$, podemos visualizar las sucesiones anteriores, cada una en una fila:
 \[
  \begin{array}{lllllll}
 {f_{\varphi_1 (1)}}& f_{\varphi_1 (2)} & f_{\varphi_1 (3)} & \dots &f_{\varphi_1 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_1
@@ -685,14 +687,14 @@ donde hemos usado que $\sigma_n(k) \ge k \ \forall k \in \mathbb{N}$, y también
 \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } 
 \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
 \]
-As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in \mathbb{N} \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
+As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in N \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
 \[
 \{f_{\sigma (n)} (r) \}_{n\in\mathbb N} \longrightarrow f(r), \ \forall r\in A\cap \mathbb Q^N.
 \]
 
 Notemos que en este paso no ha sido necesario utilizar la equicontinuidad.
 
-\underline{Paso 2.} Probaremos el siguiente resultado técnico: Dado $\delta>0$, $\exists r_1,...,r_k \in \mathbb Q^N \cap A$ tales que $\exists \ i=1,...,k : |x-r_i| < \delta \ \ \forall x \in A$.
+\underline{Paso 2.} Probaremos el siguiente resultado técnico: Dado $\delta>0$, $\exists r_1,...,r_k \in A \cap \mathbb Q^N$ tales que $\exists \ i=1,...,k : |x-r_i| < \delta \ \ \forall x \in A$.
 
 Por ser $A$ compacto, todo recubrimiento de abiertos del conjunto $A$ admite un subrecubrimiento finito del mismo. Definimos el conjunto de bolas abiertas $B=\{B(r,\delta) : r \in A\cap \mathbb Q^N \}$. Como $\mathbb{Q}$ es denso en $\mathbb{R}$, el conjunto $B$ recubre a $A$. Por tanto, como $A$ es compacto, existe un subrecubrimiento finito del mismo que también lo recubre. Es decir, $$\exists r_1,\dots, r_k \in A\cap \mathbb Q^N \ \text{tales que} \ A \subseteq \bigcup_{i=1}^k B(r_i,\delta)$$
  
