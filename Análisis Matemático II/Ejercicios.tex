@@ -309,6 +309,8 @@
 \includegraphics{by-nc-sa}  % Licencia.
 \end{center}
 \newpage
+\tableofcontents    % Índice
+\newpage
 
 \section{Sucesiones y series de funciones}
 
@@ -364,7 +366,7 @@ En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (dep
 
 \begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
-\begin{sol}
+\begin{proof}
 	Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
 	Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
 Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$). Entonces, se tiene que:
@@ -379,7 +381,7 @@ Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bola
 Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 
 Por tanto, $\varphi$ es un homeomorfismo.
-\end{sol}	
+\end{proof}	
 \end{ejer}
 
 \begin{ejer}
@@ -395,7 +397,7 @@ De otro lado, por ser $f_k$ uniformemente continua en $A$,
 $\exists \delta >0$ tal que $$\forall x,y \in A\ con\ |x-y| < \delta,\ se\ tiene\ |f_k(x)-f_k(y)| < \epsilon /3$$
 Juntando ambas informaciones: $$|f(x)-f(y)| \leq |f(x)-f_k(x)| + |f_k(x)-f_k(y)| + |f_k(y)-f(y)| < \epsilon$$
 Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ con\ |x-y|<\delta\ se\ verifica\ |f(x)-f(y)| < \epsilon$$ 
-Por tanto, $f$ es uniformemente continua.
+Por tanto, $f$ es uniformemente continua.\qed
 \end{sol}
 \end{ejer}
 
@@ -482,7 +484,7 @@ Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo qu
 \begin{ejer}
 	Probar que $\displaystyle \frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\ \ \forall x \in (-1,1)$
 	
-\begin{sol}
+\begin{proof}
 	Para probarlo, se podría estudiar la convergencia de la serie de potencias, o también desarrollar el término de la izquierda como su suma de Taylor, y ver que coinciden. Sin embargo, procederemos de otro modo.
 	
 	En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
@@ -490,7 +492,7 @@ Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo qu
 	Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \forall k \ge 0$. Por tanto, tenemos que la serie de Taylor en $a=0$ de $f(x)$ es: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
 	
 pues la serie converge dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
-\end{sol}
+\end{proof}
 \end{ejer}
 
 \begin{ejer}
