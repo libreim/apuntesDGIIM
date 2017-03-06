@@ -1037,9 +1037,157 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \newpage
 
+\section{Integral asociada a una medida}
 
+%%% Revisar Introducción
+% Libro recomendado a seguir: Rudin: Real and Complex Analysis
 
+Riemman realizó una definición de la integral que nos daba ciertos problemas cuando la función (de manera intuitiva) realizaba muchas oscilaciones, en el intervalo de integración y además no establecía ninguna relación entre la función y las particiones que se tomaban del intervalo de integración.
 
+Lebesgue por ello intentó cambiar esta definición para hacer esta integral más general e intentando establecer una relación entre el intervalo de integración y la función. El precio a pagar por esta generalización, es que necesitamos una \textbf{MEDIDA} de integración, que construiremos quizá al final de curso.
 
+Necesitaremos primero algunas nociones para comenzar a presentar la integral.
+
+\begin{ndef}[Espacio medible]
+ $(\Omega,\mathcal{A})$ es un espacio medible si
+ \begin{nlist}
+	\item $\emptyset \ne \Omega$ es un conjunto
+	\item $\mathcal{A}$ es una $\sigma-$álgebra, esto es: $\emptyset \ne A : \Omega \ A \in \mathcal{A} \ \forall A \in \mathcal{A}$ y además $\cup_{n=1}^\infty A_n \in \mathcal{A}, \forall \{A_n\} \subset \mathcal{A}$
+\end{nlist}
+A los elementos $A$ de $\mathcal{A}$ los llamaremos medibles.
+\end{ndef}
+
+\begin{nota}
+	Un ejemplo sencillo de $\sigma-$álgebra es: dado un $\Omega$ cualquiera, tomamos como $\sigma-$álgebra las partes de $\Omega$: $P(\Omega)= 2^\Omega$(es notación).
+\end{nota}
+
+\begin{ndef}[Función medible]
+	Si $(\Omega,\mathcal{A}) $ y $(\mathcal{X},\mathcal{B)}$ son espacios medibles y $f: \Omega \to X$ es una función, diremos que $f$ es medible si:
+	\[
+	f^{-1}(B) \in A, \ \forall B \in \mathcal{B}
+	\]
+	Es decir, la imagen inversa de un medible es otro medible.
+\end{ndef}
+
+\begin{nota}
+	Un caso particular importante es: Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. 
+\end{nota}
+Ejercicio: Definición de sigma-álgebra engendrada y probar cómo se forma y propiedades.
+
+Ejercicio: Si $(\Omega,\mathcal{A})$ es un espacio medible, $\mathcal{X}$ un espacio topológico con $B$ su $\sigma-$álgebra de Borel, entonces:
+\[
+f: \Omega \to X \textit{ es medible} \iff f^{-1}(G) \in \mathcal{A} \ \forall G \in \tau
+\]
+
+\begin{ndef}[Funciones medibles positivas]
+	Una función se llamará medible positiva si es medible y $f: \Omega \to \mathcal{X} = [0,\infty ]$
+\end{ndef}
+\begin{nota}
+	Vamos a tomar primero dos convenios:
+	\begin{enumerate}
+	\item $\infty + x = \infty \ \ \forall x \in [0,\infty]$
+	\item $\infty \cdot 0 = 0$
+\end{enumerate}
+\end{nota}
+\begin{nprop}
+	Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
+	\[
+	\text{f es medible} \iff \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0
+	\]
+	\[
+	\iff \{w \in \Omega : f(w) \leq \gamma \} \text{ es medible } \forall \gamma \geq 0
+	\]
+	\[
+	\iff \{w \in \Omega : f(w) > \gamma \} \text{ es medible } \forall \gamma \geq 0
+	\]
+	\[
+	\iff \{w \in \Omega : f(w) \geq \gamma \} \text{ es medible } \forall \gamma \geq 0
+	\]
+\end{nprop}
+\begin{proof}
+	La prueba se deja como ejercicio al lector.
+\end{proof}
+
+\begin{nprop}
+	Sea $(\Omega,\mathcal{A})$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
+	\[
+	g_1(w) =  sup\{f_n(w) : \ n \in \mathbb{N} \}
+	\]
+	\[
+	g_2(w) =  inf\{f_n(w) : \ n \in \mathbb{N} \}
+	\]
+	\[
+	g_3(w) = \limsup_{n\to \infty} \ f_n(w)
+	\]
+	\[
+	g_4(w) = \liminf_{n\to \infty}  \ f_n(w)
+	\]
+En particular, si $f_n \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medible.
+\end{nprop}
+
+\begin{ndef}[Funciones simples positivas]
+	Si $s: \Omega \to [0,\infty)$ es medible, entonces:
+	\[
+	\text{s es simple positiva} \iff s(\Omega) \text{ es un conjunto finito}
+	\]
+\end{ndef}
+\begin{ncor}
+	Si $s:\Omega \to [0,\infty)$ es simple con $s(\Omega) =  \{\alpha_1,\cdots, \alpha_m\}$, entonces para los conjuntos medibles:
+	\[
+	A_k:= \{w \in \Omega: s(\omega)= \alpha_k\} = s^{-1}([0,\alpha_k])\ s^{-1}([0,\alpha_k))
+	\]
+	se tiene $\Omega = \cup_{k=1}^m A_k$, $A_j \cap A_k = \emptyset \ \ (j \ne k)$ y además:
+	\[
+	s = \sum_{k=1}^m \alpha_k \mathcal{X}_{A_k}
+	\]
+	Donde $\mathcal{X}_{A_k}$ es la función característica de $A_k$. Esta función, en general, está definida como:
+	\[
+	X_A(\omega)= \begin{cases}
+	1 \ \omega \in A\\
+	0 \ \omega \notin A
+\end{cases}
+	\]
+Siendo esta la descomposición canónica, que es única si $\alpha_1 < \alpha_2 <  \cdots <\alpha_m$
+\end{ncor}
+
+Ejercicio: $B_1,B_2,\cdots,B_m \subset \Omega$ medibles y $\beta_1,\cdots,\beta_m\in[0,\infty)$, implica que $t:= \sum_{k=1}^m \beta_k \mathcal{X}_{B_k}$  es simple positiva. Para la realización del ejercicio, cuidado porque la definición dada NO  es la descomposición canónica de $t$.
+
+Ejercicio: si $s$ y $t$ son funciones simple y positivas y $\alpha \in \R^+$, entonces $s+t, \alpha s, \alpha t$ son simples positivas
+
+\begin{nth}[Teorema de Lebesgue]
+	Si $\Omega$ es un espacio medible y $f:\Omega \to [0,\infty]$ es una función, son equivalentes las siguientes condiciones:
+	\begin{nlist}
+	\item $f$ es medible
+	\item $\exists s_n : \Omega \to [0,\infty)$ simples positivas tal que $\{s_n\}$ es monótona creciente y convergente a $f$ puntualmente en $\Omega$
+\end{nlist}
+Además, si $f$ es medible y
+\[
+f(\omega) \leq M < \infty, \ \ \forall \omega in \Omega
+\]
+Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$
+\end{nth}
+\begin{proof}\hfill \\
+	\boxed{ii)\implies i)} \hfill \\
+	 Es consecuencia directa de la proposición ??\\
+	\boxed{i)\implies ii)} \hfill \\
+	Vamos a partir el dominio de $f$. 
+	\[
+	\begin{cases}
+	n\in \N \to F_n = \{\omega \in \Omega : f(\omega) \geq n\}\\
+	1 \leq k \leq n2^n \to E_{n,k} =\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\}
+\end{cases}
+	\]
+	
+	
+	Así, tenemos que:
+	\[
+	\Omega = F_n \cup \bigcup_{k=1}^{n2^n}E_{n,k}
+	\]
+	y que:
+	\[
+	s_n = n\mathcal{X}_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\mathcal{X}_{E_{n,k}}
+	\]
+	Ejercicio: Tomar la función de Dirichlet y buscar los $F_n$ y los $E_{n,k}$ en la construcción de Lebesgue.
+\end{proof}
 
 \end{document}
