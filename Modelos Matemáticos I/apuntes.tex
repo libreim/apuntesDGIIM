@@ -895,4 +895,102 @@ Entonces, existe un único punto de equilibrio en $f$
 	\item Inestable, si no es estable, esto es, $\exists \epsilon_0 > 0 : \forall \delta > 0\quad \exists x_0 \in I$ y $\exists n_0 \in \mathbb{N}$ tal que $|x_0 - \alpha| < \delta$ y $|x_{n_0} - \alpha| > \epsilon_0$.
 \end{itemize}
 \end{ndef}
+
+COMPROBAR SI FALTA O NO CONTENIDO.
+
+\begin{ndef}[Ciclo]
+	Un ciclo de orden $s$ o una órbita periódica de período $s$ o un $s-$ciclo del SDD$=\{I,f\}$ es un conjunto de puntos $\{\alpha_0, \cdots, \alpha_{s-1}\}\subset I$ distintos entre sí tales que:
+	\[
+	\alpha_1 = f(\alpha_0), \cdots, \alpha_{s-1}= f(\alpha_{s-2}), \alpha_0 = f(\alpha_{s-1})
+	\]
+	En ese caso, se llama ciclo
+\end{ndef}
+\begin{nota}
+	Si elegimos como dato inicial $x_0 = \alpha_0$, entonces la órbita correspondiente $\gamma(I,f,\alpha_0)$ tiene un comportamiento periódico:
+	\[
+	\{\alpha_0,\cdots,\alpha_{s-1},\alpha_0,\cdots\}
+	\]
+\end{nota}
+\begin{nota}
+	Una órbita de $\{I,f\}$ se dirá eventualmente periódica si ..
+	
+	COMPLETAR DE LAS DIAPOSITIVAS; DIAPOSITIVA 55
+\end{nota}
+
+\begin{nota}
+	Las órbitas periódicas de periodo mínimo $s$ (si existen), están constituidas por valores que resuelven la ecuación $\{x \in I : f^s(x) = x\}$ pero que no son soluciones de las $s-1$ ecuaciones $\{x \in I : f^h(x) = x\}$ con $h=1,2,\cdots, s-1$.
+	
+	
+	Si $\alpha_0 \in I, \ f^s(\alpha_0)= f(f(f\cdots(f(\alpha_0))\cdots)= f(f(f\cdots(f(\alpha_0))\cdots) =  \cdots = \alpha_0$
+	Donde en la primera vez se repite la $f$ $s$ veces, la segunda $s-1$ veces y así sucesivamente. De esta forma, $\alpha_0,\cdots,\alpha_{s-1}$ son puntos  de equilibrio de $f^s$ pero NO son puntos de equilibrio de $f^h$ con $h = 1,\cdots, s-1$.
+\end{nota}
+
+%%% Copiar ejemplos de las diapositivas
+
+Puesto que los puntos de una órbita periódica de un periodo $s$ son puntos de equilibrio de la función $f^s(x)$ para estudiar la estabilidad de una órbita periódica basta estudiar la estabilidad ed los puntos de equilibrio de la función $f^s(x)$:
+\begin{nprop}
+	Supongamos que $f:I \to I, f \in \mathcal{C}^1(I)$ y que $\{\alpha_0,\cdots, \alpha_{s-1}\}$ es un $s-$ciclo para el SDD $\{I,f\}$. Entonces:
+	\begin{nlist}
+	\item Si $|f'(\alpha_0)\cdots f'(\alpha_{s-1})|<1$ el ciclo es asintóticamente estable
+	\item Si $|f'(\alpha_0)\cdots f'(\alpha_{s-1})|>1$ el ciclo es inestable.
+\end{nlist}
+\end{nprop}
+
+\begin{ejemplo}
+	La dinámica de una población de peces sin agentes externos y adecuadamente normalizada viene descrita por la ecuación:
+	\[
+	x_{k+1}= \dfrac{3}{2}x_k -\dfrac{1}{2} x_k^2
+	\]
+	El término $\dfrac{3}{2}x_k$ representa el crecimiento y el término $\dfrac{1}{2} x_k^2$ representa la competencia intraespecífica.
+	Esta ecuación que tenemos es una ecuación en diferencias no lineal. Además, es un SDD por su forma pero no lo trataremos como tal.
+	Se proponen dos estrategias de pesca:
+	\begin{itemize}
+	\item Pescar una cantidad fija $b$ de peces al año, con lo que la ecuación sería:
+	\[
+	x_{k+1}= \dfrac{3}{2}x_k -\dfrac{1}{2} x_k^2 -b
+	\]
+	\item Pescar una fracción $r\in(0,1)$ del total de peces en cada año, con lo que la ecuación quedaría:
+	\[
+	x_{k+1}= \dfrac{3}{2}x_k -\dfrac{1}{2} x_k^2 -rx_k
+	\]
+	
+\end{itemize}
+Vamos a ver las soluciones de ambas para ver cuál es más estable:
+\begin{enumerate}
+	\item Estudiamos la primera. Tenemos la ecuación $f(x) = \dfrac{3}{2}x -\dfrac{1}{2} x^2 -b $, una parábola.
+	Buscamos entonces los puntos de equilibrio, soluciones de la ecuación $x=f(x)$. Miramos la ecuación por ello:
+	\[
+	x= \dfrac{3}{2}x -\dfrac{1}{2} x^2 \implies x^2 -x - 2b = 0\implies x= \frac{1\pm \sqrt{1-4*2b}}{2}= \frac{1\pm \sqrt{1-8b}}{2}
+	\]
+	Entonces, habrá puntos de equilibrio si el discriminante es positivo, es decir $1-8b \geq 0 \implies b \leq \dfrac{1}{8}$. Volvemos ahora a la ecuación en diferencias no lineal.
+	Ahora, los puntos de equilibrio serán $\alpha_0 = \frac{1 + \sqrt{1-8b}}{2}$ y $\alpha_1 = \frac{1- \sqrt{1-8b}}{2}$. Estudiamos ahora la estabilidad. Si $f(x) = \dfrac{3}{2}x-\dfrac{1}{2}x^2 -b$, tenemos que :
+	\[
+	f'(x)= \dfrac{3}{2}-x \implies \begin{cases}
+	f'(\alpha_0) = f'(\frac{1 + \sqrt{1-8b}}{2}) = 1- \dfrac{\sqrt{1-8b}}{2} <1\\
+	f'(\alpha_1) = f'(\frac{1 - \sqrt{1-8b}}{2})=1+ \dfrac{\sqrt{1-8b}}{2} > 1
+\end{cases}
+	\]
+	Por lo que tenemos que en el primer caso, como $f'(\alpha_0)$ es menor que 1, el resultado es Localmente asintóticamente estable y el segundo caso, como $f'(\alpha_1)$ es mayor que 1, es inestable.
+	
+	Por tanto, tenemos que tomar un $x_0$. Sabemos que $\alpha_1 < x_0$ pues de lo contrario, la población de peces se extinguiría. Así:
+	\[
+	\frac{1 - \sqrt{1-8b}}{2} < x_0 \implies b < \dfrac{1}{2}x_0 -(1-x_0)
+	\]
+	De esta forma, para llegar al punto de equilibrio A.E., hay que tomar $0 < b < min\{\ \dfrac{1}{8},\ \dfrac{1}{2}x_0 -(1-x_0) \}$
+	
+	Ahora, si $b= \dfrac{1}{8}$, entonces $\alpha_0 = \alpha_1 = \dfrac{1}{2}$ y $f'(\dfrac{1}{2}) = 1$ y $f''(x) = -1 < 0 \implies \alpha= \dfrac{1}{2}$ es inestable
+	
+	Por tanto, si tomáramos $x_0 > \dfrac{1}{2} \implies x_k$ converge hacia $\dfrac{1}{2} = \alpha$.
+	Si tomáramos $x_0 < \dfrac{1}{2} \implies x_k$ diverge negativamente.
+	
+	\item Ahora tenemos $x_{k+1}= \dfrac{3}{2}x_k - \dfrac{1}{2} x_k^2 -rx_k \implies x_{k+1} = (\dfrac{3}{2}-r)x_k - \dfrac{1}{2}x^2$.
+	Ahora, volvemos a sacar los puntos de equilibrio:
+	\[
+	x = (\dfrac{3}{2}-r)x_k - \dfrac{1}{2}x^2 \implies \begin{cases}
+	\alpha_0 = 0
+	\alpha_1 = 1-2r
+\end{cases}
+	\]
+\end{enumerate}
+\end{ejemplo}
 \end{document}
