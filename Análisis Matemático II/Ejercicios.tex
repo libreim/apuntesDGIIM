@@ -489,9 +489,9 @@ Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo qu
 	
 	En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
 	
-	Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \forall k \ge 0$. Por tanto, tenemos que la serie de Taylor en $a=0$ de $f(x)$ es: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
+	Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \ \forall k \ge 0$. Tenemos entonces que, tomando $a=0$ en el \textit{Teorema de Taylor} aplicado a $f(x)$: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
 	
-pues la serie converge dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
+pues, en este caso, el resto de Taylor tiende a $0$ dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
 \end{proof}
 \end{ejer}
 
