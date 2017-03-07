@@ -414,5 +414,56 @@ Estudiaremos esto a largo plazo. Tenemos que $-1 \leq 1-p-q < 1$. Tenemos que $|
 	Esto tiende a la solución constante $x_* = \dfrac{K}{0.1}$
 \end{enumerate}
 
-\section{MACHASGASANALASTAMAGA}
+\subsection{Ejercicio 12}
+La ecuación logística de Pielou es una ecuación en diferencias no lineal de la forma:
+\[
+x_{n+1}= \frac{\alpha x_n}{1+ \beta x_n} \quad \quad \alpha > 1 \quad \beta > 0
+\]
+
+\begin{enumerate}
+	\item Demuestre que posee un punto de equilibrio positivo.
+	Tenemos que buscar un $\bar{\alpha}\in \R$ tal que $\bar{\alpha} = f(\bar{\alpha})$ donde  $f(x)= \frac{a x}{1+bx}$. Por tanto, buscamos la solución de:
+	\[
+	\alpha = \frac{a x}{1+bx} \implies b\alpha^2 - a\alpha + \alpha = 0 \implies \alpha[b\alpha +(1-a)]=0 \implies \alpha = 0
+	\]
+	Es un punto de equilibrio, así que tenemos que:
+	\[
+	b\alpha +(1-a) = 0 \implies \alpha =  \frac{a-1}{b} > 0
+	\]
+	
+	\item Tomando $\alpha = 2$ y $\beta = 1$, probar que el punto de equilibrio es Asintóticamente Estable. Para ello , trabajaremos ahora en $\R^+$.
+	Tenemos que $f(x) = \dfrac{2x}{1+x} \in \mathcal{C}^\infty$ y que su derivada es:
+	\[
+	f'(x) = \frac{2(1+x)-2x}{(1+x)^2} = \frac{2}{(1+x)^2}\implies |f'(1)|= \frac{1}{2} < 1
+	\]
+	Por lo que sí es A.E.
+	
+	\item Demostrar que el cambio de variable $x_n = \dfrac{1}{z_n}$ trasnforma esa ecuación en una ecuación lineal del primer orden.
+	Tenemos ahora por tanto:
+	\[
+	\frac{1}{z_{n+1}} =  \frac{a \dfrac{1}{z_n}}{1+b \dfrac{1}{z_n}} \implies z_{n+1}= \dfrac{1}{a}z_n + \dfrac{b}{a} \quad (2)
+	\]
+	Que es una ecuación lineal de primer orden
+	
+	\item A partir del resultado anterior, determinar el comportamiento asintótico de las soluciones de la ecuación logística.
+	
+	Esta es una ecuación en diferencias lineal no homogénea, por tanto tendremos una solución $z_n = z_* +y_n$ donde $z_*$ es la solución constante y $y_n$ es la solución de la homogénea asociada.
+	
+	Tenemos que $z_*=\frac{b/a}{1- (1/a)} = \frac{b}{a-1}> 0$. Ahora, calculamos la ecuación homogénea asociada a $(2)$, calculado en el apartado anterior:
+	\[
+	y_n = \mathcal{C} + (\dfrac{1}{a})^n
+	\]
+	Ya tenemos la solución, por tanto la solucion de $z_n$ es:
+	\[
+	z_n =  \dfrac{b}{a-1} + \mathcal{C}(\dfrac{1}{a})^n \quad n \geq 0
+	\]
+	El comportamiento asintótico de esta es convergente a $\dfrac{b}{a-1}$ pues , como $a > 1$, entonces $(\frac{1}{a})^n \to 0$
+	
+	Ahora, volviendo al cambio de variable, como $z_n$ tiene límite distinto de cero, entonces:
+	\[
+	\lim_{n\to \infty} x_n = \frac{1}{\lim_{n\to \infty}z_n} = \frac{1}{b/(a-1)}= \frac{a-1}{b}
+	\]
+	Que es el punto de equilibrio de $x_n$, luego $\alpha= \frac{a-1}{b}$ es Asintóticamente Estable.
+	
+	\end{enumerate}
 \end{document}

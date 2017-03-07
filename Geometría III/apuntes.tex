@@ -752,5 +752,68 @@ Se dan las siguientes propiedades:
 
 %%% Comprobar lo que falta gg mbre
 
+\subsection{Circunferencias}
+
+\begin{ndef}[Circunferencia]
+	Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C = C(centro,radio)$
+\end{ndef}
+
+\begin{nprop}
+	Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
+	\begin{enumerate}
+	\item $C_1 = C(A_1,p_1)$
+	\item $C_2 = C(A_2,p_2)$
+\end{enumerate}
+Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
+En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
+\end{nprop}
+
+%% Formalizar dilatación
+
+
+\begin{ndef}
+	Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \bar{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$
+\end{ndef}
+
+\begin{nprop}
+	Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
+\end{nprop}
+
+\begin{ndef}[Ángulo recto]
+	Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
+\end{ndef}
+\begin{nprop}
+	El lugar geométrico desde el que dos puntos dados del plano se ven bajo un ángulo recto es una circunferencia.
+\end{nprop}
+
+\begin{nth}[La circunferencia de los 9 puntos de un triángulo]
+	Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
+	\begin{itemize}
+	\item $A',B',C'$ los puntos medios de los lados
+	\item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$
+	\item $A_3,B_3,C_3$ los tres pies de las alturas.
+\end{itemize}
+\end{nth}
+\begin{proof}
+	Tenemos que $B'A'B_2A_2$ es un rectángulo
+	%%%COMPLETAR DEMOSTRACIÓN.
+\end{proof}
+
+\subsection{Rectángulos}
+\begin{ndef}
+	Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
+\end{ndef}
+\begin{nprop}
+	Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
+\end{nprop}
+
+\begin{nprop}
+	Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
+\end{nprop}
+
+\begin{nprop}
+	Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+\end{nprop}
+
 
 \end{document}

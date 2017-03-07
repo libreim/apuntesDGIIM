@@ -987,9 +987,31 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 	Ahora, volvemos a sacar los puntos de equilibrio:
 	\[
 	x = (\dfrac{3}{2}-r)x_k - \dfrac{1}{2}x^2 \implies \begin{cases}
-	\alpha_0 = 0
+	\alpha_0 = 0\\
 	\alpha_1 = 1-2r
 \end{cases}
+	\]
+	Entonces, tenemos que estudiar ahora la estabilidad. Sabemos que $f'(0) = \dfrac{3}{2} -r$. También $f'(1-2r) = \dfrac{1}{2} + r$
+	
+	Ahora, veremos si para $\alpha_0 = 0$ es Localmente Asintóticamente estable. tenemos que:
+	\[
+	|f'(0)|<1 \iff -1 < \dfrac{3}{2}-r < 1 \iff \dfrac{1}{2} < r \dfrac{5}{2}
+	\]
+	Pero $r \in (0,1)$, luego si $\dfrac{1}{2} < r < 1$ entonces $\alpha_0 = 0$ es L.A.E. Del mismo modo, si $0 < r < \dfrac{1}{2}$, entonces $\alpha_0 = 0$ es inestable.
+	
+	Hacemos lo mismo para $\alpha_1 = 1-2r$.  Tenemos que el sistema será L.A.E si:
+	\[
+	|f'(1-2r)| < 1 \iff |\dfrac{1}{2}+r| < 1 \iff \dfrac{-3}{2} < r \dfrac{1}{2}
+	\]
+	Por tanto, tenemos que si $0 < r < \dfrac{1}{2}$ entonces $\alpha_1$ es L.A.E. y si $r> \dfrac{1}{2}$ entonces $\alpha_1$ es inestable.
+	
+	Ahora,¿ y si $r= \dfrac{1}{2}$?. En ese caso, $\alpha_0 = 0$ y $\alpha_1 = 0$, por lo que solo hay un punto de equilibrio y
+	\[
+	|f'(0)|= \dfrac{3}{2}-r = 1
+	\]
+	y que:
+	\[
+	f''(x) =  -1 \implies \text{inestable}
 	\]
 \end{enumerate}
 \end{ejemplo}
