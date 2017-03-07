@@ -101,7 +101,7 @@ una única instrucción o con varias y si son capaces de trabajar con un
 #### SISD
 Single Instruction, Single Data.
 Existe un único flujo de datos y una única instrucción a ejecutar en
-cada instante
+cada instante. Corresponde a los computadores uni-procesador.
 **<!- (algo de único flujo de datos y una única instrucción, completar) -->**
 
 
@@ -110,7 +110,7 @@ Single Instruction, Multiple Data.
 La instrucción que se codifica va a cada uno de los procesadores (es
 la misma para todos), donde se le indica de dónde tiene que captar los
 datos, hace tantas operaciones como unidades de procesamiento se
-tengan.
+tengan. Por tanto, aprovecha el paralelismo de datos.
 
 
 #### MISD
@@ -119,13 +119,15 @@ No es un sistema que se implemente en la realidad, cada unidad de
 control estaría conectada con una única unidad de procesamiento con
 cada flujo de datos.
 
+
 #### MIMD
 Multiple Instruction, Multiple Data.
-Múltiples flujos de datos que permiten realizar múltiples
+Múltiples flujos de datos que permiten realizar múltiples instrucciones. Aprovecha, además del paralelismo de datos, el paralelismo funcional.
 **<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
 
+
 ### Sistema de memoria
-Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los multiprocesadores todos los procesadores comparten el mismo espacio de direcciones. El programador no necesita conocer dónde están almacenados los datos. En los multicomputadores cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red.
+Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos.
 
 **<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
 
