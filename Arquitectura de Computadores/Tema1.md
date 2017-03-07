@@ -69,7 +69,7 @@ aplicaciones en un sistema compuesto por múltiples cores/procesadores
 que es visto externamente como una unidad autónoma.
 
 Mientras que la **computación distribuida** estudia los aspectos del
-desarollo y ejecución de aplicaciones en un sistema distribuido, es
+desarrollo y ejecución de aplicaciones en un sistema distribuido, es
 decir, en una colección de recursos autónomos situados en distintas
 localizaciones físicas.
 
