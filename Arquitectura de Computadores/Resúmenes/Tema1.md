@@ -43,6 +43,7 @@ Podemos clasificar la dependencia de datos en tres tipos, según la secuencia de
 El caso *RAR (Read After Read)* no presenta dependencia, ya que simplemente se consulta el dato, sin modificarlo en ningún caso.
 
 ## Paralelismo explícito
+
 Un computador puede aprovechar el paralelismo entre diferentes entidades de forma explícita, a saber:
 
 - Instrucciones.
@@ -99,6 +100,7 @@ una única instrucción o con varias y si son capaces de trabajar con un
 único flujo de datos o con varios.
 
 #### SISD
+
 Single Instruction, Single Data.
 Existe un único flujo de datos y una única instrucción a ejecutar en
 cada instante. Corresponde a los computadores uni-procesador.
@@ -106,6 +108,7 @@ cada instante. Corresponde a los computadores uni-procesador.
 
 
 #### SIMD
+
 Single Instruction, Multiple Data.
 La instrucción que se codifica va a cada uno de los procesadores (es
 la misma para todos), donde se le indica de dónde tiene que captar los
@@ -114,6 +117,7 @@ tengan. Por tanto, aprovecha el paralelismo de datos.
 
 
 #### MISD
+
 Multiple Instruction, Single Data.
 No es un sistema que se implemente en la realidad, cada unidad de
 control estaría conectada con una única unidad de procesamiento con
@@ -121,48 +125,51 @@ cada flujo de datos.
 
 
 #### MIMD
+
 Multiple Instruction, Multiple Data.
 Múltiples flujos de datos que permiten realizar múltiples instrucciones. Aprovecha, además del paralelismo de datos, el paralelismo funcional.
 **<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
 
 
 ### Sistema de memoria
+
 Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores.
 
 En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. Tienen mayor latencia y son poco escalables. Tienen comunicación implícita mediante variables compartidas y los datos no duplicados están en memoria principal. Es necesario implementar primitivas de sincronización, no es necesaria la distribución de código y datos entre procesadores y su programación es mas sencilla.
 
-En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos. Tienen menor latencia y son escalables. Tienen comunicación explícita mediante software para paso de mensajes y los datos duplicados están en memoria principal. Su sincronización es mediante un software específico de comunicación, es necesaria la distribución de código y datos entre procesadores y su programación es más díficil
+En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos. Tienen menor latencia y son escalables. Tienen comunicación explícita mediante software para paso de mensajes y los datos duplicados están en memoria principal. Su sincronización es mediante un software específico de comunicación, es necesaria la distribución de código y datos entre procesadores y su programación es más difícil.
 
-####Comunicación uno‐a‐uno en un multiprocesador
+#### Comunicación uno-a-uno en un multiprocesador
+
 El nodo fuente manda a memoria el dato, se procesa y se genera una respuesta que es devuelta al nodo fuente. Después el nodo destino realiza la petición del dato a memoria, se procesa y la memoria devuelve el dato a el flujo destino.  
 Se debe garantizar que el flujo de control *consumidor* del dato lea la variable compartida cuando el *productor* haya escrito en la variable el dato.
 
-####Comunicación uno‐a‐uno en un multicomputador
+#### Comunicación uno-a-uno en un multicomputador
 
 El nodo fuente copia los datos que desea enviar a un buffer y mediante la red de interconexión los hace llegar a el nodo destino que está en ejecución y a la espera de que le lleguen los datos. Cuando llegan los datos se cargan en memoria de usuario y continua con la ejecución.
 
-####Incremento de escalabilidad en multiprocesadores
+#### Incremento de escalabilidad en multiprocesadores
 
-Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor ancho de banda que un bus y distribuir físicamente los módulos de memoria entre los procesadores compartiendo el  espacio de direcciones
+Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor ancho de banda que un bus y distribuir físicamente los módulos de memoria entre los procesadores compartiendo el  espacio de direcciones.
 
-####Clasificación completa de computadores según el sistema de memoria
+#### Clasificación completa de computadores según el sistema de memoria
 
-![Clasificación](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Sources/Clasificacion.png "Clasificación completa de computadores según el sistema de memoria")
+![Clasificación](./Arquitectura de Computadores/Sources/Clasificacion.png "Clasificación completa de computadores según el sistema de memoria")
 
-####Arquitecturas con DLP, ILP y TLP
+#### Arquitecturas con DLP, ILP y TLP
 *(Thread=Flujo de control)*
 
-![Arquitecturas](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Sources/Arquitecturas.png "Arquitecturas con DLP, ILP y TLP")
+![Arquitecturas](./Arquitectura de Computadores/Sources/Arquitecturas.png "Arquitecturas con DLP, ILP y TLP")
 
 
 # Lección 3. Evaluación de prestaciones de una arquitectura
-##Tiempos de CPU
+## Tiempos de CPU
 
-###Tiempo de CPU
+### Tiempo de CPU
 
 Tcpu = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
 
-###Ciclos por Instrucción
+### Ciclos por Instrucción
 
 CPI = Ciclos/NI
 
@@ -184,7 +191,7 @@ instantes instantes en que el procesador procesador puede emitir instrucciones i
 *IPE:* Instrucciones que pueden emitirse (para empezar su
 ejecución) cada vez que se produce dicha emisión
 
-###MIPS
+### MIPS
 
 MIPS: Millones de intrucciones por segundo
 
@@ -193,7 +200,7 @@ MIPS=NI/(Tcpu * 10^6)=Frecuencia/(CPI * 10^6)
 
 Depende del repertorio de instrucciones. Puede variar con el programa. Puede variar inversamente con las prestaciones (mayor valor de MIPS corresponde a peores prestaciones)
 
-###MFLOPS
+### MFLOPS
 
 MFLOPS: Millones  de operaciones en coma flotante por segundo
 
@@ -201,20 +208,20 @@ MFLOPS= Operaciones en coma flotante/(Tcpu * 10^6)
 
 No es una medida adecuada para todos los programas. El conjunto de operaciones en coma flotante no es constante en máquinas diferentes y la potencia de las operaciones en coma flotante no es igual para todas las operaciones
 
-##Conjunto de programas de prueba (Benchmark)
-###Tipos
+## Conjunto de programas de prueba (Benchmark)
+### Tipos
 + De bajo nivel o microbenchmark
 + Kernels
 + Sintéticos
 + Programas reales
 + Aplicaciones diseñadas
 
-##Ganancia en prestaciones
-###Speed-Up
+## Ganancia en prestaciones
+### Speed-Up
 
 El incremento de velocidad que se consigue en la nueva situación con
 respecto a la previa (máquina base) se expresa mediante la ganancia de
-velocidad o speed‐up:
+velocidad o speed-up:
 
 **Sp = Vp / V1 = T1 / Tp**
 
@@ -223,11 +230,11 @@ Vp Velocidad de la máquina mejorada (un factor p en uno de sus componentes)
 T1 Tiempo de ejecución en la máquina base  
 Tp Tiempo de ejecución en la máquina mejorada
 
-###Ley de Amdahl
+### Ley de Amdahl
 La mejora de velocidad, *S*, que se puede obtener cuando se mejora
 un recurso de una máquina en un factor *p* está limitada por:
 
-S ≤ p/(1+f(p-1))
+$S \leq  p/(1+f(p-1))$
 
 donde f es la fraccion del tiempo de ejecucion en la máquina sin la mejoradurante el que no se puede aplicar esa mejora.
 
@@ -236,7 +243,7 @@ Lo vemos con un ejemplo:
 Si un programa programa pasa un 25% de su tiempo de ejecución  en una máquina
 realizando instrucciones de coma flotante, y se mejora la máquina haciendo que
 estas instrucciones se ejecuten en la mitad de tiempo, entonces p=2, f=0.75  y
-S≤2/(1+0 75)=1.14
+$S \leq 2/(1+0 75)=1.14$
 
 ***¡Hay que mejorar el caso más frecuente (lo que más se usa)!***
 
