@@ -143,14 +143,78 @@ Tcpu = Ciclos*Tciclo = Ciclos/Frecuencia de reloj
 CPI = Ciclos/NI
 
 Donde NI es el nº de instrucciones y donde los ciclos son la suma de los CPI de cada instruccion.
-Así vemos que:
+Así vemos que hay varias formas de calcular el tiempo de CPU:
 
-Tcpu = NI * CPI * Tciclo
+**Tcpu = NI * (CPE / IPE) * T1ciclo**
 
-Tcpu = NI * (CPE / IPE) * Tciclo
+**Tcpu = NI * CPI * Tºciclo**
+
+**Tcpu = (Nºoperaciones/OPI) * CPI * Tºciclo**
+
+
+*OPI:* Número de operaciones que puede codificar una instruccion
 
 *CPE:* Número mínimo de ciclos transcurridos entre los
 instantes instantes en que el procesador procesador puede emitir instrucciones instrucciones
 
 *IPE:* Instrucciones que pueden emitirse (para empezar su
 ejecución) cada vez que se produce dicha emisión
+
+###MIPS
+
+MIPS: Millones de intrucciones por segundo
+
+
+MIPS=NI/(Tcpu * 10^6)=Frecuencia/(CPI * 10^6)
+
+Depende del repertorio de instrucciones. Puede variar con el programa. Puede variar inversamente con las prestaciones (mayor valor de MIPS corresponde a peores prestaciones)
+
+###MFLOPS
+
+MFLOPS: Millones  de operaciones en coma flotante por segundo
+
+MFLOPS= Operaciones en coma flotante/(Tcpu * 10^6)
+
+No es una medida adecuada para todos los programas. El conjunto de operaciones en coma flotante no es constante en máquinas diferentes y la potencia de las operaciones en coma flotante no es igual para todas las operaciones
+
+##Conjunto de programas de prueba (Benchmark)
+###Tipos
++ De bajo nivel o microbenchmark
++ Kernels
++ Sintéticos
++ Programas reales
++ Aplicaciones diseñadas
+
+##Ganancia en prestaciones
+###Speed-Up
+
+El incremento de velocidad que se consigue en la nueva situación con
+respecto a la previa (máquina base) se expresa mediante la ganancia de
+velocidad o speed‐up:
+
+**Sp = Vp / V1 = T1 / Tp**
+
+V1 Velocidad de la máquina base  
+Vp Velocidad de la máquina mejorada (un factor p en uno de sus componentes)  
+T1 Tiempo de ejecución en la máquina base  
+Tp Tiempo de ejecución en la máquina mejorada
+
+###Ley de Amdahl
+La mejora de velocidad, *S*, que se puede obtener cuando se mejora
+un recurso de una máquina en un factor *p* está limitada por:
+
+S ≤ p/(1+f(p-1))
+
+donde f es la fraccion del tiempo de ejecucion en la máquina sin la mejoradurante el que no se puede aplicar esa mejora.
+
+Lo vemos con un ejemplo:
+
+Si un programa programa pasa un 25% de su tiempo de ejecución  en una máquina
+realizando instrucciones de coma flotante, y se mejora la máquina haciendo que
+estas instrucciones se ejecuten en la mitad de tiempo, entonces p=2, f=0.75  y
+S≤2/(1+0 75)=1.14
+
+***¡Hay que mejorar el caso más frecuente (lo que más se usa)!***
+
+*Ley enunciada por Amdahl en relación con la eficacia de los computadores paralelos: dado que en un programa hay
+código secuencial que no puede paralelizarse, los procesadores no se podrían utilizar eficazmente*
