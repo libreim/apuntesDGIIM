@@ -141,12 +141,12 @@ En los **multicomputadores** cada procesador tiene su propio espacio de direccio
 
 #### Comunicación uno-a-uno en un multiprocesador
 
-El nodo fuente manda a memoria el dato, se procesa y se genera una respuesta que es devuelta al nodo fuente. Después el nodo destino realiza la petición del dato a memoria, se procesa y la memoria devuelve el dato a el flujo destino.  
+El nodo fuente manda a memoria el dato, se procesa y se genera una respuesta que es devuelta al nodo fuente. Después, el nodo destino realiza la petición del dato a memoria, se procesa y la memoria devuelve el dato al flujo destino.
 Se debe garantizar que el flujo de control *consumidor* del dato lea la variable compartida cuando el *productor* haya escrito en la variable el dato.
 
 #### Comunicación uno-a-uno en un multicomputador
 
-El nodo fuente copia los datos que desea enviar a un buffer y mediante la red de interconexión los hace llegar a el nodo destino que está en ejecución y a la espera de que le lleguen los datos. Cuando llegan los datos se cargan en memoria de usuario y continua con la ejecución.
+El nodo fuente copia los datos que desea enviar a un buffer y mediante la red de interconexión los hace llegar al nodo destino que está en ejecución a la espera de que le lleguen los datos. Cuando llegan, los datos se cargan en memoria de usuario y continua con la ejecución.
 
 #### Incremento de escalabilidad en multiprocesadores
 
@@ -225,9 +225,9 @@ velocidad o speed-up:
 
 **Sp = Vp / V1 = T1 / Tp**
 
-V1 Velocidad de la máquina base  
-Vp Velocidad de la máquina mejorada (un factor p en uno de sus componentes)  
-T1 Tiempo de ejecución en la máquina base  
+V1 Velocidad de la máquina base
+Vp Velocidad de la máquina mejorada (un factor p en uno de sus componentes)
+T1 Tiempo de ejecución en la máquina base
 Tp Tiempo de ejecución en la máquina mejorada
 
 ### Ley de Amdahl
@@ -236,7 +236,7 @@ un recurso de una máquina en un factor *p* está limitada por:
 
 $S \leq  p/(1+f(p-1))$
 
-donde f es la fraccion del tiempo de ejecucion en la máquina sin la mejoradurante el que no se puede aplicar esa mejora.
+donde f es la fracción del tiempo de ejecución en la máquina sin la mejora durante el que no se puede aplicar esa mejora.
 
 Lo vemos con un ejemplo:
 
