@@ -50,7 +50,7 @@ task :analisis2 => (pdf_for FileList["Análisis Matemático II/*.tex"])
 task :geometria3 => (pdf_for FileList["Geometría III/*.tex"])
 task :modelos1 => (pdf_for FileList["Modelos Matemáticos I/*.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
-task :acomputadores => (pdf_for FileList["Arquitectura de Computadores/Tema*.md"])
+task :acomputadores => (pdf_for FileList["Arquitectura de Computadores/Resúmenes/Tema*.md"])
 task :pdoo => (pdf_for FileList["Programación y Diseño Orientado a Objetos/guia_ruby.md"])
 
 # Generating pdfs from Latex sources
