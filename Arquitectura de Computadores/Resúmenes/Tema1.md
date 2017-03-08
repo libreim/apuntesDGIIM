@@ -149,6 +149,11 @@ Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor 
 
 ![Clasificación](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Sources/Clasificacion.png "Clasificación completa de computadores según el sistema de memoria")
 
+####Arquitecturas con DLP, ILP y TLP
+*(Thread=Flujo de control)*
+
+![Arquitecturas](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Sources/Arquitecturas.png "Arquitecturas con DLP, ILP y TLP")
+
 
 **<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
 
