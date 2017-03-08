@@ -155,10 +155,6 @@ Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor 
 ![Arquitecturas](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Sources/Arquitecturas.png "Arquitecturas con DLP, ILP y TLP")
 
 
-**<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
-
-
-
 # Lección 3. Evaluación de prestaciones de una arquitectura
 ##Tiempos de CPU
 
