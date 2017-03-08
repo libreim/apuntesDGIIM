@@ -127,9 +127,30 @@ Múltiples flujos de datos que permiten realizar múltiples instrucciones. Aprov
 
 
 ### Sistema de memoria
-Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores. En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos.
+Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores.
+
+En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. Tienen mayor latencia y son poco escalables. Tienen comunicación implícita mediante variables compartidas y los datos no duplicados están en memoria principal. Es necesario implementar primitivas de sincronización, no es necesaria la distribución de código y datos entre procesadores y su programación es mas sencilla.
+
+En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos. Tienen menor latencia y son escalables. Tienen comunicación explícita mediante software para paso de mensajes y los datos duplicados están en memoria principal. Su sincronización es mediante un software específico de comunicación, es necesaria la distribución de código y datos entre procesadores y su programación es más díficil
+
+####Comunicación uno‐a‐uno en un multiprocesador
+El nodo fuente manda a memoria el dato, se procesa y se genera una respuesta que es devuelta al nodo fuente. Después el nodo destino realiza la petición del dato a memoria, se procesa y la memoria devuelve el dato a el flujo destino.  
+Se debe garantizar que el flujo de control *consumidor* del dato lea la variable compartida cuando el *productor* haya escrito en la variable el dato.
+
+####Comunicación uno‐a‐uno en un multicomputador
+
+El nodo fuente copia los datos que desea enviar a un buffer y mediante la red de interconexión los hace llegar a el nodo destino que está en ejecución y a la espera de que le lleguen los datos. Cuando llegan los datos se cargan en memoria de usuario y continua con la ejecución.
+
+####Incremento de escalabilidad en multiprocesadores
+
+Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor ancho de banda que un bus y distribuir físicamente los módulos de memoria entre los procesadores compartiendo el  espacio de direcciones
+
+![Clasificación](https://github.com/libreim/apuntesDGIIM/blob/master/Arquitectura%20de%20Computadores/Clasificacion.png "Clasificación completa de computadores según el sistema de memoria")
+
 
 **<!- (Se comienza la leccion 3 pero falta acabar la 2) -->**
+
+
 
 # Lección 3. Evaluación de prestaciones de una arquitectura
 ##Tiempos de CPU
