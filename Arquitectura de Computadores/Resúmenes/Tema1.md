@@ -36,8 +36,10 @@ Decimos que un bloque de código $B_2$ presenta dependencia de datos con respect
 
 Podemos clasificar la dependencia de datos en tres tipos, según la secuencia de operaciones de lectura/escritura que ocurran en los dos bloques con respecto a `M`.
 
-**RAW (Read After Write)**: dependencia verdadera. No se puede evitar.\
-**WAW (Write After Write)**: dependencia de salida. Podría evitarse guardando la variable inicial en una variable temporal.\
+**RAW (Read After Write)**: dependencia verdadera. No se puede evitar.
+
+**WAW (Write After Write)**: dependencia de salida. Podría evitarse guardando la variable inicial en una variable temporal.
+
 **WAR (Write After Read)**: antidependencia. Podría evitarse realizando la lectura en una variable temporal que contuviese la variable inicial.
 
 El caso *RAR (Read After Read)* no presenta dependencia, ya que simplemente se consulta el dato, sin modificarlo en ningún caso.
