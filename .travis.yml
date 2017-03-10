@@ -17,15 +17,15 @@ addons:
   apt:
     packages:
       pandoc
-      texlive
-      texlive-base
-      texlive-latex-extra
+      texlive-full
       python-pygments
       texlive-fonts-recommended
 before_install:
-    git config --global user.email "dgiimblog@gmail.com"
-    git config --global user.name "dgiimbot"
-    git clone -b pdf https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
+  # Cleans pdfs from folder
+    - rm -R .out/*
+    - git config --global user.email "dgiimblog@gmail.com"
+    - git config --global user.name "dgiimbot"
+    - git clone -b pdf https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
 
 script: rake
 
@@ -37,7 +37,7 @@ after_success:
     git add *
     git add . --all
     git commit -m "Compiled PDFs at `date`"
-    git push origin pdf --quiet
+    #git push origin pdf --quiet
     )
 
 branches:
