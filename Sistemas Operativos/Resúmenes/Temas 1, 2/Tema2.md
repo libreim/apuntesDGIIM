@@ -82,7 +82,7 @@ El SO tiene una colección de colas con el estado de todos los procesos. Suele h
 
 El diagrama de estados por lotes es:
 
-![Diagrama de Estados](Imagen1T2)
+![Diagrama de Estados](./Sistemas Operativos/Resúmenes/Temas 1, 2/Imagen1T2.png)
 
 ### Colas de Estados
 

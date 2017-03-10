@@ -23,9 +23,9 @@ tarea esperada. Se resuelve con recursos limitados y tiempo finito.
 * _Definición de Knuth_ :
 
   Un método computacional es una cuaterna $(Q,I,\Omega,f)$ en la que $Q$ es un conjunto que contiene a $I$ y a $\Omega$ como subconjuntos y $f$ es una función de $Q$ en $Q$ tal que:
-\[
-f(q) = q \ \ \ \forall q \in \Omega
-\]
+
+$$f(q) = q \ \ \ \forall q \in \Omega$$
+
 y donde $Q$ es el conjunto de estados del cálculo, I la entrada , $\Omega$ la salida y $f$ la regla de cálculo aplicada. Cada entrada $x\in I$ define una sucesión computacionel $x_0,...,x_n$ tal que $x_0 = x$ y $x_{k+1}=f(x_k)$ si $k\geq 0$.
 
   Se dice que la sucesión computacional termina en $k$ etapas si $k$ es el menor entero para el cual $x_k$ está en $\Omega$ y en esa caso, a partir de $x$ se obtiene como salida $x_k$.
@@ -121,17 +121,15 @@ Sean dos algoritmos que consumen uno $n^3$ días y otro $n^2$ segundos, el prime
 
 Para poder comparar los algoritmos empleando los tiempos de ejecución, se emplea una notación asintótica, según la cual un algoritmo de ejecución T(n) se dice que es de orden O(f(n)), si existe una constante positiva c y un número entero $n_0$ tales que:
 
-\[
-\forall \ n \geq n_0 \longrightarrow T(n) \leq cf(n)
-\]
+
+$$\forall \ n \geq n_0 \longrightarrow T(n) \leq cf(n)$$
 
 Así queda claro que cuando T(n) es O(f(n)), lo que estamos dando es una cota superior para el tiempo de ejecución, que siempre referiremos al peor caso del problema en cuestión.
 
 De manera análoga, se introduce la notación $\Omega(n)$. Decimos que un algoritmo es $\Omega(g(n))$ si existen dos constantes positivas k y $m_0$ tales que:
 
-\[
-\forall \ n \geq m_0 \longrightarrow T(n) \geq kg(n)
-\]
+
+$$\forall \ n \geq m_0 \longrightarrow T(n) \geq kg(n)$$
 
 Es de destacar la simetría de ambas notaciones, mientras que una acota superiormente, la otra lo hace inferiormente. Una de las razones por lo que esto es útil, es porque hay veces en las que un algoritmo es rápido, pero no lo es para los _inputs_ por lo que debemos de estar dispuestos a saber lo menos que estamos dispuestos en consumir tiempo para resolver cualquier caso de un problema.
 

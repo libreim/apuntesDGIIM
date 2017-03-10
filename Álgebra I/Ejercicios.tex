@@ -240,6 +240,45 @@
 \begin{document}
 \maketitle
 
+\section{\Huge{Relación 1}}
+
+\subsection{\LARGE{Ejercicio 3}}
+
+\textbf{¿Cuál de los siguientes conjuntos son subanillos de los anillos indicados?}
+
+\begin{enumerate}
+  \item ${a \in \mathbb{Q} | 3a \in \mathbb{Z}} \subseteq \mathbb{Q},$
+  \item ${m + 2n\sqrt{3} | m, n \in \mathbb{Z}} \subseteq \mathbb{R},$
+  \item ${f(x) = \sum a_ix^i \in \mathbb{Z}[x] | a_1 \textup{es múltiplo de} 2} \subseteq \mathbb{Z}[x],$
+  \item $ {f(x) = \sum a_ix^1 \in \mathbb{Z}[x] | 2 / a_2} \subseteq \mathbb{Z}[x].$
+\end{enumerate}
+
+Comenzamos diciendo que para que un subconjunto B sea un subanillo de un anillo A se tiene que cumplir que:
+
+\begin{itemize}
+  \item $1, -1 \in B$ (contienen al elemento neutro para el producto y su opuesto).
+  \item B es cerrado para la suma y el producto.
+\end{itemize}
+
+Pasemos ahora a analizar los casos descritos arriba.
+
+\textit{i.} ${a \in \mathbb{Q} | 3a \in \mathbb{Z}} \subseteq \mathbb{Q}$
+
+Este este subconjunto no es un anillo ya que $1, -1 \in \mathbb{Q}$ no están en él, ya que no son múltiplos de 3.
+
+\textit{ii.} ${m + 2n\sqrt{3} | m, n \in \mathbb{Z}} \subseteq \mathbb{R}$
+
+Con $n = 0$ y $m = 1, -1$ tenemos $1$ y $-1$ de $\mathbb{R}$. Además, sean cuales sean $n, m$ de $\mathbb{Z}$ este subconjunto es cerrado para la suma y el producto, dado que la suma de enteros es siempre un entero y lo mismo ocurre con el producto.
+
+\textit{iii.} ${f(x) = \sum a_ix^i \in \mathbb{Z}[x] | a_1 \textup{es múltiplo de}2} \subseteq \mathbb{Z}[x]$
+
+Con $a_0 = 1, -1$ y $a_i = 0, i > 0$ tenemos el elemento neutro del producto y su opuesto. Además, sean cuales sean los $a_i$ este subconjunto es cerrado para la suma y el producto ya que para los $a_i, i \neq 1$ la suma y producto de números enteros es siempre un número entero y en el caso del $a_1$, la suma y producto de múltiplos de 2 es siempre un múltiplo de 2.
+
+\textit{iv.} $ {f(x) = \sum a_ix^1 \in \mathbb{Z}[x] | 2 / a_2} \subseteq \mathbb{Z}[x]$
+
+Este subconjunto no es un anillo ya que $1, -1 \in \mathbb{Z}[x]$ no están en él ya que todos sus elementos son monomios de la forma $a_ix^1$. 
+
+
 \section{\Huge{Relación 2}}
 
 \subsection{\LARGE{Ejercicio 1}}
@@ -1199,6 +1238,86 @@ Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
 \end{cases}
 \]
 
+\subsection{\LARGE{Ejercicio 11 - 1 parte K[x] y $\ent\sqrt{n}$}}
+
+\textbf{(1). Probar el teorema de Ruffini:} \textit{si $f(x) \in A[x]$, entonces $f(a)$ es igual al resto de dividir $f(x)$ entre $x-a$}.\\
+
+\begin{proof}
+\hfill \\
+Si $A$ es un Dominio Euclídeo y $f(x) \in A[x]$, entonces $\exists q,r \in A$ tales que \\$f(x) = q(x-a) + r$, donde $r$ es el resto al dividir $f(x)$ por $x-a$.
+Entonces, evaluamos $f$ en $a$, y tenemos que $f(a) = (a-a)q + r = r$, como queríamos demostrar.
+\end{proof}
+
+\textit{Nota.} La tesis del teorema también puede expresarse como la siguiente congruencia: $f(x) \equiv f(a)\ mod\ (x-a)$.
+
+\textbf{(2). Encontrar un polinomio $\bm{f(x) \in \rac[x]}$ de grado 3 tal que:}
+
+\begin{itemize}[leftmargin=.15in]
+\item $f(0) = 6$
+\item $f(1) = 12$
+\item $f(x) \equiv (3x + 3)\ mod\ (x^2 + x + 1)$
+\end{itemize}
+
+\textit{Solución.}
+Primero, reescribimos las condiciones del enunciado en términos de congruencias, usando el teorema de Ruffini:
+
+\begin{itemize}[leftmargin=.15in]
+\item $f(x) \equiv 6\ mod\ (x)$
+\item $f(x) \equiv 12\ mod\ (x-1)$
+\item $f(x) \equiv (3x + 3)\ mod\ (x^2 + x + 1)$
+\end{itemize}
+
+Para resolver este sistema de tres congruencias, lo reducimos en primer lugar a un sistema de dos congruencias, tomando las dos primeras.
+
+Nos centramos en la ecuación $f(x) \equiv 6\ mod\ (x)$, que ya está resuelta: su solución general es $f(x) = 6 + g(x)\cdot x$, con $g(x) \in \rac[x]$. Sustituyendo en la segunda ecuación, nos quedaría $6 + g(x)\cdot x \equiv 12\ mod\ (x-1)$. Resolvamos ahora esta congruencia:
+
+Primero simplificamos la expresión, llegando a $g(x)\cdot x \equiv 6\ mod\ (x-1)$. Calculemos ahora el mcd $(x,x-1)$, calculando además los coeficientes de Bezout:
+
+\begin{center}
+\begin{tabular}{c|cc}
+\textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
+$x$           & 1          & 0           \\
+$x-1$         & 0          & 1           \\ 
+1             & 1          & -1          \\ 
+\end{tabular}
+\end{center} 
+
+Vemos que $(x,x-1) = 1$, y haciendo uso de la identidad de Bezout, nos queda que $1 = \bm{1}\cdot x + \bm{(-1)}\cdot (x-1)$. Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que $1\cdot x \equiv 1\ mod\ (x-1)$, y multiplicando por $6$ tenemos que $6\cdot x \equiv 6\ mod\ (x-1)$. Si comparamos esta expresión con la ecuación original, es evidente que $g_0(x) = 6$ es una solución particular. Entonces, $f_0(x) = 6 + 6x$ es una solución particular del sistema, y la solución general será: 
+\begin{equation} \label{eq:rel3_parte2_ej1_1}
+f(x) \equiv f_0(x)\ mod\ ([x,x+1]) \Rightarrow f(x) \equiv 6 + 6x\ mod\ (x^2 - x)
+\end{equation}
+
+Pasamos ahora a resolver, del mismo modo, el sistema formado por la tercera ecuación original, y la ecuación \eqref{eq:rel3_parte2_ej1_1}.
+
+La solución general de \eqref{eq:rel3_parte2_ej1_1} es $f(x) = (6 + 6x) + h(x)\cdot (x^2-x)$, con $h(x) \in \rac[x]$. Sustituyendo en la tercera ecuación y simplificando, nos quedaría $h(x)\cdot (x^2 - x) \equiv -3 -3x\ mod\ (x^2+x+1)$. Resolvamos ahora esta congruencia, calculando para ello $(x^2-x,x^2+x+1)$, y los coeficientes de Bezout:
+
+\begin{center}
+\begin{tabular}{c|cc}
+\textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
+$x^2-x$           & 1          & 0           \\
+$x^2+x+1$         & 0          & 1           \\ 
+$-2x-1$             & 1          & -1          \\ 
+$\frac{3}{4}$       & $\frac{1}{2}x + \frac{1}{4}$ & $\frac{-1}{2}x + \frac{3}{4}$
+\end{tabular}
+\end{center} 
+
+Vemos que $(x^2-x,x^2+x+1) = \frac{3}{4}$, y haciendo uso de la identidad de Bezout, nos queda lo siguiente: 
+$$\frac{3}{4} = \bm{(\frac{1}{2}x + \frac{1}{4})}\cdot (x^2-x) + \bm{(-\frac{1}{2}x + \frac{3}{4})}\cdot (x^2+x+1)$$ 
+
+Dividimos ahora la ecuación por $\frac{3}{4}$, y tenemos que:
+$$ 1 = \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x)+ \left(-\frac{2}{3}x + 1\right) \cdot (x^2+x+1)$$
+
+Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que: 
+$$\left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv 1\ mod\ (x^2+x+1)$$ 
+
+y ahora multiplicamos por $-3x-3$:
+$$(-3x-3)\cdot \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv -3x-3\ mod\ (x^2+x+1)$$ 
+
+Si comparamos esta expresión con la ecuación original, es evidente que una solución particular es $g_0(x) = (-3x-3)\cdot(\frac{2}{3}x + \frac{1}{3}) = -2x^2 -3x -1$. Podemos calcular una solución partícular óptima, ya que esta no lo es, sin más que calcular su resto al dividirla por $x^2 + x +1$, que es $1-x$. Entonces, $f_0(x) = 6 + 6x + (1-x)(x^2-x) = -x^3 + 2x^2 + 5x + 6$ es una solución particular del sistema, y la solución general será: 
+$$f(x) \equiv f_0(x)\ mod\ ([x^2-x,x^2+x+1]) \Rightarrow f(x) \equiv -x^3 + 2x^2 + 5x + 6\ mod\ (x^4 - x)$$
+
+Entonces, el polinomio pedido sería justamente $f(x) = -x^3 + 2x^2 + 5x + 6$, y podemos comprobar que, efectivamente, se cumplen las condiciones del enunciado.
+
 \subsection{\LARGE{Ejercicio 13 - 3 parte K[x] y $\ent\sqrt{n}$}}
 
 \textbf{Determinar los polinomios $f(x) \in \rac [x]$ de grado menor o igual que tres que satisfacen el sistema de congruencias}
@@ -1271,6 +1390,80 @@ $$ \frac{9 - 4\sqrt3}{1 + \sqrt3} = \frac{(9 - 4\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3
 El cociente la division es $q = 6$ y el resto es: \\
 $$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$ 
 Como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$. Esta ecuación no tiene solución.
+
+\section{\LARGE{Ejercicio 16 - 6 parte K[x] y $\ent\sqrt{n}$}}
+\textbf{En el anillo $\mathbb{Z}$[i], resolver el siguiente sistema de congruencias:} 
+
+\[
+	\begin{cases}
+	x \equiv i\ \ \ \ \ \ \ \ mod\ (3)\\
+	x \equiv 1+i \ \ \ mod\ (3+2i)\\
+	x \equiv 3+2i \ \ mod\ (4+i)
+\end{cases}
+\]
+
+\emph{Resolución. \\ }
+
+Empezaremos resolviendo el sistema: 
+\[
+	\begin{cases}
+	x \equiv i\ \ \ \ \ \ \ \ mod\ (3)\\
+	x \equiv 1+i \ \ \ mod\ (3+2i)\\
+\end{cases}
+\]
+
+ Para ello hallaremos la solución particular de $x \equiv i\ mod\ (3)$. Como i es una unidad del anillo, entonces $\forall a \in \mathbb{Z}[i] \Rightarrow (a,i) = i.$ Los coeficientes de Bezout son $0*3 + 1*i = 1$ de manera trivial. Entonces la solución general de la primera ecuación sería $x = i + 3*k$. \\
+ 
+ Ahora sustituimos x en la segunda ecuación, y nos queda la ecuación $i + 3k \equiv\ 1 +i\ mod (3+2i) $ de manera equivalente $3k\ \equiv\ 1\ mod\ (3+2i)$. Ahora sacaremos los coeficientes de Bezout de 3 y 3+2i.
+ 
+\begin{center}
+\begin{tabular}{c|cc}
+     & 3+2i & 3       \\
+3+2i & 1    & 0       \\
+3    & 0    & 1       \\
+-i   & 1    & -1-i   
+\end{tabular}
+\end{center}
+
+%%Explicar de dónde sale esto
+Por ello, sabemos que $3*(-1-i) \equiv -i\ mod (3+2i) $. Una solución particular será $k=(-1-i)*-i=(i-1)$. La solución general para $k$ será por lo tanto $k = (i-1) + (3+2i)*k'$. \\
+
+Sustituimos la particular de k en la primera resolución y hallaríamos $M = [3,3+2i]$ para ver cada cuanto debemos hacer la repetición. Para calcular el mcm recordaremos que $(a,b)*[a,b]=ab \Rightarrow \frac{ab}{(a,b)} = [a,b].$ Entonces para nuestro caso particular $[3,3+2i] = \frac{9+6i}{-i}=9i-6$. Así pues la solución será:
+
+$$x = i + 3 (i-1) + k''(9i-6) = 4i-3+ k''(9i-6) $$
+Ahora cogemos el sistema:
+\[
+	\begin{cases}
+	x \equiv 4i-3 \ \ mod\ (9i-6) \\
+	x \equiv 3+2i \ \ mod\ (4+i)
+\end{cases}
+\]
+
+ Para resolverlo y hallar (por fin) la solución final haremos lo mismo: hallar la solución general de la primera ecuación (ya resuelta) y sustituir en la segunda, mcm de los módulos y terminamos.\\
+ 
+ Solución primera ecuación: $4i-3+ k''(9i-6)$.\\
+ 
+ Sustituimos segunda: $4i-3+ k''(9i-6) \equiv 3+2i \ \ mod\ (4+i) \rightarrow 
+ (9i-6)k''\equiv 6-2i \ \ mod\ (4+i)$ \\
+ 
+ Hallamos coeficientes de bezout y mcd:  \\ 
+
+\begin{center}
+\begin{tabular}{c|cc}
+     & 9i-6 & 4+i  \\
+9i-6 & 1    & 0    \\
+4+i  & 0    & 1    \\
+2i   & 1    & 1-2i \\
+i    & -2   & 4i-1
+\end{tabular}
+\end{center}
+ 
+ Enunciamos solución particular y un indicio de la general: Como $(9i-6)(-2) \equiv i\ mod\ (4i-1) \Rightarrow $ 
+ $(9i-6)(-2)(-6i-2) \equiv i(-6i-2)\ mod\ (4i-1) \Rightarrow (9i-6)(12i+4) \equiv (6-2i)\ mod\ (4i-1) \Rightarrow k'' = (12i+4) + [9i-6,4+i] k''' $\\
+ 
+ Calculamos [9i-6,4+i]: $\frac{30i-33}{i}=30-33i$\\ 
+ 
+ Solución general: $(12i+4) + (30-33i) k'''$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

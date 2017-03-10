@@ -73,7 +73,7 @@ El tiempo invertido en el bucle es la suma del tiempo invertido en
 cada iteración.
 
 <p align="center">
-![Eficiencia bucle](pics/Eficiencia-Bucle.png "Eficiencia de un bucle")
+![Eficiencia bucle](./Estructura de datos/pics/Eficiencia-Bucle.png "Eficiencia de un bucle")
 </p>
 
 
@@ -680,7 +680,7 @@ El conjunto de números {23,45,16,26,40,14,5,12,9,25} con $f(x) = x\
 \%\ 13$:
 
 <p align="center">
-![Hashing abierto](pics/Hash abierto.png "Hash abierto listas y sinónimos")
+![Hashing abierto](./Estructura de datos/pics/Hash abierto.png "Hash abierto listas y sinónimos")
 </p>
 
 
