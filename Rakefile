@@ -62,6 +62,7 @@ rule ".pdf" => ->(f){sources_for f, :tex} do |t|
     sh %(mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
   rescue StandardError => e
     puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
+    sh %(mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
   end
   sh "rm -f *.log *.aux *.toc *.pdf *.out"
 end
