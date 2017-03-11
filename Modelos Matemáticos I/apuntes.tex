@@ -311,8 +311,8 @@ En esta asignatura, estudiaremos una serie de modelos que se dan en la naturalez
 
 
 \newpage
-
-\section{Ecuaciones en diferencias de primer orden}
+\section{Tema 1. Ecuaciones en diferencias de primer orden}
+\subsection{Ecuaciones en diferencias de primer orden}
 
 Para motivar este tema, vamos a poner primero unos ejemplos de ecuaciones en diferencias de primer orden.
 
@@ -540,7 +540,7 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	
 \end{nota}
 
-\subsection{Comportamiento asintótico de las soluciones}
+\subsubsection{Comportamiento asintótico de las soluciones}
 Tendríamos en este caso que estudiar cómo se comporta la sucesión $\{\alpha^n\}$ con $\alpha \in \mathbb{C}$.
 \begin{nprop}\hfill
 \begin{nlist}
@@ -597,7 +597,7 @@ x_* +z_n = x_* + \mathcal{C}\alpha^n
 \end{proof}
 \end{nth}
 
-\section{Modelo de la telaraña}
+\subsubsection{Ajuste del precio de un producto: modelo de la telaraña}
 En este modelo, trabajaremos con dos funciones: 
 \begin{itemize}
 	\item Una función oferta, $O(p)$ que depende del precio $p$
@@ -636,11 +636,11 @@ x_* = \frac{\beta}{1-\alpha} = \frac{(c-a)/d}{1-(-b/d)}= \frac{c-a}{b+d} = p_*
 El objetivo es conseguir que $p_n \to p_*$ y para ello tenemos que conseguir que, como $p_{n+1} =p_* + \mathcal{C}(\frac{-b}{d})^n$, entonces necesitamos que $\left|\dfrac{-b}{d}\right| < 1 \implies b < d$.
 Por ello, lo que tenemos en las rectas es que la pendiente (b) de la recta de la oferta sea menor que la pendiente de la demanda (d).
 
-\section{El modelo de Verhulst}
+\subsubsection{Modelo de Malthus. Modelo de Verhulst. Ecuación logística}
 
-Primero, estudiaremos un primer acercamiento que hubo a este modelo
+Antes de llegar al modelo de Verhulst, estudiaremos un primer acercamiento que hubo a este modelo.
 
-\subsection{La ecuación de Malthus}
+\textbf{La ecuación de Malthus}
 Vamos a estudiar ahora una ecuación que modeliza la evolución de la población de una determinada especie en un hábitat sin limitación de alimentos. Esta primera suposición ya no es real, pues siempre hay limitaciones.
 
 Vamos a llamar:
@@ -689,8 +689,8 @@ Se cumple siempre que $R = \dfrac{P_{n+1}}{P_n}$.
 	
 \end{ndef}
 
-\subsection{El modelo de Verhulst}
-Esto quiso dar un arreglo a la ecuación de Malthus. Ahora, suponemos que en el hábitat hay un número máximo de individuos al que llamaremos $M$.
+\textbf{El modelo de Verhulst}
+Este modelo quiso dar un arreglo a la ecuación de Malthus. Ahora, suponemos que en el hábitat hay un número máximo de individuos al que llamaremos $M$.
 
 Según Verhulst, la tasa de crecimiento es proporcional a $M-P_n$, esto es:
 \[
@@ -724,7 +724,7 @@ x_{n+1} = \mu x_n(1-x_n)
 \]
 Esta ecuación es conocida como la \textbf{Ecuación Logística}.
 
-\section{Sistemas dinámicos discretos}
+\subsection{Sistemas dinámicos discretos}
 
 \begin{ndef}
 	Un sistema dinámico discreto es la descripción formal de un fenómeno evolutivo en términos de una función cuya imagen está contenida en su dominio. Partiendo desde cualquier valor inicial admisible generaremos una sucesión de valores mediante la aplicación reiterada de la función dada. Lo notaremos SDD.
@@ -778,6 +778,7 @@ Notación. En lo sucesivo, para denotar las sucesivas iteradas de $f$ usaremos q
 	Al conjunto de todas las órbitas asociadas al SDD $\{I,f\}$  a todos los $x_0 \in I$ se le llama retrato de fase.
 \end{ndef}
 
+\subsubsection{Puntos de equilibrio}
 \begin{ndef}[Punto de equilibrio]
 	Un número $\alpha \in \R$ se dice que es un punto de equilibrio del SDD $\{I,f\}$ si:
 	\[
@@ -830,14 +831,13 @@ Notación. En lo sucesivo, para denotar las sucesivas iteradas de $f$ usaremos q
 \begin{ndef}
 	Dado un punto $x_0 \in I$, si $\exists k: f^k(x_0) = \alpha = f(\alpha)$,entonces su órbita se dice eventualmente estacionaria:
 	\[
-	\gamma(I,f,x_0) = \{x_0, f(x_0), \cdots f^{k-1}(x_0), \alpha, \cdots, \alpha\}
+	\gamma(I,f,x_0) = \{x_0, f(x_0), \dots, f^{k-1}(x_0), \alpha, \dots, \alpha\}
 	\]
 \end{ndef}
 \begin{nota}
-	Buscar puntos de equilibrio es equivalente a buscar intersecciones de la recta $y=x$ y la gráfica de $f$ que esten... FALTA ALGO
-	
-	
+	Buscar puntos de equilibrio es equivalente a buscar intersecciones de la recta $y=x$ y la gráfica de $f$ que estén contenidas en el subconjunto $I\times I$ del plano $xy$.
 \end{nota}
+
 \begin{nprop}
 	SI $\{I,f\}$ es un SDD, entonces $\{I,f^n\}$ también es un SDD.
 \end{nprop}
@@ -887,6 +887,7 @@ Entonces, existe un único punto de equilibrio en $f$
 \end{nth}
 %%% FALTA DEMOSTRACIÓN   -------------------------------------------------------
 
+\subsubsection{Estabilidad}
 \begin{ndef}
 	Un punto de equilibrio $\alpha$ de un SDD $\{I,f\}$ se dice que es:
 	\begin{itemize}
@@ -896,8 +897,39 @@ Entonces, existe un único punto de equilibrio en $f$
 \end{itemize}
 \end{ndef}
 
-COMPROBAR SI FALTA O NO CONTENIDO.
+\begin{ndef}[Atractor global]
+	Un punto de equilibrio $\alpha$ del SDD $\{I,f\}$ se dice que es un atractor global si para cualquier $x_0 \in I$ y $x_n=f^n(x_0)$, se verifica $$\lim_{n \rightarrow \infty} x_n = \alpha$$
+\end{ndef}	
 
+\begin{ndef}[Atractor local]
+	Un punto de equilibrio $\alpha$ del SDD $\{I,f\}$ se dice que es un atractor local si 
+$$\exists \eta > 0 : \forall x_0 \in I\ \cap\ (\alpha-\eta, \alpha+\eta) \implies \lim_{n \rightarrow \infty}x_n=\alpha$$
+Es decir, $\alpha$ atrae a las soluciones cuando $x_0$ está en un entorno suyo. En cuyo caso, diremos que $\alpha$ es LAE.
+\end{ndef}
+
+\begin{nth}[Estabilidad asintótica local]
+	Si $\alpha$ es un punto de equilibrio del SDD $\{I,f\}$ y $f \in \mathcal{C}^1(I)$, entonces:
+\begin{nlist}
+ \item Si $|f'(\alpha)| < 1$ entonces $\alpha$ es localmente asintóticamente estable.
+ \item Si $|f'(\alpha)| > 1$ entonces $\alpha$ es inestable.
+\end{nlist}
+\end{nth}
+\begin{proof}
+	$(i)$ Supongamos $|f'(\alpha)| < 1 \stackrel{f' \text{ continua}}{\implies} \left.\begin{array}{l}
+		\exists \eta > 0 \\
+		\exists 0 \leq \lambda < 1	
+	\end{array}\right/\begin{array}{l}
+		|f'(x)| \leq \lambda < 1\\
+		\forall x \in (\alpha-\eta,\alpha+\eta)\cap I
+\end{array}$
+
+Sean $x,y \in (\alpha-\eta,\alpha+\eta)\cap I$. Como es continua $\stackrel{\text{TVM}}{\implies} |f(x)-f(y)| = |f'(\xi)||x-y|$ con $\xi$ entre $x$ e $y \implies \xi \in (\alpha-\eta,\alpha+\eta)\cap I \implies |f(x)-f(y)| \leq \lambda |x-y|$.
+
+Sea $x_0 \in (\alpha-\eta,\alpha+\eta)\cap I, x_{n+1} = f(x_n),\ n \geq 0$
+$|x_n-\alpha| = |f(x_{n+1})-f(\alpha)| \leq \lambda|x_{n+1}-\alpha|=\lambda|f(x_{n-2})-f(\alpha)| \leq \lambda^2|x_{n-2}-\alpha| \leq \dots \leq \lambda^n|x_0-\alpha|\rightarrow0$, puesto que $0 \leq \lambda < 1$
+\end{proof}
+
+\subsubsection{Ciclos}
 \begin{ndef}[Ciclo]
 	Un ciclo de orden $s$ o una órbita periódica de período $s$ o un $s-$ciclo del SDD$=\{I,f\}$ es un conjunto de puntos $\{\alpha_0, \cdots, \alpha_{s-1}\}\subset I$ distintos entre sí tales que:
 	\[
@@ -936,6 +968,7 @@ Puesto que los puntos de una órbita periódica de un periodo $s$ son puntos de 
 \end{nlist}
 \end{nprop}
 
+\subsubsection{Aplicación: estrategias de pesca}
 \begin{ejemplo}
 	La dinámica de una población de peces sin agentes externos y adecuadamente normalizada viene descrita por la ecuación:
 	\[
