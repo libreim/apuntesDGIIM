@@ -2,10 +2,6 @@ language: ruby
 
 rvm:
  - 2.3.1
- 
-gems:
-  - pygmentize
-
 
 build:
   cache:
@@ -18,10 +14,10 @@ build:
       (
        wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu -O ~/tl-install &&
        chmod +x ~/tl-install &&
-       ~/tl-install
+       ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
       )
     - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra python-pygments
-    - /opt/texbin/tlmgr update --all
+    #- /opt/texbin/tlmgr update --all
   on_success:
     - rm -R .out/*
-    - rake
+    #- rake
