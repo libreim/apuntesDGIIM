@@ -26,6 +26,3 @@ cache:
   cache_dir_list:
       - /usr/local/texlive
       - /opt/texbin
-  on_success:
-    - rm -R .out/*
-    #- rake
