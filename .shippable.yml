@@ -13,7 +13,6 @@ build:
        ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
       )
     - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra python-pygments
-<<<<<<< HEAD
     - /opt/texbin/tlmgr update --all
 cache:
   directories:
@@ -22,7 +21,6 @@ cache:
   on_success:
     - ls -R
     #- rm -R .out/*
-=======
     #- /opt/texbin/tlmgr update --all
   cache: true
   cache_dir_list:
@@ -30,5 +28,4 @@ cache:
       - /opt/texbin
   on_success:
     - rm -R .out/*
->>>>>>> 88222f80d0949eb025063418d5f496fb53044afa
     #- rake
