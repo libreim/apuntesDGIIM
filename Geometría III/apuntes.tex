@@ -808,6 +808,84 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 	%%%COMPLETAR DEMOSTRACIÓN.
 \end{proof}
 
+
+
+\begin{ndef}[Movimientos]
+	Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$que es una afinidad que conserva distancias.
+	\[
+	|f(P)-f(Q)|= P-Q \quad  \quad |\vec{f}(\vec{QP}|= |\vec{QP}|
+	\]
+\end{ndef}
+
+\begin{nprop}
+	$f$ es un movimiento $\iff$ $A$ es ortogonal ($A^{-1}= A^t$). Es de la forma:
+	\[
+	f \begin{pmatrix}
+x_1\\
+\vdots\\
+x_n 
+\end{pmatrix} = A \begin{pmatrix}
+x_1\\
+\vdots\\
+x_n 
+\end{pmatrix} + \begin{pmatrix}
+b_1\\
+\vdots\\
+b_n 
+\end{pmatrix}
+	\]
+\end{nprop}
+
+
+\begin{ejemplo}
+	\begin{nlist}
+	\item Traslaciones $p \mapsto p+v$
+	\item Reflexión central $p \mapsto -p +b= -p +2A$ de centro A
+	\item Giro de ángulo $\theta$ y centro $A$ (en $\R^2$).
+	\[
+	f= \begin{cases}
+	f(A) = A \\
+	\vec{f} \equiv A_{\theta} = \begin{pmatrix}
+ cos \theta & -sen \theta\\
+ sen \theta & cos \theta
+\end{pmatrix} 
+\end{cases}
+	\]
+\end{nlist}
+\end{ejemplo}
+
+\begin{nprop}
+	Si realizamos un giro $A_\theta$ y sobre ese giro aplicamos otro giro $A_{\theta'}$, tenemos que:
+	\[
+	A_{\theta} o A_{\theta'} 0 A_{\theta+\theta'}
+	\]
+	Siendo $A$ la matriz del giro.
+\end{nprop}
+
+\begin{ndef}[Matrices ortogonales]
+	Son de la forma:
+	\[
+	\begin{pmatrix}
+ a & -b \\
+ b & a 
+\end{pmatrix} \quad \text { o } \quad \begin{pmatrix}
+ a & b \\
+ b & -a 
+\end{pmatrix}
+	\]
+	con $a^2+b^2 = 1$
+\end{ndef}
+
+\begin{ndef}[Movimiento directo]
+	Es un movimiento que tiene como matriz una matriz ortogonal. 
+\end{ndef}
+\begin{nprop}
+	En $\R^n$, si $\lambda = 1$ no es un valor propio de $A$, entonces $f$ tiene un punto fijo y solo 1.
+\end{nprop}
+
+
+
+
 \subsection{Rectángulos}
 \begin{ndef}
 	Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
@@ -826,6 +904,50 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 %%%completar
 \begin{nprop}
 	Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+\end{nprop}
+
+\subsection{Ángulos}
+
+\begin{ndef}[Ángulo entre vectores]
+	Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
+	\[
+	cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
+	\]
+\end{ndef}
+\begin{nota}
+	Un ángulo entre rectas sería el ángulo que forman sus vectores directores
+\end{nota}
+\begin{nprop}
+	Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
+\end{nprop}
+
+\begin{nprop}
+	Los ángulos opuestos por el vértice formados por dos rectas son iguales.
+\end{nprop}
+
+\begin{nprop}
+	Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
+\end{nprop}
+
+\begin{nth}
+	Los tres ángulos de un triángulo suman $\pi$
+\end{nth}
+\begin{proof}
+	La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
+\end{proof}
+
+\begin{nprop}
+	Si $f:\R^2 \to \R^2$ es una dilatación:
+	\[
+	f \begin{pmatrix}
+ x\\
+ y 
+\end{pmatrix} = \lambda\begin{pmatrix}
+ x\\
+ y 
+\end{pmatrix} + b \quad \lambda \ne 0
+	\]
+	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
 \end{nprop}
 
 
