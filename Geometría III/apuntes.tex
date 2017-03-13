@@ -315,58 +315,70 @@ En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos e
 
 \section{El espacio afín}
 \begin{ndef}[Espacio afín]
-Dado un conjunto $E$ no vacío diremos que es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
-$$\varphi: E \times E \rightarrow V$$
-$$(a,b) \mapsto \varphi(a,b)$$
-tal que se cumplan:
+Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
+
+\begin{align*}
+	\varphi: E \times E & \rightarrow V \\
+	(a,b) & \mapsto \varphi(a,b)
+\end{align*}
+
+que cumple las siguientes propiedades:
 \begin{itemize}
-\item Fijado un punto $a$ la aplicación $\varphi_a$ es biyectiva, es decir:
-$$\forall a \in E, v \in V, \exists! b \in E:\varphi(a,b)=v$$
+\item Si fijamos un punto $a$, la aplicación $\varphi_a$ es biyectiva, o lo que es lo mismo:
+$$\forall a \in E, \ \ v \in V, \ \ \exists! b \in E:\varphi(a,b)=v$$
 \item Se tiene la relación de Charles, es decir:
 $$\forall a, b, c \in E \ \ \  \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
 \end{itemize}
 \end{ndef}
 \subsection{El plano afín}
-Este plano, durante todo el contenido de los apuntes, será el plano $\R^2$. Sabemos que podemos representar un simple punto o un vector dentro de este plano (en este caso, es el plano vectorial). Daremos ahora por sabido todas las propiedades de los vectores.
 
-\begin{center}
+Desde ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
+
+\begin{figure*}[h]
+\centering
 \begin{tikzpicture}
 	\begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
 		\addplot+(2,3);
 	\end{axis}
 \end{tikzpicture}
-\end{center}
+\caption{El punto (2,3) en el plano}
+\end{figure*}
 
-Lo que haremos es transformar las propiedades de vectores en propiedades de puntos, veamos cómo unir estos dos conceptos.
+Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propiedades de los vectores en propiedades de puntos e intentar relacionar estos dos conceptos.
 
-Sean P y Q dos puntos del plano. Entonces, podemos transformarlos en un vector $\vec{u} = \overrightarrow{PQ} = Q-P$. De la misma forma, analíticamente podemos ver que si tenemos un punto P y le añadimos un vector $\vec{u}$, obtenemos otro punto Q. Damos así por definidas la suma de puntos, vectores y puntos y vectores.
+Dados dos puntos $P$ y $Q$ del plano, podemos transformarlos en un vector llamando a $\vec{u}$ al vector que une $P$ y $Q$. Así, $\vec{u} = \overrightarrow{PQ} = Q-P$. De forma analítica podemos observar también que si tenemos un punto $P$ podemos sumarle un vector $\vec{u}$, obteniendo otro punto $Q$. Hemos visto entonces que podemos sumar tanto vectores como puntos con vectores.
+
+% ¿Insertar un dibujo con la suma de un vector a un punto?
 
 \begin{ndef}[Combinación lineal de vectores]
-	Si $u_1,\cdots , u_n$ son vectores y $\alpha_1,\cdots, \alpha_n$ son escalares, entonces:
+	Si tenemos una familia $u_1,\ldots , u_n$ de vectores vectores y $\alpha_1,\ldots, \alpha_n$ una familia de escalares, entonces a
 	\[
 	\sum_{i=1}^n \alpha_i u_i
 	\]
-	es una combinación lineal de vectores.
+	lo llamamos \textit{combinación lineal de vectores}.
 \end{ndef}
 
 \begin{ndef}[Razón de vectores proporcionales]
-	Si $u$ y $v$ son dos vectores proporcionales ,es decir $u = \lambda v$, entonces se llama a $\lambda$ la razón de esos vectores.
-	Si los vectores no son proporcionales no podemos tratar este concepto.
+	Dados $u$ y $v$ dos vectores proporcionales ($u = \lambda v$), entonces llamamos \textit{razón} de esos dos vectores al escalar $\lambda$.
 \end{ndef}
-Podemos también hacer combinaciones de puntos de la siguiente forma:
-\begin{ndef}[Combinaciones baricéntricas de puntos]
-	Si $P_1,...,P_n$ son puntos y $\alpha_1,...,\alpha_n \in \R$ pesos de los puntos, que cumplen que $\sum \alpha_i = 1$, entonces una combinación de puntos de la forma:
+
+A continuación vamos a estudiar distintas \textit{combinaciones lineales} de puntos del plano afín.
+
+\begin{ndef}[Combinación baricéntrica de un conjunto de puntos]
+	Dados $P_1,...,P_n$ un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n \in \R$ un conjunto de escalares (llamados \textit{pesos} de los puntos) que cumplen que $\sum \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
 	\[
-	P = \sum_{i=1}^n \alpha_i p_i
+	P = \sum_{i=1}^n \alpha_i P_i
 	\]
-	se le llama combinación baricéntrica de puntos.
 \end{ndef}
+
 \begin{nprop} Una combinación baricéntrica de puntos es un punto. 
 \end{nprop}
-\begin{proof}
-	Lo que haremos, es transformar los puntos en vectores y así la demostración será trivial.
 
-	Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, así tenemos el vector determinado por $P$ y $P_1$ y una identidad de vectores, de la forma:
+\begin{proof}
+
+Para simplificar la demostración vamos a comenzar transformando los puntos en vectores.
+
+	Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así el vector determinado por $P$ y $P_1$ y una identidad entre vectores de la forma:
 	\[
 	P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
 	\]
@@ -375,26 +387,27 @@ Podemos también hacer combinaciones de puntos de la siguiente forma:
 	\[
 	P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
 	\]
+	
+	Hemos demostrado que $P$ es el resultado de sumar un vector a un punto (en este caso $P_1$), que es otro punto como queríamos.
 \end{proof}
 
 \begin{ndef}[Combinación convexa]
-	Si los pesos $\alpha_i$ asignados a los puntos son todos positivos, llamaremos a su combinación una combinación convexa.
-\end{ndef}
+	Si en una combinación baricéntrica los pesos $\alpha_i$ asignados a los puntos son todos positivos entonces llamaremos a esta combinación \textit{convexa}. \end{ndef}
 
-\begin{ndef}[Centro de gravedad de unos puntos]
-	Si $P_1,...,P_n$ son puntos y $\alpha_1,...,\alpha_n$ son sus pesos, entonces llamamos a
+\begin{ndef}[Centro de gravedad de un conjunto de puntos]
+	Si $P_1,...,P_n$ es un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n$ los \textit{pesos} asociados a estos puntos, llamamos a
 	\[
 	\sum_{i=1}^n \alpha_iP_i
 	\]
-	el centro de gravedad de los puntos.
+	el \textit{centro de gravedad del conjunto de puntos}.
 \end{ndef}
 
 \begin{ndef}[Punto medio]
-Sean P y Q dos puntos en el espacio afín. Entonces $m$ es el punto medio entre P y Q si está definido como:
+Sean $P$ y $Q$ dos puntos en el espacio afín. Entonces decimos que $m$ es el punto medio entre $P$ y $Q$ si está definido como:
 \[
 m = \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
 \]
-Otra forma de hablar de él es: si $u = PQ$, entonces:
+Alternativamente, si $u = \overrightarrow{PQ}$, entonces:
 \[
 m = \dfrac{1}{2}u + P
 \]
@@ -402,10 +415,11 @@ m = \dfrac{1}{2}u + P
 \end{ndef}
 
 \subsection{Rectas afines}
-A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una recta afín.
+
+En este apartado vamos a describir las \textit{rectas afines}. De ahora en adelante, si se hace mención a una recta sin más, daremos por hecho que se trata de una recta afín.
 
 \begin{ndef}[Recta vectorial]
-	Una recta vectorial es un subespacio vectorial de dimensión 1. Estas están generadas por un vector. De hecho, se notan como $L(v)$ con $v$ un vector.
+	Una recta vectorial es un subespacio vectorial de dimensión 1. Para generarlas solo es necesario un único vector. Podemos escribir la \textit{recta vectorial generada por un vector} $v$ como $L(v)$.
 \end{ndef}
 
 \begin{nprop}
@@ -413,18 +427,18 @@ A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una
 	\[
 	r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
 	\]
-	Además, notaremos a $L(v) = \vec{r}$.
+	Para distinguir las rectas vectoriales de las rectas afines, notaremos a $L(v)$ como $\vec{r}$.
 \end{nprop}
 \begin{ndef}[Variedad de dirección]
-	Si $v$ es un vector director, llamaremos variedad de dirección a $L(v) = \vec{r}$.
+	Si $v$ es un \textit{vector director}, llamaremos \textit{variedad de dirección} a la recta generada por este vector, $L(v) = \vec{r}$.
 \end{ndef}
 
-\textbf{Propiedades:}
+\textbf{Propiedades de las rectas afines:}
 \begin{itemize}
-	\item Si $Q$ es un punto y $Q\in r \implies r = Q +L(v)$
-	\item Si $P,Q$ son dos puntos, entonces por ellos pasa una recta y esta es única. Esta recta se nota : $r = P +L(\overrightarrow{PQ})$\\
+	\item Si $Q$ es un punto y $r$ una recta tales que que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
+	\item Si $P,Q$ son dos puntos, entonces por ellos pasa una única recta $r = P +L(\overrightarrow{PQ})$. \\
 	\begin{proof}
-	Si la recta $r$ pasa por $P$ y $Q$, sea $s$ otra recta que pasa por ellos, entonces:
+	(Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces por definición:
 	\[
 	s = P+L(\overrightarrow{PQ}) = r
 	\]
@@ -432,32 +446,34 @@ A partir de ahora, cada vez que mencionemos una recta, estaremos hablando de una
 \end{itemize}
 
 \subsubsection{Posición relativa entre rectas}
-Según se encuentren en el plano afín, dos rectas $r$ y $s$ pueden ser:
+
+Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín. Así, decimos que dos rectas son
+
 \begin{itemize}
-	\item Paralelas, notado $r\parallel s \equiv \vec{r} = \vec{s}$
-	\item No paralelas, notado $r\nparallel s \equiv$  sus vectores directores son linealmente independientes $\equiv u$ y $v$ es base.
+	\item Paralelas, notado $r\parallel s$, si y solo si $\vec{r} = \vec{s}$
+	\item No paralelas, notado $r\nparallel s$, si y solo si sus vectores directores son linealmente independientes o lo que es lo mismo, $u$ y $v$ forman una base.
 \end{itemize}
 
 \begin{nth}
-	Si $r$, $s$ son dos rectas del plano afín, entonces:
+	Si $r$ y $s$ son dos rectas del plano afín, entonces si:
 	\begin{nlist}
-	\item $r \nparallel s\implies r \cap s = $ un punto
-	\item $r \parallel s \implies r = s$ ó $r \cap s =  \emptyset$
+	\item $r \nparallel s\implies r \cap s = A$, un punto
+	\item $r \parallel s \implies r = s$ o bien $r \cap s =  \emptyset$
 \end{nlist}
+
 \begin{proof}
 	\begin{nlist}
-	\item Si $u,v$ son los vectores directores de $r$ y $s$, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
+	% Esta demostración ?¿ No acabo de ver que demuestre lo que dice (i)
+	\item Si $u,v$ son los vectores directores de $r$ y $s$ y $P$ y $Q$ puntos de $r$ y $s$ respectivamente, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
 y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y, por ello, existen únicos $\lambda, \mu$.
-\item Sean $u,v$ son los vectores directores de $r$ y $s$. Supongamos que tienen al menos un punto  A en común. Entonces como se podrían escribir estas rectas como $r = A +L(u)$ y $s=A+L(v)$ y además como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
+\item Sean $u,v$ son los vectores directores de $r$ y $s$. Supongamos que además tienen al menos un punto $A$ en común. Escribimos estas rectas como $r = A +L(u)$ y $s=A+L(v)$. Como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
 \end{nlist}
 \end{proof}
 \end{nth}
 
 
-
-
 \subsection{Triángulos}
-Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son sus vértices y las tres rectas que los unen.
+Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alineados $A, B, C$ llamados \textit{vértices} y las tres rectas que los unen.
 
 \begin {ndef}
 	Dos o más puntos $A_1, A_2, ... , A_n $ estan alineados $\iff$ existe una recta $r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n$
@@ -465,12 +481,13 @@ Son polígonos que vienen dados por tres puntos no alineados $A,B,C$, que son su
 
 
 \begin{nprop}
-$A,B,C$ son puntos no alineados  $ \iff \vec{AB},\vec{AC}$ son linealmente independientes.
+$A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{AC}$ son linealmente independientes.
 	\begin {proof}
 
 	\boxed{\Rightarrow}
-		Si $\nexists r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n \Rightarrow \nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v}) \Rightarrow \vec{AB} \neq \alpha \cdot \vec{AC}, \alpha \in \mathbb{R}\ $ porque si no se daría el caso anterior. \\
-	\boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la recta (única) que proporcionan los puntos A y B, y los puntos A y C son la misma, luego $r = A + L(\vec{AB})  = A + L(\vec{AC})$ y entonces $\vec{AB}$ y $\vec{AC}$ serían linealmente dependientes. Como sabemos que $\vec{AB}$ y $\vec{AC}$ no lo son, por lo tanto A, B y C no están alineados.
+	Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2\ $ tal que $A$, $B$, y $C$ $\in r$, luego $\nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
+
+	\boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
 	\end {proof}
 
 \end{nprop}
@@ -949,6 +966,5 @@ b_n
 	\]
 	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
 \end{nprop}
-
 
 \end{document}
