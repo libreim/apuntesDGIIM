@@ -58,10 +58,11 @@ task :algoritmica => (pdf_for FileList["Algorítmica/*.md"])
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   begin
     2.times { sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}") }
-    sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
-    sh %(mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
   rescue StandardError => e
     puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
+  ensure
+    sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}";
+         mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
   end
   sh "rm -f *.log *.aux *.toc *.pdf *.out"
 end
