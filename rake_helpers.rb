@@ -1,5 +1,7 @@
 # coding: utf-8
 
+@error_log = []
+
 #------------ Helper functions ------------#
 
 # pdf_for: Finds the paths of the target pdf files for a source code file
@@ -31,7 +33,7 @@ def pandoc_rule *inputs
         sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
         sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
       rescue StandardError => e
-        puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
+        @error_log << "\e[31mNo se pudo generar #{t.name}\e[m"
       end
     end
   end
