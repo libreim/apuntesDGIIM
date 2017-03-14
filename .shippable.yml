@@ -3,21 +3,37 @@ language: ruby
 rvm:
  - 2.3.1
 
+
+env:
+  - secure: Bt7iYY1lAdjRzoWy67FbyGLe0DWv3ms29LcFhxDyF6ooTJcuwqiQ4sA+g2FeCVSgDy3FROfRpcEPBXi7vlUPMlWNznu2bAdVF/UcKS1fClhh4ruQtIuHVVPT5jpZEReKTw/lY4kM+dy9CSXnmsFHbBmEY6Q8b402jq52T8IgrsS1BOhiMl4ax5pvj3GTy01gDRRribstyjc6s9+RjpH9VIvbOeke0AoCHUdEqoeDNBLiCvFuVpOQsE7fNL4oUDEcCVM4M99qwePIylvSAKt19aFlk4WR5r1YZkchl4mrf+3XD5hgwcFCT20rhg5v6iSQKo7tCZN+Tx8ZZYxKaF7JEg==
+
+
+ 
 build:
-  ci:
-    - sudo apt-get update
-    - ([[ -d /usr/local/texlive ]] && sudo /opt/texbin/tlmgr update --all) ||
-      (
-       wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu -O ~/tl-install &&
-       chmod +x ~/tl-install &&
-       ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
-      )
-    - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra python-pygments
-    #- /opt/texbin/tlmgr update --all
   cache: true
   cache_dir_list:
       - /usr/local/texlive
       - /opt/texbin
-  on_success:
+  ci:
+    - sudo apt-get update
+    - ([[ -d /usr/local/texlive ]] && sudo /opt/texbin/tlmgr update --all) ||
+      (
+       wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu \
+       -O ~/tl-install &&
+       chmod +x ~/tl-install &&
+       ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
+      )
+    - sudo apt-get install -y pandoc python-pygments
+  post_ci:
     - rm -R .out/*
-    #- rake
+    - git config --global user.email "dgiimblog@gmail.com"
+    - git config --global user.name "dgiimbot"
+    - git clone -b pdf --single-branch \
+      https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
+    - rake
+  on_success:
+    - cd .out/
+    - git add . --no-all
+    - git commit -m "Compiled PDFs at `date`"
+    - git push origin pdf --quiet
+    
