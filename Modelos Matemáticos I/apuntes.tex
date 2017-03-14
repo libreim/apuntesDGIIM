@@ -311,7 +311,7 @@ En esta asignatura, estudiaremos una serie de modelos que se dan en la naturalez
 
 
 \newpage
-\section{Tema 1. Ecuaciones en diferencias de primer orden}
+\section{Ecuaciones en diferencias de primer orden}
 \subsection{Ecuaciones en diferencias de primer orden}
 
 Para motivar este tema, vamos a poner primero unos ejemplos de ecuaciones en diferencias de primer orden.
@@ -1048,4 +1048,68 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 	\]
 \end{enumerate}
 \end{ejemplo}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{ Ecuaciones en diferencias lineales de orden superior}
+\begin{ndef}[Ecuación lineal en diferencias]
+	Es una ecuación en diferencias de la forma:
+	\[
+	x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = b(n), \ \ n \geq 0
+	\]
+	con $a_0 \ne 0$. Si $b(n)= 0$ la ecuación se dice homogénea. 
+	
+	\begin{itemize}
+	\item $k \geq 1 $ es el orden de la ecuación. 
+	\item Si $k > 1$ se dice que la ecuación es de orden superior
+	\item $a_0,\cdots,a_{k-1} \in \mathbb K $ donde $\mathbb K $ es un cuerpo que será $\R $ o $\mathbb C$.
+	\item Una solución de esta ecuación será una sucesión $\{x_n\}$ tal que se verifica la ecuación $\forall n \geq 0$.
+\end{itemize}
+\end{ndef}
+\begin{ejemplo}
+	Un ejemplo es la sucesión de Fibonacci:
+	\[
+	f_{n+1}= f_n+ f_{n-1} \ \ \ n \geq 1
+	\]
+	con $f_0 = f_1 = 1$-
+\end{ejemplo}
+
+\subsection{El espacio de las soluciones de las ecuaiones lineales en diferencias}
+
+Sea $S$ el conjunto de todas las sucesiones con coeficientes en $\mathbb K$:
+\[
+S= \{X=\{x_n\}_{n\in \mathbb N}: \ \ x_n \in \mathbb K\}
+\]
+Este conjunto es un espacio vectorial con las operaciones:
+\begin{itemize}
+	\item Suma : $X= \{x_n\}$, $Y = \{y_n\}$ con $n\geq 0$, entonces $X+Y=\{x_n+y_n\}$
+	\item Producto escalar: $X= \{x_n\}$ y $\lambda \in \mathbb K$, entonces $\lambda X= \{\lambda x_n\}$
+\end{itemize}
+Además, es de dimensión infinita pues podemos dar infinitas sucesiones linealmente independientes, como $X_0 = \{1, 0, 0, \cdots\}$, $X_1=\{0,1,0,0,\cdots\}$ y así sucesivamente.
+
+\begin{nth}
+	Sea $\sum$ el conjunto de las soluciones de la ecuación lineal en diferencias homogénea:
+	\[
+	x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = 0 , \ \ \ n\geq 0
+	\]
+	Entonces, $\sum$ es un subespacio vectorial de $S$ de dimensión $k$.
+	
+\end{nth}
+\begin{proof}
+	Tenemos que probar que $\forall X,Y \in \sum$ y $\forall \lambda,\mu \in \mathbb K$ tenemos que:
+	\[
+	\lambda X + \mu Y \in \sum \implies \{\lambda x_n + \mu y_n\}
+	\]
+	Si sustituimos esto en la ecuación lineal en diferencias, y agrupamos los términos que tengan $\lambda $ y $\mu$, nos quedarán en términos de $x_n$ e $y_n$, que, como son soluciones, igualarán la ecuación a 0 y quedará probado.
+	
+	Veamos ahora que la $dim \sum = k$ con $k$ el orden de la ecuación.
+	
+	Sea $f: S \to S$ que lleva $X \mapsto X^* = \mathcal L (X)$, es decir: $\{x_n\} \mapsto \{x_n^*\}$ y $x_n^*$ es 
+	\[
+	x_n^*
+	\]
+	%%% Completar la demostración
+	\end{proof}
 \end{document}
