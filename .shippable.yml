@@ -23,12 +23,13 @@ build:
        chmod +x ~/tl-install &&
        ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
       )
-    - sudo apt-get install -y pandoc python-pygments
+    - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra texlive-math-extra python-pygments
+    - sudo /opt/texbin/tlmgr update --all
   post_ci:
     - rm -R .out/*
     - git config --global user.email "dgiimblog@gmail.com"
     - git config --global user.name "dgiimbot"
-    - git clone -b pdf --single-branch \
+    - git clone -b pdf --single-branch
       https://${GITHUB_TOKEN}@github.com/libreim/apuntesDGIIM.git .out
     - rake
   on_success:

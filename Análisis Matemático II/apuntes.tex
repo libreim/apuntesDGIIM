@@ -1052,9 +1052,9 @@ Necesitaremos primero algunas nociones para comenzar a presentar la integral.
  $(\Omega,\mathcal{A})$ es un espacio medible si
  \begin{nlist}
 	\item $\emptyset \ne \Omega$ es un conjunto
-	\item $\mathcal{A}$ es una $\sigma-$álgebra, esto es: $\emptyset \ne A : \Omega \ A \in \mathcal{A} \ \forall A \in \mathcal{A}$ y además $\cup_{n=1}^\infty A_n \in \mathcal{A}, \forall \{A_n\} \subset \mathcal{A}$
+	\item $\mathcal{A}$ es una $\sigma-$álgebra, esto es: $\emptyset \ne \mathcal{A},\ \Omega \backslash A \in \mathcal{A} \quad \forall A \in \mathcal{A}$ y además $\cup_{n=1}^\infty A_n \in \mathcal{A}, \forall \{A_n\} \subset \mathcal{A}$
 \end{nlist}
-A los elementos $A$ de $\mathcal{A}$ los llamaremos medibles.
+A los elementos $A$ de $\mathcal{A}$ los llamaremos conjuntos medibles.
 \end{ndef}
 
 \begin{nota}
@@ -1072,7 +1072,7 @@ A los elementos $A$ de $\mathcal{A}$ los llamaremos medibles.
 \begin{nota}
 	Un caso particular importante es: Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. 
 \end{nota}
-Ejercicio: Definición de sigma-álgebra engendrada y probar cómo se forma y propiedades.
+Ejercicio: Definición de sigma-álgebra engendrada, probar cómo se forma y propiedades.
 
 Ejercicio: Si $(\Omega,\mathcal{A})$ es un espacio medible, $\mathcal{X}$ un espacio topológico con $B$ su $\sigma-$álgebra de Borel, entonces:
 \[
@@ -1162,7 +1162,7 @@ Ejercicio: si $s$ y $t$ son funciones simple y positivas y $\alpha \in \R^+$, en
 \end{nlist}
 Además, si $f$ es medible y
 \[
-f(\omega) \leq M < \infty, \ \ \forall \omega in \Omega
+f(\omega) \leq M < \infty, \ \ \forall \omega \in \Omega
 \]
 Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$
 \end{nth}
@@ -1190,4 +1190,170 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$
 	Ejercicio: Tomar la función de Dirichlet y buscar los $F_n$ y los $E_{n,k}$ en la construcción de Lebesgue.
 \end{proof}
 
+%%% completar con definición de medida y quizá ejemplos (mirar diapositivas)
+
+\textbf{Propiedades:}
+\begin{nlist}
+	\item (Monotonía). Si $A,B \in \mathcal{A}, A \subset B \implies \mu(A) \leq \mu(B)$
+	\item (Subaditividad) . $\forall \{A_k\} \subset \mathcal{A}$, se tiene:
+	\[
+	\mu(\bigcup_{k=1}^\infty A_k) \leq \sum_{k=1}^\infty \mu(A_k)
+	\]
+	%%% Faltan dos propiedades
+\end{nlist}
+
+
+\begin{ndef}[Integral de función simple positiva]
+	Si $E\in \mathcal{A}$ y $s:\Omega \to [0,\infty]$ es simple: $s= \sum_{k=1}^n \alpha_k \mathcal{X}_{A_k}$, entonces:
+	\[
+	\int_E s d\mu = \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
+	\]
+\end{ndef}
+
+\begin{ndef}
+	Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces:
+	\[
+	\int_e f d\mu = sup\{\int_e s d\mu: \text{ s es simple positiva}, s \leq f\}
+	\]
+\end{ndef}
+
+\begin{nth}[Teorema de la convergencia monótona]
+	Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in A$ y $f_n: \Omega \to [0,\infty]$ medible. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \ \ \ \forall \omega \in \Omega$. Entonces:
+	\[
+\int_E \lim_{n \to \infty} f_n d\mu = \lim_{n \to \infty}\int_E f_n d \mu
+	\]
+	\begin{nota}
+	 $f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible. Además, con $f_n(\omega) \leq f_{n+1}(\omega)$ estamos diciendo que la sucesión de funciones es monótona y por tanto convergerá a una función $f$.
+\end{nota}
+
+%%% Arreglar estilo
+\begin{proof}\hfill\\
+\boxed{\leq}\hfill\\
+Como $f_n \leq f_{n+1} \leq f \implies$
+\[
+\{ s  : \begin{cases} \text{ s simple positiva}\\ s \leq f_n \}
+	
+\end{cases}\}  \subset \{ s: \begin{cases} \text{ s es simple positiva}\\
+s\leq f_{n+1}
+	
+\end{cases} \} \subset \{s: \begin{cases}\text{ s es simple positiva}\\ s \leq f
+	
+\end{cases}\}
+\]
+Esto implica que:
+\[
+\xrightarrow{sup} \int_E f_n d \mu \leq \int_E f_{n+1} d\mu \leq \int_e f d \mu \implies \exists \lim_{n\to \infty} \int_E f_n d\mu \leq \int_E f d \mu
+\]
+\boxed{\geq}\hfill \\
+Para probar esta desigualdad, usaremos el siguiente lema: 
+%%%Añadir
+
+Ahora, como
+\[
+\int_E f d \mu:= sup \{\int_E s d\mu : \begin{cases} \text{ s es simple positiva}\\
+s \leq f
+	
+\end{cases}\}
+\]
+basta ver que:
+\[
+\begin{rcases}
+	\text{ s es simple positiva}\\
+	s \leq f
+\end{rcases} \implies \int_E s d\mu \leq \lim_{n\to \infty} \int_E f_n d\mu
+\]
+Vamos a probar este hecho.
+
+Sea $s: \Omega \to [0,\infty)$ simple positiva tal que $s \leq f$. Fijamos $p \in (0,1)$ y $\forall n \in \mathbb{N}$
+\[
+E_n= \{\omega \in E : ps(\omega) \leq f_n(\omega)\}\implies \begin{cases}
+	E_n \ \ medibles \\
+	E_n \subset E_{n+1}, \ \ \cup_{n=1}^\infty E_n = E
+\end{cases}
+\]
+\[
+\implies p\varphi(E_n) = p \int_{E_n} s d\mu = \int_{E_n} ps d \mu \leq^{\text{def. $E_n$}} \int_{E_n}f_n d\mu \leq \int_E f_n d\mu
+\]
+Donde en el último paso hemos usado que $\forall s:\Omega \to [0,\infty)$ simple que verifique $s\leq f_n$, se tiene que $\int_{E_n}sd\mu \leq \int_E s d \mu$. Recordemos que esta integral se definía:
+Si $s= \sum_{i=1}^n \alpha_i \mathcal{X}_{A_i}$, entonces $\int s d\mu = \sum_{i=1}^n \alpha_i \mu(E_n \cap A_i)$.
+
+Ahora, como $\varphi$ es una medida, si $n \to \infty$, entonces: 
+$$p \varphi(E) =  p\int_E s d\mu \implies p \int_E sd\mu \leq \lim_{n\to \infty}\int_E f_n d\mu$$
+Y si ahora $(p\to 1)$, entonces:
+\[
+1 \int_E s d\mu \leq \lim_{n\to \infty}\int_E f_n d\mu
+\]
+Probando lo que queríamos.
+\end{proof}
+\end{nth}
+
+\textbf{Propiedades de las funciones medibles positivas}
+Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathcal{A}$
+
+\begin{nlist}
+	\item $(f+g, \alpha f, fg $ son medibles y)
+	\[
+	\int_E (f+g) d\mu = \int_E f d\mu + \int_E g d\mu
+	\]
+	\[
+	\int_E \alpha f d\mu = \alpha \int_E f d\mu \quad \text{Tomando $\alpha *\infty = \infty, \ \ \alpha * 0 = 0$}
+	\]
+	
+	\item $g(\omega) \leq f(\omega), \ \forall \omega \in \Omega \implies \int_E g d\mu \leq \int_E f d \mu$
+	
+	\item $\int_E f d \mu =  \int_\Omega f\mathcal{X}_e d\mu$
+	
+	\item Teorema de Levi:
+	\[
+	f_n: \Omega \to [0,\infty] \ \ medibles \implies \int_E \sum_{n=1}^\infty f_n d \mu = \sum_{n=1}^\infty \int_E f_n d\mu
+	\]
+	\begin{proof} \hfill \\
+	Si $f_n:\Omega \to [0,\infty]$ son medibles y $\sum_{n\geq 1}f_n$ una serie de funciones, definimos:
+	\[
+	S_k= \sum_{n=1}^k f_n \quad \text{sumas parciales}
+	\]
+	Y tenemos que $S_1 \leq \cdots \leq S_k \leq S_{k+1} \leq \cdots $, es decir, $S_k$ es monótona creciente. Aplciando el $T.C.M.$, tenemos que:
+	%%% COmpletar esta prueba falta un poco
+	\[
+	\lim_{k \to \infty} \int_E S_k d\mu = \int_E \lim_{k\to \infty} S_k d\mu = \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n d\mu = \int_E \lim_{k\to \infty }
+	\]
+	
+
+\end{proof}
+	\item Si $s$ es simple positiva, entonces $\varphi(E)= \int_E s d\mu \ \ (\forall E \in \mathcal{A})$ es una medida.
+	
+	\[
+	\begin{rcases}
+	\varphi:\mathcal{A} \to [0,\infty] \\
+	E \mapsto \varphi(E)
+\end{rcases} \text{ es una medida. Además}
+	\]
+	\begin{itemize}
+	\item $E\in \mathcal{A}, \mu(E) = 0 \implies \varphi(E) = 0$
+	\item $g:\Omega \to [0,\infty]$ medible $\implies \int_E g d\varphi = \int_E g f d\mu$
+\end{itemize}
+
+\item $f:\Omega \to [0,\infty]$ medible
+\begin{itemize}
+	\item $\int_\Omega f d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$
+	\item $\int_\Omega f d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$
+\end{itemize}
+\end{nlist}
+
+
+%%% ES UN LEMA; BUSCAR SI HACER ENTORNO PARA LEMAS. COPIAR DEMOSTRACIÓN.
+\begin{nprop}
+	Si $(\Omega,\mathcal{A},\mu)$ un espacio de medida, $E\in \mathcal{A}$ y $f_n:\Omega \to [0,\infty]$ medible. Entonces:
+	\[
+	\int_E \liminf_{n \to \infty} f_n d\mu \leq \liminf_{n\to \infty} \int_E f_n d\mu
+	\]
+	\begin{proof}\hfill \\
+	\[
+\liminf_{n\to \infty} f_n(\omega) = sup\{\}	
+	\]
+	
+\end{proof}
+\end{nprop}
+
+	
 \end{document}
