@@ -546,7 +546,19 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 
 
 \end{nth}
-	\begin{nth}
+
+%%%Elegir cual os gusta más please.
+
+%% \begin{proof}
+%% 	Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
+%% 	\[
+%% 	\{A + \lambda (\frac{C+B}{2} - A)\}
+%% 	\] 
+%% 	Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
+	
+%% 	Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
+%% \end{proof}
+	\begin{proof}
 	Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
 	\[
 	\{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
@@ -556,20 +568,34 @@ Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el p
 	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
 	\]
 
-\end{nth}
+\end{proof}
 
 Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que existen las medianas $m_A = L(\vec{AA'})$. Sabemos que las 3 medianas concurren en el baricentro. Este baricentro triseca a las medianas y tenemos que $G = \dfrac{2}{3}A' + \dfrac{1}{3}A$
 
 \begin{ndef}[Mediatriz de un segmento]
 	Si $\bar{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
 \end{ndef}
-
+\begin{nota}
+	A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
+\end{nota}
 %%%completar
 \textbf{Propiedades:}
 \begin{nlist}
-	\item El punto medio $M \in \mathcal{L}$
-	\item La mediatriz es una recta que viene dada por $<\vec{AB},P> = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $AB$ y pasa por $M$ el punto medio del segmento.
+	\item El punto medio $M \in \mathcal{L}$. 
+	\item La mediatriz es una recta que viene dada por $<\vec{AB},P> = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $AB$ y pasa por $M$ el punto medio del segmento.\\
+		\begin{proof}
+		La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2<A,P> = |P|^2+|B|^2-2<B,P>= \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =<A-B,P> = <\vec{BA},P>$$
+		Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $<\vec{BA},P>$ genera la recta:
+		\[
+		r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
+		\]
+		que es perpendicular a $\vec{BA}$.
+		\end{proof}
 \end{nlist}
+%%% Revisar estilo de la raiz cuadrada.
+\begin{nota}
+	$|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = (\sqrt{<\vec{AP},\vec{AP}>})^2 =  < A-P, A-P>  =^{(1)} <A,A-P>-<P,A-P> = <A,A> -<A,P>+<P,P>-<P,A>  = |A|^2+|P|^2-2<P,A>$. Y en (1) hemos aplicado la bilinealidad del producto escalar.
+\end{nota}
 
 \begin{ndef}[Rectas perpendiculares.]
 	Dos rectas son perpendiculares si sus vectores directores son ortogonales.
@@ -616,7 +642,9 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{nprop}
 	Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
-
+\begin{proof}
+	Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
+\end{proof}
 %¿esto no debería ir e ejercicios?
 Ejercicio: Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
 
