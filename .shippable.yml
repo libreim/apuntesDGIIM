@@ -23,12 +23,10 @@ build:
        chmod +x ~/tl-install &&
        ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
       )
-<<<<<<< HEAD
-    - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra python-pygments
-=======
+
     - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra texlive-math-extra python-pygments
     - sudo /opt/texbin/tlmgr update --all
->>>>>>> 0ed8d7a4e048d985896d6e8ddf193f07b7fbe668
+
   post_ci:
     - rm -R .out/*
     - git config --global user.email "dgiimblog@gmail.com"
