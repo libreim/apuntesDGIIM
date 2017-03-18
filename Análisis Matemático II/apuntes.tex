@@ -104,9 +104,9 @@
 
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
 \usepackage{graphicx}   % Gráficos.
-
+\usepackage{xcolor}     % Colores.8
 
 %---------------------------------------------------------------------------
 %   OPCIONES PERSONALIZADAS
@@ -124,6 +124,15 @@
 \pagestyle{fancy}
 \fancyhf{}
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+
+% Estilo de enlaces
+\hypersetup{
+    %hidelinks = true,   % Oculta todos los enlaces.
+    colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
+    linkcolor=black,     % Color de enlaces genéricos
+    citecolor={blue!50!black},   % Color de enlaces de referencias
+    urlcolor={blue!80!black}     % Color de enlaces de URL
+}
 
 % Ruta donde buscar gráficos
 \graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
@@ -242,12 +251,12 @@
 % Teoremas, proposiciones y corolarios.
 \theoremstyle{theorem-style}
 \newtheorem{nth}{Teorema}[section]
-\newtheorem*{nprop}{Proposición}
+\newtheorem{nprop}{Proposición}[section]
 \newtheorem{ncor}{Corolario}[section]
-
+\newtheorem{lema}{Lema}[section]
 % Definiciones.
 \theoremstyle{definition-style}
-\newtheorem*{ndef}{Definición}
+\newtheorem{ndef}{Definición}[section]
 
 % Notas.
 \theoremstyle{remark-style}
@@ -295,6 +304,7 @@
 \date{\vspace{-1.5em} \normalsize Curso 2016/17}
 
 
+
 %---------------------------------------------------------------------------
 %   COMIENZO DEL DOCUMENTO
 %---------------------------------------------------------------------------
@@ -326,7 +336,7 @@
 %--------------------------------------------------------------------------------
 
 \section{Convergencia uniforme y puntual}
-De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. 
+De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. Durante este apartado, la referencia básica es \cite[Capítulo 5]{marsden}.
 
 \begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ converge puntualmente a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A \ \ \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
 	\[
@@ -774,6 +784,8 @@ Es decir, B es equicontinuo y la prueba está terminada.
 
 \section{Series de funciones}
 
+De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos ahora a estudiar series de funciones. La referencia básica sigue siendo \cite[Capítulo 5]{marsden}.
+
 \begin{ndef}[Sumas parciales]
 Sea $\Omega\subset \mathbb R^N$ un conjunto. 
 Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathbb R^M$, se llama sumas parciales $S_k$ a la funci\'on definida en $\Omega$ mediante
@@ -928,6 +940,8 @@ Esto implica que
 \]
 y el primer apartado se concluye aplicando el criterio de Weierstrass.
 
+Para ver que la serie converge absolutamente en todo el disco, sea $x \in D(a,R)$. Entonces, siempre podemos encontrar un radio $R'$ tal que $|x-a| < R' < R$. En consecuencia, $x \in D(a,R')$, y por lo que acabamos de probar, tenemos garantizada la convergencia (en valor absoluto) de la serie en el punto $x$. 
+
 \textit{(ii)} Basta observar que si la serie $\sum_{n\geq 0} a_n (x-a)^n$ es convergente en un punto $x\not= a$, entonces $\left\{ a_n (x-a)^n \right\} \to 0$, y tomando $\epsilon = 1$ en la definición de convergencia tenemos que:
 \[
 \exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
@@ -1039,45 +1053,85 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \section{Integral asociada a una medida}
 
-%%% Revisar Introducción
-% Libro recomendado a seguir: Rudin: Real and Complex Analysis
+%%% Revisar Introducción ----------------------------------------------------
 
-Riemman realizó una definición de la integral que nos daba ciertos problemas cuando la función (de manera intuitiva) realizaba muchas oscilaciones, en el intervalo de integración y además no establecía ninguna relación entre la función y las particiones que se tomaban del intervalo de integración.
+Recordemos por un momento la definición de integral de Riemann. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior como: $$\underline{\int_a^b} f := \underset{P \in \mathcal P [a,b]}{sup} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{inf} f$$
 
-Lebesgue por ello intentó cambiar esta definición para hacer esta integral más general e intentando establecer una relación entre el intervalo de integración y la función. El precio a pagar por esta generalización, es que necesitamos una \textbf{MEDIDA} de integración, que construiremos quizá al final de curso.
+$$\overline {\int_a^b} f := \underset{P \in \mathcal P [a,b]}{inf} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{sup} f$$
 
-Necesitaremos primero algunas nociones para comenzar a presentar la integral.
+Entonces, el conjunto de funciones que son Riemann-integrables es: $$\mathcal R = \left\{ f:[a,b] \to \mathbb{R} \text{ acotada} : \overline {\int_a^b} f = \underline {\int_a^b} f\right\}$$
 
-\begin{ndef}[Espacio medible]
- $(\Omega,\mathcal{A})$ es un espacio medible si
- \begin{nlist}
-	\item $\emptyset \ne \Omega$ es un conjunto
-	\item $\mathcal{A}$ es una $\sigma-$álgebra, esto es: $\emptyset \ne \mathcal{A},\ \Omega \backslash A \in \mathcal{A} \quad \forall A \in \mathcal{A}$ y además $\cup_{n=1}^\infty A_n \in \mathcal{A}, \forall \{A_n\} \subset \mathcal{A}$
+Si $f \in \mathcal R$, definimos su integral de Riemann como la correspondiente integral superior (o inferior). Sin embargo, hay ciertas funciones, principalmente aquellas que presentan muchas oscilaciones en el intervalo de integración, que no son integrables según Riemann. Un ejemplo es la \textbf{función de Dirichlet}, $$f(x) = \begin{cases} 1 & si \ x \in \mathbb Q \cap [0,1]\\ 0 & si \ x \in (\mathbb{R} - \mathbb Q) \cap [0,1] \end{cases}$$ donde es evidente (por la densidad de $\mathbb Q$ y $\mathbb{R} - \mathbb Q$ en $\mathbb{R}$) que $\displaystyle \overline {\int_a^b} f = 1 \ne 0 = \underline {\int_a^b} f$, y por tanto $f \notin \mathcal R$.
+
+En este apartado, nuestro objetivo será construir una integral que abarque un conjunto más amplio de funciones que las funciones Riemann-integrables. Esta será la \textbf{integral de Lebesgue}, que intenta establecer una relación entre el intervalo de integración y la función a integrar, principalmente al considerar una manera de \textit{medir} conjuntos.
+
+Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar a presentar la integral de Lebesgue. La referencia principal es esta vez \cite[Chapter 1]{rudin}.
+
+\subsection{Funciones medibles}
+
+\begin{ndef}[$\sigma$-álgebra] Una familia $\mathcal A$ no vacía de subconjuntos de $\Omega$ es una \mbox{$\sigma$-álgebra} si verifica:
+
+\begin{nlist}
+    \item $\Omega \in \mathcal A$
+	\item $\displaystyle \Omega \backslash A \in \mathcal{A}, \quad \forall A \in \mathcal{A}$
+	\item $\displaystyle \bigcup_{n=1}^\infty A_n \in \mathcal{A}, \quad \forall \{A_n\} \subset \mathcal{A}$
 \end{nlist}
-A los elementos $A$ de $\mathcal{A}$ los llamaremos conjuntos medibles.
+	
+\end{ndef}
+
+\begin{nprop}
+	Si $\mathcal A$ es una $\sigma$-álgebra sobre un conjunto $\Omega$, se verifican las siguientes propiedades: 
+	
+\begin{nlist}
+	\item $\emptyset \in \mathcal A$
+	\item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathcal{A} \implies \bigcup_{i=1}^n A_i \in \mathcal{A}$
+    \item $\displaystyle \bigcap_{n=1}^\infty A_n \in \mathcal{A}, \quad \forall \{A_n\} \subset \mathcal{A}$
+	\item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathcal{A} \implies \bigcap_{i=1}^n A_i \in \mathcal{A}$
+	\item $A,B \in \mathcal A \implies A \backslash B \in \mathcal A$
+\end{nlist}
+
+\begin{proof}
+	La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathcal A$, que sabemos que está en el $\sigma$-álgebra por definición.
+	
+	$(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
+	
+	Por último, $(v)$ se deriva del hecho de que $A - B = (\Omega - B) \cap A$.
+\end{proof}
+\end{nprop}
+
+\begin{ndef}[Espacio medible] Diremos que la pareja $(\Omega, \mathcal A)$ es un espacio medible si $\Omega \ne \emptyset$ es un conjunto, y $\mathcal A$ es una $\sigma$-álgebra sobre $\Omega$. A los elementos $A$ de $\mathcal{A}$ los llamaremos conjuntos medibles.
 \end{ndef}
 
 \begin{nota}
-	Un ejemplo sencillo de $\sigma-$álgebra es: dado un $\Omega$ cualquiera, tomamos como $\sigma-$álgebra las partes de $\Omega$: $P(\Omega)= 2^\Omega$(es notación).
+	Un ejemplo sencillo de $\sigma-$álgebra es la familia formada por todos los subconjuntos de $\Omega$. La denotamos como $P(\Omega) \equiv 2^\Omega$.
 \end{nota}
 
 \begin{ndef}[Función medible]
-	Si $(\Omega,\mathcal{A}) $ y $(\mathcal{X},\mathcal{B)}$ son espacios medibles y $f: \Omega \to X$ es una función, diremos que $f$ es medible si:
+	Si $(\Omega,\mathcal{A}) $ y $(X,\mathcal{B)}$ son espacios medibles y \mbox{$f: \Omega \to X$} es una función, diremos que $f$ es medible si:
 	\[
-	f^{-1}(B) \in A, \ \forall B \in \mathcal{B}
+	f^{-1}(B) \in \mathcal A, \ \forall B \in \mathcal{B}
 	\]
-	Es decir, la imagen inversa de un medible es otro medible.
+	Es decir, si la imagen inversa de un conjunto medible es otro conjunto medible.sqz<
 \end{ndef}
 
-\begin{nota}
-	Un caso particular importante es: Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. 
-\end{nota}
-Ejercicio: Definición de sigma-álgebra engendrada, probar cómo se forma y propiedades.
+\begin{ndef}[$\sigma$-álgebra de Borel] Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $\mathcal B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. Además, $\mathcal B(\Omega)$ es la $\sigma$-álgebra más pequeña que contiene a $\tau$.
+\end{ndef}
 
-Ejercicio: Si $(\Omega,\mathcal{A})$ es un espacio medible, $\mathcal{X}$ un espacio topológico con $B$ su $\sigma-$álgebra de Borel, entonces:
+Formalmente, si $\Lambda = \left\{ \mathcal A : \mathcal A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathcal A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathcal A \in \Lambda} \mathcal A$$ 
+Para ver que $\mathcal B(\Omega)$ es una $\sigma$-álgebra, basta observar que, dada una sucesión \mbox{$\{A_n\} \subseteq \mathcal B(\Omega)$}, tenemos que $A_n \in \mathcal A \ \ \forall \mathcal A \in \Lambda$. Como cada $\mathcal A \in \Lambda$ es una $\sigma$-álgebra, se tiene que: $$\bigcup_{n=1}^\infty A_n \in \mathcal A, \quad \forall \mathcal A \in \Lambda \implies \bigcup_{n=1}^\infty A_n \in \mathcal B(\Omega)$$
+
+El resto de propiedades se comprueban de forma análoga.
+
+\begin{nprop}Si $(\Omega,\mathcal{A})$ es un espacio medible, $X$ un espacio topológico con $\mathcal B$ su $\sigma-$álgebra de Borel, entonces:
 \[
-f: \Omega \to X \textit{ es medible} \iff f^{-1}(G) \in \mathcal{A} \ \forall G \in \tau
+f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G \in \tau
 \]
+
+%%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
+\end{nprop}
+
+
+\textbf{FALTA:} Aritmética de $[0,\infty]$.
 
 \begin{ndef}[Funciones medibles positivas]
 	Una función se llamará medible positiva si es medible y $f: \Omega \to \mathcal{X} = [0,\infty ]$
@@ -1355,5 +1409,37 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
 \end{proof}
 \end{nprop}
 
+
+
+
+
+%--------------------------------------------------------------------------------
+%   Bibliografía.
+%--------------------------------------------------------------------------------
+\newpage
+
+\begin{thebibliography}{9}
+\addcontentsline{toc}{section}{Referencias}
+
+\bibitem{marsden}
+  Jerrold E. Marsden, Michael  J. Hoffman.
+  \emph{Análisis Clásico Elemental}.
+  Addison Wesley,
+  2ª edición,
+  1998.
+
+\bibitem{rudin}
+  Walter Rudin.
+  \emph{Real and Complex Analysis}.
+  McGraw-Hill,
+  3ª edición,
+  1987.
+
+\end{thebibliography}
+
 	
+	
+%---------------------------------------------------------------------------
+%   FIN DEL DOCUMENTO
+%---------------------------------------------------------------------------
 \end{document}
