@@ -23,7 +23,6 @@ build:
        chmod +x ~/tl-install &&
        ~/tl-install -q http://osl.ugr.es/CTAN/systems/texlive/tlnet/
       )
-
     - sudo apt-get install -y pandoc texlive texlive-base texlive-latex-extra texlive-math-extra python-pygments
     - sudo /opt/texbin/tlmgr update --all
 
