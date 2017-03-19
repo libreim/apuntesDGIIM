@@ -1051,9 +1051,12 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \newpage
 
-\section{Integral asociada a una medida}
 
-%%% Revisar Introducción ----------------------------------------------------
+%--------------------------------------------------------------------------------
+%   Integral asociada a una medida.
+%--------------------------------------------------------------------------------
+
+\section{Integral asociada a una medida}
 
 Recordemos por un momento la definición de integral de Riemann. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior como: $$\underline{\int_a^b} f := \underset{P \in \mathcal P [a,b]}{sup} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{inf} f$$
 
@@ -1130,20 +1133,30 @@ f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G
 %%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
 \end{nprop}
 
+\subsubsection{Aritmética de $\bm{[0,\infty]}$}
 
-\textbf{FALTA:} Aritmética de $[0,\infty]$.
+Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty]$. La topología asociada a este espacio viene dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
+
+Puesto que de ahora en adelante trabajaremos habitualmente en el espacio $[0,\infty]$, necesitamos definir ciertas operaciones y relaciones:
+\begin{nlist}
+    \item $a < \infty, \quad \forall a \in \mathbb{R}^+_0$
+	\item $\infty + a = \infty, \quad \forall a \in [0,\infty]$
+	\item $\infty \cdot a = \infty, \quad \forall a \in (0,\infty]$
+    \item $\infty \cdot 0 = 0$
+\end{nlist}
+
+El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principalmente en cuanto a notación y distinción de casos. Por ejemplo, en $[0, \infty]$, \textit{toda sucesión monótona creciente es convergente}, si bien el límite puede ser $\infty$.
+
+\subsection{Funciones medibles positivas}
+
+Una familia muy importante de funciones medibles son aquellas que toman únicamente valores positivos (en la recta real extendida). Tanto es así, que si conocemos el comportamiento de estas funciones, las definiciones y propiedades que derivemos sobre ellas se extenderán fácilmente a funciones medibles cualesquiera en $[-\infty,+\infty]$.
 
 \begin{ndef}[Funciones medibles positivas]
-	Una función se llamará medible positiva si es medible y $f: \Omega \to \mathcal{X} = [0,\infty ]$
+	Una función $f: \Omega \to X = [0,\infty ]$ se llama función medible positiva.
 \end{ndef}
-\begin{nota}
-	Vamos a tomar primero dos convenios:
-	\begin{enumerate}
-	\item $\infty + x = \infty \ \ \forall x \in [0,\infty]$
-	\item $\infty \cdot 0 = 0$
-\end{enumerate}
-\end{nota}
-\begin{nprop}
+
+
+\begin{nprop}[Caracterización de funciones medibles positivas]
 	Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
 	\[
 	\text{f es medible} \iff \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0
@@ -1158,9 +1171,7 @@ f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G
 	\iff \{w \in \Omega : f(w) \geq \gamma \} \text{ es medible } \forall \gamma \geq 0
 	\]
 \end{nprop}
-\begin{proof}
-	La prueba se deja como ejercicio al lector.
-\end{proof}
+%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
 \begin{nprop}
 	Sea $(\Omega,\mathcal{A})$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
@@ -1176,33 +1187,35 @@ f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G
 	\[
 	g_4(w) = \liminf_{n\to \infty}  \ f_n(w)
 	\]
-En particular, si $f_n \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medible.
+En particular, si $\fn \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medible.
 \end{nprop}
+%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
 \begin{ndef}[Funciones simples positivas]
-	Si $s: \Omega \to [0,\infty)$ es medible, entonces:
-	\[
-	\text{s es simple positiva} \iff s(\Omega) \text{ es un conjunto finito}
-	\]
+	Diremos que una función medible $s: \Omega \to [0,\infty)$ es simple positiva si 
+$s(\Omega) \text{ es un conjunto finito}$.
 \end{ndef}
-\begin{ncor}
-	Si $s:\Omega \to [0,\infty)$ es simple con $s(\Omega) =  \{\alpha_1,\cdots, \alpha_m\}$, entonces para los conjuntos medibles:
+
+Una característica importante de las funciones simples es que siempre se pueden escribir como una suma finita de funciones. Antes de verlo, necesitamos definir la función característica de un conjunto $A$, que denotaremos $\upchi_A$ y viene dada por:
 	\[
-	A_k:= \{w \in \Omega: s(\omega)= \alpha_k\} = s^{-1}([0,\alpha_k])\ s^{-1}([0,\alpha_k))
-	\]
-	se tiene $\Omega = \cup_{k=1}^m A_k$, $A_j \cap A_k = \emptyset \ \ (j \ne k)$ y además:
-	\[
-	s = \sum_{k=1}^m \alpha_k \mathcal{X}_{A_k}
-	\]
-	Donde $\mathcal{X}_{A_k}$ es la función característica de $A_k$. Esta función, en general, está definida como:
-	\[
-	X_A(\omega)= \begin{cases}
-	1 \ \omega \in A\\
-	0 \ \omega \notin A
+	\upchi_A(\omega)= \begin{cases}
+	1 & si \ \omega \in A\\
+	0 & si \ \omega \notin A
 \end{cases}
 	\]
-Siendo esta la descomposición canónica, que es única si $\alpha_1 < \alpha_2 <  \cdots <\alpha_m$
-\end{ncor}
+
+\begin{nprop}[Descomposición canónica]
+	Si $s:\Omega \to [0,\infty)$ es simple con \mbox{$s(\Omega) =  \{\alpha_1,\cdots, \alpha_m\}$}, entonces los conjuntos medibles
+	\[
+	A_k:= \{w \in \Omega: s(\omega)= \alpha_k\} = s^{-1}([0,\alpha_k])\backslash s^{-1}([0,\alpha_k))
+	\] 
+	son una partición de $\Omega$, y además:
+	\[
+	s = \sum_{k=1}^m \alpha_k \upchi_{A_k}
+	\]
+	
+Siendo esta la descomposición canónica de $s$, que es única si $\alpha_1 < \alpha_2 <  \cdots <\alpha_m$.
+\end{nprop}
 
 Ejercicio: $B_1,B_2,\cdots,B_m \subset \Omega$ medibles y $\beta_1,\cdots,\beta_m\in[0,\infty)$, implica que $t:= \sum_{k=1}^m \beta_k \mathcal{X}_{B_k}$  es simple positiva. Para la realización del ejercicio, cuidado porque la definición dada NO  es la descomposición canónica de $t$.
 
