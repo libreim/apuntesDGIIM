@@ -855,6 +855,72 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 
 
 
+\subsection{Rectángulos}
+\begin{ndef}
+	Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
+\end{ndef}
+
+%%%completar
+\begin{nprop}
+	Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
+\end{nprop}
+
+%%%completar
+\begin{nprop}
+	Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
+\end{nprop}
+
+%%%completar
+\begin{nprop}
+	Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+\end{nprop}
+
+\subsection{Ángulos}
+
+\begin{ndef}[Ángulo entre vectores]
+	Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
+	\[
+	cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
+	\]
+\end{ndef}
+\begin{nota}
+	Un ángulo entre rectas sería el ángulo que forman sus vectores directores
+\end{nota}
+\begin{nprop}
+	Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
+\end{nprop}
+
+\begin{nprop}
+	Los ángulos opuestos por el vértice formados por dos rectas son iguales.
+\end{nprop}
+
+\begin{nprop}
+	Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
+\end{nprop}
+
+\begin{nth}
+	Los tres ángulos de un triángulo suman $\pi$
+\end{nth}
+\begin{proof}
+	La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
+\end{proof}
+
+\begin{nprop}
+	Si $f:\R^2 \to \R^2$ es una dilatación:
+	\[
+	f \begin{pmatrix}
+ x\\
+ y 
+\end{pmatrix} = \lambda\begin{pmatrix}
+ x\\
+ y 
+\end{pmatrix} + b \quad \lambda \ne 0
+	\]
+	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
+\end{nprop}
+
+\section{Movimientos}
+
 \begin{ndef}[Movimientos]
 	Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$que es una afinidad que conserva distancias.
 	\[
@@ -928,71 +994,27 @@ b_n
 	En $\R^n$, si $\lambda = 1$ no es un valor propio de $A$, entonces $f$ tiene un punto fijo y solo 1.
 \end{nprop}
 
+\subsection{Tipos de movimientos}
+\begin{itemize}
+	\item Movimiento deslizante si no hay puntos fijos $f = t_v o t_r$. En estas, el vector deslizamiento es $v=b^1$
+	\item Auténtica reflexión: reflexión con puntos fijos $f=r_r$. En este caso, tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$
+\end{itemize}
 
-
-
-\subsection{Rectángulos}
-\begin{ndef}
-	Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
-\end{ndef}
-
-%%%completar
-\begin{nprop}
-	Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
-\end{nprop}
-
-%%%completar
-\begin{nprop}
-	Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
-\end{nprop}
-
-%%%completar
-\begin{nprop}
-	Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
-\end{nprop}
-
-\subsection{Ángulos}
-
-\begin{ndef}[Ángulo entre vectores]
-	Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
+\subsection{Giros en el espacio}
+\begin{ndef}[Movimiento helicoidal]
+	Es un movimiento en el que no hay puntos fijos. Su matriz en cierta base ortonormal es:
 	\[
-	cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
+	\begin{pmatrix}
+cos \theta & -sen\theta & 0 \\
+ sen \theta & cos\theta & 0\\
+ 0 & 0 & 1
+\end{pmatrix} 
+	\]
+	En ellas, podemos obtener el ángulo sabiendo que 
+	\[
+	tr(A) = 1+2cos\theta
 	\]
 \end{ndef}
-\begin{nota}
-	Un ángulo entre rectas sería el ángulo que forman sus vectores directores
-\end{nota}
-\begin{nprop}
-	Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
-\end{nprop}
 
-\begin{nprop}
-	Los ángulos opuestos por el vértice formados por dos rectas son iguales.
-\end{nprop}
-
-\begin{nprop}
-	Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
-\end{nprop}
-
-\begin{nth}
-	Los tres ángulos de un triángulo suman $\pi$
-\end{nth}
-\begin{proof}
-	La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
-\end{proof}
-
-\begin{nprop}
-	Si $f:\R^2 \to \R^2$ es una dilatación:
-	\[
-	f \begin{pmatrix}
- x\\
- y 
-\end{pmatrix} = \lambda\begin{pmatrix}
- x\\
- y 
-\end{pmatrix} + b \quad \lambda \ne 0
-	\]
-	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
-\end{nprop}
 
 \end{document}
