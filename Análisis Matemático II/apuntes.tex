@@ -1425,32 +1425,31 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
 \textbf{FALTAN COSAS}
 
 
+
 \begin{nth}[Convergencia dominada de Lebesgue]
-	Sean $f_n : \Omega \rightarrow \R$ medibles y $E \in \mathcal{A}$. Además, suponemos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, suponemos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \forall \omega \in E$. Entonces,
+	Sean $f_n : \Omega \rightarrow \R$ funciones medibles y $E \in \mathcal{A}$. Además, supongamos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, supongamos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \ \forall \omega \in E$. Entonces,
 	
-	$$ \lim_{n \to \infty} \int_E f_n d \mu = \int_E (\lim_{n \to \infty} f_n ) d \mu$$ 
+	$$ \lim_{n \to \infty} \int_E f_n d \mu = \int_E  \left( \lim_{n \to \infty} f_n \right) d \mu$$ 
 \end{nth}
 
 \begin{nota}
-	Como para toda función $|f_n| \leq g$ y $g$ es integrable, $|f_n|$ también es integrable, luego cada $f_n$ es integrable.
+	Como para cada $n$, $|f_n| \leq g$ y $g$ es integrable, $|f_n|$ también es integrable, luego cada $f_n$ es integrable.
 \end{nota}
 
 \begin{nota}
-	Como $f(\omega) = \lim_{n \to \infty} f_n(\omega)$ con $f_n$ funciones medibles $\Rightarrow f$ es medible en $\Omega$.
+	Como $f(\omega) = \lim_{n \to \infty} f_n(\omega)$ con cada $f_n$ una función medible $\Rightarrow f$ es medible en $\Omega$.
 \end{nota}
 
 \begin{proof}
 	Definimos $g_n(\omega) := 2g(\omega)\upchi_E(\omega) - \abs{f_n(\omega) - f(\omega)} \chi_E (\omega)$, que es integrable. Es claro que $\{g_n(\omega)\} \rightarrow 2g(\omega)\upchi_E(\omega)$, ya que $f_n(\omega) \rightarrow f(\omega)$ y $\upchi_E$ es acotada.
 	
-	Vamos a ver además que $g_n \geq 0$ y medible en $\Omega$ porque $|f_n - f| \leq |f_n| + |f| \leq g + g = 2g\upchi_E(\omega)$.
-	
+	Vamos a ver además que $g_n \geq 0$ y es medible en $\Omega$ porque $$|f_n - f| \leq |f_n| + |f| \leq g + g = 2g\upchi_E(\omega)$$
 	Por el \textit{Lema de Fatou}, 
 	$$\liminf_{n \to \infty} \int_{\Omega} g_n d \mu \geq \int_{\Omega} \liminf_{n \to \infty} g_n d \mu = 2 \int_{\Omega} g\upchi_E(\omega)d\mu$$
 	
 	$$\liminf_{n \to \infty} \left[\int_{\Omega} 2g(\omega)\upchi_E(\omega) d\mu - \int_{\Omega} \abs{f_n(\omega) - f(\omega)}\upchi_E(\omega) d \mu \right] \leq 2\int_{\Omega} g\upchi_E(\omega) d \mu$$
-	
-	Como recordatorio, si $\exists \lim_{n \to \infty} x_n$ entonces $\liminf_{n \to \infty} (x_n + y_n) = \lim_{n \to \infty} x_n + \liminf_{n \to \infty} y_n$. Además, $\liminf_{n \to \infty} x_n = - \limsup_{n \to \infty} (- x_n)$.
-	
+
+	Como recordatorio, $$\text{si } \exists \lim_{n \to \infty} x_n \text{ entonces } \liminf_{n \to \infty} (x_n + y_n) = \lim_{n \to \infty} x_n + \liminf_{n \to \infty} y_n$$ Además, $$\liminf_{n \to \infty} x_n = - \limsup_{n \to \infty} (- x_n)$$
 	Luego entonces
 	
 	$$2 \int_{\Omega} g(\omega)\upchi_E(\omega) d \mu + \liminf_{n \to \infty} \left[-\int_{\Omega} \abs{f_n - f} \upchi_E(\omega) d \mu \right]$$
@@ -1467,16 +1466,17 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
 	
 	$$\Rightarrow \exists \lim_{n \to \infty} \int_{\Omega} \abs{f_n - f} \upchi_E d \mu = 0$$
 	
-	Hemos probado entonces que 
-	
+	Sustituyendo $\Omega$  por $E$ hemos probado entonces que 
 	$$\lim_{n \to \infty} \int_{E} \abs{f_n - f} d \mu = 0$$
 	
-	$$- \int_E \abs{f_n - f} d \mu \leq \int_E (f_n - f) d \mu \leq int_E \abs{f_n - f} d \mu$$
+	$$- \int_E \abs{f_n - f} d \mu \leq \int_E (f_n - f) d \mu \leq \int_E \abs{f_n - f} d \mu$$
 	
-	$$ - \int_E \abs{f_n - f} d \mu + \int_E f d \mu \leq \int_E f_n d \mu \leq \int_E \abs{f_n - f} d \mu + \int_E f d \mu$$. 
+	Sumando entonces $\displaystyle \int_E f d \mu$ a cada término tenemos
 	
-	$$ \Rightarrow \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
-
+	$$ - \int_E \abs{f_n - f} d \mu + \int_E f d \mu \leq \int_E f_n d \mu \leq \int_E \abs{f_n - f} d \mu + \int_E f d \mu$$
+	
+	Y si finalmente, tomando $\lim_{n \to \infty}$ tenemos que
+	$$ \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
 \end{proof}
 
 Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el Lema de Fatou.
