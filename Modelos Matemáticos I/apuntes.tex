@@ -929,6 +929,8 @@ Sea $x_0 \in (\alpha-\eta,\alpha+\eta)\cap I, x_{n+1} = f(x_n),\ n \geq 0$
 $|x_n-\alpha| = |f(x_{n+1})-f(\alpha)| \leq \lambda|x_{n+1}-\alpha|=\lambda|f(x_{n-2})-f(\alpha)| \leq \lambda^2|x_{n-2}-\alpha| \leq \dots \leq \lambda^n|x_0-\alpha|\rightarrow0$, puesto que $0 \leq \lambda < 1$
 \end{proof}
 
+%%% FALTA CONTENIDO			
+%------------------------------------------------
 \subsubsection{Ciclos}
 \begin{ndef}[Ciclo]
 	Un ciclo de orden $s$ o una órbita periódica de período $s$ o un $s-$ciclo del SDD$=\{I,f\}$ es un conjunto de puntos $\{\alpha_0, \cdots, \alpha_{s-1}\}\subset I$ distintos entre sí tales que:
@@ -1051,9 +1053,12 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%				TEMA 2
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\section{ Ecuaciones en diferencias lineales de orden superior}
+\section{Ecuaciones en diferencias lineales de orden superior}
+\subsection{La ecuación lineal en diferencias de orden superior}
 \begin{ndef}[Ecuación lineal en diferencias]
 	Es una ecuación en diferencias de la forma:
 	\[
@@ -1063,20 +1068,20 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 	
 	\begin{itemize}
 	\item $k \geq 1 $ es el orden de la ecuación. 
-	\item Si $k > 1$ se dice que la ecuación es de orden superior
-	\item $a_0,\cdots,a_{k-1} \in \mathbb K $ donde $\mathbb K $ es un cuerpo que será $\R $ o $\mathbb C$.
+	\item Si $k > 1$ se dice que la ecuación es de orden superior.
+	\item $a_0,\dots,a_{k-1} \in \mathbb K $ donde $\mathbb K $ es un cuerpo que será $\R $ o $\mathbb C$.
 	\item Una solución de esta ecuación será una sucesión $\{x_n\}$ tal que se verifica la ecuación $\forall n \geq 0$.
 \end{itemize}
 \end{ndef}
 \begin{ejemplo}
 	Un ejemplo es la sucesión de Fibonacci:
 	\[
-	f_{n+1}= f_n+ f_{n-1} \ \ \ n \geq 1
+	f_{n+1}= f_n+ f_{n-1}, \ \ \ n \geq 1
 	\]
 	con $f_0 = f_1 = 1$-
 \end{ejemplo}
 
-\subsection{El espacio de las soluciones de las ecuaiones lineales en diferencias}
+\textbf{El espacio de las soluciones de las ecuaiones lineales en diferencias}
 
 Sea $S$ el conjunto de todas las sucesiones con coeficientes en $\mathbb K$:
 \[
@@ -1098,18 +1103,28 @@ Además, es de dimensión infinita pues podemos dar infinitas sucesiones linealm
 	
 \end{nth}
 \begin{proof}
-	Tenemos que probar que $\forall X,Y \in \sum$ y $\forall \lambda,\mu \in \mathbb K$ tenemos que:
+	Tenemos que probar que $\Sigma$ es un espacio vectorial, para ello veremos que $\forall X,Y \in \sum$ y $\forall \lambda,\mu \in \mathbb K$ tenemos que:
 	\[
 	\lambda X + \mu Y \in \sum \implies \{\lambda x_n + \mu y_n\}
 	\]
 	Si sustituimos esto en la ecuación lineal en diferencias, y agrupamos los términos que tengan $\lambda $ y $\mu$, nos quedarán en términos de $x_n$ e $y_n$, que, como son soluciones, igualarán la ecuación a 0 y quedará probado.
+
+	$(\lambda x_{n+k} + \mu y_{n+k})+a_{k-1}(\lambda x_{n+k-1} + \mu y_{n+k-1})+ \dots + a_1(\lambda x_{n+1} + \mu y_{n+1}) + a_0(\lambda x_n + \mu y_n) =\\
+	= \lambda(x_{n+k}+a_{k-1}x_{n+k-1} + \dots + a_1x_{n+1}+a_0x_n) + \mu(y_{n+k}+a_{k-1}y_{n+k-1}+\dots+a_1y_{n+1}+a_0y_n)= 0$
 	
-	Veamos ahora que la $dim \sum = k$ con $k$ el orden de la ecuación.
+	Veamos ahora que la $dim \Sigma = k$ con $k$ el orden de la ecuación.
 	
-	Sea $f: S \to S$ que lleva $X \mapsto X^* = \mathcal L (X)$, es decir: $\{x_n\} \mapsto \{x_n^*\}$ y $x_n^*$ es 
+	Sea $\mathcal L: S \to S$ que lleva $X \mapsto X^* = \mathcal L (X)$, es decir: $\{x_n\} \mapsto \{x_n^*\}$ y $x_n^*$ es 
 	\[
-	x_n^*
+	x_n^*= x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n
 	\]
-	%%% Completar la demostración
+	$\Sigma \subset \mathcal S$, se cumple que $\Sigma = \{ \mathcal X : \mathcal L (\mathcal X) = 0 \} = ker\mathcal L$ y, por tanto, $\Sigma$ es un subespacio vectorial de $\mathcal S$.
+	Para ver que $dim \Sigma = k$ basta ver que la aplicación: 
+	
+	$\Phi : \Sigma \rightarrow \mathbb K ^k$, $\mathcal X \mapsto \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$
+	es un isomorfismo (si $\Sigma$ y $\mathcal K$ son isomorfos, entonces tendrán igual dimensión).
+	Como la aplicación $\Phi$ verifica las condiciones para ser un isomorfismo (es lineal y $\forall (x_0,x_1,\dots,x_{k-1}) \in \mathbb K ^k,\ \exists \{x_n\} \in \Sigma : \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$), queda demostrado.
 	\end{proof}
+	
+	FALTA CONTENIDO
 \end{document}
