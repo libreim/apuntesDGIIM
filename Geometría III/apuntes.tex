@@ -157,7 +157,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 
-
+% Flechitas de los vectores de tamaño apropiado
+\renewcommand{\vec}{\overrightarrow}
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -760,7 +761,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Transformaciones}
 
 \begin{ndef}[Traslaciones]
-	Se define la traslacion de vector $v$ como $t_v: R^2 \rightarrow R^2$ con $t_v(P) = P + v$
+	Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
 \end{ndef}
 
 %%%completar
@@ -774,7 +775,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 
 \begin{ndef}[Afinidades(aplicaciones lineales biyectivas)]
-	Se define una afinidad f como una aplicacion $f:R^2 \rightarrow R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
+	Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
 	x\\
 	y\\
 \end{pmatrix}$, $A =$ $\begin{pmatrix}
@@ -922,20 +923,20 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 \section{Movimientos}
 
 \begin{ndef}[Movimientos]
-	Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$que es una afinidad que conserva distancias.
+	Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$ que es una afinidad que conserva distancias.
 	\[
-	|f(P)-f(Q)|= P-Q \quad  \quad |\vec{f}(\vec{QP}|= |\vec{QP}|
+	|f(P)-f(Q)|= |P-Q| \quad  \quad |\vec{f}(\vec{QP})|= |\vec{QP}|
 	\]
 \end{ndef}
 
 \begin{nprop}
-	$f$ es un movimiento $\iff$ $A$ es ortogonal ($A^{-1}= A^t$). Es de la forma:
+	$f$ es un movimiento $\iff$ $\mathcal A$ es ortogonal ($\mathcal A ^{-1}= \mathcal A ^t$). Es de la forma:
 	\[
 	f \begin{pmatrix}
 x_1\\
 \vdots\\
 x_n 
-\end{pmatrix} = A \begin{pmatrix}
+\end{pmatrix} = \mathcal A \begin{pmatrix}
 x_1\\
 \vdots\\
 x_n 
@@ -951,7 +952,7 @@ b_n
 \begin{ejemplo}
 	\begin{nlist}
 	\item Traslaciones $p \mapsto p+v$
-	\item Reflexión central $p \mapsto -p +b= -p +2A$ de centro A
+	\item Reflexión central $p \mapsto -p +b= -p +2A$ de centro $A$
 	\item Giro de ángulo $\theta$ y centro $A$ (en $\R^2$).
 	\[
 	f= \begin{cases}
@@ -966,11 +967,11 @@ b_n
 \end{ejemplo}
 
 \begin{nprop}
-	Si realizamos un giro $A_\theta$ y sobre ese giro aplicamos otro giro $A_{\theta'}$, tenemos que:
+	Si realizamos un giro $\mathcal A_\theta$ y sobre ese giro aplicamos otro giro $\mathcal A_{\theta'}$, tenemos que:
 	\[
-	A_{\theta} o A_{\theta'} 0 A_{\theta+\theta'}
+	\mathcal A_{\theta} \circ \mathcal A_{\theta'} = \mathcal A_{\theta+\theta'}
 	\]
-	Siendo $A$ la matriz del giro.
+	Siendo $\mathcal A$ la matriz del giro.
 \end{nprop}
 
 \begin{ndef}[Matrices ortogonales]
@@ -979,7 +980,7 @@ b_n
 	\begin{pmatrix}
  a & -b \\
  b & a 
-\end{pmatrix} \quad \text { o } \quad \begin{pmatrix}
+\end{pmatrix} \quad \text { ó } \quad \begin{pmatrix}
  a & b \\
  b & -a 
 \end{pmatrix}
@@ -988,15 +989,15 @@ b_n
 \end{ndef}
 
 \begin{ndef}[Movimiento directo]
-	Es un movimiento que tiene como matriz una matriz ortogonal. 
+	Es un movimiento cuya matriz es ortogonal. 
 \end{ndef}
 \begin{nprop}
-	En $\R^n$, si $\lambda = 1$ no es un valor propio de $A$, entonces $f$ tiene un punto fijo y solo 1.
+	En $\R^n$, si $\lambda = 1$ no es un valor propio de $\mathcal A$, entonces $f$ tiene un punto fijo y solo 1.
 \end{nprop}
 
 \subsection{Tipos de movimientos}
 \begin{itemize}
-	\item Movimiento deslizante si no hay puntos fijos $f = t_v o t_r$. En estas, el vector deslizamiento es $v=b^1$
+	\item Movimiento deslizante si no hay puntos fijos $f = t_v \circ t_r$. En estas, el vector deslizamiento es $v=b^1$
 	\item Auténtica reflexión: reflexión con puntos fijos $f=r_r$. En este caso, tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$
 \end{itemize}
 
