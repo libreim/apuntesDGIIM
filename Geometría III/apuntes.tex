@@ -115,6 +115,7 @@
 % Redefinir letra griega épsilon.
 \let\epsilon\upvarepsilon
 
+
 % Formato de texto.
 \linespread{1.1}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
@@ -511,6 +512,18 @@ $A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{A
 \end{proof}
 \end{nth}
 
+\begin{ndef}[Triángulos semejantes]
+	Dos triángulos son semejantes si sus lados son paralelos dos a dos.
+\end{ndef}
+
+\begin{ncor}[Teorema de Thales]
+	Si en un triángulo $ABC$ se traza una recta paralela a cualquiera de sus lados, obtenemos un triángulo semejante al triángulo original.
+\end{ncor}
+
+\begin{nota}
+	Dos triángulos tienen todos los lados paralelos dos a dos $\iff$ los segmentos de los lados son proporcionales dos a dos. Esto es por el teorema anterior.
+\end{nota}
+
 \begin{ndef}[Triángulo medio]
 	Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
 	\begin{nlist}
@@ -579,7 +592,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{nota}
 	A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
 \end{nota}
-%%%completar
+
 \textbf{Propiedades:}
 \begin{nlist}
 	\item El punto medio $M \in \mathcal{L}$. 
@@ -639,7 +652,6 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \end{ndef}
 
 
-%%%completar
 \begin{nprop}
 	Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
@@ -773,8 +785,19 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	\item $t_0 = I$
 \end{nlist}
 \end{nprop}
+\begin{proof}\hfill \begin{center}\end{center}
+	\begin{nlist}
+	\item $t_v \circ t_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
+	\item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
+	\begin{itemize}
+	\item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
+	\item $t_v\circ t_{-v} = P+v-v = P = I(P)$
+\end{itemize}
+	\item $t_0(p) = P +0 = P = I(P)$
+\end{nlist}
+\end{proof}
 
-\begin{ndef}[Afinidades(aplicaciones lineales biyectivas)]
+\begin{ndef}[Afinidades]
 	Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
 	x\\
 	y\\
@@ -791,17 +814,74 @@ y $b =$ $\begin{pmatrix}
 \end{ndef}
 
 
+\begin{nota}
+	Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
+\end{nota}
+
 %%%completar
 \begin{nprop}
 Se dan las siguientes propiedades:
 \begin{nlist}
 	\item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
-	\item Sean f y g afinidades, entonces $g \circ f (x)$ es afinidad
-	%%% FALTA AÑADIR UNA PROPIEDAD SOBRE LA INVERSA
+	\item Sean f y g afinidades, entonces $(g \circ f) (P)$ es afinidad
+	\item $f^{-1}(P) = A^{-1}P +A^{-1}b$
+	
 \end{nlist}
 \end{nprop}
+\begin{proof}
+	\begin{nlist}
+	\item Trivial
+	\item $(f\circ g)(P) = f(AP +b) = A'(AP)+A'b +b' $, donde $AA'$ es una matriz y $A'b+b'$ es un vector, por lo que tenemos una nueva afinidad.
+	\item Es directo por la composición de funciones.
+\end{nlist}
+\end{proof}
 
-%%% Comprobar lo que falta gg mbre
+\begin{ndef}[Función vectorial asociada]
+	Se llama función vectorial asociada a una afinidad($\vec{f}$) a la función que actúa sobre vectores $\vec{f}(v) = Av$
+\end{ndef}
+
+\textbf{Propiedades de las afinidades:}\\
+\begin{enumerate}
+	\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
+	\item $f$ lleva rectas en rectas.
+	\item $f(r\cap s) = f(r) \cap f(s)$
+	\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$
+	\item $f$ lleva puntos medios en puntos medios
+	\item $f$ lleva segmentos en segmentos
+	\item $f$ lleva rectas paralelas en rectas paralelas
+	\item $f$ lleva triángulos en triángulos
+	\item $f$ lleva medianas en medianas
+	\item $f$ lleva baricentros en baricentros
+	\item $f$ lleva cuadriláteros en cuadriláteros
+	\item $f$ lleva paralelogramos en paralelogramos
+\end{enumerate}
+\begin{proof}\hfill
+	\begin{enumerate}
+	\item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$
+	\item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
+	 \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
+	 \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)  $
+	 \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$
+	 \item Trivial
+	 \item Trivial
+	 \item Trivial por las 4 anteriores.
+	 \item Trivial pues $f$ lleva rectas en rectas.
+	 \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas
+	 \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones
+	 \item Trivial por la anterior y porque mantiene paralelismo
+
+	 
+\end{enumerate}
+\end{proof}
+
+\begin{ndef}[Homotecia]
+	Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
+\end{ndef}
+%\begin{nota}
+%	Tenemos que ver esta transformación como una transformación intuitiva en la cual
+%\end{nota}
+
+
 
 \subsection{Circunferencias}
 
