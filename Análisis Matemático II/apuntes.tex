@@ -1476,7 +1476,48 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
 	$$ - \int_E \abs{f_n - f} d \mu + \int_E f d \mu \leq \int_E f_n d \mu \leq \int_E \abs{f_n - f} d \mu + \int_E f d \mu$$. 
 	
 	$$ \Rightarrow \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
+
 \end{proof}
+
+Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el Lema de Fatou.
+
+\begin{nprop}[Lema de Fatou para funciones medibles]
+	Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega d\mu - \int_\Omega d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
+	Entonces:
+	$$ \lim_{n\to \infty}\int_\Omega f_n d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )d\mu$$
+\end{nprop}
+\begin{proof}
+	Llamamos $h_n:= f_n - h \geq 0$ y medible por diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
+	$$ \lim_{n\to \infty} \int_\Omega (f_n -h) d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h) d\mu$$
+	
+	$$ ( \liminf_{n\to \infty}\int_\Omega f_n d\mu )  - \int_\Omega h d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n d\mu - \int_\Omega f_n d\mu$$
+	Y podemos suprimir los miembros iguales y haber probado este resultado
+\end{proof} 
+
+\begin{nth}[Teorema de la convergencia monótona para funciones integrables]
+Sean $f_n: \Omega \to \R$ funciones integrables y $f_n(\omega) \leq f_{n+1} \ \ \ \forall \omega \in \Omega$. Supongamos también que $\{\int_\Omega f_n d\mu\}$ es una sucesión acotada superiormente.\\
+Entonces:
+$$ \begin{cases}
+	f(\omega):= \lim_{n\to \infty}f_n(\omega) \text{ es integrable}\\
+	\lim_{n \to \infty} \int_\Omega f_n d\mu = \int_{\Omega}\lim_{n\to \infty} f_n d\mu
+\end{cases}$$
+	
+\end{nth}
+\begin{proof}
+	Sabemos que $f_1 \leq f_2 \leq \cdots \leq f_n \leq \cdots $. Como queremos que sean positivas, definimos $h_n:= f_n - f_1$, que es medible por diferencia de medibles y monótona creciente. Así, tenemos las condiciones para aplicar el teorema de la convergencia monótona para funciones medibles positivas y ver que:
+	$$ \lim_{n \to \infty} \int_\Omega h_n d\mu = \int_\Omega \lim_{n \to \infty}h_n d\mu$$
+	Y como la sucesión de las integrales está acotada superiormente, tenemos que:
+	$$ +\infty > \lim_{n\to \infty} \int_\Omega f_n d\mu = \int_\Omega f d\mu \geq \int_\Omega f_1 d\mu > -\infty$$
+\end{proof}
+
+\begin{nota}
+	Estos dos teoremas, los podemos realizar en un $E$ un subconjunto del espacio medible $\Omega$
+\end{nota}
+
+
+\begin{nprop}
+	Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$
+\end{nprop}
 
 %--------------------------------------------------------------------------------
 %   Bibliografía.
