@@ -797,7 +797,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nlist}
 \end{proof}
 
-\begin{ndef}[Afinidades(aplicaciones lineales biyectivas)]
+\begin{ndef}[Afinidades]
 	Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
 	x\\
 	y\\
@@ -843,14 +843,45 @@ Se dan las siguientes propiedades:
 \textbf{Propiedades de las afinidades:}\\
 \begin{enumerate}
 	\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
+	\item $f$ lleva rectas en rectas.
+	\item $f(r\cap s) = f(r) \cap f(s)$
+	\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$
+	\item $f$ lleva puntos medios en puntos medios
+	\item $f$ lleva segmentos en segmentos
+	\item $f$ lleva rectas paralelas en rectas paralelas
+	\item $f$ lleva triángulos en triángulos
+	\item $f$ lleva medianas en medianas
+	\item $f$ lleva baricentros en baricentros
+	\item $f$ lleva cuadriláteros en cuadriláteros
+	\item $f$ lleva paralelogramos en paralelogramos
 \end{enumerate}
 \begin{proof}\hfill
 	\begin{enumerate}
-	\item
+	\item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$
+	\item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
+	 \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
+	 \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)  $
+	 \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$
+	 \item Trivial
+	 \item Trivial
+	 \item Trivial por las 4 anteriores.
+	 \item Trivial pues $f$ lleva rectas en rectas.
+	 \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas
+	 \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones
+	 \item Trivial por la anterior y porque mantiene paralelismo
+
+	 
 \end{enumerate}
 \end{proof}
 
-%%% Comprobar lo que falta gg mbre
+\begin{ndef}[Homotecia]
+	Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
+\end{ndef}
+%\begin{nota}
+%	Tenemos que ver esta transformación como una transformación intuitiva en la cual
+%\end{nota}
+
+
 
 \subsection{Circunferencias}
 
