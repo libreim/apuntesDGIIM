@@ -1060,119 +1060,222 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 \section{Ecuaciones en diferencias lineales de orden superior}
 \subsection{La ecuación lineal en diferencias de orden superior}
 \begin{ndef}[Ecuación lineal en diferencias]
-	Es una ecuación en diferencias de la forma:
-	\[
-	x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = b(n), \ \ n \geq 0
-	\]
-	con $a_0 \ne 0$. Si $b(n)= 0$ la ecuación se dice homogénea. 
+  Es una ecuación en diferencias de la forma:
+  \[
+    x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = b(n), \ \ n \geq
+    0
+  \]
+  con $a_0 \ne 0$. Si $b(n)= 0$ la ecuación se dice homogénea.
 	
-	\begin{itemize}
-	\item $k \geq 1 $ es el orden de la ecuación. 
-	\item Si $k > 1$ se dice que la ecuación es de orden superior.
-	\item $a_0,\dots,a_{k-1} \in \mathbb K $ donde $\mathbb K $ es un cuerpo que será $\R $ o $\mathbb C$.
-	\item Una solución de esta ecuación será una sucesión $\{x_n\}$ tal que se verifica la ecuación $\forall n \geq 0$.
-\end{itemize}
+  \begin{itemize}
+  \item $k \geq 1 $ es el orden de la ecuación.
+  \item Si $k > 1$ se dice que la ecuación es de orden superior.
+  \item $a_0,\dots,a_{k-1} \in \mathbb K $ donde $\mathbb K $ es un cuerpo que
+    será $\R $ o $\mathbb C$.
+  \item Una solución de esta ecuación será una sucesión $\{x_n\}$ tal que se
+    verifica la ecuación $\forall n \geq 0$.
+  \end{itemize}
 \end{ndef}
 \begin{ejemplo}
-	Un ejemplo es la sucesión de Fibonacci:
-	\[
-	f_{n+1}= f_n+ f_{n-1}, \ \ \ n \geq 1
-	\]
-	con $f_0 = f_1 = 1$-
+  Un ejemplo es la sucesión de Fibonacci:
+  \[
+    f_{n+1}= f_n+ f_{n-1}, \ \ \ n \geq 1
+  \]
+  con $f_0 = f_1 = 1$-
 \end{ejemplo}
 
 \textbf{El espacio de las soluciones de las ecuaiones lineales en diferencias}
 
 Sea $S$ el conjunto de todas las sucesiones con coeficientes en $\mathbb K$:
 \[
-S= \{X=\{x_n\}_{n\in \mathbb N}: \ \ x_n \in \mathbb K\}
+  S= \{X=\{x_n\}_{n\in \mathbb N}: \ \ x_n \in \mathbb K\}
 \]
 Este conjunto es un espacio vectorial con las operaciones:
 \begin{itemize}
-	\item Suma : $X= \{x_n\}$, $Y = \{y_n\}$ con $n\geq 0$, entonces $X+Y=\{x_n+y_n\}$
-	\item Producto escalar: $X= \{x_n\}$ y $\lambda \in \mathbb K$, entonces $\lambda X= \{\lambda x_n\}$
+\item Suma : $X= \{x_n\}$, $Y = \{y_n\}$ con $n\geq 0$, entonces
+  $X+Y=\{x_n+y_n\}$
+\item Producto escalar: $X= \{x_n\}$ y $\lambda \in \mathbb K$, entonces
+  $\lambda X= \{\lambda x_n\}$
 \end{itemize}
-Además, es de dimensión infinita pues podemos dar infinitas sucesiones linealmente independientes, como $X_0 = \{1, 0, 0, \cdots\}$, $X_1=\{0,1,0,0,\cdots\}$ y así sucesivamente.
+Además, es de dimensión infinita pues podemos dar infinitas sucesiones
+linealmente independientes, como $X_0 = \{1, 0, 0, \cdots\}$,
+$X_1=\{0,1,0,0,\cdots\}$ y así sucesivamente.
 
 \begin{nth}
-	Sea $\sum$ el conjunto de las soluciones de la ecuación lineal en diferencias homogénea:
-	\[
-	x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = 0 , \ \ \ n\geq 0
-	\]
-	Entonces, $\sum$ es un subespacio vectorial de $S$ de dimensión $k$.
+  Sea $\sum$ el conjunto de las soluciones de la ecuación lineal en diferencias
+  homogénea:
+  \[
+    x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n = 0 , \ \ \ n\geq
+    0
+  \]
+  Entonces, $\sum$ es un subespacio vectorial de $S$ de dimensión $k$.
 	
 \end{nth}
 \begin{proof}
-	Tenemos que probar que $\Sigma$ es un espacio vectorial, para ello veremos que $\forall X,Y \in \sum$ y $\forall \lambda,\mu \in \mathbb K$ tenemos que:
-	\[
-	\lambda X + \mu Y \in \sum \implies \{\lambda x_n + \mu y_n\}
-	\]
-	Si sustituimos esto en la ecuación lineal en diferencias, y agrupamos los términos que tengan $\lambda $ y $\mu$, nos quedarán en términos de $x_n$ e $y_n$, que, como son soluciones, igualarán la ecuación a 0 y quedará probado.
+  Tenemos que probar que $\Sigma$ es un espacio vectorial, para ello veremos que
+  $\forall X,Y \in \sum$ y $\forall \lambda,\mu \in \mathbb K$ tenemos que:
+  \[
+    \lambda X + \mu Y \in \sum \implies \{\lambda x_n + \mu y_n\}
+  \]
+  Si sustituimos esto en la ecuación lineal en diferencias, y agrupamos los
+  términos que tengan $\lambda $ y $\mu$, nos quedarán en términos de $x_n$ e
+  $y_n$, que, como son soluciones, igualarán la ecuación a 0 y quedará probado.
 
-	$(\lambda x_{n+k} + \mu y_{n+k})+a_{k-1}(\lambda x_{n+k-1} + \mu y_{n+k-1})+ \dots + a_1(\lambda x_{n+1} + \mu y_{n+1}) + a_0(\lambda x_n + \mu y_n) =\\
-	= \lambda(x_{n+k}+a_{k-1}x_{n+k-1} + \dots + a_1x_{n+1}+a_0x_n) + \mu(y_{n+k}+a_{k-1}y_{n+k-1}+\dots+a_1y_{n+1}+a_0y_n)= 0$
+  $(\lambda x_{n+k} + \mu y_{n+k})+a_{k-1}(\lambda x_{n+k-1} + \mu y_{n+k-1})+ \dots + a_1(\lambda x_{n+1} + \mu y_{n+1}) + a_0(\lambda x_n + \mu y_n) =\\
+  = \lambda(x_{n+k}+a_{k-1}x_{n+k-1} + \dots + a_1x_{n+1}+a_0x_n) +
+  \mu(y_{n+k}+a_{k-1}y_{n+k-1}+\dots+a_1y_{n+1}+a_0y_n)= 0$
 	
-	Veamos ahora que la $dim \Sigma = k$ con $k$ el orden de la ecuación.
+  Veamos ahora que la $dim \Sigma = k$ con $k$ el orden de la ecuación.
 	
-	Sea $\mathcal L: S \to S$ que lleva $X \mapsto X^* = \mathcal L (X)$, es decir: $\{x_n\} \mapsto \{x_n^*\}$ y $x_n^*$ es 
-	\[
-	x_n^*= x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n
-	\]
-	$\Sigma \subset \mathcal S$, se cumple que $\Sigma = \{ \mathcal X : \mathcal L (\mathcal X) = 0 \} = ker\mathcal L$ y, por tanto, $\Sigma$ es un subespacio vectorial de $\mathcal S$.
-	Para ver que $dim \Sigma = k$ basta ver que la aplicación: 
+  Sea $\mathcal L: S \to S$ que lleva $X \mapsto X^* = \mathcal L (X)$, es
+  decir: $\{x_n\} \mapsto \{x_n^*\}$ y $x_n^*$ es
+  \[
+    x_n^*= x_{n+k}+ a_{k-1}x_{n+k-1}+ \cdots + a_1 x_{n+1} + a_0 x_n
+  \]
+  $\Sigma \subset \mathcal S$, se cumple que
+  $\Sigma = \{ \mathcal X : \mathcal L (\mathcal X) = 0 \} = ker\mathcal L$ y,
+  por tanto, $\Sigma$ es un subespacio vectorial de $\mathcal S$.  Para ver que
+  $dim \Sigma = k$ basta ver que la aplicación:
 	
-	$\Phi : \Sigma \rightarrow \mathbb K ^k$, $\mathcal X \mapsto \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$
-	es un isomorfismo (si $\Sigma$ y $\mathcal K$ son isomorfos, entonces tendrán igual dimensión).
-	Como la aplicación $\Phi$ verifica las condiciones para ser un isomorfismo (es lineal y $\forall (x_0,x_1,\dots,x_{k-1}) \in \mathbb K ^k,\ \exists \{x_n\} \in \Sigma : \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$), queda demostrado.
-	\end{proof}
+  $\Phi : \Sigma \rightarrow \mathbb K ^k$,
+  $\mathcal X \mapsto \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$ es un
+  isomorfismo (si $\Sigma$ y $\mathcal K$ son isomorfos, entonces tendrán igual
+  dimensión).  Como la aplicación $\Phi$ verifica las condiciones para ser un
+  isomorfismo (es lineal y
+  $\forall (x_0,x_1,\dots,x_{k-1}) \in \mathbb K ^k,\ \exists \{x_n\} \in \Sigma
+  : \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$), queda demostrado.
+\end{proof}
 	
-	%%% COMPLETAR
-	FALTA CONTENIDO
+%%% COMPLETAR
+FALTA CONTENIDO
 	
 	\begin{nth}
-	La sucesión $X_\lambda= \{\lambda^n\}_{n\geq 0}$ es solución de la ecuación en diferencias lineal homogénea de orden $k$ $\iff p(\lambda) = 0$, esto es: $\lambda$ es una raíz característica. 
-\end{nth}
+          La sucesión $X_\lambda= \{\lambda^n\}_{n\geq 0}$ es solución de la
+          ecuación en diferencias lineal homogénea de orden $k$
+          $\iff p(\lambda) = 0$, esto es: $\lambda$ es una raíz característica.
+        \end{nth}
 
 
-\begin{enumerate}
+        \begin{enumerate}
 	\item
-	\item Supongamos que $a_{k-1},\cdots,a_0\in \R$ pero existe una raíz $\lambda_*$ que sea compleja. Sabemos que $\bar{\lambda_*}$ también es raíz de $p(\lambda)$. Así, $X_{\lambda_*}= \{\lambda_*^n\}$ $X_{\bar{\lambda_*}}= \{\bar{\lambda_*^n}\}$
-\end{enumerate}
+	\item Supongamos que $a_{k-1},\cdots,a_0\in \R$ pero existe una raíz
+          $\lambda_*$ que sea compleja. Sabemos que $\bar{\lambda_*}$ también es
+          raíz de $p(\lambda)$. Así, $X_{\lambda_*}= \{\lambda_*^n\}$
+          $X_{\bar{\lambda_*}}= \{\bar{\lambda_*^n}\}$
+        \end{enumerate}
 
 \begin{nprop}[Lema]
-Sean las sucesiones:
+  Sean las sucesiones:
 $$ R= \dfrac{1}{2} [X_{\lambda_*}+ X_{\bar{\lambda_*}}] = \{\dfrac{1}{2}\lambda_*^n -+\bar{\lambda_*^n}\}$$
 $$ I = \dfrac{1}{2i}[X_{\lambda_*} -X_{\bar{\lambda_*}}] = \{\dfrac{1}{2i}\lambda_*^n -+\bar{\lambda_*^n}\}$$
-	Entonces, $R$ e $I$ son soluciones de la ecuación y además son linealmente independientes.
+Entonces, $R$ e $I$ son soluciones de la ecuación y además son linealmente
+independientes.
 \end{nprop}
 \begin{proof}
-	Estas son soluciones puesto que $\Sigma$ es un espacio vectorial y estamos sumando soluciones y multiplicando por escalares del cuerpo del e.v.
-	Ahora, veamos que son Linealmente independientes:
+  Estas son soluciones puesto que $\Sigma$ es un espacio vectorial y estamos
+  sumando soluciones y multiplicando por escalares del cuerpo del e.v.  Ahora,
+  veamos que son Linealmente independientes:
 	$$ \alpha R + \beta I = 0 \iff \alpha = 0 \ \ \ y \ \ \ \beta  = 0$$
 	$$ \alpha \dfrac{1}{2} [X_{\lambda_*}+ X_{\bar{\lambda_*}}]  + \beta \dfrac{1}{2i}[X_{\lambda_*} -X_{\bar{\lambda_*}}]$$
 	Ahora, agrupamos y tenemos que:
 	$$ (\dfrac{\alpha}{2} + \dfrac{\beta}{2i}) X_{\lambda_*} + (\dfrac{\alpha}{2} - \dfrac{\beta}{2i}) X_{\bar{\lambda_*}} = 0$$.
 	Como $X_{\lambda_*}$ y .... LO AHA BORRAO ME CAGO EN DIO; COMPLETARLA.
 	
-	Ahora, tenemos potencias de números complejos, luego usamos la fórmula de Moivre. Teniendo el módulo y el argumento de los números complejos. Además, como un número complejo se puede escribir como $r(cos \theta i sen\theta)$ con $r$ su módulo y $\theta$ su argumento, podemos decir que:
+	Ahora, tenemos potencias de números complejos, luego usamos la fórmula
+        de Moivre. Teniendo el módulo y el argumento de los números
+        complejos. Además, como un número complejo se puede escribir como
+        $r(cos \theta i sen\theta)$ con $r$ su módulo y $\theta$ su argumento,
+        podemos decir que:
 	$$X_{\lambda_*}= \{r^n(cos n\theta + i sen n \theta)\} $$
 	$$ X_{\bar{\lambda_*}}= \{r^n(cos n\theta + i sen n \theta)\} $$
 	Y escribir así:
 	$$ R = \{r^n cos (n\theta)\}$$
 	$$ I = \{r^n sen (n\theta)\}$$
-\end{proof}
+      \end{proof}
 
 
 \begin{ndef}[Raíz múltiple]
-	Decimos que $\lambda_* \in \mathbb K$ es una raíz de $p(\lambda)$ de multiplicidad $m\geq 1$ si:
+  Decimos que $\lambda_* \in \mathbb K$ es una raíz de $p(\lambda)$ de
+  multiplicidad $m\geq 1$ si:
 	$$ p(\lambda_*) = p'(\lambda_*) =  \cdots = p^{(m-1)}(\lambda_*) = 0 \ \ \ \ p^{(m)}(\lambda_*) \ne 0 $$
-\end{ndef}
+      \end{ndef}
 
-En el caso 3: Raíces múltiples, definimos las nuevas sucesiones:
+      En el caso 3: Raíces múltiples, definimos las nuevas sucesiones:
 $$ DX_{\lambda_*} =\{n\lambda^{(n-1)}\}$$
 $$ D^2X_{\lambda_*}= \{n(n-1)\lambda^{(n-2)}\} $$
 $$ \cdots $$
 $$ D^hX_{\lambda_*}\{n(n-1)...(n-h+1)\lambda^{(n-h)}\}$$
 
 Y sabemos que $n(n-1)...(n-h+1) = \frac{n!}{(n-h)!}$ es el símbolo de Pochhammer
+
+Dada una ecuación en diferencias
+$x_{n+k} + a_{k-1}x_{n+k-1} + \hdots a _1x_{n+1} + a_0x_n = 0$
+
+
+% FALTA%
+
+¿Bajo qué condiciones $DX$ es solución? Será solución si $\mathcal{L}(DX) = 0$.
+
+¿Para qué valor de $\lambda$ el 2º miembro vale 0?
+
+Necesitamos $\lambda_{\ast}$ tales que
+$p(\lambda_{\ast}) = p^{\prime}(\lambda_{\ast}) = 0 \Rightarrow \lambda_{\ast}$
+debe ser raíz de multiplicidad 2.
+
+Hemos demostrado el lema para $r = 1$. El lema se demuestra por inducción en
+$r$.
+
+\begin{nprop}[Lema]
+  Sea $\lambda_{\ast}$ una raíz del polinomio característico de multiplicidad
+  $m$, entonces
+  $X_{\lambda_{\ast}}, DX_{\lambda_{\ast}}, \hdots D^{m-1}X_{\lambda_{\ast}}$
+  son soluciones linealmente independientes de la ecuación en diferencias
+  homogénea.
+\end{nprop}
+
+\begin{proof}
+  $\\lambda_{\ast}$ raíz de $p(\lambda)$ de multiplicidad
+  $m \geq 1 \Rightarrow p(\lambda_{\ast} = 0 = p^{\prime}(\lambda_{\ast}) =
+  p^{\prime \prime}(\lambda_{\ast}) = \hdots = p^{m-1}(\lambda_{\ast})$. Por el
+  Lema 1:
+	$$ \mathcal{L}(DX_{\lambda}) = \sum_{h = 0}^r \binom{r}{h}p^h(\lambda)D^{r-h}X_{\lambda}$$
+	
+	Sustituimos $\lambda = \lambda_{\ast}$.
+	
+	% De nuevo faltan cosas :/ %
+	$$\mathcal{L}(DX_{\lambda_{\ast}}) = \sum_{h = 0}^{r}$$
+	
+	$X_{\lambda_{\ast}}, DX_{\lambda_{\ast}}, \hdots
+        D^{m-1}X_{\lambda_{\ast}}$ son linealmente independientes?
+	
+	Sean $\alpha_0, \alpha_1, \hdots, \alpha_{m-1} \in \R$.
+	
+	$$\alpha_0X_{\lambda_{\ast}} + \alpha_1DX_{\lambda_{\ast}} + \alpha_0D^2X_{\lambda_{\ast}} + \hdots + \alpha_{m-1}X_{\lambda_{\ast}}$$
+	
+	% MIRA ESTA SEÑORA CORRE MUCHO. OTRA VEZ FALTAN COSAS %
+	
+      \end{proof}
+
+\begin{ejemplo}
+  Sea la ecuación $x_{n+2} - 2x_{n+1} + x_n = 0$ con
+  $n \geq 0, x_0 = 1, x_1 = 1$
+	
+  Es de orden 2, luego $dim \Sigma = 2$, por lo que necesitamos una base de
+  soluciones con dos elementos.
+	
+  EL polinomio característico es
+  $p(\lambda) = \lambda^2 - 2\lambda + 1 = (\lambda - 1)^2 \Rightarrow
+  \lambda_{\ast} = 1$ (doble).
+	
+  La base será
+	
+	$$
+	\begin{cases}
+          X_{\lambda_{\ast}} = X_1 = {1, 1^2, 1^3, \hdots, 1^n, \hdots} = {\lambda_{\ast}^n}_{n \geq 0}\\
+          DX_{\lambda_{\ast}} = DX_1 =
+	\end{cases}
+	$$
+	% EN FIN %
+      \end{ejemplo}
+
 \end{document}
