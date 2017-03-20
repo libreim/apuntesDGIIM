@@ -248,7 +248,7 @@
 % Definiciones, ejercicios.
 \theoremstyle{definition-style}
 \newtheorem*{ndef}{Definición}
-\newtheorem{ejer}{Ejercicio}
+\newtheorem{ejer}{Ejercicio}[section]
 
 % Notas, soluciones.
 \theoremstyle{remark-style}
@@ -297,6 +297,7 @@
 \date{\vspace{-1.5em} \normalsize Curso 2016/17}
 
 
+
 %---------------------------------------------------------------------------
 %   COMIENZO DEL DOCUMENTO
 %---------------------------------------------------------------------------
@@ -311,6 +312,10 @@
 \newpage
 \tableofcontents    % Índice
 \newpage
+
+%--------------------------------------------------------------------------------
+%   Sucesiones y series de funciones.
+%--------------------------------------------------------------------------------
 
 \section{Sucesiones y series de funciones}
 
@@ -515,7 +520,18 @@ Entonces, tenemos que $\displaystyle \int_0^\infty f_k(x)\ dx = \int_0^k \frac{1
 \end{sol}
 \end{ejer}
 
+\newpage
 
 
+%--------------------------------------------------------------------------------
+%   Integral asociada a una medida.
+%--------------------------------------------------------------------------------
+
+\section{Integral asociada a una medida}
+
+\begin{ejer} Sean $B_1,B_2,\cdots,B_m \subseteq \Omega$ medibles y $\beta_1,\cdots,\beta_m\in[0,\infty)$. Entonces, la función $$t:= \sum_{k=1}^m \beta_k \upchi_{B_k}$$  es simple positiva.
+
+%%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
+\end{ejer}
 
 \end{document}
