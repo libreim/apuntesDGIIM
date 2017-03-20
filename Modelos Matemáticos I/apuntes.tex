@@ -1126,5 +1126,53 @@ Además, es de dimensión infinita pues podemos dar infinitas sucesiones linealm
 	Como la aplicación $\Phi$ verifica las condiciones para ser un isomorfismo (es lineal y $\forall (x_0,x_1,\dots,x_{k-1}) \in \mathbb K ^k,\ \exists \{x_n\} \in \Sigma : \Phi(\mathcal X) = (x_0,x_1,\dots,x_{k-1})$), queda demostrado.
 	\end{proof}
 	
+	%%% COMPLETAR
 	FALTA CONTENIDO
+	
+	\begin{nth}
+	La sucesión $X_\lambda= \{\lambda^n\}_{n\geq 0}$ es solución de la ecuación en diferencias lineal homogénea de orden $k$ $\iff p(\lambda) = 0$, esto es: $\lambda$ es una raíz característica. 
+\end{nth}
+
+
+\begin{enumerate}
+	\item
+	\item Supongamos que $a_{k-1},\cdots,a_0\in \R$ pero existe una raíz $\lambda_*$ que sea compleja. Sabemos que $\bar{\lambda_*}$ también es raíz de $p(\lambda)$. Así, $X_{\lambda_*}= \{\lambda_*^n\}$ $X_{\bar{\lambda_*}}= \{\bar{\lambda_*^n}\}$
+\end{enumerate}
+
+\begin{nprop}[Lema]
+Sean las sucesiones:
+$$ R= \dfrac{1}{2} [X_{\lambda_*}+ X_{\bar{\lambda_*}}] = \{\dfrac{1}{2}\lambda_*^n -+\bar{\lambda_*^n}\}$$
+$$ I = \dfrac{1}{2i}[X_{\lambda_*} -X_{\bar{\lambda_*}}] = \{\dfrac{1}{2i}\lambda_*^n -+\bar{\lambda_*^n}\}$$
+	Entonces, $R$ e $I$ son soluciones de la ecuación y además son linealmente independientes.
+\end{nprop}
+\begin{proof}
+	Estas son soluciones puesto que $\Sigma$ es un espacio vectorial y estamos sumando soluciones y multiplicando por escalares del cuerpo del e.v.
+	Ahora, veamos que son Linealmente independientes:
+	$$ \alpha R + \beta I = 0 \iff \alpha = 0 \ \ \ y \ \ \ \beta  = 0$$
+	$$ \alpha \dfrac{1}{2} [X_{\lambda_*}+ X_{\bar{\lambda_*}}]  + \beta \dfrac{1}{2i}[X_{\lambda_*} -X_{\bar{\lambda_*}}]$$
+	Ahora, agrupamos y tenemos que:
+	$$ (\dfrac{\alpha}{2} + \dfrac{\beta}{2i}) X_{\lambda_*} + (\dfrac{\alpha}{2} - \dfrac{\beta}{2i}) X_{\bar{\lambda_*}} = 0$$.
+	Como $X_{\lambda_*}$ y .... LO AHA BORRAO ME CAGO EN DIO; COMPLETARLA.
+	
+	Ahora, tenemos potencias de números complejos, luego usamos la fórmula de Moivre. Teniendo el módulo y el argumento de los números complejos. Además, como un número complejo se puede escribir como $r(cos \theta i sen\theta)$ con $r$ su módulo y $\theta$ su argumento, podemos decir que:
+	$$X_{\lambda_*}= \{r^n(cos n\theta + i sen n \theta)\} $$
+	$$ X_{\bar{\lambda_*}}= \{r^n(cos n\theta + i sen n \theta)\} $$
+	Y escribir así:
+	$$ R = \{r^n cos (n\theta)\}$$
+	$$ I = \{r^n sen (n\theta)\}$$
+\end{proof}
+
+
+\begin{ndef}[Raíz múltiple]
+	Decimos que $\lambda_* \in \mathbb K$ es una raíz de $p(\lambda)$ de multiplicidad $m\geq 1$ si:
+	$$ p(\lambda_*) = p'(\lambda_*) =  \cdots = p^{(m-1)}(\lambda_*) = 0 \ \ \ \ p^{(m)}(\lambda_*) \ne 0 $$
+\end{ndef}
+
+En el caso 3: Raíces múltiples, definimos las nuevas sucesiones:
+$$ DX_{\lambda_*} =\{n\lambda^{(n-1)}\}$$
+$$ D^2X_{\lambda_*}= \{n(n-1)\lambda^{(n-2)}\} $$
+$$ \cdots $$
+$$ D^hX_{\lambda_*}\{n(n-1)...(n-h+1)\lambda^{(n-h)}\}$$
+
+Y sabemos que $n(n-1)...(n-h+1) = \frac{n!}{(n-h)!}$ es el símbolo de Pochhammer
 \end{document}
