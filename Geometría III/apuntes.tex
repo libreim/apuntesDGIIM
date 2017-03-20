@@ -115,6 +115,7 @@
 % Redefinir letra griega épsilon.
 \let\epsilon\upvarepsilon
 
+
 % Formato de texto.
 \linespread{1.1}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
@@ -511,6 +512,18 @@ $A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{A
 \end{proof}
 \end{nth}
 
+\begin{ndef}[Triángulos semejantes]
+	Dos triángulos son semejantes si sus lados son paralelos dos a dos.
+\end{ndef}
+
+\begin{ncor}[Teorema de Thales]
+	Si en un triángulo $ABC$ se traza una recta paralela a cualquiera de sus lados, obtenemos un triángulo semejante al triángulo original.
+\end{ncor}
+
+\begin{nota}
+	Dos triángulos tienen todos los lados paralelos dos a dos $\iff$ los segmentos de los lados son proporcionales dos a dos. Esto es por el teorema anterior.
+\end{nota}
+
 \begin{ndef}[Triángulo medio]
 	Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
 	\begin{nlist}
@@ -579,7 +592,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{nota}
 	A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
 \end{nota}
-%%%completar
+
 \textbf{Propiedades:}
 \begin{nlist}
 	\item El punto medio $M \in \mathcal{L}$. 
@@ -639,7 +652,6 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \end{ndef}
 
 
-%%%completar
 \begin{nprop}
 	Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
@@ -773,6 +785,17 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	\item $t_0 = I$
 \end{nlist}
 \end{nprop}
+\begin{proof}\hfill \begin{center}\end{center}
+	\begin{nlist}
+	\item $t_v \circ t_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
+	\item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
+	\begin{itemize}
+	\item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
+	\item $t_v\circ t_{-v} = P+v-v = P = I(P)$
+\end{itemize}
+	\item $t_0(p) = P +0 = P = I(P)$
+\end{nlist}
+\end{proof}
 
 \begin{ndef}[Afinidades(aplicaciones lineales biyectivas)]
 	Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
@@ -791,15 +814,41 @@ y $b =$ $\begin{pmatrix}
 \end{ndef}
 
 
+\begin{nota}
+	Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
+\end{nota}
+
 %%%completar
 \begin{nprop}
 Se dan las siguientes propiedades:
 \begin{nlist}
 	\item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
-	\item Sean f y g afinidades, entonces $g \circ f (x)$ es afinidad
-	%%% FALTA AÑADIR UNA PROPIEDAD SOBRE LA INVERSA
+	\item Sean f y g afinidades, entonces $(g \circ f) (P)$ es afinidad
+	\item $f^{-1}(P) = A^{-1}P +A^{-1}b$
+	
 \end{nlist}
 \end{nprop}
+\begin{proof}
+	\begin{nlist}
+	\item Trivial
+	\item $(f\circ g)(P) = f(AP +b) = A'(AP)+A'b +b' $, donde $AA'$ es una matriz y $A'b+b'$ es un vector, por lo que tenemos una nueva afinidad.
+	\item Es directo por la composición de funciones.
+\end{nlist}
+\end{proof}
+
+\begin{ndef}[Función vectorial asociada]
+	Se llama función vectorial asociada a una afinidad($\vec{f}$) a la función que actúa sobre vectores $\vec{f}(v) = Av$
+\end{ndef}
+
+\textbf{Propiedades de las afinidades:}\\
+\begin{enumerate}
+	\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
+\end{enumerate}
+\begin{proof}\hfill
+	\begin{enumerate}
+	\item
+\end{enumerate}
+\end{proof}
 
 %%% Comprobar lo que falta gg mbre
 
