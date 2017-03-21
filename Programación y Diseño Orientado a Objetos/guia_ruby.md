@@ -1,77 +1,47 @@
-Primeras aproximaciones con Ruby
+Iniciación a Ruby
 ------------------------------------
 
-# 1. Ruby:
+# 1. Notas generales:
 
-  - Hay que tener varias cosas en cuenta de Ruby antes de nada, la primera de
-ellas es que es **no se compilan** los archivos de Ruby, se ejecutan tal cual y
-con una pecularidad más, se va ejecutando **línea a línea** esto provoca que:
+  - Lo primero a tener en cuenta en Ruby es que los programas **no se compilan**, Ruby es un lenguaje interpretado, se va ejecutando **línea a línea** esto provoca que:
 
-    1. Como no compilas no sabes los errores que puedes tener en tu código
-  hasta que pasas por **todas las líneas** (y si hay lineas que rara vez pasas
-  entonces podrías acumular errores sin darte cuenta).
+    1. Como no se compila, no se saben los errores que puede tener el código
+  hasta que se pasa por **todas las líneas**. Si hay líneas que rara vez se ejecutan, se podrían acumular errores inconscientemente.
 
-    2. Di **adiós a los puntos y comas** al final
-  de cada sentencia: solo tienes que poner una en cada línea y se interpretan
+    2. No es necesario poner punto y coma al final de cada sentencia, solo hay que poner una en cada línea y se interpretan
   igual que en los demás lenguajes.
 
-    3. Ya no tienes que escribir llaves: normalmente cuando se
-  hace algo que implique bloque (`class X, for, while, def`...) se va a esperar
-  siempre un `end` que implica el fin de bloque: normalmente la IDE nos va a
-  poner siempre el end, pero ten cuidado.
+    3. No hay que escribir llaves al implementar un bloque (`class X, for, while, def`...) se indica su fin con la palabra reservada
+`end` que implica el fin de bloque.
 
-    4. Para los proyectos, como no compilas los archivos, no se usa un Makefile
-  en vez de eso se usa un **Rakefile**, que si te líabas mucho con el Makefile
-  no te preocupes, la IDE está aquí para ayudarte, pero tenlo en cuenta.
+    4. Para la gestión de proyectos se usa un **Rakefile**.
 
-    5. Ten **mucho cuidado** cuando separes una sentencia muy larga en varias
-    líneas: la mayoría de veces Ruby detecta que "falta algo" en la línea y
-    pasa a la siguiente, lo detecta si hay expresiones con `and`, `or`,  ``,``
-    etc. En cualquier caso si quieres separar varias líneas
-    puedes usar `\` para indicar que continua en la siguiente línea, por ejemplo:
+    5. Para separar una sentencia muy larga en varias
+    líneas se utiliza `\`. Por ejemplo, la línea de código
 
       ```Ruby
        string = "line #1line #2line #3"
        ```
 
-      Podemos ponerlo como:
+      podemos reescribirla como
       ```Ruby
          string = "line #1"\
          "line #2"\
          "line #3"
          ```
 
-  - Normalmente en Ruby se usa la notación **snake_case**, que como habrás podido
-notar es la de separar las palabras por el guión bajo, sin embargo en **PDOO**
-vamos a usar **camelCase** por razones técnicas, pero ten en cuenta que si
-haces cosas en Ruby se usa la notación snake_case.
+  - Normalmente en Ruby se usa la notación **snake_case**, que consiste en separar las palabras con un guión bajo, sin embargo en **PDOO**
+se va a utilizar **camelCase** por "razones técnicas".
 
-  - La mentalidad de programación en Ruby tienes que cambiarla, personalmente
-hay una cosa esencial que cambia mucho de Java/C++ a Ruby en lo que es la
-manera de pensar como trabajar con **arrays**, esto lo veremos más adelante, pero
-ten en cuenta de que hay que "cambiar totalmente el chip".
+- Ruby es un lenguaje de **tipado dinámico**, es decir, no se indica explícitamente el tipo de las variables. Esto implica que una variable puede **variar su tipo** a lo largo del programa.
 
-- Se acabó lo de poner los tipos a las variables. Ruby es un lenguaje de
-**tipado dinámico**, esto significa que si tu declaras una variable por ej `var`,
-no tienes que poner el tipo y lo mejor de todo es que puedes hacer **variar su
-tipo** cuando tu quieras (puedes hacer lo que quieras con var). Así si pasas
-parámetros a funciones no hace falta que indiques su tipo.
+- Para comentar una línea se usa `#`, para comentar varias se utiliza `=begin` y `=end`, siempre en líneas separadas y sin tabular.
 
-- Aunque esto nos permite mucha **versatilidad** no hay que abusar de ello para
-evitar liarnos a nosotros mismos y perder la cuenta de que era la variable `var`
-y también para dar legibilidad al código.
+- Existe `return` pero habitualmente no se usa, cuando se llega al final de la función, se devuelve la última salida que se ha producido.
 
-- Para comentar se usa `#` que comenta una linea, para comentar varias líneas
-hay otra manera que es usando `=begin` y `=end` y entre medias puedes comentar
-lo que quieras, pero siempre poniendo ambas al principio de líneas separadas (aunque he leído que la gente prefiere usar varias `#`).
+- La sintaxis de la declaración de funciones es la siguiente:
 
-- Existe `return` pero normalmente no se usa, cuando se llega al final de la función, se devuelve la última salida que se ha producido. Por ello, si quieres
-estar seguro de devolver lo que quieres solo tienes que poner al final de la función lo que quieres devolver pero sin el return.
-
-- Vamos a ver varios ejemplos de como declarar funciones (métodos) siempre es con `def nombre_metodo(param)`
-en caso de que no tenga parametros la función entonces no hace falta poner nada.
-
-  Ej. 1 (sin parametros)
+ Declaración de métodos sin parámetros
   ```Ruby
   def nombre_metodo
       # cosas
@@ -80,7 +50,7 @@ en caso de que no tenga parametros la función entonces no hace falta poner nada
   end
   ```
 
-  Ej. 2 (con parametros)
+  Declaración de métodos con parámetros
   ```Ruby
   def nombre_metodo(mi_var, otra_var)
       # cosas
