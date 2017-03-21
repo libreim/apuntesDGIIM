@@ -1162,5 +1162,21 @@ cos \theta & -sen\theta & 0 \\
 	Y ya tendríamos, para cada punto $P$, su simétrico. Ahora, desarrollamos la expresión y la transformamos en expresión matricial.
 \end{proof}
 
+\begin{nth}
+	Dados $ABC, A'B'C'$ dos triángulos $\Rightarrow \exists f$ una afinidad que lleva uno a otro. Son equivalentes:
+	\begin{enumerate}
+		\item Los triángulos son semejantes.
+		\item Los lados homólogos son proporcionales.
+		\item Los ángulos homólogos son iguales.
+	\end{enumerate}	
+\end{nth}
+
+\begin{proof} \hfill 
+
+	$\boxed{1 \Rightarrow 2}$ Trivial por definición de semejanza.\\
+	$\boxed{1 \Rightarrow 3}$ Trivial, ya que como la semejanza es la composición de homotecia y movimiento y tanto las homotecias como los movimientos conservan los ángulos.\\
+	$\boxed{2 \Rightarrow 1}$ Se $h$ una homotecia de razón $\lambda = \frac{a'}{a}$. Llamemos $A''B''C'' = h(ABC)$. Entonces, $A'B'C'$ y $A''B''C''$ tienen sus lados homólogos de la misma logitud, luego existe $g$ movimiento que lleva cada vértice de $A'B'C'$ en el correspondiente de $A''B''C''$ Entonces $g^{-1} \circ h$ lleva $ABC$ en $	A'B'C'$. Como $g^{-1}$ es un movimiento y $h$ una homotecia, $g^{-1} \circ h$ es una semejanza.
+\end{proof}
+
 
 \end{document}
