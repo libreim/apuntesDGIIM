@@ -466,4 +466,115 @@ x_{n+1}= \frac{\alpha x_n}{1+ \beta x_n} \quad \quad \alpha > 1 \quad \beta > 0
 	Que es el punto de equilibrio de $x_n$, luego $\alpha= \frac{a-1}{b}$ es Asintóticamente Estable.
 	
 	\end{enumerate}
+	
+	\subsection{Ejercicio 15}
+	
+	\begin{enumerate}
+	\item Hecho en clase
+	\item Para conseguir un equilibrio poblacional asintóticamente estable (a.e.), se propone vender una fracción $\alpha$$(0 < \alpha < 1)$ de la población en cada periodo de tiempo dando lugar al modelo:
+	\[
+	p_{n+1} = 10(1 - \alpha)p_n e^{(1-\alpha)p_n}
+	\]
+
+	i) Encuentre el intervalo abierto (de amplitud máxima) donde elegir $\alpha$ para que esté asegurada la estabilidad
+asintótica del equilibrio positivo.
+
+
+	Si :
+	\[
+	\mu = \frac{ln(10(1-\alpha)}{(1-\alpha)}
+	\]
+Vamos a comprobar que es L.A.E.
+\[
+f'(x) = 10(1-\alpha)e^{-(1-\alpha)x}(1+x(-(1-\alpha))
+\]
+\[
+f'(\mu) 0 1-ln(10(1-\alpha)) \quad y \quad 0 < ln(10(1-\alpha))< 2
+\]
+Y ahora, si:
+\begin{itemize}
+	\item $\alpha < 9/10$
+	\item $\alpha > \frac{10-e^2}{10}$
+\end{itemize}
+Por tanto $\mu$ es L.A.E si $\frac{10-e^2}{10} < \alpha < 9/10$
+
+ii) Calcule el valor de $\alpha$ para el que la población de equilibrio alcanza su valor máximo y es a.e.
+
+Ahora, si $g(x) = \frac{ln(10(1-x))}{1-x}\implies g'(x)= \frac{-1+ln(10(1-x))}{(1-x)^2}$.
+
+Ahora, $g'(x) = 0\implies 1-ln(10(1-x)) = 0 \implies x= \frac{10-e}{10}$ es donde la poblaciñon alcanza su máximo.
+
+Ahora, si comprobamos: $x_0 > \mu \implies x_1 = 10(1-\alpha)x_0 e^{-(1-\alpha)x_0} = x_0 \frac{10(1-\alpha)}{e^{(1-\alpha)x_0}} < x_0 \implies x _{n+1} < x_n$. Y Si miramos ahora si $x_0 < \mu$, veremos que $x _{n+1} > x_n$
+\end{enumerate}
+
+\subsection{Ejercicio 19}
+
+Determine razonadamente la veracidad o falsedad de las siguientes afirmaciones.
+a) Sea la ecuación en diferencias de primer orden, $x _{n+1} = f (x_n )$, donde $f(x)$ es suficientemente derivable en
+un entorno del punto de equilibrio, s. Si $f'(s) = 1 $y $f'' (s) = 0$, entonces el punto de equilibrio siempre será
+inestable.
+
+El punto de equilibrio es siempre inestable
+
+
+b) Toda ecuación en diferencias $x _{n+1} = f (x_n)$, con un punto de equilibrio inestable en $x = s$ admite, al menos,
+un 2-ciclo o solución 2-periódica.
+
+Falso. Basta tomar la función $f(x) = ax+b$ tal que si $a>1$, entonces la derivada es mayor que 1 y la función no tiene ningún ciclo.
+
+c) Todas las soluciones no constantes de la ecuación en diferencias lineal $x_{n+2}+ x_{n-1} = 0$, son 3-periódicas.
+
+Si despejamos la ecuación, vemos que:
+\[
+x_{n+3} = -x_n
+\]
+Dados 3 datos iniciales, $x_0,x_1,x_2$, podemos escribir algunos términos de la recurrencia en función de los anteriores y escribimos su órbita, quedando:
+\[
+\{x_0,x_1,x_2,-x_0,-x_1,-x_2,x_0,\cdots\}
+\]
+
+Por lo que el periodo es 6, no 3 y por tanto es FALSO.
+
+d ) La dinámica de cierta población ovina se rige mediante un modelo logístico discreto. Si la tasa de crecimiento
+para una población de 10 cientos es de $1.5$ y para una de población de 20 cientos es de $1$; entonces, a largo plazo, la población tiende a un valor constante.
+
+Tenemos que $P_n=10$ y la tasa de $P_n$ es 1.5 . También que si $P_m = 20$, entonces su tasa es de 1.
+
+Ajustando por un modelo conveniente, tenemos que:
+\[
+tasa(P_n) = \frac{P _{n+1} - P_n}{P_n} = a -bP_n
+\]
+y si despejamos, obtenemos:
+\[
+P _{n+1} = P_n + P_n -b P_n^2 \implies P _{n+1} = (1+a)P_n(1-\frac{b}{1+a}P_n)
+\]
+ASí que si tomamos $\mu = (1+a)$, $x_n = \frac{b}{1+a}P_n$, entonces:
+\[
+x _{n+1} = \mu x_n (1-x_n)
+\]
+Ahora, debemos hallar a y b. planteamos el sistema:
+\[
+\begin{rcases}
+	1.5 = a-10b\\
+	1 = a-20b
+\end{rcases} 
+\begin{cases}
+	a = 2 \\
+	b = 0.05
+\end{cases}
+\]
+y planteamos la ecuación:
+\[
+P _{n+1} = 3P_n - 0,05 P_n^2
+\]
+entonces:
+\[
+P_* = 3P_* - 0,05P_*^2
+\]
+Si igualamos $0,05P_*^2 -2P_* = 0 \implies P_* = 0$, pero también tenemos que tener en cuenta el caso $0,05P_* - 2 = 0 \implies P_* = 40$
+
+Ahora, si $f(x) = 3x - 0,05x^2$, entonces $f'(0) = 3$, por lo que es inestable y $f'(40) =3-4 = -1$ y $f''(40) = -0,05$
+pero como la derivada vale $-1$, no podemos determinar con claridad lo que ocurre en este caso. Sin embargo, si realizamos el dibujo en $wxmaxima$, veríamos que se realiza la tela de araña y así converge.
+
+
 \end{document}
