@@ -1569,6 +1569,37 @@ $$ \begin{cases}
 	Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$
 \end{nprop}
 
+% Borrar?
+
+Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathcal A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
+
+$$d_p (f, g) = \left( \int_{\Omega} \abs{f(\omega) - g(\omega)}^p d \mu \right)^{\frac{1}{p}}$$
+
+Sin embargo, esta definición no nos da una distancia ya que no sólo necesitamos que $f, g$ sean integrables, también que $\abs{f(\omega) - g(\omega)}^p$ sean integrables.
+
+Vamos a dar algunas definiciones:
+
+\begin{itemize}
+	\item $\mathcal L^p (\Omega) = \{ f: \Omega \rightarrow \mathbb K \text{ medibles } : \abs{f}^p \text{ es integrable } \} \forall p \in [1, \infty)$.
+	\item $\mathcal L^{\infty} (\Omega) = \{ f: \Omega \rightarrow \mathbb K : \abs{f} \text{ es una función acotada } \}$.
+	\item $\mathcal L^{1} (\Omega) = \{ f: \Omega \rightarrow \mathbb K \text{ medibles } : f \text{ es integrable } \}$. 
+\end{itemize}
+
+\begin{nprop}[Lema]
+	Dadas $f \in L^p (\Omega), g L^q (\Omega)$ entonces $fg \in L^1 (\Omega)$ y $ \displaystyle \int_{\Omega} \abs{fg}d \mu \leq \left( \int_{\Omega} f^p d \mu \right)^{\frac{1}{p}}\left( \int_{\Omega} g^q d \mu \right)^{\frac{1}{q}}$
+\end{nprop}
+
+\begin{proof}
+	Para probarlo, tenemos que demostrar que $$ \int_{\Omega} \frac{|f|}{\left( \int_{_\Omega} |f|^p d \mu \right)^{\frac{1}{p}}} \frac{|g|}{\left( \int_{_\Omega} |g|^q d \mu \right)^{\frac{1}{q}}} d \mu \leq 1$$
+	
+	Aplicamos Young
+	
+	$$\int_{\Omega} \frac{|f|}{\left( \int_{_\Omega} |f|^p d \mu \right)^{\frac{1}{p}}} \frac{|g|}{\left( \int_{_\Omega} |g|^q d \mu \right)^{\frac{1}{q}}} d \mu \leq $$
+	
+	\textbf{FALTAN COSAS.}
+	
+	Se da la igualdad cuando $\displaystyle \frac{|f|^p}{\int_{\Omega} |f|^p d \mu } = \frac{|g|^q}{\int_{\Omega} |g|^q d \mu }$
+\end{proof}
 %--------------------------------------------------------------------------------
 %   Bibliografía.
 %--------------------------------------------------------------------------------

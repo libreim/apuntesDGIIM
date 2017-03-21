@@ -534,4 +534,58 @@ Entonces, tenemos que $\displaystyle \int_0^\infty f_k(x)\ dx = \int_0^k \frac{1
 %%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
 \end{ejer}
 
+% Ejercicios propuestos el 21-3. No tienen mucho que ver con la integral
+
+\begin{ejer}
+	Dado $p \in (1, +\infty)$ y sea $q = \frac{p}{p-1} \in (1, +\infty)$. Entonces $\frac{1}{p} + \frac{1}{q} = 1$.
+\end{ejer}
+
+\begin{ejer}
+	Con $p, q$ definidos como en el ejercicio anterior:
+	\begin{enumerate}
+		\item $ \displaystyle ab \leq \frac{a^p}{p} + \frac{b^q}{q} \ \forall a, b \geq 0$ (Desigualdad de Young).
+		\item Si $ \displaystyle ab = \frac{a^p}{p} + \frac{b^q}{q} \Leftrightarrow a^p = b^q$.
+	\end{enumerate}
+\end{ejer}
+
+\begin{ejer}
+	\begin{enumerate}
+		\item $\mathcal L^{1} (\Omega)$ es un espacio vectorial.
+		\item $\mathcal L^{\infty} (\Omega)$ es un espacio vectorial.
+		\item $\mathcal L^{p} (\Omega)$ es un espacio vectorial.
+	\end{enumerate}
+	
+	\begin{sol}
+	
+	3.
+		Dado $\alpha \in \mathbb K$, $f \in \mathcal L^p (\Omega)$. Entonces $\abs{\alpha f}^p = \abs{\alpha}^p \cdot \abs{f}^p$.
+		Como $f, g \in \mathcal L^p(\Omega) \Rightarrow f + g \in \mathcal L^p(\Omega)$ y $ \displaystyle \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{p}} \leq \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}}$	
+		
+		$$\int_{\Omega} \abs{f+g}^p d \mu = \int_{\Omega}\abs{f+g}^{p-1} \abs{f+g}d \mu \leq \int_{\Omega} \abs{f+g}^{p-1} \abs{f}d \mu + \int_{\Omega} \abs{f+g}^{p-1} \abs{g}d \mu$$
+		
+		Utilizando la desigualdad de Young:
+		
+		$$\leq \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
+		
+		$$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
+		
+		$$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
+		
+		$$= \left[ \int_{\Omega} \left[ |f|+|g| \right]^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
+		
+		$$ \leq 2^{p-1} \int_{\Omega} \left( |f|^p + |g|^p) d \mu \right)^{\frac{1}{q}} < \infty$$	
+		
+	\end{sol}
+
+\end{ejer}
+
+\begin{ejer}
+	Dada $g : \Omega \rightarrow \mathbb R$ medible positiva. Entonces:
+	
+	$$\int_{\Omega} g d \mu = 0 \Leftrightarrow g = 0 \text{ a. e. } x \in \Omega$$
+\end{ejer}
+
+\begin{ejer}
+	Dado $\Omega \subset \mathbb R^N \text{ compacto, } g: \Omega \rightarrow \mathbb R \text{ cont. } \Rightarrow$ g es integrable. Si además $\int_{\mathbb R} |g| d \mu = 0 \Rightarrow g(\omega) = 0 \ \forall \omega \in \Omega$.
+\end{ejer}
 \end{document}
