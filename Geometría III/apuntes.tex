@@ -1097,5 +1097,70 @@ cos \theta & -sen\theta & 0 \\
 	\]
 \end{ndef}
 
+%% VOY A COPIAR LO DE CLASSE, REVISAR SI VA AQUÍ
+
+ %%% METER AQUÍ APUNTES DE CAMINO
+ 
+ \subsection{Movimientos en $\R^3$}
+ 
+ \[
+ f \begin{pmatrix}
+ x\\
+ y\\
+ z
+\end{pmatrix} = A\begin{pmatrix}
+ x\\
+ y\\
+ z
+\end{pmatrix} + \begin{pmatrix}
+ b_1\\
+ b_2\\
+ b_3
+\end{pmatrix}
+ \]
+
+\begin{itemize}
+	\item Si la matriz $A$ es simétrica, $f$ es una reflexión que puede ser respecto de un plano o respecto de una recta (axial o especular). Además, tenemos el caso de que sea deslizante o no deslizante.
+
+\begin{itemize}
+	\item Simetría axial, $dim(V_1) = 1$, $dim(V_{-1}) =2$. Su determinante vale por tanto 1. Es un movimiento directo.
+	\item Simetría especular , $dim(V_1) = 2$, $dim(V_{-1}) =1$. Su determinante vale -1.Es un movimiento inverso.
+\end{itemize}
+
+	\item Si la matriz $A$ no es simétrica, entonces podemos tener un movimiento directo con $dim(V_1) = 1$ y $dim(V_{-1})=0$, teniendo por tanto un giro o un movimiento helicoidal.
+	
+	\item Movimientos inversos, en los que hay puntos fijos por fuerza y tenemos que $dim(V_1) = 0$ y $dim(V_{-1}) = 1$. Este movimiento lo llamaremos giro con simetría. La matriz de este movimiento, en ciertas coordenadas, es:
+	\[
+	\begin{pmatrix}
+ cos \theta & -sen\theta  & 0\\
+ sen\theta & cos\theta  & 0\\
+ 0 & 0 & -1
+\end{pmatrix} 
+	\]
+\end{itemize}
+
+\begin{ejemplo}
+	Obtener la expresión matricial en coordenadas usuales de la simetría respcto del plano $x-y+z = 1\equiv \Pi$
+\end{ejemplo}
+\begin{proof}[Solución:]
+	Tomamos un punto $P(x,y,z)$ y tomamos su simétrico respecto del plano $\sigma(P)$. Si tomamos el vector normal al plano, el $n=(1,-1,1)$, sacado de la ecuación del plano, podemos determinar una recta normal al plano de la forma:
+	\[
+	s\equiv Q = P + \lambda n = (x,y,z)+\lambda(1,-1,1)
+	\]
+	Ahora, tenemos que buscar la intersección de la recta con el planno, introducimos la ecuación de la recta en el plano. Si desarrollamos la ecuación nos queda $(x+\lambda,y-\lambda,z+\lambda)$ y si lo introducimos en el plano:
+	\[
+	x-y+z+3\lambda = 1 \implies \lambda = \frac{1-x+y+z}{3}
+	\]
+	Por tanto, el punto de corte del plano con la recta estará en el punto:
+	\[
+	Q = (x,y,z)+\frac{1-x+y+z}{3}(1,-1,1) \in s\cap \Pi
+	\]
+	Ahora, tratamos de hallar $\sigma(P)$. Para ello, como el punto de intersección de la recta con el plano sería el punto medio del vector $\vec{PQ}$ , podemos hacer :
+	\[
+	\sigma(P) = P + 2 \vec{PQ} = (x,y,z) + \dfrac{2}{3}(1-x+y+z)(1,-1,1)
+	\]
+	Y ya tendríamos, para cada punto $P$, su simétrico. Ahora, desarrollamos la expresión y la transformamos en expresión matricial.
+\end{proof}
+
 
 \end{document}
