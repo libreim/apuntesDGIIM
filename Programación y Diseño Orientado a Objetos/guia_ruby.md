@@ -8,8 +8,7 @@ Iniciación a Ruby
     1. Como no se compila, no se saben los errores que puede tener el código
   hasta que se pasa por **todas las líneas**. Si hay líneas que rara vez se ejecutan, se podrían acumular errores inconscientemente.
 
-    2. No es necesario poner punto y coma al final de cada sentencia, solo hay que poner una en cada línea y se interpretan
-  igual que en los demás lenguajes.
+    2. No es necesario poner punto y coma al final de cada sentencia, sino que hay que poner una sentencia por línea, las cuales se interpretan igual que en los demás lenguajes.
 
     3. No hay que escribir llaves al implementar un bloque (`class X, for, while, def`...) se indica su fin con la palabra reservada
 `end` que implica el fin de bloque.
