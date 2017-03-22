@@ -1301,6 +1301,11 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$.
 \end{proof}
 
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to \mathbb{R}$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
+\begin{proof}
+	Por el teorema de Lebesgue sabemos que si existe una sucesion $\{s_n\}$ y otra $\{t\}$ simple positivas que convergen respectivamente en f y g. Por la propiedad 3.6 además sabemos que podemos generar una sucesión $\{s_n+t_n\} \rightarrow f+g$ de sucesiones simples positivas. Por último, al aplicar otra vez el teorema de Lesbesgue, nos queda que la función $f+g$ es medible.
+	
+	La demostración para $ \alpha f$ y para  $fg$ son análogas.
+\end{proof}
 
 %%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 	
