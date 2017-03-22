@@ -1281,7 +1281,7 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$.
 	\[
 	\begin{cases}
 	F_n := \{\omega \in \Omega : f(\omega) \geq n\}\\
-	E_{n,k} := \{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\}, \text{ para } 1 \leq k \leq n2^n
+	E_{n,k} := \left\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\right\}, \text{ para } 1 \leq k \leq n2^n
 \end{cases}
 	\]
 	
@@ -1292,9 +1292,9 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$.
 	
 	y que:
 	\[
-	s_n = \rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
+	s_n = n\rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
 	\]
-    Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s$ es medible (por serlo $f$ y la función característica de un conjunto), y $s(\Omega)$ es finito, por lo que $s$ es simple.
+    Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible (por serlo $f$ y la función característica de un conjunto), y $s(\Omega)$ es finito, por lo que $s$ es simple.
     
     \textbf{COMPLETAR LA PRUEBA CON DIAPOSITIVAS}
     %%% FALTA COMPLETAR CON DIAPOSITIVAS ---------------------------------------
@@ -1308,15 +1308,27 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$.
 
 \subsection{Integral de funciones medibles positivas}
 %%% COMPLETAR -----------------------------------------------------------------
+\begin{ndef}[Medida]
+	Si $(\Omega, \mathcal A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathcal A \rightarrow [0, \infty]$ verificando:
+	\begin{nlist}
+	 	\item $\mu(\emptyset) = 0$
+	 	\item $\forall \{A_k\} \subset \mathcal A$ con $A_k\bigcap A_j = \emptyset, \forall k \neq j,$ se tiene
+	 	$$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu(A_k) $$
+	\end{nlist}
+	$(\Omega, \mathcal A, \mu)$ se llama espacio de medida.
+\end{ndef}
 
-\textbf{Propiedades:}
+\textbf{Propiedades de la medida:}
 \begin{nlist}
 	\item (Monotonía). Si $A,B \in \mathcal{A}, A \subset B \implies \mu(A) \leq \mu(B)$
 	\item (Subaditividad) . $\forall \{A_k\} \subset \mathcal{A}$, se tiene:
 	\[
 	\mu(\bigcup_{k=1}^\infty A_k) \leq \sum_{k=1}^\infty \mu(A_k)
 	\]
-	%%% Faltan dos propiedades
+	\item $\forall \{A_k\} \subset \mathcal{A}$ con $A_1 \subset A_2 \subset ... \subset A_k \subset ...$ se tiene:
+	$$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
+	\item $\forall \{A_k\} \subset \mathcal{A}$ con $A_1 \supset A_2 \supset ... \supset A_k \supset ...$ se tiene:
+	$$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
 \end{nlist}
 
 
