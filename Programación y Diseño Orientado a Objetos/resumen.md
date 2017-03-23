@@ -1,17 +1,17 @@
 # RESUMEN PDOO
 
-  - La identidad es la propiedad que permite distinguir a un objeto de los demás.
+  - La **identidad** es la propiedad que permite distinguir a un objeto de los demás.
     - Un objeto tiene identidad en tanto que existe.
     - Las características únicas no constituyen su identidad (p.ej. el DNI es único pero no es su identidad. Dos personas con el mismo DNI son personas distintas.)
-    - LA IDENTIDAD PUEDE EQUIVALER A LA POSICIÓN DE MEMORIA (si dos objetos tienen la misma posición de memoria entonces son idénticos.)
-  - El estado del objeto lo determinan características que pueden ser consultadas.
+    - La identidad puede equivaler a la posición de memoria (si dos objetos tienen la misma posición de memoria entonces son idénticos.)
+  - El **estado** del objeto lo determinan características que pueden ser consultadas.
     - Dos objetos diferentes pueden tener el mismo estado.
     - El estado de un objeto varía a lo largo del tiempo.
-    - EL ESTADO PUEDE EQUIVALER A COMPROBAR SI LOS ATRIBUTOS DE LOS OBJETOS SON IGUALES.
+    - El estado puede equivaler a comprobar si los atributos de los objetos son iguales.
 
   - Un objeto es una instancia de una clase.
 
-  - ÁMBITO DE LOS ATRIBUTOS
+  - **Ámbito de los atributos**
       - Atributos de instancia: Almacenan los valores que configuran el estado de un objeto.
         - Cada objeto tiene una copia distinta de cada atributo de instancia, las cuales se almacenan en posiciones de memoria diferentes.
         - JAVA -> no se pone *static*
@@ -21,7 +21,7 @@
         - JAVA -> se pone *static*
         - RUBY -> se ponen dos @, es decir, *@@variable*, y se declara explícitamente.
 
-    - AMBITO DE LOS MÉTODOS - Determinan el comportamiento
+    - **Ámbito de los métodos** - Determinan el comportamiento
       - Métodos de instancia:
         - Métodos asociados a los objetos cuya invocación se realizan mediante envío de mensajes entre objetos.
         - JAVA -> no se pone *static*
@@ -31,7 +31,7 @@
         - JAVA -> se pone *static*
         - RUBY -> se pone *self*.
 
-    - CONSTRUCTORES
+    - **Constructores**
       - Propósitos:
         - Crear instancias de la clase a la que pertenecen (llamando de manera interna a new)
         - Inicializar la instancia
@@ -42,12 +42,12 @@
         - Un único initialize (no es un constructor pero se invoca cada vez que se construye un objeto).
         - Se pueden crear más constructores, en cuyo caso sería con *self.* y dentro de este se haría *new(parámetros)*
 
-    - CONSULTORES Y MODIFICADORES
+    - **Consultores y modificadores**
       - RUBY
         - Se les pone el mismo nombre que el atributo de interés.
         - Se hace automáticamente con *attr_accessor* (get y set), *attr_writter*(set) y *attr_reader*(get). Se colocan después del nombre de la clase.
 
-    - AGRUPACIONES
+    - **Agrupaciones**
       - JAVA -> Paquetes
         - Permiten agrupar clases.
         - No se pueden anidar paquetes (solo a nivel de nombrado).
@@ -58,7 +58,7 @@
         - Para indicar el path del fichero necesitamos *require* o *require_relative* si el fichero está en la carpeta actual.
         - *include* permite incorporar un módulo dentro de una clase.
 
-    - ESPECIFICADORES DE ACCESO
+    - **Especificadores de acceso**
       - JAVA
         - Visible en :
           - mismo paquete
@@ -93,7 +93,7 @@
           - Antes de los métodos afectados.
           - Una vez ya definidos mediante *private :metodo1, :metodo2*
 
-    - COLECCIONES DE OBJETOS
+    - **Colecciones de objetos**
       - Cuando un objeto contiene otros objetos se dice que ese objeto es una colección de objetos.
       - Tamaño: fijas o variables
       - Contenido: homogéneas o heterogéneas.
@@ -102,14 +102,14 @@
       - Fijas y homogéneas -> Eficientes
       - Variables y heterogéneas -> Flexibles  
 
-    - PSEUDOVARIABLES
+    - **Pseudovariables**
       - En todos los lenguajes existen pseudovariables que referencian a un objeto especial: el objeto que tiene el control de la ejecución en ese momento.
       - JAVA -> this, super
       - RUBY -> self, super
 
 ## RESUMEN UML
 
-- CLASES
+- **Clases**
 
 	Nombre ^ [multiplicidad]
 
@@ -118,20 +118,20 @@
 	[visibilidad] nombre_metodo ([lista parámetros])[:tipo retorno]
 
 
-- MULTIPLICIDAD DE CLASE -> nº de instancias que puede tener una clase
+- **Multiplicidad de clase** -> nº de instancias que puede tener una clase
 
 
-- MULTIPLICIDAD DE ATRIBUTO -> nº de elementos en dicho atributo
+- **Multiplicidad de atributo** -> nº de elementos en dicho atributo
 
 
-- RELACIONES (O FLECHAS)
+- **Relaciones** (flechas)
 
 	- De dependencia (flecha discontinua): el receptor depende del emisor, esta dependencia es poco duradera
 
 	- De asociación (línea continua sin flechas): ambas clases tienen una relación o dependencia duradera
 
 
-- VISIBILIDAD
+- **Visibilidad**
 
 	\+ -> pública
 
@@ -142,7 +142,7 @@
 	\# -> protegida
 
 
-- ELEMENTOS DE LAS ASOCIACIONES:
+- **Elementos de las asociaciones**:
 
 	- Nombre de la asociación (se coloca encima de la línea). Se puede indicar hacia donde se lee empleando (> negra).
 
@@ -158,7 +158,7 @@
 	NO CONFUNDIR DIRECCIÓN DE LECTURA DEL NOMBRE DE LA ASOCIACIÓN CON LA NAVEGABILIDAD.
 
 
-- ASOCIACIONES ESPECIALES
+- **Asociaciones especiales**
 
 	- Agregación (rombo blanco situado al comienzo de la línea).
 		- Clase A (rombo blanco cerca de A) Clase B <-> La clase B es parte de la clase A pero no necesariamente.
@@ -167,7 +167,7 @@
 		- Clase A (rombo negro cerca de A) Clase B <-> La clase B es parte necesariamente de la clase A.
 
 
-- CLASE ASOCIACIÓN:
+- **Clase asociación**:
 
-	- CUALIFICADORES DE LA ASOCIACIÓN: un cualificador es un atributo de algunas de las clases de la asociación que pasa a ser un atributo asociado a la clase del otro extremo.
+	- Cualificadores de la asociación: un cualificador es un atributo de algunas de las clases de la asociación que pasa a ser un atributo asociado a la clase del otro extremo.
 		- Clase A (cualificador cerca de A) Clase B <-> Clase A contiene un atributo llamado cualificador de tipo Clase B.
