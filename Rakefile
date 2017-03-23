@@ -14,14 +14,7 @@ task :default => [
        :pdoo,
        :algoritmica
        # add your task here
-     ] do
-  if @error_log.empty?
-    puts "\e[33mNo se produjeron errores en la compilación\e[m"
-  else
-    puts "\e[33mSe produjeron algunos errores:\e[m"
-    @error_log.each { |msg| puts msg }
-  end
-end
+     ]
 
 #------------ Compilation tasks ------------#
 # A task must:
@@ -66,13 +59,10 @@ rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   begin
     2.times { sh %(pdflatex --shell-escape --interaction=nonstopmode "#{t.source}") }
   rescue StandardError => e
-    @error_log << "\e[31mErrores al generar #{t.name}\e[m"
+    puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
   ensure
-    out = t.source.split("/").last.sub(".tex", ".pdf")
-    unless Dir[out].empty?
-      sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}";
-          mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
-    end
+    sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}";
+         mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
   end
   sh "rm -f *.log *.aux *.toc *.pdf *.out"
 end
