@@ -132,9 +132,13 @@
 
 
 - VISIBILIDAD
+
 	\+ -> pública
+
 	\- -> privada
+
 	\~ -> paquete
+
 	\# -> protegida
 
 
