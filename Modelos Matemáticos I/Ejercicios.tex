@@ -13,6 +13,7 @@
 % Guillermo Galindo
 % Antonio Coín (@antcc)
 % Sofía Almeida (@SofiaAlmeida)
+% Álvaro López (@alopezj97)
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
@@ -506,6 +507,203 @@ Ahora, $g'(x) = 0\implies 1-ln(10(1-x)) = 0 \implies x= \frac{10-e}{10}$ es dond
 
 Ahora, si comprobamos: $x_0 > \mu \implies x_1 = 10(1-\alpha)x_0 e^{-(1-\alpha)x_0} = x_0 \frac{10(1-\alpha)}{e^{(1-\alpha)x_0}} < x_0 \implies x _{n+1} < x_n$. Y Si miramos ahora si $x_0 < \mu$, veremos que $x _{n+1} > x_n$
 \end{enumerate}
+
+\subsection{Ejercicio 17}
+En cierto mercado, los precios de determinado producto siguen una din\'amica basada en los postulados del modelo de la telaraña pero se ha observado que las funciones de oferta y demanda vienen dadas por:
+
+\[ 
+O(p) = 1 + p^{2}, \ D(p) = c - dp
+\]\
+
+donde c \textgreater 1 y d \textgreater 0. Suponemos, adem\'as, que el equilibrio del mercado se da si la Oferta iguala a la Demanda y que la oferta en el periodo (n+1)-\'esimo depende del precio del periodo n-\'esimo.
+
+a) Deduzca la ED, $p_{n+1} = F(p_n)$, que describe la din\'amica planteada y calcule el precio de mercado $p^{*}$ (punto de equilibrio econ\'omicamente factible).
+
+b) Deduzca las condiciones sobre c y d que aseguran la estabilidad asit\'otica de $p^{*}$. ¿Qu\'e ocurre si d = 2 y c = 4 ?
+
+c) Para c = 3 y d = 2, use el diagrama de Cobweb para trazar los valores $p_1$ y $p_2$ a partir de $p_0$ = 1. A largo plazo, ¿c\'omo se comportar\'an los precios en el caso contemplado?
+
+a)
+
+Deducimos la ED, sabemos que el equilibrio del mercado se da si la oferta es igual a la demanda por lo que :
+
+\[
+O(p_{n-1}) = D (p_n) \Rightarrow
+\]
+
+\[ 
+\Rightarrow 1 + p_{n-1}^{2} = c - dp_n \Rightarrow 
+\]
+
+\[ 
+\Rightarrow p_n = \frac{c-1}{d} - \frac{p_{n-1}^{2}}{d} \Rightarrow 
+\]
+
+puesto que $d>0$
+
+\[
+\Rightarrow p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n)
+\]
+
+Para calcular el punto de equilibrio ($\alpha$) tenemos que resolver la ecuaci\'on 
+
+\[
+\alpha = F(\alpha) \Rightarrow
+\]
+
+\[
+\Rightarrow F(\alpha) = \frac{c-1}{d} - \frac{\alpha^{2}}{d} = \alpha \Rightarrow
+\]
+
+\[
+\Rightarrow \alpha^{2} + d\alpha -c+1 = 0 \Rightarrow
+\]
+
+\[
+\Rightarrow \alpha = \frac{-d\pm\sqrt{d^{2} - 4(-c+1)}}{2} = \frac{-d\pm\sqrt{d^{2} +4c-4}}{2}
+\]
+
+Dado que $\alpha$ es el precio de equilibrio y \'este es un n\'umero real entonces se tiene que dar que el discriminante sea mayor que 0 lo cual es cierto ya que c$>$1 y d$>$0. Adem\'as se tiene que el precio de equilibrio es un n\'umero positivo así que debemos escoger aquellos $\alpha$s que sean positivos. As\'i se verifica que :
+
+\[
+d^{2} +4c-4 > d^{2} \Rightarrow 
+\]
+
+\[
+-d + \sqrt{d^2 +4(c-1)} > -d + \sqrt{d^{2}} = 0
+\]
+
+Se puede ver que el precio de equilibrio que buscamos es:
+
+\[
+\alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2}
+\]
+
+b) 
+Recordemos que para que un punto de equilibrio sea localmente asintóticamente estable (L.A.E.) se tienen que dar dos condiciones: la primera es que la funci\'on sea de clase 1 y segundo que el valor absoluto de la derivada evaluada en el punto de equilibrio sea menor que 1. Como podemos ver $F \in C^{\infty}$ luego, en particular, $F \in C^{1}$, basta con ver para que valores de c y d se tiene que la mencionada derivada sea menor que 1.
+
+\[
+F(x) = \frac{c-1}{d} - \frac{1}{d}x^{2} \Rightarrow
+\]
+
+\[
+\Rightarrow |F'(x)| = |\frac{-2}{d}x| 
+\]
+
+\[
+\alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} \Rightarrow
+\]
+
+\[
+\Rightarrow |F'(\alpha)| = |\frac{d-\sqrt{d^{2}+4c-4}}{d}| = | 1 - \frac {\sqrt{d^{2}+4c-4}}{d}| < 1
+\]
+
+\[
+\Rightarrow -1 <  1 - \frac {\sqrt{d^{2}+4c-4}}{d} < 1 \Rightarrow
+\]
+
+\[
+\Rightarrow -2 < - \frac {\sqrt{d^{2}+4c-4}}{d} < 0 \Rightarrow
+\]
+
+\[
+\Rightarrow 2 > \frac {\sqrt{d^{2}+4c-4}}{d} > 0 \Rightarrow
+\]
+
+\[
+\Rightarrow 2d > \sqrt{d^{2}+4c-4} > 0 \Rightarrow
+\]
+
+\[
+\Rightarrow 4d^{2} > d^{2}+4c-4 \Rightarrow 
+\]
+
+\[
+\Rightarrow 3d^{2}-4c+4 > 0
+\]
+
+Si d = 2 y c = 4
+
+\[
+\Rightarrow 3*4 - 4*4 +4 = 0 
+\]
+
+Luego la condici\'on anterior no nos garantiza que ese punto sea L.A.E.
+\
+
+\
+
+\
+
+Sustituyendo en $F(x)$:
+
+\[
+F(x) = \frac{4-1}{2} - \frac{1}{2}x^{2} = \frac{3}{2} - \frac{1}{2}x^{2}\Rightarrow
+\]
+
+\[
+|F(x)|' = |-x| = x 
+\]
+
+Sustituyendo $\alpha$ por x:
+
+\[
+x = \alpha = \frac{-2+\sqrt{2^{2} +4*4-4}}{2} = 1
+\]
+
+El resultado como podemos ver es 1, lo cual no nos dice que sea L.A.E. ni inestable. Por tanto tendremos que comprobar que ocurre con la segunda derivada (si es distinta o mayor que 0 entonces es inestable y si es menor que 0 es L.A.E.) :
+
+\[
+F(x)' = -x \Rightarrow
+\]
+
+\[
+\Rightarrow F(x)'' = -1 \neq 0
+\]
+
+\[
+\Rightarrow F(\alpha)'' = -1
+\]
+
+Por tanto, es inestable.
+
+c) Si c = 3 , d = 2 y $p_0 = 1$ , entonces usando que : 
+
+\[
+p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n) \Rightarrow
+\]
+
+\[
+\Rightarrow p_{n+1} = 1 - \frac{1}{2}p_n^{2} = F(p_n)
+\]
+
+\[
+\Rightarrow p_1 = 1 - \frac{p_0^{2}}{2} = \frac{1}{2}
+\]
+
+\[
+\Rightarrow p_2 = 1 - \frac{p_1^{2}}{2} = \frac{7}{8}
+\]
+
+\includegraphics[scale=0.32]{/home/usuario/Escritorio/diagrama(ej17).png}
+\
+
+Podemos ver que el punto de equilibrio es un atractor y que la funci\'on converge a dicho punto:
+\[
+\alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} = \frac{-2+\sqrt{4 +12-4}}{2} = \frac{-2+2\sqrt{3}}{2} = -1+\sqrt{3}  
+\]
+
+\
+
+Para realizar este gr\'afico he usado wxmaxima, en concreto, la orden 
+
+\[
+staircase(1-(1/2)*x^2,1,100,[x,0,1.5],[y,0,1.5]);
+\]
+
+donde el primer par\'ametro es la funci\'on obtenida antes $(F_n)$ representada por la curva roja, el segundo par\'ametro es el punto inicial, el tercero es el n\'umero de iteraciones o valores que calculamos (n=100) y los \'ultimos par\'ametros son opciones para representar el gr\'afico.
+
+\end
 
 \subsection{Ejercicio 19}
 
