@@ -40,7 +40,7 @@
         - No devuelven nada.
       - RUBY
         - Un único initialize (no es un constructor pero se invoca cada vez que se construye un objeto).
-        - Se pueden crear más constructores, en cuyo caso sería con *self.* y dentro de este se haría *self.new(parámetros)*
+        - Se pueden crear más constructores, en cuyo caso sería con *self.* y dentro de este se haría *new(parámetros)*
 
     - CONSULTORES Y MODIFICADORES
       - RUBY
