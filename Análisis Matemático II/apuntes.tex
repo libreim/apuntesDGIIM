@@ -1062,7 +1062,7 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \section{Integral asociada a una medida}
 
-Recordemos por un momento la definición de integral de Riemann. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior como: $$\underline{\int_a^b} f := \underset{P \in \mathcal P [a,b]}{sup} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{inf} f$$
+Recordemos por un momento la definición de integral de Riemann-Darboux. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior de una función $f$ en $[a,b]$ como: $$\underline{\int_a^b} f := \underset{P \in \mathcal P [a,b]}{sup} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{inf} f$$
 
 $$\overline {\int_a^b} f := \underset{P \in \mathcal P [a,b]}{inf} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{sup} f$$
 
@@ -1103,7 +1103,7 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 \end{nlist}
 
 \begin{proof}
-	La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathcal A$, que sabemos que está en el $\sigma$-álgebra por definición.
+	La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathcal A$, y aplicamos la definición de $\sigma$-álgebra.
 	
 	$(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
 	
@@ -1148,23 +1148,23 @@ En general, cuando consideremos un espacio $X$ sin decir explícitamente quién 
 %   Aritmética de [0,\infty].
 %--------------------------------------------------------------------------------
 
-\subsubsection{Aritmética de $\bm{[0,\infty]}$}
+\subsubsection*{Aritmética de $\bm{[0,\infty]}$}
 
 Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. La topología asociada a este espacio viene dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
 
-Puesto que de ahora en adelante trabajaremos habitualmente en el espacio $[0,\infty]$, necesitamos definir ciertas operaciones y relaciones:
+Puesto que de ahora en adelante trabajaremos habitualmente en el espacio topológico $[0,\infty] \subseteq [-\infty,\infty]$, necesitamos definir ciertas operaciones y relaciones:
 \begin{nlist}
-    \item $a < \infty, \quad \forall a \in \mathbb{R}^+_0$
+    \item $a < \infty, \quad \forall a \in [0,\infty)$
 	\item $\infty + a = \infty, \quad \forall a \in [0,\infty]$
 	\item $\infty \cdot a = \infty, \quad \forall a \in (0,\infty]$
     \item $\infty \cdot 0 = 0$
 \end{nlist}
 
-El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principalmente en cuanto a notación y distinción de casos. Por ejemplo, en $[0, \infty]$, \textit{toda sucesión monótona creciente es convergente}, si bien el límite puede ser $\infty$.
+El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principalmente en cuanto a notación y distinción de casos. Por ejemplo, en $[0, \infty]$, \textit{toda sucesión monótona creciente es convergente}, si bien el límite puede ser $\infty$. También podemos decir que existe siempre la suma de una serie, o que si $\xn$ e $\{y_n\}$ son dos sucesiones convergentes a $x$ e $y$ respectivamente, entonces $x_ny_n \to xy$.
 
 
 %--------------------------------------------------------------------------------
-%   Funciones medibles positivas. Funciones simples
+%   Funciones medibles positivas. Funciones simples.
 %--------------------------------------------------------------------------------
 
 \subsection{Funciones medibles positivas. Funciones simples}
@@ -1211,6 +1211,13 @@ En particular, si $\fn \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medibl
 \end{nprop}
 %%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
+
+%--------------------------------------------------------------------------------
+%   Funciones simples.
+%--------------------------------------------------------------------------------
+
+\subsubsection*{Funciones simples}
+
 Centraremos ahora nuestra atención en estudiar funciones sencillas o \textit{simples}, que nos servirán más adelante como base para construir una integral.
 
 \begin{ndef}[Funciones simples positivas]
@@ -1241,7 +1248,7 @@ Por tanto, dado $\omega \in \Omega$, $\exists ! \ k_0 \in \{1,\dots,m\} \text{ t
 \end{proof}
 
 
-\begin{nprop}[Propiedades de funciones simples]
+\begin{nprop}[Propiedades de funciones simples] \label{propsimples}
 	Si $s$ y $t$ son funciones simples positivas y $\alpha \in [0,\infty)$, entonces $s+t, \ \alpha s, \ st$ son también simples positivas.
 	
 \begin{proof}
@@ -1302,72 +1309,86 @@ Entonces puede conseguirse que $\{s_n\}\xrightarrow{c.u.}f$ en $\Omega$.
 
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to \mathbb{R}$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
 \begin{proof}
-	Por el teorema de Lebesgue sabemos que si existe una sucesion $\{s_n\}$ y otra $\{t\}$ simple positivas que convergen respectivamente en f y g. Por la propiedad 3.6 además sabemos que podemos generar una sucesión $\{s_n+t_n\} \rightarrow f+g$ de sucesiones simples positivas. Por último, al aplicar otra vez el teorema de Lesbesgue, nos queda que la función $f+g$ es medible.
+	Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, manteniendo la monotonía creciente. Entonces, aplicamos de nuevo el \textit{Teorema de Lebesgue} para concluir que la función $f+g$ es medible.
 	
-	La demostración para $ \alpha f$ y para  $fg$ son análogas.
+La demostración para $ \alpha f$ y $fg$ es análoga.
 \end{proof}
-
-%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
-	
 \end{ncor}
 
+
+%--------------------------------------------------------------------------------
+%   Integral de funciones medibles positivas.
+%--------------------------------------------------------------------------------
+
 \subsection{Integral de funciones medibles positivas}
-%%% COMPLETAR -----------------------------------------------------------------
+
+Abordamos ahora el problema de definir una integral asociada a funciones medibles positivas. Para ello, formalizaremos el concepto de \textit{medida}, que nos permitirá asignar a cada conjunto medible un número $m \in [0,\infty]$, que entenderemos como la \textit{medida} de ese conjunto. 
+
 \begin{ndef}[Medida]
 	Si $(\Omega, \mathcal A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathcal A \rightarrow [0, \infty]$ verificando:
 	\begin{nlist}
 	 	\item $\mu(\emptyset) = 0$
-	 	\item $\forall \{A_k\} \subset \mathcal A$ con $A_k\bigcap A_j = \emptyset, \forall k \neq j,$ se tiene
+	 	\item $\forall \{A_k\} \subseteq \mathcal A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
 	 	$$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu(A_k) $$
 	\end{nlist}
-	$(\Omega, \mathcal A, \mu)$ se llama espacio de medida.
+	La terna $(\Omega, \mathcal A, \mu)$ se llama \textbf{espacio de medida}.
 \end{ndef}
 
-\textbf{Propiedades de la medida:}
+\begin{nprop}[Propiedades de una medida] Si $(\Omega, \mathcal A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
 \begin{nlist}
-	\item (Monotonía). Si $A,B \in \mathcal{A}, A \subset B \implies \mu(A) \leq \mu(B)$
-	\item (Subaditividad) . $\forall \{A_k\} \subset \mathcal{A}$, se tiene:
+	\item (Monotonía). Si $A,B \in \mathcal{A},\ A \subseteq B \implies \mu(A) \leq \mu(B)$
+	\item (Subaditividad). $\forall \{A_k\} \subseteq \mathcal{A}$, se tiene:
 	\[
-	\mu(\bigcup_{k=1}^\infty A_k) \leq \sum_{k=1}^\infty \mu(A_k)
+	\mu\left( \bigcup_{k=1}^\infty A_k \right) \leq \sum_{k=1}^\infty \mu(A_k)
 	\]
-	\item $\forall \{A_k\} \subset \mathcal{A}$ con $A_1 \subset A_2 \subset ... \subset A_k \subset ...$ se tiene:
+	\item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
 	$$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
-	\item $\forall \{A_k\} \subset \mathcal{A}$ con $A_1 \supset A_2 \supset ... \supset A_k \supset ...$ se tiene:
+	\item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ se tiene:
 	$$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
 \end{nlist}
 
+%%% FALTA DEMOSTRACIÓN --------------------------------------------------------
+\end{nprop}
+
+\textbf{FALTAN EJEMPLOS DE MEDIDAS (DIAPOSITIVAS)}
+%%% EJEMPLOS DE MEDIDAS -------------------------------------------------------
+
+Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
 
 \begin{ndef}[Integral de función simple positiva]
-	Si $E\in \mathcal{A}$ y $s:\Omega \to [0,\infty]$ es simple: $s= \sum_{k=1}^n \alpha_k \mathcal{X}_{A_k}$, entonces:
+	Si $E \in \mathcal{A}$ y $s:\Omega \to [0,\infty]$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
 	\[
-	\int_E s d\mu = \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
+	\int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
 	\]
 \end{ndef}
 
-\begin{ndef}
-	Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces:
+%%% FALTA UN EJERCICIO (DIAPOSITIVAS). ¿PONER AQUÍ, O EN EJERCICIOS.TEX? --------
+
+\begin{ndef}[Integral de función medible positiva]
+	Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
 	\[
-	\int_e f d\mu = sup\{\int_e s d\mu: \text{ s es simple positiva}, s \leq f\}
+	\int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ s es simple positiva}, \ s \leq f\right\}
 	\]
 \end{ndef}
+
+%%% PREÁMBULO DEL TEOREMA (MOTIVACIÓN) ---------------------------------------
 
 \begin{nth}[Teorema de la convergencia monótona]
-	Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in A$ y $f_n: \Omega \to [0,\infty]$ medible. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \ \ \ \forall \omega \in \Omega$. Entonces:
+	Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in \mathcal A$ y $f_n: \Omega \to [0,\infty]$ medibles. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \, \ \forall \omega \in \Omega$. Entonces:
 	\[
-\int_E \lim_{n \to \infty} f_n d\mu = \lim_{n \to \infty}\int_E f_n d \mu
+\int_E \lim_{n \to \infty} f_n\ d\mu = \lim_{n \to \infty}\int_E f_n\, d \mu
 	\]
 	\begin{nota}
-	 $f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible. Además, con $f_n(\omega) \leq f_{n+1}(\omega)$ estamos diciendo que la sucesión de funciones es monótona y por tanto convergerá a una función $f$.
+	 $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente.
 \end{nota}
 
-%%% Arreglar estilo
-\begin{proof}\hfill\\
-\boxed{\leq}\hfill\\
-Como $f_n \leq f_{n+1} \leq f \implies$
+%%% ARREGLAR ESTILO Y COMPARAR CON DIAPOSITIVAS --------------------------------
+\begin{proof} Veamos las dos desigualdades.
+
+\boxed{\leq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
 \[
-\{ s  : \begin{cases} \text{ s simple positiva}\\ s \leq f_n \}
-	
-\end{cases}\}  \subset \{ s: \begin{cases} \text{ s es simple positiva}\\
+\{ s  : \begin{rcases} \text{ s simple positiva}\\ s \leq f_n 
+\end{rcases}  \subset \{ s: \begin{cases} \text{ s es simple positiva}\\
 s\leq f_{n+1}
 	
 \end{cases} \} \subset \{s: \begin{cases}\text{ s es simple positiva}\\ s \leq f
@@ -1380,7 +1401,7 @@ Esto implica que:
 \]
 \boxed{\geq}\hfill \\
 Para probar esta desigualdad, usaremos el siguiente lema: 
-%%%Añadir
+%%% AÑADIR EL LEMA ANTES DEL TEOREMA ---------------------------------------
 
 Ahora, como
 \[
