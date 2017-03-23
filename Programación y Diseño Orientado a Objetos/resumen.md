@@ -112,7 +112,9 @@
 - CLASES
 
 	Nombre ^ [multiplicidad]
+
 	[visibilidad] nombre_atributo [:tipo[multiplicidad]][=valorinicial]
+
 	[visibilidad] nombre_metodo ([lista parámetros])[:tipo retorno]
 
 
@@ -130,10 +132,10 @@
 
 
 - VISIBILIDAD
-	+ -> pública
-	- -> privada
-	~ -> paquete
-	# -> protegida
+	\+ -> pública
+	\- -> privada
+	\~ -> paquete
+	\# -> protegida
 
 
 - ELEMENTOS DE LAS ASOCIACIONES:
