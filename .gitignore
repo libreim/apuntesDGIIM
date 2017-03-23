@@ -1,3 +1,4 @@
 *.swp
 Recursos/Plantillas/by-nc-sa-eps-converted-to.pdf
 *.texpadtmp
+.shippable.yml
