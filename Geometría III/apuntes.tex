@@ -1,11 +1,11 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
 % Apuntes de la asignatura Geometría III.
 % Doble Grado de Informática y Matemáticas.
 % Universidad de Granada.
 % Curso 2016/17.
-%
-%
+% 
+% 
 % Colaboradores:
 % Javier Sáez (@fjsaezm)
 % Daniel Pozo (@danipozodg)
@@ -14,77 +14,77 @@
 % Antonio Coín (@antcc)
 % Sofía Almeida (@SofiaAlmeida)
 % Miguel Lentisco (@AlfaOmegaX)
-%
+% 
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
 % las plantillas base.
-%
+% 
 % Sitio original:
 % https://github.com/libreim/apuntesDGIIM/
-%
+% 
 % Licencia:
 % CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
-%------------------------------------------------------------------------------
-%   ACKNOWLEDGMENTS
-%------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% ACKNOWLEDGMENTS
+% ------------------------------------------------------------------------------
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Plantilla básica de Latex en Español.
-%
+% 
 % Autor: Andrés Herrera Poyatos (https://github.com/andreshp)
-%
+% 
 % Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
 % estilo moderno pero serio.
-%
+% 
 % La plantilla se encuentra adaptada al español.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-%%%
+%%% 
 % Plantilla de Trabajo
 % Modificación de una plantilla de Latex de Frits Wenneker para adaptarla
 % al castellano y a las necesidades de escribir informática y matemáticas.
-%
+% 
 % Editada por: Mario Román
-%
+% 
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%
+%%% 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Short Sectioned Assignment
 % LaTeX Template
 % Version 1.0 (5/5/12)
-%
+% 
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
-%
+% 
 % Original author:
 % Frits Wenneker (http://www.howtotex.com)
-%
+% 
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 % Tipo de documento y opciones.
 \documentclass[11pt, a4paper, titlepage]{article}
 
 
-%---------------------------------------------------------------------------
-%   PAQUETES
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% PAQUETES
+% ---------------------------------------------------------------------------
 
 % Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
 \selectlanguage{spanish}
-%\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 
 % Fuente utilizada.
 \usepackage{courier}    % Fuente Courier.
@@ -107,14 +107,15 @@
 \usepackage{pgfplots}
 \usepackage{graphicx}   % Gráficos.
 
-% Dibujos Tickz
+% Dibujos Tikz
+\usepackage{pgf,tikz}
 \usepackage{mathrsfs}
-\usetikzlibrary{arrows}
+\usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
 
-%---------------------------------------------------------------------------
-%   OPCIONES PERSONALIZADAS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% OPCIONES PERSONALIZADAS
+% ---------------------------------------------------------------------------
 
 % Redefinir letra griega épsilon.
 \let\epsilon\upvarepsilon
@@ -142,9 +143,9 @@
 \linespread{1.3}
 
 
-%---------------------------------------------------------------------------
-%   COMANDOS PERSONALIZADOS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
 
 % Valor absoluto: \abs{}
 \providecommand{\abs}[1]{\lvert#1\rvert}
@@ -165,15 +166,15 @@
 % Flechitas de los vectores de tamaño apropiado
 \renewcommand{\vec}{\overrightarrow}
 
-%---------------------------------------------------------------------------
-%   CABECERA Y PIE DE PÁGINA
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% CABECERA Y PIE DE PÁGINA
+% ---------------------------------------------------------------------------
 
 % Cabecera del documento.
 \renewcommand\headrule{
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize
-	\end{minipage}
+  \begin{minipage}{1\textwidth}
+    \hrule width \hsize
+  \end{minipage}
 }
 
 % Texto de la cabecera.
@@ -183,9 +184,9 @@
 
 % Pie de página del documento.
 \renewcommand\footrule{
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize
-	\end{minipage}\par
+  \begin{minipage}{1\textwidth}
+    \hrule width \hsize
+  \end{minipage}\par
 }
 
 % Texto del pie de página.
@@ -194,9 +195,9 @@
 \rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
 
 
-%---------------------------------------------------------------------------
-%   ENTORNOS PARA MATEMÁTICAS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% ENTORNOS PARA MATEMÁTICAS
+% ---------------------------------------------------------------------------
 
 % Nuevo estilo para definiciones.
 \newtheoremstyle{definition-style} % Nombre del estilo.
@@ -263,17 +264,17 @@
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
 {\begin{enumerate}
-\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-{\end{enumerate}}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
 
 % División por casos con llave a la derecha.
 \newenvironment{rcases}
-  {\left.\begin{aligned}}
-  {\end{aligned}\right\rbrace}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
 
-%---------------------------------------------------------------------------
-%   PÁGINA DE TÍTULO
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% PÁGINA DE TÍTULO
+% ---------------------------------------------------------------------------
 
 % Título del documento.
 \newcommand{\subject}{Geometría III}
@@ -297,9 +298,9 @@
 \date{\vspace{-1.5em} \normalsize Curso 2016/17}
 
 
-%---------------------------------------------------------------------------
-%   COMIENZO DEL DOCUMENTO
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% COMIENZO DEL DOCUMENTO
+% ---------------------------------------------------------------------------
 \usepackage{amsmath}
 \begin{document}
 
@@ -307,47 +308,47 @@
 \tableofcontents    % Índice
 \vfill
 \begin{center}
-\includegraphics{by-nc-sa}  % Licencia.
+  \includegraphics{by-nc-sa}  % Licencia.
 \end{center}
 \newpage
 
 
-%----------------------------
-%   Introducción.
-%----------------------------
+% ----------------------------
+% Introducción.
+% ----------------------------
 \section*{Introducción}
 En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
 \newpage
 
 \section{El espacio afín}
 \begin{ndef}[Espacio afín]
-Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
+  Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
 
-\begin{align*}
-	\varphi: E \times E & \rightarrow V \\
-	(a,b) & \mapsto \varphi(a,b)
-\end{align*}
+  \begin{align*}
+    \varphi: E \times E & \rightarrow V \\
+    (a,b) & \mapsto \varphi(a,b)
+  \end{align*}
 
-que cumple las siguientes propiedades:
-\begin{itemize}
-\item Si fijamos un punto $a$, la aplicación $\varphi_a$ es biyectiva, o lo que es lo mismo:
-$$\forall a \in E, \ \ v \in V, \ \ \exists! b \in E:\varphi(a,b)=v$$
-\item Se tiene la relación de Charles, es decir:
-$$\forall a, b, c \in E \ \ \  \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
-\end{itemize}
+  que cumple las siguientes propiedades:
+  \begin{itemize}
+  \item Si fijamos un punto $a$, la aplicación $\varphi_a$ es biyectiva, o lo que es lo mismo:
+    $$\forall a \in E, \ \ v \in V, \ \ \exists! b \in E:\varphi(a,b)=v$$
+  \item Se tiene la relación de Charles, es decir:
+    $$\forall a, b, c \in E \ \ \  \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
+  \end{itemize}
 \end{ndef}
 \subsection{El plano afín}
 
 Desde ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
 
 \begin{figure*}[h]
-\centering
-\begin{tikzpicture}
-	\begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
-		\addplot+(2,3);
-	\end{axis}
-\end{tikzpicture}
-\caption{El punto (2,3) en el plano}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
+      \addplot+(2,3);
+    \end{axis}
+  \end{tikzpicture}
+  \caption{El punto (2,3) en el plano}
 \end{figure*}
 
 Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propiedades de los vectores en propiedades de puntos e intentar relacionar estos dos conceptos.
@@ -357,24 +358,24 @@ Dados dos puntos $P$ y $Q$ del plano, podemos transformarlos en un vector llaman
 % ¿Insertar un dibujo con la suma de un vector a un punto?
 
 \begin{ndef}[Combinación lineal de vectores]
-	Si tenemos una familia $u_1,\ldots , u_n$ de vectores vectores y $\alpha_1,\ldots, \alpha_n$ una familia de escalares, entonces a
-	\[
-	\sum_{i=1}^n \alpha_i u_i
-	\]
-	lo llamamos \textit{combinación lineal de vectores}.
+  Si tenemos una familia $u_1,\ldots , u_n$ de vectores vectores y $\alpha_1,\ldots, \alpha_n$ una familia de escalares, entonces a
+  \[
+    \sum_{i=1}^n \alpha_i u_i
+  \]
+  lo llamamos \textit{combinación lineal de vectores}.
 \end{ndef}
 
 \begin{ndef}[Razón de vectores proporcionales]
-	Dados $u$ y $v$ dos vectores proporcionales ($u = \lambda v$), entonces llamamos \textit{razón} de esos dos vectores al escalar $\lambda$.
+  Dados $u$ y $v$ dos vectores proporcionales ($u = \lambda v$), entonces llamamos \textit{razón} de esos dos vectores al escalar $\lambda$.
 \end{ndef}
 
 A continuación vamos a estudiar distintas \textit{combinaciones lineales} de puntos del plano afín.
 
 \begin{ndef}[Combinación baricéntrica de un conjunto de puntos]
-	Dados $P_1,...,P_n$ un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n \in \R$ un conjunto de escalares (llamados \textit{pesos} de los puntos) que cumplen que $\sum \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
-	\[
-	P = \sum_{i=1}^n \alpha_i P_i
-	\]
+  Dados $P_1,...,P_n$ un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n \in \R$ un conjunto de escalares (llamados \textit{pesos} de los puntos) que cumplen que $\sum \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
+  \[
+    P = \sum_{i=1}^n \alpha_i P_i
+  \]
 \end{ndef}
 
 \begin{nprop} Una combinación baricéntrica de puntos es un punto. 
@@ -382,41 +383,41 @@ A continuación vamos a estudiar distintas \textit{combinaciones lineales} de pu
 
 \begin{proof}
 
-Para simplificar la demostración vamos a comenzar transformando los puntos en vectores.
+  Para simplificar la demostración vamos a comenzar transformando los puntos en vectores.
 
-	Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así el vector determinado por $P$ y $P_1$ y una identidad entre vectores de la forma:
-	\[
-	P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
-	\]
+  Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así el vector determinado por $P$ y $P_1$ y una identidad entre vectores de la forma:
+  \[
+    P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
+  \]
 
-	Y llegamos así a que
-	\[
-	P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
-	\]
-	
-	Hemos demostrado que $P$ es el resultado de sumar un vector a un punto (en este caso $P_1$), que es otro punto como queríamos.
+  Y llegamos así a que
+  \[
+    P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
+  \]
+  
+  Hemos demostrado que $P$ es el resultado de sumar un vector a un punto (en este caso $P_1$), que es otro punto como queríamos.
 \end{proof}
 
 \begin{ndef}[Combinación convexa]
-	Si en una combinación baricéntrica los pesos $\alpha_i$ asignados a los puntos son todos positivos entonces llamaremos a esta combinación \textit{convexa}. \end{ndef}
+  Si en una combinación baricéntrica los pesos $\alpha_i$ asignados a los puntos son todos positivos entonces llamaremos a esta combinación \textit{convexa}. \end{ndef}
 
 \begin{ndef}[Centro de gravedad de un conjunto de puntos]
-	Si $P_1,...,P_n$ es un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n$ los \textit{pesos} asociados a estos puntos, llamamos a
-	\[
-	\sum_{i=1}^n \alpha_iP_i
-	\]
-	el \textit{centro de gravedad del conjunto de puntos}.
+  Si $P_1,...,P_n$ es un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n$ los \textit{pesos} asociados a estos puntos, llamamos a
+  \[
+    \sum_{i=1}^n \alpha_iP_i
+  \]
+  el \textit{centro de gravedad del conjunto de puntos}.
 \end{ndef}
 
 \begin{ndef}[Punto medio]
-Sean $P$ y $Q$ dos puntos en el espacio afín. Entonces decimos que $m$ es el punto medio entre $P$ y $Q$ si está definido como:
-\[
-m = \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
-\]
-Alternativamente, si $u = \overrightarrow{PQ}$, entonces:
-\[
-m = \dfrac{1}{2}u + P
-\]
+  Sean $P$ y $Q$ dos puntos en el espacio afín. Entonces decimos que $m$ es el punto medio entre $P$ y $Q$ si está definido como:
+  \[
+    m = \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
+  \]
+  Alternativamente, si $u = \overrightarrow{PQ}$, entonces:
+  \[
+    m = \dfrac{1}{2}u + P
+  \]
 
 \end{ndef}
 
@@ -425,30 +426,30 @@ m = \dfrac{1}{2}u + P
 En este apartado vamos a describir las \textit{rectas afines}. De ahora en adelante, si se hace mención a una recta sin más, daremos por hecho que se trata de una recta afín.
 
 \begin{ndef}[Recta vectorial]
-	Una recta vectorial es un subespacio vectorial de dimensión 1. Para generarlas solo es necesario un único vector. Podemos escribir la \textit{recta vectorial generada por un vector} $v$ como $L(v)$.
+  Una recta vectorial es un subespacio vectorial de dimensión 1. Para generarlas solo es necesario un único vector. Podemos escribir la \textit{recta vectorial generada por un vector} $v$ como $L(v)$.
 \end{ndef}
 
 \begin{nprop}
-	Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por
-	\[
-	r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
-	\]
-	Para distinguir las rectas vectoriales de las rectas afines, notaremos a $L(v)$ como $\vec{r}$.
+  Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por
+  \[
+    r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
+  \]
+  Para distinguir las rectas vectoriales de las rectas afines, notaremos a $L(v)$ como $\vec{r}$.
 \end{nprop}
 \begin{ndef}[Variedad de dirección]
-	Si $v$ es un \textit{vector director}, llamaremos \textit{variedad de dirección} a la recta generada por este vector, $L(v) = \vec{r}$.
+  Si $v$ es un \textit{vector director}, llamaremos \textit{variedad de dirección} a la recta generada por este vector, $L(v) = \vec{r}$.
 \end{ndef}
 
 \textbf{Propiedades de las rectas afines:}
 \begin{itemize}
-	\item Si $Q$ es un punto y $r$ una recta tales que que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
-	\item Si $P,Q$ son dos puntos, entonces por ellos pasa una única recta $r = P +L(\overrightarrow{PQ})$. \\
-	\begin{proof}
-	(Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces por definición:
-	\[
-	s = P+L(\overrightarrow{PQ}) = r
-	\]
-\end{proof}
+\item Si $Q$ es un punto y $r$ una recta tales que que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
+\item Si $P,Q$ son dos puntos, entonces por ellos pasa una única recta $r = P +L(\overrightarrow{PQ})$. \\
+  \begin{proof}
+    (Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces por definición:
+    \[
+      s = P+L(\overrightarrow{PQ}) = r
+    \]
+  \end{proof}
 \end{itemize}
 
 \subsubsection{Posición relativa entre rectas}
@@ -456,25 +457,25 @@ En este apartado vamos a describir las \textit{rectas afines}. De ahora en adela
 Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín. Así, decimos que dos rectas son
 
 \begin{itemize}
-	\item Paralelas, notado $r\parallel s$, si y solo si $\vec{r} = \vec{s}$
-	\item No paralelas, notado $r\nparallel s$, si y solo si sus vectores directores son linealmente independientes o lo que es lo mismo, $u$ y $v$ forman una base.
+\item Paralelas, notado $r\parallel s$, si y solo si $\vec{r} = \vec{s}$
+\item No paralelas, notado $r\nparallel s$, si y solo si sus vectores directores son linealmente independientes o lo que es lo mismo, $u$ y $v$ forman una base.
 \end{itemize}
 
 \begin{nth}
-	Si $r$ y $s$ son dos rectas del plano afín, entonces si:
-	\begin{nlist}
-	\item $r \nparallel s\implies r \cap s = A$, un punto
-	\item $r \parallel s \implies r = s$ o bien $r \cap s =  \emptyset$
-\end{nlist}
+  Si $r$ y $s$ son dos rectas del plano afín, entonces si:
+  \begin{nlist}
+  \item $r \nparallel s\implies r \cap s = A$, un punto
+  \item $r \parallel s \implies r = s$ o bien $r \cap s =  \emptyset$
+  \end{nlist}
 
-\begin{proof}
-	\begin{nlist}
-	% Esta demostración ?¿ No acabo de ver que demuestre lo que dice (i)
-	\item Si $u,v$ son los vectores directores de $r$ y $s$ y $P$ y $Q$ puntos de $r$ y $s$ respectivamente, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
-y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y, por ello, existen únicos $\lambda, \mu$.
-\item Sean $u,v$ son los vectores directores de $r$ y $s$. Supongamos que además tienen al menos un punto $A$ en común. Escribimos estas rectas como $r = A +L(u)$ y $s=A+L(v)$. Como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
-\end{nlist}
-\end{proof}
+  \begin{proof}
+    \begin{nlist}
+      % Esta demostración ?¿ No acabo de ver que demuestre lo que dice (i)
+    \item Si $u,v$ son los vectores directores de $r$ y $s$ y $P$ y $Q$ puntos de $r$ y $s$ respectivamente, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
+      y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y, por ello, existen únicos $\lambda, \mu$.
+    \item Sean $u,v$ son los vectores directores de $r$ y $s$. Supongamos que además tienen al menos un punto $A$ en común. Escribimos estas rectas como $r = A +L(u)$ y $s=A+L(v)$. Como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
+    \end{nlist}
+  \end{proof}
 \end{nth}
 
 
@@ -482,19 +483,19 @@ y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y,
 Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alineados $A, B, C$ llamados \textit{vértices} y las tres rectas que los unen.
 
 \begin {ndef}
-	Dos o más puntos $A_1, A_2, ... , A_n $ estan alineados $\iff$ existe una recta $r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n$
+  Dos o más puntos $A_1, A_2, ... , A_n $ estan alineados $\iff$ existe una recta $r \subset \mathbb{R}^2\ tal\ que\ A_i \in r\ \forall i \in 1,...,n$
 \end{ndef}
 
 
 \begin{nprop}
-$A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{AC}$ son linealmente independientes.
-	\begin {proof}
+  $A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{AC}$ son linealmente independientes.
+  \begin {proof}
 
-	\boxed{\Rightarrow}
-	Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2\ $ tal que $A$, $B$, y $C$ $\in r$, luego $\nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
+    \boxed{\Rightarrow}
+    Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2\ $ tal que $A$, $B$, y $C$ $\in r$, luego $\nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
 
-	\boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
-	\end {proof}
+    \boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
+  \end {proof}
 
 \end{nprop}
 
@@ -503,189 +504,250 @@ $A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{A
 
 
 \begin{nth}
-	Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales.
-	Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
-	\[
-	\frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
-	\]
-	Entonces, la pareja restante $C\vee B \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
-	\begin{proof}
-	Si los lados son paralelos, entonces los vectores directores son proporcionales.
+  Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales.
+  Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
+  \[
+    \frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
+  \]
+  Entonces, la pareja restante $C\vee B \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
+  \begin{proof}
+    Si los lados son paralelos, entonces los vectores directores son proporcionales.
 
-	Si $w$ (el lado no mencionado del primer triangulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
-\end{proof}
+    Si $w$ (el lado no mencionado del primer triangulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
+  \end{proof}
 \end{nth}
 
 \begin{ndef}[Triángulos semejantes]
-	Dos triángulos son semejantes si sus lados son paralelos dos a dos. También son semejantes $\iff$ los ángulos son iguales. También son semejantes si sus lados son proporcionales.
+  Dos triángulos son semejantes si sus lados son paralelos dos a dos. También son semejantes $\iff$ los ángulos son iguales. También son semejantes si sus lados son proporcionales.
 \end{ndef}
 
 \begin{ncor}[Teorema de Thales]
-	Si en un triángulo $ABC$ se traza una recta paralela a cualquiera de sus lados, obtenemos un triángulo semejante al triángulo original.
+  Si en un triángulo $ABC$ se traza una recta paralela a cualquiera de sus lados, obtenemos un triángulo semejante al triángulo original.
 \end{ncor}
 
 \begin{nota}
-	Dos triángulos tienen todos los lados paralelos dos a dos $\iff$ los segmentos de los lados son proporcionales dos a dos. Esto es por el teorema anterior.
+  Dos triángulos tienen todos los lados paralelos dos a dos $\iff$ los segmentos de los lados son proporcionales dos a dos. Esto es por el teorema anterior.
 \end{nota}
 
 \begin{ndef}[Triángulo medio]
-	Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
-	\begin{nlist}
-	\item $A'B'C'$ es un triángulo
-	\item Los lados homólogos son paralelos y que el factor de proporcionalidad es: $-\dfrac{1}{2}$
-\end{nlist}\vspace{0.2cm}
-\begin{proof}
+  Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
+  \begin{nlist}
+  \item $A'B'C'$ es un triángulo
+  \item Los lados homólogos son paralelos y que el factor de proporcionalidad es: $-\dfrac{1}{2}$
+  \end{nlist}\vspace{0.2cm}
+  \begin{proof}
 
-	\begin{nlist}
-	\item Se hace viendo que si ABC no están alineados, estos 3 tampoco
-	\item Tenemos que: $A' = B/2 + C/2$, $B' = A/2+C/2$, $C' = A/2 + B/2$. Tenemos por tanto que: $\vec{A'B'} = B'-A' = \dfrac{1}{2}(A-B) = -\dfrac{1}{2} \vec{AB}$ y por tanto los lados homólogos son paralelos.
+    \begin{nlist}
+    \item Se hace viendo que si ABC no están alineados, estos 3 tampoco
+    \item Tenemos que: $A' = B/2 + C/2$, $B' = A/2+C/2$, $C' = A/2 + B/2$. Tenemos por tanto que: $\vec{A'B'} = B'-A' = \dfrac{1}{2}(A-B) = -\dfrac{1}{2} \vec{AB}$ y por tanto los lados homólogos son paralelos.
 
-Además, el factor es el número obtenido en la conversión, es decir $\dfrac{-1}{2}$.
-\end{nlist}
-\end{proof}
+      Además, el factor es el número obtenido en la conversión, es decir $\dfrac{-1}{2}$.
+    \end{nlist}
+  \end{proof}
 \end{ndef}
 
 
-%%Centros y ejes de un triangulo
+%% Centros y ejes de un triangulo
 \subsubsection{Centros y ejes de un triángulo}
 
 \begin{ndef}[Medianas de un triángulo]
-Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el punto medio del lado opuesto
+  Las medianas de un triángulo $ABC$ son las rectas que unen un vértice con el punto medio del lado opuesto
 \end{ndef}
 \begin{ndef}[Baricentro de un triángulo]
-	El baricentro $G$ de un triángulo que viene dado por:
-	\[
-	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C
-	\]
+  El baricentro $G$ de un triángulo que viene dado por:
+  \[
+    G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C
+  \]
 \end{ndef}
 
 \begin{nth}
-	Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
+  Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
 
 
 \end{nth}
 
-%%%Elegir cual os gusta más please.
+%%% Elegir cual os gusta más please.
 
 %% \begin{proof}
-%% 	Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
-%% 	\[
-%% 	\{A + \lambda (\frac{C+B}{2} - A)\}
-%% 	\] 
-%% 	Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
-	
-%% 	Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
+%%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
+%%   \[
+%%     \{A + \lambda (\frac{C+B}{2} - A)\}
+%%   \] 
+%%   Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
+
+%%   Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
 %% \end{proof}
-	\begin{proof}
-	Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
-	\[
-	\{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
-	\]
-	Entonces, sabemos que $G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C$ y veamos que este está en la mediana: Tenemos que ver la ecuación:
-	\[
-	G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
-	\]
+\begin{proof}
+  Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
+  \[
+    \{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
+  \]
+  Entonces, sabemos que $G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C$ y veamos que este está en la mediana: Tenemos que ver la ecuación:
+  \[
+    G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
+  \]
 
 \end{proof}
 
 Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que existen las medianas $m_A = L(\vec{AA'})$. Sabemos que las 3 medianas concurren en el baricentro. Este baricentro triseca a las medianas y tenemos que $G = \dfrac{2}{3}A' + \dfrac{1}{3}A$
 
 \begin{ndef}[Mediatriz de un segmento]
-	Si $\bar{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
+  Si $\overline{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
 \end{ndef}
+
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate [label=left:$A$] (A) at (0,0);
+    \coordinate [label=right:$B$] (B) at (2,0.5);
+    \draw (A) -- (B);
+    \coordinate (M) at ($ (A)!.5!(B)$);
+    \coordinate (top) at ($ (M) !1! 90:(B)$);
+    \coordinate (bottom) at ($ (M) !1! 270:(B)$);
+    \draw [dashed, red] (top) -- (bottom) node[right] {Mediatriz del segmento $\overline{AB}$};
+  \end{tikzpicture}
+\end{center}
+
 \begin{nota}
-	A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
+  A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
 \end{nota}
 
 \textbf{Propiedades:}
 \begin{nlist}
-	\item El punto medio $M \in \mathcal{L}$. 
-	\item La mediatriz es una recta que viene dada por $<\vec{AB},P> = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $AB$ y pasa por $M$ el punto medio del segmento.\\
-		\begin{proof}
-		La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2<A,P> = |P|^2+|B|^2-2<B,P>= \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =<A-B,P> = <\vec{BA},P>$$
-		Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $<\vec{BA},P>$ genera la recta:
-		\[
-		r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
-		\]
-		que es perpendicular a $\vec{BA}$.
-		\end{proof}
+\item El punto medio $M \in \mathcal{L}$. 
+\item La mediatriz es una recta que viene dada por $<\vec{AB},P> = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $AB$ y pasa por $M$ el punto medio del segmento.\\
+  \begin{proof}
+    La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2<A,P> = |P|^2+|B|^2-2<B,P>= \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =<A-B,P> = <\vec{BA},P>$$
+    Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $<\vec{BA},P>$ genera la recta:
+    \[
+      r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
+    \]
+    que es perpendicular a $\vec{BA}$.
+  \end{proof}
 \end{nlist}
 %%% Revisar estilo de la raiz cuadrada.
 \begin{nota}
-	$|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = (\sqrt{<\vec{AP},\vec{AP}>})^2 =  < A-P, A-P>  =^{(1)} <A,A-P>-<P,A-P> = <A,A> -<A,P>+<P,P>-<P,A>  = |A|^2+|P|^2-2<P,A>$. Y en (1) hemos aplicado la bilinealidad del producto escalar.
+  $|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = (\sqrt{<\vec{AP},\vec{AP}>})^2 =  < A-P, A-P>  =^{(1)} <A,A-P>-<P,A-P> = <A,A> -<A,P>+<P,P>-<P,A>  = |A|^2+|P|^2-2<P,A>$. Y en (1) hemos aplicado la bilinealidad del producto escalar.
 \end{nota}
 
 \begin{ndef}[Rectas perpendiculares.]
-	Dos rectas son perpendiculares si sus vectores directores son ortogonales.
+  Dos rectas son perpendiculares si sus vectores directores son ortogonales.
 \end{ndef}
 
 \begin{ndef}[Mediatrices de un triángulo]
-	Si $ABC$ es un triángulo, cada lado de este triángulo tendrá su mediatriz. Por tanto, tendremos 3 mediatrices para cada triángulo.
+  Si $ABC$ es un triángulo, cada lado de este triángulo tendrá su mediatriz. Por tanto, tendremos 3 mediatrices para cada triángulo.
 \end{ndef}
 
+\pgfdeclarelayer{0}
+\pgfdeclarelayer{1}
+\pgfdeclarelayer{2}
+\pgfdeclarelayer{3}
+\pgfsetlayers{0,1,main,2,3}
+
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+    \begin{pgfonlayer}{3}
+      \coordinate [label=left:$A$] (A) at (0,0);
+      \coordinate [label=right:$B$] (B) at (2,0);
+      \coordinate [label=above:$C$] (C) at (1,2);
+    \end{pgfonlayer}{3}
+    \begin{pgfonlayer}{1}
+      \draw (A) -- (B) -- (C) -- cycle;
+    \end{pgfonlayer}{1}
+    \begin{pgfonlayer}{3}
+      \node [fill=orange!150,inner sep=1pt,label=below:$M_{AB}$, scale=2, circle] (MAB) at
+      ($ (A)!.5!(B)$) {};
+    \end{pgfonlayer}{3}
+    \coordinate (C1) at ($ (MAB)!1.2!(C)$);
+    \coordinate (C2) at ($ (MAB)!-.3!(C)$);
+    \draw [dashed, purple, name path=MC](C1) -- (C2);
+    \begin{pgfonlayer}{3}
+      \node [fill=cyan!150,inner sep=1pt,label=left:$M_{AC}$, scale=2, circle] (MAC) at ($
+      (A)!.5!(C)$) {};
+    \end{pgfonlayer}{3}
+    \coordinate (B1) at ($ (MAC)!1.2!(B) $);
+    \coordinate (B2) at ($ (MAC)!-.3!(B)$);
+    
+    \draw [dashed, teal, name path=MB] (B1) -- (B2);
+    
+    \begin{pgfonlayer}{3}
+      \node [fill=orange,inner sep=1pt,label=right:$M_{BC}$, scale=2, circle] (MBC) at ($
+      (B)!.5!(C)$) {};
+    \end{pgfonlayer}{3}  
+    \coordinate (A1) at ($ (MBC)!1.2!(A) $);
+    \coordinate (A2) at ($ (MBC)!-.3!(A)$);
+    
+    \draw [dashed, brown] (A1) -- (A2);
+    
+    \path [name intersections={of=MB and MC, by=O}];
+    \begin{pgfonlayer}{3}
+      \node [fill=red, inner sep=1pt, label=below:$O$] at (O) {};
+    \end{pgfonlayer}{3}
+  \end{tikzpicture}
+\end{center}
+
 \begin{nth}
-	Las tres mediatrices de un triángulo son concurrentes. Además, concurren en el punto $O$ llamado el circuncentro, el centro de la circunferencia que pasa por $A$,$B$ y $C$.
+  Las tres mediatrices de un triángulo son concurrentes. Además, concurren en el punto $O$ llamado el circuncentro, el centro de la circunferencia que pasa por $A$,$B$ y $C$.
 \end{nth}
 \begin{proof}
-	Lo primero es ver que es trivial que dos mediatrices nunca son paralelas. Así:
-	\[
-	O = m_{AB} \cap m_{AC}\implies \begin{cases}
-	AO = BO\\
-	AO = CO
-\end{cases} \implies BO = CO \implies O \in M_{BC}
-	\]
+  Lo primero es ver que es trivial que dos mediatrices nunca son paralelas. Así:
+  \[
+    O = m_{AB} \cap m_{AC}\implies \begin{cases}
+      AO = BO\\
+      AO = CO
+    \end{cases} \implies BO = CO \implies O \in M_{BC}
+  \]
 \end{proof}
 
 
 \begin{ndef}[Alturas de un triángulo]
-	Son las rectas que pasan por un vértice y son perpendiculares al lado opuesto del triángulo. Estas alturas se cortan en el ortocentro $H$.
+  Son las rectas que pasan por un vértice y son perpendiculares al lado opuesto del triángulo. Estas alturas se cortan en el ortocentro $H$.
 \end{ndef}
 
 \begin{nota}
-	Las mediatrices de un triángulo $ABC$ son las alturas de $A'B'C'$. Por lo que las alturas de $A'B'C'$ son concurrentes.
+  Las mediatrices de un triángulo $ABC$ son las alturas de $A'B'C'$. Por lo que las alturas de $A'B'C'$ son concurrentes.
 \end{nota}
 
 \begin{nprop}
-	Todo triángulo $ABC$ es el triángulo medio de otro triángulo $A''B''C''$
+  Todo triángulo $ABC$ es el triángulo medio de otro triángulo $A''B''C''$
 \end{nprop}
 \begin{proof}
-	Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Íden con $B''$ y $C''$.
+  Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Íden con $B''$ y $C''$.
 \end{proof}
 \begin{ndef}
-	Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposicion 
+  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposicion 
 \end{ndef}
 
 
 \begin{nprop}
-	Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
+  Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
 \begin{proof}
-	Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
+  Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
 \end{proof}
-%¿esto no debería ir e ejercicios?
+% ¿esto no debería ir e ejercicios?
 Ejercicio: Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
 
 
 Ejercicio:Si $h$ es una homotecia de razón $\lambda\ne 0$, entonces 
 \begin{itemize}
-	\item $h$ multiplica la distancia por $|\lambda|$.
-	\item $h$ lleva rectas perpendiculares en rectas perpendiculares.
-	\item $h$ lleva mediatrices en mediatrices.
-	\item $h$ lleva alturas en alturas.
+\item $h$ multiplica la distancia por $|\lambda|$.
+\item $h$ lleva rectas perpendiculares en rectas perpendiculares.
+\item $h$ lleva mediatrices en mediatrices.
+\item $h$ lleva alturas en alturas.
 \end{itemize}
 
 Ejercicio: Para toda homotecia, el centro un punto y su imagen están alineados.
 
 
 \begin{nth}[Recta de Euler]
-	Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados(están en la recta de Euler).
+  Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados(están en la recta de Euler).
 \end{nth}
 \begin{proof}
-	Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón). 
-	Ahora, si $G',O',H'$ son los centros de $A'B'C'$ y $G,O,H$ los centros de $ABC$, tenemos que $G'=G$ y $O=H'$. Sabemos que la homotecia $h$ lleva $G \to G$, $O \to O'$ y $H \to H' = O$.
-	
-	Entonces, si aplicamos $h$ al centro G, a un punto $H$ y a su imagen $O$, por el ejercicio anterior, estan alineados.
-	
+  Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón). 
+  Ahora, si $G',O',H'$ son los centros de $A'B'C'$ y $G,O,H$ los centros de $ABC$, tenemos que $G'=G$ y $O=H'$. Sabemos que la homotecia $h$ lleva $G \to G$, $O \to O'$ y $H \to H' = O$.
+  
+  Entonces, si aplicamos $h$ al centro G, a un punto $H$ y a su imagen $O$, por el ejercicio anterior, estan alineados.
+  
 \end{proof}
 
 
@@ -697,392 +759,338 @@ También por tanto podemos hacer una recta mediante dos puntos, tomando el vecto
 
 Las rectas vectoriales en el plano vectorial son siempre de la forma:
 \[
-\vec{r} \equiv (x,y) \in L : \alpha x + \beta y = 0 \text{  con $\alpha$ o $\beta$ distinto de 0}
+  \vec{r} \equiv (x,y) \in L : \alpha x + \beta y = 0 \text{  con $\alpha$ o $\beta$ distinto de 0}
 \]
 
 Si $r$ es una recta afín, entonces:
 \[
-r \equiv \alpha x + \beta y = \gamma
+  r \equiv \alpha x + \beta y = \gamma
 \] con $\alpha$ o $\beta$ distintos de $0$ y $\alpha,\beta,\gamma \in \R$
 
 Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{itemize}
-	\item $r \parallel r' \iff (\alpha,\beta), (\alpha',\beta') $ son linealmente dependientes. Es decir, si el determinante que forman es $0$
+\item $r \parallel r' \iff (\alpha,\beta), (\alpha',\beta') $ son linealmente dependientes. Es decir, si el determinante que forman es $0$
 
-	\item $r \nparallel r'\iff (\alpha,\beta), (\alpha',\beta') $ no son linealmente dependientes. Es decir, si el determinante que forman no es $0$
+\item $r \nparallel r'\iff (\alpha,\beta), (\alpha',\beta') $ no son linealmente dependientes. Es decir, si el determinante que forman no es $0$
 \end{itemize}
 
 \subsection{Cuadriláteros}
 
 \begin{ndef}
-	$ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $A \vee C$ y $B \vee D$.
+  $ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 \begin{ndef}[Lado]
-	Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $A \vee B$, $B \vee C$, $C \vee D$
-	y $D \vee A$.
+  Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $A \vee B$, $B \vee C$, $C \vee D$
+  y $D \vee A$.
 \end{ndef}
 
 \begin{ndef}[Diagonal]
-	Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
+  Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 \begin{ndef}[Paralelogramo]
-	Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
-	paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$. Además los paralelogramos cumplen que
-	siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
-	\begin{nlist}
-		\item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
-		\item $V_{3} = \lambda V_{1}\ con\ \lambda \neq 0$
-		\item $V_{4} = \mu V_{2}\ con\ \mu \neq 0$
-	\end{nlist}
+  Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
+  paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$. Además los paralelogramos cumplen que
+  siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
+  \begin{nlist}
+  \item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
+  \item $V_{3} = \lambda V_{1}\ con\ \lambda \neq 0$
+  \item $V_{4} = \mu V_{2}\ con\ \mu \neq 0$
+  \end{nlist}
 \end{ndef}
 
 
 \begin{nprop}
-	Sea ABCD un cuadrilátero. Entonces, son equivalentes:
-	\begin{nlist}
-		\item ABCD es un paralelogramo
-		\item $\vec{AB} = \vec{DC}$
-		\item Las diagonales del cuadrilátero se cortan en su punto medio.
-	\end{nlist}
+  Sea ABCD un cuadrilátero. Entonces, son equivalentes:
+  \begin{nlist}
+  \item ABCD es un paralelogramo
+  \item $\vec{AB} = \vec{DC}$
+  \item Las diagonales del cuadrilátero se cortan en su punto medio.
+  \end{nlist}
 \end{nprop}
 
 
 \begin{proof}\hfill
-	\boxed{1) \Rightarrow 2)}
-	Solo tenemos que fijarnos en lo que implica ser paralelogramo (ver propiedad arriba):
-	$V_{1} - V_{2} - V_{3} + V_{4} = 0 \Leftrightarrow V_{1} - V_{2} = V_{3} - V_{4} $
-	Sustituimos $V_{3} = \lambda V_{1}$ y $V_{4} = \mu V_{2}$:
-	$V_{1} - V_{2} = \lambda V_{1} - \mu V_{2}$
-	Como sabemos que $V_{1}\ y\ V_{2}$ unen 3 puntos que no están alineados, entonces sabemos que son linealmente independientes y por
-	tanto forman base, por esta razon, cualquier vector se forma como combinación lineal de ellos, con coeficientes únicos.
-	Concluyendo por tanto que entonces $\lambda = 1 y \mu = 1$
+  \boxed{1) \Rightarrow 2)}
+  Solo tenemos que fijarnos en lo que implica ser paralelogramo (ver propiedad arriba):
+  $V_{1} - V_{2} - V_{3} + V_{4} = 0 \Leftrightarrow V_{1} - V_{2} = V_{3} - V_{4} $
+  Sustituimos $V_{3} = \lambda V_{1}$ y $V_{4} = \mu V_{2}$:
+  $V_{1} - V_{2} = \lambda V_{1} - \mu V_{2}$
+  Como sabemos que $V_{1}\ y\ V_{2}$ unen 3 puntos que no están alineados, entonces sabemos que son linealmente independientes y por
+  tanto forman base, por esta razon, cualquier vector se forma como combinación lineal de ellos, con coeficientes únicos.
+  Concluyendo por tanto que entonces $\lambda = 1 y \mu = 1$
 
-	\boxed{2) \Rightarrow 3)}
-	Tenemos que $B - A = C - D$, pasando los términos:
-	$B + D = C + A$
-	Y ahora dividiendo todo entre 2:
-	$\frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A$
-	Con lo cual obtenemos los puntos medios de las diagonales que son iguales.
+  \boxed{2) \Rightarrow 3)}
+  Tenemos que $B - A = C - D$, pasando los términos:
+  $B + D = C + A$
+  Y ahora dividiendo todo entre 2:
+  $\frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A$
+  Con lo cual obtenemos los puntos medios de las diagonales que son iguales.
 
-	\boxed{3) \Rightarrow 2)} Del mismo modo, si se cortan en la diagonal 
-	$\implies \frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A \implies 
-	\frac{1}{2}B - \frac{1}{2}A = \frac{1}{2}C - \frac{1}{2}D \implies $ $B - A = C - D \implies \vec{AB} = \vec{DC}$
-	
-	\boxed{2) \Rightarrow 1)} Para que sea un paralelogramo, además de $\vec{AB} = \vec{DC}$, ha de cumplir $\vec{AD} = \vec{BC}$, pero por hipotesis $A - B = D - C \implies A - D = B - C$
-	
+  \boxed{3) \Rightarrow 2)} Del mismo modo, si se cortan en la diagonal 
+  $\implies \frac{1}{2}B + \frac{1}{2}D = \frac{1}{2}C + \frac{1}{2}A \implies 
+  \frac{1}{2}B - \frac{1}{2}A = \frac{1}{2}C - \frac{1}{2}D \implies $ $B - A = C - D \implies \vec{AB} = \vec{DC}$
+  
+  \boxed{2) \Rightarrow 1)} Para que sea un paralelogramo, además de $\vec{AB} = \vec{DC}$, ha de cumplir $\vec{AD} = \vec{BC}$, pero por hipotesis $A - B = D - C \implies A - D = B - C$
+  
 \end{proof}
 
 \begin{ndef}
-	\begin{itemize}
-	\item Un cuadrilátero es convexo si las dos diagonales separan a los otros vértices.\\
-	\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
-\definecolor{qqqqff}{rgb}{0.,0.,1.}
-\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
-\tikzpicture[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.4]
-\draw [color=cqcqcq,, xstep=2.0cm,ystep=2.0cm] (-6.172138488994639,-1.7754832599642767) grid (11.578919976204638,9.629341867935777);
-\draw[->,color=black] (-6.172138488994639,0.) -- (11.578919976204638,0.);
-\foreach \x in {-6.,-4.,-2.,2.,4.,6.,8.,10.}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {$\x$};
-\draw[->,color=black] (0.,-1.7754832599642767) -- (0.,9.629341867935777);
-\foreach \y in {,2.,4.,6.,8.}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {$\y$};
-\draw[color=black] (0pt,-10pt) node[right] {$0$};
-\clip(-6.172138488994639,-1.7754832599642767) rectangle (11.578919976204638,9.629341867935777);
-\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,1.) -- (2.,3.) -- (6.,3.) -- (3.,0.) -- cycle;
-\draw [domain=-6.172138488994639:11.578919976204638] plot(\x,{(--6.--2.*\x)/6.});
-\draw [color=zzttqq] (0.,1.)-- (2.,3.);
-\draw [color=zzttqq] (2.,3.)-- (6.,3.);
-\draw [color=zzttqq] (6.,3.)-- (3.,0.);
-\draw [color=zzttqq] (3.,0.)-- (0.,1.);
-\draw [fill=xdxdff] (0.,1.) circle (2.5pt);
-\draw[color=xdxdff] (0.20475298036883344,1.5815822010708196) node {$A$};
-\draw [fill=qqqqff] (6.,3.) circle (2.5pt);
-\draw[color=qqqqff] (6.213746864961336,3.5743607852469044) node {$B$};
-\draw[color=black] (11.211022391433673,4.555421011302823) node {$f$};
-\draw [fill=qqqqff] (2.,3.) circle (2.5pt);
-\draw[color=qqqqff] (2.2281896966091663,3.5743607852469044) node {$C$};
-\draw [fill=qqqqff] (3.,0.) circle (2.5pt);
-\draw[color=qqqqff] (3.2092499226650846,0.5698638429506537) node {$D$};
-\draw[color=zzttqq] (1.431078262938732,1.9188216537775418) node {$a$};
-\draw[color=zzttqq] (4.067677620464014,2.7772493515764705) node {$c$};
-\draw[color=zzttqq] (4.220968280785251,2.133428578227274) node {$b$};
-\draw[color=zzttqq] (1.7376595835812065,1.2443427483640979) node {$d$};
-\endtikzpicture
-
-
-	\item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.
-	\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
-\definecolor{qqqqff}{rgb}{0.,0.,1.}
-
-
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
-\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-4.3,-2.46) grid (7.28,6.3);
-\draw[->,color=black] (-4.3,0.) -- (7.28,0.);
-\foreach \x in {-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.}
-\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-\draw[->,color=black] (0.,-2.46) -- (0.,6.3);
-\foreach \y in {-2.,-1.,1.,2.,3.,4.,5.,6.}
-\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-\clip(-4.3,-2.46) rectangle (7.28,6.3);
-\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.68,3.5) -- (3.42,1.06) -- (3.78,4.12) -- (1.02,0.8) -- cycle;
-\draw [color=zzttqq] (0.68,3.5)-- (3.42,1.06);
-\draw [color=zzttqq] (3.42,1.06)-- (3.78,4.12);
-\draw [color=zzttqq] (3.78,4.12)-- (1.02,0.8);
-\draw [color=zzttqq] (1.02,0.8)-- (0.68,3.5);
-\begin{scriptsize}
-\draw [fill=qqqqff] (0.68,3.5) circle (2.5pt);
-\draw[color=qqqqff] (0.82,3.86) node {$A$};
-\draw [fill=qqqqff] (3.42,1.06) circle (2.5pt);
-\draw[color=qqqqff] (3.56,1.42) node {$B$};
-\draw [fill=qqqqff] (3.78,4.12) circle (2.5pt);
-\draw[color=qqqqff] (3.92,4.48) node {$C$};
-\draw [fill=qqqqff] (1.02,0.8) circle (2.5pt);
-\draw[color=qqqqff] (1.16,1.16) node {$D$};
-\draw[color=zzttqq] (1.88,2.22) node {$a$};
-\draw[color=zzttqq] (3.96,2.72) node {$b$};
-\draw[color=zzttqq] (2.2,2.84) node {$c$};
-\draw[color=zzttqq] (1.22,2.36) node {$d$};
-\end{scriptsize}
-\end{tikzpicture}
-\end{itemize}
+  \begin{itemize}
+  \item Un cuadrilátero es convexo si las dos diagonales separan a los otros vértices.\\
+    \begin{tikzpicture}
+      \draw (0,0) node {}
+      -- (1,3) node {}
+      -- (4,2) node {}
+      -- (3,0) node {}
+      -- cycle;
+      \draw [dashed, gray] (0,0) -- (4,2);
+      \draw [dashed, gray] (1,3) -- (3,0);
+    \end{tikzpicture}
+  \item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.
+    \begin{tikzpicture}
+      \draw (0,0) node {}
+      -- (0,4) node {}
+      -- (4,0) node {}
+      -- (4,3) node {}
+      -- cycle;
+    \end{tikzpicture}
+  \end{itemize}
 \end{ndef}
 
 \subsection{Transformaciones}
 
 \begin{ndef}[Traslaciones]
-	Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
+  Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
 \end{ndef}
 
-%%%completar
+%%% completar
 \begin{nprop}
-	Se dan las siguientes propiedades:
-\begin{nlist}
-	\item $t_v \circ t_w = t_{v+w}$
-	\item $t_{v}^{-1} = t_{-v}$
-	\item $t_0 = I$
-\end{nlist}
+  Se dan las siguientes propiedades:
+  \begin{nlist}
+  \item $t_v \circ t_w = t_{v+w}$
+  \item $t_{v}^{-1} = t_{-v}$
+  \item $t_0 = I$
+  \end{nlist}
 \end{nprop}
 \begin{proof}\hfill \begin{center}\end{center}
-	\begin{nlist}
-	\item $t_v \circ t_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
-	\item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
-	\begin{itemize}
-	\item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
-	\item $t_v\circ t_{-v} = P+v-v = P = I(P)$
-\end{itemize}
-	\item $t_0(p) = P +0 = P = I(P)$
-\end{nlist}
+  \begin{nlist}
+  \item $t_v \circ t_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
+  \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
+    \begin{itemize}
+    \item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
+    \item $t_v\circ t_{-v} = P+v-v = P = I(P)$
+    \end{itemize}
+  \item $t_0(p) = P +0 = P = I(P)$
+  \end{nlist}
 \end{proof}
 
 \begin{ndef}[Afinidades]
-	Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
-	x\\
-	y\\
-\end{pmatrix}$, $A =$ $\begin{pmatrix}
-	a & b\\
-	c & d\\
-\end{pmatrix}$
-y $b =$ $\begin{pmatrix}
-	b1\\
-	b2\\
-\end{pmatrix}$
+  Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
+    x\\
+    y\\
+  \end{pmatrix}$, $A =$ $\begin{pmatrix}
+    a & b\\
+    c & d\\
+  \end{pmatrix}$
+  y $b =$ $\begin{pmatrix}
+    b1\\
+    b2\\
+  \end{pmatrix}$
 
 
 \end{ndef}
 
 
 \begin{nota}
-	Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
+  Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
 \end{nota}
 
-%%%completar
+%%% completar
 \begin{nprop}
-Se dan las siguientes propiedades:
-\begin{nlist}
-	\item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
-	\item Sean f y g afinidades, entonces $(g \circ f) (P)$ es afinidad
-	\item $f^{-1}(P) = A^{-1}P +A^{-1}b$
-	
-\end{nlist}
+  Se dan las siguientes propiedades:
+  \begin{nlist}
+  \item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
+  \item Sean f y g afinidades, entonces $(g \circ f) (P)$ es afinidad
+  \item $f^{-1}(P) = A^{-1}P +A^{-1}b$
+    
+  \end{nlist}
 \end{nprop}
 \begin{proof}
-	\begin{nlist}
-	\item Trivial
-	\item $(f\circ g)(P) = f(AP +b) = A'(AP)+A'b +b' $, donde $AA'$ es una matriz y $A'b+b'$ es un vector, por lo que tenemos una nueva afinidad.
-	\item Es directo por la composición de funciones.
-\end{nlist}
+  \begin{nlist}
+  \item Trivial
+  \item $(f\circ g)(P) = f(AP +b) = A'(AP)+A'b +b' $, donde $AA'$ es una matriz y $A'b+b'$ es un vector, por lo que tenemos una nueva afinidad.
+  \item Es directo por la composición de funciones.
+  \end{nlist}
 \end{proof}
 
 \begin{ndef}[Función vectorial asociada]
-	Se llama función vectorial asociada a una afinidad($\vec{f}$) a la función que actúa sobre vectores $\vec{f}(v) = Av$
+  Se llama función vectorial asociada a una afinidad($\vec{f}$) a la función que actúa sobre vectores $\vec{f}(v) = Av$
 \end{ndef}
 
 \textbf{Propiedades de las afinidades:}\\
 \begin{enumerate}
-	\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
-	\item $f$ lleva rectas en rectas.
-	\item $f(r\cap s) = f(r) \cap f(s)$
-	\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$
-	\item $f$ lleva puntos medios en puntos medios
-	\item $f$ lleva segmentos en segmentos
-	\item $f$ lleva rectas paralelas en rectas paralelas
-	\item $f$ lleva triángulos en triángulos
-	\item $f$ lleva medianas en medianas
-	\item $f$ lleva baricentros en baricentros
-	\item $f$ lleva cuadriláteros en cuadriláteros
-	\item $f$ lleva paralelogramos en paralelogramos
+\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
+\item $f$ lleva rectas en rectas.
+\item $f(r\cap s) = f(r) \cap f(s)$
+\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$
+\item $f$ lleva puntos medios en puntos medios
+\item $f$ lleva segmentos en segmentos
+\item $f$ lleva rectas paralelas en rectas paralelas
+\item $f$ lleva triángulos en triángulos
+\item $f$ lleva medianas en medianas
+\item $f$ lleva baricentros en baricentros
+\item $f$ lleva cuadriláteros en cuadriláteros
+\item $f$ lleva paralelogramos en paralelogramos
 \end{enumerate}
 \begin{proof}\hfill
-	\begin{enumerate}
-	\item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$
-	\item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
-	 \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
-	 \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)  $
-	 \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$
-	 \item Trivial
-	 \item Trivial
-	 \item Trivial por las 4 anteriores.
-	 \item Trivial pues $f$ lleva rectas en rectas.
-	 \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas
-	 \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones
-	 \item Trivial por la anterior y porque mantiene paralelismo
+  \begin{enumerate}
+  \item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$
+  \item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
+  \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
+  \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)  $
+  \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$
+  \item Trivial
+  \item Trivial
+  \item Trivial por las 4 anteriores.
+  \item Trivial pues $f$ lleva rectas en rectas.
+  \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas
+  \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones
+  \item Trivial por la anterior y porque mantiene paralelismo
 
-	 
-\end{enumerate}
+    
+  \end{enumerate}
 \end{proof}
 
 \begin{ndef}[Homotecia]
-	Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
+  Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
 \end{ndef}
-%\begin{nota}
-%	Tenemos que ver esta transformación como una transformación intuitiva en la cual
-%\end{nota}
+% \begin{nota}
+%   Tenemos que ver esta transformación como una transformación intuitiva en la cual
+% \end{nota}
 
 
 
 \subsection{Circunferencias}
 
 \begin{ndef}[Circunferencia]
-	Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C = C(centro,radio)$
+  Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C = C(centro,radio)$
 \end{ndef}
 
 \begin{nprop}
-	Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
-	\begin{enumerate}
-	\item $C_1 = C(A_1,p_1)$
-	\item $C_2 = C(A_2,p_2)$
-\end{enumerate}
-Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
-En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
+  Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
+  \begin{enumerate}
+  \item $C_1 = C(A_1,p_1)$
+  \item $C_2 = C(A_2,p_2)$
+  \end{enumerate}
+  Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
+  En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 \end{nprop}
 
 %% Formalizar dilatación
 
 
 \begin{ndef}
-	Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \bar{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$
+  Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \bar{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$
 \end{ndef}
 
 
-%%%completar
+%%% completar
 \begin{nprop}
-	Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
+  Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
 \end{nprop}
 
 \begin{ndef}[Ángulo recto]
-	Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
+  Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
 \end{ndef}
 
-%%%completar
+%%% completar
 \begin{nprop}
-	El lugar geométrico desde el que dos puntos dados del plano se ven bajo un ángulo recto es una circunferencia.
+  El lugar geométrico desde el que dos puntos dados del plano se ven bajo un ángulo recto es una circunferencia.
 \end{nprop}
 
 \begin{nth}[La circunferencia de los 9 puntos de un triángulo]
-	Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
-	\begin{itemize}
-	\item $A',B',C'$ los puntos medios de los lados
-	\item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$
-	\item $A_3,B_3,C_3$ los tres pies de las alturas.
-\end{itemize}
+  Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
+  \begin{itemize}
+  \item $A',B',C'$ los puntos medios de los lados
+  \item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$
+  \item $A_3,B_3,C_3$ los tres pies de las alturas.
+  \end{itemize}
 \end{nth}
 \begin{proof}
-	Tenemos que $B'A'B_2A_2$ es un rectángulo
-	%%%COMPLETAR DEMOSTRACIÓN.
+  Tenemos que $B'A'B_2A_2$ es un rectángulo
+  %%% COMPLETAR DEMOSTRACIÓN.
 \end{proof}
 
 
 
 \subsection{Rectángulos}
 \begin{ndef}
-	Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
+  Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
 \end{ndef}
 
-%%%completar
+%%% completar
 \begin{nprop}
-	Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
+  Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
 \end{nprop}
 
-%%%completar
+%%% completar
 \begin{nprop}
-	Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
+  Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
 \end{nprop}
 
-%%%completar
+%%% completar
 \begin{nprop}
-	Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+  Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
 \end{nprop}
 
 \subsection{Ángulos}
 
 \begin{ndef}[Ángulo entre vectores]
-	Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
-	\[
-	cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
-	\]
+  Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
+  \[
+    cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
+  \]
 \end{ndef}
 \begin{nota}
-	Un ángulo entre rectas sería el ángulo que forman sus vectores directores
+  Un ángulo entre rectas sería el ángulo que forman sus vectores directores
 \end{nota}
 \begin{nprop}
-	Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
+  Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
 \end{nprop}
 
 \begin{nprop}
-	Los ángulos opuestos por el vértice formados por dos rectas son iguales.
+  Los ángulos opuestos por el vértice formados por dos rectas son iguales.
 \end{nprop}
 
 \begin{nprop}
-	Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
+  Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
 \end{nprop}
 
 \begin{nth}
-	Los tres ángulos de un triángulo suman $\pi$
+  Los tres ángulos de un triángulo suman $\pi$
 \end{nth}
 \begin{proof}
-	La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
+  La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
 \end{proof}
 
 \begin{nprop}
-	Si $f:\R^2 \to \R^2$ es una dilatación:
-	\[
-	f \begin{pmatrix}
- x\\
- y 
-\end{pmatrix} = \lambda\begin{pmatrix}
- x\\
- y 
-\end{pmatrix} + b \quad \lambda \ne 0
-	\]
-	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
+  Si $f:\R^2 \to \R^2$ es una dilatación:
+  \[
+    f \begin{pmatrix}
+      x\\
+      y 
+    \end{pmatrix} = \lambda\begin{pmatrix}
+      x\\
+      y 
+    \end{pmatrix} + b \quad \lambda \ne 0
+  \]
+  Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
 \end{nprop}
 
 \begin{ndef}[La razón áurea]
-	
+  
 \end{ndef}
 
 
@@ -1104,190 +1112,190 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 \section{Movimientos}
 
 \begin{ndef}[Movimientos]
-	Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$ que es una afinidad que conserva distancias.
-	\[
-	|f(P)-f(Q)|= |P-Q| \quad  \quad |\vec{f}(\vec{QP})|= |\vec{QP}|
-	\]
+  Un movimiento es una aplicación $f:\R^n \to \R^n$ con $n= 2$ ó $3$ que es una afinidad que conserva distancias.
+  \[
+    |f(P)-f(Q)|= |P-Q| \quad  \quad |\vec{f}(\vec{QP})|= |\vec{QP}|
+  \]
 \end{ndef}
 
 \begin{nprop}
-	$f$ es un movimiento $\iff$ $\mathcal A$ es ortogonal ($\mathcal A ^{-1}= \mathcal A ^t$). Es de la forma:
-	\[
-	f \begin{pmatrix}
-x_1\\
-\vdots\\
-x_n 
-\end{pmatrix} = \mathcal A \begin{pmatrix}
-x_1\\
-\vdots\\
-x_n 
-\end{pmatrix} + \begin{pmatrix}
-b_1\\
-\vdots\\
-b_n 
-\end{pmatrix}
-	\]
+  $f$ es un movimiento $\iff$ $\mathcal A$ es ortogonal ($\mathcal A ^{-1}= \mathcal A ^t$). Es de la forma:
+  \[
+    f \begin{pmatrix}
+      x_1\\
+      \vdots\\
+      x_n 
+    \end{pmatrix} = \mathcal A \begin{pmatrix}
+      x_1\\
+      \vdots\\
+      x_n 
+    \end{pmatrix} + \begin{pmatrix}
+      b_1\\
+      \vdots\\
+      b_n 
+    \end{pmatrix}
+  \]
 \end{nprop}
 
 
 \begin{ejemplo}
-	\begin{nlist}
-	\item Traslaciones $p \mapsto p+v$
-	\item Reflexión central $p \mapsto -p +b= -p +2A$ de centro $A$
-	\item Giro de ángulo $\theta$ y centro $A$ (en $\R^2$).
-	\[
-	f= \begin{cases}
+  \begin{nlist}
+  \item Traslaciones $p \mapsto p+v$
+  \item Reflexión central $p \mapsto -p +b= -p +2A$ de centro $A$
+  \item Giro de ángulo $\theta$ y centro $A$ (en $\R^2$).
+    \[
+      f= \begin{cases}
 	f(A) = A \\
 	\vec{f} \equiv A_{\theta} = \begin{pmatrix}
- cos \theta & -sen \theta\\
- sen \theta & cos \theta
-\end{pmatrix} 
-\end{cases}
-	\]
-\end{nlist}
+          cos \theta & -sen \theta\\
+          sen \theta & cos \theta
+        \end{pmatrix} 
+      \end{cases}
+    \]
+  \end{nlist}
 \end{ejemplo}
 
 \begin{nprop}
-	Si realizamos un giro $\mathcal A_\theta$ y sobre ese giro aplicamos otro giro $\mathcal A_{\theta'}$, tenemos que:
-	\[
-	\mathcal A_{\theta} \circ \mathcal A_{\theta'} = \mathcal A_{\theta+\theta'}
-	\]
-	Siendo $\mathcal A$ la matriz del giro.
+  Si realizamos un giro $\mathcal A_\theta$ y sobre ese giro aplicamos otro giro $\mathcal A_{\theta'}$, tenemos que:
+  \[
+    \mathcal A_{\theta} \circ \mathcal A_{\theta'} = \mathcal A_{\theta+\theta'}
+  \]
+  Siendo $\mathcal A$ la matriz del giro.
 \end{nprop}
 
 \begin{ndef}[Matrices ortogonales]
-	Son de la forma:
-	\[
-	\begin{pmatrix}
- a & -b \\
- b & a 
-\end{pmatrix} \quad \text { ó } \quad \begin{pmatrix}
- a & b \\
- b & -a 
-\end{pmatrix}
-	\]
-	con $a^2+b^2 = 1$
+  Son de la forma:
+  \[
+    \begin{pmatrix}
+      a & -b \\
+      b & a 
+    \end{pmatrix} \quad \text { ó } \quad \begin{pmatrix}
+      a & b \\
+      b & -a 
+    \end{pmatrix}
+  \]
+  con $a^2+b^2 = 1$
 \end{ndef}
 
 \begin{ndef}[Movimiento directo]
-	Es un movimiento cuya matriz es ortogonal. 
+  Es un movimiento cuya matriz es ortogonal. 
 \end{ndef}
 \begin{nprop}
-	En $\R^n$, si $\lambda = 1$ no es un valor propio de $\mathcal A$, entonces $f$ tiene un punto fijo y solo 1.
+  En $\R^n$, si $\lambda = 1$ no es un valor propio de $\mathcal A$, entonces $f$ tiene un punto fijo y solo 1.
 \end{nprop}
 
 \subsection{Tipos de movimientos}
 \begin{itemize}
-	\item Movimiento deslizante si no hay puntos fijos $f = t_v \circ t_r$. En estas, el vector deslizamiento es $v=b^1$
-	\item Auténtica reflexión: reflexión con puntos fijos $f=r_r$. En este caso, tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$
+\item Movimiento deslizante si no hay puntos fijos $f = t_v \circ t_r$. En estas, el vector deslizamiento es $v=b^1$
+\item Auténtica reflexión: reflexión con puntos fijos $f=r_r$. En este caso, tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$
 \end{itemize}
 
 \subsection{Giros en el espacio}
 \begin{ndef}[Movimiento helicoidal]
-	Es un movimiento en el que no hay puntos fijos. Su matriz en cierta base ortonormal es:
-	\[
-	\begin{pmatrix}
-cos \theta & -sen\theta & 0 \\
- sen \theta & cos\theta & 0\\
- 0 & 0 & 1
-\end{pmatrix} 
-	\]
-	En ellas, podemos obtener el ángulo sabiendo que 
-	\[
-	tr(A) = 1+2cos\theta
-	\]
+  Es un movimiento en el que no hay puntos fijos. Su matriz en cierta base ortonormal es:
+  \[
+    \begin{pmatrix}
+      cos \theta & -sen\theta & 0 \\
+      sen \theta & cos\theta & 0\\
+      0 & 0 & 1
+    \end{pmatrix} 
+  \]
+  En ellas, podemos obtener el ángulo sabiendo que 
+  \[
+    tr(A) = 1+2cos\theta
+  \]
 \end{ndef}
 
 %% VOY A COPIAR LO DE CLASSE, REVISAR SI VA AQUÍ
 
- %%% METER AQUÍ APUNTES DE CAMINO
- 
- \subsection{Movimientos en $\R^3$}
- 
- \[
- f \begin{pmatrix}
- x\\
- y\\
- z
-\end{pmatrix} = A\begin{pmatrix}
- x\\
- y\\
- z
-\end{pmatrix} + \begin{pmatrix}
- b_1\\
- b_2\\
- b_3
-\end{pmatrix}
- \]
+%%% METER AQUÍ APUNTES DE CAMINO
+
+\subsection{Movimientos en $\R^3$}
+
+\[
+  f \begin{pmatrix}
+    x\\
+    y\\
+    z
+  \end{pmatrix} = A\begin{pmatrix}
+    x\\
+    y\\
+    z
+  \end{pmatrix} + \begin{pmatrix}
+    b_1\\
+    b_2\\
+    b_3
+  \end{pmatrix}
+\]
 
 \begin{itemize}
-	\item Si la matriz $A$ es simétrica, $f$ es una reflexión que puede ser respecto de un plano o respecto de una recta (axial o especular). Además, tenemos el caso de que sea deslizante o no deslizante.
+\item Si la matriz $A$ es simétrica, $f$ es una reflexión que puede ser respecto de un plano o respecto de una recta (axial o especular). Además, tenemos el caso de que sea deslizante o no deslizante.
 
-\begin{itemize}
-	\item Simetría axial, $dim(V_1) = 1$, $dim(V_{-1}) =2$. Su determinante vale por tanto 1. Es un movimiento directo.
-	\item Simetría especular , $dim(V_1) = 2$, $dim(V_{-1}) =1$. Su determinante vale -1.Es un movimiento inverso.
-\end{itemize}
+  \begin{itemize}
+  \item Simetría axial, $dim(V_1) = 1$, $dim(V_{-1}) =2$. Su determinante vale por tanto 1. Es un movimiento directo.
+  \item Simetría especular , $dim(V_1) = 2$, $dim(V_{-1}) =1$. Su determinante vale -1.Es un movimiento inverso.
+  \end{itemize}
 
-	\item Si la matriz $A$ no es simétrica, entonces podemos tener un movimiento directo con $dim(V_1) = 1$ y $dim(V_{-1})=0$, teniendo por tanto un giro o un movimiento helicoidal.
-	
-	\item Movimientos inversos, en los que hay puntos fijos por fuerza y tenemos que $dim(V_1) = 0$ y $dim(V_{-1}) = 1$. Este movimiento lo llamaremos giro con simetría. La matriz de este movimiento, en ciertas coordenadas, es:
-	\[
-	\begin{pmatrix}
- cos \theta & -sen\theta  & 0\\
- sen\theta & cos\theta  & 0\\
- 0 & 0 & -1
-\end{pmatrix} 
-	\]
+\item Si la matriz $A$ no es simétrica, entonces podemos tener un movimiento directo con $dim(V_1) = 1$ y $dim(V_{-1})=0$, teniendo por tanto un giro o un movimiento helicoidal.
+  
+\item Movimientos inversos, en los que hay puntos fijos por fuerza y tenemos que $dim(V_1) = 0$ y $dim(V_{-1}) = 1$. Este movimiento lo llamaremos giro con simetría. La matriz de este movimiento, en ciertas coordenadas, es:
+  \[
+    \begin{pmatrix}
+      cos \theta & -sen\theta  & 0\\
+      sen\theta & cos\theta  & 0\\
+      0 & 0 & -1
+    \end{pmatrix} 
+  \]
 \end{itemize}
 
 \begin{ejemplo}
-	Obtener la expresión matricial en coordenadas usuales de la simetría respcto del plano $x-y+z = 1\equiv \Pi$
+  Obtener la expresión matricial en coordenadas usuales de la simetría respcto del plano $x-y+z = 1\equiv \Pi$
 \end{ejemplo}
 \begin{proof}[Solución:]
-	Tomamos un punto $P(x,y,z)$ y tomamos su simétrico respecto del plano $\sigma(P)$. Si tomamos el vector normal al plano, el $n=(1,-1,1)$, sacado de la ecuación del plano, podemos determinar una recta normal al plano de la forma:
-	\[
-	s\equiv Q = P + \lambda n = (x,y,z)+\lambda(1,-1,1)
-	\]
-	Ahora, tenemos que buscar la intersección de la recta con el planno, introducimos la ecuación de la recta en el plano. Si desarrollamos la ecuación nos queda $(x+\lambda,y-\lambda,z+\lambda)$ y si lo introducimos en el plano:
-	\[
-	x-y+z+3\lambda = 1 \implies \lambda = \frac{1-x+y+z}{3}
-	\]
-	Por tanto, el punto de corte del plano con la recta estará en el punto:
-	\[
-	Q = (x,y,z)+\frac{1-x+y+z}{3}(1,-1,1) \in s\cap \Pi
-	\]
-	Ahora, tratamos de hallar $\sigma(P)$. Para ello, como el punto de intersección de la recta con el plano sería el punto medio del vector $\vec{PQ}$ , podemos hacer :
-	\[
-	\sigma(P) = P + 2 \vec{PQ} = (x,y,z) + \dfrac{2}{3}(1-x+y+z)(1,-1,1)
-	\]
-	Y ya tendríamos, para cada punto $P$, su simétrico. Ahora, desarrollamos la expresión y la transformamos en expresión matricial.
+  Tomamos un punto $P(x,y,z)$ y tomamos su simétrico respecto del plano $\sigma(P)$. Si tomamos el vector normal al plano, el $n=(1,-1,1)$, sacado de la ecuación del plano, podemos determinar una recta normal al plano de la forma:
+  \[
+    s\equiv Q = P + \lambda n = (x,y,z)+\lambda(1,-1,1)
+  \]
+  Ahora, tenemos que buscar la intersección de la recta con el planno, introducimos la ecuación de la recta en el plano. Si desarrollamos la ecuación nos queda $(x+\lambda,y-\lambda,z+\lambda)$ y si lo introducimos en el plano:
+  \[
+    x-y+z+3\lambda = 1 \implies \lambda = \frac{1-x+y+z}{3}
+  \]
+  Por tanto, el punto de corte del plano con la recta estará en el punto:
+  \[
+    Q = (x,y,z)+\frac{1-x+y+z}{3}(1,-1,1) \in s\cap \Pi
+  \]
+  Ahora, tratamos de hallar $\sigma(P)$. Para ello, como el punto de intersección de la recta con el plano sería el punto medio del vector $\vec{PQ}$ , podemos hacer :
+  \[
+    \sigma(P) = P + 2 \vec{PQ} = (x,y,z) + \dfrac{2}{3}(1-x+y+z)(1,-1,1)
+  \]
+  Y ya tendríamos, para cada punto $P$, su simétrico. Ahora, desarrollamos la expresión y la transformamos en expresión matricial.
 \end{proof}
 
 \begin{nth}
-	Dados $ABC, A'B'C'$ dos triángulos $\Rightarrow \exists f$ una afinidad que lleva uno a otro. Son equivalentes:
-	\begin{enumerate}
-		\item Los triángulos son semejantes.
-		\item Los lados homólogos son proporcionales.
-		\item Los ángulos homólogos son iguales.
-	\end{enumerate}	
+  Dados $ABC, A'B'C'$ dos triángulos $\Rightarrow \exists f$ una afinidad que lleva uno a otro. Son equivalentes:
+  \begin{enumerate}
+  \item Los triángulos son semejantes.
+  \item Los lados homólogos son proporcionales.
+  \item Los ángulos homólogos son iguales.
+  \end{enumerate}	
 \end{nth}
 
 \begin{proof} \hfill 
 
-	$\boxed{1 \Rightarrow 2}$ Trivial por definición de semejanza.\\
-	$\boxed{1 \Rightarrow 3}$ Trivial, ya que como la semejanza es la composición de homotecia y movimiento y tanto las homotecias como los movimientos conservan los ángulos.\\
-	$\boxed{2 \Rightarrow 1}$ Se $h$ una homotecia de razón $\lambda = \frac{a'}{a}$. Llamemos $A''B''C'' = h(ABC)$. Entonces, $A'B'C'$ y $A''B''C''$ tienen sus lados homólogos de la misma logitud, luego existe $g$ movimiento que lleva cada vértice de $A'B'C'$ en el correspondiente de $A''B''C''$ Entonces $g^{-1} \circ h$ lleva $ABC$ en $	A'B'C'$. Como $g^{-1}$ es un movimiento y $h$ una homotecia, $g^{-1} \circ h$ es una semejanza.
+  $\boxed{1 \Rightarrow 2}$ Trivial por definición de semejanza.\\
+  $\boxed{1 \Rightarrow 3}$ Trivial, ya que como la semejanza es la composición de homotecia y movimiento y tanto las homotecias como los movimientos conservan los ángulos.\\
+  $\boxed{2 \Rightarrow 1}$ Se $h$ una homotecia de razón $\lambda = \frac{a'}{a}$. Llamemos $A''B''C'' = h(ABC)$. Entonces, $A'B'C'$ y $A''B''C''$ tienen sus lados homólogos de la misma logitud, luego existe $g$ movimiento que lleva cada vértice de $A'B'C'$ en el correspondiente de $A''B''C''$ Entonces $g^{-1} \circ h$ lleva $ABC$ en $	A'B'C'$. Como $g^{-1}$ es un movimiento y $h$ una homotecia, $g^{-1} \circ h$ es una semejanza.
 \end{proof}
 
 
 \begin{nprop}[Propiedad del ángulo inscrito]
-	Si $C$ es una circunferencia de centro $O$ y $A$ un punto cualquiera de ella y B y C dos puntos distintos y distintos de $A$, entonces el ángulo que forman los segmentos $AB$,$AC$ es justo la mitad del que forman $OB$, $OC$. Esto es:
-	\[
-	A = \dfrac{1}{2} O
-	\]
+  Si $C$ es una circunferencia de centro $O$ y $A$ un punto cualquiera de ella y B y C dos puntos distintos y distintos de $A$, entonces el ángulo que forman los segmentos $AB$,$AC$ es justo la mitad del que forman $OB$, $OC$. Esto es:
+  \[
+    A = \dfrac{1}{2} O
+  \]
 \end{nprop}
 \begin{ncor}
-	Todos los ángulos inscritos que abarcan el mismo arco son iguales.
+  Todos los ángulos inscritos que abarcan el mismo arco son iguales.
 \end{ncor}
 
 
