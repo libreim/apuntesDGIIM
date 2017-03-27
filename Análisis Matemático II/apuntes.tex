@@ -1638,6 +1638,127 @@ Vamos a dar algunas definiciones:
 	
 	Se da la igualdad cuando $\displaystyle \frac{|f|^p}{\int_{\Omega} |f|^p d \mu } = \frac{|g|^q}{\int_{\Omega} |g|^q d \mu }$
 \end{proof}
+
+\begin{ndef}
+	Se define $L^p(\Omega) = \mathcal{L}^p(\Omega)/\sim \ \ = \{ \ [f] : f \in \mathcal{L}^p(\Omega) \} $ siendo $\sim$ la relación de equivalencia:
+	\[
+	f,g\in \mathcal{L}^p(\Omega), \quad f\sim  g \iff f(\omega)= g(\omega) \ \ \ a.e. \omega \in \Omega
+	\]
+	
+\end{ndef}
+
+
+Ejercicio:
+\begin{nprop}
+	Si $0 < \mu(\Omega) < \infty$, y $1\leq r < s < \infty $, entonces $L^s(\Omega) \subset L^r(\Omega)$
+\end{nprop}
+\begin{nota}
+	Para la prueba, usar la desigualdad de Holder.
+\end{nota}
+
+\begin{ndef}[Supremo esencial]
+	Si $\emptyset \ne A \subset \R$, entonces:
+	\[
+	ess \ sup A = Min\{ \ M : a \leq M \ \ a.e. \ \ A \ \}
+	\]
+\end{ndef}
+
+\begin{nth}[Teorema de Riesz-Fisher]
+	$( L^p(\Omega), || \cdot ||_p)$ es un espacio de Banach $\forall p \in [1,\infty]$.
+\end{nth}
+\begin{proof}
+	Ya hemos probado que el espacio es normado. Probemos ahora que es completo.\\
+	
+	Sea $\{ F_n\} \subset L^p(\Omega)$ una sucesión de Cauchy: $\forall \epsilon > 0 \ \ \exists n_0 \in \mathbb N : n,m \geq n_0 \implies || F_n - F_m ||_p < \epsilon$.
+	Tomo entonces $\epsilon = \dfrac{1}{2}$. Entonces, por la definición $\exists n_1 \in \mathbb N$ tal que si $n,m \geq n_1 \implies || F_n - F_m ||_p < \epsilon $.
+	Si tomo $\epsilon = \dfrac{1}{2^2}$, $\exists n_2 > n_1 \ : \ n,m \geq n_2 \implies || F_n - F_m ||_p < \epsilon$.\\
+	Sucesivamente, podemos definir $\epsilon= \dfrac{1}{2^k}$ y entonces $\exists n_k : \ n_k > n_{k-1} > \cdots > n_1 : \ \ m,n \geq n_k \implies || F_n - F_m ||_p < \epsilon$
+	
+	Así, podemos definir una aplicación $\sigma: \mathbb N \to \mathbb N$ que lleva $k \mapsto n_k 0 \sigma(k)$ estrictamente creciente ($\sigma(k) > \sigma(k-1)$ y podemos tomar $\{F_{\sigma(k)}\}$ como una subsucesión y teniendo que: $|| F_{\sigma(k+1)} - F_{\sigma(k)} ||_p < \dfrac{1}{2^k}$.
+	
+	Teniendo esta subsucesión, vamos a probar que es convergente. Para facilitar la tarea, vamos a tomar esta subsucesión como una sucesión, sin tener en cuenta la sucesión inicial durante un tiempo.
+	
+	Definimos entonces:
+	\[
+	g_n := \sum_{k=1}^n |f_{\sigma(k+1)} - f_{\sigma(k)}|
+	\]
+	Esta función es convergente , medible y positiva $\forall n$ y:
+	\[
+	g_n(\omega) \to \sum_{k=1}^\infty |f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega)| \ \ \in [0,\infty]
+	\]
+	Entonces, por el Teorema de la convergencia monótona:
+	\[
+	\int_\Omega |g_n|^p d\mu \to \int_\Omega |g|^p d\mu \implies (\int_\Omega |g_n|^p d\mu)^{1/p} \to (\int_\Omega |g|^p d\mu)^{1/p} 
+	\]
+	\[
+	\implies ||g_n||_p \to ||g||_p
+	\]
+	Y por el teorema de la convergencia monótona:
+	\[
+	||g||_p = \lim_{n\to \infty} ||g_n||_p \leq 1  
+	\]
+	Esto indica que:
+	\[
+	\int_\Omega |g|^p d\mu \leq 1 \implies g \in \mathcal L ^p(\Omega) \implies \mu(\{ \omega \in \Omega : g(\omega) = \infty\}) = 0
+	\].
+	
+	Consideramos el conjunto:
+	\[
+	E = \{ \omega \in \Omega : g(\omega) < \infty\}
+	\]	
+	Podemos considerar ahora :
+	\[
+	f_{\sigma(k)} = f_{\sigma(k)} \mathcal X _E \implies F_{\sigma(k)} = [f_{\sigma(k)}] = f_{\sigma(k)} \mathcal X _E
+	\]
+	
+	\begin{nota}
+	La diferencia entre  $f_{\sigma(k)}$ y $f_{\sigma(k)}\mathcal X _E$ es que la que está multiplicada por la función característica nunca puede tomar valores en infinito.
+\end{nota}
+	
+	Si $G = [g] = [g \mathcal X _E]$, podemos afirmar sin pérdida de generalidad que $g(\omega) < \infty \ \ \ \forall \omega \in \Omega$ donde $g$ es un representante de la clase $[g]$.
+	
+	Sabiendo que:
+	\[
+	\sum_{k \geq 1} |f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega)| \text{ es convergente}
+	\]	
+	pues lo habíamos dicho antes, entonces:
+	\[
+	\sum_{k \geq 1} f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega) \text{ es absolutamente convergente}
+	\]
+	lo que implica que es convergente y por tanto:
+	\[
+	\exists h(\omega):= \sum_{k=1}^\infty (f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega))
+	\]
+	medible por ser límite puntual de medibles y 
+	\[
+	h(\omega) = \lim_{k \to \infty}[f_{\sigma(k+1)}(\omega) -f_{\sigma(1)}(\omega)]
+	\]
+	Y por tanto:
+	\[
+	f_{\sigma(k+1)}(\omega) \to h(\omega) + f_{\sigma(1)}(\omega)
+	\]
+	
+	%%% completar:
+	Falta añadir por qué $g(\omega) + f_{\sigma(1)} \in \mathcal L ^p (\Omega)$
+	
+	
+	
+	
+	Y entonces, $\exists \{ F_{\sigma(n)}\}$ convergente en $L^p(\Omega)$ y , como $\{F_n\}$ es de Cauchy, entonces $\{F_n\}$ es convergente en $L^p(\Omega)$.
+\end{proof}
+
+
+\begin{ncor}
+	$\{F_n\} \subset  L ^p (\Omega)$ convergente en $L^P(\Omega)$ hacia $F \in L^p(\Omega)$ entonces:
+	\[
+	\exists \sigma : \mathbb N \to \mathbb N \text{ estrictamente creciente} : \{F_{\sigma(n)}(\omega)\}\to F(\omega) \text{ a.e. } \omega \in \Omega
+	\]
+	y
+	\[
+	\exists \bar g \in \mathcal L ^p (\Omega) : \ \ |f_{\sigma(n)}(\omega)| \leq \bar g (\omega) \ \ \text{ a.e.} \omega \in \Omega
+	\]
+\end{ncor}
+
 %--------------------------------------------------------------------------------
 %   Bibliografía.
 %--------------------------------------------------------------------------------
