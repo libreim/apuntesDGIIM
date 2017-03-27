@@ -1278,4 +1278,129 @@ $r$.
 	% EN FIN %
       \end{ejemplo}
 
+\begin{nth}
+	Sean $\lambda_i, i=1,2,\cdots,s$ las raíces del polinomio característico
+\end{nth}
+
+%% Teorema de equivalencia de dos cosas
+
+
+\begin{proof}
+	\boxed{\Rightarrow}\hfill \\
+	Supongamos que $\exists \bar \lambda$ raíz de $p(\lambda)$ tal que $|\bar \lambda| \geq 1$. Entonces la sucesión $X_{\bar \lambda}=\{\bar \lambda ^n\}$ es solución de la ecuación.
+	
+	Esto implica que hay una solución $x_n = C_1 \bar \lambda ^n $ tal que:
+	\[
+	|x_n|=|C_1||\bar \lambda ^n | = |C_1| |\bar \lambda| ^n \geq 1
+	\]
+	con $C_1$ arbitraria, lo cual es absurdo
+	
+	\boxed{\Leftarrow}\hfill\\	
+	Sea $\mu = max |\lambda i| < 1$ con $1 \leq i \leq s$.  Sabemos que :
+	$$x_n \leq |x_n| \leq \sum_{i=1}^s|q_i(n)||\lambda_i|^n \leq \mu^n (\sum_{i=1}^s |q_i(n)|)$$
+	por ello, existe un $c_i \in \R$ tal que $|q_i(n)| \leq c_i n^{m_i -1}$ así que, si $k = max (m_i)$ con $m_i$ la multiplicidad de las raíces entonces:
+	\[
+	\mu^n (\sum_{i=1}^s |q_i(n)|) \leq \mu^n \sum_{i=1}^s c_i n^{m_i -1} \leq \mu^n n^{k-1}(\sum_{i=1}^s c_i) \to 0
+	\]
+\end{proof}
+
+\begin{nota}
+	Si $k=2$, $a_1,a_0 ,\in \R$. Si tenemos la ecuación $x_{n+2} + a_1 x _{n+1}	+ a_0 x_n =0$, entonces $p(\lambda) = \lambda^2 + a_1 \lambda + a_1$ que tiene $\lambda_1 $ y $\lambda_2$ como raíces, entonces:
+	\[
+	\begin{rcases}
+	p(1) > 0\\
+	p(-1) > 0\\
+	p(0) < 1
+\end{rcases} \iff |\lambda_1|,|\lambda_2| < 1 \iff \lim_{n\to \infty } x_n  = 0
+	\]
+	
+	Sabemos que $p(0) = a_0 \leq |a_0| = |\lambda_1 \lambda_2| = |\lambda_1||\lambda_2| < 1$.
+	
+	Vamos a probar la primera doble implicación:\\
+	\boxed{\Rightarrow}\hfill \\	
+	Vemos que $p(1)> 0$. Supongamos que no, supongamos que $p(1) \leq 0$. Entonces o bien $p(1) = 0\implies $ es una raíz y $|1|>1$, lo cual es absurdo. Ahora, si $p(1) < 0$. Como $\lim_{\lambda \to \infty} p(\lambda) = + \infty$. Entonces, por bolzano $\exists k > 1 : p(k) = 0 \implies k > 1$ es raíz, lo cual también es absurdo. Con el $(-1)$ se hace análogamente.
+	
+	\boxed{\Leftarrow}\hfill \\
+	Supongamos que $\lambda_1, \lambda_2 \in \mathbb C\slash R$. Entonces $\lambda_2 = \bar \lambda_1$ y $a_0 = \lambda_1 \lambda_2 = \lambda_1 \bar \lambda_1 = |\lambda_1|^2$
+	
+	Supongamos ahora que $\lambda_1,\lambda_2 \in \R$. Entonces $1 > p(0) = a_0 = \lambda_1 \lambda_2$. Pero también , como $p(1) = 1+a_1+a_0$ y $p(-1) = 1-a_1+a_0$ entonces $a_0 > -1$ por lo que $-1 < a_0 < 1\implies -1 \lambda_1 \lambda_2 < 1 \implies |\lambda_1||\lambda_2| < 1 \implies$ al menos 1 tiene módulo menor que 1. Suponemos que es $\lambda_1$ (en caso contrario, tomamos el otro y seguimos igual).
+	
+	Se puede probar que el cambio de crecimiento está en $(-1,1)$, pues $(-\infty,-1)$ es decreciente y $(1,+\infty)$ es creciente, lo que implica que $-1 < \lambda_2 < 1$
+\end{nota}
+
+
+%%% Lema de las las sucesiones que se restan
+\begin{proof}
+	La prueba se realiza restando las dos ecuaciones e introduciendo las sucesiones en la ecuación y nos queda que $\{x_n^{(1)}-x_n^{(2)}\}$ es solución de la ecuación homogénea aosciada.
+\end{proof}
+
+
+%%% Principio de superposición
+
+\begin{proof}
+	Sean $\{x_n^{(1)}\}$ solución de la primera y $\{ x_n^{(2)}\}$ solución de la segunda.
+
+Ahora, si sustituimos la primera ecuación en su solución y la segunda ecuación en su solución y sumamos ambas, nos queda que $\{x_1^{(1)} + x_2^{(1)}\}$ es solución de la nueva ecuación en diferencias con término independiente $b_1(n)+b_2(n)$
+\end{proof}
+
+\begin{ejemplo}
+	Intentaremos resolver: $x _{n+2} - x _{n+1}  - x_n = 1+n$ ecuación en diferencias completa de orden 2.
+	\begin{enumerate}
+	\item Buscamos una solucioón de la ecuación en diferencias homogénea asociada: $x _{n+2} - x _{n+1} x_n = 0$. Esta es la ecuación de Fibonacci. Su solución es : $$x_n^h = C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n$$
+	\item Buscamos una solución particular de la ecuación dada.  Usamos el principio de superposición: $x _{n+2} - x_n = 1$. Como el término independiente, buscamos una solución constante. $\{x_n^{(1)}\} = \{-1\}$. Ahora, resolvemos.
+	
+	Resolvemos entonces $x _{n+2} - x _{n+1} - x_n = n$. Ahora, siguiendo la transparencia 26 del tema 2 de las diapositivas, buscamos $x_n^{(2)} = C_0 + C_1 n$ debe ser solución. Sustituimos:
+	\[
+	(C_0 + C_1(n+2)) -(C-0 + C_1(n+1)) - (C_0 + C_1 n) = n \implies -C_0 + C_1 +n(-C_1) = n 
+	\]
+	que es un polinomio en $n$. por lo que tenemos que $C_1 = -1 $ y $-C_0 + C_1 0 0 \implies C_0 = -1$
+	
+	\item Solución: La solución final es la súma de la homogénea mas las dos soluciones particulares halladas:
+	\[
+	x_n = x_n^h + x_n^{(1)} +  x_n^{(2)} =  C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n -1-1-n = 
+	\]
+	\[
+	=  C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n -2 - n
+	\]
+\end{enumerate}
+\end{ejemplo}
+
+
+\subsection{El modelo de Samuelson}
+
+%% Diapositivas
+
+Con las ecuaciones que tenemos, podemos ver que:
+\[
+\begin{cases}
+	Y_n  = bY _{n-1} + k(b Y _{n-1} - b Y _{n-2}) + G\\
+	Y _{n+2} - b(1+k)Y _{n+1} + kb Y_n = G\\
+	p(\lambda) = \lambda^2 - b(1-k) +kb
+\end{cases}
+\]
+Con $G > 0 $ constante. Ahora, resolvemos la segunda.
+\begin{enumerate}
+	\item Calculamos la asociada homogénea:
+	 \[
+	 Y _{n+2} - b(1-k)Y _{n+1} + kb Y_n = 0
+	 \]
+	 Soluciones al polinomio característico. Tenemos que buscar un equilibrio $Y_n = Y_n^h + Y_n^{(1)} = Y_n^h + Y_*$ con $Y_*$ una solución particular constante. 
+	 \item Buscamos condiciones para que la renta nacional converja hacia $Y_*$. Ahora, ¿Cuándo las soluciones de la ecuación homogénea van a 0?. Si $k = max (|\lambda_i) < 1 \iff$
+	 \[
+	 \iff \begin{cases}
+	p(1) = 1-b(1+k) +kb 0 1-b > 0\\
+	p(-1) = 1+b(1+k) +kb > 0 \text{ (siempre)}\\
+	p(0) = kb < 1
+\end{cases}
+	 \]
+	 Por tanto, debe ocurrir, teniendo que $b> 0 $ y $k > 0$:
+	 \[
+	 \begin{cases}
+	1-b > 0\\
+	bk < 1
+\end{cases}
+	 \]
+	 
+\end{enumerate}
+
 \end{document}
