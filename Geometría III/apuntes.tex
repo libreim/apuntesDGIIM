@@ -107,6 +107,10 @@
 \usepackage{pgfplots}
 \usepackage{graphicx}   % Gráficos.
 
+% Dibujos Tickz
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
 
 %---------------------------------------------------------------------------
 %   OPCIONES PERSONALIZADAS
@@ -513,7 +517,7 @@ $A,B,C$ son puntos no alineados  $ \iff \overrightarrow{AB}, \ \overrightarrow{A
 \end{nth}
 
 \begin{ndef}[Triángulos semejantes]
-	Dos triángulos son semejantes si sus lados son paralelos dos a dos.
+	Dos triángulos son semejantes si sus lados son paralelos dos a dos. También son semejantes $\iff$ los ángulos son iguales. También son semejantes si sus lados son proporcionales.
 \end{ndef}
 
 \begin{ncor}[Teorema de Thales]
@@ -770,6 +774,83 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	
 \end{proof}
 
+\begin{ndef}
+	\begin{itemize}
+	\item Un cuadrilátero es convexo si las dos diagonales separan a los otros vértices.\\
+	\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\tikzpicture[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.4]
+\draw [color=cqcqcq,, xstep=2.0cm,ystep=2.0cm] (-6.172138488994639,-1.7754832599642767) grid (11.578919976204638,9.629341867935777);
+\draw[->,color=black] (-6.172138488994639,0.) -- (11.578919976204638,0.);
+\foreach \x in {-6.,-4.,-2.,2.,4.,6.,8.,10.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {$\x$};
+\draw[->,color=black] (0.,-1.7754832599642767) -- (0.,9.629341867935777);
+\foreach \y in {,2.,4.,6.,8.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {$\y$};
+\draw[color=black] (0pt,-10pt) node[right] {$0$};
+\clip(-6.172138488994639,-1.7754832599642767) rectangle (11.578919976204638,9.629341867935777);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,1.) -- (2.,3.) -- (6.,3.) -- (3.,0.) -- cycle;
+\draw [domain=-6.172138488994639:11.578919976204638] plot(\x,{(--6.--2.*\x)/6.});
+\draw [color=zzttqq] (0.,1.)-- (2.,3.);
+\draw [color=zzttqq] (2.,3.)-- (6.,3.);
+\draw [color=zzttqq] (6.,3.)-- (3.,0.);
+\draw [color=zzttqq] (3.,0.)-- (0.,1.);
+\draw [fill=xdxdff] (0.,1.) circle (2.5pt);
+\draw[color=xdxdff] (0.20475298036883344,1.5815822010708196) node {$A$};
+\draw [fill=qqqqff] (6.,3.) circle (2.5pt);
+\draw[color=qqqqff] (6.213746864961336,3.5743607852469044) node {$B$};
+\draw[color=black] (11.211022391433673,4.555421011302823) node {$f$};
+\draw [fill=qqqqff] (2.,3.) circle (2.5pt);
+\draw[color=qqqqff] (2.2281896966091663,3.5743607852469044) node {$C$};
+\draw [fill=qqqqff] (3.,0.) circle (2.5pt);
+\draw[color=qqqqff] (3.2092499226650846,0.5698638429506537) node {$D$};
+\draw[color=zzttqq] (1.431078262938732,1.9188216537775418) node {$a$};
+\draw[color=zzttqq] (4.067677620464014,2.7772493515764705) node {$c$};
+\draw[color=zzttqq] (4.220968280785251,2.133428578227274) node {$b$};
+\draw[color=zzttqq] (1.7376595835812065,1.2443427483640979) node {$d$};
+\endtikzpicture
+
+
+	\item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.
+	\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=0.6]
+\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-4.3,-2.46) grid (7.28,6.3);
+\draw[->,color=black] (-4.3,0.) -- (7.28,0.);
+\foreach \x in {-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-2.46) -- (0.,6.3);
+\foreach \y in {-2.,-1.,1.,2.,3.,4.,5.,6.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-4.3,-2.46) rectangle (7.28,6.3);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0.68,3.5) -- (3.42,1.06) -- (3.78,4.12) -- (1.02,0.8) -- cycle;
+\draw [color=zzttqq] (0.68,3.5)-- (3.42,1.06);
+\draw [color=zzttqq] (3.42,1.06)-- (3.78,4.12);
+\draw [color=zzttqq] (3.78,4.12)-- (1.02,0.8);
+\draw [color=zzttqq] (1.02,0.8)-- (0.68,3.5);
+\begin{scriptsize}
+\draw [fill=qqqqff] (0.68,3.5) circle (2.5pt);
+\draw[color=qqqqff] (0.82,3.86) node {$A$};
+\draw [fill=qqqqff] (3.42,1.06) circle (2.5pt);
+\draw[color=qqqqff] (3.56,1.42) node {$B$};
+\draw [fill=qqqqff] (3.78,4.12) circle (2.5pt);
+\draw[color=qqqqff] (3.92,4.48) node {$C$};
+\draw [fill=qqqqff] (1.02,0.8) circle (2.5pt);
+\draw[color=qqqqff] (1.16,1.16) node {$D$};
+\draw[color=zzttqq] (1.88,2.22) node {$a$};
+\draw[color=zzttqq] (3.96,2.72) node {$b$};
+\draw[color=zzttqq] (2.2,2.84) node {$c$};
+\draw[color=zzttqq] (1.22,2.36) node {$d$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{itemize}
+\end{ndef}
+
 \subsection{Transformaciones}
 
 \begin{ndef}[Traslaciones]
@@ -1000,6 +1081,26 @@ En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 	Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
 \end{nprop}
 
+\begin{ndef}[La razón áurea]
+	
+\end{ndef}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Movimientos}
 
 \begin{ndef}[Movimientos]
@@ -1177,6 +1278,18 @@ cos \theta & -sen\theta & 0 \\
 	$\boxed{1 \Rightarrow 3}$ Trivial, ya que como la semejanza es la composición de homotecia y movimiento y tanto las homotecias como los movimientos conservan los ángulos.\\
 	$\boxed{2 \Rightarrow 1}$ Se $h$ una homotecia de razón $\lambda = \frac{a'}{a}$. Llamemos $A''B''C'' = h(ABC)$. Entonces, $A'B'C'$ y $A''B''C''$ tienen sus lados homólogos de la misma logitud, luego existe $g$ movimiento que lleva cada vértice de $A'B'C'$ en el correspondiente de $A''B''C''$ Entonces $g^{-1} \circ h$ lleva $ABC$ en $	A'B'C'$. Como $g^{-1}$ es un movimiento y $h$ una homotecia, $g^{-1} \circ h$ es una semejanza.
 \end{proof}
+
+
+\begin{nprop}[Propiedad del ángulo inscrito]
+	Si $C$ es una circunferencia de centro $O$ y $A$ un punto cualquiera de ella y B y C dos puntos distintos y distintos de $A$, entonces el ángulo que forman los segmentos $AB$,$AC$ es justo la mitad del que forman $OB$, $OC$. Esto es:
+	\[
+	A = \dfrac{1}{2} O
+	\]
+\end{nprop}
+\begin{ncor}
+	Todos los ángulos inscritos que abarcan el mismo arco son iguales.
+\end{ncor}
+
 
 
 \end{document}
