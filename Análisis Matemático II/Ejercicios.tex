@@ -1,5 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
 % Ejercicios resueltos de Análisis Matemático II.
 % Doble Grado de Informática y Matemáticas.
 % Universidad de Granada.
@@ -15,77 +15,77 @@
 % Sofía Almeida (@SofiaAlmeida)
 % Miguel Lentisco (@AlfaOmegaX)
 % Luis Ortega (@Ludvins)
-%
+% 
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
 % las plantillas base.
-%
+% 
 % Sitio original:
 % https://github.com/libreim/apuntesDGIIM/
-%
+% 
 % Licencia:
 % CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
-%------------------------------------------------------------------------------
-%   ACKNOWLEDGMENTS
-%------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% ACKNOWLEDGMENTS
+% ------------------------------------------------------------------------------
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Plantilla básica de Latex en Español.
-%
+% 
 % Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
-%
+% 
 % Es una plantilla básica para redactar documentos. Utiliza el paquete fancyhdr
 % para darle un estilo moderno pero serio.
-%
+% 
 % La plantilla se encuentra adaptada al español.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Plantilla de Trabajo
 % Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
 % al castellano y a las necesidades de escribir informática y matemáticas.
-%
+% 
 % Editada por: Mario Román
-%
+% 
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Short Sectioned Assignment
 % LaTeX Template
 % Version 1.0 (5/5/12)
-%
+% 
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
-%
+% 
 % Original author:
 % Frits Wenneker (http://www.howtotex.com)
-%
+% 
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 % Tipo de documento y opciones.
 \documentclass[11pt, a4paper]{article}
 
 
-%---------------------------------------------------------------------------
-%   PAQUETES
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% PAQUETES
+% ---------------------------------------------------------------------------
 
 % Idioma y codificación para Español.
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
 \selectlanguage{spanish} 
-%\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 
 % Fuente utilizada.
 \usepackage{courier}    % Fuente Courier.
@@ -108,9 +108,9 @@
 \usepackage{graphicx}   % Gráficos.
 
 
-%---------------------------------------------------------------------------
-%   OPCIONES PERSONALIZADAS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% OPCIONES PERSONALIZADAS
+% ---------------------------------------------------------------------------
 
 % Redefinir letra griega épsilon.
 \let\epsilon\upvarepsilon
@@ -129,17 +129,17 @@
 \graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
 
 % Redefinir entorno de demostración (reducir espacio superior)
-%\makeatletter
-%\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-%\makeatother
+% \makeatletter
+% \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+% \makeatother
 
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
 
 
-%---------------------------------------------------------------------------
-%   COMANDOS PERSONALIZADOS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
 
 % Valor absoluto: \abs{}
 \providecommand{\abs}[1]{\lvert#1\rvert}    
@@ -162,15 +162,15 @@
 \newcommand{\fn}{\{f_n\}}
 
 
-%---------------------------------------------------------------------------
-%   CABECERA Y PIE DE PÁGINA
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% CABECERA Y PIE DE PÁGINA
+% ---------------------------------------------------------------------------
 
 % Cabecera del documento.
 \renewcommand\headrule{
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize 
-	\end{minipage}
+  \begin{minipage}{1\textwidth}
+    \hrule width \hsize 
+  \end{minipage}
 }
 
 % Texto de la cabecera.
@@ -180,9 +180,9 @@
 
 % Pie de página del documento.
 \renewcommand\footrule{                                 
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize   
-	\end{minipage}\par
+  \begin{minipage}{1\textwidth}
+    \hrule width \hsize   
+  \end{minipage}\par
 }
 
 % Texto del pie de página.
@@ -191,9 +191,9 @@
 \rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
 
 
-%---------------------------------------------------------------------------
-%   ENTORNOS PARA MATEMÁTICAS
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% ENTORNOS PARA MATEMÁTICAS
+% ---------------------------------------------------------------------------
 
 % Nuevo estilo para definiciones.
 \newtheoremstyle{definition-style} % Nombre del estilo.
@@ -262,18 +262,18 @@
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
 {\begin{enumerate}
-\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-{\end{enumerate}}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
 
 % División por casos con llave a la derecha.
 \newenvironment{rcases}
-  {\left.\begin{aligned}}
-  {\end{aligned}\right\rbrace}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
 
 
-%---------------------------------------------------------------------------
-%   PÁGINA DE TÍTULO
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% PÁGINA DE TÍTULO
+% ---------------------------------------------------------------------------
 
 % Título del documento.
 \newcommand{\subject}{Análisis Matemático II: Ejercicios resueltos}
@@ -298,294 +298,325 @@
 
 
 
-%---------------------------------------------------------------------------
-%   COMIENZO DEL DOCUMENTO
-%---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% COMIENZO DEL DOCUMENTO
+% ---------------------------------------------------------------------------
 
 \begin{document}
 
 \maketitle  % Título.
 \vfill
 \begin{center}
-\includegraphics{by-nc-sa}  % Licencia.
+  \includegraphics{by-nc-sa}  % Licencia.
 \end{center}
 \newpage
 \tableofcontents    % Índice
 \newpage
 
-%--------------------------------------------------------------------------------
-%   Sucesiones y series de funciones.
-%--------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------
+% Sucesiones y series de funciones.
+% --------------------------------------------------------------------------------
 
 \section{Sucesiones y series de funciones}
 
 \begin{ejer}
-    Probar que el espacio $\mathcal{C}_B(A,\mathbb{R}^M)$ es un espacio de Banach, esto es, un espacio normado y completo.
+  Probar que el espacio $\mathcal{C}_B(A,\mathbb{R}^M)$ es un espacio de Banach, esto es, un espacio normado y completo.
 
-\begin{proof}
-	Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
-	\begin{itemize}
-	
-\item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
-\item Homogeneidad. Si $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
-\item Desigualdad triangular.
-$|f+g|_\infty \leq |f|_\infty + |g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
-para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
-\end{itemize}
+  \begin{proof}
+    Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
+    \begin{itemize}
+      
+    \item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
+    \item Homogeneidad. Si $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
+    \item Desigualdad triangular.
+      $|f+g|_\infty \leq |f|_\infty + |g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
+      para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
+    \end{itemize}
 
-Para demostrar que ${f_n} \to f$  c.u. en A $\iff f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$, solo tenemos que observar que ${f_n} \to f$  c.u. en A  significa que: $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow |f_n(x)-f(x) |<\epsilon , \ \forall x\in A,$$
-lo cual equivale a decir $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow \|f_n-f\|_\infty = sup_{x \in A} |f_n-f| \leq \epsilon , \ \forall x\in A,$$
-es decir, $f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$.
- 
-Por último, $\mathcal{C}_B(A, \mathbb R^M)$ es de Banach si es completo, es decir si toda sucesión $\{ f_n\}$ (de funciones en $\mathcal{C}_B(A, \mathbb R^M)$) de Cauchy converge. La prueba es análoga a la que se hizo para ver que $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, era completo. La única diferencia será que tras probar la convergencia uniforme de $f_n$ a una función  $f$, deberemos probar que $f\in \mathcal{C}_B(A,\mathbb{R}^M)$, es decir que el límite uniforme de la sucesión $\{f_n\}$ de funciones continuas y acotadas es una función continua y acotada. Veámoslo.
+    Para demostrar que ${f_n} \to f$  c.u. en A $\iff f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$, solo tenemos que observar que ${f_n} \to f$  c.u. en A  significa que: $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow |f_n(x)-f(x) |<\epsilon , \ \forall x\in A,$$
+    lo cual equivale a decir $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow \|f_n-f\|_\infty = sup_{x \in A} |f_n-f| \leq \epsilon , \ \forall x\in A,$$
+    es decir, $f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$.
+    
+    Por último, $\mathcal{C}_B(A, \mathbb R^M)$ es de Banach si es completo, es decir si toda sucesión $\{ f_n\}$ (de funciones en $\mathcal{C}_B(A, \mathbb R^M)$) de Cauchy converge. La prueba es análoga a la que se hizo para ver que $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, era completo. La única diferencia será que tras probar la convergencia uniforme de $f_n$ a una función  $f$, deberemos probar que $f\in \mathcal{C}_B(A,\mathbb{R}^M)$, es decir que el límite uniforme de la sucesión $\{f_n\}$ de funciones continuas y acotadas es una función continua y acotada. Veámoslo.
 
-Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que $n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A$. Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
-Por tanto, $f$ está acotada.
-\end{proof}
+    Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que $n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A$. Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
+    Por tanto, $f$ está acotada.
+  \end{proof}
 \end{ejer}
 
 \begin{ejer}
-\label{1}
-Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+  \label{1}
+  Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
-\begin{nlist}
-	\item $f_k \geq 0$
-	\item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
-	\item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
-\end{nlist}
+  \begin{nlist}
+  \item $f_k \geq 0$
+  \item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
+  \item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
+  \end{nlist}
 
-Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
+  Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
 
-\begin{proof}
-Como $f_k(x) \to 0\ \ \forall x \in A$, entonces:  $$\forall \ x \in A,\ \forall \epsilon >0\ \exists k_x \in \mathbb{N}:\ k\geq k_x \implies |f_k(x)| < \frac{\epsilon}{2}$$
-Por otro lado, como $f_{k_x}$ es continua en $A$, en particular $f_{k_x}$ es continua en $x$. Por tanto, $\exists U_x$ entorno abierto de $x$ en $A$ tal que $$|f_{k_x}(y) - f_{k_x}(x)| < \frac{\epsilon}{2}\ \ \forall y \in U_x$$
-Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,..,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},...,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
+  \begin{proof}
+    Como $f_k(x) \to 0\ \ \forall x \in A$, entonces:  $$\forall \ x \in A,\ \forall \epsilon >0\ \exists k_x \in \mathbb{N}:\ k\geq k_x \implies |f_k(x)| < \frac{\epsilon}{2}$$
+    Por otro lado, como $f_{k_x}$ es continua en $A$, en particular $f_{k_x}$ es continua en $x$. Por tanto, $\exists U_x$ entorno abierto de $x$ en $A$ tal que $$|f_{k_x}(y) - f_{k_x}(x)| < \frac{\epsilon}{2}\ \ \forall y \in U_x$$
+    Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,..,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},...,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
 
-Entonces, dado $k \ge k_0$ se tiene que $|f_k(x_i)| < \epsilon/2 \ \ \forall i = 1,\dots,n$. También se verifica, puesto que $f_{k{x_i}}$ es continua, que  $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ \ \ $\forall y \in U_{x_i}, \ \forall i = 1,\dots,n$.
+    Entonces, dado $k \ge k_0$ se tiene que $|f_k(x_i)| < \epsilon/2 \ \ \forall i = 1,\dots,n$. También se verifica, puesto que $f_{k{x_i}}$ es continua, que  $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ \ \ $\forall y \in U_{x_i}, \ \forall i = 1,\dots,n$.
 
-Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,..n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $f_{k_{x_i}}(x_i) < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
+    Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,..n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $f_{k_{x_i}}(x_i) < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
 
-En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,..., x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
-\end{proof}
+    En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,..., x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
+  \end{proof}
 \end{ejer}
 
 \begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
-\begin{proof}
-	Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
-	Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
-Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$). Entonces, se tiene que:
-\[
-\begin{array}{l}
+  \begin{proof}
+    Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
+    Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
+    Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$). Entonces, se tiene que:
+    \[
+      \begin{array}{l}
 	\varphi'^{-1}(B_\infty(f, \epsilon)) = \{ g\in \mathcal{C}(A,\R^M) : \varphi'(g) = g + 	\tilde f \in B(f, \epsilon)\} =\\
 	= \{ g\in \mathcal{C}(A,\R^M) : \|f-\tilde f-g\|_\infty < \epsilon\} = B(f-\tilde f,\epsilon)
-\end{array}
-\]
+      \end{array}
+    \]
 
 
-Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
+    Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 
-Por tanto, $\varphi$ es un homeomorfismo.
-\end{proof}	
+    Por tanto, $\varphi$ es un homeomorfismo.
+  \end{proof}	
 \end{ejer}
 
 \begin{ejer}
-	
-Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?. 
+  
+  Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?. 
 
-\begin{sol}
-La respuesta es afirmativa. Veamos la prueba.
-	
-Dado $\epsilon>0$, como $f_n \rightarrow f$ converge uniformemente, $\exists k>0$
-tal que $$n>k \Rightarrow |f_n(x)-f(x)| < \epsilon/3, \ \ \forall x \in A.$$
-De otro lado, por ser $f_k$ uniformemente continua en $A$, 
-$\exists \delta >0$ tal que $$\forall x,y \in A\ con\ |x-y| < \delta,\ se\ tiene\ |f_k(x)-f_k(y)| < \epsilon /3$$
-Juntando ambas informaciones: $$|f(x)-f(y)| \leq |f(x)-f_k(x)| + |f_k(x)-f_k(y)| + |f_k(y)-f(y)| < \epsilon$$
-Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ con\ |x-y|<\delta\ se\ verifica\ |f(x)-f(y)| < \epsilon$$ 
-Por tanto, $f$ es uniformemente continua.\qed
-\end{sol}
+  \begin{sol}
+    La respuesta es afirmativa. Veamos la prueba.
+    
+    Dado $\epsilon>0$, como $f_n \rightarrow f$ converge uniformemente, $\exists k>0$
+    tal que $$n>k \Rightarrow |f_n(x)-f(x)| < \epsilon/3, \ \ \forall x \in A.$$
+    De otro lado, por ser $f_k$ uniformemente continua en $A$, 
+    $\exists \delta >0$ tal que $$\forall x,y \in A\ con\ |x-y| < \delta,\ se\ tiene\ |f_k(x)-f_k(y)| < \epsilon /3$$
+    Juntando ambas informaciones: $$|f(x)-f(y)| \leq |f(x)-f_k(x)| + |f_k(x)-f_k(y)| + |f_k(y)-f(y)| < \epsilon$$
+    Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ con\ |x-y|<\delta\ se\ verifica\ |f(x)-f(y)| < \epsilon$$ 
+    Por tanto, $f$ es uniformemente continua.\qed
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
-Estudiar la convergencia puntual y uniforme de la sucesión de funciones $f_n$ definidas en $[0,1]$ mediante $f_n(x) = x-x^n$ para todo $x\in [0,1]$.
+  Estudiar la convergencia puntual y uniforme de la sucesión de funciones $f_n$ definidas en $[0,1]$ mediante $f_n(x) = x-x^n$ para todo $x\in [0,1]$.
 
-\begin{sol}
-Sabemos que para $0\le x<1$, $f_n(x)=x-x^n \to x$, y para $x=1$, tenemos que $f_n(x)=1-1^n = 0 \to 0$. Por tanto, el límite puntual es: $$f(x)= \left\{ \begin{array}{lcc} x & si & 0 \le x < 1 \\ \\ 0 & si & x=1  \end{array} \right.$$
-Como cada $f_n$ es continua y $f$ no es continua, no hay convergencia uniforme. 
-\end{sol}
+  \begin{sol}
+    Sabemos que para $0\le x<1$, $f_n(x)=x-x^n \to x$, y para $x=1$, tenemos que $f_n(x)=1-1^n = 0 \to 0$. Por tanto, el límite puntual es: $$f(x)= \left\{ \begin{array}{lcc} x & si & 0 \le x < 1 \\ \\ 0 & si & x=1  \end{array} \right.$$
+    Como cada $f_n$ es continua y $f$ no es continua, no hay convergencia uniforme. 
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
-	Estudiad la convergencia uniforme de la sucesión de funciones $f_n$ definidas en [$0,99999]$ mediante $f_n(x) = x^n$ para todo $x\in [0,99999]$.
+  Estudiad la convergencia uniforme de la sucesión de funciones $f_n$ definidas en [$0,99999]$ mediante $f_n(x) = x^n$ para todo $x\in [0,99999]$.
 
-\begin{sol}
-	En efecto, la sucesión de funciones converge uniformemente. En primer lugar, $\fn \xrightarrow {c.p} f=0$ por ser potencia de base menor que $1$. Además, por ser una función potencial, el valor máximo que toma es $0.99999^n$. Por tanto: $|x^n| \leq 0.99999^n \to 0$, luego $\fn$ converge uniformemente a $f=0$. 
-\end{sol}
+  \begin{sol}
+    En efecto, la sucesión de funciones converge uniformemente. En primer lugar, $\fn \xrightarrow {c.p} f=0$ por ser potencia de base menor que $1$. Además, por ser una función potencial, el valor máximo que toma es $0.99999^n$. Por tanto: $|x^n| \leq 0.99999^n \to 0$, luego $\fn$ converge uniformemente a $f=0$. 
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
-	Estudiad la convergencia puntual y uniforme de la sucesión de funciones $f_n$ definidas en $[0,1]$ mediante $f_n(x) = (x-\frac{1}{n})^2$ para todo $x\in [0,1]$.
-	
-\begin{sol}
-  Sabemos que $\{\frac{1}{n}\} \to 0$, por lo que podemos afirmar que $\{f_n(x)\} \to x^2$ puntualmente en $[0,1]$. Veamos que también hay convergencia uniforme: $$|f_n (x) - x^2| = \left|-\frac{2x}{n} + \frac{1}{n^2} \right| \leq \frac{2}{n} + \frac{1}{n^2}\to 0, \ \forall x\in [0,1].$$
-\end{sol}
+  Estudiad la convergencia puntual y uniforme de la sucesión de funciones $f_n$ definidas en $[0,1]$ mediante $f_n(x) = (x-\frac{1}{n})^2$ para todo $x\in [0,1]$.
+  
+  \begin{sol}
+    Sabemos que $\{\frac{1}{n}\} \to 0$, por lo que podemos afirmar que $\{f_n(x)\} \to x^2$ puntualmente en $[0,1]$. Veamos que también hay convergencia uniforme: $$|f_n (x) - x^2| = \left|-\frac{2x}{n} + \frac{1}{n^2} \right| \leq \frac{2}{n} + \frac{1}{n^2}\to 0, \ \forall x\in [0,1].$$
+  \end{sol}
 \end{ejer}
 
 
 \begin{ejer}
-Estudiar el carácter de la siguientes series de funciones.
+  Estudiar el carácter de la siguientes series de funciones.
 
-\textbf{a)} $\ \displaystyle \sum_{n\geq1} \frac{sen^k(nx)}{n^2}, \quad k > 0$
+  \textbf{a)} $\ \displaystyle \sum_{n\geq1} \frac{sen^k(nx)}{n^2}, \quad k > 0$
 
-\begin{sol}
-Notemos lo siguiente: $\displaystyle |sen(nx)| \le 1 \implies \left|\frac{sen^k(nx)}{n^2}\right| \leq \frac{1}{n^2}$. Además, ya sabemos que la serie $\displaystyle \sum_{n \ge 1} \frac{1}{n^2}$ es convergente. Por tanto, aplicando el \textit{Criterio de Weierstrass}, tenemos que: $$\sum_{n\ge1} \frac{sen^k(nx)}{n^2}\ \text{converge uniformemente (y absolutamente).}$$
-\end{sol}
+  \begin{sol}
+    Notemos lo siguiente: $\displaystyle |sen(nx)| \le 1 \implies \left|\frac{sen^k(nx)}{n^2}\right| \leq \frac{1}{n^2}$. Además, ya sabemos que la serie $\displaystyle \sum_{n \ge 1} \frac{1}{n^2}$ es convergente. Por tanto, aplicando el \textit{Criterio de Weierstrass}, tenemos que: $$\sum_{n\ge1} \frac{sen^k(nx)}{n^2}\ \text{converge uniformemente (y absolutamente).}$$
+  \end{sol}
 
-\textbf{b)} $\displaystyle \sum_{n\geq1} \left(\frac{x^n}{n!}\right)^2$
+  \textbf{b)} $\displaystyle \sum_{n\geq1} \left(\frac{x^n}{n!}\right)^2$
 
-\begin{sol}[1] Podemos reescribir la serie tal que así: $\displaystyle \sum_{n\ge1} \frac{x^{2n}}{(n!)^2}$. Entonces, dado $M>0$, se tiene que, si $|x|\le M$:
-     $$\begin{rcases}
-    \frac{x^{2n}}{(n!)^2} \leq \frac{M^{2n}}{(n!)^2}\\
-    \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2} \ converge
+  \begin{sol}[1] Podemos reescribir la serie tal que así: $\displaystyle \sum_{n\ge1} \frac{x^{2n}}{(n!)^2}$. Entonces, dado $M>0$, se tiene que, si $|x|\le M$:
+    $$\begin{rcases}
+      \frac{x^{2n}}{(n!)^2} \leq \frac{M^{2n}}{(n!)^2}\\
+      \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2} \ converge
     \end{rcases} \overset{\text{Criterio Weierstrass}}{\implies} \ \left(\frac{x^{n}}{n!}\right)^2 \ \text{es c.u en}\ [-M,M]$$ 
     
-Donde la convergencia de $\displaystyle \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2}$ viene dada por el \textit{Criterio del cociente:} $$\lim_{n\to\infty}\ddfrac{\ddfrac{M^{2(n+1)}}{((n+1)!)^2}}{\frac{M^{2n}}{(n!)^2}} = \lim_{n\to\infty} \frac{M^2}{(n+1)^2} = 0 < 1.$$
+    Donde la convergencia de $\displaystyle \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2}$ viene dada por el \textit{Criterio del cociente:} $$\lim_{n\to\infty}\ddfrac{\ddfrac{M^{2(n+1)}}{((n+1)!)^2}}{\frac{M^{2n}}{(n!)^2}} = \lim_{n\to\infty} \frac{M^2}{(n+1)^2} = 0 < 1.$$
 
-Como $M$ era una constante arbitraria, concluímos que la serie converge uniformemente en cualquier intervalo acotado de $\mathbb{R}$.
-\end{sol}
+    Como $M$ era una constante arbitraria, concluímos que la serie converge uniformemente en cualquier intervalo acotado de $\mathbb{R}$.
+  \end{sol}
 
-\begin{sol}[2] Podemos ver la serie como una serie de potencias $\displaystyle \sum_{k \ge 1} a_kx^k$, donde: $$a_k = \begin{cases} 0 & si \ k \ impar \\ \displaystyle \frac{1}{(n!)^2} & si \ k \ par \end{cases}$$
-	
-Podemos aplicar el \textit{Criterio del cociente}, de forma muy similar al caso anterior, para ver que el radio de convergencia de la serie es $R = \infty$. Por tanto, $D(0,R) = \mathbb{R}$, y se tiene que $\forall M \in \mathbb{R}^+$ la serie converge uniformemente en $[-M,M]$.
-\end{sol}
+  \begin{sol}[2] Podemos ver la serie como una serie de potencias $\displaystyle \sum_{k \ge 1} a_kx^k$, donde: $$a_k = \begin{cases} 0 & si \ k \ impar \\ \displaystyle \frac{1}{(n!)^2} & si \ k \ par \end{cases}$$
+    
+    Podemos aplicar el \textit{Criterio del cociente}, de forma muy similar al caso anterior, para ver que el radio de convergencia de la serie es $R = \infty$. Por tanto, $D(0,R) = \mathbb{R}$, y se tiene que $\forall M \in \mathbb{R}^+$ la serie converge uniformemente en $[-M,M]$.
+  \end{sol}
 
 
-\textbf{c)} $\displaystyle \sum_{n\geq1} \frac{1}{x^2+n^2}$
+  \textbf{c)} $\displaystyle \sum_{n\geq1} \frac{1}{x^2+n^2}$
 
-\begin{sol}
-Nos basta la simple observación de que podemos acotar el término general de la serie (es siempre positivo) por una constante $M_n$, de tal suerte que $\sum_{n\ge1} M_n$ es convergente, y aplicar el \textit{Criterio de comparación}. Así: $$0 \le \frac{1}{x^2 + n^2} \le \frac{1}{n^2}\ \forall x \in \mathbb{R} \implies \sum_{n\ge 1} \frac{1}{x^2 + n^2} \ \text{converge uniformemente en } \mathbb{R}.$$
-	
-\end{sol}
+  \begin{sol}
+    Nos basta la simple observación de que podemos acotar el término general de la serie (es siempre positivo) por una constante $M_n$, de tal suerte que $\sum_{n\ge1} M_n$ es convergente, y aplicar el \textit{Criterio de comparación}. Así: $$0 \le \frac{1}{x^2 + n^2} \le \frac{1}{n^2}\ \forall x \in \mathbb{R} \implies \sum_{n\ge 1} \frac{1}{x^2 + n^2} \ \text{converge uniformemente en } \mathbb{R}.$$
+    
+  \end{sol}
 
-\textbf{d)} $\displaystyle \sum_{k\geq1} \frac{x^k}{k^2}$
+  \textbf{d)} $\displaystyle \sum_{k\geq1} \frac{x^k}{k^2}$
 
-\begin{sol}
-	Como es una serie de potencias, calculamos su radio de convergencia: $$R^{-1} = \lim_{k\to\infty} \frac{a_{k+1}}{a_k} = \lim_{k\to\infty} \ddfrac{\frac{1}{(k+1)^2}}{\frac{1}{k^2}} = \lim_{k\to\infty} \left(\frac{k}{k+1}\right)^2 = 1 \implies R = 1$$
-	Por tanto, ya sabemos que la serie converge uniformemente cuando $|x| < 1$, y no converge cuando $|x| > 1$. Solo nos falta por estudiar el caso $|x|=1$: $$|x| = 1 \implies \left| \frac{x^k}{k^2} \right| = \frac{|x|^k}{k^2} = \frac{1}{k^2}$$
-	
-Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo que, en virtud del \textit{Criterio de Weierstrass}, la serie $\displaystyle \sum_{k\ge1}\frac{x^k}{k^2}$ converge uniformemente cuando $|x| = 1$.
-\end{sol}
+  \begin{sol}
+    Como es una serie de potencias, calculamos su radio de convergencia: $$R^{-1} = \lim_{k\to\infty} \frac{a_{k+1}}{a_k} = \lim_{k\to\infty} \ddfrac{\frac{1}{(k+1)^2}}{\frac{1}{k^2}} = \lim_{k\to\infty} \left(\frac{k}{k+1}\right)^2 = 1 \implies R = 1$$
+    Por tanto, ya sabemos que la serie converge uniformemente cuando $|x| < 1$, y no converge cuando $|x| > 1$. Solo nos falta por estudiar el caso $|x|=1$: $$|x| = 1 \implies \left| \frac{x^k}{k^2} \right| = \frac{|x|^k}{k^2} = \frac{1}{k^2}$$
+    
+    Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo que, en virtud del \textit{Criterio de Weierstrass}, la serie $\displaystyle \sum_{k\ge1}\frac{x^k}{k^2}$ converge uniformemente cuando $|x| = 1$.
+  \end{sol}
 
-\textbf{e)} $\displaystyle \sum_{k\geq1} k! x^k$
+  \textbf{e)} $\displaystyle \sum_{k\geq1} k! x^k$
 
-\begin{sol}
+  \begin{sol}
     Se trata de una serie de potencias, donde $a_k = k!$. Calculamos su radio de convergencia: $$R^{-1} = \lim_{k\to\infty} \frac{a_{k+1}}{a_k} = \lim_{k\to\infty} \frac{(k+1)!}{k!} = \lim_{k\to\infty} k + 1 = \infty \implies R=0$$
     
     Por tanto, la serie no converge si $|x| > R = 0$ (es decir, si $x\ne 0$). Si $|x| = 0$, tenemos que: $$\sum_{k\ge1} k! \cdot0^k = \sum_{k\ge1} 0 = 0 \ \text{(convergente)}$$
     En general, \textbf{una serie de potencias siempre es convergente en su centro}.
-\end{sol}
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
-	Probar que $\displaystyle \frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\ \ \forall x \in (-1,1)$
-	
-\begin{proof}
-	Para probarlo, se podría estudiar la convergencia de la serie de potencias, o también desarrollar el término de la izquierda como su suma de Taylor, y ver que coinciden. Sin embargo, procederemos de otro modo.
-	
-	En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
-	
-	Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \ \forall k \ge 0$. Tenemos entonces que, tomando $a=0$ en el \textit{Teorema de Taylor} aplicado a $f(x)$: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
-	
-pues, en este caso, el resto de Taylor tiende a $0$ dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
-\end{proof}
+  Probar que $\displaystyle \frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\ \ \forall x \in (-1,1)$
+  
+  \begin{proof}
+    Para probarlo, se podría estudiar la convergencia de la serie de potencias, o también desarrollar el término de la izquierda como su suma de Taylor, y ver que coinciden. Sin embargo, procederemos de otro modo.
+    
+    En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
+    
+    Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \ \forall k \ge 0$. Tenemos entonces que, tomando $a=0$ en el \textit{Teorema de Taylor} aplicado a $f(x)$: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
+    
+    pues, en este caso, el resto de Taylor tiende a $0$ dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
+  \end{proof}
 \end{ejer}
 
 \begin{ejer}
-Encontrar un ejemplo de una sucesión de funciones $f_k: A \subseteq \mathbb{R} \to \mathbb{R}$ que cumpla:
-\begin{nlist}
-	\item $\{f_k\} \to 0$ c.u.
-	\item $\displaystyle \int_A f_k \not \to \int_A 0 = 0$
-\end{nlist}
+  Encontrar un ejemplo de una sucesión de funciones $f_k: A \subseteq \mathbb{R} \to \mathbb{R}$ que cumpla:
+  \begin{nlist}
+  \item $\{f_k\} \to 0$ c.u.
+  \item $\displaystyle \int_A f_k \not \to \int_A 0 = 0$
+  \end{nlist}
 
-\begin{sol}
+  \begin{sol}
     Sea $A = [0,+\infty)$, y tomo $f_k$ tales que $0 \le f_k(x) \le \frac{1}{k}$, y que además su integral se mantenga constante y distinta de 0. Un ejemplo de una tal función es:
 
-$$f_k(x) = 
-\begin{cases}
-1/k & si \ \ 0 \le x \le k \\
-0 & si \ \ x \ge k
-\end{cases}$$
+    $$f_k(x) = 
+    \begin{cases}
+      1/k & si \ \ 0 \le x \le k \\
+      0 & si \ \ x \ge k
+    \end{cases}$$
 
-Entonces, tenemos que $\displaystyle \int_0^\infty f_k(x)\ dx = \int_0^k \frac{1}{k}\ dx = 1 \to 1 \ne 0 $.
-\end{sol}
+    Entonces, tenemos que $\displaystyle \int_0^\infty f_k(x)\ dx = \int_0^k \frac{1}{k}\ dx = 1 \to 1 \ne 0 $.
+  \end{sol}
 \end{ejer}
 
 \newpage
 
 
-%--------------------------------------------------------------------------------
-%   Integral asociada a una medida.
-%--------------------------------------------------------------------------------
+% --------------------------------------------------------------------------------
+% Integral asociada a una medida.
+% --------------------------------------------------------------------------------
 
 \section{Integral asociada a una medida}
 
 \begin{ejer} Sean $B_1,B_2,\cdots,B_m \subseteq \Omega$ medibles y $\beta_1,\cdots,\beta_m\in[0,\infty)$. Entonces, la función $$t:= \sum_{k=1}^m \beta_k \upchi_{B_k}$$  es simple positiva.
 
-%%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
+  %%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
 \end{ejer}
 
 % Ejercicios propuestos el 21-3. No tienen mucho que ver con la integral
 
 \begin{ejer}
-	Dado $p \in (1, +\infty)$ y sea $q = \frac{p}{p-1} \in (1, +\infty)$. Entonces $\frac{1}{p} + \frac{1}{q} = 1$.
+  Dado $p \in (1, +\infty)$ y sea $q = \frac{p}{p-1} \in (1, +\infty)$. Entonces $\frac{1}{p} + \frac{1}{q} = 1$.
 \end{ejer}
 
 \begin{ejer}
-	Con $p, q$ definidos como en el ejercicio anterior:
-	\begin{enumerate}
-		\item $ \displaystyle ab \leq \frac{a^p}{p} + \frac{b^q}{q} \ \forall a, b \geq 0$ (Desigualdad de Young).
-		\item Si $ \displaystyle ab = \frac{a^p}{p} + \frac{b^q}{q} \Leftrightarrow a^p = b^q$.
-	\end{enumerate}
+  Con $p, q$ definidos como en el ejercicio anterior:
+  \begin{enumerate}
+  \item $ \displaystyle ab \leq \frac{a^p}{p} + \frac{b^q}{q} \ \forall a, b \geq 0$ (Desigualdad de Young).
+  \item Si $ \displaystyle ab = \frac{a^p}{p} + \frac{b^q}{q} \Leftrightarrow a^p = b^q$.
+  \end{enumerate}
 \end{ejer}
 
 \begin{ejer}
-	\begin{enumerate}
-		\item $\mathcal L^{1} (\Omega)$ es un espacio vectorial.
-		\item $\mathcal L^{\infty} (\Omega)$ es un espacio vectorial.
-		\item $\mathcal L^{p} (\Omega)$ es un espacio vectorial.
-	\end{enumerate}
-	
-	\begin{sol}
-	
-	3.
-		Dado $\alpha \in \mathbb K$, $f \in \mathcal L^p (\Omega)$. Entonces $\abs{\alpha f}^p = \abs{\alpha}^p \cdot \abs{f}^p$.
-		Como $f, g \in \mathcal L^p(\Omega) \Rightarrow f + g \in \mathcal L^p(\Omega)$ y $ \displaystyle \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{p}} \leq \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}}$	
-		
-		$$\int_{\Omega} \abs{f+g}^p d \mu = \int_{\Omega}\abs{f+g}^{p-1} \abs{f+g}d \mu \leq \int_{\Omega} \abs{f+g}^{p-1} \abs{f}d \mu + \int_{\Omega} \abs{f+g}^{p-1} \abs{g}d \mu$$
-		
-		Utilizando la desigualdad de Young:
-		
-		$$\leq \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
-		
-		$$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
-		
-		$$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
-		
-		$$= \left[ \int_{\Omega} \left[ |f|+|g| \right]^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
-		
-		$$ \leq 2^{p-1} \int_{\Omega} \left( |f|^p + |g|^p) d \mu \right)^{\frac{1}{q}} < \infty$$	
-		
-	\end{sol}
+  \begin{enumerate}
+  \item $\mathcal L^{1} (\Omega)$ es un espacio vectorial.
+  \item $\mathcal L^{\infty} (\Omega)$ es un espacio vectorial.
+  \item $\mathcal L^{p} (\Omega)$ es un espacio vectorial.
+  \end{enumerate}
+  
+  \begin{sol}
+    
+    3.
+    Dado $\alpha \in \mathbb K$, $f \in \mathcal L^p (\Omega)$. Entonces $\abs{\alpha f}^p = \abs{\alpha}^p \cdot \abs{f}^p$.
+    Como $f, g \in \mathcal L^p(\Omega) \Rightarrow f + g \in \mathcal L^p(\Omega)$ y $ \displaystyle \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{p}} \leq \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}}$	
+    
+    $$\int_{\Omega} \abs{f+g}^p d \mu = \int_{\Omega}\abs{f+g}^{p-1} \abs{f+g}d \mu \leq \int_{\Omega} \abs{f+g}^{p-1} \abs{f}d \mu + \int_{\Omega} \abs{f+g}^{p-1} \abs{g}d \mu$$
+    
+    Utilizando la desigualdad de Young:
+    
+    $$\leq \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
+    
+    $$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
+    
+    $$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
+    
+    $$= \left[ \int_{\Omega} \left[ |f|+|g| \right]^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
+    
+    $$ \leq 2^{p-1} \int_{\Omega} \left( |f|^p + |g|^p) d \mu \right)^{\frac{1}{q}} < \infty$$	
+    
+  \end{sol}
 
 \end{ejer}
 
 \begin{ejer}
-	Dada $g : \Omega \rightarrow \mathbb R$ medible positiva. Entonces:
-	
-	$$\int_{\Omega} g d \mu = 0 \Leftrightarrow g = 0 \text{ a. e. } x \in \Omega$$
+  Dada $g : \Omega \rightarrow \mathbb R$ medible positiva. Entonces:
+  
+  $$\int_{\Omega} g d \mu = 0 \Leftrightarrow g = 0 \text{ a. e. } x \in \Omega$$
 \end{ejer}
 
 \begin{ejer}
-	Dado $\Omega \subset \mathbb R^N \text{ compacto, } g: \Omega \rightarrow \mathbb R \text{ cont. } \Rightarrow$ g es integrable. Si además $\int_{\mathbb R} |g| d \mu = 0 \Rightarrow g(\omega) = 0 \ \forall \omega \in \Omega$.
+  Dado $\Omega \subset \mathbb R^N \text{ compacto, } g: \Omega \rightarrow \mathbb R \text{ cont. } \Rightarrow$ g es integrable. Si además $\int_{\mathbb R} |g| d \mu = 0 \Rightarrow g(\omega) = 0 \ \forall \omega \in \Omega$.
 \end{ejer}
+
+\begin{ejer}
+  Dados $\Omega \supset E_{1,k} \supset E_{2,k} \supset \hdots \supset E_{n,k} \supset
+  E_{n+1,k} \supset \hdots$ entonces si $\mu(\Omega) < \infty \Rightarrow
+  \lim_{n\to\infty} \mu(E_{n,k}) = \mu(\bigcap_{n \in \mathbb N}
+  E_{n,k})$. 
+\end{ejer}
+
+\begin{ejer}
+  Tomamos $\Omega = \mathbb R, \mu =$ medida de Lebesgue en $\mathbb R,
+  \mu(\mathbb R) = \infty$.
+
+  $f_n(\omega) = \chi_{[n,n+1]}(\omega) \rightarrow 0 \forall \omega \in \R$.
+
+  Porque $\forall \omega \in \R \exists \omega_0 \in \N : \omega < n_0
+  \rightarrow f_n(\omega) = 0 \forall n \geq n_0$
+
+  Si $F \subset \R$ medible tal que $\mu(R \setminus F) < \varepsilon <
+  \infty$ Luego si $\mu(\R \setminus F) < \infty$ y $\mu(\R) = 0$ entonces
+  $\mu(F)=\infty$.
+  Con lo que $f_n(\omega)$ no converge uniformemente a 0 en $F$.
+  % Hacer el dibujo que tengo (jmml) en un papel
+\end{ejer}
+
+\begin{ejer}
+  Dado $(\Omega, \mathcal A, \mu)$ un espacio de medida y $f \in \mathcal
+  L^1(\Omega)$ con $f \in \mathcal L^1(\Omega)$. Demostrar que $\forall \varepsilon
+  > 0 \exists \delta > 0$ tal que si $E \in \mathcal A$ y $\mu(E) < \delta$
+  entonces $\int_E |f|d\mu < \varepsilon$
+\end{ejer}
+
 \end{document}
