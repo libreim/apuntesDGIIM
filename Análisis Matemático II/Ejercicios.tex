@@ -107,6 +107,10 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}   % Gráficos.
 
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
@@ -597,19 +601,59 @@
 \end{ejer}
 
 \begin{ejer}
-  Tomamos $\Omega = \mathbb R, \mu =$ medida de Lebesgue en $\mathbb R,
-  \mu(\mathbb R) = \infty$.
+  Definimos un espacio métrico con $\Omega = \mathbb R$ y $\mu =$ la medida de Lebesgue en $\mathbb R$
+  (sabiendo que $\mu(\mathbb R) = \infty$).
 
-  $f_n(\omega) = \chi_{[n,n+1]}(\omega) \rightarrow 0 \forall \omega \in \R$.
+  Si definimos la función $f_n(\omega) = \chi_{[n,n+1]}(\omega) \rightarrow 0 \ \
+  \forall \omega \in \R$, probar que ${f_n}$ no converge uniformemente a 0 en un
+  conjunto $F \subseteq \R$ medible tal que $\forall \varepsilon > 0 \ \ \mu(\R
+  \setminus F) < \varepsilon < \infty$.
 
-  Porque $\forall \omega \in \R \exists \omega_0 \in \N : \omega < n_0
-  \rightarrow f_n(\omega) = 0 \forall n \geq n_0$
-
-  Si $F \subset \R$ medible tal que $\mu(R \setminus F) < \varepsilon <
-  \infty$ Luego si $\mu(\R \setminus F) < \infty$ y $\mu(\R) = 0$ entonces
-  $\mu(F)=\infty$.
-  Con lo que $f_n(\omega)$ no converge uniformemente a 0 en $F$.
+  \textit{Pista: Utilizar que $\mu(\R \setminus F) < \infty \Rightarrow \mu(F) =
+    \infty$ (es decir, es posible tomar puntos tan separados como se quieran}
   % Hacer el dibujo que tengo (jmml) en un papel
+
+  \pgfdeclarelayer{bg}
+  \pgfdeclarelayer{fg}
+  \pgfsetlayers{bg,main,fg}
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+    \draw[help lines, color=gray!30, dashed] (-0.9,-0.9) grid (8.9,2.9);
+    \begin{pgfonlayer}{fg}
+    \draw[->,ultra thick] (-1,0)--(9,0) node[right]{$$};
+    \draw[->,ultra thick] (0,-1)--(0,3) node[above]{$$};
+    \end{pgfonlayer}{fg}
+    \foreach \x/\xtext in {1/1, 2/2, 3/3, 4/ \omega, 5/n, 6/n+1, 7/m, 8/m+1}
+    \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {$\xtext$};
+    \draw[shift={(0,0)}] (2pt,0pt) -- (-2pt,0pt) node[below left] {$0$};
+    \foreach \y/\ytext in {1/1, 2/2}
+    \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+    \coordinate (A) at (1,1);
+    \coordinate (B) at (2,1);
+    \draw[blue] (A) -- node [above] {$f_1$} (B) ;
+    \draw[blue, dashed] (1,0) -- (A);
+    \draw[blue, dashed] (2,0) -- (B);
+    \fill [blue!10] (1,0) -- (A) -- (B) -- (2,0);
+    \coordinate (N) at (5,1);
+    \coordinate (N+1) at (6,1);
+    \draw[blue] (N) -- node [above] {$f_n$} (N+1);
+    \begin{pgfonlayer}{fg}
+    \draw[blue, dashed] (N) -- (5,0);
+    \draw[blue, dashed] (N+1) -- (6,0);
+    \end{pgfonlayer}{fg}
+    \fill [blue!10] (N) -- (5,0) -- (6,0) -- (N+1);
+    \coordinate (M) at (7,1);
+    \coordinate (M+1) at (8,1);
+    \draw[blue] (M) -- node [above] {$f_m$} (M+1);
+    \draw[blue, dashed] (M) -- (7,0);
+    \draw[blue, dashed] (M+1) -- (8,0);
+    \fill [blue!10] (M) -- (7,0) -- (8,0) -- (M+1);
+  \end{tikzpicture}
+    \caption{Representación gráfica de la función $f_n(\omega)$}
+  \end{figure}
+  
+  
 \end{ejer}
 
 \begin{ejer}
