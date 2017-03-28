@@ -685,7 +685,7 @@ p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n) \Rightarrow
 \Rightarrow p_2 = 1 - \frac{p_1^{2}}{2} = \frac{7}{8}
 \]
 
-\includegraphics[scale=0.32]{/home/usuario/Escritorio/diagrama(ej17).png}
+%\includegraphics[scale=0.32]{/home/usuario/Escritorio/diagrama(ej17).png}
 \
 
 Podemos ver que el punto de equilibrio es un atractor y que la funci\'on converge a dicho punto:
@@ -701,9 +701,7 @@ Para realizar este gr\'afico he usado wxmaxima, en concreto, la orden
 staircase(1-(1/2)*x^2,1,100,[x,0,1.5],[y,0,1.5]);
 \]
 
-donde el primer par\'ametro es la funci\'on obtenida antes $(F_n)$ representada por la curva roja, el segundo par\'ametro es el punto inicial, el tercero es el n\'umero de iteraciones o valores que calculamos (n=100) y los \'ultimos par\'ametros son opciones para representar el gr\'afico.
-
-\end
+donde el primer parámetro es la función obtenida antes $(F_n)$ representada por al curva roja, el segundo parámetro es el punto inicial, el tercero es el número de iteraciones o valores que calculamos (n=100) y los últimos parámetros son opciones para representar el gráfico.
 
 \subsection{Ejercicio 19}
 
@@ -775,4 +773,43 @@ Ahora, si $f(x) = 3x - 0,05x^2$, entonces $f'(0) = 3$, por lo que es inestable y
 pero como la derivada vale $-1$, no podemos determinar con claridad lo que ocurre en este caso. Sin embargo, si realizamos el dibujo en $wxmaxima$, veríamos que se realiza la tela de araña y así converge.
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\section{Relación 2}
+
+\subsection{Ejercicicio 2}
+Calcule una solución de la ecuación $x_ {n+3} -x_n = 0$ con condiciones iniciales $x_0 = 1$, $x_1 = 0$ y $x_2 = 0$.
+
+Lo primero es ver que su polinomio característico es:
+\[
+p(\lambda) = \lambda^3 -1
+\]
+y las raíces de este son:
+\[
+\lambda = \frac{-1 \pm \sqrt{-3}i}{2}
+\]
+y por tanto tenemos: $\lambda_1 = 1$, $\lambda_2 = cos(\dfrac{2\pi}{3})+ i sen(\dfrac{2\pi}{3})$ y $\lambda_3 = cos(\dfrac{2\pi}{3}) - i sen(\dfrac{2\pi}{3})$
+Así, la solución general es:
+\[
+x_n = c_1 * 1^n + c_2 cos(n(\dfrac{2\pi}{3})) + c_3 sen(n(\dfrac{2\pi}{3}))
+\]
+Solo faltaría resolver el sistema con las condiciones iniciales para obtener la solución particular del sistema.
+
+
+\subsection{Ejercicio 4}
+Dado un número real $\alpha$, determine una expresión para la sucesión $\{x_n\}$ que verifica:
+\[
+\begin{cases}
+	x_{k+2} = x _{k+1} + x_k \ \ k \in \mathbb N
+	x_1 = 1, \ \ \ x_2 = \alpha
+\end{cases}
+\]
+Su polinomio característico es $p(\lambda) = \lambda^2 - \lambda - 1$, cuyas soluciones son $\lambda_1 = \frac{1+\sqrt 5}{2}$ y $\lambda_2 = \frac{1+ \sqrt 5}{2}$. Con las condiciones iniciales, podemos obtener la expresión de la sucesión hallando $c_1$ y $c_2$.
+
+Apartado $b$): estudiar el comportamiento de la sucesión $\{y_n\}$ definida por:
+\[
+y_{k+1} = \frac{1}{1+y_k} \ \ \ k \geq 2 \quad y \quad y_2 = 1
+\]
+Hallando su polinomio característico, sus raíces son $y = \frac{-1 \pm \sqrt 5}{2}$
 \end{document}

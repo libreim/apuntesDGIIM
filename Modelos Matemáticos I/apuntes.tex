@@ -1314,7 +1314,7 @@ $r$.
 
        \begin{nth}[Comportamiento asintótico de las soluciones con k=2]
         En el caso $k = 2$, las raíces $\lambda_{1}, \lambda_{2}$ del polinomio
-        $p(\lambda) = \lambda² + a_{1}\lambda + a_{0}$ verifican $|\lambda_{i}|
+        $p(\lambda) = \lambda^2 + a_{1}\lambda + a_{0}$ verifican $|\lambda_{i}|
         < 1$ para $i = 1, 2$ si y solo si
         $$
         \begin{cases}
@@ -1480,5 +1480,31 @@ Con $G > 0 $ constante. Ahora, resolvemos la segunda.
 	 \]
 	 
 \end{enumerate}
+
+\subsection{El modelo del jugador arruinado}
+Supongamos que un jugador va a jugar a una sucesión de juegos contra un solo adversario. En cada juego, la probabilidad de que el jugador gane $1$\$ es un valor conocido $a$ y la probabilidad de perder $1$\$ es $1-q$, donde $0\leq q \leq 1$. El juego se termina si pierde todo su dinero o bien alcanza su objetivo de conseguir $N$ dólares. Si el jugador se queda sin dinero antes, se dice que el jugador se ha arruinado.
+
+Por tanto, sea $p_n$ la probabilidad de que el jugador se arruine si posee $n$ dólares. Así, siendo $p_n =1$ y $p_0 = 0$, por el teorema de la probabilidad total tenemos
+\[
+p_n = q p _{n+1} + (1-q) p _{n-1}
+\]
+y si cambiamos $n$ por $n+1$, obtenemos:
+\[
+p _{n+2} - \dfrac{1}{q}p _{n+1} + \dfrac{1-q}{q}p_n = 0, \quad n= 0,1,\cdots,N, \ \ \ p_0 = 1, p_N = 0
+\]
+Ahora, la ecuación característica viene dada por : 
+\[
+\lambda ^2 - \dfrac{1}{q}\lambda + \dfrac{1-q}{q} = 0
+\]
+Y esta ecuación tendrá como raíces:
+\[
+\lambda_1 = \dfrac{1-q}{q} \quad y \quad \lambda_2 = 1
+\]
+Por tanto, la solución general será de la forma:
+\[
+p_n = c_1 \lambda_1^n + c_2\lambda_2^n \implies p_n= c_1 (\dfrac{1-q}{q})^n + c_2
+\]
+Además, con $p_0 = 0$ y $p_n = 1$, tenemos un sistema de dos ecuaciones y dos incógnitas y podemos resolverlo.
+
 
 \end{document}
