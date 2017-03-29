@@ -1,5 +1,5 @@
 package paquete;
-import algun.otro.paquete;
+import java.util.ArrayList;
 
 public class NombreClase {
     private static int varPrivadaClase;
@@ -12,3 +12,4 @@ public class NombreClase {
 }
 
 NombreClase test = new NombreClase(...);
+ArrayList<int> miArrayList = new ArrayList<int>();

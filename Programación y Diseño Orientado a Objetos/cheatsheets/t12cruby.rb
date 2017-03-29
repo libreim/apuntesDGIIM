@@ -20,3 +20,4 @@ end
 
 test = NombreClase.new(1,2)
 test.metodo_1
+mi_array = Array.new

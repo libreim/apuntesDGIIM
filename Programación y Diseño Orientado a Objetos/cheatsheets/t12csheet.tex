@@ -150,6 +150,9 @@ Dinámica  & Ocurre durante la ejecución, más flexible, la usan Java y Ruby \\
   public & \checkmark & \checkmark & \checkmark \\
 \end{tabular}
 
+Se utiliza \textit{protected} por defecto. Hay introspección, ya que se
+puede consultar una clase u objeto en ejecución.
+
 \subsubsection{Ruby}
 
 \begin{tabular}{cccc}
@@ -158,6 +161,10 @@ Visible en & Desde el propio objeto & Clase & Otra\\
   protected & \checkmark & \checkmark & \\
   public & \checkmark & \checkmark & \checkmark \\
 \end{tabular}
+
+Se utiliza \textit{private} por defecto. Se pueden consultar y modificar las
+clases, métodos y variables en ejecución. 
+
 \section{Diagramas UML}
 
 \subsection{Diagramas de clases}
@@ -292,7 +299,7 @@ Mensaje  & \texttt{variable = mensaje(arg) : tipo devuelto} \\
      \end{umlcall}
      \begin{umlcall}[op={3:m3()}]{o1}{o2}
      \end{umlcall}
-     \begin{umlfragment}[type=alt, inner xsep=2, label=b]
+     \begin{umlfragment}[type=alt, inner xsep=2, label=c]
      \begin{umlcallself}[op=o1()]{o1}
      \end{umlcallself}
      \end{umlfragment}
@@ -308,7 +315,7 @@ Mensaje  & \texttt{variable = mensaje(arg) : tipo devuelto} \\
 
  El recuadro con alt es un \textit{fragmento de interacción}, una secuencia de mensajes
  que ocurre bajo determinadas condiciones. Se pueden combinar. Los argumentos de
- los operadores descritos a continuación se indican dentro.
+ los operadores descritos a continuación se indican dentro, entre llaves.
 
 \begin{tabular}{@{}ll@{}}
   alt & Se ejecuta si se cumple la condición \\
