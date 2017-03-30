@@ -8,7 +8,8 @@ public class NombreClase {
     // Constructor
     public NombreClase(...) {...}
 
-    public metodoPublicoInstancia() {}
+    public tipo metodoPublicoInstancia() {}
+    public static tipo metodoPublicoClase() {}
 }
 
 NombreClase test = new NombreClase(...);

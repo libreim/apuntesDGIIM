@@ -3,7 +3,7 @@
   - La **identidad** es la propiedad que permite distinguir a un objeto de los demás.
     - Un objeto tiene identidad en tanto que existe.
     - Las características únicas no constituyen su identidad (p.ej. el DNI es único pero no es su identidad. Dos personas con el mismo DNI son personas distintas.)
-    - La identidad puede equivaler a la posición de memoria (si dos objetos tienen la misma posición de memoria entonces son idénticos.)
+    - La identidad puede equivaler a la posición de memoria (si dos objetos tienen la misma posición de memoria entonces son idénticos).
   - El **estado** del objeto lo determinan características que pueden ser consultadas.
     - Dos objetos diferentes pueden tener el mismo estado.
     - El estado de un objeto varía a lo largo del tiempo.
@@ -56,7 +56,7 @@
         - Permiten agrupar clases, métodos, variables y trozos de código.
         - Pueden agrupar a otros módulos.
         - Para indicar el path del fichero necesitamos *require* o *require_relative* si el fichero está en la carpeta actual.
-        - *include* permite incorporar un módulo dentro de una clase.
+        - *include* permite incorporar un módulo dentro de una clase (copia todo el código).
 
     - **Especificadores de acceso**
       - JAVA
@@ -87,8 +87,8 @@
           - otra
             - public
         - La visibilidad de los atributos de instancia y de clase es privada.
-        - Las constantes son públicas y no puede cambiarse.
-        - Por defecto los métodos son públicos
+        - Las constantes son públicas y no pueden cambiarse.
+        - Por defecto los métodos son públicos.
         - La visibilidad se especifica:
           - Antes de los métodos afectados.
           - Una vez ya definidos mediante *private :metodo1, :metodo2*
@@ -100,7 +100,7 @@
       - Orden de elementos: sin relación de orden o con orden.
 
       - Fijas y homogéneas -> Eficientes
-      - Variables y heterogéneas -> Flexibles  
+      - Variables y heterogéneas -> Flexibles
 
     - **Pseudovariables**
       - En todos los lenguajes existen pseudovariables que referencian a un objeto especial: el objeto que tiene el control de la ejecución en ese momento.
@@ -146,9 +146,9 @@
 
 	- Nombre de la asociación (se coloca encima de la línea). Se puede indicar hacia donde se lee empleando (> negra).
 
-	- Rol(se coloca al comienzo de la línea): Se emplea para explicitar el papel que juega cada clase en la asociación.
+	- Rol (se coloca al comienzo de la línea): Se emplea para explicitar el papel que juega cada clase en la asociación.
 
-	- Navegabilidad(sentido de la flecha si es unidireccional, si es bidireccional sin punta en ningún extremo)
+	- Navegabilidad (sentido de la flecha si es unidireccional, si es bidireccional sin punta en ningún extremo)
 		- Clase A -> Clase B (La clase A tiene un atributo b de tipo B)
 
 	- Multiplicidad (se coloca al comienzo de la línea): Indica el número de objetos de una clase que pueden asociarse con UN objeto de la otra clase.
@@ -164,7 +164,7 @@
 		- Clase A (rombo blanco cerca de A) Clase B <-> La clase B es parte de la clase A pero no necesariamente.
 
 	- Composición (rombo negro situado al comienzo de la línea).
-		- Clase A (rombo negro cerca de A) Clase B <-> La clase B es parte necesariamente de la clase A.
+		- Clase A (rombo negro cerca de A) Clase B <-> La clase B es parte necesaria de la clase A.
 
 
 - **Clase asociación**:

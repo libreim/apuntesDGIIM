@@ -1,8 +1,6 @@
 class NombreClase
   attr_accessor :var1, :var2
   @@class_variable
-
-  private :metodo_clase
   
   def initialize(var1, var2)
     @var1 = var1
@@ -16,8 +14,10 @@ class NombreClase
   def self.metodo_clase
       ...
   end
+
+   private :metodo_clase
 end
 
 test = NombreClase.new(1,2)
-test.metodo_1
+test.metodo_instancia
 mi_array = Array.new

@@ -201,7 +201,8 @@ Para indicar un atributo o método de clase, lo subrayamos.
   \umldep{C1}{C2}
 \end{tikzpicture}
 \hskip 4pt \parbox{4cm}{
-   Relación de dependencia
+   \textbf{Relación de dependencia:}
+En algún método de C1 se usa un elemento de C2.
 }
 
 \begin{tikzpicture}[baseline=0]
@@ -210,7 +211,7 @@ Para indicar un atributo o método de clase, lo subrayamos.
   \umlassoc{C1}{C2}
 \end{tikzpicture}
 \hskip 4pt \parbox{4cm}{
-   Relación de asociación
+   \textbf{Relación de asociación}
 }
 
 En una relación de asociación se puede indicar el número de objetos que se
@@ -226,6 +227,7 @@ Existen otras asociaciones:
 \end{tikzpicture}
 \hskip 4pt \parbox{4cm}{
    Agregación. Una clase representa el `todo` (C1) y otra las `partes` (C2).
+   ($\text{C1} \supset \text{C2}$)
  }
 
  \begin{tikzpicture}[baseline=0]
@@ -234,8 +236,8 @@ Existen otras asociaciones:
   \umlcompo{C1}{C2}
 \end{tikzpicture}
 \hskip 4pt \parbox{4cm}{
-   Composición. Agregación en la que las `todo` (C1)  no tienen sentido sin el
-   `partes` (C2).
+   Composición. Agregación en la que las `partes` (C2)  no tienen sentido sin el
+   `todo` (C1).
  }
 
  Podemos crear una clase asociación cuando una asociación presenta atributos
@@ -315,7 +317,7 @@ Mensaje  & \texttt{variable = mensaje(arg) : tipo devuelto} \\
 
  El recuadro con alt es un \textit{fragmento de interacción}, una secuencia de mensajes
  que ocurre bajo determinadas condiciones. Se pueden combinar. Los argumentos de
- los operadores descritos a continuación se indican dentro, entre llaves.
+ los operadores descritos a continuación se indican dentro, en un recuadro.
 
 \begin{tabular}{@{}ll@{}}
   alt & Se ejecuta si se cumple la condición \\
