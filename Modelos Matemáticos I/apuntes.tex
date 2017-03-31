@@ -739,13 +739,13 @@ Con estas definiciones, podemos ver que si $x_0 \in I$ es un valor inicial, pode
 x_1 = f(x_0); \ x_2 = f(x_1) = f(f(x_0)); \ x_3 = f(x_2) = f(f(f(x_0))); \cdots
 \]
 
-Estos valores están bién definidoes pues $f(I) \subset I$ y la sucesión así definida es solución de la ecuación en diferencias:
+Estos valores están bién definidos pues $f(I) \subset I$ y la sucesión así definida es solución de la ecuación en diferencias:
 \[
 x_{n+1} = f(x_n) \quad n \geq 0
 \]
 \begin{ejemplo}
-	Tomemos $f(x) = cos(x)$, que es continua. Ahora, tenemos que tomar $I \subset \R$ tal que $f(I) \subset I$. Podemos tomar el intervali $I=[-1,1]$ en radianes por supuesto.
-	Si tomamos $X_0\in I$, podemos ver fácilmente que $x_{n+1}=f(x_n) \in I$, por lo que $\{[-1,1],cos(x)\}$ es un SDD.
+	Tomemos $f(x) = cos(x)$, que es continua. Ahora, tenemos que tomar $I \subset \R$ tal que $f(I) \subset I$. Podemos tomar el intervalo $I=[-1,1]$ en radianes, por supuesto.
+	Si tomamos $x_0\in I$, podemos ver fácilmente que $x_{n+1}=f(x_n) \in I$, por lo que $\{[-1,1],cos(x)\}$ es un SDD.
 \end{ejemplo}
 
 \begin{nprop}La ecuación logística es un SDD, pues $f(x) = \mu x(1-x)$ es continua y $\exists I = [0,1]: f(I) \subset I$
