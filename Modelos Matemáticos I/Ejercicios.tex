@@ -873,5 +873,78 @@ $$= \lim_{n\to\infty} \frac{\left( 1 + \sqrt 2 \right)^{n+1}}{\left(1+\sqrt 2 \r
 \vspace{0.2em}
 
 Por tanto, $\displaystyle \exists \lim_{n\to\infty} \frac{x_{n+1}}{x_n} = 1 + \sqrt 2.$
+\newpage
+\subsection{Ejercicio 13}
+
+Presentamos el modelo de Samuelson modificado:
+$$Y_n = C_n + I_n$$
+$$C_n=b\cdot I_{n-1}$$
+$$I_n = C_n-kC_{n-1}+G$$
+
+Donde $Y_n$ es la renta nacional, $C_n$ es el consumo e $I_n$ es la inversión. G es el gasto público que suponemos constante.
+
+Debemos escribir en primer lugar la ley de recurrencia para las inversiones anuales $I_n$ y posteriormente calcular las condiciones sobre los parámetros k y b para que haya convergencia.
+
+Para comenzar tomamos la expresión de $I_n$ e intentamos expresarla exclusivamente con términos de $I_n$. Para ello sustituimos en la tercera ecuación los $C_n$ por la expresión correspondiente que observamos en la segunda ecuación.
+
+$$I_n = b\cdot I_{n-1}-k\cdot (b\cdot I_{n-2}) +G\quad \quad n \ge 2$$
+
+Como nos interesa tener la ecuación en recurrencia para valores mayores o iguales que 0 hacemos una pequeña transformación en los índices (le sumamos 2 a todos)
+
+$$I_{n+2} = b\cdot I_{n+1}-k\cdot (b\cdot I_{n}) +G\quad \quad n \ge 0$$
+
+Y reordenamos para obtener la \textbf{ley de recurrencia:}
+
+$$I_{n+2} - b\cdot I_{n+1} + k\cdot b\cdot I_{n} = G$$
+
+\newpage
+Ahora procederemos a calcular las condiciones sobre k y b para que haya convergencia.
+
+Sabemos que la $I_n = I_n^h+I_n^{(1)}$, es decir, que podemos expresar $I_n$ como suma de la homogénea asociada más una solución particular. Y para que se produzca esta situación de convergencia la homogénea asociada debe converger a cero ( $\lim \limits_{n \to +\infty} X_n = 0 $ ).
+
+$$I_n^h:\ I_{n+2} - b\cdot I_{n+1} + k\cdot b\cdot I_{n} = 0 $$
+
+Cuyo polinomio característico es:
+$$p(\lambda) = \lambda^2 - b\lambda + kb$$
+
+Al estar ante una ecuación en diferencias lineal homogénea de orden dos, para que converja a 0 tiene que cumplirse lo siguiente:
+
+\[
+\begin{rcases}
+ (1)\ \quad p(1) = 1-b + kb\ \textgreater\ 0\\
+ (2)\ p(-1) = 1+b + kb\ \textgreater\ 0\\
+ (3)\ \quad\quad \quad\quad p(0) = kb\ \textless\ 1\\
+\end{rcases}
+\]
+
+Y a partir de esto obtenemos las condiciones:
+Partimos de $1 \textgreater b \textgreater 0$ y de $k\textgreater 0$.
+
+Probamos que la condición (1) se cumple siempre.
+Restamos b  en la primera expresión:
+
+$$1-b > b-b$$
+$$1-b > 0$$
+
+Y de la segunda multiplicamos por b, un número positivo y la expresión se mantiene:
+
+$$k\cdot b > 0$$
+
+Si sumamos estas dos expresiones obtenemos:
+
+$$1-b +k\cdot b > 0$$
+
+La condición (2) es trivial. Suma de números positivos es positiva.
+
+Y de la condición (3) obtenemos:
+$$k < \frac{1}{b}$$ 
+
+Con esto deducimos finalmente que converge si:
+\[
+\begin{rcases}
+	0 < k < \frac{1}{b}\\
+	0 < b < 1
+\end{rcases}
+\]
 
 \end{document}
