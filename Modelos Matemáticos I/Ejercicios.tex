@@ -818,4 +818,60 @@ Apartado $b$): estudiar el comportamiento de la sucesión $\{y_n\}$ definida por
 y_{k+1} = \frac{1}{1+y_k} \ \ \ k \geq 2 \quad y \quad y_2 = 1
 \]
 Hallando su polinomio característico, sus raíces son $y = \frac{-1 \pm \sqrt 5}{2}$
+
+\subsection{Ejercicio 9}
+
+La sucesión $\{\overline{x_n}\}_{n\ge0} = \{1, 2, 5, 12, 29, \dots\}$ es solución de cierta ecuación en diferencias lineal homogénea de orden 2 con coeficientes constantes.\\
+
+\textbf{a)} Deduzca dicha ecuación en diferencias.
+
+Sabemos que la ecuación en diferencias será de la forma
+\begin{equation} \label {1}
+	x_{n+2} + a_1x_{n+1} + a_0x_n = 0, \quad n \ge 0
+\end{equation}
+
+Si sustuimos en (\ref 1) los valores $n=0$ y $n=1$ para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obtenemos el siguiente sistema de ecuaciones: 
+
+$$\begin{cases} 5 + 2a_1 + a_0 = 0\\ 12 + 5a_1 + 2a_0 = 0 \end{cases}$$
+
+cuyas soluciones son $a_1 = -2$, $a_0 = -1$. Por tanto, la ecuación en diferencias es:
+\begin{equation} \label{2}
+	x_{n+2} - 2x_{n+1} - x_n = 0, \quad n \ge 0
+\end{equation}
+
+\textbf{b)} Dé una expresión de la solución general de la ecuación en diferencias.
+
+Resolvemos la ecuación (\ref 2) como ya sabemos. Comenzamos hallando las raíces del polinomio característico: 
+
+$$p(\lambda) =  \lambda^2 - 2\lambda - 1 = 0 \iff \lambda = \frac{2 \pm \sqrt{8}}{2} \iff \begin{cases} \lambda_1 = 1 + \sqrt{2}\\ \lambda_2 = 1 - \sqrt{2} \end{cases}$$
+
+Como $\lambda_1$ y $\lambda_2$ son dos raíces distintas de $p(\lambda)$, sabemos que $\{ X_{\lambda_1}, X_{\lambda_2} \}$ es una base del espacio de soluciones $\Sigma$, donde 
+
+$$X_{\lambda_1} = \{ \lambda_1^n \}_{n\ge 0} \quad ; \quad X_{\lambda_2} = \{ \lambda_2^n \}_{n\ge0}$$
+Por tanto, la solución general $\{x_n\}_{n\ge0}$ será una combinación lineal de la base $\{ X_{\lambda_1}, X_{\lambda_2} \}$, es decir:
+\begin{equation} \label{3}
+	x_n = c_1\lambda_1^n + c_2\lambda_{2}^n, \quad c_1,c_2 \in \mathbb C, \quad n\ge 0
+\end{equation}
+
+Para determinar las constantes $c_1$ y $c_2$, sustituimos los valores $n=0$, y $n=1$ en (\ref 3) para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obteniendo el siguiente sistema de ecuaciones:
+
+$$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}) + c_2(1-\sqrt{2}) =2 \end{cases}$$
+
+cuyas soluciones son $c_1 = \frac{2+\sqrt{2}}{4}$, $c_2 = \frac{2 - \sqrt{2}}{4}$. Por tanto, la expresión de la solución general es:
+
+\begin{equation} \label{4}
+	x_n = \frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^n + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^n, \quad n \ge 0
+\end{equation}
+
+\textbf{c)} Deduzca de forma razonada el valor, si existe, de $\displaystyle \lim_{n\to\infty} \frac{x_{n+1}}{x_n}$.
+
+Como $\sqrt 2 < 2$, se tiene que $\left| 1 - \sqrt 2 \right| < 1$, y por tanto $(1-\sqrt2)^n \to 0$ cuando $n \to \infty$. Utilizando esa información, y atendiendo a (\ref 4), podemos expresar el límite de la siguiente forma:
+
+$$\lim_{n\to\infty} \ddfrac{x_{n+1}}{x_n} = \lim_{n\to\infty} \ddfrac{\frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^{n+1} + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^{n+1}}{\frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^n + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^n} =$$
+
+$$= \lim_{n\to\infty} \frac{\left( 1 + \sqrt 2 \right)^{n+1}}{\left(1+\sqrt 2 \right)^n} = \lim_{n\to\infty} \left(1 + \sqrt 2 \right) = 1 + \sqrt 2$$
+\vspace{0.2em}
+
+Por tanto, $\displaystyle \exists \lim_{n\to\infty} \frac{x_{n+1}}{x_n} = 1 + \sqrt 2.$
+
 \end{document}
