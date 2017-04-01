@@ -355,6 +355,28 @@ Ahora, continuamos la resolución del ejercicio:
 \end{enumerate}
 Así, la solución es $x_n = \dfrac{3}{5}2^n +\dfrac{2}{5}(\dfrac{1}{3})^n$ con $n\geq 0$
 
+\subsection{Ejercicio 3}
+Primero calculamos $KerL$.
+$$ x \in KerL \Leftrightarrow L(x) = 0$$
+$$x_n^{*} = 0 \Leftrightarrow x_{n+1} - (2 + i ) x_n = 0 \Leftrightarrow x_{n+1} = (2+i)x_n$$
+Solución general: $$ x_n = K (2+i)^{n} \ , \ K \in C$$
+Por lo tanto los elementos de $X$ que pertenecen al $KerL$ son de la forma que acabamos de indicar. Veamos ahora los elementos de $X$ tales que $L(x) = b$ siendo b = \{ 1,1,1,1.. \}.
+$$x_{n+1} -(2+i)x_n = 1 \Leftrightarrow x_{n+1} = (2+i)x_n + 1$$
+
+\[
+\begin{rcases}
+	x _{n+1} = (2+i) x_n + 1 \\
+	x _{n+1}^* = (2+i) x_n^* +  1 
+\end{rcases}
+\]
+Restamos y tenemos que:
+$$ x _{n+1}  - x _{n+1}^* = (2 + i) (x_n - x_n^*)$$
+LLamamos $y_n = x_n^* - x_n$, y tenemos que $ y_{n+1} = (2+i) y_n $. Por lo tanto la solucion general de $y_n$ es: $y_n = K (2+i)^n \ , \ k \in C $.
+Ahora calculamos la solucion constante $x^*$.
+$$ x^* = (2+i)x^* +1  \Leftrightarrow x^* (1-2-i) = 1 \Leftrightarrow x^* = \frac{1}{-1-i} \Leftrightarrow x^* = \frac{1(-1+i)}{(-1-i)(-1+i)} \Leftrightarrow x^* = \frac{-1+i}{2} $$
+Y ya podemos calcular la solución general de $x_n$ que es:
+$$ x_n = y_n + x^* = K (2+i)^n + \frac{-1+i}{2}$$
+Es decir los elementos de $X$ que cumplen que $L(x) = b$ son de esa forma.
 
 \subsection{Ejercicio 4}
 Llamaremos primero $x_n$ el número de clientes de $Paga^+$ en el año n.
