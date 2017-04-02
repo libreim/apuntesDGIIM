@@ -1349,20 +1349,25 @@ $r$.
 	Se puede probar que el cambio de crecimiento está en $(-1,1)$, pues $(-\infty,-1)$ es decreciente y $(1,+\infty)$ es creciente, lo que implica que $-1 < \lambda_2 < 1$
 \end{nota}
 
-     Dada la ecuación en diferencias completa
-      $$x_{n+k} + a_{k-1}x_{n+k-1} + \hdots + a_{1}x_{n+1} + a_{0}x_{n} = b(n)$$
-      con $a_{0} \neq 0$.
-
+     Dada la ecuación en diferencias lineal completa
+     \begin{equation} \label{ecdiferenciasmiecendiferencias}
+      x_{n+k} + a_{k-1}x_{n+k-1} + \hdots + a_{1}x_{n+1} + a_{0}x_{n} = b(n), \quad 
+      con\ a_{0} \neq 0.
+\end{equation}
 % Poner entorno de lema
       \textbf{Lema}
       Sean $\{x_{n}^{(1)}\}_{n \geq 0}$ y $\{x_{n}^{(2)}\}_{n \geq 0}$ soluciones de
-      la ecuación lineal en diferencias completa anterior, entonces
+      la ecuación (\ref {ecdiferenciasmiecendiferencias}), entonces
       $\{x_{n}^{(1)} - x_{n}^{(2)}\}_{n \geq 0}$ es solución de la ecuación lineal
-      en diferencias homogénea.
+      en diferencias homogénea.\\
 
 \begin{proof}
 	La prueba se realiza restando las dos ecuaciones e introduciendo las sucesiones en la ecuación y nos queda que $\{x_n^{(1)}-x_n^{(2)}\}$ es solución de la ecuación homogénea aosciada.
 \end{proof}
+
+\begin{nota}
+	Como consecuencia, toda solución $\{x_n\}$ de (\ref{ecdiferenciasmiecendiferencias}) se escribe como la suma de una solución particular de (\ref{ecdiferenciasmiecendiferencias}) y la solución de la ecuación homogénea asociada: $$x_n = \overline{x_n} + x_n^h, \quad n \ge 0$$
+\end{nota}
 
 
       \begin{nth}[Principio de superposición]
@@ -1381,9 +1386,9 @@ $r$.
 
         respectivamente. Entonces $\{x_{n}^{(1)}+ x_{n}^{(2)}\}_{n \geq 0}$ es
         solución de la ecuación en diferencias completa
-
            $$x_{n+k} + a_{k-1}x_{n+k-1} + \hdots + a_{1}x_{n+1} + a_{0}x_{n} =
         b_{1}(n) + b_{2}(n)$$
+
 
 \begin{proof}
 	Sean $\{x_n^{(1)}\}$ solución de la primera y $\{ x_n^{(2)}\}$ solución de la segunda.
@@ -1392,24 +1397,31 @@ Ahora, si sustituimos la primera ecuación en su solución y la segunda ecuació
 \end{proof}
 
 \begin{ejemplo}
-	Intentaremos resolver: $x _{n+2} - x _{n+1}  - x_n = 1+n$ ecuación en diferencias completa de orden 2.
+	Vamos a resolver la siguiente ecuación en diferencias lineal completa de orden 2: $x _{n+2} - x _{n+1}  - x_n = 1+n$.
 	\begin{enumerate}
-	\item Buscamos una solucioón de la ecuación en diferencias homogénea asociada: $x _{n+2} - x _{n+1} x_n = 0$. Esta es la ecuación de Fibonacci. Su solución es : $$x_n^h = C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n$$
-	\item Buscamos una solución particular de la ecuación dada.  Usamos el principio de superposición: $x _{n+2} - x_n = 1$. Como el término independiente, buscamos una solución constante. $\{x_n^{(1)}\} = \{-1\}$. Ahora, resolvemos.
+	\item Buscamos una solución de la ecuación en diferencias homogénea asociada:\\ $x _{n+2} - x _{n+1} - x_n = 0$. Esta es la ecuación de Fibonacci, cuya solución es $$x_n^h = C_1\left(\frac{1+ \sqrt 5}{2}\right)^n + C_2 \left( \frac{1-\sqrt 5}{2}\right)^n$$
+	\item Buscamos una solución particular de la ecuación dada.  Usamos el principio de superposición, para dividir el término $b(n)=1+n$. En cada caso, buscaremos una solución particular del mismo carácter que el término independiente, atendiendo a la tabla de la \textbf{diapositiva 27} del tema 2.
 	
-	Resolvemos entonces $x _{n+2} - x _{n+1} - x_n = n$. Ahora, siguiendo la transparencia 26 del tema 2 de las diapositivas, buscamos $x_n^{(2)} = C_0 + C_1 n$ debe ser solución. Sustituimos:
-	\[
-	(C_0 + C_1(n+2)) -(C-0 + C_1(n+1)) - (C_0 + C_1 n) = n \implies -C_0 + C_1 +n(-C_1) = n 
-	\]
-	que es un polinomio en $n$. por lo que tenemos que $C_1 = -1 $ y $-C_0 + C_1 0 0 \implies C_0 = -1$
+\begin{itemize}
+	\item $x _{n+2} - x_{n+1} - x_n = 1$. Como el término independiente es constante, buscamos una solución particular constante. Sea $x_*$ la posible solución constante. Entonces, se tendría $x_* - x_* - x_* = 1 \implies x_* = -1$. Por tanto,\\ $\{x_n^{(1)}\} = \{-1\}_{n\ge0}$ es solución (constante).
 	
-	\item Solución: La solución final es la súma de la homogénea mas las dos soluciones particulares halladas:
+	\item Resolvemos ahora $x _{n+2} - x _{n+1} - x_n = n$. Como el término independiente es un polinomio de grado 1, buscamos una solución de la forma $c_0 + c_1 n$. Como debe ser solución, sustituimos:
 	\[
-	x_n = x_n^h + x_n^{(1)} +  x_n^{(2)} =  C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n -1-1-n = 
+	(c_0 + c_1(n+2)) -(c_0 + c_1(n+1)) - (c_0 + c_1 n) = n \implies -c_0 + c_1 +n(-c_1) = n 
+	\] que es un polinomio en $n$. Igualando coeficientes, tenemos que $c_1 = -1 $ y $-c_0 + c_1 = 0 \implies c_0 = -1$. Por tanto, la solución buscada es\\ $\{x_n^{(2)}\} = \{-1 - n\}_{n\ge0}$
+\end{itemize}
+	
+	
+	
+	\item Solución. Por el lema anterior, la solución final es la suma de la solución de la homogénea más la solución particular de la completa. A su vez, por el \textit{principio de superposición}, la solución particular de la completa es la suma de las dos soluciones particulares halladas. Por tanto:
+	\[
+	x_n = x_n^h + x_n^{(1)} +  x_n^{(2)} =  c_1\left(\frac{1+ \sqrt 5}{2}\right)^n + c_2 \left(\frac{1-\sqrt 5}{2}\right)^n -1-1-n = 
 	\]
 	\[
-	=  C_1(\frac{1+ \sqrt 5}{2})^n + C_2 (\frac{1-\sqrt 5}{2})^n -2 - n
+	=  c_1\left(\frac{1+ \sqrt 5}{2}\right)^n + c_2 \left(\frac{1-\sqrt 5}{2}\right)^n -2 - n, \quad n \ge 0
 	\]
+	
+	Como siempre, las constantes $c_1$ y $c_2$ se determinan a partir de las condiciones iniciales, en cada caso.
 \end{enumerate}
 \end{ejemplo}
 
