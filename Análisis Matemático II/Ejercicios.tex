@@ -657,10 +657,81 @@
 \end{ejer}
 
 \begin{ejer}
-  Dado $(\Omega, \mathcal A, \mu)$ un espacio de medida y $f \in \mathcal
+  (Continuidad absoluta de la integral). Dado $(\Omega, \mathcal A, \mu)$ un espacio de medida y $f \in \mathcal
   L^1(\Omega)$ con $f \in \mathcal L^1(\Omega)$. Demostrar que $\forall \varepsilon
   > 0 \exists \delta > 0$ tal que si $E \in \mathcal A$ y $\mu(E) < \delta$
   entonces $\int_E |f|d\mu < \varepsilon$
+
+  \begin{sol}
+    Veamos una primera demostración.
+
+    Sea $\varepsilon$ un número positivo cualquiera. Como $|f|$ es integrable,
+   $ \int_{\Omega} |f| d\mu = \text{ sup } \{ \int_{\Omega}sd\mu : \text{s
+     simple positiva y } S \leq |f|$\}. Entonces $\exists s : \Omega \rightarrow
+   [\Omega, \infty)$ simple tal que $$0 \leq \int_{\Omega}(|f| - s)d\mu <
+   \varepsilon$$
+
+   Así, tenemos que $\forall E \in \mathcal A$
+
+   $$\int_E |f| d \mu = \int_E (|f| - s)d\mu + \int_E s d\mu \leq \int_{\Omega}
+   (|f| -s)d\mu + \int_E s d \mu < \varepsilon + \int_E s d \mu$$
+
+   Si elijo $\displaystyle \delta = \frac{\varepsilon}{1 + \sum_{i=1}^n |\alpha_i|}$, como $|f| =
+   s$ es simple y $\mu(E) < \delta$ entonces $$\int_E sd\mu
+    = \sum_{i=1}^n \alpha_i \mu (A_i \cap E) \leq \left[ \sum_{i=1}^n |\alpha_i|
+    \right] \mu (E) \leq \frac{\sum_{i=1}^n |\alpha_i|}{1 + \sum_{i=1}^n
+      |\alpha_i|} \varepsilon < \varepsilon $$
+
+    Por tanto, $\mu(E) < \delta$ y $E \in \mathcal A \Rightarrow \int_E |f|d\mu
+    < \varepsilon + \int_e s d \mu < \varepsilon + \varepsilon = 2\varepsilon$
+
+    \begin{nota}
+      Si desde un principio tomamos $\frac{\varepsilon}{2}$ en lugar de
+    simplemente $\varepsilon$ nos quedará $\varepsilon$ al final y no $2\varepsilon$.
+    \end{nota}
+   
+  \end{sol}
+\end{ejer}
+
+\begin{ejer}
+  Dada una función $f: k \rightarrow \R$ continua y $K \subset \R^N$ un
+  compacto, entonces $f \in \mathcal L^1(K)$.
+
+  \begin{sol}
+    Para obtener la solución vamos a usar que $f \in L^1(K) \Leftrightarrow |f|
+    \in \mathcal L^1(K)$.
+
+    $f$ es medible.
+
+    Como $f$ es continua, $f^{-1}((-\infty, \gamma)) = \{ x \in K : f(x) <
+    \gamma\}$ abierto en $\R^N \forall \gamma \in \R \Rightarrow
+    f^{-1}((-\infty, \gamma)) \in \mathcal B \subset$ medibles de Lebesgue en
+    $\R^N$.
+
+    Como $f$ es continua, $|f|$ también lo es, con lo que $|f|$ es medible
+    positiva.
+
+    Dado $K$ un compacto y $|f|$ una función continua, por el Teorema de
+    Weierstrass $\exists M > 0 : |f(x)| \leq M \forall x \in K$.
+
+    $|f| \leq M = M \chi_k$ luego $$\int_K Md\mu = M\mu(K) \leq M \mu (B) <
+    \infty$$ $$\int_K |f|d\mu \leq \int_K Md\mu \leq M\mu(B) < \infty \Rightarrow
+    |f| \in \mathcal L^1(K).$$
+    
+  \end{sol}
+  
+\end{ejer}
+
+\begin{ejer}
+  Dada una función $g : \Omega \rightarrow \R$ medible, $\Omega \in \R^N$
+  medible, con $\mu(\Omega) < \infty$. Entonces, $ g \in L^1(\Omega)$. Prueba
+  además que $\exists M, m \in \R : m \leq g(x) \leq M \forall x \in \Omega$.
+\end{ejer}
+
+\begin{ejer}
+  Si $\{f_n\} \subset \mathcal C(k, \R), k \in \R^N$ compacto y $\{f_n(x)\}
+  \rightarrow f(x) \forall x \in K$, prueba que $\{f_n\} \rightarrow f$ c.u. en
+  $K \Leftrightarrow \{f_n : n \in \N\}$ es equiacotada y equicontinua.
 \end{ejer}
 
 \end{document}

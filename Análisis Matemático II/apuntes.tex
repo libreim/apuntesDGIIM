@@ -1889,6 +1889,50 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   \mu(\bigcap_{n=1}^{\infty} A_n) = 0$.
 \end{ejemplo}
 
+\begin{nth}[Vitali]
+  Sea $\{f_n\} \subset L^p(\Omega), f \in L^p(\Omega)$ y que
+  $\{f_n(\omega)\} \rightarrow f(\omega)$ a.e. $\omega \in \Omega$ $\{f_n\}
+  \rightarrow f$ en $L^p(\Omega) \Leftrightarrow \forall \varepsilon > 0,
+  \exists \delta > 0$ independiente de n, tal que si $E \in \mathcal A, \mu(E) <
+  \delta$ y $n \in \N$ entonces $\int_E |f_n|^pd\mu < \varepsilon$.
+\end{nth}
+
+\begin{proof}
+   \boxed{\Rightarrow} Supongamos que $\{f_n\} \rightarrow f$ en $L^p(\Omega)$
+   i.e. $\lim_{h \to \infty}(\infty_{\Omega}|f_n - f|^pd\mu) = 0$.
+
+   $f \in L^(\Omega) \Leftrightarrow |f|^p \in L^1(\Omega)$. Ahora, por la
+   propiedad absoluta de la integral, $\forall \varepsilon > 0 \exists \delta >
+   0$ tal que si $E \in \mathcal A$ y $\mu(E) < \delta$ entonces $\displaystyle \int_E |f|^p d\mu < \frac{\varepsilon}{2^p}$.
+
+   Como $\{f_n\} \rightarrow f$ con  $\frac{\varepsilon^{\frac{1}{p}}}{2} > 0$ $\Rightarrow \exists n_0 \in \N$ tal que si $n
+   \geq n_0$ entonces $||f_n - f||_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$ 
+
+   $$\left(\int_E |f_n|^p d\mu\right)^{\frac{1}{p}} = ||f_n||_{ L^p(E)} \leq ||f_n -
+   f||_{ L^(E)}+ ||f||_{ L^p(E)} \leq ||f_n - f||_{
+     L^p(\Omega)} + ||f||_{ L^p(E)} <
+   \frac{\varepsilon^{\frac{1}{p}}}{2} + \frac{\varepsilon^{\frac{1}{p}}}{2} =
+   \varepsilon^{\frac{1}{p}}$$
+
+   Hasta ahora hemos probado que $\forall \varepsilon > 0 \exists \delta > 0$ y
+   $n_0 \in \N$ tal que si $E \in \mathcal A, \mu(E) <
+  \delta$ y $n_0 \in \N \Rightarrow \left( \int_E|f_n|^p d\mu \right) <
+  \varepsilon$.
+
+  Para cada $f_i, i=1, \hdots, n_{0-1}$ uso que $|f_i|^p \in L^1(\Omega)$ y por
+  la continuidad absoluta de la integral, $\exists \delta_i > 0$ tal que si $E
+  \in A$ y $\mu(E) < \delta$ entonces $\int_E |f_i|^p d\mu < \varepsilon \forall
+  i = 1, \hdots , n_{0-1}$.
+
+  Si elijo $\delta_0 = min\{\delta, \delta_1, \hdots, \delta_{n_0 -1}\} > 0$
+  entonces si $E \in \mathcal A$, $\mu(E) < \delta_0$ y $n \in \N$ entonces
+  $\int_E |f_n|^p d \mu < \varepsilon$.
+
+  \boxed{\Leftarrow}
+
+  
+\end{proof}
+
 
 
 % --------------------------------------------------------------------------------
