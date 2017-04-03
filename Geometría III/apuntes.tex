@@ -1326,4 +1326,104 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nlist}
 	\item Existe una circunferencia por $ADHF$. Lo mismo para $BEHD$ y $CFHE$
 \end{nlist}
+
+\section{Cónicas y Cuádricas}
+Ya sabemos que la ecuación de una recta viene dada por una ecuación de la forma:
+\[
+ax + by +c = 0
+\]
+
+Ahora, la ecuación de una elipse vendría dada por una ecuación de una forma:
+\[
+ax^2 + by^2 + c = 0
+\]
+También la ecuación de una hipérbola viene dada por una ecuación de la fora;
+\[
+axby = c
+\]
+También si multiplicamos dos ecuaciones de una recta, tendríamos la ecuación de una cónica en $\R^2$
+\[
+(ax + by +c)(a'x+b'y+c') = 0
+\]
+
+\subsection{Cambio de coordenadas en el espacio afín.}
+
+En el espacio afín $\R^3$ tomaremos dos sistemas de referencia ortonomales:
+\begin{nlist}
+	\item El usual: con $\mathcal R = \{O, e_1, e_2, e_3\}$ con $O=(0,0,0)$, $e_i$ tiene un 1 en la posición $i$.
+	\item El formado por otro origen $\bar O = (a,b,c)$ y una base ortonormal $\{\bar e_1, \bar e_2, \bar e_3\}$. 
+\end{nlist}
+
+La matriz de cambio de base es una matriz ortogonal $P$ cuyas columnas son las coordenadas de $\bar e_i$ con $i=1,2,3$ respecto de la base usual.
+
+Así, el cambio de coordenadas para vectores será:
+\[
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}  = P \begin{pmatrix}
+\bar x\\
+\bar y\\
+\bar z
+\end{pmatrix} 
+\]
+
+Y para puntos será:
+\[
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix} = P \begin{pmatrix}
+\bar x\\
+\bar y\\
+\bar z
+\end{pmatrix}  + \begin{pmatrix}
+ a\\ 
+ b\\
+ c
+\end{pmatrix} 
+\]
+
+\subsection{Cuádricas en $\R^3$}
+Una cuádrica viene dada por una ecuación de la forma:
+\[
+\mathcal Q \equiv ax^2 + by^2 + cz^2+ dxy + exz + fyz + gx + hy+ iz + j = 0
+\]
+Su expresión matricial será:
+\[
+(x,y,z)\begin{pmatrix}
+ a & d/2& e/2\\
+ d/2 & b &  f/2\\
+  e/2& f/2& c
+\end{pmatrix} \begin{pmatrix}
+x\\
+y\\
+z\\
+\end{pmatrix} + 2(g/2,h/2,i/2) \begin{pmatrix}
+ x\\
+ y\\
+ z
+\end{pmatrix}  + j
+\]
+La matriz $3\times 3$ será, como se puede ver, simétrica.
+
+\begin{nprop}
+	Toda matriz simétrica es diagonalizable por una matriz ortogonal:
+	\[
+	\mathcal P ^t \mathcal A \mathcal P = \bar{ \mathcal A}, \quad \text{$\bar{\mathcal A}$ es simétrica}
+	\]
+\end{nprop}
+\begin{nota}
+	Recordemos que diagonalizar por semejanza es hacer $P^{-1}AP$ u hacerlo por conjugación es hacer $P^t A P$
+\end{nota}
+
+\begin{nth}
+	Si una $A$ es una matriz simétrica, entonces $\exists = \{\bar e_1, \bar e_2, \bar e_3\}$ una base ortonormal de vectores propios
+\end{nth}
+
+\begin{nprop}
+	El centro de una cuádrica $\mathcal Q$ es un punto $P=(a,b,c)$ tal que la reflexión central $\sigma_A: P \mapsto -P+2A$ se tiene que $\sigma_A (\mathcal Q) = \mathcal Q$
+\end{nprop}
 \end{document}
