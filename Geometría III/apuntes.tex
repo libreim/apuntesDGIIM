@@ -1386,28 +1386,45 @@ z
 \end{pmatrix} 
 \]
 
-\subsection{Cuádricas en $\R^3$}
-Una cuádrica viene dada por una ecuación de la forma:
-\[
-\mathcal Q \equiv ax^2 + by^2 + cz^2+ dxy + exz + fyz + gx + hy+ iz + j = 0
+
+
+
+
+\subsection{Cu\'adricas con centro en $\mathbb{R}^3$.}
+
+
+Una cuadr\'ica  $\cal Q$ es el lugar geom\'etrico de los puntos $P=(x,y,z)\in\mathbb{R}^3$ tales que
+\[ 
+\alpha_1 \,x^2 + 2\alpha_2 \,x y + 2\alpha_3\,x z + \alpha_4 \,y^2 + 2 \alpha_5 \,y z + \alpha_6 \,z^2 
++ 2\beta_1 \,x+ 2\beta_2 \,y +2 \beta_3 \,z + \gamma = 0
 \]
-Su expresión matricial será:
-\[
-(x,y,z)\begin{pmatrix}
- a & d/2& e/2\\
- d/2 & b &  f/2\\
-  e/2& f/2& c
-\end{pmatrix} \begin{pmatrix}
-x\\
-y\\
-z\\
-\end{pmatrix} + 2(g/2,h/2,i/2) \begin{pmatrix}
- x\\
- y\\
- z
-\end{pmatrix}  + j
+o en forma matricial 
+\[  
+\left( \begin{array}{ccc} 
+x & y & z   
+ \end{array} \right)\begin{pmatrix}
+ \alpha_1 & \alpha_2 / 2 &\alpha_3 / 2\\
+ \alpha_2 / 2 & \alpha_4 &\alpha_5 / 2\\
+ \alpha_3 / 2& \alpha_5 / 2& \alpha_6
+\end{pmatrix} 
+\left(\begin{array}{c}
+x \\
+y \\
+z
+\end{array} \right)
++
+ 2\left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right)
+\left( \begin{array}{c}
+x \\
+y \\
+z
+ \end{array} \right)
++ \gamma = 0
 \]
-La matriz $3\times 3$ será, como se puede ver, simétrica.
+
+donde $\cal A$ es una matriz $3\times 3$ sim\'etrica y no nula y $\beta_i, \gamma\in\mathbb{R}$. 
 
 \begin{nprop}
 	Toda matriz simétrica es diagonalizable por una matriz ortogonal:
@@ -1426,4 +1443,406 @@ La matriz $3\times 3$ será, como se puede ver, simétrica.
 \begin{nprop}
 	El centro de una cuádrica $\mathcal Q$ es un punto $P=(a,b,c)$ tal que la reflexión central $\sigma_A: P \mapsto -P+2A$ se tiene que $\sigma_A (\mathcal Q) = \mathcal Q$
 \end{nprop}
+
+
+\begin{ndef}[Centro]
+	Un {\it centro} de $\cal Q$ es un punto $A=(a,b,c)$ que es un centro de simetr\'ia de $\cal Q$, es decir, tal que la reflexi\'on central $\sigma_A:\mathbb{R}^3\longrightarrow\mathbb{R}^3$, $\sigma_A(P)= -P+2A$ lleva  $\cal Q$ en $\cal Q$. Hacemos el cambio de coordenadas que toma a $A$ como nuevo origen y 
+y una base ortonormal tal que la matriz del cambio de base sea $\cal P$.
+\end{ndef}
+
+
+Expresamos la cu\'adrica en las nuevas coordenadas
+\[ 
+\left( \begin{array}{ccc} 
+\overline{x} & \overline{y} & \overline{z}   
+ \end{array} \right)\overline{{\cal A}}
+\left(\begin{array}{c}
+\overline{x} \\
+\overline{y} \\
+\overline{z}  
+\end{array} \right)
++
+2
+ \left( \begin{array}{ccc}
+\overline{\beta_1} & \overline{\beta_2} & \overline{\beta_3}   
+ \end{array} \right)
+\left( \begin{array}{c}
+\overline{x} \\
+\overline{y} \\
+\overline{z}  
+ \end{array} \right)
++ \overline{\gamma} = 0
+\]
+siendo
+\[
+\overline{{\cal A}} = {\cal P}^t{\cal A}{\cal P} \hspace{1.5cm}
+\left( \begin{array}{ccc}
+\overline{\beta}_1 & \overline{\beta}_2 & \overline{\beta}_3   
+ \end{array} \right) = 
+  \left\{
+\left( \begin{array}{ccc} 
+a &  b &  c 
+ \end{array} \right){\cal A} +
+ \left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right) \right\}
+{\cal P}
+\]
+
+
+\[
+ \overline{\gamma} = \left( \begin{array}{ccc} 
+a &  b & c 
+ \end{array} \right){\cal A}
+\left(\begin{array}{c}
+a  \\
+b \\
+c  
+\end{array} \right)  + 
+2 \left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right)
+\left( \begin{array}{c}
+a \\
+b \\
+c  
+ \end{array} \right)
++ \gamma
+\]
+
+\vspace{.3cm}
+
+Para que el origen de las nuevas coordenadas sea un centro de la c\'uadrica imponemos que la parte lineal de la ecuaci\'on anterior se anule
+
+\
+
+\[
+{
+\left( \begin{array}{ccc} 
+a &  b &  c 
+ \end{array} \right){\cal A}
++
+ \left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right)
+=0 }
+\]
+y la ecuaci\'on de la cu\'adrica en esas coordenadas queda
+\[
+{\cal Q} \, \, \, \, \equiv \, \, \, \,
+\left(\begin{array}{ccc} 
+\overline{x} & \overline{y} & \overline{z}   
+ \end{array} \right){\overline{\cal A}}
+\left(\begin{array}{c}
+\overline{x} \\
+\overline{y} \\
+\overline{z}  
+\end{array} \right) + \overline{\gamma} = 0
+\]
+siendo $\overline{\gamma}$ la constante dada por
+\[
+\overline{\gamma} = 
+\left\{
+\left( \begin{array}{ccc} 
+a &  b &  c 
+ \end{array} \right){\cal A}
++
+ 2\left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right)\right\}
+\left( \begin{array}{c}
+a \\
+b \\
+c  
+ \end{array} \right)
++\gamma = 
+\left( \begin{array}{ccc}
+\beta_1 & \beta_2 & \beta_3   
+ \end{array} \right)
+\left( \begin{array}{c}
+a \\
+b \\
+c  
+ \end{array} \right)+\gamma
+\]
+\[
+{ 
+\overline{\gamma} =
+\beta_1 a+ \beta_2 b+ \beta_3  c 
++\gamma
+}
+\]
+
+\subsubsection{\bf Ecuaci\'on reducida de una cu\'adrica con centro}
+
+Para obtener la ecuaci\'on reducida de la cu\'adrica, consideramos el sistema de referencia que tiene como origen el centro de $\cal Q$ y como vectores una base ortonormal de vectores propios de la matriz $\cal A$ y valores propios $\lambda_1,\lambda_2,\lambda_3$. Entonces
+\[
+{\cal R} =\{A; {e}_1, {e}_2, {e}_3 \}
+\hspace{2cm}
+{\cal Q} \, \, \, \equiv \, \, \, \lambda_1 {x}^2 +\lambda_2 {y}^2 +\lambda_3 {z}^2 +
+{\gamma} = 0.
+\]
+A continuaci\'on damos la lista de los distintos tipos de cu\'adricas con centro y  sus ecuaciones reducidas. Cuando ${\gamma}\neq 0$, estas ecuaciones se obtienen dividiendo la ecuaci\'on anterior por ${\gamma}$. 
+
+\begin{itemize}
+	
+\item
+{ {\bf Rango de ${\cal A} = 3$.}} 
+
+\vspace{.3cm}
+
+Si $\cal A$ tiene rango $3$ entonces $\cal Q$ tiene un \'unico centro.
+Entonces existen $a,b,c>0$ tales que en esas coordenadas la cu\'adrica se escribe 
+
+
+\begin{tabular}{ll}
+{\bf  Elipsoide} \hspace{5cm} & 
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2} = 1
+$
+\vspace{.5cm}
+\\
+{\it Elipsoide imaginario}  &
+$
+-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} - \frac{{z}^2}{c^2} = 1
+$
+\vspace{.5cm}
+\\
+{\bf  Hiperboloide de una hoja}  &
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1
+$
+\vspace{.5cm}
+\\
+{\bf  Hiperboloide de dos hojas} &
+$
+\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1
+$
+\vspace{.5cm}
+\\
+{\bf  Cono}  &
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 0
+$
+\vspace{.5cm}
+\\
+{\it Cono imaginario}  &
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2}=0
+$
+\vspace{.4cm}
+\end{tabular}
+
+
+
+\item {\bf Rango ${\cal A}=2$.} 
+
+
+Consideramos cu\'adricas con centro y rango $2$ en el sistema de referencia $\cal R$
+
+\vspace{.5cm}
+
+\begin{tabular}{ll}
+{\bf Cilindro el\'iptico} \hspace{5cm} & 
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=1
+$
+\vspace{.5cm}
+\\
+{\it Cilindro imaginario}  &
+$
+-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1
+$
+\vspace{.5cm}
+\\
+{\bf  Cilindro hiperb\'olico}  &
+$
+\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1
+$
+\vspace{.5cm}
+\\
+{\bf  Par de planos reales}  &
+$
+\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=0
+$
+\vspace{.5cm}
+\\
+{\it Par de planos imaginarios} &
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=0
+$
+\vspace{.3cm}
+\\
+\end{tabular}
+ 
+
+
+\item {\bf Rango ${\cal A}=1$.} 
+
+\vspace{.4cm}
+
+Cu\'adricas con centro y rango $1$ en el sistema de referencia $\cal R$
+
+\vspace{.5cm}
+
+\begin{tabular}{ll}
+{\bf  Par de planos paralelos.} \hspace{5cm} & 
+$
+\frac{{x}^2}{a^2}=1
+$
+\vspace{.4cm}
+\\
+{\it Par de planos imaginarios paralelos}  &
+$
+\frac{{x}^2}{a^2} =-1
+$
+\vspace{.4cm}
+\\
+{\bf  Plano doble}  &
+$
+{{x}^2} = 0
+$
+\vspace{.3cm}
+\\
+\end{tabular}
+
+\end{itemize}
+
+
+\subsection{\bf  C\'onicas con centro en $\mathbb{R}^2$.}
+
+\vspace{.5cm}
+
+Dada una c\'onica $\cal C$ con centro consideramos el sistema de referencia 
+${\cal R}=\{A; e_1,e_2\}$ donde $A$ 
+es el centro y $e_1,e_2$ es una base ortonormal de vectores propios de la matriz $\cal A$. Se tienen los siguientes casos
+
+\vspace{.8cm}
+
+\begin{tabular}{ll}
+{\bf Elipse} \hspace{5cm} & 
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2} = 1
+$
+\vspace{.4cm}
+\\
+{\it Elipse imaginaria}  &
+$
+-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1
+$
+\vspace{.4cm}
+\\
+{\bf  Hip\'erbola}  &
+$
+\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1
+$
+\vspace{.4cm}
+\\
+{\bf  Par de rectas reales concurrentes}  &
+$
+\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=0
+$
+\vspace{.4cm}
+\\
+{\it Par de rectas imaginarias} &
+$
+\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=0
+$
+\vspace{.4cm}
+\\
+{\bf  Par de rectas reales paralelas}  &
+$
+\frac{{x}^2}{a^2}=1
+$
+\vspace{.4cm}
+\\
+{\it Par de rectas imaginarias paralelas}  &
+$
+-\frac{{x}^2}{a^2} = 1
+$
+\vspace{.4cm}
+\\
+{\bf  Recta doble}  &
+$
+{{x}^2} = 0
+$
+\vspace{.3cm}
+\\
+\end{tabular}
+\subsubsection{\bf  Elementos notables de las c\'onicas y cu\'adricas con centro.}
+
+\begin{ndef}[Centro]
+	Es un centro de simetría
+\end{ndef}
+
+
+
+\begin{ndef}[Ejes]
+	 Son los ejes de simetr\'ia. Cada eje es una recta que pasa por el centro y tiene como vector director a un vector propio de la matriz $\cal A$. En $\mathbb{R}^2$ (respectivamente $\mathbb{R}^3$) se consideran dos (respectivamente tres)  ejes perpendiculares pasando por el centro.
+\end{ndef}
+
+\begin{ndef}[Vértices]
+	La intersecci\'on de los ejes con la c\'onica o cu\'adrica.
+\end{ndef}
+
+
+\subsection{\bf Cu\'adricas sin centro en $\mathbb{R}^3$.}
+
+
+Sea $\cal Q$ una cu\'adrica sin centro tal que el rango de $\cal A$ sea $2$. Entonces los valores propios son 
+$\lambda_1,\lambda_2 \neq 0$ y $\lambda_3=0$. Tomamos el sistema de referencia ${\cal R} = \{O; e_1,e_2,e_3\}$ con una base de vectores propios y la ecuaci\'on queda de la forma 
+
+\vspace{.3cm}
+
+\[
+{\cal Q} \, \, \equiv \, \, \lambda_1 x^2 + \lambda_2 y^2 + \beta_1 x + \beta_2 y + \beta_3 z + \gamma = 0
+\]  
+
+\vspace{.2cm}
+
+Consideramos un nuevo sistema de referencia $\overline{{\cal R}} = \{A;e_1,e_2,e_3\}$ de manera que el origen 
+$A=(\alpha_1,\alpha_2,\alpha_3)$ nos permita obtener cuadrados perfectos en $\overline{x}=x-\alpha_1$ e 
+$\overline{y}=y-\alpha_2$. La nueva ecuaci\'on es
+\[
+{\cal Q} \, \, \equiv \, \, \lambda_1 \overline{x}^2 + \lambda_2 \overline{y}^2 + 
+\overline{\beta}_3 \overline{z} = 0
+\]
+donde $\overline{\beta}_3\neq 0$ ya que la cu\'adrica no tiene centro. Esto nos permite obtener las ecuaciones reducidas para el caso sin centro.
+
+
+\subsubsection{\bf Ecuaciones reducidas para cu\'adricas sin centro.}
+
+\begin{itemize}
+
+\item {Rango $\cal A$ $=2$.}
+
+
+
+{\bf Paraboloide El\'iptico.}    \hspace{2.7cm}   $z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
+
+\vspace{.2cm}
+
+{\bf Paraboloide Hiperb\'olico.}    \hspace{2cm}   $z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$
+
+\vspace{0.5cm}
+
+\item {Rango $\cal A$ $=1$.}
+
+
+{\bf Cilindro Parab\'olico}    \hspace{3.3cm}   $z = \frac{x^2}{a^2}$ 
+
+\end{itemize}
+
+\subsection{\bf C\'onicas sin centro en $\mathbb{R}^2$.}
+
+
+
+{\bf Par\'abola} \hspace{5.5cm}  $y = \frac{x^2}{a^2}$
+
+
+
+\subsection{Cuádricas sin centro}
+
+
+
 \end{document}
