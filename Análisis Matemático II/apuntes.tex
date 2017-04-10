@@ -870,23 +870,23 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
   
   \begin{proof}
     Por el criterio de Cauchy para la convergencia de una serie de números positivos (las sumas parciales son de Cauchy), se tiene que:
-    $$ \forall \epsilon > 0\ \exists n_{o} \in \mathbb{N}:\ |S_{n+k} - S_{n-1}| = M_{n} + ... + M_{n+k} < \epsilon\ \  \forall n \geq n_{o}\ \forall k \in \mathbb{N} $$
+    $$ \forall \epsilon > 0\ \exists n_{0} \in \mathbb{N}:\ |S_{n+k} - S_{n-1}| = M_{n} + \dots + M_{n+k} < \epsilon\ \  \forall n \geq n_{0}\ \forall k \in \mathbb{N} $$
     
     Usando que $ |f_{n}(x)| \leq M_{n}\ \forall x \in A $ y la desigualdad triangular obtenemos:
-    $$ |f_{n}(x) + ... + f_{n+k}(x)| \leq |f_{n}(x)| + ... + |f_{n+k}(x)| \leq M_{n} + ... + M_{n+k} < \epsilon\ \ \forall x \in A $$
+    $$ |f_{n}(x) + \dots + f_{n+k}(x)| \leq |f_{n}(x)| + \dots + |f_{n+k}(x)| \leq M_{n} + \dots + M_{n+k} < \epsilon\ \ \forall x \in A $$
     
     Y por tanto:
-    $$\forall \epsilon > 0\ \exists n_{o} \in \mathbb{N}:\ |f_{n}(x) + .... + f_{n+k}(x)| < \epsilon\ \  \forall n \geq n_{o}\ \forall k \in \mathbb{N}\ \forall x \in A $$
+    $$\forall \epsilon > 0\ \exists n_{0} \in \mathbb{N}:\ |f_{n}(x) + \dots + f_{n+k}(x)| < \epsilon\ \  \forall n \geq n_{0}\ \forall k \in \mathbb{N}\ \forall x \in A $$
     
     Como la sucesión de sumas parciales de la serie de funciones $\sum_{n\ge 1} f_n$ converge uniformemente, queda probado que dicha serie converge uniformemente en A.
   \end{proof}
 \end{nth}
 
-\begin{nth}[Criterio de Abel] \label{11} Sean $ A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
+\begin{nth}[Criterio de Abel] \label{11} Sean $ A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
   $$\sum_{n \ge 1} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n \ge 1} \phi_n(x) f_n(x)\ c. u.\ en\ A.$$
 \end{nth}
 
-\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^n\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
+\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
 
   Entonces, la serie $\displaystyle \sum_{n\ge 1} \phi_n(x)f_n(x)$ converge uniformemente en $A$.
   
@@ -912,7 +912,7 @@ Un caso interesante de series de funciones lo constituyen las series de potencia
 Veamos una característica importante de las series de potencias, que nos ayuda a determinar su carácter de convergencia.
 
 \begin{ndef}[Radio de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos su radio de convergencia $R \in [0, \infty]$ como: $$
-  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|},$$
+  \frac{1}{R} =\underset{n\to\infty}{\mbox{\lim\,sup\,}}  \sqrt[n]{|a_n|},$$
 \end{ndef}
 
 \begin{nota}
@@ -936,7 +936,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
   \end{nlist}
 
   \begin{proof} \hfill \\
-    \textit{(i)} Sea $R'<R$. Como $\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{|a_n|} < 1/R'$, si elegimos $R''\in (R',R)$, deducimos que $\exists n_0\geq 0$ tal que $\sqrt[n]{|a_n|} \leq 1/R''$, $\forall n\geq n_0$.
+    \textit{(i)} Sea $R'<R$. Como $\underset{n\to\infty}{\mbox{\lim\,sup\,}} \sqrt[n]{|a_n|} < 1/R'$, si elegimos $R''\in (R',R)$, deducimos que $\exists n_0\geq 0$ tal que $\sqrt[n]{|a_n|} \leq 1/R''$, $\forall n\geq n_0$.
 
     Esto implica que
     \[
@@ -950,7 +950,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     \[
       \exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
     \]
-    Y por tanto, $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
+    Y por tanto, $$\underset{n\to\infty}{\mbox{\lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
 
     Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
   \end{proof}
@@ -1007,7 +1007,7 @@ Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficie
     \[
       P_k(x) =  \sum_{n=0}^k \frac{f^{n)} (a)}{n!} (x-a)^n,
     \]
-    Usando el teorema del resto, tendremos que $\exists c$ entre $x$ y $a$ tal que:
+    Usando el teorema del resto de Taylor, tendremos que $\exists c$ entre $x$ y $a$ tal que:
     \[
       |f(x)-S_k(x)| =\left| \frac{ f^{k+1)} (c)}{(k+1)!} (x-a)^{k+1}\right| \leq  M \frac{|x-a|^{k+1}}{(k+1)!} \to 0
     \]
