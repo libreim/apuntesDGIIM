@@ -14,7 +14,10 @@ task :default => [
        :pdoo,
        :algoritmica
        # add your task here
-     ]
+     ] do
+  TARGET = "apuntes.tar.gz"
+  sh "cd .out && rm -f #{TARGET} && tar -zcvf #{TARGET} * && cd .."
+end
 
 #------------ Compilation tasks ------------#
 # A task must:
@@ -61,8 +64,11 @@ rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   rescue StandardError => e
     puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
   ensure
-    sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}";
-         mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")
+    out = t.source.split("/").last.sub(".tex", ".pdf")
+    unless Dir[out].empty?
+      sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}";
+             mv "#{t.source.split("/").last.sub(".tex", ".pdf")}" "#{t.name}")  
+    end 
   end
   sh "rm -f *.log *.aux *.toc *.pdf *.out"
 end
