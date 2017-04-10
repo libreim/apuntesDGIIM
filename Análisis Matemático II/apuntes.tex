@@ -912,7 +912,7 @@ Un caso interesante de series de funciones lo constituyen las series de potencia
 Veamos una característica importante de las series de potencias, que nos ayuda a determinar su carácter de convergencia.
 
 \begin{ndef}[Radio de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos su radio de convergencia $R \in [0, \infty]$ como: $$
-  \frac{1}{R} =\underset{n\to\infty}{\mbox{\lim\,sup\,}}  \sqrt[n]{|a_n|},$$
+  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|},$$
 \end{ndef}
 
 \begin{nota}
@@ -936,7 +936,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
   \end{nlist}
 
   \begin{proof} \hfill \\
-    \textit{(i)} Sea $R'<R$. Como $\underset{n\to\infty}{\mbox{\lim\,sup\,}} \sqrt[n]{|a_n|} < 1/R'$, si elegimos $R''\in (R',R)$, deducimos que $\exists n_0\geq 0$ tal que $\sqrt[n]{|a_n|} \leq 1/R''$, $\forall n\geq n_0$.
+    \textit{(i)} Sea $R'<R$. Como $\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{|a_n|} < 1/R'$, si elegimos $R''\in (R',R)$, deducimos que $\exists n_0\geq 0$ tal que $\sqrt[n]{|a_n|} \leq 1/R''$, $\forall n\geq n_0$.
 
     Esto implica que
     \[
@@ -950,7 +950,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     \[
       \exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
     \]
-    Y por tanto, $$\underset{n\to\infty}{\mbox{\lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
+    Y por tanto, $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
 
     Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
   \end{proof}
