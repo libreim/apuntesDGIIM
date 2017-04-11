@@ -1179,16 +1179,15 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \begin{nprop}[Caracterización de funciones medibles positivas]
   Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
   \[
-    \text{f es medible} \iff \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0
-  \]
-  \[
-    \iff \{w \in \Omega : f(w) \leq \gamma \} \text{ es medible } \forall \gamma \geq 0
-  \]
-  \[
-    \iff \{w \in \Omega : f(w) > \gamma \} \text{ es medible } \forall \gamma \geq 0
-  \]
-  \[
-    \iff \{w \in \Omega : f(w) \geq \gamma \} \text{ es medible } \forall \gamma \geq 0
+  \begin{array}{lll}
+    \text{f es medible} & \iff & \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0\\
+
+    & \iff & \{w \in \Omega : f(w) \leq \gamma \} \text{ es medible } \forall \gamma \geq 0\\
+
+    & \iff & \{w \in \Omega : f(w) > \gamma \} \text{ es medible } \forall \gamma \geq 0\\
+
+    & \iff & \{w \in \Omega : f(w) \geq \gamma \} \text{ es medible } \forall \gamma \geq 0
+    \end{array}
   \]
 \end{nprop}
 %%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
@@ -1387,13 +1386,14 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
 
     \boxed{\leq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
     \[
-      \{ s  : \begin{rcases} \text{ s simple positiva}\\ s \leq f_n 
-      \end{rcases}  \subset \{ s: \begin{cases} \text{ s es simple positiva}\\
+    \left\{ s  : \begin{array}{r} \text{ s simple positiva}\\
+        s \leq f_n 
+      \end{array}\right\}  \subset \left\{ s: \begin{array}{r} \text{ s es simple positiva}\\
         s\leq f_{n+1}
 	
-      \end{cases} \} \subset \{s: \begin{cases}\text{ s es simple positiva}\\ s \leq f
+      \end{array} \right\} \subset \left\{s: \begin{array}{r}\text{ s es simple positiva}\\ s \leq f
 	
-      \end{cases}\}
+      \end{array}\right\}
     \]
     Esto implica que:
     \[
@@ -1405,10 +1405,10 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
 
     Ahora, como
     \[
-      \int_E f d \mu:= sup \{\int_E s d\mu : \begin{cases} \text{ s es simple positiva}\\
+      \int_E f d \mu:= sup \left\{\int_E s d\mu : \begin{array}{l} \text{ s es simple positiva}\\
         s \leq f
 	
-      \end{cases}\}
+      \end{array}\right\}
     \]
     basta ver que:
     \[
