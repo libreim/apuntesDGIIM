@@ -132,7 +132,7 @@
 }
 
 % Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {img/}, {'Análisis Matemático II'/img/}}
 
 % Redefinir entorno de demostración (reducir espacio superior)
 % \makeatletter
@@ -171,8 +171,8 @@
 \newcommand{\fn}{\{f_n\}}
 
 % Letra griega "chi" en línea con el texto
-\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi 
+\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{0.6\depth}{$#1\chi$}} % inner command, used by \rchi 
 
 
 % ---------------------------------------------------------------------------
@@ -1105,7 +1105,7 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
   \begin{proof}
     La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathcal A$, y aplicamos la definición de $\sigma$-álgebra.
     
-    $(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
+    La propiedad $(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
     
     Por último, $(v)$ se deriva del hecho de que $A - B = (\Omega - B) \cap A$.
   \end{proof}
@@ -1138,8 +1138,22 @@ El resto de propiedades se comprueban de forma análoga.
   \[
     f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G \in \tau
   \]
+  
+  \begin{proof} \hfill \\
+	\boxed{\Rightarrow} Como $f$ es medible, se tiene que $f^{-1}(B) \in \mathcal A \ \forall B \in \mathcal B$, y como $\tau \subseteq \mathcal B$, se verifica automáticamente que la preimagen de cualquier abierto de $X$ es medible.
 
-  %%% FALTA DEMOSTRACIÓN ----------------------------------------------------------
+\boxed{\Leftarrow} Defino $\mathcal M := \{ E \subseteq X: f^{-1}(E) \in \mathcal A\}$, y afirmo que $\mathcal M$ es una $\sigma$-álgebra sobre $X$. En efecto, utilizando que $\mathcal A$ es una $\sigma$-álgebra sobre $\Omega$, y las propiedades de la imagen inversa de conjuntos por una función:
+
+\begin{itemize}
+	\item $X \in \mathcal M$, porque $f^{-1}(X) = \Omega \in \mathcal A$.
+
+    \item Si $E \in \mathcal M$, se tiene que $X - E \in \mathcal M$, porque $f^{-1}(X-E) = f^{-1}(X) - f^{-1}(E) = \Omega - f^{-1}(E) \in \mathcal A$.
+
+    \item Si $\{A_n\} \subseteq \mathcal M$, entonces $\bigcup_{n=1}^\infty A_n \in \mathcal M$, pues $f^{-1}\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty f^{-1}(A_n) \in \mathcal A$, porque cada $f^{-1}(A_n) \in \mathcal A$.
+\end{itemize}
+
+Por otro lado, tenemos que, por hipótesis, $\tau \subseteq \mathcal M$. Como $\mathcal B$ es la más pequeña $\sigma$-álgebra sobre $X$ que contiene a $\tau$, necesariamente $\mathcal B \subseteq \mathcal M$. Pero entonces se cumple que \mbox{$f^{-1}(B) \in \mathcal A$} $\forall B \in \mathcal B$, concluyendo la prueba.
+\end{proof}
 \end{nprop}
 
 En general, cuando consideremos un espacio $X$ sin decir explícitamente quién es la $\sigma-$álgebra asociada, daremos por hecho que se trata de la $\sigma$-álgebra de Borel $\mathcal B(X)$ asociada a la topología usual de $X$.
@@ -1266,7 +1280,14 @@ Una característica importante de las funciones simples es que siempre se pueden
   \end{proof}
 \end{nprop}
 
-\begin{nth}[Teorema de Lebesgue]
+\begin{nprop}
+Si $B_1, B_2,\dots ,B_m \subseteq \Omega$ son conjuntos medibles,
+$\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \beta_k \rchi_{B_k} \ \ \text{es simple positiva.}$$ 
+
+%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
+\end{nprop}
+
+\begin{nth}[Teorema de aproximación de Lebesgue]
   Si $\Omega$ es un espacio medible y $f:\Omega \to [0,\infty]$ es una función, son equivalentes las siguientes afirmaciones:
   \begin{nlist}
   \item $f$ es medible
@@ -1284,29 +1305,28 @@ Una característica importante de las funciones simples es que siempre se pueden
   Es consecuencia directa de la \textit{Proposición \ref{p1}}, al ser $f$ el límite de funciones medibles.
   
   \boxed{i)\implies ii)} La idea principal se basa en dividir el dominio de $f$. Fijado un $n \in \mathbb{N}$, consideramos los conjuntos: 
-  \[
-    \begin{cases}
-      F_n := \{\omega \in \Omega : f(\omega) \geq n\}\\
-      E_{n,k} := \left\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\right\}, \text{ para } 1 \leq k \leq n2^n
-    \end{cases}
-  \]
+    \begin{itemize}
+      \item $F_n := \{\omega \in \Omega : f(\omega) \geq n\}$\\
+      \item $E_{n,k} := \left\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\right\}$, \text{ para } $1 \leq k \leq n2^n$\\
+    \end{itemize}
+  
   
   Así, tenemos que:
   \[
     \Omega = F_n \cup \left( \bigcup_{k=1}^{n2^n}E_{n,k} \right)
   \]
   
-  y que:
+  y podemos definir las funciones
   \[
-    s_n = n\rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
+    s_n := n\rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
   \]
-  Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible (por serlo $f$ y la función característica de un conjunto), y $s(\Omega)$ es finito, por lo que $s$ es simple.
+  Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
   
   \textbf{COMPLETAR LA PRUEBA CON DIAPOSITIVAS}
   %%% FALTA COMPLETAR CON DIAPOSITIVAS ---------------------------------------
 \end{proof}
 
-\begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to \mathbb{R}$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
+\begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
   \begin{proof}
     Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, manteniendo la monotonía creciente. Entonces, aplicamos de nuevo el \textit{Teorema de Lebesgue} para concluir que la función $f+g$ es medible.
     
