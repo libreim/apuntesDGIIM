@@ -1421,6 +1421,8 @@ con convergencia uniforme en el caso $f(\omega) <\infty$. \qed
   
 \end{proof}
 
+%%% TODO: Revisar prueba teorema de aproximación de Lebesgue
+
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
   \begin{proof}
     Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, manteniendo la monotonía creciente. Entonces, aplicamos de nuevo el \textit{Teorema de Lebesgue} para concluir que la función $f+g$ es medible.
@@ -1464,7 +1466,7 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
   %%% FALTA DEMOSTRACIÓN --------------------------------------------------------
 \end{nprop}
 
-\textbf{FALTAN EJEMPLOS DE MEDIDAS (DIAPOSITIVAS)}
+%%% FIXME: FALTAN EJEMPLOS DE MEDIDAS (DIAPOSITIVAS)
 %%% EJEMPLOS DE MEDIDAS -------------------------------------------------------
 
 Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
@@ -1476,7 +1478,7 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
   \]
 \end{ndef}
 
-%%% FALTA UN EJERCICIO (DIAPOSITIVAS). ¿PONER AQUÍ, O EN EJERCICIOS.TEX? --------
+%%% FIXME: FALTA UN EJERCICIO (DIAPOSITIVAS). ¿PONER AQUÍ, O EN EJERCICIOS.TEX? --------
 
 \begin{ndef}[Integral de función medible positiva]
   Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
@@ -1496,7 +1498,7 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
     $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente.
   \end{nota}
 
-  %%% ARREGLAR ESTILO Y COMPARAR CON DIAPOSITIVAS --------------------------------
+  %%% TODO: ARREGLAR ESTILO Y COMPARAR CON DIAPOSITIVAS --------------------------------
   \begin{proof} Veamos las dos desigualdades.
 
     \boxed{\leq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
@@ -1516,7 +1518,7 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
     \]
     \boxed{\geq}\hfill \\
     Para probar esta desigualdad, usaremos el siguiente lema: 
-    %%% AÑADIR EL LEMA ANTES DEL TEOREMA ---------------------------------------
+    %%% TODO: AÑADIR EL LEMA ANTES DEL TEOREMA ---------------------------------------
 
     Ahora, como
     \[
@@ -1583,7 +1585,7 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
       S_k= \sum_{n=1}^k f_n \quad \text{sumas parciales}
     \]
     Y tenemos que $S_1 \leq \cdots \leq S_k \leq S_{k+1} \leq \cdots $, es decir, $S_k$ es monótona creciente. Aplciando el $T.C.M.$, tenemos que:
-    %%% COmpletar esta prueba falta un poco
+    %%% TODO: Completar esta prueba falta un poco
     \[
       \lim_{k \to \infty} \int_E S_k d\mu = \int_E \lim_{k\to \infty} S_k d\mu = \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n d\mu = \int_E \lim_{k\to \infty }
     \]
@@ -1611,7 +1613,7 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
 \end{nlist}
 
 
-%%% ES UN LEMA; BUSCAR SI HACER ENTORNO PARA LEMAS. COPIAR DEMOSTRACIÓN.
+%%% TODO: ES UN LEMA; BUSCAR SI HACER ENTORNO PARA LEMAS. COPIAR DEMOSTRACIÓN.
 \begin{nprop}
   Si $(\Omega,\mathcal{A},\mu)$ un espacio de medida, $E\in \mathcal{A}$ y $f_n:\Omega \to [0,\infty]$ medible. Entonces:
   \[
@@ -1625,7 +1627,7 @@ Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathca
   \end{proof}
 \end{nprop}
 
-\textbf{FALTAN COSAS}
+%%% FIXME: FALTAN COSAS
 
 
 
@@ -1722,7 +1724,7 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
   Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$
 \end{nprop}
 
-% Borrar?
+% WARNING: Borrar?
 
 Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathcal A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
 
@@ -1853,7 +1855,7 @@ Ejercicio:
     f_{\sigma(k+1)}(\omega) \to h(\omega) + f_{\sigma(1)}(\omega)
   \]
   
-  %%% completar:
+  %%% TODO: completar:
   Falta añadir por qué $g(\omega) + f_{\sigma(1)} \in \mathcal L ^p (\Omega)$
   
   
@@ -1989,12 +1991,12 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   Por tanto, queda probado que ${f_{n}(\omega)} \rightarrow f(\omega)$
   c.u. $\omega \in F$.
 
-  % Acaba de decir no se qué de una propiedad de no se qué medida que dice
+  % WARNING: Acaba de decir no se qué de una propiedad de no se qué medida que dice
   % que está mal ayuda antcc      
 
 \end{proof}
 
-% Qué es esto
+% WARNING: Qué es esto
 
 \begin{ejemplo}
   Dado $\Omega = \R$ tal que $\mu(\Omega) = \infty$. Tomando $A_n = [n,
