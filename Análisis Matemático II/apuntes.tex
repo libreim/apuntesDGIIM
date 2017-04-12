@@ -1321,9 +1321,104 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
     s_n := n\rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
   \]
   Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
+
+  Ahora, ${s_n}$ es monótona creciente, pues:
+  \[
+      \begin{aligned}
+ s_{n+1}-s_n =&  \sum_{k=1}^{(n+1)2^{n+1}} \frac{k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,k}} 
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				\\
+			&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} 
+				\\ %\pause
+			=& \sum_{k=1}^{(n+1)2^{n}} \left[ \frac{2k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \frac{(2k-1)-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+									\\
+			&
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
+				\\
+%				\pause
+			\geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+%									\\
+%			&
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				\\
+				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
+ \end{aligned}
+      \]
+
+      \[
+\begin{aligned}
+ s_{n+1}-s_n \geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				\\
+				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
+				\\ %\pause
+				\geq& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				\\
+				+&\sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
+                                \\
+                                = & \sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
+				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
+\end{aligned}
+\]
+
+Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Y usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y 
+ \begin{multline*}
+ \left( E_{n+1, 2(1+n2^n)-1} \cup E_{n+1, 2(1+n2^n)}  \right)
+ \cup
+ \left(E_{n+1, 2(2+n2^n)-1} \cup E_{n+1, 2(2+n2^n)} \right)
+ \cup
+ \dots
+ \\
+ \dots
+ \cup
+ \left( E_{n+1, (1+n)2^{n+1}-1} \cup E_{n+1, (1+n)2^{n+1}} \right) 
+ =F_{n} \setminus F_{n+1}
+\end{multline*}
+\[
+\implies s_{n+1}-s_n \geq  n \text{\huge{$\chi$}}_{F_{n}\setminus F_{n+1}}+ (n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} 
+\geq 0\]
+
+Probamos para acabar esta implicaci\'on que 
+ \[ 
+ \{ s_n(\omega)\}
+ \longrightarrow f(\omega) \quad \forall \omega\in\Omega .
+ \]
+ En efecto, sea $\omega\in\Omega$ fijo. 
+ \begin{itemize}
+ \item Si $f(\omega)=\infty \implies \omega\in F_n, $ $\forall n\in \mathbb N$
+ \[
+ \implies s_n(\omega) =\sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge{$\chi$}}_{E_{n,k}}(\omega) + n 1\geq n\longrightarrow \infty .
+ \]
+ \item Si $f(\omega)<\infty \implies \exists n_0\in\mathbb N$ t.q. $f(\omega)< n_0$ y $\omega\not\in F_n$ $\forall n\geq n_0$.
+% \pause
+ \[
+ \begin{aligned}
+\implies& \forall n\geq n_0 \quad \exists_1 k= 1,2,\dots,n2^n \text{ t.q. } \frac{k-1}{2^n} \leq f(\omega) < \frac{k}{2^n}
+\\
+ \implies& s_n(\omega) = \frac{k-1}{2^n} = \frac{E(2^n f(\omega)+1)-1}{2^n} \longrightarrow f(\omega) \text{ porque }
+ \end{aligned}
+  \]
+ \end{itemize}
+
+ \[
+\begin{aligned}
+0\leq f(\omega) - s_n(\omega) &= f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} 
+\\
+({\text{Usamos } x-1\leq E(x)} )\ &\leq f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0
+\end{aligned}
+\]
+con convergencia uniforme en el caso $f(\omega) <\infty$. \qed
+
   
-  \textbf{COMPLETAR LA PRUEBA CON DIAPOSITIVAS}
-  %%% FALTA COMPLETAR CON DIAPOSITIVAS ---------------------------------------
 \end{proof}
 
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
