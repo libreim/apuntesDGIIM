@@ -16,6 +16,8 @@ A continuación puedes encontrar apuntes compilados en PDF listos para descargar
 
 ## [Fichero comprimido con todos los PDF](http://tux.ugr.es/libreimapuntesdgiim/apuntes.tar.gz)
 
+## [Lista de cosas por completar o revisar](http://tux.ugr.es/libreimapuntesdgiim/todo.pdf)
+
 ## Primer cuatrimestre
 
 ### Análisis Matemático I
