@@ -331,7 +331,7 @@
 
 \section*{Introducción}
 
-%%% FALTA COMPLETAR LA INTRODUCCIÓN ---------------------------------------------
+%%% TODO: FALTA COMPLETAR LA INTRODUCCIÓN ---------------------------------------------
 
 \newpage
 
@@ -976,8 +976,16 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
       =  \sum_{n= 0}^\infty \int_a^x a_n (x-a)^n \, dx.
     \]
   \end{nlist}
+  
+  %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------
+  %\begin{proof} \hfill
+  %\begin{nlist}
+  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluímos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
+  
+  % Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia (ver Marsden), y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, para ver que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
+  %\end{nlist}	
+  %\end{proof}
 
-  %%% FALTA DEMOSTRAR EL TEOREMA ----------------------------------------------------
 \end{nth}
 
 
@@ -1174,7 +1182,7 @@ Puesto que de ahora en adelante trabajaremos habitualmente en el espacio topoló
 \item $\infty \cdot 0 = 0$
 \end{nlist}
 
-El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principalmente en cuanto a notación y distinción de casos. Por ejemplo, en $[0, \infty]$, \textit{toda sucesión monótona creciente es convergente}, si bien el límite puede ser $\infty$. También podemos decir que existe siempre la suma de una serie, o que si $\xn$ e $\{y_n\}$ son dos sucesiones convergentes a $x$ e $y$ respectivamente, entonces $x_ny_n \to xy$.
+El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principalmente en cuanto a notación y distinción de casos. Por ejemplo, en $[0, \infty]$, \textit{toda sucesión monótona creciente es convergente}, si bien el límite puede ser $\infty$. También podemos decir que existe siempre la suma de una serie, o que si $\xn$ e $\{y_n\}$ son dos sucesiones convergentes a $x$ e $y$ respectivamente, entonces $\{x_ny_n\} \to xy$.
 
 
 % --------------------------------------------------------------------------------
@@ -1190,7 +1198,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \end{ndef}
 
 
-\begin{nprop}[Caracterización de funciones medibles positivas]
+\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles}
   Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
   \[
   \begin{array}{lll}
@@ -1209,18 +1217,24 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \begin{nprop} \label {p1}
   Sea $(\Omega,\mathcal{A})$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
   \[
-    g_1(w) =  sup\{f_n(w) : \ n \in \mathbb{N} \}
+    g_1(\omega) =  sup\{f_n(\omega) : \ n \in \mathbb{N} \}
   \]
   \[
-    g_2(w) =  inf\{f_n(w) : \ n \in \mathbb{N} \}
+    g_2(\omega) =  inf\{f_n(\omega) : \ n \in \mathbb{N} \}
   \]
   \[
-    g_3(w) = \limsup_{n\to \infty} \ f_n(w)
+    g_3(\omega) = \limsup_{n\to \infty} \ f_n(\omega)
   \]
   \[
-    g_4(w) = \liminf_{n\to \infty}  \ f_n(w)
+    g_4(\omega) = \liminf_{n\to \infty}  \ f_n(\omega)
   \]
   En particular, si $\fn \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medible.
+  
+  \begin{proof}
+	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathcal A$ una $\sigma-$álgebra.
+	
+	La demostración para $g_2(\omega)$ es análoga. La medibilidad de $g_3(\omega)$ se deriva del hecho de que $$g_3(\omega) = \limsup f_n(\omega) = \inf_{n \ge 1} \left\{\sup_{k\ge n} f_k(\omega) \right\}$$ Así, podemos ver la función como $g_3(\omega) = \inf \{h_n(\omega) : n \in \mathbb{N}\}$, donde $h_n(\omega) := \sup \{f_k(\omega) : k \ge n\}$. Combinando lo demostrado anteriormente, concluimos que $g_3(\omega)$ es medible. De nuevo, la prueba para $g_4(\omega)$ es análoga.
+\end{proof}
 \end{nprop}
 %%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
@@ -1245,6 +1259,14 @@ Una característica importante de las funciones simples es que siempre se pueden
     0 & si \ \omega \notin A
   \end{cases}
 \]
+
+\begin{nprop} La función característica $\rchi_A$ es medible si y solo si $A$ es medible.
+
+\begin{proof}
+	Evidente, notando que $\rchi^{-1}_A(1) = A$, $\rchi^{-1}_A(0) = \Omega - A$, y que la imagen de $\rchi_A$ es el espacio $\{0,1\}$ con la topología discreta.
+\end{proof}
+	
+\end{nprop}
 
 \begin{nprop}[Descomposición canónica]
   Si $s:\Omega \to [0,\infty)$ es simple con \mbox{$s(\Omega) =  \{\alpha_1,\cdots, \alpha_m\}$}, entonces los conjuntos medibles $A_k:= \{w \in \Omega: s(\omega)= \alpha_k\}$ son una partición de $\Omega$, y además:
@@ -1425,7 +1447,7 @@ con convergencia uniforme en el caso $f(\omega) <\infty$.
 
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
   \begin{proof}
-    Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, manteniendo la monotonía creciente. Entonces, aplicamos de nuevo el \textit{Teorema de Lebesgue} para concluir que la función $f+g$ es medible.
+    Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
     
     La demostración para $ \alpha f$ y $fg$ es análoga.
   \end{proof}
@@ -1459,7 +1481,7 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
     \]
   \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
-  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ se tiene:
+  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(\Omega) < \infty$ se tiene:
     $$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
   \end{nlist}
 
@@ -1472,7 +1494,7 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
 Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
 
 \begin{ndef}[Integral de función simple positiva]
-  Si $E \in \mathcal{A}$ y $s:\Omega \to [0,\infty]$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
+  Si $E \in \mathcal{A}$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
   \[
     \int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
   \]
