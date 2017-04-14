@@ -1260,10 +1260,10 @@ Una característica importante de las funciones simples es que siempre se pueden
   \end{cases}
 \]
 
-\begin{nprop} La función característica $\rchi_A$ es medible si y solo si $A$ es medible.
+\begin{nprop} \label{chi} La función característica $\rchi_A$ es medible si y solo si $A$ es medible.
 
 \begin{proof}
-	Evidente, notando que $\rchi^{-1}_A(1) = A$, $\rchi^{-1}_A(0) = \Omega - A$, y que la imagen de $\rchi_A$ es el espacio $\{0,1\}$ con la topología discreta.
+	Evidente, notando que $\rchi^{-1}_A(\{1\}) = A$, $\rchi^{-1}_A(\{0\}) = \Omega - A$, y que la imagen de $\rchi_A$ es el espacio $\{0,1\}$ con la topología discreta.
 \end{proof}
 	
 \end{nprop}
@@ -1304,10 +1304,16 @@ Una característica importante de las funciones simples es que siempre se pueden
 
 \begin{nprop}
 Si $B_1, B_2,\dots ,B_m \subseteq \Omega$ son conjuntos medibles,
-$\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \beta_k \rchi_{B_k} \ \ \text{es simple positiva.}$$ 
+$\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \beta_k \rchi_{B_k} \ \ \text{es simple positiva.}$$
 
-%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
+\begin{proof}
+	Empezamos observando que las funciones $\rchi_{B_k}$ son simples positivas para $k=1,\dots,m$. Esto es así porque son medibles (ver \textit{Proposición \ref{chi}}), y su imagen es evidentemente un conjunto finito. Concluimos viendo que $t$ es suma y producto por escalares de funciones simples positivas, y en virtud de la \textit{Proposición \ref{propsimples}}, es simple positiva.
+\end{proof}
 \end{nprop}
+
+\begin{nota}
+	La expresión de la función $t$ de la proposición anterior no es su descomposición canónica, pues podría darse el caso de que $B_i \cap B_j \neq \O$ para algún $i,j \in \{1,\dots,m\}$, $i\neq j$, y ya no podrían formar una partición de $\Omega$.
+\end{nota}
 
 \begin{nth}[Teorema de aproximación de Lebesgue]
   Si $\Omega$ es un espacio medible y $f:\Omega \to [0,\infty]$ es una función, son equivalentes las siguientes afirmaciones:
@@ -1340,7 +1346,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
   
   y podemos definir las funciones
   \[
-    s_n := n\rchi_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \rchi_{E_{n,k}}
+    s_n := n\text{\huge {$\chi$}}_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \text{\huge {$\chi$}}_{E_{n,k}}
   \]
   Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
 
@@ -1366,13 +1372,8 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 %			&
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
-				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
- \end{aligned}
-      \]
-
-      \[
-\begin{aligned}
- s_{n+1}-s_n \geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}\\
+				\geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
@@ -1389,65 +1390,50 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
                                 = & \sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
-\end{aligned}
+ \end{aligned}
+      \]
+
+Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
+\[
+ \left( E_{n+1, 2(1+n2^n)-1} \cup E_{n+1, 2(1+n2^n)}  \right)
+ \bigcup
+ \left(E_{n+1, 2(2+n2^n)-1} \cup E_{n+1, 2(2+n2^n)} \right)
+ \bigcup \
+ \dots
+\]
+\[
+ \dots \
+ \bigcup
+ \left( E_{n+1, (1+n)2^{n+1}-1} \cup E_{n+1, (1+n)2^{n+1}} \right) 
+ =F_{n} \setminus F_{n+1},
 \]
 
-Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Y usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y 
- \begin{multline*}
- \left( E_{n+1, 2(1+n2^n)-1} \cup E_{n+1, 2(1+n2^n)}  \right)
- \cup
- \left(E_{n+1, 2(2+n2^n)-1} \cup E_{n+1, 2(2+n2^n)} \right)
- \cup
- \dots
- \\
- \dots
- \cup
- \left( E_{n+1, (1+n)2^{n+1}-1} \cup E_{n+1, (1+n)2^{n+1}} \right) 
- =F_{n} \setminus F_{n+1}
-\end{multline*}
-\[
-\implies s_{n+1}-s_n \geq  n \text{\huge{$\chi$}}_{F_{n}\setminus F_{n+1}}+ (n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} 
-\geq 0\]
+tenemos que $\displaystyle s_{n+1}-s_n \geq  n \text{\huge{$\chi$}}_{F_{n}\setminus F_{n+1}}+ (n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} \geq 0$.
 
-Probamos para acabar esta implicaci\'on que 
- \[ 
- \{ s_n(\omega)\}
- \longrightarrow f(\omega) \quad \forall \omega\in\Omega .
- \]
- En efecto, sea $\omega\in\Omega$ fijo. 
+
+Probamos para acabar que $\{ s_n(\omega)\} \to f(\omega) \ \ \forall \omega\in\Omega$. En efecto, sea $\omega\in\Omega$ fijo. 
  \begin{itemize}
  \item Si $f(\omega)=\infty \implies \omega\in F_n, $ $\forall n\in \mathbb N$
  \[
- \implies s_n(\omega) =\sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge{$\chi$}}_{E_{n,k}}(\omega) + n 1\geq n\longrightarrow \infty .
+ \implies s_n(\omega) =\sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge{$\chi$}}_{E_{n,k}}(\omega) + n \cdot1\geq n\longrightarrow \infty .
  \]
- \item Si $f(\omega)<\infty \implies \exists n_0\in\mathbb N$ t.q. $f(\omega)< n_0$ y $\omega\not\in F_n$ $\forall n\geq n_0$.
-% \pause
+ \item Si $f(\omega)<\infty \implies \exists n_0\in\mathbb N$ tal que $f(\omega)< n_0$ y $\omega\not\in F_n$ $\forall n\geq n_0$.
  \[
  \begin{aligned}
-\implies& \forall n\geq n_0 \quad \exists_1 k= 1,2,\dots,n2^n \text{ t.q. } \frac{k-1}{2^n} \leq f(\omega) < \frac{k}{2^n}
+\implies& \forall n\geq n_0 \ \ \exists ! \ k= 1,2,\dots,n2^n : \frac{k-1}{2^n} \leq f(\omega) < \frac{k}{2^n}
 \\
- \implies& s_n(\omega) = \frac{k-1}{2^n} = \frac{E(2^n f(\omega)+1)-1}{2^n} \longrightarrow f(\omega) \text{ porque }
+ \implies& s_n(\omega) = \frac{k-1}{2^n} = \frac{E(2^n f(\omega)+1)-1}{2^n} \longrightarrow f(\omega),
  \end{aligned}
   \]
+porque $\displaystyle 0\leq f(\omega) - s_n(\omega) = f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} \le \left(\text{Usamos } x-1\leq E(x)\right)$\\ $\displaystyle \leq f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0$
  \end{itemize}
-
- \[
-\begin{aligned}
-0\leq f(\omega) - s_n(\omega) &= f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} 
-\\
-({\text{Usamos } x-1\leq E(x)} )\ &\leq f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0
-\end{aligned}
-\]
-con convergencia uniforme en el caso $f(\omega) <\infty$.
-
-  
+\vspace{0.5em}
+Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
 \end{proof}
-
-%%% TODO: Revisar prueba teorema de aproximación de Lebesgue
 
 \begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
   \begin{proof}
-    Por el \textit{Teorema de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
+    Por el \textit{Teorema de aproximación de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
     
     La demostración para $ \alpha f$ y $fg$ es análoga.
   \end{proof}
