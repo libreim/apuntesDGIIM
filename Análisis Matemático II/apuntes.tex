@@ -142,6 +142,9 @@
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
 
+% Permitir salto de página en ecuaciones
+\allowdisplaybreaks
+
 
 % ---------------------------------------------------------------------------
 % COMANDOS PERSONALIZADOS
@@ -172,7 +175,11 @@
 
 % Letra griega "chi" en línea con el texto
 \DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{0.6\depth}{$#1\chi$}} % inner command, used by \rchi 
+\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi 
+
+% Letra 'omega'
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
 
 
 % ---------------------------------------------------------------------------
@@ -519,7 +526,7 @@ $\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
 
   \begin{proof}
 
-    %%% MEJORAR EL FORMATO PARA INDICAR DÓNDE SE ENCUENTRA EL EJERCICIO --------------
+    %%% FIXME: MEJORAR EL FORMATO PARA INDICAR DÓNDE SE ENCUENTRA EL EJERCICIO --------------
 
     Puede consultarse en \textit{[Ejercicios, p.3]}.
   \end{proof}
@@ -1134,6 +1141,12 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
   Es decir, si la imagen inversa de un conjunto medible es otro conjunto medible.
 \end{ndef}
 
+\begin{nprop} La composición de funciones medibles es medible. Es decir, si\\ \mbox{$f:(X,\mathcal A) \longrightarrow (Y,\mathcal B)$}, $g:(Y,\mathcal B) \longrightarrow (Z,\mathcal C)$ son medibles, entonces $g\circ f$ es medible.
+	\begin{proof}
+	Evidente, pues $(g\circ f)^{-1}(C) = f^{-1}(g^{-1}(C)) \in \mathcal A$, por ser $f$ y $g$ medibles.
+\end{proof}
+\end{nprop}
+
 \begin{ndef}[$\sigma$-álgebra de Borel] Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $\mathcal B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. Además, $\mathcal B(\Omega)$ es la $\sigma$-álgebra más pequeña que contiene a $\tau$.
 \end{ndef}
 
@@ -1165,6 +1178,13 @@ Por otro lado, tenemos que, por hipótesis, $\tau \subseteq \mathcal M$. Como $\
 \end{nprop}
 
 En general, cuando consideremos un espacio $X$ sin decir explícitamente quién es la $\sigma-$álgebra asociada, daremos por hecho que se trata de la $\sigma$-álgebra de Borel $\mathcal B(X)$ asociada a la topología usual de $X$.
+
+\begin{nprop} Sean $(X,\tau_X), (Y, \tau_Y)$ dos espacios topológicos, y $f:X\longrightarrow Y$ continua. Entonces, $f$ es medible.
+
+\begin{proof} Basta observar que dado $O \in \tau_Y \implies f^{-1}(O) \in \tau_X \subseteq \mathcal B(X)$, por la continuidad de $f$.
+\end{proof}
+	
+\end{nprop}
 
 % --------------------------------------------------------------------------------
 % Aritmética de [0,\infty].
@@ -1198,8 +1218,8 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \end{ndef}
 
 
-\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles}
-  Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
+\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces: 
+  
   \[
   \begin{array}{lll}
     \text{f es medible} & \iff & \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0\\
@@ -1212,7 +1232,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
     \end{array}
   \]
 \end{nprop}
-%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
+%%% TODO: FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
 \begin{nprop} \label {p1}
   Sea $(\Omega,\mathcal{A})$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
@@ -1234,9 +1254,10 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathcal A$ una $\sigma-$álgebra.
 	
 	La demostración para $g_2(\omega)$ es análoga. La medibilidad de $g_3(\omega)$ se deriva del hecho de que $$g_3(\omega) = \limsup f_n(\omega) = \inf_{n \ge 1} \left\{\sup_{k\ge n} f_k(\omega) \right\}$$ Así, podemos ver la función como $g_3(\omega) = \inf \{h_n(\omega) : n \in \mathbb{N}\}$, donde $h_n(\omega) := \sup \{f_k(\omega) : k \ge n\}$. Combinando lo demostrado anteriormente, concluimos que $g_3(\omega)$ es medible. De nuevo, la prueba para $g_4(\omega)$ es análoga.
+	
+La última afirmación proviene de que si $\fn \to f$, entonces $\limsup f_n = \liminf f_n =$ $=\lim f_n$.
 \end{proof}
 \end{nprop}
-%%% FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
 
 % --------------------------------------------------------------------------------
@@ -1302,7 +1323,7 @@ Una característica importante de las funciones simples es que siempre se pueden
   \end{proof}
 \end{nprop}
 
-\begin{nprop}
+\begin{nprop} \label{caract_simples}
 Si $B_1, B_2,\dots ,B_m \subseteq \Omega$ son conjuntos medibles,
 $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \beta_k \rchi_{B_k} \ \ \text{es simple positiva.}$$
 
@@ -1351,8 +1372,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
   Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
 
   Ahora, ${s_n}$ es monótona creciente, pues:
-  \[
-      \begin{aligned}
+      \begin{align*}
  s_{n+1}-s_n =&  \sum_{k=1}^{(n+1)2^{n+1}} \frac{k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,k}} 
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
@@ -1390,8 +1410,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
                                 = & \sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
- \end{aligned}
-      \]
+ \end{align*}
 
 Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
 \[
@@ -1452,7 +1471,7 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
   Si $(\Omega, \mathcal A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathcal A \rightarrow [0, \infty]$ verificando:
   \begin{nlist}
   \item $\mu(\emptyset) = 0$
-  \item $\forall \{A_k\} \subseteq \mathcal A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
+  \item \textit{(Aditividad).} $\forall \{A_k\} \subseteq \mathcal A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu(A_k) $$
   \end{nlist}
   La terna $(\Omega, \mathcal A, \mu)$ se llama \textbf{espacio de medida}.
@@ -1467,17 +1486,69 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
     \]
   \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
-  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(\Omega) < \infty$ se tiene:
+  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(A_1) < \infty$ se tiene:
     $$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
   \end{nlist}
+  
+  \begin{proof}\hfill 
+\begin{nlist}
+    \item Escribimos convenientemente el conjunto B, y aplicamos la definición de medida:
+$$B= ( B\setminus A) \cup A \Longrightarrow \mu(B)= \mu ( (B\setminus A) + \mu(A)) \geq \mu(A)	$$
+\item Sabemos que si los conjuntos $A_k$ son disjuntos se da la igualdad. Si no lo son,  podemos considerar los conjuntos:
+$$B_1=A_1, \ B_2=A_2\setminus B_1, \dots , B_n=A_n \setminus B_{n-1}, \dots $$
 
-  %%% FALTA DEMOSTRACIÓN --------------------------------------------------------
+Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disjuntos dos a dos. Por la propiedad $(i)$,  $\mu (B_k) \leq \mu (A_k)$, y tenemos 
+
+  $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \mu \left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) \leq \sum_{k=1}^\infty \mu(A_k)$$
+\end{nlist}
+\end{proof}
+  %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------------------------
 \end{nprop}
 
-%%% FIXME: FALTAN EJEMPLOS DE MEDIDAS (DIAPOSITIVAS)
-%%% EJEMPLOS DE MEDIDAS -------------------------------------------------------
 
-Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
+\begin{ejemplo}[Medida contadora]
+\[ 
+ \mu: 2^\Omega\longrightarrow [0,\infty] , \
+ \mu (A) = \left\{ \begin{array}{ll}
+                               \text{card\,} A , & \text{ si } A \text{ es finito,}
+                               \\
+                               \infty , &  \text{ si } A \text{ es infinito.}
+                              \end{array}
+                              \right.
+ \]
+ 
+ Es claro que $\mu(\O) = |\O| = 0$, y si $A_k \cap A_j \ne 0$, se tiene que $\mu(A_k \cup A_j) = |A_k| + |A_j| = $\\ $= \mu(A_k) + \mu(A_j)$. Si alguno de ellos no es finito, la suma será $\infty$ por la aritmética definida en $[0,\infty]$.
+	
+\end{ejemplo}
+
+\begin{ejemplo}[Medida de Dirac]
+Sea $(\Omega,\ \mathcal A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathcal A \longrightarrow [0,\infty ]$ dada por 
+ \[
+ \delta_\omega (A) = \left\{ \begin{array}{ll}
+                                1, & \text{ si } \omega\in A,
+                               \\
+                               0 , &  \text{ si } \omega\not\in A.
+                              \end{array}
+                              \right.
+ \]
+ 
+ Fijemos $\omega \in \Omega$. Claramente $\delta_\omega(\O) = 0$, porque el conjunto vacío no contiene ningún punto. Ahora, si $A_k \cap A_j = \O$, pueden darse dos casos:
+ 
+\begin{itemize}
+    \item $\omega \in A_k\cup A_j \implies \omega \in A_k$ o bien $\omega \in A_j$. Supongamos $\omega \in A_k$. Entonces, $\delta_\omega(A_k\cup A_j) = 1 = 1 + 0 = \delta_\w(A_k) + \delta_\w(A_j)$.
+    \item $\w \notin A_k\cup A_j \implies \w \notin A_k$ y $\w \notin A_j$. Entonces, $\delta_\omega(A_k\cup A_j) = 0 = 0 + 0 =$ $=\delta_\w(A_k) + \delta_\w(A_j)$.
+\end{itemize}
+	
+\end{ejemplo}
+
+\begin{ejemplo}[Medida de Lebesgue]
+	 Si $(\Omega = \mathbb R^N, \mathcal A= \mathcal B(\mathbb R^N))$ espacio medible, la medida de Lebesgue es $\lambda: \mathcal A \to [0,\infty]$ dada por  
+ \[
+ \lambda ([a_1,b_1]\times  [a_2,b_2]\times \dots [a_N,b_N]) = (b_1-a_1) (b_2-a_2) \dots (b_N-a_N)
+ \]
+\end{ejemplo}
+
+Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida $(\W, \mathcal A, \mu)$. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
 
 \begin{ndef}[Integral de función simple positiva]
   Si $E \in \mathcal{A}$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
@@ -1486,51 +1557,83 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
   \]
 \end{ndef}
 
-%%% FIXME: FALTA UN EJERCICIO (DIAPOSITIVAS). ¿PONER AQUÍ, O EN EJERCICIOS.TEX? --------
+Comprobemos ahora que la definición es consistente, es decir, que el valor de la integral no depende de la representación de $s$. Sea $s = \sum_{j=1}^m \beta_j \rchi_{B_j}$ con $\{B_j\}_{j=1}^m$ medibles y disjuntos, y $\{\beta_1,\dots,\beta_m\} \subseteq [0,\infty)$. Sabemos por la \textit{Proposición \ref{caract_simples}} que $s$ es simple. Además, supongamos que $s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su descomposición canónica.
+
+Observemos que puede ocurrir que $\beta_i = \beta_j$ para algún $i\neq j$. Teniendo esto en cuenta, definimos $I_k := \{j \in \{1,\dots,m\} : \beta_j = \alpha_k\}$, y entonces $$A_k = \bigcup_{j\in I_k} B_j$$ Realizando transformaciones algebraicas, tenemos que $$\sum_{j=1}^m \beta_j\mu(E \cap B_j) = \sum_{k=1}^n \sum_{j \in I_k} \beta_j \mu(E \cap B_j) = \sum_{k=1}^n \alpha_k \sum_{j \in I_k} \mu(E \cap B_j) \overset{(*)}{=} \sum_{k=1}^n \alpha_k  \mu \left(\bigcup_{j \in I_k} E \cap B_j \right) = $$ 
+
+$$= \sum_{k=1}^n \alpha_k  \mu \left(E \cap\bigcup_{j \in I_k} B_j \right) = \sum_{k=1}^n \alpha_k  \mu (E \cap A_k)$$
+
+donde la igualdad $(*)$ se da por la \textit{aditividad} de $\mu$, teniendo en cuenta que los conjuntos $\{B_j \cap E\}_{j=1}^m$ son disjuntos dos a dos, por serlo $\{B_j\}_{j=1}^m$.
+
+Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \beta_j \mu(E \cap B_j)$$
+
+%%% TODO: Se puede demostrar que no es necesario que los conjuntos B_j sean disjuntos.
+
+\begin{nprop}[Propiedades integral función simple] \label{int_simples} Sea $s$ una función simple. Entonces, se verifica lo siguiente:
+\vspace{0.5em}
+    \begin{nlist}
+    \item $\displaystyle \int_E \alpha s\, d\mu = \alpha \int_E s\, d\mu, \quad \forall \alpha \in [0,\infty]$
+    \item Si $A,B$ son dos conjuntos medibles y disjuntos, entonces $$\int_{A \cup B} s\, d\mu = \int_A s\,d\mu + \int_B s\, d\mu$$
+    \item Si $t$ es simple y $\displaystyle s(\omega) \leq t(\omega)\ \forall \w \in \W$, entonces $\displaystyle \int_E s\, d\mu \leq \int_E t\, d\mu$
+    \end{nlist}
+    
+    \begin{proof} Supongamos que $\displaystyle s = \sum_{k=1}^n \alpha_k\rchi_{A_k}$ (descomposición canónica).\hfill
+    \begin{nlist}
+	\item Sabemos que $\alpha s$ es una función simple, por ser producto de una simple y un escalar. De hecho, $\displaystyle \alpha s = \sum_{k=1}^n \alpha \alpha_k \rchi_{A_k}$. Entonces, se tiene que: $$\int_E \alpha s\, d\mu = \sum_{k=1}^n \alpha \alpha_k \mu (E\cap A_k) = \alpha \sum_{k=1}^n \alpha_k \mu (E\cap A_k) = \alpha \int_E s\, d\mu$$
+	\item Basta observar lo siguiente: $$\int_{A\cup B} s\, d\mu = \sum_{k=1}^n \alpha_k\cdot \mu((A\cup B)\cap A_k) = \sum_{k=1}^n \alpha_k \cdot \mu((A\cap A_k)\cup (B \cap A_k)) \overset{(*)}{=}$$ $$=\sum_{k=1}^n \alpha_k \left( \mu(A\cap A_k) +  \mu(B \cap A_k)\right) = \sum_{k=1}^n \alpha_k \mu(A\cap A_k) + \sum_{k=1}^n \alpha_k \mu(B\cap A_k) =$$ $$= \int_A s\, d\mu + \int_B s\, d\mu,$$ 
+	
+	donde $(*)$ es consecuencia de la \textit{aditividad} de $\mu$, teniendo en cuenta que $(A\cap A_k)$ y $(B\cap A_k)$ son disjuntos, por serlo $A$ y $B$.
+\end{nlist}
+\end{proof}
+%%% TODO: Completar demostración último apartado
+\end{nprop}
 
 \begin{ndef}[Integral de función medible positiva]
   Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
   \[
     \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ s es simple positiva}, \ s \leq f\right\}
   \]
+  
 \end{ndef}
 
-%%% PREÁMBULO DEL TEOREMA (MOTIVACIÓN) ---------------------------------------
+Veamos ahora un teorema importante que, dada una sucesión de funciones convergente, nos permite bajo ciertas condiciones "intercambiar la integral con el límite". Antes, necesitaremos el siguiente
+
+
+\begin{lema} \label{phi}
+	Sea $s:\W \to [0,\infty)$ simple. Entonces, $\varphi:\mathcal A \to [0,\infty]$ dada por $$\varphi(E) = \int_E s\, d\mu, \quad \forall E \in \mathcal A$$ es una medida.
+	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\O) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$ 
+	
+	donde $(*)$ es consecuencia de la \textit{Proposición \ref{int_simples} ii}. Por tanto, $\varphi$ es aditiva, luego es una medida.
+	    %%% TODO: Estilo de referencias a un apartado en específico de una proposición.
+\end{proof}
+\end{lema}
 
 \begin{nth}[Teorema de la convergencia monótona]
   Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in \mathcal A$ y $f_n: \Omega \to [0,\infty]$ medibles. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \, \ \forall \omega \in \Omega$. Entonces:
   \[
     \int_E \lim_{n \to \infty} f_n\ d\mu = \lim_{n \to \infty}\int_E f_n\, d \mu
   \]
-  \begin{nota}
-    $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente.
-  \end{nota}
-
   %%% TODO: ARREGLAR ESTILO Y COMPARAR CON DIAPOSITIVAS --------------------------------
-  \begin{proof} Veamos las dos desigualdades.
+  \begin{proof} Empezamos observando que $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente. Veamos ahora las dos desigualdades.
 
-    \boxed{\leq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
+    \boxed{\geq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
     \[
     \left\{ s  : \begin{array}{r} \text{ s simple positiva}\\
         s \leq f_n 
-      \end{array}\right\}  \subset \left\{ s: \begin{array}{r} \text{ s es simple positiva}\\
+      \end{array}\right\}  \subseteq \left\{ s: \begin{array}{r} \text{ s es simple positiva}\\
         s\leq f_{n+1}
 	
-      \end{array} \right\} \subset \left\{s: \begin{array}{r}\text{ s es simple positiva}\\ s \leq f
+      \end{array} \right\} \subseteq \left\{s: \begin{array}{r}\text{ s es simple positiva}\\ s \leq f
 	
       \end{array}\right\}
     \]
-    Esto implica que:
+    Tomando supremos de las respectivas integrales, esto implica que:
     \[
-      \xrightarrow{sup} \int_E f_n d \mu \leq \int_E f_{n+1} d\mu \leq \int_e f d \mu \implies \exists \lim_{n\to \infty} \int_E f_n d\mu \leq \int_E f d \mu
+      \int_E f_n\, d \mu \leq \int_E f_{n+1}\, d\mu \leq \int_E f\, d \mu \implies \exists \lim_{n\to \infty} \int_E f_n\, d\mu \leq \int_E f\, d \mu
     \]
-    \boxed{\geq}\hfill \\
-    Para probar esta desigualdad, usaremos el siguiente lema: 
-    %%% TODO: AÑADIR EL LEMA ANTES DEL TEOREMA ---------------------------------------
-
-    Ahora, como
+    \boxed{\leq} Para probar esta desigualdad, usaremos el \textit{Lema \ref{phi}}. Ahora, como
     \[
-      \int_E f d \mu:= sup \left\{\int_E s d\mu : \begin{array}{l} \text{ s es simple positiva}\\
+      \int_E f\, d \mu = sup \left\{\int_E s\, d\mu : \begin{array}{l} \text{ s es simple positiva}\\
         s \leq f
 	
       \end{array}\right\}
