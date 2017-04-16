@@ -1303,8 +1303,10 @@ Una característica importante de las funciones simples es que siempre se pueden
   Por tanto, dado $\omega \in \Omega$, $\exists ! \ k_0 \in \{1,\dots,m\} \text{ tal que } \omega \in A_{k_0}$, de donde se deduce la descomposición canónica de $s$.
 \end{proof}
 
+En general, reservaremos las letras $\alpha_k$ y $A_k$ para denotar las constantes y los conjuntos que intervienen en la descomposición canónica de una función simple.
 
-\begin{nprop}[Propiedades de funciones simples] \label{propsimples}
+
+\begin{nprop}[Aritmética de funciones simples] \label{propsimples}
   Si $s$ y $t$ son funciones simples positivas y $\alpha \in [0,\infty)$, entonces $s+t, \ \alpha s, \ st$ son también simples positivas.
   
   \begin{proof}
@@ -1359,7 +1361,10 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
       \item $E_{n,k} := \left\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\right\}$, \text{ para } $1 \leq k \leq n2^n$\\
     \end{itemize}
   
-  
+  Veamos gráficamente ambos conjuntos, para un $n\in \mathbb{N}$ fijo:
+  \begin{center}
+	\includegraphics[height=15\baselineskip]{fig_th_Lebesgue.pdf}
+\end{center}
   Así, tenemos que:
   \[
     \Omega = F_n \cup \left( \bigcup_{k=1}^{n2^n}E_{n,k} \right)
@@ -1450,7 +1455,7 @@ porque $\displaystyle 0\leq f(\omega) - s_n(\omega) = f(\omega) - \frac{E(2^n f(
 Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
 \end{proof}
 
-\begin{ncor}[Propiedades funciones medibles] Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
+\begin{ncor}[Aritmética de funciones medibles positivas] \label{arit_medibles} Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
   \begin{proof}
     Por el \textit{Teorema de aproximación de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
     
@@ -1477,7 +1482,7 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
   La terna $(\Omega, \mathcal A, \mu)$ se llama \textbf{espacio de medida}.
 \end{ndef}
 
-\begin{nprop}[Propiedades de una medida] Si $(\Omega, \mathcal A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
+\begin{nprop}[Propiedades de una medida] \label{prop_medida} Si $(\Omega, \mathcal A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
   \begin{nlist}
   \item (Monotonía). Si $A,B \in \mathcal{A},\ A \subseteq B \implies \mu(A) \leq \mu(B)$
   \item (Subaditividad). $\forall \{A_k\} \subseteq \mathcal{A}$, se tiene:
@@ -1569,7 +1574,7 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
 
 %%% TODO: Se puede demostrar que no es necesario que los conjuntos B_j sean disjuntos.
 
-\begin{nprop}[Propiedades integral función simple] \label{int_simples} Sea $s$ una función simple. Entonces, se verifica lo siguiente:
+\begin{nprop}[Propiedades integral funciones simples] \label{int_simples} Sea $s$ una función simple. Entonces, se verifica lo siguiente:
 \vspace{0.5em}
     \begin{nlist}
     \item $\displaystyle \int_E \alpha s\, d\mu = \alpha \int_E s\, d\mu, \quad \forall \alpha \in [0,\infty]$
@@ -1591,12 +1596,12 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
 \begin{ndef}[Integral de función medible positiva]
   Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
   \[
-    \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ s es simple positiva}, \ s \leq f\right\}
+    \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ $s$ es simple positiva}, \ s \leq f\right\}
   \]
   
 \end{ndef}
 
-Veamos ahora un teorema importante que, dada una sucesión de funciones convergente, nos permite bajo ciertas condiciones "intercambiar la integral con el límite". Antes, necesitaremos el siguiente
+Veamos ahora un teorema importante que, dada una sucesión de funciones convergente, nos permite bajo ciertas condiciones ``intercambiar la integral con el límite''. Antes, necesitaremos el siguiente
 
 
 \begin{lema} \label{phi}
@@ -1608,22 +1613,21 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 \end{proof}
 \end{lema}
 
-\begin{nth}[Teorema de la convergencia monótona]
+\begin{nth}[Teorema de la convergencia monótona] \label{tcm}
   Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in \mathcal A$ y $f_n: \Omega \to [0,\infty]$ medibles. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \, \ \forall \omega \in \Omega$. Entonces:
   \[
     \int_E \lim_{n \to \infty} f_n\ d\mu = \lim_{n \to \infty}\int_E f_n\, d \mu
   \]
-  %%% TODO: ARREGLAR ESTILO Y COMPARAR CON DIAPOSITIVAS --------------------------------
   \begin{proof} Empezamos observando que $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente. Veamos ahora las dos desigualdades.
 
     \boxed{\geq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
     \[
-    \left\{ s  : \begin{array}{r} \text{ s simple positiva}\\
+    \left\{ s  : \begin{array}{r} \text{ $s$ simple positiva}\\
         s \leq f_n 
-      \end{array}\right\}  \subseteq \left\{ s: \begin{array}{r} \text{ s es simple positiva}\\
+      \end{array}\right\}  \subseteq \left\{ s: \begin{array}{r} \text{ $s$ es simple positiva}\\
         s\leq f_{n+1}
 	
-      \end{array} \right\} \subseteq \left\{s: \begin{array}{r}\text{ s es simple positiva}\\ s \leq f
+      \end{array} \right\} \subseteq \left\{s: \begin{array}{r}\text{ $s$ es simple positiva}\\ s \leq f
 	
       \end{array}\right\}
     \]
@@ -1631,115 +1635,142 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \[
       \int_E f_n\, d \mu \leq \int_E f_{n+1}\, d\mu \leq \int_E f\, d \mu \implies \exists \lim_{n\to \infty} \int_E f_n\, d\mu \leq \int_E f\, d \mu
     \]
-    \boxed{\leq} Para probar esta desigualdad, usaremos el \textit{Lema \ref{phi}}. Ahora, como
+    \boxed{\leq} Como
     \[
-      \int_E f\, d \mu = sup \left\{\int_E s\, d\mu : \begin{array}{l} \text{ s es simple positiva}\\
+      \int_E f\, d \mu = sup \left\{\int_E s\, d\mu : \begin{array}{r} \text{ $s$ es simple positiva}\\
         s \leq f
 	
       \end{array}\right\}
     \]
-    basta ver que:
+    basta ver que
     \[
       \begin{rcases}
-	\text{ s es simple positiva}\\
+	\text{ $s$ es simple positiva}\\
 	s \leq f
-      \end{rcases} \implies \int_E s d\mu \leq \lim_{n\to \infty} \int_E f_n d\mu
+      \end{rcases} \implies \int_E s\, d\mu \leq \lim_{n\to \infty} \int_E f_n\, d\mu,
     \]
-    Vamos a probar este hecho.
+    pues al tomar el supremo de la primera integral, se mantiene el orden y tendríamos lo buscado. Vamos a probar este hecho. Sea $s: \Omega \to [0,\infty)$ simple positiva tal que $s \leq f$. Fijamos $\rho \in (0,1)$, y para cada $n \in \mathbb{N}$ definimos
+    \[
+      E_n := \{\omega \in E : \rho s(\omega) \leq f_n(\omega)\} 
+    \]
+    %%% TODO: Probar que los E_n son medibles
+    Tenemos que los conjuntos $E_n$ son medibles, y claramente $E_n \subseteq E_{n+1} \ \forall n \in \mathbb{N}$, pues $\fn$ es creciente. Además, se verifica que $$E = \bigcup_{n=1}^\infty E_n$$ Para verlo, sea $\w \in E$. Si $f(\w) = 0 \implies s(\w) = 0 \implies \w \in E_1$. En otro caso, $\rho s(\w) < f(\w)$, pues $\rho < 1$. Entonces, $\exists n \in \mathbb{N}: \w \in E_n$. 
+    
+    Ahora, se tiene lo siguiente, donde $\varphi$ es la medida definida en el \textit{Lema \ref{phi}}:
+    \begin{equation} \label{eq1}
+      \rho\varphi(E_n) = \rho \int_{E_n} s\, d\mu = \int_{E_n} \rho s\, d \mu \overset{\text{def. $E_n$}}{\leq} \int_{E_n}f_n\, d\mu \leq \int_E f_n\, d\mu
+    \end{equation}
+    %%% WARNING: ¿estamos usando sin demostrarlo que \rho s <= f_n \implies \int \rho s <= \int f_n ??? 
+    La última desigualdad es así porque para toda función simple $s \leq f_n$ se tiene que $\int_{E_n}s\,d\mu \leq \int_E s\, d \mu$, como consecuencia de que $E_n \cap A_k \subseteq E \cap A_k$ y la monotonía de $\mu$.
 
-    Sea $s: \Omega \to [0,\infty)$ simple positiva tal que $s \leq f$. Fijamos $p \in (0,1)$ y $\forall n \in \mathbb{N}$
+    Ahora, como $\varphi$ es una medida, si $n \to \infty$ en \eqref{eq1}, entonces: 
+    $$\rho \varphi(E) =  \rho\int_E s\, d\mu \implies \rho \int_E s\,d\mu \leq \lim_{n\to \infty}\int_E f_n\, d\mu$$ Donde hemos usado que $\varphi(E_n) \to \varphi(E)$ cuando $n\to\infty$, porque $\{E_n\}$ es una sucesión encajada de conjuntos medibles, y $\varphi$ es una medida (\textit{Proposición \ref{prop_medida} iii}).
+    Por último, hacemos tender $\rho\to 1$, y concluimos la prueba:
     \[
-      E_n= \{\omega \in E : ps(\omega) \leq f_n(\omega)\}\implies \begin{cases}
-	E_n \ \ medibles \\
-	E_n \subset E_{n+1}, \ \ \cup_{n=1}^\infty E_n = E
-      \end{cases}
+     \int_E s\, d\mu \leq \lim_{n\to \infty}\int_E f_n\, d\mu
     \]
-    \[
-      \implies p\varphi(E_n) = p \int_{E_n} s d\mu = \int_{E_n} ps d \mu \leq^{\text{def. $E_n$}} \int_{E_n}f_n d\mu \leq \int_E f_n d\mu
-    \]
-    Donde en el último paso hemos usado que $\forall s:\Omega \to [0,\infty)$ simple que verifique $s\leq f_n$, se tiene que $\int_{E_n}sd\mu \leq \int_E s d \mu$. Recordemos que esta integral se definía:
-    Si $s= \sum_{i=1}^n \alpha_i \mathcal{X}_{A_i}$, entonces $\int s d\mu = \sum_{i=1}^n \alpha_i \mu(E_n \cap A_i)$.
-
-    Ahora, como $\varphi$ es una medida, si $n \to \infty$, entonces: 
-    $$p \varphi(E) =  p\int_E s d\mu \implies p \int_E sd\mu \leq \lim_{n\to \infty}\int_E f_n d\mu$$
-    Y si ahora $(p\to 1)$, entonces:
-    \[
-      1 \int_E s d\mu \leq \lim_{n\to \infty}\int_E f_n d\mu
-    \]
-    Probando lo que queríamos.
   \end{proof}
 \end{nth}
+Una vez que conocemos el \textit{teorema de la convergencia monótona}, podemos deducir una serie de propiedades útiles sobre la integral de funciones medibles positivas. Por comodidad, abreviaremos dicho teorema como $T.C.M$.
 
-\textbf{Propiedades de las funciones medibles positivas}
-Si $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathcal{A}$
+\begin{nprop}[Propiedades integral funciones medibles positivas] \label{int_medibles}
+Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathcal{A}$. Entonces, se verifican las siguientes propiedades.
 
 \begin{nlist}
-\item $(f+g, \alpha f, fg $ son medibles y)
+\item Linealidad de la integral
   \[
-    \int_E (f+g) d\mu = \int_E f d\mu + \int_E g d\mu
+    \int_E (f+g)\, d\mu = \int_E f\, d\mu + \int_E\, g d\mu
   \]
   \[
-    \int_E \alpha f d\mu = \alpha \int_E f d\mu \quad \text{Tomando $\alpha *\infty = \infty, \ \ \alpha * 0 = 0$}
+    \int_E \alpha f\, d\mu = \alpha \int_E f\, d\mu
   \]
   
-\item $g(\omega) \leq f(\omega), \ \forall \omega \in \Omega \implies \int_E g d\mu \leq \int_E f d \mu$
+\item Monotonía $$g(\omega) \leq f(\omega) \ \forall \omega \in \Omega \implies \int_E g\, d\mu \leq \int_E f\, d \mu$$
   
-\item $\int_E f d \mu =  \int_\Omega f\mathcal{X}_e d\mu$
-  
-\item Teorema de Levi:
-  \[
-    f_n: \Omega \to [0,\infty] \ \ medibles \implies \int_E \sum_{n=1}^\infty f_n d \mu = \sum_{n=1}^\infty \int_E f_n d\mu
-  \]
-  \begin{proof} \hfill \\
-    Si $f_n:\Omega \to [0,\infty]$ son medibles y $\sum_{n\geq 1}f_n$ una serie de funciones, definimos:
-    \[
-      S_k= \sum_{n=1}^k f_n \quad \text{sumas parciales}
-    \]
-    Y tenemos que $S_1 \leq \cdots \leq S_k \leq S_{k+1} \leq \cdots $, es decir, $S_k$ es monótona creciente. Aplciando el $T.C.M.$, tenemos que:
-    %%% TODO: Completar esta prueba falta un poco
-    \[
-      \lim_{k \to \infty} \int_E S_k d\mu = \int_E \lim_{k\to \infty} S_k d\mu = \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n d\mu = \int_E \lim_{k\to \infty }
-    \]
-    
+  %%% TODO: nombre de la propiedad
+\item Integración en un conjunto más grande: $$\int_E f\, d \mu =  \int_\Omega f\rchi_E \,d\mu$$
 
-  \end{proof}
-\item Si $s$ es simple positiva, entonces $\varphi(E)= \int_E s d\mu \ \ (\forall E \in \mathcal{A})$ es una medida.
-  
-  \[
-    \begin{rcases}
-      \varphi:\mathcal{A} \to [0,\infty] \\
-      E \mapsto \varphi(E)
-    \end{rcases} \text{ es una medida. Además}
-  \]
-  \begin{itemize}
-  \item $E\in \mathcal{A}, \mu(E) = 0 \implies \varphi(E) = 0$
-  \item $g:\Omega \to [0,\infty]$ medible $\implies \int_E g d\varphi = \int_E g f d\mu$
-  \end{itemize}
+\item Condiciones suficientes para que la integral sea nula: $$\mu(E) = 0 \implies \int_E f\, d\mu = 0$$ $$f(\w) = 0 \ \ \forall \w \in \W \implies \int_E f\,d\mu = 0$$
 
-\item $f:\Omega \to [0,\infty]$ medible
-  \begin{itemize}
-  \item $\int_\Omega f d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$
-  \item $\int_\Omega f d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$
-  \end{itemize}
+\item Relaciones entre la integral y la medida de algunos conjuntos:
+  $$\int_\Omega f\, d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$$
+  $$\int_\Omega f\, d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$$
 \end{nlist}
 
-
-%%% TODO: ES UN LEMA; BUSCAR SI HACER ENTORNO PARA LEMAS. COPIAR DEMOSTRACIÓN.
-\begin{nprop}
-  Si $(\Omega,\mathcal{A},\mu)$ un espacio de medida, $E\in \mathcal{A}$ y $f_n:\Omega \to [0,\infty]$ medible. Entonces:
-  \[
-    \int_E \liminf_{n \to \infty} f_n d\mu \leq \liminf_{n\to \infty} \int_E f_n d\mu
-  \]
-  \begin{proof}\hfill \\
-    \[
-      \liminf_{n\to \infty} f_n(\omega) = sup\{\}	
-    \]
+\begin{proof}\hfill
+\begin{nlist}
+    \item Ya sabemos por el \textit{Corolario \ref{arit_medibles}} que $f+g$, $fg$ y $\alpha f$ son medibles. 
+    $$\dots$$
+    Recordemos que tomamos el convenio $\alpha \cdot \infty = \infty, \ \alpha \cdot 0 = 0$.
+    \item
+    \item
+    \item
+    \item $\dots$
     
-  \end{proof}
+    Veamos ahora la segunda equivalencia:
+    
+    \boxed{\Rightarrow}  Empezamos probando que si $s$ es una función simple positiva con integral $\int_\Omega s \, d\mu = 0$, entonces $\mu(\{ \omega\in\Omega \, :\, s(\omega) >0\} ) = 0$. En efecto, si $$s(\omega)=\sum_{i=1}^m \alpha_i \text{\Large$\chi$}_{A_i}, \quad (\alpha_1,\alpha_2,\dots,\alpha_m > 0)$$ entonces $\displaystyle A:=\{ \omega\in\Omega \, :\, s(\omega) >0\} = \bigcup_{i=1}^m A_i$, y $\displaystyle \int_\Omega s \, d\mu = \sum_{i=1}^m \alpha_i \mu (A_i) = 0 \implies\mu(A_i)=0\ \forall i=1,\dots , m$, por lo que $\mu(A)=0 $.
+
+Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{teorema de convergencia monótona}: 
+
+$$0\leq \int_\Omega s_n \, d\mu \nearrow \int_\Omega f\, d\mu = 0,$$
+
+es decir, $\displaystyle \int_\Omega s_n \, d\mu=0$, y por lo acabado de probar, $\mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0 \ \forall n$. 
+
+Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega \, :\, s_n(\omega) >0\}$ y, por tanto, $$0\leq \mu (\{ \omega\in\Omega \, :\,f(\omega) >0\} ) \leq \mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0$$
+
+\boxed{\Leftarrow} $\dots$
+\end{nlist}
+\end{proof}
+%%% TODO: Completar demostración.
 \end{nprop}
 
-%%% FIXME: FALTAN COSAS
+\begin{nprop} \label {phi_2} Sea $f:\W \to [0,\infty]$ medible. Entonces, $\varphi:\mathcal{A} \to [0,\infty]$ dada por $$\varphi(E) = \int_E f\, d\mu, \quad \forall E \in \mathcal A$$
+es una medida. Además, se verifica lo siguiente:
+  \begin{nlist}
+  \item $E\in \mathcal{A}, \ \mu(E) = 0 \implies \varphi(E) = 0$
+  \item $g:\Omega \to [0,\infty]$ medible $\displaystyle \implies \int_E g\, d\varphi = \int_E g f\, d\mu$
+  \end{nlist}
+%%% TODO: completar
+\end{nprop}
 
+Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuencia directa del \textit{teorema de la convergencia monótona}.
+
+\begin{nth}[Teorema de Levi] Sean $f_n: \Omega \to [0,\infty]$ medibles. Entonces
+\[
+     \int_E \sum_{n=1}^\infty f_n\, d \mu = \sum_{n=1}^\infty \int_E f_n\, d\mu
+  \]
+	  \begin{proof} \hfill \\
+    Si $f_n:\Omega \to [0,\infty]$ son medibles y $\sum_{n\geq 1}f_n$ una serie de funciones, definimos las sumas parciales como
+    \[
+      S_k= \sum_{n=1}^k f_n, \quad \forall k \in \mathbb{N}
+    \]
+    Tenemos que $S_1 \leq \cdots \leq S_k \leq S_{k+1} \leq \cdots $, es decir, $S_k$ es monótona creciente. Además, las funciones $S_k$ son medibles para cada $k \in \mathbb{N}$, por ser suma de funciones medibles. Aplicando el \hyperref[tcm]{\textit{T.C.M}}, tenemos que:
+    %%% WARNING: ¿Manera adecuada de referenciar un teorema por un nombre cualquiera?
+    \[
+      \lim_{k \to \infty} \int_E S_k\, d\mu = \int_E \lim_{k\to \infty} S_k\, d\mu \implies \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n\, d\mu = \int_E \sum_{n=1}^\infty f_n \overset{\text{Proposición \ref {int_medibles}} \ i}\implies
+    \]
+    
+    \[
+    \implies \lim_{k\to\infty} \sum_{n=1}^k \int_E f_n\,d\mu = \int_E \sum_{n=1}^\infty f_n\,d\mu \implies \sum_{n=1}^\infty \int_E f_n\,d\mu = \int_E \sum_{n=1}^\infty f_n\,d\mu
+    \]
+\end{proof}
+\end{nth}
+
+
+\begin{lema} [Lema de Fatou]
+  Si $(\Omega,\mathcal{A},\mu)$ es un espacio de medida, $E\in \mathcal{A}$ y tenemos funciones $f_n:\Omega \to [0,\infty]$ medibles, entonces:
+  \[
+    \int_E \liminf_{n \to \infty} f_n\, d\mu \leq \liminf_{n\to \infty} \int_E f_n\, d\mu
+  \]
+    %%% TODO: completar demostración.
+
+\end{lema}
+
+
+\subsection{Integral de funciones medibles}
+
+%%% FIXME: FALTAN COSAS
 
 
 \begin{nth}[Convergencia dominada de Lebesgue]
@@ -2192,4 +2223,5 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
 % ---------------------------------------------------------------------------
 % FIN DEL DOCUMENTO
 % ---------------------------------------------------------------------------
+
 \end{document}
