@@ -719,7 +719,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 
 
 \begin{nprop}
-  Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
+  Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediat8rices de $ABC$ y $O=H'$
 \end{nprop}
 \begin{proof}
   Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
@@ -727,16 +727,35 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 % ¿esto no debería ir e ejercicios?
 Ejercicio: Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
 
+\begin{ndef}[Homotecia]
+  Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
+\end{ndef}
 
-Ejercicio:Si $h$ es una homotecia de razón $\lambda\ne 0$, entonces 
-\begin{itemize}
+\begin{nprop} Si $h$ es una homotecia de razón $\lambda\ne 0$, entonces 
+\begin{enumerate}
 \item $h$ multiplica la distancia por $|\lambda|$.
 \item $h$ lleva rectas perpendiculares en rectas perpendiculares.
 \item $h$ lleva mediatrices en mediatrices.
 \item $h$ lleva alturas en alturas.
-\end{itemize}
+\end{enumerate}
+\end{nprop}
 
-Ejercicio: Para toda homotecia, el centro un punto y su imagen están alineados.
+\begin{proof}\hfill
+\begin{enumerate}
+	\item $h(P)-h(Q)=(A+\lambda(\vec{AP})) -(A+\lambda(\vec{AQ})) = \lambda(A-P) - \lambda(A-Q) = \lambda (Q-P)$.
+	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $<h(P) - h(P'),h(Q) - h(Q')> =  <\lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 <\vec{PP'},\vec{QQ'}> = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
+	\item Si $h$ multiplica distancia por $\lambda$, las distancias iguales siguen siendo iguales, por lo que el conjunto de puntos que estan a la misma distancia de dos rectas se mantiene.
+	\item Como mantiene distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
+\end{enumerate}
+\end{proof}
+
+\begin{nprop}
+	
+Para toda homotecia, el centro un punto y su imagen están alineados.
+\end{nprop}
+\begin{proof}
+	
+\end{proof}
 
 
 \begin{nth}[Recta de Euler]
@@ -963,9 +982,6 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \end{enumerate}
 \end{proof}
 
-\begin{ndef}[Homotecia]
-  Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
-\end{ndef}
 % \begin{nota}
 %   Tenemos que ver esta transformación como una transformación intuitiva en la cual
 % \end{nota}
