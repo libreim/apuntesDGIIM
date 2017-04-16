@@ -566,7 +566,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \end{nth}
 
-%%% Elegir cual os gusta más please.
+%%% TODO: Elegir cual os gusta más please.
 
 %% \begin{proof}
 %%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
@@ -624,7 +624,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
     que es perpendicular a $\vec{BA}$.
   \end{proof}
 \end{nlist}
-%%% Revisar estilo de la raiz cuadrada.
+%%%TODO: Revisar estilo de la raiz cuadrada.
 \begin{nota}
   $|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = (\sqrt{<\vec{AP},\vec{AP}>})^2 =  < A-P, A-P>  =^{(1)} <A,A-P>-<P,A-P> = <A,A> -<A,P>+<P,P>-<P,A>  = |A|^2+|P|^2-2<P,A>$. Y en (1) hemos aplicado la bilinealidad del producto escalar.
 \end{nota}
@@ -724,8 +724,9 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{proof}
   Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
 \end{proof}
-% ¿esto no debería ir e ejercicios?
-Ejercicio: Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
+%TODO Demostrar
+\begin{nprop}Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
+\end{nprop}
 
 \begin{ndef}[Homotecia]
   Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
@@ -749,6 +750,7 @@ Ejercicio: Si 2 de los centros del triángulo ABC coinciden, entonces el triáng
 \end{enumerate}
 \end{proof}
 
+%%%TODO:Demostrar
 \begin{nprop}
 	
 Para toda homotecia, el centro un punto y su imagen están alineados.
@@ -819,7 +821,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \end{nlist}
 \end{ndef}
 
-
+%TODO
 \begin{nprop}
   Sea ABCD un cuadrilátero. Entonces, son equivalentes:
   \begin{nlist}
@@ -900,7 +902,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
 \end{ndef}
 
-%%% completar
+
 \begin{nprop}
   Se dan las siguientes propiedades:
   \begin{nlist}
