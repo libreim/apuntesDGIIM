@@ -861,31 +861,6 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 \subsection{Transformaciones}
 
-\begin{ndef}[Traslaciones]
-  Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
-\end{ndef}
-
-%%% completar
-\begin{nprop}
-  Se dan las siguientes propiedades:
-  \begin{nlist}
-  \item $t_v \circ t_w = t_{v+w}$
-  \item $t_{v}^{-1} = t_{-v}$
-  \item $t_0 = I$
-  \end{nlist}
-\end{nprop}
-\begin{proof}\hfill \begin{center}\end{center}
-  \begin{nlist}
-  \item $t_v \circ t_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
-  \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
-    \begin{itemize}
-    \item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
-    \item $t_v\circ t_{-v} = P+v-v = P = I(P)$
-    \end{itemize}
-  \item $t_0(p) = P +0 = P = I(P)$
-  \end{nlist}
-\end{proof}
-
 \begin{ndef}[Afinidades]
   Se define una afinidad f como una aplicacion $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
     x\\
@@ -902,12 +877,37 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 \end{ndef}
 
+\begin{ndef}[Traslaciones]
+  Se define la traslacion de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
+\end{ndef}
+
+%%% completar
+\begin{nprop}
+  Se dan las siguientes propiedades:
+  \begin{nlist}
+  \item $t_v \circ t_w = t_{v+w}$
+  \item $t_{v}^{-1} = t_{-v}$
+  \item $t_0 = I$
+  \end{nlist}
+\end{nprop}
+\begin{proof}\hfill \begin{center}\end{center}
+  \begin{nlist}
+  \item $t_v \circ_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
+  \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
+    \begin{itemize}
+    \item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
+    \item $t_v\circ t_{-v} = P+v-v = P = I(P)$
+    \end{itemize}
+  \item $t_0(p) = P +0 = P = I(P)$
+  \end{nlist}
+\end{proof}
+
 
 \begin{nota}
   Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
 \end{nota}
 
-%%% completar
+
 \begin{nprop}
   Se dan las siguientes propiedades:
   \begin{nlist}
