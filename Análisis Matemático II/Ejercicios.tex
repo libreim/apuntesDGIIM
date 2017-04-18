@@ -112,6 +112,42 @@
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
+% Fuentes Sans Serif para los enunciados
+
+\usepackage{lmodern}
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbrm}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+\DeclareMathVersion{boldsans}
+\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+\let\oldmd\mdseries
+\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+\let\oldbf\bfseries
+\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+   \mathversion{bold}\fi\relax}
+\let\oldnorm\normalfont
+\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+\let\oldrm\rmfamily
+\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+
+
 
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
@@ -203,10 +239,10 @@
 % Nuevo estilo para definiciones.
 \newtheoremstyle{definition-style} % Nombre del estilo.
 {10pt}               % Espacio por encima.
-{10pt}               % Espacio por debajo.
+{30pt}               % Espacio por debajo.
 {\sffamily}                   % Fuente del cuerpo.
 {}                   % Identación.
-{\bfseries \sffamily }                % Fuente para la cabecera.
+{\large \bfseries \sffamily }                % Fuente para la cabecera.
 {.}                  % Puntuación tras la cabecera.
 {.5em}               % Espacio tras la cabecera.
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
@@ -214,10 +250,10 @@
 % Nuevo estilo para notas.
 \newtheoremstyle{remark-style} 
 {10pt}                
-{10pt}                
+{40pt}                
+{\normalfont}                   
 {}                   
-{}                   
-{\itshape}          
+{\large \bfseries \itshape}          
 {.}                  
 {.5em}               
 {}                  
@@ -327,7 +363,7 @@
 \begin{ejer}
   Probar que el espacio $\mathcal{C}_B(A,\mathbb{R}^M)$ es un espacio de Banach, esto es, un espacio normado y completo.
 
-  \begin{proof}
+  \begin{sol}
     Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
     \begin{itemize}
       
@@ -346,7 +382,7 @@
 
     Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que $n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A$. Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
     Por tanto, $f$ está acotada.
-  \end{proof}
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
@@ -361,7 +397,7 @@
 
   Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
 
-  \begin{proof}
+  \begin{sol}
     Como $f_k(x) \to 0\ \ \forall x \in A$, entonces:  $$\forall \ x \in A,\ \forall \epsilon >0\ \exists k_x \in \mathbb{N}:\ k\geq k_x \implies |f_k(x)| < \frac{\epsilon}{2}$$
     Por otro lado, como $f_{k_x}$ es continua en $A$, en particular $f_{k_x}$ es continua en $x$. Por tanto, $\exists U_x$ entorno abierto de $x$ en $A$ tal que $$|f_{k_x}(y) - f_{k_x}(x)| < \frac{\epsilon}{2}\ \ \forall y \in U_x$$
     Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,..,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},...,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
@@ -371,12 +407,12 @@
     Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,..n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $f_{k_{x_i}}(x_i) < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
 
     En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,..., x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
-  \end{proof}
+  \end{sol}
 \end{ejer}
 
 \begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
-  \begin{proof}
+  \begin{sol}
     Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
     Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
     Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$). Entonces, se tiene que:
@@ -391,12 +427,12 @@
     Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 
     Por tanto, $\varphi$ es un homeomorfismo.
-  \end{proof}	
+  \end{sol}	
 \end{ejer}
 
 \begin{ejer}
   
-  Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?. 
+  Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?
 
   \begin{sol}
     La respuesta es afirmativa. Veamos la prueba.
@@ -494,7 +530,7 @@
 \begin{ejer}
   Probar que $\displaystyle \frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\ \ \forall x \in (-1,1)$
   
-  \begin{proof}
+  \begin{sol}
     Para probarlo, se podría estudiar la convergencia de la serie de potencias, o también desarrollar el término de la izquierda como su suma de Taylor, y ver que coinciden. Sin embargo, procederemos de otro modo.
     
     En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
@@ -502,7 +538,7 @@
     Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \ \forall k \ge 0$. Tenemos entonces que, tomando $a=0$ en el \textit{Teorema de Taylor} aplicado a $f(x)$: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
     
     pues, en este caso, el resto de Taylor tiende a $0$ dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
-  \end{proof}
+  \end{sol}
 \end{ejer}
 
 \begin{ejer}
@@ -744,8 +780,8 @@
     \ dy \right) \ dx$$
 \end{ejer}
 
-\begin{sol}
-  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy
+\begin{sol} 
+  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy$$
 \end{sol}
 
 \end{document}
