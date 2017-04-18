@@ -2193,39 +2193,38 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   
 \end{proof}
 
-Vamos a ver ahora el Teorema de Fubini y Torelli, que nos permite integrar en un
-conjunto $A \subset \R^N$, que se reduce a calcular $N$ integrales en
-subconjuntos de R.
+Vamos a ver ahora el Teorema de Fubini y Tonelli, que nos permite reducir la integración en un
+conjunto $A \subset \R^N$ a calcular $N$ integrales en
+subconjuntos de $\R$.
 
-Vamos a ver antes una pequeña definición que nos va a ayudar a entender lo que
-viene después.
+Vamos a ver antes una definición.
 
 \begin{ndef}
-  Una propiedad $P$ se verifica para a.e. $x \in \Omega$ si y solo si $\{ x \in
+  Una propiedad $P$ se verifica para $a.e.\ x \in \Omega$ si y solo si $\{ x \in
   \Omega : P \text{ no se verifica} \}$ tiene medida $0$.
 \end{ndef}
 
 
 \begin{nth}[Fubini y Torelli]
 Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
-\times R^M)$. Entonces,
+\times \R^M)$. Entonces,
 
 \begin{enumerate}
-\item Para a.e. $y \in \R^M$ la función $\underset{\big{ f^y: \R^N \rightarrow \R}}{f^y(x) := f(x,y)}$ es integrable en
-  $\R^N$. Entonces $\displaystyle \varphi(y) := \int_{\R^N}f^y dm_N$. Esto quiere decir que $m_N
-  ( \overbrace{\{ y \in
-  \R^M : f^y \text{ no es integrable en } R^N \}}^{A}) = 0 \Leftrightarrow \forall y
-  \in R^m \ A$ % FIXME Aquí falta un poco. Era texto que estaba en color y dijo
-  % que iba a borrar.
+\item Para a.e. $y \in \R^M$ la función $\underset{  f^y: \R^N \to \R }{f^y(x) := f(x,y)}$ es integrable en $\R^N$. Entonces $\displaystyle \varphi(y) := \int_{\R^N}f^y dm_N$. Esto quiere decir que
 
-  Vemos que $\varphi$ está definida $\forall y \in \R^M \ A$. Esta función
-  $\varphi$ es integrable en $R^M$, luego $\exists \int_{\R^M} \varphi \ dm_M$.
-\item Para a.e. $x \in R^N$ la función $f_x(y) := f(x,y)$ es integrable. Esto
+  $$m_N
+  ( \overbrace{\{ y \in
+  \R^M : f^y \text{ no es integrable en } \R^N \}}^{A}) = 0 \Leftrightarrow \forall y
+  \in \R^M \verb+\+ A, m_N(A) =0\ f^y \text{ es integrable}$$
+
+  Vemos que $\varphi$ está definida $\forall y \in \R^M \verb+\+ A$. Esta función
+  $\varphi$ es integrable en $\R^M$, luego $\exists \int_{\R^M} \varphi \ dm_M$.
+\item Para a.e. $x \in \R^N$ la función $f_x(y) := f(x,y)$ es integrable. Esto
   quiere decir que $\varphi (x) := \displaystyle \int_{\R^M} f_x \ dm_M$ es
-  integrable en $R^N$, lo que implica que $\exists \displaystyle \int_{\R^N}\psi
+  integrable en $\R^N$, lo que implica que $\exists \displaystyle \int_{\R^N}\psi
   \ dm_N$.
-\item $\int_{R^M} \varphi \ dm_M = \int_{\R^M} \psi \ dm_N = \int_{R^N \times R^M} f
-  \ dm_{M \times N}$.
+\item $\displaystyle\int_{\R^M} \varphi \ dm_M = \displaystyle\int_{\R^M} \psi \ dm_N \displaystyle\int_{\R^N \times \R^M} f
+  \ dm_{M + N}$.
 \end{enumerate}
 \end{nth}
 
@@ -2234,8 +2233,8 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
   $\displaystyle \int_A 1 \ dm_2 = \int_{R^2} \rchi_A (x, y) \ dm_2 = m_2(A)$.
 
   Es claro que $f(x, y) := \rchi_A(x,y)$ es integrable. Vamos a ver ahora qué
-  ocurre cuando fijamos un punto $y$. Dado $y \in \R$, $$\underset{\big{x \mapsto f^y(x)
-      := f(x, y) = \rchi_A(x,y)}}{f^y: \R^N \rightarrow \R}$$
+  ocurre cuando fijamos un punto $y$. Dado $y \in \R$, $$\underset{x \mapsto f^y(x)
+      := f(x, y) = \rchi_A(x,y)}{f^y: \R^N \rightarrow \R}$$
   Analicemos ahora la función $\rchi_A$
   $$\begin{cases}
     \rchi_{(a,b)}(x) & \text{ si } y \in (c,d) \\
@@ -2252,13 +2251,13 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
     0 & y \notin (c, d) \\
   \end{cases} = (b -a) \rchi_{(c, d)} (y)\]
   % FIXME Falta una línea aquí y el "punto 3" (en este documento no están numeradas).
-\int_{\R}
+%\int_{\R}
   
 \end{ejemplo}
-% FIXME Demostrar.
-\begin{nprop}
-  La medida de un intervalo es la longitud del intervalo.
-\end{nprop}
+
+\begin{nota}
+  La medida de un intervalo es la longitud del intervalo. Esto lo demostraremos cuando construyamos la medida de Lebesgue.
+\end{nota}
 
 % TODO Aquí ha estado un rato diciendo no se qué de notación para concluir que
 % "con esta notación podéis recordar fácilmente lo que dice el teorema". Falta
