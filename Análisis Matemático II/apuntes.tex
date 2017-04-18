@@ -101,6 +101,7 @@
 % Símbolos y matemáticas.
 \usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
 \usepackage{upgreek}
+\usepackage{mathrsfs}
 
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
@@ -1097,29 +1098,29 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 
 \subsection{Nociones generales}
 
-\begin{ndef}[$\sigma$-álgebra] Una familia $\mathcal A$ no vacía de subconjuntos de $\Omega$ es una \mbox{$\sigma$-álgebra} si verifica:
+\begin{ndef}[$\sigma$-álgebra] Una familia $\mathscr A$ no vacía de subconjuntos de $\Omega$ es una \mbox{$\sigma$-álgebra} si verifica:
 
   \begin{nlist}
-  \item $\Omega \in \mathcal A$
-  \item $\displaystyle \Omega \backslash A \in \mathcal{A}, \quad \forall A \in \mathcal{A}$
-  \item $\displaystyle \bigcup_{n=1}^\infty A_n \in \mathcal{A}, \quad \forall \{A_n\} \subset \mathcal{A}$
+  \item $\Omega \in \mathscr A$
+  \item $\displaystyle \Omega \backslash A \in \mathscr A, \quad \forall A \in \mathscr A$
+  \item $\displaystyle \bigcup_{n=1}^\infty A_n \in \mathscr A, \quad \forall \{A_n\} \subset \mathscr A$
   \end{nlist}
   
 \end{ndef}
 
 \begin{nprop}
-  Si $\mathcal A$ es una $\sigma$-álgebra sobre un conjunto $\Omega$, se verifican las siguientes propiedades: 
+  Si $\mathscr A$ es una $\sigma$-álgebra sobre un conjunto $\Omega$, se verifican las siguientes propiedades: 
   
   \begin{nlist}
-  \item $\emptyset \in \mathcal A$
-  \item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathcal{A} \implies \bigcup_{i=1}^n A_i \in \mathcal{A}$
-  \item $\displaystyle \bigcap_{n=1}^\infty A_n \in \mathcal{A}, \quad \forall \{A_n\} \subset \mathcal{A}$
-  \item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathcal{A} \implies \bigcap_{i=1}^n A_i \in \mathcal{A}$
-  \item $A,B \in \mathcal A \implies A \backslash B \in \mathcal A$
+  \item $\emptyset \in \mathscr A$
+  \item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathscr A \implies \bigcup_{i=1}^n A_i \in \mathscr A$
+  \item $\displaystyle \bigcap_{n=1}^\infty A_n \in \mathscr A, \quad \forall \{A_n\} \subset \mathscr A$
+  \item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathscr A \implies \bigcap_{i=1}^n A_i \in \mathscr A$
+  \item $A,B \in \mathscr A \implies A \backslash B \in \mathscr A$
   \end{nlist}
 
   \begin{proof}
-    La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathcal A$, y aplicamos la definición de $\sigma$-álgebra.
+    La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathscr A$, y aplicamos la definición de $\sigma$-álgebra.
     
     La propiedad $(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
     
@@ -1127,7 +1128,7 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
   \end{proof}
 \end{nprop}
 
-\begin{ndef}[Espacio medible] Diremos que la pareja $(\Omega, \mathcal A)$ es un espacio medible si $\Omega \ne \emptyset$ es un conjunto, y $\mathcal A$ es una $\sigma$-álgebra sobre $\Omega$. A los elementos $A$ de $\mathcal{A}$ los llamaremos conjuntos medibles.
+\begin{ndef}[Espacio medible] Diremos que la pareja $(\Omega, \mathscr A)$ es un espacio medible si $\Omega \ne \emptyset$ es un conjunto, y $\mathscr A$ es una $\sigma$-álgebra sobre $\Omega$. A los elementos $A$ de $\mathscr A$ los llamaremos conjuntos medibles.
 \end{ndef}
 
 \begin{nota}
@@ -1135,46 +1136,46 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 \end{nota}
 
 \begin{ndef}[Función medible]
-  Si $(\Omega,\mathcal{A}) $ y $(X,\mathcal{B)}$ son espacios medibles y \mbox{$f: \Omega \to X$} es una función, diremos que $f$ es medible si:
+  Si $(\Omega,\mathscr A) $ y $(X,\mathcal{B)}$ son espacios medibles y \mbox{$f: \Omega \to X$} es una función, diremos que $f$ es medible si:
   \[
-    f^{-1}(B) \in \mathcal A, \ \forall B \in \mathcal{B}
+    f^{-1}(B) \in \mathscr A, \ \forall B \in \mathcal{B}
   \]
   Es decir, si la imagen inversa de un conjunto medible es otro conjunto medible.
 \end{ndef}
 
-\begin{nprop} La composición de funciones medibles es medible. Es decir, si\\ \mbox{$f:(X,\mathcal A) \longrightarrow (Y,\mathcal B)$}, $g:(Y,\mathcal B) \longrightarrow (Z,\mathcal C)$ son medibles, entonces $g\circ f$ es medible.
+\begin{nprop} La composición de funciones medibles es medible. Es decir, si\\ \mbox{$f:(X,\mathscr A) \longrightarrow (Y,\mathcal B)$}, $g:(Y,\mathcal B) \longrightarrow (Z,\mathcal C)$ son medibles, entonces $g\circ f$ es medible.
 	\begin{proof}
-	Evidente, pues $(g\circ f)^{-1}(C) = f^{-1}(g^{-1}(C)) \in \mathcal A$, por ser $f$ y $g$ medibles.
+	Evidente, pues $(g\circ f)^{-1}(C) = f^{-1}(g^{-1}(C)) \in \mathscr A$, por ser $f$ y $g$ medibles.
 \end{proof}
 \end{nprop}
 
 \begin{ndef}[$\sigma$-álgebra de Borel] Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $\mathcal B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. Además, $\mathcal B(\Omega)$ es la $\sigma$-álgebra más pequeña que contiene a $\tau$.
 \end{ndef}
 
-Formalmente, si $\Lambda = \left\{ \mathcal A : \mathcal A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathcal A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathcal A \in \Lambda} \mathcal A$$ 
-Para ver que $\mathcal B(\Omega)$ es una $\sigma$-álgebra, basta observar que, dada una sucesión \mbox{$\{A_n\} \subseteq \mathcal B(\Omega)$}, tenemos que $A_n \in \mathcal A \ \ \forall \mathcal A \in \Lambda$. Como cada $\mathcal A \in \Lambda$ es una $\sigma$-álgebra, se tiene que: $$\bigcup_{n=1}^\infty A_n \in \mathcal A, \quad \forall \mathcal A \in \Lambda \implies \bigcup_{n=1}^\infty A_n \in \mathcal B(\Omega)$$
+Formalmente, si $\Lambda = \left\{ \mathscr A : \mathscr A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathscr A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathscr A \in \Lambda} \mathscr A$$ 
+Para ver que $\mathcal B(\Omega)$ es una $\sigma$-álgebra, basta observar que, dada una sucesión \mbox{$\{A_n\} \subseteq \mathcal B(\Omega)$}, tenemos que $A_n \in \mathscr A \ \ \forall \mathscr A \in \Lambda$. Como cada $\mathscr A \in \Lambda$ es una $\sigma$-álgebra, se tiene que: $$\bigcup_{n=1}^\infty A_n \in \mathscr A, \quad \forall \mathscr A \in \Lambda \implies \bigcup_{n=1}^\infty A_n \in \mathcal B(\Omega)$$
 
 El resto de propiedades se comprueban de forma análoga.
 
-\begin{nprop}Si $(\Omega,\mathcal{A})$ es un espacio medible, $X$ un espacio topológico con $\mathcal B$ su $\sigma-$álgebra de Borel, entonces:
+\begin{nprop}Si $(\Omega,\mathscr A)$ es un espacio medible, $X$ un espacio topológico con $\mathcal B$ su $\sigma-$álgebra de Borel, entonces:
   \[
-    f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathcal{A}, \ \ \forall G \in \tau
+    f: \Omega \to X \text{ es medible} \iff f^{-1}(G) \in \mathscr A, \ \ \forall G \in \tau
   \]
   
   \begin{proof} \hfill \\
-	\boxed{\Rightarrow} Como $f$ es medible, se tiene que $f^{-1}(B) \in \mathcal A \ \forall B \in \mathcal B$, y como $\tau \subseteq \mathcal B$, se verifica automáticamente que la preimagen de cualquier abierto de $X$ es medible.
+	\boxed{\Rightarrow} Como $f$ es medible, se tiene que $f^{-1}(B) \in \mathscr A \ \forall B \in \mathcal B$, y como $\tau \subseteq \mathcal B$, se verifica automáticamente que la preimagen de cualquier abierto de $X$ es medible.
 
-\boxed{\Leftarrow} Defino $\mathcal M := \{ E \subseteq X: f^{-1}(E) \in \mathcal A\}$, y afirmo que $\mathcal M$ es una $\sigma$-álgebra sobre $X$. En efecto, utilizando que $\mathcal A$ es una $\sigma$-álgebra sobre $\Omega$, y las propiedades de la imagen inversa de conjuntos por una función:
+\boxed{\Leftarrow} Defino $\mathcal M := \{ E \subseteq X: f^{-1}(E) \in \mathscr A\}$, y afirmo que $\mathcal M$ es una $\sigma$-álgebra sobre $X$. En efecto, utilizando que $\mathscr A$ es una $\sigma$-álgebra sobre $\Omega$, y las propiedades de la imagen inversa de conjuntos por una función:
 
 \begin{itemize}
-	\item $X \in \mathcal M$, porque $f^{-1}(X) = \Omega \in \mathcal A$.
+	\item $X \in \mathcal M$, porque $f^{-1}(X) = \Omega \in \mathscr A$.
 
-    \item Si $E \in \mathcal M$, se tiene que $X - E \in \mathcal M$, porque $f^{-1}(X-E) = f^{-1}(X) - f^{-1}(E) = \Omega - f^{-1}(E) \in \mathcal A$.
+    \item Si $E \in \mathcal M$, se tiene que $X - E \in \mathcal M$, porque $f^{-1}(X-E) = f^{-1}(X) - f^{-1}(E) = \Omega - f^{-1}(E) \in \mathscr A$.
 
-    \item Si $\{A_n\} \subseteq \mathcal M$, entonces $\bigcup_{n=1}^\infty A_n \in \mathcal M$, pues $f^{-1}\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty f^{-1}(A_n) \in \mathcal A$, porque cada $f^{-1}(A_n) \in \mathcal A$.
+    \item Si $\{A_n\} \subseteq \mathcal M$, entonces $\bigcup_{n=1}^\infty A_n \in \mathcal M$, pues $f^{-1}\left( \bigcup_{n=1}^\infty A_n \right) = \bigcup_{n=1}^\infty f^{-1}(A_n) \in \mathscr A$, porque cada $f^{-1}(A_n) \in \mathscr A$.
 \end{itemize}
 
-Por otro lado, tenemos que, por hipótesis, $\tau \subseteq \mathcal M$. Como $\mathcal B$ es la más pequeña $\sigma$-álgebra sobre $X$ que contiene a $\tau$, necesariamente $\mathcal B \subseteq \mathcal M$. Pero entonces se cumple que \mbox{$f^{-1}(B) \in \mathcal A$} $\forall B \in \mathcal B$, concluyendo la prueba.
+Por otro lado, tenemos que, por hipótesis, $\tau \subseteq \mathcal M$. Como $\mathcal B$ es la más pequeña $\sigma$-álgebra sobre $X$ que contiene a $\tau$, necesariamente $\mathcal B \subseteq \mathcal M$. Pero entonces se cumple que \mbox{$f^{-1}(B) \in \mathscr A$} $\forall B \in \mathcal B$, concluyendo la prueba.
 \end{proof}
 \end{nprop}
 
@@ -1219,7 +1220,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \end{ndef}
 
 
-\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathcal{A})$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces: 
+\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathscr A)$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces: 
   
   \[
   \begin{array}{lll}
@@ -1236,7 +1237,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 %%% TODO: FALTA DEMOSTRACIÓN ---------------------------------------------------------
 
 \begin{nprop} \label {p1}
-  Sea $(\Omega,\mathcal{A})$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
+  Sea $(\Omega,\mathscr A)$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
   \[
     g_1(\omega) =  sup\{f_n(\omega) : \ n \in \mathbb{N} \}
   \]
@@ -1252,7 +1253,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
   En particular, si $\fn \xrightarrow{c.p.} f$ en $\Omega$, entonces $f$ es medible.
   
   \begin{proof}
-	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathcal A$ una $\sigma-$álgebra.
+	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathscr A$ una $\sigma-$álgebra.
 	
 	La demostración para $g_2(\omega)$ es análoga. La medibilidad de $g_3(\omega)$ se deriva del hecho de que $$g_3(\omega) = \limsup f_n(\omega) = \inf_{n \ge 1} \left\{\sup_{k\ge n} f_k(\omega) \right\}$$ Así, podemos ver la función como $g_3(\omega) = \inf \{h_n(\omega) : n \in \mathbb{N}\}$, donde $h_n(\omega) := \sup \{f_k(\omega) : k \ge n\}$. Combinando lo demostrado anteriormente, concluimos que $g_3(\omega)$ es medible. De nuevo, la prueba para $g_4(\omega)$ es análoga.
 	
@@ -1474,25 +1475,25 @@ Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
 Abordamos ahora el problema de definir una integral asociada a funciones medibles positivas. Para ello, formalizaremos el concepto de \textit{medida}, que nos permitirá asignar a cada conjunto medible un número $m \in [0,\infty]$, que entenderemos como la \textit{medida} de ese conjunto. 
 
 \begin{ndef}[Medida]
-  Si $(\Omega, \mathcal A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathcal A \rightarrow [0, \infty]$ verificando:
+  Si $(\Omega, \mathscr A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathscr A \rightarrow [0, \infty]$ verificando:
   \begin{nlist}
   \item $\mu(\emptyset) = 0$
-  \item \textit{(Aditividad).} $\forall \{A_k\} \subseteq \mathcal A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
+  \item \textit{(Aditividad).} $\forall \{A_k\} \subseteq \mathscr A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu(A_k) $$
   \end{nlist}
-  La terna $(\Omega, \mathcal A, \mu)$ se llama \textbf{espacio de medida}.
+  La terna $(\Omega, \mathscr A, \mu)$ se llama \textbf{espacio de medida}.
 \end{ndef}
 
-\begin{nprop}[Propiedades de una medida] \label{prop_medida} Si $(\Omega, \mathcal A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
+\begin{nprop}[Propiedades de una medida] \label{prop_medida} Si $(\Omega, \mathscr A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
   \begin{nlist}
-  \item (Monotonía). Si $A,B \in \mathcal{A},\ A \subseteq B \implies \mu(A) \leq \mu(B)$
-  \item (Subaditividad). $\forall \{A_k\} \subseteq \mathcal{A}$, se tiene:
+  \item (Monotonía). Si $A,B \in \mathscr A,\ A \subseteq B \implies \mu(A) \leq \mu(B)$
+  \item (Subaditividad). $\forall \{A_k\} \subseteq \mathscr A$, se tiene:
     \[
       \mu\left( \bigcup_{k=1}^\infty A_k \right) \leq \sum_{k=1}^\infty \mu(A_k)
     \]
-  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
+  \item $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
-  \item $\forall \{A_k\} \subseteq \mathcal{A}$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(A_1) < \infty$ se tiene:
+  \item $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(A_1) < \infty$ se tiene:
     $$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
   \end{nlist}
   
@@ -1528,7 +1529,7 @@ Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disj
 \end{ejemplo}
 
 \begin{ejemplo}[Medida de Dirac]
-Sea $(\Omega,\ \mathcal A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathcal A \longrightarrow [0,\infty ]$ dada por 
+Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathscr A \longrightarrow [0,\infty ]$ dada por 
  \[
  \delta_\omega (A) = \left\{ \begin{array}{ll}
                                 1, & \text{ si } \omega\in A,
@@ -1548,16 +1549,16 @@ Sea $(\Omega,\ \mathcal A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$,
 \end{ejemplo}
 
 \begin{ejemplo}[Medida de Lebesgue]
-	 Si $(\Omega = \mathbb R^N, \mathcal A= \mathcal B(\mathbb R^N))$ espacio medible, la medida de Lebesgue es $\lambda: \mathcal A \to [0,\infty]$ dada por  
+	 Si $(\Omega = \mathbb R^N, \mathscr A= \mathcal B(\mathbb R^N))$ espacio medible, la medida de Lebesgue es $\lambda: \mathscr A \to [0,\infty]$ dada por  
  \[
  \lambda ([a_1,b_1]\times  [a_2,b_2]\times \dots [a_N,b_N]) = (b_1-a_1) (b_2-a_2) \dots (b_N-a_N)
  \]
 \end{ejemplo}
 
-Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida $(\W, \mathcal A, \mu)$. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
+Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida $(\W, \mathscr A, \mu)$. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
 
 \begin{ndef}[Integral de función simple positiva]
-  Si $E \in \mathcal{A}$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
+  Si $E \in \mathscr A$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
   \[
     \int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
   \]
@@ -1595,7 +1596,7 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
 \end{nprop}
 
 \begin{ndef}[Integral de función medible positiva]
-  Si $E\in \mathcal{A}$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
+  Si $E\in \mathscr A$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
   \[
     \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ $s$ es simple positiva}, \ s \leq f\right\}
   \]
@@ -1606,7 +1607,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 
 
 \begin{lema} \label{phi}
-	Sea $s:\W \to [0,\infty)$ simple. Entonces, $\varphi:\mathcal A \to [0,\infty]$ dada por $$\varphi(E) = \int_E s\, d\mu, \quad \forall E \in \mathcal A$$ es una medida.
+	Sea $s:\W \to [0,\infty)$ simple. Entonces, $\varphi:\mathscr A \to [0,\infty]$ dada por $$\varphi(E) = \int_E s\, d\mu, \quad \forall E \in \mathscr A$$ es una medida.
 	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\O) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$ 
 	
 	donde $(*)$ es consecuencia de la \textit{Proposición \ref{int_simples} ii}. Por tanto, $\varphi$ es aditiva, luego es una medida.
@@ -1615,7 +1616,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 \end{lema}
 
 \begin{nth}[Teorema de la convergencia monótona] \label{tcm}
-  Sea $(\Omega,\mathcal{A},\mu)$ un espacio de medida. Sea $E\in \mathcal A$ y $f_n: \Omega \to [0,\infty]$ medibles. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \, \ \forall \omega \in \Omega$. Entonces:
+  Sea $(\Omega,\mathscr A,\mu)$ un espacio de medida. Sea $E\in \mathscr A$ y $f_n: \Omega \to [0,\infty]$ medibles. Supongamos que $f_n(\omega) \leq f_{n+1}(\omega) \, \ \forall \omega \in \Omega$. Entonces:
   \[
     \int_E \lim_{n \to \infty} f_n\ d\mu = \lim_{n \to \infty}\int_E f_n\, d \mu
   \]
@@ -1675,7 +1676,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 Una vez que conocemos el \textit{teorema de la convergencia monótona}, podemos deducir una serie de propiedades útiles sobre la integral de funciones medibles positivas. Por comodidad, abreviaremos dicho teorema como $T.C.M$.
 
 \begin{nprop}[Propiedades integral funciones medibles positivas] \label{int_medibles}
-Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathcal{A}$. Entonces, se verifican las siguientes propiedades.
+Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \mathscr A$. Entonces, se verifican las siguientes propiedades.
 
 \begin{nlist}
 \item Linealidad de la integral
@@ -1726,10 +1727,10 @@ Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega
 %%% TODO: Completar demostración.
 \end{nprop}
 
-\begin{nprop} \label {phi_2} Sea $f:\W \to [0,\infty]$ medible. Entonces, $\varphi:\mathcal{A} \to [0,\infty]$ dada por $$\varphi(E) = \int_E f\, d\mu, \quad \forall E \in \mathcal A$$
+\begin{nprop} \label {phi_2} Sea $f:\W \to [0,\infty]$ medible. Entonces, $\varphi:\mathscr A \to [0,\infty]$ dada por $$\varphi(E) = \int_E f\, d\mu, \quad \forall E \in \mathscr A$$
 es una medida. Además, se verifica lo siguiente:
   \begin{nlist}
-  \item $E\in \mathcal{A}, \ \mu(E) = 0 \implies \varphi(E) = 0$
+  \item $E\in \mathscr A, \ \mu(E) = 0 \implies \varphi(E) = 0$
   \item $g:\Omega \to [0,\infty]$ medible $\displaystyle \implies \int_E g\, d\varphi = \int_E g f\, d\mu$
   \end{nlist}
 %%% TODO: completar
@@ -1760,7 +1761,7 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
 
 
 \begin{lema} [Lema de Fatou]
-  Si $(\Omega,\mathcal{A},\mu)$ es un espacio de medida, $E\in \mathcal{A}$ y tenemos funciones $f_n:\Omega \to [0,\infty]$ medibles, entonces:
+  Si $(\Omega,\mathscr A,\mu)$ es un espacio de medida, $E\in \mathscr A$ y tenemos funciones $f_n:\Omega \to [0,\infty]$ medibles, entonces:
   \[
     \int_E \liminf_{n \to \infty} f_n\, d\mu \leq \liminf_{n\to \infty} \int_E f_n\, d\mu
   \]
@@ -1775,7 +1776,7 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
 
 
 \begin{nth}[Convergencia dominada de Lebesgue]
-  Sean $f_n : \Omega \rightarrow \R$ funciones medibles y $E \in \mathcal{A}$. Además, supongamos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, supongamos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \ \forall \omega \in E$. Entonces,
+  Sean $f_n : \Omega \rightarrow \R$ funciones medibles y $E \in \mathscr A$. Además, supongamos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, supongamos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \ \forall \omega \in E$. Entonces,
   
   $$ \lim_{n \to \infty} \int_E f_n d \mu = \int_E  \left( \lim_{n \to \infty} f_n \right) d \mu$$ 
 \end{nth}
@@ -1869,7 +1870,7 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
 
 % WARNING: Borrar?
 
-Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathcal A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
+Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathscr A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
 
 $$d_p (f, g) = \left( \int_{\Omega} \abs{f(\omega) - g(\omega)}^p d \mu \right)^{\frac{1}{p}}$$
 
@@ -2034,14 +2035,14 @@ Ejercicio:
 
   Basta ver que $\forall$ función $g: \Omega \rightarrow [0, \infty]$ es medible
   positiva de $L^{p}(\Omega)$ se verifica que $\forall \varepsilon > 0 \exists
-  E_{1}, E_{2}, \hdots,E_{n} \in \mathcal A, \mu(E_{i}) < \infty \forall i = 1,
+  E_{1}, E_{2}, \hdots,E_{n} \in \mathscr A, \mu(E_{i}) < \infty \forall i = 1,
   \hdots, n, \alpha_{1}, \alpha_{2}, \hdots, \alpha_{n} \in (0, \infty)$ tal que
   $||g - \sum_{i=1}^{n} \alpha_{i}\chi_{E_{i}}|| < \varepsilon$.
 
   En efecto $g$ es medible positiva y por el Teorema de Lebesgue, $\exists
   {s_{k}}$ simples positivas de forma que $s_{k}(\omega)$ es monótona creciente
   y converge a $g(\omega) \forall \omega \in \Omega$. Entonces $\exists
-  E_{1}^{k}, \hdots, E_{n_{k}}^{k} \in \mathcal A$ y $\exists \alpha_{1}^{k},
+  E_{1}^{k}, \hdots, E_{n_{k}}^{k} \in \mathscr A$ y $\exists \alpha_{1}^{k},
   \hdots, \alpha_{n_{k}}^{k} \in [0, \infty)$ tal que $s_{k} =
   \sum_{i=1}^{n_{k}}\alpha_{i}^{k}\chi_{E_{i}}^{k}$.
 
@@ -2153,7 +2154,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   Sea $\{f_n\} \subset L^p(\Omega), f \in L^p(\Omega)$ y que
   $\{f_n(\omega)\} \rightarrow f(\omega)$ a.e. $\omega \in \Omega$ $\{f_n\}
   \rightarrow f$ en $L^p(\Omega) \Leftrightarrow \forall \varepsilon > 0,
-  \exists \delta > 0$ independiente de n, tal que si $E \in \mathcal A, \mu(E) <
+  \exists \delta > 0$ independiente de n, tal que si $E \in \mathscr A, \mu(E) <
   \delta$ y $n \in \N$ entonces $\int_E |f_n|^pd\mu < \varepsilon$.
 \end{nth}
 
@@ -2163,7 +2164,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
 
    $f \in L^(\Omega) \Leftrightarrow |f|^p \in L^1(\Omega)$. Ahora, por la
    propiedad absoluta de la integral, $\forall \varepsilon > 0 \exists \delta >
-   0$ tal que si $E \in \mathcal A$ y $\mu(E) < \delta$ entonces $\displaystyle \int_E |f|^p d\mu < \frac{\varepsilon}{2^p}$.
+   0$ tal que si $E \in \mathscr A$ y $\mu(E) < \delta$ entonces $\displaystyle \int_E |f|^p d\mu < \frac{\varepsilon}{2^p}$.
 
    Como $\{f_n\} \rightarrow f$ con  $\frac{\varepsilon^{\frac{1}{p}}}{2} > 0$ $\Rightarrow \exists n_0 \in \N$ tal que si $n
    \geq n_0$ entonces $||f_n - f||_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$ 
@@ -2175,7 +2176,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
    \varepsilon^{\frac{1}{p}}$$
 
    Hasta ahora hemos probado que $\forall \varepsilon > 0 \exists \delta > 0$ y
-   $n_0 \in \N$ tal que si $E \in \mathcal A, \mu(E) <
+   $n_0 \in \N$ tal que si $E \in \mathscr A, \mu(E) <
   \delta$ y $n_0 \in \N \Rightarrow \left( \int_E|f_n|^p d\mu \right) <
   \varepsilon$.
 
@@ -2185,7 +2186,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   i = 1, \hdots , n_{0-1}$.
 
   Si elijo $\delta_0 = min\{\delta, \delta_1, \hdots, \delta_{n_0 -1}\} > 0$
-  entonces si $E \in \mathcal A$, $\mu(E) < \delta_0$ y $n \in \N$ entonces
+  entonces si $E \in \mathscr A$, $\mu(E) < \delta_0$ y $n \in \N$ entonces
   $\int_E |f_n|^p d \mu < \varepsilon$.
 
   \boxed{\Leftarrow}
