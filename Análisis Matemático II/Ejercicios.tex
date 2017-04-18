@@ -112,6 +112,7 @@
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
+
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -203,9 +204,9 @@
 \newtheoremstyle{definition-style} % Nombre del estilo.
 {10pt}               % Espacio por encima.
 {10pt}               % Espacio por debajo.
-{}                   % Fuente del cuerpo.
+{\sffamily}                   % Fuente del cuerpo.
 {}                   % Identación.
-{\bf}                % Fuente para la cabecera.
+{\bfseries \sffamily }                % Fuente para la cabecera.
 {.}                  % Puntuación tras la cabecera.
 {.5em}               % Espacio tras la cabecera.
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
@@ -733,5 +734,18 @@
   \rightarrow f(x) \forall x \in K$, prueba que $\{f_n\} \rightarrow f$ c.u. en
   $K \Leftrightarrow \{f_n : n \in \N\}$ es equiacotada y equicontinua.
 \end{ejer}
+
+\begin{ejer}
+  Sean $\varphi, \psi : [a, b] \rightarrow \R$ continua, tal que $\varphi(x)
+  \leq \psi(x), x \in [a, b]$. Definamos el conjunto $A = \{ (x, y) \in \R^2 : a
+  \leq x \leq b, \varphi(x) \leq y \leq \psi(y) \}$. Definimos $f : A
+  \rightarrow \R$ integrable. Probar que
+  $$ \int_A f(x, y) \ dxdy = \int_a^b \left( \int_{\varphi(x)}^{\psi(x)} f(x,y)
+    \ dy \right) \ dx$$
+\end{ejer}
+
+\begin{sol}
+  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy
+\end{sol}
 
 \end{document}

@@ -108,6 +108,8 @@
 \usepackage{graphicx}   % Gráficos.
 \usepackage{xcolor}     % Colores.8
 
+
+
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -2258,7 +2260,19 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
   La medida de un intervalo es la longitud del intervalo.
 \end{nprop}
 
+% TODO Aquí ha estado un rato diciendo no se qué de notación para concluir que
+% "con esta notación podéis recordar fácilmente lo que dice el teorema". Falta
+% todo eso.
 
+% TODO ¿Integral iterada?
+
+\begin{nprop}[Integral iterada]
+  $$\int_{\R^{N+M}} f(x_1, \hdots, x_N, y_1, \hdots, y_M) \ dx_1 \hdots dx_N,
+  dy_1, \hdots dy_M$$
+
+  $$= \int_{\R^M} \left[ \int_{\R^N} f(x_1, \hdots, x_N, y_1,
+    \hdots, y_M) dx_1, dx_2, \hdots, dx_N \right] dy_1 dy_2 \hdots dy_M$$
+\end{nprop}
 
 % --------------------------------------------------------------------------------
 % Bibliografía.
