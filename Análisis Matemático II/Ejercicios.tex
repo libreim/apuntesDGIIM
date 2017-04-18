@@ -370,8 +370,8 @@
     \item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
     \item Homogeneidad. Si $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
     \item Desigualdad triangular.
-      $|f+g|_\infty \leq |f|_\infty + |g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
-      para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
+      $\|f+g\|_\infty \leq \|f|_\infty + \|g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
+      Para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
     \end{itemize}
 
     Para demostrar que ${f_n} \to f$  c.u. en A $\iff f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$, solo tenemos que observar que ${f_n} \to f$  c.u. en A  significa que: $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow |f_n(x)-f(x) |<\epsilon , \ \forall x\in A,$$
@@ -387,7 +387,7 @@
 
 \begin{ejer}
   \label{1}
-  Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+  Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
   \begin{nlist}
   \item $f_k \geq 0$
@@ -400,13 +400,13 @@
   \begin{sol}
     Como $f_k(x) \to 0\ \ \forall x \in A$, entonces:  $$\forall \ x \in A,\ \forall \epsilon >0\ \exists k_x \in \mathbb{N}:\ k\geq k_x \implies |f_k(x)| < \frac{\epsilon}{2}$$
     Por otro lado, como $f_{k_x}$ es continua en $A$, en particular $f_{k_x}$ es continua en $x$. Por tanto, $\exists U_x$ entorno abierto de $x$ en $A$ tal que $$|f_{k_x}(y) - f_{k_x}(x)| < \frac{\epsilon}{2}\ \ \forall y \in U_x$$
-    Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,..,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},...,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
+    Observamos que $\forall x \in A, \ x \in U_x$. Por tanto $A \subseteq \bigcup_{x\in A} U_x$ $\implies \{U_x: x\in A\}$ es un recubrimiento por abiertos de $A$. Entonces, como $A$ es compacto, $\exists x_1,\dots,x_n \in A$ tales que $A \subseteq \bigcup_{i=1}^{n} U_{x_{i}}$. Sea ahora $k_0 = \text{máx}\{k_{x_1},\dots,k_{x_n}\}$, y es claro que $k \ge k_0 \implies k \ge k_{x_i}\ \forall i$.
 
-    Entonces, dado $k \ge k_0$ se tiene que $|f_k(x_i)| < \epsilon/2 \ \ \forall i = 1,\dots,n$. También se verifica, puesto que $f_{k{x_i}}$ es continua, que  $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ \ \ $\forall y \in U_{x_i}, \ \forall i = 1,\dots,n$.
+    Entonces, dado $k \ge k_0$ se tiene que $|f_k(x_i)| < \epsilon/2 \ \ \forall i = 1,\dots,n$. También se verifica, puesto que $f_{k_{x_i}}$ es continua, que  $|f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \epsilon/2$ \ \ $\forall y \in U_{x_i}, \ \forall i = 1,\dots,n$.
 
-    Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,..n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $f_{k_{x_i}}(x_i) < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
+    Sea $y \in A \subseteq \bigcup_{i=1}^n U_{x_i} \implies \exists i \in \{1,\dots, n\}: y \in U_{x_i} \implies |f_{k_{x_i}}(y) - f_{k_{x_i}}(x_i)| < \epsilon/2$, y también $|f_{k_{x_i}}(x_i)| < \epsilon/2$. Sumando ambas expresiones, y utilizando la monotonía y la positividad de $\{f_k\}$, tenemos que: $$|f_k(y)| \leq |f_{k_{x_i}}(y)| \leq |f_{k_{x_i}} (x_i)| + |f_{k_{x_i}} (y) - f_{k_{x_i}}(x_i)| < \frac{2\epsilon}{2} = \epsilon$$
 
-    En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,..., x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
+    En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,\dots, x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
   \end{sol}
 \end{ejer}
 
@@ -781,7 +781,7 @@
 \end{ejer}
 
 \begin{sol} 
-  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy$$
+%  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy$$
 \end{sol}
 
 \end{document}

@@ -383,7 +383,7 @@ El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo
 
 \begin{nth}
   \label{1}
-  Sea $A\subseteq \R^n$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+  Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
   \begin{nlist}
   \item $f_k \geq 0$
@@ -488,7 +488,8 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
   Sea $A \subseteq \mathbb{R}^N$, y sean $f_n: A \longrightarrow \mathbb{R}^M \ \forall n \in \mathbb{N}$. Entonces: $$\fn \xrightarrow {c.u} f \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ m,n \ge n_0 \Rightarrow |f_n(x) - f_m(x)| < \epsilon\ \ \forall x \in A$$
   
   \begin{proof} \hfill \\
-    \boxed{\Rightarrow}	 $\fn \xrightarrow {c.u} f \implies \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \Rightarrow |f_n(x) - f(x)| < \frac{\epsilon}{2}\ \forall x \in A$. Entonces, dados $m,n \ge n_0$ se tiene que: $$ |f_n(x) - f_m(x)| \le |f_n(x) - f(x) + |f_m(x) - f(x)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
+    \boxed{\Rightarrow}	 $\fn \xrightarrow {c.u} f \implies \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \Rightarrow |f_n(x) - f(x)| < \frac{\epsilon}{2}\ \forall x \in A$. Entonces, dados $m,n \ge n_0$ se tiene que: 
+    $$ |f_n(x) - f_m(x)| \le |f_n(x) - f(x)| + |f_m(x) - f(x)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
 
     \boxed{\Leftarrow} Sea $x \in A$ fijo. Entonces, es claro que $\{f_n(x)\} \subseteq \mathbb{R}^M$ es una sucesión de Cauchy. Como $\mathbb{R}^M$ es completo, tenemos que $\{f_n(x)\} \xrightarrow {c.p} f(x)\ \forall x \in A$. Ahora, tomando límite cuando $m \to \infty$ en la expresión de la hipótesis, y teniendo en cuenta que el último $<$ se transforma en $\le$: $$\forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \implies |f_n(x) - f(x)| \le \frac{\epsilon}{2} < \epsilon\ \ \forall x \in A$$
 
