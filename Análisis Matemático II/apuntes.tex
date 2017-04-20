@@ -107,6 +107,7 @@
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage{hyperref}
 \usepackage{graphicx}   % Gráficos.
+\usepackage[space]{grffile}  % Permitir espacios en rutas de gráficos
 \usepackage{xcolor}     % Colores.8
 
 
@@ -135,7 +136,7 @@
 }
 
 % Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {img/}, {'Análisis Matemático II'/img/}}
+\graphicspath{{../Recursos/Plantillas/} {Recursos/Plantillas/} {./img/} {Análisis Matemático II/img/}}
 
 % Redefinir entorno de demostración (reducir espacio superior)
 % \makeatletter
@@ -327,7 +328,7 @@
 \maketitle  % Título.
 \vfill
 \begin{center}
-  \includegraphics{by-nc-sa}  % Licencia.
+  \includegraphics{by-nc-sa.pdf}  % Licencia.
 \end{center}
 \newpage
 \tableofcontents    % Índice
@@ -1366,8 +1367,8 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
   
   Veamos gráficamente ambos conjuntos, para un $n\in \mathbb{N}$ fijo:
   \begin{center}
-	\includegraphics[height=15\baselineskip]{fig_th_Lebesgue.pdf}
-\end{center}
+	\includegraphics[ext=.pdf,height=13.5\baselineskip]{thLebesgue.pdf}
+  \end{center}
   Así, tenemos que:
   \[
     \Omega = F_n \cup \left( \bigcup_{k=1}^{n2^n}E_{n,k} \right)
