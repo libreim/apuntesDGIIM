@@ -1884,7 +1884,84 @@ donde $\overline{\beta}_3\neq 0$ ya que la cu\'adrica no tiene centro. Esto nos 
 Para definir correctamente el plano proyectivo, primero realizaremos una "definición" a través de un caso concreto. Situémonos en $\mathbb{R}^3$. Ahora definamos el plano $\pi \equiv z = 1 \equiv$ plano afín, asi como el plano $\pi_0 \equiv z = 0 \equiv$ plano vectorial, y el punto $O = (0,0,0)$ el origen.
 
 
-Entonces definimos el plano proyectivo como el conjunto formado por las intersecciones de cada recta vectorial de $\mathbb{R}^3$ con el plano $\pi$. Este conjunto contiene a todos los puntos del plano $\pi$(dado un punto del plano siempre puedes encontrar una recta centrada en el origen que pase por el), pero ademas, contiene la interseccion de las rectas vectoriales paralelas a dicho plano. Por ello llamaremos "puntos" del plano proyectivo a cada intersección de una recta vectorial con $\pi$ y en concreto "puntos en el infinito" aquellos puntos generados por una recta paralela a $\pi$
+Entonces definimos el plano proyectivo $\mathbb{P}^2$ como el conjunto formado por las intersecciones de cada recta vectorial de $\mathbb{R}^3$ con el plano $\pi$. Este conjunto contiene a todos los puntos del plano $\pi$(dado un punto del plano siempre puedes encontrar una recta centrada en el origen que pase por el), pero ademas, contiene la interseccion de las rectas vectoriales paralelas a dicho plano. Por ello llamaremos "puntos" del plano proyectivo a cada intersección de una recta vectorial con $\pi$ y en concreto "puntos en el infinito"\ aquellos puntos generados por una recta paralela a $\pi$. Simbólicamente:
+$$\mathbb{P}^2 = \mathbb{R}^2\ \cup \{puntos\ del\ infinito\}$$
+Ahora definimos la rectas de $\mathbb{P}^2$ como la intersección de un plano vectorial con $\pi$, de manera que de la misma que forma que ocurria con los puntos, $\mathbb{P}^2$ contiene a todas las rectas de $\mathbb{R}^2$ y a un recta más, que es la definida por el plano $\pi_0 \equiv z= 0$ a la que llamaremos recta del infinito ($r_\infty$). Si nos fijamos, esta recta contiene a todos los puntos del infinito, por tanto:
+$$\mathbb{P}^2 = \mathbb{R}^2\ \cup r_\infty$$
+
+\begin{nth}
+Sean P y Q dos puntos distintos de $\mathbb{P}^2$, existe una única recta proyectiva que contiene a P y Q. A esta la llamaremos $P \vee Q$
+\\
+
+\begin{proof}
+
+De lo estudiado en espacio afín sabemos que dos rectas vectoriales distintas determinan un plano vectorial unico que las contiene, por tanto, utilizando la biyeccion que conocemos entre rectas vectoriales y puntos de $\mathbb{P}^2$ y planos vectoriales y rectas de $\mathbb{P}^2$, la prueba del resultado es trivial.
+\end{proof}
+\end{nth}
+
+\begin{nth}
+Dos rectas proyectivas se cortan en único  punto proyectivo
+\\
+
+\begin{proof}
+La demostracion es similar a la del teorema anterior usando que dos planos vectoriales distintos se cortan un una única recta vectorial
+\end{proof}
+
+\end{nth}
+
+\textbf{Consequencias:}
+
+Una recta $r$ en $\mathbb{R}^2$ identifica a una única recta en $\mathbb{P}^2$ que contiene a:
+\begin{nlist}
+
+	\item $r \cap \mathbb{R}^2 = la\ recta\ de\ siempre$ 
+%%%TODO Pensar una forma de escribirlo mejor
+	\item $r \cap {puntos\ en\ el\ infinito} = r \cap r_\infty = 1\ punto\ en\ el\ infinito$
+
+\end{nlist}
+
+Ahora, una vez comprendida la aproximación inicial necesaria para poder imaginarnos y comprender el plano proyectivo, veamos que se puede construir con dos planos cualesquiera con una serie de condiciones.
+
+
+Sean dos planos $\pi'$ y $\pi_0'$, cumpliendo que:
+\begin{nlist}
+	\item $O \notin \pi'$
+	\item $O \in \pi_0$
+	\item $\pi\ ||\ \pi_0$ 
+\end{nlist}
+Con estos dos planos podemos realizar la misma construcción que realizamos al comienzo del tema y formando de nuevo el plano proyectivo $\mathbb{P}^2$. 
+
+Si nos fijamos, podemos decir que el plano proyectivo formado por cada par de planos es el mismo porque los elementos de ambos estan determinados inequívocamente por las rectas vectoriales y los planos vectoriales, por tanto, ambos son iguales, con la diferencia de que la llamada "recta en el infinito" es distinta, que estaria determinada respectivamente por los planos $\pi_0$ y $\pi_0'$
+
+\begin{nprop}
+Sea $r \in \mathbb{P}^2 \implies \mathbb{P}^2 - r = plano\ afin$
+\end{nprop}
+%%%TODO Esto hace falta demostrarlo? En dicho caso, como se haría?
+
+\begin{ndef}
+Tres puntos no alineados $A,B,C \in \mathbb{P}^2$ definen unico triángulo $ABC$, cuyos elementos son similares a los definidos para los triángulos en el plano afín
+\end{ndef}
+
+\begin{ndef}
+Cuatro puntos no alinedos 3 a 3 $A,B,C,D \in \mathbb{P}^2$ definen un único cuadrilatero, para el que definiremos los siguientes elementos:
+\begin{itemize}
+	\item Vértices: $A, B, C, D$
+	\item Lados: $A\vee B, B\vee C, C\vee D, D\vee A$
+	\item Puntos diagonales: $P = (B\vee C) \cap (D\vee A)$, $Q = (A\vee B) \cap (C\vee D)$ 
+	\item Rectas diagonales: $A\vee C, B\vee D$
+\end{itemize} 
+\end{ndef}
+
+\begin{nth}[Teorema de Fano]
+	Dada un cuadrilátero $ABCD \in \mathbb{P}^2$, los dos puntos diagonales $P$ y $Q$ y el punto de corte R de las dos rectas diagonales $R = (A \vee C)\cap (B\vee D)$, no están alineados 
+\\
+	
+	\begin{proof}
+	Para llevar a cabo esta demostracion trabajaremes en el plano afín $\mathbb{P}^2 -r$, con $r = P\vee Q$. De esta manera obtenemos que el cuadrilátero $ABCD$ que obtenemos en dicho plano afín es un paralelogramo (pues sus lados son paralelos por estar sus puntos de corte en el infinito). 
+	
+	Por tanto, como sabemos del estudio del plano afín que las diagonales de un paralelogramos se cortan en su punto medio, $R$. Consecuentemente, $P$ y $Q$ pertenecen a $r$ y R al plano afín $\mathbb{P}^2 - r \implies R \notin r$ luego $P,Q$ y $R$ no están alineados.  
+	\end{proof}
+\end{nth}
 
 
 \end{document}
