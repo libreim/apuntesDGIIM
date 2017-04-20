@@ -134,3 +134,21 @@ $$\forall \ n \geq m_0 \longrightarrow T(n) \geq kg(n)$$
 Es de destacar la simetría de ambas notaciones, mientras que una acota superiormente, la otra lo hace inferiormente. Una de las razones por lo que esto es útil, es porque hay veces en las que un algoritmo es rápido, pero no lo es para los _inputs_ por lo que debemos de estar dispuestos a saber lo menos que estamos dispuestos en consumir tiempo para resolver cualquier caso de un problema.
 
 ### Notación $\Theta$
+
+(Tiempo desperdiciado entre medias, aquí debería haber algo de divide
+y vencerás)
+
+## Algoritmos Greedy
+
+Es una forma de resolver algunos problemas mediante algoritmos que
+construyen la solución paso a paso, siempre actuando con el mismo
+criterio fijado y sin modificar nada en la resolución anterior.
+
+Estos tienen por ventajas que son eficientes, fáciles de diseñar y de
+implementar, pero por el contrario puede que la solución alcanzada no
+sea óptima, o no encontrar ninguna solución aunque el problema la
+tenga.
+
+Ejemplos de algoritmos greedy los podemos encontrar en el problema del
+cambio de la máquina expendedora o en diversos algoritmos de caminos
+en grafos.

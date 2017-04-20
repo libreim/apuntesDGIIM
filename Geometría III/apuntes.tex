@@ -724,9 +724,15 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{proof}
   Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
 \end{proof}
-%TODO Demostrar
+
+
 \begin{nprop}Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
 \end{nprop}
+
+%TODO: la dejo a medias, comentada para que no ensucie.
+%\begin{proof}
+%	Si es equilatero $\implies$ coinciden todos los centros, por lo que veremos que si no es equilatero no coinciden.
+%\end{proof}
 
 \begin{ndef}[Homotecia]
   Se define homotecia de centro $A$ y razón $\lambda$ como la aplicación $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$
@@ -812,14 +818,21 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 \begin{ndef}[Paralelogramo]
   Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
-  paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$. Además los paralelogramos cumplen que
+  paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$.
+  
+
+\end{ndef}
+
+%TODO
+\begin{nprop}
+	Los paralelogramos cumplen que
   siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
   \begin{nlist}
   \item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
   \item $V_{3} = \lambda V_{1}\ con\ \lambda \neq 0$
   \item $V_{4} = \mu V_{2}\ con\ \mu \neq 0$
   \end{nlist}
-\end{ndef}
+\end{nprop}
 
 %TODO
 \begin{nprop}
@@ -996,6 +1009,8 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C = C(centro,radio)$
 \end{ndef}
 
+
+%FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
 \begin{nprop}
   Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
   \begin{enumerate}
@@ -1006,7 +1021,10 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
 \end{nprop}
 
-%% Formalizar dilatación
+
+\begin{ndef}
+	Una dilatación es una homotecia con $\lambda \ne 1$.
+\end{ndef}
 
 
 \begin{ndef}
@@ -1018,6 +1036,13 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nprop}
   Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
 \end{nprop}
+\begin{proof}
+	Sabemos la existencia de la circunferencia de manera trivial, porque el punto medio $O$ esta a la misma distancia de ambas. Entoces $C_1 = C(O, |\vec{AB}|/2)$ pasa por ambos. \\
+	Supongamos que existe otra circunferencia  distinta con el mismo centro que pasa por ambos. Entonces como pasa por uno de los puntos también tiene el mismo radio y por lo tanto son distintas.\\
+	Por último debemos ver si el centro puede ser diferente de $O$. Como son diametralmente opuestos el centro debe estar en la linea que los une. Además como deben estar a la misma distancia tiene que ser el punto medio, es decir, $O$.
+	
+\end{proof}
+
 
 \begin{ndef}[Ángulo recto]
   Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
@@ -1333,7 +1358,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 	
 	\begin{proof}[Solución]
 	Por la propiedad el ángulo inscrito, los dos arcos están contenidos en $\mathcal L$. Sea 
-	%%%% COMPLETARRRRRRRRRRRr
+	%%%% COMPLETARRRRRRRRRRR
 	
 \end{proof}
 \end{ejemplo}
