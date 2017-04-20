@@ -1657,9 +1657,8 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \[
       E_n := \{\omega \in E : \rho s(\omega) \leq f_n(\omega)\} 
     \]
-    %%% TODO: Probar que los E_n son medibles
-    Tenemos que los conjuntos $E_n$ son medibles, y claramente $E_n \subseteq E_{n+1} \ \forall n \in \mathbb{N}$, pues $\fn$ es creciente. Además, se verifica que $$E = \bigcup_{n=1}^\infty E_n$$ Para verlo, sea $\w \in E$. Si $f(\w) = 0 \implies s(\w) = 0 \implies \w \in E_1$. En otro caso, $\rho s(\w) < f(\w)$, pues $\rho < 1$. Entonces, $\exists n \in \mathbb{N}: \w \in E_n$. 
-    
+    Tenemos que los conjuntos $E_n$ son medibles, puesto que la función $h:= f_n -\rho s$ es medible, y por tanto $E_n = h^{-1}([0,\infty))$ es medible para cada $n \in \mathbb{N}$. Además, claramente $E_n \subseteq E_{n+1} \ \forall n \in \mathbb{N}$, pues $\fn$ es creciente, y se verifica que $$E = \bigcup_{n=1}^\infty E_n$$ Para verlo, sea $\w \in E$. Si $f(\w) = 0 \implies s(\w) = 0 \implies \w \in E_1$. En otro caso, $\rho s(\w) < f(\w)$, pues $\rho < 1$. Entonces, $\exists n \in \mathbb{N}: \w \in E_n$. 
+    %%% TODO: La función h es medible, pero no positiva. Arreglar
     Ahora, se tiene lo siguiente, donde $\varphi$ es la medida definida en el \textit{Lema \ref{phi}}:
     \begin{equation} \label{eq1}
       \rho\varphi(E_n) = \rho \int_{E_n} s\, d\mu = \int_{E_n} \rho s\, d \mu \overset{\text{def. $E_n$}}{\leq} \int_{E_n}f_n\, d\mu \leq \int_E f_n\, d\mu
@@ -1691,14 +1690,10 @@ Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \m
   
 \item Monotonía $$g(\omega) \leq f(\omega) \ \forall \omega \in \Omega \implies \int_E g\, d\mu \leq \int_E f\, d \mu$$
   
-  %%% TODO: nombre de la propiedad
-\item Integración en un conjunto más grande: $$\int_E f\, d \mu =  \int_\Omega f\rchi_E \,d\mu$$
+  %%% TODO: revisar nombre de la propiedad
+\item Integración en un conjunto más grande $$\int_E f\, d \mu =  \int_\Omega f\rchi_E \,d\mu$$
 
-\item Condiciones suficientes para que la integral sea nula: $$\mu(E) = 0 \implies \int_E f\, d\mu = 0$$ $$f(\w) = 0 \ \ \forall \w \in \W \implies \int_E f\,d\mu = 0$$
-
-\item Relaciones entre la integral y la medida de algunos conjuntos:
-  $$\int_\Omega f\, d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$$
-  $$\int_\Omega f\, d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$$
+\item Condiciones suficientes para que la integral sea nula $$\mu(E) = 0 \implies \int_E f\, d\mu = 0$$ $$f(\w) = 0 \ \ \forall \w \in \W \implies \int_E f\,d\mu = 0$$
 \end{nlist}
 
 \begin{proof}\hfill
@@ -1706,24 +1701,14 @@ Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \m
     \item Ya sabemos por el \textit{Corolario \ref{arit_medibles}} que $f+g$, $fg$ y $\alpha f$ son medibles. 
     $$\dots$$
     Recordemos que tomamos el convenio $\alpha \cdot \infty = \infty, \ \alpha \cdot 0 = 0$.
-    \item
-    \item
-    \item
-    \item $\dots$
     
-    Veamos ahora la segunda equivalencia:
+    \item
+    \item
+    \item Veamos la primera implicación. Empezamos notando que si $\mu(E) = 0$, entonces $\int_E s\,d\mu = 0$ para toda función simple $s$. En efecto, si $s = \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su forma canónica, entonces: $$\int_E s\,d\mu = \sum_{k=1}^n \alpha_k \mu(E \cap A_k) = \sum_{k=1}^n \alpha_k \cdot 0 = 0,$$ donde hemos usado que $\mu(E\cap A_k) = 0\ \forall k \in \{1,\dots,n\}$ por la monotonía de $\mu$, notando que $E\cap A_k \subseteq E$.
     
-    \boxed{\Rightarrow}  Empezamos probando que si $s$ es una función simple positiva con integral $\int_\Omega s \, d\mu = 0$, entonces $\mu(\{ \omega\in\Omega \, :\, s(\omega) >0\} ) = 0$. En efecto, si $$s(\omega)=\sum_{i=1}^m \alpha_i \text{\Large$\chi$}_{A_i}, \quad (\alpha_1,\alpha_2,\dots,\alpha_m > 0)$$ entonces $\displaystyle A:=\{ \omega\in\Omega \, :\, s(\omega) >0\} = \bigcup_{i=1}^m A_i$, y $\displaystyle \int_\Omega s \, d\mu = \sum_{i=1}^m \alpha_i \mu (A_i) = 0 \implies\mu(A_i)=0\ \forall i=1,\dots , m$, por lo que $\mu(A)=0 $.
-
-Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{teorema de convergencia monótona}: 
-
-$$0\leq \int_\Omega s_n \, d\mu \nearrow \int_\Omega f\, d\mu = 0,$$
-
-es decir, $\displaystyle \int_\Omega s_n \, d\mu=0$, y por lo acabado de probar, $\mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0 \ \forall n$. 
-
-Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega \, :\, s_n(\omega) >0\}$ y, por tanto, $$0\leq \mu (\{ \omega\in\Omega \, :\,f(\omega) >0\} ) \leq \mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0$$
-
-\boxed{\Leftarrow} $\dots$
+    Por tanto, $\displaystyle \sup\left\{\int_E s\,d\mu : s \text{ es simple positiva, } s \le f \right\} = 0$, y hemos acabado.
+    
+    Para la segunda implicación, observemos que $f=0$ es simple, pues el único valor que toma es el 0. Por tanto: $$\int_E f\,d\mu =  \sum_{k=1}^n 0\cdot \mu(E) = 0$$
 \end{nlist}
 \end{proof}
 %%% TODO: Completar demostración.
@@ -1767,7 +1752,24 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
   \[
     \int_E \liminf_{n \to \infty} f_n\, d\mu \leq \liminf_{n\to \infty} \int_E f_n\, d\mu
   \]
-    %%% TODO: completar demostración.
+  
+  \begin{proof} Definimos $g_k(\omega) :=  \underset{n\geq k}{\text{inf\,} } f_n(\omega )$. Sabemos que $\{g_k\}$ es monótona creciente por definición, y además es una sucesión de funciones medibles por la \textit{Proposición \ref{p1}}. Entonces, tenemos que: $$\underset{n\to \infty}{\text{lim\,inf\,}} f_n (\omega ) = \underset{k\geq 1}{\text{sup\,}}  \left\{ \underset{n\geq k}{\text{inf\,} } f_n(\omega )\right\}  =  \underset{k\geq 1}{\text{sup\,}} g_k(\omega) = \lim_{k\to\infty} g_k(\w)$$ 
+  
+Ahora, aplicando el \hyperref[tcm]{\textit{T.C.M}}, se tiene que:
+\[
+\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu  =  \int_E \underset{k\to \infty}{\text{lim}} g_k\, d\mu 
+ =  \underset{k\to \infty}{\text{lim}}  \int_E g_k d\mu 
+\]
+
+Por último, como $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo), aplicamos la monotonía de la integral:
+\[
+\int_E g_k\, d\mu  \leq \int_E f_k\, d\mu 
+\overset{k\to\infty}{\implies}
+\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu 
+\leq   \underset{k\to \infty}{\lim} \int_E f_k\, d\mu
+\]
+%%% WARNING: Por qué está completa la prueba poniendo solo \lim en lugar de \liminf en la última desigualdad?
+\end{proof}
 
 \end{lema}
 
@@ -1865,12 +1867,39 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
   Estos dos teoremas, los podemos realizar en un $E$ un subconjunto del espacio medible $\Omega$
 \end{nota}
 
-
+%%% WARNING: ¿quitar?
 \begin{nprop}
   Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$
 \end{nprop}
 
-% WARNING: Borrar?
+\begin{nprop} Sea $f:\mathscr A \to [0,\infty]$ medible. Entonces, se verifican las siguientes afirmaciones:
+  \begin{nlist}
+	
+  \item $\displaystyle \int_\Omega f\, d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$
+  \item $\displaystyle \int_\Omega f\, d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$
+\end{nlist}
+    \begin{proof} \hfill
+    \begin{nlist}
+    \item Llamemos $E := \{\w \in \W: f(\w) = \infty\} \subseteq \W$. Se tiene que $E$ es medible, pues es diferencia de conjuntos medibles: $E = f^{-1}[0,\infty] \setminus f^{-1}[0,\infty)$. Veamos el contrarrecíproco: $$\int_\W f\, d\mu \ge \int_E f\,d\mu \ge \int_E n\rchi_E\,d\mu = n\mu(E) \quad \forall n \in \mathbb{N}$$
+    Como $n\mu(E) \to \infty$ cuando $n\to \infty$, tenemos lo buscado.
+    \item Veamos las dos equivalencias:
+    
+    \boxed{\Rightarrow}  Empezamos probando que si $s$ es una función simple positiva con integral $\int_\Omega s \, d\mu = 0$, entonces $\mu(\{ \omega\in\Omega \, :\, s(\omega) >0\} ) = 0$. En efecto, si $$s(\omega)=\sum_{i=1}^m \alpha_i \text{\Large$\chi$}_{A_i}, \quad (\alpha_1,\alpha_2,\dots,\alpha_m > 0)$$ entonces $\displaystyle A:=\{ \omega\in\Omega \, :\, s(\omega) >0\} = \bigcup_{i=1}^m A_i$, y $\displaystyle \int_\Omega s \, d\mu = \sum_{i=1}^m \alpha_i \mu (A_i) = 0 \implies\mu(A_i)=0\ \forall i=1,\dots , m$, por lo que $\mu(A)=0 $.
+
+Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{teorema de convergencia monótona}: 
+
+$$0\leq \int_\Omega s_n \, d\mu \nearrow \int_\Omega f\, d\mu = 0,$$
+
+es decir, $\displaystyle \int_\Omega s_n \, d\mu=0$, y por lo acabado de probar, $\mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0 \ \forall n$. 
+
+Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega \, :\, s_n(\omega) >0\}$ y, por tanto, $$0\leq \mu (\{ \omega\in\Omega \, :\,f(\omega) >0\} ) \leq \mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0$$
+
+\boxed{\Leftarrow} Trivial, pues $f=0\ a.e.\ \w \in \W \implies \int_\W f\, d\mu = \int_\W 0\, d\mu = 0$.
+\end{nlist}
+\end{proof}
+\end{nprop}
+
+\section{Espacios $L^p(\W)$}
 
 Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathscr A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
 
@@ -1881,9 +1910,8 @@ Sin embargo, esta definición no nos da una distancia ya que no sólo necesitamo
 Vamos a dar algunas definiciones:
 
 \begin{itemize}
-\item $\mathcal L^p (\Omega) = \{ f: \Omega \rightarrow \mathbb K \text{ medibles } : \abs{f}^p \text{ es integrable } \} \forall p \in [1, \infty)$.
-\item $\mathcal L^{\infty} (\Omega) = \{ f: \Omega \rightarrow \mathbb K : \abs{f} \text{ es una función acotada } \}$.
-\item $\mathcal L^{1} (\Omega) = \{ f: \Omega \rightarrow \mathbb K \text{ medibles } : f \text{ es integrable } \}$. 
+\item $\mathcal L^p (\Omega) := \{ f: \Omega \rightarrow \mathbb K \text{ medibles } : \abs{f}^p \text{ es integrable } \}\quad \forall p \in [1, \infty)$.
+\item $\mathcal L^{\infty} (\Omega) := \{ f: \Omega \rightarrow \mathbb K : \abs{f} \text{ es acotada } \}$.
 \end{itemize}
 
 \begin{nprop}[Lema]
