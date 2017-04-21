@@ -1032,7 +1032,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ndef}
 
 
-%%% completar
+%%% DONE
 \begin{nprop}
   Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
 \end{nprop}
@@ -1048,11 +1048,21 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
 \end{ndef}
 
-%%% completar
+%TODO: completar
 \begin{nprop}
   El lugar geométrico desde el que dos puntos dados del plano se ven bajo un ángulo recto es una circunferencia.
 \end{nprop}
 
+\begin{proof}
+	Estos son todos los puntos $P$ que cumple $<P-A, P-B>=0$. Entonces por la bilienealidad y la comutatividad del producto escalar $<P-A,P-B> = <P-A,P> - < P-A,B> = <P,P> - <P,A> - <P,B> + <A,B> = | P|^2 - <P,A+B> + <A,B> = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
+	$|P|^2 - <P,2M> + |M|^2 = |P|^2 - 2<P,M> + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, por lo que forman una circunferencia de centro $M$ y radio $\rho$. 
+\end{proof}
+
+\begin{nota}
+	Vease que esta circunferencia es la única definida por $A$ y $B$ de modo que sean diametralmente opuestos.
+\end{nota}
+
+%%%TODO:Subir foto de la imagen de la circunferencia de los 9  puntos para poder demostrarlo
 \begin{nth}[La circunferencia de los 9 puntos de un triángulo]
   Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
   \begin{itemize}
@@ -1063,7 +1073,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nth}
 \begin{proof}
   Tenemos que $B'A'B_2A_2$ es un rectángulo
-  %%% COMPLETAR DEMOSTRACIÓN.
+  %%% TODO:COMPLETAR DEMOSTRACIÓN.
 \end{proof}
 
 
