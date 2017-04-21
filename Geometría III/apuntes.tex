@@ -1183,34 +1183,6 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 
 
-\subsection{Rectángulos}
-\begin{ndef}
-  Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
-\end{ndef}
-
-
-\begin{nprop}
-  Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
-\end{nprop}
-\begin{proof}\hfill \\
-  $\boxed{\Rightarrow}$
-  %%%¿HARÍA FALTA EXPLICARLA MÁS? no me salio muy clara.
-  Al ser ambas diagonales hipotenusas de tiágulos idénticos (por ser $\vec{AB}=\vec{CD}$, $\vec{BC}=\vec{DA}$ y por ser recto el ángulo que une los segemtos) son de igual distancia.\\
-  %FALTA
-  $\boxed{\Leftarrow}$ 
-  
-\end{proof}
-
-%%% completar
-\begin{nprop}
-  Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
-\end{nprop}
-
-%%% completar
-\begin{nprop}
-  Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
-\end{nprop}
-
 \subsection{Ángulos}
 
 \begin{ndef}[Ángulo entre vectores]
@@ -1229,6 +1201,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nprop}
   Los ángulos opuestos por el vértice formados por dos rectas son iguales.
 \end{nprop}
+
 
 \begin{nprop}
   Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
@@ -1255,15 +1228,58 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
 \end{nprop}
 
-\begin{ndef}[La razón áurea]
-  
+
+
+
+\subsection{Rectángulos}
+\begin{ndef}
+  Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
 \end{ndef}
 
 
+\begin{nprop}
+  Un paralelogramo es rectángulo $\iff$ las dos diagonales miden lo mismo.
+\end{nprop}
+\begin{proof}\hfill \\
+  $\boxed{\Rightarrow}$\\
+  %%%FIXME:¿HARÍA FALTA EXPLICARLA MÁS? no me salio muy clara.
+  Al ser ambas diagonales hipotenusas de tiágulos idénticos (por ser $\vec{AB}=\vec{CD}$, $\vec{BC}=\vec{DA}$ y por ser recto el ángulo que une los segemtos) son de igual distancia.\\
+  %TODO:Incluir imagen de un rectángulo ABCD, con la diagonales dibujadas
+  $\boxed{\Leftarrow}$ \\
+  Por ser los lados opuestos paralelos de la misma distancia, y la diagonal también, ambos triángulos ABC y BCD son iguales. Entonces, además sabemos que  $\angle A = \angle
+ B = \angle C  = \angle D$. Por último, como un cuadrilatero está compuesto por dos triángulos, sabemos que sus ángulos deben sumar $2\pi$, por lo que cada ángulo debe
+  medir $\pi/2$, por lo que todos los lados son perpeniculares.
+  
+\end{proof}
+
+\begin{nota}
+	Recordemos para la siguiente demostración que el punto de corte de las diagonales de un cuadrilatero es el punto medio de cada una de ellas.
+\end{nota}
+
+\begin{nprop}
+  Todo rectángulo se inscribe en una circunferencia. Además,cada par de vértices opuestos son diametralmente opuestos.
+\end{nprop}
+
+\begin{proof}
+	Que se inscribe en una circunferencia es obvio porque porque al medir las dos diagonales lo mismo, el punto donde se cortan está a la misma distancia de los 4 puntos. Además los lados estarán mas cerca de este centro que los vertices. 
+	
+	Además como el centro está en la diagonal $A\vee C$, estos dos puntos son diametralmente opuestos. Análogo $B\vee D$
+\end{proof}
+
+%%% TODO:completar
+\begin{nprop}
+  Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+\end{nprop}
 
 
 
 
+
+%TODO:Si alguien puede que envie al grupo apuntes de este día.
+\subsection {Razón aurea}
+\begin{ndef}[La razón áurea]
+  
+\end{ndef}
 
 
 
