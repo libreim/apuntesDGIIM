@@ -103,6 +103,8 @@
 \usepackage{upgreek}
 \usepackage{mathrsfs}
 
+\usepackage{mdframed}
+
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage{hyperref}
@@ -110,14 +112,52 @@
 \usepackage[space]{grffile}  % Permitir espacios en rutas de gráficos
 \usepackage{xcolor}     % Colores.8
 
+% Fuentes personalizadas
 
+\usepackage[scaled=.85]{FiraSans}
+\usepackage{ebgaramond-maths}
+\usepackage[T1]{fontenc}
+
+% Código para ajustar las fuentes matemáticas al estilo del texto
+% que le rodea
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+\DeclareMathVersion{boldsans}
+\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+\let\oldmd\mdseries
+\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+\let\oldbf\bfseries
+\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+   \mathversion{bold}\fi\relax}
+\let\oldnorm\normalfont
+\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+\let\oldrm\rmfamily
+\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
 
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
 
 % Formato de texto.
-\linespread{1.1}            % Espaciado entre líneas.
+\linespread{1.3}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
 \setlist{leftmargin=.5in}   % Indentación para las listas.
 
@@ -220,11 +260,11 @@
 
 % Nuevo estilo para definiciones.
 \newtheoremstyle{definition-style} % Nombre del estilo.
-{10pt}               % Espacio por encima.
-{10pt}               % Espacio por debajo.
+{}               % Espacio por encima.
+{}               % Espacio por debajo.
 {}                   % Fuente del cuerpo.
 {}                   % Identación.
-{\bf}                % Fuente para la cabecera.
+{\bf\sffamily}                % Fuente para la cabecera.
 {.}                  % Puntuación tras la cabecera.
 {.5em}               % Espacio tras la cabecera.
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
@@ -235,21 +275,85 @@
 {10pt}                
 {}                   
 {}                   
-{\itshape}          
+{\itshape \sffamily}          
 {.}                  
 {.5em}               
 {}                  
 
 % Nuevo estilo para teoremas y proposiciones.
 \newtheoremstyle{theorem-style}
-{10pt}                
-{10pt}                
-{\itshape}           
+{}                
+{}                
+{}           
 {}                  
-{\bf}             
+{\bfseries \sffamily}             
 {.}                
 {.5em}               
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para la demostración
+\renewenvironment{proof}{{\itshape \sffamily Demostración}}{\qed}
+
+% Configuración general de mdframe, los estilos de los teoremas, etc
+\mdfsetup{skipabove=12pt,skipbelow=12pt}
+
+% Creamos los 'marcos' de los estilos
+
+\mdfdefinestyle{nth-frame}{
+	linewidth=1pt, %
+	linecolor= black, % 
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, % 
+	rightmargin=0pt, %
+	innerrightmargin=0pt, % 
+	innertopmargin=10pt,%
+	innerbottommargin=10pt, % 
+	%splittopskip=\topskip, %
+	%splitbottomskip=\topskip, %
+}% 
+
+\mdfdefinestyle{nprop-frame}{
+	linewidth=1pt, %
+	linecolor= gray, % 
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, %
+	innerrightmargin=0em, 
+	rightmargin=0pt, % 
+	innertopmargin=10pt,%
+	innerbottommargin=10pt, % 
+	%splittopskip=\topskip, %
+	%splitbottomskip=\topskip, %
+}%       
+
+\mdfdefinestyle{ndef-frame}{
+	linewidth=1pt, %
+	linecolor= gray, % 
+	backgroundcolor= gray!5,
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, %
+	innerrightmargin=1em, 
+	rightmargin=0pt, % 
+	innertopmargin=1.5em,%
+	innerbottommargin=1em, % 
+	splittopskip=\topskip, %
+	%splitbottomskip=\topskip, %
+}%               
+
+% Asignamos los marcos a los estilos
+
+\surroundwithmdframed[style=nth-frame]{nth}
+\surroundwithmdframed[style=nprop-frame]{nprop}
+\surroundwithmdframed[style=nprop-frame]{ncor}
+\surroundwithmdframed[style=ndef-frame]{ndef}
 
 % Nuevo estilo para ejemplos.
 \newtheoremstyle{example-style}
@@ -257,7 +361,7 @@
 {10pt}                
 {}                  
 {}                   
-{\scshape}              
+{\bf \sffamily}              
 {:}                 
 {.5em}               
 {}                   
