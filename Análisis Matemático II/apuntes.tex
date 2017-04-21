@@ -1868,12 +1868,12 @@ Ahora, aplicando el \hyperref[tcm]{\textit{T.C.M}}, se tiene que:
  =  \underset{k\to \infty}{\text{lim}}  \int_E g_k d\mu 
 \]
 
-Por último, como $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo), aplicamos la monotonía de la integral:
+Por último, como $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo). Además, se tiene que $g_k \le \inf_{n\ge k}\ f_k$. Aplicamos la monotonía de la integral:
 \[
-\int_E g_k\, d\mu  \leq \int_E f_k\, d\mu 
+\int_E g_k\, d\mu  \leq \inf_{n\ge k} \int_E f_n\, d\mu 
 \overset{k\to\infty}{\implies}
 \int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu 
-\leq   \underset{k\to \infty}{\lim} \int_E f_k\, d\mu
+\leq   \underset{k\to \infty}{\lim \text{inf}} \int_E f_k\, d\mu
 \]
 %%% WARNING: Por qué está completa la prueba poniendo solo \lim en lugar de \liminf en la última desigualdad?
 \end{proof}
