@@ -116,44 +116,6 @@
 
 % Fuentes personalizadas
 
-\usepackage[scaled=.85]{FiraSans}
-\usepackage{ebgaramond-maths}
-\usepackage[T1]{fontenc}
-
-% Código para ajustar las fuentes matemáticas al estilo del texto
-% que le rodea
-
-\DeclareMathVersion{sans}
-\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
-\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
-\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
-\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
-\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
-
-\DeclareMathVersion{boldsans}
-\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
-\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
-\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
-\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
-\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
-
-\newif\IfInSansMode
-\let\oldsf\sffamily
-\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
-\let\oldmd\mdseries
-\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
-\let\oldbf\bfseries
-\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-   \mathversion{bold}\fi\relax}
-\let\oldnorm\normalfont
-\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
-\let\oldrm\rmfamily
-\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
-
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -861,12 +823,15 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \end{enumerate}
 \end{proof}
 
-%%%TODO:Demostrar
+
 \begin{nprop}
 	
-Para toda homotecia, el centro un punto y su imagen están alineados.
+Para toda homotecia, el centro, un punto y su imagen están alineados.
 \end{nprop}
+
 \begin{proof}
+	Sea la homotecia $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$ y el punto cualquiera$P$. Veamos que en la recta (única) que contiene a $P$ y a $ A$, $r= A + \mu \vec{AP}$,  contiene a $h_{A,\lambda} (P)$. Esto es obvio por la misma definición de homotecia.
+	
 	
 \end{proof}
 
@@ -927,8 +892,8 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   
 
 \end{ndef}
-
-%TODO
+\hfill
+%TODO : Incluir dibujo de un paralelogramo con sus respectivos
 \begin{nprop}
 	Los paralelogramos cumplen que
   siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
@@ -939,7 +904,15 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \end{nlist}
 \end{nprop}
 
-%TODO
+\begin{proof}
+	\begin{nlist} 
+		\item Como $V_1 = V_3$ y $V_2 = V_4$ al restarlos da 0.
+		\item Al ser esos lados paralelos, sus vectores han de ser proporcionales
+		\item Análoga al anterior
+	\end{nlist}
+\end{proof}
+
+
 \begin{nprop}
   Sea ABCD un cuadrilátero. Entonces, son equivalentes:
   \begin{nlist}
