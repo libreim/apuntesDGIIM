@@ -423,28 +423,27 @@
 % ----------------------------
 \section*{Introducción}
 En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
+%%% TODO: completar introducción.
 \newpage
 
 \section{El espacio afín}
 \begin{ndef}[Espacio afín]
-  Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe la aplicación
-
+  Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe una aplicación
   \begin{align*}
     \varphi: E \times E & \rightarrow V \\
     (a,b) & \mapsto \varphi(a,b)
   \end{align*}
-
   que cumple las siguientes propiedades:
-  \begin{itemize}
+  \begin{nlist}
   \item Si fijamos un punto $a$, la aplicación $\varphi_a$ es biyectiva, o lo que es lo mismo:
     $$\forall a \in E, \ \ v \in V, \ \ \exists! b \in E:\varphi(a,b)=v$$
   \item Se tiene la relación de Charles, es decir:
     $$\forall a, b, c \in E \ \ \  \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
-  \end{itemize}
+  \end{nlist}
 \end{ndef}
 \subsection{El plano afín}
 
-Desde ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
+De ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
 
 \begin{figure*}[h]
   \centering
@@ -460,27 +459,28 @@ Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propieda
 
 Dados dos puntos $P$ y $Q$ del plano, podemos transformarlos en un vector llamando a $\vec{u}$ al vector que une $P$ y $Q$. Así, $\vec{u} = \overrightarrow{PQ} = Q-P$. De forma analítica podemos observar también que si tenemos un punto $P$ podemos sumarle un vector $\vec{u}$, obteniendo otro punto $Q$. Hemos visto entonces que podemos sumar tanto vectores como puntos con vectores.
 
-% ¿Insertar un dibujo con la suma de un vector a un punto?
+%%% TODO: ¿Insertar un dibujo con la suma de un vector a un punto?
 
 \begin{ndef}[Combinación lineal de vectores]
-  Si tenemos una familia $u_1,\ldots , u_n$ de vectores vectores y $\alpha_1,\ldots, \alpha_n$ una familia de escalares, entonces a
+  Si tenemos una familia $u_1,\ldots , u_n$ de vectores y $\alpha_1,\ldots, \alpha_n \in \R$ una familia de escalares, entonces a la expresión
   \[
     \sum_{i=1}^n \alpha_i u_i
   \]
-  lo llamamos \textit{combinación lineal de vectores}.
+  la llamamos \textit{combinación lineal de vectores}.
 \end{ndef}
 
 \begin{ndef}[Razón de vectores proporcionales]
-  Dados $u$ y $v$ dos vectores proporcionales ($u = \lambda v$), entonces llamamos \textit{razón} de esos dos vectores al escalar $\lambda$.
+  Dados $u$ y $v$ dos vectores proporcionales ($u = \lambda v$), llamamos \textit{razón} de esos dos vectores al escalar $\lambda \in \R$.
 \end{ndef}
 
-A continuación vamos a estudiar distintas \textit{combinaciones lineales} de puntos del plano afín.
+A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del plano afín.
 
-\begin{ndef}[Combinación baricéntrica de un conjunto de puntos]
-  Dados $P_1,...,P_n$ un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n \in \R$ un conjunto de escalares (llamados \textit{pesos} de los puntos) que cumplen que $\sum \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
+\begin{ndef}[Combinación baricéntrica de puntos]
+  Dado $\{P_1,...,P_n\}$ un conjunto de puntos del plano afín y $\alpha_1,\dots,\alpha_n \in \R$ un conjunto de escalares que cumplan que $\sum_i \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
   \[
-    P = \sum_{i=1}^n \alpha_i P_i
+    \sum_{i=1}^n \alpha_i P_i
   \]
+  Los escalares $\alpha_1,\dots,\alpha_n$ se llaman \textit{pesos} de los puntos.
 \end{ndef}
 
 \begin{nprop} Una combinación baricéntrica de puntos es un punto. 
@@ -488,14 +488,14 @@ A continuación vamos a estudiar distintas \textit{combinaciones lineales} de pu
 
 \begin{proof}
 
-  Para simplificar la demostración vamos a comenzar transformando los puntos en vectores.
+  Sea $P = \sum_i \alpha_i P_i$ una combinación baricéntrica de puntos. Para simplificar la demostración, vamos a comenzar transformando los puntos en vectores.
 
-  Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así el vector determinado por $P$ y $P_1$ y una identidad entre vectores de la forma:
+  Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así una identidad entre vectores de la forma:
   \[
     P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
   \]
 
-  Y llegamos así a que
+  Y llegamos a que
   \[
     P = P_1 + \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
   \]
@@ -504,10 +504,10 @@ A continuación vamos a estudiar distintas \textit{combinaciones lineales} de pu
 \end{proof}
 
 \begin{ndef}[Combinación convexa]
-  Si en una combinación baricéntrica los pesos $\alpha_i$ asignados a los puntos son todos positivos entonces llamaremos a esta combinación \textit{convexa}. \end{ndef}
+  Si en una combinación baricéntrica los pesos $\alpha_i$ asignados a los puntos son todos positivos, la llamaremos \textit{combinación convexa}. \end{ndef}
 
 \begin{ndef}[Centro de gravedad de un conjunto de puntos]
-  Si $P_1,...,P_n$ es un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n$ los \textit{pesos} asociados a estos puntos, llamamos a
+  Si $\{P_1,\dots,P_n\}$ es un conjunto de puntos del plano afín y $\alpha_1,...,\alpha_n$ los \textit{pesos} asociados a estos puntos, llamamos a
   \[
     \sum_{i=1}^n \alpha_iP_i
   \]
@@ -515,13 +515,13 @@ A continuación vamos a estudiar distintas \textit{combinaciones lineales} de pu
 \end{ndef}
 
 \begin{ndef}[Punto medio]
-  Sean $P$ y $Q$ dos puntos en el espacio afín. Entonces decimos que $m$ es el punto medio entre $P$ y $Q$ si está definido como:
+  Sean $P$ y $Q$ dos puntos en el espacio afín. Entonces definimos el punto medio entre $P$ y $Q$ como:
   \[
-    m = \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
+    M := \dfrac{1}{2} P + \dfrac{1}{2}Q = \dfrac{1}{2}(P+Q)
   \]
   Alternativamente, si $u = \overrightarrow{PQ}$, entonces:
   \[
-    m = \dfrac{1}{2}u + P
+    M = \dfrac{1}{2}u + P
   \]
 
 \end{ndef}
@@ -531,16 +531,17 @@ A continuación vamos a estudiar distintas \textit{combinaciones lineales} de pu
 En este apartado vamos a describir las \textit{rectas afines}. De ahora en adelante, si se hace mención a una recta sin más, daremos por hecho que se trata de una recta afín.
 
 \begin{ndef}[Recta vectorial]
-  Una recta vectorial es un subespacio vectorial de dimensión 1. Para generarlas solo es necesario un único vector. Podemos escribir la \textit{recta vectorial generada por un vector} $v$ como $L(v)$.
+  Una recta vectorial es un subespacio vectorial de dimensión $1$, es decir, para generarla es necesario un único vector. Podemos denotar la recta vectorial generada por un vector $v$ como $L(v)$.
 \end{ndef}
 
-\begin{nprop}
-  Si $P$ es un punto y $v$ un vector, entonces la recta afín $r$ viene dada por
+\begin{ndef}[Recta afín]
+  Si $P$ es un punto y $v$ un vector, entonces una recta afín $r$ viene dada por
   \[
     r = P+L(v) = \{P + \lambda v : \lambda \in \R\}
   \]
   Para distinguir las rectas vectoriales de las rectas afines, notaremos a $L(v)$ como $\vec{r}$.
-\end{nprop}
+\end{ndef}
+
 \begin{ndef}[Variedad de dirección]
   Si $v$ es un \textit{vector director}, llamaremos \textit{variedad de dirección} a la recta generada por este vector, $L(v) = \vec{r}$.
 \end{ndef}
