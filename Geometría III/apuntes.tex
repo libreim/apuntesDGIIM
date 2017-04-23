@@ -538,7 +538,7 @@ A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del 
 
   Sea $P = \sum_i \alpha_i P_i$ una combinación baricéntrica de puntos. Para simplificar la demostración, vamos a comenzar transformando los puntos en vectores.
 
-  Restamos primero $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así una identidad entre vectores de la forma:
+  Restamos un punto cualquiera de la combinación como por ejemplo $P_1$, $P-P_1 = \sum \alpha_i(P_i-P_1)$, obteniendo así una identidad entre vectores de la forma:
   \[
     P-P_1 = \sum_{i=2}^n \alpha_i \overrightarrow{P_1P_i}
   \]
@@ -596,7 +596,7 @@ En este apartado vamos a describir las \textit{rectas afines}. De ahora en adela
 
 \textbf{Propiedades de las rectas afines:}
 \begin{itemize}
-\item Si $Q$ es un punto y $r$ una recta tales que que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
+\item Si $Q$ es un punto y $r$ una recta tales que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
 \item Si $P,Q$ son dos puntos, entonces por ellos pasa una única recta $r = P +L(\overrightarrow{PQ})$. \\
   \begin{proof}
     (Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces por definición:
@@ -616,7 +616,7 @@ Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín
 \end{itemize}
 
 \begin{nth}
-  Si $r$ y $s$ son dos rectas del plano afín, entonces si:
+  Sean $r$ y $s$ dos rectas del plano afín, entonces:
   \begin{nlist}
   \item $r \nparallel s\implies r \cap s = A$, un punto
   \item $r \parallel s \implies r = s$ o bien $r \cap s =  \emptyset$
@@ -624,10 +624,11 @@ Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín
 
   \begin{proof}
     \begin{nlist}
-      % Esta demostración ?¿ No acabo de ver que demuestre lo que dice (i)
+      % REVIEW: No acabo de ver que demuestre lo que dice (i)
     \item Si $u,v$ son los vectores directores de $r$ y $s$ y $P$ y $Q$ puntos de $r$ y $s$ respectivamente, entonces con los pares $\{u,v\}$ tenemos que $P+\lambda u = Q + \mu v$ con $\lambda, \mu \in \R$
       y si $r = P +L(u)$ y $s=Q+L(v)$, y $\overrightarrow{PQ} = \lambda u - \mu v $ y, por ello, existen únicos $\lambda, \mu$.
-    \item Sean $u,v$ son los vectores directores de $r$ y $s$. Supongamos que además tienen al menos un punto $A$ en común. Escribimos estas rectas como $r = A +L(u)$ y $s=A+L(v)$. Como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
+    \item Sean $u,v$ los vectores directores de $r$ y $s$. Supongamos que además tienen al menos un punto $A$ en común. Escribimos estas rectas como $r = A +L(u)$ y $s=A+L(v)$. Como $r \parallel s \implies L(r)=L(s)$ descubrimos que $r = A +L(u)=A+L(v) = s$.
+   	%TODO: demostrar que cuando no existe el punto A la intersección es vacía 
     \end{nlist}
   \end{proof}
 \end{nth}
@@ -648,12 +649,12 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
     \boxed{\Rightarrow}
     Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2\ $ tal que $A$, $B$, y $C$ $\in r$, luego $\nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
 
-    \boxed{\Leftarrow} Si A, B, C están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
+    \boxed{\Leftarrow} Si $A$, $B$ y $C$ están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
   \end {proof}
 
 \end{nprop}
 
-% Posibilidad de hacer dibujo de triangulo con los 3 puntos y las 3 rectas
+% REVIEW: Posibilidad de hacer dibujo de triángulo con los 3 puntos y las 3 rectas
 
 
 
@@ -667,7 +668,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   \begin{proof}
     Si los lados son paralelos, entonces los vectores directores son proporcionales.
 
-    Si $w$ (el lado no mencionado del primer triangulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
+    Si $w$ (el lado no mencionado del primer triángulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
   \end{proof}
 \end{nth}
 
