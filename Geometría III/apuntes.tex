@@ -329,8 +329,8 @@
 
 \mdfdefinestyle{nth-frame}{
 	linewidth=2pt, %
-	%linecolor= 500, % 
-	linecolor=black,
+	linecolor= 500, % 
+	%linecolor=black,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -344,8 +344,8 @@
 
 \mdfdefinestyle{nprop-frame}{
 	linewidth=2pt, %
-	%linecolor= 300, %
-	linecolor= gray, 
+	linecolor= 300, %
+	%linecolor= gray, 
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -359,10 +359,10 @@
 
 \mdfdefinestyle{ndef-frame}{
 	linewidth=2pt, %
-	%linecolor= 300, % 
-	linecolor= gray!50,
-	%backgroundcolor= 50,
-	backgroundcolor= gray!5,
+	linecolor= 300, % 
+	%linecolor= gray!50,
+	backgroundcolor= 50,
+	%backgroundcolor= gray!5,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -494,11 +494,16 @@ En esta asignatura estudiaremos la geometría afín. Nos centraremos en el plano
 De ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
 
 \begin{figure*}[h]
+	\sffamily
   \centering
   \begin{tikzpicture}
-    \begin{axis}[width=190pt,axis x line=middle, axis y line=center, tick align=outside]
-      \addplot+(2,3);
-    \end{axis}
+	  	\draw[->] (-0.2,0) -- (4,0) node[right] {$x$};
+  		\draw[->] (0,-0.2) -- (0,4) node[above] {$y$};
+  		\node [fill=500, inner sep=1pt, scale=1.5, circle] at (2,3) {};
+  		\draw [dashed, 300] (0,3) -- (2,3);
+  		\draw [dashed, 300] (2,0) -- (2,3);
+  		\draw[shift={(0,3)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$3$};
+  		\draw[shift={(2,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {$2$};
   \end{tikzpicture}
   \caption{El punto (2,3) en el plano}
 \end{figure*}
@@ -688,7 +693,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
   \begin{nlist}
   \item $A'B'C'$ es un triángulo
-  \item Los lados homólogos son paralelos y que el factor de proporcionalidad es: $-\dfrac{1}{2}$
+  \item Los lados homólogos son paralelos y el factor de proporcionalidad es: $-\dfrac{1}{2}$
   \end{nlist}\vspace{0.2cm}
   \begin{proof}
 
@@ -715,81 +720,6 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   \]
 \end{ndef}
 
-\begin{nth}
-  Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el Baricentro. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
-
-
-\end{nth}
-
-%%% TODO: Elegir cual os gusta más please.
-
-%% \begin{proof}
-%%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
-%%   \[
-%%     \{A + \lambda (\frac{C+B}{2} - A)\}
-%%   \] 
-%%   Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
-
-%%   Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
-%% \end{proof}
-\begin{proof}
-  Sea $A'$ el punto medio del lado opuesto a A en un triángulo $ABC$. Sea $AvA'$ una de las medianas. Esta es:
-  \[
-    \{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
-  \]
-  Entonces, sabemos que $G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C$ y veamos que este está en la mediana: Tenemos que ver la ecuación:
-  \[
-    G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  \implies \dfrac{1}{3}A + \dfrac{2}{3}(\dfrac{1}{2}B+\dfrac{1}{2}C) = ... = G
-  \]
-
-\end{proof}
-
-Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que existen las medianas $m_A = L(\vec{AA'})$. Sabemos que las 3 medianas concurren en el baricentro. Este baricentro triseca a las medianas y tenemos que $G = \dfrac{2}{3}A' + \dfrac{1}{3}A$
-
-\begin{ndef}[Mediatriz de un segmento]
-  Si $\overline{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
-\end{ndef}
-
-\begin{center}
-  \begin{tikzpicture}
-    \coordinate [label=left:$A$] (A) at (0,0);
-    \coordinate [label=right:$B$] (B) at (2,0.5);
-    \draw (A) -- (B);
-    \coordinate (M) at ($ (A)!.5!(B)$);
-    \coordinate (top) at ($ (M) !1! 90:(B)$);
-    \coordinate (bottom) at ($ (M) !1! 270:(B)$);
-    \draw [dashed, 900] (top) -- (bottom) node[right] {Mediatriz del segmento $\overline{AB}$};
-  \end{tikzpicture}
-\end{center}
-
-\begin{nota}
-  A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
-\end{nota}
-
-\textbf{Propiedades:}
-\begin{nlist}
-\item El punto medio $M \in \mathcal{L}$. 
-\item La mediatriz es una recta que viene dada por $<\vec{AB},P> = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $AB$ y pasa por $M$ el punto medio del segmento.\\
-  \begin{proof}
-    La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2<A,P> = |P|^2+|B|^2-2<B,P>= \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =<A-B,P> = <\vec{BA},P>$$
-    Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $<\vec{BA},P>$ genera la recta:
-    \[
-      r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
-    \]
-    que es perpendicular a $\vec{BA}$.
-  \end{proof}
-\end{nlist}
-\begin{nota}
-  $|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = 	\left(\sqrt{<\vec{AP},\vec{AP}>}\right)^2 =  < A-P, A-P>  =^{(1)} <A,A-P>-<P,A-P> = <A,A> -<A,P>+<P,P>-<P,A>  = |A|^2+|P|^2-2<P,A>$. Y en (1) hemos aplicado la bilinealidad del producto escalar.
-\end{nota}
-\begin{ndef}[Rectas perpendiculares.]
-  Dos rectas son perpendiculares si sus vectores directores son ortogonales.
-\end{ndef}
-
-\begin{ndef}[Mediatrices de un triángulo]
-  Si $ABC$ es un triángulo, cada lado de este triángulo tendrá su mediatriz. Por tanto, tendremos 3 mediatrices para cada triángulo.
-\end{ndef}
-
 \pgfdeclarelayer{0}
 \pgfdeclarelayer{1}
 \pgfdeclarelayer{2}
@@ -797,6 +727,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \pgfsetlayers{0,1,main,2,3}
 
 \begin{center}
+  \sffamily
   \begin{tikzpicture}[scale=2]
     \begin{pgfonlayer}{3}
       \coordinate [label=left:$A$] (A) at (0,0);
@@ -831,24 +762,99 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
     
     \draw [dashed, 300] (A1) -- (A2);
     
-    \path [name intersections={of=MB and MC, by=O}];
+    \path [name intersections={of=MB and MC, by=G}];
     \begin{pgfonlayer}{3}
-      \node [fill=500, inner sep=1pt, label=below:$O$] at (O) {};
+      \node [fill=700, inner sep=1pt, label=below:$G$, scale=1.5, circle] at (G) {};
     \end{pgfonlayer}{3}
   \end{tikzpicture}
 \end{center}
 
 \begin{nth}
+  Si $ABC$ es un triángulo en el plano afín, entonces las medianas son concurrentes. Su punto de corte es el baricentro $(G)$. El baricentro triseca el segmento que une un vértice con el punto medio homólogo.
+
+
+\end{nth}
+
+%%% TODO: Elegir cual os gusta más please.
+
+%% \begin{proof}
+%%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
+%%   \[
+%%     \{A + \lambda (\frac{C+B}{2} - A)\}
+%%   \] 
+%%   Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
+
+%%   Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
+%% \end{proof}
+\begin{proof}
+  Sea $A'$ el punto medio del lado opuesto a $A$ en un triángulo $ABC$. Sea $A \vee A'$ una de las medianas. Esta es:
+  \[
+    \{\lambda A + \mu A': \lambda, \mu \in \R \text{ , } \lambda+\mu = 1\}
+  \]
+  Sabemos que $G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C$ y queremos ver si está en la mediana. Lo que queremos comprobar es que:
+  \[
+    G = \dfrac{1}{3} A +  \dfrac{1}{3} B +  \dfrac{1}{3} C = \lambda A + \mu A'  
+  \]
+  
+  Es claro que $A' = \left(\frac{1}{2}B + \frac{1}{2}C\right)$. Tomamos $\lambda = \frac{1}{3}$, por lo que $\mu = \frac{2}{3}$ ya que el punto que buscamos se encuentra en la mediana. Sustituyendo estos valores en la ecuación anterior:
+  
+  $$\dfrac{1}{3}A + \dfrac{2}{3}\left(\dfrac{1}{2}B+\dfrac{1}{2}C\right) = \frac{1}{3}A + \frac{1}{3}B + \frac{1}{3}C = G$$
+% TODO: Falta demostrar que el baricentro triseca el segmento que une un vértice con el punto medio homólogo.
+\end{proof}
+
+Dado un triángulo $ABC$ y su triángulo medio $A'B'C'$, las medianas de cada lado cortan al punto opuesto y a su homólogo del triángulo medio. Las tres medianas concurren en el baricentro, por lo que este triseca a las medianas. Considerando el punto $A$ del triángulo tenemos que $G = \dfrac{2}{3}A' + \dfrac{1}{3}A$
+
+\begin{ndef}[Mediatriz de un segmento]
+  Si $\overline{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
+\end{ndef}
+
+\begin{center}
+  \sffamily
+  \begin{tikzpicture}
+    \coordinate [label=left:$A$] (A) at (0,0);
+    \coordinate [label=right:$B$] (B) at (2,0.5);
+    \draw (A) -- (B);
+    \coordinate (M) at ($ (A)!.5!(B)$);
+    \coordinate (top) at ($ (M) !1! 90:(B)$);
+    \coordinate (bottom) at ($ (M) !1! 270:(B)$);
+    \draw [dashed, 700] (top) -- (bottom) node[right] {Mediatriz del segmento $\overline{AB}$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{nota}
+  A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
+\end{nota}
+
+\textbf{Propiedades:}
+\begin{nlist}
+\item El punto medio $M \in \mathcal{L}$. 
+\item La mediatriz es una recta que viene dada por $\langle\vec{AB},P\rangle  = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $\overline{AB}$ y pasa por $M$ el punto medio del segmento.\\
+  \begin{proof}
+    La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
+    Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $\langle\vec{BA},P\rangle $ genera la recta:
+    \[
+      r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
+    \]
+    que es perpendicular a $\vec{BA}$.
+  \end{proof}
+\end{nlist}
+\begin{nota}
+  $|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = 	\left(\sqrt{\langle \vec{AP},\vec{AP}\rangle }\right)^2 =  \langle A-P, A-P \rangle  =^{(1)} \langle A,A-P\rangle -\langle P,A-P\rangle  =  \langle A,A\rangle  - \langle A,P\rangle +\langle P,P\rangle - \langle P,A\rangle   = |A|^2+|P|^2-2 \langle P,A\rangle $. Y en (1) hemos aplicado la bilinealidad del producto escalar.
+\end{nota}
+\begin{ndef}[Rectas perpendiculares.]
+  Dos rectas son perpendiculares si sus vectores directores son ortogonales.
+\end{ndef}
+
+\begin{ndef}[Mediatrices de un triángulo]
+  Si $ABC$ es un triángulo, cada lado de este triángulo tendrá su mediatriz. Por tanto, tendremos 3 mediatrices para cada triángulo.
+\end{ndef}
+
+\begin{nth}
   Las tres mediatrices de un triángulo son concurrentes. Además, concurren en el punto $O$ llamado el circuncentro, el centro de la circunferencia que pasa por $A$,$B$ y $C$.
 \end{nth}
 \begin{proof}
-  Lo primero es ver que es trivial que dos mediatrices nunca son paralelas. Así:
-  \[
-    O = m_{AB} \cap m_{AC}\implies \begin{cases}
-      AO = BO\\
-      AO = CO
-    \end{cases} \implies BO = CO \implies O \in M_{BC}
-  \]
+  Lo primero es ver que dos mediatrices nunca son paralelas. Tomamos $O = m_{AB} \cap m_{AC}$. Por la definición de mediatriz tenemos que $\vec{AO} = \vec{BO}$ y que $\vec{AO} = \vec{CO}$. Es obvio entonces que $\vec{BO} = \vec{CO}$ luego $O \in m_{BC}$.
+  % TODO: Completar esta demostración.
 \end{proof}
 
 
@@ -857,22 +863,23 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \end{ndef}
 
 \begin{nota}
-  Las mediatrices de un triángulo $ABC$ son las alturas de $A'B'C'$. Por lo que las alturas de $A'B'C'$ son concurrentes.
+  Las mediatrices de un triángulo $ABC$ son las alturas de $A'B'C'$, por lo que las alturas de $A'B'C'$ son concurrentes.
 \end{nota}
 
 \begin{nprop}
   Todo triángulo $ABC$ es el triángulo medio de otro triángulo $A''B''C''$
 \end{nprop}
 \begin{proof}
-  Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Íden con $B''$ y $C''$.
+  Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Ídem con $B''$ y $C''$.
 \end{proof}
 \begin{ndef}
-  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposicion 
+  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición.
+  % FIXME: ¿Qué es un triángulo doble? ¿Qué proposición?
 \end{ndef}
 
 
 \begin{nprop}
-  Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediat8rices de $ABC$ y $O=H'$
+  Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
 \begin{proof}
   Si tomamos $m_{BC}$ podems comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
@@ -903,7 +910,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
 \begin{proof}\hfill
 \begin{enumerate}
 	\item $h(P)-h(Q)=(A+\lambda(\vec{AP})) -(A+\lambda(\vec{AQ})) = \lambda(A-P) - \lambda(A-Q) = \lambda (Q-P)$.
-	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $<h(P) - h(P'),h(Q) - h(Q')> =  <\lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 <\vec{PP'},\vec{QQ'}> = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
+	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 <\vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
 	\item Si $h$ multiplica distancia por $\lambda$, las distancias iguales siguen siendo iguales, por lo que el conjunto de puntos que estan a la misma distancia de dos rectas se mantiene.
 	\item Como mantiene distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
 \end{enumerate}
@@ -2070,6 +2077,7 @@ donde $\overline{\beta}_3\neq 0$ ya que la cu\'adrica no tiene centro. Esto nos 
 
 
 \begin{tikzpicture}
+\sffamily
 \begin{axis}
 \addplot3 [surf,mesh/interior colormap=
            {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black] {x^2-y^2};
