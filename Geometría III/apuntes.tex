@@ -73,8 +73,8 @@
 
 
 % Tipo de documento y opciones.
-\documentclass[11pt, a4paper, titlepage]{article}
-
+%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
+\documentclass[11pt, a4paper]{article}
 
 % ---------------------------------------------------------------------------
 % PAQUETES
@@ -91,7 +91,8 @@
 \usepackage{microtype}  % Mejora la letra final de cara al lector.
 
 % Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
+\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
 \usepackage{lastpage}   % Referencia a la última página.
 \usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
 \usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
@@ -114,44 +115,52 @@
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
-%% % Fuentes personalizadas
-%% -\usepackage[scaled=.85]{FiraSans}
-%% -\usepackage{ebgaramond-maths}
-%% -\usepackage[T1]{fontenc}
-%% -
-%% -% Código para ajustar las fuentes matemáticas al estilo del texto
-%% -% que le rodea
-%% -
-%% -\DeclareMathVersion{sans}
-%% -\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
-%% -\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
-%% -\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-%% -\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
-%% -\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
-%% -\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
-%% -\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
-%% -
-%% -\DeclareMathVersion{boldsans}
-%% -\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
-%% -\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-%% -\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
-%% -\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
-%% -\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
-%% -\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
-%% -\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
-%% -
-%% -\newif\IfInSansMode
-%% -\let\oldsf\sffamily
-%% -\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
-%% -\let\oldmd\mdseries
-%% -\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
-%% -\let\oldbf\bfseries
-%% -\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-%% -   \mathversion{bold}\fi\relax}
-%% -\let\oldnorm\normalfont
-%% -\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
-%% -\let\oldrm\rmfamily
-%% -\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+% Fuentes personalizadas
+\usepackage[scaled=.85]{FiraSans}
+\usepackage{ebgaramond-maths}
+\usepackage[T1]{fontenc}
+
+% Código para ajustar las fuentes matemáticas al estilo del texto
+% que le rodea
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+\DeclareMathVersion{boldsans}
+\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+\let\oldmd\mdseries
+\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+\let\oldbf\bfseries
+\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+	\mathversion{bold}\fi\relax}
+\let\oldnorm\normalfont
+\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+\let\oldrm\rmfamily
+\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+
+% Colores
+
+\definecolor{50}{HTML}{E8F5E9}
+\definecolor{300}{HTML}{81C784}
+\definecolor{500}{HTML}{4CAF50}
+\definecolor{700}{HTML}{388E3C}
+
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -168,7 +177,23 @@
 % Estilo de página.
 \pagestyle{fancy}
 \fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
+
+% Estilo de las cabeceras
+
+\titleformat{\section}
+  {\Large\bfseries\sffamily}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\large\sffamily}{\thesubsection}{1em}{}
+
+% Estilo de enlaces
+\hypersetup{
+  % hidelinks = true,   % Oculta todos los enlaces.
+  colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
+  linkcolor=black,     % Color de enlaces genéricos
+  citecolor={blue!50!black},   % Color de enlaces de referencias
+  urlcolor={blue!80!black}     % Color de enlaces de URL
+}
 
 % Ruta donde buscar gráficos
 \graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
@@ -209,29 +234,42 @@
 % CABECERA Y PIE DE PÁGINA
 % ---------------------------------------------------------------------------
 
-% Cabecera del documento.
-\renewcommand\headrule{
-  \begin{minipage}{1\textwidth}
-    \hrule width \hsize
-  \end{minipage}
+\renewcommand{\sectionmark}[1]{%
+\markboth{#1}{}}
+
+\renewcommand{\subsectionmark}[1]{%
+\markright{#1}{}}
+
+%\addtolength{\headheight}{4ex}
+\renewcommand{\headrulewidth}{0pt}
+
+\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+
+\fancypagestyle{section}{%
+  \fancyhead{}
+  %\addtolength{\headheight}{-10ex}
+  %\renewcommand{\headheight}{0pt}%
+  %\setlength{\footskip}{-48pt}%
+  \fancyfoot[LE,RO]{\Large\sffamily\thepage}
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
 }
 
-% Texto de la cabecera.
-\lhead{\subject}  % Izquierda.
-\chead{}            % Centro.
-\rhead{\docauthor}    % Derecha.
-
-% Pie de página del documento.
-\renewcommand\footrule{
-  \begin{minipage}{1\textwidth}
-    \hrule width \hsize
-  \end{minipage}\par
+\let\originalsection\section
+\RenewDocumentCommand{\section}{som}{%
+  \IfBooleanTF{#1}
+    {\originalsection*{#3}}
+    {\IfNoValueTF{#2}
+      {\originalsection{#3}}
+      {\originalsection[#2]{#3}}%
+    }%
+  \thispagestyle{section}%
 }
 
-% Texto del pie de página.
-\lfoot{}                                                 % Izquierda
-\cfoot{}                                                 % Centro.
-\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
+\fancyhead[LO,RE]{\sffamily{\leftmark}}
+\fancyfoot[LE,RO]{\Large\sffamily\thepage}
 
 
 % ---------------------------------------------------------------------------
@@ -284,8 +322,9 @@
 % Creamos los 'marcos' de los estilos
 
 \mdfdefinestyle{nth-frame}{
-	linewidth=1pt, %
-	linecolor= black, % 
+	linewidth=2pt, %
+	%linecolor= 500, % 
+	linecolor=black,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -298,8 +337,9 @@
 }% 
 
 \mdfdefinestyle{nprop-frame}{
-	linewidth=1pt, %
-	linecolor= gray, % 
+	linewidth=2pt, %
+	%linecolor= 300, %
+	linecolor= gray, 
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -312,8 +352,10 @@
 }%       
 
 \mdfdefinestyle{ndef-frame}{
-	linewidth=1pt, %
-	linecolor= gray, % 
+	linewidth=2pt, %
+	%linecolor= 300, % 
+	linecolor= gray!50,
+	%backgroundcolor= 50,
 	backgroundcolor= gray!5,
 	topline=false, %
 	bottomline=false, %
@@ -390,15 +432,15 @@
   \normalfont \normalsize
   \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
   \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-  \huge \subject\\ % Título.
+  \huge \sffamily\subject\\ % Título.
   \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
 }
 
 % Autor.
-\author{\Large{\docauthor}}
+\author{\Large\sffamily{\docauthor}}
 
 % Fecha.
-\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+\date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
 
 
 % ---------------------------------------------------------------------------
