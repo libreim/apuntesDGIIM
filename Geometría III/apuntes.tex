@@ -456,6 +456,7 @@
 \begin{document}
 
 \maketitle  % Título.
+\newpage
 \tableofcontents    % Índice
 \vfill
 \begin{center}
@@ -756,7 +757,7 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
     \coordinate (M) at ($ (A)!.5!(B)$);
     \coordinate (top) at ($ (M) !1! 90:(B)$);
     \coordinate (bottom) at ($ (M) !1! 270:(B)$);
-    \draw [dashed, red] (top) -- (bottom) node[right] {Mediatriz del segmento $\overline{AB}$};
+    \draw [dashed, 900] (top) -- (bottom) node[right] {Mediatriz del segmento $\overline{AB}$};
   \end{tikzpicture}
 \end{center}
 
@@ -805,33 +806,33 @@ Si $ABC$ es un triángulo en $\R^2$, y $A'B'C'$ su triángulo medio. Sabemos que
       \draw (A) -- (B) -- (C) -- cycle;
     \end{pgfonlayer}{1}
     \begin{pgfonlayer}{3}
-      \node [fill=orange!150,inner sep=1pt,label=below:$M_{AB}$, scale=2, circle] (MAB) at
+      \node [fill=500,inner sep=1pt,label=below:$M_{AB}$, scale=1.5, circle] (MAB) at
       ($ (A)!.5!(B)$) {};
     \end{pgfonlayer}{3}
     \coordinate (C1) at ($ (MAB)!1.2!(C)$);
     \coordinate (C2) at ($ (MAB)!-.3!(C)$);
-    \draw [dashed, purple, name path=MC](C1) -- (C2);
+    \draw [dashed, 300, name path=MC](C1) -- (C2);
     \begin{pgfonlayer}{3}
-      \node [fill=cyan!150,inner sep=1pt,label=left:$M_{AC}$, scale=2, circle] (MAC) at ($
+      \node [fill=500,inner sep=1pt,label=left:$M_{AC}$, scale=1.5, circle] (MAC) at ($
       (A)!.5!(C)$) {};
     \end{pgfonlayer}{3}
     \coordinate (B1) at ($ (MAC)!1.2!(B) $);
     \coordinate (B2) at ($ (MAC)!-.3!(B)$);
     
-    \draw [dashed, teal, name path=MB] (B1) -- (B2);
+    \draw [dashed, 300, name path=MB] (B1) -- (B2);
     
     \begin{pgfonlayer}{3}
-      \node [fill=orange,inner sep=1pt,label=right:$M_{BC}$, scale=2, circle] (MBC) at ($
+      \node [fill=orange,inner sep=1pt,label=right:$M_{BC}$, scale=1.5, circle] (MBC) at ($
       (B)!.5!(C)$) {};
     \end{pgfonlayer}{3}  
     \coordinate (A1) at ($ (MBC)!1.2!(A) $);
     \coordinate (A2) at ($ (MBC)!-.3!(A)$);
     
-    \draw [dashed, brown] (A1) -- (A2);
+    \draw [dashed, 300] (A1) -- (A2);
     
     \path [name intersections={of=MB and MC, by=O}];
     \begin{pgfonlayer}{3}
-      \node [fill=red, inner sep=1pt, label=below:$O$] at (O) {};
+      \node [fill=500, inner sep=1pt, label=below:$O$] at (O) {};
     \end{pgfonlayer}{3}
   \end{tikzpicture}
 \end{center}
@@ -2069,7 +2070,8 @@ donde $\overline{\beta}_3\neq 0$ ya que la cu\'adrica no tiene centro. Esto nos 
 
 \begin{tikzpicture}
 \begin{axis}
-\addplot3 [surf,shader=flat,draw=black] {x^2-y^2};
+\addplot3 [surf,mesh/interior colormap=
+           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black] {x^2-y^2};
 \end{axis}
 \end{tikzpicture}
 
