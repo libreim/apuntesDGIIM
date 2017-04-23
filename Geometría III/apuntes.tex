@@ -115,43 +115,45 @@
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
 % Fuentes personalizadas
--\usepackage[scaled=.85]{FiraSans}
--\usepackage{ebgaramond-maths}
--\usepackage[T1]{fontenc}
--
--% Código para ajustar las fuentes matemáticas al estilo del texto
--% que le rodea
--
--\DeclareMathVersion{sans}
--\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
--\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
--\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
--\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
--\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
--\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
--\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
--
--\DeclareMathVersion{boldsans}
--\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
--\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
--\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
--\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
--\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
--\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
--\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
--
--\newif\IfInSansMode
--\let\oldsf\sffamily
--\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
--\let\oldmd\mdseries
--\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
--\let\oldbf\bfseries
--\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
--   \mathversion{bold}\fi\relax}
--\let\oldnorm\normalfont
--\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
--\let\oldrm\rmfamily
--\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+\usepackage[scaled=.85]{FiraSans}
+\usepackage{ebgaramond-maths}
+\usepackage[T1]{fontenc}
+
+% Código para ajustar las fuentes matemáticas al estilo del texto
+% que le rodea
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+\DeclareMathVersion{boldsans}
+\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+\let\oldmd\mdseries
+\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+\let\oldbf\bfseries
+\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+   \mathversion{bold}\fi\relax}
+\let\oldnorm\normalfont
+\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+\let\oldrm\rmfamily
+\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+
+
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -420,27 +422,28 @@
 % Introducción.
 % ----------------------------
 \section*{Introducción}
-En esta asignatura trataremos de estudiar la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
+En esta asignatura estudiaremos la geometría afín. Nos centraremos en el plano, el espacio y las figuras que se forman en él.
 %%% TODO: completar introducción.
 \newpage
 
 \section{El espacio afín}
 \begin{ndef}[Espacio afín]
-  Sea $E$ un conjunto no vacío. Entonces diremos que $E$ es un espacio afín asociado a un espacio vectorial $V$ si existe una aplicación
+  Sea $E$ un conjunto no vacío. Diremos que $E$ es un \textit{espacio afín} asociado a un espacio vectorial $V$ si existe una aplicación
   \begin{align*}
     \varphi: E \times E & \rightarrow V \\
     (a,b) & \mapsto \varphi(a,b)
   \end{align*}
-  que cumple las siguientes propiedades:
+  que cumpla las siguientes propiedades:
   \begin{nlist}
   \item Si fijamos un punto $a$, la aplicación $\varphi_a$ es biyectiva, o lo que es lo mismo:
-    $$\forall a \in E, \ \ v \in V, \ \ \exists! b \in E:\varphi(a,b)=v$$
+    $$\forall a \in E, \ \ v \in V, \ \ \exists! \ b \in E:\varphi(a,b)=v$$
   \item Se tiene la relación de Charles, es decir:
     $$\forall a, b, c \in E \ \ \  \varphi(a,b) + \varphi(b,c) = \varphi(a,c)$$
   \end{nlist}
 \end{ndef}
 \subsection{El plano afín}
 
+%%% TODO: Decir explícitamente quién es la aplicación \phi en el espacio afín R^2
 De ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
 
 \begin{figure*}[h]
@@ -455,9 +458,9 @@ De ahora en adelante, en el desarollo de estos apuntes consideraremos $\R^2$ com
 
 Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propiedades de los vectores en propiedades de puntos e intentar relacionar estos dos conceptos.
 
-Dados dos puntos $P$ y $Q$ del plano, podemos transformarlos en un vector llamando a $\vec{u}$ al vector que une $P$ y $Q$. Así, $\vec{u} = \overrightarrow{PQ} = Q-P$. De forma analítica podemos observar también que si tenemos un punto $P$ podemos sumarle un vector $\vec{u}$, obteniendo otro punto $Q$. Hemos visto entonces que podemos sumar tanto vectores como puntos con vectores.
+Dados dos puntos $P$ y $Q$ del plano, podemos transformarlos en un vector llamando $\vec{u}$ al vector que une $P$ y $Q$. Así, $\vec{u} = \overrightarrow{PQ} = Q-P$. De forma analítica podemos observar también que si tenemos un punto $P$, podemos sumarle un vector $\vec{u}$ y obtenemos otro punto $Q$. Hemos visto entonces que podemos sumar tanto dos vectores como puntos con vectores.
 
-%%% TODO: ¿Insertar un dibujo con la suma de un vector a un punto?
+%%% TODO: ¿Insertar un dibujo con la suma de un vector a un punto? ¿Suma de vectores?
 
 \begin{ndef}[Combinación lineal de vectores]
   Si tenemos una familia $u_1,\ldots , u_n$ de vectores y $\alpha_1,\ldots, \alpha_n \in \R$ una familia de escalares, entonces a la expresión
