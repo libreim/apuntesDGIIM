@@ -114,44 +114,44 @@
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
-% Fuentes personalizadas
--\usepackage[scaled=.85]{FiraSans}
--\usepackage{ebgaramond-maths}
--\usepackage[T1]{fontenc}
--
--% Código para ajustar las fuentes matemáticas al estilo del texto
--% que le rodea
--
--\DeclareMathVersion{sans}
--\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
--\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
--\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
--\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
--\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
--\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
--\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
--
--\DeclareMathVersion{boldsans}
--\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
--\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
--\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
--\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
--\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
--\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
--\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
--
--\newif\IfInSansMode
--\let\oldsf\sffamily
--\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
--\let\oldmd\mdseries
--\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
--\let\oldbf\bfseries
--\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
--   \mathversion{bold}\fi\relax}
--\let\oldnorm\normalfont
--\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
--\let\oldrm\rmfamily
--\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+%% % Fuentes personalizadas
+%% -\usepackage[scaled=.85]{FiraSans}
+%% -\usepackage{ebgaramond-maths}
+%% -\usepackage[T1]{fontenc}
+%% -
+%% -% Código para ajustar las fuentes matemáticas al estilo del texto
+%% -% que le rodea
+%% -
+%% -\DeclareMathVersion{sans}
+%% -\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+%% -\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
+%% -\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+%% -\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+%% -\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+%% -\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+%% -\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+%% -
+%% -\DeclareMathVersion{boldsans}
+%% -\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+%% -\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+%% -\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+%% -\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+%% -\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+%% -\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+%% -\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+%% -
+%% -\newif\IfInSansMode
+%% -\let\oldsf\sffamily
+%% -\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+%% -\let\oldmd\mdseries
+%% -\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+%% -\let\oldbf\bfseries
+%% -\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+%% -   \mathversion{bold}\fi\relax}
+%% -\let\oldnorm\normalfont
+%% -\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+%% -\let\oldrm\rmfamily
+%% -\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
 % ---------------------------------------------------------------------------
@@ -608,11 +608,11 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \begin{nth}
   Si consideramos los triángulos $ABC$ y $A_1B_1C_1$ con dos de los lados homólogos paralelos y las razones de los vectores de esos lados son iguales.
-  Si las rectas paralelas son: $A\vee C \parallel A_1C_1$ y $A\vee B \parallel A_1B_1$, por lo que las razones son:
+  Si las rectas paralelas son: $A\vee C \parallel A_1\vee C_1$ y $A\vee B \parallel A_1\vee B_1$, por lo que las razones son:
   \[
     \frac{\vec{A_1C_1}}{\vec{AC}} = \frac{\vec{A_1B_1}}{\vec{AB}}
   \]
-  Entonces, la pareja restante $C\vee B \parallel C_1B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
+  Entonces, la pareja restante $C\vee B \parallel C_1\vee B_1$ y $\frac{\vec{B_1C_1}}{\vec{BC}} = \frac{\vec{A_1B_1}}{\vec{AB}} = \frac{\vec{A_1C_1}}{\vec{AC}}$\\
   \begin{proof}
     Si los lados son paralelos, entonces los vectores directores son proporcionales.
 
@@ -627,6 +627,10 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{ncor}[Teorema de Thales]
   Si en un triángulo $ABC$ se traza una recta paralela a cualquiera de sus lados, obtenemos un triángulo semejante al triángulo original.
 \end{ncor}
+
+\begin{proof}
+	Estos dos triángulos van a tener las tres rectas paralelas, por lo tanto, van a ser semejante.
+\end{proof}
 
 \begin{nota}
   Dos triángulos tienen todos los lados paralelos dos a dos $\iff$ los segmentos de los lados son proporcionales dos a dos. Esto es por el teorema anterior.
