@@ -208,6 +208,11 @@
 
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
+
+% Numerar las ecuaciones del entorno {equation} con respecto a las secciones
+\numberwithin{equation}{section}
+
+
 %---------------------------------------------------------------------------
 %   COMANDOS PERSONALIZADOS
 %---------------------------------------------------------------------------
@@ -225,11 +230,35 @@
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
 % Renombrar la R de los reales
-
 \newcommand{\R}{\mathbb{R}}
 
 % Flechitas de los vectores de tamaño apropiado
 \renewcommand{\vec}{\overrightarrow}
+
+% Letra lambda
+\newcommand{\la}{\lambda}
+
+% Polinomio característico
+\newcommand{\pl}{p(\lambda)}
+
+% Matriz 2x2
+\newcommand{\m}[4]{%
+  \begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}
+}
+
+% Matriz 3x3
+\newcommand{\mm}[9]{%
+  \begin{pmatrix} #1 & #2 & #3\\ #4 & #5 & #6\\ #7 & #8 & #9\end{pmatrix}
+}
+
+% Determinante 2x2
+\newcommand{\detm}[4]{%
+  \begin{vmatrix} #1 & #2 \\ #3 & #4\end{vmatrix}
+}
+% Determinante 3x3
+\newcommand{\detmm}[9]{%
+  \begin{vmatrix} #1 & #2 & #3\\ #4 & #5 & #6\\ #7 & #8 & #9\end{vmatrix}
+}
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -371,7 +400,20 @@
 	innerbottommargin=1em, % 
 	splittopskip=\topskip, %
 	%splitbottomskip=\topskip, %
-}%               
+}%         
+
+%%% TODO: ¿Estilo de ejercicios?
+%\mdfdefinestyle{ejemplo-frame}{
+%	leftmargin=1em,
+%	topline=false, %
+%	bottomline=false, %
+%	rightline=false,%
+%	leftline=false,
+%	innerleftmargin=0em, %
+%	innerrightmargin=0em, 
+%	innertopmargin=0em,%
+%	innerbottommargin=0em, % 
+%}        
 
 % Asignamos los marcos a los estilos
 
@@ -379,6 +421,7 @@
 \surroundwithmdframed[style=nprop-frame]{nprop}
 \surroundwithmdframed[style=nprop-frame]{ncor}
 \surroundwithmdframed[style=ndef-frame]{ndef}
+%\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
 
 % Nuevo estilo para ejemplos.
 \newtheoremstyle{example-style}
@@ -397,6 +440,7 @@
 \newtheorem{nprop}{Proposición}[section]
 \newtheorem{ncor}{Corolario}[section]
 \newtheorem{lema}{Lema}[section]
+
 % Definiciones.
 \theoremstyle{definition-style}
 \newtheorem{ndef}{Definición}[section]
@@ -1683,26 +1727,20 @@ incógnitas y podemos resolverlo.
 
 \section{Sistemas de ecuaciones en diferencias}
 
+%%% TODO: ¿Otro nombre para la subsección?
 \subsection{Introducción}
 
-Para poder continuar en nuestro estudio de los sistemas de ecuaciones en
-diferencias es necesario que hagamos un repaso a algunos conceptos que ya
-conocemos de otras asignaturas como \textit{Geometría II} o \textit{Métodos
+En esta sección vamos a abordar el estudio de \textbf{sistemas de ecuaciones en diferencias}. Para ello, es necesario hacer un repaso a algunos conceptos que ya se conocen de otras asignaturas como \textit{Geometría II} o \textit{Métodos
   Numéricos I}.
 
-\subsubsection{Valores y vectores propios}
-
-Es posible que observemos alguna diferencia respecto a lo estudiado en
-\textit{Geometría II}.
-
 \begin{ejemplo}
-Veamos un sistema de ecuaciones, que podemos escribir de dos formas:
-  \begin{align*}
+Vamos a estudiar el siguiente sistema de ecuaciones en diferencias lineal con dos incógnitas:
+  $$\begin{rcases}
     x_{n+1} &= 2x_n - 3y_n \\
     y_{n+1} &= x_n - 2y_n
-  \end{align*}
-
-  \begin{align*}
+  \end{rcases}$$
+Podemos reescribirlo matricialmente de la siguiente forma:
+  \begin{align*} 
     \left(
     \begin{array}{c}
       x_{n+1} \\
@@ -1728,37 +1766,43 @@ Veamos un sistema de ecuaciones, que podemos escribir de dos formas:
   \begin{pmatrix}
     2 & -3 \\
     1 & -2
-  \end{pmatrix}$.
-
-  $X_{n+1} = AX_n = A(AX_{n+1}) = A^2X_{n-1} = A^2(AX_{n-2}) = \hdots =
-  A^{n+1}X_0$ donde $X_0 =
+  \end{pmatrix}$, que serán el \textit{vector de incógnitas} y la \textit{matriz de coeficientes}, respectivamente. Entonces, el sistema se escribe:
+  \begin{equation} \label{ej1:1}
+	X_{n+1} = AX_n,\quad n \ge 0
+\end{equation}
+  Ahora observamos lo siguiente, iterando la expresión \eqref{ej1:1}:
+  $$X_{n+1} = AX_n = A(AX_{n-1}) = A^2X_{n-1} = A^2(AX_{n-2}) = \hdots =
+  A^{n+1}X_0,$$ donde $X_0 = 
   \begin{pmatrix}
     x_0 \\
     y_0
-  \end{pmatrix}$ las condiciones iniciales.
+  \end{pmatrix}$ son las condiciones iniciales.
 
-  La solución es $X_n = A^nX_0, n \geq 0$. Tenemos una potencia de una
-  matriz. Lo que nos va a interesar va a ser el comportamiento asintótico de la solución.
+  Por tanto, la solución del sistema es $X_n = A^nX_0, \ n \geq 0$. Observemos que tenemos una potencia de una matriz. En muchos casos, lo que nos interesará será el comportamiento asintótico de la solución, que se reducirá a estudiar cómo se comportan las potencias de una cierta matriz.
 
 \end{ejemplo}
 
-\begin{ejemplo}[La sucesión de Fibonacci]
-  La suceción de Fibonacci es una ecuación en diferencias de orden 2 lineal.
-  $
+\begin{ejemplo}
+  Sabemos que la \textit{sucesión de Fibonacci} es una ecuación en diferencias lineal de orden $2$ lineal, $$f_{n+2} = f_{n+1} + f_n,\quad n \ge 0,\quad f_0=f_1=1$$
+   Veamos cómo podemos transformarla en un sistema de ecuaciones en diferencias. Para ello, definimos:
+  $$
   \begin{rcases}
     x_n = f_n \\
     y_n = f_{n+1}
-  \end{rcases}
+  \end{rcases}$$
+  Y realizando transformaciones, obtenemos el siguiente sistema:
+  $$
   \begin{rcases}
     x_{n+1} = f_{n+1} = y_n \\
     y_{n+1} = f_{n+2} = f_{n+1} + f_n = y_n + x_n
-  \end{rcases}
+  \end{rcases} \implies 
   \begin{rcases}
     x_{n+1} = y_n \\
     y_{n+1} = x_n + y_n
-  \end{rcases}$ $n \geq 0$.
+  \end{rcases}\quad n \ge 0$$
 
-  $
+Al escribirlo en forma matricial, nos queda:
+  $$
   \begin{pmatrix}
     x_{n+1} \\
     y_{n+1}
@@ -1770,8 +1814,7 @@ Veamos un sistema de ecuaciones, que podemos escribir de dos formas:
   \begin{pmatrix}
     x_n \\
     y_n
-  \end{pmatrix}$ $n \geq 0$; condiciones iniciales:
-
+  \end{pmatrix},\quad n \ge 0,$$ donde las condiciones iniciales son
   $\begin{pmatrix}
     x_0 \\
     y_0
@@ -1783,149 +1826,188 @@ f_1
   \begin{pmatrix}
     1 \\
     1
-  \end{pmatrix}$
+  \end{pmatrix}$.
+  
+  Por tanto, la solución es $X_n = \begin{pmatrix}
+    0 & 1 \\
+    1 & 1
+  \end{pmatrix}^n \cdot \begin{pmatrix}
+	1 \\
+	1
+\end{pmatrix}, \ n \ge 0$.
 
 \end{ejemplo}
 
-\begin{ndef}[Valor propio]
-  $\lambda$ es valor propio de $A \in \mathcal M_k (\mathbb C)$ si y solo si
-  existe un vector no nulo $v$ tal que $$Av = \lambda v$$
+\subsubsection{Valores y vectores propios}
 
-  $v$ se llama \textit{vector propio asociado al valor propio} $\lambda$.
+\begin{ndef}[Valor propio]
+  $\lambda$ es \textit{valor propio} de $A \in \mathcal M_k (\mathbb C)$ si y solo si
+  existe un vector no nulo $v \in \mathbb C^k$ tal que $$Av = \lambda v$$
+  El vector $v$ se llama \textit{vector propio asociado al valor propio} $\lambda$.
 \end{ndef}
 
 \begin{nota}
   Vemos el vector $v$ como un vector columna.
 \end{nota}
 
-Cálculo de valores y vectores propios
+\textbf {Cálculo de valores y vectores propios}
 
-  Como $Av = \lambda v \Leftrightarrow Av - \lambda v = 0 \Leftrightarrow (A -
-  \lambda I)v = 0$. Esto es un sistema de ecuaciones dependiente del parámetro
-  $\lambda$, que tenemos que resolver.
+  Tenemos que $Av = \lambda v \iff Av - \lambda v = 0 \iff (A -
+  \lambda I)v = 0$. Esto es un sistema de ecuaciones homogéneo, dependiente del parámetro $\lambda$, donde $v$ es el vector de incógnitas. Por ser homogéneo, siempre tiene solución. Si esa solución es única, necesariamente es la solución trivial $v = 0$, que desechamos.
 
-  Es un sistema compatible y queremos que sea indeterminado para que infinitas
-  soluciones, con el fin de encontrar $v$ no nulos. Para ello imponemos que
-  $det(A - \lambda I) = 0$.
+  Queremos entonces que sea un sistema compatible indeterminado, con el fin de encontrar vectores $v$ no nulos. Para ello imponemos que
+  $det(A - \lambda I) = 0$, es decir, debemos calcular las raíces de ese polinomio.
+  
+  \begin{ndef}[Polinomio característico] Si $A \in \mathcal M_k(\mathbb C)$, el polinomio $p(\lambda)= det (A-\lambda I)$ se llama \textit{polinomio característico} de la matriz $A$.
+  
+  Si $\dim A = k$, entonces $p(\lambda)$ es de grado $k$.
+	
+\end{ndef}
+\begin{nota}
+	Por el \textit{Teorema fundamental del Álgebra}, sabemos que $p(\lambda)$ tiene $k$ raíces entre reales y complejas, contando multiplicidades. Además, el término de mayor grado es siempre $(-1)^k\lambda^k$.
+\end{nota}
 
-  \begin{ejemplo}
-    $A =
-    \begin{pmatrix}
-      2 & -3 \\
-      1 -2
-    \end{pmatrix}
-    $
-    Calculamos sus valores y vectores propios. Primero necesitamos que $det(A -
-    \lambda I) = 0$. Vamos a calcular este determinante.
-    $$
-    \begin{vmatrix}
-      2 - \lambda & -3 \\
-      1 & -2-\lambda
-    \end{vmatrix} = (2 - \lambda)(-2-\lambda) + 3 = \lambda^2-1$$
+\begin{ndef}[Ecuación característica] Llamamos \textit{ecuación característica} a la ecuación $$p(\lambda) = 0$$
+	
+\end{ndef}
 
-    $ \lambda^2-1$ es lo que llamamos \textit{polinomio característico},
-    $p(\lambda)$. Igualamos ahora $p(\lambda) = 0$. Obtenemos dos raíces
-    distintas, $1$ y $-1$. Por tanto, tenemos dos valores propios distintos
-    $\lambda_1 = 1, \lambda_2 = -1$.
+Con esta notación, los \textit{valores propios} de una matriz son las raíces de su polinomio característico, y los \textit{vectores propios} son soluciones no triviales del sistema $(A - \lambda I)v = 0$. De hecho, cada valor propio define un \textbf{subespacio vectorial} de vectores propios, pues sabemos que hay infinitas soluciones.
 
-    Ahora vamos a obtener los vectores propios, que son soluciones no triviales
-    de sistemas de ecuaciones lineales. Lo que vamos a hacer es sustituir los
-    $\lambda_i$ que hemos obtenido (los valores propios).
-
-    Para $\lambda_1 = 1$:
-
-    $A - I =
-    \begin{pmatrix}
-      1 & -3 \\
-      1 & -3
-    \end{pmatrix}$ y el sistema que tenemos $
-    \begin{pmatrix}
-      1 & -3 \\
-      1 & -3
-    \end{pmatrix}
-    \begin{pmatrix}
-      v_1 \\
-      v_2
-    \end{pmatrix} =
-    \begin{pmatrix}
-      0 \\
-      0
-    \end{pmatrix} \rightarrow
-    \begin{cases}
-      v_1 = 3v_2 \\
-      v_2 \in \mathbb C
-    \end{cases}$
-
-    En realidad hemos obtenido un subespacio vectorial de $\mathbb
-    C^2$ que llamamos $V_{\lambda_1} = V_1 = \{
-    \begin{pmatrix}
-      v1 \\
-      v2
-    \end{pmatrix} \in \mathbb C^2 : v_1 = 3v_2 \} = \mathcal L
-    \begin{pmatrix}
-      3 \\
-      1
-    \end{pmatrix} = \langle
-    \begin{pmatrix}
-      3 \\
-      1
-    \end{pmatrix} \rangle$
+\begin{ndef}[Subespacio propio] 
+	Denotamos como $\mathcal V_\lambda$ al subespacio vectorial de vectores propios asociados al valor propio $\lambda$.
+\end{ndef}
 
 
-     Para $\lambda_2 = -1$:
-
-    $A + I =
-    \begin{pmatrix}
-      3 & -3 \\
-      1 & -1
-    \end{pmatrix}$ y el sistema que tenemos $
-    \begin{pmatrix}
-      3 & -3 \\
-      1 & -1
-    \end{pmatrix}
-    \begin{pmatrix}
-      v_1 \\
-      v_2
-    \end{pmatrix} =
-    \begin{pmatrix}
-      0 \\
-      0
-    \end{pmatrix} \rightarrow
-    \begin{cases}
-      v_1 = v_2 \\
-      v_2 \in \mathbb C
-    \end{cases}$
-
-    De nuevo hemos obtenido un subespacio vectorial de $\mathbb
-    C^2$ que llamamos $V_{\lambda_2} = V_2 = \{
-    \begin{pmatrix}
-      v1 \\
-      v2
-    \end{pmatrix} \in \mathbb C^2 : v_1 = v_2 \} = \mathcal L
-    \begin{pmatrix}
-      1 \\
-      1
-    \end{pmatrix} = \langle
-    \begin{pmatrix}
-      1 \\
-      1
-    \end{pmatrix} \rangle$
-  \end{ejemplo}
-
-  \begin{nth}[Teorema de Cayley-Hamilton]
-    Toda matriz cuadrada anula su polinomio característico: $$p(A) = 0$$
-  \end{nth}
-
-  \begin{ejemplo}
+  \begin{ejemplo} \label{ej2} Calcular los valores y vectores propios de la matriz
     $A =
     \begin{pmatrix}
       2 & -3 \\
       1 & -2
-    \end{pmatrix}, \lambda_1 = 1, \lambda_2 = -1, p(\lambda) = \lambda^2-1$.
+    \end{pmatrix}
+    $.
+    
+    En primer lugar, hallamos el polinomio característico:
+    $$ \pl = \detm{2-\lambda}{-3}{1}{-2-\lambda}
+    = (2 - \lambda)(-2-\lambda) + 3 = \lambda^2-1$$
 
-    ¿Es verdad que $p(A) = 0$. Comprobémoslo. $p(\lambda) = A^2 - I = 0$:
+    Resolvemos ahora la ecuación característica $p(\lambda) = 0$, y obtenemos dos raíces
+    distintas, $1$ y $-1$. Por tanto, tenemos dos valores propios distintos:
+    $\lambda_1 = 1, \lambda_2 = -1$.
 
-    $A^2 =
+    Ahora vamos a obtener los vectores propios, que son soluciones no triviales
+    del sistemas de ecuaciones lineales $(A - \lambda I)v = 0$. Lo que vamos a hacer es sustituir los valores propios obtenidos.
+
+\begin{nlist}
+	
+    \item Para $\lambda_1 = 1$, tenemos que:
+
+    $A - 1\cdot I =
+    \begin{pmatrix}
+      1 & -3 \\
+      1 & -3
+    \end{pmatrix}$, y el sistema resultante es $
+    \begin{pmatrix}
+      1 & -3 \\
+      1 & -3
+    \end{pmatrix}
+    \begin{pmatrix}
+      v_1 \\
+      v_2
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix}$.
+    
+    De aquí sacamos que $v_1 = 3v_2,\ v_2 \in \mathbb C$. Es decir, tenemos el subespacio vectorial $$\mathcal V_{\lambda_1} = \mathcal V_1 = \left\{
+    \begin{pmatrix}
+      v1 \\
+      v2
+    \end{pmatrix} \in \mathbb C^2 : v_1 = 3v_2 \right\} = \mathscr L
+    \begin{pmatrix}
+      3 \\
+      1
+    \end{pmatrix} = \langle
+    \begin{pmatrix}
+      3 \\
+      1
+    \end{pmatrix} \rangle$$
+
+
+     \item Para $\lambda_2 = -1$, se tiene
+
+    $A - (-1)\cdot I =
+    \begin{pmatrix}
+      3 & -3 \\
+      1 & -1
+    \end{pmatrix}$, y el sistema que tenemos es $
+    \begin{pmatrix}
+      3 & -3 \\
+      1 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+      v_1 \\
+      v_2
+    \end{pmatrix} =
+    \begin{pmatrix}
+      0 \\
+      0
+    \end{pmatrix}.$
+    
+    Por tanto, se tiene que $v_1 = v_2,\ v_2 \in \mathbb C$. De nuevo hemos obtenido un subespacio vectorial de $\mathbb
+    C^2$:  $$\mathcal V_{\lambda_2} = \mathcal V_2 = \left\{
+    \begin{pmatrix}
+      v1 \\
+      v2
+    \end{pmatrix} \in \mathbb C^2 : v_1 = v_2 \right\} = \mathscr L
+    \begin{pmatrix}
+      1 \\
+      1
+    \end{pmatrix} = \langle
+    \begin{pmatrix}
+      1 \\
+      1
+    \end{pmatrix} \rangle$$
+    
+    \end{nlist}
+  \end{ejemplo}
+  
+    \begin{ejemplo}[Fibonacci]
+    Calcular los valores propios de $B =
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1
+    \end{pmatrix}$. 
+    
+    Su polinomio característico, $p(\lambda) = det(B - \lambda I)
+    =
+    \begin{vmatrix}
+      -\lambda & 1 \\
+      1 & 1 - \lambda
+    \end{vmatrix} = (-\lambda)(1-\lambda) - 1 = \lambda^2 - \lambda - 1$.
+    
+    Sus valores propios son las soluciones de $p(\lambda) = 0$, es decir,  $\displaystyle \lambda_1 =
+    \frac{1 + \sqrt{5}}{2}$ y $\displaystyle \lambda_2 = \frac{1 - \sqrt{5}}{2}$ .
+    
+    Notemos que el polinomio característico \textbf{es el mismo} que el que obtuvimos en el tema anterior para la ecuación de Fibonacci.
+
+  \end{ejemplo}
+  
+  Veamos ahora un teorema que nos será útil a la hora de calcular potencias de una matriz.
+
+  \begin{nth}[Teorema de Cayley-Hamilton]
+    Toda matriz cuadrada anula su polinomio característico: $$p(A) = 0$$
+  \end{nth}
+  
+  \begin{nota}
+	Merece la pena aclarar la notación utilizada. Si $\pl = (-1)^k \lambda^k + a_{k-1}\lambda^{k-1} + \hdots + a_1\lambda + a_0$, con $a_i
+  \in \mathbb C, \ i=0, 1, \hdots, k -1$, entonces $p(A) = (-1)^kA^k + a_{k-1}A^{k-1} + \hdots + a_1A + a_0I$.
+\end{nota}
+
+  \begin{ejemplo} Para la matriz $A$ del \textit{Ejemplo}  \eqref{ej2}, ¿es verdad que $p(A) = 0$? Comprobémoslo.
+  $$\begin{rcases}
+   p(A) = A^2 - I \\
+    A^2 =
     \begin{pmatrix}
       2 & -3 \\
       1 & -2
@@ -1937,47 +2019,27 @@ Cálculo de valores y vectores propios
     \begin{pmatrix}
       1 & 0 \\
       0 & 1
-    \end{pmatrix}$
+    \end{pmatrix} = I
+    \end{rcases} \implies p(A) = 0$$
   \end{ejemplo}
 
-  \begin{ejemplo}[Fibonacci]
-    La matriz es $B =
-    \begin{pmatrix}
-      0 & 1 \\
-      1 & 1
-    \end{pmatrix}$. Su polinomio característico, $p(\lambda) = det(B - \lambda I)
-    =
-    \begin{vmatrix}
-      -\lambda & 1 \\
-      1 & 1 - \lambda
-    \end{vmatrix} = (-\lambda)(1-\lambda) - 1 = \lambda^2 - \lambda - 1$.
-    
-    Sus valores propios son las soluciones de $p(\lambda) = 0$. $\lambda_1 =
-    \frac{1 + \sqrt{5}}{2}$ y $\lambda_2 = \frac{1 - \sqrt{5}}{2}$ 
+  Una de las consecuencias del \textit{Teorema de Cayley-Hamilton} es que nos permite hallar cualquier potencia de una matriz con relativa facilidad. Veámoslo.
 
-  \end{ejemplo}
-
-  ¿Qué consecuencias tiene el Teorema de Cayley-Hamilton?
-
-  Dada una matriz $A \in \mathbb C^{k\times k} \Rightarrow p(\lambda) = det(A - \lambda I) =
-  (-1)^k \lambda^k + a_{k-1}\lambda^{k-1} + \hdots + a_1\lambda + a_0$ con $a_i
-  \in \mathbb C, \ i=0, 1, \hdots, k -1$.
-
-Entonces $0 = p(A) = (-1)^kA^k + a_{k-1}A^{k-1} + \hdots + a_1A + a_0I$ con lo
+  Dada una matriz $A \in \mathcal M_k(\mathbb C)$, tenemos que  $0 = p(A) = (-1)^kA^k + a_{k-1}A^{k-1} + \hdots + a_1A + a_0I$, con lo
 que $$A^k = (-1)^k\left[-a_{k-1}A^{k-1}-a_{k-2}A^{k-2} - \hdots - a_1A -
   a_0I\right]$$
-Con esto, para calcular $A^k$ necesitaríamos el polinomio característico y las
-potencias anteriores, $A^2, A^3, \hdots, A^{k-1}$. Así, para calcular $A^{n+k} =
-$% FIXME Aquí falta algo
+Así, para calcular $A^k$ necesitaríamos el polinomio característico y las
+potencias anteriores ($A^2, A^3, \hdots, A^{k-1}$). 
+Entonces, si conocemos las $k-1$ primeras potencias de la matriz $A$, podemos calcular cualquier potencia superior: $$A^{n+k} = A^kA^n = (-1)^k\left[-a_{k-1}A^{k-1}-a_{k-2}A^{k-2} - \hdots - a_1A - a_0I\right] A^n =$$ $$=(-1)^k\left[-a_{k-1}A^{n+k-1}-a_{k-2}A^{n+k-2} - \hdots - a_1A^{n+1} - a_0A\right]$$
 
 \begin{ejemplo}
   Sea $B =
   \begin{pmatrix}
     0 & 1 \\
     1 & 1
-  \end{pmatrix}$, la matriz de Fibonacci. Calcular $B^6$.
+  \end{pmatrix}$, la matriz de Fibonacci. Calcular $B^3$ y $B^4$.
 
-Tenemos que $p(\lambda) = \lambda^2 - \lambda -1$, luego $B^2 = B + I =
+Tenemos que $p(\lambda) = \lambda^2 - \lambda -1$, luego por el \textit{Teorema de Cayley-Hamilton} se tiene que $$p(B) = B^2 - B - I = 0 \implies B^2 = B + I = 
 \begin{pmatrix}
   0 & 1 \\
   1 & 1
@@ -1989,101 +2051,128 @@ Tenemos que $p(\lambda) = \lambda^2 - \lambda -1$, luego $B^2 = B + I =
 \begin{pmatrix}
   1 & 1 \\
   1 & 2
-\end{pmatrix}$.
+\end{pmatrix}.$$
 
-$B^6 = B^2B^2B^2 = (B+I)(B+I)(B+I)$.
+Podemos calcular las potencias sucesivas realizando manipulaciones algebraicas:
 
-Veamos más ejemplos de potencias de esta matriz:
-
-$B^3 = BB^2 = B(B+I) = B^2 + B = (B+I) + B = 2B + I$.
+$B^3 = BB^2 = B(B+I) = B^2 + B = (B+I) + B = 2B + I$
 
 $B^4 = BB^3 = B(2B + I) = 2B^2 + B = 2(B+I) + B = 3B + 2I$
 
-Podemos incluso hacer una conjetura y pensar que $B^n = (n-1)B + (n-2)I$ para $n
-\geq 3$, algo que tendríamos que comprobar.
+En vista de lo anterior, podemos conjeturar que $B^n = (n-1)B + (n-2)I$ para $n
+\geq 3$, algo que tendríamos demostrar por inducción.
 
 \end{ejemplo}
 
-\begin{ndef}[Espectro de una matriz]
-  Llamamos espectro de una matriz, $\sigma(A)$ al conjunto $$\{ \lambda \in
+Concluimos este apartado con dos definiciones.
+
+\begin{ndef}[Espectro de una matriz cuadrada]
+  Llamamos espectro de una matriz $A \in \mathcal M_k(\mathbb C)$ al conjunto $$\sigma(A) = \{ \lambda \in
   \mathbb C : p(\lambda) = 0 \}$$
 \end{ndef}
 
-\begin{ndef}[Radio espectral de una matriz]
-  Llamamos radio espectral de una matriz, $\rho(A)$ a $$max \{|\lambda| :
+\begin{nota}
+	Será útil incluir en el espectro de una matriz la multiplicidad de las raíces del polinomio característico.
+\end{nota}
+
+\begin{ndef}[Radio espectral de una matriz cuadrada]
+  Llamamos radio espectral de una matriz $A \in \mathcal M_k(\mathbb C)$ al número real $$\rho(A) =\max \{|\lambda| :\
   p(\lambda) = 0 \}$$
 \end{ndef}
 
 \begin{nota}
-  ¿Puede ser 0 $\rho(A)$? Esto implicaría que $\sigma(A) = \{0, 0, \hdots
-  \}$, algo que ocurre por ejemplo en $
-  \begin{pmatrix}
-    0 & 0 \\
-    0 & 0
-  \end{pmatrix}$ o en $
-  \begin{pmatrix}
-    0 & 1 \\
-    0 & 0
-  \end{pmatrix}$.
+  En general, $\rho(A) \ge 0$. Además, el hecho de que $\rho(A) = 0$  implica que $\sigma(A) = \{0, 0, \hdots 0\}$, pero no implica que $A=0$, como demuestra el siguiente ejemplo.
+  
 \end{nota}
 
-\begin{ndef}[Semejancia de matrices]
-  Dos matrices $A, B \in \mathcal M_k(\mathbb C)$ se dice que son semejantes si
-  existe una matriz regular $P \in \mathcal M_k(\mathbb C)$ que verifica que $$A
+\begin{ejemplo} Calcular el radio espectral de la matriz $O = \m{0}{0}{0}{0}$ y de la matriz $C = \m{0}{1}{0}{0}$.
+
+En ambos casos, el polinomio característico es $p(\lambda) = \lambda^2$. Por tanto, $\sigma(O) = \sigma(C) = \{0,0\}$, y se tiene que $\rho(O) = \rho(C) = 0$.
+	
+\end{ejemplo}
+
+\subsubsection{Semejanza de matrices}
+
+\begin{ndef}[Matrices semejantes]
+  Dos matrices $A, B \in \mathcal M_k(\mathbb C)$ se dicen \textit{semejantes} si
+  existe una matriz regular $P \in \mathcal M_k(\mathbb C)$ verificando $$A
   = PBP^{-1}$$
 
 A la matriz $P$ se le suele llamar \textit{matriz de paso}.
 \end{ndef}
 
-\begin{nprop}
+\begin{nprop} \label{potencias_semejantes}
   Si dos matrices son semejantes, también lo son sus potencias $$A = PBP^{-1}
   \Rightarrow A^n = PB^nP^{-1}$$
 \end{nprop}
 
 \begin{proof}
-  Sean $A, B \in M_k(\mathbb C)$ semejantes. Esto implica que $\exists \underset{\text{inversible}}{P} \in
-  M_k(\mathbb C) : A = PBP^{-1}$.
-
-$A^n = A \cdot A \hdots \cdot A = (PBP^{-1})(PBP^{-1}) \hdots (PBP^{-1}) =
-(PBP^{-1}) \Rightarrow $ %FIXME: Aquí falta un poquito que me ha borrado.
+  Sean $A, B \in M_k(\mathbb C)$ semejantes. Entonces, $\exists {P} \in
+  M_k(\mathbb C)$ invertible tal que $A = PBP^{-1}$. Así, tenemos que
+$$A^n = A \cdot A \hdots \cdot A = (PBP^{-1})(PBP^{-1}) \hdots (PBP^{-1}) =
+PBP^{-1}PBP^{-1}\hdots PBP^{-1} = PB^nP^{-1}$$ Hemos usado la asociatividad del producto de matrices, y el hecho de que $P^{-1}P = I$.
 \end{proof}
 
 \begin{ndef}[Matriz diagonal]
-  Una matriz $D \in M_k(\mathbb C)$ con $D = (d_{i,j})$ se dice que es
-  \textit{diagonal} si $d_{i,j} = 0, \forall i \neq j$. Esto es, si es de la
+  Una matriz $D \in M_k(\mathbb C)$ con $D = (d_{ij})$ se dice que es
+  \textit{diagonal} si $d_{i,j} = 0\ \ \forall i \neq j$. Esto es, si es de la
   forma
 $$ D =
 \begin{pmatrix}
+  d_{11} & 0 & \hdots & 0 \\
+  0 & d_{22} & \hdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \hdots & d_{kk}
+\end{pmatrix}$$
+
+\end{ndef}
+
+\begin{nota} En una matriz diagonal, puede ser que $d_{ij} = 0$ para $i=j$.
+	
+\end{nota}
+
+Obsérvese que para una matriz diagonal es muy sencillo calcular las potencias: 
+$$ D^n = 
+\begin{pmatrix}
+  d_{11}^n & 0 & \hdots & 0 \\
+  0 & d_{22}^n & \hdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \hdots & d_{kk}^n
+\end{pmatrix}$$
+
+Si $A$ es semejante a una matriz diagonal $D = (d_{ij})$, sabemos que $A^n$ es semejante a $D^n$ por la \textit{Proposición \ref{potencias_semejantes}}. Entonces, podemos calcular también fácilmente $A^n$: $$A^n = P \begin{pmatrix}
+  d_{11}^n & 0 & \hdots & 0 \\
+  0 & d_{22}^n & \hdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \hdots & d_{kk}^n
+\end{pmatrix}P^{-1}$$
+
+Es precisamente este hecho el que da pie al siguiente apartado.
+
+\subsubsection{Diagonalización de matrices}
+
+\begin{ndef}[Matriz diagonalizable]
+  Una matriz $A \in M_k(\mathbb C)$ se dice \textit{diagonalizable} si es
+  semejante a una matriz diagonal.
+\end{ndef}
+
+Puesto que diagonalizar una matriz es útil para calcular sus potencias, lo que nos interesa ahora es ver bajo qué condiciones una matriz $A \in \mathcal M (\mathbb C)$ es diagonalizable.
+
+$A$ es diagonalizable si $\exists D$ diagonal, $\exists P$ regular tal que $A = PDP^{-1}$. Entonces: $$A = PDP^{-1} \iff AP = PDP^{-1}P \iff AP = PD$$
+Viendo la matriz $P$ por columnas, dicha expresión es equivalente a que $$A\Bigg(  P_1 \ \Big| \ P_2 \ \Big| \ \dots \ \Big| \ P_k \Bigg) = \Bigg(  P_1 \ \Big| \ P_2 \ \Big| \ \dots \ \Big| \ P_k \Bigg) \begin{pmatrix}
+  d_{11} & 0 & \hdots & 0 \\
+  0 & d_{22} & \hdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \hdots & d_{kk}
+\end{pmatrix} \iff$$ $$\iff \Bigg(  AP_1 \ \Big| \ AP_2 \ \Big| \ \dots \ \Big| \ AP_k \Bigg) = \Bigg(  d_{11}P_1 \ \Big| \ d_{22}P_2 \ \Big| \ \dots \ \Big| \ d_{kk}P_k \Bigg)$$
+
+Igualando las columnas de ambas matrices, se tiene que $AP_i = d_{ii}P_i, \ i =1,\dots,k$; es decir, los números $d_{ii}$ deben ser valores propios de $A$. Además, los vectores columna $\{P_1,P_2,\dots,P_k\}$ deben ser vectores propios asociados a valores propios de $A$.
+
+La conclusión que hemos extraído es que, si $A$ fuese diagonalizable, entonces la matriz $P$ sería una matriz \textbf{cuyas columnas serían una base de cada subespacio propio de $\bm{A}$}. También sabemos que la matriz $D$ sería de la forma $$\begin{pmatrix}
   \lambda_1 & 0 & \hdots & 0 \\
   0 & \lambda_2 & \hdots & 0 \\
   \vdots & \vdots & \ddots & \vdots \\
   0 & 0 & \hdots & \lambda_k
-\end{pmatrix}$$
-
-\end{ndef}
-
-Obsérvese que para una matriz diagonal es muy fácil calcular los potencias: 
-$$ D^n = 
-\begin{pmatrix}
-  \lambda_1^n & 0 & \hdots & 0 \\
-  0 & \lambda_2^n & \hdots & 0 \\
-  \vdots & \vdots & \ddots & \vdots \\
-  0 & 0 & \hdots & \lambda_k^n
-\end{pmatrix}$$
-
-\begin{ndef}[Matriz diagonalizable]
-  Una matriz $A \in M_k(\mathbb C)$ se dice \textit{diagonalizable} si es
-  semejante a una matriz diagonal. Esto es, existen dos matrices $P, D \in
-  M_k(\mathbb C)$ con $P$ %FIXME: De nuevo, faltan cosas aquí porque me ha quitado la diapostiva.
-\end{ndef}
-
-Puesto que las matrices diagonales son muy interesantes, la pregunta que nos hacemos ahora es, sea $A \in M_k(\mathbb C)$ una matriz
-cualquiera. ¿Podemos asegurar que existe una matriz diagonal $D \in M_k(\mathbb C)$
-tal que $A$ sea semejante a $D$? Es decir, ¿existen matrices $D$ y $P$, con $P$
-regular verificando $A = PDP^{-1} \Leftrightarrow AP = PD$?
-
-%FIXME: Aquí faltan cosas
-$A = PDP^{-1} \underset{\text{multiplicando por P}}{\Longleftrightarrow} AP = PDP^{-1}P
-\Leftrightarrow AP = PD$
+\end{pmatrix}$$ donde $\lambda_1,\lambda_2\dots,\lambda_k$ son los valores propios de $A$.
 
 \end{document}
