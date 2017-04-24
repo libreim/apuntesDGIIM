@@ -733,7 +733,7 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
 En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de $\mathcal{C}(A,\mathbb{R}^M)$. Para ello, necesitamos primero definir ciertos conceptos el espacio de funciones continuas. Salvo que se especifique lo contrario, $A$ será un subconjunto compacto de $\mathbb{R}^N$ en todo el apartado.
 
 \begin{ndef}[Conjunto acotado]
-  Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es acotado (o equiacotado) si $\exists M > 0: \ \|f\|_{\infty} \le M \ \ \forall f \in B$.
+  Sea $A \subseteq \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es acotado (o equiacotado) si $\exists M > 0: \ \|f\|_{\infty} \le M \ \ \forall f \in B$.
 \end{ndef}
 
 \begin{nota}
@@ -2389,10 +2389,10 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
   Vemos que $\varphi$ está definida $\forall y \in \R^M \verb+\+ A$. Esta función
   $\varphi$ es integrable en $\R^M$, luego $\exists \int_{\R^M} \varphi \ dm_M$.
 \item Para a.e. $x \in \R^N$ la función $f_x(y) := f(x,y)$ es integrable. Esto
-  quiere decir que $\varphi (x) := \displaystyle \int_{\R^M} f_x \ dm_M$ es
+  quiere decir que $\psi (x) := \displaystyle \int_{\R^M} f_x \ dm_M$ es
   integrable en $\R^N$, lo que implica que $\exists \displaystyle \int_{\R^N}\psi
   \ dm_N$.
-\item $\displaystyle\int_{\R^M} \varphi \ dm_M = \displaystyle\int_{\R^M} \psi \ dm_N \displaystyle\int_{\R^N \times \R^M} f
+\item $\displaystyle\int_{\R^M} \varphi \ dm_M = \displaystyle\int_{\R^M} \psi \ dm_N = \displaystyle\int_{\R^N \times \R^M} f
   \ dm_{M + N}$.
 \end{enumerate}
 \end{nth}
