@@ -113,6 +113,8 @@
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
@@ -910,7 +912,7 @@ Dado un triángulo $ABC$ y su triángulo medio $A'B'C'$, las medianas de cada la
 \begin{proof}\hfill
 \begin{enumerate}
 	\item $h(P)-h(Q)=(A+\lambda(\vec{AP})) -(A+\lambda(\vec{AQ})) = \lambda(A-P) - \lambda(A-Q) = \lambda (Q-P)$.
-	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 <\vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
+	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 \langle \vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
 	\item Si $h$ multiplica distancia por $\lambda$, las distancias iguales siguen siendo iguales, por lo que el conjunto de puntos que estan a la misma distancia de dos rectas se mantiene.
 	\item Como mantiene distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
 \end{enumerate}
@@ -967,7 +969,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Cuadriláteros}
 
 \begin{ndef}
-  $ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman lados a los segmentos que unen los vertices consecutivos, y diagonales a los segmentos que unen $A \vee C$ y $B \vee D$.
+  $ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman \textit{lados} a los segmentos que unen los vertices consecutivos, y \textit{diagonales} a los segmentos que unen $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 \begin{ndef}[Lado]
@@ -976,17 +978,43 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ndef}
 
 \begin{ndef}[Diagonal]
-  Una diagonal es una recta que une dos vertices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
+  Una diagonal es una recta que une dos vértices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
 \end{ndef}
 
 \begin{ndef}[Paralelogramo]
-  Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, sea $ABCD$ un
-  paralelogramo entonces $AvB$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$.
+  Un paralelogramo es un cuadrilátero que cumple que todos sus lados opuestos son paralelos. Es decir, si $ABCD$ es un
+  paralelogramo, entonces $A \vee B$ es paralelo a $C \vee D$ y $B \vee C$ es paralelo a $D \vee A$.
   
+\pgfdeclarelayer{0}
+\pgfdeclarelayer{1}
+\pgfdeclarelayer{2}
+\pgfdeclarelayer{3}
+\pgfsetlayers{0,1,main,2,3}
 
+\begin{center}
+  \sffamily
+  \begin{tikzpicture}[scale=1]
+    \begin{pgfonlayer}{3}
+      \coordinate [label=below left:$A$] (A) at (0,0);
+      \coordinate [label=above left:$B$] (B) at (1,3);
+      \coordinate [label=above right:$C$] (C) at (4,3);
+      \coordinate [label=below right:$D$] (D) at (3,0);
+    \end{pgfonlayer}{3}
+    
+    \begin{pgfonlayer}{1}
+      \draw[color=700, line width=1pt] (A) -- (B) -- (C) -- (D) -- cycle;
+    \end{pgfonlayer}{1}
+    
+    \draw [dashed, 300, name path=AC, line width=1pt] (A) -- (C);
+    \draw [dashed, 300, name path=BD, line width=1pt] (B) -- (D);
+    
+    \end{tikzpicture}
+\end{center}
+  
 \end{ndef}
+
 \hfill
-%TODO : Incluir dibujo de un paralelogramo con sus respectivos
+
 \begin{nprop}
 	Los paralelogramos cumplen que
   siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
@@ -997,11 +1025,11 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \end{nlist}
 \end{nprop}
 
-\begin{proof}
+\begin{proof} \hfill
 	\begin{nlist} 
-		\item Como $V_1 = V_3$ y $V_2 = V_4$ al restarlos da 0.
-		\item Al ser esos lados paralelos, sus vectores han de ser proporcionales
-		\item Análoga al anterior
+		\item Como $V_1 = V_3$ y $V_2 = V_4$ el resultado de restarlos es $0$.
+		\item Al ser esos lados paralelos, sus vectores han de ser proporcionales.
+		\item Análoga a la anterior.
 	\end{nlist}
 \end{proof}
 
@@ -1016,7 +1044,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 
 
-\begin{proof}\hfill
+\begin{proof} \hfill \\
   \boxed{1) \Rightarrow 2)}
   Solo tenemos que fijarnos en lo que implica ser paralelogramo (ver propiedad arriba):
   $V_{1} - V_{2} - V_{3} + V_{4} = 0 \Leftrightarrow V_{1} - V_{2} = V_{3} - V_{4} $
@@ -1042,26 +1070,33 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{proof}
 
 \begin{ndef}
+	\hfill
   \begin{itemize}
-  \item Un cuadrilátero es convexo si las dos diagonales separan a los otros vértices.\\
-    \begin{tikzpicture}
-      \draw (0,0) node {}
+   \item Un cuadrilátero es convexo si sus dos diagonales separan a los otros vértices.\\
+   \begin{center}
+   	\begin{tikzpicture}
+      \draw [line width=1pt, color=500] (0,0) node {}
       -- (1,3) node {}
       -- (4,2) node {}
       -- (3,0) node {}
       -- cycle;
-      \draw [dashed, gray] (0,0) -- (4,2);
-      \draw [dashed, gray] (1,3) -- (3,0);
+      \draw [dashed, 300, line width=1pt] (0,0) -- (4,2);
+      \draw [dashed, 300, line width=1pt] (1,3) -- (3,0);
     \end{tikzpicture}
-  \item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.\\
-    \begin{tikzpicture}
-      \draw (0,0) node {}
+   \end{center}
+    
+  \item Un cuadrilátero es no convexo si sus dos diagonales no separan a los otros vértices.\\
+  \begin{center}
+  	 \begin{tikzpicture}
+      \draw [line width=1pt, color=500] (0,0) node {}
       -- (0,4) node {}
       -- (4,0) node {}
       -- (4,3) node {}
       -- cycle;
     \end{tikzpicture}
-  \end{itemize}
+
+  \end{center}
+     \end{itemize}
 \end{ndef}
 
 \subsection{Transformaciones}
@@ -1177,7 +1212,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Circunferencias}
 
 \begin{ndef}[Circunferencia]
-  Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C = C(centro,radio)$
+  Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C(centro,radio)$.
 \end{ndef}
 
 
@@ -1194,7 +1229,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 
 \begin{ndef}
-	Una dilatación es una homotecia con $\lambda \ne 1$.
+	Una dilatación es una homotecia cuya razón $\lambda \ne 1$.
 \end{ndef}
 
 
@@ -1216,7 +1251,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 
 \begin{ndef}[Ángulo recto]
-  Dos vectores forman un ángulo recto si $<\vec{PA},\vec{PB}> = 0$, siendo $P$ el punto donde se cortan.
+  Dos vectores forman un ángulo recto si $\langle \vec{PA},\vec{PB}\rangle  = 0$, siendo $P$ el punto donde se cortan.
 \end{ndef}
 
 %TODO: completar
@@ -1225,15 +1260,14 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 
 \begin{proof}
-	Estos son todos los puntos $P$ que cumple $<P-A, P-B>=0$. Entonces por la bilienealidad y la comutatividad del producto escalar $<P-A,P-B> = <P-A,P> - < P-A,B> = <P,P> - <P,A> - <P,B> + <A,B> = | P|^2 - <P,A+B> + <A,B> = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
-	$|P|^2 - <P,2M> + |M|^2 = |P|^2 - 2<P,M> + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, por lo que forman una circunferencia de centro $M$ y radio $\rho$. 
+	Estos son todos los puntos $P$ que cumple $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la comutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
+	$|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, por lo que forman una circunferencia de centro $M$ y radio $\rho$. 
 \end{proof}
 
 \begin{nota}
 	Vease que esta circunferencia es la única definida por $A$ y $B$ de modo que sean diametralmente opuestos.
 \end{nota}
 
-%%%TODO:Subir foto de la imagen de la circunferencia de los 9  puntos para poder demostrarlo
 \begin{nth}[La circunferencia de los 9 puntos de un triángulo]
   Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
   \begin{itemize}
@@ -1241,6 +1275,103 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$
   \item $A_3,B_3,C_3$ los tres pies de las alturas.
   \end{itemize}
+  
+  \begin{center}
+  	 \begin{tikzpicture}[scale=2]
+  \sffamily
+  % Definimos los vértices
+	\tkzDefPoint(-1,1){A} \tkzDefPoint(3,2){B}
+\tkzDefPoint(1,4){C}
+% Dibujamos el triángulo
+\tkzDrawPolygon[color=500, fill=50](A,B,C)
+
+
+
+% Puntos medios
+\tkzDefMidPoint(A,B) \tkzGetPoint{MAB}
+\tkzDefMidPoint(B,C) \tkzGetPoint{MBC}
+\tkzDefMidPoint(C,A) \tkzGetPoint{MCA}
+% Alturas del triángulo
+
+% Dibujamos las alturas
+\begin{pgfinterruptboundingbox}
+\tkzDrawAltitude[dashed,color=900](B,C)(A)
+\tkzGetPoint{A3} 
+\tkzDrawAltitude[dashed,color=900](A,C)(B)
+\tkzGetPoint{B3}   
+\tkzDrawAltitude[dashed,color=900](A,B)(C)
+\tkzGetPoint{C3} 
+\end{pgfinterruptboundingbox}
+
+% Buscamos el ortocentro
+\tkzInterLL(A,A3)(B,B3) \tkzGetPoint{H}
+
+% Dibujamos las medianas del triángulo
+\tkzDrawSegment[color=900](A,MBC)
+\tkzDrawSegment[color=900](B,MCA)
+\tkzDrawSegment[color=900](C,MAB)
+
+% Puntos medios de los segmentos que unen vértices con H
+\tkzDefMidPoint(H,A) \tkzGetPoint{A2}
+\tkzDefMidPoint(H,B) \tkzGetPoint{B2}
+\tkzDefMidPoint(H,C) \tkzGetPoint{C2}
+
+% Buscamos el circucentro y el baricentro del triángulo
+\begin{pgfinterruptboundingbox}
+\tkzCircumCenter(A,B,C)\tkzGetPoint{O}
+\tkzCentroid(A,B,C)\tkzGetPoint{G}
+\end{pgfinterruptboundingbox}
+
+% Dibujamos la recta de Euler
+\tkzDefPointWith[linear, K=2](O,H) \tkzGetPoint{E1}
+\tkzDefPointWith[linear, K=-2.5](O,G) \tkzGetPoint{E2}
+\tkzDrawSegment[color=900](E1, E2)
+\tkzLabelSegment[above right, pos=0](E1,E2){$\text{Recta de Euler}$}
+
+% Configuramos el estilo de los puntos
+\tkzSetUpPoint[size=5,color=900, fill=700]
+
+% Dibujamos los vértices del triángulo
+\tkzDrawPoints[size=10](A,B,C)
+\tkzLabelPoint[left](A){$A$}
+\tkzLabelPoint[right](B){$B$}
+\tkzLabelPoint[above=1pt](C){$C$}
+
+% Dibujamos el ortocentro, baricentro y circucentro
+\tkzDrawPoint[size=10](O)
+\tkzDrawPoint[size=10](G)
+\tkzDrawPoint[size=10](H)
+
+% Calculamos el círculo de los 9 puntos y obtenemos su centro
+\begin{pgfinterruptboundingbox}
+\tkzDefCircle[euler](A,B,C)
+\tkzGetPoint{E} \tkzGetLength{rEuler}
+\end{pgfinterruptboundingbox}
+
+% Dibujamos el círculo y su centro
+\tkzDrawCircle[R,color=700, thick](E,\rEuler pt)
+\tkzDrawPoint(E)
+
+% Dibujamos los 9 puntos de la circunferencia
+\tkzDrawPoints(MAB, MBC, MCA)
+\tkzLabelPoint[below](MAB){$A'$}
+\tkzLabelPoint[right](MBC){$B'$}
+\tkzLabelPoint[left](MCA){$C'$}
+
+\tkzDrawPoints(A2, B2, C2)
+\tkzLabelPoint[left](A2){$A_2$}
+\tkzLabelPoint[right](B2){$B_2$}
+\tkzLabelPoint[below](C2){$C_2$}
+
+\tkzDrawPoints(A3, B3, C3)
+\tkzLabelPoint[above](A3){$A_3$}
+\tkzLabelPoint[above](B3){$B_3$}
+\tkzLabelPoint[below](C3){$C_3$}
+	   
+	\end{tikzpicture}
+
+  \end{center}
+   
 \end{nth}
 \begin{proof}
   Tenemos que $B'A'B_2A_2$ es un rectángulo
@@ -1254,9 +1385,9 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{ndef}[Ángulo entre vectores]
   Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
   \[
-    cos \theta =  \frac{< v,w >}{|v||w|} \implies \theta = cos^{-1} \frac{< v,w >}{|v||w|}
+    cos \theta =  \frac{\langle  v,w \rangle }{|v||w|} \implies \theta = cos^{-1} \frac{\langle  v,w \rangle }{|v||w|}
   \]
-\end{ndef}
+\end{ndef} 
 \begin{nota}
   Un ángulo entre rectas sería el ángulo que forman sus vectores directores
 \end{nota}
@@ -1844,7 +1975,7 @@ A continuaci\'on damos la lista de los distintos tipos de cu\'adricas con centro
 \vspace{.3cm}
 
 Si $\cal A$ tiene rango $3$ entonces $\cal Q$ tiene un \'unico centro.
-Entonces existen $a,b,c>0$ tales que en esas coordenadas la cu\'adrica se escribe 
+Entonces existen $a,b,c\rangle 0$ tales que en esas coordenadas la cu\'adrica se escribe 
 
 
 \begin{tabular}{ll}
