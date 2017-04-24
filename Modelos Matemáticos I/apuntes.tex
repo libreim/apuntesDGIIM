@@ -511,7 +511,7 @@
 \section*{Introducción.}
 En esta asignatura, estudiaremos una serie de modelos que se dan en la naturaleza y que dan respuesta a las posibles cuestiones que nos podemos hacer en torno al comportamiento de estos problemas. Por ejemplo, podremos estudiar cómo se desarrollará la población de una especie considerando unos recursos dados (finitos o infinitos), así como otros modelos que se ajustan a situaciones de la vida real.
 
-%%% FALTA TERMINAR INTRODUCCIÓN ----------------------------------------------------------------------------
+%%% TODO: FALTA TERMINAR INTRODUCCIÓN ----------------------------------------------------------------------------
 
 
 \newpage
@@ -608,7 +608,7 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	Comprobar si en el caso $(iii)$, una solución podría ser: \[x_n = \alpha^n x_0 + \beta \sum_{i=0}^{n-1}\alpha^i\]
 \end{ejemplo}
 
-%%% FALTA RESOLVER EL EJEMPLO ---------------------------------------------------------
+%%% TODO: FALTA RESOLVER EL EJEMPLO ---------------------------------------------------------
 
 \begin{nprop}
 	Si $\alpha \ne 1$, la sucesión $\{x_n\}$ es solución de la ecuación $\iff$ la sucesión $\{z_n\}$ definida por $z_n = x_n - x_*$ es solución de la ecuación:
@@ -1133,7 +1133,7 @@ Sea $x_0 \in (\alpha-\eta,\alpha+\eta)\cap I, x_{n+1} = f(x_n),\ n \geq 0$
 $|x_n-\alpha| = |f(x_{n+1})-f(\alpha)| \leq \lambda|x_{n+1}-\alpha|=\lambda|f(x_{n-2})-f(\alpha)| \leq \lambda^2|x_{n-2}-\alpha| \leq \dots \leq \lambda^n|x_0-\alpha|\rightarrow0$, puesto que $0 \leq \lambda < 1$
 \end{proof}
 
-%%% FALTA CONTENIDO			
+%%% FIXME: FALTA CONTENIDO			
 %------------------------------------------------
 \subsubsection{Ciclos}
 \begin{ndef}[Ciclo]
@@ -1163,7 +1163,7 @@ $|x_n-\alpha| = |f(x_{n+1})-f(\alpha)| \leq \lambda|x_{n+1}-\alpha|=\lambda|f(x_
 	Donde en la primera vez se repite la $f$ $s$ veces, la segunda $s-1$ veces y así sucesivamente. De esta forma, $\alpha_0,\cdots,\alpha_{s-1}$ son puntos  de equilibrio de $f^s$ pero NO son puntos de equilibrio de $f^h$ con $h = 1,\cdots, s-1$.
 \end{nota}
 
-%%% Copiar ejemplos de las diapositivas
+%%% TODO Copiar ejemplos de las diapositivas
 
 Puesto que los puntos de una órbita periódica de un periodo $s$ son puntos de equilibrio de la función $f^s(x)$ para estudiar la estabilidad de una órbita periódica basta estudiar la estabilidad ed los puntos de equilibrio de la función $f^s(x)$:
 \begin{nprop}
@@ -1725,6 +1725,11 @@ incógnitas y podemos resolverlo.
 
 \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%				TEMA 3
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Sistemas de ecuaciones en diferencias}
 
 %%% TODO: ¿Otro nombre para la subsección?
@@ -1783,7 +1788,7 @@ Podemos reescribirlo matricialmente de la siguiente forma:
 \end{ejemplo}
 
 \begin{ejemplo}
-  Sabemos que la \textit{sucesión de Fibonacci} es una ecuación en diferencias lineal de orden $2$ lineal, $$f_{n+2} = f_{n+1} + f_n,\quad n \ge 0,\quad f_0=f_1=1$$
+  Sabemos que la \textit{sucesión de Fibonacci} es una ecuación en diferencias lineal de orden $2$, $$f_{n+2} = f_{n+1} + f_n,\quad n \ge 0,\quad f_0=f_1=1$$
    Veamos cómo podemos transformarla en un sistema de ecuaciones en diferencias. Para ello, definimos:
   $$
   \begin{rcases}
@@ -1850,7 +1855,7 @@ f_1
   Vemos el vector $v$ como un vector columna.
 \end{nota}
 
-\textbf {Cálculo de valores y vectores propios}
+\textbf{Cálculo de valores y vectores propios}
 
   Tenemos que $Av = \lambda v \iff Av - \lambda v = 0 \iff (A -
   \lambda I)v = 0$. Esto es un sistema de ecuaciones homogéneo, dependiente del parámetro $\lambda$, donde $v$ es el vector de incógnitas. Por ser homogéneo, siempre tiene solución. Si esa solución es única, necesariamente es la solución trivial $v = 0$, que desechamos.
