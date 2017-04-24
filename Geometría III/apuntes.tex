@@ -737,23 +737,23 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
       \coordinate [label=above:$C$] (C) at (1,2);
     \end{pgfonlayer}{3}
     \begin{pgfonlayer}{1}
-      \draw (A) -- (B) -- (C) -- cycle;
+      \draw [500, fill=50] (A) -- (B) -- (C) -- cycle;
     \end{pgfonlayer}{1}
     \begin{pgfonlayer}{3}
-      \node [fill=500,inner sep=1pt,label=below:$M_{AB}$, scale=1.5, circle] (MAB) at
+      \node [fill=700,inner sep=1pt,label=below:$M_{AB}$, scale=1.5, circle] (MAB) at
       ($ (A)!.5!(B)$) {};
     \end{pgfonlayer}{3}
     \coordinate (C1) at ($ (MAB)!1.2!(C)$);
     \coordinate (C2) at ($ (MAB)!-.3!(C)$);
-    \draw [dashed, 300, name path=MC](C1) -- (C2);
+    \draw [dashed, 700, name path=MC](C1) -- (C2);
     \begin{pgfonlayer}{3}
-      \node [fill=500,inner sep=1pt,label=left:$M_{AC}$, scale=1.5, circle] (MAC) at ($
+      \node [fill=700,inner sep=1pt,label=left:$M_{AC}$, scale=1.5, circle] (MAC) at ($
       (A)!.5!(C)$) {};
     \end{pgfonlayer}{3}
     \coordinate (B1) at ($ (MAC)!1.2!(B) $);
     \coordinate (B2) at ($ (MAC)!-.3!(B)$);
     
-    \draw [dashed, 300, name path=MB] (B1) -- (B2);
+    \draw [dashed, 700, name path=MB] (B1) -- (B2);
     
     \begin{pgfonlayer}{3}
       \node [fill=orange,inner sep=1pt,label=right:$M_{BC}$, scale=1.5, circle] (MBC) at ($
@@ -762,7 +762,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
     \coordinate (A1) at ($ (MBC)!1.2!(A) $);
     \coordinate (A2) at ($ (MBC)!-.3!(A)$);
     
-    \draw [dashed, 300] (A1) -- (A2);
+    \draw [dashed, 700] (A1) -- (A2);
     
     \path [name intersections={of=MB and MC, by=G}];
     \begin{pgfonlayer}{3}
