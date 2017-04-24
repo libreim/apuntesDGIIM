@@ -74,6 +74,7 @@
 
 
 % Tipo de documento y opciones.
+%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
 \documentclass[11pt, a4paper]{article}
 
 
@@ -92,7 +93,8 @@
 \usepackage{microtype}  % Mejora la letra final de cara al lector.
 
 % Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
+\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
 \usepackage{lastpage}   % Referencia a la última página.
 \usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
 \usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
@@ -103,6 +105,8 @@
 \usepackage{upgreek}
 
 \usepackage{mdframed}
+\usepackage{xcolor}
+
 
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
@@ -121,6 +125,8 @@
 \usepackage{ebgaramond-maths}
 \usepackage[T1]{fontenc}
 
+% Código para ajustar las fuentes matemáticas al estilo del texto
+% que le rodea
 
 \DeclareMathVersion{sans}
 \SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
@@ -153,7 +159,12 @@
 \let\oldrm\rmfamily
 \renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
 
+% Colores
 
+\definecolor{50}{HTML}{E8F5E9}
+\definecolor{300}{HTML}{81C784}
+\definecolor{500}{HTML}{4CAF50}
+\definecolor{700}{HTML}{388E3C}
 
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
@@ -163,14 +174,30 @@
 \let\epsilon\upvarepsilon
 
 % Formato de texto.
-\linespread{1.1}            % Espaciado entre líneas.
+\linespread{1.3}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
 \setlist{leftmargin=.5in}   % Indentación para las listas.
 
 % Estilo de página.
 \pagestyle{fancy}
 \fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
+
+% Estilo de las cabeceras
+
+\titleformat{\section}
+  {\Large\bfseries\sffamily}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\large\sffamily}{\thesubsection}{1em}{}
+
+% Estilo de enlaces
+\hypersetup{
+  % hidelinks = true,   % Oculta todos los enlaces.
+  colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
+  linkcolor=black,     % Color de enlaces genéricos
+  citecolor={blue!50!black},   % Color de enlaces de referencias
+  urlcolor={blue!80!black}     % Color de enlaces de URL
+}
 
 % Ruta donde buscar gráficos
 \graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
@@ -183,10 +210,15 @@
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
 
+% Permitir salto de página en ecuaciones
+\allowdisplaybreaks
 
 % ---------------------------------------------------------------------------
 % COMANDOS PERSONALIZADOS
 % ---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
 
 % Valor absoluto: \abs{}
 \providecommand{\abs}[1]{\lvert#1\rvert}    
@@ -208,35 +240,55 @@
 \newcommand{\xn}{\{x_n\}}
 \newcommand{\fn}{\{f_n\}}
 
+% Letra griega "chi" en línea con el texto
+\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi 
+
+% Letra 'omega'
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
+
 
 % ---------------------------------------------------------------------------
 % CABECERA Y PIE DE PÁGINA
 % ---------------------------------------------------------------------------
 
-% Cabecera del documento.
-\renewcommand\headrule{
-  \begin{minipage}{1\textwidth}
-    \hrule width \hsize 
-  \end{minipage}
+\renewcommand{\sectionmark}[1]{%
+\markboth{#1}{}}
+
+\renewcommand{\subsectionmark}[1]{%
+\markright{#1}{}}
+
+%\addtolength{\headheight}{4ex}
+\renewcommand{\headrulewidth}{0pt}
+
+\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+
+\fancypagestyle{section}{%
+  \fancyhead{}
+  %\addtolength{\headheight}{-10ex}
+  %\renewcommand{\headheight}{0pt}%
+  %\setlength{\footskip}{-48pt}%
+  \fancyfoot[LE,RO]{\Large\sffamily\thepage}
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
 }
 
-% Texto de la cabecera.
-\lhead{\subject}  % Izquierda.
-\chead{}            % Centro.
-\rhead{\docauthor}    % Derecha.
-
-% Pie de página del documento.
-\renewcommand\footrule{                                 
-  \begin{minipage}{1\textwidth}
-    \hrule width \hsize   
-  \end{minipage}\par
+\let\originalsection\section
+\RenewDocumentCommand{\section}{som}{%
+  \IfBooleanTF{#1}
+    {\originalsection*{#3}}
+    {\IfNoValueTF{#2}
+      {\originalsection{#3}}
+      {\originalsection[#2]{#3}}%
+    }%
+  \thispagestyle{section}%
 }
 
-% Texto del pie de página.
-\lfoot{}                                                 % Izquierda
-\cfoot{}                                                 % Centro.
-\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
-
+\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
+\fancyhead[LO,RE]{\sffamily{\leftmark}}
+\fancyfoot[LE,RO]{\Large\sffamily\thepage}
 
 % ---------------------------------------------------------------------------
 % ENTORNOS PARA MATEMÁTICAS
@@ -282,8 +334,9 @@
 % Creamos los 'marcos' de los estilos
 
 \mdfdefinestyle{nth-frame}{
-	linewidth=1pt, %
-	linecolor= black, % 
+	linewidth=2pt, %
+	linecolor= 500, % 
+	%linecolor=black,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -296,8 +349,9 @@
 }% 
 
 \mdfdefinestyle{nprop-frame}{
-	linewidth=1pt, %
-	linecolor= gray, % 
+	linewidth=2pt, %
+	linecolor= 300, %
+	%linecolor= gray, 
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -310,9 +364,11 @@
 }%       
 
 \mdfdefinestyle{ndef-frame}{
-	linewidth=1pt, %
-	linecolor= gray, % 
-	backgroundcolor= gray!5,
+	linewidth=2pt, %
+	linecolor= 300, % 
+	%linecolor= gray!50,
+	backgroundcolor= 50,
+	%backgroundcolor= gray!5,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -386,7 +442,7 @@
 \newcommand{\subject}{Análisis Matemático II: Ejercicios resueltos}
 
 % Autor del documento.
-\newcommand{\docauthor}{DGIIM}
+\newcommand{\docauthor}{Doble Grado en Ingeniería Informática y Matemáticas}
 
 % Título
 \title{
@@ -398,10 +454,10 @@
 }
 
 % Autor.
-\author{\Large{Doble Grado de Informática y Matemáticas}}
+\author{\Large\sffamily{\docauthor}}
 
 % Fecha.
-\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+\date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
 
 
 
@@ -731,7 +787,7 @@
   \pgfdeclarelayer{fg}
   \pgfsetlayers{bg,main,fg}
 
-
+  \sffamily
     \begin{tikzpicture}[scale=1.4]
     \draw[help lines, color=gray!30, dashed] (-0.9,-0.9) grid (8.9,2.9);
     \begin{pgfonlayer}{fg}
@@ -745,24 +801,24 @@
     \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
     \coordinate (A) at (1,1);
     \coordinate (B) at (2,1);
-    \draw[blue] (A) -- node [above] {$f_1$} (B) ;
-    \draw[blue, dashed] (1,0) -- (A);
-    \draw[blue, dashed] (2,0) -- (B);
-    \fill [blue!10] (1,0) -- (A) -- (B) -- (2,0);
+    \draw[700] (A) -- node [above] {$f_1$} (B) ;
+    \draw[700, dashed, thick] (1,0) -- (A);
+    \draw[700, dashed, thick] (2,0) -- (B);
+    \fill [300] (1,0) -- (A) -- (B) -- (2,0);
     \coordinate (N) at (5,1);
     \coordinate (N+1) at (6,1);
-    \draw[blue] (N) -- node [above] {$f_n$} (N+1);
+    \draw[700, thick] (N) -- node [above] {$f_n$} (N+1);
     \begin{pgfonlayer}{fg}
-    \draw[blue, dashed] (N) -- (5,0);
-    \draw[blue, dashed] (N+1) -- (6,0);
+    \draw[700, dashed, thick] (N) -- (5,0);
+    \draw[700, dashed, thick] (N+1) -- (6,0);
     \end{pgfonlayer}{fg}
-    \fill [blue!10] (N) -- (5,0) -- (6,0) -- (N+1);
+    \fill [300] (N) -- (5,0) -- (6,0) -- (N+1);
     \coordinate (M) at (7,1);
     \coordinate (M+1) at (8,1);
-    \draw[blue] (M) -- node [above] {$f_m$} (M+1);
-    \draw[blue, dashed] (M) -- (7,0);
-    \draw[blue, dashed] (M+1) -- (8,0);
-    \fill [blue!10] (M) -- (7,0) -- (8,0) -- (M+1);
+    \draw[700] (M) -- node [above] {$f_m$} (M+1);
+    \draw[700, dashed, thick] (M) -- (7,0);
+    \draw[700, dashed, thick] (M+1) -- (8,0);
+    \fill [300] (M) -- (7,0) -- (8,0) -- (M+1);
   \end{tikzpicture}
     \captionof{figure}{Representación gráfica de la función $f_n(\omega)$}
 
@@ -846,7 +902,7 @@
   $K \Leftrightarrow \{f_n : n \in \N\}$ es equiacotada y equicontinua.
 \end{ejer}
 
-\begin{ejer}
+\begin{ejer}[Aplicación Th. Fubini]
   Sean $\varphi, \psi : [a, b] \rightarrow \R$ continua, tal que $\varphi(x)
   \leq \psi(x), x \in [a, b]$. Definamos el conjunto $A = \{ (x, y) \in \R^2 : a
   \leq x \leq b, \varphi(x) \leq y \leq \psi(y) \}$. Definimos $f : A
@@ -858,5 +914,38 @@
 \begin{sol} 
 %  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy$$
 \end{sol}
+
+\begin{ejer}
+  Calcula la integral $\displaystyle \int_A sen^2x \ sen^2y \ dxdy$ en el conjunto
+  $A = [0, \pi] \times [0, \pi]$.
+\end{ejer}
+
+\begin{sol}
+  \begin{align*}
+    \int_A sen^2 \ x sen^2 \ y \ dxdy = \int_{0}^{\pi}\left(\int_0^{\pi} sen^2 \
+    x \ sen^2 \ y \ dy \right) dx
+    \end{align*}
+\end{sol}
+
+\begin{nota}
+  Si $A = [a, b] \times [c, d]$, entonces $$ \int_A f \ dxdy = \int_a^b \left(
+    \int_c^d f \ dy \right) dx$$
+\end{nota}
+
+\begin{ejer}
+  Sean $\phi, \psi : [c, d] \rightarrow \R$ continuas tales que $\phi(y) \leq
+  \psi(y) \forall y \in [c, d]$. Dado el conjunto $A = \{ (x,y) \in \R^2, \ \ c
+  \leq y \leq d, \ \ \phi(y) \leq \psi(y) \}$. Sabiendo que $f : A \rightarrow
+  \R$ es integrable, demuestra que su integral es:
+
+   \begin{align*}
+    \int_A = f \ dxdy = \int_c^d \left( \int_{\phi(y)}^{\psi(y)} f(x,y) \ dx
+    \right) dy
+   \end{align*}
+
+   Puedes probar a desmotrarlo con el Teorema de Fubini general.
+ \end{ejer}
+
+ 
 
 \end{document}

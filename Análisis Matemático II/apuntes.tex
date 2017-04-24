@@ -334,8 +334,8 @@
 
 \mdfdefinestyle{nth-frame}{
 	linewidth=2pt, %
-	%linecolor= 500, % 
-	linecolor=black,
+	linecolor= 500, % 
+	%linecolor=black,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -349,8 +349,8 @@
 
 \mdfdefinestyle{nprop-frame}{
 	linewidth=2pt, %
-	%linecolor= 300, %
-	linecolor= gray, 
+	linecolor= 300, %
+	%linecolor= gray, 
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -364,10 +364,10 @@
 
 \mdfdefinestyle{ndef-frame}{
 	linewidth=2pt, %
-	%linecolor= 300, % 
-	linecolor= gray!50,
-	%backgroundcolor= 50,
-	backgroundcolor= gray!5,
+	linecolor= 300, % 
+	%linecolor= gray!50,
+	backgroundcolor= 50,
+	%backgroundcolor= gray!5,
 	topline=false, %
 	bottomline=false, %
 	rightline=false,%
@@ -2441,6 +2441,74 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
   $$= \int_{\R^M} \left[ \int_{\R^N} f(x_1, \hdots, x_N, y_1,
     \hdots, y_M) dx_1, dx_2, \hdots, dx_N \right] dy_1 dy_2 \hdots dy_M$$
 \end{nprop}
+
+\begin{ejemplo}[Área de una elipse]
+
+La ecuación de la elipse es $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$. Si llamamos
+$A$ a uno de los cuadrantes de la elipse, el área total será $4A$. La ecuación
+de $A$ será $y = b \sqrt{1 - \frac{x^2}{a^2}} = \psi(x)$. Por tanto:
+
+$$4A = 4\int_A 1 \ dxdy = 4\int_{0}^{a}\left(\int_0^{\frac{b}{a}\sqrt{a^2-x^2}}
+  1 \ dy \right) dx = 4 \int_0^{a}\left[y\right]^{y = \frac{b}{a}\sqrt{a^2-x^2}}
+\ dx = 4 \int_0^{a} \frac{b}{a}\sqrt{a^2-x^2} \ dx$$
+$$= \frac{4b}{a} \int_0^{a}\sqrt{a^2-x^2} \ dx$$
+
+El ``truco'' para resolver esta integral es utilizar:
+\begin{align*}
+ \int \sqrt{a^2-x^2} &= a\int \sqrt{1 - \frac{x}{a}^2 \ dx} \overset{\frac{x}{a}
+    = sen t}{=} a\int \sqrt{1 - sen^2 t} \ dx = a\int cos \ t \ dx \\
+                    (dx \ = \ a \ cos \ t \ dt)   &= a^2\int cos^2 \ t \ dt
+\end{align*}
+\end{ejemplo}
+
+\begin{ejemplo}[Cálculo del volumen de un sólido de revolución]
+  Sea $f : [a, b] \rightarrow \R$ integrable que cumple $f \geq 0$. Definimos el
+  conjunto $\mathcal S = \{ (x, y, z) \in \R^3 : a \leq x \leq b, y^2+z^2 \leq
+  f(x)^2 \}$. Vamos a demostrar que el volumen de $S$ es $\pi \int_a^b f(x)^2 \
+  dx$.
+
+  El volumen es un conjunto de $\R^3$. El volumen de $S$ es:
+
+  \begin{align*}
+    \lambda(S) = \int_S 1 \ dxdydz = \int_a^b \left( \int_{S(x)} 1  \ dydz \right)
+    \ dx = \int_a^b \pi f(x)^2 \ dx = \pi \int_a^b f(x)^2dx
+  \end{align*}
+
+  Siendo $\forall x \in [a, b], \ S(x) = \{ (y, z) \in \R^2 : (x, y, z) \in S \} = \{ (y,z) \in \R^2 :
+  \sqrt{y^2+z^2} \geq f(x) \}$, es decir, el círculo de centro $(0,0)$ y radio $f(x)$.
+\end{ejemplo}
+
+\begin{ejemplo}
+  Supongamos que queremos calcular el área de un círculo $C$ de radio $R$. Para ello
+  llamamos $D$ a un cuadrante del círculo y diremos que el área de $C$ es
+  $4D$. Definimos $D$ como $\{ (x, y) \in [0, R] \times [0, R] : x^2 + y^2 \leq
+  R^2 \}$. El área de $D$ es:
+  \begin{align*}
+    \text{área } = \int_D 1 \ dxdy 
+  \end{align*}
+
+  $\{ (\rho, \theta) : 0 \leq \rho \leq R^2, 0 \leq \theta \leq
+  \frac{\pi}{2} = [0, R] \times [0, \frac{\pi}{2}]$. Definimos una aplicación:
+  \begin{align*}
+    D &\overset{\varphi}{\longrightarrow} \phi(D) \subseteq \R^2 \\
+    (x,y) &\longmapsto (\rho, \theta) = \left(\sqrt{x^2+y^2}, arctg \ \frac{x}{y} \right)
+  \end{align*}
+% FIXME: Aquí debe faltar algo porque esto por sí mismo no tiene mucho sentido en el estado en el que está.
+\end{ejemplo}
+
+\begin{nth}
+  Sean $U, V \subset R^N$ conjuntos abiertos y $E \subset V$ un conjunto medible. Sea $\varphi : U \rightarrow R^N, \varphi(U)
+  = V$ un difemormismo $(\varphi \in \mathcal C^1 (U) \exists \varphi^{-1} \in
+  \mathcal C^1 (V)$. Además, $det(J \varphi (x)) \neq 0 \forall x \in U$. Sea $f
+  : E \rightarrow \R$ una función medible. Entonces:
+  \begin{align*}
+    f \in L^1(E) \leftrightarrow (f \circ \varphi) |det (J\varphi)| \in L^1(\varphi^{-1}(E))
+  \end{align*}
+y en este caso,
+\begin{align*}
+  \int_E f(x) \ dx = \int_{\varphi^{-1}(E)`} f (\varphi(y)) |det J \varphi (y)| \ dy
+\end{align*}
+\end{nth}
 
 % --------------------------------------------------------------------------------
 % Bibliografía.
