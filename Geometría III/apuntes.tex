@@ -1053,7 +1053,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
       \draw [dashed, gray] (0,0) -- (4,2);
       \draw [dashed, gray] (1,3) -- (3,0);
     \end{tikzpicture}
-  \item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.
+  \item Un cuadrilátero es no convexo si las dos diagonales no separan a los otros vértices.\\
     \begin{tikzpicture}
       \draw (0,0) node {}
       -- (0,4) node {}
@@ -2115,23 +2115,18 @@ $$\mathbb{P}^2 = \mathbb{R}^2\ \cup r_\infty$$
 
 \begin{nth}
 Sean P y Q dos puntos distintos de $\mathbb{P}^2$, existe una única recta proyectiva que contiene a P y Q. A esta la llamaremos $P \vee Q$
-\\
-
+\end{nth}
 \begin{proof}
 
 De lo estudiado en espacio afín sabemos que dos rectas vectoriales distintas determinan un plano vectorial unico que las contiene, por tanto, utilizando la biyeccion que conocemos entre rectas vectoriales y puntos de $\mathbb{P}^2$ y planos vectoriales y rectas de $\mathbb{P}^2$, la prueba del resultado es trivial.
 \end{proof}
-\end{nth}
 
 \begin{nth}
 Dos rectas proyectivas se cortan en único  punto proyectivo
-\\
-
+\end{nth}
 \begin{proof}
 La demostracion es similar a la del teorema anterior usando que dos planos vectoriales distintos se cortan un una única recta vectorial
 \end{proof}
-
-\end{nth}
 
 \textbf{Consequencias:}
 
@@ -2180,12 +2175,85 @@ Cuatro puntos no alinedos 3 a 3 $A,B,C,D \in \mathbb{P}^2$ definen un único cua
 	Dada un cuadrilátero $ABCD \in \mathbb{P}^2$, los dos puntos diagonales $P$ y $Q$ y el punto de corte R de las dos rectas diagonales $R = (A \vee C)\cap (B\vee D)$, no están alineados 
 \\
 	
-	\begin{proof}
-	Para llevar a cabo esta demostracion trabajaremes en el plano afín $\mathbb{P}^2 -r$, con $r = P\vee Q$. De esta manera obtenemos que el cuadrilátero $ABCD$ que obtenemos en dicho plano afín es un paralelogramo (pues sus lados son paralelos por estar sus puntos de corte en el infinito). 
+
+\end{nth}
+\begin{proof}
+	Para llevar a cabo esta demostracion trabajaremos en el plano afín $\mathbb{P}^2 -r$, con $r = P\vee Q$. De esta manera obtenemos que el cuadrilátero $ABCD$ que obtenemos en dicho plano afín es un paralelogramo (pues sus lados son paralelos por estar sus puntos de corte en el infinito). 
 	
 	Por tanto, como sabemos del estudio del plano afín que las diagonales de un paralelogramos se cortan en su punto medio, $R$. Consecuentemente, $P$ y $Q$ pertenecen a $r$ y R al plano afín $\mathbb{P}^2 - r \implies R \notin r$ luego $P,Q$ y $R$ no están alineados.  
 	\end{proof}
+
+\begin{nprop}
+	Si $r$, $s$ son dos rectas en $\mathbb P^2$ con $r\ne s$, entonces:
+	\[
+	r \cap s = 1 \text { punto } \begin{cases}
+	\in \R^2 \equiv \text{ no son paralelas}\\
+
+	\in r_\infty \equiv \text{ son paralelas}
+	
+\end{cases}
+	\]
+\end{nprop}
+
+\begin{nth}[Teorema de Desargues]
+	Sean $ABC$, $A'B'C'$ dos triángulos en $\mathbb P^2$ cuyos vértices homólogos son diferentes y los lados homólogos también tales que los lados homólogos se cortan en tres puntos alineados.\\
+	Entonces, las rectas que unen los vértices homólogos son concurrentes
+\end{nth}
+
+Tenemos también versiones afines del teorema de Desargues:
+
+\begin{nth}[Versión afín del Teorema de Desargues]
+	Sean dos triángulos en el afín tales que los lados homólogos no son paralelos y se cortan en tres puntos alineados.\\
+	  Entonces las rectas que unen los vértices homólogos son o bien concurrentes o bien paralelas
+\end{nth}
+
+\begin{nth}[Versión equivalente 2]
+	Sean $ABC$,$A'B'C'$ dos triángulos en el afín tales que los pares de lados homólogos son paralelos.\\
+	Entonces, las rectas que unen los vértices homólogos son concurrentes o son paralelas.
 \end{nth}
 
 
+%%%TODO: Definir Q. 
+\begin{nth}[Versión equivalente 3]
+	En el afín $\mathbb P^2 - P\vee Q$ con $P$ el punto de corte de las rectas que unen los vértices homólogos y $Q$  el punto de corte, si un paralelogramo está inscrito en un cuadrilátero.\\
+	Entonces, la otra diagonal del cudrilátero es paralela al otro par de lados del paralelogramo.
+\end{nth}
+
+\begin{nota}
+	Los enunciados afines son equivalentes al enunciado proyectivo. Por tanto, probando una de las versiones habremos probado todas.
+\end{nota}
+\begin{proof}
+	Vamos a probar la versión afín 2.\\
+	Los lados homólogos de los triángulos $ABC$, $A'B'C'$ de $\R^2$ son paralelos. Entonces, existe una dilatación:
+	\[
+	f: \R^2 \to \R^2 \begin{cases}
+	A \mapsto A'\\
+	B \mapsto B'\\
+	C \mapsto C'
+	
+\end{cases}
+	\]
+	Que lleva uno en otro.
+	\begin{enumerate}
+	\item Si $f$ es una traslación, $f = t_v$, entonces $\vec{AA'}= \vec{BB'} = \vec{CC'}=v$
+	\item Si $f$ es una homotecia, $f= h_{p,\lambda}$, con $\lambda \ne 0, 1$, entonces $(P,A,A')$, $(P,B,B')$, $(P,C,C')$ están alineados y $A\vee A'$, $B \vee B'$ y $C \vee C'$ concurren.
+\end{enumerate}
+\end{proof}
+
+\begin{ndef}[Hexágono]
+	Un hexágono son 6 puntos consecutivos y distintos y lados(rectas que unen vértices consecutivos)
+\end{ndef}
+\begin{nth}[Teorema de Pappus]
+	Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 2 rectas distintas, entonces los 3 pares de lados opuestos se cortan en 3 puntos alineados
+\end{nth}
+
+\begin{nth}[Versión afín del teorema de Pappus]
+	Dado un hexágono en el plano afín cuyos vértices están alternativamente en dos rectas distintas $s$ y $s'$. Si los pares de lados opuestos son paralelos, entonces el tercer par de lados opuestos también es paralelo.
+\end{nth}
+%%%% TODO: Incluir dibujos para aclarar las rectas.
+\begin{proof}[Demostración de la versión afín]\hfill
+\begin{nlist}
+	\item Si $s \parallel s'$
+\end{nlist}
+\end{proof}
 \end{document}
