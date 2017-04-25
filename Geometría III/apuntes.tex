@@ -581,6 +581,33 @@ A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del 
 
 \end{ndef}
 
+\subsection{Sistemas de referencia y coordenadas}
+
+\begin{ndef}[Sistema de referencia]
+Sea $V$ un espacio vectorial y $E$ su espacio afín asociado con dimensión finita. LLamaremos \textit{ sistema de referencia cartesiano } a cada conjunto $R=\{O,B\}$ donde $O\in E$ y se denomina \textit{origen del sistema de referencia} y $B$ es base de $V$.
+
+Entonces $\forall A \in E, \vec{OA}$ tiene coordenadas únicas respecto a $B$: $\vec{OA}=(a_1,...,a_n)_B=(a_1,...,a_n)_R=A$ llamadas coordenadas de $A$ respecto a $R$. 
+
+\end{ndef}
+
+\begin{ndef}[Sistema de referencia ortogonal]
+En $R=\{O,B\}$ con $O\in E$ y $V=L(B)$. Si $E$ es afín euclídeo y $B$ es ortornomal entonces estamos en un \textit{sistema de referencia rectangular} y $d(A,B)=||\vec{AB}|| \forall A,B \in E$.
+
+\end{ndef}
+
+%%%No tengo del todo claro si ponerlo como teorema o como si nada, pues la propia demostración esta implícita en el enunciado.
+\begin{nth}
+
+Sea $E$ el espacio afín asociado a $V=L(B)=L(B')$, sean $O,O'\in E$ y a partir de estos $R=\{O,B\}$ y $R'=\{O',B'\}$.
+
+Sea $M(1_V,B',B)$ la matriz de cambio de base de $B'$ a $B$. Notaremos para esta fórmula $\vec{OA}=A_R$, $\vec{OO'}=O'_R$ y $\vec{O'A}=A_{R'}$ evidenciando así la relación entre las coordenadas de los vectores respecto a las bases y las coordenadas de los puntos respecto a los sistemas de referencia. De esta forma tenemos que:
+
+$$\vec{OA}=\vec{OO'}+\vec{O'A}=\vec{OO'}+M(1_V,B',B)\vec{O'A}$$
+
+luego $A_R=O'_R+M(1_V,B',B)A_{R'}$.
+
+\end{nth}
+
 \subsection{Rectas afines}
 
 En este apartado vamos a describir las \textit{rectas afines}. De ahora en adelante, si se hace mención a una recta sin más, daremos por hecho que se trata de una recta afín.
