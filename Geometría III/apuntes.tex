@@ -119,9 +119,9 @@
 \usetikzlibrary{arrows,calc,intersections,through,backgrounds}
 
 % Fuentes personalizadas
-\usepackage[scaled=.85]{newpxtext,newpxmath}
-\usepackage[scaled=.85]{FiraSans}
-\usepackage[T1]{fontenc}
+%\usepackage[scaled=.85]{newpxtext,newpxmath}
+%\usepackage[scaled=.85]{FiraSans}
+%\usepackage[T1]{fontenc}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
 % que le rodea
@@ -2451,13 +2451,65 @@ Tenemos también versiones afines del teorema de Desargues:
 %%% TODO: Si se quiere, cambiar el dibujo para que los nombres sean 1,2,3,4,5,6 y se facilite la notación
 \begin{proof}[Demostración de la versión afín]\hfill
 \begin{nlist}
-	\item Si $s \parallel s'$ %%% TODO: Completar demostración
+	\item Si $s \parallel s'$ %%% TODO: Completar demostración e incluir dibujo para paralelas y no paralelas
 	\item Si $s\cap s' = P$. Tenemos que probar que:
 	$$\begin{rcases}
 	P_G\vee P_I \parallel P_F \vee P_E\\
 	P_H\vee P_I \parallel P_E \vee P_D
 \end{rcases}\implies P_G \vee P_D \parallel P_I \vee P_F $$
-Probar esto es inmediato por el teorema de Thales.
+
+Caso primer hexagono:\\ %incluir dibujo primer hexagono
+Por thales sabemos que $\frac{PP_5}{PP_1}=\frac{PP_4}{PP_2}$ y que $\frac{PP_3}{PP_5}=\frac{PP_2}{PP_6}$. Si multiplicamos ambas igualdades nos queda que $\frac{PP_3}{PP_1} = \frac{PP_4}{PP_6}$, por lo que aplicando una última vez Thales nos queda que $P_1 P_6$ es paralelo a $P_3 P_4$.
+
+Caso segundo hexagono:\\
+Teniendo este caso, cogemos los dos triángulos enfrentados por los vértices $P_1P_2P$ y $P_4P_5P$.  Sabemos %por la magia de aros TODO:Demostrar
+que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por ello, una vez sabemos aplicar esta propiedad, la demostración es anáoga a la anterior.
+
 \end{nlist}
 \end{proof}
+
+
+%TODO:Dejado como ejercicio
+%TODO:incluir dibujo
+
+\begin{ndef}[Punto Diagonal]
+	Un punto diagonal es el punto donde dos lados opuestos de una cuadrilatero se cortan. Cada cuadrilatero tiene dos puntos diagonales.
+\end{ndef}
+
+\begin{nth}
+	Si un cuadrilátero $A'B'C'D'$ inscrito en otro $ABCD$ en $\mathbb{P}^2$, de manera que las cuatro diagonales son concurrentes. Entonces los cuatro puntos diagonales  (dos de cada cuadrilatero) están alineados
+\end{nth} 
+
+\begin{proof}
+	Para demostrarlo, haremos un teorema equivalente en el afín, quitando una recta que no moleste.
+\end{proof}
+
+%TODO: formalizar
+	$P \in \mathbb{P}^2 \equiv$ recta vectorial de$ \mathbb{R}^3 \equiv (x_0,x_1,x_2) $
+	Enotnces, Para algún $x_i \ne 0$, listas proporcionales representan el mismo V y representan el mismo P.
+
+\begin{ndef}[Coordenadas Homogeneas]
+	Tengamos un punto en $\mathbb{R}^2$ de coordenadas $(x,y)$. Este punto posee de coordenadas homogeneas $\mathbb{P}^2$. Del mismo modo si tenemos un vector en el proyectivo  $(x_0, x_1, x_2)$ este equivale con $(x_1/x_0, x_2/x_0)$. 
+\end{ndef}
+
+Si observamos la primera parte siempre se puede hacer. La segunda sin embargo no, porque si no sería una correspondencia biyectiva, la cual sabemos que no existe. Cuando $x_0 = 0$ estaremos trabajando con puntos del infinito, los cuales ya sabemos que no existen en el afín.\\
+
+
+Sabemos que en el afín esta recta sería $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
+En $\mathbb{P}^2$, teniendo dos puntos $A(a_1,a_2,a_3), B(b_1,b_2,b_3)$. Entonces, la equivalencia de estos en  $\mathbb{R}^3$ serán dos rectas vectoriales que generan un plano vectorial, el cual puede verse como una recta proyectiva. Entonces $A\vee B = \{ \lambda (a_1,a_2,a_3) + \mu (b_1,b_2,b_3)\backslash \lambda, \mu \ne 0 \} = \{  \{ (a_1,a_2,a_3) + \alpha (b_1,b_2,b_3)\backslash \alpha  \in \mathbb{R}\} \cup  \{(b_1,b_2,b_3) \}$
+
+\underline{Ecuación de una recta en el plano afín.\\}\\
+Ecuación de una recta en el plano afín. Toda recta $r \in \mathbb{R}^2$ la pone $r\{ax+by+c= 0\}$ con $a$ o $b$ diferente de 0. Además sabemos que dos rectas son iguales si y solo si sus ecuaciones son proporcionales. \\
+\underline{Ecuación de un plano vectorial en $\mathbb{R}^3$}\\
+Todo plano vectorial admite una ecuación : $V = \{(x_0,x_1,x_2) \in \mathbb{R}^3 \backslash a_0x_0+a_1x_1+a_2x_2 = 0\}$ algún $a_i \ne 0$: Ecuaciones proporcionales me dan el mismo plano
+
+\underline{Ecuación de una recta en $\mathbb{P}^2$}\\
+$r = \{(x_0,x_1,x_2) \in \mathbb{P}^ \backslash a_0x_0+a_1x_1+a_2x_2 = 0\}$ algún $a_i \ne 0$: Ecuaciones proporcionales dan la misma recta.
+
+\textbf{\underline{
+Ejercicio:\\}
+Encontrar en $\mathbb{P}^2$ la recta que pasa por dos puntos. A(1,2,3),B(-1,0,2)}\\
+
+Por  último nos quedaría cosiderar la correspondencia entre la recta proyectiva y la afín, el cual realizaremos de modo análogo. Esto implicará los pasos punto a punto, y, quitando los puntos de infinito. La recta del infinito obviamente no se pasará
+
 \end{document}
