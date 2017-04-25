@@ -1725,18 +1725,22 @@ incógnitas y podemos resolverlo.
 
 \newpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%				TEMA 3
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                                     %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%			    TEMA 3               %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%                                     %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Sistemas de ecuaciones en diferencias}
 
 %%% TODO: ¿Otro nombre para la subsección?
 \subsection{Introducción}
 
-En esta sección vamos a abordar el estudio de \textbf{sistemas de ecuaciones en diferencias}. Para ello, es necesario hacer un repaso a algunos conceptos que ya se conocen de otras asignaturas como \textit{Geometría II} o \textit{Métodos
-  Numéricos I}.
+En esta sección vamos a abordar el estudio de \textbf{sistemas de ecuaciones en diferencias}. Para ello, es necesario hacer un repaso de algunos conceptos que ya se conocen de otras asignaturas como \textit{Geometría II} o \textit{Métodos
+  Numéricos I}. Es por esto que muchos resultados aparecen sin demostración, pues lo que nos interesa es su aplicación a la resolución y el estudio de sistemas de ecuaciones en diferencias.
 
 \begin{ejemplo}
 Vamos a estudiar el siguiente sistema de ecuaciones en diferencias lineal con dos incógnitas:
@@ -1876,11 +1880,35 @@ f_1
 	
 \end{ndef}
 
-Con esta notación, los \textit{valores propios} de una matriz son las raíces de su polinomio característico, y los \textit{vectores propios} son soluciones no triviales del sistema $(A - \lambda I)v = 0$. De hecho, cada valor propio define un \textbf{subespacio vectorial} de vectores propios, pues sabemos que hay infinitas soluciones.
+Con esta notación, los \textit{valores propios} de una matriz son las raíces de su polinomio característico, y los \textit{vectores propios} son soluciones no triviales del sistema $(A - \lambda I)v = 0$. De hecho, cada valor propio define un \textbf{subespacio vectorial} de vectores propios, pues sabemos que hay infinitas soluciones. Recogemos esta información en los siguientes teoremas y definiciones.
+
+
+\begin{nth} Sea $A \in \mathcal M_k(\mathbb C)$. Entonces, $\lambda \in \mathbb C$ es un valor propio de $A$ si y solo si $$p(\lambda) = \det(A - \lambda I)=0,$$ es decir, $\lambda$ es solución de la ecuación característica.
+	
+\end{nth}
+
+Una consecuencia inmediata de este teorema es que \textbf{una matriz de orden $k$ tiene $k$ valores propios}, contando multiplicidades. Es decir, dada $A \in \mathcal M_k(\mathbb C)$, existen $\lambda_1,\lambda_2,\dots,\lambda_r \in \mathbb{C}$ tales que $$\pl = (\lambda - \lambda_1)^{m1}(\la - \la_2)^{m2} \cdots (\la - \la_r)^{m_r},$$ donde $m_1 + m_2 + \dots + m_r = k$.
+
+\begin{ndef}[Multiplicidad algebraica] Sean $\lambda_1,\lambda_2,\dots,\lambda_r$ los valores propios distintos de una matriz $A \in \mathcal M_k(\mathbb C)$.
+	Llamamos \textit{multiplicidad algebraica de} $\lambda_i$, y lo denotamos como $m_i$, a la multiplicidad de $\lambda_i$ como raíz de $p(\lambda)$.
+	
+	Se tiene que $m_1 + m_2 + \dots + m_r = k$.
+	
+\end{ndef}
+
+En lo que respecta a vectores propios, tenemos lo siguiente.
 
 \begin{ndef}[Subespacio propio] 
-	Denotamos como $\mathcal V_\lambda$ al subespacio vectorial de vectores propios asociados al valor propio $\lambda$.
+	Denotamos como $\mathcal V_\lambda$ al subespacio vectorial de vectores propios asociados al valor propio $\lambda$. Además, tenemos que $$\mathcal V_\lambda = \ker (A - \lambda I) = \{ v \in \mathbb C^k : \  Av = \lambda v\}$$
 \end{ndef}
+
+\begin{ndef}[Multiplicidad geométrica] Sean $\lambda_1,\lambda_2,\dots,\lambda_r$ los valores propios distintos de una matriz $A \in \mathcal M_k(\mathbb C)$.
+	Llamamos \textit{multiplicidad geométrica de} $\lambda_i$, y la denotamos como $\sigma_i$, a la dimensión del subespacio propio $\mathcal V_{\lambda_i}$, para $i=1,2,\dots,r$.
+\end{ndef}
+
+\begin{nota}
+	Obsérvese que siempre se verifica $\sigma_i \ge 1$.
+\end{nota}
 
 
   \begin{ejemplo} \label{ej2} Calcular los valores y vectores propios de la matriz
@@ -2000,7 +2028,7 @@ Con esta notación, los \textit{valores propios} de una matriz son las raíces d
   
   Veamos ahora un teorema que nos será útil a la hora de calcular potencias de una matriz.
 
-  \begin{nth}[Teorema de Cayley-Hamilton]
+  \begin{nth}[Cayley-Hamilton]
     Toda matriz cuadrada anula su polinomio característico: $$p(A) = 0$$
   \end{nth}
   
@@ -2096,7 +2124,7 @@ En ambos casos, el polinomio característico es $p(\lambda) = \lambda^2$. Por ta
 	
 \end{ejemplo}
 
-\subsubsection{Semejanza de matrices}
+\subsubsection{Diagonalización de matrices}
 
 \begin{ndef}[Matrices semejantes]
   Dos matrices $A, B \in \mathcal M_k(\mathbb C)$ se dicen \textit{semejantes} si
@@ -2112,14 +2140,14 @@ A la matriz $P$ se le suele llamar \textit{matriz de paso}.
 \end{nprop}
 
 \begin{proof}
-  Sean $A, B \in M_k(\mathbb C)$ semejantes. Entonces, $\exists {P} \in
-  M_k(\mathbb C)$ invertible tal que $A = PBP^{-1}$. Así, tenemos que
+  Sean $A, B \in \mathcal M_k(\mathbb C)$ semejantes. Entonces, $\exists {P} \in
+  \mathcal M_k(\mathbb C)$ invertible tal que $A = PBP^{-1}$. Así, tenemos que
 $$A^n = A \cdot A \hdots \cdot A = (PBP^{-1})(PBP^{-1}) \hdots (PBP^{-1}) =
 PBP^{-1}PBP^{-1}\hdots PBP^{-1} = PB^nP^{-1}$$ Hemos usado la asociatividad del producto de matrices, y el hecho de que $P^{-1}P = I$.
 \end{proof}
 
 \begin{ndef}[Matriz diagonal]
-  Una matriz $D \in M_k(\mathbb C)$ con $D = (d_{ij})$ se dice que es
+  Una matriz $D \in \mathcal M_k(\mathbb C)$ con $D = (d_{ij})$ se dice que es
   \textit{diagonal} si $d_{i,j} = 0\ \ \forall i \neq j$. Esto es, si es de la
   forma
 $$ D =
@@ -2152,16 +2180,14 @@ Si $A$ es semejante a una matriz diagonal $D = (d_{ij})$, sabemos que $A^n$ es s
   0 & 0 & \hdots & d_{kk}^n
 \end{pmatrix}P^{-1}$$
 
-Es precisamente este hecho el que da pie al siguiente apartado.
-
-\subsubsection{Diagonalización de matrices}
+Es precisamente este hecho el que da pie a la siguiente definición.
 
 \begin{ndef}[Matriz diagonalizable]
-  Una matriz $A \in M_k(\mathbb C)$ se dice \textit{diagonalizable} si es
+  Una matriz $A \in \mathcal M_k(\mathbb C)$ se dice \textit{diagonalizable} si es
   semejante a una matriz diagonal.
 \end{ndef}
 
-Puesto que diagonalizar una matriz es útil para calcular sus potencias, lo que nos interesa ahora es ver bajo qué condiciones una matriz $A \in \mathcal M (\mathbb C)$ es diagonalizable.
+Puesto que diagonalizar una matriz es útil para calcular sus potencias, lo que nos interesa ahora es ver bajo qué condiciones una matriz $A \in \mathcal M_k (\mathbb C)$ es diagonalizable.
 
 $A$ es diagonalizable si $\exists D$ diagonal, $\exists P$ regular tal que $A = PDP^{-1}$. Entonces: $$A = PDP^{-1} \iff AP = PDP^{-1}P \iff AP = PD$$
 Viendo la matriz $P$ por columnas, dicha expresión es equivalente a que $$A\Bigg(  P_1 \ \Big| \ P_2 \ \Big| \ \dots \ \Big| \ P_k \Bigg) = \Bigg(  P_1 \ \Big| \ P_2 \ \Big| \ \dots \ \Big| \ P_k \Bigg) \begin{pmatrix}
@@ -2171,7 +2197,7 @@ Viendo la matriz $P$ por columnas, dicha expresión es equivalente a que $$A\Big
   0 & 0 & \hdots & d_{kk}
 \end{pmatrix} \iff$$ $$\iff \Bigg(  AP_1 \ \Big| \ AP_2 \ \Big| \ \dots \ \Big| \ AP_k \Bigg) = \Bigg(  d_{11}P_1 \ \Big| \ d_{22}P_2 \ \Big| \ \dots \ \Big| \ d_{kk}P_k \Bigg)$$
 
-Igualando las columnas de ambas matrices, se tiene que $AP_i = d_{ii}P_i, \ i =1,\dots,k$; es decir, los números $d_{ii}$ deben ser valores propios de $A$. Además, los vectores columna $\{P_1,P_2,\dots,P_k\}$ deben ser vectores propios asociados a valores propios de $A$.
+Igualando las columnas de ambas matrices, se tiene que $AP_i = d_{ii}P_i, \ i =1,\dots,k$; es decir, los números $d_{ii}$ deben ser valores propios de $A$. Además, los vectores columna $P_1,P_2,\dots,P_k$ deben ser vectores propios asociados a valores propios de $A$.
 
 La conclusión que hemos extraído es que, si $A$ fuese diagonalizable, entonces la matriz $P$ sería una matriz \textbf{cuyas columnas serían una base de cada subespacio propio de $\bm{A}$}. También sabemos que la matriz $D$ sería de la forma $$\begin{pmatrix}
   \lambda_1 & 0 & \hdots & 0 \\
@@ -2179,45 +2205,63 @@ La conclusión que hemos extraído es que, si $A$ fuese diagonalizable, entonces
   \vdots & \vdots & \ddots & \vdots \\
   0 & 0 & \hdots & \lambda_k
 \end{pmatrix}$$ donde $\lambda_1,\lambda_2\dots,\lambda_k$ son los valores propios de $A$.
-%FIXME: Faltan diapositivas del principio, que me puse a copiar pasados 10 min
-%xd
 
-Veamos a continuación algunas propiedades.
+Veamos a continuación algunas propiedades sobre vectores propios, valores propios y matrices semejantes en general.
 
-\begin{nprop}
-  Dada una matriz $A \in \mathcal M_k(\mathbb C)$:
-  \begin{itemize}
-  \item traza$(A) = a_{11} + a_{22} + \hdots + a_{kk} = \lambda_1 \lambda_2 +
-    \hdots + \lambda_k$
-  \item det$(A) = \lambda_1\lambda_2\hdots \lambda_k$
+\begin{nprop} \label{prop_matrices}
+  Dada una matriz $A \in \mathcal M_k(\mathbb C)$, se verifican las siguientes propiedades.
+  \begin{nlist}
+  \item traza$(A) = a_{11} + a_{22} + \dots + a_{kk} = \lambda_1 + \lambda_2 +
+    \dots + \lambda_k$.
+  \item $\det(A) = \lambda_1\lambda_2\cdots \lambda_k$.
   \item Los valores propios de una matriz regular son no nulos.
   \item Los valores propios de una matriz simétrica real son reales.
-  \item Los vectores propios asociados a valores propios distintos son
-    linealmente independientes. Además, si la matriz es simétrica y real, son
+  \item Vectores propios asociados a valores propios distintos son
+    linealmente independientes. Además, si la matriz es simétrica y real, entonces son
     ortogonales.
-  \item Para cualquier valor propio $\lambda_i$ se verifica que $1 \leq \sigma_i
-    \leq m_i$
+  \item Para cualquier valor propio $\lambda_i$ de $A$ se verifica que $1 \leq \sigma_i
+    \leq m_i$. 
+    \item Para cualquier valor propio $\la_i$ de $A$ se verifica que $\sigma_i = k - \text{rango}(A - \lambda_i I)$.
   \item Dos matrices semejantes $A$ y $B$ tienen los mismos valores
     propios. Además, si $v$ es un vector propio asociado a la matriz $A$,
     entonces $P^{-1}v$ es vector propio de la matriz $B$, donde $P$ es la matriz
     regular que cumple $A = PBP^{-1}$.
-  \end{itemize}
+  \end{nlist}
 \end{nprop}
 
-\begin{nth}
+%%% TODO: Completar con alguna demostración que sea fácil de GEO II.
+\begin{proof} Razonaremos únicamente el apartado $(viii)$. El resto se dejan como ejercicio al lector.
+
+Supongamos que $A=PBP^{-1}$ con $P$ regular. Si $\lambda$ es un valor propio de $A$, entonces: $$\det(B - \la I) =  \det(P^{-1}AP - \lambda I) = \det(P^{-1}AP - \lambda P^{-1}P) = \det(P^{-1}[A - \la I]P) =$$ $$=\det(P^{-1}) \det(A - \lambda I) \det(P) = 0, $$
+pues $\det(A - \la I) = 0$ al ser $\lambda$ un valor propio de $A$. Por tanto, $\lambda$ es un valor propio de $B$.
+
+Ahora, sea $w = P^{-1}v$, donde $v$ es un vector propio de $A$ asociado a un valor propio $\la$. Entonces, tenemos que $$Bw = BP^{-1}v = P^{-1}PBP^{-1}v = P^{-1}Av = P^{-1}\la v = \la P^{-1}v = \la w$$ Es decir, $w = P^{-1}v$ es un vector propio de $B$ asociado al valor propio $\la$.
+\end{proof}
+
+Vamos ahora a intentar caracterizar cuándo una matriz es diagonalizable.
+
+\begin{nth}[Caracterización de la diagonalización]
   Sea $A \in \mathcal M_k(\mathbb C)$. Son equivalentes:
-  \begin{itemize}
-  \item $A$ es una matriz diagonalizable.
+  \begin{nlist}
+  \item $A$ es diagonalizable.
   \item Existe una base de $\mathbb C^k$ formada por vectores propios de $A$.
-  \end{itemize}
+  \end{nlist}
 \end{nth}
 
+\begin{nota}
+	Atendiendo a las propiedades expuestas en la \textit{Proposición \ref{prop_matrices}}, tenemos que la afirmación $(ii)$ del teorema equivale a que \textbf{coincidan la multiplicidad geométrica y algebraica} de cada uno de los valores propios de $A$.
+% Para una demostración más detallada de esta última afirmación, consultar [\textit{Ejercicios}, 3.4].
+\end{nota}
+%%% TODO: Descomentar cuando esté el ejercicio subido en el otro archivo.
+
 \begin{ncor} \hfill
-  \begin{itemize}
-  \item Una matriz con todos los valores propios simples es diagonalizable.
-  \item Toda matriz simétrica real es diagonalizable.
-  \end{itemize}
+  \begin{nlist}
+  \item Una matriz cuyos valores propios sean todos simples es diagonalizable.
+  \item Toda matriz real simétrica es diagonalizable.
+  \end{nlist}
 \end{ncor}
+
+Hemos visto que no toda matriz cuadrada es diagonalizable. Para finalizar, veremos un proceso parecido a la diagonalización, que se puede aplicar siempre a toda matriz cuadrada.
 
 \begin{nth}[Forma canónica de Jordan]
   Toda matriz $A \in \mathcal M_k (\mathbb C)$ es semejante a una matriz
@@ -2229,13 +2273,24 @@ Veamos a continuación algunas propiedades.
     & & & J_r
   \end{pmatrix}$$
 
-  donde $1 \leq r \leq k$ y,
-
-  %FIXME: Completar el teorema.
+  donde $1 \leq r \leq k$, y $$J_i = 
+  \begin{pmatrix}
+	\la_i & 1\\
+	& \la_i & 1 \\
+	& & \ddots & \ddots \\
+	& & & \la_i & 1 \\
+	& & & & \la_i
+\end{pmatrix}, \quad \lambda_i \in \sigma(A)$$
 
 \end{nth}
 
-\subsection{Modelos lineales en genética}
+\begin{nota}
+	La forma canónica de Jordan de una matriz $A$ es única salvo eventuales permutaciones de los bloques.
+\end{nota}
+
+Observemos lo siguiente: sea $A \in \mathcal M_k(\mathbb{C})$, con $J$ su forma canónica de Jordan. Entonces, se tiene que la \textbf{multiplicidad geométrica} de un valor propio $\lambda_i$ de $A$ es el número de bloques de $J$ correspondientes a $\lambda_i$. Asimismo, la \textbf{multiplicidad algebraica} de un valor propio $\lambda_i$ de $A$ es la suma de las dimensiones de todos los bloques correspondientes a $\lambda_i$.
+
+\subsubsection{Modelos lineales en genética}
 
 En un invernadero se producen flores rojas (AA), rosas (Aa) y blancas (aa). Se
 realiza un programa de fertilización artificial que consiste en polinizar cada
