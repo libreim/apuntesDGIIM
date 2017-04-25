@@ -106,6 +106,12 @@
 
 \usepackage{mdframed}
 
+% Gráficos
+
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
 % Otros.
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage{hyperref}
@@ -115,8 +121,8 @@
 
 % Fuentes personalizadas
 
+\usepackage[scaled=.85]{newpxtext,newpxmath}
 \usepackage[scaled=.85]{FiraSans}
-\usepackage{ebgaramond-maths}
 \usepackage[T1]{fontenc}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
@@ -2478,7 +2484,9 @@ El ``truco'' para resolver esta integral es utilizar:
   \sqrt{y^2+z^2} \geq f(x) \}$, es decir, el círculo de centro $(0,0)$ y radio $f(x)$.
 \end{ejemplo}
 
-\begin{ejemplo}
+\begin{ejemplo} \hfill
+
+\begin{minipage}[b]{0.55\textwidth}
   Supongamos que queremos calcular el área de un círculo $C$ de radio $R$. Para ello
   llamamos $D$ a un cuadrante del círculo y diremos que el área de $C$ es
   $4D$. Definimos $D$ como $\{ (x, y) \in [0, R] \times [0, R] : x^2 + y^2 \leq
@@ -2486,6 +2494,23 @@ El ``truco'' para resolver esta integral es utilizar:
   \begin{align*}
     \text{área } = \int_D 1 \ dxdy 
   \end{align*}
+\end{minipage} \hfill
+\begin{minipage}[b]{0.35\textwidth}
+  \begin{tikzpicture}
+    \sffamily
+    \tkzInit[ymin=-0.5,ymax=3.5,xmin=-0.5,xmax=3.5]
+    \tkzAxeXY
+%\tkzClip
+\tkzDefPoint(0,0){O}
+\tkzDefPoint(3,0){A}
+\tkzDefPoint(0,3){B}
+
+\tkzDrawSector[color=500, fill=50](O,A)(B)
+
+\tkzText(1.25,1.25){$D$}
+
+\end{tikzpicture}
+\end{minipage}
 
   $\{ (\rho, \theta) : 0 \leq \rho \leq R^2, 0 \leq \theta \leq
   \frac{\pi}{2} = [0, R] \times [0, \frac{\pi}{2}]$. Definimos una aplicación:
@@ -2496,7 +2521,7 @@ El ``truco'' para resolver esta integral es utilizar:
 % FIXME: Aquí debe faltar algo porque esto por sí mismo no tiene mucho sentido en el estado en el que está.
 \end{ejemplo}
 
-\begin{nth}
+\begin{nth}[Cambio de variable]
   Sean $U, V \subset R^N$ conjuntos abiertos y $E \subset V$ un conjunto medible. Sea $\varphi : U \rightarrow R^N, \varphi(U)
   = V$ un difemormismo $(\varphi \in \mathcal C^1 (U) \exists \varphi^{-1} \in
   \mathcal C^1 (V)$. Además, $det(J \varphi (x)) \neq 0 \forall x \in U$. Sea $f
@@ -2509,6 +2534,90 @@ y en este caso,
   \int_E f(x) \ dx = \int_{\varphi^{-1}(E)`} f (\varphi(y)) |det J \varphi (y)| \ dy
 \end{align*}
 \end{nth}
+
+\begin{nota} %FIXME: Hola una cosa esto está súper mal explicado. Aiuda.
+ Veamos que realmente el Teorema de Cambio de variable en integrales de una
+ variable produce el mismo resultado que la definición que conocíamos
+ anteriormente. Recordemos qué dice:
+
+ Sea $f: [c, d] \rightarrow \R$ una función integrable y $\varphi: [a, b]
+\rightarrow [c, d]$ una aplicación biyectiva y estrictamente monótona tal que $\varphi'(x) \neq 0 \forall
+x \in [a, b]$. Entonces,
+$$\int_c^df(x) \ dx = \int_a^bf(\varphi(y)) \ \varphi'(y)
+\ dy$$
+
+Veamos entonces qué posibilidades tenemos para $\varphi$:
+
+$$ \varphi \text{ es }
+\begin{cases}
+  \text{creciente }
+  \begin{cases}
+    \varphi'(x) > 0 \forall x \in (a,b) \\
+    \varphi(a) = c, \varphi(b) = d
+  \end{cases}
+  \rightarrow \int_c^d f(x) \ dx = \int_{\varphi^{-1}(c)}^{\varphi^{-1}(d)}
+  f(\varphi(y)) |\varphi'(y) \\
+  \text{decreciente }
+  \begin{cases}
+    \varphi'(x) < 0 \forall x \in (a,b) \\
+    \varphi(a) = d, \varphi(b) = c
+  \end{cases}
+  \rightarrow
+\end{cases}$$
+
+\end{nota}
+
+
+\begin{ejemplo}[Coordenadas cilíndricas en $\R^3$]
+  $$
+\begin{cases}
+  x = r \ cos \theta \\
+  y = r \ sen \theta \\
+  z = z
+\end{cases}
+$$
+
+Definimos ahora $\phi$:
+
+$$\phi : (0, \infty) \times (-\pi, \pi) \times \R \rightarrow \R^3 \setminus
+\{(x,y,z) : x \leq 0, z \in \R \}$$
+
+$$\phi(r, \theta, z) = (r \ cos \theta, r \ sen \theta, z)$$
+
+$$det(J \phi (r, \theta, z)) = det
+\begin{pmatrix}
+  cos \ \theta & sen \ \theta & 0 \\
+  -rsen \ \theta & r \ cos \theta & 0 \\
+  0 & 0 & 1
+\end{pmatrix}, r > 0$$
+
+$$\int_{\R^3}f(x,y,z) \ dxdydz = \int_0^{\infty} \left[ \int_{-\pi}^{\pi} \left(
+  \int_{-\infty}^{+\infty}rf(r \ cos \theta, r \ sen \theta, z) \ dz \right) d
+\theta \right]dr$$
+\end{ejemplo}
+
+
+
+\begin{ejemplo}[Coordenadas esféricas en $\R^3$]
+  Definimos $\psi$
+\begin{align*}
+  \psi : (0, \infty) \times (-\pi, \pi) \times \left( \frac{-\pi}{2},
+  \frac{\pi}{2} \right)
+&\rightarrow \R^3 \setminus \{(x, y, z) : x \leq 0, z \in \R \} \\
+\psi(r, \theta, \varphi) &= (r \ cos \theta cos \varphi, r \ sen \theta cos
+                           \varphi, r \ sen \phi )
+\end{align*}
+\begin{align*}det(J \psi (r, \theta, \varphi)) &= det
+\begin{pmatrix}
+  cos \ \theta \ cos \ \varphi & sen \ \theta \ cos \ \varphi & sen \ \varphi \\
+  -r \ sen \ \theta \ cos \ \varphi & r \ cos \ \theta \ cos \ \varphi & 0 \\
+  -r \ cos \ \theta \ sen \ \varphi & -r \ sen \ \theta \ sen \ \varphi & r \
+  cos \ \varphi
+\end{pmatrix} \\
+  &con \ \ r^2 \ cos \varphi > 0 \ \forall r \in (0, \infty) \ \forall \varphi \in \left( \frac{-\pi}{2}, \frac{\pi}{2} \right)
+\end{align*}
+\end{ejemplo}
+
 
 % --------------------------------------------------------------------------------
 % Bibliografía.
