@@ -2408,10 +2408,56 @@ Tenemos también versiones afines del teorema de Desargues:
 \begin{nth}[Versión afín del teorema de Pappus]
 	Dado un hexágono en el plano afín cuyos vértices están alternativamente en dos rectas distintas $s$ y $s'$. Si los pares de lados opuestos son paralelos, entonces el tercer par de lados opuestos también es paralelo.
 \end{nth}
+
+\definecolor{ffqqtt}{rgb}{1.,0.,0.2}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.86,-2.02) rectangle (8.72,6.24);
+\draw [domain=-2.86:8.72] plot(\x,{(--22.2488--4.08*\x)/8.2});
+\draw [domain=-2.86:8.72] plot(\x,{(--10.778-0.28*\x)/8.62});
+\draw (0.700246938808434,1.2276021876025103)-- (2.2849026302237316,3.850146674550344);
+\draw (2.2849026302237316,3.850146674550344)-- (4.2797184295294075,1.11133165194104);
+\draw (4.2797184295294075,1.11133165194104)-- (0.603268420149154,3.0134311163668963);
+\draw (0.603268420149154,3.0134311163668963)-- (2.0394835365165065,1.1841003027581647);
+\draw (2.0394835365165065,1.1841003027581647)-- (3.9986774495031376,4.702854145606439);
+\draw (3.9986774495031376,4.702854145606439)-- (0.700246938808434,1.2276021876025103);
+\draw [color=ffqqtt,domain=-2.86:8.72] plot(\x,{(--0.8792591002888015--0.2246992452667933*\x)/0.537225831251114});
+\begin{scriptsize}
+\draw [fill=xdxdff] (0.700246938808434,1.2276021876025103) circle (2.5pt);
+\draw[color=xdxdff] (0.84,1.59) node {$D$};
+\draw [fill=xdxdff] (2.2849026302237316,3.850146674550344) circle (2.5pt);
+\draw[color=xdxdff] (2.42,4.23) node {$E$};
+\draw [fill=xdxdff] (4.2797184295294075,1.11133165194104) circle (2.5pt);
+\draw[color=xdxdff] (4.42,1.49) node {$F$};
+\draw [fill=xdxdff] (0.603268420149154,3.0134311163668963) circle (2.5pt);
+\draw[color=xdxdff] (0.74,3.39) node {$G$};
+\draw [fill=xdxdff] (2.0394835365165065,1.1841003027581647) circle (2.5pt);
+\draw[color=xdxdff] (2.18,1.55) node {$H$};
+\draw [fill=xdxdff] (3.9986774495031376,4.702854145606439) circle (2.5pt);
+\draw[color=xdxdff] (4.14,5.07) node {$I$};
+\draw [fill=uuuuuu] (1.267842867158042,2.1669517136675966) circle (1.5pt);
+\draw[color=uuuuuu] (1.4,2.45) node {$J$};
+\draw [fill=uuuuuu] (1.805068698409156,2.39165095893439) circle (1.5pt);
+\draw[color=uuuuuu] (1.94,2.69) node {$K$};
+\draw [fill=uuuuuu] (2.987104327906867,2.886047353106368) circle (1.5pt);
+\draw[color=uuuuuu] (3.12,3.17) node {$L$};
+\draw[color=ffqqtt] (-2.7,0.85) node {$r$};
+\end{scriptsize}
+\end{tikzpicture}
+
 %%%% TODO: Incluir dibujos para aclarar las rectas.
+%%% TODO: Completar demostración
+%%% TODO: Si se quiere, cambiar el dibujo para que los nombres sean 1,2,3,4,5,6 y se facilite la notación
 \begin{proof}[Demostración de la versión afín]\hfill
 \begin{nlist}
-	\item Si $s \parallel s'$
+	\item Si $s \parallel s'$ %%% TODO: Completar demostración
+	\item Si $s\cap s' = P$. Tenemos que probar que:
+	$$\begin{rcases}
+	P_G\vee P_I \parallel P_F \vee P_E\\
+	P_H\vee P_I \parallel P_E \vee P_D
+\end{rcases}\implies P_G \vee P_D \parallel P_I \vee P_F $$
+Probar esto es inmediato por el teorema de Thales.
 \end{nlist}
 \end{proof}
 \end{document}
