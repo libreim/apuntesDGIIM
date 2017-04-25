@@ -713,13 +713,11 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
   \begin {proof}\hfill\\
     \boxed{\Rightarrow}
-    Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2\ $ tal que $A$, $B$, y $C$ $\in r$, luego $\nexists \vec{v}\ tal\ que\ A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
+    Si los puntos $A$, $B$, y $C$ no están alineados entonces $\nexists r \subset \mathbb{R}^2$ una recta tal que $A$, $B$, y $C \in r$, luego $\nexists \vec{v}$ tal que $A,B,C \in r = A + L(\vec{v})$. Por tanto, $\overrightarrow{AB} \neq \alpha \cdot \overrightarrow{AC}, \alpha \in \mathbb{R}\ $ porque si no, sería cierto lo anterior. Así, $\overrightarrow{AB}$ y $\overrightarrow{AC}$ son linealmente independientes.
 
-    \boxed{\Leftarrow} Si $A$, $B$ y $C$ están en la misma recta, entonces la única recta que une puntos A y B y los puntos A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, por lo tanto A, B y C no están alineados.
+    \boxed{\Leftarrow} Si $A$, $B$ y $C$ están en la misma recta, entonces la única recta que une puntos A y B y los puntos los A y C es la misma, luego $r = A + L(\overrightarrow{AB})  = A + L(\overrightarrow{AC})$, por lo que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ serían linealmente dependientes. Como sabemos que $\overrightarrow{AB}$ y $\overrightarrow{AC}$ no lo son, A, B y C no están alineados.
   \end{proof}
 
-
-% REVIEW: Posibilidad de hacer dibujo de triángulo con los 3 puntos y las 3 rectas
 \begin{nth}\hfill\\
 \begin{minipage}[c]{0.50\textwidth}
   \hfill\\
@@ -757,7 +755,8 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \end{minipage}
 
   \end{nth}
-
+  
+  %FIXME: Corregir esta demostración, no está bien explicada.
   \begin{proof}
     Si los lados son paralelos, entonces los vectores directores son proporcionales.
     Si $w$ (el lado no mencionado del primer triángulo) es $w=-u+v$ y $w_1$(el lado no mencionado del segundo triángulo) es $w_1 = - \lambda u + \lambda v = \lambda (-u+v) = \lambda w$  por lo que tenemos lo que queríamos.
@@ -776,22 +775,18 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \end{nota}
 
 \begin{ndef}[Triángulo medio]
-  Si $ABC$ es un triángulo y $A'$,$B'$,$C'$ los puntos medios de sus lados, entonces:
-  \begin{nlist}
-  \item $A'B'C'$ es un triángulo
-  \item Los lados homólogos son paralelos y el factor de proporcionalidad es: $-\dfrac{1}{2}$
-  \end{nlist}\vspace{0.2cm}
-  \begin{proof}\hfill\\
-
-    \begin{nlist}
-    \item Se hace viendo que si ABC no están alineados, estos 3 tampoco
-    \item Tenemos que: $A' = B/2 + C/2$, $B' = A/2+C/2$, $C' = A/2 + B/2$. Tenemos por tanto que: $\vec{A'B'} = B'-A' = \dfrac{1}{2}(A-B) = -\dfrac{1}{2} \vec{AB}$ y por tanto los lados homólogos son paralelos.
-
-      Además, el factor es el número obtenido en la conversión, es decir $\dfrac{-1}{2}$.
-    \end{nlist}
-  \end{proof}
+  Si $ABC$ es un triángulo, sus puntos medios $A'$, $B'$ y $C'$ forman otro triángulo, el \textit{triángulo medio}.
 \end{ndef}
 
+\begin{nprop}
+  Los lados homólogos de un triángulo en su triángulo medio tienen razón $-\frac{1}{2}$.
+\end{nprop}
+
+\begin{proof}
+  Tenemos que: $A' = B/2 + C/2$, $B' = A/2+C/2$, $C' = A/2 + B/2$. Tenemos por tanto que: $\vec{A'B'} = B'-A' = \dfrac{1}{2}(A-B) = -\dfrac{1}{2} \vec{AB}$ y por tanto los lados homólogos son paralelos.
+
+      Además, el factor es el número obtenido en la conversión, es decir $-\dfrac{1}{2}$.
+\end{proof}
 
 %% Centros y ejes de un triangulo
 \subsubsection{Centros y ejes de un triángulo}
@@ -894,11 +889,13 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 % TODO: Falta demostrar que el baricentro triseca el segmento que une un vértice con el punto medio homólogo.
 \end{proof}
 
-Dado un triángulo $ABC$ y su triángulo medio $A'B'C'$, las medianas de cada lado cortan al punto opuesto y a su homólogo del triángulo medio. Las tres medianas concurren en el baricentro, por lo que este triseca a las medianas. Considerando el punto $A$ del triángulo tenemos que $G = \dfrac{2}{3}A' + \dfrac{1}{3}A$
+\begin{nota}
+  A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
+\end{nota}
 
 \begin{ndef}[Mediatriz de un segmento] \hfill\\
 \begin{minipage}[c]{0.70\textwidth}
-  Si $\overline{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : AP = BP\}$ (los puntos del plano que distan lo mismo que A que de B).
+  Si $\overline{AB}$ es un segmento, entonces llamamos $m_{AB}$  al lugar geométrico $\mathcal{L}=\{P \in \R^2 : \mu(AP) = \mu(BP)\}$ (los puntos del plano que distan lo mismo que A que de B).
 \end{minipage}
 \begin{minipage}[]{0.27\textwidth}
   \begin{center}
@@ -916,23 +913,25 @@ Dado un triángulo $ABC$ y su triángulo medio $A'B'C'$, las medianas de cada la
 \end{minipage}
 \end{ndef}
 
-\begin{nota}
-  A partir de ahora, usaremos $\mu(A,B)$ para denotar la distancia euclídea entre los puntos $A$ y $B$.
-\end{nota}
+\begin{nprop}\hfill
+  \begin{nlist}
+    \item El punto medio $M \in \mathcal{L}$. 
+    \item La mediatriz es una recta que viene dada por $\langle\vec{AB},P\rangle  = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $\overline{AB}$ y pasa por $M$ el punto medio del segmento.
+  \end{nlist}
+\end{nprop}
 
-\textbf{Propiedades:}
-\begin{nlist}
-\item El punto medio $M \in \mathcal{L}$. 
-\item La mediatriz es una recta que viene dada por $\langle\vec{AB},P\rangle  = \dfrac{1}{2}(|B|^2-|A|^2)$ y que es perpendicular al segmento $\overline{AB}$ y pasa por $M$ el punto medio del segmento.\\
-  \begin{proof}
-    La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
+\begin{proof}\hfill
+  \begin{nlist}
+    \item
+    \item La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
     Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $\langle\vec{BA},P\rangle $ genera la recta:
     \[
       r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
     \]
     que es perpendicular a $\vec{BA}$.
-  \end{proof}
-\end{nlist}
+  \end{nlist}
+\end{proof}
+
 \begin{nota}
   $|\vec{AP}|^2 = \mu(A,P)^2\implies \mu(A,P)^2 = 	\left(\sqrt{\langle \vec{AP},\vec{AP}\rangle }\right)^2 =  \langle A-P, A-P \rangle  =^{(1)} \langle A,A-P\rangle -\langle P,A-P\rangle  =  \langle A,A\rangle  - \langle A,P\rangle +\langle P,P\rangle - \langle P,A\rangle   = |A|^2+|P|^2-2 \langle P,A\rangle $. Y en (1) hemos aplicado la bilinealidad del producto escalar.
 \end{nota}
@@ -948,7 +947,7 @@ Dado un triángulo $ABC$ y su triángulo medio $A'B'C'$, las medianas de cada la
   Las tres mediatrices de un triángulo son concurrentes. Además, concurren en el punto $O$ llamado el circuncentro, el centro de la circunferencia que pasa por $A$,$B$ y $C$.
 \end{nth}
 \begin{proof}
-  Lo primero es ver que dos mediatrices nunca son paralelas. Tomamos $O = m_{AB} \cap m_{AC}$. Por la definición de mediatriz tenemos que $\vec{AO} = \vec{BO}$ y que $\vec{AO} = \vec{CO}$. Es obvio entonces que $\vec{BO} = \vec{CO}$ luego $O \in m_{BC}$.
+  Lo primero es ver que dos mediatrices nunca son paralelas. Tomamos $O = m_{AB} \cap m_{AC}$. Por la definición de mediatriz tenemos que $\mu(AO) = \mu(BO)$ y que $\mu(AO) = \mu(CO)$. Es obvio entonces que $\mu(BO) = \mu(CO)$ luego $O \in m_{BC}$.
   % TODO: Completar esta demostración.
 \end{proof}
 
