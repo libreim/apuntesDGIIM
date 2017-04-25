@@ -922,7 +922,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \begin{proof}\hfill
   \begin{nlist}
-    \item
+    \item Trivial.
     \item La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
     Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $\langle\vec{BA},P\rangle $ genera la recta:
     \[
@@ -966,10 +966,10 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{proof}
   Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Ídem con $B''$ y $C''$.
 \end{proof}
-\begin{ndef}
-  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición.
-  % FIXME: ¿Qué es un triángulo doble? ¿Qué proposición?
-\end{ndef}
+% FIXME: ¿Qué es un triángulo doble? ¿Qué proposición?
+%\begin{ndef}
+%  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición.
+%\end{ndef}
 
 
 \begin{nprop}
@@ -1017,14 +1017,12 @@ Para toda homotecia, el centro, un punto y su imagen están alineados.
 \end{nprop}
 
 \begin{proof}
-	Sea la homotecia $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$ y el punto cualquiera$P$. Veamos que en la recta (única) que contiene a $P$ y a $ A$, $r= A + \mu \vec{AP}$,  contiene a $h_{A,\lambda} (P)$. Esto es obvio por la misma definición de homotecia.
-	
-	
+	Sea la homotecia $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$ y el punto cualquiera$P$. Veamos que en la recta (única) que contiene a $P$ y a $ A$, $r= A + \mu \vec{AP}$,  contiene a $h_{A,\lambda} (P)$. Esto es obvio por la misma definición de homotecia.	
 \end{proof}
 
 
 \begin{nth}[Recta de Euler]
-  Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados(están en la recta de Euler).
+  Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados en la recta de Euler.
 \end{nth}
 \begin{proof}
   Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón). 
@@ -1061,16 +1059,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Cuadriláteros}
 
 \begin{ndef}
-  $ABCD$ es un cuadrilátero que está formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman \textit{lados} a los segmentos que unen los vertices consecutivos, y \textit{diagonales} a los segmentos que unen $A \vee C$ y $B \vee D$.
-\end{ndef}
-
-\begin{ndef}[Lado]
-  Un lado es una recta que une dos vértices consecutivos. En concreto, los cuadriláteros tienen 4 lados: $A \vee B$, $B \vee C$, $C \vee D$
-  y $D \vee A$.
-\end{ndef}
-
-\begin{ndef}[Diagonal]
-  Una diagonal es una recta que une dos vértices no consecutivos. En concreto, los cuadriláteros tienen 2 diagonales: $A \vee C$ y $B \vee D$.
+  Un cuadrilátero es un polígono formado por 4 puntos consecutivos no alineados 3 a 3. Se llaman \textit{lados} a los segmentos que unen los vértices consecutivos, y \textit{diagonales} a los segmentos que unen los vértices no consecutivos.
 \end{ndef}
 
 \begin{ndef}[Paralelogramo]\hfill\\
@@ -1107,8 +1096,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \hfill
 
 \begin{nprop}
-	Los paralelogramos cumplen que
-  siendo $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces:
+	Sean $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces los paralelogramos cumplen las siguientes identidades:
   \begin{nlist}
   \item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
   \item $V_{3} = \lambda V_{1}\ con\ \lambda \neq 0$
@@ -1195,35 +1183,40 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Transformaciones}
 
 \begin{ndef}[Afinidades]
-  Se define una afinidad f como una aplicación $f:\R^2 \rightarrow \R^2$ con $f(x) = Ax + b$, con $x =$ $\begin{pmatrix}
+  Una afinidad es una aplicación $f : \R^2 \rightarrow \R^2$ definida como $f(x) = Ax + b$ con $x =$ $\begin{pmatrix}
     x\\
     y\\
-  \end{pmatrix}$, $A =$ $\begin{pmatrix}
+  \end{pmatrix} \in \R^2$, $A =$ $\begin{pmatrix}
     a & b\\
     c & d\\
   \end{pmatrix}$
   y $b =$ $\begin{pmatrix}
     b1\\
     b2\\
-  \end{pmatrix}$
-
-
+  \end{pmatrix} \in \R^2$.
 \end{ndef}
+
+\begin{nota}
+  Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
+\end{nota}
 
 \begin{ndef}[Traslaciones]
-  Se define la traslación de vector $v$ como $t_v: \R^2 \rightarrow \R^2$ con $t_v(P) = P + v$
+  Una traslación es una aplicación $t_v: \R^2 \rightarrow \R^2$ definida como $t_v(P) = P + v \ \ \forall v \in \R^2$.
 \end{ndef}
 
+\begin{ncor}
+    \item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$.
+\end{ncor}
 
 \begin{nprop}
-  Se dan las siguientes propiedades:
+  Las afinidades cumplen las siguientes propiedades:
   \begin{nlist}
   \item $t_v \circ t_w = t_{v+w}$
   \item $t_{v}^{-1} = t_{-v}$
   \item $t_0 = I$
   \end{nlist}
 \end{nprop}
-\begin{proof}\hfill \begin{center}\end{center}
+\begin{proof}\hfill
   \begin{nlist}
   \item $t_v \circ_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
   \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
@@ -1235,62 +1228,56 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \end{nlist}
 \end{proof}
 
-
-\begin{nota}
-  Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
-\end{nota}
-
-
 \begin{nprop}
-  Se dan las siguientes propiedades:
+  Las afinidades cumplen las siguientes propiedades:
   \begin{nlist}
-  \item Las traslaciones son un caso particular de afinidades, en las que $A = I$ y $b = v$
-  \item Sean f y g afinidades, entonces $(g \circ f) (P)$ es afinidad
-  \item $f^{-1}(P) = A^{-1}P +A^{-1}b$
-    
+    \item Si $f$ y $g$ dos afinidades, entonces $(g \circ f) (P)$ es otra afinidad.
+    \item $f^{-1}(P) = A^{-1}P +A^{-1}b$.
   \end{nlist}
 \end{nprop}
-\begin{proof}
+\begin{proof}\hfill
   \begin{nlist}
-  \item Trivial
   \item $(f\circ g)(P) = f(AP +b) = A'(AP)+A'b +b' $, donde $AA'$ es una matriz y $A'b+b'$ es un vector, por lo que tenemos una nueva afinidad.
-  \item Es directo por la composición de funciones.
+  \item Es trivial, por la composición de funciones.
   \end{nlist}
 \end{proof}
 
 \begin{ndef}[Función vectorial asociada]
-  Se llama función vectorial asociada a una afinidad($\vec{f}$) a la función que lleva vectores en vectores tal que $\vec{f}(v) = Av$
+  Dada una afinidad $f = Av + b$, llamamos función vectorial asociada a una afinidad, $\vec{f}$, a la misma afinidad $f$ pero con $b = 0$. 
 \end{ndef}
 
-\textbf{Propiedades de las afinidades:}\\
-\begin{enumerate}
-\item $f(P + \vec{v}) = f(P) + \vec{f}(v)$
+\begin{nprop}
+Una afinidad $f$ cumple las siguientes propiedades:
+  \begin{nlist}
+    \item $f(P + \vec{v}) = f(P) + \vec{f}(v)$.
 \item $f$ lleva rectas en rectas.
-\item $f(r\cap s) = f(r) \cap f(s)$
-\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$
-\item $f$ lleva puntos medios en puntos medios
-\item $f$ lleva segmentos en segmentos
-\item $f$ lleva rectas paralelas en rectas paralelas
-\item $f$ lleva triángulos en triángulos
-\item $f$ lleva medianas en medianas
-\item $f$ lleva baricentros en baricentros
-\item $f$ lleva cuadriláteros en cuadriláteros
-\item $f$ lleva paralelogramos en paralelogramos
-\end{enumerate}
+\item $f(r\cap s) = f(r) \cap f(s)$.
+\item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$.
+\item $f$ lleva puntos medios en puntos medios.
+\item $f$ lleva segmentos en segmentos.
+\item $f$ lleva rectas paralelas en rectas paralelas.
+\item $f$ lleva triángulos en triángulos.
+\item $f$ lleva medianas en medianas.
+\item $f$ lleva baricentros en baricentros.
+\item $f$ lleva cuadriláteros en cuadriláteros.
+\item $f$ lleva paralelogramos en paralelogramos.
+  \end{nlist}
+\end{nprop}
+
 \begin{proof}\hfill
   \begin{enumerate}
-  \item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$
+  \item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$.
   \item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
   \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
-  \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)  $
-  \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$
-  \item Trivial
-  \item Trivial
+  \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)$.
+  \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$.
+  \item Trivial.
+  \item Trivial.
   \item Trivial por las 4 anteriores.
   \item Trivial pues $f$ lleva rectas en rectas.
-  \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas
-  \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones
-  \item Trivial por la anterior y porque mantiene paralelismo
+  \item Trivial pues lleva intersecciones de rectas en intersecciones de rectas.
+  \item Trivial pues lleva rectas en rectas e intersecciones en intersecciones.
+  \item Trivial por la anterior y porque mantiene paralelismo.
 
     
   \end{enumerate}
@@ -1305,29 +1292,26 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Circunferencias}
 
 \begin{ndef}[Circunferencia]
-  Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C(centro,radio)$.
+  Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C($centro, radio$)$.
 \end{ndef}
-
-
-%FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
-\begin{nprop}
-  Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
-  \begin{enumerate}
-  \item $C_1 = C(A_1,p_1)$
-  \item $C_2 = C(A_2,p_2)$
-  \end{enumerate}
-  Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
-  En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$
-\end{nprop}
-
 
 \begin{ndef}
 	Una dilatación es una homotecia cuya razón $\lambda \ne 1$.
 \end{ndef}
 
+%FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
+\begin{nprop}
+  Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
+  \begin{enumerate}
+  \item $C_1 = C(A_1,p_1)$.
+  \item $C_2 = C(A_2,p_2)$.
+  \end{enumerate}
+  Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
+  En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$.
+\end{nprop}
 
 \begin{ndef}
-  Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \bar{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$
+  Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \vec{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$.
 \end{ndef}
 
 
@@ -1337,24 +1321,23 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 \begin{proof}
 	Sabemos la existencia de la circunferencia de manera trivial, porque el punto medio $O$ esta a la misma distancia de ambas. Entonces $C_1 = C(O, |\vec{AB}|/2)$ pasa por ambos. \\
-	Supongamos que existe otra circunferencia  distinta con el mismo centro que pasa por ambos. Entonces como pasa por uno de los puntos también tiene el mismo radio y por lo tanto son distintas.\\
+	Supongamos que existe otra circunferencia  distinta con el mismo centro que pasa por ambos. Entonces como pasa por uno de los puntos también tiene el mismo radio y por lo tanto son iguales.\\
 	Por último debemos ver si el centro puede ser diferente de $O$. Como son diametralmente opuestos el centro debe estar en la linea que los une. Además como deben estar a la misma distancia tiene que ser el punto medio, es decir, $O$.
-	
 \end{proof}
 
-
+%FIXME: ¿Hola? ¿Definición de producto escalar?
 \begin{ndef}[Ángulo recto]
   Dos vectores forman un ángulo recto si $\langle \vec{PA},\vec{PB}\rangle  = 0$, siendo $P$ el punto donde se cortan.
 \end{ndef}
 
-%TODO: completar
+%TODO: ¿Mejorar un poco más?
 \begin{nprop}
-  El lugar geométrico desde el que dos puntos dados del plano se ven bajo un ángulo recto es una circunferencia.
+  Dados dos puntos, $A$ y $B$, el lugar geométrico de los puntos $P$ que cumplen que los segmentos $AP$ y $BP$ forman un ángulo recto es una circunferencia.
 \end{nprop}
 
 \begin{proof}
-	Estos son todos los puntos $P$ que cumple $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
-	$|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, por lo que forman una circunferencia de centro $M$ y radio $\rho$. 
+	El lugar geométrico que buscamos son todos los puntos $P$ que cumplen que $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
+	$|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, formando una circunferencia de centro $M$ y radio $\rho$. 
 \end{proof}
 
 \begin{nota}
@@ -1364,8 +1347,8 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nth}[La circunferencia de los 9 puntos de un triángulo]
   Sea $ABC$ un triángulo en el plano $\R^2$. Entonces existe una circunferencia que pasa por los siguientes puntos:
   \begin{itemize}
-  \item $A',B',C'$ los puntos medios de los lados
-  \item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$
+  \item $A',B',C'$ los puntos medios de los lados.
+  \item $A_2,B_2,C_2$ los puntos medios de los segmentos $\bar{HA}$, $\bar{HB}$, $\bar{HC}$.
   \item $A_3,B_3,C_3$ los tres pies de las alturas.
   \end{itemize}
   
@@ -1476,7 +1459,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \subsection{Ángulos}
 
 \begin{ndef}[Ángulo entre vectores]
-  Dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ forman un ángulo:
+  Definimos el ángulo $\theta$ de dos vectores $\vec{w}$ y $\vec{v}$ en $\R^2$ como:
   \[
     cos \theta =  \frac{\langle  v,w \rangle }{|v||w|} \implies \theta = cos^{-1} \frac{\langle  v,w \rangle }{|v||w|}
   \]
@@ -1488,17 +1471,51 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
 \end{nprop}
 
-\begin{nprop}
-  Los ángulos opuestos por el vértice formados por dos rectas son iguales.
+\begin{nprop}\hfill\\
+  \begin{minipage}[c]{0.65\textwidth}
+    Los ángulos opuestos por el vértice formado por dos rectas son iguales.
+  \end{minipage}\hfill
+  \begin{minipage}{0.30\textwidth}
+     \begin{tikzpicture}[scale=1.5]
+  \sffamily
+  \tkzSetUpPoint[size=10,color=900, fill=700]
+  % Definimos los vértices
+  \tkzDefPoint(0,0){A} 
+  \tkzDefPoint(3,2){B}
+  \tkzDefPoint(0,2){C}
+  \tkzDefPoint(3,0){D}
+  
+  \tkzDefMidPoint(A,B) \tkzGetPoint{P}
+  
+  \tkzDefPointWith[linear, K=0.3](A,B) \tkzGetPoint{A'}
+  \tkzDefPointWith[linear, K=0.7](A,B) \tkzGetPoint{B'}
+  \tkzDefPointWith[linear, K=0.3](C,D) \tkzGetPoint{C'}
+  \tkzDefPointWith[linear, K=0.7](C,D) \tkzGetPoint{D'}
+  
+  \tkzDrawSector[color=300, fill=50](P,C')(A')
+  \tkzDrawSector[color=300, fill=50](P,D')(B')
+  
+  \tkzDrawSegment[color=500](A,B)
+  \tkzDrawSegment[color=500](C,D)
+  
+  \tkzDrawPoints(P)
+  
+  \tkzText(1,1){$\alpha$}
+  \tkzText(2,1){$\alpha$}
+	   
+\end{tikzpicture}
+
+  \end{minipage}
 \end{nprop}
 
+ 
 
 \begin{nprop}
-  Si $r$ y $s$ son perpendiculares, entonces $\theta = \pi/2$
+  Si $r$ y $s$ son perpendiculares, entonces el ángulo formado por sus dos vectores directores es $\theta = \pi/2$.
 \end{nprop}
 
 \begin{nth}
-  Los tres ángulos de un triángulo suman $\pi$
+  Los tres ángulos de un triángulo suman $\pi$.
 \end{nth}
 \begin{proof}
   La prueba se hace realizando el triángulo medio y trasladando los ángulos a uno de los vértices de este por rectas paralelas.
@@ -1515,7 +1532,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
       y 
     \end{pmatrix} + b \quad \lambda \ne 0
   \]
-  Las distancias se multiplican por $|\lambda|$, los ángulos se mantienen.
+  Las distancias se multiplican por $|\lambda|$ pero los ángulos se mantienen.
 \end{nprop}
 
 
@@ -1523,7 +1540,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 \subsection{Rectángulos}
 \begin{ndef}
-  Un rectángulo es un paralelogramo tal que los lados contiguos son perpendiculares.
+  Un rectángulo es un paralelogramo en el que los lados contiguos son perpendiculares.
 \end{ndef}
 
 
@@ -1585,12 +1602,12 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{proof}
 	Que se inscribe en una circunferencia es obvio porque porque al medir las dos diagonales lo mismo, el punto donde se cortan está a la misma distancia de los 4 puntos. Además los lados estarán mas cerca de este centro que los vertices. 
 	
-	Además como el centro está en la diagonal $A\vee C$, estos dos puntos son diametralmente opuestos. Análogo $B\vee D$
+	Además como el centro está en la diagonal $A\vee C$, estos dos puntos son diametralmente opuestos. Análogo para $B\vee D$.
 \end{proof}
 
 %%% TODO: completar
 \begin{nprop}
-  Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo
+  Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo.
 \end{nprop}
 
 %TODO: Si alguien puede que envíe al grupo apuntes de este día.
@@ -1598,6 +1615,8 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{ndef}[La razón áurea]
   
 \end{ndef}
+
+\newpage
 
 \section{Movimientos}
 
@@ -1628,10 +1647,10 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 
 
-\begin{ejemplo}
+\begin{ejemplo}\hfill
   \begin{nlist}
-  \item Traslaciones $p \mapsto p+v$
-  \item Reflexión central $p \mapsto -p +b= -p +2A$ de centro $A$
+  \item Traslaciones $p \mapsto p+v$.
+  \item Reflexión central $p \mapsto -p +b= -p +2A$ de centro $A$.
   \item Giro de ángulo $\theta$ y centro $A$ (en $\R^2$).
     \[
       f= \begin{cases}
@@ -1650,11 +1669,11 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \[
     \mathcal A_{\theta} \circ \mathcal A_{\theta'} = \mathcal A_{\theta+\theta'}
   \]
-  Siendo $\mathcal A$ la matriz del giro.
+  siendo $\mathcal A$ la matriz del giro.
 \end{nprop}
 
 \begin{ndef}[Matrices ortogonales]
-  Son de la forma:
+  Las matrices ortogonales son de la forma:
   \[
     \begin{pmatrix}
       a & -b \\
@@ -1664,25 +1683,28 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
       b & -a 
     \end{pmatrix}
   \]
-  con $a^2+b^2 = 1$
+  con $a^2+b^2 = 1$.
 \end{ndef}
 
 \begin{ndef}[Movimiento directo]
-  Es un movimiento cuya matriz es ortogonal. 
+  Un movimiento directo es un movimiento cuya matriz es ortogonal. 
 \end{ndef}
 \begin{nprop}
-  En $\R^n$, si $\lambda = 1$ no es un valor propio de $\mathcal A$, entonces $f$ tiene un punto fijo y solo 1.
+  En $\R^n$, si $\lambda = 1$ no es un valor propio de $\mathcal A$, entonces $f$ tiene un punto fijo y sólo uno.
 \end{nprop}
 
 \subsection{Tipos de movimientos}
-\begin{itemize}
-\item Movimiento deslizante si no hay puntos fijos $f = t_v \circ t_r$. En estas, el vector deslizamiento es $v=b^1$
-\item Auténtica reflexión: reflexión con puntos fijos $f=r_r$. En este caso, tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$
+
+\begin{ndef}[Tipos de movimientos]\hfill
+  \begin{itemize}
+\item Decimos que un movimiento es \textit{deslizante} si no hay puntos fijos $f = t_v \circ t_r$. El vector deslizamiento es $v=b^1$.
+\item Decimos que un movimiento es una \textit{auténtica reflexión} si es una reflexión con puntos fijos $f=r_r$. En este caso tenemos que $r= \dfrac{1}{2}b^{-1}+V_1$.
 \end{itemize}
+\end{ndef}
 
 \subsection{Giros en el espacio}
 \begin{ndef}[Movimiento helicoidal]
-  Es un movimiento en el que no hay puntos fijos. Su matriz en cierta base ortonormal es:
+  Un movimiento helicoidal es un movimiento en el que no hay puntos fijos. Su matriz en cierta base ortonormal es:
   \[
     \begin{pmatrix}
       cos \theta & -sen\theta & 0 \\
@@ -1690,10 +1712,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
       0 & 0 & 1
     \end{pmatrix} 
   \]
-  En ellas, podemos obtener el ángulo sabiendo que 
-  \[
-    tr(A) = 1+2cos\theta
-  \]
+  A partir de la matiz, podemos obtener el ángulo sabiendo que $tr(A) = 1+2 \ cos\theta$.
 \end{ndef}
 
 %% VOY A COPIAR LO DE CLASSE, REVISAR SI VA AQUÍ
@@ -1816,6 +1835,8 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nlist}
 	\item Existe una circunferencia por $ADHF$. Lo mismo para $BEHD$ y $CFHE$
 \end{nlist}
+
+\newpage
 
 \section{Cónicas y Cuádricas}
 Ya sabemos que la ecuación de una recta viene dada por una ecuación de la forma:
