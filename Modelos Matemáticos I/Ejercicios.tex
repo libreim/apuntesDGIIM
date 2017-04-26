@@ -1151,16 +1151,16 @@ Con esto deducimos finalmente que converge si:
     & 3 & & \\
     & & 3 & \\
     & & & 3 
-  \end{pmatrix} \ \ \
-  J_4 = 
+  \end{pmatrix}$$
+  
+  $$J_4 = 
     \begin{pmatrix}
     3 & 1 & & \\
     & 3 & 1 & \\
     & & 3 & \\
     & & & 3 
-  \end{pmatrix}$$
-  
-  $$J_5 =
+  \end{pmatrix} \ \ \
+  J_5 =
     \begin{pmatrix}
     3 & 1 & & \\
     & 3 & & \\
@@ -1174,36 +1174,32 @@ Con esto deducimos finalmente que converge si:
   \times 2$.
 \end{ejer}
 
-\begin{sol}
-  $X^2 = I$ con $X \in M_2(\R)$.
-  $X \cdot X = I \Leftrightarrow X^{-1} = X$
-  $X = PJP^{-1}$
-  Tenemos tres posibilidades:
-  \begin{enumerate}
+\begin{sol} Sabemos que $X^2 = X \cdot X = I \iff X^{-1} = X$. Además, por el \textit{teorema de la forma canónica de Jordan}, sabemos que $X = PJP^{-1}$, y $J$ puede ser una de estas tres matrices, donde $\lambda_i \in \sigma(X)$:
+  \begin{nlist}
   \item $J =
     \begin{pmatrix}
-      \lambda_1 & \\
-      & \lambda_2
-    \end{pmatrix}$ con $\lambda_1 \neq \lambda_2$.
+      \lambda_1 & 0\\
+      0 & \lambda_2
+    \end{pmatrix},\ $ con $\lambda_1 \neq \lambda_2$.
   \item  $J =
     \begin{pmatrix}
-      \lambda_1 & \\
-      & \lambda_1
+      \lambda_1 & 0\\
+      0 & \lambda_1
     \end{pmatrix}$
   \item  $J =
     \begin{pmatrix}
       \lambda_1 & 1 \\
-      & \lambda_1
+      0 & \lambda_1
     \end{pmatrix}$
-  \end{enumerate}
+  \end{nlist}
 
-  $X = PJP^{-1}$ $X^2 = (PJP^{-1})(PJP^{-1}) = PJ^2P^{-1}$
+Ahora, realizando manipulaciones algebraicas, tenemos que
+  $$X^2 = X\cdot X = (PJP^{-1})(PJP^{-1}) = PJP^{-1}PJP^{-1} = PJ^2P^{-1}$$
+  
+  Entonces, se verifica la siguiente equivalencia: $$X^2 = I \iff PJ^2P^{-1} = I \iff P^{-1}(PJ^2P^{-1})P = P I P^{-1} \iff J^2 = I$$
 
-  $X^2 = PJ^2P^{-1} = I \Rightarrow P^{-1}(PJ^{2}P^{-1})P = P^{-1}IP \Rightarrow
-  J^2 = I$.
-
-  Evaluemos ahora los casos que teníamos:
-  \begin{enumerate}
+  Es decir, para que se verifique la ecuación del enunciado, necesariamente debe ser $J^2 = I$. Evaluemos ahora los casos que teníamos:
+  \begin{nlist}
   \item $J^2 =
     \begin{pmatrix}
       \lambda_1^2 & 0 \\
@@ -1213,30 +1209,23 @@ Con esto deducimos finalmente que converge si:
       1 & 0 \\
       0 & 1
     \end{pmatrix} \Rightarrow \lambda_1^2 = \lambda_2^2 = 1 \Rightarrow
-    \lambda_1 = 1, \lambda_2 = -1$.
-    $X = P
+    \lambda_1 = \pm 1, \lambda_2 = \pm 1$, con $\lambda_1 \ne \lambda_2$. Supongamos $\lambda_1 = 1,\ \lambda_2 = -1$. Entonces, la matriz $X$ que verifica $X^2 = I$ será de la forma
+    $$X = P
     \begin{pmatrix}
-      1 &  \\
-       & 1
-    \end{pmatrix} P^{-1} \in M_2(\R)$
+      1 &  0\\
+       0& -1
+    \end{pmatrix}P^{-1},\quad P \in M_2(\R)\ \text{regular}$$
 
-  \item $J =
-    \begin{pmatrix}
-      \lambda_1 & \\
-      & \lambda_1
-    \end{pmatrix}$
-
-    $J^2 =
+  \item $J^2 =
     \begin{pmatrix}
       \lambda_1^2 & \\
       & \lambda_1^2
-    \end{pmatrix} = I \Rightarrow J = I$ ó $J = -I$. Luego $X = PJP^{-1} = I$ ó
+    \end{pmatrix} =  \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} \Rightarrow J = I$ ó $J = -I$. Luego tenemos que $X = PJP^{-1} \Rightarrow X= I$ ó
     $X = -I$.
-  \item $J =
-    \begin{pmatrix}
-      \lambda_1 & 1 \\
-      & \lambda_1
-    \end{pmatrix}$ y $J^2 =
+  \item $J^2 =
     \begin{pmatrix}
       \lambda_1 & 1 \\
       0 & \lambda_1
@@ -1248,30 +1237,39 @@ Con esto deducimos finalmente que converge si:
     \begin{pmatrix}
       \lambda_1^2 & 2\lambda_1 \\
       0 & \lambda_1^2
-    \end{pmatrix} = I$.
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} \ $.
     Vemos que no puede darse este caso.
-  \end{enumerate}
+  \end{nlist}
 \end{sol}
 
 \begin{ejer}[7] \hfill
-  \begin{enumerate}
+  \begin{nlist}
   \item Demuestre que una matriz $A \in \mathbb C^{d\times d}$ es nilpotente si
     y sólo si $\sigma(A) = \{0\}$.
   \item Describa todas las matrices nilpotentes $2 \times 2$.
-  \end{enumerate}
+  \end{nlist}
 \end{ejer}
 
 \begin{sol}
-  Decimos que una matriz $A$ es \textbf{nilpotente} si $\exists n$ tal
-  que $A^n = 0$. Por ejemplo, $
-  \begin{pmatrix}
+  Decimos que una matriz $A$ es \textbf{nilpotente} si $\exists n \in \mathbb{N}$ tal
+  que $A^n = 0$. Al menor $n$ tal que $A$ es nilpotente se le llama \textit{orden de nilpotencia}. Por ejemplo, las matrices
+  $$ N = \begin{pmatrix}
     0 & 1 \\
     0 & 0
-  \end{pmatrix}, A^2 = 
+  \end{pmatrix}, \quad M = 
   \begin{pmatrix}
-    0 & 0 \\
-    0 & 0 \\
-  \end{pmatrix}$
+    0 & 1 & 0 \\
+    0 & 0 & 1\\
+    0 & 0 & 0
+  \end{pmatrix}$$
   
+  son nilpotentes de orden $2$ y $3$, respectivamente. En general, si $J$ es un bloque de Jordan con todos los elementos diagonales nulos, entonces $J$ es nilpotente de orden $\dim J$.
+  
+  Resolvemos ahora los dos apartados del ejercicio.
+  
+Comenzamos probando $(i)$. %%%...
 \end{sol}
 \end{document}
