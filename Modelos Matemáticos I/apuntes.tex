@@ -265,7 +265,7 @@
 %---------------------------------------------------------------------------
 
 \renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
+\markboth{#1}{}} 
 
 \renewcommand{\subsectionmark}[1]{%
 \markright{#1}{}}
@@ -298,7 +298,8 @@
 }
 
 % Texto del pie de página.
-\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
+
+\fancyhead[LE,RO]{\sffamily\textsl{\rightmark}}
 \cfoot{}                                                 % Centro.
 \fancyhead[LO,RE]{\sffamily{\leftmark}}
 \fancyfoot[LE,RO]{\Large\sffamily\thepage}
@@ -340,6 +341,17 @@
 {.}                
 {.5em}           
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\bf \sffamily}              
+{}                 
+{.5em}               
+{\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}  
 
 % Nuevo estilo para la demostración
 %\renewenvironment{proof}{{\itshape \sffamily Demostración \\}}{\hspace*{\fill}\qed}
@@ -402,18 +414,21 @@
 	%splitbottomskip=\topskip, %
 }%         
 
-%%% TODO: ¿Estilo de ejercicios?
-%\mdfdefinestyle{ejemplo-frame}{
-%	leftmargin=1em,
-%	topline=false, %
-%	bottomline=false, %
-%	rightline=false,%
-%	leftline=false,
-%	innerleftmargin=0em, %
-%	innerrightmargin=0em, 
-%	innertopmargin=0em,%
-%	innerbottommargin=0em, % 
-%}        
+\mdfdefinestyle{ejemplo-frame}{
+	linewidth=0pt, %
+	linecolor= 300, % 
+	%backgroundcolor= 50,
+	leftline=false, %
+	rightline=false, %
+	leftmargin=0pt, %
+	innerleftmargin=1.5em, %
+	innerrightmargin=1.5em, 
+	rightmargin=0pt, % 
+	innertopmargin=0em,%
+	innerbottommargin=0em, % 
+	splittopskip=\topskip, %
+	%splitbottomskip=\topskip, %
+}%    
 
 % Asignamos los marcos a los estilos
 
@@ -421,18 +436,7 @@
 \surroundwithmdframed[style=nprop-frame]{nprop}
 \surroundwithmdframed[style=nprop-frame]{ncor}
 \surroundwithmdframed[style=ndef-frame]{ndef}
-%\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\bf \sffamily}              
-{:}                 
-{.5em}               
-{}                   
+\surroundwithmdframed[style=ejemplo-frame]{ejemplo}              
 
 % Teoremas, proposiciones y corolarios.
 \theoremstyle{theorem-style}
@@ -516,7 +520,7 @@ En esta asignatura, estudiaremos una serie de modelos que se dan en la naturalez
 
 \newpage
 \section{Ecuaciones en diferencias de primer orden}
-\subsection{Ecuaciones en diferencias de primer orden}
+\subsection[E.D. primer orden]{Ecuaciones en diferencias de primer orden}
 
 Para motivar este tema, vamos a poner primero unos ejemplos de ecuaciones en diferencias de primer orden.
 
@@ -578,7 +582,7 @@ Si $a_k(n)\ne 0, \ n \geq 0$ se dice que es de orden $k$. Si $b(n) = 0$, se dice
 \end{ndef}
 
 
-\subsection{Ecuación en diferencias de primer orden lineal con coeficientes constantes}
+\subsection[E.D. primer orden coef. const.]{Ecuación en diferencias de primer orden lineal con coeficientes constantes}
 
 Una ecuación en diferencias de primer orden lineal será de la forma:
 \[
@@ -1262,7 +1266,7 @@ Vamos a ver las soluciones de ambas para ver cuál es más estable:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Ecuaciones en diferencias lineales de orden superior}
-\subsection{La ecuación lineal en diferencias de orden superior}
+\subsection[E.D. orden superior]{La ecuación lineal en diferencias de orden superior}
 \begin{ndef}[Ecuación lineal en diferencias]
   Es una ecuación en diferencias de la forma:
   \[
@@ -1859,7 +1863,7 @@ f_1
   Vemos el vector $v$ como un vector columna.
 \end{nota}
 
-\textbf{Cálculo de valores y vectores propios}
+\subsubsection{Cálculo de valores y vectores propios}
 
   Tenemos que $Av = \lambda v \iff Av - \lambda v = 0 \iff (A -
   \lambda I)v = 0$. Esto es un sistema de ecuaciones homogéneo, dependiente del parámetro $\lambda$, donde $v$ es el vector de incógnitas. Por ser homogéneo, siempre tiene solución. Si esa solución es única, necesariamente es la solución trivial $v = 0$, que desechamos.
