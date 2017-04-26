@@ -2606,13 +2606,15 @@ Tenemos también versiones afines del teorema de Desargues:
 %%% TODO: Completar demostración
 %%% TODO: Si se quiere, cambiar el dibujo para que los nombres sean 1,2,3,4,5,6 y se facilite la notación
 \begin{proof}[Demostración de la versión afín]\hfill
+
+
 \begin{nlist}
 	\item Si $s \parallel s'$ %%% TODO: Completar demostración e incluir dibujo para paralelas y no paralelas
 	\item Si $s\cap s' = P$. Tenemos que probar que:
 	$$\begin{rcases}
-	P_G\vee P_I \parallel P_F \vee P_E\\
-	P_H\vee P_I \parallel P_E \vee P_D
-\end{rcases}\implies P_G \vee P_D \parallel P_I \vee P_F $$
+	P_1\vee P_2 \parallel P_4 \vee P_5\\
+	P_2\vee P_3 \parallel P_5 \vee P_6
+\end{rcases}\implies P_3 \vee P_4 \parallel P_6 \vee P_1 $$
 
 Caso primer hexagono:\\ %incluir dibujo primer hexagono
 Por thales sabemos que $\frac{PP_5}{PP_1}=\frac{PP_4}{PP_2}$ y que $\frac{PP_3}{PP_5}=\frac{PP_2}{PP_6}$. Si multiplicamos ambas igualdades nos queda que $\frac{PP_3}{PP_1} = \frac{PP_4}{PP_6}$, por lo que aplicando una última vez Thales nos queda que $P_1 P_6$ es paralelo a $P_3 P_4$.
@@ -2644,23 +2646,27 @@ que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por
 	$P \in \mathbb{P}^2 \equiv$ recta vectorial de$ \mathbb{R}^3 \equiv (x_0,x_1,x_2) $
 	Enotnces, Para algún $x_i \ne 0$, listas proporcionales representan el mismo V y representan el mismo P.
 
-\begin{ndef}[Coordenadas Homogeneas]
-	Tengamos un punto en $\mathbb{R}^2$ de coordenadas $(x,y)$. Este punto posee de coordenadas homogeneas $\mathbb{P}^2$. Del mismo modo si tenemos un vector en el proyectivo  $(x_0, x_1, x_2)$ este equivale con $(x_1/x_0, x_2/x_0)$. 
+\begin{ndef}[Coordenadas Homogéneas]
+Dado un punto en el espacio proyectivo, llamamos coordenadas homogéneas de dicho punto a cada uno de los puntos pertenecientes a la recta vectorial de $\mathbb{R}^3$ que lo define.
 \end{ndef}
+
+
+Ahora bien, tengamos un punto en $\mathbb{R}^2$ de coordenadas $(x,y)$, que sabemos que esta asociado a un único punto de $\mathbb{P}^2$. Definimos las coordenadas homogéneas asociadas a dicho punto como $(x,y,1)$ y todo el resto de coordenadas equivalentes. Del mismo modo si tenemos un punto en el proyectivo  $(x_0, x_1, x_2)$ este equivale con $(x_1/x_0, x_2/x_0)$. 
 
 Si observamos la primera parte siempre se puede hacer. La segunda sin embargo no, porque si no sería una correspondencia biyectiva, la cual sabemos que no existe. Cuando $x_0 = 0$ estaremos trabajando con puntos del infinito, los cuales ya sabemos que no existen en el afín.\\
 
+Sean $A$ y $B$ dos puntos distintos en el afin con $A =(1,2)$ y $B=(-1,1)$ sabemos que definen la recta $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
+Ahora bien, en $\mathbb{P}^2$, teniendo dos puntos $A(a_1,a_2,a_3), B(b_1,b_2,b_3)$, que sabemos que definen rectas vectoriales en $\mathbb{R}^3$, y por tanto generan un plano vectorial, el cual puede verse como una recta proyectiva. Entonces $A\vee B = \{ \lambda (a_1,a_2,a_3) + \mu (b_1,b_2,b_3)\backslash \lambda, \mu \ne 0 \} = \{  \{ (a_1,a_2,a_3) + \alpha (b_1,b_2,b_3)\backslash \alpha  \in \mathbb{R}\} \cup  \{(b_1,b_2,b_3) \}$
+\begin{ndef}[Ecuación de una recta en el plano afín.]
+Dada una recta perteneciente al plano afin, sabemos que se puede escribir de la forma $r = \{(x,y) \in \mathbb{R}^2\ \backslash\ ax + by + c = 0, a \textup{ ó } b \neq 0\}$. Entonces llamamos ecuación de r a la expresión $ax + by + c = 0$ 
+\end{ndef}
+Sabemos que dos rectas son iguales si y solo sus ecuaciones son proporcionales
 
-Sabemos que en el afín esta recta sería $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
-En $\mathbb{P}^2$, teniendo dos puntos $A(a_1,a_2,a_3), B(b_1,b_2,b_3)$. Entonces, la equivalencia de estos en  $\mathbb{R}^3$ serán dos rectas vectoriales que generan un plano vectorial, el cual puede verse como una recta proyectiva. Entonces $A\vee B = \{ \lambda (a_1,a_2,a_3) + \mu (b_1,b_2,b_3)\backslash \lambda, \mu \ne 0 \} = \{  \{ (a_1,a_2,a_3) + \alpha (b_1,b_2,b_3)\backslash \alpha  \in \mathbb{R}\} \cup  \{(b_1,b_2,b_3) \}$
+\begin{ndef}[Ecuación de una recta en el plano proyectivo.]
+Dada una recta perteneciente al plano proyectivo, sabemos que se puede escribir de la forma $r = \{(x_0,x_1,x_2) \in \mathbb{P}^2\ \backslash\ a_0x_0+a_1x_1+a_2x_2 = 0\}$ con algun $a_i \neq 0$ (r esta definido por un plano vectorial que sabemos que se puede escribir de esa forma). Entonces llamamos ecuación de r a la expresión $a_0x_0+a_1x_1+a_2x_2 = 0$ 
+\end{ndef}
+Sabemos que dos planos son iguales si y solo si sus ecuaciones son proporcionales, por lo tanto dos rectas en el proyectivo lo seran tambien si y solo si sus ecuaciones son proporcionales
 
-\underline{Ecuación de una recta en el plano afín.\\}\\
-Ecuación de una recta en el plano afín. Toda recta $r \in \mathbb{R}^2$ la pone $r\{ax+by+c= 0\}$ con $a$ o $b$ diferente de 0. Además sabemos que dos rectas son iguales si y solo si sus ecuaciones son proporcionales. \\
-\underline{Ecuación de un plano vectorial en $\mathbb{R}^3$}\\
-Todo plano vectorial admite una ecuación : $V = \{(x_0,x_1,x_2) \in \mathbb{R}^3 \backslash a_0x_0+a_1x_1+a_2x_2 = 0\}$ algún $a_i \ne 0$: Ecuaciones proporcionales me dan el mismo plano
-
-\underline{Ecuación de una recta en $\mathbb{P}^2$}\\
-$r = \{(x_0,x_1,x_2) \in \mathbb{P}^ \backslash a_0x_0+a_1x_1+a_2x_2 = 0\}$ algún $a_i \ne 0$: Ecuaciones proporcionales dan la misma recta.
 
 \textbf{\underline{
 Ejercicio:\\}
