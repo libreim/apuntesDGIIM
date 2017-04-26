@@ -455,10 +455,15 @@
 % COMIENZO DEL DOCUMENTO
 % ---------------------------------------------------------------------------
 \usepackage{amsmath}
+\usepackage{pdfpages}
 \begin{document}
 
-\maketitle  % Título.
+%\maketitle  % Título.
+\includepdf{portada}
 \newpage
+\hfill
+\newpage
+\includepdf{portada-int}
 \tableofcontents    % Índice
 \vfill
 \begin{center}
@@ -2512,6 +2517,63 @@ Tenemos también versiones afines del teorema de Desargues:
 	Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 2 rectas distintas, entonces los 3 pares de lados opuestos se cortan en 3 puntos alineados
 \end{nth}
 
+\begin{nth}[Teorema de Pappus]\hfill\\
+\begin{minipage}[c]{0.4\textwidth}
+Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 2 rectas distintas, entonces los 3 pares de lados opuestos se cortan en 3 puntos alineados.
+\end{minipage}\hfill
+\begin{minipage}[]{0.6\textwidth}
+       \begin{tikzpicture}[scale=1.5]
+  \sffamily
+  \tkzSetUpPoint[size=10,color=900, fill=700]
+  % Definimos los vértices
+  \tkzDefPoint(0,0){O} 
+  \tkzDefPoint(5,3){P}
+  \tkzDefPoint(5,0){P'}
+  
+  %\tkzDefMidPoint(A,B) \tkzGetPoint{P}
+  
+  \tkzDefPointWith[linear, K=0.3](O,P) \tkzGetPoint{6}
+  \tkzDefPointWith[linear, K=0.5](O,P) \tkzGetPoint{4}
+  \tkzDefPointWith[linear, K=0.8](O,P) \tkzGetPoint{2}
+  \tkzDefPointWith[linear, K=0.3](O,P') \tkzGetPoint{5}
+  \tkzDefPointWith[linear, K=0.5](O,P') \tkzGetPoint{1}
+  \tkzDefPointWith[linear, K=0.8](O,P') \tkzGetPoint{3}
+  
+  \tkzDrawSegment[color=500](O,P)
+  \tkzDrawSegment[color=500](O,P')
+  
+  \tkzDrawSegments[color=700](6,1 1,2 3,4 4,5 6,3 5,2)
+  
+  \tkzDrawPoints(6,4,2)
+  \tkzLabelPoints[above=0.5em](6,4,2)
+  
+  \tkzDrawPoints(5,1,3)
+  \tkzLabelPoints[below=0.5em](5,1,3)
+  
+  \tkzInterLL(5,4)(6,1) \tkzGetPoint{A}
+  \tkzInterLL(5,2)(6,3) \tkzGetPoint{B}
+  \tkzInterLL(4,3)(1,2) \tkzGetPoint{C}
+  
+  \tkzDefPointWith[linear, K=2.5](A,C) \tkzGetPoint{C'}
+  \tkzDefPointWith[linear, K=-2](A,C) \tkzGetPoint{A'}
+  
+  \tkzDrawSegment[color=300](A',C')
+  
+  \tkzLabelSegment[below=0.5em, pos=.1](A',C'){$r$}
+  
+  \tkzDrawPoints(B, C)
+  \tkzLabelPoints[right=0.5em](B, C)
+  
+  \tkzDrawPoints(A)
+  \tkzLabelPoints[left=0.5em](A)
+  
+  %\tkzText(1,1){$\alpha$}
+  %\tkzText(2,1){$\alpha$}
+	   
+\end{tikzpicture}
+\end{minipage}
+
+\end{nth}
 
 
 \begin{nth}[Versión afín del teorema de Pappus]\hfill\\
