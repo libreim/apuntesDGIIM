@@ -186,6 +186,8 @@
   {\Large\bfseries\sffamily}{\thesection}{1em}{}
 \titleformat{\subsection}
   {\large\sffamily}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\sffamily}{\thesubsubsection}{1em}{}
 
 % Estilo de enlaces
 \hypersetup{
@@ -326,6 +328,17 @@
 {.5em}           
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
 
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\bf \sffamily}              
+{}                 
+{.5em}               
+{\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}  
+
 % Nuevo estilo para la demostración
 %\renewenvironment{proof}{{\itshape \sffamily Demostración \\}}{\hspace*{\fill}\qed}
 
@@ -385,7 +398,23 @@
 	innerbottommargin=1em, % 
 	splittopskip=\topskip, %
 	%splitbottomskip=\topskip, %
-}%               
+}% 
+
+\mdfdefinestyle{ejemplo-frame}{
+	linewidth=0pt, %
+	linecolor= 300, % 
+	%backgroundcolor= 50,
+	leftline=false, %
+	rightline=false, %
+	leftmargin=0pt, %
+	innerleftmargin=1.5em, %
+	innerrightmargin=1.5em, 
+	rightmargin=0pt, % 
+	innertopmargin=0em,%
+	innerbottommargin=0em, % 
+	splittopskip=\topskip, %
+	%splitbottomskip=\topskip, %
+}%                
 
 % Asignamos los marcos a los estilos
 
@@ -393,18 +422,9 @@
 \surroundwithmdframed[style=nprop-frame]{nprop}
 \surroundwithmdframed[style=nprop-frame]{ncor}
 \surroundwithmdframed[style=ndef-frame]{ndef}
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\bf \sffamily}              
-{:}                 
-{.5em}               
-{}                   
-
+\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
+                 
+% Asignamos los estilos definidos anteriormente a los entornos correspondientes
 % Teoremas, proposiciones y corolarios.
 \theoremstyle{theorem-style}
 \newtheorem{nth}{Teorema}[section]
@@ -422,6 +442,8 @@
 % Ejemplos.
 \theoremstyle{example-style}
 \newtheorem{ejemplo}{Ejemplo}[section]
+
+
 
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
@@ -1336,7 +1358,7 @@ En general, cuando consideremos un espacio $X$ sin decir explícitamente quién 
 % Aritmética de [0,\infty].
 % --------------------------------------------------------------------------------
 
-\subsubsection*{Aritmética de $\bm{[0,\infty]}$}
+\subsubsection{Aritmética de $[0,\infty]$}
 
 Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. La topología asociada a este espacio viene dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
 
@@ -1355,7 +1377,7 @@ El hecho de trabajar en este espacio nos proporciona ciertas ventajas, principal
 % Funciones medibles positivas. Funciones simples.
 % --------------------------------------------------------------------------------
 
-\subsection{Funciones medibles positivas. Funciones simples}
+\subsection{Funciones medibles positivas}
 
 Una familia muy importante de funciones medibles son aquellas que toman únicamente valores positivos (en la recta real extendida). Tanto es así, que si conocemos el comportamiento de estas funciones, las definiciones y propiedades que derivemos sobre ellas se extenderán fácilmente a funciones medibles cualesquiera en $[-\infty,+\infty]$.
 
@@ -1410,7 +1432,7 @@ La última afirmación proviene de que si $\fn \to f$, entonces $\limsup f_n = \
 % Funciones simples.
 % --------------------------------------------------------------------------------
 
-\subsubsection*{Funciones simples}
+\subsubsection{Funciones simples}
 
 Centraremos ahora nuestra atención en estudiar funciones sencillas o \textit{simples}, que nos servirán más adelante como base para construir una integral.
 
