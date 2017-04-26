@@ -1987,12 +1987,11 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
   $$ \lim_{n\to \infty} \int_\Omega (f_n -h) d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h) d\mu$$
   
   $$ ( \liminf_{n\to \infty}\int_\Omega f_n d\mu )  - \int_\Omega h d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n d\mu - \int_\Omega f_n d\mu$$
-  Y podemos suprimir los miembros iguales y haber probado este resultado
+  Y podemos suprimir los miembros iguales y haber probado este resultado.
 \end{proof} 
 
 \begin{nth}[Teorema de la convergencia monótona para funciones integrables]
-  Sean $f_n: \Omega \to \R$ funciones integrables y $f_n(\omega) \leq f_{n+1} \ \ \ \forall \omega \in \Omega$. Supongamos también que $\{\int_\Omega f_n d\mu\}$ es una sucesión acotada superiormente.\\
-  Entonces:
+  Sean $f_n: \Omega \to \R$ funciones integrables y $f_n(\omega) \leq f_{n+1} \ \ \ \forall \omega \in \Omega$. Supongamos también que $\{\int_\Omega f_n d\mu\}$ es una sucesión acotada superiormente. Entonces: 
   $$ \begin{cases}
     f(\omega):= \lim_{n\to \infty}f_n(\omega) \text{ es integrable}\\
     \lim_{n \to \infty} \int_\Omega f_n d\mu = \int_{\Omega}\lim_{n\to \infty} f_n d\mu
@@ -2012,7 +2011,7 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
 
 %%% WARNING: ¿quitar?
 \begin{nprop}
-  Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$
+  Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$.
 \end{nprop}
 
 \begin{nprop} Sea $f:\mathscr A \to [0,\infty]$ medible. Entonces, se verifican las siguientes afirmaciones:
@@ -2031,7 +2030,7 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
     
     \boxed{\Rightarrow}  Empezamos probando que si $s$ es una función simple positiva con integral $\int_\Omega s \, d\mu = 0$, entonces $\mu(\{ \omega\in\Omega \, :\, s(\omega) >0\} ) = 0$. En efecto, si $$s(\omega)=\sum_{i=1}^m \alpha_i \text{\Large$\chi$}_{A_i}, \quad (\alpha_1,\alpha_2,\dots,\alpha_m > 0)$$ entonces $\displaystyle A:=\{ \omega\in\Omega \, :\, s(\omega) >0\} = \bigcup_{i=1}^m A_i$, y $\displaystyle \int_\Omega s \, d\mu = \sum_{i=1}^m \alpha_i \mu (A_i) = 0 \implies\mu(A_i)=0\ \forall i=1,\dots , m$, por lo que $\mu(A)=0 $.
 
-Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{teorema de convergencia monótona}: 
+Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{Teorema de convergencia monótona}: 
 
 $$0\leq \int_\Omega s_n \, d\mu \nearrow \int_\Omega f\, d\mu = 0,$$
 
@@ -2043,10 +2042,11 @@ Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega
 \end{nlist}
 \end{proof}
 
+\newpage
+
 \section{Espacios $L^p(\W)$}
 
 Vamos a intentar dar ahora una definición de distancia en el espacio medible. Dado un espacio medible $(\Omega, \mathscr A, \mu)$ y dos funciones $f, g: \Omega \rightarrow \mathbb K$ integrables en $\Omega$. Intentamos definir una primera distancia como:
-
 $$d_p (f, g) = \left( \int_{\Omega} \abs{f(\omega) - g(\omega)}^p d \mu \right)^{\frac{1}{p}}$$
 
 Sin embargo, esta definición no nos da una distancia ya que no sólo necesitamos que $f, g$ sean integrables, también que $\abs{f(\omega) - g(\omega)}^p$ sean integrables.
@@ -2059,7 +2059,7 @@ Vamos a dar algunas definiciones:
 \end{itemize}
 
 \begin{nprop}[Lema]
-  Dadas $f \in L^p (\Omega), g L^q (\Omega)$ entonces $fg \in L^1 (\Omega)$ y $ \displaystyle \int_{\Omega} \abs{fg}d \mu \leq \left( \int_{\Omega} f^p d \mu \right)^{\frac{1}{p}}\left( \int_{\Omega} g^q d \mu \right)^{\frac{1}{q}}$
+  Dadas $f \in L^p (\Omega), g L^q (\Omega)$ entonces $fg \in L^1 (\Omega)$ y $$ \displaystyle \int_{\Omega} \abs{fg}d \mu \leq \left( \int_{\Omega} f^p d \mu \right)^{\frac{1}{p}}\left( \int_{\Omega} g^q d \mu \right)^{\frac{1}{q}}$$
 \end{nprop}
 
 \begin{proof}
@@ -2069,7 +2069,7 @@ Vamos a dar algunas definiciones:
   
   $$\int_{\Omega} \frac{|f|}{\left( \int_{_\Omega} |f|^p d \mu \right)^{\frac{1}{p}}} \frac{|g|}{\left( \int_{_\Omega} |g|^q d \mu \right)^{\frac{1}{q}}} d \mu \leq $$
   
-  \textbf{FALTAN COSAS.}
+  %FIXME: FALTAN COSAS
   
   Se da la igualdad cuando $\displaystyle \frac{|f|^p}{\int_{\Omega} |f|^p d \mu } = \frac{|g|^q}{\int_{\Omega} |g|^q d \mu }$
 \end{proof}
@@ -2094,7 +2094,7 @@ Ejercicio:
 \begin{ndef}[Supremo esencial]
   Si $\emptyset \ne A \subset \R$, entonces:
   \[
-    ess \ sup A = Min\{ \ M : a \leq M \ \ a.e. \ \ A \ \}
+    \text{\textit{ess sup }} A = \text{\textit{mín}}\{ \ M : a \leq M \ \ a.e. \ \ A \ \}
   \]
 \end{ndef}
 
@@ -2135,7 +2135,7 @@ Ejercicio:
   Esto indica que:
   \[
     \int_\Omega |g|^p d\mu \leq 1 \implies g \in \mathcal L ^p(\Omega) \implies \mu(\{ \omega \in \Omega : g(\omega) = \infty\}) = 0
-  \].
+  \]
   
   Consideramos el conjunto:
   \[
