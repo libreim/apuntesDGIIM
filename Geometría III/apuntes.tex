@@ -2104,129 +2104,248 @@ Para obtener la ecuaci\'on reducida de la cu\'adrica, consideramos el sistema de
 \]
 A continuaci\'on damos la lista de los distintos tipos de cu\'adricas con centro y  sus ecuaciones reducidas. Cuando ${\gamma}\neq 0$, estas ecuaciones se obtienen dividiendo la ecuaci\'on anterior por ${\gamma}$. 
 
-\begin{itemize}
-	
-\item
-{ {\bf Rango de ${\cal A} = 3$.}} 
+Rango de $\mathcal A = 3$.
 
-\vspace{.3cm}
+Si $\mathcal A$ tiene rango $3$ entonces $\mathcal Q$ tiene un único centro.
+Entonces existen $a,b,c > 0$ tales que en esas coordenadas la cuádrica se escribe: 
 
-Si $\cal A$ tiene rango $3$ entonces $\cal Q$ tiene un \'unico centro.
-Entonces existen $a,b,c\rangle 0$ tales que en esas coordenadas la cu\'adrica se escribe 
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Elipsoide}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+  % Elipsoide
 
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+         % x^2+y^2-z^2=0
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({2*cos(deg(x))*sin(deg(y))},{3*sin(deg(x))*sin(deg(y))},{2*cos(deg(y))}); 
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({2*cos(deg(x))*sin(deg(y))},{-3*sin(deg(x))*sin(deg(y))},{2*cos(deg(y))});     
+        %\addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{-x});   
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
 
-\begin{tabular}{ll}
-{\bf  Elipsoide} \hspace{5cm} & 
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2} = 1
-$
-\vspace{.5cm}
-\\
-{\it Elipsoide imaginario}  &
-$
--\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} - \frac{{z}^2}{c^2} = 1
-$
-\vspace{.5cm}
-\\
-{\bf  Hiperboloide de una hoja}  &
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1
-$
-\vspace{.5cm}
-\\
-{\bf  Hiperboloide de dos hojas} &
-$
-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1
-$
-\vspace{.5cm}
-\\
-{\bf  Cono}  &
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 0
-$
-\vspace{.5cm}
-\\
-{\it Cono imaginario}  &
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2}=0
-$
-\vspace{.4cm}
-\end{tabular}
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Elipsoide imaginario}\vspace{1em}\\
+  $\displaystyle -\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} - \frac{{z}^2}{c^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
 
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Hiperboloide de una hoja}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
 
+% Hiperboloide de una hoja
 
-\item {\bf Rango ${\cal A}=2$.} 
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+         % x^2+y^2-z^2=-1
+            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{sqrt(x^2-1)});    
+        \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{-sqrt(x^2-1)}); 
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
 
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Hiperboloide de dos hojas}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
 
-Consideramos cu\'adricas con centro y rango $2$ en el sistema de referencia $\cal R$
+% Hiperboloide de dos hojas
 
-\vspace{.5cm}
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+         % x^2+y^2-z^2=-1
+            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({0.5*sinh(x)*cos(deg(y))},{0.5*sinh(x)*sin(deg(y))},{0.5*cosh(x)});
+            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({0.5*sinh(x)*cos(deg(y))},{0.5*sinh(x)*sin(deg(y))},{-0.5*cosh(x)});    
+        %\addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{-sqrt(x^2-1)}); 
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
 
-\begin{tabular}{ll}
-{\bf Cilindro el\'iptico} \hspace{5cm} & 
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=1
-$
-\vspace{.5cm}
-\\
-{\it Cilindro imaginario}  &
-$
--\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1
-$
-\vspace{.5cm}
-\\
-{\bf  Cilindro hiperb\'olico}  &
-$
-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1
-$
-\vspace{.5cm}
-\\
-{\bf  Par de planos reales}  &
-$
-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=0
-$
-\vspace{.5cm}
-\\
-{\it Par de planos imaginarios} &
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=0
-$
-\vspace{.3cm}
-\\
-\end{tabular}
- 
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cono}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 0$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
 
+% Cono
 
-\item {\bf Rango ${\cal A}=1$.} 
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+         % x^2+y^2-z^2=0
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{x});    
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{-x});   
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
 
-\vspace{.4cm}
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cono imaginario}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2}=0$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
 
-Cu\'adricas con centro y rango $1$ en el sistema de referencia $\cal R$
+\vspace{1em}
 
-\vspace{.5cm}
+Rango de $\mathcal A = 2$.
 
-\begin{tabular}{ll}
-{\bf  Par de planos paralelos.} \hspace{5cm} & 
-$
-\frac{{x}^2}{a^2}=1
-$
-\vspace{.4cm}
-\\
-{\it Par de planos imaginarios paralelos}  &
-$
-\frac{{x}^2}{a^2} =-1
-$
-\vspace{.4cm}
-\\
-{\bf  Plano doble}  &
-$
-{{x}^2} = 0
-$
-\vspace{.3cm}
-\\
-\end{tabular}
+Consideramos cuádricas con centro y rango $2$ en el sistema de referencia $\mathcal R$.
 
-\end{itemize}
+\vspace{1em}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cilindro elíptico}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+
+% Cilindro elíptico
+
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+         % x^2+y^2=1
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({cos(deg(y))},{sin(deg(y))},{x});    
+        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({cos(deg(y))},{sin(deg(y))},{-x});   
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cilindro imaginario}\vspace{1em}\\
+  $\displaystyle -\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cilindro hiperbólico}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+
+% Cilindro hiperbólico
+
+\begin{tikzpicture}
+\sffamily
+    \begin{axis}[
+            xmin=-3,xmax=3,
+            ymin=-3,ymax=3,
+            zmin=-2,zmax=2,
+            %xlabel={$x$},
+            %ylabel={$y$},
+            %zlabel={$z$},
+            %zlabel style={rotate=90},
+            view={60}{40}]
+
+        \addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({0.5*cosh(y)},{0.5*sinh(y)},{x});
+        \addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({-0.5*cosh(y)},{0.5*sinh(y)},{x});    
+        %\addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({cosh(y)},{sinh(y)},{-x});   
+    \end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Par de planos reales}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=0$
+\end{minipage}\hfill\vspace{1em}
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Par de planos imaginarios}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=0$
+\end{minipage}\hfill\vspace{1em}
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
+
+\vspace{1em}
+
+Rango de $\mathcal A = 1$.
+
+Consideramos cuádricas con centro y rango $1$ en el sistema de referencia $\mathcal R$.
+
+\vspace{1em}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Par de planos paralelos}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2}=1$
+\end{minipage}\hfill\vspace{1em}
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Par de planos imaginarios paralelos}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} =-1$
+\end{minipage}\hfill\vspace{1em}
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Plano doble}\vspace{1em}\\
+  $\displaystyle {{x}^2} = 0$
+\end{minipage}\hfill\vspace{1em}
+\begin{minipage}[]{0.45\textwidth}
+\hfill
+\end{minipage}
 
 
 \subsection{\bf  C\'onicas con centro en $\mathbb{R}^2$.}
@@ -2237,27 +2356,43 @@ Dada una c\'onica $\cal C$ con centro consideramos el sistema de referencia
 ${\cal R}=\{A; e_1,e_2\}$ donde $A$ 
 es el centro y $e_1,e_2$ es una base ortonormal de vectores propios de la matriz $\cal A$. Se tienen los siguientes casos
 
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Elipse}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.35\textwidth}
+\begin{tikzpicture}
+  \sffamily
+  \tkzInit[ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+  \tkzAxeXY
+  \draw[scale=1,domain=-2.5:2.5,smooth,variable=\x,500, samples=20] plot ({2*sin(2*\x r)},{cos(2*\x r)});
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Hipérbola}\vspace{1em}\\
+  $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1$
+\end{minipage}\hfill
+\begin{minipage}[]{0.35\textwidth}
+\begin{tikzpicture}
+  \sffamily
+  \tkzInit[ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+  \tkzAxeXY
+  \draw[scale=1,domain=-pi/2:pi/2,smooth,variable=\x,500, samples=20] plot ({cosh(\x)},{sinh(\x)});
+\end{tikzpicture}
+\end{minipage}
+
+
+
 \vspace{.8cm}
 
 \begin{tabular}{ll}
-{\bf Elipse} \hspace{5cm} & 
-$
-\frac{{x}^2}{a^2} + \frac{{y}^2}{b^2} = 1
-$
-\vspace{.4cm}
-\\
 {\it Elipse imaginaria}  &
 $
 -\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1
 $
 \vspace{.4cm}
-\\
-{\bf  Hip\'erbola}  &
-$
-\frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1
-$
-\vspace{.4cm}
-\\
+\\
 {\bf  Par de rectas reales concurrentes}  &
 $
 \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=0
@@ -2329,43 +2464,69 @@ $\overline{y}=y-\alpha_2$. La nueva ecuaci\'on es
 donde $\overline{\beta}_3\neq 0$ ya que la cu\'adrica no tiene centro. Esto nos permite obtener las ecuaciones reducidas para el caso sin centro.
 
 
-\subsubsection{\bf Ecuaciones reducidas para cu\'adricas sin centro.}
+\subsubsection{Ecuaciones reducidas para cuádricas sin centro.}
 
-\begin{itemize}
+Rango $\cal A$ $=2$.
 
-\item {Rango $\cal A$ $=2$.}
-
-
-
-{\bf Paraboloide El\'iptico.}    \hspace{2.7cm}   $z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
-
-\vspace{.2cm}
-
-{\bf Paraboloide Hiperb\'olico.}    \hspace{2cm}   $z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$
-
-
-\begin{tikzpicture}
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Paraboloide elíptico}\vspace{1em}\\
+  $\displaystyle z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+  \begin{tikzpicture}
 \sffamily
 \begin{axis}
 \addplot3 [surf,mesh/interior colormap=
-           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black] {x^2-y^2};
+           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2+y^2};
 \end{axis}
 \end{tikzpicture}
+\end{minipage}
 
-\vspace{0.5cm}
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Paraboloide hiperbólico}\vspace{1em}\\
+  $\displaystyle z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+  \begin{tikzpicture}
+\sffamily
+\begin{axis}
+\addplot3 [surf,mesh/interior colormap=
+           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2-y^2};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
 
-\item {Rango $\cal A$ $=1$.}
+Rango $\cal A$ $=1$.
+
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Cilindro parabólico}\vspace{1em}\\
+  $\displaystyle z = \frac{x^2}{a^2}$
+\end{minipage}\hfill
+\begin{minipage}[]{0.45\textwidth}
+  \begin{tikzpicture}
+\sffamily
+\begin{axis}
+\addplot3 [surf,mesh/interior colormap=
+           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\subsection{Cónicas sin centro en $\mathbb{R}^2$.}
 
 
-{\bf Cilindro Parab\'olico}    \hspace{3.3cm}   $z = \frac{x^2}{a^2}$ 
-
-\end{itemize}
-
-\subsection{\bf C\'onicas sin centro en $\mathbb{R}^2$.}
-
-
-
-{\bf Par\'abola} \hspace{5.5cm}  $y = \frac{x^2}{a^2}$
+\begin{minipage}[c]{0.45\textwidth}
+  {\bf Parábola}\vspace{1em}\\
+  $\displaystyle y = \frac{x^2}{a^2}$
+\end{minipage}\hfill
+\begin{minipage}[]{0.35\textwidth}
+  \begin{tikzpicture}
+\sffamily
+  \tkzInit[ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+  \tkzAxeXY
+  \draw[scale=1,domain=-1.7:1.7,smooth,variable=\x,500, samples=20] plot ({\x},{\x*\x});
+\end{tikzpicture}
+\end{minipage}
 
 
 
@@ -2511,11 +2672,8 @@ Tenemos también versiones afines del teorema de Desargues:
 \end{proof}
 
 \begin{ndef}[Hexágono]
-	Dados 6 puntos $A,B,C,D,E,F$ tales que los consecutivos no estan alineados 3 a 3, estos forman el hexágono $ABCDEF$
+    Si dados 6 puntos, $A,B,C,D,E,F$ los consecutivos no están alineados 3 a 3, entonces forman el hexágono $ABCDEF$.
 \end{ndef}
-\begin{nth}[Teorema de Pappus]
-	Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 2 rectas distintas, entonces los 3 pares de lados opuestos se cortan en 3 puntos alineados
-\end{nth}
 
 \begin{nth}[Teorema de Pappus]\hfill\\
 \begin{minipage}[c]{0.4\textwidth}
@@ -2624,47 +2782,6 @@ Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 
 
 \end{nth}
 
-\definecolor{ffqqtt}{rgb}{1.,0.,0.2}
-\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
-\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-2.86,-2.02) rectangle (8.72,6.24);
-\draw [domain=-2.86:8.72] plot(\x,{(--22.2488--4.08*\x)/8.2});
-\draw [domain=-2.86:8.72] plot(\x,{(--10.778-0.28*\x)/8.62});
-\draw (0.700246938808434,1.2276021876025103)-- (2.2849026302237316,3.850146674550344);
-\draw (2.2849026302237316,3.850146674550344)-- (4.2797184295294075,1.11133165194104);
-\draw (4.2797184295294075,1.11133165194104)-- (0.603268420149154,3.0134311163668963);
-\draw (0.603268420149154,3.0134311163668963)-- (2.0394835365165065,1.1841003027581647);
-\draw (2.0394835365165065,1.1841003027581647)-- (3.9986774495031376,4.702854145606439);
-\draw (3.9986774495031376,4.702854145606439)-- (0.700246938808434,1.2276021876025103);
-\draw [color=ffqqtt,domain=-2.86:8.72] plot(\x,{(--0.8792591002888015--0.2246992452667933*\x)/0.537225831251114});
-\begin{scriptsize}
-\draw [fill=xdxdff] (0.700246938808434,1.2276021876025103) circle (2.5pt);
-\draw[color=xdxdff] (0.84,1.59) node {$D$};
-\draw [fill=xdxdff] (2.2849026302237316,3.850146674550344) circle (2.5pt);
-\draw[color=xdxdff] (2.42,4.23) node {$E$};
-\draw [fill=xdxdff] (4.2797184295294075,1.11133165194104) circle (2.5pt);
-\draw[color=xdxdff] (4.42,1.49) node {$F$};
-\draw [fill=xdxdff] (0.603268420149154,3.0134311163668963) circle (2.5pt);
-\draw[color=xdxdff] (0.74,3.39) node {$G$};
-\draw [fill=xdxdff] (2.0394835365165065,1.1841003027581647) circle (2.5pt);
-\draw[color=xdxdff] (2.18,1.55) node {$H$};
-\draw [fill=xdxdff] (3.9986774495031376,4.702854145606439) circle (2.5pt);
-\draw[color=xdxdff] (4.14,5.07) node {$I$};
-\draw [fill=uuuuuu] (1.267842867158042,2.1669517136675966) circle (1.5pt);
-\draw[color=uuuuuu] (1.4,2.45) node {$J$};
-\draw [fill=uuuuuu] (1.805068698409156,2.39165095893439) circle (1.5pt);
-\draw[color=uuuuuu] (1.94,2.69) node {$K$};
-\draw [fill=uuuuuu] (2.987104327906867,2.886047353106368) circle (1.5pt);
-\draw[color=uuuuuu] (3.12,3.17) node {$L$};
-\draw[color=ffqqtt] (-2.7,0.85) node {$r$};
-\end{scriptsize}
-\end{tikzpicture}
-
-
-
-
-%%%% TODO: Incluir dibujos para aclarar las rectas.
 %%% TODO: Completar demostración
 %%% TODO: Si se quiere, cambiar el dibujo para que los nombres sean 1,2,3,4,5,6 y se facilite la notación
 \begin{proof}[Demostración de la versión afín]\hfill
@@ -2678,13 +2795,12 @@ Si los vértices de un hexágono en $\mathbb P^2$ están alternativamente sobre 
 	P_2\vee P_3 \parallel P_5 \vee P_6
 \end{rcases}\implies P_3 \vee P_4 \parallel P_6 \vee P_1 $$
 
-Caso primer hexagono:\\ %incluir dibujo primer hexagono
-Por thales sabemos que $\frac{PP_5}{PP_1}=\frac{PP_4}{PP_2}$ y que $\frac{PP_3}{PP_5}=\frac{PP_2}{PP_6}$. Si multiplicamos ambas igualdades nos queda que $\frac{PP_3}{PP_1} = \frac{PP_4}{PP_6}$, por lo que aplicando una última vez Thales nos queda que $P_1 P_6$ es paralelo a $P_3 P_4$.
+\textit{Caso primer hexágono}:\\ %incluir dibujo primer hexagono
+Por el Teorema de Thales sabemos que $\frac{PP_5}{PP_1}=\frac{PP_4}{PP_2}$ y que $\frac{PP_3}{PP_5}=\frac{PP_2}{PP_6}$. Si multiplicamos ambas igualdades nos queda que $\frac{PP_3}{PP_1} = \frac{PP_4}{PP_6}$, por lo que aplicando una última vez el Teorema de Thales nos queda que $P_1 P_6$ es paralelo a $P_3 P_4$.
 
-Caso segundo hexagono:\\
+\textit{Caso segundo hexágono}:\\
 Teniendo este caso, cogemos los dos triángulos enfrentados por los vértices $P_1P_2P$ y $P_4P_5P$.  Sabemos %por la magia de aros TODO:Demostrar
-que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por ello, una vez sabemos aplicar esta propiedad, la demostración es anáoga a la anterior.
-
+que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por ello, una vez sabemos aplicar esta propiedad, la demostración es análoga a la anterior.
 \end{nlist}
 \end{proof}
 
@@ -2693,11 +2809,11 @@ que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por
 %TODO:incluir dibujo
 
 \begin{ndef}[Punto Diagonal]
-	Un punto diagonal es el punto donde dos lados opuestos de una cuadrilatero se cortan. Cada cuadrilatero tiene dos puntos diagonales.
+	Un punto diagonal es el punto donde dos lados opuestos de una cuadrilátero se cortan. Cada cuadrilátero tiene dos puntos diagonales.
 \end{ndef}
 
 \begin{nth}
-	Si un cuadrilátero $A'B'C'D'$ inscrito en otro $ABCD$ en $\mathbb{P}^2$, de manera que las cuatro diagonales son concurrentes. Entonces los cuatro puntos diagonales  (dos de cada cuadrilatero) están alineados
+    Si un cuadrilátero $A'B'C'D'$ está inscrito en otro $ABCD$ de forma que las cuatro diagonales son concurrentes, entonces los cuatro puntos diagonales (dos de cada cuadrilátero) están alineados.
 \end{nth} 
 
 \begin{proof}
@@ -2706,7 +2822,7 @@ que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por
 
 %TODO: formalizar
 	$P \in \mathbb{P}^2 \equiv$ recta vectorial de$ \mathbb{R}^3 \equiv (x_0,x_1,x_2) $
-	Enotnces, Para algún $x_i \ne 0$, listas proporcionales representan el mismo V y representan el mismo P.
+	Entonces, Para algún $x_i \ne 0$, listas proporcionales representan el mismo V y representan el mismo P.
 
 \begin{ndef}[Coordenadas Homogéneas]
 Dado un punto en el espacio proyectivo, llamamos coordenadas homogéneas de dicho punto a cada uno de los puntos pertenecientes a la recta vectorial de $\mathbb{R}^3$ que lo define.
@@ -2717,23 +2833,18 @@ Ahora bien, tengamos un punto en $\mathbb{R}^2$ de coordenadas $(x,y)$, que sabe
 
 Si observamos la primera parte siempre se puede hacer. La segunda sin embargo no, porque si no sería una correspondencia biyectiva, la cual sabemos que no existe. Cuando $x_0 = 0$ estaremos trabajando con puntos del infinito, los cuales ya sabemos que no existen en el afín.\\
 
-Sean $A$ y $B$ dos puntos distintos en el afin con $A =(1,2)$ y $B=(-1,1)$ sabemos que definen la recta $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
+Sean $A$ y $B$ dos puntos distintos en el afín con $A =(1,2)$ y $B=(-1,1)$ sabemos que definen la recta $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
 Ahora bien, en $\mathbb{P}^2$, teniendo dos puntos $A(a_1,a_2,a_3), B(b_1,b_2,b_3)$, que sabemos que definen rectas vectoriales en $\mathbb{R}^3$, y por tanto generan un plano vectorial, el cual puede verse como una recta proyectiva. Entonces $A\vee B = \{ \lambda (a_1,a_2,a_3) + \mu (b_1,b_2,b_3)\backslash \lambda, \mu \ne 0 \} = \{  \{ (a_1,a_2,a_3) + \alpha (b_1,b_2,b_3)\backslash \alpha  \in \mathbb{R}\} \cup  \{(b_1,b_2,b_3) \}$
 \begin{ndef}[Ecuación de una recta en el plano afín.]
-Dada una recta perteneciente al plano afin, sabemos que se puede escribir de la forma $r = \{(x,y) \in \mathbb{R}^2\ \backslash\ ax + by + c = 0, a \textup{ ó } b \neq 0\}$. Entonces llamamos ecuación de r a la expresión $ax + by + c = 0$ 
+Dada una recta perteneciente al plano afín, sabemos que se puede escribir de la forma $r = \{(x,y) \in \mathbb{R}^2\ \backslash\ ax + by + c = 0, a \textup{ ó } b \neq 0\}$. Entonces llamamos ecuación de r a la expresión $ax + by + c = 0$ 
 \end{ndef}
 Sabemos que dos rectas son iguales si y solo sus ecuaciones son proporcionales
 
 \begin{ndef}[Ecuación de una recta en el plano proyectivo.]
 Dada una recta perteneciente al plano proyectivo, sabemos que se puede escribir de la forma $r = \{(x_0,x_1,x_2) \in \mathbb{P}^2\ \backslash\ a_0x_0+a_1x_1+a_2x_2 = 0\}$ con algun $a_i \neq 0$ (r esta definido por un plano vectorial que sabemos que se puede escribir de esa forma). Entonces llamamos ecuación de r a la expresión $a_0x_0+a_1x_1+a_2x_2 = 0$ 
 \end{ndef}
-Sabemos que dos planos son iguales si y solo si sus ecuaciones son proporcionales, por lo tanto dos rectas en el proyectivo lo seran tambien si y solo si sus ecuaciones son proporcionales
+Sabemos que dos planos son iguales si y solo si sus ecuaciones son proporcionales, por lo tanto dos rectas en el proyectivo lo serán también si y solo si sus ecuaciones son proporcionales
 
-
-\textbf{\underline{
-Ejercicio:\\}
-Encontrar en $\mathbb{P}^2$ la recta que pasa por dos puntos. A(1,2,3),B(-1,0,2)}\\
-
-Por  último nos quedaría cosiderar la correspondencia entre la recta proyectiva y la afín, el cual realizaremos de modo análogo. Esto implicará los pasos punto a punto, y, quitando los puntos de infinito. La recta del infinito obviamente no se pasará
+Por  último nos quedaría considerar la correspondencia entre la recta proyectiva y la afín, el cual realizaremos de modo análogo. Esto implicará los pasos punto a punto, y, quitando los puntos de infinito. La recta del infinito obviamente no se pasará
 
 \end{document}
