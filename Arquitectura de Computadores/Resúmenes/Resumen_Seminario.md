@@ -52,6 +52,7 @@ Una **directiva** es "una marca" en nuestro archivo fuente que es sustituida por
 el preprocesador del compilador por otro código que permite realizar
 una tarea determinada sin tener que definirla nosotros explícitamente.
 
+
 ## Sintaxsis de las directivas C/C++
 
 ```c
@@ -168,7 +169,8 @@ necesitamos todos los cálculos de los threads hasta ese punto para que
 no se produzcan errores.
 
 **Critical:** Evita que varios threads accedan a variables compartidas
-a la vez (situaciones de carrera).
+a la vez (situaciones de carrera). Un thread protege una variable frente a
+los accesos de otros threads a la misma variable.
 
 **Atomic:** Da una respuesta más eficiente que “*Critical*”.
 
@@ -178,9 +180,109 @@ ejecutará el bloque de código será la hebra “maestra” 0.
 
 \newpage
 
-# Seminario 2. Funciones OPENMP
+# Seminario 2. Cláusulas OpenMP
 
+Las **cláusulas** son las encargadas de ajustar el comportamiento de
+las directivas. No pueden ser usadas en directivas tales como: master,
+critical, barrier, atomic, flush, ordered o threadprivate.
+
+## Ámbito de los datos por defecto. Compartición de datos.
+
+Es conveniente saber qué valores tomarán las variables dentro de una
+zona donde queramos hacer uso del paralelismo. Dejando claro si
+queremos que la memoria se comparta o en cada thread se mantengan unos
+datos privados.
+
+Por lo general las variables declaradas fuera de una región y las
+dinámicas son compartidas por los threads de la región. Mientras que
+las variables declaradas dentro son privadas.
+
+A excepción de esto nos encontramos los índices de los bucles for y
+las variables declaradas static, que son privados y “públicas”
+respectivamente.
+
+### Shared
+```c
+#pragma omp parallel for shared(a,b,...,N)
+```
+
+Las variables indicadas por la lista son compartidas por los
+threads. Hay que tener cuidado cuando un thread lea lo que otro
+escribe en una variable de la lista.
+
+### Private
+```c
+#pragma omp parallel for private(a,b,...,N)
+```
+
+De modo análogo a shared, indica una lista de variables cuya memoria
+no es compartida. Es importante saber que el valor de entrada y de
+salida están indefinidos aunque la variable haya sido definida antes
+de la región (por lo cual es necesario definirlas dentro de esta).
+
+Los índices de los bucles tienen un ámbito predeterminado privado si
+se usa la directiva for.
+
+### Lastprivate
+```c
+#pragma omp parallel for lastprivate(a,b,...,N)
+```
+
+Combina la protección que otorga private pero al salir de la región
+paralela le asigna a las variables de la lista el último valor en una
+ejecución secuencial. (En un bucle la ultima iteración y en una
+construcción sections el valor que tuviese tras la última sección).
+
+### Firstprivate
+```c
+#pragma omp parallel for firstprivate(a,b,...,N)
+```
+
+Combina la protección que otorga private pero al entrar en la región,
+en lugar de tener valores indefinidos, asigna los valores que tenía
+antes de entrar a cada variable de la lista para cada thread.
+
+### Default
+Con `default(<none/shared>)` podemos alterar el comportamiento por
+defecto de las variables (sólo se puede usar una única vez. En caso de
+`none` habrá que especififcar el alcance de todas las variables usadas
+en la construcción por parte del programador.
+
+Podeoms excluir del ámbito por defecto usando todas las cláusulas de
+compartición que hemos visto hasta ahora.
+
+### Reduction
+```c
+#pragma omp parallel for reduction(operator:list)
+```
+
+Esta cláusula indica que las variables de la lista serán tratadas
+según el operador indicado. Así de este modo se sumarán, restarán,
+multiplicarán... todas las variables del mismo nombre en distintos
+threads al final de la región tomando unos valores iniciales por
+defecto (el neutro para el correspondiente operador).
+
+### Copyprivate
+```c
+#pragma omp parallel
+{ 
+// init list vars
+
+	#pragma omp single copyprivate(list)
+	{
+		//Codeblock 
+	}
+}
+```
+
+Esta cláusula sólo se puede usar con la directiva single, y dentro de
+una región paralela copia el valor de la variable en el thread que
+ejecuta el single a la misma variable privada en los otros
+threads. Esto es usado comúnmente en lecturas o peticiones al usuario
+únicas.
+
+# Seminario 3. Variables de entorno OpenMP
+
+(...)
 Se evitan con #ifdef _OPENMP ...(funciones)... #endif para asegurarnos
 de que sólo se usarán cuando estemos usando -fopenmp
-
-# Seminario 3. Variables de entorno OPENMP
