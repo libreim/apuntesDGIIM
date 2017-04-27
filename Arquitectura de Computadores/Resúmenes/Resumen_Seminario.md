@@ -4,8 +4,8 @@ author: Doble grado Ingeniería Informática y matemática
 header-includes:      	 	        	
 toc: true                   	
 numbersections: true
-fontsize: 11pt 
-geometry: margin=1in 
+fontsize: 11pt
+geometry: margin=1in
 ---
 
 \newpage
@@ -26,18 +26,18 @@ necesitamos comunicarnos con el servidor mediante **sftp**. Siempre
 debemos de estar conectados a la VPN de la ugr (usar eduroam o bien
 conectarse a la VPN con openconnect).
 
--psbnodes: Información sobre los nodos.
--qsub: Enviar un trabajo a ejecutar, devuelve la salida en un
+* psbnodes: Información sobre los nodos.
+* qsub: Enviar un trabajo a ejecutar, devuelve la salida en un
 fichero output(\*.o) y otro error (\*.e).
 
-\underline{\textbf{Ejemplos de uso:}}
+**Ejemplos de uso:**
 
--"echo 'hello' | qsub -q ac" $\rightarrow$ Envía el trabajo(programa)
-hello por la cola ac 
--"qstat" $\rightarrow$ Muestra los trabajos ejecutándose y los que
+* "echo 'hello' | qsub -q ac" $\rightarrow$ Envía el trabajo(programa)
+hello por la cola ac
+* "qstat" $\rightarrow$ Muestra los trabajos ejecutándose y los que
 están en las colas
 
--"echo 'hello/trabajoMiTrabajo' | qsub -q ac -N “NombreMiNombre” "
+* "echo 'hello/trabajoMiTrabajo' | qsub -q ac -N “NombreMiNombre” "
 
 \newpage
 
@@ -60,15 +60,14 @@ una tarea determinada sin tener que definirla nosotros explícitamente.
 ```
 Donde:
 
--#pragma omp es necesario para indicar que estamos usando una
-directiva de openmp.
+* \#pragma omp es necesario para indicar que estamos usando una directiva de openmp.
 
--<nombre_directiva> es el nombre de la acción que realiza la directiva.
+* <nombre_directiva> es el nombre de la acción que realiza la directiva.
 
--<cláusula> es opcional, modifica o aporta información para la
+* <cláusula> es opcional, modifica o aporta información para la
 ejecución de la directiva, pueden combinarse.
 
--<\\n(newline)> es el salto de línea necesario.
+* <\\n(newline)> es el salto de línea necesario.
 
 **Compilación:** Compilamos usando gcc -fopenmp para poder usar estas
 directivas.
@@ -93,7 +92,7 @@ forma anidada.
 ### Trabajo compartido. Worksharing
 
 **Paralelismo de datos(for):** Para distribuir las iteraciones de un bucle
-entre los diversos hilos usamos 
+entre los diversos hilos usamos:
 ```c
 #pragma omp for
 {
@@ -102,15 +101,15 @@ entre los diversos hilos usamos
 ```
 
 **Paralelismo de tareas(sections):** Para distribuir trozos de código que son
-independientes entre sí 
+independientes entre sí.
 ```c
 #pragma omp sections
 {
-	#pragma omp section 
+	#pragma omp section
 	{
 		//Codeblock 1
 	}
-	
+
 	#pragma omp section
 	{
 		//Codeblock 2
@@ -120,7 +119,7 @@ independientes entre sí
 
 **Ejecución única(single):** Para que sólo un hilo ejecute un trozo de código
 (lo cual interesa por ejemplo para pedir/mostrar datos al usuario del programa
-una única vez en una situación de paralelismo)
+una única vez en una situación de paralelismo).
 ```c
 #pragma omp single
 {
@@ -144,11 +143,11 @@ prestaciones.
 ```c
 #pragma omp parallel sections
 {
-	#pragma omp section 
+	#pragma omp section
 	{
 		//Codeblock 1
 	}
-	
+
 	#pragma omp section
 	{
 		//Codeblock 2
@@ -156,7 +155,7 @@ prestaciones.
 }
 ```
 ### Directivas básicas de comunicación y sincronización
-En diversas ocasiones nos interesa que la lectura/escritura de una
+En diversas ocasiones nos interesa que la *lectura/escritura* de una
 variable se hiciese en exclusión mutua (secuencial) para evitar que se
 modifique o use un valor de manera incorrecta. Para esto veremos las
 directivas **critical y atomic** y la directiva de “control”
@@ -176,7 +175,7 @@ los accesos de otros threads a la misma variable.
 
 ### Directiva master
 Es similar a la directiva single, pero en este caso la hebra que
-ejecutará el bloque de código será la hebra “maestra” 0.
+ejecutará el bloque de código será la *thread master* o "*hebra 0*".
 
 \newpage
 
@@ -198,7 +197,7 @@ dinámicas son compartidas por los threads de la región. Mientras que
 las variables declaradas dentro son privadas.
 
 A excepción de esto nos encontramos los índices de los bucles for y
-las variables declaradas static, que son privados y “públicas”
+las variables declaradas *static*, que son privados y “públicas”
 respectivamente.
 
 ### Shared
@@ -242,13 +241,15 @@ Combina la protección que otorga private pero al entrar en la región,
 en lugar de tener valores indefinidos, asigna los valores que tenía
 antes de entrar a cada variable de la lista para cada thread.
 
+Útil para no olvidar la inicialización dentro de la región paralela cuando usamos variables private.
+
 ### Default
 Con `default(<none/shared>)` podemos alterar el comportamiento por
 defecto de las variables (sólo se puede usar una única vez. En caso de
 `none` habrá que especififcar el alcance de todas las variables usadas
 en la construcción por parte del programador.
 
-Podeoms excluir del ámbito por defecto usando todas las cláusulas de
+Podemos excluir del ámbito por defecto usando todas las cláusulas de
 compartición que hemos visto hasta ahora.
 
 ### Reduction
@@ -262,15 +263,31 @@ multiplicarán... todas las variables del mismo nombre en distintos
 threads al final de la región tomando unos valores iniciales por
 defecto (el neutro para el correspondiente operador).
 
+**Operadores reduction (v3.0)**
+```
+														C/C++
+
+					tipo 												Valor inicial
+																		variables locales
+					 + 																0
+						- 															0
+					 * 																1
+					 & 													~0 (bits a 1)
+					 | 																0
+					 ^ 																0
+					 && 															1
+					 || 															0
+```
+
 ### Copyprivate
 ```c
 #pragma omp parallel
-{ 
+{
 // init list vars
 
 	#pragma omp single copyprivate(list)
 	{
-		//Codeblock 
+		//Codeblock
 	}
 }
 ```
