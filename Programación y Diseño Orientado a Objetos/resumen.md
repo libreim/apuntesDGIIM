@@ -21,7 +21,7 @@
         - JAVA -> se pone *static*
         - RUBY -> se ponen dos @, es decir, *@@variable*, y se declara explícitamente.
 
-    - **Ámbito de los métodos** - Determinan el comportamiento
+  - **Ámbito de los métodos** - Determinan el comportamiento
       - Métodos de instancia:
         - Métodos asociados a los objetos cuya invocación se realizan mediante envío de mensajes entre objetos.
         - JAVA -> no se pone *static*
@@ -31,7 +31,7 @@
         - JAVA -> se pone *static*
         - RUBY -> se pone *self*.
 
-    - **Constructores**
+  - **Constructores**
       - Propósitos:
         - Crear instancias de la clase a la que pertenecen (llamando de manera interna a new)
         - Inicializar la instancia
@@ -42,12 +42,12 @@
         - Un único initialize (no es un constructor pero se invoca cada vez que se construye un objeto).
         - Se pueden crear más constructores, en cuyo caso sería con *self.* y dentro de este se haría *new(parámetros)*
 
-    - **Consultores y modificadores**
+  - **Consultores y modificadores**
       - RUBY
         - Se les pone el mismo nombre que el atributo de interés.
         - Se hace automáticamente con *attr_accessor* (get y set), *attr_writter*(set) y *attr_reader*(get). Se colocan después del nombre de la clase.
 
-    - **Agrupaciones**
+  - **Agrupaciones**
       - JAVA -> Paquetes
         - Permiten agrupar clases.
         - No se pueden anidar paquetes (solo a nivel de nombrado).
@@ -58,7 +58,7 @@
         - Para indicar el path del fichero necesitamos *require* o *require_relative* si el fichero está en la carpeta actual.
         - *include* permite incorporar un módulo dentro de una clase (copia todo el código).
 
-    - **Especificadores de acceso**
+  - **Especificadores de acceso**
       - JAVA
         - Visible en :
           - mismo paquete
@@ -93,7 +93,7 @@
           - Antes de los métodos afectados.
           - Una vez ya definidos mediante *private :metodo1, :metodo2*
 
-    - **Colecciones de objetos**
+  - **Colecciones de objetos**
       - Cuando un objeto contiene otros objetos se dice que ese objeto es una colección de objetos.
       - Tamaño: fijas o variables
       - Contenido: homogéneas o heterogéneas.
@@ -102,7 +102,7 @@
       - Fijas y homogéneas -> Eficientes
       - Variables y heterogéneas -> Flexibles
 
-    - **Pseudovariables**
+  - **Pseudovariables**
       - En todos los lenguajes existen pseudovariables que referencian a un objeto especial: el objeto que tiene el control de la ejecución en ese momento.
       - JAVA -> this, super
       - RUBY -> self, super
@@ -117,21 +117,17 @@
 
 	[visibilidad] nombre_metodo ([lista parámetros])[:tipo retorno]
 
+  - **Multiplicidad de clase** -> nº de instancias que puede tener una clase
 
-- **Multiplicidad de clase** -> nº de instancias que puede tener una clase
+  - **Multiplicidad de atributo** -> nº de elementos en dicho atributo
 
-
-- **Multiplicidad de atributo** -> nº de elementos en dicho atributo
-
-
-- **Relaciones** (flechas)
+  - **Relaciones** (flechas)
 
 	- De dependencia (flecha discontinua): el receptor depende del emisor, esta dependencia es poco duradera
 
 	- De asociación (línea continua sin flechas): ambas clases tienen una relación o dependencia duradera
 
-
-- **Visibilidad**
+  - **Visibilidad**
 
 	\+ -> pública
 
@@ -141,8 +137,7 @@
 
 	\# -> protegida
 
-
-- **Elementos de las asociaciones**:
+  - **Elementos de las asociaciones**:
 
 	- Nombre de la asociación (se coloca encima de la línea). Se puede indicar hacia donde se lee empleando (> negra).
 
