@@ -116,7 +116,7 @@
 \usepackage{tkz-euclide}
 \usetkzobj{all}
 \usepackage{mathrsfs}
-\usetikzlibrary{arrows, arrows.meta, calc,intersections,through,backgrounds}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
 
 % Fuentes personalizadas
 \usepackage[scaled=.85]{newpxtext,newpxmath}
@@ -536,12 +536,12 @@ Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propieda
   \tkzDrawPoints(P,Q)
   \tkzDrawPoints(A,Ap)
   
-  \tkzDrawSegment[500,arrows={-Triangle[length=0.2cm]}, line width=1pt](P,Q)
+  \tkzDrawSegment[500, line width=1pt](P,Q)
   \tkzLabelPoints[below=0.5pt](P)
   \tkzLabelPoints[above=0.5pt](Q)
   \tkzLabelSegment[right=0.8em, pos=.4](P,Q){$\vec{u} = Q - P$}
   
-  \tkzDrawSegment[500,arrows={-Triangle[length=0.2cm]}, line width=1pt](A,Ap)
+  \tkzDrawSegment[500, line width=1pt](A,Ap)
   \tkzLabelPoints[below=0.5pt](A)
   \tkzLabelPoint[above=0.5pt](Ap){$A + \vec{u} = Q$}
   \tkzLabelSegment[right=0.8em, pos=.4](A,Ap){$\vec{u}$}
