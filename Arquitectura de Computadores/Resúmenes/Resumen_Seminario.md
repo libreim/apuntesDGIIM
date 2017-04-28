@@ -264,20 +264,31 @@ threads al final de la región tomando unos valores iniciales por
 defecto (el neutro para el correspondiente operador).
 
 **Operadores reduction (v3.0)**
-```
-														C/C++
 
-					tipo 												Valor inicial
-																		variables locales
-					 + 																0
-						- 															0
-					 * 																1
-					 & 													~0 (bits a 1)
-					 | 																0
-					 ^ 																0
-					 && 															1
-					 || 															0
-```
+C/C++
+
+		   	   		
++------+-------+
+| tipo |Valor  |
+|      |inicial|
++------+-------+
+|  \+  |   0   |
++------+-------+
+|  \-  |   0   |
++------+-------+
+|  \*  |   1   |
++------+-------+
+|  &   |  ~0   |
++------+-------+
+|  |   |   0   |
++------+-------+
+|  ^   |   0   |
++------+-------+
+|  &&  |   1   |
++------+-------+
+|  ||  |   0   |
++------+-------+
+
 
 ### Copyprivate
 ```c
