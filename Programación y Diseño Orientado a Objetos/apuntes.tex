@@ -73,7 +73,7 @@
 
 
 % Tipo de documento y opciones.
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
+% \documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
 \documentclass[11pt, a4paper]{article}
 
 
@@ -151,7 +151,7 @@
 \renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
 \let\oldbf\bfseries
 \renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-   \mathversion{bold}\fi\relax}
+  \mathversion{bold}\fi\relax}
 \let\oldnorm\normalfont
 \renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
 \let\oldrm\rmfamily
@@ -186,11 +186,11 @@
 % Estilo de las cabeceras
 
 \titleformat{\section}
-  {\Large\bfseries\sffamily}{\thesection}{1em}{}
+{\Large\bfseries\sffamily}{\thesection}{1em}{}
 \titleformat{\subsection}
-  {\large\sffamily}{\thesubsection}{1em}{}
+{\large\sffamily}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
-  {\normalsize\sffamily}{\thesubsubsection}{1em}{}
+{\normalsize\sffamily}{\thesubsubsection}{1em}{}
 
 % Estilo de enlaces
 \hypersetup{
@@ -241,22 +241,22 @@
 % ---------------------------------------------------------------------------
 
 \renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
+  \markboth{#1}{}}
 
 \renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
+  \markright{#1}{}}
 
-%\addtolength{\headheight}{4ex}
+% \addtolength{\headheight}{4ex}
 \renewcommand{\headrulewidth}{0pt}
 
 \addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
+% \addtolength{\headwidth}{\marginparwidth}
 
 \fancypagestyle{section}{%
   \fancyhead{}
-  %\addtolength{\headheight}{-10ex}
-  %\renewcommand{\headheight}{0pt}%
-  %\setlength{\footskip}{-48pt}%
+  % \addtolength{\headheight}{-10ex}
+  % \renewcommand{\headheight}{0pt}%
+  % \setlength{\footskip}{-48pt}%
   \fancyfoot[LE,RO]{\Large\sffamily\thepage}
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
@@ -265,11 +265,11 @@
 \let\originalsection\section
 \RenewDocumentCommand{\section}{som}{%
   \IfBooleanTF{#1}
-    {\originalsection*{#3}}
-    {\IfNoValueTF{#2}
-      {\originalsection{#3}}
-      {\originalsection[#2]{#3}}%
-    }%
+  {\originalsection*{#3}}
+  {\IfNoValueTF{#2}
+    {\originalsection{#3}}
+    {\originalsection[#2]{#3}}%
+  }%
   \thispagestyle{section}%
 }
 
@@ -280,13 +280,13 @@
 \fancyfoot[LE,RO]{\Large\sffamily\thepage}
 
 
-%
+% 
 % LISTINGS
-%
+% 
 
 \usepackage{listings}
 
-%%%%%%
+%%%%%% 
 
 %% Colores de Solarized
 
@@ -404,7 +404,7 @@
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
 
 % Nuevo estilo para la demostración
-%\renewenvironment{proof}{{\itshape \sffamily Demostración \\}}{\hspace*{\fill}\qed}
+% \renewenvironment{proof}{{\itshape \sffamily Demostración \\}}{\hspace*{\fill}\qed}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape\sffamily#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
@@ -416,52 +416,52 @@
 % Creamos los 'marcos' de los estilos
 
 \mdfdefinestyle{nth-frame}{
-	linewidth=2pt, %
-	linecolor= 500, % 
-	%linecolor=black,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, % 
-	rightmargin=0pt, %
-	innerrightmargin=0pt, % % 
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
+  linewidth=2pt, %
+  linecolor= 500, % 
+  % linecolor=black,
+  topline=false, %
+  bottomline=false, %
+  rightline=false,%
+  leftmargin=0pt, %
+  innerleftmargin=1em, % 
+  rightmargin=0pt, %
+  innerrightmargin=0pt, % % 
+  % splittopskip=\topskip, %
+  % splitbottomskip=\topskip, %
 }% 
 
 \mdfdefinestyle{nprop-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	%linecolor= gray, 
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=0em, 
-	rightmargin=0pt, %
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
+  linewidth=2pt, %
+  linecolor= 300, %
+  % linecolor= gray, 
+  topline=false, %
+  bottomline=false, %
+  rightline=false,%
+  leftmargin=0pt, %
+  innerleftmargin=1em, %
+  innerrightmargin=0em, 
+  rightmargin=0pt, %
+  % splittopskip=\topskip, %
+  % splitbottomskip=\topskip, %
 }%       
 
 \mdfdefinestyle{ndef-frame}{
-	linewidth=2pt, %
-	linecolor= 300, % 
-	%linecolor= gray!50,
-	backgroundcolor= 50,
-	%backgroundcolor= gray!5,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em, 
-	rightmargin=0pt, % 
-	innertopmargin=1.5em,%
-	innerbottommargin=1em, % 
-	splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
+  linewidth=2pt, %
+  linecolor= 300, % 
+  % linecolor= gray!50,
+  backgroundcolor= 50,
+  % backgroundcolor= gray!5,
+  topline=false, %
+  bottomline=false, %
+  rightline=false,%
+  leftmargin=0pt, %
+  innerleftmargin=1em, %
+  innerrightmargin=1em, 
+  rightmargin=0pt, % 
+  innertopmargin=1.5em,%
+  innerbottommargin=1em, % 
+  splittopskip=\topskip, %
+  % splitbottomskip=\topskip, %
 }%               
 
 % Asignamos los marcos a los estilos
@@ -545,15 +545,15 @@
 \begin{document}
 
 \maketitle  % Título.
-%\includepdf{portada}
+% \includepdf{portada}
 \newpage
 \hfill
 \newpage
-%\includepdf{portada-int}
+% \includepdf{portada-int}
 \tableofcontents    % Índice
 \vfill
 \begin{center}
- % \includegraphics{by-nc-sa}  % Licencia.
+  % \includegraphics{by-nc-sa}  % Licencia.
 \end{center}
 \newpage
 
@@ -631,7 +631,6 @@ En Java las interfaces se utilizan para simular \textit{herencia múltiple}.
     }
 
   }
-  
 \end{lstlisting}
 
 Produce la salida:
@@ -666,5 +665,54 @@ generalizando los tipos y sus operaciones.
 Su uso  más frecuente es cuando sus atributos están formados por varios objetos
 del mismo tipo, siendo este un parámetro que tomará valor uando usemos la clase
 parametrizable. En Ruby no existe este concepto.
+
+\begin{lstlisting}[language=Java] 
+public class Tienda<T> {
+
+    String nombre;
+    ArrayList<T> stock;
+    float ganancias;
+
+    Tienda (String n) {
+
+      nombre=n;
+      stock = new ArrayList();
+      ganancia=0;
+    }
+
+    public void comprarAProveedr(T objeto, float precioCoste) {
+
+      stock.add(objeto);
+      ganancias = ganancias-precioCoste;
+
+    }
+
+    public void venderACliente(T objeto, float pvp) {
+
+      stock.remove(objeto);
+      ganancias=ganancias+pvp;
+
+    }
+
+    public float getGanancias() {
+      return ganancias
+    }
+
+  }
+
+\end{lstlisting}
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+\subsection{}
+
+\subsection{}
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
 
 \end{document}
