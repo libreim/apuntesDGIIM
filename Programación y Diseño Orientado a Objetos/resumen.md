@@ -166,3 +166,89 @@
 
 	- Cualificadores de la asociación: un cualificador es un atributo de algunas de las clases de la asociación que pasa a ser un atributo asociado a la clase del otro extremo.
 		- Clase A (cualificador cerca de A) Clase B <-> Clase A contiene un atributo llamado cualificador de tipo Clase B.
+
+
+## Resumen HERENCIA
+
+La **herencia** es el mecamismo que permite derivar clases (descendiente) a partir de clases existentes (superclase, clase padre), mediante el cuál las clases padre e hija comparten código que está definido en la clase padre y es heredado por la hija. Es decir, la clase hija reutiliza lo definido en la clase padre.
+
+	- **Reutilización de código**: La clase hija hereda el comportamiento de la clase padre pero no lo modifica.
+	- **Reutilización del concepto**: La clase hija hereda el comportamiento de la clase padre, pero modifica la forma de llevar a cabo ese comportamiento.
+ 
+Así, la clase hija es tanto una extensión de la clase padre a la que se le añaden atributos y/o métodos como una especialización de los individuos de la clase padre.
+
+**Tipos de herencia**:
+	- Simple: Una clase solo puede tener una clase padre.
+	- Múltiple: Una clase puede tener más de una clase padre.
+
+*Herramienta a la hora de usar herencia*: El test "es un". Cuando queramos saber si una clase es descendiente de otra, podemos realizarnos la pregunta ¿Un objeto de la clase A es un objeto de la clase B? Si la respuesta es afirmativa, normalmente se da un caso de herencia.
+
+*La herencia es transitiva*, es decir, si una clase C hereda de B, y B a su vez hereda de A, entoces C hereda de A.
+
+**Formas de establecer relaciones de herencia**:
+
+	- **Especialización**: Las clases hijas cambian algún comportamiento de la clase padre.
+	- **Especificación**: La clase padre declara, pero no implementa el comportamiento, ya que serán las hijas las que lo implementen (similar a una interfaz).
+	- **Construcción**: *Forma no recomendada*. Se utiliza una clase para construir código sin cumplir el test/regla "es un".
+	- **Extensión**: La clase hija no cambia el comportamiento de la clase padre, pero sí lo amplia.
+	- **Limitación**: *Forma no recomendada*. La clase hija restringe el comportamiento del padre, anulando alguno de sus métodos mediante mensajes de error o excepciones.
+	- **Generalización**: Si varias clases comparten propiedades, se crea una nueva clase (padre) que contiene los aspectos comunes.
+	- **Combinación**: Una clase hereda de varias clases (herencia múltiple).
+
+**Herencia en los lenguajes de programación**
+
+Según la herencia, existen dos tipos de lenguajes orientados a objetos:
+
+	- Con una jerarquía de herencia única, es decir, todas las clases heredan al menos de una superclase que actúa como raíz.
+		- Por ejemplo en Java y Ruby la clase Object.
+	- Con posibilidad de varias estructuras de herencia, es decir, puede haber clases sin superclase.
+		- Por ejemplo en C++
+
+	**Definición de herencia en los lenguajes de programación**
+		- Java: class hija extends padre
+		- Ruby: class hija < padre
+		- Python: class hija (padre1, padre2...)
+		- C++: class hija : padre1, padre2...
+
+**Ámbito de métodos y atributos con herencia**
+
+Los especificadores de acceso (private, protected, public) de una clase afectan a sus subclases de la siguiente forma:
+	- Los miembros private no son accesibles en las subclases (ojo en Ruby)
+	- Los miembros protected son accesibles desde las subclases (ojo en Java debido a los paquetes)
+	- Los miembros public son accesibles desde cualquier clase.
+
+Las variables de clase son variables compartidas desde la clase donde se han definido hacia abajo.
+En Java, si una variable de clase se redefine en una clase asignando un nuevo valor, solo sus subclases verán el nuevo valor.
+En Ruby, si una variable de clase se redefine en una clase asignando un nuevo valor, todas las clases verán el nuevo valor.
+
+
+**Super**
+
+La pseudovariable **super**, al igual que self o this, referencia al objeto receptor de un mensaje. 
+Dentro de un método de una clase usamos super para llamar a un método de la superclase.
+
+En Ruby, al usar super dentro del método llamado "met" lo que hace es invocar al método "met" de la superclase, sin indicar el nombre del método.
+
+
+**Redefinición de métodos**
+
+Una subclase redefine (Override) un método de una superclase cuando cambia su implementación, lo cual anula el comportamiento heredado pero mantiene la cabecera.
+
+Cuando se envía un mensaje a un objeto, se busca el método a ejecutar en la clase a la que pertenece. Si no se encuentra, se busca en la superclase y así sucesivamente hasta que lo encuentre.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
