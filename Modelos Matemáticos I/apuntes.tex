@@ -2497,14 +2497,143 @@ Donde $X_0$, $Y_0$ y $Z_0$ son las poblaciones iniciales de flores de cada tipo.
 $$\begin{cases}
 \underset{n\to\infty }{\lim} X_n = X_0 + \frac{1}{2}Y_0\\
 \underset{n\to\infty }{\lim}Y_n = 0\\
-\underset{n\to\infty }{\lim}Z_n = \frac{1}{2}Y_0 + Z_0
-	
+\underset{n\to\infty }{\lim}Z_n = \frac{1}{2}Y_0 + Z_0	
 \end{cases}$$
 
 Como podemos ver, la población de flores rosas tiende a extinguirse, y a largo plazo, dicha población se transormará en flores rojas y blancas a partes iguales.
 
-
-
 \subsection{Normas vectoriales}
+Dado $E$ un espacio vectorial sobre $\mathbb C$, una norma es una aplicación $$||\cdot||$$
+
+%TODO: Dibujar bola unidad para las normas de R^2
+
+\subsubsection{Equivalencia entre normas vectoriales}
+
+\subsection{Normas matriciales}
+\label{sub:normas_matriciales}
+
+\begin{ndef}
+    Dado un espacio vectorial de las matrices cuadradas de orden $k$, $\mathcal M_k(\mathbb C)$, una norma matricial es una aplicación: $$||\cdot|| : \mathcal M_k (\mathbb C) \rightarrow \mathbb R$$
+\end{ndef}
+
+Verifica las siguientes propiedades:
+
+\subsubsection{Norma matricial inducida}
+\label{ssub:norma_matricial_inducida}
+
+\begin{ndef}
+    Dada una norma vectorial $||\cdot||$ se define la norma matricial inducida en la forma $$||A|| = \text{ máx } \frac{||Ax||}{||x||} = \text{ máx } \{ ||Ax|| : ||x|| = 1 \}$$
+\end{ndef}
+
+Decimos que la norma matricial inducida es una ''norma heredada'' de otra norma en un espacio vectorial.
+
+\begin{ejemplo}
+    Norma 1: $||A||_1 = \text{ máx }_{j=1, \hdots, k} \sum^{k}_{i=1} |a_{ij}|$
+    Norma Infinito: $||A||_{\infty} = \text{ máx }_{i=1, \hdots, k} \sum^{k}_{j=1} |a_{ij}|$
+
+    Entonces dadas las matrices $$A = \begin{pmatrix}
+        1 & 2 & -1 \\
+        0 & 1 & 3 \\
+        \frac{1}{2} & 2 & -4
+    \end{pmatrix} / y / X = \begin{pmatrix}
+        0 \\
+        1 \\
+        -2
+    \end{pmatrix}$$
+    Tenemos que:
+    $$\begin{cases}
+        ||X||_1 = 3 \\
+        ||X||_2 = \sqrt{5} \\
+        ||X||_{\infty} = 2
+    \end{cases}$$
+    $$ \begin{cases}
+        ||A||_1 = 8 \\
+        ||A||_{\infty} = \frac{13}{2}
+    \end{cases}$$
+\end{ejemplo}
+
+No todas las normas son inducidas. La \emph{norma de Frobenius} no es una norma inducida.
+
+\begin{nprop}
+    Dada una norma vectorial $||\cdot||$ y la correspondiente norma matricial inducida, se verifica $$||Ax|| \leq ||A|| \ ||x||$$
+\end{nprop}
+
+\begin{nprop}
+    Dada una matriz cuadrada $A$, se verifica \begin{itemize}
+        \item $\rho(A) \leq ||A||$ para cualquier norma matricial inducida.
+        \item $\rho(A) = \text{ ínf } \{||A|| : ||\cdot|| \text{ es una norma matricial inducida } \}$-
+    \end{itemize}
+\end{nprop}
+
+\begin{proof}
+    \begin{itemize}
+        \item Sea $A$ cualquier matriz, $\lambda$ un valor propio de $A$, $v$ un vector propio asociado a $\lambda$.Entonces $$\rho(A) = \text{ máx } \{ |\lambda| : \lambda \text{ es valor propio de } A \}$$ Entonces:
+            \begin{align*}
+                \label{}
+                Av &= \lambda v \\
+                |\lambda|\cdot||\lambda v||_v &= ||Av||_v \leq ||A||_M||v||_v || \\
+                |\lambda| &\leq \frac{||Av||v}{||v||_v} \leq \text{ máx } \frac{||Av||v}{||v||v} = ||A||_M
+            \end{align*}
+            %FIXME Falta una implicación aquí :/
+    \end{itemize}
+\end{proof}
+
+\begin{nth}
+    Dada una matriz cuadrada $A = (a_{ij})^k_{i,j =1} \in \mathcal M(\mathbb C)$, son equivalentes: 
+    \begin{enumerate}[(i)]
+        \item $\lim_{n \to \infty} A^n = 0$.
+        \item Para cada vector no nulo $v \in \mathbb C^{k}$, se cumple que $\lim_{n \to \infty}(A^n v) = 0$.
+        \item $\rho(A) < 1$.
+    \end{enumerate}
+\end{nth}
+
+\begin{proof}\hfill\\
+    $\boxed{i \Rightarrow ii}$ Si $A^n \rightarrow 0$, por la continuidad del producto matriz vector, $A^n \cdot v \rightarrow 0$.
+    
+    $\boxed{ii \Rightarrow iii}$ Sea $\lambda$ un valor propio de $A$. Entonces existe $r \neq 0$ tal que $Av = \lambda v$ entonces $\lambda^n$ es valor propio de $A^n$ asociado al vector propio $v$.
+
+    Tomamos $A^nv = \lambda^n v$. Por $(ii)$, $$\lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} \lambda^n v = 0$$
+    $\forall v$ fijo no nulo.
+
+    $0 = \lim_{n \to \infty} \lambda^n \begin{pmatrix}
+        v_1 \\
+        v_2 \\
+        \vdots \\
+        v_k
+    \end{pmatrix} \Rightarrow$
+
+    %FIXME: Para variar, me ha borrado la pizarra así que faltan cosas aquí.
+
+    $\boxed{ii \Rightarrow iii}$. Sea $A$ tal que $\rho(A) < 1$. Trabajaremos con su forma canónica de Jordan, tal que $\exists P$ inversible y $\exists J$ su forma canónica de Jordan, tales que $A = PJP^{-1}$.
+
+    Si demostramos que $\lim_{n \to \infty} J^n = 0$, entonces $\lim_{n \to \infty} A^n = \lim_{n \to \infty} (PJ^nP^{-1}) = P(\lim_{n \to \infty} J^n)P^{-1}$.
+
+    Sea (con $r$ el número de valores propios distintos entre sí y la dim J la multiplicidad del valor propio $\lambda_i$) $$J = \begin{pmatrix}
+        J_1 & & & \\
+            & J_2 & & \\
+            & & \ddots & \\
+            & & & J_r
+    \end{pmatrix} \Rightarrow J^n = \begin{pmatrix}
+         J_1^n & & & \\
+            & J_2^n & & \\
+            & & \ddots & \\
+            & & & J_r^n
+    \end{pmatrix}$$
+
+    Si $$J_i = \begin{pmatrix}
+        \lambda_i & & & 0 \\
+                  & \lambda_i & & \\
+                  & & \ddots & \\
+        0 & & & \lambda_i
+    \end{pmatrix} \Rightarrow J_i^n = \begin{pmatrix}
+        \lambda_i^n & & & 0 \\
+                  & \lambda_i^n & & \\
+                  & & \ddots & \\
+        0 & & & \lambda_i^n
+    \end{pmatrix}$$
+
+    Si $|\lambda_i| < 1 \Rightarrow \lim_{n \to \infty} J_i^n = 0$.
+
+\end{proof}
 
 \end{document}
