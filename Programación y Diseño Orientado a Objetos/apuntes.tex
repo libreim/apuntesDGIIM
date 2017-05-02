@@ -193,7 +193,7 @@
 {\normalsize\sffamily}{\thesubsubsection}{1em}{}
 
 % Estilo de enlaces
-\hypersetup{
+\hypersetup{%
   % hidelinks = true,   % Oculta todos los enlaces.
   colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
   linkcolor=black,     % Color de enlaces genéricos
@@ -565,9 +565,19 @@
 
 \subsection{Mecanismos de reutilización}
 
-\subsubsection{}
+En la programación orientada a objetos existen diferentes mecanismos de reutilización de código, \textit{herencia}, \textit{interfaces} y \textit{clases parametrizables}.
 
 \subsubsection{}
+
+\subsubsection{Definición y propiedades de la herencia}
+
+La herencia es un mecanismo que permite derivar nuevas clases (subclases o clases hija) a partir de clases existentes (superclase o clase padre).
+
+Las clases padre e hija comparten un código común que es definido en la clase padre y que hereda la clase hija. Se reutiliza el código definido en la clase padre. Podemos hablar de reutilización  de código cuando la clase hija hereda el comportamiento de la clase padre pero no modifica la forma de llevarlo a cabo. Hablamos de reutilización de concepto cuando la clase hija hereda el comportamiento de la clase padre y modifica la forma de llevarlo a cabo.
+
+La clase hija es a la vez una extensión de la clase padre, desde el punto de vista de la clase como un módulo, y una especialización o restricción de la clase padre.
+
+Una forma de saber si es conveniente utilizar herencia en cierto caso es mediante el \textit{test de especialización}. Supongamos que tenemos una clase A padre y una clase B que pretendemos que sea hija de A. Si podemos decir que ""B es un A"" entonces podemos establecer una relación de herencia entre A y B.
 
 \subsubsection{}
 
@@ -657,6 +667,7 @@ Para simular herencia múltiple en Ruby hay una forma posible llamada comúnment
 módulo dentro de la clase.
 
 \subsubsection{Clases parametrizables}
+
 
 Una clase parametrizable presenta un alto grado de reutilización, pero tiene
 limitaciones. Encapsulan operaciones válidas para varios tipos de datos,
