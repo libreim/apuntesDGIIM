@@ -121,8 +121,8 @@
 
 % Fuentes personalizadas
 
+\usepackage[scaled=.85]{newpxtext,newpxmath}
 \usepackage[scaled=.85]{FiraSans}
-\usepackage{ebgaramond-maths}
 \usepackage[T1]{fontenc}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
@@ -946,6 +946,109 @@
    Puedes probar a desmotrarlo con el Teorema de Fubini general.
  \end{ejer}
 
- 
+\begin{ejer}
+    $\int_A x \ dxdy$, $A = \{ (x,y) \in \R^2 : x^2 + y^2 \leq 2 \} = f^{-1}((-\infty, 0])) \ \ \ f(x,y) = x^2+y^2-2x$ es continua y medible.
+\end{ejer} 
+
+\begin{sol}
+    Primero intentamos dibujar el conjunto A. Podemos imaginarnos también el conjunto A en coordenadas polares. Así, $x = \rho \ cos \theta$ y $y = \rho \ sen \theta $ con $\rho \in [0, +\infty)$ y $\theta \in (-\pi, \pi)$. Por tanto, el conjunto $A' = \{ (\rho, \theta) \in [0, +\infty) \times (-\pi, \pi) : \rho \leq 2 \rho / cos \theta \}$.
+
+    Así, \begin{align*}
+        \displaystyle \int_A x \ d(x,y) = \int_A x \ dxdy = \int_{A'} \rho \ \cos \theta \ \rho d\rho d\theta= \int_{-\pi}^{\pi} \left[ \int_0^{2cos \theta}  \rho^2 \ cos \theta \ d\rho\right]d\theta
+    \end{align*}
+
+    Ahora, por el Teorema de Fubini:
+    \begin{align*}
+    \int_0^{2cos\theta} \rho^2 cos \theta \ d\rho = \left[ \frac{\rho^3cos\theta}{3} \right]^{\rho = 2cos \theta} = \frac{8cos^4 \theta}{3}
+    \end{align*}
+    \begin{align*}
+        \label{}
+        \int cos^4 \theta \ d\theta &= \int cos^2 \theta cos^2 \theta \ d\theta = \int \frac{1 + cos(2\theta)}{2} \frac{1 + cos (2 \theta)}{2} / d \theta \\
+                                    &= \frac{1}{4} \int [1 + 2cos(2\theta) + cos^2(2 \theta)] \ d\theta = \hdots + \frac{1}{4} \int cos^2(2\theta) \ d\theta 
+    \end{align*}
+    % FIXME: Miguel va a acabar este ejercicio.
+\end{sol}
+
+\begin{ejer}
+    Calcula el volumen de $A = \{ (x,y,z) \in \R^3 : 1 \leq x^2 + y^2 \leq 2, 2(x^2+y^2) \leq 1, z \geq 0 \}$.
+\end{ejer}
+
+\begin{sol}
+    Decimos entonces que \begin{align*}
+        \label{}
+        Vol A = \int_A 1 \ dxdydz = \int_{\R^3} \Xi_A (x,y,z) \ dxdydz = \text{medida}(A)
+    \end{align*}
+    Vamos a utilizar coordenadas cilíndricas:
+    $$\begin{cases}
+        x = \rho \ cos \theta \\
+        y = \rho \ sen \theta \\
+        z = z
+    \end{cases}$$ teniendo en cuenta que  $x^2 + y^2 = \rho^2$.
+
+    Definimos el conjunto $A' = \{(\rho, \theta, z) : 1 \leq \rho^2 \leq 2, z\rho^2 \leq 1, z \geq 0 \} = \{ (\rho, \theta, z) \in [0, +\infty) \times (-\pi, \pi) \times \R : 1 \leq \rho \leq \sqrt{2}, 0 \leq z \leq \frac{1}{\rho^2} \}$. Intentamos dibujar el conjunto:
+    % TODO: ¿Hacer el dibujo? 
+
+    Ahora vamos a calcular la integral del conjunto $A'$.
+
+    \begin{align*}
+        \label{}
+        \int_A 1 \ dxdydz &\underset{\text{cambiamos a cilíndricas}}{=} \int_{A'} 1 \ \rho d\rho d\theta dz \underset{Fubini/Tonelli}{=} = \int_{-\pi}^{\pi}\left( \int 1 \ d\rho dz \right) \ d\rho \\
+                          &= \int_{-\pi}^{\pi} \int_1^{\sqrt{2}} \left( \int_0^{\frac{1}{\rho^2}} 1 \ dz \right) \ d\rho \ d\theta = \int_{-\pi}^{\pi} \int_1^{\sqrt{2}} \left( \frac{1}{\rho} d \ \rho \right) \ d\theta \\
+                          &= \int_1^{\sqrt{2}} \int_{-\pi}^{\pi} \frac{1}{\rho} \ d \theta d \rho = 2\pi \int_1^{\sqrt{2}} \frac{1}{\rho} d\rho \\
+                          &= 2\pi [ln \sqrt{2} - ln 1]
+    \end{align*}
+
+\end{sol}
+
+    \begin{ejer}[Fórmula de Liouville]
+        Calcula la siguiente integral: $$\int_0^{+\infty} e^{-x^2} \ dx$$
+    \end{ejer}
+
+    \begin{ejer}
+        Calcula la siguiente integral: $$\int_0^{\infty} \frac{sen \ x}{x} \ dx$$
+    \end{ejer}
+
+    \begin{sol}
+        Dado un $R > 0$, definimos la función $F(x,y) = e^{-xy} \ sen(x)$ tal que $F : [0, R] \times [0, \infty) \rightarrow \mathbb R$. Nótese que es una función de dos variables.
+
+        \begin{align*}
+            \label{}
+            \int e^{-xy} \ sen x \ dx &\left( \begin{cases}
+                h = sen \ x \\ 
+                dv = e^{-xy} \ dx \\ 
+                v = \frac{e^{-xy}}{-y}
+    \end{cases} \right) = - \frac{e^{-xy} \ sen x}{y} + \frac{1}{y} \int e^{-xy} \ cos x \ dx \\
+                                      &= - \frac{e^{xy} \ sen x}{y} + \frac{1}{y} \left( - \frac{e^{xy} \ cos x}{y} - \int \frac{e^{-xy}}{y}(sen x) \ dx \right) \\
+                                      &= - \frac{e^{-xy} \ sen x}{y} - \frac{e^{-xy} \ cos x}{y^2} - \frac{1}{y^2} \int e^{-xy} \ sen x \ dx
+        \end{align*}
+        \begin{align*}
+            \label{}
+            \int e^{-xy} \ sen x \ dx = -e^{-xy} \left[ \frac{sen x}{y} + \frac{cos x}{y^2} \right] \cdot \frac{y^2}{1+y^2} = -e^{-xy} \frac{y \ sen x + cos x}{1 + y^2}
+        \end{align*}
+        \begin{align*}
+            \label{}
+            \int_0^{R} e^{-xy} \ sen x \ dx = -e^{Ry} \frac{y \ sen R + cosR}{1+y^2} + \frac{1}{1 + y^2} = \frac{1 - e^{Ry} [y \ senR + cosR]}{1 + y^2}
+        \end{align*}
+        % FIXME: No sé qué está haciendo aquí
+        \begin{align*}
+            \label{}
+            \int_{[0, R] \times [0, \infty)} F(x,y) \ dxdy &= \int_{0}^{+\infty} \left( \int_0^{R} e^{-xy} \ senx \ dx \right) dy \\
+                                                           &= \int_0^{+\infty} \frac{1}{1+y^2} \left[ 1 - e^{-Ry} (y \ sen R + cos R) \right] dy
+        \end{align*}
+
+    Para simplificar la notación a continuación, llamamos $$ g(y, R) =  \frac{1}{1+y^2} \left[ 1 - e^{-Ry} (y \ sen R + cos R) \right]$$
+    
+        Para acabar nos queda calcular el valor del límite:
+        \begin{align*}
+            \label{}
+            \lim_{R \to \infty} \int_0^{\infty} g(y, R) \ dy = \int_0^{\infty} \lim_{R \to \infty} g(y,R) \ dy = \int_{0}^{\infty} \frac{1}{1+y^2} \ dy = \frac{\pi}{2} 
+        \end{align*}
+
+        \begin{align*}
+            \label{}
+            \lim_{n \to \infty} \int_0^{\infty} g(y, R_n) \ dy &\underset{th. \ conv. \ dominada}{=} \int_0^{\infty} \lim_{n \to \infty} g(y, R_n) = \int_0^{+\infty} \frac{1}{1 + y^2} \ dy \\ 
+                                                               &= \frac{\pi}{2}
+        \end{align*}
+            \end{sol}
 
 \end{document}
