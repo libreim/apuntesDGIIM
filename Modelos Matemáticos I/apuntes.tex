@@ -2227,6 +2227,7 @@ Veamos a continuación algunas propiedades sobre vectores propios, valores propi
   \item Para cualquier valor propio $\lambda_i$ de $A$ se verifica que $1 \leq \sigma_i
     \leq m_i$. 
     \item Para cualquier valor propio $\la_i$ de $A$ se verifica que $\sigma_i = k - \text{rango}(A - \lambda_i I)$.
+    \item Si $\la$ es un valor propio de $A$, entonces $\la^n$ es un valor propio de $A^n$
   \item Dos matrices semejantes $A$ y $B$ tienen los mismos valores
     propios. Además, si $v$ es un vector propio asociado a la matriz $A$,
     entonces $P^{-1}v$ es vector propio de la matriz $B$, donde $P$ es la matriz
@@ -2235,12 +2236,20 @@ Veamos a continuación algunas propiedades sobre vectores propios, valores propi
 \end{nprop}
 
 %%% TODO: Completar con alguna demostración que sea fácil de GEO II.
-\begin{proof} Razonaremos únicamente el apartado $(viii)$. El resto se dejan como ejercicio al lector.
+\begin{proof} Razonaremos únicamente los dos últimos apartados. El resto se dejan como ejercicio al lector.
 
-Supongamos que $A=PBP^{-1}$ con $P$ regular. Si $\lambda$ es un valor propio de $A$, entonces: $$\det(B - \la I) =  \det(P^{-1}AP - \lambda I) = \det(P^{-1}AP - \lambda P^{-1}P) = \det(P^{-1}[A - \la I]P) =$$ $$=\det(P^{-1}) \det(A - \lambda I) \det(P) = 0, $$
+\begin{nlist}
+
+\item[$(viii)$] Sea $v$ un vector propio asociado al valor propio $\la$. Sabemos que se verifica la igualdad $Av = \la v$. Por tanto: $$A^n v = A^{n-1}Av = A^{n-1}\la v = \la A^{n-2}Av = \la^2 A^{n-2}v = \la^2 A^{n-3}Av = \dots = \la^n v$$
+
+\item[$(ix)$] Supongamos que $A=PBP^{-1}$ con $P$ regular. Si $\lambda$ es un valor propio de $A$, entonces: $$\det(B - \la I) =  \det(P^{-1}AP - \lambda I) = \det(P^{-1}AP - \lambda P^{-1}P) = \det(P^{-1}[A - \la I]P) =$$ $$=\det(P^{-1}) \det(A - \lambda I) \det(P) = 0, $$
 pues $\det(A - \la I) = 0$ al ser $\lambda$ un valor propio de $A$. Por tanto, $\lambda$ es un valor propio de $B$.
 
 Ahora, sea $w = P^{-1}v$, donde $v$ es un vector propio de $A$ asociado a un valor propio $\la$. Entonces, tenemos que $$Bw = BP^{-1}v = P^{-1}PBP^{-1}v = P^{-1}Av = P^{-1}\la v = \la P^{-1}v = \la w$$ Es decir, $w = P^{-1}v$ es un vector propio de $B$ asociado al valor propio $\la$.
+	
+\end{nlist}
+
+
 \end{proof}
 
 Vamos ahora a intentar caracterizar cuándo una matriz es diagonalizable.
@@ -2503,112 +2512,158 @@ $$\begin{cases}
 Como podemos ver, la población de flores rosas tiende a extinguirse, y a largo plazo, dicha población se transormará en flores rojas y blancas a partes iguales.
 
 \subsection{Normas vectoriales}
-Dado $E$ un espacio vectorial sobre $\mathbb C$, una norma es una aplicación $$||\cdot||$$
+
+\begin{ndef}[Norma vectorial]
+Dado $E$ un espacio vectorial sobre $\mathbb C$, una \textit{norma} es una aplicación $$\|\cdot\|: E \longrightarrow \mathbb{R}$$
+verificando:
+\begin{nlist}
+	\item $\|x\| \ge 0, \ \forall x \in E\quad$(positividad)
+	\item $\|cx\| = |c|\|x\|, \ \forall c \in \mathbb{C},\ \forall x \in E\quad$ (homogeneidad)
+	\item $\|x + y \| \le \|x\| + \|y\|, \ \forall x,y \in E\quad$ (desigualdad triangular)
+	\item $\|x\| = 0 \iff x = 0,\ \forall x \in E$
+	
+\end{nlist}	
+\end{ndef}
+
+
+Sea $E$ un espacio de dimensión $k$ y sea $\mathcal B = \{u_1,u_2,\dots,u_k\}$ una base suya. Recordemos que cualquier vector $x \in E$ puede ser expresado de forma única en función de los vectores de la base $\mathcal B$: $$x = \sum_{i=1}^k x_i u_i,$$ donde los escalares $x_1,x_2,\dots,x_k$ son las \textbf{coordenadas del vector $x$ en la base $\mathcal B$}. Teniendo en cuenta esta notación, veamos algunos ejemplos de normas vectoriales.
+
+\begin{ejemplo} Para $1 \le p < + \infty$, la aplicación dada por $$\|x\|_p = \left( \sum_{i=1}^k |x_i|^p \right)^{1/p}$$ 
+
+es una norma (\textit{norma p}). En particular, sabemos que la \textbf{norma euclídea} es: $$\|x\|_2 = \sqrt{x_1^2 + x_2^2 + \dots + x_k^2}$$
+	
+\end{ejemplo}
+
+\begin{ejemplo}
+	La aplicación $$\|x\|_\infty = \max\{|x_1|,|x_2|,\dots ,|x_k|\}$$ es una norma, y se conoce como la \textit{norma infinito} o \textit{norma del máximo}.
+\end{ejemplo}
+
+
+Veamos ahora como se vería la bola unidad para distintas normas en $\mathbb{R}^2$.
 
 %TODO: Dibujar bola unidad para las normas de R^2
 
 \subsubsection{Equivalencia entre normas vectoriales}
 
+En un espacio normado, muchas definiciones y resultados no dependen de la norma concreta que se considere, sino que son aplicables a cualquier norma equivalente.
+
+\begin{ndef}[Normas equivalentes] Decimos que dos normas vectoriales $\|\cdot\|_a$ y $\|\cdot\|_b$ en un espacio $E$ son equivalentes si existen constantes $A,B > 0$ tales que $$A\|x\|_a \le \|x\|_b \le B\|x\|_a,\quad \forall x \in E$$
+	
+\end{ndef}
+
+Puesto que en general trabajaremos en espacios de dimensión finita, nos será de utilidad el siguiente resultado.
+
+\begin{nth}
+	En un espacio vectorial $E$ de \textbf{dimensión finita} todas las normas
+vectoriales son equivalentes.
+\end{nth}
+
+\begin{ejemplo} En $\mathbb{C}^k$ se verifica que: $$\|x\|_\infty \le \|x\|_1 \le k\|x\|_\infty,\quad \forall x \in \mathbb{C}^k$$
+	
+\end{ejemplo}
+
 \subsection{Normas matriciales}
 \label{sub:normas_matriciales}
 
 \begin{ndef}
-    Dado un espacio vectorial de las matrices cuadradas de orden $k$, $\mathcal M_k(\mathbb C)$, una norma matricial es una aplicación: $$||\cdot|| : \mathcal M_k (\mathbb C) \rightarrow \mathbb R$$
+    En el espacio vectorial $\mathcal M_k(\mathbb C)$ de las matrices cuadradas de orden $k$, una norma matricial es una aplicación: $$\|\cdot\| : \mathcal M_k (\mathbb C) \longrightarrow \mathbb R$$ que verifica las siguientes propiedades:
+    \begin{nlist}
+		\item $\|A\| \ge 0, \ \forall A \in \mathcal M_k(\mathbb{C})\quad$(positividad)
+	\item $\|cA\| = |c|\|A\|, \ \forall c \in \mathbb{C},\ \forall A \in \mathcal M_k(\mathbb{C})\quad$ (homogeneidad)
+	\item $\|A + B \| \le \|A\| + \|B\|, \ \forall A,B \in \mathcal M_k(\mathbb{C})\quad$ (desigualdad triangular)
+	\item $\|A\| = 0 \iff A = 0,\ \forall A \in E$
+	\item $\|A B \| \le \|A\| \|B\|, \ \forall A,B \in \mathcal M_k(\mathbb{C})$
+\end{nlist}
 \end{ndef}
-
-Verifica las siguientes propiedades:
+\begin{nota}
+	Si se cumplen las cuatro primeras propiedades, estaríamos ante una norma vectorial.
+\end{nota}
 
 \subsubsection{Norma matricial inducida}
 \label{ssub:norma_matricial_inducida}
 
+Veamos que existe una relación entre normas vectoriales y normas matriciales.
+
 \begin{ndef}
-    Dada una norma vectorial $||\cdot||$ se define la norma matricial inducida en la forma $$||A|| = \text{ máx } \frac{||Ax||}{||x||} = \text{ máx } \{ ||Ax|| : ||x|| = 1 \}$$
+    Dada una norma vectorial $\|\cdot\|$ en $\mathbb{K}^n$, se define la \textit{norma matricial inducida} (o subordinada) en $\mathcal M_n(\mathbb K)$ del siguiente modo: $$\|A\| := \underset{x\ne 0}{\text{ máx }} \frac{\|Ax\|}{\|x\|} = \text{ máx } \{ \|Ax\| : \|x\| = 1 \}$$ donde $\mathbb K = \mathbb{R}$ ó $\mathbb{C}$.
 \end{ndef}
 
-Decimos que la norma matricial inducida es una ''norma heredada'' de otra norma en un espacio vectorial.
+Notemos que en la definición anterior, $Ax$ es siempre un vector de $\mathbb K^n$, y por tanto podemos tomar su norma (vectorial). La equivalencia entre las dos definiciones se deduce de la siguiente igualdad, recordando que al dividir un vector por su módulo obtenemos un vector unitario: $$\{Ax : \|x\| = 1 \} =  \left\{\frac{Ax}{\|x\|} : x\ne0\right\}$$
+Ahora, tomando normas, tenemos que $\displaystyle \left\|\frac{1}{\|x\|}Ax\right\| = \left| \frac{1}{\|x\|}\right| \|Ax\| = \frac{\|Ax\|}{\|x\|}$, por la homogeneidad y la positividad de la norma.
+
+Intentamos encontrar ahora una expresión explícita de una norma matricial inducida por alguna de las normas vectoriales que conocemos. Sea $A \in \mathcal M_k(\mathbb{C}), \ A = (a_{ij})$. Entonces, es inmediato comprobar que:
+
+\begin{nlist}
+	\item \textit{(Norma 1)}. $\displaystyle \ \|A\|_1 = \underset{j=1,\dots,k}{\text{máx}} \sum_{i=1}^k |a_{ij}|$
+	\item \textit{(Norma infinito)}. $\displaystyle \ \|A\|_\infty = \underset{i=1,\dots,k}{\text{máx}} \sum_{j=1}^k |a_{ij}|$
+\end{nlist}
 
 \begin{ejemplo}
-    Norma 1: $||A||_1 = \text{ máx }_{j=1, \hdots, k} \sum^{k}_{i=1} |a_{ij}|$
-    Norma Infinito: $||A||_{\infty} = \text{ máx }_{i=1, \hdots, k} \sum^{k}_{j=1} |a_{ij}|$
-
-    Entonces dadas las matrices $$A = \begin{pmatrix}
+    Dadas la matriz y el vector $$A = \begin{pmatrix}
         1 & 2 & -1 \\
         0 & 1 & 3 \\
         \frac{1}{2} & 2 & -4
-    \end{pmatrix} / y / X = \begin{pmatrix}
+    \end{pmatrix}\quad;\quad x = \begin{pmatrix}
         0 \\
         1 \\
         -2
     \end{pmatrix}$$
-    Tenemos que:
-    $$\begin{cases}
-        ||X||_1 = 3 \\
-        ||X||_2 = \sqrt{5} \\
-        ||X||_{\infty} = 2
-    \end{cases}$$
-    $$ \begin{cases}
-        ||A||_1 = 8 \\
-        ||A||_{\infty} = \frac{13}{2}
-    \end{cases}$$
+    tenemos lo siguiente: $$
+        \|x\|_1 = 3 \quad ; \quad
+        \|x\|_2 = \sqrt{5} \quad ; \quad
+        \|x\|_{\infty} = 2
+$$
+$$
+        \|A\|_1 = 8 \quad ; \quad
+        \|A\|_{\infty} = \frac{13}{2}
+$$
 \end{ejemplo}
 
-No todas las normas son inducidas. La \emph{norma de Frobenius} no es una norma inducida.
+Sin embargo, no todas las normas matriciales son inducidas. Un ejemplo es la \emph{norma de Frobenius}, que no es una norma inducida: $$\|A\|_F = \sqrt{\sum_{i=1}^k \sum_{j=1}^k |a_{ij}|^2}$$
 
-\begin{nprop}
-    Dada una norma vectorial $||\cdot||$ y la correspondiente norma matricial inducida, se verifica $$||Ax|| \leq ||A|| \ ||x||$$
+\begin{nprop} \label{norma_matricial_vec}
+    Dada una norma vectorial $\|\cdot\|$ y la correspondiente norma matricial inducida, se verifica $$\|Ax\| \leq \|A\| \ \|x\|$$
 \end{nprop}
 
-\begin{nprop}
-    Dada una matriz cuadrada $A$, se verifica \begin{itemize}
-        \item $\rho(A) \leq ||A||$ para cualquier norma matricial inducida.
-        \item $\rho(A) = \text{ ínf } \{||A|| : ||\cdot|| \text{ es una norma matricial inducida } \}$-
-    \end{itemize}
-\end{nprop}
-
-\begin{proof}
-    \begin{itemize}
-        \item Sea $A$ cualquier matriz, $\lambda$ un valor propio de $A$, $v$ un vector propio asociado a $\lambda$.Entonces $$\rho(A) = \text{ máx } \{ |\lambda| : \lambda \text{ es valor propio de } A \}$$ Entonces:
-            \begin{align*}
-                \label{}
-                Av &= \lambda v \\
-                |\lambda|\cdot||\lambda v||_v &= ||Av||_v \leq ||A||_M||v||_v || \\
-                |\lambda| &\leq \frac{||Av||v}{||v||_v} \leq \text{ máx } \frac{||Av||v}{||v||v} = ||A||_M
-            \end{align*}
-            %FIXME Falta una implicación aquí :/
-    \end{itemize}
+\begin{proof} Es evidente de la definición. Dados $A \in \mathcal M_k(\mathbb{C})$ y $x \in \mathbb{C}^k$ no nulo: $$\|A\|\|x\| = \left(\underset{x \ne 0}{\text{máx}} \frac{\|Ax\|}{\|x\|}\right)\|x\| \ge \frac{\|Ax\|}{\|x\|}\|x\| = \|Ax\|$$ Si $x = 0$ la desigualdad se cumple trivialmente.
 \end{proof}
 
+Relacionamos ahora los conceptos de norma matricial y radio espectral, enlazando con los apartados anteriores.
+
+\begin{nprop}
+    Dada una matriz cuadrada $A \in \mathcal M_k(\mathbb{C})$, se verifica: \begin{nlist}
+        \item $\rho(A) \leq \|A\|$ para cualquier norma matricial inducida.
+        \item $\rho(A) = \text{ ínf } \{\|A\| : \|\cdot\| \text{ es una norma matricial inducida } \}$
+    \end{nlist}
+\end{nprop}
+
+\begin{proof} Veremos únicamente $(i)$. Sea $A$ cualquier matriz cuadrada, $\lambda$ un valor propio de $A$, y $v$ un vector propio asociado a $\lambda$. En primer lugar, sabemos que $$\rho(A) = \text{ máx } \{ |\lambda| : \lambda \text{ es valor propio de } A \}$$ Ahora, como $\la$ es valor propio de $A$, tenemos que $Av = \la v$. Tomando normas, y teniendo en cuenta la \textit{Proposición \ref{norma_matricial_vec}}:
+$$\|\lambda v\| = \|Av\| \implies |\la|\|v\| = \|Av\| \le \|A\|\|v\|$$
+Y por tanto, como $v\ne 0$, dividimos por su norma, obteniendo: $$|\lambda| \le \|A\|$$\end{proof}
+
+Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento asintótico de las potencias de una matriz}.
 \begin{nth}
-    Dada una matriz cuadrada $A = (a_{ij})^k_{i,j =1} \in \mathcal M(\mathbb C)$, son equivalentes: 
-    \begin{enumerate}[(i)]
-        \item $\lim_{n \to \infty} A^n = 0$.
-        \item Para cada vector no nulo $v \in \mathbb C^{k}$, se cumple que $\lim_{n \to \infty}(A^n v) = 0$.
+    Dada una matriz cuadrada $A = (a_{ij})\in \mathcal M_k(\mathbb C)$, son equivalentes: 
+    \begin{nlist}
+        \item $\displaystyle \lim_{n \to \infty} A^n = 0$.
+        \item Para cada vector no nulo $v \in \mathbb C^{k}$, se cumple que $\displaystyle \lim_{n \to \infty}(A^n v) = 0$.
         \item $\rho(A) < 1$.
-    \end{enumerate}
+    \end{nlist}
 \end{nth}
 
 \begin{proof}\hfill\\
-    $\boxed{i \Rightarrow ii}$ Si $A^n \rightarrow 0$, por la continuidad del producto matriz vector, $A^n \cdot v \rightarrow 0$.
+    $\boxed{i \Rightarrow ii}$ \ Si $A^n \rightarrow 0$, por la continuidad del producto matriz-vector, se tiene que $A^n \cdot v \rightarrow 0$.
     
-    $\boxed{ii \Rightarrow iii}$ Sea $\lambda$ un valor propio de $A$. Entonces existe $r \neq 0$ tal que $Av = \lambda v$ entonces $\lambda^n$ es valor propio de $A^n$ asociado al vector propio $v$.
+    $\boxed{ii \Rightarrow iii}$ \ Sea $\lambda$ un valor propio de $A$. Ya sabemos por la \textit{Proposición \ref{prop_matrices} $viii$} que $\lambda^n$ es valor propio de $A^n$. Sea $v\ne 0$ tal que $A^n v = \la^n v$. Entonces, por hipótesis: \begin{equation} \label{eq:teorema}
+lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\lim_{n\to\infty} \la^n = 0
+\end{equation}
+   Como sabemos que $v\ne0$, que $\displaystyle \lim_{n\to\infty} \la^n = 0 \iff |\la| < 1$ y que $\eqref{eq:teorema}$ se verifica para cualquier $\la$ valor propio de $A$, concluimos que necesariamente $\rho(A) < 1$.
 
-    Tomamos $A^nv = \lambda^n v$. Por $(ii)$, $$\lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} \lambda^n v = 0$$
-    $\forall v$ fijo no nulo.
+    $\boxed{iii \Rightarrow i}$ \ Sea $A$ tal que $\rho(A) < 1$. Trabajaremos con su forma canónica de Jordan, es decir, $A = PJP^{-1}$. Ya sabemos que entonces $A^n = PJ^nP^{-1}$.
 
-    $0 = \lim_{n \to \infty} \lambda^n \begin{pmatrix}
-        v_1 \\
-        v_2 \\
-        \vdots \\
-        v_k
-    \end{pmatrix} \Rightarrow$
+    Basta probar que $\displaystyle \lim_{n \to \infty} J^n = 0$, pues $\displaystyle \lim_{n \to \infty} A^n = \lim_{n \to \infty} (PJ^nP^{-1}) = P(\lim_{n \to \infty} J^n)P^{-1}$.
 
-    %FIXME: Para variar, me ha borrado la pizarra así que faltan cosas aquí.
-
-    $\boxed{ii \Rightarrow iii}$. Sea $A$ tal que $\rho(A) < 1$. Trabajaremos con su forma canónica de Jordan, tal que $\exists P$ inversible y $\exists J$ su forma canónica de Jordan, tales que $A = PJP^{-1}$.
-
-    Si demostramos que $\lim_{n \to \infty} J^n = 0$, entonces $\lim_{n \to \infty} A^n = \lim_{n \to \infty} (PJ^nP^{-1}) = P(\lim_{n \to \infty} J^n)P^{-1}$.
-
-    Sea (con $r$ el número de valores propios distintos entre sí y la dim J la multiplicidad del valor propio $\lambda_i$) $$J = \begin{pmatrix}
+    Supongamos que $r$ es el número de valores propios de $A$ distintos entre sí. Entonces, tenemos que: $$J = \begin{pmatrix}
         J_1 & & & \\
             & J_2 & & \\
             & & \ddots & \\
@@ -2620,7 +2675,7 @@ No todas las normas son inducidas. La \emph{norma de Frobenius} no es una norma 
             & & & J_r^n
     \end{pmatrix}$$
 
-    Si $$J_i = \begin{pmatrix}
+    donde $$J_i = \begin{pmatrix}
         \lambda_i & & & 0 \\
                   & \lambda_i & & \\
                   & & \ddots & \\
@@ -2631,9 +2686,10 @@ No todas las normas son inducidas. La \emph{norma de Frobenius} no es una norma 
                   & & \ddots & \\
         0 & & & \lambda_i^n
     \end{pmatrix}$$
+    
+    %%% FIXME: La forma de J_i está mal, faltan los '1' encima de la diagonal. Revisar demostración.
 
-    Si $|\lambda_i| < 1 \Rightarrow \lim_{n \to \infty} J_i^n = 0$.
-
+    Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0.$$
 \end{proof}
 
 \end{document}

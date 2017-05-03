@@ -1309,9 +1309,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
 
         Resolvemos ahora los dos apartados del ejercicio.
 
-        Comenzamos probando $(i)$. %%%...
-
-        Sea $$J = \begin{bmatrix}
+        Comenzamos probando $(i)$. Sea la matriz $$J = \begin{bmatrix}
             \lambda & 1 & & & \\
                     & \lambda & 1 & & \\
                     & & \ddots & \ddots & \\
@@ -1379,18 +1377,15 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
         \end{align*}
         Concluimos entonces que $J$ es nilpotente de orden $p \Leftrightarrow \lambda = 0$.
 
-        Probamos ahora $(ii)$.
-
-        Sea $A \in \mathcal_{r \times r}(\mathbb C) \Rightarrow \exists J \text{ (de Jordan) y } P \text{ regular } : A = PJP^{-1}$
-
-        \begin{pmatrix}
+        Probamos ahora $(ii)$. Sea $A \in \mathbb C^{d \times d} \Rightarrow \exists J \text{ (de Jordan) y } P \text{ regular }$ tal que $A = PJP^{-1}$. Sabemos que la matriz $J$ es de la forma $$ J= \begin{pmatrix}
             J_1 & & & \\
                 & J_2 & & \\
                 & & \ddots & \\
                 & & & J_s
-        \end{pmatrix}
+        \end{pmatrix}$$
 
-        $$A^n = (PJP^{-1})^n = (PJP^{-1})(PJP^{-1}) \hdots (PJP^{-1}) = PJ^nP^{-1}$$
-        $$A^n \equiv 0 \Leftrightarrow J^n \equiv 0 \Leftrightarrow J^n_1, J^n_2, \hdots, J^n_s \equiv 0 \Leftrightarrow \lambda_1 = \lambda_2 = \hdots \lambda_s = 0 \in \mathbb C$$
+Ya sabemos que podemos escribir $A^n$ de la siguiente forma: $$A^n = (PJP^{-1})^n = (PJP^{-1})(PJP^{-1}) \hdots (PJP^{-1}) = PJ^nP^{-1}$$
+Y por tanto, aplicando el apartado $(i)$:
+        $$A^n = 0 \Leftrightarrow J^n = 0 \Leftrightarrow J^n_1, J^n_2, \hdots, J^n_s = 0 \Leftrightarrow \lambda_1 = \lambda_2 = \hdots \lambda_s = 0$$
     \end{sol}
     \end{document}
