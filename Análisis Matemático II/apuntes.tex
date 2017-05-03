@@ -963,7 +963,7 @@ Como conclusión de este capítulo, presentamos el siguiente corolario, que nos 
 De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos ahora a estudiar series de funciones. La referencia básica sigue siendo \cite[Capítulo 5]{marsden}.
 
 \begin{ndef}[Sumas parciales]
-  Sea $\Omega\subset \mathbb R^N$ un conjunto. 
+  Sea $\Omega\subseteq \mathbb R^N$ un conjunto. 
   Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathbb R^M$, se llama sumas parciales $S_k$ a la funci\'on definida en $\Omega$ mediante
   \[ 
     S_k (x) = \sum_{n=1}^{k} f_n(x),\ \ x\in\Omega.
@@ -971,13 +971,13 @@ De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos
 \end{ndef}
 
 \begin{ndef}[Serie de funciones]
-  Llamamos serie  de funciones $\sum_{n\geq 1} f_n$ al par formado por la sucesiones  $\{ f_n \}$ y $\{S_n\}$. Llamaremos a $f_n$ el t\'ermino general de la serie de funciones $\displaystyle\sum_{n\geq 1} f_n$.
+  Llamamos serie  de funciones $\sum_{n\geq 1} f_n$ al par formado por las sucesiones  $\{ f_n \}$ y $\{S_n\}$. Llamaremos a $f_n$ el t\'ermino general de la serie de funciones $\displaystyle\sum_{n\geq 1} f_n$.
 \end{ndef}
 
 
 El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales $S_n$. Por tanto, tenemos de nuevo dos tipos de convergencia.
 \begin{ndef}[Convergencia de series de funciones]
-  Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subset \Omega$, diremos 
+  Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subseteq \Omega$, diremos 
   $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\ c.p.\ en\ A.$$
 
   $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n(x)\} \longrightarrow S(x) \mbox{ c.u. en }A.$$ 
@@ -1059,12 +1059,15 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 \begin{nth}[Criterio de Abel] \label{11} Sean $ A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
   $$\sum_{n \ge 1} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n \ge 1} \phi_n(x) f_n(x)\ c. u.\ en\ A.$$
 \end{nth}
+%%% TODO: añadir demostración Criterio de Abel
 
 \begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
 
   Entonces, la serie $\displaystyle \sum_{n\ge 1} \phi_n(x)f_n(x)$ converge uniformemente en $A$.
   
 \end{nth}
+
+%%% TODO: añadir demostración Criterio de Dirichlet
 
 Veamos un ejemplo de aplicación de estos criterios.
 
