@@ -8,10 +8,10 @@
 \usepackage[utf8]{inputenc}
 
 % Fuentes (Fira Sans)
-\usepackage[T1]{fontenc}
-\usepackage[sfdefault,scaled=.85]{FiraSans}
-\usepackage{newtxsf}
-\usepackage[scaled=.85]{FiraMono}
+%\usepackage[T1]{fontenc}
+%\usepackage[sfdefault,scaled=.85]{FiraSans}
+%\usepackage{newtxsf}
+%\usepackage[scaled=.85]{FiraMono}
 
 % TikZ for UML
 
@@ -236,6 +236,16 @@ El casting no cambia el tipo de un objeto. Simplemente indica al compilador el t
 
 \subsubsection{Ruby}
 \lstinputlisting[language=Ruby]{t12cruby.rb}
+
+\section{Polimorfismo}
+\label{Polimorfismo}
+(Java) Reglas de compatibilidad de tipos en OO:
+\begin{itemize}
+\item Entre clases (herencia): el tipo dinámico de una variable puede ser su tipo estático o una subclase.
+\item Entre interfaz y clases (a través de realización): el tipo dinámico de una variable puede ser el tipo estático de la interfaz implementada.
+\end{itemize}
+Error en compilación: si se envía un mensaje a un objeto que no tiene ese método definido en su tipo estático.
+Error en ejecución: el tipo dinámico de una variable no se corresponde con el estático.
 
 \end{multicols}
 \end{document}
