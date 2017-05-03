@@ -1,9 +1,9 @@
-class NombreClase
-  attr_accessor :var1, :var2
+class NombreClase < OtraClase
+  attr_accessor :var2
   @@class_variable
   
   def initialize(var1, var2)
-    @var1 = var1
+    super(var1)
     @var2 = var2
   end
 
