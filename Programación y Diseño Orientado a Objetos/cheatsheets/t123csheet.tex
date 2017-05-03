@@ -8,10 +8,10 @@
 \usepackage[utf8]{inputenc}
 
 % Fuentes (Fira Sans)
-%\usepackage[T1]{fontenc}
-%\usepackage[sfdefault,scaled=.85]{FiraSans}
-%\usepackage{newtxsf}
-%\usepackage[scaled=.85]{FiraMono}
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage{newtxsf}
+\usepackage[scaled=.85]{FiraMono}
 
 % TikZ for UML
 
@@ -21,6 +21,20 @@
 
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+\lstset{literate=   % listings config
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~{n}}}1
+}
 
 % Multiple cols/rows
 
@@ -122,19 +136,10 @@
 \tikzumlset{font=\footnotesize}
 
 \begin{center}
-     \Large{\textbf{PDOO temas 1 y 2}} \\
+     \Large{\textbf{PDOO temas 1, 2 y 3}} \\
 \end{center}
 
 \section{Conceptos básicos}
-
-\subsection{Envío de mensajes entre objetos}
-
-Diferentes formas de ligar un mensaje al método que lo resuelve
-
-\begin{tabular}{@{}ll@{}}
-Estática    & Ocurre antes de la ejecución, más eficiente \\
-Dinámica  & Ocurre durante la ejecución, más flexible, la usan Java y Ruby \\
-\end{tabular}
 
 \subsection{Especificadores de acceso}
 
@@ -144,26 +149,48 @@ Dinámica  & Ocurre durante la ejecución, más flexible, la usan Java y Ruby \\
 \multirow{2}{*}{Visible en} & \multicolumn{2}{c}{Mismo paquete} & Otro paquete
   \\
                             & Clase & Otra & Otra \\
-  private & \checkmark & - & - \\
-  package & \checkmark & \checkmark & - \\
-  protected & \checkmark & \checkmark & - \\
+  private & \checkmark & & \\
+  package & \checkmark & \checkmark & \\
+  protected & \checkmark & \checkmark & \\
   public & \checkmark & \checkmark & \checkmark \\
 \end{tabular}
-
-Se utiliza \textit{protected} por defecto. Hay introspección, ya que se
-puede consultar una clase u objeto en ejecución.
 
 \subsubsection{Ruby}
 
 \begin{tabular}{cccc}
 Visible en & Desde el propio objeto & Clase & Otra\\
-  private & \checkmark & - & - \\
-  protected & \checkmark & \checkmark & - \\
+  private & \checkmark & & \\
+  protected & \checkmark & \checkmark & \\
   public & \checkmark & \checkmark & \checkmark \\
 \end{tabular}
 
-Se utiliza \textit{private} por defecto. Se pueden consultar y modificar las
-clases, métodos y variables en ejecución. 
+\subsection{Especificadores de acceso (herencia)}
+
+\subsubsection{Java}
+
+\begin{tabular}{ccc}
+\multirow{2}{*}{Visible en} & \multicolumn{2}{c}{Subclase}\\
+                            & Mismo paquete & Otro paquete\\
+  private &  & \\
+  package & \checkmark \\
+  protected & \checkmark & \checkmark\\
+  public & \checkmark & \checkmark\\
+\end{tabular}
+
+\subsubsection{Ruby}
+
+\begin{tabular}{ccc}
+\multirow{2}{*}{Visible en}
+                            & {El mismo objeto en } & {Cualquier objeto de}\\
+                            & la subclase (self) & la subclase\\
+
+  private & \checkmark   & \\
+  protected & \checkmark & \checkmark\\
+  public & \checkmark & \checkmark\\
+\end{tabular}
+
+
+En Ruby, los métodos \textit{protected} solo pueden llamarse desde un método de instancia. Además, pueden ser llamados únicamente desde una instancia de la clase que lo define, o de una subclase suya.
 
 \section{Diagramas UML}
 
@@ -179,73 +206,105 @@ clases, métodos y variables en ejecución.
   }
 \end{tikzpicture}
 
-La multiplicidad de la clase indica el número de instancias que puede tener. La
-de un atributo, el número de elementos que tiene. La descripción de la responsabilidad de la clase puede indicarse debajo. La
-visibilidad se marca mediante:
+\hspace{4em}
+\verb!+! Pública \quad
+\verb!-!  Privada \quad
+\verb!~! Paquete \quad
+\verb!#! Protegida \quad
+
+ \subsection{Diagramas de secuencia}
+Los argumentos de
+ los fragmentos de interacción descritos a continuación se indican dentro, en un recuadro.
 
 \begin{tabular}{@{}ll@{}}
-\verb!+!    & Pública \\
-\verb!-!  & Privada \\
-\verb!~! & Paquete \\
-\verb!#!  & Protegida \\
+  alt & Se ejecuta si se cumple la condición \\
+  break & Se ejecuta si se cumple la condición y no se continúa \\
+  loop & Se realiza arg veces el fragmento \\
+  opt & Como alt pero con un solo fragmento \\
+\end{tabular}
+ 
+\subsection{Diagramas de comunicación}
+
+Tipos de enlace (objetoX envía mensaje a objetoY):
+
+\begin{tabular}{@{}l@{}l@{}l@{}}
+Global \ & \texttt{G}    & \ \  El ámbito de objetoY es superior al de objetoX \\
+Asociación \  &  \texttt{A}  & \ \ Existe una relación fuerte y duradera \\
+Parámetro \ & \texttt{P} & \ \ objetoY es pasado como parámetro de objetoX \\
+  Local \ & \texttt{L}  & \ \ objetoY es referenciado en un método de objetoX \\
+  Self \ & \texttt{S} & \ \ objetoX siempre se conoce a sí mismo \\
+\end{tabular}
+\vspace{.5em}
+
+Estructuras de control:
+
+\begin{tabular}{@{}l@{}l@{}l@{}}
+[condición] \ \ & Selectivas. \\
+*[condición] \ \ & Iterativas. \\
 \end{tabular}
 
-Para indicar un atributo o método de clase, lo subrayamos.
+\section{Herencia}
 
-\subsection{Herencia y ocultamiento de información}
-\label{sub:herencia_y_ocultamiento_de_informaci_n}
-
-\begin{tabular}{ccccc}
-    \multirow{3}{*}{ Declarado como} & \multicolumn{2}{c}{Java} & \multicolumn{2}{c}{Ruby}\\
-                                     & \multicolumn{2}{c}{Subclase} & \multirow{2}{*}{ \begin{tabular}{c}
-                                         Propio obj. \\
-                                         en la subcl.
-                                     \end{tabular}} & \multirow{2}{*}{ \begin{tabular}{c}
-                                    Cualquier obj. \\
-                                     en la subcl.
-                                 \end{tabular} } \\
-                                                                   & M. paq. & D. paq. & & \\
-private & - & - & \checkmark & - \\
-package & \checkmark & - & - & - \\
-protected & \checkmark & \checkmark &  \checkmark &  \checkmark   \\
-public & \checkmark & \checkmark & \checkmark &  \checkmark  \\
-\end{tabular}
-
-\subsection{Redefinición de métodos en Java}
-\label{sub:redefinici_n_de_m_todos_en_java}
-
-Utilizamos \texttt{@Override}. La cabecera del método que se redefine puede cambiar la visibilidad y el tipo de retorno. No se puede redefinir un método marcado como \texttt{final}.
-
-\section{Cosas que recordar}
-\label{sec:cosas_que_recordar}
-
-En Java si una variable de clase se redefine en una clase cambiando su valor, solo sus subclases verán el nuevo valor.
-
-En Ruby, \texttt{super} sólo permite llamar al método actual, no a cualquier método de la clase padre.
-
-Las clases abstractas no tienen instancias.
-
-Cuando declaramos la referencia a un objeto, \texttt{MiClase objeto = new MiClase} el tipo de la referencia \texttt{objeto} es \texttt{MiClase} y sus subclases.
-
-El casting no cambia el tipo de un objeto. Simplemente indica al compilador el tipo de objeto que se espera en ese momento.
-
-\section{Clases en Java y Ruby}
+Relación \textit{es-un}. Diferente a composición.
+\subsection{Métodos y atributos}
 
 \subsubsection{Java}
-\lstinputlisting[language=Java]{t12cjava.java}
+
+$\diamond$ Los atributos privados de instancia se 'heredan' (al crearse en el constructor), pero no son accesibles desde la subclase. Igual en Ruby.
+
+$\diamond$ Los métodos de clase se heredan, pero quedan ligados a la clase donde se definen. Pueden sobreescribirse, pero lo que hacemos en realidad es ocultar el antiguo (NO @Override). Sin embargo, no se comportan de forma polimórfica. No se pueden redefinir métodos \textit{final}.
+
+$\diamond$ Si modificamos un atributo de clase, la modificación será visible desde la clase donde se modficia hacia abajo en el árbol de herencia, siempre y cuando en la clase donde modificamos definamos un nuevo método static para consultarlo. En otro caso, utilizará el consultor static de la clase padre, que está ligado a ella, por lo que no imprimirá el valor modificado. Los atributos de clase en realidad no se sobreescriben, sino que se ocultan. 
+
+$\diamond$ Los constructores se heredan siempre que no tengan argumentos. En otro caso, hay que definirlos explícitamente. 
+
+$\diamond$ Se pueden modificar métodos que se redefinen, en cuanto a tipo o número de parámetros. En realidad estaríamos sobrecargando el método, sin ocultar el de la clase padre. Se puede cambiar el tipo de retorno, siempre que sea una subclase del original. También se puede cambiar la visibilidad, siempre que sea menos restrictiva que la del original.
 
 \subsubsection{Ruby}
-\lstinputlisting[language=Ruby]{t12cruby.rb}
+
+$\diamond$ Los atributos de instancia de la clase no se heredan, cada clase tiene el suyo. Sin embargo, los métodos de clase sí se heredan. Se pueden sobreescribir, pero en realidad lo que hacemos es ocultarlos. Hay que poner el require\_relative para heredar. Si se modifica un atributo de clase, se modifica en todo el árbol de herencia.
+
+$\diamond$ Se hereda el constructor.
+
+$\diamond$ Se pueden modificar los métodos que se sobreescriben, en cuanto al número o el tipo de parámetros. No existe la sobrecarga, por lo que al hacer eso, se 'oculta' el método antiguo.
+
+\subsection{Pseudovariable super}
+
+Permite invocar métodos de la clase padre. En Java, puede llamarse de dos formas:
+
+\begin{tabular}{@{}l@{}l@{}l@{}}
+	super.met1() \ \ & Invoca el método 'met1' de la clase padre.\\
+	
+	super(args) \ \ & Invoca el constructor de la clase padre con los argumentos \textit{args}.\\
+	&  Únicamente en la primera línea del constructor.\\
+\end{tabular}
+
+En Ruby, \textit{super} solo puede llamar al método de la clase padre al que sobreescribe. Tiene tres variantes:
+
+\begin{tabular}{@{}l@{}l@{}l@{}}
+	super \ \ & Invoca con los mismos argumentos.\\
+	
+	super() \ \ & Invoca sin argumentos (¡OJO!).\\
+	super(args) \ \ &  Invoca con los argumentos \textit{args}.\\
+\end{tabular}
+
+\subsection{Clases abstractas e interfaces}
+
+\textbf{Clases abstractas.} Palabra clave \textit{abstract}. Tienen al menos un método sin implementar, también marcado como \textit{abstract}.
+
+\textbf{Interfaces.} No son clases. Palabra clave \textit{interface}. Son una colección de métodos públicos (\textit{default}, \textit{static}, o implícitamente \textit{abstract}) y de constantes (implícitamente \textit{public}, \textit{static} y \textit{final}).
+
+En ambos casos, si una clase hereda o implementa, debe definir todos los métodos que queden sin definir (excepto \textit{default}). De lo contrario, esta clase debe marcarse como \textit{abstract}. No se pueden instanciar. No existen en Ruby.
+
+Se permite herencia múltiple entre inferfaces. Los métodos \textit{default} pueden sobreescribirse. Los métodos \textit{static} se pueden llamar desde otros métodos \textit{static} o \textit{default} de la interfaz, y también desde fuera. No se pueden sobreescribir (no se heredan).
+
+Si una clase implementa una o varias interfaces (ej: In),  y hay conflicto de nombres al llamar a un método de esta última, debe ponerse \textit{In.super.metodo()}.
 
 \section{Polimorfismo}
-\label{Polimorfismo}
-(Java) Reglas de compatibilidad de tipos en OO:
-\begin{itemize}
-\item Entre clases (herencia): el tipo dinámico de una variable puede ser su tipo estático o una subclase.
-\item Entre interfaz y clases (a través de realización): el tipo dinámico de una variable puede ser el tipo estático de la interfaz implementada.
-\end{itemize}
-Error en compilación: si se envía un mensaje a un objeto que no tiene ese método definido en su tipo estático.
-Error en ejecución: el tipo dinámico de una variable no se corresponde con el estático.
+
+Es necesario \textit{downcast} para que cuadre el tipo estático. También en llamada a métodos o al añadir a un ArrayList.
+
+\lstinputlisting[language=Java]{poli.java}
 
 \end{multicols}
 \end{document}
