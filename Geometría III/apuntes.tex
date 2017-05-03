@@ -2847,4 +2847,37 @@ Sabemos que dos planos son iguales si y solo si sus ecuaciones son proporcionale
 
 Por  último nos quedaría considerar la correspondencia entre la recta proyectiva y la afín, el cual realizaremos de modo análogo. Esto implicará los pasos punto a punto, y, quitando los puntos de infinito. La recta del infinito obviamente no se pasará
 
+\begin{nth}
+	Si tenemos cuadrilátero den $\mathbb P ^2$ inscrito en otro tal que las 4 rectas diagonales son concurrentes, entonces las 4 rectas diagonales están alineadas
+\end{nth}
+
+\begin{proof}
+	\begin{nlist}
+	\item Versión afín del teorema:  Tomo como $r_\infty$ la recta que pasa por los dos puntos diagonales del primer cuadrilátero.
+	Tenemos un cuadrilátero inscrito en un paralelogramo(en el plano afín) tal que las cuatro rectas diagonales son concurrentes(en el afín).\\
+	$\Rightarrow$ ese cuadrilátero también es un paralelogramo
+\end{nlist}
+
+\item Probamos el teorema en el afín. Sea $\sigma$ la reflexión central de centro $O$, el punto donde se cortan las diagonales. Esta homotecia hace: $A \leftrightarrow C$, $B \leftrightarrow D$, $A\vee B \leftrightarrow C \vee D$, $A \vee D \leftrightarrow B \vee C$, $E \vee G \leftrightarrow E \vee G$ , $F \vee H \leftrightarrow F\vee H$. Ahora, usamos que:
+
+\[
+\begin{rcases}
+	E\vee H \xrightarrow{\sigma} F \vee G \implies E \vee G \parallel F \vee G\\
+	E\vee F \xrightarrow{\sigma} E \vee F \implies E \vee F \parallel H \vee G
+\end{rcases} \implies EFGH \text{ es un paralelogramo}
+\]
+\end{proof}
+
+\begin{nth}
+Sean, en $\mathbb P^2$ dos puntos $A$ y $B$ y 3 pares de rectas distintas tales que una pasa por $A$ y la otra por $B$. Se forman 3 cuadriláteros con vértices opuestos $A$ y $B$ y una recta diagonal $A\vee B$. Entonces, las otras 3 rectas diagonales son concurrentes
+\end{nth}
+
+\begin{proof}
+	\begin{nlist}
+	\item Versión afín del teorema: En este caso, uno de los cuadriláteros será un paralelogramo y tendremos que, entonces. las 3 rectas diagonales $(\ne A\vee B)$ son concurrentes
+	\item Probamos ahora la versión afín.\\
+	Si tomamos los dos triángulos apropiados, entonces las rectas que unen los vértices homólogos son concurrentes. Si vemos que los lados homólogos de los dos triángulos son paralelos
+\end{nlist}
+\end{proof}
+
 \end{document}
