@@ -707,7 +707,7 @@ Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín
   \item $r \nparallel s\implies r \cap s = A$, un punto
   \item $r \parallel s \implies r = s$ o bien $r \cap s =  \emptyset$
   \end{nlist}
-
+\end{nth}
   \begin{proof}\hfill\\
     \begin{nlist}
       % REVIEW: No acabo de ver que demuestre lo que dice (i)
@@ -717,7 +717,6 @@ Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín
    	%TODO: demostrar que cuando no existe el punto A la intersección es vacía 
     \end{nlist}
   \end{proof}
-\end{nth}
 
 
 \subsection{Triángulos}
@@ -796,7 +795,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \end{nota}
 
 \begin{ndef}[Triángulo medio]
-  Si $ABC$ es un triángulo, sus puntos medios $A'$, $B'$ y $C'$ forman otro triángulo, el \textit{triángulo medio}.
+  Si $ABC$ es un triángulo, sus puntos medios $A'$, $B'$ y $C'$ forman el \textit{triángulo medio}.
 \end{ndef}
 
 \begin{nprop}
@@ -949,7 +948,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
     \[
       r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
     \]
-    que es perpendicular a $\vec{BA}$.
+    donde $\vec{BA}_i$ es la coordenada $i$-ésima del vector $\vec{BA}$ y por lo tanto $r$ es perpendicular a $\vec{BA}$.
   \end{nlist}
 \end{proof}
 
@@ -968,10 +967,9 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   Las tres mediatrices de un triángulo son concurrentes. Además, concurren en el punto $O$ llamado el circuncentro, el centro de la circunferencia que pasa por $A$,$B$ y $C$.
 \end{nth}
 \begin{proof}
-  Lo primero es ver que dos mediatrices nunca son paralelas. Tomamos $O = m_{AB} \cap m_{AC}$. Por la definición de mediatriz tenemos que $\mu(AO) = \mu(BO)$ y que $\mu(AO) = \mu(CO)$. Es obvio entonces que $\mu(BO) = \mu(CO)$ luego $O \in m_{BC}$.
-  % TODO: Completar esta demostración.
+  Sabemos que dos mediatrices nunca son paralelas. Tomemos $O$ como el único punto tal que $O \in  m_{AB} \cap m_{AC}$. Por la definición de mediatriz tenemos que $\mu(AO) = \mu(BO)$ y que $\mu(AO) = \mu(CO)$. Es obvio entonces que $\mu(BO) = \mu(CO)$ luego $O \in m_{BC}$.
+ 
 \end{proof}
-
 
 \begin{ndef}[Alturas de un triángulo]
   Son las rectas que pasan por un vértice y son perpendiculares al lado opuesto del triángulo. Estas alturas se cortan en el ortocentro $H$.
@@ -987,10 +985,13 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{proof}
   Para ello, tenemos que considerar $A'' = C+ \vec{AB}$. Ídem con $B''$ y $C''$.
 \end{proof}
-% FIXME: ¿Qué es un triángulo doble? ¿Qué proposición?
-%\begin{ndef}
-%  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición.
-%\end{ndef}
+
+\begin{ndef}
+  El triángulo doble$DEF$ de un triángulo $ABC$ es el triángulo tal que $ABC$ es el triángulo medio de $DEF$.
+
+\begin{ndef}
+  Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición anterior.
+\end{ndef}
 
 
 \begin{nprop}
@@ -1027,7 +1028,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 	\item $h(P)-h(Q)=(A+\lambda(\vec{AP})) -(A+\lambda(\vec{AQ})) = \lambda(A-P) - \lambda(A-Q) = \lambda (Q-P)$.
 	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}, \lambda(\vec {QQ'}))=^1 \lambda^2 \langle \vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
 	\item Si $h$ multiplica distancia por $\lambda$, las distancias iguales siguen siendo iguales, por lo que el conjunto de puntos que están a la misma distancia de dos rectas se mantiene.
-	\item Como mantiene distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
+	\item Como $h$ lleva distancias iguales en distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
 \end{enumerate}
 \end{proof}
 
@@ -1116,21 +1117,15 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 
 \hfill
 
+
 \begin{nprop}
-	Sean $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces los paralelogramos cumplen las siguientes identidades:
-  \begin{nlist}
-  \item $V_{1} - V_{2} - V_{3} + V_{4} = 0$
-  \item $V_{3} = \lambda V_{1}\ con\ \lambda \neq 0$
-  \item $V_{4} = \mu V_{2}\ con\ \mu \neq 0$
-  \end{nlist}
+	Sean $V_{1} = A \vee B$, $V_{2} = B \vee C$, $V_{3} = C\vee D$, $V_{4} = D \vee A$ entonces los paralelogramos cumplen que $V_{1} - V_{2} - V_{3} + V_{4} = 0$
+ 
 \end{nprop}
 
 \begin{proof} \hfill
-	\begin{nlist} 
-		\item Como $V_1 = V_3$ y $V_2 = V_4$ el resultado de restarlos es $0$.
-		\item Al ser esos lados paralelos, sus vectores han de ser proporcionales.
-		\item Análoga a la anterior.
-	\end{nlist}
+	
+		 Como $V_1 = -V_3$ y $V_2 =-V_4$ el resultado de restarlos es $0$.
 \end{proof}
 
 
@@ -1230,7 +1225,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ncor}
 
 \begin{nprop}
-  Las afinidades cumplen las siguientes propiedades:
+  Las traslaciones cumplen las siguientes propiedades:
   \begin{nlist}
   \item $t_v \circ t_w = t_{v+w}$
   \item $t_{v}^{-1} = t_{-v}$
@@ -1239,7 +1234,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{nprop}
 \begin{proof}\hfill
   \begin{nlist}
-  \item $t_v \circ_w = t_v(P+w) = P+w+v = t_{v+w}(P)$
+  \item $t_v \circ t_w (P) = t_v(P+w) = P+w+v = t_{v+w}(P)$
   \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
     \begin{itemize}
     \item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
