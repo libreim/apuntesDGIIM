@@ -254,7 +254,7 @@ $\diamond$ Los atributos privados de instancia se 'heredan' (al crearse en el co
 
 $\diamond$ Los métodos de clase se heredan, pero quedan ligados a la clase donde se definen. Pueden sobreescribirse, pero lo que hacemos en realidad es ocultar el antiguo (NO @Override). Sin embargo, no se comportan de forma polimórfica. No se pueden redefinir métodos \textit{final}.
 
-$\diamond$ Si modificamos un atributo de clase, la modificación será visible desde la clase donde se modficia hacia abajo en el árbol de herencia, siempre y cuando en la clase donde modificamos definamos un nuevo método static para consultarlo. En otro caso, utilizará el consultor static de la clase padre, que está ligado a ella, por lo que no imprimirá el valor modificado. Los atributos de clase en realidad no se sobreescriben, sino que se ocultan. 
+$\diamond$ Si modificamos un atributo de clase, la modificación será visible desde la clase donde se modifica hacia abajo en el árbol de herencia, siempre y cuando en la clase donde modificamos definamos un nuevo método static para consultarlo. En otro caso, utilizará el consultor static de la clase padre, que está ligado a ella, por lo que no imprimirá el valor modificado. Los atributos de clase en realidad no se sobreescriben, sino que se ocultan. 
 
 $\diamond$ Los constructores se heredan siempre que no tengan argumentos. En otro caso, hay que definirlos explícitamente. 
 
