@@ -988,6 +988,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \begin{ndef}
   El triángulo doble$DEF$ de un triángulo $ABC$ es el triángulo tal que $ABC$ es el triángulo medio de $DEF$.
+\end{ndef}
 
 \begin{ndef}
   Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición anterior.
@@ -1213,7 +1214,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{ndef}
 
 \begin{nota}
-  Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $
+  Durante esta sección, consideraremos continuamente la afinidad $f(P) = AP + b $.
 \end{nota}
 
 \begin{ndef}[Traslaciones]
@@ -1227,7 +1228,7 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \begin{nprop}
   Las traslaciones cumplen las siguientes propiedades:
   \begin{nlist}
-  \item $t_v \circ t_w = t_{v+w}$
+  \item $\displaystyle t_v \circ t_w = t_{v+w}$
   \item $t_{v}^{-1} = t_{-v}$
   \item $t_0 = I$
   \end{nlist}
@@ -1236,19 +1237,19 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
   \begin{nlist}
   \item $t_v \circ t_w (P) = t_v(P+w) = P+w+v = t_{v+w}(P)$
   \item Vamos a ver que $t_{-v}\circ t_v = I = t_v \circ t_{-v}$
-    \begin{itemize}
-    \item $t_{-v}\circ t_v (P) = P-v+v = P = I(P)$
-    \item $t_v\circ t_{-v} = P+v-v = P = I(P)$
-    \end{itemize}
-  \item $t_0(p) = P +0 = P = I(P)$
+    $$
+    t_{-v}\circ t_v (P) = P-v+v = P = I(P)$$
+    $$t_v\circ t_{-v}(P) = P+v-v = P = I(P)
+    $$
+  \item $t_0(P) = P +0 = P = I(P)$
   \end{nlist}
 \end{proof}
 
 \begin{nprop}
   Las afinidades cumplen las siguientes propiedades:
   \begin{nlist}
-    \item Si $f$ y $g$ dos afinidades, entonces $(g \circ f) (P)$ es otra afinidad.
-    \item $f^{-1}(P) = A^{-1}P +A^{-1}b$.
+    \item Si $f$ y $g$ son dos afinidades, entonces $(f \circ g)$ es otra afinidad.
+    \item Si $f$ es una afinidad, entonces  $f^{-1}$ es otra afinidad, con $f^{-1}(P) = A^{-1}P +A^{-1}b$.
   \end{nlist}
 \end{nprop}
 \begin{proof}\hfill
@@ -1259,19 +1260,23 @@ Ahora, si tenemos $r'\equiv \alpha' x + \beta' x = \gamma '$ podemos ver que:
 \end{proof}
 
 \begin{ndef}[Función vectorial asociada]
-  Dada una afinidad $f = Av + b$, llamamos función vectorial asociada a una afinidad, $\vec{f}$, a la misma afinidad $f$ pero con $b = 0$. 
+  Dada una afinidad $f(v) = Av + b$, llamamos función vectorial asociada a una afinidad a la aplicación $\vec{f}(v) = Av$.
 \end{ndef}
+
+\begin{nota}
+	Es claro que $\vec{f}$ es una aplicación lineal.
+\end{nota}
 
 \begin{nprop}
 Una afinidad $f$ cumple las siguientes propiedades:
   \begin{nlist}
-    \item $f(P + \vec{v}) = f(P) + \vec{f}(v)$.
+    \item $f(P + v) = f(P) + \vec{f}(v)$.
 \item $f$ lleva rectas en rectas.
-\item $f(r\cap s) = f(r) \cap f(s)$.
+\item $f$ lleva rectas paralelas en rectas paralelas.
+\item Si $f$ no es constante ($A \ne 0$), entonces $f(r\cap s) = f(r) \cap f(s)$.
 \item $\lambda,\mu \in \R$, $\lambda+\mu=1$. Entonces, $f(\lambda P + \mu Q) = \lambda f(P) +  \mu f(Q)$.
 \item $f$ lleva puntos medios en puntos medios.
 \item $f$ lleva segmentos en segmentos.
-\item $f$ lleva rectas paralelas en rectas paralelas.
 \item $f$ lleva triángulos en triángulos.
 \item $f$ lleva medianas en medianas.
 \item $f$ lleva baricentros en baricentros.
@@ -1281,10 +1286,11 @@ Una afinidad $f$ cumple las siguientes propiedades:
 \end{nprop}
 
 \begin{proof}\hfill
-  \begin{enumerate}
-  \item $f(P+\vec{v}) = A(P+\vec{v}) + b = AP + A\vec{v} + b = AP + b + A\vec{v} = f(P) + \vec{f}(\vec{v})$.
-  \item Sea $r = P + \lambda \vec{v}$ una recta. Entonces, $f(r) = f(P + \lambda \vec{v}) =^{(1)} f(P) + \lambda \vec{f}(\vec{v})$, donde en $(1)$ hemos usado la linealidad de la asociada vectorial.
-  \item Equivalente a la siguiente propiedad al ser $\lambda P + \mu Q$ con $\mu+\lambda = 1$ las combinaciones baricéntricas de $P$ y $Q$ y por lo tanto una recta.
+  \begin{nlist}
+  \item $f(P+v) = A(P+v) + b = AP + Av + b = AP + b + Av = f(P) + \vec{f}(v)$.
+  \item Sea $r = P + \lambda v$ una recta. Entonces, $f(r) = f(P + \lambda v) \overset{(i)}{=} f(P) + \vec{f}(\lambda v) = f(P) + \lambda \vec{f}(v)$, por la linealidad de $\vec{f}$.
+  \item Si $r = P + \lambda v$ y $s = Q + \lambda v$, entonces $f(r) = f(P) + \lambda \vec{f}(v)$ y $f(s) = f(Q) + \lambda \vec{f}(v)$.
+  \item Trivial por ser $f$ biyectiva.
   \item $f(\lambda P + \mu Q) = A(\lambda P + \mu Q) + b =A(\lambda P + \mu Q) + (\lambda + \mu)b = \lambda (AP + b) + \mu (AQ + b) = \lambda f(P) + \mu f(Q)$.
   \item Si $PQ$ es un segmento y $f(\dfrac{1}{2}P + \dfrac{1}{2}Q) = \dfrac{1}{2}f(P) +  \dfrac{1}{2}f(Q)$.
   \item Trivial.
@@ -1296,12 +1302,23 @@ Una afinidad $f$ cumple las siguientes propiedades:
   \item Trivial por la anterior y porque mantiene paralelismo.
 
     
-  \end{enumerate}
+  \end{nlist}
 \end{proof}
 
 % \begin{nota}
 %   Tenemos que ver esta transformación como una transformación intuitiva en la cual
 % \end{nota}
+
+\begin{ndef}
+	Una dilatación es una aplicación $h(P) = \lambda P + b$. 
+\end{ndef}
+
+\begin{nprop} 
+Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una traslación. 
+	
+\end{nprop}
+
+%%%TODO: demostrar
 
 
 
@@ -1311,29 +1328,25 @@ Una afinidad $f$ cumple las siguientes propiedades:
   Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C($centro, radio$)$.
 \end{ndef}
 
-\begin{ndef}
-	Una dilatación es una homotecia cuya razón $\lambda \ne 1$.
-\end{ndef}
-
 %FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
 \begin{nprop}
   Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
   \begin{enumerate}
-  \item $C_1 = C(A_1,p_1)$.
-  \item $C_2 = C(A_2,p_2)$.
+  \item $C_1 = C(A_1,\rho_1)$.
+  \item $C_2 = C(A_2,\rho_2)$.
   \end{enumerate}
-  Si $h$ es una dilatación de razón $\lambda$, entonces $h(p) = \lambda p + b$.
-  En nuestro caso, cumplirán que $h(C_1) = C_2$ y $p_2 = \lambda p_1$.
+  Si $h$ es una dilatación de razón $\lambda$, entonces $h(P) = \lambda P + b$.
+  En nuestro caso, cumplirán que $h(C_1) = C_2$ y $\rho_2 = \lambda \rho_1$.
 \end{nprop}
 
 \begin{ndef}
-  Dos puntos $A$, $B$ de $C = C(O,p) $ se dicen diametralmente opuestos si y solamente si $O \in \vec{AB} \equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$.
+  Dos puntos $A$, $B$ de $C = C(O,\rho) $ se dicen diametralmente opuestos si y solamente si $O \in A \vee B$, es decir, $\equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$.
 \end{ndef}
 
 
 %%% DONE
 \begin{nprop}
-  Un par de puntos diametralmente opuestos de $C$ determinan la circunferencia de forma única.
+  Un par de puntos diametralmente opuestos de una circunferencia $C$ la determinan de forma única.
 \end{nprop}
 \begin{proof}
 	Sabemos la existencia de la circunferencia de manera trivial, porque el punto medio $O$ esta a la misma distancia de ambas. Entonces $C_1 = C(O, |\vec{AB}|/2)$ pasa por ambos. \\
@@ -1341,14 +1354,16 @@ Una afinidad $f$ cumple las siguientes propiedades:
 	Por último debemos ver si el centro puede ser diferente de $O$. Como son diametralmente opuestos el centro debe estar en la linea que los une. Además como deben estar a la misma distancia tiene que ser el punto medio, es decir, $O$.
 \end{proof}
 
-%FIXME: ¿Hola? ¿Definición de producto escalar?
-\begin{ndef}[Ángulo recto]
-  Dos vectores forman un ángulo recto si $\langle \vec{PA},\vec{PB}\rangle  = 0$, siendo $P$ el punto donde se cortan.
+\begin{nota} Recordemos que dados dos vectores, el ángulo entre ellos se dice recto si su producto escalar es 0.
+\end{nota}
+
+\begin{ndef}[Rectas perpendiculares]
+  Dos rectas $r$ y $s$ son perpendiculares si sus vectores directores forman un ángulo recto.
 \end{ndef}
 
 %TODO: ¿Mejorar un poco más?
 \begin{nprop}
-  Dados dos puntos, $A$ y $B$, el lugar geométrico de los puntos $P$ que cumplen que los segmentos $AP$ y $BP$ forman un ángulo recto es una circunferencia.
+  Dados dos puntos $A$ y $B$, el lugar geométrico de los puntos $P$ que cumplen que los segmentos $AP$ y $BP$ forman un ángulo recto es una circunferencia.
 \end{nprop}
 
 \begin{proof}
@@ -1568,7 +1583,7 @@ Una afinidad $f$ cumple las siguientes propiedades:
    \begin{minipage}[c]{0.75\textwidth}
   %%%FIXME:¿HARÍA FALTA EXPLICARLA MÁS? no me salió muy clara.
   
-  Al ser ambas diagonales hipotenusas de triángulos idénticos (por ser $\vec{AB}=\vec{CD}$, $\vec{BC}=\vec{DA}$ y por ser recto el ángulo que une los segmentos) son de igual distancia.\hfill
+  Al ser ambas diagonales hipotenusas de triángulos idénticos (por ser $\vec{AB}=\vec{DC}$, $\vec{BC}=\vec{AD}$ y por ser recto el ángulo que une los segmentos) son de igual distancia.\hfill
 
   \end{minipage}\hfill
   \begin{minipage}[]{0.2\textwidth}
@@ -1601,7 +1616,8 @@ Una afinidad $f$ cumple las siguientes propiedades:
  
   \end{minipage}\\
   $\boxed{\Leftarrow}$ \\
-  Por ser los lados opuestos paralelos de la misma distancia, y la diagonal también, ambos triángulos ABC y BCD son iguales. Entonces, además sabemos que  $\angle A = \angle
+  Sabemos que $\angle A = \angle C $ y $\angle B = \angle D$.
+  Por ser los lados opuestos paralelos de la misma distancia, y las diagonales medir lo mismo, los triángulos ABC , BCD, CDA Y DAB son semejantes. Entonces, además sabemos que  $\angle A = \angle
  B = \angle C  = \angle D$. Por último, como un cuadrilátero está compuesto por dos triángulos, sabemos que sus ángulos deben sumar $2\pi$, por lo que cada ángulo debe
   medir $\pi/2$, por lo que todos los lados son perpendiculares.
   
