@@ -59,7 +59,7 @@ $\sum_{n\geq 0} \frac{f^{n)}(0)}{n!}z^n$
 
 \textbf{Solución}
 
-\subsection{a} 
+\subsubsection{a} 
 $f'(z) = \frac{2z-3}{z^2-3z+2}$
 
 $\frac{1}{z^2-3z+2} = \frac{A}{2-z} + \frac{B}{1-z}$
@@ -73,3 +73,59 @@ $= \sum_{n\geq 0} (\frac{A}{2^{n}} + 2B)z^{n+1} - \sum_{n\geq 0} 3 (\frac{A}{2^{
 que nos da como resultado 
 
 $$ f'(z) = -\left(\frac{3A}{2}+B\right) + \sum_{n\geq 1} \left(\frac{A}{2^{n+1}} - B \right)z^n $$
+
+
+\subsection{Ejercicio 6}
+
+\textbf{Solución}
+
+$f(z) = \frac{1}{1-z-z^2} = \frac{1}{(z-a_1)(z-a_2)} $
+$z^2+z-1 = 0 \Longleftrightarrow z = \frac{-1\pm \sqrt{5}}{2}$, donde $a_1=\frac{-1+ \sqrt{5}}{2},a_2=\frac{-1- \sqrt{5}}{2}$
+$f(z) = \frac{1}{(a_1-z)(a_2-z)} = \frac{1}{a_1-a_2}\left[ \frac{1}{a_1-z}-\frac{1}{a_2-z} \right]$
+Expresamos $\alpha_n$ en términos de $a_1$ y $a_2$
+$a_1+a_2 = -1$
+$a_1*a_2=-1$
+$(z-a_1)(z-a_2) = z^2-(a_1+a_2) + a_1a_2$
+
+$\alpha_{n+2}$ a partir de aquí se puede expresar en términos de $\alpha_n$ y $\alpha_{n+1}$
+
+
+\subsection{Ejercicio 1}
+
+\textbf{Solución}
+\subsubsection{a)}
+$f(z) = \sum_{n\geq 0} \frac{f^{n)}(0)}{n!} z^n$
+$ f^{n)}(0) = n$, vemos $\left\{ \frac{n}{n!} \right\}$,  $\left\{ \sqrt[n]{\frac{n}{n!}} \right\} \rightarrow 0 \implies R = \infty$,
+
+
+\subsubsection{b)} 
+$\frac{f^{n)}(0)}{n!} = \frac{(n+1)!}{n!} = n+1$, $\sqrt[n]{n+1} \implies R=1$
+Por tanto no hay función entera que cumpla la condición
+
+\subsubsection{c)}
+$\frac{f^{n)}(0)}{n!} = \frac{2^n n!}{n!} = 2^n$, $\sqrt[n]{z^n} = 2 \implies R=1/2$
+
+\subsubsection{d)}
+$\frac{f^{n)}(0)}{n!} = \frac{n^n}{n!}$, $\sqrt[n]{ \frac{n^n}{n!} }$ por el criterio del cociente
+$\implies R=\frac{1}{e} < \frac{1}{2}$
+
+
+
+\subsection{Ejercicio 12}
+
+\textbf{Solución}
+
+$\int_{\mathcal{C}(0,2)} \frac{dz}{z^2(z-1)^2}$
+$f(z) = \frac{1}{z^2(z-1)^2}$
+
+$\phi(z) = \frac{1}{z}$
+
+$\gamma{\ast} = \mathcal{C}(0,1/2)^{\ast}$
+$\phi(\gamma^{\ast}) = \mathcal{C}(0,2)^{\ast}$
+Si $\gamma(t) = \frac{1}{2}e^{-it}$
+$\phi(\gamma(t)) = 2e^{it}\implies \phi o \gamma = \mathcal{C}(0,2)$ 
+
+Por tanto
+
+$\int_{\mathcal{C}(0,2)} \frac{dz}{z^2(z-1)^2} = \int_{\mathcal{C}(0,1/2)} \frac{1}{ \frac{1}{w^2} (\frac{1}{w}-1)^2} \frac{1}{w^2} dw =$
+$\int_{\mathcal{C}(0,1/2)} \frac{w^2dw}{(1-w)^2}$
