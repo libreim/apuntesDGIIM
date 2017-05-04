@@ -567,7 +567,7 @@ Lo que vamos a tratar de hacer en este tema es \textit{transformar} las propieda
 A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del plano afín.
 
 \begin{ndef}[Combinación baricéntrica de puntos]
-  Dado $\{P_1,...,P_n\}$ un conjunto de puntos del plano afín y $\alpha_1,\dots,\alpha_n \in \R$ un conjunto de escalares que cumplan que $\sum_i \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
+  Dado $\{P_1,...,P_n\}$ un conjunto de puntos del plano afín y $\alpha_1,\dots,\alpha_n \in \R$ una lista de escalares que cumplan que $\sum_i \alpha_i = 1$, llamamos \textit{combinación baricéntrica de puntos} a:
   \[
     \sum_{i=1}^n \alpha_i P_i
   \]
@@ -620,29 +620,33 @@ A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del 
 \subsection{Sistemas de referencia y coordenadas}
 
 \begin{ndef}[Sistema de referencia]
-Sea $V$ un espacio vectorial y $E$ su espacio afín asociado con dimensión finita. Llamaremos \textit{ sistema de referencia cartesiano } a cada conjunto $R=\{O,B\}$ donde $O\in E$ y se denomina \textit{origen del sistema de referencia} y $B$ es base de $V$.
+Sea $V$ un espacio vectorial de dimesión finit y $E$ un espacio afín asociado a $V$. Llamaremos \textit{ sistema de referencia cartesiano } a cada conjunto $R=\{O,B\}$ donde $O\in E$ y $B$ es base de $V$.
 
-Entonces $\forall A \in E, \vec{OA}$ tiene coordenadas únicas respecto a $B$: $\vec{OA}=(a_1,...,a_n)_B=(a_1,...,a_n)_R=A$ llamadas coordenadas de $A$ respecto a $R$. 
+$O$ se denomina el origen del sistema de referencia 
 
 \end{ndef}
+
+Entonces $\forall A \in E$, las cordenadas de $A$ respecto de R se definen como las coordenadas del vector $\vec{OA}$ respecto de $B$. Es decir, si $B] = v_1, ... ,v_n $ y $\vec{OA} = \sum_{i=1}^{n} a_i*v_i$, entonces $A = (a_1,..., a_n)$.
 
 \begin{ndef}[Sistema de referencia ortogonal]
-En $R=\{O,B\}$ con $O\in E$ y $V=L(B)$. Si $E$ es afín euclídeo y $B$ es ortornomal entonces estamos en un \textit{sistema de referencia rectangular} y $d(A,B)=||\vec{AB}|| \forall A,B \in E$.
+Sea $V$ un espacio euclídeo, $E$ un espacio afín asociado a $V$ y $R=\{O,B\}$ un sistema de referencia, diremos que $R$ es ortogonal si B es ortonormal.
 
 \end{ndef}
 
+En este caso se induce en $E$ una distancia como $d(A,B) = \|\vec{AB}\|\ \forall A,B \in E$ 
+
 %%%No tengo del todo claro si ponerlo como teorema o como si nada, pues la propia demostración esta implícita en el enunciado.
-\begin{nth}
+%\begin{nth}
 
-Sea $E$ el espacio afín asociado a $V=L(B)=L(B')$, sean $O,O'\in E$ y a partir de estos $R=\{O,B\}$ y $R'=\{O',B'\}$.
+%Sea $E$ el espacio afín asociado a $V=L(B)=L(B')$, sean $O,O'\in E$ y a partir de estos $R=\{O,B\}$ y $R'=\{O',B'\}$.
 
-Sea $M(1_V,B',B)$ la matriz de cambio de base de $B'$ a $B$. Notaremos para esta fórmula $\vec{OA}=A_R$, $\vec{OO'}=O'_R$ y $\vec{O'A}=A_{R'}$ evidenciando así la relación entre las coordenadas de los vectores respecto a las bases y las coordenadas de los puntos respecto a los sistemas de referencia. De esta forma tenemos que:
+%Sea $M(1_V,B',B)$ la matriz de cambio de base de $B'$ a $B$. Notaremos para esta fórmula $\vec{OA}=A_R$, $\vec{OO'}=O'_R$ y $\vec{O'A}=A_{R'}$ evidenciando así la relación entre las coordenadas de los vectores respecto a las bases y las coordenadas de los puntos respecto a los sistemas de referencia. De esta forma tenemos que:
 
-$$\vec{OA}=\vec{OO'}+\vec{O'A}=\vec{OO'}+M(1_V,B',B)\vec{O'A}$$
+%$$\vec{OA}=\vec{OO'}+\vec{O'A}=\vec{OO'}+M(1_V,B',B)\vec{O'A}$$
 
-luego $A_R=O'_R+M(1_V,B',B)A_{R'}$.
+%luego $A_R=O'_R+M(1_V,B',B)A_{R'}$.
 
-\end{nth}
+%\end{nth}
 
 \subsection{Rectas afines}
 
@@ -661,20 +665,32 @@ En este apartado vamos a describir las \textit{rectas afines}. De ahora en adela
 \end{ndef}
 
 \begin{ndef}[Variedad de dirección]
-  Si $v$ es un \textit{vector director}, llamaremos \textit{variedad de dirección} a la recta generada por este vector, $L(v) = \vec{r}$.
+  Si $r$ es una \textit{recta afín}, llamaremos \textit{variedad de dirección de r} a $\vec{r}$.
 \end{ndef}
 
-\textbf{Propiedades de las rectas afines:}
-\begin{itemize}
-\item Si $Q$ es un punto y $r$ una recta tales que $Q\in r \implies r = Q +L(v)$ donde v es el vector director de la recta $r$.
+\begin{nprop}[Propiedades de las rectas afines]\hfill
+\begin{nlist}
+\item Si $Q$ es un punto y $r$ una recta tales que $Q\in r \implies r = Q +L(v)$ donde $v$ es el vector director de la recta $r$.
 \item Si $P,Q$ son dos puntos, entonces por ellos pasa una única recta $r = P +L(\overrightarrow{PQ})$. \\
-  \begin{proof}
-    (Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces por definición:
+ 
+\end{nlist}
+\end{nprop}
+
+ \begin{proof} \hfill
+ 
+ \begin{nlist}
+	\item Es obvio que dado $r = \{P+\lambda v : \lambda \in \mathbb{R}\},$ este conjunto es identico a $r = Q +L(v)$, puesto que al estar tanto $P$ como $Q$ en $r$, $\vec{PQ}$ es proporcional a $v$
+
+\item (Existencia) $r$ es una recta y es trivial por su definición que contiene tanto a $P$ como a $Q$.
+
+    (Unicidad) Si la recta $r$ pasa por $P$ y $Q$ y sea $s$ otra recta que pasa por ellos, entonces es consecuencia directa de la definición que:
     \[
       s = P+L(\overrightarrow{PQ}) = r
     \]
+    
+    
+\end{nlist}
   \end{proof}
-\end{itemize}
 
 \subsubsection{Posición relativa entre rectas}
 
