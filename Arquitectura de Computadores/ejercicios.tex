@@ -173,10 +173,10 @@
 
 % Colores
 
-\definecolor{50}{HTML}{E8F5E9}
-\definecolor{300}{HTML}{81C784}
-\definecolor{500}{HTML}{4CAF50}
-\definecolor{700}{HTML}{388E3C}
+\definecolor{50}{HTML}{E0F7FA}
+\definecolor{300}{HTML}{4DD0E1}
+\definecolor{500}{HTML}{00BCD4}
+\definecolor{700}{HTML}{0097A7}
 
 % ---------------------------------------------------------------------------
 % OPCIONES PERSONALIZADAS
@@ -515,7 +515,7 @@
   \normalfont \normalsize 
   \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
   \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-  \huge Análisis Matemático II\\ \Large{Ejercicios resueltos}\\ % Título.
+  \huge \sffamily Arquitectura de Computadores\\ \Large{Ejercicios resueltos}\\ % Título.
   \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
 }
 
@@ -588,7 +588,46 @@
   \end{tabular}}
 \end{sol}
 
+\begin{ejer}
+    
+\end{ejer}
 
+\begin{ejer}
+    Suponga que en un CC‐NUMA de red estática de 4 nodos (N0‐N3) se implementa un protocolo
+MSI basado en directorios sin difusión con dos estados en el directorio (válido e inválido). Cada nodo tiene 8
+GBytes de memoria y una línea de cache supone 64 Bytes. Considere que el directorio utiliza vector de bits
+completo.
 
+\begin{enumerate}
+    \item Calcule el tamaño del directorio de uno nodo en bytes.
+    \item Indique cual sería el contenido del directorio, las transiciones de estados (en cache y en el directorio) y la secuencia de paquetes generados por el protocolo de coherencia en los siguientes accesos sobre una dirección D que se encuentra en la memoria del nodo 3 (inicialmente D no está en ninguna caché):
+        \begin{itemize}
+            \item Lectura generada por el procesador del nodo 1
+            \item Escritura generada por el procesador del nodo 1
+            \item Lectura generada por el procesador del nodo 2
+            \item Lectura generada por el procesador del nodo 3
+            \item Escritura generada por el procesador del nodo 0
+        \end{itemize}
+\end{enumerate}
+\end{ejer}
+
+\begin{sol}
+    % Aquí se podría hacer el dibujito que ha hecho en la pizarra.
+
+    La memoria principal es de 32Gb (4 nodos de 8Gb). Cada línea de caché (el tamaño de cada bloque de caché) tiene 64 bytes.
+
+    \begin{enumerate}
+        \item Teniendo en cuenta que hay una entrada por cada marco de bloque o de línea, tenemos que calcular cuantas líneas hay en cada memoria principal de cada nodo. Multiplicando por el número de bits de cada nodo, tendremos el tamaño que buscamos.
+        \begin{align*}
+            \label{}
+            MPN &= 8GBytes = 2^3 \cdot 2^{30} = 2^{33} \ Bytes \\
+            LC &= 64 \ Bytes = 2^6 \ Bytes \\
+            \text{Nº líneas } &= \frac{2^{33} \ Bytes}{2^6 \ Bytes} = 2^{27} \text{ líneas } \\
+            \text{ Tamaño directorio memoria } &= 2^{27}l \cdot (4+1) \ bits = 5 \cdot 2^{27} bits \cdot \frac{1 \ Byte}{2^3 \ bits} = 5 \cdot 2^{24} \ Bytes \\
+                                                &= 5 \cdot 2^4 \cdot 2^{20} \ Bytes = 80 \ MBytes
+        \end{align*}
+    \item 
+    \end{enumerate}
+\end{sol}
 
 \end{document}
