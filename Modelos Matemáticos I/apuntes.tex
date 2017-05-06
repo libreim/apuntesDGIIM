@@ -2039,7 +2039,7 @@ En lo que respecta a vectores propios, tenemos lo siguiente.
   
   \begin{nota}
 	Merece la pena aclarar la notación utilizada. Si $\pl = (-1)^k \lambda^k + a_{k-1}\lambda^{k-1} + \hdots + a_1\lambda + a_0$, con $a_i
-  \in \mathbb C, \ i=0, 1, \hdots, k -1$, entonces $p(A) = (-1)^kA^k + a_{k-1}A^{k-1} + \hdots + a_1A + a_0I$.
+  \in \mathbb C, \ i=0, 1, \hdots, k -1$, entonces $p(A) = (-1)^kA^k + a_{k-1}A^{k-1} + \hdots + a_1A + a_0I = 0 \in \mathcal M_k(\mathbb{C})$.
 \end{nota}
 
   \begin{ejemplo} Para la matriz $A$ del \textit{Ejemplo}  \eqref{ej2}, ¿es verdad que $p(A) = 0$? Comprobémoslo.
@@ -2119,7 +2119,7 @@ Concluimos este apartado con dos definiciones.
 \end{ndef}
 
 \begin{nota}
-  En general, $\rho(A) \ge 0$. Además, el hecho de que $\rho(A) = 0$  implica que $\sigma(A) = \{0, 0, \hdots 0\}$, pero no implica que $A=0$, como demuestra el siguiente ejemplo.
+  En general, $\rho(A) \ge 0$. Además, el hecho de que $\rho(A) = 0$  implica que $\sigma(A) = \{0, 0, \hdots ,0\}$, pero no implica que $A=0$, como demuestra el siguiente ejemplo.
   
 \end{nota}
 
@@ -2619,7 +2619,7 @@ $$
 $$
 \end{ejemplo}
 
-Sin embargo, no todas las normas matriciales son inducidas. Un ejemplo es la \emph{norma de Frobenius}, que no es una norma inducida: $$\|A\|_F = \sqrt{\sum_{i=1}^k \sum_{j=1}^k |a_{ij}|^2}$$
+Sin embargo, no todas las normas matriciales son inducidas. Un ejemplo es la \textbf{norma de Frobenius}, que no es una norma inducida: $$\|A\|_F = \sqrt{\sum_{i=1}^k \sum_{j=1}^k |a_{ij}|^2}$$
 
 \begin{nprop} \label{norma_matricial_vec}
     Dada una norma vectorial $\|\cdot\|$ y la correspondiente norma matricial inducida, se verifica $$\|Ax\| \leq \|A\| \ \|x\|$$
@@ -2655,7 +2655,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
     $\boxed{i \Rightarrow ii}$ \ Si $A^n \rightarrow 0$, por la continuidad del producto matriz-vector, se tiene que $A^n \cdot v \rightarrow 0$.
     
     $\boxed{ii \Rightarrow iii}$ \ Sea $\lambda$ un valor propio de $A$. Ya sabemos por la \textit{Proposición \ref{prop_matrices} $viii$} que $\lambda^n$ es valor propio de $A^n$. Sea $v\ne 0$ tal que $A^n v = \la^n v$. Entonces, por hipótesis: \begin{equation} \label{eq:teorema}
-lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\lim_{n\to\infty} \la^n = 0
+\lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\lim_{n\to\infty} \la^n = 0
 \end{equation}
    Como sabemos que $v\ne0$, que $\displaystyle \lim_{n\to\infty} \la^n = 0 \iff |\la| < 1$ y que $\eqref{eq:teorema}$ se verifica para cualquier $\la$ valor propio de $A$, concluimos que necesariamente $\rho(A) < 1$.
 
@@ -2663,7 +2663,7 @@ lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\
 
     Basta probar que $\displaystyle \lim_{n \to \infty} J^n = 0$, pues $\displaystyle \lim_{n \to \infty} A^n = \lim_{n \to \infty} (PJ^nP^{-1}) = P(\lim_{n \to \infty} J^n)P^{-1}$.
 
-    Supongamos que $r$ es el número de valores propios de $A$ distintos entre sí. Entonces, tenemos que: $$J = \begin{pmatrix}
+    Supongamos que $r$ es el número de valores propios de $A$ \textbf{distintos entre sí}. Entonces, tenemos que: $$J = \begin{pmatrix}
         J_1 & & & \\
             & J_2 & & \\
             & & \ddots & \\
@@ -2673,21 +2673,32 @@ lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\
             & J_2^n & & \\
             & & \ddots & \\
             & & & J_r^n
-    \end{pmatrix}$$
+    \end{pmatrix},$$
 
     donde $$J_i = \begin{pmatrix}
-        \lambda_i & & & 0 \\
-                  & \lambda_i & & \\
-                  & & \ddots & \\
-        0 & & & \lambda_i
-    \end{pmatrix} \Rightarrow J_i^n = \begin{pmatrix}
-        \lambda_i^n & & & 0 \\
-                  & \lambda_i^n & & \\
-                  & & \ddots & \\
-        0 & & & \lambda_i^n
-    \end{pmatrix}$$
+        \lambda_i & 1 & & & \\
+                  & \lambda_i & 1 & \\
+                  & & \ddots & \ddots  \\
+                  & & & \lambda_i & 1\\
+        & & & & \lambda_i
+    \end{pmatrix}, \ \lambda_i \in \sigma(A) \implies J_i^n = \begin{pmatrix}
+                \lambda_i^n & n\lambda_i^{n-1} & \begin{pmatrix}
+                n\\
+                2
+\end{pmatrix} \lambda_i^{n-2} & \hdots & \begin{pmatrix}
+                    n \\
+                    m_i-1
+                \end{pmatrix} \lambda_i^{n-m_i +1} \\
+                 & \lambda_i^n & n\lambda_i^{n-1} & \hdots & \begin{pmatrix}
+	        n\\
+	        m_i-2
+\end{pmatrix} \lambda_i^{n-m_i+2}\\
+                                             &  & \ddots & \ddots & \vdots \\
+                                            & & & \lambda_i^n & n\lambda_i^{n-1}\\
+                                            & & & & \lambda_i^n
+            \end{pmatrix}$$
     
-    %%% FIXME: La forma de J_i está mal, faltan los '1' encima de la diagonal. Revisar demostración.
+    Para un razonamiento del cálculo de la forma explícita de $J_i^n$, consultar \textit{[Ejercicios, 3.7]}.
 
     Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0.$$
 \end{proof}

@@ -210,6 +210,9 @@
 % Aumentar el tamaño del interlineado
 \linespread{1.3}
 
+% Numerar las ecuaciones del entorno {equation} con respecto a las secciones
+\numberwithin{equation}{section}
+
 %---------------------------------------------------------------------------
 %   COMANDOS PERSONALIZADOS
 %---------------------------------------------------------------------------
@@ -1129,22 +1132,26 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
     \end{ejer}
 
     \begin{sol}
-        Sea $A \in \mathcal M_{r \times r}(\mathbb C)$ y sea $p(\lambda) = |A - \lambda I| \Rightarrow p(A)= 0 \in \mathcal M_{r \times r}(\mathbb C)$.
+        Sea $A \in \mathcal M_{r}(\mathbb C)$ y sea $p(\lambda) = |A - \lambda I| = (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_1\lambda + c_0)$ su polinomio característico, con $c_i \in \mathbb{C}$. Llamemos $C = A - \lambda I$. Sabemos que: $$C^{-1} = \frac{1}{|C|} \cdot Adj(C)^T \implies |C|I = C \ Adj(C)^T$$
 
-        Dada $C$, $\displaystyle C^{-1} = \frac{1}{|C|} \cdot Adj(C^T)$. Se cumple siempre que $|C|I = C \ Adj(C^T)$.
+Entonces, tendremos que 
+\begin{equation} \label {th_cayley}
+	p(\lambda)I = (A - \lambda I) \ Adj(A-\lambda I)^T
+\end{equation} 
 
-        Llamamos $C$ a $A - \lambda I$.
+Consideremos la matriz $B = Adj(A - \lambda I)$. Como las entradas de $B$ son polinomios en $\lambda$, podemos separar para cada $0 \le i \le r$ los coeficientes del término $\lambda^i$, y formar una matriz de números $B_i$ tal que:
         \begin{align*}
-            p(\lambda)I &= (A - \lambda I)Adj((A-\lambda I)^T) \\
-            p(\lambda) &= (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_0)
+            Adj(A - \lambda I)^T &= B_{r-1}\lambda^{r-1} + B_{r-2}\lambda^{r-2} + \hdots + B_0
         \end{align*}
-        Separamos las potencias de los coeficientes de mismo grado en $B$:
+        
+        Ahora, sustituyendo en \eqref{th_cayley} nos queda que
         \begin{align*}
-            Adj((A - \lambda I)^T) &= B_{r-1}\lambda^{r-1} + B_{r-2}\lambda^{r-2} + \hdots + B_0 \\
             (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_0)I &= (A -\lambda I)(B_{r-1}\lambda^{r-1} + \hdots + B_0) \\
                                                                      &= -(B_{r-1}\lambda^r + \hdots + B_0\lambda) + (AB_{r-1}\lambda^{r-1}+\hdots + AB_0) \\
                                                                      &= -B_{r-1}\lambda^r + (-B_{r-2}+AB_{r-1})\lambda^{r-1} + \hdots + (-B_0 + AB_1)\lambda + AB_0
         \end{align*}
+        
+        Identificando término a término en la igualdad anterior, notamos que se verifica lo siguiente:
         \begin{align*}
             \label{}
             (-1)^rI &= -B_{r-1} \\
@@ -1153,7 +1160,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
              (-1)^rc_1I &= -B_0 + AB_1 \\
             (-1)^rc_0I &= AB_0
         \end{align*}
-        Nos queda por tanto que,
+Por tanto, concluimos que
         \begin{align*}
             \label{}
             p(A) &= (-1)^r \left[ A^r + c_{r-1}A^{r-1} + c_{r-2}A^{r-2} + \hdots + c_1A + c_0I \right] \\
@@ -1305,87 +1312,90 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
             0 & 0 & 0
         \end{pmatrix}$$
 
-        son nilpotentes de orden $2$ y $3$, respectivamente. En general, si $J$ es un bloque de Jordan con todos los elementos diagonales nulos, entonces $J$ es nilpotente de orden $\dim J$.
+        son nilpotentes de orden $2$ y $3$, respectivamente. En general, si $J$ es un bloque de Jordan con todos los elementos diagonales nulos, entonces $J$ es nilpotente de orden $\dim J$. Esto es una consecuencia directa del \textit{Teorema de Cayley-Hamilton}.
 
-        Resolvemos ahora los dos apartados del ejercicio.
+        Resolveremos ahora los dos apartados del ejercicio.
 
-        Comenzamos probando $(i)$. Sea la matriz $$J = \begin{bmatrix}
-            \lambda & 1 & & & \\
-                    & \lambda & 1 & & \\
-                    & & \ddots & \ddots & \\
-                    & & & & 1 \\
-                    & & & \lambda &
-        \end{bmatrix}, \sigma(J) = \{\lambda\}$$
+        \underline{Comenzamos probando $(i)$}. Sea $A \in \mathbb{C}^{d\times d}$. Aplicando el \textit{Teorema de la forma canónica de Jordan}, sabemos que $A$ es semejante a una matriz diagonal por bloques $J$, y también sabemos que $A^n = 0 \iff J^n = 0$. Además, es obvio que $J^n = 0$ si y solo si cada uno de los bloques que la forman es nulo.
+        
+        
+        
+        Consideremos un bloque arbitrario de $J$, digamos $$J_\lambda = \begin{pmatrix}
+	\lambda & 1\\
+	& \lambda & 1 \\
+	& & \ddots & \ddots \\
+	& & & \lambda & 1 \\
+	& & & & \lambda
+\end{pmatrix}, \quad \lambda \in \sigma(A)$$
 
-        \begin{align*}
-            \label{}
-            J = \lambda I + F , F = \begin{bmatrix}
-                0 & 1 & & & \\
-                  & 0 & 1 & & \\
-                  & & \ddots & & \\
-                & & & & 1 \\
-                & & & 0 & 
-            \end{bmatrix}, \text{una matrix FLIP} \\
-            J^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
+
+Tenemos que $J_\lambda = \lambda I + F$, donde $$F = \begin{pmatrix}
+	0 & 1\\
+	& 0 & 1 \\
+	& & \ddots & \ddots \\
+	& & & 0 & 1 \\
+	& & & & 0
+\end{pmatrix}$$
+
+Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Conocemos una fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
                 n \\
                 k
-            \end{pmatrix} \lambda^{n-k} F^k \\
-            F^2 = \begin{pmatrix}
-                0 & 0 & 1 & & \\
-                  & 0 & 0 & 1 & \\
-                  & & & & 1 \\
-                  & & & & 0 \\
-                  & & & & 0
-            \end{pmatrix}, F^3 = \begin{bmatrix}
-                0 & 0 & 0 & 1 & & \\
-                 & 0 & 0 & 0 & 1 \\
-                 & & & & & \\
-                 & & & & & \\
-                 & && & &
-            \end{bmatrix}, F^{p-1} = \begin{bmatrix}
-                0 & 0 & \hdots& 1 \\
-                  & & & \\
-                  & & & \vdots \\
-                  & & & 0
-            \end{bmatrix}
-        \end{align*}
-
-        Tenemos entonces que $\forall n \geq p, J^n = \sum^{p-1}_{k=0} \begin{pmatrix}
+            \end{pmatrix} \lambda^{n-k} F^k$$
+%%% TODO: ¿De dónde sale la fórmula?
+        Ahora, como $F$ es nilpotente de orden $p$, tenemos que $$ J_\lambda^n = \sum^{p-1}_{k=0} \begin{pmatrix}
             n \\
             k
-        \end{pmatrix} \lambda^{n-k} F^k$ 
+        \end{pmatrix} \lambda^{n-k} F^k, \quad  \forall n \geq p $$
+        
         \begin{align*}
             \label{}
+                J^n_\lambda = 
             \begin{pmatrix}
-                \lambda^n \begin{pmatrix}
+                \lambda^n & n\lambda^{n-1} & \begin{pmatrix}
+                n\\
+                2
+\end{pmatrix} \lambda^{n-2} & \hdots & \begin{pmatrix}
                     n \\
-                    1
-                \end{pmatrix} \lambda^{n-1} & & \hdots & \lambda^n \begin{pmatrix}
-                    n \\
-                    1
-                \end{pmatrix} \lambda^{n-1} \\
-                & \lambda^n \begin{pmatrix}
-                    n \\
-                    1
-                \end{pmatrix} \lambda^{n-1} & & \\
-                                            & \ddots & & \\
-                                            & & & \lambda^n \begin{pmatrix}
-                    n \\
-                    1
-                \end{pmatrix} \lambda^{n-1}
-            \end{pmatrix}
+                    p-1
+                \end{pmatrix} \lambda^{n-p +1} \\
+                 & \lambda^n & n\lambda^{n-1} & \hdots & \begin{pmatrix}
+	        n\\
+	        p-2
+\end{pmatrix} \lambda^{n-p+2}\\
+                                             &  & \ddots & \ddots & \vdots \\
+                                            & & & \lambda^n & n\lambda^{n-1}\\
+                                            & & & & \lambda^n
+            \end{pmatrix},\quad n \ge p
         \end{align*}
-        Concluimos entonces que $J$ es nilpotente de orden $p \Leftrightarrow \lambda = 0$.
+        
+        Teniendo en cuenta todo el desarrollo anterior, concluimos que $J$ es nilpotente de orden $p$ si y solo si $\lambda = 0$.
+        
+        \textit{Demostración alternativa}. En primer lugar, sea $A \in \mathbb{C}^{d\times d}$ tal que su único valor propio es $0$. Entonces, el polinomio característico asociado será $p(\lambda) = (-1)^d\lambda^d$. Por el \textit{Teorema de Cayley-Hamilton}, tenemos que $p(A) = (-1)^dA^d = 0$, por lo que $A$ es nilpotente de orden $d$.
+        
+        Supongamos ahora que $A$ es nilpotente de orden $p$. Si $\lambda$ es un valor propio de $A$, ya sabemos que $\lambda^p$ es valor propio de $A^p$. Por tanto, existirá un $v \neq 0$ tal que $$ 0 = A^p v =  \lambda^p v,$$ lo cual es absurdo salvo en el caso $\lambda = 0$.
 
-        Probamos ahora $(ii)$. Sea $A \in \mathbb C^{d \times d} \Rightarrow \exists J \text{ (de Jordan) y } P \text{ regular }$ tal que $A = PJP^{-1}$. Sabemos que la matriz $J$ es de la forma $$ J= \begin{pmatrix}
-            J_1 & & & \\
-                & J_2 & & \\
-                & & \ddots & \\
-                & & & J_s
-        \end{pmatrix}$$
+        \underline{Probamos ahora $(ii)$}. Consideremos $A \in \mathbb{C}^{2\times 2}$. Ya sabemos por $(i)$ que $A$ es nilpotente si y solo si su único valor propio es el $0$. $$A = \begin{pmatrix}
+        a & b\\
+        c & d
+\end{pmatrix} \implies p(\lambda) = |A - \lambda I| = \lambda^2 - (a+d)\lambda - bc + ad$$
 
-Ya sabemos que podemos escribir $A^n$ de la siguiente forma: $$A^n = (PJP^{-1})^n = (PJP^{-1})(PJP^{-1}) \hdots (PJP^{-1}) = PJ^nP^{-1}$$
-Y por tanto, aplicando el apartado $(i)$:
-        $$A^n = 0 \Leftrightarrow J^n = 0 \Leftrightarrow J^n_1, J^n_2, \hdots, J^n_s = 0 \Leftrightarrow \lambda_1 = \lambda_2 = \hdots \lambda_s = 0$$
+Como queremos que $0$ sea la única raíz de $p(\lambda)$, imponemos las siguientes condiciones: $$\begin{cases}
+	a + d = 0\\
+	bc = 0\\
+	ad = 0
+\end{cases} \implies 
+\begin{cases}
+	a = d = 0\\
+	b = 0 \text{ ó } c = 0
+\end{cases}$$
+
+Es decir, las matrices nilpotentes de orden $2$ son de la forma: $$\begin{pmatrix}
+0 & 0\\
+c & 0	
+\end{pmatrix} \quad \text{ó} \quad 
+\begin{pmatrix}
+0 & c\\
+0 & 0	    
+\end{pmatrix}, \quad c \in \mathbb{C}.$$
     \end{sol}
     \end{document}
