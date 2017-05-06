@@ -1029,8 +1029,8 @@
             \label{}
             \int_0^{R} e^{-xy} \ sen x \ dx = -e^{Ry} \frac{y \ sen R + cosR}{1+y^2} + \frac{1}{1 + y^2} = \frac{1 - e^{Ry} [y \ senR + cosR]}{1 + y^2}
         \end{align*}
-        % FIXME: No sé qué está haciendo aquí
-        \begin{align*}
+        % FIXME: Por Fubini se puede hacer en ambos sentidos.
+                \begin{align*}
             \label{}
             \int_{[0, R] \times [0, \infty)} F(x,y) \ dxdy &= \int_{0}^{+\infty} \left( \int_0^{R} e^{-xy} \ senx \ dx \right) dy \\
                                                            &= \int_0^{+\infty} \frac{1}{1+y^2} \left[ 1 - e^{-Ry} (y \ sen R + cos R) \right] dy
