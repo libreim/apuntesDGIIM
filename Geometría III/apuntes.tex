@@ -620,7 +620,7 @@ A continuación vamos a estudiar distintas \textit{combinaciones} de puntos del 
 \subsection{Sistemas de referencia y coordenadas}
 
 \begin{ndef}[Sistema de referencia]
-Sea $V$ un espacio vectorial de dimesión finit y $E$ un espacio afín asociado a $V$. Llamaremos \textit{ sistema de referencia cartesiano } a cada conjunto $R=\{O,B\}$ donde $O\in E$ y $B$ es base de $V$.
+Sea $V$ un espacio vectorial de dimesión finita y $E$ un espacio afín asociado a $V$. Llamaremos \textit{ sistema de referencia cartesiano } a cada conjunto $R=\{O,B\}$ donde $O\in E$ y $B$ es base de $V$.
 
 $O$ se denomina el origen del sistema de referencia 
 
@@ -647,6 +647,7 @@ En este caso se induce en $E$ una distancia como $d(A,B) = \|\vec{AB}\|\ \forall
 %luego $A_R=O'_R+M(1_V,B',B)A_{R'}$.
 
 %\end{nth}
+
 
 \subsection{Rectas afines}
 
@@ -721,6 +722,21 @@ Podemos clasificar un par de rectas $r$ y $s$ por su posición en el plano afín
 
 \subsection{Triángulos}
 Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alineados $A, B, C$ llamados \textit{vértices} y las tres rectas que los unen.
+
+\begin{ndef}[Coordenadas baricéntricas en un triángulo]
+	Si $ABC$ es un triángulo en $\R^2$, cualquier punto interior a él puede ser representado por tres coordenadas $(\alpha,\beta,\gamma)$ baricéntricas tales que:
+	\[
+	\alpha + \beta + \gamma = 1 \quad \text{con } 0\leq \alpha,\beta,\gamma \leq 1
+	\]
+	Donde la relación entre las coordenadas cartesianas y las baricéntricas viene dada por:
+	\[
+	\begin{cases}
+	x = \alpha x_A + \beta x_B + \gamma x_C\\
+	y = \alpha y_A + \beta y_B + \gamma y_C
+\end{cases}
+	\]
+\end{ndef}
+
 
 \begin {ndef}
   Dos o más puntos $A_1, A_2, ... , A_n $ están alineados $\iff$ existe una recta $r \subset \mathbb{R}^2$ tal que $A_i \in r\ \forall i \in 1,...,n$
