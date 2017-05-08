@@ -883,17 +883,6 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \end{nth}
 
-%%% TODO: Elegir cual os gusta más please.
-
-%% \begin{proof}
-%%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
-%%   \[
-%%     \{A + \lambda (\frac{C+B}{2} - A)\}
-%%   \] 
-%%   Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
-
-%%   Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
-%% \end{proof}
 \begin{proof}
   Sea $A'$ el punto medio del lado opuesto a $A$ en un triángulo $ABC$. Sea $A \vee A'$ una de las medianas. Esta es:
   \[
@@ -1306,9 +1295,6 @@ Una afinidad $f$ cumple las siguientes propiedades:
   \end{nlist}
 \end{proof}
 
-% \begin{nota}
-%   Tenemos que ver esta transformación como una transformación intuitiva en la cual
-% \end{nota}
 
 \begin{ndef}
 	Una dilatación es una aplicación $h(P) = \lambda P + b$. 
@@ -1333,7 +1319,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C($centro, radio$)$.
 \end{ndef}
 
-%FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
 \begin{nprop}
   Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
   \begin{enumerate}
@@ -1344,12 +1329,21 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   En nuestro caso, cumplirán que $h(C_1) = C_2$ y $\rho_2 = \lambda \rho_1$.
 \end{nprop}
 
+\begin{proof}
+	Demostraremos la existecia de una única dilatación que lleve $C_1$ en $C_2$, de modo que la dilatación que lleva $C_2$ en $C_1$ sea análoga. \\
+	
+	Veamos primero la existencia:\\
+		La dilatación $h(P) = (\rho_2/\rho_1)P + (\rho_2/\rho_1) (A_2-A_1)$. De este modo $\lambda = (\rho_2/\rho_1)$, entonces $\rho_2 = \lambda \rho_1$ y $h(A_1) = (\lambda)A_1 +  (A_2-(\lambda)A_1) = (\rho_2/\rho_1)A_1 +  (A_2-(\rho_2/\rho_1)A_1) = A_2$, por lo que lleva $C_1$ en $C_2$. \\
+		
+	Es única porque si hubiese otra tendría que cumplir que  $\lambda = (\rho_2/\rho_1)$, y además que $h(A_1) = A_2$, por lo que $\lambda A_1 + b = A_2$, y entonces $b= A_2- \lambda A_1$, por lo que es la misma dilatación.\\
+	
+\end{proof}
+
 \begin{ndef}
   Dos puntos $A$, $B$ de $C = C(O,\rho) $ se dicen diametralmente opuestos si y solamente si $O \in A \vee B$, es decir, $\equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$.
 \end{ndef}
 
 
-%%% DONE
 \begin{nprop}
   Un par de puntos diametralmente opuestos de una circunferencia $C$ la determinan de forma única.
 \end{nprop}
@@ -1366,15 +1360,17 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   Dos rectas $r$ y $s$ son perpendiculares si sus vectores directores forman un ángulo recto.
 \end{ndef}
 
-%TODO: ¿Mejorar un poco más?
 \begin{nprop}
   Dados dos puntos $A$ y $B$, el lugar geométrico de los puntos $P$ que cumplen que los segmentos $AP$ y $BP$ forman un ángulo recto es una circunferencia.
 \end{nprop}
 
 \begin{proof}
-	El lugar geométrico que buscamos son todos los puntos $P$ que cumplen que $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
-	$|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, formando una circunferencia de centro $M$ y radio $\rho$. 
+	El lugar geométrico que buscamos son todos los puntos $P$ que cumplen que $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, $|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, formando una circunferencia de centro $M$ y radio $\rho$. 
 \end{proof}
+
+\begin{nota}
+	Para comprender mejora la demostración, es útil tener en cuenta que $<A,B> = <A/2+A/2,B/2+B/2> =  <A/2,B/2> + <A/2,B/2> +  <A/2,B/2> + <A/2,B/2> =  <B/2+A/2> + <A/2,B/2>  <B/2,A/2> + <A/2,B/2> = <A/2+B/2, A/2+B/2> = |M|^2$
+\end{nota}
 
 \begin{nota}
 	Véase que esta circunferencia es la única definida por $A$ y $B$ de modo que sean diametralmente opuestos.
@@ -1544,12 +1540,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   \end{minipage}
 \end{nprop}
 
- 
-
-\begin{nprop}
-  Si $r$ y $s$ son perpendiculares, entonces el ángulo formado por sus dos vectores directores es $\theta = \pi/2$.
-\end{nprop}
-
 \begin{nth}
   Los tres ángulos de un triángulo suman $\pi$.
 \end{nth}
@@ -1586,7 +1576,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 \begin{proof}\hfill \\
   $\boxed{\Rightarrow}$\hfill\\
    \begin{minipage}[c]{0.75\textwidth}
-  %%%FIXME:¿HARÍA FALTA EXPLICARLA MÁS? no me salió muy clara.
   
   Al ser ambas diagonales hipotenusas de triángulos idénticos (por ser $\vec{AB}=\vec{DC}$, $\vec{BC}=\vec{AD}$ y por ser recto el ángulo que une los segmentos) son de igual distancia.\hfill
 
@@ -1642,7 +1631,7 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 	Además como el centro está en la diagonal $A\vee C$, estos dos puntos son diametralmente opuestos. Análogo para $B\vee D$.
 \end{proof}
 
-%%% TODO: completar
+
 \begin{nprop}
   Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo.
 \end{nprop}
