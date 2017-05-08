@@ -2949,4 +2949,98 @@ Supuesto que el par de rectas sobrantes son paralelas:
 \end{nlist}
 \end{proof}
 
+\subsection{Dualidad}
+
+\begin{ndef}[Coordenadas homogéneas de un punto]
+	Si $P \in \mathbb P^2$ es un punto tal que $P = \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}$, entonces las coordenadas homogéneas del punto son la terna:
+\[
+(x_0,x_1,x_2)
+\]
+\end{ndef}
+
+\begin{ndef}[Coordenadas homogéneas de la recta]
+	Si $r \in \mathbb P ^2$ es una recta de la forma:
+	\[
+	r \equiv a_0x_0 + a_1x_1 + a_2 x_2
+	\]
+	entonces, se llaman coordenadas homogéneas de la recta a la terna:
+	\[
+	(a_0,a_1,a_2)
+	\]
+\end{ndef}
+
+
+	Sea $P \in \mathbb P ^2$ un punto. $P = \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix} $ con algún $x_i \ne 0$.(Las listas proporcionales se identifican). 
+Sea también $r \in \mathbb P ^2$ una recta con $r \equiv a_0x_0 + a_1x_1 + a_2 x_2 \equiv (a_0,a_1,a_2)$  con algún $a_i \ne 0$. (Las listas proporcionales representan la misma recta)
+
+
+
+\begin{ndef}[Plano proyectivo dual]
+	El plano proyectivo dual es el conjunto de rectas de $\mathbb P ^2 \equiv \mathbb P^{2*}$ definido como:
+	\[
+	\mathbb P^{2*} = \{ (a_0,a_1,a_2) \ \text{ con algún $a_i\ne 0$}\}
+	\]
+\end{ndef}
+Del mismo modo se define para puntos. De esta forma, tenemos dos copias del plano proyectivo, los $(a_0,a_1,a_2)\in \mathbb P^{2*}$ y los $\begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  \in \mathbb P ^2$ y con ello tenemos que:
+\[
+a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
+	=0 \ \ \ \ P \in r\\
+	\ne 0 \ \ \ \ P \notin r
+\end{cases}
+\]
+
+\begin{ndef}[Recta del plano proyectivo dual]
+	Una recta del plano proyectivo dual $\mathbb P^{2*}$ viene dada de la forma:
+	\[
+	\Lambda = \{ (a_0, a_1,a_2) \in \mathbb P^{2*} : \alpha_0a_0 + \alpha_1 a_1 + \alpha_2 a_2 = 0\}
+	\]
+	\[
+	= \{ r \text{ recta de } \mathbb P ^2  : r \text { pasa por } P\} \ \ \ \text{ con } P = \begin{pmatrix}
+ \alpha_0\\
+ \alpha_1\\
+ \alpha_2
+\end{pmatrix} 
+	\]
+	También son llamados haces de rectas de $\mathbb P^2$ que pasan por $P$.
+\end{ndef}
+
+\begin{nth}
+	Existe un isomorfismo NATURAL entre $\mathbb P^2 $y $(\mathbb P^{2*})^*$
+\end{nth}
+\begin{nota}
+	Lo que hace es volver a transformar los haces de rectas en puntos.
+\end{nota}
+
+\begin{nprop}[Propiedades]
+	\begin{nlist}
+	\item Una sucesión de puntos alineados en $\mathbb P^2$ son rectas concurrentes en $\mathbb P^{2*}$
+\end{nlist}
+\end{nprop}
+
+\begin{nth}
+	Por dos puntos distintos pasa una recta y solo una.
+\end{nth}
+
+\begin{nth}[Enunciado dual]
+	Entre dos rectas del plano proyectivo existe un único punto de intersección entre ellas.
+\end{nth}
+
+\begin{ejemplo}
+	Un triángulo
+\end{ejemplo}
+\begin{ndef}[Triángulo dual]
+	Tres rectas no concurrentes(los vértices del original) y tres puntos de corte(las rectas del original)
+\end{ndef}
 \end{document}
