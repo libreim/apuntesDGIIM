@@ -2700,7 +2700,226 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
     
     Para un razonamiento del cálculo de la forma explícita de $J_i^n$, consultar \textit{[Ejercicios, 3.7]}.
 
-    Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0.$$
+    Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0$$
+
+
 \end{proof}
+
+\begin{ndef}
+    Dada una matriz $A \in \mathcal M_k (\mathbb C)$ con espectro
+    $$ \sigma(A) = \{ \lambda_1, \lambda_2, \hdots, \lambda_r \}$$
+    donde $r \leq k$.
+    Decimos que $\lambda_1$ es el \textit{valor propio dominante} si 
+    \begin{itemize}
+        \item $|\lambda_1| > |\lambda_2| \geq \hdots \geq |\lambda_r|$
+        \item Es simple
+    \end{itemize}
+\end{ndef}
+
+\begin{ejemplo}
+    \begin{align*}
+        \label{}
+        A &= \begin{pmatrix}
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}, \sigma(A) = \{0, 1 \} \ \ \ \ \lambda_1 = 1 \text{ dominante} \\
+        B &= \begin{pmatrix}
+            1 & 0 \\
+            0 & -1
+        \end{pmatrix}, \sigma(B) = \{ 1, -1 \} \ \ \ \ |\lambda_1| = |\lambda_2|, \text{ no hay valor propio dominante}
+    \end{align*}
+\end{ejemplo}
+
+\begin{nth}
+    Si $A \in \mathcal M_k (\mathbb C)$ es una matric con valor propio dominante $\lambda_1$, entonces la sucesión $$ \left\{ \frac{1}{\lambda_1^n}A^n \right\}_{n \geq 0}$$ converge a una matriz $Q \in \mathcal M_k (\mathbb C)$ que verifica:
+    \begin{itemize}
+        \item $Im(Q) = Ker(A - \lambda_1I)$
+        \item $Qv = v$, donde $v$ es el vector propio asociado al valor propio $\lambda_1$
+        \item $Q^2 = Q$
+        \item $QA = AQ$
+    \end{itemize}
+\end{nth}
+
+\begin{proof}
+    $A$ es una matriz $k \times k$ con $k \geq 2$, luego $A$ es semejante a su forma  canónica de Jordan, por lo que existe $P$ inversible y $J$ su forma canónica tales que $A = PJP^{-1}$.
+    $$J = \begin{pmatrix}
+        \lambda_1 & & & & \\
+                  & J_2 & & & \\
+                  & & J_3 & & \\
+                  & & & \ddots & \\
+                  & & & & J_r
+    \end{pmatrix} \ \ |\lambda_1| > |\lambda_i|, i = 1, 2, \hdots, r \ \ \rho(J_i) < |\lambda_1|$$
+    %FIXME Es posible que falte algo aquí.
+
+    $$\frac{1}{\lambda_1}J = \begin{pmatrix}
+        1 & & & &\\
+          & \frac{1}{\lambda_1}J_2 & & &\\
+          & & \frac{1}{\lambda_1}J_3 & & \\
+          & & & \ddots & \\
+          & & & & \frac{1}{\lambda_1}J_r
+    \end{pmatrix}$$
+
+    \begin{align*}
+        \label{}
+        \frac{1}{\lambda_1^n} A^n = \frac{1}{J_1^n}(PJ^nP^{-1}) = P \frac{1}{\lambda_1^n}J^nP^{-1} = P
+        %FIXME Faltan cosas aquí.
+    \end{align*}
+    
+    $$\theta = \begin{pmatrix}
+        1 & 0 & \hdots & 0 \\
+        0 & 0 & \hdots & 0 \\
+        \vdots & & \vdots & \\
+        0 & 0 & \hdots & 0
+    \end{pmatrix}$$
+
+    \begin{itemize}
+        \item Sea $Ker(A - \lambda_1I) =$ subespacio propio asociado al valor propio $\lambda_1$ de dimensión 1 = $\langle v_1 \rangle$ = $\langle p_1 \rangle$ .
+            $P = \begin{pmatrix}
+                p_1 & p_2 & \hdots & p_k
+            \end{pmatrix}$ donde $p_1$ es una columna que representa al vector propio asociado al valor propio $\lambda_1$.
+            Por otro lado, $Q = P\theta P^{-1} \Rightarrow QP = PQ \Rightarrow Q \begin{pmatrix}
+                p_1 & p_2 & \hdots & p_k
+            \end{pmatrix} = \begin{pmatrix}
+                p_1 & p_2 & \hdots & p_k
+            \end{pmatrix} \begin{pmatrix}
+        1 & 0 & \hdots & 0 \\
+        0 & 0 & \hdots & 0 \\
+        \vdots & & \vdots & \\
+        0 & 0 & \hdots & 0
+    \end{pmatrix}$
+
+    $ \begin{pmatrix}
+        Qp_1 & Qp_2 & \hdots & Qp_k
+    \end{pmatrix} = \begin{pmatrix}
+        p-1 & 0 & \hdots & 0
+    \end{pmatrix}$
+
+\item
+    $$ \begin{rcases}
+        Qp_1 = p_1 \\
+        Qp_2 = 0 \\
+        \vdots \\
+        Qp_k = 0
+    \end{rcases} \text{ luego } Im Q = \langle p_1 \rangle = Ker (A - \lambda_1 I)$$
+\item
+    \begin{align*}
+        \label{}
+        Q^2 = P\theta P^{-1} = P \begin{pmatrix}
+            1 & 0 & \hdots & 0 \\
+            0 & 0 & \hdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \hdots & 0
+        \end{pmatrix}^2 P^{-1} = P \begin{pmatrix}
+            1 & 0 & \hdots & 0 \\
+            0 & 0 & \hdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \hdots & 0
+        \end{pmatrix}P^{-1} = P\theta P^{-1} = Q
+    \end{align*}
+\item 
+    ¿$QA = AQ$?
+
+    \begin{align*}
+        \label{}
+        QA = (P\theta P^{-1})A = \left[ P \left( \lim_{n \to \infty} \frac{1}{\lambda^n_1}J^n \right) P^{-1} \right] A
+    \end{align*}
+
+    %FIXME Completar
+    \end{itemize}
+\end{proof}
+
+    \subsection{Dinámica de poblaciones}
+    \label{sub:din_mica_de_poblaciones}
+    
+    Existen dos procesos que afectan al cambio del tamaño de la población:
+
+    % TODO No está copiado porque dice antcc que lo va a copiar
+
+    \subsubsection{El modelo de Leslie}
+    \label{ssub:el_modelo_de_leslie}
+
+    Realizaremos varias consideraciones en este modelo: \begin{itemize}
+        \item Supondremos que la edad máxima alcanzada por un individuo de una población son $L$ años.
+        \item Dividimos esta población en $N$ clases de edades. Cada clase es evidente que tendrá $\frac{L}{N}$ años de duración.
+    \end{itemize}
+
+    La población se censará cada $\frac{L}{N}$ años para que todos los individuos de una clase pasen a la siguiente.
+
+    Llamamos $x_i^{(n)}$ al número de individuos clase $i$ en el recuento $n$-ésimo.
+    La población en cada censo viene descrita por el vector $$x^{(n)} = \begin{bmatrix}
+        x_1^{(n)} \\
+        \vdots \\
+        x_N^{(n)}
+    \end{bmatrix}$$
+
+    Los procesos de nacimiento y muerte entre dos censos consecutivos se pueden describir mediante los siguientes parámetros demográficos:
+    \begin{itemize}
+        \item Al promedio del númerode hijas que tiene una hembra durante el tiempo que permanece en la clase $i$ lo llamaremos $a_i$, con $i = 1, 2, \hdots, N$. Es claro que $a_i \geq 0, \ a_i \in \R$.
+        \item La fracción de las hembras que están en la clase $i$ que se espera que sobrevivan y pasen a la clase $i+1$ la llamaremos $b_i$, con $i = 1, 2, \hdots, N-1$. Es claro que $0 < b_i \leq 1$, un porcentaje.
+    \end{itemize}
+
+    Tras estas consideraciones, ya podemos pasar a ver el modelo en sí:
+    \begin{align*}
+        \label{}
+        x_1^{(n+1)} &= a_1 \ x_1^{(n)} + a_2 \ x_2^{(n)} + \hdots + a_N \ x_N^{(n)}  \\
+        x_2^{(n+1)} &= b_1 \ x_1^{(n)} \\
+        x_3^{(n+1)} &= b_2 \ x_2^{(n)} \\
+        \vdots \\
+        x_N^{(n+1)} &= b_{N-1} \ x_{N-1}^{(n)} 
+    \end{align*}
+    
+    $$
+    \begin{pmatrix}
+        a_1 & a_2 & a_3 & \hdots & a_N \\
+        b_1 & 0 & 0 & \hdots & 0 \\
+        0 & b_2 & 0 & \hdots & 0 \\
+        \vdots & & & & \\
+        0 & 0 & \hdots & b_N-1 & 0
+    \end{pmatrix} \begin{pmatrix}
+        x_1^{(n)} \\
+        x_2^{(n)} \\
+        x_3^{(n)} \\
+        \hdots \\
+        x_N^{(n)}
+    \end{pmatrix} = \begin{pmatrix}
+        x_1^{(n+1)} \\
+        1x_2^{(n+1)} \\
+        x_3^{(n+1)} \\
+        \hdots \\
+        x_N^{(n+1)}
+    \end{pmatrix}$$
+
+    %FIXME Falta  aquí algo sobre notación
+
+    \begin{ejemplo}
+        Describa y estudie la evolución de una población distribuida en grupos de edad cuya matriz de Leslie viene dada por $$\mathcal L = \begin{bmatrix}
+            1 & \frac{1}{3} \\
+            \frac{1}{2} & 0
+        \end{bmatrix}$$
+
+        Decimos que hay dos clases de edad, $[0, \frac{L}{2}), [ \frac{L}{2}, L ]$. Las tasas de reproducción son: \begin{itemize}
+            \item La primera clase tiene un media de una cría por cada individuo.
+            \item La segunda clase tiene una media de 1,5 crías por individuo.
+        \end{itemize}
+        Las tasas de mortalidad: de la primera a la segunda clase sobreviven el $50\%$ de los individuos.
+
+        El objetivo es el estudio de $X^{(n+1)} = \mathcal L^nX^{(0)}$
+
+    \end{ejemplo}
+
+     \begin{nprop}
+            El polinomio característico de la matriz de Leslie $\mathcal L_N$ viene dado por \begin{align*}
+                \label{}
+                p(\lambda) &= det(L_N - \lambda I) \\
+                           &= (-1)^N \left[ \lambda^N - a_1\lambda^{N-1} - a_2b_1\lambda^{N-2} - a_3 b_1 b_2\lambda^{N-3} - \hdots - a_N b_1 b_2\hdots b_{N-1} \right]
+            \end{align*}
+     \end{nprop}
+
+     \begin{nprop}
+        Se considera el polinomio $$p(\lambda) = \lambda^{N} - \beta_{N-1}\lambda^{N-1} - \hdots - \beta_1\lambda - \beta_0$$ con $\beta_i \geq 0, \ i = 0, \hdots, N -1$, y para algún $i \in \{ 0, \hdots, N -2 \}$, $\beta \cdot \beta_{i+1} > 0$.
+        
+        Entonces $p(\lambda)$ tiene una única raíz real positiva $\lambda_1 \in (0, +\infty)$, que es simple y dominante.
+     \end{nprop}
 
 \end{document}
