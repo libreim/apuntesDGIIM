@@ -2643,8 +2643,66 @@ $$\int_{\R^3}f(x,y,z) \ dxdydz = \int_0^{\infty} \left[ \int_{-\pi}^{\pi} \left(
 \end{align*}
 \end{ejemplo}
 
+\subsection{Caracterización de las funciones Riemann-integrables}
+\label{sub:caracterizaci_n_de_las_funciones_riemann_integrables}
 
+\begin{ndef}[Función \textit{Riemann-integrable}]
+    Sea $I = [a, b] \subset \R$ un intervalo y $f : [a, b] \rightarrow \R$ una función acotada. $f$ se dice \textit{Riemann-integrable} si $\underline {\int}f$ = $\overline {\int}f$, donde:
 
+    $$\underline {\int}f = sup \left \{ \sum_{i=1}^{n} m_i(x_i - x_{i-1}) : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \right \}$$
+
+    $$\overline {\int}f = inf \left \{ \sum_{i=1}^{n} M_i(x_i - x_{i-1}) : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \right \}$$
+
+    con $m_i = inf \{ f(x) : x_{i-1} < x < x_i \}$ y $M_i = sup \{ f(x) : x_{i-1} < x < x_i \}$. 
+\end{ndef}
+
+\begin{ndef}[Integral de Riemann]
+    En el caso anterior, se llama \textit{integral de Riemann} de $f$ en $[a, b]$ a $$ \mathcal R \int_{a}^{b} f = \underline{\int}f = \overline{\int}f$$
+\end{ndef}
+
+Vamos a utilizar la siguiente notación de ahora en adelante. Llamaremos $\mathcal R(I)$ al conjunto de funciones \textit{Riemann-integrables} en el intervalo $I$, y $\mathcal L(I)$ al conjunto de funciones \textit{Lebesgue-integrables} en el intervalo $I$. Formalmente,
+$$\mathcal R(I) = \{ f : [a, b] \rightarrow \R \text{ acotada } : f \text{ es \textit{Riemann-integrable}} \}$$
+$$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \textit{Lebesgue-integrable}} \}$$
+
+\begin{nth}
+    Sea $I = [a, b] \subset \R$ un intervalo y $f : [a, b] \rightarrow \R$ una función acotada. Entonces, 
+    $$f \in \mathcal R(I) \Leftrightarrow f \text{ es continua a.e. en } [a, b]$$
+    Además, $\mathcal R(I) \subset \mathcal L (I)$ con 
+    $$ \mathcal R \int_a^b f = \int_{(a,b)} f \ dx $$
+\end{nth}
+
+\begin{proof}
+    Usando que $f = f^{+} + f^{-}$, podemos suponer sin pérdida de generalidad que $f \geq 0$. Definimos $P_n = \{ x^n_i := a + i\frac{b-a}{2^n}, i= 0,1, \hdots 2^n \}$ partición de $[a, b]$. Definimos también $m_i^n := inf \{ f(x) : x^n_{i-1} \leq x \leq x_i^n \}, \ M^n_i := sup \{ f(x) : x^n_{i-1} \leq x \leq x^n_i \}$.
+
+    \begin{nota}
+        Los nodos de la partición $P_n$ lo son también de las particiones siguientes.
+    \end{nota}
+
+    Consideramos también $A^n_i := (x^n_{i-1}, x^n_i), \ s_n := \sum^{2^n}_{i=1} m^n_i \rchi_{A_{i}}, \ t_n := \sum^{2^n}_{i=1} M^n_i \rchi_{A_{i}}$.
+
+    \begin{nota}
+        $s_n$ y $t_n$ son funciones simples positivas $(f \geq 0)$ con 
+        \begin{align*}
+            \label{}
+            (b - a) \underset{[a,b]}{\text{inf}} f &\leq s_1(x) \leq \hdots \leq s_n(x) \leq s_{n+1}(x) \leq \hdots \leq f(x) \\
+                                                   & \leq \hdots \leq t_{n+1}(x) \leq t_n(x) \leq \hdots \leq t_1(x) \leq (b-a) \underset{[a,b]}{\text{sup}} f
+        \end{align*}
+
+        $$\int_{(a,b)} s_n \ dx = \sum^{n}_{i=1} m_i^n(x_i^n - x^n_{i-1}) \leq \underline{\int} f \leq \overline{\int}f \leq \sum^{n}_{i=1} M^n_i (x_i^n - x^n_{i-1}) = \int_{(a,b)} t_n \ dx$$
+        $$
+        \begin{rcases}
+            \{s_n\} \nearrow \ \Rightarrow \{s_n\} \rightarrow s = \text{ función medible } \\
+            \{t_n\} \searrow \ \Rightarrow \{t_n\} \rightarrow t = \text{ función medible }
+        \end{rcases} \text{con } s \leq f \leq t$$
+    \end{nota}
+\end{proof}
+
+\begin{ndef}
+    Se dice que una función $f : [a, b] \rightarrow \R$ es absolutamente continua si $\forall \varepsilon > 0 \exists \delta > 0$ tal que $$ \begin{rcases}
+        a \leq x_1 \leq \hdots \leq x_n \leq b \\
+        \sum^{n}_{i=0} (x_i - x_{i-1}) < \delta
+    \end{rcases} \Rightarrow  \sum^{n}_{i=0} |f(x_i) - f(x_{i-1})| < \varepsilon$$ 
+\end{ndef}
 % --------------------------------------------------------------------------------
 % Bibliografía.
 % --------------------------------------------------------------------------------
