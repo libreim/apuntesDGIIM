@@ -1337,11 +1337,11 @@ Tenemos que $J_\lambda = \lambda I + F$, donde $$F = \begin{pmatrix}
 	& & & & 0
 \end{pmatrix}$$
 
-Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Conocemos una fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
+Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Se puede demostrar por inducción la siguiente fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
                 n \\
                 k
             \end{pmatrix} \lambda^{n-k} F^k$$
-%%% TODO: ¿De dónde sale la fórmula?
+%%% TODO: Demostrar la fórmula por inducción
         Ahora, como $F$ es nilpotente de orden $p$, tenemos que $$ J_\lambda^n = \sum^{p-1}_{k=0} \begin{pmatrix}
             n \\
             k
