@@ -247,6 +247,8 @@
 \newcommand{\W}{\Omega}
 \newcommand{\w}{\omega}
 
+% Conjunto vacío
+\renewcommand{\O}{\emptyset}
 
 % ---------------------------------------------------------------------------
 % CABECERA Y PIE DE PÁGINA
@@ -1567,13 +1569,8 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 %			&
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
-				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}\\
-				\geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
-									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
-				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
-				\\
 				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
-				\\ %\pause
+				\\
 				\geq& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
@@ -1693,7 +1690,7 @@ Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disj
                               \right.
  \]
  
- Es claro que $\mu(\O) = |\O| = 0$, y si $A_k \cap A_j \ne 0$, se tiene que $\mu(A_k \cup A_j) = |A_k| + |A_j| = $\\ $= \mu(A_k) + \mu(A_j)$. Si alguno de ellos no es finito, la suma será $\infty$ por la aritmética definida en $[0,\infty]$.
+ Es claro que $\mu(\emptyset) = |\emptyset| = 0$, y si $A_k \cap A_j = 0$, se tiene que $\mu(A_k \cup A_j) = |A_k| + |A_j| = $\\ $= \mu(A_k) + \mu(A_j)$. Si alguno de ellos no es finito, la suma será $\infty$ por la aritmética definida en $[0,\infty]$.
 	
 \end{ejemplo}
 
@@ -1708,11 +1705,11 @@ Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$,
                               \right.
  \]
  
- Fijemos $\omega \in \Omega$. Claramente $\delta_\omega(\O) = 0$, porque el conjunto vacío no contiene ningún punto. Ahora, si $A_k \cap A_j = \O$, pueden darse dos casos:
+ Fijemos $\omega \in \Omega$. Claramente $\delta_\omega(\emptyset) = 0$, porque el conjunto vacío no contiene ningún punto. Ahora, si $A_k \cap A_j = \emptyset$, pueden darse dos casos:
  
 \begin{itemize}
     \item $\omega \in A_k\cup A_j \implies \omega \in A_k$ o bien $\omega \in A_j$. Supongamos $\omega \in A_k$. Entonces, $\delta_\omega(A_k\cup A_j) = 1 = 1 + 0 = \delta_\w(A_k) + \delta_\w(A_j)$.
-    \item $\w \notin A_k\cup A_j \implies \w \notin A_k$ y $\w \notin A_j$. Entonces, $\delta_\omega(A_k\cup A_j) = 0 = 0 + 0 =$ $=\delta_\w(A_k) + \delta_\w(A_j)$.
+    \item $\w \notin A_k\cup A_j \implies \w \notin A_k$ y $\w \notin A_j$. Entonces, $\delta_\omega(A_k\cup A_j) = 0 = 0 + 0 =\delta_\w(A_k) + \delta_\w(A_j)$.
 \end{itemize}
 	
 \end{ejemplo}
@@ -1907,7 +1904,6 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
       S_k= \sum_{n=1}^k f_n, \quad \forall k \in \mathbb{N}
     \]
     Tenemos que $S_1 \leq \cdots \leq S_k \leq S_{k+1} \leq \cdots $, es decir, $S_k$ es monótona creciente. Además, las funciones $S_k$ son medibles para cada $k \in \mathbb{N}$, por ser suma de funciones medibles. Aplicando el \hyperref[tcm]{\textit{T.C.M}}, tenemos que:
-    %%% WARNING: ¿Manera adecuada de referenciar un teorema por un nombre cualquiera?
     \[
       \lim_{k \to \infty} \int_E S_k\, d\mu = \int_E \lim_{k\to \infty} S_k\, d\mu \implies \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n\, d\mu = \int_E \sum_{n=1}^\infty f_n \overset{\text{Proposición \ref {int_medibles}} \ i}\implies
     \]
@@ -1932,7 +1928,7 @@ Ahora, aplicando el \hyperref[tcm]{\textit{T.C.M}}, se tiene que:
  =  \underset{k\to \infty}{\text{lim}}  \int_E g_k d\mu 
 \]
 
-Por último, como $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo). Además, se tiene que $g_k \le \inf_{n\ge k}\ f_k$. Aplicamos la monotonía de la integral:
+Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo). Además, se tiene que $g_k \le \inf_{n\ge k}\ f_k$. Aplicamos la monotonía de la integral:
 \[
 \int_E g_k\, d\mu  \leq \inf_{n\ge k} \int_E f_n\, d\mu 
 \overset{k\to\infty}{\implies}
