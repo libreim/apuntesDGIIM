@@ -2867,10 +2867,11 @@ que $\frac{PP_4}{PP_2} = \frac{PP_5}{PP_1} \iff P_1\vee P_2 || P_4\vee P_3$. Por
 	$P \in \mathbb{P}^2 \equiv$ recta vectorial de$ \mathbb{R}^3 \equiv (x_0,x_1,x_2) $
 	Entonces, Para algún $x_i \ne 0$, listas proporcionales representan el mismo V y representan el mismo P.
 
-\begin{ndef}[Coordenadas Homogéneas]
-Dado un punto en el espacio proyectivo, llamamos coordenadas homogéneas de dicho punto a cada uno de los puntos pertenecientes a la recta vectorial de $\mathbb{R}^3$ que lo define.
+\begin{ndef}[Coordenadas homogéneas]
+Dado un punto en el espacio proyectivo, llamamos coordenadas homogéneas de dicho punto a cada terna $(x_0,x_1,x_2)$, tal que, vista como un punto de $\mathbb{R}^3$, pertenece a la recta vectorial de $\mathbb{R}^3$ que lo define.
 \end{ndef}
 
+Es conveniente indicar que ternas proporcionales representan el mismo punto de $\mathbb{P}^2$ pues los puntos de $\mathbb{R}^3$ con coordenadas proporcionales pertenecen a la misma recta vectorial.
 
 Ahora bien, tengamos un punto en $\mathbb{R}^2$ de coordenadas $(x,y)$, que sabemos que esta asociado a un único punto de $\mathbb{P}^2$. Definimos las coordenadas homogéneas asociadas a dicho punto como $(x,y,1)$ y todo el resto de coordenadas equivalentes. Del mismo modo si tenemos un punto en el proyectivo  $(x_0, x_1, x_2)$ este equivale con $(x_0/x_2, x_1/x_2)$. 
 
@@ -2878,6 +2879,7 @@ Si observamos la primera parte siempre se puede hacer. La segunda sin embargo no
 
 Sean $A$ y $B$ dos puntos distintos en el afín con $A =(1,2)$ y $B=(-1,1)$ sabemos que definen la recta $A \vee B = \{ \lambda (1,2) + \mu (-1,1) \backslash \lambda + \mu = 1\}$.\\
 Ahora bien, en $\mathbb{P}^2$, teniendo dos puntos $A(a_1,a_2,a_3), B(b_1,b_2,b_3)$, que sabemos que definen rectas vectoriales en $\mathbb{R}^3$, y por tanto generan un plano vectorial, el cual puede verse como una recta proyectiva. Entonces $A\vee B = \{ \lambda (a_1,a_2,a_3) + \mu (b_1,b_2,b_3)\backslash \lambda, \mu \ne 0 \} = \{  \{ (a_1,a_2,a_3) + \alpha (b_1,b_2,b_3)\backslash \alpha  \in \mathbb{R}\} \cup  \{(b_1,b_2,b_3) \}$
+
 \begin{ndef}[Ecuación de una recta en el plano afín.]
 Dada una recta perteneciente al plano afín, sabemos que se puede escribir de la forma $r = \{(x,y) \in \mathbb{R}^2\ \backslash\ ax + by + c = 0, a \textup{ ó } b \neq 0\}$. Entonces llamamos ecuación de r a la expresión $ax + by + c = 0$ 
 \end{ndef}
@@ -2951,37 +2953,23 @@ Supuesto que el par de rectas sobrantes son paralelas:
 
 \subsection{Dualidad}
 
-\begin{ndef}[Coordenadas homogéneas de un punto]
-	Si $P \in \mathbb P^2$ es un punto tal que $P = \begin{pmatrix}
- x_0\\
- x_1\\
- x_2
-\end{pmatrix}$, entonces las coordenadas homogéneas del punto son la terna:
-\[
-(x_0,x_1,x_2)
-\]
-\end{ndef}
-
 \begin{ndef}[Coordenadas homogéneas de la recta]
-	Si $r \in \mathbb P ^2$ es una recta de la forma:
+	Si $r \in \mathbb P ^2$ es una recta cuya ecuación es:
 	\[
-	r \equiv a_0x_0 + a_1x_1 + a_2 x_2
+	a_0x_0 + a_1x_1 + a_2 x_2 = 0
 	\]
 	entonces, se llaman coordenadas homogéneas de la recta a la terna:
 	\[
 	(a_0,a_1,a_2)
 	\]
 \end{ndef}
+ 
+Sea $r \in \mathbb P ^2$ una recta con $r$ con coordenadas homogéneas $(a_0,a_1,a_2)$  con algún $a_i \ne 0$. Entonces cualquier terna proporcional a esta representa la misma recta en $\mathbb{P}^2$, pues la ecuacion sería equivalente.
 
-
-	Sea $P \in \mathbb P ^2$ un punto. $P = \begin{pmatrix}
- x_0\\
- x_1\\
- x_2
-\end{pmatrix} $ con algún $x_i \ne 0$.(Las listas proporcionales se identifican). 
-Sea también $r \in \mathbb P ^2$ una recta con $r \equiv a_0x_0 + a_1x_1 + a_2 x_2 \equiv (a_0,a_1,a_2)$  con algún $a_i \ne 0$. (Las listas proporcionales representan la misma recta)
-
-
+\begin{ndef}[Plano proyectivo dual]
+	Se define el plano proyectivo dual como aquel que tiene como conjunto de puntos el conjunto de rectas de $\mathbb{P}^2$. Es decir :
+	$$\mathbb{P}^{2*} = \{ (a_0,a_1,a_2) \ \text{ con algún $a_i\ne 0$}\}$$
+\end{ndef}
 
 \begin{ndef}[Plano proyectivo dual]
 	El plano proyectivo dual es el conjunto de rectas de $\mathbb P ^2 \equiv \mathbb P^{2*}$ definido como:
@@ -2989,11 +2977,11 @@ Sea también $r \in \mathbb P ^2$ una recta con $r \equiv a_0x_0 + a_1x_1 + a_2 
 	\mathbb P^{2*} = \{ (a_0,a_1,a_2) \ \text{ con algún $a_i\ne 0$}\}
 	\]
 \end{ndef}
-Del mismo modo se define para puntos. De esta forma, tenemos dos copias del plano proyectivo, los $(a_0,a_1,a_2)\in \mathbb P^{2*}$ y los $\begin{pmatrix}
+De esta forma, tenemos dos copias del plano proyectivo, los $(a_0,a_1,a_2)\in \mathbb P^{2*}$ y los $\begin{pmatrix}
  x_0\\
  x_1\\
  x_2
-\end{pmatrix}  \in \mathbb P ^2$ y con ello tenemos que:
+\end{pmatrix}  \in \mathbb P ^2$. Con esto tenemos que:
 \[
 a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
 	=0 \ \ \ \ P \in r\\
