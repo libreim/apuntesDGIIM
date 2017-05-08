@@ -2235,7 +2235,6 @@ Veamos a continuación algunas propiedades sobre vectores propios, valores propi
   \end{nlist}
 \end{nprop}
 
-%%% TODO: Completar con alguna demostración que sea fácil de GEO II.
 \begin{proof} Razonaremos únicamente los dos últimos apartados. El resto se dejan como ejercicio al lector.
 
 \begin{nlist}
@@ -2300,7 +2299,14 @@ Hemos visto que no toda matriz cuadrada es diagonalizable. Para finalizar, verem
 	La forma canónica de Jordan de una matriz $A$ es única salvo eventuales permutaciones de los bloques.
 \end{nota}
 
-Observemos lo siguiente: sea $A \in \mathcal M_k(\mathbb{C})$, con $J$ su forma canónica de Jordan. Entonces, se tiene que la \textbf{multiplicidad geométrica} de un valor propio $\lambda_i$ de $A$ es el número de bloques de $J$ correspondientes a $\lambda_i$. Asimismo, la \textbf{multiplicidad algebraica} de un valor propio $\lambda_i$ de $A$ es la suma de las dimensiones de todos los bloques correspondientes a $\lambda_i$.
+Observemos lo siguiente: sea $A \in \mathcal M_k(\mathbb{C})$, con $J$ su forma canónica de Jordan. Podemos distinguir dos casos:
+
+\begin{nlist}
+	\item Supongamos que $r$ es el número de valores propios distintos de $A$. Entonces, la \textbf{multiplicidad geométrica} de un valor propio $\lambda_i$ de $A$ es 1, y la \textbf{multiplicidad algebraica} de $\la_i$ es la dimensión del bloque asociado a $\lambda_i$.
+	%%% WARNING: completar la multiplicidad geométrica del primer caso.
+	
+	\item Entonces, se tiene que la \textbf{multiplicidad geométrica} de un valor propio $\lambda_i$ de $A$ es el número de bloques de $J$ correspondientes a $\lambda_i$. Asimismo, la \textbf{multiplicidad algebraica} de $\lambda_i$ es la suma de las dimensiones de todos los bloques correspondientes a $\lambda_i$.
+\end{nlist} 
 
 \subsubsection{Modelos lineales en genética}
 
@@ -2487,7 +2493,7 @@ $$ \begin{pmatrix}
 	X_n\\
 	Y_n\\
 	Z_n
-\end{pmatrix} = A 
+\end{pmatrix} = A^n 
 \begin{pmatrix}
 	X_0\\
 	Y_0\\
@@ -2509,7 +2515,7 @@ $$\begin{cases}
 \underset{n\to\infty }{\lim}Z_n = \frac{1}{2}Y_0 + Z_0	
 \end{cases}$$
 
-Como podemos ver, la población de flores rosas tiende a extinguirse, y a largo plazo, dicha población se transormará en flores rojas y blancas a partes iguales.
+Como podemos ver, la población de flores rosas tiende a extinguirse y, a largo plazo, dicha población se transormará en flores rojas y blancas a partes iguales.
 
 \subsection{Normas vectoriales}
 
@@ -2565,7 +2571,7 @@ vectoriales son equivalentes.
 \subsection{Normas matriciales}
 \label{sub:normas_matriciales}
 
-\begin{ndef}
+\begin{ndef}[Norma matricial]
     En el espacio vectorial $\mathcal M_k(\mathbb C)$ de las matrices cuadradas de orden $k$, una norma matricial es una aplicación: $$\|\cdot\| : \mathcal M_k (\mathbb C) \longrightarrow \mathbb R$$ que verifica las siguientes propiedades:
     \begin{nlist}
 		\item $\|A\| \ge 0, \ \forall A \in \mathcal M_k(\mathbb{C})\quad$(positividad)
@@ -2584,7 +2590,7 @@ vectoriales son equivalentes.
 
 Veamos que existe una relación entre normas vectoriales y normas matriciales.
 
-\begin{ndef}
+\begin{ndef}[Norma matricial inducida]
     Dada una norma vectorial $\|\cdot\|$ en $\mathbb{K}^n$, se define la \textit{norma matricial inducida} (o subordinada) en $\mathcal M_n(\mathbb K)$ del siguiente modo: $$\|A\| := \underset{x\ne 0}{\text{ máx }} \frac{\|Ax\|}{\|x\|} = \text{ máx } \{ \|Ax\| : \|x\| = 1 \}$$ donde $\mathbb K = \mathbb{R}$ ó $\mathbb{C}$.
 \end{ndef}
 
@@ -2652,14 +2658,14 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 \end{nth}
 
 \begin{proof}\hfill\\
-    $\boxed{i \Rightarrow ii}$ \ Si $A^n \rightarrow 0$, por la continuidad del producto matriz-vector, se tiene que $A^n \cdot v \rightarrow 0$.
+    $\boxed{(i) \Rightarrow (ii)}$ \ Si $A^n \rightarrow 0$, por la continuidad del producto matriz-vector, se tiene que $A^n \cdot v \rightarrow 0$.
     
-    $\boxed{ii \Rightarrow iii}$ \ Sea $\lambda$ un valor propio de $A$. Ya sabemos por la \textit{Proposición \ref{prop_matrices} $viii$} que $\lambda^n$ es valor propio de $A^n$. Sea $v\ne 0$ tal que $A^n v = \la^n v$. Entonces, por hipótesis: \begin{equation} \label{eq:teorema}
+    $\boxed{(ii) \Rightarrow (iii)}$ \ Sea $\lambda$ un valor propio de $A$. Ya sabemos por la \textit{Proposición \ref{prop_matrices} $viii$} que $\lambda^n$ es valor propio de $A^n$. Sea $v\ne 0$ tal que $A^n v = \la^n v$. Entonces, por hipótesis: \begin{equation} \label{eq:teorema}
 \lim_{n \to \infty}(A^n v) = 0 \Rightarrow \lim_{n \to \infty} (\lambda^n v) = v\lim_{n\to\infty} \la^n = 0
 \end{equation}
    Como sabemos que $v\ne0$, que $\displaystyle \lim_{n\to\infty} \la^n = 0 \iff |\la| < 1$ y que $\eqref{eq:teorema}$ se verifica para cualquier $\la$ valor propio de $A$, concluimos que necesariamente $\rho(A) < 1$.
 
-    $\boxed{iii \Rightarrow i}$ \ Sea $A$ tal que $\rho(A) < 1$. Trabajaremos con su forma canónica de Jordan, es decir, $A = PJP^{-1}$. Ya sabemos que entonces $A^n = PJ^nP^{-1}$.
+    $\boxed{(iii) \Rightarrow (i)}$ \ Sea $A$ tal que $\rho(A) < 1$. Trabajaremos con su forma canónica de Jordan, es decir, $A = PJP^{-1}$. Ya sabemos que entonces $A^n = PJ^nP^{-1}$.
 
     Basta probar que $\displaystyle \lim_{n \to \infty} J^n = 0$, pues $\displaystyle \lim_{n \to \infty} A^n = \lim_{n \to \infty} (PJ^nP^{-1}) = P(\lim_{n \to \infty} J^n)P^{-1}$.
 
@@ -2700,46 +2706,50 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
     
     Para un razonamiento del cálculo de la forma explícita de $J_i^n$, consultar \textit{[Ejercicios, 3.7]}.
 
-    Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0$$
-
-
+    Recordemos que $\dim J_i$ es la multiplicidad algebraica del valor propio $\lambda_i$. Como por hipótesis $|\lambda_i| < 1$ para todo $i$, tenemos que: $$\lim_{n \to \infty} J_i^n = 0 \ \  \forall i \implies \lim_{n\to\infty} J^n = 0$$ Donde hemos usado que una función exponencial domina a una potencial en el límite.
 \end{proof}
 
-\begin{ndef}
-    Dada una matriz $A \in \mathcal M_k (\mathbb C)$ con espectro
+\subsection{Valor propio dominante}
+
+\begin{ndef}[Valor propio dominante]
+    Sea una matriz $A \in \mathcal M_k (\mathbb C)$ con espectro
     $$ \sigma(A) = \{ \lambda_1, \lambda_2, \hdots, \lambda_r \}$$
-    donde $r \leq k$.
+    donde $r \leq k$ es el número de valores propios diferentes.
     Decimos que $\lambda_1$ es el \textit{valor propio dominante} si 
-    \begin{itemize}
-        \item $|\lambda_1| > |\lambda_2| \geq \hdots \geq |\lambda_r|$
+    \begin{nlist}
+        \item $|\lambda_1| > |\lambda_2| \geq \dots \geq |\lambda_r|$
         \item Es simple
-    \end{itemize}
+    \end{nlist}
 \end{ndef}
 
-\begin{ejemplo}
+\begin{ejemplo} No todas las matrices tienen un valor propio dominante.
     \begin{align*}
         \label{}
         A &= \begin{pmatrix}
             0 & 0 & 0 \\
             0 & 0 & 0 \\
             0 & 0 & 1
-        \end{pmatrix}, \sigma(A) = \{0, 1 \} \ \ \ \ \lambda_1 = 1 \text{ dominante} \\
+        \end{pmatrix}, \quad \sigma(A) = \{0, 1 \} \implies \lambda_1 = 1 \text{ dominante.} \\
         B &= \begin{pmatrix}
             1 & 0 \\
             0 & -1
-        \end{pmatrix}, \sigma(B) = \{ 1, -1 \} \ \ \ \ |\lambda_1| = |\lambda_2|, \text{ no hay valor propio dominante}
+        \end{pmatrix}, \quad \sigma(B) = \{ 1, -1 \} \implies |\lambda_1| = |\lambda_2|, \text{ no hay valor propio dominante.}
     \end{align*}
 \end{ejemplo}
 
 \begin{nth}
-    Si $A \in \mathcal M_k (\mathbb C)$ es una matric con valor propio dominante $\lambda_1$, entonces la sucesión $$ \left\{ \frac{1}{\lambda_1^n}A^n \right\}_{n \geq 0}$$ converge a una matriz $Q \in \mathcal M_k (\mathbb C)$ que verifica:
-    \begin{itemize}
+    Si $A \in \mathcal M_k (\mathbb C), k\ge 2$ es una matriz con valor propio dominante $\lambda_1$, entonces la sucesión $$ \left\{ \frac{1}{\lambda_1^n}A^n \right\}_{n \geq 0}$$ converge a una matriz $Q \in \mathcal M_k (\mathbb C)$ que verifica:
+    \begin{nlist}
         \item $Im(Q) = Ker(A - \lambda_1I)$
         \item $Qv = v$, donde $v$ es el vector propio asociado al valor propio $\lambda_1$
         \item $Q^2 = Q$
         \item $QA = AQ$
-    \end{itemize}
+    \end{nlist}
 \end{nth}
+
+\begin{nota}
+	Si $\lambda_1$ es el valor propio dominante de $A$, se verifica que $\lambda_1 \ne 0$.
+\end{nota}
 
 \begin{proof}
     $A$ es una matriz $k \times k$ con $k \geq 2$, luego $A$ es semejante a su forma  canónica de Jordan, por lo que existe $P$ inversible y $J$ su forma canónica tales que $A = PJP^{-1}$.
