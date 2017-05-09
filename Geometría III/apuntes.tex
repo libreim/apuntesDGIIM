@@ -18,6 +18,9 @@
 % ACKNOWLEDGMENTS
 % ------------------------------------------------------------------------------
 
+%Estos apuntes han sido realizados por libreim, de manera principal por los alumnos
+%de la promoción del 97 del doble grado en ingieniería informática y matemáticas.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Plantilla básica de Latex en Español.
 % 
@@ -1482,8 +1485,12 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
    
 \end{nth}
 \begin{proof}
-  Tenemos que $B'A'B_2A_2$ es un rectángulo
-  %%% TODO:COMPLETAR DEMOSTRACIÓN.
+Para los puntos medios se tienen homotecias de razón 1/2 y se dedice que $A_1B_1A_2B_2$ y $A'C'A_2C_2$ son rectánguls con lados paralelos a los lados de ABC y a sus alturas. Por tanto $$C_{B'B_2} = C _{A'A_2} = C_{C'C_2}$$.
+
+Además  $$A_3 \vee A' = B\vee C \perp h_A = A_3\vee A_2 $$ da $A_3 \in C_{A'A_2}$ y análogamente el resto.
+
+la circunferencia de los 9 puntos es la ircuferencia circunscrita del triángulo $A'B'C'$ y su centro es $$O' = 1/2O+1/2H$$. En el se cortan las diagonales de los rectángulos.
+
 \end{proof}
 
 
@@ -1499,9 +1506,14 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 \begin{nota}
   Un ángulo entre rectas sería el ángulo que forman sus vectores directores
 \end{nota}
+
 \begin{nprop}
   Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
 \end{nprop}
+
+\begin{proof}
+	Como tienen los mismo vectores directores entonces el ángulo será igual..
+\end{proof}
 
 \begin{nprop}\hfill\\
   \begin{minipage}[c]{0.65\textwidth}
@@ -1540,6 +1552,11 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   \end{minipage}
 \end{nprop}
 
+\begin{proof}
+	Los vectores que generan ambos ángulos son opuestos. De ese modo dados sendos ángulos opuestos por el vértice $\alpha$ y $\alpha'$, entonces $\alpha= cos^{-1} \frac{\langle  v,w \rangle }{|v||w|} =^1  cos^{-1} \frac{\langle  -v,-w \rangle }{|-v||-w|}  = \alpha'$ donde en 1 se usa la bilinealidad del producto escalar.
+\end{proof}
+
+
 \begin{nth}
   Los tres ángulos de un triángulo suman $\pi$.
 \end{nth}
@@ -1560,6 +1577,10 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   \]
   Las distancias se multiplican por $|\lambda|$ pero los ángulos se mantienen.
 \end{nprop}
+
+\begin{proof}
+	 Tengamos el ángulo $\theta=cos^{-1} \frac{\langle  v,w \rangle }{|v||w|} $. Tras aplicar la dilatación $ \vec f (v)$ sobre los vectores nos queda $cos^{-1} \frac{\langle  \lambda v,\lambda w \rangle }{|\lambda v||\lambda w|} = cos^{-1} \frac{\lambda^2 \langle  v,w \rangle }{\lambda^2 |v|| w|} = cos^{-1} \frac{ \langle  v,w \rangle }{ |v|| w|} =  \theta$ .
+\end{proof}
 
 
 
@@ -1643,46 +1664,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 	
 	Si no fuesen diametralmente opuestos, tendríamos que ver que dos rectas paralelas que no estén a la misma distancia del centro no pueden tener, en el segmento incluido dentro de la circunferencia, la misma distancia. Por lo cual, para que sea un paralelogramo, los vértices han de ser diametralmente opuestos 
 \end{proof}
-
-
-
-%TODO: Si alguien puede que envíe al grupo apuntes de este día.
-\subsection {Razón áurea}
-\begin{ndef}[La razón áurea]
-  
-\end{ndef}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
