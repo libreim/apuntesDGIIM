@@ -2699,6 +2699,108 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
         \sum^{n}_{i=0} (x_i - x_{i-1}) < \delta
     \end{rcases} \Rightarrow  \sum^{n}_{i=0} |f(x_i) - f(x_{i-1})| < \varepsilon$$ 
 \end{ndef}
+
+\begin{nprop}
+    \label{elem-lebesgue-botsko-ob1}
+     Si $f : [a, b] \rightarrow \R$ es monótona, entonces $f$ es continua \textit{a.e.} en $[a, b]$.
+\end{nprop}
+
+\begin{proof}
+         Esto es así porque si $f$ es monótona, $\exists \lim_{y \to x^{-}} f(y) \leq f(x) \leq \exists \lim_{y \to x^{+}} f(y)$. Entonces $f$ es continua en $x \Leftrightarrow \lim_{y \to x^{-}} f(y) = \lim_{y \to x^{+}} f(y)$ y $f$ no es continua en $x \Leftrightarrow \lim_{y \to x^{-}} f(y) < lim_{y \to x^{+}} f(y)$.
+
+   Veamos qué puntos forman este último conjunto, que llamaremos $A$: $$A = \{ x \in [a, b] : f \text{ no es continua en } x \} = \{x \in [a, b] : f(x-) = \lim_{y \to x^{-}} < \lim_{y \to x^{+}} f(y) = f(x+) \}$$
+
+   $\forall x \in A \exists r_x \in \mathbb Q \cup (f(x-), f(x+))$  tal que \begin{align*}
+       \label{}
+       r: A &\longrightarrow \mathbb Q \\
+        x & \longrightarrow r_x
+   \end{align*}
+
+   Es una aplicación monótona y estrictamente creciente porque $f$ es monótona creciente.
+
+   %FIXME: ¿Corregir? ¿Demostrar? Lo ha dejado como ejercicio.
+\end{proof}
+
+\begin{lema}
+    \label{elem-lebesgue-botsko-ej1}
+    Dada una función $g : [c, d] \rightarrow \R$ y el conjunto $P = \{ x_0 = c < x_1 < x_2 < \hdots < x_n = d \} \in \mathcal P([c, d])$ y $\emptyset \neq S \subset \{ 1, 2, \hdots, n \}, A > 0$. Si $g$ verifica cualquiera de estas dos propiedades \begin{itemize}
+        \item $\displaystyle g(c) \leq g(d) \ y \ \frac{g(x_k) - g(x_{k-1})}{x_k - x_{k-1}} < - A \ \ \forall k \in S$
+        \item $ \displaystyle g(c) \geq g(d) \ y \ \frac{g(x_k) - g(x_{k-1})}{x_k - x_{k-1}} > A \ \ \forall k \in S$
+    \end{itemize}
+    Entonces, $ \displaystyle \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| > |g(d) - g(c)| + A \sum^{}_{k \in S} (x_k - x_{k-1})$ 
+
+\end{lema}
+
+\begin{nth}
+    \label{elem-lebesgue-botsko-th1}
+    Sea $f : [a, b] \rightarrow \R$ una función monótona creciente. Entonces, $$\exists \lim_{y \to x} \frac{f(y) - f(x)}{y - x} \in [0, +\infty] \ a.e. \ x \in [a, b]$$
+\end{nth}
+
+\begin{proof}
+    Por la proposición \ref{elem-lebesgue-botsko-ob1}, $f$ es continua \textit{a.e.} $x \in [a, b]$. Entonces,
+
+    $$\overline{D} f (x) := \lim_{y \to x} sup \frac{f(y) - f(x)}{y -x}, \underline{D} f (x) := \lim_{y \to x} inf \frac{f(y) - f(x)}{y -x}$$
+
+    Necesitamos demostrar que el siguiente conjunto tiene medida cero: \begin{align*} 
+        \left\{ x \in [a, b] : \nexists f'(x) = \lim_{y \to x} \frac{f(y) - f(x)}{y - x} \in [0, +\infty] \right\} &= \{ x \in [a, b] : \underline{D} f(x) < \overline{D} f(x) \} \\
+            & \subseteq \{ x \in [a, b] : f \text{ es continua en } x \text{ y } \underline{D} f(x) < \overline{D} f(x) \} \\
+            & \cup \{ x \in [a, b] : f \text{ no es continua en } x \}
+    \end{align*}
+    Por la proposición \ref{elem-lebesgue-botsko-ob1} sabemos que el conjunto $\{ x \in [a, b] : f \text{ no es continua en } x \}$ tiene medida cero. ¿La tiene el otro conjunto?
+
+    Para demostrarlo, consideramos el conjunto \begin{align*}
+        \label{}
+        \{ x \in [a, b] : \underline{D} f(x) < \overline{D} f(x) \} = \cup \{ x \in [a, b] : f \text{ es continua en } x \text{ y } \underline{D} f(x) < r < s < \overline{D} f(x) \}
+    \end{align*}
+
+    Si este conjunto tiene medida cero $\forall r, s \in \mathbb Q, r < s$ entonces lo habremos probado.
+
+    Definimos las funciones $$g(x) = f(x) - \frac{r+s}{2}x \ \ \ \ y \ \ \ \ f(x) = g(x) + \frac{r+s}{2}x$$
+    Vemos que \begin{align*}
+        \label{}
+        \underline{D} f(x) = \underline{D} g (x) + \frac{r+s}{2} < r < s < \overline{D} f(x) = \overline{D} g(x) + \frac{r+s}{2} &\Leftrightarrow \underline{D} g(x) < r - \frac{r+s}{2} < s - \frac{r+s}{2} < \overline{D} g(x) \\
+                                     &\Leftrightarrow \underline{D} g (x) < - \frac{s-r}{2} < \frac{s-r}{2} < \overline{D} g(x)
+    \end{align*}
+
+    Tomando $g(x) := f(x) - \frac{r+s}{2}x$ tenemos $E_{r,s} = \{ x \in [a, b] : g \text{ es continua en } x \text{ y } \underline{D} g(x) < - A < A < \overline{D} g(x) \}, A = \frac{s-r}{2} > 0$
+
+    Para probar que $\forall A > 0, E_{r,s}$ tiene medida cero, haremos reducción al absurdo. Supongamos que la medida de este conjunto sea mayor que 0.
+
+    ($A = \frac{s-r}{2}$, $B = \frac{r+s}{2}$)
+    Sea $P = \{ x_0 = a < x_1 < x_2 < \hdots < x_n = b \} \in \mathcal P([a,b])$.
+    \begin{align*}
+        \label{}
+        \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| &= \sum^{n}_{k=1} | f(x_k) - \frac{r+s}{2}x_k - \left( f(x_{k-1}) - \frac{r+s}{2} x_{k-1} \right)| \\
+                                             &\leq \sum^{n}_{k=1} |f(x_k) - f(x_{k-1}) | + |B| (b-a)  \\
+                                             &= \sum^{n}_{k=1}  (f(x_k) - f(x_{k-1})) + |B|(b-a) \\
+                                             &= f(b) - f(a) + |B|(b-a)  
+    \end{align*}
+
+Esto nos permite decir que \begin{align*}
+    \exists T :&= sup \left\{ \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \in \mathcal P ([a, b]) \right\} \\
+    & \leq (f(b) - f(a)) + |B|(b-a)
+\end{align*}
+
+Además, \begin{align*}
+    \label{}
+    \exists P = \{ x_0 = a < x_1 < x_2 < \hdots < x_n = b \} \in \mathcal P([a,b]) \ t.q. \ T &\geq \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| \\
+                                                                                     & > T - A \frac{A \mu(E)}{4}
+\end{align*}
+
+$x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap (x_k, x_{k-1}) = \{ x \in (x_k, x_{k-1}) : g \text{ es continua en } x, \underline{D} g(x) < -A < A < \overline{D} g(x) \}$ 
+
+%FIXME: Y aquí ya me cansé. Completar.
+\end{proof}
+
+\begin{nth}
+    Sea $f : [a, b] \rightarrow \R$ una función monótona. Entonces, $f$ es derivable \textit{a.e.} en $[a, b]$.
+\end{nth}
+
+\begin{proof}
+
+  
+\end{proof}
+
 % --------------------------------------------------------------------------------
 % Bibliografía.
 % --------------------------------------------------------------------------------
