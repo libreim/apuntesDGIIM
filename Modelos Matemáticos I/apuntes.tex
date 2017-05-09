@@ -2926,10 +2926,98 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
             \end{align*}
      \end{nprop}
 
+     \begin{proof}
+         Vamos a proceder por inducción. Comenzamos con $N=2$. Así, $det(\mathcal L_2 - \lambda I) = \begin{vmatrix}
+             a_1 - \lambda & a_2 \\
+             b_1 & -\lambda
+         \end{vmatrix} = (a_1 - \lambda)(-\lambda) - a_2b_1 = \lambda^2 - a_1\lambda - a_2b_1$
+         Veámoslo ahora para $N$. \begin{align*}
+             \label{}
+             det (\mathcal LN - \lambda I) &= \begin{vmatrix}
+                 a_1 - \lambda & a_2 & a_3 & \hdots & a_N \\
+                 b_1 & -\lambda & 0 & \hdots & 0 \\
+                 0 & b_2 & -\lambda & \hdots & 0 \\
+                 \vdots & & & & \vdots \\
+                 0 & & & \vdots & b_{N-1}-\lambda
+             \end{vmatrix}\\
+             &= (-1)^{1 + N} a_N \begin{vmatrix}
+                 b_1 & -\lambda & 0 & \hdots & 0 \\
+                 0 & b_2 & -\lambda & \hdots & 0  \\
+                \vdots & & & & \vdots \\
+                \vdots & & & & -\lambda \\
+                0 & & & & b_{N-1}
+            \end{vmatrix} + (-1)^{2N}(-\lambda)\cdot p_{N-1}(\lambda)\\
+            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (\lambda) \left\( (-1)^{N-1} \left\( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right\) \right\)
+         \end{align*}
+     \end{proof}
+
      \begin{nprop}
         Se considera el polinomio $$p(\lambda) = \lambda^{N} - \beta_{N-1}\lambda^{N-1} - \hdots - \beta_1\lambda - \beta_0$$ con $\beta_i \geq 0, \ i = 0, \hdots, N -1$, y para algún $i \in \{ 0, \hdots, N -2 \}$, $\beta \cdot \beta_{i+1} > 0$.
         
         Entonces $p(\lambda)$ tiene una única raíz real positiva $\lambda_1 \in (0, +\infty)$, que es simple y dominante.
      \end{nprop}
+
+     \begin{proof}
+         Sea $\lambda_1$ una raíz de $p(\lambda)$, \begin{align*}
+             \label{}
+             p(\lambda) = \lambda^{N} - \beta_{N-1}\lambda^{N-1} - \hdots - \beta_1\lambda - \beta_0 = \lambda^{N}\left( 1 - \left( \frac{\beta_{N-1}}{\lambda} + \frac{\beta_{N-2}}{\lambda^2} + \hdots + \frac{\beta_{1}}{\lambda^{N-1}} + \frac{\beta_{0}}{\lambda^N}\right)\right) = \lambda^N(1 - q(\lambda))
+         \end{align*}
+
+         Sea $q(\lambda) = \frac{\beta_{N-1}}{\lambda} + \frac{\beta_{N-2}}{\lambda^2} + \hdots + \frac{\beta_{1}}{\lambda^{N-1}} + \frac{\beta_{0}}{\lambda^N}$ con $\lambda \neq 0$.
+
+         Con $\lambda \neq 0$, raíz de $p(\lambda) \Leftrightarrow q(\lambda_1) = 1$.
+        $$
+         \begin{rcases}
+             \lim_{\lambda \to 0^+} q(\lambda) = +\infty \\
+            \lim_{\lambda \to \infty+} q(\lambda) = 0 \\
+         \end{rcases} \Rightarrow \begin{rcases}
+             q(\lambda) \in C^{\infty} (0, +\infty) \\
+             q(\lambda )> 0, \forall \lambda > 0
+         \end{rcases}$$
+
+         Además, $q$ es estrictamente decreciente:
+
+         $$q'(\lambda) = -\frac{\beta_{N-1}}{\lambda^2} -\frac{2\beta_{N-2}}{\lambda^3} - \hdots -\frac{(N-1)\beta_{1}}{\lambda^N} -\frac{N\beta_{0}}{\lambda^{N+1}} < 0$$
+
+    %TODO: Dibujo de q(\lambda)?
+
+         Acabamos de ver que $\exists \lambda_1 > 0$ tal que $q(\lambda-1) = 1$ luego $p(\lambda_1) = 0$.
+
+         Para comprobar la unicidad, puesto que $q(\lambda)$ es estrictamente decreciente entonces existe una única por el Teorema de Rolle.
+
+        Ahora tenemos que probar que la raíz es simple. Sabemos que $p(\lambda_1) = 0$. Veamos lo que vale $p'(\lambda_1)$. 
+        \begin{align*}
+            \label{}
+            p'(\lambda) &= N\lambda^{N-1}(1 - q(\lambda)) + \lambda^N(-q'(\lambda)) \\
+            p'(\lambda_1) &= N\lambda_1^{N-1}(1 - q(\lambda)) + \lambda_1^N(-q'(\lambda_1)) \\
+                          &=-\lambda_1^N q'(\lambda_1) > 0 \text{, luego es simple}
+        \end{align*}
+
+        Finalmente, nos queda probar que es dominante. Sea $\mu \in \mathbb C$ cuqlquier otra raíz de $p(\lambda) \Rightarrow |\mu| < |\lambda_1| = \lambda_1$.
+
+        Si $\mu = 0$ entonces $|\mu| = 0 < |\lambda_1| = \lambda_1$, por lo que se cumple. Supongamos que $\mu \neq 0, \mu \in \mathbb C \setminus [0, +\infty]$. Entonces, existe $r > 0$ y $\theta \in (0, 2\pi)$
+        \begin{align*}
+            \label{}
+            \mu = r(cos \ \theta + i \ sen \ \theta)
+        \end{align*}
+
+        Queremos ver que $ r < \lambda_1$.
+        \begin{align*}
+            \label{}
+            \frac{1}{\mu} &= \frac{1}{r(cos \ \theta + i \ sen \ \theta)} = \frac{1}{r}\frac{cos \ \theta - i \ sen \ \theta}{(cos \ \theta + i \ \sen \theta)(cos \ \theta - i \ sen \ \theta)} \\
+                          &= \frac{1}{r}(cos \ \theta - i \ sen \ \theta) \\
+            \frac{1}{\mu^j} &=  \frac{1}{r}(cos \ j\theta - i \ sen \ j\theta) 
+        \end{align*}
+        \begin{align*}
+            \label{eq:}
+            1 = q(\mu) &= \frac{\beta_{N-1}}{\mu} + \frac{\beta_{N-2}}{\mu^2} + \hdots + \frac{\beta_{1}}{\mu^{N-1}} + \frac{\beta_{0}}{\mu^N} \\
+                       &= \frac{\beta_{N-1}}{r} 
+        \end{align*}
+
+        %TODO: Que alguien continúe esto que yo ya me he cansado de tanto sen cos sen cos ndjfd
+
+
+
+     \end{proof}
 
 \end{document}
