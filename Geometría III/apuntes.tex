@@ -3070,4 +3070,162 @@ a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
 \begin{ndef}[Triángulo dual]
 	Tres rectas no concurrentes(los vértices del original) y tres puntos de corte(las rectas del original)
 \end{ndef}
+
+\subsection{Proyectividades}
+
+\begin{ndef}[Proyectividad]
+	Una proyectividad es una aplicación:
+	\[
+	f: \mathbb P ^2 \to \mathbb P^2
+	\]
+	\[
+	 \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  \mapsto A  \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  \
+	\]
+	Con $A$ una matriz $3\times 3$ regular. Esto define una aplicación:
+	\[
+	\bar{f} : \R^3 \to \R^3 
+	\]
+	
+\end{ndef}
+
+\begin{nprop}[Propiedades de $\bar{f}$]
+	\begin{nlist}
+	\item $\bar{f}$ lleva rectas vectoriales en rectas vectoriales
+	\item $\bar{f}$ lleva planos vectoriales en planos vectoriales
+	\item $\bar{f}$ lleva vectores linealmente independientes en vectores linealmente independientes.
+	\item Ídem con vectores linealmente dependientes.
+\end{nlist}
+\end{nprop}
+
+\begin{nprop}[Propiedades de $f$]
+	\begin{nlist}
+	\item $f$ lleva puntos de $\mathbb P^2$ en puntos de $\mathbb P^2$
+	\item $f$ lleva rectas de $\mathbb P^2$ en rectas de $\mathbb P^2$
+	\item $f$ lleva puntos no alineados a puntos no alineados
+	\item Ídem con puntos sí alineados
+\end{nlist}
+\end{nprop}
+
+\begin{nprop}
+	Si $A$ es la matriz de una proyectividad y $\lambda \ne 0$, entonces $\lambda A$ y $A$ inducen la misma proyectividad.
+\end{nprop}
+
+\begin{nprop}
+	Si tenemos una proyectividad $f$ con matriz $A$ y otra $g$ con una matriz $B$, la composición de ambas es otra proyectividad $go f$ con matriz $BA$
+\end{nprop}
+
+\begin{nprop}
+	Si $f$ es una proyectividad de matriz $A$ y $A$ tiene inversa, entonces $f$ es biyectiva
+\end{nprop}
+
+\begin{nth}
+	Toda proyectividad tiene al menos un punto fijo
+\end{nth}
+\begin{proof}\hfill\\
+Es análoga a la del teorema: Todo isomorfismo lineal de $\R^3$ tiene al menos un vector propio.
+\end{proof}
+\subsubsection{Relación entre afinidades y proyectividades}
+
+Si $h: \R^2 \to \R^2$ es una afinidad de la forma:
+\[
+h \begin{pmatrix}
+x\\
+y
+\end{pmatrix}  = \begin{pmatrix}
+ \alpha & \beta \\
+ \gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+x\\
+y
+\end{pmatrix} + \begin{pmatrix}
+b_1\\
+b_2
+\end{pmatrix}
+\]
+podemos definir una proyectividad $\bar h : \mathbb P ^2 \to \mathbb P^2$ tal que:
+\[
+\bar{h} \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  = \begin{pmatrix}
+ 1 & 0 & 0 \\
+ b_1 & \alpha & \beta \\
+ b_2 & \gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix} 
+\]
+
+\begin{nprop}
+	Toda afinidad se extiende a una proyectividad.
+\end{nprop}
+
+\begin{nprop}
+	$\bar h$ actúa sobre $r_\infty$, la lleva sobre sí misma.
+\end{nprop}
+%%% TODO: Añadir ejemplos de proyectividades
+
+\begin{nth}
+	Si $f: \mathbb P^2 \to \mathbb P^2$ es una proyectividad, entonces:
+	\[
+	\text{ $f$ viene de una afinidad } \iff f(r_\infty) = r_\infty
+	\]
+\end{nth}
+\begin{proof}
+	Sea $A$ la matriz:
+	\[
+	\begin{pmatrix}
+ a_0& b_0 & c_0 \\
+ a_1 & b_1 & c_1\\
+ a_2 & b_2 & c_2
+\end{pmatrix} 
+	\]
+	Tenemos que tener que $f\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix} \mapsto \begin{pmatrix}
+b_0\\
+\\
+
+\end{pmatrix} \implies b_0 = 0 $. Idem con $\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix} \implies c_0 = 0 $ y tenemos que tener que $a_0 \ne 0$. Por tanto, la matriz será de la forma:
+\[
+\dfrac{1}{a_0} A = \begin{pmatrix}
+ 1& 0 & 0 \\
+  &  & \\
+  & & 
+\end{pmatrix} 
+\]
+(Los huecos en blanco no son relevantes). De esta forma, tenemos que está definida a partir de una afinidad.
+\end{proof}
+
+\begin{ncor}
+	Si $f: \mathbb P^2 \to \mathbb P^2$ es una proyectividad. $r\subset \mathbb P^2$ es una recta con $f(r) = r$.
+	Entonces, sobre el afín $\mathbb P^2 -r$, $f|_{\mathbb P^2 -r}$ es una afinidad.
+\end{ncor}
+
+\subsection{Proyectividades y dualidad}
+
+\begin{nth}
+	Toda proyectividad de $\mathbb P^2$ tiene al menos un punto fijo.
+\end{nth}
+
+\begin{nth}[Dual]
+	Toda proyectividad de $\mathbb P^2$ tiene al menos una recta fija
+\end{nth}
 \end{document}
