@@ -2192,29 +2192,11 @@ Si $\mathcal A$ tiene rango $3$ entonces $\mathcal Q$ tiene un único centro.
 Entonces existen $a,b,c > 0$ tales que en esas coordenadas la cuádrica se escribe: 
 
 \begin{minipage}[c]{0.45\textwidth}
-  {\bf Elipsoide}\vspace{1em}\\
+  {Elipsoide}\vspace{1em}\\
   $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}+\frac{{z}^2}{c^2} = 1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-  % Elipsoide
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-         % x^2+y^2-z^2=0
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({2*cos(deg(x))*sin(deg(y))},{3*sin(deg(x))*sin(deg(y))},{2*cos(deg(y))}); 
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({2*cos(deg(x))*sin(deg(y))},{-3*sin(deg(x))*sin(deg(y))},{2*cos(deg(y))});     
-        %\addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{-x});   
-    \end{axis}
-\end{tikzpicture}
+    \includegraphics{./img/elde.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2230,25 +2212,7 @@ Entonces existen $a,b,c > 0$ tales que en esas coordenadas la cuádrica se escri
   $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-
-% Hiperboloide de una hoja
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-         % x^2+y^2-z^2=-1
-            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{sqrt(x^2-1)});    
-        \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{-sqrt(x^2-1)}); 
-    \end{axis}
-\end{tikzpicture}
+\includegraphics{./img/hip1.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2256,26 +2220,7 @@ Entonces existen $a,b,c > 0$ tales que en esas coordenadas la cuádrica se escri
   $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-
-% Hiperboloide de dos hojas
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-         % x^2+y^2-z^2=-1
-            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({0.5*sinh(x)*cos(deg(y))},{0.5*sinh(x)*sin(deg(y))},{0.5*cosh(x)});
-            \addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({0.5*sinh(x)*cos(deg(y))},{0.5*sinh(x)*sin(deg(y))},{-0.5*cosh(x)});    
-        %\addplot3[mesh,500,domain=1:2,y domain=0:2*pi,samples=15]({x*cos(deg(y))},{x*sin(deg(y))},{-sqrt(x^2-1)}); 
-    \end{axis}
-\end{tikzpicture}
+\includegraphics{./img/hip2.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2283,25 +2228,7 @@ Entonces existen $a,b,c > 0$ tales que en esas coordenadas la cuádrica se escri
   $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}-\frac{{z}^2}{c^2} = 0$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-
-% Cono
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-         % x^2+y^2-z^2=0
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{x});    
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({x*cos(deg(y))},{x*sin(deg(y))},{-x});   
-    \end{axis}
-\end{tikzpicture}
+\includegraphics{./img/cono.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2325,25 +2252,7 @@ Consideramos cuádricas con centro y rango $2$ en el sistema de referencia $\mat
   $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2}=1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-
-% Cilindro elíptico
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-         % x^2+y^2=1
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({cos(deg(y))},{sin(deg(y))},{x});    
-        \addplot3[mesh,500,domain=0:2,y domain=0:2*pi, samples=20]({cos(deg(y))},{sin(deg(y))},{-x});   
-    \end{axis}
-\end{tikzpicture}
+\includegraphics{./img/celi.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2359,26 +2268,7 @@ Consideramos cuádricas con centro y rango $2$ en el sistema de referencia $\mat
   $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2}=1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-
-% Cilindro hiperbólico
-
-\begin{tikzpicture}
-\sffamily
-    \begin{axis}[
-            xmin=-3,xmax=3,
-            ymin=-3,ymax=3,
-            zmin=-2,zmax=2,
-            %xlabel={$x$},
-            %ylabel={$y$},
-            %zlabel={$z$},
-            %zlabel style={rotate=90},
-            view={60}{40}]
-
-        \addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({0.5*cosh(y)},{0.5*sinh(y)},{x});
-        \addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({-0.5*cosh(y)},{0.5*sinh(y)},{x});    
-        %\addplot3[mesh,500,domain=-2:2,y domain=-2:2, samples=20]({cosh(y)},{sinh(y)},{-x});   
-    \end{axis}
-\end{tikzpicture}
+\includegraphics{./img/chip.pdf}
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2443,12 +2333,7 @@ es el centro y $e_1,e_2$ es una base ortonormal de vectores propios de la matriz
   $\displaystyle \frac{{x}^2}{a^2} + \frac{{y}^2}{b^2} = 1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.35\textwidth}
-\begin{tikzpicture}
-  \sffamily
-  \tkzInit[ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
-  \tkzAxeXY
-  \draw[scale=1,domain=-2.5:2.5,smooth,variable=\x,500, samples=20] plot ({2*sin(2*\x r)},{cos(2*\x r)});
-\end{tikzpicture}
+\includegraphics{./img/elip.pdf} 
 \end{minipage}
 
 \begin{minipage}[c]{0.45\textwidth}
@@ -2456,12 +2341,7 @@ es el centro y $e_1,e_2$ es una base ortonormal de vectores propios de la matriz
   $\displaystyle \frac{{x}^2}{a^2} - \frac{{y}^2}{b^2} = 1$
 \end{minipage}\hfill
 \begin{minipage}[]{0.35\textwidth}
-\begin{tikzpicture}
-  \sffamily
-  \tkzInit[ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
-  \tkzAxeXY
-  \draw[scale=1,domain=-pi/2:pi/2,smooth,variable=\x,500, samples=20] plot ({cosh(\x)},{sinh(\x)});
-\end{tikzpicture}
+\includegraphics{./img/hipe.pdf}
 \end{minipage}
 
 
@@ -2555,27 +2435,15 @@ Rango $\cal A$ $=2$.
   $\displaystyle z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-  \begin{tikzpicture}
-\sffamily
-\begin{axis}
-\addplot3 [surf,mesh/interior colormap=
-           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2+y^2};
-\end{axis}
-\end{tikzpicture}
+\includegraphics{./img/peli.pdf}
 \end{minipage}
 
-\begin{minipage}[c]{0.45\textwidth}
+\begin{minipage}[c]{0.5\textwidth}
   {\bf Paraboloide hiperbólico}\vspace{1em}\\
   $\displaystyle z = \frac{x^2}{a^2} - \frac{y^2}{b^2}$
 \end{minipage}\hfill
-\begin{minipage}[]{0.45\textwidth}
-  \begin{tikzpicture}
-\sffamily
-\begin{axis}
-\addplot3 [surf,mesh/interior colormap=
-           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2-y^2};
-\end{axis}
-\end{tikzpicture}
+\begin{minipage}[]{0.5\textwidth}
+    \includegraphics{./img/phip.pdf}
 \end{minipage}
 
 Rango $\cal A$ $=1$.
@@ -2585,13 +2453,7 @@ Rango $\cal A$ $=1$.
   $\displaystyle z = \frac{x^2}{a^2}$
 \end{minipage}\hfill
 \begin{minipage}[]{0.45\textwidth}
-  \begin{tikzpicture}
-\sffamily
-\begin{axis}
-\addplot3 [surf,mesh/interior colormap=
-           {inside}{color=(50) color=(300)},colormap/blackwhite,shader=flat,draw=black, samples=20] {x^2};
-\end{axis}
-\end{tikzpicture}
+\includegraphics{./img/cpar.pdf}
 \end{minipage}
 
 \subsection{Cónicas sin centro en $\mathbb{R}^2$.}
