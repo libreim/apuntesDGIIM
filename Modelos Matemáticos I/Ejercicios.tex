@@ -1134,33 +1134,33 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
     \begin{sol}
         Sea $A \in \mathcal M_{r}(\mathbb C)$ y sea $p(\lambda) = |A - \lambda I| = (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_1\lambda + c_0)$ su polinomio característico, con $c_i \in \mathbb{C}$. Llamemos $C = A - \lambda I$. Sabemos que: $$C^{-1} = \frac{1}{|C|} \cdot Adj(C)^T \implies |C|I = C \ Adj(C)^T$$
 
-Entonces, tendremos que 
-\begin{equation} \label {th_cayley}
-	p(\lambda)I = (A - \lambda I) \ Adj(A-\lambda I)^T
-\end{equation} 
+        Entonces, tendremos que 
+        \begin{equation} \label {th_cayley}
+            p(\lambda)I = (A - \lambda I) \ Adj(A-\lambda I)^T
+        \end{equation} 
 
-Consideremos la matriz $B = Adj(A - \lambda I)$. Como las entradas de $B$ son polinomios en $\lambda$, podemos separar para cada $0 \le i \le r$ los coeficientes del término $\lambda^i$, y formar una matriz de números $B_i$ tal que:
+        Consideremos la matriz $B = Adj(A - \lambda I)$. Como las entradas de $B$ son polinomios en $\lambda$, podemos separar para cada $0 \le i \le r$ los coeficientes del término $\lambda^i$, y formar una matriz de números $B_i$ tal que:
         \begin{align*}
             Adj(A - \lambda I)^T &= B_{r-1}\lambda^{r-1} + B_{r-2}\lambda^{r-2} + \hdots + B_0
         \end{align*}
-        
+
         Ahora, sustituyendo en \eqref{th_cayley} nos queda que
         \begin{align*}
             (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_0)I &= (A -\lambda I)(B_{r-1}\lambda^{r-1} + \hdots + B_0) \\
                                                                      &= -(B_{r-1}\lambda^r + \hdots + B_0\lambda) + (AB_{r-1}\lambda^{r-1}+\hdots + AB_0) \\
                                                                      &= -B_{r-1}\lambda^r + (-B_{r-2}+AB_{r-1})\lambda^{r-1} + \hdots + (-B_0 + AB_1)\lambda + AB_0
         \end{align*}
-        
+
         Identificando término a término en la igualdad anterior, notamos que se verifica lo siguiente:
         \begin{align*}
             \label{}
             (-1)^rI &= -B_{r-1} \\
             (-1)^rc_{r-1}I &= -B_{r-2}+AB_{r-1} \\
                            &\ \ \vdots \\
-             (-1)^rc_1I &= -B_0 + AB_1 \\
+            (-1)^rc_1I &= -B_0 + AB_1 \\
             (-1)^rc_0I &= AB_0
         \end{align*}
-Por tanto, concluimos que
+        Por tanto, concluimos que
         \begin{align*}
             \label{}
             p(A) &= (-1)^r \left[ A^r + c_{r-1}A^{r-1} + c_{r-2}A^{r-2} + \hdots + c_1A + c_0I \right] \\
@@ -1317,85 +1317,187 @@ Por tanto, concluimos que
         Resolveremos ahora los dos apartados del ejercicio.
 
         \underline{Comenzamos probando $(i)$}. Sea $A \in \mathbb{C}^{d\times d}$. Aplicando el \textit{Teorema de la forma canónica de Jordan}, sabemos que $A$ es semejante a una matriz diagonal por bloques $J$, y también sabemos que $A^n = 0 \iff J^n = 0$. Además, es obvio que $J^n = 0$ si y solo si cada uno de los bloques que la forman es nulo.
-        
-        
-        
+
+
+
         Consideremos un bloque arbitrario de $J$, digamos $$J_\lambda = \begin{pmatrix}
-	\lambda & 1\\
-	& \lambda & 1 \\
-	& & \ddots & \ddots \\
-	& & & \lambda & 1 \\
-	& & & & \lambda
-\end{pmatrix}, \quad \lambda \in \sigma(A)$$
+            \lambda & 1\\
+                    & \lambda & 1 \\
+                    & & \ddots & \ddots \\
+                    & & & \lambda & 1 \\
+                    & & & & \lambda
+        \end{pmatrix}, \quad \lambda \in \sigma(A)$$
 
 
-Tenemos que $J_\lambda = \lambda I + F$, donde $$F = \begin{pmatrix}
-	0 & 1\\
-	& 0 & 1 \\
-	& & \ddots & \ddots \\
-	& & & 0 & 1 \\
-	& & & & 0
-\end{pmatrix}$$
+        Tenemos que $J_\lambda = \lambda I + F$, donde $$F = \begin{pmatrix}
+            0 & 1\\
+              & 0 & 1 \\
+              & & \ddots & \ddots \\
+              & & & 0 & 1 \\
+              & & & & 0
+        \end{pmatrix}$$
 
-Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Se puede demostrar por inducción la siguiente fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
-                n \\
-                k
-            \end{pmatrix} \lambda^{n-k} F^k$$
-%%% TODO: Demostrar la fórmula por inducción
+        Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Se puede demostrar por inducción la siguiente fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
+            n \\
+            k
+        \end{pmatrix} \lambda^{n-k} F^k$$
+        %%% TODO: Demostrar la fórmula por inducción
         Ahora, como $F$ es nilpotente de orden $p$, tenemos que $$ J_\lambda^n = \sum^{p-1}_{k=0} \begin{pmatrix}
             n \\
             k
         \end{pmatrix} \lambda^{n-k} F^k, \quad  \forall n \geq p $$
-        
+
         \begin{align*}
             \label{}
-                J^n_\lambda = 
+            J^n_\lambda = 
             \begin{pmatrix}
                 \lambda^n & n\lambda^{n-1} & \begin{pmatrix}
-                n\\
-                2
-\end{pmatrix} \lambda^{n-2} & \hdots & \begin{pmatrix}
+                    n\\
+                    2
+                \end{pmatrix} \lambda^{n-2} & \hdots & \begin{pmatrix}
                     n \\
                     p-1
                 \end{pmatrix} \lambda^{n-p +1} \\
-                 & \lambda^n & n\lambda^{n-1} & \hdots & \begin{pmatrix}
-	        n\\
-	        p-2
-\end{pmatrix} \lambda^{n-p+2}\\
-                                             &  & \ddots & \ddots & \vdots \\
-                                            & & & \lambda^n & n\lambda^{n-1}\\
-                                            & & & & \lambda^n
-            \end{pmatrix},\quad n \ge p
-        \end{align*}
-        
-        Teniendo en cuenta todo el desarrollo anterior, concluimos que $J$ es nilpotente de orden $p$ si y solo si $\lambda = 0$.
-        
-        \textit{Demostración alternativa}. En primer lugar, sea $A \in \mathbb{C}^{d\times d}$ tal que su único valor propio es $0$. Entonces, el polinomio característico asociado será $p(\lambda) = (-1)^d\lambda^d$. Por el \textit{Teorema de Cayley-Hamilton}, tenemos que $p(A) = (-1)^dA^d = 0$, por lo que $A$ es nilpotente de orden $d$.
-        
-        Supongamos ahora que $A$ es nilpotente de orden $p$. Si $\lambda$ es un valor propio de $A$, ya sabemos que $\lambda^p$ es valor propio de $A^p$. Por tanto, existirá un $v \neq 0$ tal que $$ 0 = A^p v =  \lambda^p v,$$ lo cual es absurdo salvo en el caso $\lambda = 0$.
+                & \lambda^n & n\lambda^{n-1} & \hdots & \begin{pmatrix}
+                n\\
+                p-2
+            \end{pmatrix} \lambda^{n-p+2}\\
+            &  & \ddots & \ddots & \vdots \\
+            & & & \lambda^n & n\lambda^{n-1}\\
+            & & & & \lambda^n
+        \end{pmatrix},\quad n \ge p
+    \end{align*}
 
-        \underline{Probamos ahora $(ii)$}. Consideremos $A \in \mathbb{C}^{2\times 2}$. Ya sabemos por $(i)$ que $A$ es nilpotente si y solo si su único valor propio es el $0$. $$A = \begin{pmatrix}
+    Teniendo en cuenta todo el desarrollo anterior, concluimos que $J$ es nilpotente de orden $p$ si y solo si $\lambda = 0$.
+
+    \textit{Demostración alternativa}. En primer lugar, sea $A \in \mathbb{C}^{d\times d}$ tal que su único valor propio es $0$. Entonces, el polinomio característico asociado será $p(\lambda) = (-1)^d\lambda^d$. Por el \textit{Teorema de Cayley-Hamilton}, tenemos que $p(A) = (-1)^dA^d = 0$, por lo que $A$ es nilpotente de orden $d$.
+
+    Supongamos ahora que $A$ es nilpotente de orden $p$. Si $\lambda$ es un valor propio de $A$, ya sabemos que $\lambda^p$ es valor propio de $A^p$. Por tanto, existirá un $v \neq 0$ tal que $$ 0 = A^p v =  \lambda^p v,$$ lo cual es absurdo salvo en el caso $\lambda = 0$.
+
+    \underline{Probamos ahora $(ii)$}. Consideremos $A \in \mathbb{C}^{2\times 2}$. Ya sabemos por $(i)$ que $A$ es nilpotente si y solo si su único valor propio es el $0$. $$A = \begin{pmatrix}
         a & b\\
         c & d
-\end{pmatrix} \implies p(\lambda) = |A - \lambda I| = \lambda^2 - (a+d)\lambda - bc + ad$$
+    \end{pmatrix} \implies p(\lambda) = |A - \lambda I| = \lambda^2 - (a+d)\lambda - bc + ad$$
 
-Como queremos que $0$ sea la única raíz de $p(\lambda)$, imponemos las siguientes condiciones: $$\begin{cases}
-	a + d = 0\\
-	bc = 0\\
-	ad = 0
-\end{cases} \implies 
-\begin{cases}
-	a = d = 0\\
-	b = 0 \text{ ó } c = 0
-\end{cases}$$
+    Como queremos que $0$ sea la única raíz de $p(\lambda)$, imponemos las siguientes condiciones: $$\begin{cases}
+        a + d = 0\\
+        bc = 0\\
+        ad = 0
+    \end{cases} \implies 
+    \begin{cases}
+        a = d = 0\\
+        b = 0 \text{ ó } c = 0
+    \end{cases}$$
 
-Es decir, las matrices nilpotentes de orden $2$ son de la forma: $$\begin{pmatrix}
-0 & 0\\
-c & 0	
-\end{pmatrix} \quad \text{ó} \quad 
-\begin{pmatrix}
-0 & c\\
-0 & 0	    
-\end{pmatrix}, \quad c \in \mathbb{C}.$$
-    \end{sol}
-    \end{document}
+    Es decir, las matrices nilpotentes de orden $2$ son de la forma: $$\begin{pmatrix}
+        0 & 0\\
+        c & 0	
+    \end{pmatrix} \quad \text{ó} \quad 
+    \begin{pmatrix}
+        0 & c\\
+        0 & 0	    
+    \end{pmatrix}, \quad c \in \mathbb{C}.$$
+\end{sol}
+
+\begin{ejer}[9]
+    Supongamos que el polinomio $p(\lambda) = \lambda^k + a_{k-1}\lambda^{k-1} + \hdots + a_1\lambda + a_0$ tiene $k$ raíces distintas $\lambda_1, \lambda_2, \hdots, \lambda_k$. Sea $A$ la matriz \textit{compañera} de $p(\lambda)$ definida en el problema anterior y sea $V$ la matriz de \textit{Vandermonde} $$V = \begin{pmatrix}
+        1 & 1 & \hdots & 1 \\
+        \lambda_1 & \lambda_2 & \hdots & \lambda_k \\
+        \vdots & \vdots & & \vdots \\
+        \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \lambda_k^{k-1} \\
+    \end{pmatrix}$$
+    Demuestre que la matriz $V^{-1}AV$ es diagonal.
+\end{ejer}
+
+\begin{sol}
+    Vamos a probar que: $V^{-1}AV = D = \begin{pmatrix}
+        \lambda_1 & & & \\
+                  & \lambda_2 & & \\
+                  & & \ddots & \\
+                  & & & \lambda_k
+    \end{pmatrix}$. En realidad, lo que vamos a demostrar es que $AV = VD$.
+
+    Vamos a multiplicar $A$ por $V$.
+
+    \begin{align*}
+        \label{}
+        \begin{pmatrix}
+            0 & 1 & 0 & \hdots & 0 \\
+            0 & 0 & 1 & \hdots & 0 \\
+            \vdots & \vdots & \vdots & & \vdots \\
+            0 & 0 & 0 & \hdots & 1 \\
+            -a_0 & -a_1 & -a_2 & \hdots & -a_{k-1}
+        \end{pmatrix} \cdot \begin{pmatrix}
+            1 & \hdots & \hdots & \hdots & 1 \\
+            \lambda_1 & \hdots & \hdots & \hdots & \lambda_k \\
+            \vdots & & & & \vdots \\
+            \vdots & & & & \vdots \\
+            \lambda_1^{k-1} & \hdots & \hdots & \hdots & \lambda_k^{k-1}
+        \end{pmatrix} &= \begin{pmatrix}
+            \lambda_1 & \lambda_2 & \hdots & \hdots & \lambda_k \\
+            \lambda_1 & \lambda_2 & \hdots & \hdots & \lambda_k \\
+            \vdots & & & & \vdots \\
+            \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \hdots & \lambda_k^{k-1} \\
+            \lambda_1^k & \lambda_2^k & \hdots & \hdots & \lambda_k^k
+        \end{pmatrix}\\
+        &= VD \\
+        &= \begin{pmatrix}
+        1 & 1 & \hdots & 1 \\
+        \lambda_1 & \lambda_2 & \hdots & \lambda_k \\
+        \vdots & \vdots & & \vdots \\
+        \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \lambda_k^{k-1} \\
+    \end{pmatrix} \\
+        &\cdot \begin{pmatrix}
+        \lambda_1 & & & \\
+                  & \lambda_2 & & \\
+                  & & \ddots & \\
+                  & & & \lambda_k
+    \end{pmatrix}
+    \end{align*}
+\end{sol}
+
+\begin{ejer}[11]
+    Sea $A$ una matriz $k \times k$ tal que $|\lambda| < 1$ para cualquier valor propio $\lambda$ de $A$. Demuestre que:
+\end{ejer}
+
+\begin{sol}\hfill\\
+    \begin{itemize}
+        \item Si $|A-I| = 0$ entonces $\lambda = 1$ es valor propio de $A$.
+        \item $I-A$ es regular, luego $\exists (I-A)^{-1}$.
+            $$\rho(A) < 1 \Leftrightarrow \{ A^{k}\}_{k \geq 0} \rightarrow 0$$
+            \begin{align*}
+                \label{}
+                s_n &= \sum^{n}_{k=0} A^{k} = I + A + A^2 + \hdots + A^n \\
+                (I - A)s_n &= (I-A) + (A-A^2) + (A^2-A^3) + \hdots + (A^n - A^{n+1}) \\
+                           &= I - A^{n+1} \\
+                s_n &= (I-A)^{-1}(I-A^{n+1}) \\
+                \sum^{\infty}_{k=0} A^k &= \lim_{n \to \infty} s_n = (I -A)^{-1}
+            \end{align*}
+    \end{itemize}
+\end{sol}
+
+\begin{ejer}[15]
+    Se considera la matriz de Leslie $$ \begin{pmatrix}
+        \frac{1}{2} & 2 & 1 \\
+        \alpha & 0 & 0 \\
+        0 & \beta & 0
+    \end{pmatrix},$$
+    donde $\alpha, \beta \in ]0, 1[$. Encuentra las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\alpha, \beta)$. 
+\end{ejer}
+
+\begin{sol}
+    La tasa de fertilidad del primer grupo es $\frac{1}{2}$, la del segundo $2$, y la del tercero, $1$.
+    \begin{align*}
+        \label{}
+        X_n = L^nX_0 \\
+        \left\{ \frac{1}{\lambda_1^n} L^nX_0 \right\}_{n \geq 0} \rightarrow V \ ; \ \ LV = \lambda_1V
+        \end{align*}
+
+        Entonces \begin{itemize}
+            \item $0 < \lambda_1 < 1 \Rightarrow$ extinción.
+            \item $\lambda_1 = 1 \Rightarrow$ equilibrio.
+            \item $\lambda_1 > 1 \Rightarrow$ crecimiento ilimitado.
+        \end{itemize}
+\end{sol}
+
+\end{document}
