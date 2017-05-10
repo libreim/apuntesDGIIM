@@ -517,22 +517,20 @@
 % --------------------------------------------------------------------------------
 
 \section{Convergencia uniforme y puntual}
-De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. Durante este apartado, la referencia básica es \cite[Capítulo 5]{marsden}.
+De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. Durante este apartado la referencia básica es \cite[Capítulo 5]{marsden}.
 
-\begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ converge puntualmente a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A \ \ \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
+\begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ \textit{converge puntualmente} a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A, \ \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
   \[
     \forall x\in A\ \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \epsilon 
   \]
-  
   En ocasiones denotaremos la convergencia puntual como $\fn \xrightarrow {c.p} f$. 
 \end{ndef}
 
 
-\begin{ndef}[Convergencia uniforme] Diremos que $\fn$ converge uniformemente a una función $f \in \mathcal{F}(A,\mathbb{R}^M)$ si se verifica:
+\begin{ndef}[Convergencia uniforme] Diremos que $\fn$ \textit{converge uniformemente} a una función $f \in \mathcal{F}(A,\mathbb{R}^M)$ si se verifica:
   \[
     \forall \epsilon>0 \quad \exists n_0 \in \mathbb{N}\ : n\ge n_0\implies \abs{f_n(x)-f(x)} < \epsilon \quad \forall x \in A
   \]
-  
   En ocasiones denotaremos la convergencia uniforme como $\fn \xrightarrow {c.u} f$.
 \end{ndef}
 
@@ -546,7 +544,7 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$, podemos hacerlo
 \end{nprop}
 
   \begin{nota}
-    El recíproco no es cierto en general. Sin embargo, ambos conceptos son equivalentes si el conjunto de definición de las $f_n$ es un conjunto finito. En efecto, si $A$ es finito, y $\{f_n(x)\} \xrightarrow {c.p} f(x) \ \forall x \in A$, entonces tomamos $n_0$ como el máximo de los $n_0(x)$ que nos da la convergencia puntual en cada $x \in A$, y $\fn$ converge uniformemente en $A$.
+    El recíproco no es cierto en general. Sin embargo, ambos conceptos son equivalentes si para cada $f_n : A \rightarrow \R^M$ que forma la sucesión, el conjunto A es finito. En efecto, si $A$ es finito, y $\{f_n(x)\} \xrightarrow {c.p} f(x) \ \forall x \in A$, entonces tomamos $n_0$ como el máximo de los $n_0(x)$ que nos da la convergencia puntual en cada $x \in A$, y $\fn$ converge uniformemente en $A$.
   \end{nota}	
 
 El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la proposición anterior sí es cierto.
@@ -568,45 +566,28 @@ El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo
     Se puede consultar en \textit{[Ejercicios, p.4]}.
   \end{proof}
 
-La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas.
+La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas. El conjunto de las funciones continuas entre un conjunto $A$ y $\R^M$ se denota como $\mathcal{C}(A,\R^M)$.
 
 \begin{nth}
   \label{2}
-  Sean $\emptyset \ne A \subseteq \R^N$, $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$. Entonces, se tiene que
+  Sea $A$ un subconjunto no vacío de $\R^N$ y $f_n \in \mathcal{C}(A,\R^M)\ \forall n\in \N$. Entonces se tiene que:
   \[
     \fn \to f \text{ uniformemente } \implies f \text{ es continua}
   \]
 \end{nth}
 
 \begin{proof}
-  Fijamos $a\in A$. Dado $\epsilon>0$, como $\fn\to f$ uniformemente,
-  \[
-    \exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\dfrac{\epsilon}{3}\ \forall y\in A \implies \begin{cases}
-      \abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}\\
-      \abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}
-    \end{cases}
-  \]
-  
-  Como además, $f_n$ es continua para cada $n\in \N$,
-  \[
-    \exists \delta>0:\ \begin{rcases}
-      \abs{x-a}<\delta\\
-      x\in A
-    \end{rcases} \implies \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}
-  \] 
-  
-  Entonces,
-  \[
-    \exists \delta>0:\ \begin{rcases}
-      \abs{x-a}<\delta\\
-      x\in A
-    \end{rcases} \implies \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon
-  \]
-  
-  Hemos probado que dado $\epsilon > 0$, $\exists \delta>0:\ \begin{rcases}
+  Como $\fn \to f$ uniformemente, por definición podemos tomar un número $\epsilon > 0$ cualquiera de forma que:
+  \[ \exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\dfrac{\epsilon}{3}\ \forall y\in A \]
+    Es obvio entonces que si tomamos un punto $a \in A$, $\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}$. Dado que $f_n$ es una función continua para cada $n \in \N$, por la definición de continuidad de una función podemos afirmar que:
+    $$\exists \delta > 0 \text{ tal que si } |x-a| < \delta \text{ para } x \in A \text{ entonces } \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}$$
+    De igual forma que con $a$, por la convergencia uniforme podemos afirmar que dado $x \in A$, $\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}$.
+    Llegados a este punto, si unimos las desigualdades obtenidas hasta ahora podemos afirmar que:
+    $$ \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon $$  
+  Por tanto, hemos probado que dado $\epsilon > 0$, \ $\exists \delta>0:\ \begin{rcases}
     \abs{x-a}<\delta\\
     x\in A
-  \end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$, por tanto, $f$ es continua. 
+  \end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$. Es decir, hemos probado que $f$ es continua. 
 \end{proof}
 
 Veamos algunoss ejemplos de sucesiones de funciones:
