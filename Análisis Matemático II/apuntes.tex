@@ -797,7 +797,7 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
   Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B}_{\infty}(0,r)$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B}_{\infty}(0,r)$. Esto prueba que $\overline{B}_{\infty}(0,r)$ no es compacta.
 
-  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluímos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
+  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluimos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
 \end{ejemplo}
 
 \begin{ndef}[Sucesión acotada]
@@ -1076,7 +1076,7 @@ Veamos un ejemplo de aplicación de estos criterios.
 \begin{ejemplo}
   Probar que la serie $\displaystyle \sum_{n \ge 1} \frac{(-1)^n}{n} e^{-nx}$ converge uniformemente en $[0, \infty)$.
   
-  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibnitz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
+  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
 \end{ejemplo}
 
 
@@ -1091,7 +1091,7 @@ Un caso interesante de series de funciones lo constituyen las series de potencia
 Veamos una característica importante de las series de potencias, que nos ayuda a determinar su carácter de convergencia.
 
 \begin{ndef}[Radio de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos su radio de convergencia $R \in [0, \infty]$ como: $$
-  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|},$$
+  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|}$$
 \end{ndef}
 
 \begin{nota}
@@ -1110,7 +1110,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
 \begin{nth} \label{13}
   La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$  
   \begin{nlist}
-  \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$.
+  \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$).
   \item no converge si $x\not\in \overline{D(a,R)}$.
   \end{nlist}
 \end{nth}
@@ -1159,7 +1159,7 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
   %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------
   %\begin{proof} \hfill
   %\begin{nlist}
-  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluímos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
+  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
   
   % Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia (ver Marsden), y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, para ver que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
   %\end{nlist}	
