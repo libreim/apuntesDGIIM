@@ -121,9 +121,10 @@
 
 % Fuentes personalizadas
 
-\usepackage[scaled=.85]{newpxtext,newpxmath}
+\usepackage[scaled=.9]{newpxtext,newpxmath}
 \usepackage[scaled=.85]{FiraSans}
 \usepackage[T1]{fontenc}
+\usepackage[italic]{mathastext}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
 % que le rodea
@@ -185,7 +186,9 @@
 \titleformat{\section}
   {\Large\bfseries\sffamily}{\thesection}{1em}{}
 \titleformat{\subsection}
-  {\large\sffamily}{\thesubsection}{1em}{}
+  {\Large\sffamily}{\thesubsection}{1em}{}[
+\vspace{.5em}%
+]
 \titleformat{\subsubsection}
   {\sffamily}{\thesubsubsection}{1em}{}
 
@@ -579,7 +582,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 \begin{proof}
   Como $\fn \to f$ uniformemente, por definición podemos tomar un número $\epsilon > 0$ cualquiera de forma que:
   \[ \exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\dfrac{\epsilon}{3}\ \forall y\in A \]
-    Es obvio entonces que si tomamos un punto $a \in A$, $\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}$. Dado que $f_n$ es una función continua para cada $n \in \N$, por la definición de continuidad de una función podemos afirmar que:
+    Es obvio entonces que si tomamos un punto $a \in A$, $\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}$. Por otro lado, dado que $f_n$ es una función continua para cada $n \in \N$, por la definición de continuidad de una función podemos afirmar que:
     $$\exists \delta > 0 \text{ tal que si } |x-a| < \delta \text{ para } x \in A \text{ entonces } \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}$$
     De igual forma que con $a$, por la convergencia uniforme podemos afirmar que dado $x \in A$, $\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}$.
     Llegados a este punto, si unimos las desigualdades obtenidas hasta ahora podemos afirmar que:
@@ -778,7 +781,7 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
   Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B}_{\infty}(0,r)$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B}_{\infty}(0,r)$. Esto prueba que $\overline{B}_{\infty}(0,r)$ no es compacta.
 
-  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluímos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
+  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluimos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
 \end{ejemplo}
 
 \begin{ndef}[Sucesión acotada]
@@ -1057,7 +1060,7 @@ Veamos un ejemplo de aplicación de estos criterios.
 \begin{ejemplo}
   Probar que la serie $\displaystyle \sum_{n \ge 1} \frac{(-1)^n}{n} e^{-nx}$ converge uniformemente en $[0, \infty)$.
   
-  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibnitz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
+  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
 \end{ejemplo}
 
 
@@ -1072,7 +1075,7 @@ Un caso interesante de series de funciones lo constituyen las series de potencia
 Veamos una característica importante de las series de potencias, que nos ayuda a determinar su carácter de convergencia.
 
 \begin{ndef}[Radio de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos su radio de convergencia $R \in [0, \infty]$ como: $$
-  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|},$$
+  \frac{1}{R} =\underset{n\to\infty}{\mbox{lim\,sup\,}}  \sqrt[n]{|a_n|}$$
 \end{ndef}
 
 \begin{nota}
@@ -1091,7 +1094,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
 \begin{nth} \label{13}
   La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$  
   \begin{nlist}
-  \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$.
+  \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$).
   \item no converge si $x\not\in \overline{D(a,R)}$.
   \end{nlist}
 \end{nth}
@@ -1140,7 +1143,7 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
   %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------
   %\begin{proof} \hfill
   %\begin{nlist}
-  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluímos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
+  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
   
   % Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia (ver Marsden), y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, para ver que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
   %\end{nlist}	

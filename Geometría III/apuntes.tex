@@ -5,20 +5,6 @@
 % Universidad de Granada.
 % Curso 2016/17.
 % 
-% 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo(@guillegalor)
-% Antonio Coín (@antcc)
-% Sofía Almeida (@SofiaAlmeida)
-% Miguel Lentisco (@AlfaOmegaX)
-% 
-% Agradecimientos:
-% Andrés Herrera (@andreshp) y Mario Román (@M42) por
-% las plantillas base.
-% 
 % Sitio original:
 % https://github.com/libreim/apuntesDGIIM/
 % 
@@ -31,6 +17,9 @@
 % ------------------------------------------------------------------------------
 % ACKNOWLEDGMENTS
 % ------------------------------------------------------------------------------
+
+%Estos apuntes han sido realizados por libreim, de manera principal por los alumnos
+%de la promoción del 97 del doble grado en ingieniería informática y matemáticas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Plantilla básica de Latex en Español.
@@ -497,7 +486,6 @@ En esta asignatura estudiaremos la geometría afín. Nos centraremos en el plano
 \end{ndef}
 \subsection{El plano afín}
 
-%%% TODO: Decir explícitamente quién es la aplicación \phi en el espacio afín R^2
 De ahora en adelante, en el desarrollo de estos apuntes consideraremos $\R^2$ como el plano afín. En este plano podemos representar tanto \textit{puntos} como \textit{vectores} (realmente lo haríamos en el plano vectorial). No vamos a entrar a detallar todas las propiedades de los vectores, que vamos a suponer que el lector conoce. \\
 
 \begin{figure*}[h]
@@ -898,17 +886,6 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 
 \end{nth}
 
-%%% TODO: Elegir cual os gusta más please.
-
-%% \begin{proof}
-%%   Tomamos el vértice $A$ y el punto medio del lado opuesto. Lo que haremos es hacer una de las medianas y ver que el Baricentro pertenece a esta. Si tomamos el vértice $A$ y el punto medio del lado opuesto $A'$. Consideramos la recta $AvA' = Av\frac{C+B}{2}$. Tomando $A$ como un punto y $\vec{AA'}$ como el vector director, representamos la mediana de la forma:
-%%   \[
-%%     \{A + \lambda (\frac{C+B}{2} - A)\}
-%%   \] 
-%%   Y en este caso basta tomar $\lambda = \dfrac{2}{3}$ para obtener que el baricentro $G = \dfrac{A+B+C}{3}$ pertenece a esta recta.
-
-%%   Ahora, haciéndolo de forma análoga con los otros dos vértices, comprobamos que el baricentro pertenece a las 3 medianas, por tanto es donde trisecan.
-%% \end{proof}
 \begin{proof}
   Sea $A'$ el punto medio del lado opuesto a $A$ en un triángulo $ABC$. Sea $A \vee A'$ una de las medianas. Esta es:
   \[
@@ -922,7 +899,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   Es claro que $A' = \left(\frac{1}{2}B + \frac{1}{2}C\right)$. Tomamos $\lambda = \frac{1}{3}$, por lo que $\mu = \frac{2}{3}$ ya que el punto que buscamos se encuentra en la mediana. Sustituyendo estos valores en la ecuación anterior:
   
   $$\dfrac{1}{3}A + \dfrac{2}{3}\left(\dfrac{1}{2}B+\dfrac{1}{2}C\right) = \frac{1}{3}A + \frac{1}{3}B + \frac{1}{3}C = G$$
-% TODO: Falta demostrar que el baricentro triseca el segmento que une un vértice con el punto medio homólogo.
+	Después, una vez que sabemos que este punto se encuentra en la recta en la recta que une el punto medio con su vértice homólogo, como este se expresa como un tercio del vértice más otros dos puntos no alineados, este punto triseca claramente a esa recta.
 \end{proof}
 
 \begin{nota}
@@ -1022,9 +999,9 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{nprop}Si 2 de los centros del triángulo ABC coinciden, entonces el triángulo es equilátero.
 \end{nprop}
 
-%TODO: la dejo a medias, comentada para que no ensucie.
 %\begin{proof}
 %	Si es equilátero $\implies$ coinciden todos los centros, por lo que veremos que si no es equilátero no coinciden.
+%	Supongamos que no es equilatero, entonces 
 %\end{proof}
 
 \begin{ndef}[Homotecia]
@@ -1321,9 +1298,6 @@ Una afinidad $f$ cumple las siguientes propiedades:
   \end{nlist}
 \end{proof}
 
-% \begin{nota}
-%   Tenemos que ver esta transformación como una transformación intuitiva en la cual
-% \end{nota}
 
 \begin{ndef}
 	Una dilatación es una aplicación $h(P) = \lambda P + b$. 
@@ -1334,7 +1308,11 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 	
 \end{nprop}
 
-%%%TODO: demostrar
+\begin{proof}
+	En esta demostración notaremos la dilatación $h(P) = \lambda P + b$ como $d_{b,\lambda}(P)$.\\
+	Si $\lambda = 1,$ es trivial que $d(P) = P + b$, por lo que es unna traslación.\\
+	Recordemos que se define dilatación como $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A $. Entonces, como $ (1-\lambda)A $ es constante, podemos fijarlo como $b$ y $h_{A,\lambda} (P)= \lambda P + (1-\lambda)A  = \lambda P + b  = d_{b,\lambda} (P) $
+\end{proof}
 
 
 
@@ -1344,7 +1322,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   Una circunferencia es el lugar geométrico de los puntos del plano $\R^2$ que distan exactamente una distancia $r$ de un punto fijo. Las notaremos como $C($centro, radio$)$.
 \end{ndef}
 
-%FIXME: ¿es esto cierto? ¿O hay una que leva la primera en la segunda y otra la segunda en la primera?
 \begin{nprop}
   Dadas dos circunferencias, existen exactamente dos dilataciones que llevan una en la otra.
   \begin{enumerate}
@@ -1355,12 +1332,21 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   En nuestro caso, cumplirán que $h(C_1) = C_2$ y $\rho_2 = \lambda \rho_1$.
 \end{nprop}
 
+\begin{proof}
+	Demostraremos la existecia de una única dilatación que lleve $C_1$ en $C_2$, de modo que la dilatación que lleva $C_2$ en $C_1$ sea análoga. \\
+	
+	Veamos primero la existencia:\\
+		La dilatación $h(P) = (\rho_2/\rho_1)P + (\rho_2/\rho_1) (A_2-A_1)$. De este modo $\lambda = (\rho_2/\rho_1)$, entonces $\rho_2 = \lambda \rho_1$ y $h(A_1) = (\lambda)A_1 +  (A_2-(\lambda)A_1) = (\rho_2/\rho_1)A_1 +  (A_2-(\rho_2/\rho_1)A_1) = A_2$, por lo que lleva $C_1$ en $C_2$. \\
+		
+	Es única porque si hubiese otra tendría que cumplir que  $\lambda = (\rho_2/\rho_1)$, y además que $h(A_1) = A_2$, por lo que $\lambda A_1 + b = A_2$, y entonces $b= A_2- \lambda A_1$, por lo que es la misma dilatación.\\
+	
+\end{proof}
+
 \begin{ndef}
   Dos puntos $A$, $B$ de $C = C(O,\rho) $ se dicen diametralmente opuestos si y solamente si $O \in A \vee B$, es decir, $\equiv O = \dfrac{1}{2}A + \dfrac{1}{2}B$.
 \end{ndef}
 
 
-%%% DONE
 \begin{nprop}
   Un par de puntos diametralmente opuestos de una circunferencia $C$ la determinan de forma única.
 \end{nprop}
@@ -1377,15 +1363,17 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   Dos rectas $r$ y $s$ son perpendiculares si sus vectores directores forman un ángulo recto.
 \end{ndef}
 
-%TODO: ¿Mejorar un poco más?
 \begin{nprop}
   Dados dos puntos $A$ y $B$, el lugar geométrico de los puntos $P$ que cumplen que los segmentos $AP$ y $BP$ forman un ángulo recto es una circunferencia.
 \end{nprop}
 
 \begin{proof}
-	El lugar geométrico que buscamos son todos los puntos $P$ que cumplen que $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, %aquí usamos a aros y su magia. Demostrar. 
-	$|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, formando una circunferencia de centro $M$ y radio $\rho$. 
+	El lugar geométrico que buscamos son todos los puntos $P$ que cumplen que $\langle P-A, P-B\rangle =0$. Entonces por la bilienealidad y la conmutatividad del producto escalar $\langle P-A,P-B\rangle  = \langle P-A,P\rangle  - \langle  P-A,B\rangle  = \langle P,P\rangle  - \langle P,A\rangle  - \langle P,B\rangle  + \langle A,B\rangle  = | P|^2 - \langle P,A+B\rangle  + \langle A,B\rangle  = 0  $. Definimos $M=A/2+B/2 $, entonces, $|P|^2 - \langle P,2M\rangle  + |M|^2 = |P|^2 - 2\langle P,M\rangle  + |M|^2 = |P-M|^2 = \rho$ ,  por lo que la distancia de todos estos puntos a $M$ es igual, formando una circunferencia de centro $M$ y radio $\rho$. 
 \end{proof}
+
+\begin{nota}
+	Para comprender mejora la demostración, es útil tener en cuenta que $<A,B> = <A/2+A/2,B/2+B/2> =  <A/2,B/2> + <A/2,B/2> +  <A/2,B/2> + <A/2,B/2> =  <B/2+A/2> + <A/2,B/2>  <B/2,A/2> + <A/2,B/2> = <A/2+B/2, A/2+B/2> = |M|^2$
+\end{nota}
 
 \begin{nota}
 	Véase que esta circunferencia es la única definida por $A$ y $B$ de modo que sean diametralmente opuestos.
@@ -1497,8 +1485,12 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
    
 \end{nth}
 \begin{proof}
-  Tenemos que $B'A'B_2A_2$ es un rectángulo
-  %%% TODO:COMPLETAR DEMOSTRACIÓN.
+Para los puntos medios se tienen homotecias de razón 1/2 y se dedice que $A_1B_1A_2B_2$ y $A'C'A_2C_2$ son rectánguls con lados paralelos a los lados de ABC y a sus alturas. Por tanto $$C_{B'B_2} = C _{A'A_2} = C_{C'C_2}$$.
+
+Además  $$A_3 \vee A' = B\vee C \perp h_A = A_3\vee A_2 $$ da $A_3 \in C_{A'A_2}$ y análogamente el resto.
+
+la circunferencia de los 9 puntos es la ircuferencia circunscrita del triángulo $A'B'C'$ y su centro es $$O' = 1/2O+1/2H$$. En el se cortan las diagonales de los rectángulos.
+
 \end{proof}
 
 
@@ -1514,9 +1506,14 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 \begin{nota}
   Un ángulo entre rectas sería el ángulo que forman sus vectores directores
 \end{nota}
+
 \begin{nprop}
   Si tenemos cuatro rectas $r \parallel r'$ y $s \parallel s'$, entonces los ángulos entre $r$ y $s$, y entre $r'$ y $s'$ son iguales.
 \end{nprop}
+
+\begin{proof}
+	Como tienen los mismo vectores directores entonces el ángulo será igual..
+\end{proof}
 
 \begin{nprop}\hfill\\
   \begin{minipage}[c]{0.65\textwidth}
@@ -1555,11 +1552,10 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   \end{minipage}
 \end{nprop}
 
- 
+\begin{proof}
+	Los vectores que generan ambos ángulos son opuestos. De ese modo dados sendos ángulos opuestos por el vértice $\alpha$ y $\alpha'$, entonces $\alpha= cos^{-1} \frac{\langle  v,w \rangle }{|v||w|} =^1  cos^{-1} \frac{\langle  -v,-w \rangle }{|-v||-w|}  = \alpha'$ donde en 1 se usa la bilinealidad del producto escalar.
+\end{proof}
 
-\begin{nprop}
-  Si $r$ y $s$ son perpendiculares, entonces el ángulo formado por sus dos vectores directores es $\theta = \pi/2$.
-\end{nprop}
 
 \begin{nth}
   Los tres ángulos de un triángulo suman $\pi$.
@@ -1582,6 +1578,10 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
   Las distancias se multiplican por $|\lambda|$ pero los ángulos se mantienen.
 \end{nprop}
 
+\begin{proof}
+	 Tengamos el ángulo $\theta=cos^{-1} \frac{\langle  v,w \rangle }{|v||w|} $. Tras aplicar la dilatación $ \vec f (v)$ sobre los vectores nos queda $cos^{-1} \frac{\langle  \lambda v,\lambda w \rangle }{|\lambda v||\lambda w|} = cos^{-1} \frac{\lambda^2 \langle  v,w \rangle }{\lambda^2 |v|| w|} = cos^{-1} \frac{ \langle  v,w \rangle }{ |v|| w|} =  \theta$ .
+\end{proof}
+
 
 
 
@@ -1597,7 +1597,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 \begin{proof}\hfill \\
   $\boxed{\Rightarrow}$\hfill\\
    \begin{minipage}[c]{0.75\textwidth}
-  %%%FIXME:¿HARÍA FALTA EXPLICARLA MÁS? no me salió muy clara.
   
   Al ser ambas diagonales hipotenusas de triángulos idénticos (por ser $\vec{AB}=\vec{DC}$, $\vec{BC}=\vec{AD}$ y por ser recto el ángulo que une los segmentos) son de igual distancia.\hfill
 
@@ -1653,8 +1652,7 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 	Además como el centro está en la diagonal $A\vee C$, estos dos puntos son diametralmente opuestos. Análogo para $B\vee D$.
 \end{proof}
 
-%%% TODO: completar
-%%%FIXME: aquí va a haber un merge guapísimo.
+
 \begin{nprop}
   Un paralelogramo se puede inscribir en una circunferencia $\iff$ es un rectángulo.
 \end{nprop}
@@ -1666,19 +1664,6 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 	
 	Si no fuesen diametralmente opuestos, tendríamos que ver que dos rectas paralelas que no estén a la misma distancia del centro no pueden tener, en el segmento incluido dentro de la circunferencia, la misma distancia. Por lo cual, para que sea un paralelogramo, los vértices han de ser diametralmente opuestos 
 \end{proof}
-
-
-
-%TODO: Si alguien puede que envíe al grupo apuntes de este día.
-\subsection {Razón áurea}
-\begin{ndef}[La razón áurea]
-  
-\end{ndef}
-
-
-
-
-
 
 
 
@@ -2932,4 +2917,162 @@ a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
 \begin{ndef}[Triángulo dual]
 	Tres rectas no concurrentes(los vértices del original) y tres puntos de corte(las rectas del original)
 \end{ndef}
+
+\subsection{Proyectividades}
+
+\begin{ndef}[Proyectividad]
+	Una proyectividad es una aplicación:
+	\[
+	f: \mathbb P ^2 \to \mathbb P^2
+	\]
+	\[
+	 \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  \mapsto A  \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  \
+	\]
+	Con $A$ una matriz $3\times 3$ regular. Esto define una aplicación:
+	\[
+	\bar{f} : \R^3 \to \R^3 
+	\]
+	
+\end{ndef}
+
+\begin{nprop}[Propiedades de $\bar{f}$]
+	\begin{nlist}
+	\item $\bar{f}$ lleva rectas vectoriales en rectas vectoriales
+	\item $\bar{f}$ lleva planos vectoriales en planos vectoriales
+	\item $\bar{f}$ lleva vectores linealmente independientes en vectores linealmente independientes.
+	\item Ídem con vectores linealmente dependientes.
+\end{nlist}
+\end{nprop}
+
+\begin{nprop}[Propiedades de $f$]
+	\begin{nlist}
+	\item $f$ lleva puntos de $\mathbb P^2$ en puntos de $\mathbb P^2$
+	\item $f$ lleva rectas de $\mathbb P^2$ en rectas de $\mathbb P^2$
+	\item $f$ lleva puntos no alineados a puntos no alineados
+	\item Ídem con puntos sí alineados
+\end{nlist}
+\end{nprop}
+
+\begin{nprop}
+	Si $A$ es la matriz de una proyectividad y $\lambda \ne 0$, entonces $\lambda A$ y $A$ inducen la misma proyectividad.
+\end{nprop}
+
+\begin{nprop}
+	Si tenemos una proyectividad $f$ con matriz $A$ y otra $g$ con una matriz $B$, la composición de ambas es otra proyectividad $go f$ con matriz $BA$
+\end{nprop}
+
+\begin{nprop}
+	Si $f$ es una proyectividad de matriz $A$ y $A$ tiene inversa, entonces $f$ es biyectiva
+\end{nprop}
+
+\begin{nth}
+	Toda proyectividad tiene al menos un punto fijo
+\end{nth}
+\begin{proof}\hfill\\
+Es análoga a la del teorema: Todo isomorfismo lineal de $\R^3$ tiene al menos un vector propio.
+\end{proof}
+\subsubsection{Relación entre afinidades y proyectividades}
+
+Si $h: \R^2 \to \R^2$ es una afinidad de la forma:
+\[
+h \begin{pmatrix}
+x\\
+y
+\end{pmatrix}  = \begin{pmatrix}
+ \alpha & \beta \\
+ \gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+x\\
+y
+\end{pmatrix} + \begin{pmatrix}
+b_1\\
+b_2
+\end{pmatrix}
+\]
+podemos definir una proyectividad $\bar h : \mathbb P ^2 \to \mathbb P^2$ tal que:
+\[
+\bar{h} \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix}  = \begin{pmatrix}
+ 1 & 0 & 0 \\
+ b_1 & \alpha & \beta \\
+ b_2 & \gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+ x_0\\
+ x_1\\
+ x_2
+\end{pmatrix} 
+\]
+
+\begin{nprop}
+	Toda afinidad se extiende a una proyectividad.
+\end{nprop}
+
+\begin{nprop}
+	$\bar h$ actúa sobre $r_\infty$, la lleva sobre sí misma.
+\end{nprop}
+%%% TODO: Añadir ejemplos de proyectividades
+
+\begin{nth}
+	Si $f: \mathbb P^2 \to \mathbb P^2$ es una proyectividad, entonces:
+	\[
+	\text{ $f$ viene de una afinidad } \iff f(r_\infty) = r_\infty
+	\]
+\end{nth}
+\begin{proof}
+	Sea $A$ la matriz:
+	\[
+	\begin{pmatrix}
+ a_0& b_0 & c_0 \\
+ a_1 & b_1 & c_1\\
+ a_2 & b_2 & c_2
+\end{pmatrix} 
+	\]
+	Tenemos que tener que $f\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix} \mapsto \begin{pmatrix}
+b_0\\
+\\
+
+\end{pmatrix} \implies b_0 = 0 $. Idem con $\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix} \implies c_0 = 0 $ y tenemos que tener que $a_0 \ne 0$. Por tanto, la matriz será de la forma:
+\[
+\dfrac{1}{a_0} A = \begin{pmatrix}
+ 1& 0 & 0 \\
+  &  & \\
+  & & 
+\end{pmatrix} 
+\]
+(Los huecos en blanco no son relevantes). De esta forma, tenemos que está definida a partir de una afinidad.
+\end{proof}
+
+\begin{ncor}
+	Si $f: \mathbb P^2 \to \mathbb P^2$ es una proyectividad. $r\subset \mathbb P^2$ es una recta con $f(r) = r$.
+	Entonces, sobre el afín $\mathbb P^2 -r$, $f|_{\mathbb P^2 -r}$ es una afinidad.
+\end{ncor}
+
+\subsection{Proyectividades y dualidad}
+
+\begin{nth}
+	Toda proyectividad de $\mathbb P^2$ tiene al menos un punto fijo.
+\end{nth}
+
+\begin{nth}[Dual]
+	Toda proyectividad de $\mathbb P^2$ tiene al menos una recta fija
+\end{nth}
 \end{document}
