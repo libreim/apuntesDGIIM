@@ -44,18 +44,18 @@ end
 #       task :example => (pdf_for FileList["tema*.tex"])
 #
 #-------------------------------------------#
-task :algebra1 => (pdf_for FileList["Álgebra I/*.tex"])
-task :analisis1 => (pdf_for FileList["Análisis Matemático I/*.tex"])
-task :ecomputadores => (pdf_for FileList["Estructura de Computadores/*.md"])
-task :edatos => (pdf_for FileList["Estructuras de datos/*.org", "Estructura de datos/*.md"])
-task :sistemas => (pdf_for FileList["Sistemas Operativos/repasoFS.md", "Sistemas Operativos/Prácticas/Modulo2/LlamadasSistema.md", "Sistemas Operativos/Resúmenes/Temas 1, 2/*.md", "Sistemas Operativos/Resúmenes/Temas 3, 4/*.md", "Sistemas Operativos/Ejercicios relación 1,2/*.md", "Sistemas Operativos/Ejercicios relación 3,4/*.md"])
-task :analisis2 => (pdf_for FileList["Análisis Matemático II/*.tex"])
-task :geometria3 => (pdf_for FileList["Geometría III/*.tex"])
-task :modelos1 => (pdf_for FileList["Modelos Matemáticos I/*.tex"])
+task :algebra1 => (pdf_for FileList["ALGI/*.tex"])
+task :analisis1 => (pdf_for FileList["AMI/*.tex"])
+task :ecomputadores => (pdf_for FileList["EC/*.md"])
+task :edatos => (pdf_for FileList["ED/*.org", "ED/*.md"])
+task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
+task :analisis2 => (pdf_for FileList["AMII/*.tex"])
+task :geometria3 => (pdf_for FileList["GEOIII/*.tex"])
+task :modelos1 => (pdf_for FileList["MMI/*.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
-task :acomputadores => (pdf_for FileList["Arquitectura de Computadores/Resúmenes/Tema*.md"])
-task :pdoo => (pdf_for FileList["Programación y Diseño Orientado a Objetos/guia_ruby.md"])
-task :algoritmica => (pdf_for FileList["Algorítmica/*.md"])
+task :acomputadores => (pdf_for FileList["AC/Resúmenes/Tema*.md"])
+task :pdoo => (pdf_for FileList["PDOO/guia_ruby.md"])
+task :algoritmica => (pdf_for FileList["ALGO/*.md"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
