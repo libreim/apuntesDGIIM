@@ -121,10 +121,9 @@
 
 % Fuentes personalizadas
 
-\usepackage[scaled=.9]{newpxtext,newpxmath}
+\usepackage[scaled=.85]{newpxtext,newpxmath}
 \usepackage[scaled=.85]{FiraSans}
 \usepackage[T1]{fontenc}
-\usepackage[italic]{mathastext}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
 % que le rodea
@@ -186,9 +185,7 @@
 \titleformat{\section}
   {\Large\bfseries\sffamily}{\thesection}{1em}{}
 \titleformat{\subsection}
-  {\Large\sffamily}{\thesubsection}{1em}{}[
-\vspace{.5em}%
-]
+  {\large\sffamily}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
   {\sffamily}{\thesubsubsection}{1em}{}
 
@@ -582,7 +579,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
 \begin{proof}
   Como $\fn \to f$ uniformemente, por definición podemos tomar un número $\epsilon > 0$ cualquiera de forma que:
   \[ \exists K>0:\ n\ge K \implies \abs{f_n(y)-f(y)}<\dfrac{\epsilon}{3}\ \forall y\in A \]
-    Es obvio entonces que si tomamos un punto $a \in A$, $\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}$. Por otro lado, dado que $f_n$ es una función continua para cada $n \in \N$, por la definición de continuidad de una función podemos afirmar que:
+    Es obvio entonces que si tomamos un punto $a \in A$, $\abs{f_n(a)-f(a)}<\dfrac{\epsilon}{3}$. Dado que $f_n$ es una función continua para cada $n \in \N$, por la definición de continuidad de una función podemos afirmar que:
     $$\exists \delta > 0 \text{ tal que si } |x-a| < \delta \text{ para } x \in A \text{ entonces } \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}$$
     De igual forma que con $a$, por la convergencia uniforme podemos afirmar que dado $x \in A$, $\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}$.
     Llegados a este punto, si unimos las desigualdades obtenidas hasta ahora podemos afirmar que:
