@@ -564,10 +564,10 @@
     
     Dado $\epsilon>0$, como $f_n \rightarrow f$ converge uniformemente, $\exists k>0$
     tal que $$n>k \Rightarrow |f_n(x)-f(x)| < \epsilon/3, \ \ \forall x \in A.$$
-    Por otro lado, por ser $f_k$ uniformemente continua en $A$, 
-    $\exists \delta >0$ tal que $$\forall x,y \in A\ \textrm{con\ }|x-y| < \delta,\textrm{se\ tiene\ }|f_k(x)-f_k(y)| < \epsilon /3$$
+    De otro lado, por ser $f_k$ uniformemente continua en $A$, 
+    $\exists \delta >0$ tal que $$\forall x,y \in A\ con\ |x-y| < \delta,\ se\ tiene\ |f_k(x)-f_k(y)| < \epsilon /3$$
     Juntando ambas informaciones: $$|f(x)-f(y)| \leq |f(x)-f_k(x)| + |f_k(x)-f_k(y)| + |f_k(y)-f(y)| < \epsilon$$
-    Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ \textrm{con\ }|x-y|<\delta\ \textrm{se\ verifica\ }|f(x)-f(y)| < \epsilon$$ 
+    Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ con\ |x-y|<\delta\ se\ verifica\ |f(x)-f(y)| < \epsilon$$ 
     Por tanto, $f$ es uniformemente continua.\qed
   \end{sol}
 
@@ -630,7 +630,7 @@
     
     Donde la convergencia de $\displaystyle \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2}$ viene dada por el \textit{Criterio del cociente:} $$\lim_{n\to\infty}\ddfrac{\ddfrac{M^{2(n+1)}}{((n+1)!)^2}}{\frac{M^{2n}}{(n!)^2}} = \lim_{n\to\infty} \frac{M^2}{(n+1)^2} = 0 < 1.$$
 
-    Como $M$ era una constante arbitraria, concluimos que la serie converge uniformemente en cualquier intervalo acotado de $\mathbb{R}$.
+    Como $M$ era una constante arbitraria, concluímos que la serie converge uniformemente en cualquier intervalo acotado de $\mathbb{R}$.
   \end{sol}
 
   \begin{sol}[b2] Podemos ver la serie como una serie de potencias $\displaystyle \sum_{k \ge 1} a_kx^k$, donde: $$a_k = \begin{cases} 0 & si \ k \ impar \\ \displaystyle \frac{1}{(n!)^2} & si \ k \ par \end{cases}$$
