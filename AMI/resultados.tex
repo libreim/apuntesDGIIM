@@ -1,0 +1,784 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Documento con los principales resultados de la
+% asignatura Análisis Matemático I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+% Colaboradores:
+% Javier Sáez (@fjsaezm)
+% Daniel Pozo (@danipozodg)
+% Pedro Bonilla (@pedrobn23)
+% Guillermo Galindo
+% Antonio Coín (@antcc)
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) por la base para la plantilla.
+% Mario Román (@M42) por la base para la portada.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%------------------------------------------------------------------------------
+%   ACKNOWLEDGMENTS
+%------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla básica de Latex en Español.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+%
+% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
+% estilo moderno pero serio.
+%
+% La plantilla se encuentra adaptada al español.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Plantilla de Trabajo
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% al castellano y a las necesidades de escribir informática y matemáticas.
+%
+% Editada por: Mario Román
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper, titlepage]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+
+
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
+
+
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+% Cabecera del documento.
+\renewcommand\headrule{
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize 
+	\end{minipage}
+}
+
+% Texto de la cabecera.
+\lhead{\subject: Principales resultados}  % Izquierda.
+\chead{}            % Centro.
+\rhead{DGIIM}    % Derecha.
+
+% Pie de página del documento.
+\renewcommand\footrule{                                 
+	\begin{minipage}{1\textwidth}
+		\hrule width \hsize   
+	\end{minipage}\par
+}
+
+% Texto del pie de página.
+\lfoot{}                                                 % Izquierda
+\cfoot{}                                                 % Centro.
+\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
+
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem*{ndef}{Definición}
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+
+%---------------------------------------------------------------------------
+%   PÁGINA DE TÍTULO
+%---------------------------------------------------------------------------
+
+% Título del documento.
+\newcommand{\subject}{Análisis Matemático I}
+
+% Autor del documento.
+\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
+
+% Título
+\title{
+  \normalfont \normalsize 
+  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+  \huge \subject\\  \Large Teoremas, proposiciones y definiciones\\ % Título.
+  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+}
+
+% Autor.
+\author{\large{\docauthor}}
+
+% Fecha.
+\date{\vspace{-1.5em} \normalsize Curso 2016/17}
+
+
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+
+\maketitle  % Título.
+\tableofcontents
+\newpage
+
+%--------------------------------------
+%   Topología de un espacio métrico.
+%--------------------------------------
+\section{Topología de un espacio métrico.}
+
+%%% El espacio métrico R^N.
+\subsection{Concepto de espacio métrico. El espacio métrico $\mathbb{R}^N$.}
+
+\begin{ndef}[Espacio métrico]
+Consideremos un conjunto $X$ cualquiera, y una aplicación \mbox{$d:X\times X \longrightarrow \mathbb{R}$} que cumple las siguientes propiedades:
+
+\begin{nlist}
+\item $d(x,y) \ge 0\ \ \forall x,y \in X$.
+
+\item $d(x,y) = 0 \iff x = y\ \ \forall x,y \in X$.
+
+\item $d(x,y) = d(y,x)\ \ \forall x,y \in X$.
+
+\item $d(x,y) \leq d(x,z) + d(z,y)\ \ \forall x,y,z \in X. \quad \quad(desigualdad\ triangular)$
+
+\end{nlist}
+
+Entonces, se dice que el par $(X,d)$ es un \emph{espacio métrico}.
+\end{ndef}
+
+
+
+\begin{nota}
+En adelante, entenderemos $\mathbb{R}^N$ como el espacio métrico $(\mathbb{R}^N,d)$, siendo $d$ la distancia usual \textbf{(distancia euclídea)} dada por: $$d(x,y) = \sqrt{\sum_{i=1}^N (y_i - x_i)^2}\ \ \forall x,y\in \mathbb{R}^N.$$
+
+Existen otras distancias en $\mathbb{R}^N$. Las más destacadas son las siguientes:
+
+\begin{nlist}
+\item $\displaystyle d_1(x,y) = \sum_{i=1}^N \abs{x_i - y_i}\ \ \forall x,y \in \mathbb{R}^N$.
+
+\item $\displaystyle d_{\infty}(x,y) = m\acute{a}x \{\abs{x_i - y_i}: \ i=1,\dots,N \}\ \ \forall x,y\in \mathbb{R}^N$.
+
+\item $\displaystyle d_p(x,y) = \left( \sum_{i=1}^N \abs{x_i - y_i}^p \right)^{1/p}\ \ \forall x,y\in \mathbb{R}^N$.\\
+\end{nlist}
+
+\end{nota}
+
+
+
+\begin{ndef}
+Sean $(X,d)$ y $(X,d')$ dos espacios métricos sobre un mismo conjunto $X$. Se dice que las distancias $d$ y $d'$ son \textit{equivalentes} si, y solo si, $$\exists k_1,k_2 > 0 :\ k_1d(x,y)\le d'(x,y) \le k_2d(x,y)\ \ \forall x,y\in X.$$
+\end{ndef}
+
+
+
+\begin{nprop}
+En $\mathbb{R}^N$, todas las distancias mencionadas anteriormente son equivalentes entre sí. En particular, la distancia euclídea es equivalente a todas ellas.
+\end{nprop}
+
+
+%%% Conceptos topológicos.
+\subsection{Conceptos topológicos.} 
+
+\begin{ndef}[Bola abierta]
+Sea $(X,d)$ un espacio métrico, y fijemos un $x\in X$ y un $\epsilon > 0$. Se llama \emph{bola abierta de centro $x$ y radio $\epsilon$} al conjunto $B(x,\epsilon) = \{ y\in X \ | \ d(x,y)<\epsilon\}$.
+\end{ndef}
+
+
+
+\begin{ndef}[Bola cerrada]
+De forma análoga, se define la \emph{bola cerrada de centro $x$ y radio $\epsilon$} como el conjunto $\bar{B}(x,\epsilon) = \{y\in X \ | \ d(x,y)\leq \epsilon \}$.
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto abierto]
+Sea $(X,d)$ un espacio métrico, y sea $A\subseteq X$. Decimos que \mbox{$A\ es\ abierto \iff \forall a \in A\ \exists \epsilon > 0: B(x,\epsilon) \subseteq A$}.	
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, $\forall x \in X \ \forall \epsilon > 0$ se tiene que $B(x,\epsilon)$ es un conjunto abierto.
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $Si\ \{A_\lambda \ | \ \lambda \in \Lambda \}$ es una familia de subconjuntos abiertos de $X$, entonces $\displaystyle \bigcup_{\lambda \in \Lambda} A_\lambda$ es abierto.
+
+\item Si $\{A_1,\dots, A_n\}$ es una familia finita de abiertos de $X$, entonces $\displaystyle \bigcap_{i=1}^n A_i$ es abierto.
+
+\item $X,\emptyset$ son abiertos.
+\end{nlist}
+
+\end{nprop}
+
+
+
+\begin{ndef}[Punto interior]
+Sea $(X,d)$ un espacio métrico, y consideremos $A\subseteq X$, $a\in A$. Se dice que $a$ \emph{es un punto interior de} $A$ si, y solo si, $\exists \epsilon_0 > 0: B(a,\epsilon_0)\subseteq A$.  Definimos $int(A) = \mathring{A} = \{ a\in A \ | \ a\ es\ punto\ interior\ de\ A\}$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $\mathring{A} \subseteq A$.
+
+\item $\mathring{A}$ es abierto.
+
+\item Si $B\subseteq A$ es un subconjunto abierto de $A$, entonces $B \subseteq \mathring{A}$. Es decir, $\mathring{A}$ es el abierto más grande contenido en $A$.
+
+\item $\displaystyle \mathring{A}  = \bigcup \{ B\subseteq A \ | \ B\ es\ abierto \}$.
+
+\item $A$ es abierto $\iff \mathring{A} =A$.
+
+\item $int(int(A)) = int(A).$
+
+\item Si $A\subseteq B$, entonces $\mathring{A} \subseteq \mathring{B}$.
+\end{nlist}
+
+\end{nprop}
+
+
+
+\begin{ndef}[Conjunto cerrado]
+Sea $(X,d)$ un espacio métrico, y $F\subseteq X$. Se dice que el conjunto $F\ es\ cerrado \iff X-F\ es\ abierto$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, $\forall x\in X \ \forall \epsilon > 0$ se tiene que $\bar{B}(x,\epsilon)$ es un conjunto cerrado.
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes propiedades:
+
+\begin{nlist}
+\item $Si\ \{F_\lambda \ | \ \lambda \in \Lambda \}$ es una familia de cerrados de $X$, entonces $\displaystyle \bigcap_{\lambda \in \Lambda} F_\lambda$ es cerrado.
+
+\item Si $\{F_1,\dots, F_n\}$ es una familia finita de cerrados de $X$, entonces $\displaystyle \bigcup_{i=1}^n F_i$ es cerrado.
+
+\item $X,\emptyset$ son cerrados.
+\end{nlist}
+
+\end{nprop}
+
+
+
+\begin{ndef}[Clausura]
+Sea $(X,d)$ un espacio métrico. Se llama \textit{clausura o cierre de A} al conjunto $\bar{A} = X - int(X-A)$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifican las siguientes propiedades:
+\begin{nlist}
+\item $A \subseteq \bar{A}$.
+
+\item $\bar{A}$ es cerrado.
+
+\item Si $B\subseteq X$ es un subconjunto cerrado de $X$ tal que $A\subseteq B$, entonces $\bar{A} \subseteq B$. Es decir, $\bar{A}$ es el cerrado más pequeño que contiene a $A$.
+
+\item $\displaystyle \bar{A}  = \bigcap \{ F\subseteq X \ | \ F\ es\ cerrado\ y\ A\subseteq F \}$.
+
+\item $A$ es cerrado $\iff \bar{A} = A$.
+
+\item $\bar{\bar{A}} = \bar{A}.$
+
+\item Si $A\subseteq B$, entonces $\bar{A} \subseteq \bar{B}$.
+\end{nlist}
+
+\end{nprop}
+
+
+
+\begin{ndef}[Frontera]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Llamamos \textit{frontera de A} al conjunto $\partial A = \bar{A}-\mathring{A}$.	
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, se verifica lo siguiente:
+$x\in \partial A \iff \forall \epsilon > 0\ B(x,\epsilon)\cap A \neq \emptyset \ y\ B(x,\epsilon)\cap (X-A) \neq \emptyset$.
+\end{nprop}
+
+
+
+\begin{ndef}[Punto de acumulación]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Dado $x\in X$, decimos que \textit{x es punto de acumulación de} $A \iff \forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})\neq \emptyset$. Definimos $A' = \{ x\in X \ | \ x\ es\ punto\ de\ acumulaci\acute{o}n\ de\ A \}$.
+\end{ndef}
+
+
+
+\begin{nprop}
+Sea $(X,d)$ un espacio métrico. Entonces, se verifican las siguientes afirmaciones:
+
+\begin{nlist}
+\item $\mathring{A} = X - \overline{X-A}$
+
+\item $\bar{A} = A \cup \partial A$.
+
+\item $\bar{A} = A \cup A'$
+
+\item $X = int(A) \cup \partial A \cup int(X-A)$. Además, la unión es disjunta dos a dos.
+\end{nlist}
+
+\end{nprop}
+
+\newpage
+
+
+%--------------------------------------
+%   Sucesiones en R^N.
+%--------------------------------------
+\section{Sucesiones en $\mathbb{R}^N$.}
+
+
+
+\begin{ndef}[Sucesión en $\mathbb{R}^N$]
+Una sucesión en $\mathbb{R}^N$ es una aplicación $x: \mathbb{N} \longrightarrow \mathbb{R}^N$ que a cada $n\in \mathbb{N}$ le hace corresponder un $x(n) \in \mathbb{R}^N$. Por simplicidad, al elemento imagen de $n$ se le denomina $x_n$, y la aplicación $x$ se denota $\{x_n\}$.
+\end{ndef}
+
+
+
+\begin{ndef}[Convergencia de sucesiones]
+Sea $(X,d)$ un espacio métrico, $A\subseteq X$ y $x\in X$. Decimos que una sucesión $\{x_n\}$ de puntos de $A$ converge a $x$ si, y solo si: $$ \forall \epsilon > 0\ \ \exists n_o \in \mathbb{N}: \ n\ge n_o \Rightarrow d(x_n,x) < \epsilon.$$
+\end{ndef}
+
+
+
+\begin{nota}
+Este concepto no depende de la distancia equivalente elegida.
+\end{nota}
+
+
+
+\begin{nprop}
+Sea $A\subseteq \mathbb{R}^N$, $x\in \mathbb{R}^N$, y $\{x_n\}$ una sucesión de puntos de $A$. Adoptemos la notación $x_n = (x_n^1, x_n^2,\dots,x_n^N)$, y $x=(x^1, x^2,\dots, x^N)$. Entonces, se verifica que:
+$$\{x_n\} \rightarrow x \iff \{x_n^j\} \rightarrow x^j.$$
+\end{nprop}
+
+
+
+\begin{ndef}
+Sea $(X,d)$ un espacio métrico, y $x\in X$. Consideremos, para cada $n\in \mathbb{N}$, un punto $a_n \in X$. Entonces, decimos que $d(a_n,x) \rightarrow 0$ $\iff \{a_n\} \rightarrow x$.
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto acotado]
+Sea $A \subseteq \mathbb{R}^N$. Decimos que $A$ \textit{está acotado} si, y solo si, $\exists R>0: A\subseteq B(0,R)$.
+\end{ndef}
+
+
+
+\begin{ndef}[Sucesión acotada]
+Sea $\{x_n\}$ una sucesión de puntos de $R^N$. Entonces, decimos que $\{x_n\}$ \textit{está acotada} sí, y solo sí, $\{x_n\ | \ n\in \mathbb{N}\}$ está acotado.
+\end{ndef}
+
+
+
+\begin{nprop}
+Si una sucesión $\{x_n\} \subseteq \mathbb{R}^N$ es acotada, entonces $\forall i=1,\dots,n$ la sucesión $\{x_n^i\}$ es acotada (en $\mathbb{R}$).
+\end{nprop}
+
+
+
+\begin{nota}
+Si un conjunto $A\subseteq \mathbb{R}^N$ es acotado, entonces cualquier sucesión de puntos de $A$ es acotada.
+\end{nota}
+
+
+
+\begin{nth}[Bolzano-Weierstrass]
+Sea $\{x_n\}\subseteq \mathbb{R}^N$ acotada. Entonces, existe una sucesión parcial suya $\{x_{\sigma_{(n)}}\}$ convergente.
+\end{nth}
+
+
+
+\begin{ndef}[Sucesión de Cauchy]
+Sea $\{x_n\}\subseteq \mathbb{R}^N$. Decimos que $\{x_n\}$ es una \textit{sucesión de Cauchy} $\iff \forall \epsilon > 0\ \ \exists n_o \in \mathbb{N}: \ n,m\ge n_o \Rightarrow d(x_n,x_m) < \epsilon$.
+\end{ndef}
+
+
+
+\begin{nth} [$\bm{\mathbb{R}^N}$ es completo]
+Sea $\{x_n\}\subseteq \mathbb{R}^N$. Entonces: $$\{x_n\}\ es\ de\ Cacuchy\ \iff \{x_n\}\ es\ convergente.$$
+\end{nth}
+
+
+
+\begin{nprop}
+Sea $\{x_n\} \subseteq \mathbb{R}^N\ con\ \{x_n\} \rightarrow x \in \mathbb{R}^N$. Entonces, toda sucesión parcial de $\{x_n\}$ es convergente a $x$.
+\end{nprop}
+
+\newpage
+
+
+%-----------------------------------
+%   Funciones continuas en R^N.
+%-----------------------------------
+\section{Funciones continuas en $\mathbb{R}^N$.}
+
+
+
+\begin{ndef}[Función continua]
+Sea $\emptyset \ne A\subseteq \mathbb{R}^N$, $f: A \longrightarrow \mathbb{R}^M$ y $a \in A$. Decimos que \textit{f es continua en $a$} si, y solo si: $$\forall \epsilon > 0\ \ \exists \delta > 0: \ x\in A, \ d(x,a)<\delta \Rightarrow d(f(x),f(a))<\epsilon.$$
+Además, se dice que $f$ es continua si lo es en todos sus puntos.	
+\end{ndef}
+
+
+
+\begin{nprop}[Caracterización de continuidad]
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, y $f:A\longrightarrow \mathbb{R}^M$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
+\end{nprop}
+
+
+
+\begin{ndef}[Continuidad uniforme]
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, $f:A \longrightarrow \mathbb{R}^M$. Se dice que $f$ es uniformemente continua si, y solo si: $$\forall \epsilon > 0 \ \ \exists \delta > 0 : \ x,y \in A,\ d(x,y) < \delta \Rightarrow d(f(x),f(a)) < \epsilon.$$
+\end{ndef}
+
+
+\begin{ndef}[Conjunto compacto]
+Sea $(X,d)$ un espacio métrico, y sea $\emptyset \ne A \subseteq X$. $$A\ es\ compacto \iff \forall \{x_n\} \subseteq A\ \ \exists \{x_{\sigma(n)}\} \rightarrow x\in A.$$
+\end{ndef}
+
+
+
+\begin{nprop}[Caracterización de cerrados]
+Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Entonces, son equivalentes:
+
+\begin{nlist}
+\item $A$ es cerrado.
+\item $\forall \{x_n\} \subseteq A$ convergente a un $x \in X$, se verifica que $x\in A$.
+\end{nlist}
+
+\end{nprop}
+
+
+
+\begin{nprop}[Caracterización de compactos]
+Sea $A \subseteq \mathbb{R}^N$. Entonces: $$A\ es\ compacto \iff A\ es\ cerrado\ y\ acotado.$$
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.
+\end{nprop}
+
+
+
+%%% Clasificación de conjuntos en R^N.
+\subsection{Clasificación de conjuntos en $\mathbb{R}^N$}
+
+\begin{ndef}[Conjunto convexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Poligonalmente convexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{poligonalmente convexo} si  $\forall x,y \in A$ existe una poligonal que los une y no se sale de $A$. En otras palabras:  $A\ poligonalmente\ convexo \iff \exists \{x= a_0, a_1,\dots,a_k=y \}\subseteq A$ tal que: $$\bigcup_{i=1}^k [a_{i-1},a_i] \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto arco-conexo]
+Un conjunto $A \subseteq \mathbb{R}^N$ se dice \emph{arco-conexo(conexo por arcos)} si $\forall x,y \in A$ existe un camino incluido en $A$ que los une. En otras palabras,  $A\ es\ conexo\ por\ arcos \iff \exists \varphi:[a,b] \longrightarrow \mathbb{R}^N$ verificando: $$\varphi(a) = x;\quad \varphi(b) = y;\quad \varphi([a,b]) \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto no conexo]
+Decimos que un conjunto $A\in \mathbb{R}^N$ es \textit{NO conexo} si existen $U,\ V$ abiertos en $\mathbb{R}^N$ tales que: $$U \cap A \ne \emptyset;\quad V \cap A \ne \emptyset;\quad A \subseteq U \cup V;\quad A \cap U \cap V = \emptyset.$$
+\end{ndef}
+
+
+
+\begin{nota}
+La misma definición se aplica para un espacio topológico $(X,\tau).$
+\end{nota}
+
+
+
+\begin{ndef}[Conjunto conexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
+\end{ndef}
+
+\begin{nprop}
+Sea $A\subseteq \mathbb{R}^N$. Entonces, se verifica lo siguiente:
+
+\begin{nlist}
+\item $A$ es abierto y conexo por arcos $\Rightarrow$ $A$ es poligonalmente convexo.
+\item $A$ es convexo $\Rightarrow$ $A$ es arco-conexo.
+\item $A$ es arco-conexo $\Rightarrow$ $A$ es conexo.
+\end{nlist}
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $A\subseteq \mathbb{R}$ un conjunto arco-conexo. Entonces, $A$ es convexo.
+\end{nprop}
+
+
+
+
+%%% Continuidad en espacios topológicos. Topología inducida.
+\subsection{Continuidad en espacios topológicos. Topología inducida.}
+
+\begin{ndef}[Continuidad en espacios topológicos]
+Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, y sea $f:X\longrightarrow Y$. Entonces: $$f\ es\ continua \iff f^{-1}(B) \in \tau_x \ \ \forall B \in \tau_y.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Topología inducida]
+Sea $(X,\tau)$ un espacio topológico, y $A\subseteq X$. Entonces, $\tau_A = \{B\cap A: \ B \in \tau\}$ es la \textit{topología inducida en $A$}.
+\end{ndef}
+
+
+
+\begin{nprop}[Caracterización de abiertos en topología inducida]
+Sea $(X,\tau)$ un espacio topológico, y $A\subseteq X$. Si $(A,\tau_A)$ es el espacio topológico inducido en $A$, entonces: $$B' \in \tau_A \iff \exists B\in \tau: \ B' = B\cap A.$$
+\end{nprop}
+
+
+
+\begin{nprop}
+Sea $(X,\tau)$ un espacio topológico, y $A\subseteq X$. Entonces, $A$ es no conexo si, y solo si, existen $U,V$ \textbf{abiertos en $\bm{(A,\tau_A)}$} tales que: $$U \ne \emptyset \ne V;\quad A \subseteq U \cup V;\quad U \cap V = \emptyset.$$
+\end{nprop}
+
+
+
+\begin{ndef}[Continuidad en topología inducida]
+Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, $A\subseteq X$, y $f:A\longrightarrow Y$. Entonces: $$f\ es\ continua \iff f\ es\ continua\ en\ (A,\tau_A).$$
+\end{ndef}
+
+
+
+%%% Teoremas sobre funciones continuas en R^N.
+\subsection{Teoremas sobre funciones continuas en $\mathbb{R}^N$}
+
+
+
+\begin{nth}[Weierstrass]
+Sea $(X,d)$ un espacio métrico, $\emptyset \ne A \subseteq X$ compacto, y $f:A \longrightarrow \mathbb{R}$ continua en $A$. Entonces, $\exists x_1,x_2 \in A: \ f(x_1)\le f(x) \le f(x_2)\ \ \forall x\in A$. En otras palabras, la función $f$ alcanza su mínimo y su máximo.
+\end{nth}
+
+
+
+\begin{nth}[Weierstrass generalizado]
+Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ compacto, y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
+\end{nth}
+
+
+
+\begin{nth}[Valor Intermedio]
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$ arco conexo, y $f: A \longrightarrow \mathbb{R}^M$ continua. Entonces, $f(A)$ es arco-conexo en $\mathbb{R}^M$.
+\end{nth}
+
+
+
+\begin{nth}[Valor Intermedio revisitado]
+Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \mathbb{R}^M$ continua. Entonces, $f(A)$ es conexo en $\mathbb{R}^M$.
+\end{nth}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% Para la parte de límites:
+
+%\begin{nprop}[Caracterización punto de acumulación]
+%Sea $(X,d)$ un espacio métrico, y $A\subseteq X$. Consideremos un punto %$x\in X$. Son equivalentes:
+
+%\begin{nlist}
+%\item x es punto de acumulación de A.
+%\item $\exists \{a_n\}\subseteq A-\{x\}$ tal que $\{a_n\} \rightarrow x$.
+%\item $\forall \epsilon > 0\ B(x,\epsilon)\cap (A-\{x\})$ es un conjunto infinito. 
+%\end{nlist}
+%\end{nprop}
+
+
+
+\end{document}

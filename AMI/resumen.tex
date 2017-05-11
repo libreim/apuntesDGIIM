@@ -1,0 +1,712 @@
+
+% Tipo de documento y opciones.
+\documentclass[11pt, a4paper]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+
+
+%---------------------------------------------------------------------------
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.1}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Aumentar el tamaño del interlineado
+\linespread{1.3}
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{10pt}               % Espacio por encima.
+{10pt}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{10pt}                
+{10pt}                
+{\itshape}           
+{}                  
+{\bf}             
+{.}                
+{.5em}               
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}                   
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\scshape}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem*{nth}{Teorema}
+\newtheorem*{nprop}{Proposición}
+\newtheorem{ncor}{Corolario}
+
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem*{ndef}{Definición}
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem*{ejemplo}{Ejemplo}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+  {\left.\begin{aligned}}
+  {\end{aligned}\right\rbrace}
+
+\title{\textbf{Resúmenes Análisis}}
+\date{}
+%---------------------------------------------------------------------------
+%   COMIENZO DEL DOCUMENTO
+%---------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\section{Conjuntos.}
+\begin{ndef}[Punto de acumulación]
+
+Un punto $x$ en un espacio métrico $M$ es un punto de acumulación de un conjunto $A\subset M$ si todo conjunto abierto $U$ que contiene a $x$ también contiene a algún punto de A distinto de $x$.
+	
+\end{ndef}
+
+\begin{nth}
+	Un conjunto $A\subset M$ es cerrado $\iff$ todos los puntos de acumulación de A pertenecen a A.
+\end{nth}
+\section{Sucesiones.}
+
+\begin{nprop}
+	Una sucesión $\{x_n\}$ en M converge a $x \in M \iff \ \ \forall \epsilon > 0 \ \ \exists N : \ \ k \geq N \implies d(x,x_k) < \epsilon$
+	
+	
+\end{nprop}
+
+\begin{nprop}
+	$\{v_n\} \to v \in \mathbb{R}^n \iff$ cada sucesión de coordenadas converge a la coordenada correspondiente de $v$ como una sucesión en $\mathbb{R}$
+\end{nprop}
+
+\begin{nprop}\hfill\\
+	\begin{itemize}
+	\item Un conjunto $A\subset M$ es cerrado $\iff \forall \{x_n\} \subset A $ con $\{x_n\}$ convergente, el límite es un elemento de A.
+	
+	\item Para un conjunto $B \subset M, \ \ x \in \overbar{B} \iff \ $ existe una sucesión $\{x_n\}\in B$ tal que $\{x_n\} \to x$
+
+\end{itemize}
+\end{nprop}
+
+\begin{proof}
+	Demostraremos el primero.\\
+	Sea $A$ un conjunto cerrado y $\{x_n\} \to x$. Entonces $x$ es un punto de acumulación de $A$. $x$ es un punto de acumulación de A, pues cualquier entorno de $x$ contiene algún punto de $\{x_n\}\subset A$. Ahora, como sabemos que $A$ es cerrado si contiene a todos sus puntos de acumulación, A es cerrado y $x$ es un punto de acumulación entonces $x\in A$.
+	
+De la misma forma, sea $x\in A$ un punto de acumulación de A y elegimos $\{x_n\}\in B(x, \frac{1}{n}) \cap A$. De esta forma, $\{x_n\} \to x \ $ (pues $ \forall \epsilon > 0 \ \exists N \geq 1 /\epsilon
+$ con lo que $k\geq N \implies x_n \in B(x,\epsilon)$). Así, tenememos una sucesión de elementos de $A$ que converge a un elemento de $A$, y su límite es un punto de acumulación, por tanto por el teorema anterior, $A$ es cerrado.
+\end{proof}
+
+\begin{ndef}[Sucesión de Cauchy]
+	Una sucesión de Cauchy es una sucesión $\{x_n\} \in M$ tal que $\forall \epsilon > 0 \ \ \exists N$ tal que si $p,q \geq N$ entonces $d(x_p,x_q) < \epsilon $. M es completo $\iff$ toda sucesión de Cauchy en M converge a un punto de M.
+\end{ndef}
+
+\begin{nprop}
+Una sucesión convergente en un espacio normado o métrico está acotada.
+	
+\end{nprop}
+\begin{proof}
+	Sea $\{x_n\} \to x$, sabemos que $\exists N : d(x_n,x) < 1$ si $n \geq N$, así que $x_n \in B(x,1)$ si $n \geq N$. Basta tomar $R = max\{1,d(x_1,x),...,d(x_{N-1},x)\}$ y así $d(x,x_n) \leq R \ \forall n$ por lo que $x_n \in B(x,R) \ \forall n$ y así está acotada.
+\end{proof}
+
+\begin{nth}[Teorema de Bolzano Weierstrass]
+
+Sea $\{x_n\}$ una sucesión de $\mathbb{R}^N$ acotada. Entonces existe una sucesión parcial suya $\{x_{\sigma(n)}\}$ convergente.
+	
+\end{nth}
+
+\begin{proof}
+	Notaremos $x_n = (x_n^1, \dots, x_n^N)$. Como $\{x_n^1\}$ es acotada en $\mathbb{R}$, existe $\sigma_1 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma_1(n)}^1\}$ es convergente.
+
+Ahora, como $\{x_n^2\}$ es acotada, $\{x_{\sigma_1(n)}^2\}$ también es acotada, y existe $\sigma_2 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{(\sigma_2\circ\sigma_1)(n)}^2\}$ es convergente.
+
+Procediendo de esta forma con cada componente de $x_n$, obtenemos $\sigma_1, \dots, \sigma_N$, y\\ $\{x_{\sigma_1(n)}^1\}, \{x_{(\sigma_2\circ\sigma_1)(n)}^2\}, \dots, \{x_{(\sigma_N\circ\dots\circ\sigma_2\circ\sigma_1)(n)}^N\}$ sucesiones convergentes en $\mathbb{R}$. Al ser $\sigma_i$ estrictamente creciente $\forall i=1,\dots,N$, $\{x_{(\sigma_N(n)\circ\dots\circ\sigma_{i+1}\sigma_i\circ\dots\circ\sigma_1)(n)}^i\}$ también es convergente (toda sucesión parcial de una sucesión convergente es convergente).
+
+Así, tomando $\sigma = \sigma_1\circ\dots\circ\sigma_N$, $\{x_{\sigma(n)}\}$ es convergente.
+\end{proof}
+
+\begin{nprop}\hfill\\
+	\begin{nlist}
+	\item Toda sucesión convergente en un espacio métrico es una sucesión de Cauchy.
+	\item Una sucesión de Cauchy en un espacio métrico debe estar acotada.
+	\item Si una subsucesión de una sucesión de Cauchy converge a $x$, entonces la sucesión converge a $x$.
+\end{nlist}
+\end{nprop}
+
+\begin{nth}[$\mathbb{R}^n$ es completo]
+	Una sucesión $x_n\in \mathbb{R}^n$ converge a un punto de $\mathbb{R}^N \iff $ es una sucesión de Cauchy
+\end{nth}
+\begin{proof}\hfill\\
+\boxed{\Rightarrow}\\
+Dado $\varepsilon > 0$, existe $m\in \mathbb{N}$ tal que si $n \ge m$ entonces $d(x_n, x) < \displaystyle\frac{\varepsilon}{2}$, y si $p,q \ge m$ entonces $d(x_p, x_q) \le d(x_p, x) + d(x, x_q) < \varepsilon $
+
+
+	\boxed{\Leftarrow}\\
+Como $\{x_n\}$ es de Cauchy, $\{x_n^i\}$ es de Cauchy $\forall i = 1,\dots,N$ (porque $|x_n^i-x_m^i| \le |x_n-x_m|$). $\implies$ $\{x_n^i\}\rightarrow x^i$ es convergente, por ser $\mathbb{R}$ completo. Luego $\{x_n\}$ es convergente.
+
+
+\end{proof}
+
+
+
+\section{Conjuntos compactos y conexos.}
+
+\begin{ndef}[Compacto]
+	Un subconjunto $A$ de un espacio métrico $M$ es compacto si todo recubrimiento abierto de $A$ contiene un subrecubrimiento finito.
+\end{ndef}
+
+\begin{ndef}[Otra definición de compacto.]
+Sea $A \subset X$ con $X$ espacio métrico.
+\begin{center}
+	A es compacto $\iff \forall \{x_n\} \subset A \ \ \exists \{x_{\sigma(n)}\}$ parcial de $\{x_n\}$ con $\{x_{\sigma(n)}\}\to x \in A$
+\end{center}	
+\end{ndef}
+
+\begin{nth}[Teorema de Heine-Borel]
+	
+	Un conjunto $A \subset \mathbb{R}^n$ es compacto $\iff$ es cerrado y acotado.
+\end{nth}
+\begin{proof}\hfill\\
+	\boxed{\Rightarrow}\\
+	Suponemos que $A \subset \mathbb{R}^n$ es compacto. Entonces, por su definición, $\forall \{x_n\} \subset A \ \exists \{x_{\sigma(n)}\}$ parcial de $\{x_n\}$ con $\{x_{\sigma(n)}\} \to x \in A$. Supongamos que $A$ no está acotado. Entonces, $\forall n \in \mathbb{N}, \ \exists a_n \in A : \ |a_n| \geq n$, por lo que $\{a_n\}$ no converge y por tanto $\sigma(n) \geq n \implies \{a_{\sigma(n)}\}$ no converge, por lo que $A$ está acotado.
+	
+	Supongamos ahora que $\{x_n\} \to x \implies \exists \{x_{\sigma(n)}\} \to x \in A$, y como sabemos que si una sucesión es convergente todas sus parciales convergen al mismo límite, entonces eso implica que $\{x_n\}\to x \in A$ por lo que toda sucesión converge a un punto de $A$, y así $A$ es cerrado.
+	\\
+	\boxed{\Leftarrow}\\
+	Supongamos ahora que $A$ es cerrado y acotado. Sea $\{x_n\}$ una sucesión cualquiera de puntos de $A$.
+	
+	Como $A$ es acotado, entonces $\exists R > 0 : \ \ A \subset B(0,R)$. Además, como $\{x_n\} \subset A \ \forall n \implies |x_n| < R \ \forall n \in \mathbb{N}$, así $\{x_n\}$ es acotada.
+	
+	Como $\{x_n\}$ es acotada, por el teorema de Bolzano Weierstrass, $\exists \sigma: \mathbb{N} \to \mathbb{N}$ estrictamente creciente con $\{x_{\sigma(n)}\}\to x \in \mathbb{R}^n$, y como $\{x_{\sigma(n)}\}$ es una subsucesión de puntos de $A$ que converge a $x$ y el conjunto $A$ es cerrado, entonces el límite de esta sucesión está en $A$ , es decir:
+	\[
+	\{x_{\sigma(n)}\}\to x \in A
+	\]
+Por lo que tenemos la definición de conjunto compacto.
+
+\end{proof}
+\begin{ndef}[Función continua]
+	Una aplicación $f:A \to M$ es continua si $\{x_n\} \to x \implies \{f(x_n)\} \to f(x)$ para toda sucesión $x_n$ convergente a un punto de A con $x_n\in A$
+\end{ndef}
+
+\begin{nprop}[Caracterización de continuidad]
+Sea $\emptyset \ne A \subseteq \mathbb{R}^N$, y $f:A\longrightarrow \mathbb{R}^M$. Entonces: $$f\ es\ continua\ en\ a \iff \forall \{x_n\}\subseteq A\ con\ \{x_n\} \rightarrow a \Rightarrow \{f(x_n)\} \rightarrow f(a).$$
+\end{nprop}
+
+\begin{ndef}[Conjunto convexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Poligonalmente conexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{poligonalmente conexo} si  $\forall x,y \in A$ existe una poligonal que los une y no se sale de $A$. En otras palabras:  $A\ poligonalmente\ conexo \iff \exists \{x= a_0, a_1,\dots,a_k=y \}\subseteq A$ tal que: $$\bigcup_{i=1}^k [a_{i-1},a_i] \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto arco-conexo]
+Un conjunto $A \subseteq \mathbb{R}^N$ se dice \emph{arco-conexo(conexo por arcos)} si $\forall x,y \in A$ existe un camino incluido en $A$ que los une. En otras palabras,  $A\ es\ conexo\ por\ arcos \iff \exists \varphi:[a,b] \longrightarrow \mathbb{R}^N$ continua verificando: $$\varphi(a) = x;\quad \varphi(b) = y;\quad \varphi([a,b]) \subseteq A.$$
+\end{ndef}
+
+
+
+\begin{ndef}[Conjunto no conexo]
+Decimos que un conjunto $A\in \mathbb{R}^N$ es \textit{NO conexo} si existen $U,\ V$ abiertos en $\mathbb{R}^N$ tales que: $$U \cap A \ne \emptyset;\quad V \cap A \ne \emptyset;\quad A \subseteq U \cup V;\quad A \cap U \cap V = \emptyset.$$
+\end{ndef}
+
+
+
+\begin{nota}
+La misma definición se aplica para un espacio topológico $(X,\tau).$
+\end{nota}
+
+
+
+\begin{ndef}[Conjunto conexo]
+Un conjunto $A\subseteq \mathbb{R}^N$ se dice conexo si no es no conexo. Equivalentemente, $\forall \ U,V$ abiertos en $\mathbb{R}^N$ tales que $U \cap A \ne \emptyset, \ V \cap A \ne \emptyset,\ A \subseteq U \cup V,$ se tiene que forzosamente $A \cap U \cap V \ne \emptyset$.
+\end{ndef}
+
+\begin{nth}
+	Los conjuntos conexos por arcos en $\mathbb{R}$ son convexos.
+\end{nth}
+\begin{proof}
+Sean $x,y$ dos puntos de $A$. Suponemos $x \leq y$ (si fuera al revés, cambiamos los nombres).
+
+Como A es arco conexo$\implies \exists \varphi:[a,b]\to \R$ continua con $\varphi(a) = x$	, $\varphi(b) = y$ y $\varphi([a,b])$ es un intervalo por el teorema del valor intermedio en R.
+
+Ahora, $\forall \ \alpha, \beta \in \varphi([a,b])$ con $\alpha \leq \beta \implies [\alpha,\beta ]  \subseteq \varphi([a,b]) $ y así tenemos $\varphi(a), \varphi(b) \in \varphi([a.b]) \implies [\varphi(a),\varphi(b)] = [x,y] \subseteq \varphi([a,b])\subseteq A$
+\end{proof}
+
+
+
+\section{Funciones continuas}
+
+\begin{ndef}[Límite]
+	Supongamos que $x_0$ es un punto de acumulación de A. Decimos que $b\in N$ es el límite de $f$ en $x_0$, denotado por:
+	\[
+	\lim_{x\to x_0}f(x) = b
+	\]
+	Si $\forall\epsilon > 0  \ \exists \delta > 0 $ tal que $\forall x \in A$ que sea distinto de $x_0$ y $d(x_0,x)$, entonces $d'(f(x),b) < \epsilon$ 
+\end{ndef}
+
+\begin{ndef}[Función continua]
+	Una función $f:A \to B$ es continua en un punto $x_0$ de su dominio $\iff \forall \epsilon > 0 \ \ \exists \delta > 0 : \ \forall x \in A$ que cumpla que $d(x,x_0)< \delta \implies d'(f(x),f(x_0)) < \epsilon$
+\end{ndef}
+
+\begin{nth}
+	Sea $f:A \to B$ continua y $K \subset A$ conexo. Entonces, $f(K)$ es conexo. Análogamente, si K es arco-conexo, entonces, f(K) es arco-conexo.
+\end{nth}
+
+\begin{nth}[Teorema de Weierstrass]
+Sea $f:A \to B$ continua y $K\subset A$ un compacto. Entonces, $f(K)$ es compacto.	
+\end{nth}
+\begin{proof}
+	Sea $\{y_n\}\subseteq f(K)$ una sucesión cualquiera en $f(K)$. Para demostrar que $f(K)$ es compacto debemos demostrar que $\{y_n\}$ tiene una subsucesión convergente a algún punto de $f(K)$. Sea $y_n$ = $f(x_n)$ con $x_n \in K$, por ser A compacto $\{x_n\}$ tiene una subsucesión $\{x_{\sigma(n)}\}$ convergente a un $a \in K$. Por lo tanto, $\{f(x_{\sigma(n)})\}$ convergente a un $f(a) \in f(K)$, siendo $\{f(x_{\sigma(n)})\}$ una subsucesión de $\{f(x_{n})\}$, es decir, de $\{y_n\}$.
+
+\end{proof}
+
+\begin{nth}
+	Sean M,N,P espacios métricos y supongamos que $f:A\subset M \to N$ y $g: B \subset N \to P$ son transformaciones continuas tales que $f(A) \subset B$. Entonces, $g \circ f : A \subset M \to P $ es continua.
+\end{nth}
+
+\begin{nth}[Teorema del máximo-mínimo]
+	Sea (M,d) un espacio métrico, $A\subset M$ y $f:A \to \R$ una función continua. Sea $K \subset A$ un conjunto compacto. Entonces f está acotada en K, es decir: $B=\{f(x) : x \in K\}\subset \R$ es un conjunto acotado. Además, existen puntos $x_0,x_1 \in K $ tales que $f(x_0) = inf(B)$ y $f(x_1) = sup(B)$. Decimos que sup(B) es el máximo de f en K e inf(B) el mínimo de f en K.
+	
+\end{nth}
+\begin{nth}
+	[Teorema de los valores intermedios]
+Sean M un espacio métrico, $A\subset M$ y $f:A \to \R$ continua. Supongamos que $K\in A$ es conexo y que x,y $\in K$. Para cada número $c \in \R$ tal que $f(x) < c f(y)$ existe un punto $z \in K : f(z) = c$
+\end{nth}
+
+
+\subsection{Continuidad uniforme}
+
+\begin{ndef}[Uniformemente continua]
+	Sean $(M,d)$ y $(N,p)$ espacios métricos, $A \subset M$ , $f:A \to N$ y $B \subset A$. Decimos que $f$ es uniformemente continua en el conjunto $B$ si $\forall \epsilon > 0 \ \exists \delta > 0 :  \ x,y \in B \ \ y \ \ d(x,y) < \delta \implies p(f(x),f(y)) < \epsilon$
+\end{ndef}
+
+\begin{nth}[Teorema de la continuidad uniforme. Teorema de Heine-Cantor.]
+	Sean $f:A \to N$ continua y $K\subset A $ un compacto. Entonces, f es uniformemente continua en K.
+\end{nth}
+\begin{proof}
+		La condición para la continuidad uniforme es la siguiente:
+	\[
+		\forall \varepsilon > 0 \  \exists \delta > 0 \ \forall x, y \in A : d(x,y) < \delta \implies d (f(x) , f(y) ) < \varepsilon
+	\]
+	
+	Vamos a proceder por reducción al absurdo, para lo cual negamos esta condición:
+	\[
+		\exists \varepsilon_0 > 0 \ \forall \delta > 0 \ \exists x, y \in A : d (x,y) < \delta \wedge d (f(x) , f(y) ) \ge \varepsilon_0
+	\]
+	
+	Tomamos este $\epsilon_0$, lo que nos da, para cada $\delta>0$, un par de puntos $x$ e $y$ que cumplen la propiedad expresada arriba. Tomamos $\delta = \frac{1}{n} \ \forall n\in \mathbb{N}$. Esto nos da dos sucesiones $\{x_n\}$ e $\{y_n\}$ tales que
+	\[
+		d(x_n,y_n) < \frac{1}{n} \wedge d(f(x_n),f(y_n)) \ge \epsilon_0
+	\]
+	
+	Por ser A compacto, el teorema de Bolzano-Weierstrass nos da dos sucesiones parciales $\{x_{n_k}\}$ a $x_0$ e $\{y_{n_k}\}$ a $y_0$. Por tanto:
+	\[
+		d(x_{n_k},y_{n_k}) < \frac{1}{n_k} \wedge d(f(x_{n_k}),f(y_{n_k})) \ge \epsilon_0
+	\]
+	
+	Sin embargo, $\{x_{n_k}\}$ e $\{y_{n_k}\}$ convergen al mismo punto (por converger su distancia a cero), y como $f$ es continua, esta proposición no puede ser verdadera. Hemos llegado por tanto a una contradicción, luego $f$ debe ser uniformemente continua.
+\end{proof}
+
+
+
+\section{Transformaciones diferenciables}
+
+\begin{ndef}
+	[Diferenciable]
+	Una transformación $f:A\subset \R^n \to \R^m$ es diferenciable en $x_0 \in A$ si existe una transformación lineal, denotada $Df(x_0): \R^n \to \R^m$ llamada diferencial de $f$ en $x_0$ tal que:
+	 \[
+	 \lim_{x\to x_0}\frac{||f(x)-f(x_0)-Df(x_0)(x-x_0)||}{||x-x_0||} = 0
+	 \]
+	 Donde $Df(x_0)(x-x_0)$ es el valor de la aplicación lineal aplicada al vector $(x-x_0)$.\\
+	 
+	Equivalentemente, podemos decir que $\forall \epsilon > 0 \ \exists \delta > 0$ tal que si $x\in A $ y $||x-x_0||< \delta$ entonces:
+	\[
+	||f(x)-f(x_0) - Df(x_0)(x-x_0) ||  \leq \epsilon ||x-x_0||
+	\]
+\end{ndef}
+
+\begin{nth}[Matriz jacobiana de $f$]
+Sea $A\subset \R^n$ un conjunto abierto y $f:A \to \R^m$ es diferenciable en $A$. Entonces, las derivadas parciales $\frac{\partial f_j}{\partial x_i}$ existen y la matriz de la transformación lineal $Df(x)$ con respecto de las bases canónicas en $\R^n \ y \ \R^m$ es:
+\[
+\begin{pmatrix}
+ \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+ \vdots & \ddots&\vdots \\
+ \frac{\partial f_m}{\partial x_i} & \cdots & \frac{\partial f_m}{\partial x_n}
+\end{pmatrix} 
+\]
+donde cada derivada parcial se evalua en $x=(x_1,...,x_n)$. Esta matriz es la matriz jacobiana de f.
+	
+\end{nth}
+\begin{ndef}[Gradiente (caso $f:A \to \mathbb{R}$)]
+	En el caso de que $f:A \to \R$, entonces $Df(x)$ es una matriz $1\times n$. El vector cuyas componentes son iguales a las de $Df(x)$ se denomina gradiente de $f$ y se denota $\triangledown f$.
+	\[
+	\triangledown f = (\frac{\partial f}{\partial x_1},..., \frac{\partial f}{\partial x_n})
+	\]
+\end{ndef}
+
+\begin{nth}
+	Sean $A \subset \R^n$ un conjunto abierto y $f:A \subset \R^n \to \R^m$. Si $f=(f_1,...,f_m)$ y cada $\frac{\partial f_j}{\partial x_i}$ existe y es continua en $A$, entonces $f$ es diferenciable en $A$
+\end{nth}
+
+\begin{ndef}[Derivada direccional]
+	Las derivadas parciales de una función miden su variación en las direcciones paralelas a los ejes. Las derivadas direccionales hacen lo mismo en otras direcciones.
+	
+	Sea $f$ una función escalar definida en un entorno de $x_0\in \R^n$ y sea $e\in \R^n$ un vector unitario, entonces:
+	\[
+	\frac{d}{dt}f(x_0+te)|_{t= 0} =  \lim_{t\to 0} \frac{f(x_0+te) -f(x_0)}{t}
+	\]
+	es la derivada direccional de $f$ en $x_0$ en la dirección e.
+	
+	Se puede afirmar que la derivada direccional en la dirección de $e$ es igual a $Df(x_0)(e)$. Se suele notar $D_ef(x)$.
+\end{ndef}
+\begin{nprop}[Regla de la cadena]
+	Sea $A\subset \R^n$ abierto y $f:A \to \R^m$ diferenciable en $x_0 \in A$. Sean $B\subset \R^n$ abierto y $f(A) \subset B$ y $g:B \to \R^p$ diferenciable en $f(x_0)$. Entonces, la composición $g\circ f$ es diferenciable en $x_0$ y 
+	\[
+	D(g \circ f)(x_0) = Dg(f(x_0)) \circ Df(x_0)
+	\]
+\end{nprop} 
+
+
+\begin{nth}[Teorema del valor medio]\hfill\\
+	\begin{nlist}
+	\item Sea $f:A \subset \R^n\to \R$ diferenciable en un abierto A. $\forall a,b \in A$ tales que el segmento de recta que une a con b esté en A, existe un punto $c$ en ese segmento tal que:
+	\[
+	f(b)-f(a) = Df(c)(b-a)
+	\]
+	\item Sea $f:A \subset \R^n \to \R^m$ diferenciable en el conjunto abierto A. Supongamos que el segmento de recta que une x e y está contenido en A y $f=(f_1,...,f_m)$. Entonces, existen puntos $c_1,...,c_m$ en ese segmento tales que:
+	\[
+	f_i(y) - f_i(x) = Df_i(c_i)(y-x) \ \ \ i = 1,...,m
+	\]
+\end{nlist}
+\end{nth}
+\begin{proof}
+	Lo vamos a hacer para una función $f:A \subset \R^n \to \R$ y lo aplicamos luego a cada coordenada de $f$.
+	
+	Consideremos la función $h:[0,1] \to \R$ definida por $h(t) = f((1-t)a +tb) \ \ \forall t \in [0,1]$ es continua en [0,1] y por la regla de la cadena es derivable en ]0,1[ con:
+	\[
+	h'(t) = Df((1-t)a +tb)(b-a)
+	\].
+	El TVM para funciones de $\R$ en $\R$ nos da un $t_0 \in ]0,1[$ tal que:
+	\[
+	f(b)-f(a) = h(1)-h(0) = h'(t_0) = Df((1-t_0)a+t_0b)(b-a)
+	\]
+	Si tomamos $c=(1-t_0)a+t_0b \in [a,b]$ obtenemos el $c$ que buscábamos.
+	
+\end{proof}
+
+\begin{nth}[Matriz Hessiana]
+	Sea $f:A\subset \R^n \to \R$ dos veces diferenciable en el conjunto abierto A. Entonces, la matriz $D^2f(x): \R^n\times\R^n \to \R$ en la base canónica está dada por:
+	\[
+	\begin{pmatrix}
+ \frac{\partial^2 f}{\partial x_1 \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_1\partial x_n} \\
+ \vdots & \ddots&\vdots \\
+ \frac{\partial^2 f}{\partial x_n \partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n \partial x_n}
+\end{pmatrix} 
+	\]
+	donde cada derivada parcial está evaluada en el punto $x=(x_1,...,x_n)$
+\end{nth}
+
+\begin{nprop}
+	Si $f:A \to \R^m$ es dos veces diferenciable en el conjunto abierto A con $D^2 f(x)$ continua $\forall x\in A$, entonces $D^2f(x)$ es simétrica $\forall x \in A$, es decir:
+	\[
+	\frac{\partial^2 f_k}{\partial x_i \partial x_j} =  \frac{\partial^2 f_k}{\partial x_j \partial x_i}
+	\]
+\end{nprop}
+
+\begin{nth}[Teorema de Taylor. Caso n=1]
+	Sea $A \subseteq \R^n$ abierto, $a \in A$ y $f:A \to \R$ con $f\in \mathcal{C}^2(A)$. Entonces, $\forall x \in A \ \exists c$ comprendido entre x y a tal que:
+	\[
+	f(x) = f(a) + \frac{Df(a)(x-a)}{1!} + \frac{(x-a)^t Hf(c)(x-a)}{2!}
+	\]
+	Donde (x-a) es un vector columna.
+\end{nth}
+
+
+\section{Máximos y mínimos}
+
+\begin{ndef}
+	Sea $f:A\subset \R^n \to \R$ donde A es abierto. Si existe un entorno de $x_0 \in A$ en el que $f(x_0)$ es máximo, es decir si $f(x_0) \geq f(x) \ \forall x$ en el entorno, entonces $x_0$ es un punto de máximo local y $f(x_0)$ es un máximo local de $f$. Análogamente se define un mínimo local de $f$. Un punto es extremo si es un máximo o un mínimo local de $f$. Un punto $x_0$ es un punto crítico si $f$ es diferenciable en ese punto y $Df(x_0) = 0$.
+\end{ndef}
+
+\begin{nth}\hfill
+	\begin{nlist}
+	\item Si $f:A \subset \R^n\to \R$ es una función $\mathcal{C}^2$ definida en un abierto A y $x_0$ es un punto crítico de f tal que $H_{x_0}(f)$ es definida negativa, entonces f tiene un máximo local en $x_0$.
+	\item Si f tiene un máximo local en $x_0$, entonces $H_{x_0}(f) $ es semidefinida negativa.
+\end{nlist}
+Para el caso del mínimo, reemplazamos negativa por positiva. La matriz hessiana, es la vista anteriormente.
+\end{nth}
+
+\section{Clasificación de matrices según su signo}
+ Si $A_k$ es el determinante del menor de orden K de una matriz A, entonces:
+ \begin{itemize}
+	\item A es definida positiva $\iff$ $A_k > 0 \ \forall k$
+	\item A es definida negativa $\iff$ $A_k > 0$ si K es par y $A_k < 0 $ si K es impar.
+\end{itemize}
+
+\section{Teorema de la función Inversa}
+\begin{nth}[Teorema de la función inversa. Caso general.]
+	Sea $A \subset \R^n$ abierto, $a\in A$ y $f:A \to \R^n$ de clase 1. Si  
+$Df(a): \R^n \to \R^n$ es invertible \\
+$\implies \exists U\subset A$ abierto y $\exists V$ abierto en $\R^n$ tales que $a\in U $, $f(a) \in V$ y $f|_U : U \to V$ es biyectiva, y por tanto existe la inversa de la función $g = (f|_U)^{-1}: V \to U$ es de clase 1 y además:
+	\[
+	Dg(f(a)) = (Df(a))^{-1}
+	\]
+Además, decir que $Df(a)$ es invertible es lo mismo que decir que $det(Jf(a)) \ne 0$
+Y decir que $Dg(f(a)) = (Df(a))^{-1}$ es lo mismo que decir $Jg(f(a)) = (Jf(a))^{-1}$
+\end{nth}
+
+\section{Teorema de la función implícita}
+\begin{nth}[Teorema de la función implícita]
+	Sea $A \subset \R^n \times\R^m$ abierto y no vacío. Sea $F: A \to \R^n$ una función de clase 1. Fijando un $(x_0,y_0) \in A$ tal que $F(x_0,y_0) = 0$. Si:
+	\[
+	det\begin{pmatrix}
+ \frac{\partial F_1}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_1}{\partial x_n}(x_0,y_0) \\
+ \cdots& & \cdots\\
+ 
+ \frac{\partial F_n}{\partial x_1}(x_0,y_0) & \cdots & \frac{\partial F_n}{\partial x_n} (x_0,y_0)
+\end{pmatrix} \ne 0
+	\]
+	
+	Entonces, existe $U$ un entorno abierto de $x_0$ en $\R^n$ y también existe $V$ un entorno abierto de $y_0$ en $\R^m$ tal que $U\times V \subset A$ y $\forall y \in V \ \ \exists! x \in U : F(x,y) = 0$
+\end{nth}
+
+
+\section{Teorema de Lagrange.}
+
+\begin{nth} Sean $\emptyset \ne A \subset \mathbb{R}^N$ un abierto, $f\in \mathcal{C}^1(A, \R)$, $g_1, \dots, g_k \in \mathcal{C}^1(A,\R)$ ($k$ restricciones). Llamo $S = \{ x\in A :\ g_1(x) = \dots = g_k(x) = 0 \}$ y supongo $1\le k < N$.
+	
+Sea $a \in S$ tal que $f$ presenta un mínimo (respectivamente máximo) relativo condicionado a $S$. Entonces $\exists \lambda_0, \dots, \lambda_k\in \R$ que verifican:
+
+\begin{nlist}
+	\item $(\lambda_0, \dots, \lambda_k) \ne (0, \dots, 0)$, $\lambda_0 \ge 0$
+	\item $\lambda_0 \displaystyle\frac{\partial f}{\partial x_j}(a) + \sum_{i=1}^k \lambda_i \displaystyle\frac{\partial g_i}{\partial x_j} = 0 \quad \forall j=1,\dots, N$
+\end{nlist}
+
+Si, además $r(Jg(a)) = k, \text{ donde } g = (g_1, \dots, g_k) : A \to \R^k$ entonces puedo escoger $\lambda_0 = 1$.
+\end{nth}
+\begin{nota}Demostraremos el teorema para el caso en el que $f$ presente un mínimo relativo. Para la prueba con máximo en lugar de mínimo, basta aplicar el resultado a $-f$.
+	\end{nota}
+
+\begin{proof}[Demostración (método de penalización)]\hfill\\
+	
+	$f$ presenta un mínimo relativo en $a$ condicionado a $S$, luego
+	\[
+	\exists \varepsilon_0 >0 \text{ tal que } B(a, \varepsilon_0) \subseteq A \text{ y } f(a) \le f(x) \;\;\forall x\in B(a, \varepsilon_0)\cap S
+	\]
+	\boxed{Paso\hspace{1mm} 1}\hfill\\
+	Afirmamos que $\forall \varepsilon\in (0,\varepsilon_0)\ \exists M>0$ tal que
+	\[
+		f(x) + \abs{x-a}^2 + M\sum_{i=1}^k g_i(x)^2 > f(a)\ \forall x \text{ tal que } \abs{x-a} = \epsilon
+	\]
+	
+	Para probarlo, supongamos lo contrario. Entonces
+	\[
+		\exists\epsilon>0\ \ \forall M>0\ \ \exists x\in A : \abs{x-a} = \epsilon \text{ y } f(x) + \abs{x-a}^2 + M \sum_{i=1}^k g_i(x)^2 \le f(a)
+	\]
+	
+	Tomando $M = n\in \mathbb{N}$,
+	\[
+	\exists x_n\in A \text{ t.q. } \begin{cases}
+	\abs{x_n-a} = \epsilon\\
+	f(x_n) + \abs{x_n-a}^2+n\sum_{i=1}^k g_i(x_n)^2 \le f(a)
+\end{cases}
+	\]
+	
+	$\{x_n\}$ está acotada, pues $\abs{x_n-a} = \epsilon \ \ \forall n\in \mathbb{N}$. Luego existe $\{x_{\sigma(n)}\}$ sucesión parcial de $\{x_n\}$ tal que $\{x_{\sigma(n)}\}\to x^*$, y se verifica que $\abs{x^*-a} = \epsilon$ ($\abs{x^*-a} = \lim \abs{x_{\sigma(n)}-a} = \epsilon$).
+	
+	Reescribiendo tenemos que 
+	\[f(x_n) + \abs{x_n-a}^2-f(a) \le -n\sum_{i=1}^k g_i(x_n)^2\quad(1)
+	\]
+	
+	Dividiendo por $-n$ y tomando para cada $n$ $\sigma(n)$:
+	\[
+		\frac{f(x_\sigma(n))}{-\sigma(n)} + \frac{\epsilon^2}{-\sigma(n)}-\frac{f(a)}{-\sigma(n)} \ge \sum_{i=1}^k g_i(x_{\sigma(n)})^2
+	\]
+	
+	Y tomando límites:
+	\[0 \ge \sum_{i=1}^k g_i(x^*) \implies g_i(x^*) = 0 \ \ \forall i=1,\dots,k \implies x^*\in S\]
+	
+	Es decir, $x^*\in B(a,\epsilon_0)\cap S \implies f(x^*) \ge f(a)\quad (*)$. Sabemos que
+	\[
+		f(x_{\sigma(n)}) \le f(a) - \epsilon^2 -\underbrace{n\sum_{i=1}^k g_i(x_{\sigma(n)})^2}_{\ge 0 \text{ por (1)}}
+	\]
+	
+	Luego,
+	\[
+	f(x_{\sigma(n)}) \le f(a) - \epsilon^2 \implies f(x^*) \le f(a) - \epsilon^2 < f(a)
+	\]
+	
+	lo cual es una contradicción con (*), por lo que \textbf{queda probado el paso 1}.\\
+	
+	\boxed{Paso\hspace{1mm} 2}\hfill\\
+	Veamos que $\forall \epsilon\in (0,\epsilon_0)\ \exists x^{\epsilon}\in A$ que verifica que $\abs{x-a} < \epsilon$ y $\exists(\lambda^{\epsilon}_0, \dots, \lambda_k^{\epsilon})\in \mathbb{R}^{k+1}$ tal que
+	\[
+		\begin{cases}
+	\abs{(\lambda_0^{\epsilon}, \dots, \lambda_k^{\epsilon})} = 1\\
+	\lambda_0^{\epsilon}\left[\displaystyle\frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j)\right] + \displaystyle\sum_{i=1}^k \lambda_i^\epsilon \frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0 \ \ \forall j=1,\dots,N
+\end{cases}
+	\]
+	
+	Recordemos: $f(a) = f(a)+\abs{a-a}^2+M\displaystyle\sum_{i=1}^k g_i(a)^2$ (porque $a\in S$).
+	
+	Definimos $F(x) := f(x) + \abs{x-a}^2 + M\displaystyle\sum_{i=1}^k g_i(x)^2 \in \mathcal{C}^1$. Por el teorema de Weierstrass, $\exists \min_{\bar{B}(a,\epsilon)} F \implies \exists x^{\epsilon}\in \bar{B}(a,\epsilon)$ tal que
+	\[
+	F(x^{\epsilon}) = \min_{\bar{B}(a, \epsilon)} F \left( \le \underbrace{F(a)}_{=f(a)} \underbrace{<F\restriction_{\partial B(a,\epsilon)} (x)}_{\text{Paso 1}}\implies x^{\epsilon}\in B(a,\epsilon) \text{ (es interior)}  \right)
+	\]
+	
+	Por tanto $x^\epsilon$ es un mínimo relativo de $F$ en $B(a,\epsilon)$, que es un abierto, luego \[\displaystyle \frac{\partial F}{\partial x_j}(x^{\epsilon}) = 0<\quad \forall j=1,\dots, N\] 
+	
+	Y vemos que por el paso 1, además:
+	
+	\[
+	\left[\frac{\partial f}{\partial x_j}(x^{\epsilon}) + 2(x_j^{\epsilon}-a_j)\right]+\sum_{i=1}^k M2g_i(x^{\epsilon})\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\quad \forall j=1,\dots,N
+	\]
+	
+	Ahora ajustamos las constantes, dividiendo por el módulo del vector de los candidatos a $\lambda_i$, que es $\sqrt{\underbrace{1}_{\lambda_0}+\underbrace{\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}_{\lambda_i}}$  ($\lambda_i$ son los candidatos).
+	
+\[
+	\frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\left( \frac{\partial f}{\partial x_j}(x^{\epsilon})+2(x_j^{\epsilon}-a_j) \right)+\sum_{i=1}^k \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\frac{\partial g_i}{\partial x_j}(x^{\epsilon}) = 0\ \ \forall j=1,\dots, N
+\]
+	
+	Ahora, escogemos $\lambda_0^{\epsilon} = \frac{1}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}$, $\lambda_i^{\epsilon} = \frac{M2g_i(x^{\epsilon})}{\sqrt{1+\sum_{i=1}^k 4M^2g_i(x^{\epsilon})^2}}\quad \forall i = 1,\dots,k$ y se verifica que $\abs{(\lambda_0^{\epsilon},\dots,\lambda_k^{\epsilon})} = 1$, y además $\lambda_0^\epsilon > 0$.\\
+	
+	\boxed{\text{Conclusión.}}\hfill\\
+	Escojo $\epsilon=\frac{\epsilon_0}{n},\ n\in \mathbb{N}-\{1\} \stackrel{\text{Paso 2}}{\implies} \exists(\lambda_0^n,\dots,\lambda_k^n)$ tales que
+	
+	\begin{nlist}
+	\item $\abs{x^n-a}<\frac{\epsilon_0}{n}$
+	\item $\abs{(\lambda_0^n,\dots,\lambda_k^n)} = 1,\ \lambda_0^n>0$
+	\item $\lambda_0^n\left[\frac{\partial f}{\partial x_j}(x^n)+2(x_j^n-a_j)\right]+\sum_{i=1}^k \lambda_i^n \frac{\partial g_i}{\partial x_j} (x^n) = 0 \quad \forall j=1,\dots,N$
+\end{nlist}
+
+Ahora, por (i), $\{x^n\}\to a$.
+En (ii) tenemos una sucesión acotada de vectores\\ $\stackrel{\text{Bolz.-Weierstrass}}{\implies}\ \exists \{(\lambda_0^{\sigma(n)},\dots,\lambda_k^{\sigma(n)})\}\to (\lambda_0,\dots,\lambda_k)$ con módulo 1 y $\lambda_0 \ge 0$.
+
+En (iii) reescribo sustituyendo $n$ por $\sigma(n)$:
+\[
+	\lambda_0^{\sigma(n)}\left[\frac{\partial f}{\partial x_j}(x^{\sigma(n)})+2(x_j^{\sigma(n)}-a_j)\right]+\sum_{i=1}^k \lambda_i^{\sigma(n)} \frac{\partial g_i}{\partial x_j} (x^{\sigma(n)}) = 0 \quad \forall j=1,\dots,N
+\]
+
+Y tomando límites:
+
+\[
+	\lambda_0\left[\frac{\partial f}{\partial x_j}(a)+0\right]+\sum_{i=1}^k \lambda_i \frac{\partial g_i}{\partial x_j} (a) = 0 \quad \forall j=1,\dots,N
+\]
+
+Donde $(\lambda_0,\dots,\lambda_k)\ne (0,\dots,0)$, porque $\abs{(\lambda_0,\dots,\lambda_k)} = 1$. \textbf{Queda probada la primera afirmación del teorema}.
+
+%Ahora, veamos que si $r(Jg(a)) = k\implies \lambda_0 \ne 0$
+\end{proof}
+
+
+
+
+
+\end{document}
