@@ -2631,7 +2631,7 @@ Sin embargo, no todas las normas matriciales son inducidas. Un ejemplo es la \te
     Dada una norma vectorial $\|\cdot\|$ y la correspondiente norma matricial inducida, se verifica $$\|Ax\| \leq \|A\| \ \|x\|$$
 \end{nprop}
 
-\begin{proof} Es evidente de la definición. Dados $A \in \mathcal M_k(\mathbb{C})$ y $x \in \mathbb{C}^k$ no nulo: $$\|A\|\|x\| = \left(\underset{x \ne 0}{\text{máx}} \frac{\|Ax\|}{\|x\|}\right)\|x\| \ge \frac{\|Ax\|}{\|x\|}\|x\| = \|Ax\|$$ Si $x = 0$ la desigualdad se cumple trivialmente.
+\begin{proof} Es evidente de la definición. Dados $A \in \mathcal M_k(\mathbb{C})$ y $x \in \mathbb{C}^k$ no nulo: $$\|A\|\|x\| = \left(\underset{y \ne 0}{\text{máx}} \frac{\|Ay\|}{\|y\|}\right)\|x\| \ge \frac{\|Ax\|}{\|x\|}\|x\| = \|Ax\|$$ Si $x = 0$ la desigualdad se cumple trivialmente.
 \end{proof}
 
 Relacionamos ahora los conceptos de norma matricial y radio espectral, enlazando con los apartados anteriores.
@@ -2645,7 +2645,7 @@ Relacionamos ahora los conceptos de norma matricial y radio espectral, enlazando
 
 \begin{proof} Veremos únicamente $(i)$. Sea $A$ cualquier matriz cuadrada, $\lambda$ un valor propio de $A$, y $v$ un vector propio asociado a $\lambda$. En primer lugar, sabemos que $$\rho(A) = \text{ máx } \{ |\lambda| : \lambda \text{ es valor propio de } A \}$$ Ahora, como $\la$ es valor propio de $A$, tenemos que $Av = \la v$. Tomando normas, y teniendo en cuenta la \textit{Proposición \ref{norma_matricial_vec}}:
 $$\|\lambda v\| = \|Av\| \implies |\la|\|v\| = \|Av\| \le \|A\|\|v\|$$
-Y por tanto, como $v\ne 0$, dividimos por su norma, obteniendo: $$|\lambda| \le \|A\|$$\end{proof}
+Por tanto, como $v\ne 0$, dividimos por su norma, obteniendo: $$|\lambda| \le \|A\|$$\end{proof}
 
 Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento asintótico de las potencias de una matriz}.
 \begin{nth}
@@ -2713,7 +2713,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 
 \begin{ndef}[Valor propio dominante]
     Sea una matriz $A \in \mathcal M_k (\mathbb C)$ con espectro
-    $$ \sigma(A) = \{ \lambda_1, \lambda_2, \hdots, \lambda_r \}$$
+    $$ \sigma(A) = \{ \lambda_1, \lambda_2, \hdots, \lambda_r \},$$
     donde $r \leq k$ es el número de valores propios diferentes.
     Decimos que $\lambda_1$ es el \textit{valor propio dominante} si 
     \begin{nlist}
@@ -2947,7 +2947,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
                 \vdots & & & & -\lambda \\
                 0 & & & & b_{N-1}
             \end{vmatrix} + (-1)^{2N}(-\lambda)\cdot p_{N-1}(\lambda)\\
-            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (\lambda) \left\( (-1)^{N-1} \left\( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right\) \right\)
+            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right)
          \end{align*}
      \end{proof}
 
