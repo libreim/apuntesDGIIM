@@ -4,7 +4,7 @@ layout: default
 
 # ![apuntes](resources/hero.png)
 
-**ApuntesDGIIM** es un proyecto colaborativo llevado a cabo por alumnos del Doble Grado con la intención de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.
+**ApuntesDGIIM** es un proyecto colaborativo llevado a cabo por alumnos del Doble Grado de Ingeniería Informática y Matemáticas, con la intención de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases. El proyecto se encuentra en [github](https://github.com/libreim/apuntesDGIIM).
 
 A continuación puedes encontrar apuntes compilados en PDF listos para descargar.
 
