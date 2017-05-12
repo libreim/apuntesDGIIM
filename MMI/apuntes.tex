@@ -2759,8 +2759,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
                   & & J_3 & & \\
                   & & & \ddots & \\
                   & & & & J_r
-    \end{pmatrix} \ \ |\lambda_1| > |\lambda_i|, i = 1, 2, \hdots, r \ \ \rho(J_i) < |\lambda_1|$$
-    %FIXME Es posible que falte algo aquí.
+    \end{pmatrix} \ \ |\lambda_1| > |\lambda_i|, i = 1, 2, \hdots, r \ \rho(J_i) < |\lambda_1| \implies \rho \left(\frac{1}{\lambda_1}J_i\right) < 1$$
 
     $$\frac{1}{\lambda_1}J = \begin{pmatrix}
         1 & & & &\\
@@ -2772,8 +2771,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 
     \begin{align*}
         \label{}
-        \frac{1}{\lambda_1^n} A^n = \frac{1}{J_1^n}(PJ^nP^{-1}) = P \frac{1}{\lambda_1^n}J^nP^{-1} = P
-        %FIXME Faltan cosas aquí.
+        \frac{1}{\lambda_1^n} A^n = \frac{1}{\lambda_1^n}(PJ^nP^{-1}) = P \frac{1}{\lambda_1^n}J^nP^{-1} = P\left(\frac{1}{\lambda_1}J\right)^nP^{-1} \to P\theta P^{-1} = Q \text{, donde}
     \end{align*}
     
     $$\theta = \begin{pmatrix}
@@ -2784,11 +2782,11 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
     \end{pmatrix}$$
 
     \begin{itemize}
-        \item Sea $Ker(A - \lambda_1I) =$ subespacio propio asociado al valor propio $\lambda_1$ de dimensión 1 = $\langle v_1 \rangle$ = $\langle p_1 \rangle$ .
+        \item Sea $Ker(A - \lambda_1I) =$ subespacio propio asociado al valor propio $\lambda_1$ de dimensión 1 = $\langle v_1 \rangle$ = $\langle p_1 \rangle$ \\
             $P = \begin{pmatrix}
                 p_1 & p_2 & \hdots & p_k
             \end{pmatrix}$ donde $p_1$ es una columna que representa al vector propio asociado al valor propio $\lambda_1$.
-            Por otro lado, $Q = P\theta P^{-1} \Rightarrow QP = PQ \Rightarrow Q \begin{pmatrix}
+            Por otro lado, $Q = P\theta P^{-1} \Rightarrow QP = P\theta \Rightarrow Q \begin{pmatrix}
                 p_1 & p_2 & \hdots & p_k
             \end{pmatrix} = \begin{pmatrix}
                 p_1 & p_2 & \hdots & p_k
@@ -2802,20 +2800,20 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
     $ \begin{pmatrix}
         Qp_1 & Qp_2 & \hdots & Qp_k
     \end{pmatrix} = \begin{pmatrix}
-        p-1 & 0 & \hdots & 0
+        p_1 & 0 & \hdots & 0
     \end{pmatrix}$
 
 \item
-    $$ \begin{rcases}
-        Qp_1 = p_1 \\
-        Qp_2 = 0 \\
-        \vdots \\
-        Qp_k = 0
-    \end{rcases} \text{ luego } Im Q = \langle p_1 \rangle = Ker (A - \lambda_1 I)$$
+    $$ \left.\begin{array}{l l l}
+        Qp_1 & = & p_1 \\
+        Qp_2 & = & 0 \\
+         & \vdots & \\
+        Qp_k & = & 0
+    \end{array}\right\} \text{ luego } Im Q = \langle p_1 \rangle = Ker (A - \lambda_1 I)$$
 \item
     \begin{align*}
         \label{}
-        Q^2 = P\theta P^{-1} = P \begin{pmatrix}
+        Q^2 = P\theta^2 P^{-1} = P \begin{pmatrix}
             1 & 0 & \hdots & 0 \\
             0 & 0 & \hdots & 0 \\
             \vdots & \vdots & \ddots & \vdots \\
@@ -2832,10 +2830,8 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 
     \begin{align*}
         \label{}
-        QA = (P\theta P^{-1})A = \left[ P \left( \lim_{n \to \infty} \frac{1}{\lambda^n_1}J^n \right) P^{-1} \right] A
+        QA = (P\theta P^{-1})A = \left[ P \left( \lim_{n \to \infty} \frac{1}{\lambda^n_1}J^n \right) P^{-1} \right] A = \frac{1}{\lambda^n_1}A^nA=A^{n+1} = A \frac{1}{\lambda^n_1} A^n = AQ
     \end{align*}
-
-    %FIXME Completar
     \end{itemize}
 \end{proof}
 
