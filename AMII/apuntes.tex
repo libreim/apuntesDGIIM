@@ -2390,14 +2390,9 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
 \times \R^M)$. Entonces,
 
 \begin{enumerate}
-\item Para a.e. $y \in \R^M$ la función $\underset{  f^y: \R^N \to \R }{f^y(x) := f(x,y)}$ es integrable en $\R^N$. Entonces $\displaystyle \varphi(y) := \int_{\R^N}f^y dm_N$. Esto quiere decir que
+    \item Para a.e. $y \in \R^M$ la función $\underset{  f^y: \R^N \to \R }{f^y(x) := f(x,y)}$ es integrable en $\R^N$. Entonces $\displaystyle \varphi(y) := \int_{\R^N}f^y dm_N$. Llamando $A = \left\{ y \in \R^M : f^y \text{ no es integrable en } \R^N \right\}$ esto quiere decir que $m_N(A) = 0 \Leftrightarrow \forall y \in \R^M \setminus A, \ m_N(A) =0 \ \ f^y$ es integrable.
 
-  $$m_N
-  ( \overbrace{\{ y \in
-  \R^M : f^y \text{ no es integrable en } \R^N \}}^{A}) = 0 \Leftrightarrow \forall y
-  \in \R^M \verb+\+ A, m_N(A) =0\ f^y \text{ es integrable}$$
-
-  Vemos que $\varphi$ está definida $\forall y \in \R^M \verb+\+ A$. Esta función
+  Vemos que $\varphi$ está definida $\forall y \in \R^M \setminus A$. Esta función
   $\varphi$ es integrable en $\R^M$, luego $\exists \int_{\R^M} \varphi \ dm_M$.
 \item Para a.e. $x \in \R^N$ la función $f_x(y) := f(x,y)$ es integrable. Esto
   quiere decir que $\psi (x) := \displaystyle \int_{\R^M} f_x \ dm_M$ es
