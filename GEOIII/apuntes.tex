@@ -3015,7 +3015,7 @@ podemos definir una proyectividad $\bar h : \mathbb P ^2 \to \mathbb P^2$ tal qu
 \]
 
 \begin{nprop}
-	Toda afinidad se extiende a una proyectividad.
+	Toda afinidad se extiende a una proyectividad. En ella, se fija $r_\infty$.
 \end{nprop}
 
 \begin{nprop}
@@ -3075,4 +3075,80 @@ b_0\\
 \begin{nth}[Dual]
 	Toda proyectividad de $\mathbb P^2$ tiene al menos una recta fija
 \end{nth}
+\begin{proof}
+	Por el teorema anterior, la demostración queda hecha. Ya que tener la demostración en el proyectivo nos la da en el proyectivo dual.
+\end{proof}
+
+
+\begin{nota}
+	Sea $\phi: V^n \to V^n $ lineal con $\phi(v) = \lambda v$. Sean $\lambda_1,\cdots,\lambda_k$ valores propios. Entonces, si $f:\mathbb P^2 \to \mathbb P^2$ es una proyectividad, los valores propios de $\phi$ son los puntos fijos de $f$.
+\end{nota}
+
+\begin{nota}
+	Si $V_1,\cdots,V_k$ son los subespacios de los vectores propios de $\phi$, estos están contenidos en $V:(e_{11},\cdots,e_{n1}), \cdots, (e_{1k},\cdots,e_{nk})$ una base de cada uno de los $V_\lambda$, entonces:
+	\[
+	dim(V_{\lambda_1}) + \cdots + dim(V_{\lambda_k}) = dim(V)
+	\]
+	y los vectores anteriores son l.i. de $V$.
+\end{nota}
+
+%%% TODO: Discutir
+%\begin{nota}
+%	Toda Matris $A$ de orden 3 no puede tener dos valores propios de dimensiones 1 y 1
+%\end{nota}
+
+\begin{nprop}[Puntos fijos de una proyectividad en $\mathbb P^2$]
+	Estos pueden ser:
+	\begin{nlist}
+	\item Todos los puntos (Identidad)
+	\item Una recta de puntos fijos
+	\item Un punto fijo
+	\item Una recta de puntos fijos y otro punto fijo fuera de la recta
+	\item Dos puntos fijos
+	\item Tres puntos fijos(Tres valores propios de multiplicidad 1)
+	
+\end{nlist}
+\end{nprop}
+
+\begin{nth}[Teorema dual: rectas fijas de las proyectividades]
+	Las rectas fijas de una proyectividad pueden ser:
+	\begin{nlist}
+	\item Todas las rectas
+	\item Todas las rectas de un haz
+	\item Una única recta fija
+	\item Un haz de rectas fijas y otra recta fuera(homotecia)
+\end{nlist}
+\end{nth}
+
+\begin{nprop}
+	Si una proyectividad fija los 4 vértices de un cuadriátero, entonces es la identidad.
+\end{nprop}
+\begin{proof}
+	Se prueba mediante el teorema anterior
+\end{proof}
+\begin{nprop}
+	Si una proyectividad fija 3 puntos de una recta, entonces fija todos los puntos de esa recta.
+\end{nprop}
+
+\begin{nprop}
+	Si una afinidad fija dos puntos, entonces fija todos los de la recta que pasa por esos dos puntos
+	
+\end{nprop}
+\begin{nth}
+	Sea $ABCD$, $A'B'C'D'$, dos cuadriláteros en $\mathbb P^2$. Entonces, existe una proyectividad $f$ que lleva uno en otro con $f:A\mapsto A'$, $B\mapsto B'$, $C \mapsto C'$ y $D\mapsto D'$.
+\end{nth}
+\begin{proof}
+	Probamos la existencia:\\
+	Como tenemos 4 puntos, $ABCD$, tenemos una base de $\R^3$ con ellos. Así, podemos escribir
+	\[
+	D = aA + bB +cC \quad a,b,c\ne 0
+	\]
+	Por tanto, cambiamos $A,B,C,D$ por $aA,bB,cC,D$ y los llamamos $\bar A,\bar B, \bar C, \bar D$ y tenemos que $\bar D = \bar A + \bar B + \bar C$. Hacemos lo mismo para el segundo cuadriátero y tendríamos que:
+	$\bar D ' = \bar A ' + \bar B ' + \bar C'$, por tanto existe una aplicación lineal $\bar f$ que lleva $\bar A \mapsto \bar A '$, $\bar B \mapsto \bar B'$ y $\bar C \mapsto \bar C'$. Por tanto, tenemos:
+	\[
+	P{\bar D} = P( \bar A + \bar B + \bar C) = P(\bar A) + P(\bar B) + P(\bar C) = \bar A ' + \bar B ' + \bar C' = \bar D'
+	\]
+	
+	Ahora, vemos la unicidad. Sea $g$ una proyectividad que hace lo mismo que $\bar f$. Entonces, $g^{-1} o f$ fija $A,B,C,D$.
+\end{proof}
 \end{document}
