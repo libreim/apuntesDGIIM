@@ -1051,4 +1051,107 @@
         \end{align*}
             \end{sol}
 
+            \begin{ejer}[Principio de Cavalieri]
+                Sea $E \subset \R^2$ un conjunto medible. Dado el subconjunto $$\left\{ x \in \R : \emptyset \neq E(x) = \left\{ (y, z) \in \R^2 : (x, y, z) \in E \right\} \right\} = [a, b]$$ su medida $m_3(E) = \int_a^b m_2(E(x)) \ dx $.
+            \end{ejer}
+
+            \begin{sol}
+                Por ejemplo, para el conjunto  $E = [a, b] \times B_{\R^2} (0, r)$ tenemos que \begin{align*}
+                    \label{}
+                    \forall x \in [a, b] \ \ E(x) = \left\{ (y, z) \in \R^2 : (x, y, z) \in E \right\} = B_{\R^2}(0, r) \\
+                    m_3(E) = \int_a^b m_2 (B_{\R^2}(0, r)) \ dx = m_2(B_{\R^2}(0, r)) \cdot (b - a) = \pi \cdot r^2 \cdot (b -a)
+                \end{align*}
+                Probemos ahora la proposición.
+                \begin{align*}
+                    \label{}
+                    m_3(E) = \int_{\R^3} \rchi_E (x, y, z) \ dxdydz = \int_E 1 \ dxdydz &= \int_a^b \left( \int_{E(x)} \ dydz \right) \ dx \\
+                            &= \int_a^b m_2(E(x)) \ dx
+                \end{align*}
+            \end{sol}
+
+            \begin{ejer}
+                $\int (x^2 + y^2) \ dxdxy$, $\overline{B}_{\R^3} (1, 0, 1)$. $f(x, y) := x^2+y^2$ es ''Radial'' ya que su valor sólo depende de $r = \sqrt{x^2+y^2}$.
+            \end{ejer}
+
+            \begin{sol}
+                \begin{align*}
+                    \label{}
+                    \int (x^2 + y^2) \ dxdxy = \int_0^1 \left(  \int_{\pi}^{\pi} r^2 \cdot r \ d\theta \right) \ dr &= \int_0^1 r^3 \cdot 2\pi \ dr \\ 
+                            &= 2\pi \frac{r^4}{4} \bigg\rbrack_{r=0}^{r=1} = \frac{\pi}{2}
+                \end{align*}
+
+                Para la radial hacemos un cambio a coordenadas polares: $$ \begin{rcases}
+                    x = r \ cos \theta \\
+                    y = r \ sen \theta
+                \end{rcases}$$
+
+                Describamos ahora el conjunto $\overline{B}(1, 0, 1)$ \begin{align*}
+                    \label{}
+                    \left\{ (x, y) \in \R^2 : (x-1) + y^2 \leq 1 \right\} &= \left\{ (r, \theta) \in [0, \infty) \times [-\pi, \pi] : (r \ cos \theta - 1)^2 + (r \ sen \theta)^2 \leq 1 \right\} \\
+                        A &= \left\{ (r, \theta) \in [0, \infty) \times [-\pi, \pi] : r^2-2r \ cos \theta \leq 0 \right\} 
+                \end{align*}
+
+                Si tomamos $$ \begin{rcases}
+                    x = 1 + r \ cos \theta \\
+                    y = 0 + r \ sen \theta
+                \end{rcases}$$
+                tendremos al final un rectángulo, por lo que calcular el área es muy sencillo con Fubini.
+                \begin{align*}
+                    \label{}
+                    (x, y) &= (1, 0) + (r cos \theta, r \ sen \theta) \\
+                    \overline{B}((1, 0), 1) &= (1, 0) + \overline{B} ((0, 0), 1) \rightarrow B = \left\{ (r, \theta) : 0 \leq r \leq 1; -\pi < \theta \leq \pi \right\} = [0, 1] \times (-\pi, \pi] \\
+                    \int_{\overline{B}((1, 0), 1)}(x^2 + y^2) \ dxdy &= \int_B \left( (1 + rcos^2 \ \theta)^2 + r^2 \ sen^2 \ \theta \right) r \ drd\theta \\
+                        &= \int_0^1 \int_{-\pi}^{\pi} (r^3 + 2r^2 \ cos \theta + r) \ d\theta dr
+                \end{align*}
+            \end{sol}
+
+            \begin{ejer}
+                Calcula $\int_A (x^2 + y^2) \ dxdy $ con 
+                \begin{align*}
+                    A &= \left\{ (x,y) \in \R^2 : x^2 + y^2 \leq 2y, x^2 + y^2 \leq 1, x > 0 \right\}
+                \end{align*}
+            \end{ejer}
+
+            \begin{sol} 
+                Vemos que $A = B_{\R^2} (0,1),1) \cup B_{\R^2} ((0,0),1) \cup \lbrack\text{Primer y cuarto cuadrante}\rbrack$.
+
+                Hacemos el cambio de coordenadas: $$ \begin{rcases}
+                    x = r \ cos \ \theta \\
+                    y = r \ sin \ \theta
+                \end{rcases}$$
+
+                Llamamos $B$ al conjunto anterior con las nuevas coordenadas:
+                \begin{align*}
+                    \label{}
+                    B = \left\{ (r, \theta) \in (0,1) \times (0, \frac{\pi}{2}) : r \leq 2 \ sen \theta \right\}
+                \end{align*}
+                \begin{align*}
+                    \label{}
+                    \int_A (x^2 + y^2) \ dxdy &= \int_B r^3 \ drd\theta = \int_0^1 \left( \int_{arcsen(\frac{r}{2})}^{\frac{\pi}{2}} r^3 \ d\theta \right) \ dr \\
+                    \text{alternativamente,} \\
+                    &= \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} \left( \int_0^1 r^3 \ dr \right) \ d\theta + \int_0^{\frac{\pi}{6}} \left( \int_0^{2sen \ \theta} r^3 \ dr \right) \ d\theta
+                \end{align*}
+
+                
+                {\sffamily \textit{De forma cartesiana:}}
+                
+                Calculamos la intersección de los conjuntos: \begin{align*}
+                    \label{}
+                    \begin{rcases}
+                        x^2 + y^2 = 1 \\
+                        x^2 + (y-1)^2 = 1
+                    \end{rcases} \Rightarrow \begin{rcases}
+                        x^2 = 1 - y^2 \\
+                        x^2 = 1 - (y-1)^2
+                    \end{rcases} &\Rightarrow y^2 = (y - 1)^2 = y^2 - 2y + 1 \\
+                    1 = 2y &\Rightarrow y = \frac{1}{2} \\
+                    x^2 = 1 - \frac{1}{4} = \frac{3}{4} &\Rightarrow x = \pm \frac{\sqrt{3}}{2}
+                \end{align*}
+                La integral es entonces \begin{align*}
+                    \label{}
+                    \int_A (x^2 + y^2) \ dxdy &= \int_0^{\frac{\sqrt{3}}{2}} \left( \int_{1 - \sqrt{1-x^2}}^{\sqrt{1-x^2}} (x^2 + y^2) \ dx \right) \ dy \\
+                                              &= \int_{0}^{\frac{\sqrt{3}}{2}} \bigg\lbrack x^2y + \frac{y^3}{3} \bigg\rbrack_{y=1 - \sqrt{1-x^2}}^{y=\sqrt{1-x^2}} \ dx = \hdots
+                \end{align*}
+            \end{sol}
+
 \end{document}
