@@ -2837,23 +2837,46 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 
     \subsection{Dinámica de poblaciones}
     \label{sub:din_mica_de_poblaciones}
+    Cuando la variación de una población se realiza en función del tiempo, obtenemos un proceso que recibe el nombre de dinámica de población.
+    
+    El objetivo de la dinámica de poblaciones es estudiar los cambios numéricos que sufren las poblaciones, determinar sus causas, predecir su comportamiento y analizar sus consecuencias ecológicas.
     
     Existen dos procesos que afectan al cambio del tamaño de la población:
+\begin{itemize}
+	\item Los nacimientos y las migraciones, que aumentan su tamaño.
+	\item Las defunciones y las emigraciones que la disminuyen.
+\end{itemize}
 
-    % TODO No está copiado porque dice antcc que lo va a copiar
+En los modelos más simples podemos suponer que estamos estudiando una población en la que no intervienen procesos migratorios.
 
+Las hipótesis más simples que podemos plantear serían del tipo:
+\begin{itemize}
+	\item Todos los individuos son iguales (especialmente lo que hace referencia a la natalidad y a la supervivencia).
+	\item Los recursos disponibles son ilimitados.
+	\item La tasa de mortalidad será mayor entre los individuos de mayor edad que entre los más jóvenes.
+	\item La tasa de fecundidad depende también de la edad.
+\end{itemize}
+
+Con carácter general, se suelen estudiar las hembras de la población.
+
+Vamos a plantear un modelo para el estudio de una población en el que se tiene en cuenta características particulares de cada uno de los individuos.
+
+   Según estas características los agruparemos en clases que sean homogéneas a efectos reproductivos y de supervivencia.
+    
     \subsubsection{El modelo de Leslie}
     \label{ssub:el_modelo_de_leslie}
+
+El modelo de Leslie describe el crecimiento de la parte femenina de una población clasificando a los individuos por edades en intervalos de igual número de años.
 
     Realizaremos varias consideraciones en este modelo: \begin{itemize}
         \item Supondremos que la edad máxima alcanzada por un individuo de una población son $L$ años.
         \item Dividimos esta población en $N$ clases de edades. Cada clase es evidente que tendrá $\frac{L}{N}$ años de duración.
     \end{itemize}
 
-    La población se censará cada $\frac{L}{N}$ años para que todos los individuos de una clase pasen a la siguiente.
+    La población se censará cada $\frac{L}{N}$ años para que todos los individuos que sobreviven de una clase pasen a la siguiente.
 
-    Llamamos $x_i^{(n)}$ al número de individuos clase $i$ en el recuento $n$-ésimo.
-    La población en cada censo viene descrita por el vector $$x^{(n)} = \begin{bmatrix}
+    Llamamos $x_i^{(n)}$ al número de individuos en la clase $i$ en el recuento $n$-ésimo.
+    La población en cada censo viene descrita por el vector de distribución de la población según las edades $$x^{(n)} = \begin{bmatrix}
         x_1^{(n)} \\
         \vdots \\
         x_N^{(n)}
@@ -2861,7 +2884,7 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
 
     Los procesos de nacimiento y muerte entre dos censos consecutivos se pueden describir mediante los siguientes parámetros demográficos:
     \begin{itemize}
-        \item Al promedio del númerode hijas que tiene una hembra durante el tiempo que permanece en la clase $i$ lo llamaremos $a_i$, con $i = 1, 2, \hdots, N$. Es claro que $a_i \geq 0, \ a_i \in \R$.
+        \item Al promedio del número de hijas que tiene una hembra durante el tiempo que permanece en la clase $i$ lo llamaremos $a_i$, con $i = 1, 2, \hdots, N$. Es claro que $a_i \geq 0, \ a_i \in \R$.
         \item La fracción de las hembras que están en la clase $i$ que se espera que sobrevivan y pasen a la clase $i+1$ la llamaremos $b_i$, con $i = 1, 2, \hdots, N-1$. Es claro que $0 < b_i \leq 1$, un porcentaje.
     \end{itemize}
 
@@ -2880,27 +2903,28 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
         a_1 & a_2 & a_3 & \hdots & a_N \\
         b_1 & 0 & 0 & \hdots & 0 \\
         0 & b_2 & 0 & \hdots & 0 \\
-        \vdots & & & & \\
+        \vdots & & & & \vdots \\
         0 & 0 & \hdots & b_N-1 & 0
     \end{pmatrix} \begin{pmatrix}
         x_1^{(n)} \\
         x_2^{(n)} \\
         x_3^{(n)} \\
-        \hdots \\
+        \vdots \\
         x_N^{(n)}
     \end{pmatrix} = \begin{pmatrix}
         x_1^{(n+1)} \\
-        1x_2^{(n+1)} \\
+        x_2^{(n+1)} \\
         x_3^{(n+1)} \\
-        \hdots \\
+        \vdots \\
         x_N^{(n+1)}
     \end{pmatrix}$$
 
+A esta matriz la llamamos \textit{matriz de Leslie}.
     %FIXME Falta  aquí algo sobre notación
 
     \begin{ejemplo}
         Describa y estudie la evolución de una población distribuida en grupos de edad cuya matriz de Leslie viene dada por $$\mathcal L = \begin{bmatrix}
-            1 & \frac{1}{3} \\
+            1 & \frac{3}{2} \\
             \frac{1}{2} & 0
         \end{bmatrix}$$
 
@@ -2910,14 +2934,17 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
         \end{itemize}
         Las tasas de mortalidad: de la primera a la segunda clase sobreviven el $50\%$ de los individuos.
 
-        El objetivo es el estudio de $X^{(n+1)} = \mathcal L^nX^{(0)}$
-
     \end{ejemplo}
 
+El objetivo es el estudio de $X^{(n+1)} = \mathcal L^nX^{(0)}$.
+        
+Añadimos una hipótesis adicional:\\
+Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
+        
      \begin{nprop}
             El polinomio característico de la matriz de Leslie $\mathcal L_N$ viene dado por \begin{align*}
                 \label{}
-                p(\lambda) &= det(L_N - \lambda I) \\
+                p(\lambda) &= det(\mathcal L_N - \lambda I) \\
                            &= (-1)^N \left[ \lambda^N - a_1\lambda^{N-1} - a_2b_1\lambda^{N-2} - a_3 b_1 b_2\lambda^{N-3} - \hdots - a_N b_1 b_2\hdots b_{N-1} \right]
             \end{align*}
      \end{nprop}
@@ -2927,23 +2954,26 @@ Por último, el siguiente teorema nos permite estudiar el \textbf{comportamiento
              a_1 - \lambda & a_2 \\
              b_1 & -\lambda
          \end{vmatrix} = (a_1 - \lambda)(-\lambda) - a_2b_1 = \lambda^2 - a_1\lambda - a_2b_1$
-         Veámoslo ahora para $N$. \begin{align*}
+         
+         Suponiéndolo cierto hasta $N-1$, por hipótesis de inducción, veámoslo ahora para $N$. \begin{align*}
              \label{}
-             det (\mathcal LN - \lambda I) &= \begin{vmatrix}
+             det (\mathcal L_N - \lambda I) &= \begin{vmatrix}
                  a_1 - \lambda & a_2 & a_3 & \hdots & a_N \\
                  b_1 & -\lambda & 0 & \hdots & 0 \\
                  0 & b_2 & -\lambda & \hdots & 0 \\
                  \vdots & & & & \vdots \\
-                 0 & & & \vdots & b_{N-1}-\lambda
-             \end{vmatrix}\\
+                 0 & 0 & 0 & \hdots & b_{N-1}-\lambda
+             \end {vmatrix} =\\
              &= (-1)^{1 + N} a_N \begin{vmatrix}
                  b_1 & -\lambda & 0 & \hdots & 0 \\
                  0 & b_2 & -\lambda & \hdots & 0  \\
                 \vdots & & & & \vdots \\
                 \vdots & & & & -\lambda \\
-                0 & & & & b_{N-1}
+                0 & 0 & 0 & \hdots & b_{N-1}
             \end{vmatrix} + (-1)^{2N}(-\lambda)\cdot p_{N-1}(\lambda)\\
-            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right)
+            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (-\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right) 
+            % FIXME: No sé cómo poner esto de forma que lo que está tras el igual a continuación no se salga de la página y no mueva las matrices superiores hacia la derecha
+            &= (-1)^N\left[\lambda^N - a_1\lambda^{N-1} - a_2b_1\lambda^{N-2} - \hdots - a_{N-1} b_1 b_2\hdots b_{N-2}\lambda \right] - (-1)^N a_N b_1 b_2 \hdots b_{N-1}
          \end{align*}
      \end{proof}
 
