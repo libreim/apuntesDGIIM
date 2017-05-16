@@ -3149,4 +3149,135 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
                        &= (-1)^3\left(\lambda^3-\frac{9}{4}\lambda - \frac{14}{4}\right) \\
             \lambda &= 2 \text{ valor propio }
         \end{align*}
+        
+
+\section{Matrices positivas, estrictamente positivas y estocásticas}
+
+\subsection{Matrices positivas y estrictamente positivas}
+Sea $A=(a_{ij})\in M_{d\times d}(\R) $ una matriz. 
+        \begin{ndef}[Debilmente positiva o no negativa]
+	Una matris $A$ se dice débilmente positiva o no negativa  $A\geq 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$
+\end{ndef}
+
+\begin{ndef}[Matriz positiva]
+	Una matriz $A$ es positiva $A > 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$ con al menos un $a_{ij}> 0$
+\end{ndef}
+
+\begin{ndef}[Estrictamente positiva]
+	Una matriz es $A$ es estrictamente positiva $A >> 0$ si $a_{ij}> 0 \ \ \ \forall i ,j$
+\end{ndef}
+        
+        \begin{nprop}
+	Toda matriz de Leslie es positiva
+\end{nprop}
+
+\begin{nota}
+	Notación: Si $X,Y$ son dos vectores columna de dimensión $d$, diremos:
+	\begin{nlist}
+	\item $X \geq Y \iff X-Y \geq 0$
+	\item $X > Y \iff X-Y > 0$
+	\item $X >> Y \iff X-Y >> 0$
+\end{nlist}
+\end{nota}
+%%% TODO: completar de diapositivas
+\begin{nprop}[Propiedades]
+	
+\end{nprop}
+
+\subsubsection{Sistemas de ecuaciones lineales en diferencias}
+Consideraremos sistemas de ecuaciones lineales en diferencias de la foram:
+\[
+X _{n+1} = A X_n \quad n \geq 0
+\]
+con $A$ es una matriz positiva o estrictamente positiva. Así, la solucion es:
+\[
+X_n = A^n X_0
+\]
+
+\begin{ndef}
+	Una matriz positiva $A$ se dice que es primitiva o ergódica si $\exists m\in \mathbb N : A^m >> 0$
+\end{ndef}
+
+\begin{nth}[Teorema de Perron-Frobenius]
+	Si $A$ es una matriz primitiva, entonces:
+	\begin{nlist}
+	\item $A$ tiene un valor propio $\lambda_1$ real, estrictamente positivo y dominante. Esto es:
+	\[
+	\exists \lambda_1 : \quad |\lambda_i| < \lambda_1, \quad \forall \lambda_i \in \sigma(A)\backslash \{\lambda_1\}
+	\]
+	y $p(A) = \lambda_1$
+	%%% TODO: completar esta cosita
+	\item Se puede tomar un vector propio $v_1$ asociado al valor propio $\lambda_1$ con todas sus componentes
+\end{nlist}
+\end{nth}
+
+\begin{ncor}
+	Si $A$ es una matriz primitiva, $\lambda_1$ es su valor propio real, estrictamente positivo y dominante y $v_1 >> 0$ el vector propio asociado a $\lambda_1$, entonces $\exists \alpha \in \R $ tal que:
+	\[
+	\lim_{n\to \infty} \frac{1}{\lambda_1^n} A^n X_0 = \alpha v_1
+	\]
+\end{ncor}
+\begin{ncor}
+	En las condiciones anteriores, si $X_0 > 0$ entonces:
+	\[
+	\lim_{n\to \infty} \dfrac{1}{||X_n||_1}X_n = \frac{1}{||v_1||_1}v_1
+	\]
+\end{ncor}
+\begin{proof}
+Sabemos que si $X _{n+1} = AX_n$, entonces $X_n = A^n X_0$. Así
+	  \[
+	  \dfrac{1}{||X_n||_1}X_n = \dfrac{1}{||A^n X_0||_1}A^n X_0 =  \dfrac{1}{\dfrac{1}{\lambda_1^n}||A^n X_0||_1}\dfrac{1}{\lambda_1^n}A^n X_0 \to \dfrac{1}{||\alpha v_1||_1}\alpha v_1 = \dfrac{1}{||v_1||}v_1
+	  \]
+\end{proof}
+
+\begin{nprop}
+	Sea $A \geq 0$ una matriz. Entonces:
+	\begin{nlist}
+	\item Existe un valor propio $\lambda_M \geq 0$ que verifica $|\mu| \leq \lambda_M$ para todo valor propio $\mu$. Esto es, $p(A)$ es valor propio de $A$. Lo llamamos el mayor valor propio
+	\item Existe $v>0$ vector propio asociado a $\lambda_M$
+\end{nlist}
+\end{nprop}
+\begin{proof}
+	$A \geq 0 \implies p(A) = max\{|\lambda_i|, \ i= 1,2...,r\}$. Entonces, $\exists \lambda_M \geq 0$ tal que $|\lambda_M| = \lambda_M \geq |\mu| \ \ \forall \mu \in \sigma(A)$. 
+	
+	Ahora, $\lambda_M$ es mayor, pero no es dominante (podría ser porque o bien $\exists \mu : |\mu|=\lambda_M$ o bien porque $\lambda_M$ fuese de multiplicidad $m\geq 2$)
+\end{proof}
+
+\begin{ejemplo}
+	$A = \begin{pmatrix}
+ 1 & 1 \\
+ 1 & 1 
+\end{pmatrix} $ ¿Esta matriz es primitiva? Sí, pues existe un $m$ tal que $A^m >>0$. Por tanto, aplicamos el teorema de Perron-Frobenius para decir que $\exists_1 \lambda_1 > 0$ valor propio dominante y su vector propio asociado.
+
+Para comprobarlo, si hallamos su polinomio característico este es $p(\lambda) = \lambda^2 -2\lambda$. Así, sus valores propios son $\lambda_1 = 2$, el dominante y $\lambda_2 = 0$. Calculamos ahora $v_1$.
+\[
+V_{\lambda_1} = V_2 = \{v \in \R^2 : \ \ (A-2I)v = 0\}
+\]
+Escribimos el sistema:
+\[
+\begin{pmatrix}
+ -1 & 1\\
+ 1 & -1 
+\end{pmatrix} \begin{pmatrix}
+ w_1\\
+ w_2 
+\end{pmatrix} 
+\]
+Cuya solución es $w_1 = w_2$ con $w_2 \in \R$ y tomamos por ejemplo el vector $(1,1)$
+\end{ejemplo}
+
+\begin{nprop}
+	Sea $A\geq 0$ y $p(A) = \lambda_M \geq 0$ su mayor valor propio. Sean también:
+	\[
+	c_j = \sum_{i=1}^d a_{ij}, \quad \quad R_i= \sum_{j=1}^d a_{ij}
+	\]
+	las sumas de los elementos de la j-ésima columna y de la i-ésima fila de $A$. Entonces:
+	%%% TODO: completar, no sé poner el texto debajo
+	\[
+	mín C_j \leq \lambda_m \leq máx C_j , \quad \quad mín R_i \leq \lambda_M \leq máx R_i 
+	\]
+\end{nprop}
+\begin{proof}
+	Con $A\geq 0$, $a_{ij} \leq 0$. Entonces, por la proposición anterior tiene un mayor valor propio positivo $\lambda_M$.
+\end{proof}
 \end{document}
