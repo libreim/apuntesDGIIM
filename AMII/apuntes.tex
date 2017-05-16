@@ -542,32 +542,13 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo 
   Aunque ambas definiciones son muy parecidas, hay una diferencia clave. En la convergencia puntual, el valor de $n_0$ puede depender tanto de $\epsilon$ como de $x$. Sin embargo, en la convergencia uniforme, exigimos que $n_0$ sea válido para cualquier $x$.
 \end{nota}
 
-\begin{nprop}
+\begin{nprop} \label{unif_puntual}
   Si $\fn\to f \text{ uniformemente} \implies \fn \to f \text{ puntualmente}$. 
 \end{nprop}
 
   \begin{nota}
     El recíproco no es cierto en general. Sin embargo, ambos conceptos son equivalentes si para cada $f_n : A \rightarrow \R^M$ que forma la sucesión, el conjunto A es finito. En efecto, si $A$ es finito, y $\{f_n(x)\} \xrightarrow {c.p} f(x) \ \forall x \in A$, entonces tomamos $n_0$ como el máximo de los $n_0(x)$ que nos da la convergencia puntual en cada $x \in A$, y $\fn$ converge uniformemente en $A$.
   \end{nota}	
-
-El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la proposición anterior sí es cierto.
-
-\begin{nth}
-  \label{1}
-  Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
-
-  \begin{nlist}
-  \item $f_k \geq 0$
-  \item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
-  \item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
-  \end{nlist}
-
-  Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
-\end{nth}
-
-  \begin{proof}
-    Se puede consultar en \textit{[Ejercicios, p.4]}.
-  \end{proof}
 
 La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas. El conjunto de las funciones continuas entre un conjunto $A$ y $\R^M$ se denota como $\mathcal{C}(A,\R^M)$.
 
@@ -593,7 +574,7 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
   \end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$. Es decir, hemos probado que $f$ es continua. 
 \end{proof}
 
-Veamos algunoss ejemplos de sucesiones de funciones:
+Veamos algunos ejemplos de sucesiones de funciones:
 
 \begin{ejemplo}
   \[
@@ -651,6 +632,24 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
     Es decir, $\fn \xrightarrow {c.u} f$.
   \end{proof}
 
+El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la \textit{Proposición \ref{unif_puntual}} anterior sí es cierto.
+
+\begin{nth}
+  \label{1}
+  Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
+
+  \begin{nlist}
+  \item $f_k \geq 0$
+  \item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
+  \item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
+  \end{nlist}
+
+  Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
+\end{nth}
+
+  \begin{proof}
+    Se puede consultar en \textit{[Ejercicios, p.4]}.
+  \end{proof}
 
 % --------------------------------------------------------------------------------
 % El espacio de funciones continuas.
@@ -658,13 +657,13 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 
 \subsection{El espacio de funciones continuas}
 
-Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}^M), ||\cdot||_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$||f||_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
+Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}^M), \|\cdot\|_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$\|f\|_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
 
 \begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f$$
 \end{nprop}
 
   \begin{proof} \hfill \\
-    $||f_n - f ||_{\infty} \rightarrow 0 \iff \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
+    $\|f_n - f \|_{\infty} \rightarrow 0 \iff \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
   \end{proof}
 
 \begin{nth}[$\mathcal{C}(A,\R^M)$ es completo] \label{3} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, también ser sucesión de Cauchy equivale a la convergencia uniforme, esto es: $$\fn\ es\ de\ Cauchy\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f $$
@@ -725,7 +724,7 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
   \end{proof}
 
 \begin{ncor}
-  Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g \in \mathcal C((a,b))$ en (a,b). Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f' = g$.
+  Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g \in \mathcal C((a,b))$ en $(a,b)$. Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f' = g$.
 \end{ncor}
 
   \begin{proof}
@@ -2104,17 +2103,17 @@ Ejercicio:
 \end{ndef}
 
 \begin{nth}[Teorema de Riesz-Fisher]
-  $( L^p(\Omega), || \cdot ||_p)$ es un espacio de Banach $\forall p \in [1,\infty]$.
+  $( L^p(\Omega), \| \cdot \|_p)$ es un espacio de Banach $\forall p \in [1,\infty]$.
 \end{nth}
 \begin{proof}
   Ya hemos probado que el espacio es normado. Probemos ahora que es completo.\\
   
-  Sea $\{ F_n\} \subset L^p(\Omega)$ una sucesión de Cauchy: $\forall \epsilon > 0 \ \ \exists n_0 \in \mathbb N : n,m \geq n_0 \implies || F_n - F_m ||_p < \epsilon$.
-  Tomo entonces $\epsilon = \dfrac{1}{2}$. Entonces, por la definición $\exists n_1 \in \mathbb N$ tal que si $n,m \geq n_1 \implies || F_n - F_m ||_p < \epsilon $.
-  Si tomo $\epsilon = \dfrac{1}{2^2}$, $\exists n_2 > n_1 \ : \ n,m \geq n_2 \implies || F_n - F_m ||_p < \epsilon$.\\
-  Sucesivamente, podemos definir $\epsilon= \dfrac{1}{2^k}$ y entonces $\exists n_k : \ n_k > n_{k-1} > \cdots > n_1 : \ \ m,n \geq n_k \implies || F_n - F_m ||_p < \epsilon$
+  Sea $\{ F_n\} \subset L^p(\Omega)$ una sucesión de Cauchy: $\forall \epsilon > 0 \ \ \exists n_0 \in \mathbb N : n,m \geq n_0 \implies \| F_n - F_m \|_p < \epsilon$.
+  Tomo entonces $\epsilon = \dfrac{1}{2}$. Entonces, por la definición $\exists n_1 \in \mathbb N$ tal que si $n,m \geq n_1 \implies \| F_n - F_m \|_p < \epsilon $.
+  Si tomo $\epsilon = \dfrac{1}{2^2}$, $\exists n_2 > n_1 \ : \ n,m \geq n_2 \implies \| F_n - F_m \|_p < \epsilon$.\\
+  Sucesivamente, podemos definir $\epsilon= \dfrac{1}{2^k}$ y entonces $\exists n_k : \ n_k > n_{k-1} > \cdots > n_1 : \ \ m,n \geq n_k \implies \| F_n - F_m \|_p < \epsilon$
   
-  Así, podemos definir una aplicación $\sigma: \mathbb N \to \mathbb N$ que lleva $k \mapsto n_k 0 \sigma(k)$ estrictamente creciente ($\sigma(k) > \sigma(k-1)$ y podemos tomar $\{F_{\sigma(k)}\}$ como una subsucesión y teniendo que: $|| F_{\sigma(k+1)} - F_{\sigma(k)} ||_p < \dfrac{1}{2^k}$.
+  Así, podemos definir una aplicación $\sigma: \mathbb N \to \mathbb N$ que lleva $k \mapsto n_k 0 \sigma(k)$ estrictamente creciente ($\sigma(k) > \sigma(k-1)$ y podemos tomar $\{F_{\sigma(k)}\}$ como una subsucesión y teniendo que: $\| F_{\sigma(k+1)} - F_{\sigma(k)} \|_p < \dfrac{1}{2^k}$.
   
   Teniendo esta subsucesión, vamos a probar que es convergente. Para facilitar la tarea, vamos a tomar esta subsucesión como una sucesión, sin tener en cuenta la sucesión inicial durante un tiempo.
   
@@ -2131,11 +2130,11 @@ Ejercicio:
     \int_\Omega |g_n|^p d\mu \to \int_\Omega |g|^p d\mu \implies (\int_\Omega |g_n|^p d\mu)^{1/p} \to (\int_\Omega |g|^p d\mu)^{1/p} 
   \]
   \[
-    \implies ||g_n||_p \to ||g||_p
+    \implies \|g_n\|_p \to \|g\|_p
   \]
   Y por el teorema de la convergencia monótona:
   \[
-    ||g||_p = \lim_{n\to \infty} ||g_n||_p \leq 1  
+    \|g\|_p = \lim_{n\to \infty} \|g_n\|_p \leq 1  
   \]
   Esto indica que:
   \[
@@ -2216,7 +2215,7 @@ Ejercicio:
   positiva de $L^{p}(\Omega)$ se verifica que $\forall \varepsilon > 0 \exists
   E_{1}, E_{2}, \hdots,E_{n} \in \mathscr A, \mu(E_{i}) < \infty \forall i = 1,
   \hdots, n, \alpha_{1}, \alpha_{2}, \hdots, \alpha_{n} \in (0, \infty)$ tal que
-  $||g - \sum_{i=1}^{n} \alpha_{i}\chi_{E_{i}}|| < \varepsilon$.
+  $\|g - \sum_{i=1}^{n} \alpha_{i}\chi_{E_{i}}\| < \varepsilon$.
 
   En efecto $g$ es medible positiva y por el Teorema de Lebesgue, $\exists
   {s_{k}}$ simples positivas de forma que $s_{k}(\omega)$ es monótona creciente
@@ -2237,10 +2236,10 @@ Ejercicio:
   \leq \int_{\Omega}g^{p}d\mu < \infty \Rightarrow \mu(E_{i}) < \infty \forall
   i, \hdots, n$.
 
-  Por tanto, $||g-s_{k}|| \rightarrow 0 \Rightarrow$ dado $\varepsilon > 0
-  \exists k_{0} : k  \geq k_{0} \Rightarrow ||g-s_{k}||_{p} <
-  \varepsilon$. Eligiendo $k = k_{0}$ tenemos que $||g -
-  \sum_{i=1}^{n_{k_{0}}}\alpha_{i}^{k_{0}}\chi_{E_{i}}k_{0}||_{p} < \varepsilon$
+  Por tanto, $\|g-s_{k}\| \rightarrow 0 \Rightarrow$ dado $\varepsilon > 0
+  \exists k_{0} : k  \geq k_{0} \Rightarrow \|g-s_{k}\|_{p} <
+  \varepsilon$. Eligiendo $k = k_{0}$ tenemos que $\|g -
+  \sum_{i=1}^{n_{k_{0}}}\alpha_{i}^{k_{0}}\chi_{E_{i}}k_{0}\|_{p} < \varepsilon$
 \end{proof}
 
 Dadas $f_{n}, f : \Omega \rightarrow \mathbb K$ medibles. Si ${f_{n}(\omega)}
@@ -2250,12 +2249,12 @@ doquier.
 
 Por el teorema de la convergencia monótona, dada $f_{n}(\omega)$ monótona que
 converge a $f(\omega)$ casi por doquier para $\omega \in \Omega$ entonces
-$\int_{\Omega}f_{n}^{p}d\mu \rightarrow \int_{\Omega}f^{p}d\mu$ y $||f - f_{n}||_{p}
+$\int_{\Omega}f_{n}^{p}d\mu \rightarrow \int_{\Omega}f^{p}d\mu$ y $\|f - f_{n}\|_{p}
 = \left(\int_{\Omega}|f(\omega)-f_{n}(\omega)|^{p}d\mu\right)^{1/p} \rightarrow
 0$.
 
-$f_{n} \rightarrow f$ en $\mathcal L^{p}(\Omega) \Leftrightarrow ||f_{n}-f||_{p}
-\rightarrow 0 \Leftrightarrow ||[f_{n}]-[f]||_{p} \rightarrow 0 \Leftrightarrow
+$f_{n} \rightarrow f$ en $\mathcal L^{p}(\Omega) \Leftrightarrow \|f_{n}-f\|_{p}
+\rightarrow 0 \Leftrightarrow \|[f_{n}]-[f]\|_{p} \rightarrow 0 \Leftrightarrow
 {[f_{n}]} \rightarrow [f]]$ $L^{p}(\Omega)$ es lo que llamamos
 \textit{convergencia p-media}. 
 
@@ -2346,11 +2345,11 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
    0$ tal que si $E \in \mathscr A$ y $\mu(E) < \delta$ entonces $\displaystyle \int_E |f|^p d\mu < \frac{\varepsilon}{2^p}$.
 
    Como $\{f_n\} \rightarrow f$ con  $\frac{\varepsilon^{\frac{1}{p}}}{2} > 0$ $\Rightarrow \exists n_0 \in \N$ tal que si $n
-   \geq n_0$ entonces $||f_n - f||_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$ 
+   \geq n_0$ entonces $\|f_n - f\|_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$ 
 
-   $$\left(\int_E |f_n|^p d\mu\right)^{\frac{1}{p}} = ||f_n||_{ L^p(E)} \leq ||f_n -
-   f||_{ L^(E)}+ ||f||_{ L^p(E)} \leq ||f_n - f||_{
-     L^p(\Omega)} + ||f||_{ L^p(E)} <
+   $$\left(\int_E |f_n|^p d\mu\right)^{\frac{1}{p}} = \|f_n\|_{ L^p(E)} \leq \|f_n -
+   f\|_{ L^(E)}+ \|f\|_{ L^p(E)} \leq \|f_n - f\|_{
+     L^p(\Omega)} + \|f\|_{ L^p(E)} <
    \frac{\varepsilon^{\frac{1}{p}}}{2} + \frac{\varepsilon^{\frac{1}{p}}}{2} =
    \varepsilon^{\frac{1}{p}}$$
 
