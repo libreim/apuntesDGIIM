@@ -6,14 +6,6 @@
 % Curso 2016/17.
 % 
 % 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo
-% Antonio Coín (@antcc)
-% Sofía Almeida (@SofiaAlmeida)
-% Álvaro López (@alopezj97)
 %
 % Agradecimientos:
 % Andrés Herrera (@andreshp) y Mario Román (@M42) por
@@ -105,6 +97,7 @@
 
 \usepackage{mdframed}
 \usepackage{xcolor}
+%\usepackage{enumerate}
 
 
 % Otros.
@@ -1498,6 +1491,93 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
             \item $\lambda_1 = 1 \Rightarrow$ equilibrio.
             \item $\lambda_1 > 1 \Rightarrow$ crecimiento ilimitado.
         \end{itemize}
+\end{sol}
+
+\begin{ejer}[17]
+    Se considera la matriz de Leslie $$\begin{pmatrix}
+        \frac{1}{2} & \delta & \gamma \\
+        \frac{1}{2} & 0 & 0 \\
+        0 & \frac{1}{2} & 0
+    \end{pmatrix}$$ donde $\delta, \gamma \geq 0$. \begin{enumerate}[label=\alph*)]
+        \item Encuentre las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\delta, \gamma)$.
+        \item Describa la pirámide de edad a largo plazo correspondiente a los valores $\delta = \frac{1}{2}, \gamma = 1$.
+        
+    \end{enumerate}
+\end{ejer}
+
+\begin{sol}\hfill
+    \begin{enumerate}[label=\alph*)]        
+        \item $R = \frac{1}{2} + \frac{1}{2}\delta + \frac{1}{4}\gamma$
+            \begin{align*}
+                \label{}
+                \frac{1}{2} + \frac{1}{2}\delta + \frac{1}{4}\gamma = 1 \\
+                \frac{1}{2}\delta + \frac{1}{4}\gamma = \frac{1}{2} \\
+                2\delta + \gamma = 2 \\
+                \gamma = 2 - 2\delta
+            \end{align*}
+        \item $\delta = \frac{1}{2}, \gamma = 1$
+
+            $$L = \begin{pmatrix}
+                \frac{1}{2} & \frac{1}{2} & 1 \\
+                \frac{1}{2} & 0 & 0 \\
+                0 & \frac{1}{2} & 0
+            \end{pmatrix}$$
+
+            $\exists \lambda_1$ valor propio dominante (único positivo). ¿Es $\lambda_1 = 1$?
+
+            \begin{align*}
+                \label{}
+                |L-\lambda I| = \begin{vmatrix}
+                    \frac{1}{2} - \lambda & \frac{1}{2} & 1 \\
+                    \frac{1}{2} & -\lambda & 0 \\
+                    0 & \frac{1}{2} & -\lambda
+                \end{vmatrix} &= \left( \frac{1}{2} - \lambda \right)\lambda^2 - \frac{1}{2}\left( \frac{-\lambda}{2} - \frac{1}{2} \right) \\
+                              &= -\lambda^3 + \frac{1}{2}\lambda^2 + \frac{1}{4}\lambda + \frac{1}{4}
+            \end{align*}
+        
+            $p(1) = 0 \Rightarrow \lambda_1 = 1$
+
+            Buscamos $v_1 : (L - I)v_1 = 0$
+            \begin{align*}
+                \label{eq:}
+                \begin{pmatrix}
+                    -\frac{1}{2} & \frac{1}{2} & 1 \\
+                    \frac{1}{2} & -1 & 0 \\
+                    0 & \frac{1}{2} & -1
+                \end{pmatrix} \begin{pmatrix}
+                    v_1 \\
+                    v_2 \\
+                    v_3
+                \end{pmatrix} = \begin{pmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{pmatrix}
+            \end{align*}
+
+            $$ \begin{rcases}
+                \frac{1}{2}v_1 - v_2 = 0 \\
+                \frac{1}{2}v_2 - v_3 = 0
+            \end{rcases} \Rightarrow \begin{rcases}
+                v_2 = \frac{1}{2}v_1 \\
+                v_3 = \frac{1}{2}v_2
+            \end{rcases}$$
+
+            Por ejemplo $v_1 = 4 \Rightarrow \begin{cases}
+                v_2 = 2 \\
+                v_3 = 1
+            \end{cases}$
+
+            $$V = \begin{pmatrix}
+                4 \\
+                2 \\
+                1
+            \end{pmatrix} \ \ \ \ \frac{V}{||V||_1} = \begin{pmatrix}
+                \frac{4}{7} \\
+                \frac{2}{7} \\
+                \frac{1}{7} 
+            \end{pmatrix}$$
+     \end{enumerate}
 \end{sol}
 
 \end{document}
