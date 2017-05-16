@@ -2943,7 +2943,7 @@ a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
 	
 \end{ndef}
 
-\begin{nprop}[Propiedades de $\bar{f}$]
+\begin{nprop}[Propiedades de $\bar{f}$]\hfill
 	\begin{nlist}
 	\item $\bar{f}$ lleva rectas vectoriales en rectas vectoriales
 	\item $\bar{f}$ lleva planos vectoriales en planos vectoriales
@@ -2952,7 +2952,7 @@ a_0 x_0 + a_1x_1 + a_2x_2 = \begin{cases}
 \end{nlist}
 \end{nprop}
 
-\begin{nprop}[Propiedades de $f$]
+\begin{nprop}[Propiedades de $f$]\hfill
 	\begin{nlist}
 	\item $f$ lleva puntos de $\mathbb P^2$ en puntos de $\mathbb P^2$
 	\item $f$ lleva rectas de $\mathbb P^2$ en rectas de $\mathbb P^2$
@@ -3150,5 +3150,102 @@ b_0\\
 	\]
 	
 	Ahora, vemos la unicidad. Sea $g$ una proyectividad que hace lo mismo que $\bar f$. Entonces, $g^{-1} o f$ fija $A,B,C,D$.
+\end{proof}
+
+\section{Cónicas en el plano proyectivo}
+
+Una cónica en $\mathbb P^2$  es de la forma:
+\[
+C = \{(x_0,x_1,x_2) \in \mathbb P^2 : \ \ (x_0,x_1,x_2) \ A \ \begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix} = 0 \}
+\]
+Con $A$ una matriz simétrica. 
+
+\begin{nprop}
+	Las cónicas afines tienen una cónica proyectiva asociada. Esta se consigue mediante:
+	\[
+	(x,y) \leftrightarrow (1,x,y) \equiv (x_0, x_1,x_2)
+	\]
+\end{nprop}
+
+\begin{ndef}[Cónica propia]
+	Una cónica propia es aquella que tiene algún punto y cuya matriz es regular.
+\end{ndef}
+
+\begin{nth}
+	Una proyectividad $f:\mathbb P^2 \to \mathbb P^2$ :
+	\[
+	f \begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix} = P \begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix}
+	\]
+	lleva cónicas propias en cónicas propias.
+\end{nth}
+\begin{proof}
+	Sea $C$ una cónica dada por la matriz $A$. Si la cónica viene dada por:
+	\[
+	C \equiv (y_0,y_1,y_2) \ A \ \begin{pmatrix}
+y_0\\
+y_1\\
+y_2
+\end{pmatrix} = 0
+	\]	
+	
+	 Si hacemos la imagen inversa vemos que:
+	\[
+	f^{-1}(C) \equiv \begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix} \in C \equiv (x_0, x_1,x_2) P^t A P \begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix} = 0
+	\]
+	Así, $f^{-1}(C)$ es la cónica (propia) que tiene de matriz $P^t A P$ y $def(P^t A P) \ne 0$ y $f^{-1}(C) \ne 0$ entonces $f^{-1}(C)$ es una cónica propia.
+\end{proof}
+
+\begin{nth}
+	Sea $C$ una cónica con $A$ su matriz. Entonces, $\exists  \ \ f \mapsto P $ proyectividad tal que la cónica propia $f(C)$ tenga la matriz:
+	\[
+	\bar A = P^t A P=\begin{pmatrix}
+-1& & \\
+& 1& \\
+& & 1
+\end{pmatrix} 
+	\]
+\end{nth}
+\begin{ncor}
+	Toda cónica es proyectivamente equivalente a $x^2 +y^2 = 1$
+\end{ncor}
+
+\begin{nth}
+	Por cinco puntos no alineados 3 a 4 de $\mathbb P^2$ pasa una cónica y solo una.
+\end{nth}
+\begin{proof}
+	Sean $A,B,C,D,E$ los 5 puntos. El teorema es proyectivo. Usando una proyectividad, supondremos: $A=(1,0,0)$, $B=(0,1,0)$, $C=(0,0,1)$, $D=(1,1,1)$, $E=(k,m,n)$ con $0 \ne k,m,n$ y $E$ no alineado con $A$ ni $B$. Así, si hacemos el determinante de la matriz:
+	\[
+	det \begin{pmatrix}
+ 1& 0 & 0\\
+1 & 1 & 1\\
+k & m & n
+\end{pmatrix}  \ne 0
+	\]
+	Si $m\ne n$, $k\ne m \ne n \ne 0$. 
+	
+	Ahora, si $A$ es la cónica, si esta existe tiene que ser de forma que A, B,C,D,E pertenezcan a la cónica. Si forzamos con los puntos que tenemos las condiciones, mediante los parámetros obtendremos la cónica que queremos.
+	%%% TODO: Terminar demostración
+	
+	
 \end{proof}
 \end{document}

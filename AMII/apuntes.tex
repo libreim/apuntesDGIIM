@@ -124,7 +124,7 @@
 \usepackage[scaled=.9]{newpxtext,newpxmath}
 \usepackage[scaled=.85]{FiraSans}
 \usepackage[T1]{fontenc}
-\usepackage[italic]{mathastext}
+%\usepackage[italic]{mathastext}
 
 % Código para ajustar las fuentes matemáticas al estilo del texto
 % que le rodea
@@ -2748,24 +2748,62 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
     Sea $P = \{ x_0 = a < x_1 < x_2 < \hdots < x_n = b \} \in \mathcal P([a,b])$.
     \begin{align*}
         \label{}
-        \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| &= \sum^{n}_{k=1} | f(x_k) - \frac{r+s}{2}x_k - \left( f(x_{k-1}) - \frac{r+s}{2} x_{k-1} \right)| \\
+        \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| &= \sum^{n}_{k=1} \bigg\lvert  f(x_k) - \frac{r+s}{2}x_k - \left( f(x_{k-1}) - \frac{r+s}{2} x_{k-1} \right) \bigg\rvert \\
                                              &\leq \sum^{n}_{k=1} |f(x_k) - f(x_{k-1}) | + |B| (b-a)  \\
                                              &= \sum^{n}_{k=1}  (f(x_k) - f(x_{k-1})) + |B|(b-a) \\
                                              &= f(b) - f(a) + |B|(b-a)  
     \end{align*}
-
 Esto nos permite decir que \begin{align*}
     \exists T :&= sup \left\{ \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \in \mathcal P ([a, b]) \right\} \\
     & \leq (f(b) - f(a)) + |B|(b-a)
 \end{align*}
-
-Además, \begin{align*}
+Por definición de supremo y \textbf{usando que $\mathbf \mu(E) > 0$}, podemos definir: \begin{align*}
     \label{}
     \exists P = \{ x_0 = a < x_1 < x_2 < \hdots < x_n = b \} \in \mathcal P([a,b]) \ t.q. \ T &\geq \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| \\
-                                                                                     & > T - A \frac{A \mu(E)}{4}
+                                                                                     & > T - \frac{A \mu(E)}{4}
 \end{align*}
 
-$x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap (x_k, x_{k-1}) = \{ x \in (x_k, x_{k-1}) : g \text{ es continua en } x, \underline{D} g(x) < -A < A < \overline{D} g(x) \}$ 
+$E \setminus P = \cup_{k=1}^n E \cap (x_{k-1}) = \left\{ x \in (x_{k-1}, x_k) : g \text{ es continua en } x \ y \ \underline{D}g(x) < -A < A < \overline{D}g(x) \right\}$
+
+\begin{align*}
+    \label{}
+    \liminf_{y \to x} \frac{g(y) - g(x)}{y - x} = \underline{D}g(x) < -A \Rightarrow \exists y \in (x_{k-1}, x_k), y \neq x \ \ t.q. \ \ \frac{g(y) - g(x)}{y-x} < -A
+\end{align*}
+
+Posibilidad 1.
+
+Usando que $g$ es continua en $x$, 
+\begin{align*}
+    \label{}
+    \lim_{z \nearrow x} g(z) = g(x) \Rightarrow \lim_{n \nearrow x} \frac{g(y) - g(z)}{y-z} = \frac{g(y)-g(x)}{y-x} < - A \\
+    \Rightarrow \exists z \in (x_{k-1}, x) : \frac{g(y) - g(z)}{y-z} < -A
+\end{align*}
+
+Posibilidad 2.
+
+Usando que $g$ es continua en $x$, 
+\begin{align*}
+    \label{}
+    \lim_{z \searrow x} g(z) = g(x) \Rightarrow \lim_{n \searrow x} \frac{g(y) - g(z)}{y-z} = \frac{g(y)-g(x)}{y-x} < - A \\
+    \Rightarrow \exists z \in (x, x_{k}) : \frac{g(y) - g(z)}{y-z} < -A
+\end{align*}
+
+Hemos probado que $\exists [\bar{a}_x, \bar{b}_x] : x_{k-1} < \bar{a}_x < x < \bar{b}_x < x_k$ $\frac{g(\bar{b}_x)- g(\bar{a}_x)}{\bar{b}_x - \bar{a}_x} < - A$.
+
+$\exists [\tilde{a}_x, \tilde{b}_x] : x_{k-1} < \tilde{a}_x < x < \tilde{b}_x < x_k$ $\frac{g(\tilde{b}_x)- g(\tilde{a}_x)}{\tilde{b}_x - \tilde{a}_x} > A$.
+
+
+Volviendo a lo anterior, para cada $k = 1, 2, \hdots, n$. Puede ocurrir que:
+\begin{align*}
+    \label{e}
+    g(x_k) \geq g(x_{k-1}) \rightarrow (a_x, b_x) := (\bar{a}_x, \bar{b}_x) &\forall x \in E \cap (x_{k-1}, x_k) \\
+    \frac{g(b_x) - g(a_x)}{b_x - a_x} < -A \\
+    ó \\
+    g(x_k) \geq g(x_{k-1}) \rightarrow (a_x, b_x) := (\tilde{a}_x, \tilde{b}_x) &\forall x \in E \cap (x_{k-1}, x_k) \\
+    \frac{g(b_x) - g(a_x)}{b_x - a_x} > A
+\end{align*}
+
+%$x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap (x_k, x_{k-1}) = \{ x \in (x_k, x_{k-1}) : g \text{ es continua en } x, \underline{D} g(x) < -A < A < \overline{D} g(x) \}$ 
 
 %FIXME: Y aquí ya me cansé. Completar.
 \end{proof}
@@ -2778,6 +2816,7 @@ $x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap
 
   
 \end{proof}
+
 
 % --------------------------------------------------------------------------------
 % Bibliografía.
