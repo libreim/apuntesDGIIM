@@ -2585,10 +2585,10 @@ $$\phi(r, \theta, z) = (r \ cos \theta, r \ sen \theta, z)$$
 
 $$det(J \phi (r, \theta, z)) = det
 \begin{pmatrix}
-  cos \ \theta & sen \ \theta & 0 \\
-  -rsen \ \theta & r \ cos \theta & 0 \\
+  cos \ \theta & -rsen \ \theta & 0 \\
+  sen \ \theta & r \ cos \theta & 0 \\
   0 & 0 & 1
-\end{pmatrix}, r > 0$$
+\end{pmatrix} = r > 0$$
 
 $$\int_{\R^3}f(x,y,z) \ dxdydz = \int_0^{\infty} \left[ \int_{-\pi}^{\pi} \left(
   \int_{-\infty}^{+\infty}rf(r \ cos \theta, r \ sen \theta, z) \ dz \right) d
@@ -2604,7 +2604,7 @@ $$\int_{\R^3}f(x,y,z) \ dxdydz = \int_0^{\infty} \left[ \int_{-\pi}^{\pi} \left(
   \frac{\pi}{2} \right)
 &\rightarrow \R^3 \setminus \{(x, y, z) : x \leq 0, z \in \R \} \\
 \psi(r, \theta, \varphi) &= (r \ cos \theta cos \varphi, r \ sen \theta cos
-                           \varphi, r \ sen \phi )
+                           \varphi, r \ sen \varphi )
 \end{align*}
 \begin{align*}det(J \psi (r, \theta, \varphi)) &= det
 \begin{pmatrix}
