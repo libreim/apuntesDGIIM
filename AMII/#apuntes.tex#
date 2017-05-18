@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 
 % Apuntes de la asignatura Análisis Matemático II.
 % Doble Grado de Informática y Matemáticas.
@@ -965,7 +965,7 @@ El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones s
   Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subseteq \Omega$, diremos 
   $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\ c.p.\ en\ A.$$
 
-  $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n \} \longrightarrow S \mbox{ c.u. en }A.$$ 
+  $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n(x)\} \longrightarrow S(x) \mbox{ c.u. en }A.$$ 
 
   Diremos que $S$ es la suma de la serie de funciones: 
   \[
@@ -978,8 +978,8 @@ El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones s
 \end{nprop}
 
   \begin{proof}
-    Es claro que $\forall n \in \N,\ f_n = S_{n} - S_{n-1}$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que: 
-    $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to \infty} \{S_{n - 1}(x)\} = S(x) - S(x) = 0\quad \forall x \in B$$
+    Es claro que $\forall n \in \N,\ f_n = S_{n+1} - S_n$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que: 
+    $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to \infty} \{S_{n + 1}(x)\} = S(x) - S(x) = 0\quad \forall x \in B$$
   \end{proof}
 
 Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales, tenemos una relación directa de la convergencia de series con la continuidad, derivación e integración.
@@ -1132,10 +1132,10 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
       \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right) .
     \]
   \item 
-    $\displaystyle \int_a^x S(t)\, dt =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
+    $\displaystyle \int_a^x S(y)\, dy =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
     \[
-      \int_a^x  \sum_{n= 0}^\infty a_n (t-a)^n \, dt 
-      =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt.
+      \int_a^x  \sum_{n= 0}^\infty a_n (x-a)^n \, dx 
+      =  \sum_{n= 0}^\infty \int_a^x a_n (x-a)^n \, dx.
     \]
   \end{nlist}
   
