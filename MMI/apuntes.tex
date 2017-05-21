@@ -2971,8 +2971,7 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
                 \vdots & & & & -\lambda \\
                 0 & 0 & 0 & \hdots & b_{N-1}
             \end{vmatrix} + (-1)^{2N}(-\lambda)\cdot p_{N-1}(\lambda)\\
-            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (-\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right) 
-            % FIXME: No sé cómo poner esto de forma que lo que está tras el igual a continuación no se salga de la página y no mueva las matrices superiores hacia la derecha
+            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (-\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right) \\
             &= (-1)^N\left[\lambda^N - a_1\lambda^{N-1} - a_2b_1\lambda^{N-2} - \hdots - a_{N-1} b_1 b_2\hdots b_{N-2}\lambda \right] - (-1)^N a_N b_1 b_2 \hdots b_{N-1}
          \end{align*}
      \end{proof}
@@ -2995,7 +2994,7 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         $$
          \begin{rcases}
              \lim_{\lambda \to 0^+} q(\lambda) = +\infty \\
-            \lim_{\lambda \to \infty+} q(\lambda) = 0 \\
+            \lim_{\lambda \to \infty} q(\lambda) = 0 \\
          \end{rcases} \Rightarrow \begin{rcases}
              q(\lambda) \in C^{\infty} (0, +\infty) \\
              q(\lambda )> 0, \forall \lambda > 0
@@ -3015,11 +3014,11 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         \begin{align*}
             \label{}
             p'(\lambda) &= N\lambda^{N-1}(1 - q(\lambda)) + \lambda^N(-q'(\lambda)) \\
-            p'(\lambda_1) &= N\lambda_1^{N-1}(1 - q(\lambda)) + \lambda_1^N(-q'(\lambda_1)) \\
+            p'(\lambda_1) &= N\lambda_1^{N-1}(1 - q(\lambda_1)) + \lambda_1^N(-q'(\lambda_1)) \\
                           &=-\lambda_1^N q'(\lambda_1) > 0 \text{, luego es simple}
         \end{align*}
 
-        Finalmente, nos queda probar que es dominante. Sea $\mu \in \mathbb C$ cuqlquier otra raíz de $p(\lambda) \Rightarrow |\mu| < |\lambda_1| = \lambda_1$.
+        Finalmente, nos queda probar que es dominante. Sea $\mu \in \mathbb C$ cualquier otra raíz de $p(\lambda) \Rightarrow |\mu| < |\lambda_1| = \lambda_1$.
 
         Si $\mu = 0$ entonces $|\mu| = 0 < |\lambda_1| = \lambda_1$, por lo que se cumple. Supongamos que $\mu \neq 0, \mu \in \mathbb C \setminus [0, +\infty]$. Entonces, existe $r > 0$ y $\theta \in (0, 2\pi)$
         \begin{align*}
@@ -3032,14 +3031,17 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
             \label{}
             \frac{1}{\mu} &= \frac{1}{r(cos \ \theta + i \ sen \ \theta)} = \frac{1}{r}\frac{cos \ \theta - i \ sen \ \theta}{(cos \ \theta + i \ \sen \theta)(cos \ \theta - i \ sen \ \theta)} \\
                           &= \frac{1}{r}(cos \ \theta - i \ sen \ \theta) \\
-            \frac{1}{\mu^j} &=  \frac{1}{r}(cos \ j\theta - i \ sen \ j\theta) 
+            \frac{1}{\mu^j} &=  \frac{1}{r^j}(cos \ j\theta - i \ sen \ j\theta) 
         \end{align*}
         \begin{align*}
             \label{eq:}
+            p(\mu) = 0 &\iff q(\mu) = 1\\
             1 = q(\mu) &= \frac{\beta_{N-1}}{\mu} + \frac{\beta_{N-2}}{\mu^2} + \hdots + \frac{\beta_{1}}{\mu^{N-1}} + \frac{\beta_{0}}{\mu^N} \\
-                       &= \frac{\beta_{N-1}}{r} 
+                       &= \frac{\beta_{N-1}}{r}(cos\theta - isen\theta) + \frac{\beta_{N-2}}{r^2}+\hdots+\frac{\beta_1}{r^{N-1}}(cos(N-1)\theta - isen(N-1)\theta+\frac{\beta_0}{r^N}(cosN\theta -isenN\theta)
         \end{align*}
 
+	Igualamos las partes reales:
+	
         %TODO: Que alguien continúe esto que yo ya me he cansado de tanto sen cos sen cos ndjfd
      \end{proof}
 
@@ -3084,6 +3086,8 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
     La pirámide de edad en cada etapa $n$ viene dada por $$\frac{1}{||X_n||}X_n = \frac{1}{||L^nX_0||}L^nX_0 = \frac{1}{||(\frac{1}{\lambda_1^n}L^n)X_0||}\left(\frac{1}{\lambda_1^n}L^n\right)X_0\rightarrow \frac{1}{||QX_0||}QX_0$$ que converge a un vector de norma 1.
 
     Dado que $||QX_0|| > 0$ e $Im Q = \langle v \rangle$, entonces $QX_0 = \alpha v$, con $\alpha >0$ por lo que $$\frac{1}{||X_n||}X_n \rightarrow \frac{1}{||v||}v$$
+    
+    % REVIEW: ¿pasamos esto al archivo de ejercicios?
 
     \begin{ejemplo}
         La ayudante del profesor Oak decide hacer un estudio de viabilidad de la granja Pokémon en la que trabaja. Observa que tres cuartas partes de los Pokémon llegan a la primera evolución mientras que sólo un tercio de éstos alcanzan la segunda evolución (los que no evolucionan son cedidos a entrenadores novatos para que practiquen ellos). Como es bien sabido, los Pokémon sin evolucionar son incapaces de poner huevos viables, mientras que ls ya evolucionados una vez ponen una media de tres huevos viables. Existe un tratamiento de fertilidad para que los Pokémon evolucionados dos veces y aún no se conoce la tasa de fecundidad definitiva. \begin{itemize}
