@@ -21,28 +21,32 @@ A continuación puedes encontrar apuntes compilados en PDF listos para descargar
 ## Primer cuatrimestre
 
 ### Análisis Matemático I
-* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/An%C3%A1lisis%20Matem%C3%A1tico%20I/apuntes.pdf)
-* [Resultados](http://tux.ugr.es/libreimapuntesdgiim/An%C3%A1lisis%20Matem%C3%A1tico%20I/resultados.pdf)
-* [Ejercicios resueltos](http://tux.ugr.es/libreimapuntesdgiim/An%C3%A1lisis%20Matem%C3%A1tico%20I/ejercicios.pdf)
-* [Resumen](http://tux.ugr.es/libreimapuntesdgiim/An%C3%A1lisis%20Matem%C3%A1tico%20I/Resumen.pdf)
+* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/AMI/apuntes.pdf)
+* [Resultados](http://tux.ugr.es/libreimapuntesdgiim/AMI/resultados.pdf)
+* [Ejercicios resueltos](http://tux.ugr.es/libreimapuntesdgiim/AMI/ejercicios.pdf)
+* [Resumen](http://tux.ugr.es/libreimapuntesdgiim/AMI/Resumen.pdf)
 
 ### Estructuras de datos
-* [Tema 1](http://tux.ugr.es/libreimapuntesdgiim/Estructura%20de%20datos/Tema1.pdf)
-* [Tema 2](http://tux.ugr.es/libreimapuntesdgiim/Estructura%20de%20datos/Tema2.pdf)
+* [Tema 1](http://tux.ugr.es/libreimapuntesdgiim/ED/Tema1.pdf)
+* [Tema 2](http://tux.ugr.es/libreimapuntesdgiim/ED/Tema2.pdf)
 
-### [Sistemas Operativos](http://tux.ugr.es/libreimapuntesdgiim/.out/Sistemas%20Operativos)
-* [Resúmenes](http://tux.ugr.es/libreimapuntesdgiim/Sistemas%20Operativos/Resúmenes)
+### [Sistemas Operativos](http://tux.ugr.es/libreimapuntesdgiim/.out/SO)
+* [Resúmenes](http://tux.ugr.es/libreimapuntesdgiim/SO/Resúmenes)
 
 ### Álgebra I
-* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/%C3%81lgebra%20I/tema1.pdf)
+* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/ALGI/tema1.pdf)
 
 ## Segundo cuatrimestre
 
 ### Análisis Matemático II
-* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/An%C3%A1lisis%20Matem%C3%A1tico%20II/apuntes.pdf)
+* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/AMII/apuntes.pdf)
+
+* [Ejercicios (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/AMII/ejercicios.pdf)
 
 ### Modelos Matemáticos I
-* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/Modelos Matemáticos I/apuntes.pdf)
+* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/MMI/apuntes.pdf)
+
+* [Ejercicios (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/MMI/ejercicios.pdf)
 
 ### Geometría III
-* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/Geometría III/apuntes.pdf)
+* [Apuntes (en construcción)](http://tux.ugr.es/libreimapuntesdgiim/GEOIII/apuntes.pdf)
