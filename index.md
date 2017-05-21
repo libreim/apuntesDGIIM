@@ -34,7 +34,7 @@ A continuación puedes encontrar apuntes compilados en PDF listos para descargar
 * [Resúmenes](http://tux.ugr.es/libreimapuntesdgiim/SO/Resúmenes)
 
 ### Álgebra I
-* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/ALGI/tema1.pdf)
+* [Apuntes (casi completos)](http://tux.ugr.es/libreimapuntesdgiim/ALGI/apuntes.pdf)
 
 ## Segundo cuatrimestre
 
