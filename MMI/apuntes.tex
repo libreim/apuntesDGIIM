@@ -3155,12 +3155,12 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         \end{align*}
         
 
-\section{Matrices positivas, estrictamente positivas y estocásticas}
+\section{Matrices estocásticas. Aplicaciones en genética}
 
 \subsection{Matrices positivas y estrictamente positivas}
 Sea $A=(a_{ij})\in M_{d\times d}(\R) $ una matriz. 
         \begin{ndef}[Debilmente positiva o no negativa]
-	Una matris $A$ se dice débilmente positiva o no negativa  $A\geq 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$
+	Una matriz $A$ se dice débilmente positiva o no negativa  $A\geq 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$
 \end{ndef}
 
 \begin{ndef}[Matriz positiva]
@@ -3284,4 +3284,120 @@ Cuya solución es $w_1 = w_2$ con $w_2 \in \R$ y tomamos por ejemplo el vector $
 \begin{proof}
 	Con $A\geq 0$, $a_{ij} \leq 0$. Entonces, por la proposición anterior tiene un mayor valor propio positivo $\lambda_M$.
 \end{proof}
+
+\begin{ndef}[Matriz reducible]
+	Una matriz real $A$ se dice reducible si existe una matriz de permutación $P$ tal que
+	$$P^{t}AP =
+	\begin{pmatrix}
+	A_{1} & 0 \\
+	B & A_{2}
+	\end{pmatrix}$$
+donde $A_{1}$ y $A_{2}$ son matrices cuadradas. \\
+Si A no es reducible, se dice que es irreducible.
+\end{ndef}
+Equivalentemente, A se dice reducible si existe una matriz de permutación $Q$ tal que
+$$ Q^{t}	AQ =
+\begin{pmatrix}
+\hat{A}_{1} & \hat{B} \\
+0 & \hat{A}_{2}
+\end{pmatrix}$$
+donde $\hat{A}_{1}$ y $\hat{A}_{2}$ son matrices cuadradas.
+
+\begin{ejemplo}
+¿Es $A =
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0
+\end{pmatrix}
+$ reducible? \\
+Si permutamos la $F_{2}$ y $F_{4}$ entonces tenemos que: $\exists P$ de permutación tal que $P^{t}AP =
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1
+\end{pmatrix}$
+
+Vemos claramente que $A$ es reducible, ya que la matriz resultante cumple la definición:
+$\left( \begin{array}{cc|cc}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	\hline
+	0 & 0 & 1 & 1 \\
+	0 & 1 & 0 & 1
+ \end{array}\right)$
+\end{ejemplo}
+
+\begin{ejemplo}
+Es ¿$B = 
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1
+\end{pmatrix}$ reducible? \\
+No, es irreducible ya que la caja de ceros no hace el corte bien:
+$\left( \begin{array}{ccc|cc}
+	1 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 1 & 0 & 0 \\
+	\hline
+	0 & 1 & 1 & 1 & 1 \\
+	1 & 1 & 1 & 1 & 1 \\
+	0 & 1 & 0 & 0 & 1
+ \end{array}\right)$
+\end{ejemplo}
+
+\begin{ndef}[Grafo asociado a una matriz]
+	Dada una matriz cuadrada real $A$, se llama grafo asociado a $A$ a la gráfica dirigida sobre d nodos \{$N_{1},N_{2},...,N_{d}$\} tal que si $a_{ij}>0$ entonces existe una flecha desde $N_{j}$ hacia $N_{i}$
+\end{ndef}
+
+\begin{ndef}[Matriz de adyacencia]
+	La matriz $A$ de la definición anterior, se le llama la matriz de adyacencia del grafo.
+\end{ndef}
+
+\begin{ndef}[Grafo fuertemente conectado]
+	Se dice que $graf(A)$ está fuertemente conectado si existe $m>1$ tal que para toda pareja de nodos $N_{j}$,$N_{i}$ existe un camino de longitud $m$ que los conecta. Es decir, se puede ir del nodo $N_{j}$ al $N_{i}$ tras $m$ pasos en el grafo asociado a la matriz $A$.
+\end{ndef}
+
+\begin{nprop}
+Sea $A\geq0$ de orden $dxd$, son equivalentes:
+\begin{nlist}
+\item $A$ es irreducible.
+\item $graf(A)$ está fuertemente conectado.
+\end{nlist}
+\end{nprop}
+
+\begin{nth}
+Sea $A\geq0$ de orden $dxd$ e irreducible, entonces:
+\begin{nlist}
+\item $\lambda_{i}=\rho(A)$ es valor propio positivo y simple (no es dominante).
+\item $\exists!u_{1}$ vector propio asociado a $\lambda_{1}=\rho(A)$ verificando $u_{1} \gg 0$ y $\|u_{1}\|_{1}=1$, llamado vector de Perron.
+\item Si $\exists j\in\{1,2,...,d\} : a_{ij} > 0 \implies \lambda_{i}=\rho(A)$ es dominante.
+\item Todos los valores propios de módulo igual a $\rho(A)$ son simples.
+\end{nlist}
+\end{nth}
+
+\newpage
+Sea $X_{n+1}=AX_{n},n\geq 0$, sistema lineal de ecuaciones en diferencias con solución: $X_{n}=A^{n}X_{0},n\geq 0$.
+Si la matriz $A$ es positiva e irreducible vemos los casos posibles:
+\begin{nlist}
+\item $\lambda_{1}=\rho(A)$ es dominante, entonces:
+\begin{nlist}
+\item $\lim_{n\to\infty}X_{n}=0 \iff \rho(A) < 1$
+\item Si $\rho(A)=1$ y $X_{0}\gg 0$, entonces $\lim_{n\to\infty}X_{n}=X \gg 0$, que es vector propio asociado al valor propio $\lambda_{1}=1$
+\end{nlist}
+\item $\lambda_{1}=\rho(A)$ no es dominante, entonces habrá valores propios simples de igual módulo:
+\begin{nlist}
+\item $\rho(A)> 1$: las soluciones oscilan creciendo en radio.
+\item $\rho(A)< 1$: las soluciones oscilan decreciendo hacia cero.
+\item $\rho(A) = 1$: las soluciones se mantienen en la circunferencia unidad y podrían ser eventualmente periódicas.
+\end{nlist}
+\end{nlist}
+
+\subsection{Matrices estocásticas. Cadenas de Markov}
+\begin{ndef}
+\end{ndef}
 \end{document}
