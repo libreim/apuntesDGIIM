@@ -110,6 +110,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{pgfplots}
 \usepackage{graphicx}            % Gráficos.
+\usepackage{float}
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
@@ -3362,6 +3363,54 @@ $\left( \begin{array}{ccc|cc}
 	Se dice que $graf(A)$ está fuertemente conectado si existe $m>1$ tal que para toda pareja de nodos $N_{j}$,$N_{i}$ existe un camino de longitud $m$ que los conecta. Es decir, se puede ir del nodo $N_{j}$ al $N_{i}$ tras $m$ pasos en el grafo asociado a la matriz $A$.
 \end{ndef}
 
+\begin{ejemplo}
+Determine el grafo de la matriz de adyacencia:
+$$A=
+\begin{pmatrix}
+0.5 & 0 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 0.5
+\end{pmatrix}
+$$
+
+Simplemente empezamos: 
+
+$a_{11}>0$ luego hay una flecha con origen 1 y llegada 1
+
+$a_{12}>0$ luego hay una flecha con origen 2 y llegada 1
+
+Y repetir con todos.
+\begin{figure}[H]
+	\caption{Grafo resultante.}
+	\centering \includegraphics{./img/grafo_1.pdf}
+\end{figure}
+
+¿Está el grafo fuertemente conectado? Para $m=2$ sí, (puedo ir cualquier nodo a otro en 2 pasos, en el caso de los cortos por ejemplo sería: 1 a 2, 2 a 2)
+\end{ejemplo}
+
+\begin{ejemplo}
+Determine la matriz de adyacencia del grafo:
+\begin{figure}[H]
+	\caption{Grafo dado.}
+	\centering \includegraphics{./img/grafo_2.pdf}
+\end{figure}
+
+Solo tenemos que contar que la fila $i$-ésima son las flechas que llegan al nodo $í$-ésimo
+
+$$ B =
+\begin{pmatrix}
+0 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+$$
+
+\begin{ejemplo}
+Esta matriz es reducible (permutando la primera fila por la tercera), y además el grafo no está fuertemente conectado, lo que nos da una idea para la siguiente proposición.
+\end{ejemplo}
+\end{ejemplo}
+
 \begin{nprop}
 Sea $A\geq0$ de orden $dxd$, son equivalentes:
 \begin{nlist}
@@ -3374,20 +3423,19 @@ Sea $A\geq0$ de orden $dxd$, son equivalentes:
 Sea $A\geq0$ de orden $dxd$ e irreducible, entonces:
 \begin{nlist}
 \item $\lambda_{i}=\rho(A)$ es valor propio positivo y simple (no es dominante).
-\item $\exists!u_{1}$ vector propio asociado a $\lambda_{1}=\rho(A)$ verificando $u_{1} \gg 0$ y $\|u_{1}\|_{1}=1$, llamado vector de Perron.
+\item $\exists!u_{1}$ vector propio asociado a $\lambda_{1}=\rho(A)$ verificando $u_{1} >> 0$ y $\|u_{1}\|_{1}=1$, llamado vector de Perron.
 \item Si $\exists j\in\{1,2,...,d\} : a_{ij} > 0 \implies \lambda_{i}=\rho(A)$ es dominante.
 \item Todos los valores propios de módulo igual a $\rho(A)$ son simples.
 \end{nlist}
 \end{nth}
 
-\newpage
 Sea $X_{n+1}=AX_{n},n\geq 0$, sistema lineal de ecuaciones en diferencias con solución: $X_{n}=A^{n}X_{0},n\geq 0$.
 Si la matriz $A$ es positiva e irreducible vemos los casos posibles:
 \begin{nlist}
 \item $\lambda_{1}=\rho(A)$ es dominante, entonces:
 \begin{nlist}
 \item $\lim_{n\to\infty}X_{n}=0 \iff \rho(A) < 1$
-\item Si $\rho(A)=1$ y $X_{0}\gg 0$, entonces $\lim_{n\to\infty}X_{n}=X \gg 0$, que es vector propio asociado al valor propio $\lambda_{1}=1$
+\item Si $\rho(A)=1$ y $X_{0}\gg 0$, entonces $\lim_{n\to\infty}X_{n}=X >> 0$, que es vector propio asociado al valor propio $\lambda_{1}=1$
 \end{nlist}
 \item $\lambda_{1}=\rho(A)$ no es dominante, entonces habrá valores propios simples de igual módulo:
 \begin{nlist}
@@ -3398,6 +3446,108 @@ Si la matriz $A$ es positiva e irreducible vemos los casos posibles:
 \end{nlist}
 
 \subsection{Matrices estocásticas. Cadenas de Markov}
-\begin{ndef}
+\begin{ndef}[Matriz estocástica]
+	Sea $A=(a_{ij})$ una matriz cuadrada de orden $d$ positiva. Se dice que $A$ es estocástica o de probabilidad o de Markov por columnas si
+	$$\sum^{d}_{i=1}a_{ij}=1, \quad j=1,2,...,d$$
 \end{ndef}
+
+\begin{ejemplo}
+Veamos si las siguientes matrices son de Markov:
+\begin{nlist}
+\item$I =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$ es de Markov.
+\item $A=
+\begin{pmatrix}
+0.5 & 1 & 0 \\
+0.3 & 0 & 0.5 \\
+0 & 0 & 0.5
+\end{pmatrix}$ no es de Markov, falla para $j=1$
+\item $B=
+\begin{pmatrix}
+0.3 & 0.1 & 0.7 \\
+0 & 0.4 & 0.3 \\
+0.7 & 0.5 & 0
+\end{pmatrix}$ es de Markov.
+\end{nlist}
+\end{ejemplo}
+
+\begin{nota}
+\begin{nlist}
+\item Las entradas de una matriz de Markov deben ser $0\leq b_{ij} \leq 1$
+\item Las matrices de Markov pueden ser reducibles o irreducibles.
+\end{nlist}
+\end{nota}
+
+\begin{nprop}
+Sea A una matriz estocástica, entonces:
+\begin{nlist}
+\item $\rho(A)=1$ y además $\lambda_{1}=1$ es valor propio de $A$.
+\item Admite un vector $v_{1}$ asociado a $\lambda_{1}=1$ con $v_{1}>0$.
+\end{nlist}
+\end{nprop}
+
+\begin{proof}
+Como $A$ es una matriz estocástica, debe ser positiva por tanto $A\geq 0$, luego podemos usar el criterio de las cotas por columnas (Proposición 4.4) que nos da $1 \leq \lambda_{1} \leq 1$ siendo $\lambda_{1}=1$ el mayor valor propio de $A$, luego queda demostrado.
+\end{proof}
+
+\begin{ndef}[Cadenas de Markov]
+Una cadena de Markov es una sucesión de vectores positivos $\{P_{0},P_{1},...,P_{n},...\}$ solución de un sistema de ecuaciones en diferencias
+$$ P_{n+1}=MP_{n}, \qquad n\geq 0,$$
+donde $P_{0}$ cumple $\|P_{0}\|_{1}=1$, y se le llama distribución inicial de probabilidad, y la matriz de transición $M$ es estocástica.
+\end{ndef}
+
+\begin{nota}
+Se tiene que con $\|P_{0}\|_{1}= 1 \implies \|P_{n}\|_{1}=1,n\geq 0$
+\end{nota}
+
+Las cadenas de Markov se utilizan para el estudio de repeticiones de experimentos con $d$ resultados posibles correspondientes a los estados $S_{1},S_{2},...,S_{d}$ con ciertas hipótesis:
+\begin{nlist}
+\item La probabilidad de que resulte un estado $S_{i}$ solo depende del resultado en la repetición anterior del experimento, y no de los anteriores.
+\item $m_{ij},j=1,2,...,d$, representa la probabilidad de que se de el estado $S_{j}$ habiéndose dado el estado $j$ en la etapa anterior.
+\item Sea $p_{n}(i)$ la probabilidad de que en la $n$-ésima repetición del experimento salga $S_{i}$. Entonces:
+$$ p_{n+1}(i)=m_{i1}p_{n}(1)+m_{i2}p_{n}(2)+...+m_{id}p_{n}(d),$$
+Por tanto:
+$$\begin{pmatrix}
+m_{11} & m_{12} & \cdots & m_{1d} \\
+m_{21} & m_{22} & \cdots & m_{2d} \\
+\vdots & \vdots & \vdots & \vdots \\
+m_{d1} & m_{d2} & \cdots & m_{dd}
+\end{pmatrix}
+\begin{pmatrix}
+p_{n}(1) \\
+p_{n}(2) \\
+\vdots \\
+p_{n}(d)
+\end{pmatrix}
+=
+\begin{pmatrix}
+p_{n+1}(1) \\
+p_{n+1}(2) \\
+\vdots \\
+p_{n+1}(d)
+\end{pmatrix}
+$$
+Así, si $P_{n}=(p_{n}(1),p_{n}(2),...,p_{n}(d))^{t}$, entonces
+$$P_{n+1}=MP_{n}, \qquad n\geq 0$$
+Por el Teorema de la Probabilidad Total, si estoy en el estado $S_{j}$ solo puedo pasar a otro de los estados finitos $S_{1},...,S_{d}$ luego la suma de la columna $j$-ésima debe ser 1, que es lo mismo que decir que la matriz de transición $M$ es estocástica.
+\end{nlist}
+
+Hay dos tipos de cadenas de Markov:
+\begin{nlist}
+\item \underline{Cadenas regulares}: Una cadena de Markov es regular si la matriz $M$ es primitiva, es decir, $M^{k}>>0$ para algún entero positivo $k$. \\
+En este caso, el valor propio $\lambda_{1}$ es dominante y por tanto la cadena que parte de un $P_{0}>>0$ tiende a una distribución estacionaria (vector propio asociado) de probabilidad que nos indican las probabilidades (proporciones) de cada uno de los estados del experimento a largo plazo.
+\item \underline{Cadenas absorbentes}: Una cadena de Markov es absorbente si hay al menos un estado $S_{j}$ absorbente ($m_{ij}=1$) y desde cualquier otro estado podemos conectar a uno absorbente
+\end{nlist}
+
+\begin{ejemplo}
+Un ejemplo de cadena absorbente sería el problema del borracho. En este problema nos imaginamos 4 puntos: un lago, una farola, un bar y la casa del borracho; de manera que están conectados en el orden que se han descrito (de la farola se puede ir al bar o al lago). El borracho sale del bar y tiene una probabilidad $p$ de girar a la derecha, y una probabilidad $q$ de girar a la izquierda, cumpliendo que $p+q=1$. Si el borracho llega a la casa, lo encierran (estado absorbente); si llega al lago se ahoga (estado absorbente).
+\end{ejemplo}
+
+\subsection{Aplicaciones}
+
 \end{document}
