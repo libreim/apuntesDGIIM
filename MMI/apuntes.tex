@@ -110,6 +110,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{pgfplots}
 \usepackage{graphicx}            % Gráficos.
+\usepackage{float}
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
@@ -2971,8 +2972,7 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
                 \vdots & & & & -\lambda \\
                 0 & 0 & 0 & \hdots & b_{N-1}
             \end{vmatrix} + (-1)^{2N}(-\lambda)\cdot p_{N-1}(\lambda)\\
-            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (-\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right) 
-            % FIXME: No sé cómo poner esto de forma que lo que está tras el igual a continuación no se salga de la página y no mueva las matrices superiores hacia la derecha
+            &= (-1)^{N+1} a_N \cdot b_1\cdot b_2 \cdot \hdots \cdot b_{N-1} + (-\lambda) \left( (-1)^{N-1} \left( \lambda^{N-1} - a_1\lambda^{N-2} - a_2b_1\lambda^{N-3} - \hdots - a_{N-1}b_1 \cdot \hdots \cdot b_{N-2} \right) \right) \\
             &= (-1)^N\left[\lambda^N - a_1\lambda^{N-1} - a_2b_1\lambda^{N-2} - \hdots - a_{N-1} b_1 b_2\hdots b_{N-2}\lambda \right] - (-1)^N a_N b_1 b_2 \hdots b_{N-1}
          \end{align*}
      \end{proof}
@@ -2995,7 +2995,7 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         $$
          \begin{rcases}
              \lim_{\lambda \to 0^+} q(\lambda) = +\infty \\
-            \lim_{\lambda \to \infty+} q(\lambda) = 0 \\
+            \lim_{\lambda \to \infty} q(\lambda) = 0 \\
          \end{rcases} \Rightarrow \begin{rcases}
              q(\lambda) \in C^{\infty} (0, +\infty) \\
              q(\lambda )> 0, \forall \lambda > 0
@@ -3015,11 +3015,11 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         \begin{align*}
             \label{}
             p'(\lambda) &= N\lambda^{N-1}(1 - q(\lambda)) + \lambda^N(-q'(\lambda)) \\
-            p'(\lambda_1) &= N\lambda_1^{N-1}(1 - q(\lambda)) + \lambda_1^N(-q'(\lambda_1)) \\
+            p'(\lambda_1) &= N\lambda_1^{N-1}(1 - q(\lambda_1)) + \lambda_1^N(-q'(\lambda_1)) \\
                           &=-\lambda_1^N q'(\lambda_1) > 0 \text{, luego es simple}
         \end{align*}
 
-        Finalmente, nos queda probar que es dominante. Sea $\mu \in \mathbb C$ cuqlquier otra raíz de $p(\lambda) \Rightarrow |\mu| < |\lambda_1| = \lambda_1$.
+        Finalmente, nos queda probar que es dominante. Sea $\mu \in \mathbb C$ cualquier otra raíz de $p(\lambda) \Rightarrow |\mu| < |\lambda_1| = \lambda_1$.
 
         Si $\mu = 0$ entonces $|\mu| = 0 < |\lambda_1| = \lambda_1$, por lo que se cumple. Supongamos que $\mu \neq 0, \mu \in \mathbb C \setminus [0, +\infty]$. Entonces, existe $r > 0$ y $\theta \in (0, 2\pi)$
         \begin{align*}
@@ -3032,14 +3032,17 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
             \label{}
             \frac{1}{\mu} &= \frac{1}{r(cos \ \theta + i \ sen \ \theta)} = \frac{1}{r}\frac{cos \ \theta - i \ sen \ \theta}{(cos \ \theta + i \ \sen \theta)(cos \ \theta - i \ sen \ \theta)} \\
                           &= \frac{1}{r}(cos \ \theta - i \ sen \ \theta) \\
-            \frac{1}{\mu^j} &=  \frac{1}{r}(cos \ j\theta - i \ sen \ j\theta) 
+            \frac{1}{\mu^j} &=  \frac{1}{r^j}(cos \ j\theta - i \ sen \ j\theta) 
         \end{align*}
         \begin{align*}
             \label{eq:}
+            p(\mu) = 0 &\iff q(\mu) = 1\\
             1 = q(\mu) &= \frac{\beta_{N-1}}{\mu} + \frac{\beta_{N-2}}{\mu^2} + \hdots + \frac{\beta_{1}}{\mu^{N-1}} + \frac{\beta_{0}}{\mu^N} \\
-                       &= \frac{\beta_{N-1}}{r} 
+                       &= \frac{\beta_{N-1}}{r}(cos\theta - isen\theta) + \frac{\beta_{N-2}}{r^2}+\hdots+\frac{\beta_1}{r^{N-1}}(cos(N-1)\theta - isen(N-1)\theta+\frac{\beta_0}{r^N}(cosN\theta -isenN\theta)
         \end{align*}
 
+	Igualamos las partes reales:
+	
         %TODO: Que alguien continúe esto que yo ya me he cansado de tanto sen cos sen cos ndjfd
      \end{proof}
 
@@ -3084,6 +3087,8 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
     La pirámide de edad en cada etapa $n$ viene dada por $$\frac{1}{||X_n||}X_n = \frac{1}{||L^nX_0||}L^nX_0 = \frac{1}{||(\frac{1}{\lambda_1^n}L^n)X_0||}\left(\frac{1}{\lambda_1^n}L^n\right)X_0\rightarrow \frac{1}{||QX_0||}QX_0$$ que converge a un vector de norma 1.
 
     Dado que $||QX_0|| > 0$ e $Im Q = \langle v \rangle$, entonces $QX_0 = \alpha v$, con $\alpha >0$ por lo que $$\frac{1}{||X_n||}X_n \rightarrow \frac{1}{||v||}v$$
+    
+    % REVIEW: ¿pasamos esto al archivo de ejercicios?
 
     \begin{ejemplo}
         La ayudante del profesor Oak decide hacer un estudio de viabilidad de la granja Pokémon en la que trabaja. Observa que tres cuartas partes de los Pokémon llegan a la primera evolución mientras que sólo un tercio de éstos alcanzan la segunda evolución (los que no evolucionan son cedidos a entrenadores novatos para que practiquen ellos). Como es bien sabido, los Pokémon sin evolucionar son incapaces de poner huevos viables, mientras que ls ya evolucionados una vez ponen una media de tres huevos viables. Existe un tratamiento de fertilidad para que los Pokémon evolucionados dos veces y aún no se conoce la tasa de fecundidad definitiva. \begin{itemize}
@@ -3151,12 +3156,12 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         \end{align*}
         
 
-\section{Matrices positivas, estrictamente positivas y estocásticas}
+\section{Matrices estocásticas. Aplicaciones en genética}
 
 \subsection{Matrices positivas y estrictamente positivas}
 Sea $A=(a_{ij})\in M_{d\times d}(\R) $ una matriz. 
         \begin{ndef}[Debilmente positiva o no negativa]
-	Una matris $A$ se dice débilmente positiva o no negativa  $A\geq 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$
+	Una matriz $A$ se dice débilmente positiva o no negativa  $A\geq 0$ si $a_{ij} \geq 0 \ \ \ \forall i,j$
 \end{ndef}
 
 \begin{ndef}[Matriz positiva]
@@ -3280,4 +3285,269 @@ Cuya solución es $w_1 = w_2$ con $w_2 \in \R$ y tomamos por ejemplo el vector $
 \begin{proof}
 	Con $A\geq 0$, $a_{ij} \leq 0$. Entonces, por la proposición anterior tiene un mayor valor propio positivo $\lambda_M$.
 \end{proof}
+
+\begin{ndef}[Matriz reducible]
+	Una matriz real $A$ se dice reducible si existe una matriz de permutación $P$ tal que
+	$$P^{t}AP =
+	\begin{pmatrix}
+	A_{1} & 0 \\
+	B & A_{2}
+	\end{pmatrix}$$
+donde $A_{1}$ y $A_{2}$ son matrices cuadradas. \\
+Si A no es reducible, se dice que es irreducible.
+\end{ndef}
+Equivalentemente, A se dice reducible si existe una matriz de permutación $Q$ tal que
+$$ Q^{t}	AQ =
+\begin{pmatrix}
+\hat{A}_{1} & \hat{B} \\
+0 & \hat{A}_{2}
+\end{pmatrix}$$
+donde $\hat{A}_{1}$ y $\hat{A}_{2}$ son matrices cuadradas.
+
+\begin{ejemplo}
+¿Es $A =
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0
+\end{pmatrix}
+$ reducible? \\
+Si permutamos la $F_{2}$ y $F_{4}$ entonces tenemos que: $\exists P$ de permutación tal que $P^{t}AP =
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1
+\end{pmatrix}$
+
+Vemos claramente que $A$ es reducible, ya que la matriz resultante cumple la definición:
+$\left( \begin{array}{cc|cc}
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	\hline
+	0 & 0 & 1 & 1 \\
+	0 & 1 & 0 & 1
+ \end{array}\right)$
+\end{ejemplo}
+
+\begin{ejemplo}
+Es ¿$B = 
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 1
+\end{pmatrix}$ reducible? \\
+No, es irreducible ya que la caja de ceros no hace el corte bien:
+$\left( \begin{array}{ccc|cc}
+	1 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 1 & 0 & 0 \\
+	\hline
+	0 & 1 & 1 & 1 & 1 \\
+	1 & 1 & 1 & 1 & 1 \\
+	0 & 1 & 0 & 0 & 1
+ \end{array}\right)$
+\end{ejemplo}
+
+\begin{ndef}[Grafo asociado a una matriz]
+	Dada una matriz cuadrada real $A$, se llama grafo asociado a $A$ a la gráfica dirigida sobre d nodos \{$N_{1},N_{2},...,N_{d}$\} tal que si $a_{ij}>0$ entonces existe una flecha desde $N_{j}$ hacia $N_{i}$
+\end{ndef}
+
+\begin{ndef}[Matriz de adyacencia]
+	La matriz $A$ de la definición anterior, se le llama la matriz de adyacencia del grafo.
+\end{ndef}
+
+\begin{ndef}[Grafo fuertemente conectado]
+	Se dice que $graf(A)$ está fuertemente conectado si existe $m>1$ tal que para toda pareja de nodos $N_{j}$,$N_{i}$ existe un camino de longitud $m$ que los conecta. Es decir, se puede ir del nodo $N_{j}$ al $N_{i}$ tras $m$ pasos en el grafo asociado a la matriz $A$.
+\end{ndef}
+
+\begin{ejemplo}
+Determine el grafo de la matriz de adyacencia:
+$$A=
+\begin{pmatrix}
+0.5 & 0 & 1 \\
+1 & 1 & 0 \\
+0 & 1 & 0.5
+\end{pmatrix}
+$$
+
+Simplemente empezamos: 
+
+$a_{11}>0$ luego hay una flecha con origen 1 y llegada 1
+
+$a_{12}>0$ luego hay una flecha con origen 2 y llegada 1
+
+Y repetir con todos.
+\begin{figure}[H]
+	\caption{Grafo resultante.}
+	\centering \includegraphics{./img/grafo_1.pdf}
+\end{figure}
+
+¿Está el grafo fuertemente conectado? Para $m=2$ sí, (puedo ir cualquier nodo a otro en 2 pasos, en el caso de los cortos por ejemplo sería: 1 a 2, 2 a 2)
+\end{ejemplo}
+
+\begin{ejemplo}
+Determine la matriz de adyacencia del grafo:
+\begin{figure}[H]
+	\caption{Grafo dado.}
+	\centering \includegraphics{./img/grafo_2.pdf}
+\end{figure}
+
+Solo tenemos que contar que la fila $i$-ésima son las flechas que llegan al nodo $í$-ésimo
+
+$$ B =
+\begin{pmatrix}
+0 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+$$
+
+\begin{ejemplo}
+Esta matriz es reducible (permutando la primera fila por la tercera), y además el grafo no está fuertemente conectado, lo que nos da una idea para la siguiente proposición.
+\end{ejemplo}
+\end{ejemplo}
+
+\begin{nprop}
+Sea $A\geq0$ de orden $dxd$, son equivalentes:
+\begin{nlist}
+\item $A$ es irreducible.
+\item $graf(A)$ está fuertemente conectado.
+\end{nlist}
+\end{nprop}
+
+\begin{nth}
+Sea $A\geq0$ de orden $dxd$ e irreducible, entonces:
+\begin{nlist}
+\item $\lambda_{i}=\rho(A)$ es valor propio positivo y simple (no es dominante).
+\item $\exists!u_{1}$ vector propio asociado a $\lambda_{1}=\rho(A)$ verificando $u_{1} >> 0$ y $\|u_{1}\|_{1}=1$, llamado vector de Perron.
+\item Si $\exists j\in\{1,2,...,d\} : a_{ij} > 0 \implies \lambda_{i}=\rho(A)$ es dominante.
+\item Todos los valores propios de módulo igual a $\rho(A)$ son simples.
+\end{nlist}
+\end{nth}
+
+Sea $X_{n+1}=AX_{n},n\geq 0$, sistema lineal de ecuaciones en diferencias con solución: $X_{n}=A^{n}X_{0},n\geq 0$.
+Si la matriz $A$ es positiva e irreducible vemos los casos posibles:
+\begin{nlist}
+\item $\lambda_{1}=\rho(A)$ es dominante, entonces:
+\begin{nlist}
+\item $\lim_{n\to\infty}X_{n}=0 \iff \rho(A) < 1$
+\item Si $\rho(A)=1$ y $X_{0}\gg 0$, entonces $\lim_{n\to\infty}X_{n}=X >> 0$, que es vector propio asociado al valor propio $\lambda_{1}=1$
+\end{nlist}
+\item $\lambda_{1}=\rho(A)$ no es dominante, entonces habrá valores propios simples de igual módulo:
+\begin{nlist}
+\item $\rho(A)> 1$: las soluciones oscilan creciendo en radio.
+\item $\rho(A)< 1$: las soluciones oscilan decreciendo hacia cero.
+\item $\rho(A) = 1$: las soluciones se mantienen en la circunferencia unidad y podrían ser eventualmente periódicas.
+\end{nlist}
+\end{nlist}
+
+\subsection{Matrices estocásticas. Cadenas de Markov}
+\begin{ndef}[Matriz estocástica]
+	Sea $A=(a_{ij})$ una matriz cuadrada de orden $d$ positiva. Se dice que $A$ es estocástica o de probabilidad o de Markov por columnas si
+	$$\sum^{d}_{i=1}a_{ij}=1, \quad j=1,2,...,d$$
+\end{ndef}
+
+\begin{ejemplo}
+Veamos si las siguientes matrices son de Markov:
+\begin{nlist}
+\item$I =
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+$ es de Markov.
+\item $A=
+\begin{pmatrix}
+0.5 & 1 & 0 \\
+0.3 & 0 & 0.5 \\
+0 & 0 & 0.5
+\end{pmatrix}$ no es de Markov, falla para $j=1$
+\item $B=
+\begin{pmatrix}
+0.3 & 0.1 & 0.7 \\
+0 & 0.4 & 0.3 \\
+0.7 & 0.5 & 0
+\end{pmatrix}$ es de Markov.
+\end{nlist}
+\end{ejemplo}
+
+\begin{nota}
+\begin{nlist}
+\item Las entradas de una matriz de Markov deben ser $0\leq b_{ij} \leq 1$
+\item Las matrices de Markov pueden ser reducibles o irreducibles.
+\end{nlist}
+\end{nota}
+
+\begin{nprop}
+Sea A una matriz estocástica, entonces:
+\begin{nlist}
+\item $\rho(A)=1$ y además $\lambda_{1}=1$ es valor propio de $A$.
+\item Admite un vector $v_{1}$ asociado a $\lambda_{1}=1$ con $v_{1}>0$.
+\end{nlist}
+\end{nprop}
+
+\begin{proof}
+Como $A$ es una matriz estocástica, debe ser positiva por tanto $A\geq 0$, luego podemos usar el criterio de las cotas por columnas (Proposición 4.4) que nos da $1 \leq \lambda_{1} \leq 1$ siendo $\lambda_{1}=1$ el mayor valor propio de $A$, luego queda demostrado.
+\end{proof}
+
+\begin{ndef}[Cadenas de Markov]
+Una cadena de Markov es una sucesión de vectores positivos $\{P_{0},P_{1},...,P_{n},...\}$ solución de un sistema de ecuaciones en diferencias
+$$ P_{n+1}=MP_{n}, \qquad n\geq 0,$$
+donde $P_{0}$ cumple $\|P_{0}\|_{1}=1$, y se le llama distribución inicial de probabilidad, y la matriz de transición $M$ es estocástica.
+\end{ndef}
+
+\begin{nota}
+Se tiene que con $\|P_{0}\|_{1}= 1 \implies \|P_{n}\|_{1}=1,n\geq 0$
+\end{nota}
+
+Las cadenas de Markov se utilizan para el estudio de repeticiones de experimentos con $d$ resultados posibles correspondientes a los estados $S_{1},S_{2},...,S_{d}$ con ciertas hipótesis:
+\begin{nlist}
+\item La probabilidad de que resulte un estado $S_{i}$ solo depende del resultado en la repetición anterior del experimento, y no de los anteriores.
+\item $m_{ij},j=1,2,...,d$, representa la probabilidad de que se de el estado $S_{j}$ habiéndose dado el estado $j$ en la etapa anterior.
+\item Sea $p_{n}(i)$ la probabilidad de que en la $n$-ésima repetición del experimento salga $S_{i}$. Entonces:
+$$ p_{n+1}(i)=m_{i1}p_{n}(1)+m_{i2}p_{n}(2)+...+m_{id}p_{n}(d),$$
+Por tanto:
+$$\begin{pmatrix}
+m_{11} & m_{12} & \cdots & m_{1d} \\
+m_{21} & m_{22} & \cdots & m_{2d} \\
+\vdots & \vdots & \vdots & \vdots \\
+m_{d1} & m_{d2} & \cdots & m_{dd}
+\end{pmatrix}
+\begin{pmatrix}
+p_{n}(1) \\
+p_{n}(2) \\
+\vdots \\
+p_{n}(d)
+\end{pmatrix}
+=
+\begin{pmatrix}
+p_{n+1}(1) \\
+p_{n+1}(2) \\
+\vdots \\
+p_{n+1}(d)
+\end{pmatrix}
+$$
+Así, si $P_{n}=(p_{n}(1),p_{n}(2),...,p_{n}(d))^{t}$, entonces
+$$P_{n+1}=MP_{n}, \qquad n\geq 0$$
+Por el Teorema de la Probabilidad Total, si estoy en el estado $S_{j}$ solo puedo pasar a otro de los estados finitos $S_{1},...,S_{d}$ luego la suma de la columna $j$-ésima debe ser 1, que es lo mismo que decir que la matriz de transición $M$ es estocástica.
+\end{nlist}
+
+Hay dos tipos de cadenas de Markov:
+\begin{nlist}
+\item \underline{Cadenas regulares}: Una cadena de Markov es regular si la matriz $M$ es primitiva, es decir, $M^{k}>>0$ para algún entero positivo $k$. \\
+En este caso, el valor propio $\lambda_{1}$ es dominante y por tanto la cadena que parte de un $P_{0}>>0$ tiende a una distribución estacionaria (vector propio asociado) de probabilidad que nos indican las probabilidades (proporciones) de cada uno de los estados del experimento a largo plazo.
+\item \underline{Cadenas absorbentes}: Una cadena de Markov es absorbente si hay al menos un estado $S_{j}$ absorbente ($m_{ij}=1$) y desde cualquier otro estado podemos conectar a uno absorbente
+\end{nlist}
+
+\begin{ejemplo}
+Un ejemplo de cadena absorbente sería el problema del borracho. En este problema nos imaginamos 4 puntos: un lago, una farola, un bar y la casa del borracho; de manera que están conectados en el orden que se han descrito (de la farola se puede ir al bar o al lago). El borracho sale del bar y tiene una probabilidad $p$ de girar a la derecha, y una probabilidad $q$ de girar a la izquierda, cumpliendo que $p+q=1$. Si el borracho llega a la casa, lo encierran (estado absorbente); si llega al lago se ahoga (estado absorbente).
+\end{ejemplo}
+
+\subsection{Aplicaciones}
+
 \end{document}
