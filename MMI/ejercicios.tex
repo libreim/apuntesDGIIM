@@ -1233,7 +1233,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
         \end{nlist}
 
         Ahora, realizando manipulaciones algebraicas, tenemos que
-        $$X^2 = X\cdot X = (PJP^{-1})(PJP^{-1}) = PJP^{-1}PJP^{-1} = PJ^2P^{-1}$$
+        $$X^2 = X\cdot X = (PJP^{-1})(PJP^{-1}) = PJP^{-1}PJP^{-1} = P^{-1}J^2P$$
 
         Entonces, se verifica la siguiente equivalencia: $$X^2 = I \iff PJ^2P^{-1} = I \iff P^{-1}(PJ^2P^{-1})P = P I P^{-1} \iff J^2 = I$$
 
@@ -1578,6 +1578,65 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
                 \frac{1}{7} 
             \end{pmatrix}$$
      \end{enumerate}
+\end{sol}
+
+\begin{ejer}[20]
+  Una determinada población está estructurada en base a tres grupos diferentes de edad: crías (hasta los 3 años),
+jóvenes (de 3 a 6 años) y adultos (de 6 a 9 años). Es conocido que cada cría engendra en media una nueva cría, cada
+joven engendra en media 1,5 crı́as y cada adulto engendra en media 0,5 crı́as. Además, las observaciones arrojan el
+dato de que la mitad de las crı́as llegan a jóvenes, en tanto que sólo el 20 \% de los jóvenes sobrevive.
+
+\begin{itemize}
+\item Construya la matriz del modelo.
+\item Si la distribución de tamaños iniciales es $P_0 = (3, 1, 0)^t$ (en las unidades adecuadas), calcule cuál será la distribución de tamaños al cabo de seis años.
+\item Explique el comportamiento a largo plazo de la población (incluyendo su distribución porcentual por grupos
+\end{itemize}
+de edad).
+
+\end{ejer}
+
+\begin{sol}\hfill\\
+  \begin{enumerate}[label=\alph*)]
+  \item    La matriz de Leslie del modelo queda como sigue:
+
+    \begin{center}
+      \begin{pmatrix}
+        
+        1 & 1.5 & 0.5\\
+        0.5 & 0 & 0\\
+        0 & 0.2 & 0
+        
+      \end{pmatrix}
+    \end{center}
+
+ 
+ \item    Al cabo de seis años, la distribución será
+
+
+    \[
+    % P_6 = A^6 P_0 = \left(36.183125,\,11.930625,\,1.57375\right)
+    P_6 = A^2 P_0 = \left(6.85,\ 2.25\ ,\ 0.3\right)
+    \]
+
+  \item    Para calcular la distribución porcentual por grupos de edad a largo plazo, primero vamos a comprobar la
+    \emph{tasa de natalidad}:
+
+    \[
+    R = 1 + 1.5\times 0.5 + 0.5\times 0.5 \times 0.2 = 1.8 > 1
+    \]
+
+    Por tanto, la población no se extinguirá a largo plazo, sino que crecerá indefinidamente.
+    Calculemos la pirámide de población. Para ello, tenemos que calcular el valor propio dominante de
+    la matriz del modelo. Un breve análisis del polinomio característico basta para comprobar que no podemos calcular
+    sus raíces mediante procedimientos algebraicos. El método de la potencia nos da el
+    valor propio $\lambda_1 \approx 1.51$, y el vector propio asociado $v_{\lambda_1} \approx \left(1.000000,\,0.3297385,\,0.04349099\right)$.
+
+    La pirámide de población a largo plazo será, aproximadamente:
+
+    \[
+    \frac{v_{\lambda_1}}{\|v_{\lambda_1}\|_{1}} \approx (0.72821, 0.24011, 0.03167)
+    \]
+  \end{enumerate}
 \end{sol}
 
 \end{document}
