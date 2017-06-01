@@ -1,0 +1,175 @@
+Ejercicio 1
+
+\
+
+% Esto huele a la circunferencia unidad
+$\int_{0}^{2\pi} \frac{\cos^2(3t)}{1+a^2-2a\cos(2t)} dt$
+
+$1+a^2-2a\cos(2\pi) = |1-ae^{2it}|^2 = 1+a^2-2aRe(e^{2it}) =  1+a^2-2a\cos(2t) = (1+ae^{2it})\overline{1-ae^{2it}}$
+$= (1-ae^{2it})(1-A\overline{e^{2it}}) = (1+ae^{2it})(1-ae^{-2it})$
+
+$\gamma(t) = e^{it}$
+$\gamma'(t) = ie^{it}$
+
+entonces
+
+$(1+ae^{2it})(1-ae^{-2it}) = (1-az^2)(a-\frac{a}{z^2})$
+
+por lo que consideramos la función 
+
+$\frac{z^2}{(1-az^2)(z^2-a)}$ 
+como tenemos que multiplicar por $\gamma'(t)$ consideramos $\frac{z}{(1-az^2)(z^2-a)}$
+
+lo que es igual a
+
+$\frac{e^{it}}{(1-ae^{2it})(e^{2it}-a)} ie^{it}$
+
+\
+
+Haciendo el mismo procedimiento con el numerador
+
+$\cos^2(3t) = \frac{1+\cos(6t)}{2} = \frac{1+Re(e^{i6t})}{2} = Re(\frac{1+e^{i6t}}{2})$
+
+
+Así vemos que la función que finalmente tendríamos que considerar es
+
+$f(z) = \frac{(1+z^6)z}{2(1-az^2)(z^2-a)}$
+$A = \{ \frac{-1}{\sqrt{a}}, \frac{1}{\sqrt{a}}, \pm\sqrt{a} \}$
+$f:\mathbb{C}\backslash A \rightarrow \mathbb{C}$, $f\in\mathbb{H}(\mathbb{C}\backslash A)$
+
+El camino $\gamma:[0,2\pi] \rightarrow \mathbb{C}$, $\gamma(t) = e^{it}$ es nulhomólogo con respecto a $\mathbb{C}$
+
+Como $A' = \emptyset$ por el teorema de los residuos
+$\int_{\gamma} f(z)dz = 2\pi i \left( Ind_{\gamma}(-\sqrt{a})Res(f(z),-\sqrt{a}) + Res(f(z), \sqrt{a}) \right)$
+
+
+\
+
+\
+
+Ejercicio 4
+
+\
+
+Sean $a,b\in\mathbf{R}^+$ calcular
+$$ \int_{-\infty}^{\infty} \frac{dx}{(x^+a^2)(x^2+b^2)^2} $$
+
+%Método de Hermite:
+%$\frac{1}{(x^2+a^2)(x^2+b^2)^2} = \frac{Ax+B}{x^2+a^2} + %\frac{Cx+D}{x^2+b^2} + \frac{d}{dx} \frac{Mx+N}{x^2+b^2}$
+
+En el caso $a\not = b$ tomamos $f(z) = \frac{1}{(z^2+a^2)(z^2+b^2)^2}$
+$f\in\mathbb{H}( \mathbb{C}\backslash\{ \pm ia, \pm ib \} )$
+
+Tomamos $R>\max\{a,b\}$, consideramos el camino cerrado $\Gamma = [-R,R]+SC(0,R)$ (semicircunferencia recorrida en sentido positivo)
+
+$\gamma : [-R,R]\rightarrow \mathbb{C}$, $\gamma(x)=x$, $\gamma '(x) = 1$
+
+Usamos que $\Gamma$ es nul-homologa con respecto a $\mathbb{C}$
+$\int_{\Gamma}f(z)dz = \int_{-R}^{R} f(x)dx + \int_{SC(0,R)}$
+
+Por el teorema de los residuos 
+$$\int_{\Gamma}f(z)dz = 2\pi i [ Ind_{\Gamma}(ia)Res(f(z),ia) + Ind_{\Gamma}(ib)Res(f(z),ib) ]$$
+$$\int_{\Gamma}f(z)dz = 2\pi i [Res(f(z),ia) + Res(f(z),ib) ]$$
+
+Ambos índices son $1$
+$\int_{\Gamma}f(z)dz = \int_{-R}^{R} f(x)dx + \int_{SC(0,R)} f(z)dz$
+
+
+$|\int_{SC(0,R)} f(z)dz| \leq l(SC(0,R))\max \{ |f(z)| : z\in SC(0,R) \} \leq \frac{\pi R}{(R^2-a^)(R^2-a^2)^2}$
+que tiende a $0$ cuando $R\rightarrow \infty$
+
+$|f(z)| = \frac{1}{|z^2+a^2||z^2+b^2|} \leq \frac{1}{(R^2-a^2)(R^2-b^2)^2}$
+
+si $|z|=R$
+$|z^2+a^2| \geq |z|^2 -a^2 = R^2-a^2$
+
+----------
+
+$Res(f(z),ia) = \lim_{z\rightarrow ia} (z-ia)f(z) = \lim_{z\rightarrow ia} \frac{(z-ia)}{(z^2+a^2)(z^2+b^2)^2} $
+$= \frac{1}{(b^2-a^2)^2} \lim_{z\rightarrow ia} \frac{z-ia}{z^2+a^2}$ 
+por l'Hopital
+$= \frac{1}{(b^2-a^2)^2}\frac{1}{2ia}$
+
+k es el orden del polo $ib$
+
+$Res(f(z),ib) = \frac{1}{(z-1)'} \lim_{z\rightarrow ib} \frac{d^{k-1)}}{dz^{k-1}} ((z-ib)^k f(z)) = \lim_{z\rightarrow ib} \frac{d}{dz} ((z-ib)^2 f(z)) $
+$= \lim_{z\rightarrow ib} \frac{d}{dz} \left( \frac{(z-ib)^2}{(z^2+a^2)(z-ib)^2(z+ib)^2}  \right) 
+= \lim_{z\rightarrow ib}\frac{2z*(z+ib)^2 + 2(z+ib)(z^2+a^2)}{(z^2+a^2)^2 (z+ib)^4}
+= \frac{4b + 2(-a^2+b^2)}{(a^2-b^2)^2 (-ib^3)8}  $
+
+por tanto
+
+$$ \int_{-\infty}^{\infty} \frac{dx}{(x^2+a^2)(x^2+b^2)^2} = 
+2\pi i \left( \frac{1}{2ia}\frac{1}{(b^2-a^2)^2} + \frac{4b+2(b^2-a^2)}{(b^2-a^2)(-i)8b^3 4} \right) =
+\frac{4b^3-a(4b+2(b^2-a^2))}{4ab^3(b^2-a^2)^2}$$
+
+continuará
+
+\
+
+Ejercicio 16
+
+\
+
+$\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1}dx$
+
+Consideramos 
+$f(z) = \frac{e^{z/2}}{e^z+1}$
+$e^z+1=0 \Longleftrightarrow e^z = -1 \Longleftrightarrow z\in Log(-1) = \{ 0+i(\pi+2k\pi) : k\in\mathbb{Z} \} = A$
+
+$f : \mathbb{C}\backslash A \rightarrow \mathbb{C}$
+$f\in\mathbb{H}(\mathbb{C}\backslash A)$
+
+$\Gamma_R  = [-R,R,R+2\pi i, -R+2\pi i]$ es nul-homólogo con respecto a $\mathbb{C}$
+A no tiene puntos de acumulación en $\mathbb{C}$
+
+Por el teorema de los residuos
+
+$\int_{\Gamma} f(z)dz = 2\pi i Ind_{\Gamma_R}(i\pi) Res(f(z),i\pi)$
+
+$\int_{\Gamma_R} f(z)dz = 2\pi i Res(f(z),i\pi)$
+$= \frac{[-R,R]} f(z)dz + \int_{[R,R+2\pi i]} f(z)dz + \int_{[R+2\pi i, -R+2\pi i]} f(z)dz + \int_{[-R+2\pi i, -R]}$
+
+
+$\left| \int_{[R,R+2\pi i]} \right| \leq 2\pi\max\{ |f(z)| : z\in [R,R+2\pi i] \} \leq 2\pi \frac{e^{R/2}}{e^R-1} \rightarrow 0$ cuando $R\rightarrow \infty$
+
+donde hemos usado:
+$|f(z)| = |\frac{e^{z/2}}{e^z+1}| = \frac{e^{R/2} e^{ti/2}}{e^R-1} = \frac{e^{R/2}}{e^R-1}$
+y
+$|e^z+1| \geq |e^z|-1 = e^R-1$ ya que $z=R+ti$
+
+
+\
+
+$\left| \int_{-R+2\pi i, -R} f(z)dz \right| \leq 2\pi \max \{ |f(z)| : z\in[-R+2\pi i, -R] \} \leq 2\pi \frac{e^{-R/2}}{1-e^{-R}} \rightarrow 0$ cuando $R\rightarrow\infty$
+
+usando:
+Si $z= -R+ti : t\in[0,2\pi]$
+$|f(z)| = \left| \frac{e^{-R/2}e^{ti/2}}{e^{-R}e^{ti}+1} \right| \leq \frac{e^{-R/2}}{1-e^{-R}}$
+
+\
+
+$\int_{[-R,R]} f(z)dz = \int_{-R}^{R} \frac{e^{x/2}}{e^x+1} \gamma'(x)dx$ con $\gamma(x)=x$ y $x\in[-R,R]$
+
+\
+
+$\int_{[R+2\pi i, -R+2\pi i]} f(z)dz = -\int_{[-R+2\pi i, R+2\pi i]} f(z)dz = -\int_{-R}^{R} \frac{e^{x/2}e^{\pi i}}{e^x+1}dz = \int_{[-R,R]} \frac{e^{x/2}}{e^x+1}dx$
+donde hemos usado
+$\varphi (x) = xx+2\pi i : x\in[-R,R]$, $\varphi'(x) = 1$
+
+$f(\varphi(x)) = \frac{e^{x/2}e^{\pi i}}{e^{x+2\pi i}+1} = \frac{-e^{x/2}}{e^2+a}$
+
+\
+
+Tomando límite con $R\rightarrow\infty$ obtenemos que
+$2\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = 2\pi iRes(f(z),i\pi)$
+
+$Res(f(z),i\pi) = \lim_{z\rightarrow i\pi} f(z) = \lim_{z\rightarrow i\pi} (z-i\pi) \frac{e^{z/2}}{e^z+1} = e^{i\pi/2} \lim_{z\rightarrow i\pi} \frac{z-i\pi}{e^z+1}$
+que usando l'Hopital nos queda
+$-i$
+
+\
+
+$\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = \pi iRes(f(z),i\pi) = \pi i(-i) = \pi $
+
+% integrales propuestas: 14, 15, 9 (mitad superior del anillo)
