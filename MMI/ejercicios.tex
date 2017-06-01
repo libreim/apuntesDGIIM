@@ -1,0 +1,1642 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Ejercicios de la asignatura Modelos Matemáticos I.
+% Doble Grado de Informática y Matemáticas.
+% Universidad de Granada.
+% Curso 2016/17.
+% 
+% 
+%
+% Agradecimientos:
+% Andrés Herrera (@andreshp) y Mario Román (@M42) por
+% las plantillas base.
+%
+% Sitio original:
+% https://github.com/libreim/apuntesDGIIM/
+%
+% Licencia:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%------------------------------------------------------------------------------
+%   ACKNOWLEDGMENTS
+%------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantilla básica de Latex en Español.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
+%
+% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
+% estilo moderno pero serio.
+%
+% La plantilla se encuentra adaptada al español.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+% Plantilla de Trabajo
+% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
+% al castellano y a las necesidades de escribir informática y matemáticas.
+%
+% Editada por: Mario Román
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Tipo de documento y opciones.
+%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
+\documentclass[11pt, a4paper]{article}
+
+
+%---------------------------------------------------------------------------
+%   PAQUETES
+%---------------------------------------------------------------------------
+
+% Idioma y codificación para Español.
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+\selectlanguage{spanish} 
+%\usepackage[T1]{fontenc}
+
+% Fuente utilizada.
+\usepackage{courier}    % Fuente Courier.
+\usepackage{microtype}  % Mejora la letra final de cara al lector.
+
+% Diseño de página.
+\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
+\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
+\usepackage{lastpage}   % Referencia a la última página.
+\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
+\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
+\usepackage{geometry}            % Geometría de las páginas.
+
+% Símbolos y matemáticas.
+\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
+\usepackage{upgreek}
+
+\usepackage{mdframed}
+\usepackage{xcolor}
+%\usepackage{enumerate}
+
+
+% Otros.
+\usepackage{enumitem}   % Listas mejoradas.
+\usepackage[hidelinks]{hyperref}
+\usepackage{pgfplots}
+\usepackage{graphicx}            % Gráficos.
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,calc,intersections,through,backgrounds}
+
+% Fuentes personalizadas
+
+\usepackage[scaled=.85]{newpxtext,newpxmath}
+\usepackage[scaled=.85]{FiraSans}
+\usepackage[T1]{fontenc}
+
+%   OPCIONES PERSONALIZADAS
+%---------------------------------------------------------------------------
+
+\DeclareMathVersion{sans}
+\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
+\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
+\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
+\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
+\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+
+\DeclareMathVersion{boldsans}
+\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
+\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
+\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
+\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
+\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
+\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
+\let\oldmd\mdseries
+\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
+\let\oldbf\bfseries
+\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
+\mathversion{bold}\fi\relax}
+\let\oldnorm\normalfont
+\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
+\let\oldrm\rmfamily
+\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
+
+% Colores
+
+\definecolor{50}{HTML}{E3F2FD}
+\definecolor{300}{HTML}{64B5F6}
+\definecolor{500}{HTML}{2196F3}
+\definecolor{700}{HTML}{1976D2}
+\definecolor{900}{HTML}{0D47A1}
+
+% ---------------------------------------------------------------------------
+% OPCIONES PERSONALIZADAS
+% ---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Formato de texto.
+\linespread{1.3}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlist{leftmargin=.5in}   % Indentación para las listas.
+
+% Estilo de página.
+\pagestyle{fancy}
+\fancyhf{}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
+
+% Estilo de las cabeceras
+
+\titleformat{\section}
+{\Large\bfseries\sffamily}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\large\sffamily}{\thesubsection}{1em}{}
+
+% Estilo de enlaces
+\hypersetup{
+    % hidelinks = true,   % Oculta todos los enlaces.
+    colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
+    linkcolor=black,     % Color de enlaces genéricos
+    citecolor={blue!50!black},   % Color de enlaces de referencias
+    urlcolor={blue!80!black}     % Color de enlaces de URL
+}
+
+% Ruta donde buscar gráficos
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
+
+% Redefinir entorno de demostración (reducir espacio superior)
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Aumentar el tamaño del interlineado
+\linespread{1.3}
+
+% Numerar las ecuaciones del entorno {equation} con respecto a las secciones
+\numberwithin{equation}{section}
+
+%---------------------------------------------------------------------------
+%   COMANDOS PERSONALIZADOS
+%---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}    
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Renombrar la R de los reales
+
+\newcommand{\R}{\mathbb{R}}
+
+
+
+%---------------------------------------------------------------------------
+%   CABECERA Y PIE DE PÁGINA
+%---------------------------------------------------------------------------
+
+
+\renewcommand{\sectionmark}[1]{%
+\markboth{#1}{}}
+
+\renewcommand{\subsectionmark}[1]{%
+\markright{#1}{}}
+
+%\addtolength{\headheight}{4ex}
+\renewcommand{\headrulewidth}{0pt}
+
+\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+
+\fancypagestyle{section}{%
+    \fancyhead{}
+    %\addtolength{\headheight}{-10ex}
+    %\renewcommand{\headheight}{0pt}%
+    %\setlength{\footskip}{-48pt}%
+    \fancyfoot[LE,RO]{\Large\sffamily\thepage}
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+}
+
+\let\originalsection\section
+\RenewDocumentCommand{\section}{som}{%
+    \IfBooleanTF{#1}
+    {\originalsection*{#3}}
+    {\IfNoValueTF{#2}
+        {\originalsection{#3}}
+        {\originalsection[#2]{#3}}%
+    }%
+    \thispagestyle{section}%
+}
+
+\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
+\fancyhead[LO,RE]{\sffamily{\leftmark}}
+\fancyfoot[LE,RO]{\Large\sffamily\thepage}
+
+%---------------------------------------------------------------------------
+%   ENTORNOS PARA MATEMÁTICAS
+%---------------------------------------------------------------------------
+
+% Nuevo estilo para definiciones.
+\newtheoremstyle{definition-style} % Nombre del estilo.
+{}               % Espacio por encima.
+{}               % Espacio por debajo.
+{}                   % Fuente del cuerpo.
+{}                   % Identación.
+{\bf\sffamily}                % Fuente para la cabecera.
+{.}                  % Puntuación tras la cabecera.
+{.5em}               % Espacio tras la cabecera.
+{\thmname{#1}\thmnote{ #3}}     % Especificación de la cabecera (actual: nombre en negrita).
+
+% Nuevo estilo para notas.
+\newtheoremstyle{remark-style} 
+{10pt}                
+{10pt}                
+{}                   
+{}                   
+{\itshape \sffamily}          
+{.}                  
+{.5em}               
+{}                  
+
+% Nuevo estilo para teoremas y proposiciones.
+\newtheoremstyle{theorem-style}
+{}                
+{}                
+{}           
+{}                  
+{\bfseries \sffamily}             
+{.}                
+{.5em}           
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+
+
+% Configuración general de mdframe, los estilos de los teoremas, etc
+\mdfsetup{skipabove=12pt,skipbelow=12pt,innertopmargin=12pt,innerbottommargin=4pt}
+
+% Creamos los 'marcos' de los estilos
+
+\mdfdefinestyle{nth-frame}{
+    linewidth=2pt, %
+    linecolor= 500, % 
+    %linecolor=black,
+    topline=false, %
+    bottomline=false, %
+    rightline=false,%
+    leftmargin=0pt, %
+    innerleftmargin=1em, % 
+    rightmargin=0pt, %
+    innerrightmargin=0pt, % % 
+    %splittopskip=\topskip, %
+    %splitbottomskip=\topskip, %
+}% 
+
+\mdfdefinestyle{nprop-frame}{
+    linewidth=2pt, %
+    linecolor= 300, %
+    %linecolor= gray, 
+    topline=false, %
+    bottomline=false, %
+    rightline=false,%
+    leftmargin=0pt, %
+    innerleftmargin=1em, %
+    innerrightmargin=0em, 
+    rightmargin=0pt, %
+    %splittopskip=\topskip, %
+    %splitbottomskip=\topskip, %
+}%       
+
+\mdfdefinestyle{ndef-frame}{
+    linewidth=2pt, %
+    linecolor= 300, % 
+    %linecolor= gray!50,
+    backgroundcolor= 50,
+    %backgroundcolor= gray!5,
+    topline=false, %
+    bottomline=false, %
+    rightline=false,%
+    leftmargin=0pt, %
+    innerleftmargin=1em, %
+    innerrightmargin=1em, 
+    rightmargin=0pt, % 
+    innertopmargin=1.5em,%
+    innerbottommargin=1em, % 
+    splittopskip=\topskip, %
+    %splitbottomskip=\topskip, %
+}%               
+
+% Asignamos los marcos a los estilos
+
+\surroundwithmdframed[style=nth-frame]{nth}
+\surroundwithmdframed[style=nprop-frame]{nprop}
+\surroundwithmdframed[style=nprop-frame]{ncor}
+\surroundwithmdframed[style=ndef-frame]{ndef}
+\surroundwithmdframed[style=ndef-frame]{ejer}
+
+% Nuevo estilo para ejemplos.
+\newtheoremstyle{example-style}
+{10pt}                
+{10pt}                
+{}                  
+{}                   
+{\bf \sffamily}              
+{:}                 
+{.5em}               
+{}                   
+
+% Teoremas, proposiciones y corolarios.
+\theoremstyle{theorem-style}
+\newtheorem{nth}{Teorema}[section]
+\newtheorem{nprop}{Proposición}[section]
+\newtheorem{ncor}{Corolario}[section]
+\newtheorem{lema}{Lema}[section]
+% Definiciones.
+\theoremstyle{definition-style}
+\newtheorem{ndef}{Definición}[section]
+\newtheorem{ejer}{Ejercicio}[section]
+
+% Notas.
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+\newtheorem*{sol}{Solución}
+
+% Ejemplos.
+\theoremstyle{example-style}
+\newtheorem{ejemplo}{Ejemplo}[section]
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+{\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
+
+    %---------------------------------------------------------------------------
+    %   PÁGINA DE TÍTULO
+    %---------------------------------------------------------------------------
+
+    % Título del documento.
+    \newcommand{\subject}{Modelos Matemáticos I}
+
+    % Autor del documento.
+    \newcommand{\docauthor}{Doble Grado en Ingeniería Informática y Matemáticas}
+
+    % Título
+    \title{
+        \normalfont \normalsize 
+        \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
+        \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
+        \huge \subject\\ % Título.
+        \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
+    }
+
+    % Autor.
+    \author{\Large\sffamily{\docauthor}}
+
+    % Fecha.
+    \date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
+
+
+    %---------------------------------------------------------------------------
+    %   COMIENZO DEL DOCUMENTO
+    %---------------------------------------------------------------------------
+    \begin{document}
+
+    \maketitle  % Título.
+    \tableofcontents    % Índice
+    \vfill
+    \begin{center}
+        \includegraphics{by-nc-sa}  % Licencia.
+    \end{center}
+    \newpage
+
+
+    %----------------------------
+    %   Introducción.
+    %----------------------------
+
+    \section{Relación 1}
+    \subsection{Ejercicio 2}
+
+    Sea la ecuación:
+    \[
+        x _{n+1} =  1/3 x_n +2^n
+    \]
+    Hallar una solución del tipo $x_n=c2^n$. 
+
+    Llo primero es ver que esta ecuación es una ecuación en diferencias de primer orden lineal no homogénea. Vamos a hallar el $c$ que nos piden. Entonces:
+    \[
+        c2^{n+1}= \dfrac{1}{3}c2^n+2^n  \implies 2^n[2c-c\dfrac{1}{3}-1] = 0
+    \]
+    \[
+        2c-\dfrac{1}{3}c-1 = 0 \implies c = \dfrac{3}{5}
+    \]
+    Por tanto, la solución es: $x_n' =\dfrac{3}{5}2^n $, pero esta es una solución particular.
+
+    Ahora, probaremos que $x_n$ es solución de la ecuación inicial $\iff z_n = x_n - x_n'$ donde $x_n'$ es una solución particular, es solución de:
+    $z _{n+1} = \dfrac{1}{3} z_n$.
+
+    Lo probamos:
+    Que $x_n$ es solución de la inicial implica que $x _{n+1} =  \dfrac{1}{3} x_n +2^n$.
+    Que $x_n'$ es solución de la inicial implica que $x _{n+1}' = \dfrac{1}{3}x_n' 2^n$.
+
+    Si restamos estas dos obtenemos que:
+    \[
+        x _{n+1} - x _{n+1}' = \dfrac{1}{3}(x_n- x_n')
+    \]
+    Lo que implica que $z _{n+1} = x _{n+1} - x _{n+1}'$ y $z_n =(x_n- x_n') $
+
+    Ahora, continuamos la resolución del ejercicio:
+    \begin{enumerate}
+        \item Encontrar una solución particular de la ecuación inicial, $x_n' = \dfrac{3}{5}2^n$
+        \item Resolvemos la ecuación homogénea asociada
+            \[
+                z _{n+1} = \dfrac{1}{3}z_n  \implies z_n = K(\dfrac{1}{3})^n
+            \]
+        \item Usando el resultado:
+            \[
+                x_n = x_n' + z_n = \dfrac{3}{5}2^n+K(\dfrac{1}{3})^n
+            \]
+        \item Aplicamos la condición inicial $x_0 = 1$.
+
+
+    \end{enumerate}
+    Así, la solución es $x_n = \dfrac{3}{5}2^n +\dfrac{2}{5}(\dfrac{1}{3})^n$ con $n\geq 0$
+
+    \subsection{Ejercicio 3}
+    Primero calculamos $KerL$.
+    $$ x \in KerL \Leftrightarrow L(x) = 0$$
+    $$x_n^{*} = 0 \Leftrightarrow x_{n+1} - (2 + i ) x_n = 0 \Leftrightarrow x_{n+1} = (2+i)x_n$$
+    Solución general: $$ x_n = K (2+i)^{n} \ , \ K \in C$$
+    Por lo tanto los elementos de $X$ que pertenecen al $KerL$ son de la forma que acabamos de indicar. Veamos ahora los elementos de $X$ tales que $L(x) = b$ siendo b = \{ 1,1,1,1.. \}.
+    $$x_{n+1} -(2+i)x_n = 1 \Leftrightarrow x_{n+1} = (2+i)x_n + 1$$
+
+    \[
+        \begin{rcases}
+            x _{n+1} = (2+i) x_n + 1 \\
+            x _{n+1}^* = (2+i) x_n^* +  1 
+        \end{rcases}
+    \]
+    Restamos y tenemos que:
+    $$ x _{n+1}  - x _{n+1}^* = (2 + i) (x_n - x_n^*)$$
+    LLamamos $y_n = x_n^* - x_n$, y tenemos que $ y_{n+1} = (2+i) y_n $. Por lo tanto la solucion general de $y_n$ es: $y_n = K (2+i)^n \ , \ k \in C $.
+    Ahora calculamos la solucion constante $x^*$.
+    $$ x^* = (2+i)x^* +1  \Leftrightarrow x^* (1-2-i) = 1 \Leftrightarrow x^* = \frac{1}{-1-i} \Leftrightarrow x^* = \frac{1(-1+i)}{(-1-i)(-1+i)} \Leftrightarrow x^* = \frac{-1+i}{2} $$
+    Y ya podemos calcular la solución general de $x_n$ que es:
+    $$ x_n = y_n + x^* = K (2+i)^n + \frac{-1+i}{2}$$
+    Es decir los elementos de $X$ que cumplen que $L(x) = b$ son de esa forma.
+
+    \subsection{Ejercicio 4}
+    Llamaremos primero $x_n$ el número de clientes de $Paga^+$ en el año n.
+    Llamaremos $y_n$ el número de clientes de $Paga^-$ en el año n.
+    Ahora, tenemos que:
+    \[
+        \begin{rcases}
+            x _{n+1} =0.5 x_n + 0.25 y_n \\
+            y _{n+1} = 0.75 y_n +  0.5 x_n 
+        \end{rcases}
+    \]
+    Sabemos que $x_n+y_n = 1$, que es el $100\%$ de los clientes. Podemos despejar así una en función de la otra y nos queda:
+    \[
+        x _{n+1} = 0.5 x_n + 0.25(1-x_n)
+    \]
+    Esta es una ecuación en diferencias de primer orden lineal no homogénea. Despejando, tenemos:
+    \[
+        x _{n+1} = 0.25 x_n +0.25 \implies x_n =  x^* + z_n \implies x_n =  \dfrac{0.25}{1-0.25} + K(0.25)^n
+    \]
+    Ahora, tenemos que tomar el límite pues nos piden el mercado a largo plazo. Esto es:
+    \[
+        \lim_{n\to \infty}x_n = \dfrac{0.25}{0.75} = \dfrac{1}{3}
+    \]
+    Podemos afirmar ahora que, asintóticamente , $\dfrac{1}{3}$ de los clientes estarán en $Paga^+$ y $\dfrac{2}{3}$ en $Paga^-$
+
+    \subsection{Ejercicio 6}
+    Vamos a llamar $A_n$ al número de empleados en el departamento $A$ en el año $n$. Del mismo modo, llamaremos $B_n$ a los del departamento $B$ en el año $n$. Si $0 \leq p \leq 1$  y $0 \leq q \leq 1$, tenemos que:
+    \[
+        \begin{rcases}
+            A _{n+1} = (1-p)A_n + qB_n\\
+            B _{n+1}= pA_n + (1-q)B_n
+        \end{rcases}
+    \]
+    Y tenemos ahora que $A_n + B_n = M$, (aunque se podría tomar como 1) por lo que el sistema lo reducimos a una ecuación teniendo:
+    \[
+        A _{n+1} = (1-p)A_n +q(M-A_n)\implies A _{n+1} =(1-p-1)A_n +qM
+    \]
+    Teniendo de nuevo una ecuación en diferencias de primer orden lineal no homogénea. Así, su solución es:
+    \[
+        A_n = \dfrac{qM}{1-(1-p-q)} + K(1-p-q)^n
+    \]
+    Estudiamos primero la solución constante.
+    \[
+        A_* = \dfrac{qM}{1-(1-p-q)}= \dfrac{qM}{p+q}
+    \]
+    Impondremos que $p+q\ne 0$, al menos 1 trabajador cambiará de departamento.
+    Nuestro término general es:
+    \[
+        A_n = \dfrac{qM}{p+q} + K(1-p-q)^n
+    \]
+    Estudiaremos esto a largo plazo. Tenemos que $-1 \leq 1-p-q < 1$. Tenemos que $|1-p-q| < 1$, por lo que:
+    \[ \begin{cases}
+            \lim_{n \to \infty} A_n = \dfrac{qM}{p+q} = M \dfrac{q}{p+q}\\
+            \lim_{n \to \infty}B_n = \lim_{n\to \infty}(M-A_n) = M- M \dfrac{q}{p+q} = \dfrac{p}{p+q}M
+        \end{cases}
+    \]
+
+    \subsection{Ejercicio 8}
+    \begin{enumerate}
+        \item $X_n$ es el número de árboles en el año n.
+            \[
+                x _{n+1} = 0.9 x_n +K
+            \]
+            Esto tiende a la solución constante $x_* = \dfrac{K}{0.1}$
+    \end{enumerate}
+
+    \subsection{Ejercicio 12}
+    La ecuación logística de Pielou es una ecuación en diferencias no lineal de la forma:
+    \[
+        x_{n+1}= \frac{\alpha x_n}{1+ \beta x_n} \quad \quad \alpha > 1 \quad \beta > 0
+    \]
+
+    \begin{enumerate}
+        \item Demuestre que posee un punto de equilibrio positivo.
+            Tenemos que buscar un $\bar{\alpha}\in \R$ tal que $\bar{\alpha} = f(\bar{\alpha})$ donde  $f(x)= \frac{a x}{1+bx}$. Por tanto, buscamos la solución de:
+            \[
+                \alpha = \frac{a x}{1+bx} \implies b\alpha^2 - a\alpha + \alpha = 0 \implies \alpha[b\alpha +(1-a)]=0 \implies \alpha = 0
+            \]
+            Es un punto de equilibrio, así que tenemos que:
+            \[
+                b\alpha +(1-a) = 0 \implies \alpha =  \frac{a-1}{b} > 0
+            \]
+
+        \item Tomando $\alpha = 2$ y $\beta = 1$, probar que el punto de equilibrio es Asintóticamente Estable. Para ello , trabajaremos ahora en $\R^+$.
+            Tenemos que $f(x) = \dfrac{2x}{1+x} \in \mathcal{C}^\infty$ y que su derivada es:
+            \[
+                f'(x) = \frac{2(1+x)-2x}{(1+x)^2} = \frac{2}{(1+x)^2}\implies |f'(1)|= \frac{1}{2} < 1
+            \]
+            Por lo que sí es A.E.
+
+        \item Demostrar que el cambio de variable $x_n = \dfrac{1}{z_n}$ trasnforma esa ecuación en una ecuación lineal del primer orden.
+            Tenemos ahora por tanto:
+            \[
+                \frac{1}{z_{n+1}} =  \frac{a \dfrac{1}{z_n}}{1+b \dfrac{1}{z_n}} \implies z_{n+1}= \dfrac{1}{a}z_n + \dfrac{b}{a} \quad (2)
+            \]
+            Que es una ecuación lineal de primer orden
+
+        \item A partir del resultado anterior, determinar el comportamiento asintótico de las soluciones de la ecuación logística.
+
+            Esta es una ecuación en diferencias lineal no homogénea, por tanto tendremos una solución $z_n = z_* +y_n$ donde $z_*$ es la solución constante y $y_n$ es la solución de la homogénea asociada.
+
+            Tenemos que $z_*=\frac{b/a}{1- (1/a)} = \frac{b}{a-1}> 0$. Ahora, calculamos la ecuación homogénea asociada a $(2)$, calculado en el apartado anterior:
+            \[
+                y_n = \mathcal{C} + (\dfrac{1}{a})^n
+            \]
+            Ya tenemos la solución, por tanto la solucion de $z_n$ es:
+            \[
+                z_n =  \dfrac{b}{a-1} + \mathcal{C}(\dfrac{1}{a})^n \quad n \geq 0
+            \]
+            El comportamiento asintótico de esta es convergente a $\dfrac{b}{a-1}$ pues , como $a > 1$, entonces $(\frac{1}{a})^n \to 0$
+
+            Ahora, volviendo al cambio de variable, como $z_n$ tiene límite distinto de cero, entonces:
+            \[
+                \lim_{n\to \infty} x_n = \frac{1}{\lim_{n\to \infty}z_n} = \frac{1}{b/(a-1)}= \frac{a-1}{b}
+            \]
+            Que es el punto de equilibrio de $x_n$, luego $\alpha= \frac{a-1}{b}$ es Asintóticamente Estable.
+
+    \end{enumerate}
+
+    \subsection{Ejercicio 15}
+
+    \begin{enumerate}
+        \item Hecho en clase
+        \item Para conseguir un equilibrio poblacional asintóticamente estable (a.e.), se propone vender una fracción $\alpha$$(0 < \alpha < 1)$ de la población en cada periodo de tiempo dando lugar al modelo:
+            \[
+                p_{n+1} = 10(1 - \alpha)p_n e^{(1-\alpha)p_n}
+            \]
+
+            i) Encuentre el intervalo abierto (de amplitud máxima) donde elegir $\alpha$ para que esté asegurada la estabilidad
+            asintótica del equilibrio positivo.
+
+
+            Si :
+            \[
+                \mu = \frac{ln(10(1-\alpha)}{(1-\alpha)}
+            \]
+            Vamos a comprobar que es L.A.E.
+            \[
+                f'(x) = 10(1-\alpha)e^{-(1-\alpha)x}(1+x(-(1-\alpha))
+            \]
+            \[
+                f'(\mu) 0 1-ln(10(1-\alpha)) \quad y \quad 0 < ln(10(1-\alpha))< 2
+            \]
+            Y ahora, si:
+            \begin{itemize}
+                \item $\alpha < 9/10$
+                \item $\alpha > \frac{10-e^2}{10}$
+            \end{itemize}
+            Por tanto $\mu$ es L.A.E si $\frac{10-e^2}{10} < \alpha < 9/10$
+
+            ii) Calcule el valor de $\alpha$ para el que la población de equilibrio alcanza su valor máximo y es a.e.
+
+            Ahora, si $g(x) = \frac{ln(10(1-x))}{1-x}\implies g'(x)= \frac{-1+ln(10(1-x))}{(1-x)^2}$.
+
+            Ahora, $g'(x) = 0\implies 1-ln(10(1-x)) = 0 \implies x= \frac{10-e}{10}$ es donde la poblaciñon alcanza su máximo.
+
+            Ahora, si comprobamos: $x_0 > \mu \implies x_1 = 10(1-\alpha)x_0 e^{-(1-\alpha)x_0} = x_0 \frac{10(1-\alpha)}{e^{(1-\alpha)x_0}} < x_0 \implies x _{n+1} < x_n$. Y Si miramos ahora si $x_0 < \mu$, veremos que $x _{n+1} > x_n$
+    \end{enumerate}
+
+    \subsection{Ejercicio 17}
+    En cierto mercado, los precios de determinado producto siguen una din\'amica basada en los postulados del modelo de la telaraña pero se ha observado que las funciones de oferta y demanda vienen dadas por:
+
+    \[ 
+        O(p) = 1 + p^{2}, \ D(p) = c - dp
+    \]\
+
+    donde c \textgreater 1 y d \textgreater 0. Suponemos, adem\'as, que el equilibrio del mercado se da si la Oferta iguala a la Demanda y que la oferta en el periodo (n+1)-\'esimo depende del precio del periodo n-\'esimo.
+
+    a) Deduzca la ED, $p_{n+1} = F(p_n)$, que describe la din\'amica planteada y calcule el precio de mercado $p^{*}$ (punto de equilibrio econ\'omicamente factible).
+
+    b) Deduzca las condiciones sobre c y d que aseguran la estabilidad asit\'otica de $p^{*}$. ¿Qu\'e ocurre si d = 2 y c = 4 ?
+
+    c) Para c = 3 y d = 2, use el diagrama de Cobweb para trazar los valores $p_1$ y $p_2$ a partir de $p_0$ = 1. A largo plazo, ¿c\'omo se comportar\'an los precios en el caso contemplado?
+
+    a)
+
+    Deducimos la ED, sabemos que el equilibrio del mercado se da si la oferta es igual a la demanda por lo que :
+
+    \[
+        O(p_{n-1}) = D (p_n) \Rightarrow
+    \]
+
+    \[ 
+        \Rightarrow 1 + p_{n-1}^{2} = c - dp_n \Rightarrow 
+    \]
+
+    \[ 
+        \Rightarrow p_n = \frac{c-1}{d} - \frac{p_{n-1}^{2}}{d} \Rightarrow 
+    \]
+
+    puesto que $d>0$
+
+    \[
+        \Rightarrow p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n)
+    \]
+
+    Para calcular el punto de equilibrio ($\alpha$) tenemos que resolver la ecuaci\'on 
+
+    \[
+        \alpha = F(\alpha) \Rightarrow
+    \]
+
+    \[
+        \Rightarrow F(\alpha) = \frac{c-1}{d} - \frac{\alpha^{2}}{d} = \alpha \Rightarrow
+    \]
+
+    \[
+        \Rightarrow \alpha^{2} + d\alpha -c+1 = 0 \Rightarrow
+    \]
+
+    \[
+        \Rightarrow \alpha = \frac{-d\pm\sqrt{d^{2} - 4(-c+1)}}{2} = \frac{-d\pm\sqrt{d^{2} +4c-4}}{2}
+    \]
+
+    Dado que $\alpha$ es el precio de equilibrio y \'este es un n\'umero real entonces se tiene que dar que el discriminante sea mayor que 0 lo cual es cierto ya que c$>$1 y d$>$0. Adem\'as se tiene que el precio de equilibrio es un n\'umero positivo así que debemos escoger aquellos $\alpha$s que sean positivos. As\'i se verifica que :
+
+    \[
+        d^{2} +4c-4 > d^{2} \Rightarrow 
+    \]
+
+    \[
+        -d + \sqrt{d^2 +4(c-1)} > -d + \sqrt{d^{2}} = 0
+    \]
+
+    Se puede ver que el precio de equilibrio que buscamos es:
+
+    \[
+        \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2}
+    \]
+
+    b) 
+    Recordemos que para que un punto de equilibrio sea localmente asintóticamente estable (L.A.E.) se tienen que dar dos condiciones: la primera es que la funci\'on sea de clase 1 y segundo que el valor absoluto de la derivada evaluada en el punto de equilibrio sea menor que 1. Como podemos ver $F \in C^{\infty}$ luego, en particular, $F \in C^{1}$, basta con ver para que valores de c y d se tiene que la mencionada derivada sea menor que 1.
+
+    \[
+        F(x) = \frac{c-1}{d} - \frac{1}{d}x^{2} \Rightarrow
+    \]
+
+    \[
+        \Rightarrow |F'(x)| = |\frac{-2}{d}x| 
+    \]
+
+    \[
+        \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} \Rightarrow
+    \]
+
+    \[
+        \Rightarrow |F'(\alpha)| = |\frac{d-\sqrt{d^{2}+4c-4}}{d}| = | 1 - \frac {\sqrt{d^{2}+4c-4}}{d}| < 1
+    \]
+
+    \[
+        \Rightarrow -1 <  1 - \frac {\sqrt{d^{2}+4c-4}}{d} < 1 \Rightarrow
+    \]
+
+    \[
+        \Rightarrow -2 < - \frac {\sqrt{d^{2}+4c-4}}{d} < 0 \Rightarrow
+    \]
+
+    \[
+        \Rightarrow 2 > \frac {\sqrt{d^{2}+4c-4}}{d} > 0 \Rightarrow
+    \]
+
+    \[
+        \Rightarrow 2d > \sqrt{d^{2}+4c-4} > 0 \Rightarrow
+    \]
+
+    \[
+        \Rightarrow 4d^{2} > d^{2}+4c-4 \Rightarrow 
+    \]
+
+    \[
+        \Rightarrow 3d^{2}-4c+4 > 0
+    \]
+
+    Si d = 2 y c = 4
+
+    \[
+        \Rightarrow 3*4 - 4*4 +4 = 0 
+    \]
+
+    Luego la condici\'on anterior no nos garantiza que ese punto sea L.A.E.
+    \
+
+    \
+
+    \
+
+    Sustituyendo en $F(x)$:
+
+    \[
+        F(x) = \frac{4-1}{2} - \frac{1}{2}x^{2} = \frac{3}{2} - \frac{1}{2}x^{2}\Rightarrow
+    \]
+
+    \[
+        |F(x)|' = |-x| = x 
+    \]
+
+    Sustituyendo $\alpha$ por x:
+
+    \[
+        x = \alpha = \frac{-2+\sqrt{2^{2} +4*4-4}}{2} = 1
+    \]
+
+    El resultado como podemos ver es 1, lo cual no nos dice que sea L.A.E. ni inestable. Por tanto tendremos que comprobar que ocurre con la segunda derivada (si es distinta o mayor que 0 entonces es inestable y si es menor que 0 es L.A.E.) :
+
+    \[
+        F(x)' = -x \Rightarrow
+    \]
+
+    \[
+        \Rightarrow F(x)'' = -1 \neq 0
+    \]
+
+    \[
+        \Rightarrow F(\alpha)'' = -1
+    \]
+
+    Por tanto, es inestable.
+
+    c) Si c = 3 , d = 2 y $p_0 = 1$ , entonces usando que : 
+
+    \[
+        p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n) \Rightarrow
+    \]
+
+    \[
+        \Rightarrow p_{n+1} = 1 - \frac{1}{2}p_n^{2} = F(p_n)
+    \]
+
+    \[
+        \Rightarrow p_1 = 1 - \frac{p_0^{2}}{2} = \frac{1}{2}
+    \]
+
+    \[
+        \Rightarrow p_2 = 1 - \frac{p_1^{2}}{2} = \frac{7}{8}
+    \]
+
+    %\includegraphics[scale=0.32]{/home/usuario/Escritorio/diagrama(ej17).png}
+    \
+
+    Podemos ver que el punto de equilibrio es un atractor y que la funci\'on converge a dicho punto:
+    \[
+        \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} = \frac{-2+\sqrt{4 +12-4}}{2} = \frac{-2+2\sqrt{3}}{2} = -1+\sqrt{3}  
+    \]
+
+    \
+
+    Para realizar este gr\'afico he usado wxmaxima, en concreto, la orden 
+
+    \[
+        staircase(1-(1/2)*x^2,1,100,[x,0,1.5],[y,0,1.5]);
+    \]
+
+    donde el primer parámetro es la función obtenida antes $(F_n)$ representada por al curva roja, el segundo parámetro es el punto inicial, el tercero es el número de iteraciones o valores que calculamos (n=100) y los últimos parámetros son opciones para representar el gráfico.
+
+    \subsection{Ejercicio 19}
+
+    Determine razonadamente la veracidad o falsedad de las siguientes afirmaciones.
+    a) Sea la ecuación en diferencias de primer orden, $x _{n+1} = f (x_n )$, donde $f(x)$ es suficientemente derivable en
+    un entorno del punto de equilibrio, s. Si $f'(s) = 1 $y $f'' (s) = 0$, entonces el punto de equilibrio siempre será
+    inestable.
+
+    El punto de equilibrio es siempre inestable
+
+
+    b) Toda ecuación en diferencias $x _{n+1} = f (x_n)$, con un punto de equilibrio inestable en $x = s$ admite, al menos,
+    un 2-ciclo o solución 2-periódica.
+
+    Falso. Basta tomar la función $f(x) = ax+b$ tal que si $a>1$, entonces la derivada es mayor que 1 y la función no tiene ningún ciclo.
+
+    c) Todas las soluciones no constantes de la ecuación en diferencias lineal $x_{n+2}+ x_{n-1} = 0$, son 3-periódicas.
+
+    Si despejamos la ecuación, vemos que:
+    \[
+        x_{n+3} = -x_n
+    \]
+    Dados 3 datos iniciales, $x_0,x_1,x_2$, podemos escribir algunos términos de la recurrencia en función de los anteriores y escribimos su órbita, quedando:
+    \[
+        \{x_0,x_1,x_2,-x_0,-x_1,-x_2,x_0,\cdots\}
+    \]
+
+    Por lo que el periodo es 6, no 3 y por tanto es FALSO.
+
+    d ) La dinámica de cierta población ovina se rige mediante un modelo logístico discreto. Si la tasa de crecimiento
+    para una población de 10 cientos es de $1.5$ y para una de población de 20 cientos es de $1$; entonces, a largo plazo, la población tiende a un valor constante.
+
+    Tenemos que $P_n=10$ y la tasa de $P_n$ es 1.5 . También que si $P_m = 20$, entonces su tasa es de 1.
+
+    Ajustando por un modelo conveniente, tenemos que:
+    \[
+        tasa(P_n) = \frac{P _{n+1} - P_n}{P_n} = a -bP_n
+    \]
+    y si despejamos, obtenemos:
+    \[
+        P _{n+1} = P_n + P_n -b P_n^2 \implies P _{n+1} = (1+a)P_n(1-\frac{b}{1+a}P_n)
+    \]
+    ASí que si tomamos $\mu = (1+a)$, $x_n = \frac{b}{1+a}P_n$, entonces:
+    \[
+        x _{n+1} = \mu x_n (1-x_n)
+    \]
+    Ahora, debemos hallar a y b. planteamos el sistema:
+    \[
+        \begin{rcases}
+            1.5 = a-10b\\
+            1 = a-20b
+        \end{rcases} 
+        \begin{cases}
+            a = 2 \\
+            b = 0.05
+        \end{cases}
+    \]
+    y planteamos la ecuación:
+    \[
+        P _{n+1} = 3P_n - 0,05 P_n^2
+    \]
+    entonces:
+    \[
+        P_* = 3P_* - 0,05P_*^2
+    \]
+    Si igualamos $0,05P_*^2 -2P_* = 0 \implies P_* = 0$, pero también tenemos que tener en cuenta el caso $0,05P_* - 2 = 0 \implies P_* = 40$
+
+    Ahora, si $f(x) = 3x - 0,05x^2$, entonces $f'(0) = 3$, por lo que es inestable y $f'(40) =3-4 = -1$ y $f''(40) = -0,05$
+    pero como la derivada vale $-1$, no podemos determinar con claridad lo que ocurre en este caso. Sin embargo, si realizamos el dibujo en $wxmaxima$, veríamos que se realiza la tela de araña y así converge.
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+    \section{Relación 2}
+
+    \subsection{Ejercicicio 2}
+    Calcule una solución de la ecuación $x_ {n+3} -x_n = 0$ con condiciones iniciales $x_0 = 1$, $x_1 = 0$ y $x_2 = 0$.
+
+    Lo primero es ver que su polinomio característico es:
+    \[
+        p(\lambda) = \lambda^3 -1
+    \]
+    y las raíces de este son:
+    \[
+        \lambda = \frac{-1 \pm \sqrt{-3}i}{2}
+    \]
+    y por tanto tenemos: $\lambda_1 = 1$, $\lambda_2 = cos(\dfrac{2\pi}{3})+ i sen(\dfrac{2\pi}{3})$ y $\lambda_3 = cos(\dfrac{2\pi}{3}) - i sen(\dfrac{2\pi}{3})$
+    Así, la solución general es:
+    \[
+        x_n = c_1 * 1^n + c_2 cos(n(\dfrac{2\pi}{3})) + c_3 sen(n(\dfrac{2\pi}{3}))
+    \]
+    Solo faltaría resolver el sistema con las condiciones iniciales para obtener la solución particular del sistema.
+
+
+    \subsection{Ejercicio 4}
+    Dado un número real $\alpha$, determine una expresión para la sucesión $\{x_n\}$ que verifica:
+    \[
+        \begin{cases}
+            x_{k+2} = x _{k+1} + x_k \ \ k \in \mathbb N
+            x_1 = 1, \ \ \ x_2 = \alpha
+        \end{cases}
+    \]
+    Su polinomio característico es $p(\lambda) = \lambda^2 - \lambda - 1$, cuyas soluciones son $\lambda_1 = \frac{1+\sqrt 5}{2}$ y $\lambda_2 = \frac{1+ \sqrt 5}{2}$. Con las condiciones iniciales, podemos obtener la expresión de la sucesión hallando $c_1$ y $c_2$.
+
+    Apartado $b$): estudiar el comportamiento de la sucesión $\{y_n\}$ definida por:
+    \[
+        y_{k+1} = \frac{1}{1+y_k} \ \ \ k \geq 2 \quad y \quad y_2 = 1
+    \]
+    Hallando su polinomio característico, sus raíces son $y = \frac{-1 \pm \sqrt 5}{2}$
+
+    \subsection{Ejercicio 9}
+
+    La sucesión $\{\overline{x_n}\}_{n\ge0} = \{1, 2, 5, 12, 29, \dots\}$ es solución de cierta ecuación en diferencias lineal homogénea de orden 2 con coeficientes constantes.\\
+
+    \textbf{a)} Deduzca dicha ecuación en diferencias.
+
+    Sabemos que la ecuación en diferencias será de la forma
+    \begin{equation} \label {1}
+        x_{n+2} + a_1x_{n+1} + a_0x_n = 0, \quad n \ge 0
+    \end{equation}
+
+    Si sustuimos en (\ref 1) los valores $n=0$ y $n=1$ para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obtenemos el siguiente sistema de ecuaciones: 
+
+$$\begin{cases} 5 + 2a_1 + a_0 = 0\\ 12 + 5a_1 + 2a_0 = 0 \end{cases}$$
+
+    cuyas soluciones son $a_1 = -2$, $a_0 = -1$. Por tanto, la ecuación en diferencias es:
+    \begin{equation} \label{2}
+        x_{n+2} - 2x_{n+1} - x_n = 0, \quad n \ge 0
+    \end{equation}
+
+    \textbf{b)} Dé una expresión de la solución general de la ecuación en diferencias.
+
+    Resolvemos la ecuación (\ref 2) como ya sabemos. Comenzamos hallando las raíces del polinomio característico: 
+
+$$p(\lambda) =  \lambda^2 - 2\lambda - 1 = 0 \iff \lambda = \frac{2 \pm \sqrt{8}}{2} \iff \begin{cases} \lambda_1 = 1 + \sqrt{2}\\ \lambda_2 = 1 - \sqrt{2} \end{cases}$$
+
+    Como $\lambda_1$ y $\lambda_2$ son dos raíces distintas de $p(\lambda)$, sabemos que $\{ X_{\lambda_1}, X_{\lambda_2} \}$ es una base del espacio de soluciones $\Sigma$, donde 
+
+    $$X_{\lambda_1} = \{ \lambda_1^n \}_{n\ge 0} \quad ; \quad X_{\lambda_2} = \{ \lambda_2^n \}_{n\ge0}$$
+    Por tanto, la solución general $\{x_n\}_{n\ge0}$ será una combinación lineal de la base $\{ X_{\lambda_1}, X_{\lambda_2} \}$, es decir:
+    \begin{equation} \label{3}
+        x_n = c_1\lambda_1^n + c_2\lambda_{2}^n, \quad c_1,c_2 \in \mathbb C, \quad n\ge 0
+    \end{equation}
+
+    Para determinar las constantes $c_1$ y $c_2$, sustituimos los valores $n=0$, y $n=1$ en (\ref 3) para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obteniendo el siguiente sistema de ecuaciones:
+
+$$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}) + c_2(1-\sqrt{2}) =2 \end{cases}$$
+
+    cuyas soluciones son $c_1 = \frac{2+\sqrt{2}}{4}$, $c_2 = \frac{2 - \sqrt{2}}{4}$. Por tanto, la expresión de la solución general es:
+
+    \begin{equation} \label{4}
+        x_n = \frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^n + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^n, \quad n \ge 0
+    \end{equation}
+
+    \textbf{c)} Deduzca de forma razonada el valor, si existe, de $\displaystyle \lim_{n\to\infty} \frac{x_{n+1}}{x_n}$.
+
+    Como $\sqrt 2 < 2$, se tiene que $\left| 1 - \sqrt 2 \right| < 1$, y por tanto $(1-\sqrt2)^n \to 0$ cuando $n \to \infty$. Utilizando esa información, y atendiendo a (\ref 4), podemos expresar el límite de la siguiente forma:
+
+    $$\lim_{n\to\infty} \ddfrac{x_{n+1}}{x_n} = \lim_{n\to\infty} \ddfrac{\frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^{n+1} + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^{n+1}}{\frac{2+\sqrt{2}}{4}\left(1+\sqrt 2 \right)^n + \frac{2 - \sqrt 2}{4}\left( 1-\sqrt 2\right)^n} =$$
+
+    $$= \lim_{n\to\infty} \frac{\left( 1 + \sqrt 2 \right)^{n+1}}{\left(1+\sqrt 2 \right)^n} = \lim_{n\to\infty} \left(1 + \sqrt 2 \right) = 1 + \sqrt 2$$
+    \vspace{0.2em}
+
+    Por tanto, $\displaystyle \exists \lim_{n\to\infty} \frac{x_{n+1}}{x_n} = 1 + \sqrt 2.$
+    \newpage
+    \subsection{Ejercicio 13}
+
+    Presentamos el modelo de Samuelson modificado:
+    $$Y_n = C_n + I_n$$
+    $$C_n=b\cdot I_{n-1}$$
+    $$I_n = C_n-kC_{n-1}+G$$
+
+    Donde $Y_n$ es la renta nacional, $C_n$ es el consumo e $I_n$ es la inversión. G es el gasto público que suponemos constante.
+
+    Debemos escribir en primer lugar la ley de recurrencia para las inversiones anuales $I_n$ y posteriormente calcular las condiciones sobre los parámetros k y b para que haya convergencia.
+
+    Para comenzar tomamos la expresión de $I_n$ e intentamos expresarla exclusivamente con términos de $I_n$. Para ello sustituimos en la tercera ecuación los $C_n$ por la expresión correspondiente que observamos en la segunda ecuación.
+
+    $$I_n = b\cdot I_{n-1}-k\cdot (b\cdot I_{n-2}) +G\quad \quad n \ge 2$$
+
+    Como nos interesa tener la ecuación en recurrencia para valores mayores o iguales que 0 hacemos una pequeña transformación en los índices (le sumamos 2 a todos)
+
+    $$I_{n+2} = b\cdot I_{n+1}-k\cdot (b\cdot I_{n}) +G\quad \quad n \ge 0$$
+
+    Y reordenamos para obtener la \textbf{ley de recurrencia:}
+
+    $$I_{n+2} - b\cdot I_{n+1} + k\cdot b\cdot I_{n} = G$$
+
+    \newpage
+    Ahora procederemos a calcular las condiciones sobre k y b para que haya convergencia.
+
+    Sabemos que la $I_n = I_n^h+I_n^{(1)}$, es decir, que podemos expresar $I_n$ como suma de la homogénea asociada más una solución particular. Y para que se produzca esta situación de convergencia la homogénea asociada debe converger a cero ( $\lim \limits_{n \to +\infty} X_n = 0 $ ).
+
+    $$I_n^h:\ I_{n+2} - b\cdot I_{n+1} + k\cdot b\cdot I_{n} = 0 $$
+
+    Cuyo polinomio característico es:
+    $$p(\lambda) = \lambda^2 - b\lambda + kb$$
+
+    Al estar ante una ecuación en diferencias lineal homogénea de orden dos, para que converja a 0 tiene que cumplirse lo siguiente:
+
+    \[
+        \begin{rcases}
+            (1)\ \quad p(1) = 1-b + kb\ \textgreater\ 0\\
+            (2)\ p(-1) = 1+b + kb\ \textgreater\ 0\\
+            (3)\ \quad\quad \quad\quad p(0) = kb\ \textless\ 1\\
+        \end{rcases}
+    \]
+
+    Y a partir de esto obtenemos las condiciones:
+    Partimos de $1 \textgreater b \textgreater 0$ y de $k\textgreater 0$.
+
+    Probamos que la condición (1) se cumple siempre.
+    Restamos b  en la primera expresión:
+
+    $$1-b > b-b$$
+    $$1-b > 0$$
+
+    Y de la segunda multiplicamos por b, un número positivo y la expresión se mantiene:
+
+    $$k\cdot b > 0$$
+
+    Si sumamos estas dos expresiones obtenemos:
+
+    $$1-b +k\cdot b > 0$$
+
+    La condición (2) es trivial. Suma de números positivos es positiva.
+
+    Y de la condición (3) obtenemos:
+    $$k < \frac{1}{b}$$ 
+
+    Con esto deducimos finalmente que converge si:
+    \[
+        \begin{rcases}
+            0 < k < \frac{1}{b}\\
+            0 < b < 1
+        \end{rcases}
+    \]
+
+    \section{Relación 3}
+
+    \begin{ejer}[1]
+        Demuestre el Teorema de Cayley-Hamilton.
+    \end{ejer}
+
+    \begin{sol}
+        Sea $A \in \mathcal M_{r}(\mathbb C)$ y sea $p(\lambda) = |A - \lambda I| = (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_1\lambda + c_0)$ su polinomio característico, con $c_i \in \mathbb{C}$. Llamemos $C = A - \lambda I$. Sabemos que: $$C^{-1} = \frac{1}{|C|} \cdot Adj(C)^T \implies |C|I = C \ Adj(C)^T$$
+
+        Entonces, tendremos que 
+        \begin{equation} \label {th_cayley}
+            p(\lambda)I = (A - \lambda I) \ Adj(A-\lambda I)^T
+        \end{equation} 
+
+        Consideremos la matriz $B = Adj(A - \lambda I)$. Como las entradas de $B$ son polinomios en $\lambda$, podemos separar para cada $0 \le i \le r$ los coeficientes del término $\lambda^i$, y formar una matriz de números $B_i$ tal que:
+        \begin{align*}
+            Adj(A - \lambda I)^T &= B_{r-1}\lambda^{r-1} + B_{r-2}\lambda^{r-2} + \hdots + B_0
+        \end{align*}
+
+        Ahora, sustituyendo en \eqref{th_cayley} nos queda que
+        \begin{align*}
+            (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_0)I &= (A -\lambda I)(B_{r-1}\lambda^{r-1} + \hdots + B_0) \\
+                                                                     &= -(B_{r-1}\lambda^r + \hdots + B_0\lambda) + (AB_{r-1}\lambda^{r-1}+\hdots + AB_0) \\
+                                                                     &= -B_{r-1}\lambda^r + (-B_{r-2}+AB_{r-1})\lambda^{r-1} + \hdots + (-B_0 + AB_1)\lambda + AB_0
+        \end{align*}
+
+        Identificando término a término en la igualdad anterior, notamos que se verifica lo siguiente:
+        \begin{align*}
+            \label{}
+            (-1)^rI &= -B_{r-1} \\
+            (-1)^rc_{r-1}I &= -B_{r-2}+AB_{r-1} \\
+                           &\ \ \vdots \\
+            (-1)^rc_1I &= -B_0 + AB_1 \\
+            (-1)^rc_0I &= AB_0
+        \end{align*}
+        Por tanto, concluimos que
+        \begin{align*}
+            \label{}
+            p(A) &= (-1)^r \left[ A^r + c_{r-1}A^{r-1} + c_{r-2}A^{r-2} + \hdots + c_1A + c_0I \right] \\
+                 &= (-1)^r \left[ IA^r + (c_{r-1}I)A^{r-1} + \hdots + c_1IA + c_0I \right] \\
+                 &= -A^{r}B_{r-1}+A^{r-1}(-B_{r-2}+AB_{r-1}) + \hdots + A(-B_0 + AB_1)A + AB_0 \\ 
+                 &= 0
+        \end{align*}
+    \end{sol}
+
+    \begin{ejer}[3] 
+        Sea $A$ una matriz $4 \times 4$ con un valor propio $\lambda = 3$ de
+        multiplicidad algebraica 4. Escriba todas las formas canónicas de Jordan
+        asociadas a $A$ posibles.
+    \end{ejer}
+
+    \begin{sol}
+        $$J_1 =
+        \begin{pmatrix}
+            3 & & & \\
+              & 3 & & \\
+              & & 3 & \\
+              & & & 3 
+        \end{pmatrix} \ \ \ 
+        J_2 =
+        \begin{pmatrix}
+            3 & 1 & & \\
+              & 3 & 1 & \\
+              & & 3 & 1 \\
+              & & & 3 
+        \end{pmatrix} \ \ \
+        J_3 =
+        \begin{pmatrix}
+            3 & 1 & & \\
+              & 3 & & \\
+              & & 3 & \\
+              & & & 3 
+        \end{pmatrix}$$
+
+        $$J_4 = 
+        \begin{pmatrix}
+            3 & 1 & & \\
+              & 3 & 1 & \\
+              & & 3 & \\
+              & & & 3 
+        \end{pmatrix} \ \ \
+        J_5 =
+        \begin{pmatrix}
+            3 & 1 & & \\
+              & 3 & & \\
+              & & 3 & 1 \\
+              & & & 3 
+        \end{pmatrix}$$
+    \end{sol}
+
+    \begin{ejer}[5]
+        Resuelva la ecuación matricial $X^2 = I$, donde $X$ es una matriz real $2
+        \times 2$.
+    \end{ejer}
+
+    \begin{sol} Sabemos que $X^2 = X \cdot X = I \iff X^{-1} = X$. Además, por el \textit{teorema de la forma canónica de Jordan}, sabemos que $X = PJP^{-1}$, y $J$ puede ser una de estas tres matrices, donde $\lambda_i \in \sigma(X)$:
+        \begin{nlist}
+        \item $J =
+            \begin{pmatrix}
+                \lambda_1 & 0\\
+                0 & \lambda_2
+            \end{pmatrix},\ $ con $\lambda_1 \neq \lambda_2$.
+        \item  $J =
+            \begin{pmatrix}
+                \lambda_1 & 0\\
+                0 & \lambda_1
+            \end{pmatrix}$
+        \item  $J =
+            \begin{pmatrix}
+                \lambda_1 & 1 \\
+                0 & \lambda_1
+            \end{pmatrix}$
+        \end{nlist}
+
+        Ahora, realizando manipulaciones algebraicas, tenemos que
+        $$X^2 = X\cdot X = (PJP^{-1})(PJP^{-1}) = PJP^{-1}PJP^{-1} = P^{-1}J^2P$$
+
+        Entonces, se verifica la siguiente equivalencia: $$X^2 = I \iff PJ^2P^{-1} = I \iff P^{-1}(PJ^2P^{-1})P = P I P^{-1} \iff J^2 = I$$
+
+        Es decir, para que se verifique la ecuación del enunciado, necesariamente debe ser $J^2 = I$. Evaluemos ahora los casos que teníamos:
+        \begin{nlist}
+        \item $J^2 =
+            \begin{pmatrix}
+                \lambda_1^2 & 0 \\
+                0 & \lambda_2^2
+            \end{pmatrix} =
+            \begin{pmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{pmatrix} \Rightarrow \lambda_1^2 = \lambda_2^2 = 1 \Rightarrow
+            \lambda_1 = \pm 1, \lambda_2 = \pm 1$, con $\lambda_1 \ne \lambda_2$. Supongamos $\lambda_1 = 1,\ \lambda_2 = -1$. Entonces, la matriz $X$ que verifica $X^2 = I$ será de la forma
+            $$X = P
+            \begin{pmatrix}
+                1 &  0\\
+                0& -1
+            \end{pmatrix}P^{-1},\quad P \in M_2(\R)\ \text{regular}$$
+
+        \item $J^2 =
+            \begin{pmatrix}
+                \lambda_1^2 & \\
+                            & \lambda_1^2
+            \end{pmatrix} =  \begin{pmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{pmatrix} \Rightarrow J = I$ ó $J = -I$. Luego tenemos que $X = PJP^{-1} \Rightarrow X= I$ ó
+            $X = -I$.
+        \item $J^2 =
+            \begin{pmatrix}
+                \lambda_1 & 1 \\
+                0 & \lambda_1
+            \end{pmatrix}
+            \begin{pmatrix}
+                \lambda_1 & 1 \\
+                0 & \lambda_1
+            \end{pmatrix} =
+            \begin{pmatrix}
+                \lambda_1^2 & 2\lambda_1 \\
+                0 & \lambda_1^2
+            \end{pmatrix} = \begin{pmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{pmatrix} \ $.
+            Vemos que no puede darse este caso.
+        \end{nlist}
+    \end{sol}
+
+    \begin{ejer}[7] \hfill
+        \begin{nlist}
+        \item Demuestre que una matriz $A \in \mathbb C^{d\times d}$ es nilpotente si
+            y sólo si $\sigma(A) = \{0\}$.
+        \item Describa todas las matrices nilpotentes $2 \times 2$.
+        \end{nlist}
+    \end{ejer}
+
+    \begin{sol}
+        Decimos que una matriz $A$ es \textbf{nilpotente} si $\exists n \in \mathbb{N}$ tal
+        que $A^n = 0$. Al menor $n$ tal que $A$ es nilpotente se le llama \textit{orden de nilpotencia}. Por ejemplo, las matrices
+        $$ N = \begin{pmatrix}
+            0 & 1 \\
+            0 & 0
+        \end{pmatrix}, \quad M = 
+        \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1\\
+            0 & 0 & 0
+        \end{pmatrix}$$
+
+        son nilpotentes de orden $2$ y $3$, respectivamente. En general, si $J$ es un bloque de Jordan con todos los elementos diagonales nulos, entonces $J$ es nilpotente de orden $\dim J$. Esto es una consecuencia directa del \textit{Teorema de Cayley-Hamilton}.
+
+        Resolveremos ahora los dos apartados del ejercicio.
+
+        \underline{Comenzamos probando $(i)$}. Sea $A \in \mathbb{C}^{d\times d}$. Aplicando el \textit{Teorema de la forma canónica de Jordan}, sabemos que $A$ es semejante a una matriz diagonal por bloques $J$, y también sabemos que $A^n = 0 \iff J^n = 0$. Además, es obvio que $J^n = 0$ si y solo si cada uno de los bloques que la forman es nulo.
+
+
+
+        Consideremos un bloque arbitrario de $J$, digamos $$J_\lambda = \begin{pmatrix}
+            \lambda & 1\\
+                    & \lambda & 1 \\
+                    & & \ddots & \ddots \\
+                    & & & \lambda & 1 \\
+                    & & & & \lambda
+        \end{pmatrix}, \quad \lambda \in \sigma(A)$$
+
+
+        Tenemos que $J_\lambda = \lambda I + F$, donde $$F = \begin{pmatrix}
+            0 & 1\\
+              & 0 & 1 \\
+              & & \ddots & \ddots \\
+              & & & 0 & 1 \\
+              & & & & 0
+        \end{pmatrix}$$
+
+        Esta matriz recibe el nombre de \textit{shift matrix}, y tiene la propiedad de que sus sucesivas potencias desplazan una posición hacia la derecha la diagonal con $1$, dejando el resto de entradas a $0$. Como $F$ es un bloque de Jordan con todos los elementos diagonales nulos, es nilpotente de orden $\dim F = \dim J_\lambda = p$. Se puede demostrar por inducción la siguiente fórmula para la potencia $n$-ésima de la matriz $J_\lambda$: $$ J_\lambda^n = (\lambda I + F)^n = \sum^{n}_{k=0} \begin{pmatrix}
+            n \\
+            k
+        \end{pmatrix} \lambda^{n-k} F^k$$
+        %%% TODO: Demostrar la fórmula por inducción
+        Ahora, como $F$ es nilpotente de orden $p$, tenemos que $$ J_\lambda^n = \sum^{p-1}_{k=0} \begin{pmatrix}
+            n \\
+            k
+        \end{pmatrix} \lambda^{n-k} F^k, \quad  \forall n \geq p $$
+
+        \begin{align*}
+            \label{}
+            J^n_\lambda = 
+            \begin{pmatrix}
+                \lambda^n & n\lambda^{n-1} & \begin{pmatrix}
+                    n\\
+                    2
+                \end{pmatrix} \lambda^{n-2} & \hdots & \begin{pmatrix}
+                    n \\
+                    p-1
+                \end{pmatrix} \lambda^{n-p +1} \\
+                & \lambda^n & n\lambda^{n-1} & \hdots & \begin{pmatrix}
+                n\\
+                p-2
+            \end{pmatrix} \lambda^{n-p+2}\\
+            &  & \ddots & \ddots & \vdots \\
+            & & & \lambda^n & n\lambda^{n-1}\\
+            & & & & \lambda^n
+        \end{pmatrix},\quad n \ge p
+    \end{align*}
+
+    Teniendo en cuenta todo el desarrollo anterior, concluimos que $J$ es nilpotente de orden $p$ si y solo si $\lambda = 0$.
+
+    \textit{Demostración alternativa}. En primer lugar, sea $A \in \mathbb{C}^{d\times d}$ tal que su único valor propio es $0$. Entonces, el polinomio característico asociado será $p(\lambda) = (-1)^d\lambda^d$. Por el \textit{Teorema de Cayley-Hamilton}, tenemos que $p(A) = (-1)^dA^d = 0$, por lo que $A$ es nilpotente de orden $d$.
+
+    Supongamos ahora que $A$ es nilpotente de orden $p$. Si $\lambda$ es un valor propio de $A$, ya sabemos que $\lambda^p$ es valor propio de $A^p$. Por tanto, existirá un $v \neq 0$ tal que $$ 0 = A^p v =  \lambda^p v,$$ lo cual es absurdo salvo en el caso $\lambda = 0$.
+
+    \underline{Probamos ahora $(ii)$}. Consideremos $A \in \mathbb{C}^{2\times 2}$. Ya sabemos por $(i)$ que $A$ es nilpotente si y solo si su único valor propio es el $0$. $$A = \begin{pmatrix}
+        a & b\\
+        c & d
+    \end{pmatrix} \implies p(\lambda) = |A - \lambda I| = \lambda^2 - (a+d)\lambda - bc + ad$$
+
+    Como queremos que $0$ sea la única raíz de $p(\lambda)$, imponemos las siguientes condiciones: $$\begin{cases}
+        a + d = 0\\
+        bc = 0\\
+        ad = 0
+    \end{cases} \implies 
+    \begin{cases}
+        a = d = 0\\
+        b = 0 \text{ ó } c = 0
+    \end{cases}$$
+
+    Es decir, las matrices nilpotentes de orden $2$ son de la forma: $$\begin{pmatrix}
+        0 & 0\\
+        c & 0	
+    \end{pmatrix} \quad \text{ó} \quad 
+    \begin{pmatrix}
+        0 & c\\
+        0 & 0	    
+    \end{pmatrix}, \quad c \in \mathbb{C}.$$
+\end{sol}
+
+\begin{ejer}[9]
+    Supongamos que el polinomio $p(\lambda) = \lambda^k + a_{k-1}\lambda^{k-1} + \hdots + a_1\lambda + a_0$ tiene $k$ raíces distintas $\lambda_1, \lambda_2, \hdots, \lambda_k$. Sea $A$ la matriz \textit{compañera} de $p(\lambda)$ definida en el problema anterior y sea $V$ la matriz de \textit{Vandermonde} $$V = \begin{pmatrix}
+        1 & 1 & \hdots & 1 \\
+        \lambda_1 & \lambda_2 & \hdots & \lambda_k \\
+        \vdots & \vdots & & \vdots \\
+        \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \lambda_k^{k-1} \\
+    \end{pmatrix}$$
+    Demuestre que la matriz $V^{-1}AV$ es diagonal.
+\end{ejer}
+
+\begin{sol}
+    Vamos a probar que: $V^{-1}AV = D = \begin{pmatrix}
+        \lambda_1 & & & \\
+                  & \lambda_2 & & \\
+                  & & \ddots & \\
+                  & & & \lambda_k
+    \end{pmatrix}$. En realidad, lo que vamos a demostrar es que $AV = VD$.
+
+    Vamos a multiplicar $A$ por $V$.
+
+    \begin{align*}
+        \label{}
+        \begin{pmatrix}
+            0 & 1 & 0 & \hdots & 0 \\
+            0 & 0 & 1 & \hdots & 0 \\
+            \vdots & \vdots & \vdots & & \vdots \\
+            0 & 0 & 0 & \hdots & 1 \\
+            -a_0 & -a_1 & -a_2 & \hdots & -a_{k-1}
+        \end{pmatrix} \cdot \begin{pmatrix}
+            1 & \hdots & \hdots & \hdots & 1 \\
+            \lambda_1 & \hdots & \hdots & \hdots & \lambda_k \\
+            \vdots & & & & \vdots \\
+            \vdots & & & & \vdots \\
+            \lambda_1^{k-1} & \hdots & \hdots & \hdots & \lambda_k^{k-1}
+        \end{pmatrix} &= \begin{pmatrix}
+            \lambda_1 & \lambda_2 & \hdots & \hdots & \lambda_k \\
+            \lambda_1 & \lambda_2 & \hdots & \hdots & \lambda_k \\
+            \vdots & & & & \vdots \\
+            \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \hdots & \lambda_k^{k-1} \\
+            \lambda_1^k & \lambda_2^k & \hdots & \hdots & \lambda_k^k
+        \end{pmatrix}\\
+        &= VD \\
+        &= \begin{pmatrix}
+        1 & 1 & \hdots & 1 \\
+        \lambda_1 & \lambda_2 & \hdots & \lambda_k \\
+        \vdots & \vdots & & \vdots \\
+        \lambda_1^{k-1} & \lambda_2^{k-1} & \hdots & \lambda_k^{k-1} \\
+    \end{pmatrix} \\
+        &\cdot \begin{pmatrix}
+        \lambda_1 & & & \\
+                  & \lambda_2 & & \\
+                  & & \ddots & \\
+                  & & & \lambda_k
+    \end{pmatrix}
+    \end{align*}
+\end{sol}
+
+\begin{ejer}[11]
+    Sea $A$ una matriz $k \times k$ tal que $|\lambda| < 1$ para cualquier valor propio $\lambda$ de $A$. Demuestre que:
+\end{ejer}
+
+\begin{sol}\hfill\\
+    \begin{itemize}
+        \item Si $|A-I| = 0$ entonces $\lambda = 1$ es valor propio de $A$.
+        \item $I-A$ es regular, luego $\exists (I-A)^{-1}$.
+            $$\rho(A) < 1 \Leftrightarrow \{ A^{k}\}_{k \geq 0} \rightarrow 0$$
+            \begin{align*}
+                \label{}
+                s_n &= \sum^{n}_{k=0} A^{k} = I + A + A^2 + \hdots + A^n \\
+                (I - A)s_n &= (I-A) + (A-A^2) + (A^2-A^3) + \hdots + (A^n - A^{n+1}) \\
+                           &= I - A^{n+1} \\
+                s_n &= (I-A)^{-1}(I-A^{n+1}) \\
+                \sum^{\infty}_{k=0} A^k &= \lim_{n \to \infty} s_n = (I -A)^{-1}
+            \end{align*}
+    \end{itemize}
+\end{sol}
+
+\begin{ejer}[15]
+    Se considera la matriz de Leslie $$ \begin{pmatrix}
+        \frac{1}{2} & 2 & 1 \\
+        \alpha & 0 & 0 \\
+        0 & \beta & 0
+    \end{pmatrix},$$
+    donde $\alpha, \beta \in ]0, 1[$. Encuentra las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\alpha, \beta)$. 
+\end{ejer}
+
+\begin{sol}
+    La tasa de fertilidad del primer grupo es $\frac{1}{2}$, la del segundo $2$, y la del tercero, $1$.
+    \begin{align*}
+        \label{}
+        X_n = L^nX_0 \\
+        \left\{ \frac{1}{\lambda_1^n} L^nX_0 \right\}_{n \geq 0} \rightarrow V \ ; \ \ LV = \lambda_1V
+        \end{align*}
+
+        Entonces \begin{itemize}
+            \item $0 < \lambda_1 < 1 \Rightarrow$ extinción.
+            \item $\lambda_1 = 1 \Rightarrow$ equilibrio.
+            \item $\lambda_1 > 1 \Rightarrow$ crecimiento ilimitado.
+        \end{itemize}
+\end{sol}
+
+\begin{ejer}[17]
+    Se considera la matriz de Leslie $$\begin{pmatrix}
+        \frac{1}{2} & \delta & \gamma \\
+        \frac{1}{2} & 0 & 0 \\
+        0 & \frac{1}{2} & 0
+    \end{pmatrix}$$ donde $\delta, \gamma \geq 0$. \begin{enumerate}[label=\alph*)]
+        \item Encuentre las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\delta, \gamma)$.
+        \item Describa la pirámide de edad a largo plazo correspondiente a los valores $\delta = \frac{1}{2}, \gamma = 1$.
+        
+    \end{enumerate}
+\end{ejer}
+
+\begin{sol}\hfill
+    \begin{enumerate}[label=\alph*)]        
+        \item $R = \frac{1}{2} + \frac{1}{2}\delta + \frac{1}{4}\gamma$
+            \begin{align*}
+                \label{}
+                \frac{1}{2} + \frac{1}{2}\delta + \frac{1}{4}\gamma = 1 \\
+                \frac{1}{2}\delta + \frac{1}{4}\gamma = \frac{1}{2} \\
+                2\delta + \gamma = 2 \\
+                \gamma = 2 - 2\delta
+            \end{align*}
+        \item $\delta = \frac{1}{2}, \gamma = 1$
+
+            $$L = \begin{pmatrix}
+                \frac{1}{2} & \frac{1}{2} & 1 \\
+                \frac{1}{2} & 0 & 0 \\
+                0 & \frac{1}{2} & 0
+            \end{pmatrix}$$
+
+            $\exists \lambda_1$ valor propio dominante (único positivo). ¿Es $\lambda_1 = 1$?
+
+            \begin{align*}
+                \label{}
+                |L-\lambda I| = \begin{vmatrix}
+                    \frac{1}{2} - \lambda & \frac{1}{2} & 1 \\
+                    \frac{1}{2} & -\lambda & 0 \\
+                    0 & \frac{1}{2} & -\lambda
+                \end{vmatrix} &= \left( \frac{1}{2} - \lambda \right)\lambda^2 - \frac{1}{2}\left( \frac{-\lambda}{2} - \frac{1}{2} \right) \\
+                              &= -\lambda^3 + \frac{1}{2}\lambda^2 + \frac{1}{4}\lambda + \frac{1}{4}
+            \end{align*}
+        
+            $p(1) = 0 \Rightarrow \lambda_1 = 1$
+
+            Buscamos $v_1 : (L - I)v_1 = 0$
+            \begin{align*}
+                \label{eq:}
+                \begin{pmatrix}
+                    -\frac{1}{2} & \frac{1}{2} & 1 \\
+                    \frac{1}{2} & -1 & 0 \\
+                    0 & \frac{1}{2} & -1
+                \end{pmatrix} \begin{pmatrix}
+                    v_1 \\
+                    v_2 \\
+                    v_3
+                \end{pmatrix} = \begin{pmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{pmatrix}
+            \end{align*}
+
+            $$ \begin{rcases}
+                \frac{1}{2}v_1 - v_2 = 0 \\
+                \frac{1}{2}v_2 - v_3 = 0
+            \end{rcases} \Rightarrow \begin{rcases}
+                v_2 = \frac{1}{2}v_1 \\
+                v_3 = \frac{1}{2}v_2
+            \end{rcases}$$
+
+            Por ejemplo $v_1 = 4 \Rightarrow \begin{cases}
+                v_2 = 2 \\
+                v_3 = 1
+            \end{cases}$
+
+            $$V = \begin{pmatrix}
+                4 \\
+                2 \\
+                1
+            \end{pmatrix} \ \ \ \ \frac{V}{||V||_1} = \begin{pmatrix}
+                \frac{4}{7} \\
+                \frac{2}{7} \\
+                \frac{1}{7} 
+            \end{pmatrix}$$
+     \end{enumerate}
+\end{sol}
+
+\begin{ejer}[20]
+  Una determinada población está estructurada en base a tres grupos diferentes de edad: crías (hasta los 3 años),
+jóvenes (de 3 a 6 años) y adultos (de 6 a 9 años). Es conocido que cada cría engendra en media una nueva cría, cada
+joven engendra en media 1,5 crı́as y cada adulto engendra en media 0,5 crı́as. Además, las observaciones arrojan el
+dato de que la mitad de las crı́as llegan a jóvenes, en tanto que sólo el 20 \% de los jóvenes sobrevive.
+
+\begin{itemize}
+\item Construya la matriz del modelo.
+\item Si la distribución de tamaños iniciales es $P_0 = (3, 1, 0)^t$ (en las unidades adecuadas), calcule cuál será la distribución de tamaños al cabo de seis años.
+\item Explique el comportamiento a largo plazo de la población (incluyendo su distribución porcentual por grupos
+\end{itemize}
+de edad).
+
+\end{ejer}
+
+\begin{sol}\hfill\\
+  \begin{enumerate}[label=\alph*)]
+  \item    La matriz de Leslie del modelo queda como sigue:
+
+    \begin{center}
+      \begin{pmatrix}
+        
+        1 & 1.5 & 0.5\\
+        0.5 & 0 & 0\\
+        0 & 0.2 & 0
+        
+      \end{pmatrix}
+    \end{center}
+
+ 
+ \item    Al cabo de seis años, la distribución será
+
+
+    \[
+    % P_6 = A^6 P_0 = \left(36.183125,\,11.930625,\,1.57375\right)
+    P_6 = A^2 P_0 = \left(6.85,\ 2.25\ ,\ 0.3\right)
+    \]
+
+  \item    Para calcular la distribución porcentual por grupos de edad a largo plazo, primero vamos a comprobar la
+    \emph{tasa de natalidad}:
+
+    \[
+    R = 1 + 1.5\times 0.5 + 0.5\times 0.5 \times 0.2 = 1.8 > 1
+    \]
+
+    Por tanto, la población no se extinguirá a largo plazo, sino que crecerá indefinidamente.
+    Calculemos la pirámide de población. Para ello, tenemos que calcular el valor propio dominante de
+    la matriz del modelo. Un breve análisis del polinomio característico basta para comprobar que no podemos calcular
+    sus raíces mediante procedimientos algebraicos. El método de la potencia nos da el
+    valor propio $\lambda_1 \approx 1.51$, y el vector propio asociado $v_{\lambda_1} \approx \left(1.000000,\,0.3297385,\,0.04349099\right)$.
+
+    La pirámide de población a largo plazo será, aproximadamente:
+
+    \[
+    \frac{v_{\lambda_1}}{\|v_{\lambda_1}\|_{1}} \approx (0.72821, 0.24011, 0.03167)
+    \]
+  \end{enumerate}
+\end{sol}
+
+\end{document}
