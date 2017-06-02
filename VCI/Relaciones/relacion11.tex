@@ -1,0 +1,138 @@
+\subsection{Ejercicio 1}
+
+Si existen $0<r1<r2<R$ tal qe $M(r_2) \leq M(r_1)$
+
+$M(r_1) \geq M(r_2) = \max\{ |f(z)| : z\in\mathbb{C}(0,r_2)^{\ast} \} = \max\{ |f(z)| : z\in\overline{D}(0,r_2) \}$
+
+por tanto
+
+$\exists z_0 \in D(0,r_1)$ en el que $|f|$ alcanza un máximo relativo para el disco $D(0,r_2)$,
+ahora usamos el principio de módulo máximo para deducir que 
+$f$ es constante en $D(0,r_2)$ y por el principio de identidad
+$f$ es constante en $D(0,R)$
+
+
+\subsection{Ejercicio 2}
+$g:\overline{D}(0,1)\backslash\{0\} \rightarrow \mathbb{C}$, $g(z) = f(1/z)$ 
+$g\in\mathbb{H}(D(0,1)\backslash\{0\})$ y continua en $\overline{D}(0,1)\backslash\{0\}$
+
+$\lim_{z\rightarrow0} g(z) = \lim_{w\rightarrow\infty} f(w) \in\mathbb{C}$ por tanto, por el teorema de extensión de Riemann
+$g\in\mathbb{H}(D(0,1))$
+
+Ahora se aplica el resultado del ejercicio $1$ a $g$ y sacamos la conclusión sobre $f$.
+
+
+\subsection{Ejercicio 3}
+$\lim_{z\rightarrow\infty} \frac{P(z)}{z^n} = a_n$
+
+$f(z) = \frac{P(z)}{z^n}$, $f\in\mathbb{H}(\{ z\in\mathbb{C} : |z|>1 \})$ y $f$ es continua en $\{ z\in\mathbb{C} : |z|\geq 1 \}$
+y usando ejercicio $2$ sabemos que
+$|f|$ alcanza su máximo en el conjunto $\{ z\in\mathbb{C} : |z|\geq 1 \}$ en un punto de $\mathbb{T}$.
+
+$\left| \frac{P(z)}{z^n} \right| = |f(z)| \leq M$ $\forall z$ con $|z|\geq 1$
+
+
+\subsection{Ejercicio 4}
+$|f(a)| = \left| \frac{1}{2\pi i}\int_{C(a,r)} \frac{f(w)}{w-a} dw \right| \leq \frac{1}{2\pi} \int_{C(a,r)} \frac{|f(w)|}{|w-a|} dw \leq \frac{l(C(a,r))}{2\pi r} \max\{ f(w) : w\in C(a,r) \} = \max\{ f(w) : w\in C(a,r) \} $
+
+Definimos $g(z) = f(z)f(-z)$, 
+$|f(0)|^2 = |g(0)| = \max\{ |g(w)| : w\in\mathbb{T} \} \leq 2$ $\forall w\in\mathbb{T}$
+
+
+\subsection{Ejercicio 5}
+Sabemos que $f\in\mathbb{H}(D(0,1))$ y usamos la desigualdad de la medie en $C(0,r)$ 
+
+$|f(0)| \leq \max\{ |f(z)| : z\in C(0,r)^{\ast} \} = r^n$ $\forall 0<r<1$
+
+tomamos límite con $r\rightarrow 0$ obtenemos que $f(0)=0$
+
+Si $f$ es constante no hay nada que demostrar
+Si $f$ no es constante, entonces, por el principio de los ceros de una función holomorfa $\exists g\in\mathbb{H}(D(0,1)), \exists k\in\mathbb{N}$ con $g(0) \not=0$ tal que $f(z) = z^kg(z)$ $\forall z\in D(0,1)$
+
+Si tenemos que $k<n$
+$r^n = \max\{ |f(z)| : |z|=r \} = \max\{ |z^kg(z)| : |z|=r \} = r^k \max\{ |g(z)| : |z|=r \}$
+por tanto
+$\max\{ |g(z)| : |z|=r \} = r^{n-k}$ tomando límite en $r\rightarrow0$ tenemos que $g$ diverge en $z=0$, lo que es una contradicción
+
+Si tenemos que $n>k$,
+como $\max\{ |g(z)| : |z|=r \} = r^{n-k}$ tomando límite en $r\rightarrow 0$ deducimos que $g(0)=0$, lo que también es una contradicción.
+
+Luego $k=n$ tenemos $f(z)=z^ng(z)$ $\forall z\in D(0,1)$
+
+como $\max\{ |g(z)| : |z|=r \} = r^{n-k}$ deducimos que $\max\{ |g(z)| : |z|=r \} = 1$ $\forall r\in]0,1[$
+por el ejercicio $1$ tenemos que $g$ es constante.
+
+
+%  \subsection{Ejercicio 6} Consecuencia del ejercicio 1
+
+\begin{comment}
+	ENUNCIADO
+	Si $f\in\mathbb{H}(\mathbb{C})$ y es inyectiva, ¿Qué se puede decir de $f$?
+	
+	SOLUCIÓN
+	Como $f$ es entera tenemos que $f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}z^n \forall z\in\mathbb{C}$
+	
+	Si $f$ es un polinomio de grado $k$
+	si $k\geq 2$ el teorema fundamental del álgebra nos dice que $f$ tiene al menos $2$ ceros (contando multiplicidad), los ceros no pueden ser distintos porque $f$ es inyectiva, por tanto $f$ tiene un cero de orden al menos $2$.
+	
+	$f$ no es inyectiva en un entorno de un punto donde se anule la derivada, por tanto tenemos una contradicción ya que $f$ es inyectiva.
+	
+	Si $f$ es entera no polinómica, como consecuencia del teorema de Casorati $f(\mathbb{C}\backslash\overline{D}(0,R))$ es denso en $\mathbb{C}$
+	
+	Por el teorema de la aplicación abierta sabemos que $f(D(0,r))$
+	Entonces hay dos puntos donde la función vale lo mismo, por tanto no puede ser inyectiva.
+	
+\end{comment}
+
+% Ejercicio 7: 
+\subsection{Ejercicio 7}
+$\lim_{z\rightarrow\infty} P(z) = \infty$
+En  $\overline{D}(0,R) |P|$ alcanza su mínimo absoluto en $\overline{D}(0,R)$ que vale $k=\min\{ |P(z)| : z\in\overline{D}(0,R) \}$ 
+Entonces
+$\exists R^+>R$ tal que si $|z|\geq R^+$ entonces $|P(z)| > k$
+
+En $\overline{D}(0,R) \subset \overline{D}(0,R^+)$ $|P|$ alcanza su mínimo absoluto en $z_0\in\overline{D}(0,R^+)$ y sabemos que es menor o igual que $k$.
+
+Como en $C(0,R^+)$ $|P|>k$ entonces $z_0\in D(0,R^+)$
+
+$P\in\mathbb{H}(D(0,R^+))$ y $|P|$ alcanza un mínimo relativo en $z_0$, por el principio del módulo mínimo $P(z_0)=0$.
+
+
+\subsection{Ejercicio 8}
+Tenemos un punto $a\in\Omega$ tal que $Re(f)$ tiene un extremo relativo en $a$.
+Sabemos que $\exists R>0$ tal que $D(a,R)\subset\Omega$ y 
+$Re(f(z)) \geq Re(f(a))$ (respectivamente $Re(f(z))\leq Re(f(a))$) $\forall z\in D(a,R)$.
+
+Suponemos que $f$ no es constante y por el teorema de la aplicación abierta, $f(a)\in(D(a,R))$ que es abierto.
+Sabemos que $exists r>0$ tal que $D(f(a),r) \subset f(D(a,R))$, lo que es una contradicción con que $Re(f)$ alcance un extremo relativo en $a$.
+
+
+\subsection{Ejercicio 9}
+Como $C(0,1)$ es cerrado y acotado su imagen es un compacto.
+Si $Im(f(z))=0 	\forall z\in D(0,1) \implies f$ es constante en $\overline{D}(0,1)$.
+En caso contrario $\exists z_0 \in D(0,1)$ tal que $Im(f(z_0)) \not=0$, se continuará suponiendo que $Im(f(z_0))>0$, en caso de ser menor que $0$ se razonaría igual pero usando el mínimo.
+
+$Im(f):\overline{D}(0,1)\rightarrow \mathbb{R}$ es continua en un compacto, por tanto $\exists w_0\in\overline{D}(0,1)$ tal que $Im(f(w_0)) = \max\{ Im(f(z)) : z\in\overline{D}(0,1) \} > 0$
+Como $Im(f(w_0))>0$ tenemos que $w_0\in D(0,1)$ y $Im(f)$ tiene un máximo relativo en $w_0$.
+Por el ejercicio $8$ tenemos que $f$ es constante.
+
+
+\subsection{Ejercicio 10}
+Tenemos un abierto $\Omega\in\mathbb{C}$, $f\in\mathbb{H}(\mathbb{C})$ inyectiva.
+$\overline{D}(a,r) \subseteq \Omega \forall z_0\in D(a,r)$
+
+$\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw$
+Sabemos que en el caso de un cambio de variable
+$\int_{\gamma}g(\varphi(w))\varphi' dw =\int_{\varphi \circ \gamma} g(z)dz $
+
+Aplicando la fórmula del cambio de variable usando
+$\gamma = C(a,R), \varphi(w) = f(w), g(z) = \frac{f^{-1}(z)}{den}$
+y nos queda
+$g(\varphi(w)) = \frac{w}{f(w)-f(z_0)}$.
+
+Entonces
+$\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw = \int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz$
+
+Por el teorema general de Cauchy ($\frac{1}{2\pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} dz = Ind_{\Gamma} (z_0)f(z_0)$, tema $12$) nos queda
+
+$\int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * f^{-1}(f(z_0)) = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * z_0$ 
