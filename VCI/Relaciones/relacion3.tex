@@ -1,4 +1,12 @@
-\subsection{Ejercicio 1}
+\begin{ejer}
+	En cada uno de los siguientes casos, estudiar la derivabilidad de la función $f:\mathbb{C} \rightarrow\mathbb{C}$ definida como se indica:
+	\begin{enumerate}[label=(\alph*)]
+		\item $f(z)  z(Re(z))^2 \hspace{1cm}\forall z\in\mathbb{C}$
+		\item $f(x+iy) = x^3 -y+i\left( y^3 +\frac{x^2}{2} \right) \hspace{1cm} \forall x,y\in\mathbb{R}$
+		\item $f(x+iy) = \frac{x^3+iy^3}{x^2+y^2} \hspace{1cm} \forall (x,y)\in\mathbb{R}^2\backslash\{(0,0)\}, f(0)=0$
+	\end{enumerate}	
+\end{ejer}
+
 \subsubsection{a)}
 Cauchy Riemman
 
@@ -34,20 +42,31 @@ $x^4-y^4 = 0 \implies |x|=|y|$
 
 
 
-\subsection{Ejercicio 2}
+\begin{ejer}
+	Probar que existe una función entera $f$ tal que
+	$$Re(f(x+iy)) = x^4-6x^2y^2+y^4 \hspace{1cm}\forall x,y\in\mathbb{R}$$
+	Si se exige además que $f(0)=0$, entonces $f$ es única.
+\end{ejer}
 2 cauchy riemman
 $Imf = 4x^3*y - 4xy^3$
 
-\subsection{Ejercicio 3}
+\begin{ejer}
+	Encontrar la condición necesaria y suficiente que deben cumplir $a,b,c\in\mathbb{R}$ para que exista una función entera $f$ tal que
+	$$ Re(f(x+iy)) = ax^2+bxy+cy^2\hspace{1cm}\forall x,y\in\mathbb{R} $$
+\end{ejer}
 3 cauchy rieman
 $a=-c$
 
 
-\subsection{Ejercicio 4}
-\textbf{Enunciado}
+\begin{ejer}
+	Sea $\Omega$ un dominio y $f\in\mathbb{H}(\Omega)$. Supongamos que existen $a,b,c\in\mathbb{R}$ con $a^2+b^2>0$, tales que
+	$$ aRe(f(z)) + bIm(f(z)) = c\hspace{1cm} \forall z\in\Omega $$
+	Probar que $f$ es constante.
+\end{ejer}
+
+\begin{sol}
 
 
-\textbf{Solución}
 \textbf{4 cauchy rieman, derivar respecto x y respecto y}
 $Ref (x,y) = u(x,y)$ $Imf(x,y) = v(x,y)$
 
@@ -63,39 +82,40 @@ implica
 $\frac{\partial u (x,y)}{\partial x} = -a'\frac{\partial v(x,y)}{\partial y} = -a'a'\frac{\partial v(x,y)}{\partial x}$
 por tanto
 $\frac{\partial v(x,y)}{\partial x} = 0 = \frac{\partial v(x,y)}{\partial y}$ en $\Omega$
+\end{sol}
 
 
-\subsection{Ejercicio 5}
-\textbf{Enunciado}
 
-Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$. Probar que si $\overline{f}\in\mathcal{H}(\Omega)$, entonces $f$ es constante.
+\begin{ejer}
+	Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$. Probar que si $\overline{f}\in\mathcal{H}(\Omega)$, entonces $f$ es constante.
+\end{ejer}
 
-\textbf{Solución}
 
+\begin{sol}
 $\Omega$ dominio, $f\in\mathcal{H}(C)$
 $f+\overline{f} = 2Re f$
 $g$ es holomorfa por ser suma de holomorfas, $g\in\mathcal{H}(C)$
 $g\in\mathcal{H}(\Omega)$ y su parte imaginaria es constante, por tanto $g$ es constante, entonces
 
 $Re f$ es constante, $f\in\mathbb{H}(\Omega), \Omega$ dominio implican que $f$ es constante.
-
-
-\subsection{Ejercicio 6}
-\textbf{Enunciado}
+\end{sol}
 
 
 
 
 
-\textbf{Solución}
+\begin{ejer}
+	Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$. Sea $\Omega^{\ast} = \{ \overline{z} : z\in\Omega \}$ y $f^{\ast}:\Omega^{\ast} \rightarrow \mathbb{C}$ la función definida por
+	$$ f^{ast}(z) = \overline{ f(\overline{z} ) } \hspace{1cm} \forall z\in\Omega^{\ast}$$
+\end{ejer}
 
+\begin{sol}
 $P(z) = a_n z^n + a_{n-1}z^{n-1}+...+a_1z + a_0$
 $P(\overline{z}) = a_n \overline{z}^n + a_{n-1}\overline{z}^{n-1}+...+a_1\overline{z} + a_0 $
 
 $\overline{ P(\overline{z}) } = \overline{a_n}z^n + \overline{a_{n-1}}z^{n-1}+...+\overline{a_1}z + \overline{a_0}$
 
-$\overline{z}^n  = \overline{z} ... \overline{z} = \overline{(z^n)}$
-
+$\overline{z}^n = \overline{z} ... \overline{z} = \overline{(z^n)}$
 
 resolvemos
 
@@ -104,16 +124,18 @@ $\lim_{z\rightarrow a} \frac{f^{\ast}(z)-f^{\ast}(a)}{z-a} = \lim_{z\rightarrow 
  \lim_{z\rightarrow a} \frac{\overline{\overline{f(\overline{z})} - \overline{f(\overline{a})}}}{z-a} =
  \lim_{z\rightarrow a} \overline{\left( \frac{f(\overline{z})-f(\overline{a})}{z-a} \right)} =
  \overline{f'(\overline{a})}$
-
-
-\subsection{Ejercicio 7}
-\textbf{Enunciado}
+\end{sol}
 
 
 
-\textbf{Solución}
 
-\textbf{Idea} 7 jugar con los grados del polinomio
+\begin{ejer}
+	Probar que la restricción de la función exponencial a un subconjunto abierto no vacío del plano, nunca es una función racional.
+\end{ejer}
+
+\begin{sol}
+
+\textbf{Idea} Jugar con los grados del polinomio
 
 Suponemos que  existe una función racional que es la exponencial:
 
@@ -132,3 +154,5 @@ Tienes dos polinomios que son iguales en un entorno no vació. Para deducir lo �
 $gr(B(z)) + gr(A(z)) \leq \max \{ gr(A'(z)) + gr(B(z)), gr(A(z))+gr(B'(z)) \}$
 
 Por tanto llegamos a una contradicción, nuestra hipótesis no era cierto.
+
+\end{sol}
