@@ -1,71 +1,107 @@
-\subsection{Ejercicio 1}
-\subsubsection{b)}
+\begin{ejer}
+	Calcular el radio de convergencia de las siguientes series de potencias:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\sum_{n\geq1} \frac{n!}{n^n}z^n$
+		\item $\sum_{n\geq 0} z^{2n}$
+		\item $\sum_{n\geq 0} 2^nz^{n!}$
+		\item $\sum_{n\geq 0} (3+(-1)^n)^nz^n$
+		\item $\sum_{n\geq 0} (n+a^n)z^n \ (a\in\mathbb{R}^+)$
+		\item $\sum_{n\geq 0} a^{n^2}z^n \ (a\in\mathbb{C})$
+	\end{enumerate}
+\end{ejer}
+
+\begin{comment}
 
 
-\textbf{Solución}
+\textbf{b)} %(*)
 
 $\sum_{n\geq 0} z^{2n} = \sum_{n\geq 0} \alpha_nz^n$
 con $\alpha_nz{2n+1} =0, \alpha_{2n} = 1$
-hay que ver el límite superior de la sucesión
+
+Vemos el límite superior de la sucesión
 $\limsup |\alpha_n| = 1 \implies R=\frac{1}{1} = 1$
+\end{comment}
 
-\subsubsection{c)}
+\textbf{c)}
+$$\sum_{n\geq 0} 2^nz^{n!}$$
+Si $|z|\geq 1$ entonces la serie diverge, en el caso $|z|<1$:
+$$\sqrt[n]{|2^nz^{n!}|} = \sqrt[n]{2^n|z|^{n!}} = 2|z|^{(n-1)!}$$
+Dicha sucesión tiende a $0$ cuando $n\rightarrow\infty$, por tanto %(*)
+$\sum_{n\geq 0} |2^nz^{n!}| < \infty \implies \sum_{n\geq 0} 2^nz^{n!} < \infty$, entonces el radio de convergencia de la serie es $R=1$.
 
-\textbf{Solución}
 
-$\sum_{n\geq 0} 2^nz^{n!}$,
-si $|z|\geq 1$, entonces la serie diverge, 
-si $|z|<1$
-$\sqrt[n]{|2^nz^{n!}|} = \sqrt[n]{2^n|z|^{n!}} = 2*|z|^{(n-1)!} \rightarrow 0$
-por tanto
-$\sum_{n\geq 0} |2^nz^{n!}| < \infty \implies \sum_{n\geq 0} 2^nz^{n!} < \infty$, entonces $R=1$.
 
-\subsubsection{e)}
-
-\textbf{Solución}
-
-$\sum_{n\geq 0} (n+a^n)z^n$ con $a\in\mathbb{R}^+$.
-Lo separamos en dos series, calculamos los radios de convergencia por separado y cogemos el menor.
-
-$\sum_{n\geq 0} nz^n$ y $\sum_{n\geq 0} a^nz^n$
-
-% ---------------------- hay que arreglarlo
-$a^n \leq n+a^n \leq (n+1)a^n$
+\textbf{e)}
+$$\sum_{n\geq 0} (n+a^n)z^n \hspace{1cm} a\in\mathbb{R}^+$$
+Podríamos separar en dos series, calcular sus radios de convergencia y cogemos el menor:
+$$\sum_{n\geq 0} nz^n \hspace{1.5cm}\sum_{n\geq 0} a^nz^n\hspace{1cm} a\in\mathbb{R}^+$$
+\begin{comment}
+Observamos que $a^n \leq n+a^n \leq (n+1)a^n$,
 en los extremos el radio de convergencia es $1/a$, por tanto el radio de convergencia de $n+a^n$ es $1/a$
+$$\sum_{n\geq 0} a^n |z|^n \leq \sum_{n\geq 0} (n+a^n)|z|^n \leq \sum_{n\geq 0} (n+1)a^n|z|^n$$
+Por tanto el radio de convergencia es $1/a$.
+\end{comment}
 
-$\sum_{n\geq 0} a^n |z|^n \leq \sum_{n\geq 0} (n+a^n)|z|^n \leq \sum_{n\geq 0} (n+1)a^n|z|^n$
+También podemos usar otros criterios:
+$$\lim_{n\rightarrow\infty} \sqrt[n]{n+a^n} = \lim_{n\rightarrow\infty} \frac{(n+1)+a^{n+1}}{n+a^n} $$
+por tanto el radio de convergencia buscado es:
+$$ R = \left\{ \begin{array}{lcc}
+1/a &   si  & a>1 \\
+1 &  si & a\leq 1
+\end{array}
+\right. $$
 
-Por tanto el radio de convergencia es $1/a$...................................
-% ----------------------
 
-//Podemos usar el criterio de la raíz para sucesiones 
-$\sum_{n\geq 0} (n+a^n)z^n$ con $a\in\mathbb{R}^+$
-Calculamos $\lim_{n\rightarrow\infty} \sqrt[n]{n+a^n}$
-$ = \lim_{n\rightarrow\infty} \frac{(n+1)+a^{n+1}}{n+a^n} = a (\text{si a>1}), 1 (\text{ si a<=1})$
-por tanto
-$R = 1/a (a>1), 1 (a<=1)$
-
-\subsubsection{c)}
+\begin{comment}
+\textbf{f)}
 $\sum_{n\geq 0} a^{n^2}z^n,a\in\mathbb{C}$
 raíz n-esima 
+\end{comment}
 
 
-\subsection{Ejercicio 2}
-\subsubsection{a)}
-No se reduce el radio de convergencia, se puede intentar el radio de convergencia de las derivadas
 
+\begin{ejer}
+	Conocido el radio de convergencia $R$ de la serie $\sum_{n\geq 0} \alpha_nz^n$, calcular el de las siguientes:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\sum_{n\geq 0} n^k\alpha_nz^n \ (k\in\mathbb{N} \text{ fijo})$
+		\item $\sum_{n\geq0} \frac{\alpha_n}{n!}z^n$	
+	\end{enumerate}
+\end{ejer}
 
-\subsection{Ejercicio 3}
+\textbf{a)}
+
+El radio de convergencia no se reduce, podemos comprobarlo utilizando el criterio de la raíz.
+
+\textbf{b)}
+
+Vemos el cociente entre los términos $n+1$ y $n$:
+$$ \frac{\alpha_{n+1}/(n+1)!}{\alpha_n/n} = \frac{\alpha_{n+1}}{\alpha_n (n+1)}$$
+Tomando límites:
+$$ \lim_{n\rightarrow\infty} \frac{\alpha_{n+1}}{\alpha_n (n+1)} = \lim_{n\rightarrow\infty}\frac{\alpha_{n+1}}{\alpha_n}\lim_{n\rightarrow\infty}\frac{1}{n+1} = \frac{1}{R} \lim_{n\rightarrow\infty}\frac{1}{n+1} = 0$$
+Por tanto el radio de convergencia de la serie es infinito.
+
+\begin{ejer}
+	Caracterizar las series de potencias que convergen uniformemente en todo el plano.
+\end{ejer}
 Convergen en todo el plano las que a partir de cierto término son 0, o sea, las que son una suma finita
 
-Sea $\sum_{n\geq 0} \alpha_n (z-a)^n$ que converge uniformemente,
-$S_n=\sum_{k=0}^{n-1} \alpha_k (z-a)^k$ c.u. $\Longleftrightarrow S_n$ es uniformemente de Cauchy $\Longleftrightarrow \forall\epsilon>0,\exists m\in\mathbb{N}: p\geq q\geq n \implies |S_p(z)-S_q(z)| < \epsilon \forall z\in\mathbb{C}$
-Vemos que los polinomios divergen en infinito.
-Sea $p\in\mathbb{P}[\mathbb{C}]$, $\lim_{|z|\rightarrow\infty} p(z) = \infty \Longleftrightarrow gr(p)>0 $
+Sea $\sum_{n\geq 0} \alpha_n (z-a)^n$ que converge uniformemente
+$$S_n=\sum_{k=0}^{n-1} \alpha_k (z-a)^k \text{ \ converge uniformemente } \Longleftrightarrow S_n \text{ es uniformemente de Cauchy }$$
+Lo cual, por definición, es:
+$$\forall\epsilon>0,\exists m\in\mathbb{N}: p\geq q\geq n \implies |S_p(z)-S_q(z)| < \epsilon \hspace{1cm}\forall z\in\mathbb{C}$$
+Sea un polinomio $p\in\mathbb{P}[\mathbb{C}]$, tenemos que $\lim_{|z|\rightarrow\infty} p(z) = \infty \Longleftrightarrow gr(p)>0$ (grado del polinomio).
 
-Vemos que $|S_p(z)-S_q(z)|$ es un polinomio que está acotado, tiene que ser constante para no diverger en infinito, en particular es la constante $0$, ya que $S_p(a)=S_q(a)$, por tanto $\sum_{q=m}^{p-10} \alpha_n (z-\alpha)^n = 0 \implies  \alpha_n=0 \forall n\geq m$
+Vemos que $|S_p(z)-S_q(z)|$ es un polinomio que está acotado, tiene que ser constante para no diverger en infinito, en particular es la constante $0$, ya que $S_p(a)=S_q(a)$, por tanto $$\sum_{q=m}^{p-10} \alpha_n (z-\alpha)^n = 0 \implies  \alpha_n=0 \hspace{1cm}\forall n\geq m$$ %(*)
 
-\subsection{Ejercicio 4}
+
+
+\begin{ejer}
+	Estudiar la convergencia puntual, absoluta y uniforme, de la serie $\sum_{n\geq 0} f_n$ donde
+	$$ f_n(z) = \left( \frac{z-1}{z+1} \right)^n\hspace{1cm} \forall z\in\mathbb{C}\backslash\{-1\} $$
+\end{ejer}
+
+\begin{comment}
 Idea:
 
 llamar w a (w-1)/(z-1), y mirar cuando la función tiene imagen que cae en el disco de centro 0 y radio 1, afinar para saber cuando un subconjunto de C po esta función cae dentro de un subconjunto compacto donde el sumatorio converja
+\end{comment}

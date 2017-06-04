@@ -7,38 +7,35 @@
 	\end{enumerate}	
 \end{ejer}
 
-\subsubsection{a)}
+\textbf{a)}
 Cauchy Riemman
 
-\textbf{Solución}
+
 
 
 \textbf{c)}
 
-$f(x+iy) = \frac{x^3+iy^3}{x^2+y^2}$, $\forall (x,y)\in\mathbf{R}^2 \backslash \{ (0,0) \}$, $f(0)=0$
+$f(x+iy) = \frac{x^3+iy^3}{x^2+y^2}$, \ $\forall (x,y)\in\mathbf{R}^2 \backslash \{ (0,0) \}$, $f(0)=0$
 
-$u(x,y) = Re f = \frac{x^3}{x^2+y^2}, v(x,y) = Imf = \frac{y^3}{x^2+y^2}$
+$u(x,y) = Re f = \frac{x^3}{x^2+y^2}, \hspace{1cm} v(x,y) = Imf = \frac{y^3}{x^2+y^2}$
 
-En $\mathbf{C}^{\ast}$
+En $\mathbf{C}^{\ast}$ tenemos:
+$$ \frac{\partial u}{\partial x} = \frac{3x^2}{x^2+y^2} + \frac{x^4(-1)2}{(x^2+y^2)^2} \hspace{1cm}
+\frac{\partial v}{\partial y} = \frac{3y^2}{x^2+y^2} = \frac{y^4(-1)2}{(x^2+y^2)^2}$$
+$$ \frac{\partial u}{\partial y} = \frac{x^3 (-1)2y}{(x^2+y^2)^2} \hspace{1cm}
+\frac{\partial v}{\partial x} = \frac{y^3(-1)2x}{(x^2+y^2)^2}$$
 
-$ \frac{\partial u}{\partial x} = \frac{3x^2}{x^2+y^2} + \frac{x^4(-1)2}{(x^2+y^2)^2}$
-$ \frac{\partial v}{\partial y} = \frac{3y^2}{x^2+y^2} = \frac{y^4(-1)2}{(x^2+y^2)^2}$
+Usando las ecuaciones de Cauchy-Riemman de las dos primeras ecuaciones deducimos
 
-entonces
-$\frac{\partial u}{\partial y} = \frac{x^3 (-1)2y}{(x^2+y^2)^2}$
-$\frac{\partial v}{\partial x} = \frac{y^3(-1)2x}{(x^2+y^2)^2}$
+$3x^2(x²+y^2) - 2x^4 = 3y^2(x^2+y^2)-2y^4 \implies x^4-y^4 = 0 \implies |x|=|y|$ 
 
-De las dos ecuaciones primeras deducimos
+de las últimas dos deducimos
 
-$3x^2(x²+y^2) - 2x^4 = 3y^2(x^2+y^2)-2y^4$  (1)
+$2yx^3=-2xy^3 \implies xy(x^2+y^2) = 0 \implies xy=0 \text{ ó } x^2+y^2=0$
 
-de últimas dos deducimos
+Como conclusión, para que la función sea derivable en un punto $x\in\mathbb{C}$ dicho punto debe cumplir que el módulo de su parte real sea igual que el módulo de su parte imaginaria.
 
-$2yx^3=-2xy^3 \implies xy(x^2+y^2) = 0 \implies xy=0 ó x^2+y^2=0$
 
-por tanto
-
-$x^4-y^4 = 0 \implies |x|=|y|$
 
 
 
@@ -47,41 +44,46 @@ $x^4-y^4 = 0 \implies |x|=|y|$
 	$$Re(f(x+iy)) = x^4-6x^2y^2+y^4 \hspace{1cm}\forall x,y\in\mathbb{R}$$
 	Si se exige además que $f(0)=0$, entonces $f$ es única.
 \end{ejer}
-2 cauchy riemman
-$Imf = 4x^3*y - 4xy^3$
+Sabemos que dicha función debe satisfacer las ecuaciones de Cauchy-Riemman, así que tenemos
+$$ \frac{\partial Re(f)}{\partial x}(x+iy) = 4x^3-12xy^2 = \frac{\partial Im(f)}{\partial y}(x+iy) $$
+Integrando con respecto de la variable $y$ el término central nos queda que
+$Im(f) = 4x^3*y - 4xy^3+k$ tal que $k\in\mathbb{R}$, ya que también se cumple la condición 
+$$ \frac{\partial Re(f)}{\partial y} (x+iy) = -\frac{\partial Im(f)}{\partial x} (x+iy) $$
+
+Si se exige $f(0)=0$ nos queda una única ecuación como resultado de sustituir $k=0$.
+
 
 \begin{ejer}
 	Encontrar la condición necesaria y suficiente que deben cumplir $a,b,c\in\mathbb{R}$ para que exista una función entera $f$ tal que
 	$$ Re(f(x+iy)) = ax^2+bxy+cy^2\hspace{1cm}\forall x,y\in\mathbb{R} $$
 \end{ejer}
-3 cauchy rieman
-$a=-c$
+Usamos Cauchy-Riemman, deben cumplir la condición $a=-c$.
 
 
 \begin{ejer}
-	Sea $\Omega$ un dominio y $f\in\mathbb{H}(\Omega)$. Supongamos que existen $a,b,c\in\mathbb{R}$ con $a^2+b^2>0$, tales que
+	Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$. Supongamos que existen $a,b,c\in\mathbb{R}$ con $a^2+b^2>0$, tales que
 	$$ aRe(f(z)) + bIm(f(z)) = c\hspace{1cm} \forall z\in\Omega $$
 	Probar que $f$ es constante.
 \end{ejer}
 
 \begin{sol}
 
-
-\textbf{4 cauchy rieman, derivar respecto x y respecto y}
-$Ref (x,y) = u(x,y)$ $Imf(x,y) = v(x,y)$
+Definimos las funciones $u$ y $v$: 
+$Re(f(x+iy)) = u(x,y), \ Im(f(x+iy)) = v(x,y)$
 
 Los casos extremos son $a=0$ o $b=0$, donde o la imagen o la parte real que quedan serían constantes.
-$au(x,y)+bv(x,y)=c$
-$-bv(x,y) = c-au(x,y)$
-$v(x,y)= c'-a'u(x,y)$
-Derivamos
+$au(x,y)+bv(x,y)=c \implies -bv(x,y) = c-au(x,y) \implies v(x,y)= c'-a'u(x,y)$
 
-$\frac{\partial v(x,y)}{\partial x} = \frac{-a' \partial u(x,y)}{\partial x} = \frac{-a' \partial v(x,y)}{\partial y}$
-$= \frac{\partial v(x,y)}{\partial y} = \frac{-a' \partial u(x,y)}{\partial y} = -a' \frac{\partial v(x,y)}{\partial x}$
-implica
-$\frac{\partial u (x,y)}{\partial x} = -a'\frac{\partial v(x,y)}{\partial y} = -a'a'\frac{\partial v(x,y)}{\partial x}$
+Derivamos con respecto a $x$ e $y$ a ambos lados de la última ecuación:
+$$\frac{\partial v(x,y)}{\partial x} = -a' \frac{\partial u(x,y)}{\partial x} = -a' \frac{\partial v(x,y)}{\partial y}$$
+$$\frac{\partial v(x,y)}{\partial y} = -a' \frac{\partial u(x,y)}{\partial y} = a' \frac{\partial v(x,y)}{\partial x}$$
+Con lo que nos queda
+$$\frac{\partial u (x,y)}{\partial x} = \frac{\partial v(x,y)}{\partial y} = -a'\frac{\partial v(x,y)}{\partial x}$$
+% Quedaba lo siguiente pero creo que está mal
+%$$\frac{\partial u (x,y)}{\partial x} = -a'\frac{\partial v(x,y)}{\partial y} = -a'a'\frac{\partial v(x,y)}{\partial x}$$
 por tanto
-$\frac{\partial v(x,y)}{\partial x} = 0 = \frac{\partial v(x,y)}{\partial y}$ en $\Omega$
+$$\frac{\partial v(x,y)}{\partial x} = 0 = \frac{\partial v(x,y)}{\partial y} \hspace{1cm}\forall (x,y)\in\Omega$$
+Como tenemos que la parte imaginaria es constante dentro del dominio $\Omega$ y $f\in\mathcal{H}(\Omega)$, con lo que deducimos que la función $f$ es constante.
 \end{sol}
 
 
@@ -92,12 +94,12 @@ $\frac{\partial v(x,y)}{\partial x} = 0 = \frac{\partial v(x,y)}{\partial y}$ en
 
 
 \begin{sol}
-$\Omega$ dominio, $f\in\mathcal{H}(C)$
-$f+\overline{f} = 2Re f$
-$g$ es holomorfa por ser suma de holomorfas, $g\in\mathcal{H}(C)$
-$g\in\mathcal{H}(\Omega)$ y su parte imaginaria es constante, por tanto $g$ es constante, entonces
+	
+Un dominio es un abierto conexo no vacío.
 
-$Re f$ es constante, $f\in\mathbb{H}(\Omega), \Omega$ dominio implican que $f$ es constante.
+La función $g := f+\overline{f} = 2Re(f)$ es holomorfa por ser suma de holomorfas, y su parte imaginaria es constante, por tanto $g$ es constante.
+
+Por tanto $Re(f)$ es constante, como $f\in\mathcal{H}(\Omega)$ y $ \Omega$ es un dominio deducimos que $f$ es constante.
 \end{sol}
 
 
@@ -106,11 +108,16 @@ $Re f$ es constante, $f\in\mathbb{H}(\Omega), \Omega$ dominio implican que $f$ e
 
 \begin{ejer}
 	Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$. Sea $\Omega^{\ast} = \{ \overline{z} : z\in\Omega \}$ y $f^{\ast}:\Omega^{\ast} \rightarrow \mathbb{C}$ la función definida por
-	$$ f^{ast}(z) = \overline{ f(\overline{z} ) } \hspace{1cm} \forall z\in\Omega^{\ast}$$
+	$$ f^{\ast}(z) = \overline{ f(\overline{z} ) } \hspace{1cm} \forall z\in\Omega^{\ast}$$
+	Probar que $f^{\ast}\in\mathcal{H}(\Omega^{\ast})$.
 \end{ejer}
 
 \begin{sol}
-$P(z) = a_n z^n + a_{n-1}z^{n-1}+...+a_1z + a_0$
+	
+\begin{comment}
+% No sé para qué servía esto
+Tenemos que 
+$P(z) = a_n z^n + a_{n-1}z^{n-1}+...+a_1z + a_0$, 
 $P(\overline{z}) = a_n \overline{z}^n + a_{n-1}\overline{z}^{n-1}+...+a_1\overline{z} + a_0 $
 
 $\overline{ P(\overline{z}) } = \overline{a_n}z^n + \overline{a_{n-1}}z^{n-1}+...+\overline{a_1}z + \overline{a_0}$
@@ -118,41 +125,40 @@ $\overline{ P(\overline{z}) } = \overline{a_n}z^n + \overline{a_{n-1}}z^{n-1}+..
 $\overline{z}^n = \overline{z} ... \overline{z} = \overline{(z^n)}$
 
 resolvemos
-
-$a\in\Omega^{\ast} \longleftrightarrow \overline{a}\in\Omega$
-$\lim_{z\rightarrow a} \frac{f^{\ast}(z)-f^{\ast}(a)}{z-a} = \lim_{z\rightarrow a} \frac{\overline{f(\overline{z})} - \overline{f(\overline{a})}}{z-a} =
- \lim_{z\rightarrow a} \frac{\overline{\overline{f(\overline{z})} - \overline{f(\overline{a})}}}{z-a} =
- \lim_{z\rightarrow a} \overline{\left( \frac{f(\overline{z})-f(\overline{a})}{z-a} \right)} =
- \overline{f'(\overline{a})}$
+\end{comment}
+$$a\in\Omega^{\ast} \Longleftrightarrow \overline{a}\in\Omega$$
+$$\lim_{z\rightarrow a} \frac{f^{\ast}(z)-f^{\ast}(a)}{z-a} = \lim_{z\rightarrow a} \frac{\overline{f(\overline{z})} - \overline{f(\overline{a})}}{z-a} =
+\lim_{z\rightarrow a} \frac{\overline{\overline{f(\overline{z})} - \overline{f(\overline{a})}}}{z-a} =
+\lim_{z\rightarrow a} \overline{\left( \frac{f(\overline{z})-f(\overline{a})}{z-a} \right)} =
+ \overline{f'(\overline{a})}$$
 \end{sol}
 
 
 
 
 \begin{ejer}
-	Probar que la restricción de la función exponencial a un subconjunto abierto no vacío del plano, nunca es una función racional.
+	Probar que la restricción de la función exponencial a un subconjunto abierto no vacío del plano, nunca es una función racional. %(*)
 \end{ejer}
 
 \begin{sol}
 
-\textbf{Idea} Jugar con los grados del polinomio
+Suponemos que existe dicha función racional:
+$$R(z) = \frac{\sum_{i=0}^k \lambda_i z^i}{\sum_{i=0}^m \mu_i z^i} = \frac{A(z)}{B(z)}$$
 
-Suponemos que  existe una función racional que es la exponencial:
+Usamos que la derivada de la exponencial es ella misma:
+$$R(z) = R'(z) = \frac{A'(z)B(z)-A(z)B'(z)}{B(z)^2} = \frac{A(z)}{B(z)}$$
+Entonces
+$$A(z) = A'(z) - \frac{A(z)B'(z)}{B(z)} \implies
+B(z)A(z) = A'(z)B(z) - B'(z)A(z) \hspace{1cm}\forall z\in D(a,r), a\in\mathbb{C}, r>0$$
 
-$R(z) = \frac{\sum_{i=0}^k \lambda_i z^i}{\sum_{i=0}^m \mu_i z^i} = \frac{A(z)}{B(z)}$
 
-$R(z) = R'(z) = \frac{A'(z)B(z)-A(z)B'(z)}{B(z)^2} = \frac{A(z)}{B(z)}$ 
-(Tachamos los $B(z)$)
-
-$A(z) = A'(z) - \frac{B'(z)A(z)}{B(z)}$,
-$B(z)A(z) = A'(z)B(z) - B'(z)A(z)$, esto se da $\forall z\in D(a,r)$ con $a\in\mathbb{C}, r>0$
-
-Tienes dos polinomios que son iguales en un entorno no vació. Para deducir lo último tienes que pensar que son polinomios iguales en un montón de puntos.
+Tienes dos polinomios que son iguales en un entorno no vacío de un punto.
 
 
 %$gr(A(z)) \leq gr(A'(z))$
 $gr(B(z)) + gr(A(z)) \leq \max \{ gr(A'(z)) + gr(B(z)), gr(A(z))+gr(B'(z)) \}$
 
-Por tanto llegamos a una contradicción, nuestra hipótesis no era cierto.
+Por tanto llegamos a una contradicción, al derivar un polinomio su grado disminuiría, con lo que no puede cumplirse la última desigualdad.
+Como nuestra hipótesis no es cierta tenemos que dicha función nunca es una función racional.
 
 \end{sol}
