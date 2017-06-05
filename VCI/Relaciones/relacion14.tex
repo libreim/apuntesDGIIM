@@ -269,6 +269,24 @@ entonces
 $$ -\int_{\epsilon}^{R} \frac{\log(ix)}{1+(ix)^4} idx = -i\int_{\epsilon}^{R} \frac{\log(x)}{1+x^4} + \frac{\pi}{2} \int_{\epsilon}^{R} \frac{dx}{1+x^4} $$
 % Consejo: Integrar con complejos
 
+Como \textbf{idea} para las partes que quedan:
+$$ |f(z)| = \frac{|\log(|z|)+i\theta_z|}{|1+z^4|} \leq \frac{\pi/2+\log(R)}{R^4-1} \hspace{1cm} z=|z|e^{i\theta_z} \in\gamma_R^{\ast} \text{ tal que }\theta_z\in[0,\pi/2]$$
+$$ \left| \int_{\gamma_R}f(z)dz \right| \leq \frac{l(\gamma_R)(\pi/2+\log(R))}{R^4-1} \hspace{1cm}\text{ que tiene a 0 cuando $R\rightarrow\infty$} $$
+
+Si $z\in\gamma_{\epsilon}^{\ast}$
+$$ |f(z)| = \frac{|\log(\epsilon)|+\pi/2}{1-\epsilon^4} $$
+$$ \left| \int_{\gamma_{\epsilon}} f(z)dz \right| \leq \frac{l(\gamma_{\epsilon}) (|\log(\epsilon)|+\pi/2))}{1-\epsilon^4}  $$
+
+Como tenemos
+$$ \Omega = \mathbb{C}^{\ast}\backslash\mathbb{R}^- \text{ que es homologicamente conexo y }\Gamma = [\epsilon,R] +\gamma_R + [iR,i\epsilon] +\gamma_{\epsilon} $$
+podemos deducir que
+$\Gamma$ es nulhomólogo con respecto a $\Omega$ y que $f\in\mathcal{H}(\Omega\backslash A)$
+con
+$$ A = \{ e^{i\pi/4}, e^{3\pi i/4}, e^{5\pi i/4}, e^{7\pi i/4} \} $$
+Y aplicando el teorema de los residuos tenemos que
+$$ \int_{\Gamma}f(z)dz = 2\pi i Ind_{\Gamma}(e^{i\pi/4}) Res(f(z),e^{i\pi/4}) = 2\pi i Res(f(z),e^{i\pi/4}) $$
+donde
+$$ \lim_{z\rightarrow e^{i\pi/4}} \frac{(z-e^{i\pi/4})}{1+z^4}\log(z) = -\frac{\pi i}{16}e^{i\pi/4} = -\frac{\pi i}{16}\frac{\sqrt{2}}{2} + \frac{\pi}{16}\frac{\sqrt{2}}{2} $$
 
 %16
 \begin{ejer}
