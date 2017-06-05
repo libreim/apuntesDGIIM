@@ -1,6 +1,6 @@
 ---
 title:	Algoritmos & Problemas				# Título
-author: 		# Nombre del autor
+author: Jesús Sánchez de Lechina Tejada		# Nombre del autor
 header-includes:      	 	        	# Incluir paquetes en LaTeX
 toc: true                   			# Índice
 numbersections: false       			# Numeración de secciones
@@ -132,6 +132,7 @@ procedimiento:
 3. En el caso de que el importe restante sea 0 se devuelve la solución
    calculada.
    
+\newpage
 ### El problema del arbol generador minimal (AGM)
 
 Sea G=(V,A) un grafo no dirigido conexo, ponderado con pesos no
@@ -165,6 +166,7 @@ Kruskal(grafo G=(V,A)){
 Kruskal devuelve una solución óptima al problema del AGM (demostrable
 por inducción).
 
+\newpage
 #### Prim
 
 En este caso la solución original será un conjunto de aristas
@@ -191,7 +193,8 @@ Prim(grafo G=(V,A)){
 }
 ```
 
-### El problema de caminos múnimos
+\newpage
+### El problema de caminos mínimos
 Sea G=(V,A) un grafo dirigido, ponderado con pesos no
 negativos, siendo V el conjunto de vértices del grafo y A el conjunto
 de aristas. El problema consiste en obtener un conjunto de secuencias
@@ -223,3 +226,148 @@ En cada caso el algoritmo greedy selecciona el nodo v de menor
 distancia D[v], y comprobamos si para el resto de los nodos w es más
 corta la distancia D[w] (ir de S a w) o D[v] + L[v][w] (ir de S a w
 pasando por v). En tal caso se actualiza P y D.
+
+Pseudocódigo:
+```
+Dijkstra(G=(V,A),L,S){
+	C=V\{S} // Candidatos no utilizados
+	Para i = 1 hasta n, hacer: 
+		D[i] = L[S][i];
+		P[i] = S;
+	Fin-Para
+	
+	Repetir n-1 veces:
+		v=elemento de C tal que D[v] es mínimo // seleccionar el
+			                                   // arista de menor peso
+		C = C\{v}
+		
+		// Actualizamos si el camino más corto a los demás nodos es el 
+		// directo o el que pasa por el nodo que acabamos de calcular
+		Para cada w en C, hacer:
+			Si D[w]>D[v]+L[c][w], entonces:
+				D[w] = D[v]+ L[v][w];
+				P[w] <-- v
+			Fin-Si
+		Fin-Para
+	Fin-Repetir
+	Devolver D,P
+}
+```
+
+\newpage
+### El problema del viajante de comercio
+
+Un comerciante quiere distribuir su mercancía entre diferentes
+ciudades. Su problema consiste en encontrar la ruta más corta tal que:
+
+* Pase por todas las ciudades
+* Al finalizar el recorrido, se encuentre en la ciudad de origen
+* No debe de pasar por la misma ciudad dos veces
+
+Dicho **formalmente**: 
+
+Dado un grafo G=(V,A) no dirigido, completo, con V vértices
+y A aristas, donde las aristas están ponderadas con pesos no
+negativos. Encontrar el circuito hamiltoniano minimal del grafo G.
+
+Pseudocódigo:
+```
+TravelingSalesmanProblem(G=(V,A)){
+	C = A // Candidatos no utilizados
+	T = vacío
+	Repetir hasta que |T| = |V|-1:
+		a = (u,v) arista de C con peso mínimo
+		C = C\{a}
+		Si T U {a} no forma ciclos ni v está en 2 aristas de T ni y u
+		está en 2 aristas de T entonces:
+			T = T U {a}
+		Fin-Si
+	Fin-Repetir
+	
+	A = Arista restante que queda para cerrar el circuito
+	T = T U {a} 
+	
+	Devolver T
+```
+
+Intuitivamente buscamos el circuito minimal (seleccionamos las aristas
+de menor peso), que sólo tengan "una entrada y una salida" (el arista
+escogido no puede tener vértices que ya estén en dos aristas) y
+hamiltoniano (cuando sólo nos quede un arista por escoger, escogemos
+el que cierre el circuito al nodo donde empezamos).
+
+\newpage
+### El problema de la mochila
+
+Tenemos una mochila y un conjunto de objetos a transportar. Y se desea
+saber qué objetos y en qué cantidad hay que transportarlos para
+rentabilizar el esfuerzo sabiendo que:
+
+* La mochila tiene un máximo de peso M
+* Hay n objetos diferentes a transportar
+* Cada objeto i tiene un peso asociado $w_i$
+* Llevar el objeto nos reporta un beneficio $b_i$
+* Incluiremos en la mochila una cantidad $x_i$ del objeto i
+
+De nuevo, **formalmente**:
+
+Maximizar $\sum \limits _{i=1} ^n b_ix_i$ sujeto a la restricción
+$\sum \limits _{i=1} ^n w_ix_i \leq M $
+
+
+**Variantes del problema:**
+
+* **Caso continuo:** Todos los objetos son fraccionables
+* **Caso discreto:** Ningun objeto es fraccionable 
+* **Caso del problema 0/1:** Caso particular del discreto, sólo
+  podemos llevar un único ejemplar de cada tipo de objeto.
+  
+\newpage
+#### Problema de la mochila continuo
+
+Supondremos que las cantidades que podemos llevar de cada objeto es un
+número real normalizado al intervalo [0,1] (No llevarnos
+nada/llevarnos todo el objeto/llevarnos un porcentaje del total del
+objeto).
+
+Pseudocódigo:
+```
+MochilaContinuo(M, B[0..n-1], W[0..n-1]){
+	C= Conjunto de objetos posibles
+	T= Vector de n cantidades a llevar a 0 // Solución a crear
+	Mientras (suma(peso de llevar las cantidades T)<M) y
+	queden candidatos en C, hacer:
+		Seleccionar i= mejor objeto restante en C
+		C= C\{i}
+		
+		Si suma(peso de llevar las cantidades T)+ w_i <= M
+		entonces 
+			T_i = 1
+		En otro caso
+			T_i = (M-suma(peso de llevar las cantidades de T))/w_i
+			
+	Fin-Mientras
+	Devolver T
+}
+```
+
+\newpage
+### El problema de la planificación de tareas
+
+Supongamos que hay n tareas pendientes. Se plantea el problema de la
+minimización del tiempo que cada tarea espera hasta haberse
+finalizado.
+
+Sean n tareas pendientes por ejecutar. Se desea encontrar el orden de
+ejecución de dichas tareas para minimizar el tiempo T que todas las
+tareas esperan antes de finalizar su ejecución:
+
+$$T = \sum \limits _{i=1} ^n\ (Tiempo\ transcurrido\ antes\ de\ que\
+i\ finalice)$$
+
+En este problema, cuando se ejecutan las tareas en orden ascendente de
+tiempo de ejecución obtenemos la mejor planificación. Este diseño
+sería óptimo.
+
+\newpage
+## Exploración en grafos
