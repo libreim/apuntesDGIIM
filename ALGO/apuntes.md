@@ -289,3 +289,64 @@ Todos los algoritmos greedy se pueden aplicar siempre que existan:
 * **Función de selección** del candidato más prometedor para forar
   parte de la solución
 * **Función objetivo** de minimización/maximización
+
+## Exploración en grafos
+
+En ocasiones no existe un algoritmo conocido que pueda resolver un
+determinado problema, o no de manera eficiente. En esta situación la
+resolución para por la exploración directa de todas o una gran parte
+de las posibilidades para llegar a una solución.
+
+Dada la naturaleza de estos problemas se pueden representar como un
+grafo. Por esto es necesario conocer cómo explorar este.
+
+### Recorridos de profundidad y anchura
+
+Los primeros, estudiados en la asignatura Estructura de Datos, se
+basan en algoritmos recursivos para visitar cada nodo y sus hijos.
+
+Los recorridos en anchura por su parte se basan en un procedimiento
+parecido, pero se basan en el uso de una cola en la que para cada nodo
+visitado se elimina este de la cola, se insertan  sus adyacentes, se
+visitan y se inserta w al final de la cola.
+
+Otros ejemplos de estos recorridos son los recorridos **preorden,
+inorden y postorden.**
+
+### Diseño de algoritmos Backtracking
+
+Para representar el posible estado de un problema y los
+movimientos/acciones para pasar de un estado a otro podemos utilizar
+árboles y grafos.
+
+De esta idea nace el **Backtracking**. Que consiste en hacer una
+búsqueda exhaustiva sobre grafos(árboles) dirigidos y acíclicos,
+mediante un recorrido en profundidad. Se realiza una poda de las ramas
+poco prometedoras para acelerar su búsqueda.
+
+La solución del problema se expresa dependiendo de la representación
+del problema, como tuplas $T=(x_1,x_2,x_3, ... ,x_t$
+
+**Criterio de parada:** Dependiendo del problema el objetivo puede ser
+encontrar todas las soluciones al problema o alguna de ellas.
+
+**Pasos para el diseño de Backtracking:**
+
+* Buscar una **representación** del tipo $T=(x_1,x_2,x_3, ... ,x_t$
+
+* Diseñar las **restricciones implícitas:** Son los valores que cada
+  valor $x_i$ puede tener para construir la solución.
+  
+* Identificar las **restricciones explícitas:** Restricciones externas
+  al proceso de encontrar una solución.
+  
+* Diseñar la estructura del **árbol/grafo implícito** que define los
+  estados y transiciones entre estados de búsqueda de soluciones.
+  
+* Diseñar la **función objetivo:** Criterio de parada para encontrar
+  la solución o soluciones requeridas.
+  
+* Adaptar la estructura general del **procedimiento Backtracking** al
+  problema y resolverlo.
+  
+  

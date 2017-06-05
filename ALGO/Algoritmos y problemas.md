@@ -373,3 +373,54 @@ sería óptimo.
 
 \newpage
 ## Exploración en grafos
+
+**Procedimiento general Backtracking:**
+
+Pseudocódigo:
+```
+Backtracking(k,T[1, ... , t]){
+	Para cada valor posible de x k hacer:
+		Si es factible T U {x k } entonces
+			Si T U {x k } es solución entonces 
+				Devolver T U {x k }
+			En otro caso
+			Si k<t entonces
+				u= BackTracking(k+1, T U {x k })
+				Si u es solución entonces 
+					Devolver u
+				Fin-Si
+			Fin-Si
+			Fin-En otro caso
+		Fin-Si
+	Fin-Para
+Devolver No hay solución
+}
+```
+
+### El problema de las 8 reinas
+
+En un tablero de ajedrez de tamaño NxN, se desea colocar N reinas sin
+que ningún par se dé jaque entre sí.
+
+* Representación: $T=(x_1,x_2,x_3, ... ,x_t$ es un vector donde cada
+  componente representa una columna del tablero y cada valor $x_i$ es
+  la fila donde se colocará la reina de la i-ésima columna.
+  
+* Restricciones implícitas: $x_i$ tendrá valores entre 1 y N, la dila
+  donde se colocará la i-ésima reina
+  
+* Restricciones explícitas: No puede haber 2 reinas en la misma fila,
+  columna o diagonal.
+  
+* Función objetivo: Encontrar una tupla $T=(x_1,x_2,x_3, ... ,x_t$ que
+  sea solución al problema (N reinas colocadas en el tablero sin darse
+  jaque).
+
+* Función de poda: Al hacer $T=(x_1,x_2,x_3, ... ,x_{k-1}$ U $x_k$ ,
+$x_k$ debe cumplir:
+
+Implícitamente por la representación usada para T, no
+puede hacer 2 reinas en la misma columna.
+No existe x i , con i<k, tal que x i =x k . (Dos reinas en la
+misma fila).
+No existe x i , con i<k, tal que abs(x i -x k ) = abs(i-k).
