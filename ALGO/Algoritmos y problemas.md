@@ -311,8 +311,10 @@ rentabilizar el esfuerzo sabiendo que:
 
 De nuevo, **formalmente**:
 
-Maximizar $\sum \limits _{i=1} ^n b_ix_i$ sujeto a la restricción
-$\sum \limits _{i=1} ^n w_ix_i \leq M $
+Maximizar 
+$$ \sum \limits _{i=1} ^n b_ix_i $$
+sujeto a la restricción 
+$$\sum \limits _{i=1} ^n w_ix_i \leq M $$
 
 
 **Variantes del problema:**
