@@ -237,6 +237,23 @@ r el número de raíces distintas del polinomio característico
 
 $M_i$ la multiplicidad de la raíz $R_i$ del polinomio
 
+## Divide y Vencerás
+
+Los algoritmos que aplican *divide y vencerás* obtienen un mejor
+tiempo de respuesta a problemas grandes mediante la división del
+problema en subproblemas de tamaño menor, más fáciles de resolver.
+
+Para poder aplicar esta técnica los problemas deben poder dividirse en
+uno o más casos equicalentes de tamaño menor, que sean independientes
+entre sí y que puedan resolverse por separado. Este es el caso de
+algoritmos como MergeSort (ordenación).
+
+Además es necesario que estas subsoluciones independientes se puedan
+combinar entre sí para poder dar lugar a la solución del caso inicial.
+Así como también debe de existir una *condición de parada* (caso base
+resuelto) o un método básico que resuelva el problema para un tamaño pequeño
+
+
 ## Algoritmos Greedy 
 
 Es una forma de resolver algunos problemas mediante algoritmos que
@@ -251,3 +268,4 @@ tenga.
 Ejemplos de algoritmos greedy los podemos encontrar en el problema del
 cambio de la máquina expendedora o en diversos algoritmos de caminos
 en grafos.
+
