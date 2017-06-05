@@ -194,23 +194,96 @@ $$ 0=4\int_{0}^{+\infty} \frac{\sin^2(x)}{x^2} dx -2\pi  \implies  \int_{0}^{+\i
 	$$ \int_{-\pi}^{\pi} $$
 \end{ejer}
 
-\subsection{Ejercicio 16}
+%11
 \begin{ejer}
-	Integrando una conveniente función sobre la poligonal $[-R,R,R+2\pi i,-R+2\pi i,-R]$ con $R\in\mathbb{R}^+$, calcular la integral
-	$$ -$$
+	Integrando una conveniente función compleja a lo largo de la frontera de la mitad superior del anillo $A(0;\epsilon,R)$, probar que, para $\alpha\in]-1,3[$, se tiene:
+	$$ \int_{0}^{\infty} \frac{x^{\alpha}dx}{(1+x^2)^2} = \frac{\pi}{4}(1-\alpha)sec(\frac{\pi\alpha}{2}) $$
 \end{ejer}
 
-$\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1}dx$
+%12
+\begin{ejer}
+	Probar que, para $\alpha\in ]0,2[$, se tiene:
+	$$ \int_{-\infty}^{+\infty} \frac{e^{\alpha x}dx}{1+e^x+e^{2x}} = \int_{0}^{+\infty} \frac{t^{\alpha-1} dt}{1+t+t^2} = \frac{2\pi}{\sqrt{3}}\frac{\sin(\pi(1-\alpha)/3)}{\sin(\pi\alpha)} $$
+\end{ejer}
 
+%13
+\begin{ejer}
+	Integrando la función $z\rightarrow\frac{\log(z+i)}{1+z^2}$ sobre un camino cerrado que recorra la frontera del conjunto $\{ z\in\mathbb{C} : |z|<R, Im(z)>0 \}$, con $R\in\mathbb{R}$ y $R>1$, calcular la integral
+	$$ \int_{-\infty}^{+\infty} \frac{\log(1+x^2)}{1+x^2}dx $$
+\end{ejer}
+
+
+%14
+\begin{ejer}
+	Integrando una conveniente función sobre la poligonal $[-R,R,R+\pi i,-R+\pi i, -R]$, con $R\in\mathbb{R}^+$, calcular la integral
+	$$ \int_{-\infty}^{\infty} \frac{\cos(x)dx}{e^x+e^{-x}} $$
+\end{ejer}
+Probamos con la función
+$$ f(z) = \frac{e^{iz}}{e^z+e^{-z}} \hspace{2cm} e^{i(R+ti)} = e^{iR}e^{-t} $$
+$$ e^z+e^{-z} =0\Longleftrightarrow  e^{2z}+1=0 \Longleftrightarrow e^{2z}=-1 \Longleftrightarrow 2z\in Log(-1) $$
+$$ 2z\in\left\{ \ln(|1|) + i(\pi+2k\pi) : k\in\mathbb{Z} \right\} \Longleftrightarrow z\in\left\{ (\pi/2+k\pi)i : k\in\mathbb{Z} \right\} $$
+$$ \Omega=\mathbb{C} \hspace{1cm} \Gamma = [ -R,R,R+\pi i, -R+\pi i, -R ] $$
+$$ A = \left\{ \left( \pi/2 +k\pi \right)i : k\in\mathbb{Z} \right\} \hspace{1cm} f\in\mathcal{H}(\Omega\backslash A) \hspace{0.5cm} \Gamma \text{ es nulhomólogo con respecto a }\Omega=\mathbb{C} $$
+Sabeos que $A\cup\Omega = \emptyset$, luego por el teorema de los residuos sabemos que
+$$ \int_{\Gamma} f(z)dz = 2\pi iInd_{\Gamma}(\frac{\pi}{2}i) Res(f(z), \frac{\pi}{2}i) = 2\pi i Res(f(z), \frac{\pi}{2}i)$$
+Que es igual a la siguiente expresión:
+$$ \int_{-R}^{R} \frac{e^{ix}}{e^x+e^{-x}} dx + \int_{R}^{R+\pi i} f(z)dz + \int_{[R+\pi i,-R+\pi i]} f(z)dz + \int_{[-R+\pi i, -R]} f(z)dz \text{ Nombradas por (1),(2),(3) y (4)} $$
+
+Vemos $(3)$ y usamos la parametrización $x\rightarrow x+\pi i, x\in[-R,R]$
+$$ \int_{[R+\pi i,-R+\pi i]} f(z)dz = \int_{[-R+\pi i,R+\pi i]} f(z)dz = \int_{-R}^{R} \frac{e^{i(x+\pi i)}}{e^{x+\pi i}+e^{-(x+\pi i)}} = e^{-\pi} \int_{-R}^{R} \frac{\cos(x)+i\sin(x)}{e^x+e^{-x}}dx $$
+
+Veamos que $\lim{R\rightarrow\infty} \int_{R}^{R+\pi i} f(z)dz$, donde usaremos la parametrización $R+ti, \ t\in[0,\pi]$
+$$ \left| \int_{[R,R+\pi i]} \frac{e^{iz}}{e^z+e^{-z}} \right|  = \left| \int_{0}^{\pi} \frac{e^{i(R+ti)}}{e^{R+ti}+e^{-R-ti}} \right| \leq \int_{0}^{\pi} \frac{e^{-t}}{e^R-e^{-R}}dt \leq \frac{\pi}{e^R-e^{-R}} \text{ que tiende a $0$ cuando $R \rightarrow\infty$}$$
+donde hemos usado que
+$$ | e^{R+ti}+e^{-R-ti} | \geq |e^{R+ti}|-|e^{-R-ti}| = e^R-e^{-R} $$
+
+Tomando límite con $R\rightarrow\infty$ en la expresión
+$$ (1)+(2)+(3)+(4) = 2\pi i Res(f(z),\frac{\pi}{2}i)) $$
+$$ (1)+(3) = 2\pi iRes(f(z),\frac{\pi}{2}i) $$
+Y ahora tomamos las partes reales
+$$ \int_{-\infty}^{+\infty} \frac{\cos(x)}{e^x+e^{-x}} dx + e^{-\pi} \int_{-\infty}^{+\infty} \frac{\cos(x)}{e^x+e^{-x}}dx = Re(2\pi iRes(f(z), \frac{\pi}{2}i)) $$
+Tras hacer los cálculos vemos que
+$$ Res(f(z),\frac{\pi}{2}i) = \frac{e^{-\pi/2}}{2i}  $$
+
+Por lo que 
+$$ Re(2\pi iRes(f(z), \frac{\pi}{2}i)) = \pi e^{-\pi/2} $$
+y tenemos que
+$$ \int_{-\infty}^{+\infty} \frac{\cos(x)}{e^x+e^{-x}} dx = \frac{\pi e^{-\pi/2}}{1+e^{-\pi}} $$
+
+
+
+
+%15
+\begin{ejer}
+	Integrando una conveniente función sobre un camino cerrado que recorra la frontera del conjunto $\{ z\in\mathbb{C} : \epsilon < |z| < R, 0<arg(z)<\pi/2 \}$, con $0<\epsilon<1<R$, calcular la integral
+	$$ \int_{0}^{+\infty} \frac{\log(x)}{1+x^4}dx $$
+\end{ejer}
+Probamos con la función
+$$ f(z) = \frac{\log(z)}{1+z^4} $$
+entonces
+$$ \int_{[\epsilon, R]}f(z)dz = \int_{\epsilon}^{R} \frac{\log(x)}{1+x^4} $$
+$$ \int_{[iR,i\epsilon]} f(z)dz = -\int_{[i\epsilon,iR]} f(z)dz = -\int_{\epsilon}^{R} \frac{\log(ix)}{1+(ix)^4} idx $$
+Vemos
+$$ \log(ix) = \log(|ix|)+i\pi/2 $$
+entonces
+$$ -\int_{\epsilon}^{R} \frac{\log(ix)}{1+(ix)^4} idx = -i\int_{\epsilon}^{R} \frac{\log(x)}{1+x^4} + \frac{\pi}{2} \int_{\epsilon}^{R} \frac{dx}{1+x^4} $$
+% Consejo: Integrar con complejos
+
+
+%16
+\begin{ejer}
+	Integrando una conveniente función sobre la poligonal $[-R,R,R+2\pi i,-R+2\pi i,-R]$ con $R\in\mathbb{R}^+$, calcular la integral
+	$$ \int_{-\infty}^{+\infty} \frac{e^{x/2}}{e^x+1}dx $$
+\end{ejer}
 Consideramos 
 $f(z) = \frac{e^{z/2}}{e^z+1}$
 $e^z+1=0 \Longleftrightarrow e^z = -1 \Longleftrightarrow z\in Log(-1) = \{ 0+i(\pi+2k\pi) : k\in\mathbb{Z} \} = A$
 
-$f : \mathbb{C}\backslash A \rightarrow \mathbb{C}$
-$f\in\mathbb{H}(\mathbb{C}\backslash A)$
+$f : \mathbb{C}\backslash A \rightarrow \mathbb{C}\hspace{0.5cm} f\in\mathcal{H}(\mathbb{C}\backslash A)$
 
-$\Gamma_R  = [-R,R,R+2\pi i, -R+2\pi i]$ es nul-homólogo con respecto a $\mathbb{C}$
-A no tiene puntos de acumulación en $\mathbb{C}$
+$\Gamma_R  = [-R,R,R+2\pi i, -R+2\pi i]$ es nulhomólogo con respecto a $\mathbb{C}$
+
+Vemos que $A$ no tiene puntos de acumulación en $\mathbb{C}$
 
 Por el teorema de los residuos
 
