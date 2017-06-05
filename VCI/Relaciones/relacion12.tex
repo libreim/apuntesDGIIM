@@ -1,4 +1,9 @@
-\subsection{Ejercicio 1}
+\begin{ejer}
+	Enunciar con detalle y demostrar que el índice de un punto respecto a un camino cerrado
+	se conserva por giros, homotecias y traslaciones.
+\end{ejer}
+
+\begin{sol}
 Veamos el giro de centro $z_0$ y ángulo $\theta$.
 $\varphi(z) = z_0 + (z-z_0)e^{i\theta}$.
 
@@ -22,9 +27,16 @@ $\varphi'(w) = \xi \in \{ e^{i\theta},\lambda,1 \}$
 
 De esa forma tenemos 
 $\frac{1}{2\pi i} \int_{\gamma} \frac{\varphi'(w)}{\varphi(w)-\varphi(w_0)} = \frac{1}{2\pi i} \int_{\gamma} \frac{dw}{w-w_0} = Ind_{\gamma}(w_0)$
+\end{sol}
 
 
-\subsection{Ejercicio 2}
+\begin{ejer}
+	Sea $\rho : [-\pi,pi]\rightarrow\mathbb{R}^+$ una función de clase $C^1$, con $\rho(-\pi) = \rho(\pi)$ y sea $\sigma :[-\pi,\pi] \rightarrow\mathbb{C}$ el arco definido por
+	$$ \sigma(t) = \rho(t)e^{it} \hspace{1cm} \forall t\in [-\pi,\pi] $$
+	Calcular $Ind_{\sigma}(z)$ para todo $z\in\mathbb{C}\backslash\sigma{\ast}$.
+\end{ejer}
+\begin{sol}
+
 Sea $\mathbb{C}\backslash\sigma^{\ast}$ tiene una única componente conexa no acotada $U$ y $\forall z\in U, Ind_{\sigma}(z)=0=$
 $\Omega = \{ z\in\mathbb{C} : \exists t\in[-\pi,\pi], z=|z|e^{it}, |z|<\varphi(t) \}$
 
@@ -38,6 +50,9 @@ $\Omega \cup \sigma^{\ast} \cup U = \mathbb{C}$
 Si $z\in\Omega$, como el índice es constante en cada componente conexa tenemos que $Ind_{\sigma}(z) = Ind_{\sigma}(0)$
 
 $Ind_{\sigma}(0) = \frac{1}{2\pi i} \int_{\sigma} \frac{1}{z-0}dz = \frac{1}{2\pi i} \int_{-\pi}^{\pi} \frac{1}{\sigma(t)} \sigma'(t)dt = \frac{1}{2\pi i} \int_{-\pi}^{\pi} \frac{\varphi'(t)+i\varphi(t)}{\varphi(t)} dt$
+
+\end{sol}
+
 
 % Ejercicio 3: Demostración de que los arcos tienen logaritmo derivable
 
