@@ -237,6 +237,30 @@ r el número de raíces distintas del polinomio característico
 
 $M_i$ la multiplicidad de la raíz $R_i$ del polinomio
 
+## Divide y Vencerás
+
+Los algoritmos que aplican *divide y vencerás* obtienen un mejor
+tiempo de respuesta a problemas grandes mediante la división del
+problema en subproblemas de tamaño menor, más fáciles de resolver.
+
+Para poder aplicar esta técnica los problemas deben poder dividirse en
+uno o más casos equicalentes de tamaño menor, que sean independientes
+entre sí y que puedan resolverse por separado. Este es el caso de
+algoritmos como MergeSort, Quicksort o selección (ordenación).
+
+Además es necesario que estas subsoluciones independientes se puedan
+combinar entre sí para poder dar lugar a la solución del caso inicial.
+Así como también debe de existir una *condición de parada* (caso base
+resuelto) o un método básico que resuelva el problema para un tamaño
+pequeño.
+
+**El problema del umbral:** Si el tamaño del problema inicial es muy
+grande puede ser tan costoso gestionar millones de llamadas recursivas
+como resolver el problema original. Pero para poder saber cual es
+el umbral debemos comparar tiempos de ejecución entre el algoritmo
+original y el DyV.
+
+
 ## Algoritmos Greedy 
 
 Es una forma de resolver algunos problemas mediante algoritmos que
@@ -251,3 +275,17 @@ tenga.
 Ejemplos de algoritmos greedy los podemos encontrar en el problema del
 cambio de la máquina expendedora o en diversos algoritmos de caminos
 en grafos.
+
+**Diseño de algoritmos greedy:** 
+
+Todos los algoritmos greedy se pueden aplicar siempre que existan:
+
+* **Lista de candidatos** para formar la solución.
+* **Lista de candidatos usados**.
+* **Función solución** para saber cuando un conjunto de candidatos es
+  solución al problema.
+* **Criterio de factibilidad** para saber si un candidato puede formar
+  parte de la solución final.
+* **Función de selección** del candidato más prometedor para forar
+  parte de la solución
+* **Función objetivo** de minimización/maximización
