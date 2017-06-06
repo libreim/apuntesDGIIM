@@ -350,3 +350,46 @@ encontrar todas las soluciones al problema o alguna de ellas.
   problema y resolverlo.
   
   
+### Diseños de algoritmos Branch & Bound
+
+**Terminología:**
+
+* **Nodo vivo:** Nodo del espacio de soluciones del que no se han
+  generado/visitado aún todos sus hijos.
+  
+* **Nodo en curso:** nodo del que se están generando hijos.
+
+* **Nodo muerto:** nodo del que no se van a generar más hijos porque
+  sea hoja, se pode o no produzca una solución mejor que la solución
+  en curso.
+  
+Se diferencia de Backtracking en que se generan todos los hijos del
+nodo en curso antes de que cualquier nodo vivo pase a ser el nodo en
+curso, mientras que backtracking analizaba inmediatamente todo nodo
+generado. Eso hace que requiera una estructura auxiliar para almacenar
+los nodos vivos (Lista de nodos vivos).
+
+Esto hace que backtracking sea más fácil de implementar y tenga un
+menor requisito de memoria, mientras que branch & bound es más eficiente.
+
+**Componentes:**
+
+* **Representación** de la solución en una tupla $T=(x_1,x_2,x_3, ... ,x_t$
+
+* **Función objetivo** que determina si la solución actual es óptima.
+
+* **Restricciones implícitas:** Valores de cada $x_i$
+
+* **Restricciones explícitas:** Las que no dependen de la
+  representación del problema.
+  
+* **Función de elección** para seleccionar qué nodo es mejor y
+  considerarlo “*en curso*”
+  
+* **Cálculo de cotas** para eliminar partes del árbol que no vayan a
+  generar una solución o para elegir el camino más prometedor.
+  
+* **Árbol de búsqueda** para organizar el problema.
+
+Al igual que en backtracking, la solución se construye paso a paso. El
+proceso acaba cuando no quedan nodos en la lista de nodos vivos.

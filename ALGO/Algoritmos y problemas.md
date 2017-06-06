@@ -374,6 +374,7 @@ sería óptimo.
 \newpage
 ## Exploración en grafos
 
+### Backtracking
 **Procedimiento general Backtracking:**
 
 Pseudocódigo:
@@ -419,8 +420,125 @@ que ningún par se dé jaque entre sí.
 * Función de poda: Al hacer $T=(x_1,x_2,x_3, ... ,x_{k-1}$ U $x_k$ ,
 $x_k$ debe cumplir:
 
-Implícitamente por la representación usada para T, no
-puede hacer 2 reinas en la misma columna.
-No existe x i , con i<k, tal que x i =x k . (Dos reinas en la
-misma fila).
-No existe x i , con i<k, tal que abs(x i -x k ) = abs(i-k).
+Implícitamente por la representación usada para T, no puede hacer 2
+reinas en la misma columna. 
+
+No existe $x_i$ , con i<k, tal que $x_i$ =$x_k$ . (Dos reinas en la misma
+fila).
+
+No existe $x_i$, con i<k, tal que abs ($x_i -x_k$) = abs(i-k).
+
+Pseudocódigo:
+
+```
+BTNReinas(k,T[1,  ... , N]){
+	
+	Para i = 1...N, hacer:
+		T[k] = i
+		Si T es factible entonces
+			Si k = N entonces
+				Devolver T
+			En otro caso:
+				Si k < N entonces
+					T = BTNReinas(k+1,T)
+					Si T es solución entonces
+						Devolver T
+					Fin-Si
+				Fin-Si
+			Fin-En otro caso
+		Fin-Si
+	Fin-Para
+	
+	Devolver No hay solución
+}
+```
+
+### El problema de la mochila 0/1
+
+Tenemos una mochila con una capacidad de peso máxima M, un conjunto de
+n objetos a transportar. Cada objeto i tiene un peso $w_i$ y llevarlo
+supone un beneficio $b_i$.
+
+Debemos seleccionar el conjunto de objetos que nos reporte el máximo
+beneficio, siendo estos indivisibles (sólo puede llevarse o no
+llevarse).
+
+Pseudocódigo:
+```
+BTMochila(k,T,MejorSolucion,M,b,w){
+	Si k>n y Beneficio(T) > Beneficio(MejorSolucion) entonces
+		MejorSolucion = T
+	En otro caso hacer:
+		Para j=0 hasta 1 hacer
+			T[k] = j
+			Si(Peso(T1...k) <= M) entonces
+				MejorSolucion = BTMochila(k+1, T, MejorSolucion, M,b,w)
+			En otro caso
+				T[k]=0
+	    Fin-Para
+	Fin-En otro caso
+	Devolver MejorSolucion
+```
+
+\newpage
+### Branch&Bound
+
+**Procedimiento general de Branch&Bound:**
+
+Pseudocódigo:
+```
+BranchAndBound(nodoRaiz[n]){
+	C= Cola con prioridad vacía
+	Cota= COTA(nodoRaiz)
+	MejorCoste= +∞
+	
+	Mientras C no esté vacía, hacer:
+		x= Quitar Primer Elemento de C
+	
+		Si coste(x)<MejorCoste entonces
+			MejorCoste= coste(x)
+			solucion= x
+		Fin-Si
+		
+		Si se puede, recalcular cota y eliminar de C los
+		elementos con coste > cota
+		
+		Para cada nodo v hijo de x con cota(v)<cota, hacer:
+			Insertar v en C
+		Fin-Para
+		
+	Fin-Mientras
+	
+	Devolver solucion, MejorCoste
+```
+
+### El problema de la asignación de tareas
+
+Sean n tareas a repartir entre n personas, suponiendo que el coste de
+que la persona i se asigne a la tarea j es $c_{ij}$. Asignar las
+tareas a las personas de modo que el coste total sea mínimo.
+
+La solución consiste en establecer en primer lugar unas cotas, superior
+e inferior. La primera puede ser una solución cualquiera a partir de
+la cual distinguir ramas prometedoras de ramas no prometedoras. La
+inferior puede ser una situación no factible, pero que sirva de
+referencia.
+En cada nodo del primer nivel analizamos la cota mínima suponiendo que
+le hemos asignado a la primera persona una tarea distinta, entonces
+descartamos los nodos que no sean prometedores, metiendo en la lista
+de nodos vivos sólo aquellos cuyas cotas mínimas sean inferiores a la
+cota superior actual.
+
+### El problema de la mochila 0/1
+
+Tenemos una mochila con una capacidad de peso máxima M, un conjunto de
+n objetos a transportar. Cada objeto i tiene un peso $w_i$ y llevarlo
+supone un beneficio $b_i$.
+
+Debemos seleccionar el conjunto de objetos que nos reporte el máximo
+beneficio, siendo estos indivisibles (sólo puede llevarse o no
+llevarse).
+
+La diferencia en la resolución de este problema frente al enfoque de
+Backtracking reside en que Backtracking no hará uso de cotas para
+descartar ramas.
