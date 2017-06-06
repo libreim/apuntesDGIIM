@@ -1,16 +1,23 @@
-\subsection{Ejercicio 1}
+
+\begin{ejer}
+	Sean $a\in\mathbb{C}$ y $r\in\mathbb{R}^+$. Probar que para $z\in\mathbb{C}$ con $|z-a|>r$ se tiene
+	$$ \int_{C(a,r)} \frac{dw}{w-z} = 0 $$
+\end{ejer}
+\begin{sol}
+Fijo $z\in\mathbb{C}$ con $|z-a|>r, \exists r'>0 : |z-a|>r'>r$.
+Consideramos $\Omega = D(a,r'), f(w) = \frac{1}{w-z}$ , $f\in\mathcal{H}(D(a,r'))$. Sabemos que $D(a,r')$ es convexo (en particular estrellado), por tanto, usando el teorema de Cauchy para dominios estrellados tenemos % y $TLC$
+$$\int_{C(a,r)} \frac{dw}{w-z} = 0$$
+\end{sol}
 
 
-\textbf{Solución}
+\begin{ejer}
+	Probar la siguiente versión, más general, de la fórmula de Cauchy:
+	
+	Sean $a\in\mathbb{C},R\in\mathbb{R}^+$ y $f:\overline{D}(a,R) \rightarrow \mathbb{C}$ una función continua en $\overline{D}(a,R)$ y holomorfa en $D(a,R)$. Se tiene entonces:
+	$$ f(z) = \frac{1}{2\pi i} \int_{C(a,R)} \frac{f(w)}{w-z}dw \hspace{1cm} \forall z\in D(a,R) $$
+\end{ejer}
 
-Fijo $z\in\mathbf{C}$ con $|z-a|>r, \exists r'>0 : |z-a|>r'>r$
-Consideramos $\Omega = D(a,r'), f(w) = \frac{1}{w-z}$ , $f\in\mathcal{H}(D(a,r'))$
-$D(a,r')$ es convexo, en particular estrellado, por tanto, usando $TLC$ y $TCDE$ $\int_{C(a,r)} \frac{dw}{w-z} = 0$
-
-\subsection{Ejercicio 2}
-
-
-\textbf{Solución}
+\begin{sol}
 
 Fijo $z\in D(a,R)$
 Fijo $0<r<R : |z-a|<r<R$, $\overline{D}(a,r) \subset D(a,R)$
@@ -34,12 +41,16 @@ Por lo tanto
 
 $\frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\frac{f(a+re^{it})r}{a+re^{it}-z} \right| dt \leq \frac{1}{2\pi}\epsilon 2\pi$ en el caso de que $|R-r|<\delta$
 
+\end{sol}
 
-\subsection{Ejercicio 3}
 
-\textbf{Solución}
+\begin{ejer}
+	Dados $a\in\mathbb{C}, r\in\mathbb{R}^+$ y $b,c\in\mathbb{C}\backslash C(a,r)^{\ast}$, calcular todos los posibles valores de la integral
+	$$ \int_{C(a,r)} \frac{dz}{(z-b)(z-c)} $$
+	dependiendo de la posición relativa de $b,c$ respecto a la circunferencia $C(a,r)^{\ast}$.
+\end{ejer}
 
-$\frac{1}{(z-b)(z-c)} = \frac{1}{b-c} [\frac{1}{z-b}-\frac{1}{z-c}]$
+$$\frac{1}{(z-b)(z-c)} = \frac{1}{b-c} [\frac{1}{z-b}-\frac{1}{z-c}]$$
 
 Vemos primero el caso $b\not = c$
 
@@ -56,42 +67,48 @@ Ahora vemos el caso $b=c$
 $f(z) = \frac{1}{(z-b)^2}$ tiene primitiva holomorfa en $\mathbb{C}^{\ast}, \frac{-1}{z-b} \implies \int_{C(a,r)} f(z)dz = 0 $
 
 
-\subsection{Ejercicio 4}
 
-\textbf{Solución}
-\subsubsection{a}
+\begin{ejer}
+	Calcular las siguientes integrales:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\int_{C(0,r)} \frac{z+1}{z(z^2+4)}dz \hspace{1cm} (r\in\mathbb{R}^+, r\not =2)$
+		\item $\int_{C(0,1)} \frac{\cos(z)dz}{(a^2+1)z-a(z^2+1)} \hspace{1cm} (a\in\mathbb{C}, |a|\not =1)$
+	\end{enumerate}
+\end{ejer}
+\begin{sol}
 
-$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz$, donde $r\not = 2$, $z\not = \pm 2i$
-
-$\frac{z+1}{z(z^2+4)} = \frac{A}{z} + \frac{B}{z-2i} + \frac{C}{z+2i}$, donde $A = 1/4, B=1/8-i/4, C = -1/8-i/4$
-
-Por tanto
-
-$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz = \frac{1}{4} \int_{C(0,r)} \frac{dz}{z} + (\frac{1}{8}-\frac{i}{4})\int_{C(0,r)} \frac{1}{z-2i}dz + (-\frac{1}{8}+\frac{i}{4}) \int_{C(0,r)} \frac{1}{z+2i}$
+\textbf{a)}
+Tenemos $\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz$, donde $r\not = 2$, $z\not = \pm 2i$
+$$\frac{z+1}{z(z^2+4)} = \frac{A}{z} + \frac{B}{z-2i} + \frac{C}{z+2i}$$
+Nos queda $A = 1/4, B=1/8-i/4, C = -1/8-i/4$, por tanto
+$$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz = \frac{1}{4} \int_{C(0,r)} \frac{dz}{z} + (\frac{1}{8}-\frac{i}{4})\int_{C(0,r)} \frac{1}{z-2i}dz + (-\frac{1}{8}+\frac{i}{4}) \int_{C(0,r)} \frac{1}{z+2i}$$
 
 para $r\not = 2$ las dos últimas integrales se anulan, y por tanto $\frac{1}{4}\int_{C(0,r)} \frac{dz}{z} = \frac{2\pi i}{4} = \frac{\pi}{2}$
 
+\end{sol}
 
 
-\subsection{Ejercicio 5}
+\begin{ejer}
+	Dados $a,b\in\mathbb{C}$ con $a\not =b$, sea $R\in\mathbb{R}^+$ tal que $R>\max \{|a|,|b|\}$. Probar que, si $f$ es una función entera, se tiene:
+	$$ \int_{C(0,R)} \frac{f(z)dz}{(z-a)(z-b)} = 2\pi i\frac{f(b)-f(a)}{b-a} $$
+	Deducir que toda función entera y acotada es constante.
+\end{ejer}
+\begin{sol}
 
-\textbf{Solución}
+Como $R>\max\{ |a|, |b| \}$
+$$\int_{C(0,R)} \frac{f(z)}{(z-a)(z-b)}dz = \frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right]$$
 
-$R>\max\{ |a|, |b| \}$
-
-$\int_{C(0,R)} \frac{f(z)}{(z-a)(z-b)}dz = \frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right]$
-
-Por el ejercicio 3 tenemos
-
-$\frac{f(z)}{(z-a)(z-b)} = \frac{f(z)}{b-a} \left[ \frac{1}{z-b} - \frac{1}{z-a} \right]$
+Por el ejercicio $3$ tenemos
+$$\frac{f(z)}{(z-a)(z-b)} = \frac{f(z)}{b-a} \left[ \frac{1}{z-b} - \frac{1}{z-a} \right]$$
 
 Por la fórmula de Cauchy para la circunferencia
 
-$= \frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right] = 2\pi i f(b) - 2\pi if(a)$
+$$= \frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right] = 2\pi i f(b) - 2\pi if(a)$$
 
 \textbf{Consecuencia}
 
-Si $\exists M>0 : |f(z)|\leq M \forall z \in \mathbb{C}$
-
-$\frac{2\pi |f(b)-f(a)|}{|b-a|} = \frac{|2\pi i(f(b)-f(a))|}{|b-a|} = \left| \int_{C(0,R)} \frac{f(z)}{(z-a)(z-b)} dz \right|$
-$\leq \int_{C(0,R)} \frac{|f(z)|}{|z-a||z-b|} dz \leq \frac{M}{(R-|a|)(R-|b|)} 2\pi R$ que tiende a $0$ cuando $R\rightarrow \infty$ ya que $|z-a|\geq R-|a|$ y $|z-b|\geq R - |b|$
+Si $\exists M>0 : |f(z)|\leq M\ \ \forall z \in \mathbb{C}$
+$$\frac{2\pi |f(b)-f(a)|}{|b-a|} = \frac{|2\pi i(f(b)-f(a))|}{|b-a|} = \left| \int_{C(0,R)} \frac{f(z)}{(z-a)(z-b)} dz \right|
+\leq \int_{C(0,R)} \frac{|f(z)|}{|z-a||z-b|} dz \leq \frac{M}{(R-|a|)(R-|b|)} 2\pi R$$
+que tiende a $0$ cuando $R\rightarrow \infty$ ya que $|z-a|\geq R-|a|$ y $|z-b|\geq R - |b|$
+\end{sol}
