@@ -289,3 +289,182 @@ Todos los algoritmos greedy se pueden aplicar siempre que existan:
 * **Función de selección** del candidato más prometedor para forar
   parte de la solución
 * **Función objetivo** de minimización/maximización
+
+## Exploración en grafos
+
+En ocasiones no existe un algoritmo conocido que pueda resolver un
+determinado problema, o no de manera eficiente. En esta situación la
+resolución para por la exploración directa de todas o una gran parte
+de las posibilidades para llegar a una solución.
+
+Dada la naturaleza de estos problemas se pueden representar como un
+grafo. Por esto es necesario conocer cómo explorar este.
+
+### Recorridos de profundidad y anchura
+
+Los primeros, estudiados en la asignatura Estructura de Datos, se
+basan en algoritmos recursivos para visitar cada nodo y sus hijos.
+
+Los recorridos en anchura por su parte se basan en un procedimiento
+parecido, pero se basan en el uso de una cola en la que para cada nodo
+visitado se elimina este de la cola, se insertan  sus adyacentes, se
+visitan y se inserta w al final de la cola.
+
+Otros ejemplos de estos recorridos son los recorridos **preorden,
+inorden y postorden.**
+
+### Diseño de algoritmos Backtracking
+
+Para representar el posible estado de un problema y los
+movimientos/acciones para pasar de un estado a otro podemos utilizar
+árboles y grafos.
+
+De esta idea nace el **Backtracking**. Que consiste en hacer una
+búsqueda exhaustiva sobre grafos(árboles) dirigidos y acíclicos,
+mediante un recorrido en profundidad. Se realiza una poda de las ramas
+poco prometedoras para acelerar su búsqueda.
+
+La solución del problema se expresa dependiendo de la representación
+del problema, como tuplas $T=(x_1,x_2,x_3, ... ,x_t$
+
+**Criterio de parada:** Dependiendo del problema el objetivo puede ser
+encontrar todas las soluciones al problema o alguna de ellas.
+
+**Pasos para el diseño de Backtracking:**
+
+* Buscar una **representación** del tipo $T=(x_1,x_2,x_3, ... ,x_t$
+
+* Diseñar las **restricciones implícitas:** Son los valores que cada
+  valor $x_i$ puede tener para construir la solución.
+  
+* Identificar las **restricciones explícitas:** Restricciones externas
+  al proceso de encontrar una solución.
+  
+* Diseñar la estructura del **árbol/grafo implícito** que define los
+  estados y transiciones entre estados de búsqueda de soluciones.
+  
+* Diseñar la **función objetivo:** Criterio de parada para encontrar
+  la solución o soluciones requeridas.
+  
+* Adaptar la estructura general del **procedimiento Backtracking** al
+  problema y resolverlo.
+  
+  
+### Diseños de algoritmos Branch & Bound
+
+**Terminología:**
+
+* **Nodo vivo:** Nodo del espacio de soluciones del que no se han
+  generado/visitado aún todos sus hijos.
+  
+* **Nodo en curso:** nodo del que se están generando hijos.
+
+* **Nodo muerto:** nodo del que no se van a generar más hijos porque
+  sea hoja, se pode o no produzca una solución mejor que la solución
+  en curso.
+  
+Se diferencia de Backtracking en que se generan todos los hijos del
+nodo en curso antes de que cualquier nodo vivo pase a ser el nodo en
+curso, mientras que backtracking analizaba inmediatamente todo nodo
+generado. Eso hace que requiera una estructura auxiliar para almacenar
+los nodos vivos (Lista de nodos vivos).
+
+Esto hace que backtracking sea más fácil de implementar y tenga un
+menor requisito de memoria, mientras que branch & bound es más eficiente.
+
+**Componentes:**
+
+* **Representación** de la solución en una tupla $T=(x_1,x_2,x_3, ... ,x_t$
+
+* **Función objetivo** que determina si la solución actual es óptima.
+
+* **Restricciones implícitas:** Valores de cada $x_i$
+
+* **Restricciones explícitas:** Las que no dependen de la
+  representación del problema.
+  
+* **Función de elección** para seleccionar qué nodo es mejor y
+  considerarlo “*en curso*”
+  
+* **Cálculo de cotas** para eliminar partes del árbol que no vayan a
+  generar una solución o para elegir el camino más prometedor.
+  
+* **Árbol de búsqueda** para organizar el problema.
+
+Al igual que en backtracking, la solución se construye paso a paso. El
+proceso acaba cuando no quedan nodos en la lista de nodos vivos.
+
+
+## Programación Dinámica
+
+Algunos problemas pueden subdividirse en problemas de tamaño 1 unidad
+menor que el problema original, de modo que, para construir la
+solución a un problema de tamaño N es necesario saber la solución del
+problema de tamaño N-1.
+
+Ejemplos de este tipo de problemas pueden ser el de los caminos
+mínimos o el de la mochila.
+
+La programación dinámica se puede usar para encontrar una solución
+óptima a este tipo de problemas siempre y cuando se cumplan unos
+requisitos.
+
+**Características:**
+
+* Se resuelven por etapas, como greedy.
+
+* Divide el problema en subproblemas, como Divide y Vencerás.
+
+* Suele ser una técnica ascendente, es decir, necesitamos conocer la
+  solución del problema de tamaño inmediatamente anterior.
+  
+* Mantiene en memoria las soluciones de los subproblemas para ahorrar
+  cálculos repetidos.
+  
+* Devuelve la solución óptima ya que para resolver un problema con
+  Programación dinámica se ha de cumplir el **Principio de optimalidad
+  de Bellman**
+  
+Diferencias con Divide y vencerás:
+
+* DyV se aplica cuando los problemas son independientes, mientras que PD
+cuando estos se solapan.
+
+* DyV está basada en recursividad, lo cual ralentiza el proceso,
+  mientras que PD consume más memoria pero evita esta.
+  
+* DyV repetirá muchos cálculos mientras que PD mantiene en meoria las
+  subsoluciones para evitar repetir cálculos.
+  
+Diferencias con Greedy:
+
+* Greedy en cada etapa elige un elemento y genera una única
+  subsolución, mientras que PD selecciona un elemento pero genera
+  múltiples caminos de etapas a seguir.
+  
+* Greedy es eficiente en tiempo y memoria, pero puede no dar una
+  solución o que esta no sea óptima, mientras que PD sólo es eficiente
+  en tiempo, pero a cambio asegura optimalidad.
+  
+  
+### Diseño de algoritmos de PD
+
+* Son **problemas de optimización** (maximización/minimización).
+
+* El problema debe de poder **resolverse por etapas**
+
+* El problema debe de poder modelarse mediante una **ecuación
+  recurrente**
+
+* Debe existir uno o varios **casos base** al probllema.
+
+* Debe de cumplir el **Principio de Optimalidad de Bellman**.
+
+Este principio se basa en que si una secuencia de pasos para resolver
+un problema es óptima, entonces cualquier subsecuencia de pasos
+también es óptima.
+
+
+
+
+  
