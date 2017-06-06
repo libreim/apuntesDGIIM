@@ -393,3 +393,78 @@ menor requisito de memoria, mientras que branch & bound es más eficiente.
 
 Al igual que en backtracking, la solución se construye paso a paso. El
 proceso acaba cuando no quedan nodos en la lista de nodos vivos.
+
+
+## Programación Dinámica
+
+Algunos problemas pueden subdividirse en problemas de tamaño 1 unidad
+menor que el problema original, de modo que, para construir la
+solución a un problema de tamaño N es necesario saber la solución del
+problema de tamaño N-1.
+
+Ejemplos de este tipo de problemas pueden ser el de los caminos
+mínimos o el de la mochila.
+
+La programación dinámica se puede usar para encontrar una solución
+óptima a este tipo de problemas siempre y cuando se cumplan unos
+requisitos.
+
+**Características:**
+
+* Se resuelven por etapas, como greedy.
+
+* Divide el problema en subproblemas, como Divide y Vencerás.
+
+* Suele ser una técnica ascendente, es decir, necesitamos conocer la
+  solución del problema de tamaño inmediatamente anterior.
+  
+* Mantiene en memoria las soluciones de los subproblemas para ahorrar
+  cálculos repetidos.
+  
+* Devuelve la solución óptima ya que para resolver un problema con
+  Programación dinámica se ha de cumplir el **Principio de optimalidad
+  de Bellman**
+  
+Diferencias con Divide y vencerás:
+
+* DyV se aplica cuando los problemas son independientes, mientras que PD
+cuando estos se solapan.
+
+* DyV está basada en recursividad, lo cual ralentiza el proceso,
+  mientras que PD consume más memoria pero evita esta.
+  
+* DyV repetirá muchos cálculos mientras que PD mantiene en meoria las
+  subsoluciones para evitar repetir cálculos.
+  
+Diferencias con Greedy:
+
+* Greedy en cada etapa elige un elemento y genera una única
+  subsolución, mientras que PD selecciona un elemento pero genera
+  múltiples caminos de etapas a seguir.
+  
+* Greedy es eficiente en tiempo y memoria, pero puede no dar una
+  solución o que esta no sea óptima, mientras que PD sólo es eficiente
+  en tiempo, pero a cambio asegura optimalidad.
+  
+  
+### Diseño de algoritmos de PD
+
+* Son **problemas de optimización** (maximización/minimización).
+
+* El problema debe de poder **resolverse por etapas**
+
+* El problema debe de poder modelarse mediante una **ecuación
+  recurrente**
+
+* Debe existir uno o varios **casos base** al probllema.
+
+* Debe de cumplir el **Principio de Optimalidad de Bellman**.
+
+Este principio se basa en que si una secuencia de pasos para resolver
+un problema es óptima, entonces cualquier subsecuencia de pasos
+también es óptima.
+
+
+
+
+  
