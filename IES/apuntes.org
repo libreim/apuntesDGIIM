@@ -1,0 +1,619 @@
+#+latex_header: \hypersetup{colorlinks=true, linkcolor=black}
+
+# Estos apuntes de empresa han sido escritos por Mario Román, tomando
+# como base la docencia de Matilde Ruiz Arroyo para la asignatura de
+# Ingeniería, Empresa y Sociedad.
+#
+# Pueden copiarse y distribuirse bajo la siguiente licencia respetando
+# la nota de autoría original:
+#
+#  Creative Commons Attribution-NonCommercial-ShareAlike 4.0 
+#  International Public License
+# 
+
+\newpage
+
+* Empresa y Sociedad
+*Bibliografía:*
+
+ - Fuentes Fuentes M. et al. /"Fundamentos de dirección y administración de empresas"/
+
+** 1. La empresa y dirección de empresas
+*** 1.0. Introducción
+**** Economía
+
+La *economía* se define como la ciencia que estudia la administración
+eficiente de la escasez de recursos. También como ciencia que
+estudia la elección.
+
+Este concepto proviene de las ideas de *Malthus*. La escasez justifica
+la necesidad de reparto y la pobreza.
+
+# ¿Y cuando no son escasos no?¿Por qué limitar la definición así?
+# Como ciencia que estudia la elección sí parece tener sentido.
+
+**** Administración de empresas
+
+Estudia la economía en el contexto de una empresa, así como la gestión de
+proyectos, la planificación y el liderazgo.
+
+Es una disciplina científica, multidisciplinar y contempla aspectos
+psicosociales.
+
+# ¿El concepto de empresa está limitado una sociedad capitalista o lo han
+# hecho de forma que entren otras decisiones (del estado, por ejemplo)?
+# ¿Y el liderazgo? ¿¿??
+
+**** Áreas de una empresa
+
+La empresa además opera dentro de un entorno.
+
+ * Producción.
+ * Dirección.
+ * Márketing.
+ * Finanzas
+ * Recursos humanos
+
+*** 1.1. Concepto de empresa y de organización
+**** Organización
+
+Una *organización* es una unidad social deliberadamente destinada a un
+objetivo específico.
+
+# Siempre se ponen de ejemplo organizaciones estatutarias.
+
+***** Definición de Gibson
+
+La *organización* es una unidad coordinada /deliberada/ formada por más de una
+persona que trabaja para alcanzar un /objetivo común/.
+
+***** Clasificación de organizaciones
+
+Una clasificación genérica sencilla las separa según tengan o no
+*ánimo de lucro*.
+
+****** Ejemplo: Inditex
+
+Industria de diseño textil INDITEX S.A. es una empresa multinacional
+que tiene como objetivo maximizar el beneficio. Según la empresa,
+su objetivo es "escuchar a los clientes para ofrecerles las propuestas
+de moda que desean".
+
+**** Definición de empresa
+
+La *empresa* es una organización que transforma un conjunto de recursos
+físicos, monetarios y cognitivos en bienes y/o servicios, con el objetivo
+principal de obtener beneficios.
+
+***** Autores
+
+Otras definiciones de empresa.
+
+- Unidad técnico-económica que combina elementos humanos y financieros.
+- Una organización con ánimo de lucro.
+- Unidad de decisión.
+- Sistema en el que se coordinan factores de producción.
+- Conjunto de factores de producción.
+
+**** ¿Es el beneficio el único objetivo?
+
+Hay posiciones distintas.
+
+# Por definición sí, ¿no? ¿A qué estamos jugando si la definición dice
+# una cosa y luego nos inventamos otra?
+
+***** Friedman
+
+Sí, hay que maximizarlo teniendo como únicas restricciones
+
+ * las leyes,
+ * las normas de la economía capitalista, y
+ * evitar engaños y fraudes.
+
+# Lo peor es que el concepto le parezca bien.
+
+***** Freeman
+
+No, no sólo hay que maximizar el beneficio, también hay que satisfacer
+a los *stakeholders*, que son todas las personas que tienen intereses en
+la compañía.
+
+# Se entiende que aparte del beneficio económico habrá otros beneficios
+# posibles para ellos. Pero entonces, al final, es beneficio otra vez.
+# No entiendo qué estamos discutiendo con esto exactamente.
+
+**** Stakeholder
+
+Los *stakeholders* son todas las partes interesadas en una empresa. Pueden
+ser
+
+ * *internas*, como los empleados, gerentes y propietarios.
+ * *externas*, como los proveedores, clientes y la sociedad.
+
+**** La empresa social
+
+Organizaciones con ánimo de lucro y sin ánimo de lucro pueden tener un
+fin fundamental con beneficio social, medioambiental o político.
+
+En su filosofía se incluye que no reemplaza a la empresa tradicional,
+sino que que quiere coexistir.
+
+Como ejemplos:
+
+ - Plataformas sociales, como Ashoka y SocialEmprende.
+ - DBS.
+
+# "Esta asignatura no es sumar dos más dos." <- Plantear la falta de
+# racionalidad o reproducibilidad como una ventaja.
+
+# Ojo que tenemos una cosa que es el rincón crítico. Tengo la
+# sensación de que lo creó cuando vio que en la clase no estábamos muy
+# por la labor de seguirle el rollo. Orgullo de clase en ambos
+# sentidos.
+
+**** Clasificación de empresas según forma jurídica
+
+Responsabilidad limitada/ilimitada, solidaria/mancomunada. Tipo de personalidad
+jurídica NIF/CIF.
+
+***** Responsabilidad ilimitada
+
+Se llama *responsabilidad ilimitada* cuando el propietario responde
+con todo el patrimonio ante las posibles pérdidas de la
+empresa. Existe cuando éste realiza la actividad con su propia persona
+como personalidad jurídica.
+
+Se dividen en *participaciones sociales*. Nace con vocación de socios
+estables que sólo son objeto de transmisión si da visto bueno una
+junta de socios (o si es a familiares o socios).
+
+***** Responsabilidad limitada
+
+Trámites más costosos y lentos. No se responde con el patrimonio
+frente a posibles pérdidas. Hay que tributar sobre impuesto de
+sociedades en lugar de IRPF. El capital social no puede ser inferior a
+los 3000€ mínimos iniciales.
+
+La responsabilidad de cada socio está limitada por sus aportaciones.
+Necesita consentimiento de la junta general para traspasar
+participaciones sociales fuera de su familia y socios.
+
+***** Responsabilidad solidaria
+
+Se reparte entre los socios.
+
+***** Responsabilidad mancomunada
+
+Cada socio responde por su parte.
+
+***** Emprendedor de responsabilidad limitada
+
+La única diferencia es que la responsabilidad pasa a limitarse.
+Aun así, no tiene CIF y paga el IRPF.
+
+**** Clasificación de empresas según forma societaria
+
+***** Sociedad colectiva
+
+En una *sociedad colectiva* la responsabilidad es /ilimitada y
+mancomunada/ entre los socios, pero sólo participan del beneficio por
+la parte que han aportado de capital y trabajo.
+
+***** Sociedad comanditaria
+
+En una *socidedad comanditaria* existen dos tipos de socios
+
+ - *socios colectivos*, similares a los de las sociedades colectivas,
+   aportando trabajo y capital.
+ - *socios comanditarios*, sólo aportan capital y no trabajan en la
+   empresa. Su responsabilidad se limita a su capital.
+
+***** Sociedad anónima
+
+En una *sociedad anónima*, el capital se divide en partes iguales
+(alícuotas) llamadas *acciones*. Las acciones se transmiten libremente
+en el mercado financiero a terceros, suelen representar un voto y la
+responsabilidad de los socios o /accionistas/ se limita a su
+aportación. Es el único tipo de sociedad que puede cotizar en Bolsa.
+
+Necesita 60000€ como capital mínimo inicial.
+
+***** Sociedad de responsabilidad limitada unitaria (SLU)
+
+***** Sociedad de responsabilidad limitada nueva empresa (SLNE)
+
+Se da de alta en un procedimiento telemático de 48 horas. Se utilizan
+modelos genéricos para constituir la empresa. Facilita la creación de
+una sociedad de responsabilidad limitada.
+
+***** Empresas de economía social
+
+Las *empresas de economía social* suelen constituirse para solventar
+crisis de las empresas. Suelen ser democráticas.
+
+****** Sociedades cooperativas (SC)
+
+Las *sociedades cooperativas* no tienen ánimo de lucro. Cada socio
+aporta capital y trabajo; responde sólo con el capital aportado y
+tiene un voto independientemente del capital.
+
+Estas uniones de trabajo asociado suelen darse cuando los trabajadores
+tienen un objetivo común fuerte. Tienen regulación estatal y
+autonómica y en ocasiones exenciones fiscales (las andaluzas se llaman
+SCA).
+
+El beneficio se llama /retorno/. Las reservas (la parte del beneficio
+que no se distribuye entre los socios), suelen ser más grandes. Suelen
+tener una reserva obligatoria para invertir en la formación de los
+socios.
+
+/Ejemplo: cooperativa Mondragón/
+
+****** Sociedades laborales
+
+Las *sociedades laborales* son sociedades anónimas o de responsabilidad
+limitada donde los trabajadores poseen al menos el 51% del capital.
+
+Suelen ser intentos de los trabajadores de evitar la quiebra de la
+empresa.
+
+**** Clasificación de empresas según tamaño
+
+La cifra de facturación son los ingresos. El *volumen de negocio* es el
+total de ingresos por ventas contabilizadas.
+
+Se dividen en: grandes, medianas, pequeñas y microempresas. El 99.9%
+de empresas en España son PYMEs (pequeñas y medianas empresas).
+
+***** Balance general anual
+
+El total del activo debe ser igual que el pasivo.
+
+ - *Activo*: bienes y derechos de la empresa.
+ - *Pasivo*: obligaciones de pago de la empresa. Capital, reservas y
+   obligaciones.
+
+***** Empresas autónomas o asociadas
+
+Una empresa se clasifica según su relación con otras en
+
+  * *autónoma* si es totalmente independiente y no tiene participación en
+    otras empresas, ni otras empresas en ella.
+  * *asociada* si hay terceros con más del 25% de la empresa o tiene
+    participación de más del 25% en otra empresa.
+
+Aun así existen empresas que se consideran autónomas a pesar de esto.
+Además, dos empresas están *vinculadas* cuando una puede ejercer
+influencia dominante sobre la otra, ya sea nombrando miembros del
+consejo de administración, mediante cláusulas estatutarias o contratos.
+
+*** 1.2. Enfoque sistémico de la empresa
+**** Definición de sistema
+
+Un *sistema* es un conjunto de elementos relacionados dinámicamente que
+realizan una actividad para alcanzar un objetivo; operando con entradas
+y proveyendo salidas.
+
+**** Condiciones para la existencia de un sistema
+
+Para considerar algo un sistema se le exigen
+
+ * un *conjunto de elementos*.
+ * una *estructura de sistema*, formado por relaciones.
+ * un *plan común*, formado por objetivos.
+ * unas *funciones características*, funciones de transformación.
+ * un *conjunto de estados*, midiendo balance de la empresa.
+
+La empresa transforma materias primas (proceso técnico), transforma
+ahorro en capital (proceso financiero) y procesa información (proceso
+mental).
+
+**** Clasificación de sistemas
+
+Se clasifican en
+
+ * *abiertos* si se relacionan con el entorno.
+ * *cerrados* si no interaccionan con el entorno.
+ * *naturales* si no influye el ser humano en su creación.
+ * *artificiales* si se crean por voluntad humana.
+
+La empresa se considera un sistema abierto artificial.
+
+**** Retroalimentación o feedback
+
+La empresa se considera *autorregulada* porque cuando se desvía de los
+objetivos, el proceso de *retroalimentación o feedback* permite
+conocer a la empresa que se han producido estas desviaciones y
+corregirlas. Puede así adaptarse al entorno.
+
+*** 1.3. Subsistemas funcionales de la empresa
+**** Principio de jerarquía
+
+El *principio de jerarquía* permite descomponer un sistema en subsistemas
+y estudiarlos concretamente. 
+
+**** Subsistemas según criterio funcional
+
+El *criterio funcional* de jerarquización divide a la empresa en tantos
+subsistemas como actividades desarrolle. Estos son
+
+ * *subsistema de aprovisionamiento*, que adquiere los insumos.
+ * *subsistema de producción*, transforma insumos en productos.
+ * *subsistema de comercialización*, decide precio, promoción y distribución.
+ * *subsistema de recursos humanos*, selecciona y orienta trabajadores.
+ * *subsistema financiero*, decide los fondos y aplica inversiones.
+ * *subsistema de dirección*, estrategia y gestión de la empresa.
+
+**** Sinergia
+
+La *sinergia* es el aumento de productividad de varios sistemas cuando
+interactúan entre ellos frente a cuando trabajan de manera aislada.
+
+*** 1.4. La dirección de empresas
+**** Eficiencia y eficacia
+
+La *eficacia* mide el nivel de cumplimiento de los objetivos. La *eficiencia*
+mide el uso de la cantidad adecuada de recursos para lograr sus objetivos.
+
+**** Funciones de los administradores
+
+***** Planificación
+
+***** Organización
+
+***** Dirección
+
+***** Control
+
+
+** 2. Teorías de la empresa y del empresario
+*** 2.1. Teorías de la empresa
+# Nada
+
+*** 2.2. Teorías del empresario
+**** Evolución histórica del empresario
+
+Se consideran figuras distintas según la época, en
+
+ * *capitalismo mercantilista* (S. XVI-XVIII), existe un estado que es el
+   agente económico predominante y mercaderes, que simplemente comercian.
+ * *revolución industrial* (S. XVIII-XIX), se desarrolla el pensamiento
+   clásico capitalista del empresario *Adam Smith* habla de la regulación
+   del mercado por la mano invisible. En el siglo XIX, *Karl Marx* explica
+   el beneficio como la extracción de la plusvalía de los trabajadores
+   mediante la propiedad privada de los medios de producción.
+ * *aportaciones posteriores*, Cantillon define en el S. XVIII el
+   /entrepreneur/ y habla del talento del empresario. Say aporta la
+   función directiva en el S. XIX.
+
+**** Teoría del empresario riesgo. Knight (1921)
+
+*Knight* desarrolla la figura del empresario como persona que asegura las
+rentas de los factores productivos, adelantando el pago. El riesgo que
+asume al aportar el dinero es lo que justifica el beneficio empresarial.
+
+Los riesgos serán
+
+  - *técnicos*, como cumplir con la producción esperada.
+  - *financieros*, al aportar el capital inicial.
+
+**** Teoría del innovador de Schumpeter (1912)
+
+*Schumpeter* diferencia capitalista y empresario. El empresario será el
+que aplica una tecnología existente a un problema real.
+
+Se justifica el beneficio porque esa innovación desencadena el
+desarrollo económico y social. Obtiene además un monopolio temporal
+sobre la innovación y lo pierde luego a una situación de equilibrio.
+Esto produce ciclos económicos.
+
+Así, el empresario que innova es el motor del progreso económico y social.
+No el que inventó, no el que investigó y arriesgó su tiempo en ello, no;
+el empresario.
+
+# **** Autónomos
+
+# Nos dicen que hay menos autónomos en España que en Europa por
+# culpa de las cuotas de autónomo. Aquí artículos en contra:
+#
+# - [[http://www.ticbeat.com/empresa-b2b/desmontando-el-mito-de-la-cuota-de-autonomos-en-espana-y-europa/][Desmontando el mito de la cuota de autónomos en España]]
+# - [[http://www.elderecho.com/actualidad/Espana-quinto-Europa-autonomos-ATA_0_457500143.html][España, quinto país de Europa que más autónomos crea con 46.000 nuevas altas]]
+#
+# Pero hay miles a favor también. Ojalá manejáramos datos.
+
+**** Tecnoestructura de Galbraith (1950s)
+
+*Galbraith* supera la concepción de empresario como persona y deja que
+delegue en la /tecnoestructura/, un grupo de personas, un órgano
+colegiado, que dirige la empresa.
+
+Separa propietario (capital de la empresa) y gestor (administración).
+
+*** 2.3. Propiedad dirección y gobierno de la empresa
+**** Definición de directivo
+
+El *directivo* supervisa la combinación de los recursos productivos.
+
+ * Fija objetivos y toma decisiones.
+ * Coordina la empresa.
+ * Coordina relación de la empresa con el entorno.
+
+Los directivos suelen ser los mismos propietarios, pero pueden ser gestores
+contratados u otras personas al nombre del propietario.
+
+**** Definición de capitalista
+
+El *capitalista* es el propietario del capital de la empresa.
+
+**** Empresario
+
+El *empresario* es un directivo capitalista. 
+
+Ejemplos: Amancio, Florentino.
+El emprendedor tiene que ser empresario innovador, es decir, que aproveche
+la innovación de otro.
+
+***** Emprendedor
+
+Llamamos *emprendedor* al empresario que es a su vez el creador de la
+idea del negocio o del cambio y se implica a nivel gestor y
+capitalista.
+
+***** Empresario individual propietario
+
+Según Cuervo (1997), es el empresario clásico en el que convergen 
+capitalista y directivo; sigue las nociones de [[*Teoría del empresario riesgo. Knight (1921)][empresario riesgo]] y
+[[*Teoría del innovador de Schumpeter (1912)][empresario innovador]].
+
+***** Empresario corporativo
+
+Controla la empresa sin participar significativamente en el capital.
+Es parte sólo de la tecnoestructura.
+**** Estructura de la propiedad de la empresa
+
+La *estructura de la propiedad* de una empresa es el modo en el que se
+distribuye el capital de la empresa entre sus propietarios legales.
+
+La propiedad corresponde a un grupo de personas (físicas y jurídicas) que
+ostentan legalmente la titularidad. Pueden haber llegado a ella
+
+  * creándola.
+  * heredándola.
+  * comprándola.
+
+Los propietarios aportan el dinero y los bienes necesarios para la actividad
+productiva.
+
+**** Estructura accionarial
+
+La propiedad en sociedades anónimas se distribuye entre los *accionistas*.
+Los hay de dos tipos
+
+ * *accionistas de control*, si son activos en las decisiones de la
+   empresa.
+ * *accionistas pasivos*, si son simples inversores financieros.
+
+La estructura accionarial completa se divide en
+
+ * *Autocartera*, las acciones propias que la sociedad mantiene entre
+   sus activos.
+ * *Accionistas mayoritarios y de control*, que tienen control de la
+   empresa.
+ * *Pequeños accionistas*, capital flotante en compraventa libre en el
+   mercado financiero. Son propietarios sin poder en la empresa, para
+   controlarla necesitan asociarse.
+ * *Inversores institucionales*, sociedades de inversión, fondeos de
+   pensiones o compañías de seguros que buscan la rentabilidad.
+
+**** Gobierno corporativo
+
+Cuando las empresas son pequeñas, suele coincidir la propiedad y la
+gestión. Conforme crecen, se dotan de estructuras que limiten
+conflictos al intentar maximizar cada propietario sus propios objetivos.
+
+El *gobierno corporativo* es la concreción de las relaciones entre todos
+los stakeholders.
+
+***** Códigos de buen gobierno
+
+Criterios de *responsabilidad social corporativa* (RSC). Hay un código
+de buen gobierno específico para empresas cotizadas de la comisión del
+mercado de valores.
+
+***** Objetivos
+
+
+- Confianza y transparencia.
+- Control interno y responsabilidad.
+- Adecuado funcionamiento de los órganos y separación.
+
+**** Mecanismos de control
+
+Los *mecanismos de control* delimitan el modelo de gobierno corporativo que
+sigue la empresa.
+
+**** Mecanismos internos de control
+
+Los *mecanismos internos* son los diseñados por la propia organización.
+
+***** Junta general de socios accionistas
+
+En una *sociedad anónima*, la *Junta General de Socios* es una reunión
+de accionistas que toma acuerdos por mayoría. 
+
+Sus competencias son:
+
+ * Nombrar al consejo de administración.
+ * Disolver la sociedad.
+ * Nombrar y destituir administradores.
+ * Eligir consejero ejecutivo.
+ * Adquirir de determinados bienes y tomar otras decisiones.
+
+Es obligatoria y debe reunirse anualmente. Nótese que no puede administrar
+o representar a la sociedad, sólo nombrar a los administradores.
+
+***** Consejo de administración
+
+El *consejo de administración* está formado por personas elegidas por
+los propietarios que administran y representan a la empresa.
+
+Está compuesto por:
+
+ * *Consejeros internos o ejecutivos.* Delegados de la
+   empresa. /Ejemplo: Jobs, Zuckerberg./
+ * *Consejeros externos dominicales.* Significativos. Representan
+   empresas con capital en la sociedad.
+ * *Consejeros externos independientes.* Expertos en gestión que son
+   independientes. /Ejemplo: Felipe González, José María Aznar./
+
+***** Caso de las empresas pequeñas
+
+Normalmente coinciden. Sólo a partir de cierto tamaño tiene que
+nombrar administradores.
+
+**** Mecanismos externos de control
+
+Los *mecanismos externos* son los diseñados por el mercado.
+
+***** Oferta Pública de Adquisición de Valores (OPA)
+
+Intenta comprar parte de una empresa para controlar sus cambios de
+dirección. Puede intentarse por alterar su estructura financiera o
+para construir imperios empresariales.
+
+***** Mercados financieros
+
+Con los fondos se determinará el valor de la empresa y la posibilidad
+de ser controlada desde el exterior.
+
+***** Mercado laboral de consejeros y directivos
+
+La alta competencia del mercado laboral de consejeros y directivos hace
+que funcionen correctamente. Se compra su reputación positiva, que deben
+haber ganado en otras empresas previamente.
+
+*** 2.4. La dirección: funciones y niveles
+La *dirección* consiste en la integración de las distintas partes de la
+empresa entre sí. Se divide en varios niveles de jerarquización de las 
+decisiones
+
+**** Alta dirección
+
+Fija los grandes objetivos. Normalmente coincide en una persona el
+ejecutivo y el presidente de la comisión ejecutiva (CEO).
+
+/CEOs, Comité Ejecutivo, Presidente Ejecutivo, Consejero Delegado./
+
+**** Dirección intermedia
+
+Adoptan decisiones propias a un nivel intermedio y son el enlace jerárquico
+para transmisión de órdenes. Marcan objetivos a medio y corto plazo alienados
+con los grandes objetivos.
+
+/Directores departamentales./
+
+**** Dirección de primera línea
+
+Deciden problemas diarios y rutinarios para la empresa.
+
+/Jefes de equipo, capataces, jefe de planta./
