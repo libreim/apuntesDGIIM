@@ -5,9 +5,8 @@
 \end{ejer}
 
 \begin{sol}
-
-$f(0) = f(0+0) = f(0)^2 \implies f(0)= 0$ ó $f(0) = 1$
-
+Vemos los posibles valores de $f(0)$
+$$f(0) = f(0+0) = f(0)^2 \implies f(0)= 0 \text{ ó }f(0) = 1$$
 Si $f(0)=0$ la función es constante, si es $f(0)=1$ y suponiendo que $f$ es derivable en $\alpha\in\mathbb{C}$:
 
 $\exists \lim_{h\rightarrow 0} \frac{f(\alpha+h)-f(\alpha)}{h}$
@@ -19,8 +18,7 @@ Ahora encontramos todas las funciones enteras que cumplan la condición del enun
 
 Sea $z\in\Omega$, $f(z)=0$, $f(z) = e^{wz} : w\in\mathbf{C}$
 
-Sea $f$ tal que $f\in\mathcal{H}(\mathbb{C})$
-
+Sea $f$ tal que $f\in\mathcal{H}(\mathbb{C})$,
 $ f'(z) = f(z) \lim_{h\rightarrow 0} \frac{f(h)-f(0)}{h}$
 
 $(f(z) e^{-wz})' = f'(z) e^{-wz} + (-w) +ze^{-wz} = f(z)we^{-wz} - f(z)we^{-wz} = 0$
@@ -28,7 +26,7 @@ las funciones son la misma salvo una constante.
 En el punto $0$ las dos funciones valen lo mismo, por lo que la función es la constante $1$, ya que $f(0)=1$
 
 
-El ejemplo es $f(z) = e^{Re(z)}$
+El ejemplo de función entera que verifique dicha condición es $f(z) = e^{Re(z)}$
 \end{sol}
 
 
@@ -39,7 +37,7 @@ El ejemplo es $f(z) = e^{Re(z)}$
 \begin{sol}
 
 Podemos ver la exponencial como $e^z = e^{Re(z)} (\cos(Imz) + i\sin(Imz))$, sean $a,b\in\mathbb{R}$ con $a<b$.
-Definimos las bandas horizontales y verticales::
+Definimos las bandas horizontales y verticales:
 $$B_H = \{ z\in\mathbb{C} : a\leq Rez \leq b \} \hspace{1cm} B_V = \{ z\in\mathbb{C} : a\leq Imz \leq b \}$$
 Si $a\leq Rez \leq b$, $e^a \leq e^{Rez} \leq e^b$
 lo que pasa es que se mueve por toda la circunferencia.%? unidad.
@@ -71,13 +69,8 @@ $$ \{w_n(z_n-1)\} \rightarrow \lambda\in\mathbb{C} \implies \{ z_n^{w_n} \}\righ
 
 Como la función exponencial es continua
 $\{ w_n (z_n-1) \} \rightarrow \lambda \implies \{ e^{w_n(z_n-1)} \} \rightarrow e^{\lambda}$
-
-$\lim \{ \log(z_n) \} = 0 \implies \lim \{ z_n-\log(z_n) \} = 1$
-$\implies \lim \{ w_n(z_n-\log(z_n))-w_n \} = 0$
-
-$\lim \{ z_n^{w_n} = e^{\log(z_n)-w_n} \}= \lim \{ e^{w_n (z_n-1)} \}$
-$\Longleftrightarrow \lim\{ \frac{e^{w_n(z_n-1)}}{e^{w_n (\log(z_n))}} = e^{w_n (z_n-\log(z_n))-w_n} \} = 1$
-
+$$\lim \{ \log(z_n) \} = 0 \implies \lim \{ z_n-\log(z_n) \} = 1 \implies \lim \{ w_n(z_n-\log(z_n))-w_n \} = 0$$
+$$\lim \{ z_n^{w_n} = e^{\log(z_n)-w_n} \}= \lim \{ e^{w_n (z_n-1)} \} \Longleftrightarrow \lim\{ \frac{e^{w_n(z_n-1)}}{e^{w_n (\log(z_n))}} = e^{w_n (z_n-\log(z_n))-w_n} \} = 1$$
 Vemos que
 $z_n^{w_n} = e^{w_n \frac{\log(z_n)}{z_n-1} (z_n-1)}$
 $= e^{w_n (z_n-1) \frac{\log(z_n)}{z_n-1}}$
@@ -100,14 +93,11 @@ $\Longleftrightarrow |Rez| > |Imz|$
 
 donde en la última implicación hemos usado
 $e^{z^2} = e^{Rez^2} e^{Imz^2}$
-
-$Rez^2 = (Rez)^2 - (Imz)^2$,
-$Rez^2>0 \Longleftrightarrow |Rez| > |Imz|$
-
+$$Rez^2 = (Rez)^2 - (Imz)^2 \hspace{1cm}Rez^2>0 \Longleftrightarrow |Rez| > |Imz|$$
 Vemos ahora la convergencia uniforme
 
 $A = \{ z\in\mathbb{C} : (Rez)^2>(Imz)^2 \}$
-Si $B\subset A$ y satisface que $\inf_{z\in B} [ (Rez)^2-(Imz)^2 ] > 0$, entonces hay convergencia uniforme en $B$
+Si $B\subset A$ y satisface que $\inf_{z\in B} [ (Rez)^2-(Imz)^2 ] > 0$, entonces hay convergencia uniforme en $B$.
 \end{sol}
 
 
@@ -117,21 +107,15 @@ Si $B\subset A$ y satisface que $\inf_{z\in B} [ (Rez)^2-(Imz)^2 ] > 0$, entonce
 \end{ejer}
 
 \begin{sol}
+Para que los vértices en $\mathbb{T}$ formen un triángulo equilátero deben tener entre ellos una diferencia en el argumento de $2\pi/3$, de esa forma los vértices quedan:
+$$\{ a,b,c \} = \{ e^{(\lambda - 2/3\pi)i}, e^{\lambda i}, e^{(\lambda + 2/3\pi)i} \}$$
 
-$\{ a,b,c \} = \{ e^{(\lambda - 2/3\pi)i}, e^{\lambda i}, e^{(\lambda + 2/3\pi)i} \}$
+$\Longrightarrow$
+$$e^{2/3\pi i} (a+b+c) = e^{2/3\pi i} a + e^{2/3\pi i}b + e^{2/3\pi i}c = a+b+c \implies a+b+c=0$$
 
-$\Rightarrow$
-
-$e^{2/3\pi i} (a+b+c) = e^{2/3\pi i} a + e^{2/3\pi i}b + e^{2/3\pi i}c = a+b+c \implies a+b+c=0$
-
-$\Leftarrow$
-
-$a'=\frac{a}{a} = 1, b'=\frac{b}{a}, c'=\frac{c}{a}$
-$b'=e^{\theta i}$, $c' = e^{\gamma i} = -b-1$
-
-
-$a+b+c = 0 \implies a'+b'+c' = 0 \implies 1+b'+c' = 0 \implies c'=-b'-1$ con $\gamma,\theta\in ]-\pi,\pi[$
-
+$\Longleftarrow$
+$$a'=\frac{a}{a} = 1, b'=\frac{b}{a}, c'=\frac{c}{a} \hspace{1cm} b'=e^{\theta i} , \ \ c' = e^{\gamma i} = -b-1$$
+$$a+b+c = 0 \implies a'+b'+c' = 0 \implies 1+b'+c' = 0 \implies c'=-b'-1 \text{ con }\gamma,\theta\in ]-\pi,\pi[$$
 De lo que deducimos que 
 $(-\cos(\theta)-1)-i\sin(\theta) = (\cos(\gamma)) + i(\sin(\gamma))$
 
@@ -176,9 +160,7 @@ por otra parte la serie de potencias
 
 $\sum_{n\geq 1} \frac{(-1)^{n+1}}{n} z^n$ tiene radio de convergencia $1$
 y su suma $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} z^n = f(z)$ es holomorfa en $D(0,1)$ y su derivada se calcula término a término
-
-$f'(z) = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} n z^{n-1} = \sum_{n=0}^{\infty} (-1)^{n}z^{n}$
-
+$$f'(z) = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} n z^{n-1} = \sum_{n=0}^{\infty} (-1)^{n}z^{n}$$
 Entonces $f'(z) = g'(z)$ $\forall z\in D(0,1)$, por tanto $f$ y $g$ difieren en una constante.
 
 Como $g(0) = \log(1) = 0 = f(0)$
@@ -210,9 +192,7 @@ $\frac{1+z}{1-z} \in\mathbb{R}^- \Longleftrightarrow \exists r>0 : z\not=1, \fra
 Viendo que
 $g(z) = \frac{1+z}{1-z} \in\mathcal{H}(\Omega)$ y $g(\Omega) \subseteq \mathbb{C}^{\ast}\backslash \mathbb{R}^-$
 podemos asegurar que $f\in\mathcal{H}(\mathbb{C})$ por composición.
-
-$f'(z) = \frac{ \frac{1-z+(1+z)}{(1-z)^2} }{ \frac{1+z}{1-z} } = \frac{2}{1-z^2}$
-
+$$f'(z) = \frac{ \frac{1-z+(1+z)}{(1-z)^2} }{ \frac{1+z}{1-z} } = \frac{2}{1-z^2}$$
 Siendo $\xi\in\mathcal{H}(\Omega)$, entonces
 $\xi '(z) = \frac{1}{1+z} + \frac{1}{1-z} = \frac{2}{1-z^2}$
 
@@ -231,8 +211,7 @@ hacer $\frac{2}{1-z^2}$ en serie de potencias
 \end{ejer}
 \textbf{Pista}
 $z^{\phi} = e^{ \phi \log z}$ con $\Omega,\Omega_{\phi} \subset \mathbb{C}^{\ast}\backslash \mathbb{R^-}$
-
-$f^{-1}(z) = \phi^{\frac{1}{\phi\log z}} = z^{1/{phi}}$
+$$f^{-1}(z) = \phi^{\frac{1}{\phi\log z}} = z^{1/{phi}}$$
 
 
 \begin{ejer}

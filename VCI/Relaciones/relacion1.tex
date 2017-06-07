@@ -46,18 +46,17 @@ Tenemos entonces que $f$ es holomorfa en el disco $D(0,1)$, lleva la frontera en
 
 
 Por inducción, todos los números complejos deben tener el mismo argumento, son vectores linealmente dependientes sin que se invierta el signo de ninguno de ellos.
-
-$\exists\lambda_1,...,\lambda_n>0 : \lambda_1 z_1 = \lambda_2 z_2 = ... = \lambda_n z_n$
-
+$$\exists\lambda_1,...,\lambda_n>0 : \lambda_1 z_1 = \lambda_2 z_2 = ... = \lambda_n z_n$$
 para probar que es necesaria no hace falta hacer inducción
-$ |\sum_{k=1}^n z_n| = |\sum_{k=1}^n \frac{\lambda_1}{\lambda_k} z_1| 
+$$ \left|\sum_{k=1}^n z_n\right| 
+=
+\left|\sum_{k=1}^n \frac{\lambda_1}{\lambda_k} z_1\right| 
 =
 |z_1|\sum_{k=1}^n \frac{\lambda_1}{\lambda_k} 
 =
 |z_1|\sum_{k=1}^n \frac{|z_k|}{|z_1|} 
 =
-\sum_{k=1}^n |z_k|$
-
+\sum_{k=1}^n |z_k|$$
 $n=2 \implies |z_1+z_2| = |z_1| + |z_2| \longleftrightarrow z_2 = \lambda z_1$ con $\lambda \in \mathbb{R}$
 
 Sea cierto para $n\in\mathbb{N}$
@@ -67,8 +66,10 @@ $|\sum_{k=1}^{n+1} z_k|
 =
 |z_{n+1}| + |\sum_{k=1}^n z_k|$
 
-Hemos usado en este último paso que
-$|z_{n+1}|+|\sum_{k=1}^n| \geq |\sum_{k=1}^{n+1} z_k|=\sum_{k=1}^{n+1} |z_k| = |z_{n+1}| + \sum_{k=1}^n |z_k|$
+Donde en este último paso hemos usado que
+$$|z_{n+1}|+\left|\sum_{k=1}^nz_n\right| 
+\geq 
+\left|\sum_{k=1}^{n+1} z_k\right|=\sum_{k=1}^{n+1} |z_k| = |z_{n+1}| + \sum_{k=1}^n |z_k|$$
 donde la otra desigualdad entre los extremos se sabe de la desigualdad triangular.
 %Ahora usamos la hipótesis de inducción
 $|z_{n+1}| + |\sum_{k=1}^n z_k| 
@@ -82,7 +83,6 @@ Por la hipótesis de inducción para $k=n, \exists \mu_1,...\mu_n : \mu_1 z_1 = 
 como $z_{n+1} = \lambda \sum_{k=1}^n z_k 
 =
 \lambda \sum_{k=1}^n \frac{\mu_1}{\mu_k} z_1$
-
 $$ |z_1+z_2| = |z_1|+|z_2| 
 \Longleftrightarrow
 |z_1+z_2|^2 = (|z_1|+|z_2|)^2 
@@ -127,9 +127,7 @@ $$ \frac{a^2}{\sqrt{3}^2} + \frac{b^2}{2^2} = 1 $$
 \begin{sol}
 
 Usamos la fórmula del ángulo doble
-$$ \cos(2\alpha) = \cos^2(\alpha)-\sin^2(\alpha) $$
-$$ \sin(2\alpha) = 2\sin(\alpha)\cos(\alpha) $$
-
+$$ \cos(2\alpha) = \cos^2(\alpha)-\sin^2(\alpha) \hspace{1cm} \sin(2\alpha) = 2\sin(\alpha)\cos(\alpha) $$
 $\phi = \arctan(\frac{Im z}{Re z + |z|}) \implies \phi = 2\alpha = \arctan(\frac{Im z}{Re z + |z|}) $
 
 \textbf{Pista para otra forma de hacerlo}
@@ -167,7 +165,6 @@ $$ \cos(\theta) = \frac{1-\tan^2(\theta/2)}{1+\tan^2(\theta/2)}
 \begin{sol}
 Haremos la prueba por inducción, para el caso inicial $n=1$ es trivial, suponemos cierto para un $n\in\mathbb{N}$ genérico.
 Probamos que en ese caso es cierto para $n+1$.
-
 $$ 
 \cos((n+1)\theta)+i\sin((n+1)\theta) 
 =
@@ -207,17 +204,13 @@ La última igualdad la tenemos por la hipótesis de inducción.
 \textbf{Pista}
 Probar las dos simultáneamente y usar la fórmula de Moivre
 $ \sum_{k=0}^n ( cos(x)+sin(x) )^k $
-
-
-
 $$\sin(x/2) \sum_{k=0}^{n} \cos(kx) + i\sin(x/2) \sum_{k=0}^{n} \sin(kx)$$
 Sacamos factor común 
 $$ \sin(x/2)( \sum_{k=0}^{n} \cos(kx)+i\sin(kx) ) $$
 Usamos la fórmula de Moivre
 $$ \sin(x/2) \sum_{k=0}^{n} (\cos(x)+i\sin(x)^k $$
 Usamos que $x\not\in 2\pi\mathbb{Z}$
-$$ \sin(x/2) \frac{1-(\cos(x)+i\sin(x)^{n+1}}{1-(\cos(x)+i\sin(x)} $$
-$$= \sin(x/2) \frac{ 1- (\cos((n+1)x)+i\sin((n+1)x)) }{1 - \cos(x) - i\sin(x)} $$
+$$ \sin(x/2) \frac{1-(\cos(x)+i\sin(x)^{n+1}}{1-(\cos(x)+i\sin(x)} = \sin(x/2) \frac{ 1- (\cos((n+1)x)+i\sin((n+1)x)) }{1 - \cos(x) - i\sin(x)} $$
 Usamos que $2\sin^2(x/2) = 1-\cos(x)$ y que $\sin(x) = \sin(x/2)\cos(x/2)$,
 $$ 
 \sin(x/2) \frac{ 1- (\cos((n+1)x)+i\sin((n+1)x)) }{ 2\sin^2(x/2)-2i\sin(x/2)\cos(x/2) }

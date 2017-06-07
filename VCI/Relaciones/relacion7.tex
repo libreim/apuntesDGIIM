@@ -23,23 +23,17 @@ Fijo $z\in D(a,R)$
 Fijo $0<r<R : |z-a|<r<R$, $\overline{D}(a,r) \subset D(a,R)$
 
 Por la fórmula de Cauchy para la circunferencia $f(z) = \frac{1}{2\pi i} \int_{C(a,r)} \frac{f(w)}{w-z} dw$
+$$ \left|\frac{1}{2\pi i} \int_{C(0,R)} \frac{f(w)}{w-z} dz - \frac{1}{2\pi i} \int_{C(0,r)} \frac{f(w)}{w-z}dw \right| = \frac{1}{2\pi} \left|\int_{-\pi}^{\pi} \frac{f(a+Re^{it}) iRe^{it} }{ a+Re^{it}-z } dt - \int_{-\pi}^{\pi} \frac{f(a+re^{it}) ire^{it}}{a+re^{it}-z} dt\right|$$
+$$\leq \frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\frac{f(a+re^{it})r}{a+re^{it}-z} \right| dt$$
+Definimos
+$$g:[r,R]\times]-\pi, \pi[ \rightarrow \mathbb{C} \hspace{1cm}
+g(p,t) = \frac{f(a+pe^{it})p}{a+pe^{it}-z}$$
+por lo que el término de la integral queda $|g(R,t)-g(r,t)|$. Vemos que $g$ es uniformemente continua por ser una función continua en un compacto.
 
-$ \left|\frac{1}{2\pi i} \int_{C(0,R)} \frac{f(w)}{w-z} dz - \frac{1}{2\pi i} \int_{C(0,r)} \frac{f(w)}{w-z}dw \right| = \frac{1}{2\pi} |\int_{-\pi}^{\pi} \frac{f(a+Re^{it}) iRe^{it} }{ a+Re^{it}-z } dt - \int_{-\pi}^{\pi} \frac{f(a+re^{it}) ire^{it}}{a+re^{it}-z} dt|$
-
-$\leq \frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\frac{f(a+re^{it})r}{a+re^{it}-z} \right| dt$
-
-$g:[r,R]x]-\pi, \pi[ \rightarrow \mathbb{C}$,
-$g(p,t) = \frac{f(a+pe^{it})p}{a+pe^{it}-z}$
-por lo que el término de la integral queda $|g(R,t)-g(r,t)|$
-
-$g$ es una función continua en un compacto, por lo tanto es uniformemente continua.
-
-Dado $\epsilon >0 \exists \delta : si \| (p,t)-(p',t') \| _{\infty}<\delta \implies |g(p,t)-g(p',t')| < \epsilon$,
-y lo utilizamos para $(p,t)=(R,t)$ y $(p',t')=r,t$, si $|R-r|<\delta$ entonces $|g(R,t)-g(r,t)| < \epsilon$
-
-Por lo tanto
-
-$\frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\frac{f(a+re^{it})r}{a+re^{it}-z} \right| dt \leq \frac{1}{2\pi}\epsilon 2\pi$ en el caso de que $|R-r|<\delta$
+Dado $\epsilon >0 \ \exists \delta>0 : si \| (p,t)-(p',t') \| _{\infty}<\delta \implies |g(p,t)-g(p',t')| < \epsilon$,
+y lo utilizamos para $(p,t)=(R,t)$ y $(p',t')=(r,t)$. Si $|R-r|<\delta$ entonces $|g(R,t)-g(r,t)| < \epsilon$:
+$$\frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\frac{f(a+re^{it})r}{a+re^{it}-z} \right| dt \leq \frac{1}{2\pi}\epsilon 2\pi = \epsilon$$
+Ahora solamente queda hacer que $r\rightarrow R$.
 
 \end{sol}
 
@@ -50,22 +44,26 @@ $\frac{1}{2\pi} \int_{-\pi}^{\pi} \left| \frac{f(a+Re^{it})R}{a+Re^{it}-z} -\fra
 	dependiendo de la posición relativa de $b,c$ respecto a la circunferencia $C(a,r)^{\ast}$.
 \end{ejer}
 
-$$\frac{1}{(z-b)(z-c)} = \frac{1}{b-c} [\frac{1}{z-b}-\frac{1}{z-c}]$$
+\begin{sol}
+	Primero dividimos la integral en dos partes
+$$\frac{1}{(z-b)(z-c)} = \frac{1}{b-c} \left[\frac{1}{z-b}-\frac{1}{z-c}\right]$$
 
-Vemos primero el caso $b\not = c$
-
-Tenemos tres subcasos
+Vemos primero el caso $b\not = c$, tendríamos tres subcasos:
 \begin{itemize}
-	\item b interior, c exterior $\int_{C(a,r)} f(z)dz = \frac{1}{b-c} [ \int_{C(a,r)} \frac{dz}{z-b} - \int_{C(a,r)} \frac{dz}{z-c} ] = \frac{1}{b-c} (2\pi i (b interior) - 0 (ej1))$
+	\item b interior, c exterior, la segunda parte es $0$ por el ejercicio $1$
+	$$\int_{C(a,r)} \frac{dz}{(z-b)(z-c)} = \frac{1}{b-c} \left[ \int_{C(a,r)} \frac{dz}{z-b} - \int_{C(a,r)} \frac{dz}{z-c} \right] = \frac{2\pi i}{b-c} (1 - 0)$$
 	
-	\item b y c interiores $\int_{C(a,r)} f(z)dz =  \frac{1}{b-c}[2\pi i - 2\pi i] = 0$
+	\item b y c interiores 
+	$$\int_{C(a,r)} \frac{dz}{(z-b)(z-c)} =  \frac{1}{b-c}[2\pi i - 2\pi i] = 0$$
 	
-	\item b y c exteriores, por el ejercicio 1 ambas partes son $0$: $\int_{C(a,r)} f(z)dz = 0-0 = 0$
+	\item b y c exteriores, por el ejercicio 1 ambas partes son $0$
+	$$\int_{C(a,r)} \frac{dz}{(z-b)(z-c)} = 0-0 = 0$$
 \end{itemize}
 
-Ahora vemos el caso $b=c$
-$f(z) = \frac{1}{(z-b)^2}$ tiene primitiva holomorfa en $\mathbb{C}^{\ast}, \frac{-1}{z-b} \implies \int_{C(a,r)} f(z)dz = 0 $
+Ahora vemos el caso $b=c$, se tiene primitiva holomorfa en $\mathbb{C}^{\ast}, \frac{-1}{z-b}$
+$$ \int_{C(a,r)} \frac{dz}{(z-b)^2} = 0 $$
 
+\end{sol}
 
 
 \begin{ejer}
@@ -75,15 +73,22 @@ $f(z) = \frac{1}{(z-b)^2}$ tiene primitiva holomorfa en $\mathbb{C}^{\ast}, \fra
 		\item $\int_{C(0,1)} \frac{\cos(z)dz}{(a^2+1)z-a(z^2+1)} \hspace{1cm} (a\in\mathbb{C}, |a|\not =1)$
 	\end{enumerate}
 \end{ejer}
+
 \begin{sol}
 
 \textbf{a)}
 Tenemos $\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz$, donde $r\not = 2$, $z\not = \pm 2i$
 $$\frac{z+1}{z(z^2+4)} = \frac{A}{z} + \frac{B}{z-2i} + \frac{C}{z+2i}$$
-Nos queda $A = 1/4, B=1/8-i/4, C = -1/8-i/4$, por tanto
-$$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz = \frac{1}{4} \int_{C(0,r)} \frac{dz}{z} + (\frac{1}{8}-\frac{i}{4})\int_{C(0,r)} \frac{1}{z-2i}dz + (-\frac{1}{8}+\frac{i}{4}) \int_{C(0,r)} \frac{1}{z+2i}$$
+Nos queda $A = 1/4, B=1/8-i/4, C = -1/8+i/4$, por tanto
+$$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz = \frac{1}{4} \int_{C(0,r)} \frac{dz}{z} 
++ \left(\frac{1}{8}-\frac{i}{4}\right)\int_{C(0,r)} \frac{dz}{z-2i} 
++
+\left(-\frac{1}{8}+\frac{i}{4}\right) \int_{C(0,r)} \frac{dz}{z+2i}$$
 
-para $r\not = 2$ las dos últimas integrales se anulan, y por tanto $\frac{1}{4}\int_{C(0,r)} \frac{dz}{z} = \frac{2\pi i}{4} = \frac{\pi}{2}$
+Tenemos para las dos últimas integrales y $r\not = 2$ dos casos, si $r<2$ ambas integrales son $0$, si $r>2$ ambas integrales valen lo mismo y se anulan entre sí. Por tanto
+$$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz
+=
+\frac{1}{4}\int_{C(0,r)} \frac{dz}{z} = \frac{2\pi i}{4} = \frac{\pi}{2}$$
 
 \end{sol}
 
@@ -102,8 +107,7 @@ Por el ejercicio $3$ tenemos
 $$\frac{f(z)}{(z-a)(z-b)} = \frac{f(z)}{b-a} \left[ \frac{1}{z-b} - \frac{1}{z-a} \right]$$
 
 Por la fórmula de Cauchy para la circunferencia
-
-$$= \frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right] = 2\pi i f(b) - 2\pi if(a)$$
+$$\frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(z)}{z-a}dz \right] = 2\pi i\frac{f(b) - f(a)}{b-a}$$
 
 \textbf{Consecuencia}
 

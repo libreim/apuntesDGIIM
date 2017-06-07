@@ -8,7 +8,6 @@ Definimos $\gamma :[0,r] \rightarrow \mathbb{C}, \ \gamma (s) = \alpha + s, s\in
 $$\int_{[\alpha,\alpha + r]} f(z)dz = \int_{0}^{r} f(\alpha +s)\gamma ' (s)ds \hspace{1cm}\text{ donde }\gamma ' (s) = 1 \forall s\in [0,r]$$
 
 Para la igualdad respecto a un segmento vertical definimos $\xi : [0,r] \rightarrow \mathbb{C}$, $\xi(s) = \alpha +is \forall s\in[0,r]$
-
 $$\int_{[\alpha,\alpha + ir]} f(z)dz = \int_0^r f(\alpha + is) \gamma ' (s)ds = i\int_0^r f(\alpha +is)ds$$
 
 \end{sol}
@@ -61,7 +60,7 @@ Por tanto
 $$ \int_{-\pi}^{\pi} \ln |1+re^{it}|dt = 0$$
 
 Sabemos que 
-$$\log(1+re^{it}) = \ln|1+re^{it}| + i*arg(1+re^{it})$$
+$$\log(1+re^{it}) = \ln(|1+re^{it}|) + i*arg(1+re^{it})$$
 y además
 $$\gamma(t) = re^{it}, \gamma:[-\pi,\pi] \rightarrow \mathbb{C}, \ \gamma '(t) = ire^{it}$$
 
@@ -70,7 +69,7 @@ también sabemos que
 $$|1+re^{it}| = ((1+r\cos(t))^2 + r^2\sin^2(t))^{1/2} = (1+2r\cos(t) + r^2\cos^2(t) + r^2\sin^2(t))^{1/2} = (1+2r\cos(t)+r^2)^{1/2}$$
 
 por tanto
-$$0 = \int_{-\pi}^{\pi} \ln|1+re^{it}| dt = 1/2 \int_{-\pi}^{\pi} \ln(1++2r\cos(t) +r^2)dt$$
+$$0 = \int_{-\pi}^{\pi} \ln(|1+re^{it}|) dt = 1/2 \int_{-\pi}^{\pi} \ln(1++2r\cos(t) +r^2)dt$$
 
 Como sabemos que el coseno es par
 $ 1/2 \int_{-\pi}^{\pi} \ln(1++2r\cos(t) +r^2)dt = \int_{0}^{\pi} \ln (1+2r\cos(t)+r^2) dt$

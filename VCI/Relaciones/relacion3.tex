@@ -26,13 +26,9 @@ $$ \frac{\partial u}{\partial y} = \frac{x^3 (-1)2y}{(x^2+y^2)^2} \hspace{1cm}
 \frac{\partial v}{\partial x} = \frac{y^3(-1)2x}{(x^2+y^2)^2}$$
 
 Usando las ecuaciones de Cauchy-Riemman de las dos primeras ecuaciones deducimos
-
-$3x^2(x²+y^2) - 2x^4 = 3y^2(x^2+y^2)-2y^4 \implies x^4-y^4 = 0 \implies |x|=|y|$ 
-
+$$3x^2(x²+y^2) - 2x^4 = 3y^2(x^2+y^2)-2y^4 \implies x^4-y^4 = 0 \implies |x|=|y|$$
 de las últimas dos deducimos
-
-$2yx^3=-2xy^3 \implies xy(x^2+y^2) = 0 \implies xy=0 \text{ ó } x^2+y^2=0$
-
+$$2yx^3=-2xy^3 \implies xy(x^2+y^2) = 0 \implies xy=0 \text{ ó } x^2+y^2=0$$
 Como conclusión, para que la función sea derivable en un punto $x\in\mathbb{C}$ dicho punto debe cumplir que el módulo de su parte real sea igual que el módulo de su parte imaginaria.
 
 
@@ -75,8 +71,7 @@ Los casos extremos son $a=0$ o $b=0$, donde o la imagen o la parte real que qued
 $au(x,y)+bv(x,y)=c \implies -bv(x,y) = c-au(x,y) \implies v(x,y)= c'-a'u(x,y)$
 
 Derivamos con respecto a $x$ e $y$ a ambos lados de la última ecuación:
-$$\frac{\partial v(x,y)}{\partial x} = -a' \frac{\partial u(x,y)}{\partial x} = -a' \frac{\partial v(x,y)}{\partial y}$$
-$$\frac{\partial v(x,y)}{\partial y} = -a' \frac{\partial u(x,y)}{\partial y} = a' \frac{\partial v(x,y)}{\partial x}$$
+$$\frac{\partial v(x,y)}{\partial x} = -a' \frac{\partial u(x,y)}{\partial x} = -a' \frac{\partial v(x,y)}{\partial y} \hspace{1cm} \frac{\partial v(x,y)}{\partial y} = -a' \frac{\partial u(x,y)}{\partial y} = a' \frac{\partial v(x,y)}{\partial x}$$
 Con lo que nos queda
 $$\frac{\partial u (x,y)}{\partial x} = \frac{\partial v(x,y)}{\partial y} = -a'\frac{\partial v(x,y)}{\partial x}$$
 % Quedaba lo siguiente pero creo que está mal
@@ -150,14 +145,9 @@ $$R(z) = R'(z) = \frac{A'(z)B(z)-A(z)B'(z)}{B(z)^2} = \frac{A(z)}{B(z)}$$
 Entonces
 $$A(z) = A'(z) - \frac{A(z)B'(z)}{B(z)} \implies
 B(z)A(z) = A'(z)B(z) - B'(z)A(z) \hspace{1cm}\forall z\in D(a,r), a\in\mathbb{C}, r>0$$
-
-
 Tienes dos polinomios que son iguales en un entorno no vacío de un punto.
-
-
 %$gr(A(z)) \leq gr(A'(z))$
-$gr(B(z)) + gr(A(z)) \leq \max \{ gr(A'(z)) + gr(B(z)), gr(A(z))+gr(B'(z)) \}$
-
+$$gr(B(z)) + gr(A(z)) \leq \max \{ gr(A'(z)) + gr(B(z)), gr(A(z))+gr(B'(z)) \}$$
 Por tanto llegamos a una contradicción, al derivar un polinomio su grado disminuiría, con lo que no puede cumplirse la última desigualdad.
 Como nuestra hipótesis no es cierta tenemos que dicha función nunca es una función racional.
 

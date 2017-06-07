@@ -1,0 +1,18 @@
+\subsection{Ejercicio 1}
+
+\textbf{Solución}
+\subsubsection{a)}
+$f(z) = \sum_{n\geq 0} \frac{f^{n)}(0)}{n!} z^n$
+$ f^{n)}(0) = n$, vemos $\left\{ \frac{n}{n!} \right\}$,  $\left\{ \sqrt[n]{\frac{n}{n!}} \right\} \rightarrow 0 \implies R = \infty$,
+
+
+\subsubsection{b)}
+$\frac{f^{n)}(0)}{n!} = \frac{(n+1)!}{n!} = n+1$, $\sqrt[n]{n+1} \implies R=1$
+Por tanto no hay función entera que cumpla la condición
+
+\subsubsection{c)}
+$\frac{f^{n)}(0)}{n!} = \frac{2^n n!}{n!} = 2^n$, $\sqrt[n]{z^n} = 2 \implies R=1/2$
+
+\subsubsection{d)}
+$\frac{f^{n)}(0)}{n!} = \frac{n^n}{n!}$, $\sqrt[n]{ \frac{n^n}{n!} }$ por el criterio del cociente
+$\implies R=\frac{1}{e} < \frac{1}{2}$

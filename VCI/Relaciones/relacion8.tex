@@ -1,131 +1,153 @@
-\subsection{Ejercicio 1}
+\begin{ejer}
+	Sea $\gamma$ un camino y $\varphi : \gamma^{\ast} \rightarrow \mathbb{C}$ una función continua. Se define $f:\mathbb{C}\backslash\gamma^{\ast}\rightarrow\mathbb{C}$ por
+	$$ f(z) = \int_{\gamma}\frac{\varphi(w)}{w-z}dw \hspace{1cm} \forall z\in\mathbb{C}\backslash\gamma^{\ast} $$
+	Probar que $f$ es una función analítica en $\mathbb{C}\backslash\gamma^{\ast}$ y que
+	$$ f^{(k)}(z) = k! \int_{\gamma} \frac{\varphi(w)}{(w-z)^{k+1}}dw \hspace{1cm} \forall z\in\mathbb{C}\backslash\gamma^{\ast}, \ \ \forall k\in\mathbb{N} $$
+\end{ejer}
 
-\textbf{Solución}
+\begin{sol}
+Definimos
+$$\phi (w,z) = \frac{\varphi(w)}{w-z} \hspace{1cm} \phi : \gamma^{\ast}\times\mathbb{C}\backslash \gamma^{\ast} \rightarrow \mathbb{C}$$
+Sabemos que $\phi$ es continua por ser composición de funciones continuas. Vemos 
+$$\phi_w(z) = \phi(w,z)\hspace{1cm}\phi_w \in \mathcal{H}(\mathbb{C}\backslash \{w\})\hspace{1cm}\phi_w \in \mathcal{H}(\mathbb{C} \backslash \gamma^{\ast}  )$$
+Por tanto  por el teorema de holomorfía de una integral dependiente de $1$ parámetro (Tema $10$) $f\in\mathcal{H}(\mathbb{C}\backslash \gamma^{\ast})$
+Podemos proceder también de otra forma, sea $a\in\mathbb{C}\backslash \gamma^{\ast}$ fijo:
+$$\lim_{z\rightarrow a} \frac{f(z)-f(a)}{z-a} = \lim_{z\rightarrow a}  \frac{ \int_{\gamma} \frac{\varphi (w)}{w-z}dw  -  \int_{\gamma} \frac{\varphi (w)}{w-a}dw }{z-a} = \lim_{z\rightarrow a} \int_{\gamma} \frac{\varphi(w)((w-a)-(w-z))}{(z-a)(w-z)(w-a)} dw = \lim_{z\rightarrow a} \int_{\gamma} \frac{\varphi (w) dw}{(w-z)(w-a)}$$
 
-$\phi (w,z) = \frac{\varphi}{w-z}$, 
-
-$\phi : \gamma^{\ast}x\mathbb{C}\backslash \gamma^{\ast} \rightarrow \mathbb{C}$
-
-$\phi$ es continua
-
-$\phi_w(z) = \phi(w,z)$
-
-$z\rightarrow \phi_w(z)$
-
-$\phi_w \in \mathcal{H}(\mathbb{C}\backslash \{w\})$, $\phi_w \in \mathcal{H}(\mathbb{C} \backslash \gamma^{\ast}  )$
-
-Por tanto  por el teorema de holomorfía de una integral dependiente de $1$ parámetro $f\in\mathcal{H}(\mathbb{C}\backslash \gamma^{\ast})$
-
-Podemos proceder también de otra forma:
-
-
-Fijo $a\in\mathbb{C}\backslash \gamma^{\ast}$
-$\lim_{z\rightarrow a} \frac{f(z)-f(a)}{z-a}$
-$= \lim_{z\rightarrow a}  \frac{ \int_{\gamma} \frac{\varphi (w)}{w-z}dw  -  \int_{\gamma} \frac{\varphi (w)}{w-a}dw }{z-a}$
-
-$= \lim_{z\rightarrow a} \int_{\gamma} \varphi \frac{(w-a)-(w-z)}{(z-a)(w-z)(w-a)} dw$
-$= \lim_{z\rightarrow a} \int_{\gamma} \varphi (w)\frac{dw}{(w-z)(w-a)}$
-
-Sabemos que podemos intercambiar límite e integral
-
-Nos podemos restringir a un compacto para ver $\psi : \phi_{| \gamma{\ast}  \times  \overline{D}(a,r)} \rightarrow \mathbb{C}$  es continua con $r$ suficientemente pequeño y $\psi (w,z) = \frac{\varphi (w)}{(w-z)(w-a)}$
+Veremos que podemos intercambiar límite e integral. Nos podemos restringir a un compacto para ver $\psi : \phi_{| \gamma{\ast}  \times  \overline{D}(a,r)} \rightarrow \mathbb{C}$  es continua con $r$ suficientemente pequeño y $\psi (w,z) = \frac{\varphi (w)}{(w-z)(w-a)}$
 
 tenemos que $\gamma^{\ast} \times \overline{D}(a,r)$ es compacto, por tanto $\phi$ es uniformemente continua.
 
-La fórmula para las derivadas la podemos obtener por inducción:
-
-$k=1$ lo hemos hecho, supuesto cierto para $k$, vemos para $k+1$
-
+La fórmula de $f^{(k)}(z)$ la podemos obtener a partir de la \textit{fórmula de Cauchy para las derivadas} teniendo en cuenta que 
+$$ f(z) = 2\pi i\varphi(z) $$
 
 
 %$\frac{\phi (w)}{(w-z)^{k+1}} - \frac{\phi (w)}{(w-a)^{k+1}} = %\phi (w) = \left[ \frac{(w-a)^{k+1} - %(w-z)^{k+1}}{(w-z)^{k+1}(w-a)^{k+1}} \right]$
+\end{sol}
 
 
 
 
 
+\begin{ejer}
+	Para $\alpha\in\mathbb{C}$ se define:
+	$$ \binom{\alpha}{0}=1\ \text{ y }\ \binom{\alpha}{n}=\frac{1}{n!} \prod_{j=0}^{n-1}(\alpha-j)= \frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!} \ \ \forall n\in\mathbb{N}$$
+	Probar que
+	$$ (1+z)^{\alpha} = \sum_{k=0}^{\infty}\binom{\alpha}{n}z^n \hspace{1cm}\forall z\in D(0,1) $$
+\end{ejer}
 
-\subsection{Ejercicio 2}
-
-\textbf{Solución}
-
-$(1+z)^{\alpha} = e^{ \alpha \log(1+z) } \in\mathcal{H}(D(0,1))$ por tanto es analítica en ese disco.
-
-Por el Teorema de desarrollo de Taylor
-$\sum_{n\geq 0} \frac{f^{n)}(0)}{n!}z^n$
+\begin{sol}
+Vemos que la siguiente función es analítica en el disco $D(0,1)$.
+$$(1+z)^{\alpha} = e^{ \alpha \log(1+z) } \in\mathcal{H}(D(0,1))$$
 
 
-\subsection{Ejercicio 3}
+Por el \textit{teorema de desarrollo de Taylor}:
+$$\sum_{n\geq 0} \frac{f^{n)}(0)}{n!}z^n$$
+\end{sol}
 
-\textbf{Solución}
+\begin{ejer}
+	Obtener el desarrollo en serie de Taylor de la función $f$, centrado en el origen, en cada uno de los siguientes casos:
+	\begin{enumerate}[label=(\alph*)]
+		\item $f(z) = \log(z^2-3z+2) \hspace{1cm}\forall z\in D(0,1)$
+		\item $f(z) = \frac{z^2}{(z+1)^2} \hspace{1cm} \forall z\in \mathbb{C}\backslash\{-1\}$
+		\item $f(z) = \arcsin(z) \hspace{1cm} \forall z\in D(0,1)$
+		\item $f(z) = \cos^2(z) \hspace{1cm} \forall z\in\mathbb{C}$
+	\end{enumerate}
+\end{ejer}
+\begin{sol}
 
-\subsubsection{a} 
-$f'(z) = \frac{2z-3}{z^2-3z+2}$
-
-$\frac{1}{z^2-3z+2} = \frac{A}{2-z} + \frac{B}{1-z}$
-
-Por tanto el desarrollo en serie de potencias de la original se puede conseguir a partir de desarrollo de las dos partes por separado.
-
-$f'(z) = (2z-3) \sum_{n\geq 0} (\frac{A}{2} (\frac{z}{2})^n + Bz^n) = (2z-3)\sum_{n\geq 0} (\frac{A}{2^{n+1}} + B)z^n $
-
-$= \sum_{n\geq 0} (\frac{A}{2^{n}} + 2B)z^{n+1} - \sum_{n\geq 0} 3 (\frac{A}{2^{n+1}}+B)z^n$
+\textbf{a)}
+Derivamos
+$$f'(z) = \frac{2z-3}{z^2-3z+2} \hspace{1cm}\frac{1}{z^2-3z+2} = \frac{A}{2-z} + \frac{B}{1-z} = \frac{A/2}{1-z/2} + \frac{B}{1-z}$$
+Por tanto el desarrollo en serie de potencias de la original se puede conseguir a partir de desarrollo de las dos partes por separado. Como $z\in D(0,1), |z|<1$ podemos usar la fórmula de la suma de una serie geométrica
+$$f'(z) = (2z-3) \sum_{n\geq 0} \left(\frac{A}{2} \left(\frac{z}{2}\right)^n + Bz^n\right) = (2z-3)\sum_{n\geq 0} \left(\frac{A}{2^{n+1}} + B\right)z^n = \sum_{n\geq 0} \left(\frac{A}{2^{n}} + 2B\right)z^{n+1} - \sum_{n\geq 0} 3 \left(\frac{A}{2^{n+1}}+B\right)z^n$$
 
 que nos da como resultado 
+$$ f'(z) = -\left(\frac{3A}{2}+B\right) + \sum_{n\geq 1} \left(\frac{A}{2^{n+1}} - B \right)z^n $$ %(*)
+\end{sol}
 
-$$ f'(z) = -\left(\frac{3A}{2}+B\right) + \sum_{n\geq 1} \left(\frac{A}{2^{n+1}} - B \right)z^n $$
+\begin{ejer}
+	Dado $\alpha\in\mathbb{C}^{\ast}\backslash\mathbb{N}$, probar que existe una única función $f\in\mathcal{H}(D(0,1))$, verificando que
+	$$ zf'(z)-\alpha f(z) = \frac{1}{1+z} \hspace{1cm} \forall z\in D(0,1) $$
+\end{ejer}
+
+\begin{ejer}
+	Probar que existe una única función $f\in\mathcal{H}(D(0,1))$, verificando que $f(0)=0$ y 
+	$$ \exp(-zf'(z)) = 1-z \hspace{1cm} \forall z\in D(0,1) $$
+\end{ejer}
 
 
-\subsection{Ejercicio 6}
 
-\textbf{Solución}
-
-$f(z) = \frac{1}{1-z-z^2} = \frac{1}{(z-a_1)(z-a_2)} $
-$z^2+z-1 = 0 \Longleftrightarrow z = \frac{-1\pm \sqrt{5}}{2}$, donde $a_1=\frac{-1+ \sqrt{5}}{2},a_2=\frac{-1- \sqrt{5}}{2}$
-$f(z) = \frac{1}{(a_1-z)(a_2-z)} = \frac{1}{a_1-a_2}\left[ \frac{1}{a_1-z}-\frac{1}{a_2-z} \right]$
+\begin{ejer}
+	Para $z\in\mathbb{C}$ con $1-z-z^2\not =0$ se define $f(z) = (1-z-z^2)^{-1}$. Sea $\sum_{n\geq 1}\alpha_nz^n$ la serie de Taylor de $f$ centrada en el origen. Probar que $\{\alpha_n \}$ es la sucesión de Fibonacci:
+	$$ \alpha_0 = \alpha_{1} = 1 \hspace{1cm}\text{ y }\hspace{1cm} \alpha_{n+2} = \alpha_n + \alpha_{n+1} \hspace{1cm}\forall n\in\mathbb{N}\cup\{0\}  $$
+	Calcular en forma explícita dicha sucesión.
+\end{ejer}
+\begin{sol}
+Vemos los ceros del denominador
+$$f(z) = \frac{1}{1-z-z^2} = \frac{1}{(z-a_1)(z-a_2)} $$
+$$z^2+z-1 = 0 \Longleftrightarrow z = \frac{-1\pm \sqrt{5}}{2} \text{\  donde\ } a_1=\frac{-1+ \sqrt{5}}{2},a_2=\frac{-1- \sqrt{5}}{2}$$
+$$f(z) = \frac{1}{(a_1-z)(a_2-z)} = \frac{1}{a_1-a_2}\left[ \frac{1}{a_1-z}-\frac{1}{a_2-z} \right]$$
 Expresamos $\alpha_n$ en términos de $a_1$ y $a_2$
-$a_1+a_2 = -1$
-$a_1*a_2=-1$
-$(z-a_1)(z-a_2) = z^2-(a_1+a_2) + a_1a_2$
+$$a_1+a_2 = -1 \hspace{1cm}a_1*a_2=-1 \hspace{1cm}(z-a_1)(z-a_2) = z^2-(a_1+a_2) + a_1a_2$$
 
 $\alpha_{n+2}$ a partir de aquí se puede expresar en términos de $\alpha_n$ y $\alpha_{n+1}$
+\end{sol}
 
 
-\subsection{Ejercicio 1}
+\begin{ejer}
+	En cada uno de los siguientes casos, decidir si existe una función $f\in\mathcal{H}(\Omega)$ verificando que $f^{(n)}=a_n$ para todo $n\in\mathbb{N}$:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\Omega = \mathbb{C}, \ \ a_n=n$
+		\item $\Omega=\mathbb{C},\ \ a_n=(n+1)!$
+		\item $\Omega=D(0,1), \ \ a_n=2^nn!$
+		\item $\Omega=D(0,1/2), \ \ a_n=n^n$
+	\end{enumerate}
+\end{ejer}
 
-\textbf{Solución}
-\subsubsection{a)}
-$f(z) = \sum_{n\geq 0} \frac{f^{n)}(0)}{n!} z^n$
-$ f^{n)}(0) = n$, vemos $\left\{ \frac{n}{n!} \right\}$,  $\left\{ \sqrt[n]{\frac{n}{n!}} \right\} \rightarrow 0 \implies R = \infty$,
+\begin{ejer}
+	Dados $r\in\mathbb{R}^+,k\in\mathbb{N}$, y $a,b\in\mathbb{C}$ con $|b|<r<|a|$, calcular la siguiente integral:
+	$$ \int_{C(0,r)}\frac{dz}{(z-a)(z-b)^k} $$
+\end{ejer}
 
+\begin{ejer}
+	Calcular la integral $\int_{\gamma}\frac{e^zdz}{z^2(z-1)}$, para $\gamma=C(1/4,1/2), \gamma=C(1,1/2)$ y $\gamma=C(0,2)$.
+\end{ejer}
 
-\subsubsection{b)} 
-$\frac{f^{n)}(0)}{n!} = \frac{(n+1)!}{n!} = n+1$, $\sqrt[n]{n+1} \implies R=1$
-Por tanto no hay función entera que cumpla la condición
+\begin{ejer}
+	Dado $n\in\mathbb{N}$, calcular las siguientes integrales:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\int_{C(0,1)}\frac{\sin(z)}{z^n}dz$
+		\item $\int_{C(0,1)}\frac{e^z-e^{-z}}{z^n}dz$
+		\item $\int_{C(0,1/2)}\frac{\log(1+z)}{z^n}dz$
+	\end{enumerate}
+\end{ejer}
 
-\subsubsection{c)}
-$\frac{f^{n)}(0)}{n!} = \frac{2^n n!}{n!} = 2^n$, $\sqrt[n]{z^n} = 2 \implies R=1/2$
+\begin{ejer}
+	Probar la siguiente \textit{fórmula de cambio de variable} para la integral curvilínea:
+	
+	\textit{Si $\Omega$ es un abierto del plano, $\gamma$ un camino en $\Omega$ y $\varphi\in\mathcal{H}(\Omega)$, entonces $\varphi\circ\gamma$ es un camino y, para cualquier función $f$ que sea continua en $(\varphi\circ\gamma)^{\ast}$ se tiene:}
+	$$ \int_{\varphi\circ\gamma} f(z)dz = \int_{\gamma}f(\varphi(w))\varphi'(w)dw $$
+\end{ejer}
 
-\subsubsection{d)}
-$\frac{f^{n)}(0)}{n!} = \frac{n^n}{n!}$, $\sqrt[n]{ \frac{n^n}{n!} }$ por el criterio del cociente
-$\implies R=\frac{1}{e} < \frac{1}{2}$
+\begin{ejer}
+	Usar el resultado del ejercicio anterior para calcular las siguientes integrales:
+	\begin{enumerate}[label=(\alph*)]
+		\item $\int_{C(0,2)}\frac{dz}{z^2(z-1)^2}$
+		\item $\int_{C(0,2)}\frac{dz}{(z-1)^2(z+1)^2(z-3)}$
+	\end{enumerate}
+\end{ejer}
 
+\begin{sol}
 
+\
 
-\subsection{Ejercicio 12}
+\textbf{a)}
 
-\textbf{Solución}
-
-$\int_{\mathcal{C}(0,2)} \frac{dz}{z^2(z-1)^2}$
+Definimos la función y el camino
 $f(z) = \frac{1}{z^2(z-1)^2}$
-
-$\phi(z) = \frac{1}{z}$
-
-$\gamma{\ast} = \mathcal{C}(0,1/2)^{\ast}$
-$\phi(\gamma^{\ast}) = \mathcal{C}(0,2)^{\ast}$
-Si $\gamma(t) = \frac{1}{2}e^{-it}$
-$\phi(\gamma(t)) = 2e^{it}\implies \phi o \gamma = \mathcal{C}(0,2)$ 
-
+$$ \phi(z) = \frac{1}{z} \hspace{1cm} \gamma{\ast} = \mathcal{C}(0,1/2)^{\ast} \hspace{1cm} \gamma(t) = \frac{1}{2}e^{-it} $$
+$$ \phi(\gamma(t)) = 2e^{it}\implies \phi(\gamma^{\ast}) = \mathcal{C}(0,2)^{\ast}$$
 Por tanto
-
-$\int_{\mathcal{C}(0,2)} \frac{dz}{z^2(z-1)^2} = \int_{\mathcal{C}(0,1/2)} \frac{1}{ \frac{1}{w^2} (\frac{1}{w}-1)^2} \frac{1}{w^2} dw =$
-$\int_{\mathcal{C}(0,1/2)} \frac{w^2dw}{(1-w)^2}$
+$$\int_{\mathcal{C}(0,2)} \frac{dz}{z^2(z-1)^2} = \int_{\mathcal{C}(0,1/2)} \frac{1}{ \frac{1}{w^2} (\frac{1}{w}-1)^2} \frac{1}{w^2} dw = \int_{\mathcal{C}(0,1/2)} \frac{w^2dw}{(1-w)^2}$$
+\end{sol}
