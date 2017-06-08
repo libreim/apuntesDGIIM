@@ -267,7 +267,7 @@ defecto (el neutro para el correspondiente operador).
 
 C/C++
 
-		   	   		
+
 +------+-------+
 | tipo |Valor  |
 |      |inicial|
@@ -309,8 +309,64 @@ ejecuta el single a la misma variable privada en los otros
 threads. Esto es usado comúnmente en lecturas o peticiones al usuario
 únicas.
 
-# Seminario 3. Variables de entorno OpenMP
+# Seminario 3. Variables de OpenMP
 
-(...)
-Se evitan con #ifdef _OPENMP ...(funciones)... #endif para asegurarnos
+##Variables de control
+
+
+1. *dyn-var* controla el ajuste dinámico del nº de threads.
+2. *nthreads-var* controla el nº de threads en la siguiente ejecución paralela.
+3. *thred-limit-var* controla el máximo numero de threads.
+4. *nest-var* controla el paralelismo anidado.
+5. *run-sched-var* controla la planificacion de bucles para *runtime*
+
+##Variables de entorno
+
+Se evitan con #ifdef_OPENMP ...(funciones)... #endif para asegurarnos
 de que sólo se usarán cuando estemos usando -fopenmp
+
+1. *dyn-var* OMP_DYNAMIC export OMP_DYNAMIC=FALSE/TRUE
+2. *nthreads-var* OMP_NUM_THREADS export OMP_NUM_THREADS=8
+3. *thread-limit-var* OMP_THREAD_LIMIT export OMP_THREAD_LIMIT=8
+4. *nest-var* OMP_NESTED export OMP_NESTED=TRUE/FALSE
+5. *run-sched-var* OMP_SCHEDULE export OMP_SCHEDULE="static,4“/"dynamic"
+
+##Funciones del entorno de ejecución
+
+1. *dyn-var* omp_get_dynamic() omp_set_dynamic()
+2. *nthreads-var* omp_get_max_threads() omp_set_num_threads()
+3. *thread-limit-var* omp_get_thread_limit()
+4. *nest-var* omp_get_nested() omp_set_nested()
+5. *run-sched-var* omp_get_schedule(&kind, &modifier) omp_set_schedule(kind, modifier)
+
+- omp_get_thread_num() - Devuelve al thread su identificador dentro del grupo de thread.
+- omp_get_num_threads() - Obtiene el nº de threads que se están usando en una región paralela.
+- omp_get_num_procs() - Devuelve el nº de procesadores disponibles para el programa en el momento de la ejecución.
+- omp_in_parallel() -  Devuelve true si se llama a la rutina dentro de una región
+parallel activa.
+
+##Clausulas para interactuar con el entorno
+
+_Prioridad:_
+
+1º Cláusula id
+2º Cláusula num_threads
+3º Función omp_set_num_threads()
+4º OMP_NUM_THREADS
+5º Prefijado en la implementación
+
+###Cláusula if
+
+*Sintaxsis:* if(condición)
+
+No hay ejecución paralela si no se cumple la condición
+
+###Cláusula schedule
+
+*Sintaxsis:*  schedule (kind[,chunk])
+
+kind: static dynamic guided auto runtime
+
+chunk: granularidad de la distribución
+
+Solo se usa en bucles. Define el modo en el que se granula el trabajo
