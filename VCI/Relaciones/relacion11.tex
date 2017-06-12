@@ -1,5 +1,11 @@
-\subsection{Ejercicio 1}
+\begin{ejer}
+	Sea $R\in\mathbb{R}^+$ y $f\in\mathcal{H}(D(0,R))$, constante.
+	Probar que la función $M:]0,R[\rightarrow\mathbb{R}$ definida por
+	$$ M(r) = \max\{ |f(z)| : z\in C(0,r)^{\ast} \} \hspace{1cm} \forall r\in ]0,R[ $$
+	es estrictamente creciente.
+\end{ejer}
 
+\begin{sol}
 Si existen $0<r1<r2<R$ tal qe $M(r_2) \leq M(r_1)$
 
 $M(r_1) \geq M(r_2) = \max\{ |f(z)| : z\in\mathbb{C}(0,r_2)^{\ast} \} = \max\{ |f(z)| : z\in\overline{D}(0,r_2) \}$
@@ -11,8 +17,17 @@ ahora usamos el principio de módulo máximo para deducir que
 $f$ es constante en $D(0,r_2)$ y por el principio de identidad
 $f$ es constante en $D(0,R)$
 
+\end{sol}
 
-\subsection{Ejercicio 2}
+\begin{ejer}
+	Sea $\Omega = \{ z\in\mathbb{C} : |z|>1 \}$ y $f:\overline{\Omega}\rightarrow\mathbb{C}$ una función continua en $\overline{\Omega}$ y holomorfa en $\Omega$, que tenga límite en $\infty$. 
+	Probar que $|f|$ tiene un máximo absoluto en un punto de $\mathbb{T}$.
+	Suponiendo que $f$ no es constante, probar que la función $M:[1,+\infty[\rightarrow\mathbb{R}$ definida por
+	$$ M(r) = \max\{ |f(z)| : z\in C(0,r)^{\ast} \}  \hspace{1cm} \forall r\in ]1,+\infty[$$
+	es estrictamente decreciente.
+\end{ejer}
+\begin{sol}
+
 $g:\overline{D}(0,1)\backslash\{0\} \rightarrow \mathbb{C}$, $g(z) = f(1/z)$ 
 $g\in\mathbb{H}(D(0,1)\backslash\{0\})$ y continua en $\overline{D}(0,1)\backslash\{0\}$
 
@@ -20,9 +35,14 @@ $\lim_{z\rightarrow0} g(z) = \lim_{w\rightarrow\infty} f(w) \in\mathbb{C}$ por t
 $g\in\mathbb{H}(D(0,1))$
 
 Ahora se aplica el resultado del ejercicio $1$ a $g$ y sacamos la conclusión sobre $f$.
+\end{sol}
 
 
-\subsection{Ejercicio 3}
+\begin{ejer}
+	Sea $P$ un polinomio de grado $n\in\mathbb{N}$ y $M = \max\{ |P(z)| : z\in\mathbb{T} \}$. Probar que
+	$$ z\in\mathbb{C},\ \ |z|\geq 1 \implies |P(z)| \leq M|z|^n $$
+\end{ejer}
+\begin{sol}
 $\lim_{z\rightarrow\infty} \frac{P(z)}{z^n} = a_n$
 
 $f(z) = \frac{P(z)}{z^n}$, $f\in\mathbb{H}(\{ z\in\mathbb{C} : |z|>1 \})$ y $f$ es continua en $\{ z\in\mathbb{C} : |z|\geq 1 \}$
@@ -30,16 +50,32 @@ y usando ejercicio $2$ sabemos que
 $|f|$ alcanza su máximo en el conjunto $\{ z\in\mathbb{C} : |z|\geq 1 \}$ en un punto de $\mathbb{T}$.
 
 $\left| \frac{P(z)}{z^n} \right| = |f(z)| \leq M$ $\forall z$ con $|z|\geq 1$
+\end{sol}
 
 
-\subsection{Ejercicio 4}
+\begin{ejer}
+	Sea $f:\overline{D}(0,1)\rightarrow\mathbb{C}$ una función continua en $\overline{D}(0,1)$ y holomorfa en $D(0,1)$, que verifica la siguiente condición:
+	$$ z\in\mathbb{T} \implies |f(z)| \leq \left\{ \begin{array}{lcc}
+	1 &  si  & Re(z) \leq 0 \\
+	1 &  si  & Re(z) > 0
+	\end{array}
+	\right. $$
+	Probar que $|f(0)| \leq \sqrt{2}$.
+\end{ejer}
+\begin{sol}
 $|f(a)| = \left| \frac{1}{2\pi i}\int_{C(a,r)} \frac{f(w)}{w-a} dw \right| \leq \frac{1}{2\pi} \int_{C(a,r)} \frac{|f(w)|}{|w-a|} dw \leq \frac{l(C(a,r))}{2\pi r} \max\{ f(w) : w\in C(a,r) \} = \max\{ f(w) : w\in C(a,r) \} $
 
 Definimos $g(z) = f(z)f(-z)$, 
 $|f(0)|^2 = |g(0)| = \max\{ |g(w)| : w\in\mathbb{T} \} \leq 2$ $\forall w\in\mathbb{T}$
+\end{sol}
 
 
-\subsection{Ejercicio 5}
+\begin{ejer}
+	Sea $f\in\mathcal{H}(D(0,1))$ y supongamos que existe $n\in\mathbb{N}$ tal que, para todo $r\in ]0,1[$ se tiene
+	$$ \max \{ |f(z)| : |z|=r \} = r^n $$
+	Probar que existe $\alpha\in\mathbb{T}$ tal que $f(z)=\alpha z^n$ para todo $z\in D(0,1)$.
+\end{ejer}
+\begin{sol}
 Sabemos que $f\in\mathbb{H}(D(0,1))$ y usamos la desigualdad de la medie en $C(0,r)$ 
 
 $|f(0)| \leq \max\{ |f(z)| : z\in C(0,r)^{\ast} \} = r^n$ $\forall 0<r<1$
@@ -83,9 +119,22 @@ por el ejercicio $1$ tenemos que $g$ es constante.
 	Entonces hay dos puntos donde la función vale lo mismo, por tanto no puede ser inyectiva.
 	
 \end{comment}
+\end{sol}
 
-% Ejercicio 7: 
-\subsection{Ejercicio 7}
+
+
+\begin{ejer}
+	Sea $f\in\mathcal{H}(D(0,1))$ verificando que
+	$$ |f(z)| \leq |f(z^2)| \hspace{1cm} \forall z\in D(0,1) $$
+	Probar que $f$ es constante.
+\end{ejer}
+
+
+
+\begin{ejer}
+	Mostrar que el teorema fundamental del Álgebra se deduce directamente del principio del módulo mínimo.
+\end{ejer}
+\begin{sol}
 $\lim_{z\rightarrow\infty} P(z) = \infty$
 En  $\overline{D}(0,R) |P|$ alcanza su mínimo absoluto en $\overline{D}(0,R)$ que vale $k=\min\{ |P(z)| : z\in\overline{D}(0,R) \}$ 
 Entonces
@@ -96,18 +145,28 @@ En $\overline{D}(0,R) \subset \overline{D}(0,R^+)$ $|P|$ alcanza su mínimo abso
 Como en $C(0,R^+)$ $|P|>k$ entonces $z_0\in D(0,R^+)$
 
 $P\in\mathbb{H}(D(0,R^+))$ y $|P|$ alcanza un mínimo relativo en $z_0$, por el principio del módulo mínimo $P(z_0)=0$.
+\end{sol}
 
 
-\subsection{Ejercicio 8}
+\begin{ejer}
+	Sea $\Omega$ un dominio y $f\in\mathcal{H}(\Omega)$.
+	Probar que, si la función $Re(f)$ tiene un extremo relativo en un punto de $\Omega$, entonces $f$ es constante.
+\end{ejer}
+\begin{sol}
 Tenemos un punto $a\in\Omega$ tal que $Re(f)$ tiene un extremo relativo en $a$.
 Sabemos que $\exists R>0$ tal que $D(a,R)\subset\Omega$ y 
 $Re(f(z)) \geq Re(f(a))$ (respectivamente $Re(f(z))\leq Re(f(a))$) $\forall z\in D(a,R)$.
 
 Suponemos que $f$ no es constante y por el teorema de la aplicación abierta, $f(a)\in(D(a,R))$ que es abierto.
 Sabemos que $exists r>0$ tal que $D(f(a),r) \subset f(D(a,R))$, lo que es una contradicción con que $Re(f)$ alcance un extremo relativo en $a$.
+\end{sol}
 
 
-\subsection{Ejercicio 9}
+\begin{ejer}
+	Sea $f:\overline{D}(0,1)\rightarrow\mathbb{C}$ una función continua en $\overline{D}(0,1)$ y holomorfa en $D(0,1)$, tal que $Im(f(z)) = 0$ para todo $z\in\mathbb{T}$.
+	Probar que $f$ es constante.
+\end{ejer}
+\begin{sol}
 Como $C(0,1)$ es cerrado y acotado su imagen es un compacto.
 Si $Im(f(z))=0 	\forall z\in D(0,1) \implies f$ es constante en $\overline{D}(0,1)$.
 En caso contrario $\exists z_0 \in D(0,1)$ tal que $Im(f(z_0)) \not=0$, se continuará suponiendo que $Im(f(z_0))>0$, en caso de ser menor que $0$ se razonaría igual pero usando el mínimo.
@@ -115,9 +174,15 @@ En caso contrario $\exists z_0 \in D(0,1)$ tal que $Im(f(z_0)) \not=0$, se conti
 $Im(f):\overline{D}(0,1)\rightarrow \mathbb{R}$ es continua en un compacto, por tanto $\exists w_0\in\overline{D}(0,1)$ tal que $Im(f(w_0)) = \max\{ Im(f(z)) : z\in\overline{D}(0,1) \} > 0$
 Como $Im(f(w_0))>0$ tenemos que $w_0\in D(0,1)$ y $Im(f)$ tiene un máximo relativo en $w_0$.
 Por el ejercicio $8$ tenemos que $f$ es constante.
+\end{sol}
 
 
-\subsection{Ejercicio 10}
+\begin{ejer}
+	Sea $\Omega$ un abierto de $\mathbb{C}$ y $f\in\mathcal{H}(\Omega)$ una función inyectiva. 
+	Dados $a\in\Omega$ y $r\in\mathbb{R}^+$ tales que $\overline{D}(a,r)\subset\Omega$, calcular, para cada $z\in D(a,r)$, la integral
+	$$ \int_{C(a,r)} \frac{wf'(w)}{f(w)-f(z)} dw $$
+\end{ejer}
+\begin{sol}
 Tenemos un abierto $\Omega\in\mathbb{C}$, $f\in\mathbb{H}(\mathbb{C})$ inyectiva.
 $\overline{D}(a,r) \subseteq \Omega \forall z_0\in D(a,r)$
 
@@ -136,3 +201,4 @@ $\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw = \int_{f(C(a,r))} \frac{f^{-1}(
 Por el teorema general de Cauchy ($\frac{1}{2\pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} dz = Ind_{\Gamma} (z_0)f(z_0)$, tema $12$) nos queda
 
 $\int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * f^{-1}(f(z_0)) = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * z_0$ 
+\end{sol}

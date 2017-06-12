@@ -1,8 +1,24 @@
+\begin{ejer}
+	Sea $\{f_n\}$ una sucesión de funciones continuas en un abierto $\Omega$ del plano, y sea $f:\Omega\rightarrow\mathbb{C}$ otra función continua. Probar que las siguientes afirmaciones son equivalentes:
+	\begin{itemize}
+		\item $\{f_n\}$ converge uniformemente a $f$ en cada subconjunto compacto de $\Omega$.
+		\item Para toda sucesión $\{z_n\}$ de puntos de $\Omega$ que converja a un punto $z\in\Omega$ se tiene que $\{f_n(z_n)\}\rightarrow f(z)$.
+	\end{itemize}
+\end{ejer}
 
-\subsection{Ejercicio 5}
+\begin{ejer}
+	Sea $\{f_n\}$ la sucesión de funciones enteras definida por $f_n(z) = z\exp(-n^2z^2/2)$ para cualesquiera $z\in\mathbb{C}$ y $n\in\mathbb{N}$. Probar que $\{f_n\}$ converge uniformemente en $\mathbb{R}$ pero no converge uniformemente en ningún entorno del origen.
+\end{ejer}
 
-\
+\begin{ejer}
+	Probar que la serie de funciones $\sum_{n\geq 1} f(z^n)$ converge en $D(0,1)$ y que su suma es una función holomorfa en $D(0,1)$.
+\end{ejer}
 
+\begin{ejer}
+	Probar que la sucesión de funciones enteras definida por
+	$$ f_n(z) = \frac{1}{n}\sin(nz) \hspace{1cm} \forall z\in\mathbb{C}, \ \ \forall n\in\mathbb{N} $$
+	converge uniformemente en $\mathbb{R}$ pero no converge uniformemente en ningún subconjunto de $\mathbb{C}$ que tenga interior no vacío.
+\end{ejer}
 Sea $U$ con interior no vacío, entonces $\exists z_o\in U$ con $|Im(z_o)| \geq r > 0$
 
 $\frac{1}{n}|\sin(nz_O)| = \frac{1}{n}\left| \frac{e^{inz_0}-e^{-inz_0}}{2i} \right|= \frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right| $
@@ -10,29 +26,38 @@ entonces si $Im(z_0)\geq r$
 $\frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right|  \geq \frac{1}{2n} \left( e^{nIm(z_0)} -e^{-nIm(z_0)} \right)  $
 que tiende a infinito cuando $n\rightarrow\infty$
 
-\
 
-\subsection{Ejercicio 6}
-
-\
-
+\begin{ejer}
+	Probar que la serie $\sum_{n\geq 0} \frac{\sin(nz)}{3^n}$ converge en la banda $\Omega = \{ z\in\mathbb{C} : |Im(z)|<\log(3) \}$ y que su suma es una función $f\in\mathcal{H}(\Omega)$. Calcular $f'(0)$.
+\end{ejer}
 $\frac{\sin(nz)}{3^n} = \frac{1}{2i} \left( \frac{e^{inz}}{3^n} - \frac{e^{-inz}}{3^n} \right)$
 
 $\left| \frac{e^{inz}}{3^n} \right| = \frac{|e^{inRe(z)-nIm(z)}|}{3^n} = \frac{e^{nIm(z)}}{3^n}$
 tenemos que hacer que sea menor que $\delta^n$ con $0<\delta<1$, lo que pasa solamente cuando $-Im(z) < \log(3)+\log(\delta)$
 
-\
 
-\subsection{Ejercicio 7}
-
-\
+\begin{ejer}
+	Sea $\Phi [0,1]\rightarrow\mathbb{C}$ una función continua. Probar que definiendo
+	$$ f(z) = \int_{0}^{1} \Phi(t)e^{itz}dt \hspace{1cm} \forall z\in\mathbb{C} $$
+	se obtiene una función entera y calcular el desarrollo en serie de Taylor de $f$ centrado en el origen.
+\end{ejer}
 Es entera por el teorema de holomorfía de integrales dependientes de un parámetro.
 
 
 
-\subsection{Ejercicio 8}
 
-\subsubsection{a)}
+\begin{ejer}
+	Para cada $n\in\mathbb{N}$, se considera la función $f_n:\mathbb{C}\rightarrow\mathbb{C}$ definida por
+	$$ f_n(z) = \int_{0}^{n} \sqrt{t}e^{-tz} \hspace{1cm} \forall z\in\mathbb{C} $$
+	\begin{enumerate}[label=\alph*)]
+		\item Probar que $f_n$ es una función entera y calcular su desarrollo en serie de Taylor centrado en el origen.
+		\item Estudiar la convergencia de la sucesión $\{f_n\}$ en $\Omega = \{ z\in\mathbb{C} : Re(z)>0 \}$.
+		\item Deducir que $f\in\mathcal{H}(\Omega)$, donde $f(z) = \int_{0}^{+\infty} \sqrt{t}e^{-tz}dt$ para todo $z\in\Omega$.
+	\end{enumerate}
+\end{ejer}
+
+\textbf{a)}
+
 $f_n(z) = \int_0^n \sqrt{t}e^{-tz}dt$
 
 Usaremos el teorema de holomorfía de integrales dependientes de un parámetro.
@@ -54,7 +79,8 @@ entonces
 $\int_{\gamma_n}(\Phi_n(w,z)) dw = \int_0^n \sqrt{t}e^{-tz} dt$
 
 
-\subsubsection{b)}
+\textbf{b)}
+
 Sea $n\in\mathbb{N}$,
 
 $|f_n(z) - f(z)| = |\int_{0}^{n} \sqrt{t} e^{-tz}dt - \int_{0}^{\infty} \sqrt{t}e^{-tz}dt| = |\int_{n}^{\int_n^{\infty}} \sqrt{t} e^{-tz}dt|$
