@@ -19,6 +19,7 @@
 \begin{ejer}
 	Sea $f$ una función entera verificando que $f(f(z))=f(z)$ para todo $z\in\mathbb{C}$. ¿Qué se puede afirmar sobre $f$?
 \end{ejer}
+\begin{sol}
 Existe la posibilidad de que $f$ sea constante.
 
 En otro caso, si $f$ no es constante usando el \textit{teorema de Liouville} sabemos que $f(\mathbb{C})$ es denso en $\mathbb{C}$
@@ -33,6 +34,7 @@ $f(\mathbb{C}) \cap \mathbb{C} \implies f(z)=z \forall z\in \mathbb{C}$
 también se puede razonar de la siguiente forma:
 $\forall z\in\mathbb{C}, \exists \{z_n\}_{n\in\mathbb{N}}$ tal que 
 $z_n\in f(\mathbb{C}) \forall n\in\mathbb{C} \forall n\in\mathbb{N}$ y $\{z_n\}\rightarrow z \implies \{f(z_n)\}\rightarrow f(z)=z \implies f(z)=z \forall z\in\mathbb{C}$
+\end{sol}
 
 \begin{ejer}
 	En cada uno de los siguientes casos, decidir si existe una función $f$, holomorfa en un entorno del origen, y verificando que $f(1/n)=a_n$ para todo $n\in\mathbb{N}$ suficientemente grande:
@@ -55,14 +57,16 @@ $z_n\in f(\mathbb{C}) \forall n\in\mathbb{C} \forall n\in\mathbb{N}$ y $\{z_n\}\
 \begin{ejer}
 	¿Qué se puede afirmar sobre dos funciones enteras cuya composición es constante?
 \end{ejer}
+\begin{sol}
 $f'(g(z)) g'(z) = 0 $
 entonces puede darse
 $f'(g)=0$ o $g'=0$
-
+\end{sol}
 
 \begin{ejer}
 	Sea $f$ una función entera verificando que $f(z)\rightarrow\infty (z\rightarrow\infty)$. Probar que $f$ es una función polinómica.
 \end{ejer}
+\begin{sol}
 Definimos
 $h(z) = \frac{1}{f(1/z)}$, como $\lim_{w\rightarrow\infty}f(w) = \infty$ por tanto $\exists R>0$ tal que si $|w|>R$, entonces $|f(w)|>1$
 
@@ -87,25 +91,30 @@ $|f(w)| = |w|^k \frac{1}{g(1/w)} \leq \frac{1}{C}|w|^k$ $\forall w\in \mathbb{C}
 por el ejercicio $2$ de esta relación
 
 $f$ es un polinomio, en particular de grado menor o igual que $k$
-
+\end{sol}
 
 \begin{ejer}
 	Sea $f$ una función entera verificando que
 	$$ z\in\mathbb{C}, \ \ |z|=1 \implies |f(z)|=1 $$
 	Probar que existen $\alpha\in\mathbb{C}$ on $|\alpha|=1$ y $n\in\mathbb{N}\cup \{0\}$ tales que $f(z) = \alpha z^n$ para todo $z\in\mathbb{N}$.
 \end{ejer}
+\begin{sol}
 
 \textbf{Pista}
 
-LEMA
+\textit{LEMA}
+
 Si f verifica que $|z|=1 \implies |f(z)|=1$, entonces $f(0)=0$ o $f$ es constante.
 PISTA LEMA:
 $1=|f(z)|^2 = f(z)\overline{f(z)} \forall z\in\mathbb{T}$ 
 $1= f(\overline{z})\overline{f(\overline{z})} = f(1/z)\overline{f(\overline{z})}\forall $ 
---
+
+\
+
 Si hemos probado eso y f es constante es trivial, en caso contrario
 $f(0)=0 \implies \exists g\in\mathbb{H}(\mathbb{C})$, $\exists k\in\mathbb{N}$ con $g(0) \not =0$ tal que
 $f(z) = z^kg(z) \forall z\in\mathbb{C}$
 
 $1=|f(z)| = |z|^k|g(z)| z\in\mathbb{T}$
-$g$ está en las mismas condiciones que $f$ y por el lema anterior $g$ es constante
+$g$ está en las mismas condiciones que $f$ y por el lema anterior $g$ es constante.
+\end{sol}

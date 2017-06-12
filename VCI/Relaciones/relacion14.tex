@@ -15,35 +15,24 @@ $\gamma(t) = e^{it}$
 $\gamma'(t) = ie^{it}$
 
 entonces
-
-$(1+ae^{2it})(1-ae^{-2it}) = (1-az^2)(a-\frac{a}{z^2})$
-
+$$(1+ae^{2it})(1-ae^{-2it}) = (1-az^2)(a-\frac{a}{z^2})$$
 por lo que consideramos la función 
 
 $\frac{z^2}{(1-az^2)(z^2-a)}$ 
 como tenemos que multiplicar por $\gamma'(t)$ consideramos $\frac{z}{(1-az^2)(z^2-a)}$
 
 lo que es igual a
-
-$\frac{e^{it}}{(1-ae^{2it})(e^{2it}-a)} ie^{it}$
-
-\
+$$\frac{e^{it}}{(1-ae^{2it})(e^{2it}-a)} ie^{it}$$
 
 Haciendo el mismo procedimiento con el numerador
-
-$\cos^2(3t) = \frac{1+\cos(6t)}{2} = \frac{1+Re(e^{i6t})}{2} = Re(\frac{1+e^{i6t}}{2})$
-
-
+$$\cos^2(3t) = \frac{1+\cos(6t)}{2} = \frac{1+Re(e^{i6t})}{2} = Re(\frac{1+e^{i6t}}{2})$$
 Así vemos que la función que finalmente tendríamos que considerar es
-
-$f(z) = \frac{(1+z^6)z}{2(1-az^2)(z^2-a)}$
-$A = \{ \frac{-1}{\sqrt{a}}, \frac{1}{\sqrt{a}}, \pm\sqrt{a} \}$
-$f:\mathbb{C}\backslash A \rightarrow \mathbb{C}$, $f\in\mathbb{H}(\mathbb{C}\backslash A)$
+$$f(z) = \frac{(1+z^6)z}{2(1-az^2)(z^2-a)} \ \ f:\mathbb{C}\backslash A \rightarrow \mathbb{C}, \ \ f\in\mathcal{H}(\mathbb{C}\backslash A) \hspace{1cm} A = \{ \frac{-1}{\sqrt{a}}, \frac{1}{\sqrt{a}}, \pm\sqrt{a} \}$$
 
 El camino $\gamma:[0,2\pi] \rightarrow \mathbb{C}$, $\gamma(t) = e^{it}$ es nulhomólogo con respecto a $\mathbb{C}$
 
 Como $A' = \emptyset$ por el teorema de los residuos
-$\int_{\gamma} f(z)dz = 2\pi i \left( Ind_{\gamma}(-\sqrt{a})Res(f(z),-\sqrt{a}) + Res(f(z), \sqrt{a}) \right)$
+$$\int_{\gamma} f(z)dz = 2\pi i \left( Ind_{\gamma}(-\sqrt{a})Res(f(z),-\sqrt{a}) + Res(f(z), \sqrt{a}) \right)$$
 \end{sol}
 
 \begin{ejer}
@@ -145,8 +134,9 @@ continuará
 	Integrando la función $z\rightarrow\frac{1-e^{2iz}}{z^2}$ sobre un camino cerrado que recorra la frontera de la mitad superior del anillo $A(0;e,R)$, probar que
 	$$ \int_{0}^{+\infty} \frac{\sin^2(x)}{x^2}dx = \frac{\pi}{2} $$
 \end{ejer}
+\begin{sol}
 
-% Usamos el teorema general de Cauchy
+Usaremos el teorema general de Cauchy
 \begin{equation}
 	0 = \int_{\Gamma_{\epsilon,R}} f(z)dz = \int_{[-R,-\epsilon]}f(z)dz + \int_{[\epsilon,R]} f(z)dz + \int_{\gamma_R} f(z)dz + \int_{\gamma_{\epsilon}} f(z)dz
 	\label{ej9-integrales}
@@ -173,10 +163,15 @@ Donde en el último paso hemos usado que
 $$ |e^{2iRe^{it}}| = e^{-2R\sin(t)} \leq 1 \hspace{1cm} \forall t\in[0,\pi] $$
 De esa forma sabemos que cuando $R\rightarrow\infty$ la integral tiende a $0$.
 
+\
 
-	\textbf{Proposición}
+
+	\textit{Proposición}
+
 	Sea $a\in\mathbb{C}, g\in\mathcal{H}(D(a,r)\backslash\{a\}), r>0$. Si $g$ tiene un polo de orden $1$ en $a$ y $\gamma_{\epsilon} : [c,a] \rightarrow\mathbb{C}$ es un trozo de circunferencia centrado en $a$ con radio $\epsilon<r$ (recorrido en sentido positivo) entonces
 	$$ \lim_{h\rightarrow 0}\epsilon\rightarrow 0 \int_{\gamma_{\epsilon}} g(z)dz = (d-c)iRes(g(z),a) $$
+
+\
 
 Utilizando la proposición obtenemos que
 $$ \lim_{\epsilon\rightarrow 0} \int_{\gamma_{\epsilon}} f(z)dz = -\lim_{\epsilon\rightarrow 0} \int_{-\gamma_{\epsilon}} f(z)dz = -\pi iRes(f(z),0) $$
@@ -187,37 +182,41 @@ $$ -\pi iRes(f(z),0) = -2\pi $$
 
 Tomando límites en \ref{ej9-integrales} tenemos
 $$ 0=4\int_{0}^{+\infty} \frac{\sin^2(x)}{x^2} dx -2\pi  \implies  \int_{0}^{+\infty} \frac{\sin^2(x)}{x^2}dx = \pi/2 $$
+\end{sol}
 
-%10
+
 \begin{ejer}
 	Dado $a\in\mathbb{R}$ con $a>1$, integrar la función $z\rightarrow \frac{z}{a-e^{-iz}}$ sobre la poligonal $[-\pi,\pi,\pi+in,-\pi+in,-\pi]$, con $n\in\mathbb{N}$, para probar que
 	$$ \int_{-\pi}^{\pi} $$
 \end{ejer}
 
-%11
+
 \begin{ejer}
 	Integrando una conveniente función compleja a lo largo de la frontera de la mitad superior del anillo $A(0;\epsilon,R)$, probar que, para $\alpha\in]-1,3[$, se tiene:
 	$$ \int_{0}^{\infty} \frac{x^{\alpha}dx}{(1+x^2)^2} = \frac{\pi}{4}(1-\alpha)sec(\frac{\pi\alpha}{2}) $$
 \end{ejer}
 
-%12
+
 \begin{ejer}
 	Probar que, para $\alpha\in ]0,2[$, se tiene:
 	$$ \int_{-\infty}^{+\infty} \frac{e^{\alpha x}dx}{1+e^x+e^{2x}} = \int_{0}^{+\infty} \frac{t^{\alpha-1} dt}{1+t+t^2} = \frac{2\pi}{\sqrt{3}}\frac{\sin(\pi(1-\alpha)/3)}{\sin(\pi\alpha)} $$
 \end{ejer}
 
-%13
+
 \begin{ejer}
 	Integrando la función $z\rightarrow\frac{\log(z+i)}{1+z^2}$ sobre un camino cerrado que recorra la frontera del conjunto $\{ z\in\mathbb{C} : |z|<R, Im(z)>0 \}$, con $R\in\mathbb{R}$ y $R>1$, calcular la integral
 	$$ \int_{-\infty}^{+\infty} \frac{\log(1+x^2)}{1+x^2}dx $$
 \end{ejer}
 
 
-%14
+
 \begin{ejer}
 	Integrando una conveniente función sobre la poligonal $[-R,R,R+\pi i,-R+\pi i, -R]$, con $R\in\mathbb{R}^+$, calcular la integral
 	$$ \int_{-\infty}^{\infty} \frac{\cos(x)dx}{e^x+e^{-x}} $$
 \end{ejer}
+\begin{sol}
+
+
 Probamos con la función
 $$ f(z) = \frac{e^{iz}}{e^z+e^{-z}} \hspace{2cm} e^{i(R+ti)} = e^{iR}e^{-t} $$
 $$ e^z+e^{-z} =0\Longleftrightarrow  e^{2z}+1=0 \Longleftrightarrow e^{2z}=-1 \Longleftrightarrow 2z\in Log(-1) $$
@@ -249,15 +248,15 @@ Por lo que
 $$ Re(2\pi iRes(f(z), \frac{\pi}{2}i)) = \pi e^{-\pi/2} $$
 y tenemos que
 $$ \int_{-\infty}^{+\infty} \frac{\cos(x)}{e^x+e^{-x}} dx = \frac{\pi e^{-\pi/2}}{1+e^{-\pi}} $$
+\end{sol}
 
 
 
-
-%15
 \begin{ejer}
 	Integrando una conveniente función sobre un camino cerrado que recorra la frontera del conjunto $\{ z\in\mathbb{C} : \epsilon < |z| < R, 0<arg(z)<\pi/2 \}$, con $0<\epsilon<1<R$, calcular la integral
 	$$ \int_{0}^{+\infty} \frac{\log(x)}{1+x^4}dx $$
 \end{ejer}
+\begin{sol}
 Probamos con la función
 $$ f(z) = \frac{\log(z)}{1+z^4} $$
 entonces
@@ -287,12 +286,14 @@ Y aplicando el teorema de los residuos tenemos que
 $$ \int_{\Gamma}f(z)dz = 2\pi i Ind_{\Gamma}(e^{i\pi/4}) Res(f(z),e^{i\pi/4}) = 2\pi i Res(f(z),e^{i\pi/4}) $$
 donde
 $$ \lim_{z\rightarrow e^{i\pi/4}} \frac{(z-e^{i\pi/4})}{1+z^4}\log(z) = -\frac{\pi i}{16}e^{i\pi/4} = -\frac{\pi i}{16}\frac{\sqrt{2}}{2} + \frac{\pi}{16}\frac{\sqrt{2}}{2} $$
+\end{sol}
 
-%16
 \begin{ejer}
 	Integrando una conveniente función sobre la poligonal $[-R,R,R+2\pi i,-R+2\pi i,-R]$ con $R\in\mathbb{R}^+$, calcular la integral
 	$$ \int_{-\infty}^{+\infty} \frac{e^{x/2}}{e^x+1}dx $$
 \end{ejer}
+\begin{sol}
+
 Consideramos 
 $f(z) = \frac{e^{z/2}}{e^z+1}$
 $e^z+1=0 \Longleftrightarrow e^z = -1 \Longleftrightarrow z\in Log(-1) = \{ 0+i(\pi+2k\pi) : k\in\mathbb{Z} \} = A$
@@ -351,5 +352,6 @@ $-i$
 \
 
 $\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = \pi iRes(f(z),i\pi) = \pi i(-i) = \pi $
+\end{sol}
 
 % integrales propuestas: 14, 15, 9 (mitad superior del anillo)

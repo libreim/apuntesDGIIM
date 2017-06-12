@@ -22,6 +22,7 @@ Vemos el límite superior de la sucesión
 $\limsup |\alpha_n| = 1 \implies R=\frac{1}{1} = 1$
 \end{comment}
 
+\begin{sol}
 
 
 \textbf{c)}
@@ -60,7 +61,7 @@ $\sum_{n\geq 0} a^{n^2}z^n,a\in\mathbb{C}$
 raíz n-esima 
 \end{comment}
 
-
+\end{sol}
 
 \begin{ejer}
 	Conocido el radio de convergencia $R$ de la serie $\sum_{n\geq 0} \alpha_nz^n$, calcular el de las siguientes:
@@ -69,6 +70,7 @@ raíz n-esima
 		\item $\sum_{n\geq0} \frac{\alpha_n}{n!}z^n$	
 	\end{enumerate}
 \end{ejer}
+\begin{sol}
 
 \textbf{a)}
 
@@ -81,10 +83,13 @@ $$ \frac{\alpha_{n+1}/(n+1)!}{\alpha_n/n} = \frac{\alpha_{n+1}}{\alpha_n (n+1)}$
 Tomando límites:
 $$ \lim_{n\rightarrow\infty} \frac{\alpha_{n+1}}{\alpha_n (n+1)} = \lim_{n\rightarrow\infty}\frac{\alpha_{n+1}}{\alpha_n}\lim_{n\rightarrow\infty}\frac{1}{n+1} = \frac{1}{R} \lim_{n\rightarrow\infty}\frac{1}{n+1} = 0$$
 Por tanto el radio de convergencia de la serie es infinito.
+\end{sol}
 
 \begin{ejer}
 	Caracterizar las series de potencias que convergen uniformemente en todo el plano.
 \end{ejer}
+\begin{sol}
+
 Convergen en todo el plano las que a partir de cierto término son 0, o sea, las que son una suma finita
 
 Sea $\sum_{n\geq 0} \alpha_n (z-a)^n$ que converge uniformemente
@@ -95,7 +100,7 @@ Sea un polinomio $p\in\mathbb{P}[\mathbb{C}]$, tenemos que $\lim_{|z|\rightarrow
 
 Vemos que $|S_p(z)-S_q(z)|$ es un polinomio que está acotado, tiene que ser constante para no diverger en infinito, en particular es la constante $0$, ya que $S_p(a)=S_q(a)$, por tanto $$\sum_{q=m}^{p-10} \alpha_n (z-\alpha)^n = 0 \implies  \alpha_n=0 \hspace{1cm}\forall n\geq m$$ %(*)
 
-
+\end{sol}
 
 \begin{ejer}
 	Estudiar la convergencia puntual, absoluta y uniforme, de la serie $\sum_{n\geq 0} f_n$ donde

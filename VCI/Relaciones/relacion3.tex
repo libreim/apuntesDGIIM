@@ -6,6 +6,7 @@
 		\item $f(x+iy) = \frac{x^3+iy^3}{x^2+y^2} \hspace{1cm} \forall (x,y)\in\mathbb{R}^2\backslash\{(0,0)\}, f(0)=0$
 	\end{enumerate}	
 \end{ejer}
+\begin{sol}
 
 \textbf{a)}
 Cauchy Riemman
@@ -31,7 +32,7 @@ de las últimas dos deducimos
 $$2yx^3=-2xy^3 \implies xy(x^2+y^2) = 0 \implies xy=0 \text{ ó } x^2+y^2=0$$
 Como conclusión, para que la función sea derivable en un punto $x\in\mathbb{C}$ dicho punto debe cumplir que el módulo de su parte real sea igual que el módulo de su parte imaginaria.
 
-
+\end{sol}
 
 
 
@@ -40,6 +41,7 @@ Como conclusión, para que la función sea derivable en un punto $x\in\mathbb{C}
 	$$Re(f(x+iy)) = x^4-6x^2y^2+y^4 \hspace{1cm}\forall x,y\in\mathbb{R}$$
 	Si se exige además que $f(0)=0$, entonces $f$ es única.
 \end{ejer}
+\begin{sol}
 Sabemos que dicha función debe satisfacer las ecuaciones de Cauchy-Riemman, así que tenemos
 $$ \frac{\partial Re(f)}{\partial x}(x+iy) = 4x^3-12xy^2 = \frac{\partial Im(f)}{\partial y}(x+iy) $$
 Integrando con respecto de la variable $y$ el término central nos queda que
@@ -47,7 +49,7 @@ $Im(f) = 4x^3*y - 4xy^3+k$ tal que $k\in\mathbb{R}$, ya que también se cumple l
 $$ \frac{\partial Re(f)}{\partial y} (x+iy) = -\frac{\partial Im(f)}{\partial x} (x+iy) $$
 
 Si se exige $f(0)=0$ nos queda una única ecuación como resultado de sustituir $k=0$.
-
+\end{sol}
 
 \begin{ejer}
 	Encontrar la condición necesaria y suficiente que deben cumplir $a,b,c\in\mathbb{R}$ para que exista una función entera $f$ tal que

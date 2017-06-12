@@ -19,30 +19,33 @@
 	$$ f_n(z) = \frac{1}{n}\sin(nz) \hspace{1cm} \forall z\in\mathbb{C}, \ \ \forall n\in\mathbb{N} $$
 	converge uniformemente en $\mathbb{R}$ pero no converge uniformemente en ningún subconjunto de $\mathbb{C}$ que tenga interior no vacío.
 \end{ejer}
-Sea $U$ con interior no vacío, entonces $\exists z_o\in U$ con $|Im(z_o)| \geq r > 0$
+\begin{sol}
+Sea $U\subset \mathbb{C}$ con interior no vacío, entonces $\exists z_o\in U$ con $|Im(z_o)| \geq r > 0$
 
 $\frac{1}{n}|\sin(nz_O)| = \frac{1}{n}\left| \frac{e^{inz_0}-e^{-inz_0}}{2i} \right|= \frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right| $
 entonces si $Im(z_0)\geq r$
 $\frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right|  \geq \frac{1}{2n} \left( e^{nIm(z_0)} -e^{-nIm(z_0)} \right)  $
 que tiende a infinito cuando $n\rightarrow\infty$
-
+\end{sol}
 
 \begin{ejer}
 	Probar que la serie $\sum_{n\geq 0} \frac{\sin(nz)}{3^n}$ converge en la banda $\Omega = \{ z\in\mathbb{C} : |Im(z)|<\log(3) \}$ y que su suma es una función $f\in\mathcal{H}(\Omega)$. Calcular $f'(0)$.
 \end{ejer}
-$\frac{\sin(nz)}{3^n} = \frac{1}{2i} \left( \frac{e^{inz}}{3^n} - \frac{e^{-inz}}{3^n} \right)$
+\begin{sol}
 
-$\left| \frac{e^{inz}}{3^n} \right| = \frac{|e^{inRe(z)-nIm(z)}|}{3^n} = \frac{e^{nIm(z)}}{3^n}$
+$$\frac{\sin(nz)}{3^n} = \frac{1}{2i} \left( \frac{e^{inz}}{3^n} - \frac{e^{-inz}}{3^n} \right)$$
+$$\left| \frac{e^{inz}}{3^n} \right| = \frac{|e^{inRe(z)-nIm(z)}|}{3^n} = \frac{e^{nIm(z)}}{3^n}$$
 tenemos que hacer que sea menor que $\delta^n$ con $0<\delta<1$, lo que pasa solamente cuando $-Im(z) < \log(3)+\log(\delta)$
-
+\end{sol}
 
 \begin{ejer}
 	Sea $\Phi [0,1]\rightarrow\mathbb{C}$ una función continua. Probar que definiendo
 	$$ f(z) = \int_{0}^{1} \Phi(t)e^{itz}dt \hspace{1cm} \forall z\in\mathbb{C} $$
 	se obtiene una función entera y calcular el desarrollo en serie de Taylor de $f$ centrado en el origen.
 \end{ejer}
+\begin{sol}
 Es entera por el teorema de holomorfía de integrales dependientes de un parámetro.
-
+\end{sol}
 
 
 
@@ -55,6 +58,8 @@ Es entera por el teorema de holomorfía de integrales dependientes de un paráme
 		\item Deducir que $f\in\mathcal{H}(\Omega)$, donde $f(z) = \int_{0}^{+\infty} \sqrt{t}e^{-tz}dt$ para todo $z\in\Omega$.
 	\end{enumerate}
 \end{ejer}
+
+\begin{sol}
 
 \textbf{a)}
 
@@ -72,7 +77,7 @@ Tenemos que
 \end{itemize}
 
 por el teorema de holomorfía
-$f_n \in\mathbb{H}(\mathbb{C})$ y $f_n'(z) = \int_{\gamma_n} \frac{d}{dz} (\Phi_n(w,z)) dw$
+$f_n \in\mathcal{H}(\mathbb{C})$ y $f_n'(z) = \int_{\gamma_n} \frac{d}{dz} (\Phi_n(w,z)) dw$
 
 entonces
 
@@ -82,16 +87,11 @@ $\int_{\gamma_n}(\Phi_n(w,z)) dw = \int_0^n \sqrt{t}e^{-tz} dt$
 \textbf{b)}
 
 Sea $n\in\mathbb{N}$,
-
-$|f_n(z) - f(z)| = |\int_{0}^{n} \sqrt{t} e^{-tz}dt - \int_{0}^{\infty} \sqrt{t}e^{-tz}dt| = |\int_{n}^{\int_n^{\infty}} \sqrt{t} e^{-tz}dt|$
+$$|f_n(z) - f(z)| = |\int_{0}^{n} \sqrt{t} e^{-tz}dt - \int_{0}^{\infty} \sqrt{t}e^{-tz}dt| = |\int_{n}^{\infty} \sqrt{t} e^{-tz}dt|$$
 
 Usamos que 
 $|e^{-tz}| = |e^{-tRe(z)-iIm(z)}| = e^{-tRe(z)}$, de esta forma
-
-
-$|\int_{n}^{\int_n^{\infty}} \sqrt{t} e^{-tz}dt| \leq \int_{n}^{\infty} \sqrt{t}e^{-tRe(z)} dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk}dt $
-
-
+$$|\int_{n}^{\int_n^{\infty}} \sqrt{t} e^{-tz}dt| \leq \int_{n}^{\infty} \sqrt{t}e^{-tRe(z)} dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk}dt $$
 Y $\forall k\in \{ z\in\mathbb{C} : Re(z)\geq k > 0 \}$ tenemos
-$\int_{n}^{\infty} \sqrt{t}e^{-tk}dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk} dt \leq \int_{n}^{\infty} te^{-tk}$
-
+$$\int_{n}^{\infty} \sqrt{t}e^{-tk}dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk} dt \leq \int_{n}^{\infty} te^{-tk}$$
+\end{sol}

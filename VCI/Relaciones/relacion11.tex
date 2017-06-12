@@ -7,9 +7,7 @@
 
 \begin{sol}
 Si existen $0<r1<r2<R$ tal qe $M(r_2) \leq M(r_1)$
-
-$M(r_1) \geq M(r_2) = \max\{ |f(z)| : z\in\mathbb{C}(0,r_2)^{\ast} \} = \max\{ |f(z)| : z\in\overline{D}(0,r_2) \}$
-
+$$M(r_1) \geq M(r_2) = \max\{ |f(z)| : z\in\mathbb{C}(0,r_2)^{\ast} \} = \max\{ |f(z)| : z\in\overline{D}(0,r_2) \}$$
 por tanto
 
 $\exists z_0 \in D(0,r_1)$ en el que $|f|$ alcanza un máximo relativo para el disco $D(0,r_2)$,
@@ -27,12 +25,9 @@ $f$ es constante en $D(0,R)$
 	es estrictamente decreciente.
 \end{ejer}
 \begin{sol}
-
-$g:\overline{D}(0,1)\backslash\{0\} \rightarrow \mathbb{C}$, $g(z) = f(1/z)$ 
-$g\in\mathbb{H}(D(0,1)\backslash\{0\})$ y continua en $\overline{D}(0,1)\backslash\{0\}$
-
+$$g:\overline{D}(0,1)\backslash\{0\} \rightarrow \mathbb{C}, \ \ g(z) = f(1/z), \ \ g\in\mathcal{H}(D(0,1)\backslash\{0\}) \text{ continua en } \overline{D}(0,1)\backslash\{0\}$$
 $\lim_{z\rightarrow0} g(z) = \lim_{w\rightarrow\infty} f(w) \in\mathbb{C}$ por tanto, por el teorema de extensión de Riemann
-$g\in\mathbb{H}(D(0,1))$
+$g\in\mathcal{H}(D(0,1))$
 
 Ahora se aplica el resultado del ejercicio $1$ a $g$ y sacamos la conclusión sobre $f$.
 \end{sol}
@@ -43,13 +38,11 @@ Ahora se aplica el resultado del ejercicio $1$ a $g$ y sacamos la conclusión so
 	$$ z\in\mathbb{C},\ \ |z|\geq 1 \implies |P(z)| \leq M|z|^n $$
 \end{ejer}
 \begin{sol}
-$\lim_{z\rightarrow\infty} \frac{P(z)}{z^n} = a_n$
-
-$f(z) = \frac{P(z)}{z^n}$, $f\in\mathbb{H}(\{ z\in\mathbb{C} : |z|>1 \})$ y $f$ es continua en $\{ z\in\mathbb{C} : |z|\geq 1 \}$
+$$\lim_{z\rightarrow\infty} \frac{P(z)}{z^n} = a_n$$
+$$f(z) = \frac{P(z)}{z^n}, \ \ f\in\mathcal{H}(\{ z\in\mathbb{C} : |z|>1 \}) \text{ y $f$ es continua en }\{ z\in\mathbb{C} : |z|\geq 1 \}$$
 y usando ejercicio $2$ sabemos que
 $|f|$ alcanza su máximo en el conjunto $\{ z\in\mathbb{C} : |z|\geq 1 \}$ en un punto de $\mathbb{T}$.
-
-$\left| \frac{P(z)}{z^n} \right| = |f(z)| \leq M$ $\forall z$ con $|z|\geq 1$
+$$\left| \frac{P(z)}{z^n} \right| = |f(z)| \leq M \ \forall z : |z|\geq 1$$
 \end{sol}
 
 
@@ -63,7 +56,8 @@ $\left| \frac{P(z)}{z^n} \right| = |f(z)| \leq M$ $\forall z$ con $|z|\geq 1$
 	Probar que $|f(0)| \leq \sqrt{2}$.
 \end{ejer}
 \begin{sol}
-$|f(a)| = \left| \frac{1}{2\pi i}\int_{C(a,r)} \frac{f(w)}{w-a} dw \right| \leq \frac{1}{2\pi} \int_{C(a,r)} \frac{|f(w)|}{|w-a|} dw \leq \frac{l(C(a,r))}{2\pi r} \max\{ f(w) : w\in C(a,r) \} = \max\{ f(w) : w\in C(a,r) \} $
+$$|f(a)| = \left| \frac{1}{2\pi i}\int_{C(a,r)} \frac{f(w)}{w-a} dw \right|$$
+$$|f(a)| \leq \frac{1}{2\pi} \int_{C(a,r)} \frac{|f(w)|}{|w-a|} dw \leq \frac{l(C(a,r))}{2\pi r} \max\{ f(w) : w\in C(a,r) \} = \max\{ f(w) : w\in C(a,r) \} $$
 
 Definimos $g(z) = f(z)f(-z)$, 
 $|f(0)|^2 = |g(0)| = \max\{ |g(w)| : w\in\mathbb{T} \} \leq 2$ $\forall w\in\mathbb{T}$
@@ -77,16 +71,14 @@ $|f(0)|^2 = |g(0)| = \max\{ |g(w)| : w\in\mathbb{T} \} \leq 2$ $\forall w\in\mat
 \end{ejer}
 \begin{sol}
 Sabemos que $f\in\mathbb{H}(D(0,1))$ y usamos la desigualdad de la medie en $C(0,r)$ 
-
-$|f(0)| \leq \max\{ |f(z)| : z\in C(0,r)^{\ast} \} = r^n$ $\forall 0<r<1$
-
+$$|f(0)| \leq \max\{ |f(z)| : z\in C(0,r)^{\ast} \} = r^n\ \ \forall 0<r<1$$
 tomamos límite con $r\rightarrow 0$ obtenemos que $f(0)=0$
 
 Si $f$ es constante no hay nada que demostrar
 Si $f$ no es constante, entonces, por el principio de los ceros de una función holomorfa $\exists g\in\mathbb{H}(D(0,1)), \exists k\in\mathbb{N}$ con $g(0) \not=0$ tal que $f(z) = z^kg(z)$ $\forall z\in D(0,1)$
 
 Si tenemos que $k<n$
-$r^n = \max\{ |f(z)| : |z|=r \} = \max\{ |z^kg(z)| : |z|=r \} = r^k \max\{ |g(z)| : |z|=r \}$
+$$r^n = \max\{ |f(z)| : |z|=r \} = \max\{ |z^kg(z)| : |z|=r \} = r^k \max\{ |g(z)| : |z|=r \}$$
 por tanto
 $\max\{ |g(z)| : |z|=r \} = r^{n-k}$ tomando límite en $r\rightarrow0$ tenemos que $g$ diverge en $z=0$, lo que es una contradicción
 
@@ -183,22 +175,19 @@ Por el ejercicio $8$ tenemos que $f$ es constante.
 	$$ \int_{C(a,r)} \frac{wf'(w)}{f(w)-f(z)} dw $$
 \end{ejer}
 \begin{sol}
-Tenemos un abierto $\Omega\in\mathbb{C}$, $f\in\mathbb{H}(\mathbb{C})$ inyectiva.
+Tenemos un abierto $\Omega\in\mathcal{C}$, $f\in\mathcal{H}(\mathbb{C})$ inyectiva.
 $\overline{D}(a,r) \subseteq \Omega \forall z_0\in D(a,r)$
 
 $\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw$
 Sabemos que en el caso de un cambio de variable
 $\int_{\gamma}g(\varphi(w))\varphi' dw =\int_{\varphi \circ \gamma} g(z)dz $
 
-Aplicando la fórmula del cambio de variable usando
-$\gamma = C(a,R), \varphi(w) = f(w), g(z) = \frac{f^{-1}(z)}{den}$
-y nos queda
-$g(\varphi(w)) = \frac{w}{f(w)-f(z_0)}$.
-
-Entonces
-$\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw = \int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz$
-
+Aplicando la fórmula del cambio de variable con 
+$$\gamma = C(a,R), \varphi(w) = f(w), g(z) = \frac{f^{-1}(z)}{den}$$
+nos queda
+$$g(\varphi(w)) = \frac{w}{f(w)-f(z_0)}$$
+Por lo tanto
+$$\int_{C(a,ra,r)} \frac{wf'(w)}{f(w)-f(z_0)} dw = \int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz$$
 Por el teorema general de Cauchy ($\frac{1}{2\pi i} \int_{\Gamma}\frac{f(z)}{z-z_0} dz = Ind_{\Gamma} (z_0)f(z_0)$, tema $12$) nos queda
-
-$\int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * f^{-1}(f(z_0)) = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * z_0$ 
+$$\int_{f(C(a,r))} \frac{f^{-1}(z)}{z-f(z_0)} dz = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * f^{-1}(f(z_0)) = 2\pi i Ind_{f(C(a,r))} (f(z_0)) * z_0$$
 \end{sol}
