@@ -25,11 +25,10 @@
 	converge uniformemente en $\mathbb{R}$ pero no converge uniformemente en ningún subconjunto de $\mathbb{C}$ que tenga interior no vacío.
 \end{ejer}
 \begin{sol}
-Sea $U\subset \mathbb{C}$ con interior no vacío, entonces $\exists z_o\in U$ con $|Im(z_o)| \geq r > 0$
-
-$\frac{1}{n}|\sin(nz_O)| = \frac{1}{n}\left| \frac{e^{inz_0}-e^{-inz_0}}{2i} \right|= \frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right| $
+Sea $U\subset \mathbb{C}$ con interior no vacío, entonces $\exists z_o\in U, \exists r\in\mathbb{R}^+$ con $|Im(z_o)| \geq r > 0$
+$$\frac{1}{n}|\sin(nz_0)| = \frac{1}{n}\left| \frac{e^{inz_0}-e^{-inz_0}}{2i} \right|= \frac{1}{2n} \left| e^{inz_0} - e^{-inz_0} \right|$$
 entonces si $Im(z_0)\geq r$
-$\frac{1}{2n} \left| e^{inz_0} - e^{inz_0} \right|  \geq \frac{1}{2n} \left( e^{nIm(z_0)} -e^{-nIm(z_0)} \right)  $
+$$\frac{1}{2n} \left| e^{inz_0} - e^{-inz_0} \right|  \geq \frac{1}{2n} \left( e^{nIm(z_0)} -e^{-nIm(z_0)} \right)  $$
 que tiende a infinito cuando $n\rightarrow\infty$
 \end{sol}
 
@@ -37,10 +36,14 @@ que tiende a infinito cuando $n\rightarrow\infty$
 	Probar que la serie $\sum_{n\geq 0} \frac{\sin(nz)}{3^n}$ converge en la banda $\Omega = \{ z\in\mathbb{C} : |Im(z)|<\log(3) \}$ y que su suma es una función $f\in\mathcal{H}(\Omega)$. Calcular $f'(0)$.
 \end{ejer}
 \begin{sol}
-
+Expresamos el seno en función de la exponencial
 $$\frac{\sin(nz)}{3^n} = \frac{1}{2i} \left( \frac{e^{inz}}{3^n} - \frac{e^{-inz}}{3^n} \right)$$
-$$\left| \frac{e^{inz}}{3^n} \right| = \frac{|e^{inRe(z)-nIm(z)}|}{3^n} = \frac{e^{nIm(z)}}{3^n}$$
-tenemos que hacer que sea menor que $\delta^n$ con $0<\delta<1$, lo que pasa solamente cuando $-Im(z) < \log(3)+\log(\delta)$
+La segunda parte del paréntesis tiene a 0 cuando $n\rightarrow \infty$
+$$\left| \frac{e^{inz}}{3^n} \right| = \frac{|e^{inRe(z)-nIm(z)}|}{3^n} =
+\frac{e^{nIm(z)}}{3^n} = 
+\left( \frac{e^{Im(z)}}{3} \right)^n$$
+tenemos que hacer que sea menor que $\delta^n$ con $0<\delta<1$, lo que pasa solamente cuando $-Im(z) < \log(3)+\log(\delta)$. 
+% Hacemos $\delta\rightarrow 0$ y tenemos la convergencia en el conjunto buscado.
 \end{sol}
 
 \begin{ejer}
@@ -68,25 +71,20 @@ Es entera por el teorema de holomorfía de integrales dependientes de un paráme
 
 \textbf{a)}
 
-$f_n(z) = \int_0^n \sqrt{t}e^{-tz}dt$
-
-Usaremos el teorema de holomorfía de integrales dependientes de un parámetro.
-
+Usaremos el teorema de holomorfía de integrales dependientes de un parámetro para ver que $f_n(z)$ es holomorfa en $\mathbb{C}$, y por tanto entera.
 Definimos
-$\gamma_n :[0,n] \rightarrow \mathbb{C}$, $\gamma_n(t)=t$, $\gamma'(t) = 1$
-Tenemos que buscar una función $\Phi_n : \gamma_n^{\ast}\times\mathbb{C} \rightarrow \mathbb{C}$, $\Phi_n(w,z) = \sqrt{w}e^{-wz}$
-Tenemos que
+$$\gamma_n :[0,n] \rightarrow \mathbb{C} \hspace{1cm} \gamma_n(t)=t \hspace{1cm} \gamma'(t) = 1$$
+$$\Phi_n : \gamma_n^{\ast}\times\mathbb{C} \rightarrow \mathbb{C} \hspace{1cm} \Phi_n(w,z) = \sqrt{w}e^{-wz} \hspace{1cm} \Phi_{n,w} = \Phi_n(w,z)$$
+Tenemos que buscar que se cumplan las condiciones:
 \begin{itemize}
 	\item $\Phi_n$ es continua
-	\item $\Phi_n(w,\dot)$ es entera $\forall w\in\gamma_n^{\ast}$
+	\item $\Phi_{n,w}(z)$ es entera $\forall w\in\gamma_n^{\ast}$
 \end{itemize}
 
 por el teorema de holomorfía
-$f_n \in\mathcal{H}(\mathbb{C})$ y $f_n'(z) = \int_{\gamma_n} \frac{d}{dz} (\Phi_n(w,z)) dw$
-
+$$f_n \in\mathcal{H}(\mathbb{C}) \hspace{1cm}f_n'(z) = \int_{\gamma_n} \frac{d}{dz} (\Phi_n(w,z)) dw$$
 entonces
-
-$\int_{\gamma_n}(\Phi_n(w,z)) dw = \int_0^n \sqrt{t}e^{-tz} dt$
+$$\int_{\gamma_n}\Phi_n(w,z) dw = \int_0^n \sqrt{t}e^{-tz} dt$$
 
 
 \textbf{b)}
@@ -95,8 +93,8 @@ Sea $n\in\mathbb{N}$,
 $$|f_n(z) - f(z)| = |\int_{0}^{n} \sqrt{t} e^{-tz}dt - \int_{0}^{\infty} \sqrt{t}e^{-tz}dt| = |\int_{n}^{\infty} \sqrt{t} e^{-tz}dt|$$
 
 Usamos que 
-$|e^{-tz}| = |e^{-tRe(z)-iIm(z)}| = e^{-tRe(z)}$, de esta forma
-$$|\int_{n}^{\int_n^{\infty}} \sqrt{t} e^{-tz}dt| \leq \int_{n}^{\infty} \sqrt{t}e^{-tRe(z)} dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk}dt $$
-Y $\forall k\in \{ z\in\mathbb{C} : Re(z)\geq k > 0 \}$ tenemos
-$$\int_{n}^{\infty} \sqrt{t}e^{-tk}dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk} dt \leq \int_{n}^{\infty} te^{-tk}$$
+$|e^{-tz}| = |e^{-tRe(z)-itIm(z)}| = e^{-tRe(z)}$
+$$|\int_{n}^{\infty} \sqrt{t} e^{-tz}dt| \leq \int_{n}^{\infty} \sqrt{t}e^{-tRe(z)} dt \leq \int_{n}^{\infty} \sqrt{t}e^{-tk}dt $$
+Y en $\{ z\in\mathbb{C} : Re(z)\geq k > 0 \}$ tenemos
+$$ \int_{n}^{\infty} \sqrt{t}e^{-tk} dt \leq \int_{n}^{\infty} te^{-tk}$$
 \end{sol}

@@ -31,7 +31,7 @@ Por tanto
 $$f(\mathbb{C}) \cap \mathbb{C} \implies f(z)=z \hspace{1cm}  \forall z\in \mathbb{C}$$
 también se puede razonar de la siguiente forma:
 $\forall z\in\mathbb{C}, \exists \{z_n\}_{n\in\mathbb{N}}$ tal que 
-$z_n\in f(\mathbb{C}) \forall n\in\mathbb{C} \forall n\in\mathbb{N}$ y $\{z_n\}\rightarrow z \implies \{f(z_n)\}\rightarrow f(z)=z \implies f(z)=z \forall z\in\mathbb{C}$
+$$z_n\in f(\mathbb{C}) \forall n\in\mathbb{N} \text{ y }\{z_n\}\rightarrow z \implies \{f(z_n)\}\rightarrow f(z)=z \implies f(z)=z ,\forall z\in\mathbb{C}$$
 \end{sol}
 
 \begin{ejer}
@@ -56,7 +56,8 @@ $z_n\in f(\mathbb{C}) \forall n\in\mathbb{C} \forall n\in\mathbb{N}$ y $\{z_n\}\
 	¿Qué se puede afirmar sobre dos funciones enteras cuya composición es constante?
 \end{ejer}
 \begin{sol}
-$f'(g(z)) g'(z) = 0 $
+Siendo $f$ y $g$ las funciones cuya composición es constante tenemos que su derivada se anula
+$$f'(g(z)) g'(z) = 0 \hspace{1cm} \forall z\in\Omega$$
 entonces puede darse
 $f'(g)=0$ o $g'=0$
 \end{sol}
@@ -66,29 +67,20 @@ $f'(g)=0$ o $g'=0$
 \end{ejer}
 \begin{sol}
 Definimos
-$h(z) = \frac{1}{f(1/z)}$, como $\lim_{w\rightarrow\infty}f(w) = \infty$ por tanto $\exists R>0$ tal que si $|w|>R$, entonces $|f(w)|>1$
-
-Si $z\in D(0,1/R)\backslash\{0\}$, $|z|<1/R \Longleftrightarrow 1/|z|>R$, entonces
-
-podemos definir
-$h : D(0,1/R)\backslash\{0\} \rightarrow \mathbb{C}$,
-$h\in\mathbb{H}(D(0,1/R)\backslash\{0\})$ y $\lim_{z\rightarrow 0} h(z) = \lim_{z\rightarrow 0} \frac{1}{f(1/z)} = 0$
-y deducimos por el Teorema de Extensión de Riemman
-$h\in\mathbb{H}(D(0,1/R))$ y $h(0)=0$
-
-$\exists g\in\mathbb{H}(D(0,1/R)))$ con $g(0) \not = 0$, $\exists k\in\mathbb{N}$ tal que $h(z) = \frac{1}{f(1/z)} = z^k g(z)$
-
+$$h(z) = \frac{1}{f(1/z)} \hspace{1cm} \forall z\in\mathbb{C}^{\ast}$$
+Sea $R>0$, entonces $\exists w\in\mathbb{C}$ de forma que si $|w|>R$, entonces $|f(w)|>1$.
+Si $z\in D(0,1/R)\backslash\{0\}$, $|z|<1/R \Longleftrightarrow 1/|z|>R$, entonces podemos definir
+$$h : D(0,1/R)\backslash\{0\} \rightarrow \mathbb{C} \hspace{1cm} h\in\mathcal{H}(D(0,1/R)\backslash\{0\})$$
+Como $\lim_{z\rightarrow 0} h(z) = \lim_{z\rightarrow 0} \frac{1}{f(1/z)} = 0$ deducimos por el Teorema de Extensión de Riemman
+$h\in\mathcal{H}(D(0,1/R))$ y $h(0)=0$
+$$\exists g\in\mathcal{H}(D(0,1/R))) \text{ con }g(0) \not = 0, \ \exists k\in\mathbb{N} \text{ tal que }h(z) = \frac{1}{f(1/z)} = z^k g(z)$$
 $ f(1/z) = \frac{1}{z^k}\frac{1}{g(z)}$
 donde el valor absoluto del segundo término está acotado, por tanto
-$f(w) = w^k \frac{1}{g(1/w)}$,
-como $g(0)\not = 0 \exists\delta>0$, $\exists C>0$ tal que $D(0,\delta)\subset D(0,1/R)$ tal que $|g(z)| \geq C > 0 \forall z\in D(0,\delta) \implies$
-$\frac{1}{|g(z)|} \leq \frac{1}{C} \forall z\in D(0,\delta) \implies \frac{1}{|g(1/w)|} \leq \frac{1}{C} \forall x\in \mathbb{C}\backslash \overline{D}(0,1/\delta)$
-
-$|f(w)| = |w|^k \frac{1}{g(1/w)} \leq \frac{1}{C}|w|^k$ $\forall w\in \mathbb{C}\backslash\overline{D}(0,1/\delta)$
-
-por el ejercicio $2$ de esta relación
-
-$f$ es un polinomio, en particular de grado menor o igual que $k$
+$$f(w) = w^k \frac{1}{g(1/w)}$$
+Como $g(0)\not = 0 \exists\delta>0$, $\exists C>0$ tal que $D(0,\delta)\subset D(0,1/R)$:
+$$|g(z)| \geq C > 0 \ \ \forall z\in D(0,\delta) \implies \frac{1}{|g(z)|} \leq \frac{1}{C} \ \ \forall z\in D(0,\delta) \implies \frac{1}{|g(1/w)|} \leq \frac{1}{C} \ \ \forall x\in \mathbb{C}\backslash \overline{D}(0,1/\delta)$$
+$$|f(w)| = |w|^k \frac{1}{g(1/w)} \leq \frac{1}{C}|w|^k \hspace{1cm} \forall w\in \mathbb{C}\backslash\overline{D}(0,1/\delta)$$
+por el ejercicio $2$ de esta relación tenemos que $f$ es un polinomio, en particular de grado menor o igual que $k$.
 \end{sol}
 
 \begin{ejer}
@@ -106,14 +98,12 @@ Si f verifica que $|z|=1 \implies |f(z)|=1$, entonces $f(0)=0$ o $f$ es constant
 
 \textit{PISTA DEMOSTRACIÓN LEMA}:
 $1=|f(z)|^2 = f(z)\overline{f(z)} \forall z\in\mathbb{T}$ 
-$1= f(\overline{z})\overline{f(\overline{z})} = f(1/z)\overline{f(\overline{z})}\forall $ 
+$1= f(\overline{z})\overline{f(\overline{z})} = f(1/z)\overline{f(\overline{z})}$
 \end{lema}
 
 
 Si hemos probado eso y f es constante es trivial, en caso contrario
-$f(0)=0 \implies \exists g\in\mathbb{H}(\mathbb{C})$, $\exists k\in\mathbb{N}$ con $g(0) \not =0$ tal que
-$f(z) = z^kg(z) \forall z\in\mathbb{C}$
-
-$1=|f(z)| = |z|^k|g(z)| z\in\mathbb{T}$
+$$f(0)=0 \implies \exists g\in\mathcal{H}(\mathbb{C}), \ \exists k\in\mathbb{N} \text{ tal que }g(0) \not =0 \text{ y }f(z) = z^kg(z)\ \forall z\in\mathbb{C}$$
+$$1=|f(z)| = |z|^k|g(z)| \hspace{1cm} z\in\mathbb{T}$$
 $g$ está en las mismas condiciones que $f$ y por el lema anterior $g$ es constante.
 \end{sol}

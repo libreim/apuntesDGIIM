@@ -5,32 +5,25 @@
 
 \begin{sol}
 Veamos el giro de centro $z_0$ y ángulo $\theta$.
-$\varphi(z) = z_0 + (z-z_0)e^{i\theta}$.
-
+$$\varphi(z) = z_0 + (z-z_0)e^{i\theta}$$
 La homotecia de centro $z_0$ y módulo $\lambda\in\mathbb{R}^{\ast}$
-$\varphi_{\lambda}(z) = z_0 + (z-z_0)\lambda$
-
+$$\varphi_{\lambda}(z) = z_0 + (z-z_0)\lambda$$
 Y la traslación de vector $z_0$
-$\varphi_{z_0} (z) = z+z_0$.
+$$\varphi_{z_0} (z) = z+z_0$$
 Sea $\gamma$ un camino cerrado en $\Omega=\Omega^{\circ}$
 y $z\in\Omega\backslash\gamma{\ast}$.
-
-Queremos ver si  $Ind_{\gamma}(w)=Ind_{\varphi\circ\gamma} (\varphi(w_0)) = \frac{1}{2\pi i} \int_{\varphi\circ\gamma} \frac{1}{z-\varphi(w_0)} dz$
- 
+Queremos ver si  $$Ind_{\gamma}(w)=Ind_{\varphi\circ\gamma} (\varphi(w_0)) = \frac{1}{2\pi i} \int_{\varphi\circ\gamma} \frac{dz}{z-\varphi(w_0)}$$ 
 Por el ejercicio $11$ de la relación $8$ deducimos que
 $$\frac{1}{2\pi i} \int_{\varphi\circ\gamma} \frac{1}{z-\varphi(w_0)} dz = \frac{1}{2\pi i} \int_{\gamma} f(\varphi(w))\varphi'(w) dw = \frac{1}{2\pi i} \int_{\gamma} \frac{\varphi'(w)}{\varphi(w)-\varphi(w_0)} dw$$
-
-$\varphi(w)-\varphi(w_0) = (w-w_0) \xi$
-$$z_0+(w-z_0)e^{i\theta}-(z_0+(w_0-z_0))e^{i\theta}$$
-$\varphi'(w) = \xi \in \{ e^{i\theta},\lambda,1 \}$
-
+$$\varphi(w)-\varphi(w_0) = (w-w_0) \xi \hspace{1cm}
+z_0+(w-z_0)e^{i\theta}-(z_0+(w_0-z_0))e^{i\theta} \hspace{1cm}\varphi'(w) = \xi \in \{ e^{i\theta},\lambda,1 \}$$
 De esa forma tenemos 
 $$\frac{1}{2\pi i} \int_{\gamma} \frac{\varphi'(w)}{\varphi(w)-\varphi(w_0)} = \frac{1}{2\pi i} \int_{\gamma} \frac{dw}{w-w_0} = Ind_{\gamma}(w_0)$$
 \end{sol}
 
 
 \begin{ejer}
-	Sea $\rho : [-\pi,pi]\rightarrow\mathbb{R}^+$ una función de clase $C^1$, con $\rho(-\pi) = \rho(\pi)$ y sea $\sigma :[-\pi,\pi] \rightarrow\mathbb{C}$ el arco definido por
+	Sea $\rho : [-\pi,\pi]\rightarrow\mathbb{R}^+$ una función de clase $C^1$, con $\rho(-\pi) = \rho(\pi)$ y sea $\sigma :[-\pi,\pi] \rightarrow\mathbb{C}$ el arco definido por
 	$$ \sigma(t) = \rho(t)e^{it} \hspace{1cm} \forall t\in [-\pi,\pi] $$
 	Calcular $Ind_{\sigma}(z)$ para todo $z\in\mathbb{C}\backslash\sigma{\ast}$.
 \end{ejer}
@@ -40,7 +33,7 @@ Sea $\mathbb{C}\backslash\sigma^{\ast}$ tiene una única componente conexa no ac
 $$\Omega = \{ z\in\mathbb{C} : \exists t\in[-\pi,\pi], z=|z|e^{it}, |z|<\varphi(t) \}$$
 Como $\varphi : [-\pi,\pi] \rightarrow \mathbb{R}^+$ es continua alcanza su mínimo absoluto que es positivo.
 
-$0\in\Omega$ y $\Omega$ es estrellado respecto a cero
+$0\in\Omega$ y $\Omega$ es estrellado respecto al cero
 (dado $z\in\Omega$ $\lambda z + (1-\lambda)0 \in\Omega$ con $\lambda\in[0,1]$), por tanto $\Omega$ es conexo.
 $$\Omega \cup \sigma^{\ast} \cup U = \mathbb{C}$$
 Si $z\in\Omega$, como el índice es constante en cada componente conexa tenemos que $Ind_{\sigma}(z) = Ind_{\sigma}(0)$

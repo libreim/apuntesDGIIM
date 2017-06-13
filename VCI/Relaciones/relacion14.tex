@@ -6,19 +6,13 @@
 \begin{sol}
 
 % Esto huele a la circunferencia unidad
-$\int_{0}^{2\pi} \frac{\cos^2(3t)}{1+a^2-2a\cos(2t)} dt$
-
-$1+a^2-2a\cos(2\pi) = |1-ae^{2it}|^2 = 1+a^2-2aRe(e^{2it}) =  1+a^2-2a\cos(2t) = (1+ae^{2it})\overline{1-ae^{2it}}$
-$= (1-ae^{2it})(1-A\overline{e^{2it}}) = (1+ae^{2it})(1-ae^{-2it})$
-
-$\gamma(t) = e^{it}$
-$\gamma'(t) = ie^{it}$
-
-entonces
-$$(1+ae^{2it})(1-ae^{-2it}) = (1-az^2)(a-\frac{a}{z^2})$$
-por lo que consideramos la función 
-
-$\frac{z^2}{(1-az^2)(z^2-a)}$ 
+$$1+a^2-2a\cos(2 t) = |1-ae^{2it}|^2 = 1+a^2-2aRe(e^{2it}) =  1+a^2-2a\cos(2t)$$
+$$ = (1+ae^{2it})(\overline{1-ae^{2it}}()
+= (1-ae^{2it})(1-a\overline{e^{2it}}) = (1+ae^{2it})(1-ae^{-2it})$$
+$$\gamma(t) = e^{it} \hspace{1cm} \gamma'(t) = ie^{it}$$
+Entonces
+$$(1+ae^{2it})(1-ae^{-2it}) = (1-az^2)(1-\frac{a}{z^2})$$
+por lo que consideramos la función $\frac{z^2}{(1-az^2)(z^2-a)}$, 
 como tenemos que multiplicar por $\gamma'(t)$ consideramos $\frac{z}{(1-az^2)(z^2-a)}$
 
 lo que es igual a
@@ -27,7 +21,7 @@ $$\frac{e^{it}}{(1-ae^{2it})(e^{2it}-a)} ie^{it}$$
 Haciendo el mismo procedimiento con el numerador
 $$\cos^2(3t) = \frac{1+\cos(6t)}{2} = \frac{1+Re(e^{i6t})}{2} = Re(\frac{1+e^{i6t}}{2})$$
 Así vemos que la función que finalmente tendríamos que considerar es
-$$f(z) = \frac{(1+z^6)z}{2(1-az^2)(z^2-a)} \ \ f:\mathbb{C}\backslash A \rightarrow \mathbb{C}, \ \ f\in\mathcal{H}(\mathbb{C}\backslash A) \hspace{1cm} A = \{ \frac{-1}{\sqrt{a}}, \frac{1}{\sqrt{a}}, \pm\sqrt{a} \}$$
+$$f(z) = \frac{(1+z^6)z}{2(1-az^2)(z^2-a)} \ \ f:\mathbb{C}\backslash A \rightarrow \mathbb{C}, \ \ f\in\mathcal{H}(\mathbb{C}\backslash A) \hspace{1cm} A = \left\{ \pm\frac{1}{\sqrt{a}}, \pm\sqrt{a} \right\}$$
 
 El camino $\gamma:[0,2\pi] \rightarrow \mathbb{C}$, $\gamma(t) = e^{it}$ es nulhomólogo con respecto a $\mathbb{C}$
 
@@ -37,7 +31,7 @@ $$\int_{\gamma} f(z)dz = 2\pi i \left( Ind_{\gamma}(-\sqrt{a})Res(f(z),-\sqrt{a}
 
 \begin{ejer}
 	Probar que, para $n\in\mathbb{N}$, se tiene:
-	$$ \in_0^{2\pi} \frac{(1+2\cos(t))^n \cos(nt)}{3+2\cos(t)} dt = \frac{2\pi}{\sqrt{5}} (3-\sqrt{5})^n $$
+	$$ \int_0^{2\pi} \frac{(1+2\cos(t))^n \cos(nt)}{3+2\cos(t)} dt = \frac{2\pi}{\sqrt{5}} (3-\sqrt{5})^n $$
 \end{ejer}
 
 
@@ -52,31 +46,21 @@ $$\int_{\gamma} f(z)dz = 2\pi i \left( Ind_{\gamma}(-\sqrt{a})Res(f(z),-\sqrt{a}
 	$$ \int_{-\infty}^{\infty} \frac{dx}{(x^2+a^2)(x^2+b^2)^2} = \frac{\pi (a+2b)}{2ab^3(a+b)^2} $$
 \end{ejer}
 \begin{sol}
-Sean $a,b\in\mathbf{R}^+$ calcular
-$$ \int_{-\infty}^{\infty} \frac{dx}{(x^+a^2)(x^2+b^2)^2} $$
-
+Sean $a,b\in\mathbb{R}^+$.
 %Método de Hermite:
 %$\frac{1}{(x^2+a^2)(x^2+b^2)^2} = \frac{Ax+B}{x^2+a^2} + %\frac{Cx+D}{x^2+b^2} + \frac{d}{dx} \frac{Mx+N}{x^2+b^2}$
+En el caso $a\not = b$ tomamos $$f(z) = \frac{1}{(z^2+a^2)(z^2+b^2)^2} \hspace{1cm} f\in\mathcal{H}( \mathbb{C}\backslash\{ \pm ia, \pm ib \} )$$
 
-En el caso $a\not = b$ tomamos $f(z) = \frac{1}{(z^2+a^2)(z^2+b^2)^2}$
-$f\in\mathbb{H}( \mathbb{C}\backslash\{ \pm ia, \pm ib \} )$
-
-Tomamos $R>\max\{a,b\}$, consideramos el camino cerrado $\Gamma = [-R,R]+SC(0,R)$ (semicircunferencia recorrida en sentido positivo)
-
-$\gamma : [-R,R]\rightarrow \mathbb{C}$, $\gamma(x)=x$, $\gamma '(x) = 1$
-
+Tomamos $R>\max\{a,b\}$, consideramos el camino cerrado $\Gamma = [-R,R]+SC(0,R)$ (semicircunferencia recorrida en sentido positivo) y definimos
+$$\gamma : [-R,R]\rightarrow \mathbb{C} \hspace{1cm} \gamma(x)=x \hspace{1cm} \gamma '(x) = 1$$
 Usamos que $\Gamma$ es nul-homologa con respecto a $\mathbb{C}$
-$\int_{\Gamma}f(z)dz = \int_{-R}^{R} f(x)dx + \int_{SC(0,R)}$
-
+$$\int_{\Gamma}f(z)dz = \int_{-R}^{R} f(x)dx + \int_{SC(0,R)} f(x)dx$$
 Por el teorema de los residuos 
 $$\int_{\Gamma}f(z)dz = 2\pi i [ Ind_{\Gamma}(ia)Res(f(z),ia) + Ind_{\Gamma}(ib)Res(f(z),ib) ]$$
 $$\int_{\Gamma}f(z)dz = 2\pi i [Res(f(z),ia) + Res(f(z),ib) ]$$
 
 Ambos índices son $1$
-$\int_{\Gamma}f(z)dz = \int_{-R}^{R} f(x)dx + \int_{SC(0,R)} f(z)dz$
-
-
-$|\int_{SC(0,R)} f(z)dz| \leq l(SC(0,R))\max \{ |f(z)| : z\in SC(0,R) \} \leq \frac{\pi R}{(R^2-a^)(R^2-a^2)^2}$
+$$|\int_{SC(0,R)} f(z)dz| \leq l(SC(0,R))\max \{ |f(z)| : z\in SC(0,R) \} \leq \frac{\pi R}{(R^2-a^)(R^2-a^2)^2}$$
 que tiende a $0$ cuando $R\rightarrow \infty$
 
 $|f(z)| = \frac{1}{|z^2+a^2||z^2+b^2|} \leq \frac{1}{(R^2-a^2)(R^2-b^2)^2}$
@@ -131,7 +115,7 @@ continuará
 
 
 \begin{ejer}
-	Integrando la función $z\rightarrow\frac{1-e^{2iz}}{z^2}$ sobre un camino cerrado que recorra la frontera de la mitad superior del anillo $A(0;e,R)$, probar que
+	Integrando la función $z\rightarrow\frac{1-e^{2iz}}{z^2}$ sobre un camino cerrado que recorra la frontera de la mitad superior del anillo $A(0;\epsilon,R)$, probar que
 	$$ \int_{0}^{+\infty} \frac{\sin^2(x)}{x^2}dx = \frac{\pi}{2} $$
 \end{ejer}
 \begin{sol}
@@ -143,7 +127,7 @@ Usaremos el teorema general de Cauchy
 \end{equation}
 
 Sabemos que
-$$\int_{[-R,-\epsilon]}f(z)dz = \int_{-R}^{-\epsilon}f(z)dz =  \frac{1-e^{2ix}}{x^2}dx
+$$\int_{[-R,-\epsilon]}f(z)dz = \int_{-R}^{-\epsilon}f(z)dz =  \int_{-R}^{-\epsilon}\frac{1-e^{2ix}}{x^2}dx
 \hspace{1cm}\gamma_1 : [-R,-\epsilon] \rightarrow\mathbb{C}, \gamma_1(x)=x$$
 $$\int_{[\epsilon,R]} f(z)dz = \int_{\epsilon}^{R} \frac{1-e^{2ix}}{x^2}dx
 \hspace{1cm}\gamma_2:[\epsilon,R]\rightarrow\mathbb{C}, \gamma_2(x)=x$$
@@ -170,7 +154,6 @@ De esa forma sabemos que cuando $R\rightarrow\infty$ la integral tiende a $0$.
 
 	Sea $a\in\mathbb{C}, g\in\mathcal{H}(D(a,r)\backslash\{a\}), r>0$. Si $g$ tiene un polo de orden $1$ en $a$ y $\gamma_{\epsilon} : [c,a] \rightarrow\mathbb{C}$ es un trozo de circunferencia centrado en $a$ con radio $\epsilon<r$ (recorrido en sentido positivo) entonces
 	$$ \lim_{h\rightarrow 0}\epsilon\rightarrow 0 \int_{\gamma_{\epsilon}} g(z)dz = (d-c)iRes(g(z),a) $$
-
 \
 
 Utilizando la proposición obtenemos que
@@ -296,62 +279,33 @@ $$ \lim_{z\rightarrow e^{i\pi/4}} \frac{(z-e^{i\pi/4})}{1+z^4}\log(z) = -\frac{\
 
 Consideramos 
 $f(z) = \frac{e^{z/2}}{e^z+1}$
-$e^z+1=0 \Longleftrightarrow e^z = -1 \Longleftrightarrow z\in Log(-1) = \{ 0+i(\pi+2k\pi) : k\in\mathbb{Z} \} = A$
-
-$f : \mathbb{C}\backslash A \rightarrow \mathbb{C}\hspace{0.5cm} f\in\mathcal{H}(\mathbb{C}\backslash A)$
-
-$\Gamma_R  = [-R,R,R+2\pi i, -R+2\pi i]$ es nulhomólogo con respecto a $\mathbb{C}$
-
-Vemos que $A$ no tiene puntos de acumulación en $\mathbb{C}$
-
+$$e^z+1=0 \Longleftrightarrow e^z = -1 \Longleftrightarrow z\in Log(-1) = \{ 0+i(\pi+2k\pi) : k\in\mathbb{Z} \} = A$$
+$$f : \mathbb{C}\backslash A \rightarrow \mathbb{C}\hspace{0.5cm} f\in\mathcal{H}(\mathbb{C}\backslash A)$$
+El camino $\Gamma_R  = [-R,R,R+2\pi i, -R+2\pi i]$ es nulhomólogo con respecto a $\mathbb{C}$, además $A$ no tiene puntos de acumulación en $\mathbb{C}$.
 Por el teorema de los residuos
-
-$\int_{\Gamma} f(z)dz = 2\pi i Ind_{\Gamma_R}(i\pi) Res(f(z),i\pi)$
-
-$\int_{\Gamma_R} f(z)dz = 2\pi i Res(f(z),i\pi)$
-$= \frac{[-R,R]} f(z)dz + \int_{[R,R+2\pi i]} f(z)dz + \int_{[R+2\pi i, -R+2\pi i]} f(z)dz + \int_{[-R+2\pi i, -R]}$
-
-
-$\left| \int_{[R,R+2\pi i]} \right| \leq 2\pi\max\{ |f(z)| : z\in [R,R+2\pi i] \} \leq 2\pi \frac{e^{R/2}}{e^R-1} \rightarrow 0$ cuando $R\rightarrow \infty$
-
+$$\int_{\Gamma_R} f(z)dz = 2\pi i Ind_{\Gamma_R}(i\pi) Res(f(z),i\pi)$$
+$$\int_{\Gamma_R} f(z)dz = 2\pi i Res(f(z),i\pi) = \int_{[-R,R]} f(z)dz + \int_{[R,R+2\pi i]} f(z)dz + \int_{[R+2\pi i, -R+2\pi i]} f(z)dz + \int_{[-R+2\pi i, -R]} f(z)dz$$
+Vemos el segundo término
+$$\left| \int_{[R,R+2\pi i]} \right| \leq 2\pi\max\{ |f(z)| : z\in [R,R+2\pi i] \} \leq 2\pi \frac{e^{R/2}}{e^R-1} $$
+Que tiende a $0$ cuando $R\rightarrow \infty$
 donde hemos usado:
-$|f(z)| = |\frac{e^{z/2}}{e^z+1}| = \frac{e^{R/2} e^{ti/2}}{e^R-1} = \frac{e^{R/2}}{e^R-1}$
-y
-$|e^z+1| \geq |e^z|-1 = e^R-1$ ya que $z=R+ti$
-
-
-\
-
-$\left| \int_{-R+2\pi i, -R} f(z)dz \right| \leq 2\pi \max \{ |f(z)| : z\in[-R+2\pi i, -R] \} \leq 2\pi \frac{e^{-R/2}}{1-e^{-R}} \rightarrow 0$ cuando $R\rightarrow\infty$
-
-usando:
-Si $z= -R+ti : t\in[0,2\pi]$
-$|f(z)| = \left| \frac{e^{-R/2}e^{ti/2}}{e^{-R}e^{ti}+1} \right| \leq \frac{e^{-R/2}}{1-e^{-R}}$
-
-\
-
-$\int_{[-R,R]} f(z)dz = \int_{-R}^{R} \frac{e^{x/2}}{e^x+1} \gamma'(x)dx$ con $\gamma(x)=x$ y $x\in[-R,R]$
-
-\
-
-$\int_{[R+2\pi i, -R+2\pi i]} f(z)dz = -\int_{[-R+2\pi i, R+2\pi i]} f(z)dz = -\int_{-R}^{R} \frac{e^{x/2}e^{\pi i}}{e^x+1}dz = \int_{[-R,R]} \frac{e^{x/2}}{e^x+1}dx$
+$$|f(z)| = |\frac{e^{z/2}}{e^z+1}| = \frac{e^{R/2} e^{ti/2}}{e^R-1} = \frac{e^{R/2}}{e^R-1} \text{ y } |e^z+1| \geq |e^z|-1 = e^R-1 \hspace{0.5cm}\text{ ya que \ }z=R+ti$$
+Vemos el cuarto término
+$$\left| \int_{-R+2\pi i, -R} f(z)dz \right| \leq 2\pi \max \{ |f(z)| : z\in[-R+2\pi i, -R] \} \leq 2\pi \frac{e^{-R/2}}{1-e^{-R}} $$ que igualmente tiende a $0$ cuando $R\rightarrow\infty$ y hemos usado que si $z= -R+ti, \ t\in[0,2\pi]$, entonces
+$$|f(z)| = \left| \frac{e^{-R/2}e^{ti/2}}{e^{-R}e^{ti}+1} \right| \leq \frac{e^{-R/2}}{1-e^{-R}}$$
+El primer término:
+$$\int_{[-R,R]} f(z)dz = \int_{-R}^{R} \frac{e^{x/2}}{e^x+1} \gamma'(x)dx \text{ con } \gamma(x)=x \text{ y }x\in[-R,R]$$
+Y por último el segundo término:
+$$\int_{[R+2\pi i, -R+2\pi i]} f(z)dz = -\int_{[-R+2\pi i, R+2\pi i]} f(z)dz = -\int_{-R}^{R} \frac{e^{x/2}e^{\pi i}}{e^x+1}dz = \int_{[-R,R]} \frac{e^{x/2}}{e^x+1}dx$$
 donde hemos usado
-$\varphi (x) = xx+2\pi i : x\in[-R,R]$, $\varphi'(x) = 1$
-
-$f(\varphi(x)) = \frac{e^{x/2}e^{\pi i}}{e^{x+2\pi i}+1} = \frac{-e^{x/2}}{e^2+a}$
-
-\
-
+$$\varphi (x) = x+2\pi i : x\in[-R,R], \ \varphi'(x) = 1 \hspace{1cm} f(\varphi(x)) = \frac{e^{x/2}e^{\pi i}}{e^{x+2\pi i}+1} = \frac{-e^{x/2}}{e^2+a}$$
 Tomando límite con $R\rightarrow\infty$ obtenemos que
 $2\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = 2\pi iRes(f(z),i\pi)$
-
-$Res(f(z),i\pi) = \lim_{z\rightarrow i\pi} f(z) = \lim_{z\rightarrow i\pi} (z-i\pi) \frac{e^{z/2}}{e^z+1} = e^{i\pi/2} \lim_{z\rightarrow i\pi} \frac{z-i\pi}{e^z+1}$
-que usando l'Hopital nos queda
-$-i$
-
-\
-
-$\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = \pi iRes(f(z),i\pi) = \pi i(-i) = \pi $
+$$Res(f(z),i\pi) = \lim_{z\rightarrow i\pi} f(z) = \lim_{z\rightarrow i\pi} (z-i\pi) \frac{e^{z/2}}{e^z+1} = e^{i\pi/2} \lim_{z\rightarrow i\pi} \frac{z-i\pi}{e^z+1}$$
+y usando l'Hopital nos queda
+$-i$.
+Conclusión:
+$$\int_{-\infty}^{\infty} \frac{e^{x/2}}{e^x+1} dx = \pi iRes(f(z),i\pi) = \pi i(-i) = \pi $$
 \end{sol}
 
 % integrales propuestas: 14, 15, 9 (mitad superior del anillo)
