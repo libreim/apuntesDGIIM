@@ -9,14 +9,15 @@
 Definimos
 $$\phi (w,z) = \frac{\varphi(w)}{w-z} \hspace{1cm} \phi : \gamma^{\ast}\times\mathbb{C}\backslash \gamma^{\ast} \rightarrow \mathbb{C}$$
 Sabemos que $\phi$ es continua por ser composición de funciones continuas. Vemos 
-$$\phi_w(z) = \phi(w,z)\hspace{1cm}\phi_w \in \mathcal{H}(\mathbb{C}\backslash \{w\})\hspace{1cm}\phi_w \in \mathcal{H}(\mathbb{C} \backslash \gamma^{\ast}  )$$
-Por tanto  por el teorema de holomorfía de una integral dependiente de $1$ parámetro (Tema $10$) $f\in\mathcal{H}(\mathbb{C}\backslash \gamma^{\ast})$
+$$\phi_w(z) = \phi(w,z)\hspace{1cm}\phi_w  \in \mathcal{H}(\mathbb{C} \backslash \gamma^{\ast})$$
+Por el teorema de holomorfía de una integral dependiente de un parámetro (Tema $10$) $f\in\mathcal{H}(\mathbb{C}\backslash \gamma^{\ast})$.
 Podemos proceder también de otra forma, sea $a\in\mathbb{C}\backslash \gamma^{\ast}$ fijo:
 $$\lim_{z\rightarrow a} \frac{f(z)-f(a)}{z-a} = \lim_{z\rightarrow a}  \frac{ \int_{\gamma} \frac{\varphi (w)}{w-z}dw  -  \int_{\gamma} \frac{\varphi (w)}{w-a}dw }{z-a} = \lim_{z\rightarrow a} \int_{\gamma} \frac{\varphi(w)((w-a)-(w-z))}{(z-a)(w-z)(w-a)} dw = \lim_{z\rightarrow a} \int_{\gamma} \frac{\varphi (w) dw}{(w-z)(w-a)}$$
 
-Veremos que podemos intercambiar límite e integral. Nos podemos restringir a un compacto para ver $\psi : \phi_{| \gamma{\ast}  \times  \overline{D}(a,r)} \rightarrow \mathbb{C}$  es continua con $r$ suficientemente pequeño y $\psi (w,z) = \frac{\varphi (w)}{(w-z)(w-a)}$
-
-tenemos que $\gamma^{\ast} \times \overline{D}(a,r)$ es compacto, por tanto $\phi$ es uniformemente continua.
+Vamos a ver que podemos intercambiar límite e integral. Dado $r\in\mathbb{R}^+$ suficientemente pequeño, definimos
+$$\psi : \phi_{| \gamma{\ast}  \times  \overline{D}(a,r)} \rightarrow \mathbb{C} \hspace{1cm} \psi (w,z) = \frac{\varphi (w)}{(w-z)(w-a)}$$
+La función $\psi$ es continua en $\gamma^{\ast} \times \overline{D}(a,r)$, como dicho conjunto es compacto, $\phi$ es uniformemente continua en  $\gamma^{\ast} \times \overline{D}(a,r)$ y podemos intercambiar límite e integral.
+De esta forma vemos que $f\in\mathcal{H}(\mathbb{C}\backslash \gamma^{\ast})$, y, por la equivalencia entre analiticidad y holomorfía, vemos que $f$ es analítica en $\mathbb{C}\backslash\gamma^{\ast}$.
 
 La fórmula de $f^{(k)}(z)$ la podemos obtener a partir de la \textit{fórmula de Cauchy para las derivadas} teniendo en cuenta que 
 $$ f(z) = 2\pi i\varphi(z) $$
@@ -31,7 +32,7 @@ $$ f(z) = 2\pi i\varphi(z) $$
 
 \begin{ejer}
 	Para $\alpha\in\mathbb{C}$ se define:
-	$$ \binom{\alpha}{0}=1\ \text{ y }\ \binom{\alpha}{n}=\frac{1}{n!} \prod_{j=0}^{n-1}(\alpha-j)= \frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!} \ \ \forall n\in\mathbb{N}$$
+	$$ \binom{\alpha}{0}=1\ \text{ y }\ \binom{\alpha}{n}=\frac{1}{n!} \prod_{j=0}^{n-1}(\alpha-j)=\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!} \ \ \hspace{1cm}\forall n\in\mathbb{N}$$
 	Probar que
 	$$ (1+z)^{\alpha} = \sum_{k=0}^{\infty}\binom{\alpha}{n}z^n \hspace{1cm}\forall z\in D(0,1) $$
 \end{ejer}
@@ -41,8 +42,10 @@ Vemos que la siguiente función es analítica en el disco $D(0,1)$.
 $$(1+z)^{\alpha} = e^{ \alpha \log(1+z) } \in\mathcal{H}(D(0,1))$$
 
 
-Por el \textit{teorema de desarrollo de Taylor}:
-$$\sum_{n\geq 0} \frac{f^{n)}(0)}{n!}z^n$$
+Por el \textit{teorema de desarrollo de Taylor} de la exponencial centrada en cero:
+$$
+%e^{ \alpha \log(1+z) } =
+ \sum_{n\geq 0} \frac{f^{n)}(0)}{n!}z^n$$
 \end{sol}
 
 \begin{ejer}
@@ -86,7 +89,7 @@ $$ f'(z) = -\left(\frac{3A}{2}+B\right) + \sum_{n\geq 1} \left(\frac{A}{2^{n+1}}
 \begin{sol}
 Vemos los ceros del denominador
 $$f(z) = \frac{1}{1-z-z^2} = \frac{1}{(z-a_1)(z-a_2)} $$
-$$z^2+z-1 = 0 \Longleftrightarrow z = \frac{-1\pm \sqrt{5}}{2} \text{\  donde\ } a_1=\frac{-1+ \sqrt{5}}{2},a_2=\frac{-1- \sqrt{5}}{2}$$
+$$z^2+z-1 = 0 \Longleftrightarrow z = \frac{-1\pm \sqrt{5}}{2} \text{\ \ donde \ \ } a_1=\frac{-1+ \sqrt{5}}{2},a_2=\frac{-1- \sqrt{5}}{2}$$
 $$f(z) = \frac{1}{(a_1-z)(a_2-z)} = \frac{1}{a_1-a_2}\left[ \frac{1}{a_1-z}-\frac{1}{a_2-z} \right]$$
 Expresamos $\alpha_n$ en términos de $a_1$ y $a_2$
 $$a_1+a_2 = -1 \hspace{1cm}a_1*a_2=-1 \hspace{1cm}(z-a_1)(z-a_2) = z^2-(a_1+a_2) + a_1a_2$$
@@ -96,7 +99,7 @@ $\alpha_{n+2}$ a partir de aquí se puede expresar en términos de $\alpha_n$ y 
 
 
 \begin{ejer}
-	En cada uno de los siguientes casos, decidir si existe una función $f\in\mathcal{H}(\Omega)$ verificando que $f^{(n)}=a_n$ para todo $n\in\mathbb{N}$:
+	En cada uno de los siguientes casos, decidir si existe una función $f\in\mathcal{H}(\Omega)$ verificando que $f^{(n)}(0)=a_n$ para todo $n\in\mathbb{N}$:
 	\begin{enumerate}[label=(\alph*)]
 		\item $\Omega = \mathbb{C}, \ \ a_n=n$
 		\item $\Omega=\mathbb{C},\ \ a_n=(n+1)!$

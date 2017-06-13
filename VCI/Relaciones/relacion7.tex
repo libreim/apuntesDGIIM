@@ -85,7 +85,7 @@ $$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz = \frac{1}{4} \int_{C(0,r)} \frac{dz}{z}
 +
 \left(-\frac{1}{8}+\frac{i}{4}\right) \int_{C(0,r)} \frac{dz}{z+2i}$$
 
-Tenemos para las dos últimas integrales y $r\not = 2$ dos casos, si $r<2$ ambas integrales son $0$, si $r>2$ ambas integrales valen lo mismo y se anulan entre sí. Por tanto
+Tenemos para las dos últimas integrales y $r\not = 2$ dos casos, si $r<2$ ambas integrales son $0$, si $r>2$ ambas integrales valen lo mismo ($2\pi i *1$) y se anulan entre sí. Por tanto
 $$\int_{C(0,r)} \frac{z+1}{z(z^2+4)} dz
 =
 \frac{1}{4}\int_{C(0,r)} \frac{dz}{z} = \frac{2\pi i}{4} = \frac{\pi}{2}$$
@@ -112,7 +112,7 @@ $$\frac{1}{b-a} \left[ \int_{C(0,R)} \frac{f(z)}{z-b}dz - \int_{C(0,R)} \frac{f(
 \textbf{Consecuencia}
 
 Si $\exists M>0 : |f(z)|\leq M\ \ \forall z \in \mathbb{C}$
-$$\frac{2\pi |f(b)-f(a)|}{|b-a|} = \frac{|2\pi i(f(b)-f(a))|}{|b-a|} = \left| \int_{C(0,R)} \frac{f(z)}{(z-a)(z-b)} dz \right|
+$$\frac{2\pi |f(b)-f(a)|}{|b-a|} = \frac{|2\pi i(f(b)-f(a))|}{|b-a|} 
 \leq \int_{C(0,R)} \frac{|f(z)|}{|z-a||z-b|} dz \leq \frac{M}{(R-|a|)(R-|b|)} 2\pi R$$
 que tiende a $0$ cuando $R\rightarrow \infty$ ya que $|z-a|\geq R-|a|$ y $|z-b|\geq R - |b|$
 \end{sol}
