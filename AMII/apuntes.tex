@@ -1554,7 +1554,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 				\\
 				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
 				\\
-				\geq& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+				=& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
@@ -1567,7 +1567,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
  \end{align*}
 
-Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
+Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$, y que $E_{n+1, 2k} \cap E_{n+1, 2k-1}= \emptyset$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
 \[
  \left( E_{n+1, 2(1+n2^n)-1} \cup E_{n+1, 2(1+n2^n)}  \right)
  \bigcup
