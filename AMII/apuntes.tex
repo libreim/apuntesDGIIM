@@ -1113,7 +1113,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     \[
       \exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
     \]
-    Y por tanto, $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
+    Y por tanto, $\sqrt[n]{|a_n|\cdot |x-a|^n} = \sqrt[n]{|a_n|}\cdot|x-a| \leq 1, \ \ \forall n\geq n_0$. Entonces: $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{|a_n|} \cdot |x-a| =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
 
     Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
   \end{proof}
@@ -1129,26 +1129,31 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
   \item La suma $S(x)=\displaystyle\sum_{n= 0}^\infty a_n (x-a)^n$ es una función $\mathcal{C}^\infty$ en el disco de convergencia $D(a,R)$.
   \item $S'(x)= \displaystyle\sum_{n= 1}^\infty n a_n (x-a)^{n-1}$, esto es,
     \[
-      \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right) .
+      \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right), \quad x \in D(a,R).
     \]
   \item 
     $\displaystyle \int_a^x S(t)\, dt =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
     \[
       \int_a^x  \sum_{n= 0}^\infty a_n (t-a)^n \, dt 
-      =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt.
+      =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt, \quad x \in D(a,R).
     \]
   \end{nlist}
+  \end{nth}
   
-  %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------
-  %\begin{proof} \hfill
-  %\begin{nlist}
-  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
+  \begin{proof} \hfill
+  \begin{nlist}
+     \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ de forma que se cumpla $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
   
-  % Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia (ver Marsden), y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, para ver que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
-  %\end{nlist}	
-  %\end{proof}
+   Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia, y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, viendo que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
+   
+   En efecto, $\displaystyle\limsup_{n\to\infty}\sqrt[n]{n a_n} = \limsup_{n\to\infty} \sqrt[n]{n} \frac{1}{R}$, pero $\sqrt[n]{n} \to 1$, sin más que aplicar el criterio de la raíz.
+   
+   \item Sea $x \in D(a,R)$. Entonces, teniendo en cuenta $(i)$, y de igual forma que hicimos antes, obtenemos que $\sum_{n\ge0} na_n(x-a)^{n-1}$ converge uniformemente en $D(a,R')$. Concluimos aplicando el \textit{Teorema} \ref{9} sobre derivación de una serie de funciones.
+   \item La prueba es análoga a $(ii)$, aplicando en este caso el \textit{Teorema} \ref{8} sobre integración de series de funciones.
+  \end{nlist}	
+  \end{proof}
 
-\end{nth}
+
 
 
 % --------------------------------------------------------------------------------
@@ -1157,7 +1162,7 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
 
 \subsection{Funciones analíticas}
 
-Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)\ y\ a \in I, \ \exists \{a_n\}\ tal\ que\ f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
+Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)$ y $a \in I, \ \exists \{a_n\}$ tal que $f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
 
 
 Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficiente para que una funci\'on $f\in \mathcal{C}^\infty$ coincida con la suma de su serie de Taylor.
