@@ -1657,11 +1657,13 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
     \item Escribimos convenientemente el conjunto B, y aplicamos la definición de medida:
 $$B= ( B\setminus A) \cup A \Longrightarrow \mu(B)= \mu ( (B\setminus A) + \mu(A)) \geq \mu(A)	$$
 \item Sabemos que si los conjuntos $A_k$ son disjuntos se da la igualdad. Si no lo son,  podemos considerar los conjuntos:
-$$B_1=A_1, \ B_2=A_2\setminus B_1, \dots , B_n=A_n \setminus B_{n-1}, \dots $$
+$$B_1=A_1, \ B_2=A_2\setminus B_1, B_3 = A_3 \setminus (B_1 \cup B_2),\dots , B_n=A_n \setminus (B_1 \cup \dots \cup B_{n-1}), \dots $$
 
 Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disjuntos dos a dos. Por la propiedad $(i)$,  $\mu (B_k) \leq \mu (A_k)$, y tenemos 
 
   $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \mu \left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) \leq \sum_{k=1}^\infty \mu(A_k)$$
+  
+  \item Pongamos $B_1 = A_1$, $B_n = A_{n} \setminus A_{n-1} \ \forall n \in \mathbb{N}$. Entonces, dado $n \in \mathbb{N}$ se tiene $\bigcup_{k=1}^n B_k = \bigcup_{k=1}^nA_k=A_n$, con $B_k$  disjuntos dos a dos, y también $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$. Por tanto: $$\mu\left(\bigcup_{k=1}^\infty A_k \right) = \mu\left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) = \lim_{n\to\infty} \sum_{k=1}^n \mu(B_k) = \lim_{n\to\infty} \mu\left(\bigcup_{k=1}^n B_k \right) = \lim_{n\to\infty} \mu\left( A_n \right)$$
 \end{nlist}
 \end{proof}
   %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------------------------
