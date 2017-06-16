@@ -1927,8 +1927,8 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 \end{proof}
 
 \subsection{Integral de funciones medibles}
-
-%%% FIXME: FALTAN COSAS
+\textbf{\underline{Aviso:} falta contenido al principio de esta sección. Además, a partir de aquí no están revisados los apuntes}.
+%% FIXME: FALTAN COSAS
 
 
 \begin{nth}[Convergencia dominada de Lebesgue]
@@ -1984,19 +1984,18 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
   $$ \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
 \end{proof}
 
-Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el Lema de Fatou.
+Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el \textit{Lema de Fatou}.
 
 \begin{nprop}[Lema de Fatou para funciones medibles]
-  Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega d\mu - \int_\Omega d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
+  Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega h^+\, d\mu - \int_\Omega (-h^-)\, d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
   Entonces:
-  $$ \lim_{n\to \infty}\int_\Omega f_n d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )d\mu$$
+  $$ \liminf_{n\to \infty}\int_\Omega f_n\, d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )\,d\mu$$
 \end{nprop}
 \begin{proof}
-  Llamamos $h_n:= f_n - h \geq 0$ y medible por diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
-  $$ \lim_{n\to \infty} \int_\Omega (f_n -h) d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h) d\mu$$
-  
-  $$ ( \liminf_{n\to \infty}\int_\Omega f_n d\mu )  - \int_\Omega h d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n d\mu - \int_\Omega f_n d\mu$$
-  Y podemos suprimir los miembros iguales y haber probado este resultado.
+  Llamamos $h_n:= f_n - h \geq 0$, que es medible por ser diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
+  $$ \lim_{n\to \infty} \int_\Omega (f_n -h)\, d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h)\, d\mu$$
+  $$  \liminf_{n\to \infty}\int_\Omega f_n\, d\mu   - \int_\Omega h\, d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n\, d\mu - \int_\Omega h\, d\mu$$
+  Y podemos suprimir los miembros iguales para concluir la prueba.
 \end{proof} 
 
 \begin{nth}[Teorema de la convergencia monótona para funciones integrables]
