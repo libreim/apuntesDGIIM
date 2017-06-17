@@ -15,12 +15,9 @@ Cauchy Riemman
 
 
 \textbf{c)}
-
-$f(x+iy) = \frac{x^3+iy^3}{x^2+y^2}$, \ $\forall (x,y)\in\mathbf{R}^2 \backslash \{ (0,0) \}$, $f(0)=0$
-
-$u(x,y) = Re f = \frac{x^3}{x^2+y^2}, \hspace{1cm} v(x,y) = Imf = \frac{y^3}{x^2+y^2}$
-
-En $\mathbf{C}^{\ast}$ tenemos:
+$$f(x+iy) = \frac{x^3+iy^3}{x^2+y^2}\hspace{0.5cm} \forall (x,y)\in\mathbb{R}^2 \backslash \{ (0,0) \}\hspace{1cm}\text{ con } f(0)=0$$
+$$u(x,y) = Re f = \frac{x^3}{x^2+y^2}, \hspace{1cm} v(x,y) = Imf = \frac{y^3}{x^2+y^2}$$
+En $\mathbb{C}^{\ast}$ tenemos:
 $$ \frac{\partial u}{\partial x} = \frac{3x^2}{x^2+y^2} + \frac{x^4(-1)2}{(x^2+y^2)^2} \hspace{1cm}
 \frac{\partial v}{\partial y} = \frac{3y^2}{x^2+y^2} = \frac{y^4(-1)2}{(x^2+y^2)^2}$$
 $$ \frac{\partial u}{\partial y} = \frac{x^3 (-1)2y}{(x^2+y^2)^2} \hspace{1cm}
@@ -42,7 +39,7 @@ Como conclusión, para que la función sea derivable en un punto $x\in\mathbb{C}
 	Si se exige además que $f(0)=0$, entonces $f$ es única.
 \end{ejer}
 \begin{sol}
-Sabemos que dicha función debe satisfacer las ecuaciones de Cauchy-Riemman, así que tenemos
+Sabemos que dicha función debe satisfacer las ecuaciones de Cauchy-Riemann, así que tenemos
 $$ \frac{\partial Re(f)}{\partial x}(x+iy) = 4x^3-12xy^2 = \frac{\partial Im(f)}{\partial y}(x+iy) $$
 Integrando con respecto de la variable $y$ el término central nos queda que
 $Im(f) = 4x^3*y - 4xy^3+k$ tal que $k\in\mathbb{R}$, ya que también se cumple la condición 
@@ -55,7 +52,7 @@ Si se exige $f(0)=0$ nos queda una única ecuación como resultado de sustituir 
 	Encontrar la condición necesaria y suficiente que deben cumplir $a,b,c\in\mathbb{R}$ para que exista una función entera $f$ tal que
 	$$ Re(f(x+iy)) = ax^2+bxy+cy^2\hspace{1cm}\forall x,y\in\mathbb{R} $$
 \end{ejer}
-Usamos Cauchy-Riemman, deben cumplir la condición $a=-c$.
+Usamos Cauchy-Riemann, deben cumplir la condición $a=-c$.
 
 
 \begin{ejer}
@@ -70,8 +67,7 @@ Definimos las funciones $u$ y $v$:
 $Re(f(x+iy)) = u(x,y), \ Im(f(x+iy)) = v(x,y)$
 
 Los casos extremos son $a=0$ o $b=0$, donde o la imagen o la parte real que quedan serían constantes.
-$au(x,y)+bv(x,y)=c \implies -bv(x,y) = c-au(x,y) \implies v(x,y)= c'-a'u(x,y)$
-
+$$au(x,y)+bv(x,y)=c \implies -bv(x,y) = c-au(x,y) \implies v(x,y)= c'-a'u(x,y)$$
 Derivamos con respecto a $x$ e $y$ a ambos lados de la última ecuación:
 $$\frac{\partial v(x,y)}{\partial x} = -a' \frac{\partial u(x,y)}{\partial x} = -a' \frac{\partial v(x,y)}{\partial y} \hspace{1cm} \frac{\partial v(x,y)}{\partial y} = -a' \frac{\partial u(x,y)}{\partial y} = a' \frac{\partial v(x,y)}{\partial x}$$
 Con lo que nos queda

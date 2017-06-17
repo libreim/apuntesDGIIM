@@ -30,7 +30,8 @@ $$\sum_{n\geq 0} 2^nz^{n!}$$
 Si $|z|\geq 1$ entonces la serie diverge, en el caso $|z|<1$:
 $$\sqrt[n]{|2^nz^{n!}|} = \sqrt[n]{2^n|z|^{n!}} = 2|z|^{(n-1)!}$$
 Dicha sucesión tiende a $0$ cuando $n\rightarrow\infty$, por tanto %(*)
-$\sum_{n\geq 0} |2^nz^{n!}| < \infty \implies \sum_{n\geq 0} 2^nz^{n!} < \infty$, entonces el radio de convergencia de la serie es $R=1$.
+$$\sum_{n\geq 0} |2^nz^{n!}| < \infty \implies \sum_{n\geq 0} 2^nz^{n!} < \infty$$ 
+Entonces el radio de convergencia de la serie es $R=1$.
 
 
 
@@ -96,7 +97,7 @@ Sea $\sum_{n\geq 0} \alpha_n (z-a)^n$ que converge uniformemente
 $$S_n=\sum_{k=0}^{n-1} \alpha_k (z-a)^k \text{ \ converge uniformemente } \Longleftrightarrow S_n \text{ es uniformemente de Cauchy }$$
 Lo cual, por definición, es:
 $$\forall\epsilon>0,\exists m\in\mathbb{N}: p\geq q\geq n \implies |S_p(z)-S_q(z)| < \epsilon \hspace{1cm}\forall z\in\mathbb{C}$$
-Sea un polinomio $p\in\mathbb{P}[\mathbb{C}]$, tenemos que $\lim_{|z|\rightarrow\infty} p(z) = \infty \Longleftrightarrow gr(p)>0$ (grado del polinomio).
+Sea un polinomio $p\in\mathbb{P}[\mathbb{C}]$, tenemos que $$\lim_{|z|\rightarrow\infty} p(z) = \infty \Longleftrightarrow gr(p)>0 \text{ (grado del polinomio)}$$
 
 Vemos que $|S_p(z)-S_q(z)|$ es un polinomio que está acotado, tiene que ser constante para no diverger en infinito, en particular es la constante $0$, ya que $S_p(a)=S_q(a)$, por tanto $$\sum_{q=m}^{p-10} \alpha_n (z-\alpha)^n = 0 \implies  \alpha_n=0 \hspace{1cm}\forall n\geq m$$ %(*)
 

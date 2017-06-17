@@ -20,9 +20,8 @@ Sea $z\in\Omega$, $f(z)=0$, $f(z) = e^{wz} : w\in\mathbf{C}$
 
 Sea $f$ tal que $f\in\mathcal{H}(\mathbb{C})$,
 $ f'(z) = f(z) \lim_{h\rightarrow 0} \frac{f(h)-f(0)}{h}$
-
-$(f(z) e^{-wz})' = f'(z) e^{-wz} + (-w) +ze^{-wz} = f(z)we^{-wz} - f(z)we^{-wz} = 0$
-las funciones son la misma salvo una constante.
+$$(f(z) e^{-wz})' = f'(z) e^{-wz} + (-w) +ze^{-wz} = f(z)we^{-wz} - f(z)we^{-wz} = 0$$
+Por lo que las funciones son iguales salvo una constante.
 En el punto $0$ las dos funciones valen lo mismo, por lo que la función es la constante $1$, ya que $f(0)=1$
 
 
@@ -40,7 +39,7 @@ Podemos ver la exponencial como $e^z = e^{Re(z)} (\cos(Imz) + i\sin(Imz))$, sean
 Definimos las bandas horizontales y verticales:
 $$B_H = \{ z\in\mathbb{C} : a\leq Rez \leq b \} \hspace{1cm} B_V = \{ z\in\mathbb{C} : a\leq Imz \leq b \}$$
 Si $a\leq Rez \leq b$, $e^a \leq e^{Rez} \leq e^b$
-lo que pasa es que se mueve por toda la circunferencia.%? unidad.
+la función se mueve por toda la circunferencia.%? unidad.
 
 Cuando la parte imaginaria se puede mover donde quiera le das infinitas vueltas a la circunferencia unidad. Tenemos que
 $exp(B_H)$ es la corona circular de centro $0$ y radios $e^a$ y $e^b$.
@@ -70,12 +69,10 @@ $$ \{w_n(z_n-1)\} \rightarrow \lambda\in\mathbb{C} \implies \{ z_n^{w_n} \}\righ
 Como la función exponencial es continua
 $\{ w_n (z_n-1) \} \rightarrow \lambda \implies \{ e^{w_n(z_n-1)} \} \rightarrow e^{\lambda}$
 $$\lim \{ \log(z_n) \} = 0 \implies \lim \{ z_n-\log(z_n) \} = 1 \implies \lim \{ w_n(z_n-\log(z_n))-w_n \} = 0$$
-$$\lim \{ z_n^{w_n} = e^{\log(z_n)-w_n} \}= \lim \{ e^{w_n (z_n-1)} \} \Longleftrightarrow \lim\{ \frac{e^{w_n(z_n-1)}}{e^{w_n (\log(z_n))}} = e^{w_n (z_n-\log(z_n))-w_n} \} = 1$$
+$$\lim \left\{ z_n^{w_n} = e^{\log(z_n)-w_n} \right\}= \lim \left\{ e^{w_n (z_n-1)} \right\} \Longleftrightarrow \lim\left\{ \frac{e^{w_n(z_n-1)}}{e^{w_n (\log(z_n))}} = e^{w_n (z_n-\log(z_n))-w_n} \right\} = 1$$
 Vemos que
-$z_n^{w_n} = e^{w_n \frac{\log(z_n)}{z_n-1} (z_n-1)}$
-$= e^{w_n (z_n-1) \frac{\log(z_n)}{z_n-1}}$
-
-Sabemos que $ \frac{\log(z_n)}{z_n-1} \rightarrow 1$ ya que
+$$z_n^{w_n} = e^{w_n \frac{\log(z_n)}{z_n-1} (z_n-1)} =  e^{w_n (z_n-1) \frac{\log(z_n)}{z_n-1}}$$
+Y sabemos que $ \frac{\log(z_n)}{z_n-1} \rightarrow 1$ ya que
 $\lim_{z\rightarrow 1} \frac{\log(z)-\log(1)}{z-1} = \log'(1) = 1/1$
 
 \end{sol}
@@ -88,16 +85,15 @@ $\lim_{z\rightarrow 1} \frac{\log(z)-\log(1)}{z-1} = \log'(1) = 1/1$
 \end{ejer}
 
 \begin{sol}
-La serie converge puntualmente si, y sólo si, $| \frac{1}{e^{z^2}} | <1 \Longleftrightarrow 1<|e^{z^2}|  \Longleftrightarrow 0<Rez^2 = (Rez)^2-(Imz)^2 $
-$\Longleftrightarrow |Rez| > |Imz|$
-
+La serie converge puntualmente si, y sólo si, $\left| \frac{1}{e^{z^2}} \right| <1$, además
+$$\left| \frac{1}{e^{z^2}} \right| <1 \Longleftrightarrow 1<|e^{z^2}|  \Longleftrightarrow 0<Rez^2 = (Rez)^2-(Imz)^2 
+\Longleftrightarrow |Rez| > |Imz|$$
 donde en la última implicación hemos usado
 $e^{z^2} = e^{Rez^2} e^{Imz^2}$
 $$Rez^2 = (Rez)^2 - (Imz)^2 \hspace{1cm}Rez^2>0 \Longleftrightarrow |Rez| > |Imz|$$
-Vemos ahora la convergencia uniforme
-
-$A = \{ z\in\mathbb{C} : (Rez)^2>(Imz)^2 \}$
-Si $B\subset A$ y satisface que $\inf_{z\in B} [ (Rez)^2-(Imz)^2 ] > 0$, entonces hay convergencia uniforme en $B$.
+Vemos ahora la convergencia uniforme, definimos
+$$A = \{ z\in\mathbb{C} : (Rez)^2>(Imz)^2 \}$$
+Si un conjunto $B\subset A$ y satisface que $\inf_{z\in B} [ (Rez)^2-(Imz)^2 ] > 0$, entonces hay convergencia uniforme en $B$.
 \end{sol}
 
 
@@ -117,13 +113,11 @@ $\Longleftarrow$
 $$a'=\frac{a}{a} = 1, b'=\frac{b}{a}, c'=\frac{c}{a} \hspace{1cm} b'=e^{\theta i} , \ \ c' = e^{\gamma i} = -b-1$$
 $$a+b+c = 0 \implies a'+b'+c' = 0 \implies 1+b'+c' = 0 \implies c'=-b'-1 \text{ con }\gamma,\theta\in ]-\pi,\pi[$$
 De lo que deducimos que 
-$(-\cos(\theta)-1)-i\sin(\theta) = (\cos(\gamma)) + i(\sin(\gamma))$
-
-$-\sin(\theta) = \sin(\gamma) \implies \theta = -\gamma $
-$-\cos(\theta) -1 =  \cos(\gamma)$
+$(-\cos(\theta)-1)-i\sin(\theta) = (\cos(\gamma)) + i(\sin(\gamma))$, además
+$$-\sin(\theta) = \sin(\gamma) \implies \theta = -\gamma 
+\hspace{1cm}-\cos(\theta) -1 =  \cos(\gamma)$$
 por tanto
-$\theta = \pm\frac{2\pi}{3} = -\gamma$
-
+$$\theta = \pm\frac{2\pi}{3} = -\gamma$$
 \end{sol}
 
 
@@ -136,7 +130,7 @@ $\theta = \pm\frac{2\pi}{3} = -\gamma$
 \begin{sol}
 $a\in\Omega$ y vemos que es derivable por la definición
 $$\lim_{z\rightarrow a} \frac{\phi(z)-\phi(a)}{z-a} \frac{\phi(z)+\phi(a)}{\phi(z)+\phi(a)} = \lim_{z\rightarrow a} \frac{z-a}{z-a} \frac{1}{\phi(z)+\phi(a)} = \frac{1}{2\phi(a)} = \phi '(a)$$
-donde hemos usado que $\phi(a)\not = 0$
+donde hemos usado que $\phi(a)\not = 0$.
 
 \end{sol}
 
@@ -192,7 +186,7 @@ $\frac{1+z}{1-z} \in\mathbb{R}^- \Longleftrightarrow \exists r>0 : z\not=1, \fra
 Viendo que
 $g(z) = \frac{1+z}{1-z} \in\mathcal{H}(\Omega)$ y $g(\Omega) \subseteq \mathbb{C}^{\ast}\backslash \mathbb{R}^-$
 podemos asegurar que $f\in\mathcal{H}(\mathbb{C})$ por composición.
-$$f'(z) = \frac{ \frac{1-z+(1+z)}{(1-z)^2} }{ \frac{1+z}{1-z} } = \frac{2}{1-z^2}$$
+$$f'(z) = \frac{ (1-z+(1+z))/(1-z)^2 }{ (1+z)/(1-z) } = \frac{2}{1-z^2}$$
 Siendo $\xi\in\mathcal{H}(\Omega)$, entonces
 $\xi '(z) = \frac{1}{1+z} + \frac{1}{1-z} = \frac{2}{1-z^2}$
 

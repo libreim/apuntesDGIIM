@@ -57,8 +57,8 @@ $$ \left|\sum_{k=1}^n z_n\right|
 |z_1|\sum_{k=1}^n \frac{|z_k|}{|z_1|} 
 =
 \sum_{k=1}^n |z_k|$$
-$n=2 \implies |z_1+z_2| = |z_1| + |z_2| \longleftrightarrow z_2 = \lambda z_1$ con $\lambda \in \mathbb{R}$
-
+Sabemos que en el caso $n=2$
+$$|z_1+z_2| = |z_1| + |z_2| \Longleftrightarrow z_2 = \lambda z_1\text{ con }\lambda \in \mathbb{R}$$
 Sea cierto para $n\in\mathbb{N}$
 $|\sum_{k=1}^{n+1} z_k| 
 =
@@ -71,13 +71,12 @@ $$|z_{n+1}|+\left|\sum_{k=1}^nz_n\right|
 \geq 
 \left|\sum_{k=1}^{n+1} z_k\right|=\sum_{k=1}^{n+1} |z_k| = |z_{n+1}| + \sum_{k=1}^n |z_k|$$
 donde la otra desigualdad entre los extremos se sabe de la desigualdad triangular.
-%Ahora usamos la hipótesis de inducción
-$|z_{n+1}| + |\sum_{k=1}^n z_k| 
+Vemos que
+$$|z_{n+1}| + \left|\sum_{k=1}^n z_k\right| 
 =
-|z_{n+1}| + \sum_{k=1}^n |z_k|$
+|z_{n+1}| + \sum_{k=1}^n |z_k|$$
 Por la hipótesis de inducción para $k=2$, tenemos que 
-$\exists \lambda >0 : z_{n+1} = \lambda \sum_{k=1}^n z_k$
-
+$$\exists \lambda >0 : z_{n+1} = \lambda \sum_{k=1}^n z_k$$
 Nos queda por hacer lo análogo con el resto de números complejos $z_k,k=1...n$
 Por la hipótesis de inducción para $k=n, \exists \mu_1,...\mu_n : \mu_1 z_1 = \mu_2 z_2=...= \mu_n z_n$,
 como $z_{n+1} = \lambda \sum_{k=1}^n z_k 
@@ -89,7 +88,7 @@ $$ |z_1+z_2| = |z_1|+|z_2|
 =
 |z_1|^2 + 2|z_1||z_2|+|z_2|^2$$
  entonces tenemos
-$$z_1 \overline{z_2}=\lambda>0 \text{ y que } z_1 = \frac{\lambda}{|z_2|^2 }z_2 
+$$z_1 \overline{z_2}=\lambda>0 \hspace{0.5cm}\text{ y }\hspace{0.5cm} z_1 = \frac{\lambda}{|z_2|^2 }z_2 
 $$
 
 \end{sol}
@@ -109,8 +108,8 @@ Entonces $$a^2+b^2+1+2 b = a^2+(b+1)^2 = 4(a^2+(b-1)^2) = 4a^2+4b^2+4-8b$$
 Luego
 $$3a^2+3b^2-10b+3=0 \implies a^2+b^2-\frac{10}{3}b+1=0$$
 Sumamos y restamos $\frac{25}{9}$
-$$a^2+(b-\frac{5}{3})^2-\frac{25}{9}+1 \implies a^2+(b-\frac{5}{3})^2=\frac{16}{9}$$
-Por lo tanto $A$ es la circunferencia con $c=(0, \frac{5}{3})$ y radio $r=\frac{4}{3}$
+$$a^2+\left(b-\frac{5}{3}\right)^2-\frac{25}{9}+1 \implies a^2+(b-\frac{5}{3})^2=\frac{16}{9}$$
+Por lo tanto $A$ es la circunferencia con $c=(0,5/3)$ y radio $r=\frac{4}{3}$
 
 \
 
@@ -128,7 +127,7 @@ $$ \frac{a^2}{\sqrt{3}^2} + \frac{b^2}{2^2} = 1 $$
 
 Usamos la fórmula del ángulo doble
 $$ \cos(2\alpha) = \cos^2(\alpha)-\sin^2(\alpha) \hspace{1cm} \sin(2\alpha) = 2\sin(\alpha)\cos(\alpha) $$
-$\phi = \arctan(\frac{Im z}{Re z + |z|}) \implies \phi = 2\alpha = \arctan(\frac{Im z}{Re z + |z|}) $
+$\phi = \arctan\left(\frac{Im z}{Re z + |z|}\right) \implies \phi = 2\alpha = \arctan\left(\frac{Im z}{Re z + |z|}\right) $
 
 \textbf{Pista para otra forma de hacerlo}
 $$ \phi = 2\arctan ( \frac{Im z}{Re z + |z|} ) 
@@ -176,9 +175,9 @@ $$ =
 \cos(n\theta)(cos(\theta)+i\sin(\theta)) + i\sin(n\theta)(cos(\theta)+i\sin(\theta))
 $$
 $$=
-(\cos(theta)+i\sin(\theta)) (\cos(n\theta)+i\sin(n\theta))
+(\cos(\theta)+i\sin(\theta)) (\cos(n\theta)+i\sin(n\theta))
 =
-(cos(\theta)+i\sin(theta))^{n+1}
+(cos(\theta)+i\sin(\theta))^{n+1}
 $$
 La última igualdad la tenemos por la hipótesis de inducción.
 \end{sol}
@@ -206,9 +205,9 @@ Probar las dos simultáneamente y usar la fórmula de Moivre
 $ \sum_{k=0}^n ( cos(x)+sin(x) )^k $
 $$\sin(x/2) \sum_{k=0}^{n} \cos(kx) + i\sin(x/2) \sum_{k=0}^{n} \sin(kx)$$
 Sacamos factor común 
-$$ \sin(x/2)( \sum_{k=0}^{n} \cos(kx)+i\sin(kx) ) $$
+$$ \sin(x/2)\left( \sum_{k=0}^{n} \cos(kx)+i\sin(kx) \right) $$
 Usamos la fórmula de Moivre
-$$ \sin(x/2) \sum_{k=0}^{n} (\cos(x)+i\sin(x)^k $$
+$$ \sin(x/2) \sum_{k=0}^{n} (\cos(x)+i\sin(x))^k $$
 Usamos que $x\not\in 2\pi\mathbb{Z}$
 $$ \sin(x/2) \frac{1-(\cos(x)+i\sin(x)^{n+1}}{1-(\cos(x)+i\sin(x)} = \sin(x/2) \frac{ 1- (\cos((n+1)x)+i\sin((n+1)x)) }{1 - \cos(x) - i\sin(x)} $$
 Usamos que $2\sin^2(x/2) = 1-\cos(x)$ y que $\sin(x) = \sin(x/2)\cos(x/2)$,
@@ -222,11 +221,12 @@ $$
 $$
 Multiplicamos numerador y denominador por el conjugado del denominador
 $$
-\sin(\frac{n+1}{2}x)( \sin(\frac{n+1}{2}x)-i\cos(\frac{n+1}{2}x) )( \sin(x/2)+i\cos(x/2) )
+\sin\left(\frac{n+1}{2}x\right)\left(
+\sin\left(\frac{n+1}{2}x\right)-i\cos\left(\frac{n+1}{2}x\right) \right)( \sin(x/2)+i\cos(x/2) )
 $$
 $$ 
-=  \sin(\frac{n+1}{2}x) ( \cos(\frac{n+1}{2}x)\cos(x/2) + \sin(\frac{n+1}{2}x)\sin(x/2)  + i( \sin(\frac{n+1}{2}x)\cos(x/2) - \cos(\frac{n+1}{2}x)\sin(x/2) ) )
+=  \sin\left(\frac{n+1}{2}x\right) \left( \cos\left(\frac{n+1}{2}x\right)\cos(x/2) + \sin\left(\frac{n+1}{2}x\right)\sin(x/2)  + i\left( \sin\left(\frac{n+1}{2}x\right)\cos(x/2) - \cos\left(\frac{n+1}{2}x\right)\sin(x/2) \right) \right)
 $$
-$$ = \sin(\frac{n+1}{2}x) (\cos(\frac{nx}{2}) + i\sin(\frac{nx}{2}))
+$$ = \sin\left(\frac{n+1}{2}x\right) \left(\cos\left(\frac{nx}{2}\right) + i\sin(\frac{nx}{2})\right)
 $$
 \end{sol}

@@ -7,18 +7,18 @@
 
 Usamos la fórmula de la relación anterior para probar que es continua en $\mathbb{C}^{\ast} \backslash \mathbb{R}$
 $$  
-arg z = 2\arctan (\frac{Imz}{Rez + |z|}) \hspace{1cm} \forall z\in\mathbb{C}^{\ast}\backslash\mathbb{R}
+arg z = 2\arctan \left(\frac{Imz}{Rez + |z|}\right) \hspace{1cm} \forall z\in\mathbb{C}^{\ast}\backslash\mathbb{R}
 $$
 Luego nos aproximamos por sucesiones
 $$  
-\{ z+\frac{i}{n} \} \rightarrow z \hspace{1cm}
-\lim_n(arg(z+\frac{i}{n})) = \lim_n( \arctan(\frac{1}{nz}+\pi) ) = \pi
+\left\{ z+\frac{i}{n} \right\} \rightarrow z \hspace{1cm}
+\lim_{n\rightarrow\infty}\left(arg\left(z+\frac{i}{n}\right)\right) = \lim_{n\rightarrow\infty}\left( \arctan\left(\frac{1}{nz}+\pi\right) \right) = \pi
 $$
-
 $$
-\{ z-\frac{i}{n} \} \rightarrow z
-\lim_n(arg(z-\frac{i}{n})) = \lim_n( \arctan(\frac{-1}{nz}-\pi) ) = -\pi
+\left\{ z-\frac{i}{n} \right\} \rightarrow z \hspace{1cm}
+\lim_{n\rightarrow\infty}\left(arg\left(z-\frac{i}{n}\right)\right) = \lim_{n\rightarrow\infty}\left( \arctan\left(\frac{-1}{nz}-\pi\right) \right) = -\pi
 $$
+Como los límites no coinciden no existe dicho límite y la función no es continua.
 \end{sol}
 
 \begin{ejer}
@@ -29,10 +29,10 @@ $$
 \begin{sol}
 Definimos
 $$
-f(z) = z( \cos(\pi-\theta) + i\sin(\pi-\theta) ) \hspace{2cm} f:\mathbb{C}\rightarrow \mathbb{C} \text{ es continua}
+f(z) = z( \cos(\pi-\theta) + i\sin(\pi-\theta) ) \hspace{2cm} f:\mathbb{C}\rightarrow \mathbb{C} \text{ continua}
 $$
 $$
-\phi(z) = arg(f(z)) - (\pi-\theta) \hspace{2cm} \phi: S_{\theta} \rightarrow \mathbb{C} \text{ $\phi$ es continua}
+\phi(z) = arg(f(z)) - (\pi-\theta) \hspace{2cm} \phi: S_{\theta} \rightarrow \mathbb{C} \text{ continua}
 $$
 $$ 
 \phi(z) \in Arg (f(z)) + \theta-\pi \subset Arg (f(z)) + Arg( \cos(\theta-\pi)+i\sin(\theta-\pi) ) 
@@ -46,13 +46,13 @@ $$
 \end{ejer}
 
 \begin{sol}
-$\mathbb{T}$ compacto y conexo $\implies \phi(\mathbb{T})$ intervalo cerrado y acotado
+$\mathbb{T}$ compacto y conexo $\implies \phi(\mathbb{T})$ es un intervalo cerrado y acotado
 
 Sea $\alpha\in\mathbb{T} : \phi(\alpha) \not =\min(\phi(\mathbb{T})), \max(\phi(\mathbb{T}))$ 
 $\phi ( \mathbb{T}-\{ \alpha \} )$ conexo $\implies [ \min(\phi(\mathbb{T})), \phi(\alpha)[ \cup ]\phi(\alpha), \max( \phi(\mathbb{T}) ) ] $ que es una contradicción.
 
 Si $\exists h:\mathbb{C}^{\ast} \rightarrow \mathbb{R}$ con $h(z)\in Arg(z)$ $\forall z\in\mathbb{C}^{\ast}$ y $h$ continua, entonces
-$h_{| \mathbb{T}} : \mathbb{T} \rightarrow \mathbb{T} \rightarrow \mathbb{R}$ es continua y $h_{|\mathbb{T}} (z) \in Arg(z) \ \forall z\in\mathbb{T}$
+$h_{| \mathbb{T}} : \mathbb{T} \rightarrow \mathbb{R}$ es continua y $h_{|\mathbb{T}} (z) \in Arg(z) \ \forall z\in\mathbb{T}$
 \end{sol}
 
 \begin{ejer}
@@ -69,7 +69,7 @@ $$
 \{ z_n \} \rightarrow z \implies \forall \epsilon>0\ \exists m\in\mathbb{N} : n\geq m \ |z_n-z|z\epsilon
 $$
 Sea $\epsilon = \frac{|z|}{2}$, entonces 
-$\exists m\in\mathbb{N} :  n\geq m\ z_n\in D(z, |z|/2)$
+$\exists m\in\mathbb{N}$ tal que para $n\geq m$ se tiene $z_n\in D(z, |z|/2)$
 
 A partir de aquí usamos el ejercicio $2$ para concluir.
 \end{sol}
@@ -83,37 +83,37 @@ A partir de aquí usamos el ejercicio $2$ para concluir.
 
 \textbf{Idea}
 $$
-|1+\frac{z}{n}|^n \rightarrow e^{Re z}
+\left|1+\frac{z}{n}\right|^n \rightarrow e^{Re z}
 $$
 $$
-\lim_{n\rightarrow\infty} |1+\frac{z}{n}|^n 
-= e^{ \lim_{n\rightarrow\infty} n(|1+\frac{z}{n}|-1) }
+\lim_{n\rightarrow\infty} \left|1+\frac{z}{n}\right|^n 
+= e^{ \lim_{n\rightarrow\infty} n\left(\left|1+\frac{z}{n}\right|-1\right) }
 $$
 $$
-arg((1+\frac{z}{n})^n) \rightarrow Im z
+arg\left(\left(1+\frac{z}{n}\right)^n\right) \rightarrow Im z
 $$
 
 \begin{sol}
 
 
+Sea $z_n\in\mathbb{C}$ con$\phi_n\in Arg(z_n)$
+$$\{ |z_n| \} \rightarrow |z| \hspace{1cm} \{y_n\} \rightarrow y\in Arg(z)$$
+Vamos a usar que is tiene sun sucesión de números complejos y la sucesión de los módulos converge y hay una sucesión de los argumentos de forma que convergen, la sucesión converge al módulo por $cos(x) +isen(x)$
 
-$z_n\in\mathbb{C}, \phi_n\in Arg(z_n)$
+Sabemos que
+$$\phi_n \in Arg(z_n)$$
+Con lo que tenemos
 
-$\{ |z_n| \} \rightarrow |z|$ y $\{y_n\} \rightarrow y\in Arg(z)$
-
-Vamos a usar que is tiene sun sucesión de numeros complejos y la sucesion de los modulos converge y hay una sucesion de los argumentos de forma q convergen, la sucesion converge al modulo por el cos +isen
-
-$\phi_n \in Arg(z_n)$, $z_n = (1+\frac{z}{n})^n = (1+\frac{a+ib}{n})^n
-= [(1+\frac{a}{n}) + (\frac{ib}{n})] ^n$
-$|z_n| = [| (1+\frac{a}{n}) + \frac{ib}{n} |] ^n
-= [ (1+\frac{a}{n})^2 + (\frac{b}{n})^n ]^{1/2}
-= lim n [ (1+\frac{a^2}{n^2} + (\frac{a}{n}+\frac{b^2}{n^2}) )]^{n/2}
-= e^{  \lim n/2 (\frac{a^2}{n^2} + 2a/n + b^2/n^2 )  } = e^a = e^{Re z}$ 
+$z_n = \left(1+\frac{z}{n}\right)^n = \left(1+\frac{a+ib}{n}\right)^n
+= \left[\left(1+\frac{a}{n}\right) + \left(\frac{ib}{n}\right)\right] ^n$
+$|z_n| = \left[\left| \left(1+\frac{a}{n}\right) + \frac{ib}{n} \right|\right] ^n
+= \left[ \left(1+\frac{a}{n}\right)^2 + \left(\frac{b}{n}\right)^n \right]^{1/2}
+= lim n \left[ \left(1+\frac{a^2}{n^2} + \left(\frac{a}{n}+\frac{b^2}{n^2}\right) \right)\right]^{n/2}
+= e^{  \lim n/2 \left(\frac{a^2}{n^2} + 2a/n + b^2/n^2 \right)  } = e^a = e^{Re z}$ 
 
 Vamos a utilizar la fórmula de Moivre.
-
-$ z_m = (1+z/n)^n$
-$Arg(a+ \frac{a+ib}{n})^n = n Arg(a+\frac{a+ib}{n}) = n*\arctan (\frac{b/n}{1+a/n}) = n*\arctan(\frac{b}{n+a})$
-Llamamos $y=b/(n+a)$ y usamos $\lim_{y\rightarrow0} \frac{\arctan(y)}{y} = 1$,
-$n*\arctan(\frac{b}{n+a}) = \frac{\arctan(\frac{b}{n+a})}{ \frac{n+a}{n}\frac{b}{n+a}\frac{1}{b} } = b$
+%$ z_m = (1+z/n)^n$
+$$Arg\left(a+ \frac{a+ib}{n}\right)^n = n Arg\left(a+\frac{a+ib}{n}\right) = n*\arctan \left(\frac{b/n}{1+a/n}\right) = n*\arctan\left(\frac{b}{n+a}\right)$$
+Llamamos $y=b/(n+a)$ y usamos $\lim_{y\rightarrow0} \frac{\arctan(y)}{y} = 1$:
+$$n*\arctan\left(\frac{b}{n+a}\right) = \frac{\arctan\left(\frac{b}{n+a}\right)}{ \frac{n+a}{n}\frac{b}{n+a}\frac{1}{b} } = b$$
 \end{sol}
