@@ -1113,7 +1113,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     \[
       \exists n_0>0: \,  |a_n| |x-a|^n \leq 1, \ \forall n\geq n_0
     \]
-    Y por tanto, $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{a_n} \cdot |x-a| = |a_n| \cdot |x-a|^n =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
+    Y por tanto, $\sqrt[n]{|a_n|\cdot |x-a|^n} = \sqrt[n]{|a_n|}\cdot|x-a| \leq 1, \ \ \forall n\geq n_0$. Entonces: $$\underset{n\to\infty}{\mbox{lim\,sup\,}} \sqrt[n]{|a_n|} \cdot |x-a| =\frac{|x-a|}{R} \leq 1 \implies |x-a| \le R$$
 
     Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
   \end{proof}
@@ -1129,26 +1129,31 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
   \item La suma $S(x)=\displaystyle\sum_{n= 0}^\infty a_n (x-a)^n$ es una función $\mathcal{C}^\infty$ en el disco de convergencia $D(a,R)$.
   \item $S'(x)= \displaystyle\sum_{n= 1}^\infty n a_n (x-a)^{n-1}$, esto es,
     \[
-      \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right) .
+      \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right), \quad x \in D(a,R).
     \]
   \item 
     $\displaystyle \int_a^x S(t)\, dt =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
     \[
       \int_a^x  \sum_{n= 0}^\infty a_n (t-a)^n \, dt 
-      =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt.
+      =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt, \quad x \in D(a,R).
     \]
   \end{nlist}
+  \end{nth}
   
-  %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------
-  %\begin{proof} \hfill
-  %\begin{nlist}
-  %   \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ tal que $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
+  \begin{proof} \hfill
+  \begin{nlist}
+     \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ de forma que se cumpla $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
   
-  % Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia (ver Marsden), y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, para ver que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
-  %\end{nlist}	
-  %\end{proof}
+   Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia, y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, viendo que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
+   
+   En efecto, $\displaystyle\limsup_{n\to\infty}\sqrt[n]{n a_n} = \limsup_{n\to\infty} \sqrt[n]{n} \frac{1}{R}$, pero $\sqrt[n]{n} \to 1$, sin más que aplicar el criterio de la raíz.
+   
+   \item Sea $x \in D(a,R)$. Entonces, teniendo en cuenta $(i)$, y de igual forma que hicimos antes, obtenemos que $\sum_{n\ge0} na_n(x-a)^{n-1}$ converge uniformemente en $D(a,R')$. Concluimos aplicando el \textit{Teorema} \ref{9} sobre derivación de una serie de funciones.
+   \item La prueba es análoga a $(ii)$, aplicando en este caso el \textit{Teorema} \ref{8} sobre integración de series de funciones.
+  \end{nlist}	
+  \end{proof}
 
-\end{nth}
+
 
 
 % --------------------------------------------------------------------------------
@@ -1157,7 +1162,7 @@ Por último, veamos un teorema sobre derivación e integración de series de pot
 
 \subsection{Funciones analíticas}
 
-Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)\ y\ a \in I, \ \exists \{a_n\}\ tal\ que\ f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
+Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escribir como suma de una serie de potencias, es decir, si dada $f \in \mathcal{C}^{\infty}(I)$ y $a \in I, \ \exists \{a_n\}$ tal que $f(x) = \sum_{n=0}^{\infty}a_n(x-a)^n$.
 
 
 Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficiente para que una funci\'on $f\in \mathcal{C}^\infty$ coincida con la suma de su serie de Taylor.
@@ -1554,7 +1559,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 				\\
 				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
 				\\
-				\geq& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+				=& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
 				\\
@@ -1567,7 +1572,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
  \end{align*}
 
-Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
+Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=E_{n,k}$, y que $E_{n+1, 2k} \cap E_{n+1, 2k-1}= \emptyset$. Ahora, usando que $(k-1)2^{-n} \geq n$ para $k=1+n 2^n, 2+n 2^n,\dots n 2^{n+1}$ y que
 \[
  \left( E_{n+1, 2(1+n2^n)-1} \cup E_{n+1, 2(1+n2^n)}  \right)
  \bigcup
@@ -1652,11 +1657,13 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
     \item Escribimos convenientemente el conjunto B, y aplicamos la definición de medida:
 $$B= ( B\setminus A) \cup A \Longrightarrow \mu(B)= \mu ( (B\setminus A) + \mu(A)) \geq \mu(A)	$$
 \item Sabemos que si los conjuntos $A_k$ son disjuntos se da la igualdad. Si no lo son,  podemos considerar los conjuntos:
-$$B_1=A_1, \ B_2=A_2\setminus B_1, \dots , B_n=A_n \setminus B_{n-1}, \dots $$
+$$B_1=A_1, \ B_2=A_2\setminus B_1, B_3 = A_3 \setminus (B_1 \cup B_2),\dots , B_n=A_n \setminus (B_1 \cup \dots \cup B_{n-1}), \dots $$
 
 Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disjuntos dos a dos. Por la propiedad $(i)$,  $\mu (B_k) \leq \mu (A_k)$, y tenemos 
 
   $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \mu \left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) \leq \sum_{k=1}^\infty \mu(A_k)$$
+  
+  \item Pongamos $B_1 = A_1$, $B_n = A_{n} \setminus A_{n-1} \ \forall n \in \mathbb{N}$. Entonces, dado $n \in \mathbb{N}$ se tiene $\bigcup_{k=1}^n B_k = \bigcup_{k=1}^nA_k=A_n$, con $B_k$  disjuntos dos a dos, y también $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$. Por tanto: $$\mu\left(\bigcup_{k=1}^\infty A_k \right) = \mu\left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) = \lim_{n\to\infty} \sum_{k=1}^n \mu(B_k) = \lim_{n\to\infty} \mu\left(\bigcup_{k=1}^n B_k \right) = \lim_{n\to\infty} \mu\left( A_n \right)$$
 \end{nlist}
 \end{proof}
   %%% TODO: COMPLETAR DEMOSTRACIÓN -------------------------------------------
@@ -1922,8 +1929,8 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 \end{proof}
 
 \subsection{Integral de funciones medibles}
-
-%%% FIXME: FALTAN COSAS
+\textbf{\underline{Aviso:} falta contenido al principio de esta sección. Además, a partir de aquí no están revisados los apuntes}.
+%% FIXME: FALTAN COSAS
 
 
 \begin{nth}[Convergencia dominada de Lebesgue]
@@ -1979,19 +1986,18 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
   $$ \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
 \end{proof}
 
-Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el Lema de Fatou.
+Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el \textit{Lema de Fatou}.
 
 \begin{nprop}[Lema de Fatou para funciones medibles]
-  Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega d\mu - \int_\Omega d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
+  Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega h^+\, d\mu - \int_\Omega (-h^-)\, d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
   Entonces:
-  $$ \lim_{n\to \infty}\int_\Omega f_n d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )d\mu$$
+  $$ \liminf_{n\to \infty}\int_\Omega f_n\, d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )\,d\mu$$
 \end{nprop}
 \begin{proof}
-  Llamamos $h_n:= f_n - h \geq 0$ y medible por diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
-  $$ \lim_{n\to \infty} \int_\Omega (f_n -h) d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h) d\mu$$
-  
-  $$ ( \liminf_{n\to \infty}\int_\Omega f_n d\mu )  - \int_\Omega h d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n d\mu - \int_\Omega f_n d\mu$$
-  Y podemos suprimir los miembros iguales y haber probado este resultado.
+  Llamamos $h_n:= f_n - h \geq 0$, que es medible por ser diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
+  $$ \lim_{n\to \infty} \int_\Omega (f_n -h)\, d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h)\, d\mu$$
+  $$  \liminf_{n\to \infty}\int_\Omega f_n\, d\mu   - \int_\Omega h\, d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n\, d\mu - \int_\Omega h\, d\mu$$
+  Y podemos suprimir los miembros iguales para concluir la prueba.
 \end{proof} 
 
 \begin{nth}[Teorema de la convergencia monótona para funciones integrables]
