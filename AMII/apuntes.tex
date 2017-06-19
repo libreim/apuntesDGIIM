@@ -1989,13 +1989,13 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el \textit{Lema de Fatou}.
 
 \begin{nprop}[Lema de Fatou para funciones medibles]
-  Sean $f_n: \omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega h^+\, d\mu - \int_\Omega (-h^-)\, d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
+  Sean $f_n: \Omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega h^+\, d\mu - \int_\Omega (-h^-)\, d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
   Entonces:
-  $$ \liminf_{n\to \infty}\int_\Omega f_n\, d\mu \geq \int_\mu (\liminf_{n\to \infty}f_n )\,d\mu$$
+  $$ \liminf_{n\to \infty}\int_\Omega f_n\, d\mu \geq \int_\Omega (\liminf_{n\to \infty}f_n )\,d\mu$$
 \end{nprop}
 \begin{proof}
   Llamamos $h_n:= f_n - h \geq 0$, que es medible por ser diferencia de funciones medibles. Ahora, usamos el lema de Fatou para funciones medibles positivas y así tenemos que:
-  $$ \lim_{n\to \infty} \int_\Omega (f_n -h)\, d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h)\, d\mu$$
+  $$ \liminf_{n\to \infty} \int_\Omega (f_n -h)\, d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h)\, d\mu$$
   $$  \liminf_{n\to \infty}\int_\Omega f_n\, d\mu   - \int_\Omega h\, d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n\, d\mu - \int_\Omega h\, d\mu$$
   Y podemos suprimir los miembros iguales para concluir la prueba.
 \end{proof} 
