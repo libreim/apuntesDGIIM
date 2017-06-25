@@ -307,30 +307,63 @@
 
 \section{Anillo conmutativo}
 
-\begin{ndef}[Anillo conmutativo]
-Un conjunto A es un anillo conmutativo si en él hay definidas dos operaciones; una aplicacion de adición y una aplicación de multiplicación, tales que cumplen las siguientes propiedades:
-\begin{nlist}
-\item Asociativa: $a+(b+c) = (a+b)+c$\hspace{1cm} $a(bc) = (ab)c$
-\item Conmutativa: $a+b = b+a$ \hspace{1cm} $ab = ba$
-\item Existencia elemento neutro: $a+0 = a$ \hspace{1cm} $a*1 = a$
-\item Existencia del elemento opuesto para la suma: $a+(-a) = 0$
-\item Distributiva del producto en la suma: $a(b+c) = ab+ ac$
+\begin{ndef}[Monoide]
+  Un monoide es un par $(X, \cdot)$, donde $X$ es un conjunto y $\cdot$ es una aplicación $\cdot: X\times X\to X$ con las siguientes propiedades:
+  \begin{nlist}
+  \item Asociatividad: $a\cdot (b \cdot c) = (a \cdot b) \cdot c \ \forall a,b,c \in X$
+  \item Existencia de elemento neutro: $\exists e \in X : a \cdot e = e \cdot a \ \forall a \in X$
+  \end{nlist}
 
-\end{nlist}
+  En ocasiones, si la operación $\cdot$ queda clara por el contexto, se dirá simplemente que ``X es un monoide''.
+\end{ndef}
 
+Nótese que la definición de $\cdot$ implica la \emph{clausura} de la misma, es decir, para cualesquiera $a,b \in X$, $a\cdot b \in X$.
+
+Un grupo se define similarmente, como un conjunto con una operación y ciertas propiedades.
+
+\begin{ndef}[Grupo]
+  Un grupo es un monoide $(X, \cdot)$, con la siguiente propiedad adicional:
+
+  \begin{itemize}
+  \item Existencia de elementos inversos: $\forall a\in X \ \exists a^{-1} : a\cdot a^{-1} = a^{-1}\cdot a = e$, donde $e$ es el elemento neutro de $X$ como monoide con $\cdot$.
+  \end{itemize}
+  
+\end{ndef}
+
+\begin{ndef}[Monoide conmutativo]
+  Un monoide $(X, \cdot)$ se dice \emph{conmutativo} o \emph{abeliano} si $\cdot$ es una aplicación simétrica.
 \end{ndef}
 
 \begin{ndef}[Grupo conmutativo]
-	Denominamos un grupo conmutativo o abeliano a aquellos conjuntos que cumplen las propiedades asociativa, conmutativa y existencia de elemento neutro para la suma, y existencia de elemento opuesto.
+  Un grupo $(X, \cdot)$ se dice \emph{conmutativo} o \emph{abeliano} si $\cdot$ es una aplicación simétrica.
 \end{ndef}
 
-\begin{ndef}[monoide]
-	Denominamos monoide a un conjunto con una operación binaria interna que cumple la propiedad asociativa y tiene un elemento neutro a izquierda y derecha. En el caso del producto, se denomina monoide multiplicativo.
+
+\begin{ndef}[Anillo]
+
+  Un anillo es una tripla $(X, +, \cdot)$ tal que:
+
+  \begin{nlist}
+  \item $(X, +)$ es un grupo conmutativo.
+  \item $(X, \cdot)$ es un monoide.
+  \item $\cdot$ es distributiva a izquierda y a derecha respecto de $+$:
+    \[
+    \begin{cases}
+      (a + b) \cdot c = (a \cdot c) + (b \cdot c)\\
+      c \cdot (a + b) = (c \cdot a) + (c \cdot b)
+    \end{cases} \ \forall a,b,c \in X
+    \]
+  \end{nlist}
+
+\end{nlist}
+
+\begin{ndef}[Anillo conmutativo]
+  Un anillo $(X, +, \cdot)$ se dice \emph{conmutativo} o \emph{abeliano} si $(X, \cdot)$ es un monoide conmutativo.
 \end{ndef}
 
-\begin{nota}
-	Llamaremos anillo aquellos conjuntos que cumplan todas las propiedades excepto la propiedad conmutativa para la multiplicación.
-\end{nota}
+\end{ndef}
+
+
 
 
 \section*{Caracterización de $\mathbb{Z}_{n}$}
