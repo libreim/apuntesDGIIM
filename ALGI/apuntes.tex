@@ -158,6 +158,14 @@
 % Línea horizontal.
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
+% Restricción de una aplicación.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -353,27 +361,36 @@ Un grupo se define similarmente, como un conjunto con una operación y ciertas p
       c \cdot (a + b) = (c \cdot a) + (c \cdot b)
     \end{cases} \ \forall a,b,c \in X
     \]
+
   \end{nlist}
 
-\end{nlist}
+\end{ndef}
 
 \begin{ndef}[Anillo conmutativo]
   Un anillo $(X, +, \cdot)$ se dice \emph{conmutativo} o \emph{abeliano} si $(X, \cdot)$ es un monoide conmutativo.
 \end{ndef}
 
-\end{ndef}
+Nótese que en este caso, la distributividad de $\cdot$ a izquierda y a derecha son dos propiedades equivalentes.
 
-
+\begin{nota}
+  En todas las estructuras provistas de una operación de las notadas con $\cdot$, se notará $a \cdot b = ab$.
+\end{nota}
 
 
 \section*{Caracterización de $\mathbb{Z}_{n}$}
 
+Si $a,n\in \mathbb{Z}$, entonces existen $q,r \in \mathbb{Z},\ 0 \le r < n$ tales que:
+
+\[
+    a = qn + r
+\]
+
 Llamaremos $R_n:\mathbb{N} \rightarrow \mathbb{Z}_n$ a la aplicación definida como:
 
 \[
-R_n(a) = a - nq = a- nE(\frac{a}{n})
+R_n(a) = a - qn = a- nE\left(\frac{a}{n}\right)
 \] 
-Para esta aplicación, definimos las siguientes propiedades:
+Para esta aplicación, observamos las siguientes propiedades:
 
 \begin{itemize}
 \item Si $0 \leq a < n  \Rightarrow R_n(a) = a$
@@ -387,7 +404,7 @@ Para esta aplicación, definimos las siguientes propiedades:
 \end{itemize} 
 
 
-Una vez que tenemos definida una suma y producto con la aplicación $R_n$, definimos las suma y el producto de $\mathbb{Z}_n$.
+Una vez observadas estas propiedades de la aplicación $R_n$, definimos las suma y el producto de $\mathbb{Z}_n$.
 \begin{ndef}[Suma y producto en $\ent_n$] Se define la suma y el producto en $\ent_n$ de la forma:
 	\begin{itemize}
 	\item $a\oplus b = R_n(a+b)$
@@ -401,30 +418,34 @@ Una vez que tenemos definida una suma y producto con la aplicación $R_n$, defin
 Es fácil verificar que $\mathbb{Z}_n$ es un anillo conmutativo con estas operaciones.\\
 
 \begin{ndef}[Unidad]
-	Si A es un anillo conmutativo (a.c) $a \in A$ es una "\textbf{unidad}” o "\textbf{invertible}” si $\exists a^{-1}$ tal que $ aa^{-1} = 1$.\\ $U(A) = \{ a \in A$ : $a$ es una unidad\} = conjunto de las unidades de A.\\
+  Si A es un anillo conmutativo (a.c.) $a \in A$ es ``una unidad'' o ``invertible'' si $\exists a^{-1}$ tal que $ aa^{-1} = 1$.
+
+  El conjunto de las unidades de $A$ se nota $U(A) = \{ a \in A : a \text{ es una unidad} \}$.
 \end{ndef}
 
 
 
-\begin{ndef}[Cuerpo] Se dice que A es un \textbf{cuerpo} si siendo un anillo conmutativo, $U(A) = A - \{0\}$, es decir, $\exists a^{-1}$ $\forall a \in A$ con $a \neq 0$.
+\begin{ndef}[Cuerpo] Se dice que $A$ es un cuerpo si siendo un anillo conmutativo, $U(A) = A - \{0\}$, es decir, $\forall a \in A \ \exists a^{-1}$  con $a \neq 0$.
 \end{ndef}
 
 
 \begin{nprop}[Asociatividad generalizada]
 	Sea A un anillo conmutativo, y $a_1, ..., a_n$ una lista de elementos de A.
 La propiedad de la \textbf{asociatividad generalizada} nos dice que:
-$\forall m$ tal que $1 \leq m < n$ se verifican: \[\sum_{i=1}^{n}a_i = (\sum_{i=1}^{m}a_i) + (\sum_{i=m+1}^{n}a_i)\]\[\prod_{i=1}^{n}a_i = (\prod_{i=1}^{m}a_i)(\prod_{i=m+1}^{n}a_i)\]\\
+$\forall m$ tal que $1 \leq m < n$ se verifican: \[\sum_{i=1}^{n}a_i = \left(\sum_{i=1}^{m}a_i\right) + \left(\sum_{i=m+1}^{n}a_i\right)\]\[\prod_{i=1}^{n}a_i = \left(\prod_{i=1}^{m}a_i\right)\left(\prod_{i=m+1}^{n}a_i\right)\]\\
 \end{nprop}
 
 
-\begin{ndef}[Distributividad generalizada]
-Definimos también la distributividad generalizada en un anillo como:
-	\[(\sum_{i=1}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j \hspace{1cm} \forall a,b\in A\]
-\end{ndef}
+\begin{nprop}[Distributividad generalizada]
+Se tiene la propiedad análoga a la asociatividad generalizada para la distributividad:
+	\[\left(\sum_{i=1}^{n} a_i\right)\left(\sum_{j=1}^{m}b_j\right) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j \hspace{1cm} \forall a,b\in A\]
+\end{nprop}
 
 \begin{ndef}[Subanillo]
 
-Si A es un anillo conmutativo y B es un subconjunto de A. Se dice que B es un \textbf{subanillo} de A ($B \leq A$) si se verifican:
+Si $A$ es un anillo conmutativo y $B \subseteq A$, se dice que $B$ es un subanillo de $A$ ($B \leq A$) si $\left(B, \restr{+}{B\times B}, \restr{\cdot}{B\times B}\right)$ es un anillo conmutativo.
+
+Esto equivale a:
 \begin{itemize}
 \item $1,-1 \in B$
 \item B es cerrado para la suma y el producto.
@@ -459,7 +480,7 @@ Se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y qu
 \end{ndef}
 
 \begin{ndef}[Norma]
-	Se define entonces la Norma $N(\alpha) = \alpha \bar{\alpha} = a^2 - nb^2 \in \rac $. Así:
+	Si $\alpha \in \mathbb{Z}[\sqrt{n}]$ o $\alpha \in \mathbb{Q}[\sqrt{n}]$, se define la norma $N(\alpha) = \alpha \bar{\alpha} = a^2 - nb^2 \in \rac $. Así:
 \begin{enumerate}
 	\item $N(\alpha \beta) = N(\alpha) * N(\beta)$
 	\item $N(\alpha) = 0 \iff \alpha = 0$
@@ -475,12 +496,16 @@ Se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y qu
 
 \item Anillos de series.
 \begin{ndef}
-	Si A es un anillo conmutativo y $x$ es un símbolo que no denota ningún elemento de A. El anillo de series con coeficientes en A, denotado con A[[$x$]] esta definido como:\begin{center}
-$A[[x]] = \{a = \displaystyle\sum_{n\in \mathbb{N}} a_n x^n , a_n \in A\ \forall	n \in \mathbb{N}\}$\end{center}
+  Si $A$ es un anillo conmutativo y $x$ es un símbolo que no denota ningún elemento de $A$, el anillo de series con coeficientes en $A$, denotado con $A[[x]]$ esta definido como:
+
+\[
+    A[[x]] = \left\{a = \displaystyle\sum_{n\in \mathbb{N}} a_n x^n , a_n \in A\ \forall	n \in \mathbb{N}\right\}
+\]
+
 Y definimos la suma y el producto de la siguiente forma:\\
 \[(a+b) = \sum_{n\in \mathbb{N}}(a_n+b_n)x^n\]
 
-\[ (ab) = \sum_{n=0}^\infty \left(\sum_{k=0}^n a_k b_{n-k}\right)x^n\]
+\[ (ab) = \sum_{n\in \mathbb{N}} \left(\sum_{k=0}^n a_k b_{n-k}\right)x^n\]
 
 \end{ndef}
 \end{itemize}
@@ -490,7 +515,7 @@ Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un ani
 \section{Homomorfismos}
 
 \begin{ndef}
-Si $A,B$ son anillos conmutativos, una aplicacion $\varphi: A \to B$ es un homomorfismo si:
+Si $A,B$ son anillos conmutativos, una aplicación $\varphi: A \to B$ es un homomorfismo si:
 
 \begin{enumerate}
 	\item $\varphi(1) = 1$
