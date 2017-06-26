@@ -104,6 +104,7 @@
 \usepackage{enumitem}   % Listas mejoradas.
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}            % Gráficos.
+\usepackage{array} % Más opciones para el entorno array
 
 %---------------------------------------------------------------------------
 %   OPCIONES PERSONALIZADAS
@@ -510,7 +511,7 @@ Y definimos la suma y el producto de la siguiente forma:\\
 \end{ndef}
 \end{itemize}
 
-Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo y $A[x]$ es un subanillo de $A[[x]]$ (los elementos de $A[x]$ son los de $A[[x]]$ para los que $a_n = 0$ a partir de un cierto $n\in \mathbb{N}$).
+Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo.
 
 \section{Homomorfismos}
 
@@ -571,6 +572,25 @@ es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\v
 	Se puede probar que $R_n: \ent \to \ent_n$ es un homomorfismo, llamado \emph{Homomorfismo de reducción módulo n}\\
 \end{nota}
 
+\begin{ndef}[Anillo de polinomios sobre un anillo conmutativo]
+  Sean $A$ un anillo conmutativo y $x$ un símbolo que no denote ningún elemento de $A$. Entonces se define el anillo de polinomios sobre $A$ (también ``con coeficientes en $A$'') como:
+
+  \[
+       A[x] = \{ a_nx^n + \dots + a_1x + a_0 : n \in \mathbb{N}, a_i \in A \ \forall i \in \{0, \dots, n\} \}
+  \]
+
+  Las operaciones de suma y producto en $A[x]$ son las usuales. Con las convenciones de que $x^0 = 1, x^1 = x$ y $\sum_{i=m}^n a_i = 0$ si $m>n$:
+
+  \[
+  \begin{array}{lllll}
+    \sum_{i=0}^n a_ix^i + \sum_{i=0}^m b_ix^i & = & \sum_{i=0}^m (a_i + b_i)x^i + \sum_{i=m+1}^n a_ix^i, \text{ con $m \le n$.} & & \\
+    \left(\sum_{i=0}^n a_ix^i\right) \cdot \left(\sum_{i=0}^m b_ix^i\right) & = & \sum_{i=0}^n \sum_{j=0}^m a_i b_j x^{i+j} =  \sum_{k=0}^{m+n} \sum_{i+j=k} a_ib_j x^k
+  \end{array}
+  \]
+  
+\end{ndef}
+
+$A[x]$ es un subanillo de $A[[x]]$ (los elementos de $A[x]$ son los de $A[[x]]$ para los que $a_n = 0$ a partir de un cierto $n\in \mathbb{N}$).
 
 \begin{nprop}[Homomorfismo de cambio de coeficientes)(1]
  Dado $A$ cualquier anillo conmutativo, conocido $A[x]$.
@@ -639,17 +659,19 @@ Como $\varphi$ es homomorfismo, eso es igual a:
  
  Ahora probaremos el producto:
  
- $fg = \sum c_i x^i$ con $c_n  = \sum_{i+j = n} a_ib_j$\\
+ $fg = \sum c_k x^k$ con $c_k  = \sum_{i+j = k} a_ib_j$\\
  
- Así: \[\Phi(f*g) = \sum_n\varphi(c_n)b^n = \sum \varphi(\sum_{i+j = n} a_ib_j)b^n = \sum_n ( \sum_{i+j = n} \varphi(a_i)\varphi(b_j))b^n\]
+ Así: \[\Phi(f*g) = \sum_n\varphi(c_n)b^n = \sum \varphi\left(\sum_{i+j = n} a_ib_j\right)b^n = \sum_n \left( \sum_{i+j = n} \varphi(a_i)\varphi(b_j)\right)b^n\]
  
  Desarrollamos por otro lado
- \[
- \Phi(f) * \Phi(g) = (\sum_i \varphi(a_i)b^i)(\sum_j \varphi(b_j)b^j) =^{(1)} \sum_{i,j} \varphi(a_i)b^i\varphi(b_j)b^j =^{(2)} \sum_{i,j} \varphi(a_ib_j)b^{i+j}=
- \]
  
  \[
-  = \sum_n(\sum_{i,j: i+j = n} \varphi(a_ib_j)b^n)
+
+ \begin{array}{>{\displaystyle}l}
+   \Phi(f) * \Phi(g) = \left(\sum_i \varphi(a_i)b^i\right)\left(\sum_j \varphi(b_j)b^j\right) =^{(1)} \sum_{i,j} \varphi(a_i)b^i\varphi(b_j)b^j \\
+   =^{(2)} \sum_{i,j} \varphi(a_ib_j)b^{i+j} = \sum_n\left(\sum_{i,j: i+j = n} \varphi(a_ib_j)b^n\right)
+ \end{array}
+
  \]
  
  Donde en $(1)$ hemos usado la distributividad general y en $(2)$ hemos usado que estamos en un anillo conmutativo y que $\varphi$ es un homomorfismo. 
