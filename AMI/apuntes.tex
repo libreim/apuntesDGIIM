@@ -613,16 +613,25 @@ Si un conjunto $A\subseteq \mathbb{R}^N$ es acotado, entonces cualquier sucesió
 Sea $\{x_n\}\subseteq \mathbb{R}^N$ acotada. Entonces, existe una sucesión parcial suya $\{x_{\sigma_{(n)}}\}$ convergente.
 \end{nth}
 
+\begin{proof}
+	Notaremos $x_n = (x_n^1, \dots, x_n^N)$. Como $\{x_n^1\}$ es acotada en $\mathbb{R}$, existe $\sigma_1 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{\sigma_1(n)}^1\}$ es convergente.
+
+Ahora, como $\{x_n^2\}$ es acotada, $\{x_{\sigma_1(n)}^2\}$ también es acotada, y existe $\sigma_2 : \mathbb{N} \rightarrow \mathbb{N}$ estrictamente creciente tal que $\{x_{(\sigma_2\circ\sigma_1)(n)}^1\}$ es convergente.
+
+Procediendo de esta forma con cada componente de $x_n$, obtenemos $\sigma_1, \dots, \sigma_N$, y\\ $\{x_{\sigma_1(n)}^1\}, \{x_{(\sigma_2\circ\sigma_1)(n)}^2\}, \dots, \{x_{(\sigma_N\circ\dots\circ\sigma_2\circ\sigma_1)(n)}^N\}$ sucesiones convergentes en $\mathbb{R}$. Al ser $\sigma_i$ estrictamente creciente $\forall i=1,\dots,N$, $\{x_{(\sigma_N(n)\circ\dots\circ\sigma_{i+1}\sigma_i\circ\dots\circ\sigma_1)(n)}^i\}$ también es convergente (toda sucesión parcial de una sucesión convergente es convergente).
+
+Así, tomando $\sigma = \sigma_1\circ\dots\circ\sigma_N$, $\{x_{\sigma(n)}\}$ es convergente.
+\end{proof}
 
 
 \begin{ndef}[Sucesión de Cauchy]
-Sea $\{x_n\}\subseteq \mathbb{R}^N$. Decimos que $\{x_n\}$ es una \textit{sucesión de Cauchy} $\iff \forall \epsilon > 0\ \ \exists n_o \in \mathbb{N}: \ n,m\ge n_o \Rightarrow d(x_n,x_m) < \epsilon$.
+Sea $\{x_n\}\subseteq \mathbb{R}^N$. Decimos que $\{x_n\}$ es una \textit{sucesión de Cauchy} si $$ \forall \epsilon > 0\ \ \exists n_o \in \mathbb{N}: \ n,m\ge n_o \Rightarrow d(x_n,x_m) < \epsilon$$
 \end{ndef}
 
 
 
 \begin{nth} [$\bm{\mathbb{R}^N}$ es completo]
-Sea $\{x_n\}\subseteq \mathbb{R}^N$. Entonces: $$\{x_n\}\ es\ de\ Cacuchy\ \iff \{x_n\}\ es\ convergente.$$
+Sea $\{x_n\}\subseteq \mathbb{R}^N$. Entonces: $$\{x_n\}\ es\ de\ Cauchy\ \iff \{x_n\}\ es\ convergente.$$
 \end{nth}
 
 
@@ -630,6 +639,17 @@ Sea $\{x_n\}\subseteq \mathbb{R}^N$. Entonces: $$\{x_n\}\ es\ de\ Cacuchy\ \iff 
 \begin{nprop}
 Sea $\{x_n\} \subseteq \mathbb{R}^N\ con\ \{x_n\} \rightarrow x \in \mathbb{R}^N$. Entonces, toda sucesión parcial de $\{x_n\}$ es convergente a $x$.
 \end{nprop}
+\begin{proof}
+	Sea $\sigma :\mathbb N \to \mathbb N$ una aplicación tal que $\sigma(n+1) > \sigma(n) > n \quad \forall n \in \mathbb N$. Ahora, $\{x_{\sigma(n)}\}$ es una sucesión parcial de $\{x_n\}$. Como $x_n$ es convergente:
+	\[
+	\forall \epsilon > 0 \ \ \ \exists n_0 \in \mathbb N : \ \ n \geq n_0 \implies d(x_n,x) < \epsilon
+	\]
+	Pero $\sigma(n) \geq n \ \ \forall n$ así que
+	\[
+	\forall \epsilon > 0 \ \ \ \exists n_0 \in \mathbb N : \ \ \sigma(n) \geq n \geq n_0 \implies d(x_{\sigma(n)},x) < \epsilon
+	\]
+	Luego $\{x_{\sigma(n)}\}\to x$
+\end{proof}
 
 \newpage
 
@@ -673,7 +693,11 @@ Sea $(X,d)$ un espacio métrico, y sea $\emptyset \ne A \subseteq X$. $$A\ es\ c
 \end{ndef}
 
 \begin{nprop}
-	Sea $A \subseteq \mathbb{R}^N$ compacto. Entonces existe un subrecubrimiento finito de $A$.
+	Sea $A \subseteq \mathbb{R}^N$ y $\bigcup_{i\in I} O_i$ un recubrimiento cualquiera de $A$. Entonces, $A$ es compacto si $\exists n\in \mathbb N$ tal que 
+	\[
+	A \subseteq \bigcup_{i=1}^n O_i
+	\]
+	es decir, existe un subrecubrimiento de $A$ finito.
 \end{nprop}
 
 \begin{nprop}[Caracterización de cerrados]
