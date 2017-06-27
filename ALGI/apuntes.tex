@@ -801,7 +801,7 @@ Después de esto, vamos a demostrarlo en el caso general.
 Si $\varphi :A \to B$ es un homomorfismo, $\forall(b_1,...,b_n) \in B^n$ la aplicación:
 
 \[
-\Phi:A[x_1,...x_n] \to B \iff \Phi(\sum_{i1,...,in}a_{i1}...a_{in}x^{i1}... x^{in}) = \sum_{i1,...,in}a_{i1}...a_{in}b^{i1}... b^{in} \in B
+\Phi:A[x_1,...x_n] \to B \iff \Phi\left(\sum_{i1,...,in}a_{i1}...a_{in}x^{i1}... x^{in}\right) = \sum_{i1,...,in}a_{i1}...a_{in}b^{i1}... b^{in} \in B
 \]
 
 es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un polinomio en n variables.
@@ -811,7 +811,7 @@ es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un p
 
 
 \begin{nprop}
-	Si $\varphi:A \to B$ es un homomorfismo, $\forall\  b \in B\  \exists ! $ homomorfismo definido como:
+	Si $\varphi:A \to B$ es un homomorfismo, $\forall\  b \in B$ existe un único homomorfismo definido como:
 	
 \[
 \Phi:A[x] \to B : \begin{cases}
@@ -820,7 +820,7 @@ es un homomorfismo de anillos conmutativos. Es conocido como evaluación de un p
 \end{cases}
 \]
 \[
-\Phi(\sum a_i x^i) = \sum \Phi(a_i x^i) =  \sum \Phi(a_i) \Phi(x)^i = \sum \varphi(a_i) b^i
+\Phi\left(\sum a_i x^i\right) = \sum \Phi(a_i x^i) =  \sum \Phi(a_i) \Phi(x)^i = \sum \varphi(a_i) b^i
 \]
 
 Además, ya se probó que esto es un homomorfismo de anillos conmutativos.
@@ -828,7 +828,7 @@ Además, ya se probó que esto es un homomorfismo de anillos conmutativos.
 \end{nprop}
 
 \begin{ncor}
-	$A \leq B$ subanillo, $\forall b \in B$ $\exists !$ homomorfismo
+	$A \leq B$ subanillo, $\forall b \in B$ existe un único homomorfismo
 \[
 E_b: A[x] \to B: \begin{cases}
 E_b(a) = a \hspace{0.3cm} \forall a \in A\\
@@ -877,7 +877,7 @@ E_b(x) = b
   
   ¿Es único?
   \[
-    \phi(\sum_{i1,\cdots,ir} a_{1i}\cdots a_{ir}x_1^{i1}\cdots x_r^{ir} )= \sum _{i1,\cdots,ir} \varphi(a_{i1}\cdots a_{ir})b_1^{i1}\cdots b_r^{ir}
+    \phi\left(\sum_{i1,\cdots,ir} a_{1i}\cdots a_{ir}x_1^{i1}\cdots x_r^{ir} \right)= \sum _{i1,\cdots,ir} \varphi(a_{i1}\cdots a_{ir})b_1^{i1}\cdots b_r^{ir}
   \]
 \end{proof}
 
@@ -900,14 +900,15 @@ Se suele notar $f(x_1,\cdots,x_r) \to f(b_1,\cdots,b_r)$
 \begin{ndef}[Dominio de integridad]
 A (anillo conmutativo) es un dominio de integridad si verifica la propiedad:
 \[
-a \neq 0\ \wedge\ b \neq 0 \Rightarrow ab \neq 0 \] 
+a \neq 0\ \wedge\ b \neq 0 \Rightarrow ab \neq 0 \ \ \forall a,b \in A
+\] 
 
 Equivalentemente,
 
 \[ \hspace{0.1cm} ab=0 \implies \begin{cases}
 	a = 0,\text{ o}\\
 	b = 0
-\end{cases}
+\end{cases} \ \forall a,b \in A
 \]
 	
 \end{ndef}
@@ -916,13 +917,13 @@ Equivalentemente,
 	
 A es un dominio de integridad $\iff$ se verifica: $ax=ay$ con $a\neq 0 \Rightarrow x = y$
 \end{nprop}
-\begin{proof}
+\begin{proof}\hfill\\
 	\boxed{\Rightarrow} $a(x-y) = 0$, por ser A dominio de integridad, $x-y = 0 \Rightarrow x=y$ \\
-	\boxed{\Leftarrow} $ab = 0$ con $a\neq 0 \Rightarrow b= 0$ pues $a0 = 0; ab = a0; b = 0;$
+	\boxed{\Leftarrow} $ab = 0$ con $a\neq 0$, tomo $x,y \in A : b = x-y$, entonces $ab = a(x-y) = 0 \implies x=y \implies b = 0$. 
 \end{proof}
 
 \begin{ndef}[Divisor de 0]
-	$a\in A$ es divisor de 0 si $\exists b\neq 0 : ab = 0$
+	$a\in A$ es divisor de 0 si $\exists b\neq 0 : ab = 0$.
 \end{ndef}
 
 \begin{nprop}
@@ -932,26 +933,26 @@ A es un dominio de integridad $\iff$ se verifica: $ax=ay$ con $a\neq 0 \Rightarr
 \begin{nlist}
 	\item $A\leq B$ y $B$ es D.I. $\Rightarrow$ A es D.I.
 	\item Todo cuerpo es D.I.
-	\item Si $u \in U(A) \Rightarrow$ u no es divisor de 0 (Supongamos $u*b = 0 \Rightarrow u*u^{-1}*b = u^{-1}*0 \Rightarrow b=0$)
+	\item Si $u \in U(A) \Rightarrow$ u no es divisor de 0 (supongamos $u*b = 0 \Rightarrow u*u^{-1}*b = u^{-1}*0 \Rightarrow b=0$)
 \end{nlist}
 \end{nprop}
 
 \begin{nprop}
 	Si $A$ es finito, $A$ es dominio de integridad $\iff$ $A$ es un cuerpo
 \end{nprop}
-\begin{proof}
+\begin{proof}\hfill\\
 	\boxed{\Leftarrow} Trivial\\
 	\boxed{\Rightarrow} $0 \neq a \in A$.
-Tomo $\{1,a,a^2,\cdots,a^n\} = \{a^n: n\in N\} \subseteq A$
-Como tiene cardinalidad finita: $\exists k \in N : a^n = a^{n+k}$.\\
-Pero, por ello: $a^n = a^n a^k; a^n * 1 = a^n * a^k$, luego $a^n$ no es 0 porque A es Dominio de integridad y por ser D.I entonces:
+Tomo $\{1,a,a^2,\dots\} = \{a^n: n\in \mathbb{N}\} \subseteq A$
+Como $A$ tiene cardinal finito y es cerrado para el producto: $\exists n,k \in \mathbb{N} : a^n = a^{n+k}$.\\
+Pero, por ello: $a^n = a^n a^k; a^n * 1 = a^n * a^k$, luego $a^n$ no es 0 porque $A$ es dominio de integridad y por ser D.I. entonces:
 \[
 1=a^k \begin{cases}
 	k = 1 \Rightarrow a = 1\\
 	k > 1 \Rightarrow a^{k-1}*a = 1
 	
 \end{cases}\]
-Con lo que $\exists$ inverso de a = $a^{k-1}$ y como a es un elemento cualquiera, todo elemento tiene inverso, luego es un cuerpo.
+Con lo que $\exists$ inverso de $a = a^{k-1}$ y como $a$ es un elemento cualquiera, todo elemento tiene inverso, luego es un cuerpo.
 \end{proof}
 
 
@@ -960,41 +961,67 @@ Con lo que $\exists$ inverso de a = $a^{k-1}$ y como a es un elemento cualquiera
 \end{nprop}
 
 
-Primero, presentaremos otros conceptos:
+Primero, presentaremos otros conceptos. Comenzaremos por repasar brevemente los conceptos de relación binaria y
+relación de equivalencia, y definir el cociente de un conjunto por una relación de equivalencia. Esto nos servirá
+para construir el cuerpo de fracciones de un dominio de integridad, del que el dominio de integridad será un subanillo.
+
+\begin{ndef}[Relación binaria]
+  Una relación binaria en un conjunto $A$ es un subconjunto de $A^2$.
+  Si $\sim \ \subseteq A^2$ es una relación binaria y $(a,b) \in \sim$, se nota $a \sim b$
+  y se dice que ``$a$ y $b$ están relacionados mediante $\sim$''.
+\end{ndef}
+
+\begin{ndef}[Relación de equivalencia]
+  Una relación de equivalencia en un conjunto $A$ es una relación binaria $\sim$ en $A$ que verifica las siguientes propiedades:
+
+  \begin{nlist}
+  \item \textbf{\emph{Reflexividad}}. $a \sim a \ \ \forall a \in A$.
+  \item \textbf{\emph{Transitividad}}. Si $a \sim b$ y $b \sim c$, entonces $a \sim c \ \ \forall a,b,c \in A$.
+    \item \textbf{\emph{Simetría}}. $a \sim b \implies b \sim a \ \ \forall a,b \in A$.
+  \end{nlist}
+\end{ndef}
+
+\begin{ndef}[Clase de equivalencia]
+  Sean $A$ un conjunto, $a\in A$ y $\sim$ una relación de equivalencia en $A$. Se define la clase de equivalencia
+  de $a$ respecto de $\sim$:
+
+  \[
+     [a] = \{ b \in A : a \sim b \}
+  \]
+\end{ndef}
+
+\begin{ndef}[Cociente de un conjunto por una relación de equivalencia]
+  Sean $A$ un conjunto y $\sim$ una relación de equivalencia en $A$. Entonces se define el cociente de $A$ por $\sim$:
+
+  \[
+     A/\sim \ = \{ [a] : a \in A\}
+  \]
+\end{ndef}
 
 \begin{ndef}[Cuerpo de fracciones de un D.I.]
-Sea A un dominio de integridad con $|A| \geq 2$. Consideramos $A\times (A-\{0\}) = \{(a,b), a,b \in A\ |\ b\neq 0\}$
+  Sea $A$ un dominio de integridad con $|A| \geq 2$. Consideramos
 
-\begin{ndef} Decimos que (a,b) es equivalente a (c,d):
-	$(a,b)\sim(c,d) \iff ad = bc$
-	
-Esta relación es reflexiva, simétrica y transitiva.
-\end{ndef}
-	
-Ahora, considero $a,b\in A \hspace{0.2cm}$. Llamo $\displaystyle\frac{a}{b} = \{(c,d)\hspace{0.2cm} c,d \in A : (c,d) \sim (a,b)\} \subseteq A$x$A-\{0\}$
+  $$A\times (A-\{0\}) = \{(a,b), a,b \in A\ |\ b\neq 0\}$$
 
-Y llamo a $\displaystyle\frac{a}{b}$ la fracción $a$ entre $b$.
+  y en este conjunto la relación de equivalencia:
 
-\begin{ncor}
-	\[\frac{a}{b}= \frac{u}{v} \iff av = bu \iff (a,b) \sim (u,v)\]
-\end{ncor}
-\begin{proof}
-	
-	\boxed{\Rightarrow} $(a,b) \in \dfrac{a}{b} = \dfrac{u}{v} \Rightarrow (a,b) \sim (u,v) \Rightarrow (av = ub)$
-	
-	\boxed{\Leftarrow} $(a,b) \sim (u,v)$ Por la transitividad: $\dfrac{a}{b} \subseteq \dfrac{u}{v}$ y $\dfrac{u}{v} \subseteq \dfrac{a}{b} \Rightarrow \dfrac{a}{b}= \dfrac{u}{v}$
-\end{proof}
-\end{ndef}
+  \[
+     (a,b) \sim (c,d) \iff ad = bc
+  \]
 
-Ahora, llamamos $Q(A) = \left\{\dfrac{a}{b}\ |\ a,b \in A: \hspace{0.25cm} b\neq 0\right\}$ que es un conjunto de conjuntos, pues ya habíamos definido la fracción $\dfrac{a}{b}$ como un conjunto.
+  Definimos el cuerpo de fracciones de $A$ como
 
-Sobre él, definimos unas operaciones que nos permitirán ver que es un cuerpo:
+  $$\mathbb{Q}(A) = [A\times (A-\{0\})]/\sim$$
+
+    Se nota $[(a,b)] = \displaystyle\frac{a}{b}$ y se le llama ``fracción $a$ entre $b$''.
+
+  Sobre él, definimos unas operaciones con las que será un cuerpo:
 \begin{nlist}
 	\item Suma: \[\frac{a}{b}+ \frac{c}{d} = \frac{ad + cb}{bd}\]
 
-Ahora, como la fracción $\frac{a}{b}$ es un conjunto, hay que probar que el resultado es único, es decir:
+Ahora, como la fracción $\dfrac{a}{b}$ es un conjunto, hay que probar que el resultado es único, es decir:
 \[
-\frac{a}{b}= \frac{a'}{b'} \hspace{0.25cm}y\hspace{0.25cm} \frac{c}{d}= \frac{c'}{d'}  \Rightarrow ab' = a'b \hspace{0.25cm} y \hspace{0.25cm} cd' = c'd
+\frac{a}{b}= \frac{a'}{b'} \text{ y } \frac{c}{d}= \frac{c'}{d'}  \Rightarrow ab' = a'b \text{ y } cd' = c'd
 \]
 Hay que probar que se cumple:
 \[
@@ -1024,18 +1051,26 @@ La unicidad del producto se hace desarrollando de la misma manera.
 
 
 
-Para finalizar, se puede probar que es un cuerpo probando las propiedades de anillo conmutativo y que existe inverso para todo $\frac{a}{b}$.
+Para finalizar, se puede probar que es un cuerpo probando las propiedades de anillo conmutativo y que existe inverso para todo $\dfrac{a}{b}$.
+\end{ndef}
+
+\begin{ncor}
+	\[\frac{a}{b}= \frac{u}{v} \iff av = bu \iff (a,b) \sim (u,v)\]
+\end{ncor}
 
 \begin{nprop}[Fracciones de denominador 1]
-  Existe un homomorfismo
-  \begin{align}
-    i :& A \longrightarrow \mathbb{Q}(A)\notag\\
-     \quad  &a \longmapsto \frac{a}{1} = i(a)\notag
-  \end{align}
+  Si $A$ es un dominio de integridad, existe un homomorfismo
+
+  \[
+  \begin{array}{llll}
+    i :& A & \longrightarrow & \mathbb{Q}(A) \\
+       &a & \longmapsto &  i(a) = \dfrac{a}{1}
+  \end{array}
+  \]
 
   Que cumple que $i(a+b) = i(a)+i(b)$ y que $i(ab)=i(a)i(b)$, y además es un monomorfismo.
-  Así, $A \stackrel{i}{\cong} Img(i) = \{\frac{a}{1} : a\in A\}$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\frac{a}{1}$.
-  Con esta identificaión $\frac{a}{b} = \frac{a}{1}\frac{1}{b} = ab^{-1}$
+  Así, $A \stackrel{i}{\cong} Img(i)$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\dfrac{a}{1}$.
+  Con esta identificación $\dfrac{a}{b} = \dfrac{a}{1}\dfrac{1}{b} = ab^{-1}$.
 \end{nprop}
 
 \begin{nprop}
