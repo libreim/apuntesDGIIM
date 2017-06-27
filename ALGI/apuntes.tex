@@ -643,23 +643,34 @@ es un homomorfismo, que es justamente el enunciado de la primera proposición.
 
 \end{nlist}
 
-Pasamos ahora a la demostración de la Proposición 4.
+Pasamos ahora a la demostración de la proposición 4.
 
 
-Sean $f = \sum a_i x^i$ y $g = \sum b_i x^i \in A[x]$. Entonces: $f+g = \sum c_i x^i$ con $c_i = a_i + b_i$
+Sean $f = \sum a_i x^i$ y $g = \sum b_i x^i \in A[x]$.
+Si ahora aplicamos $\Phi(f+g) = \sum \varphi(a_i + b_i)b^i$, como $\varphi$ es homomorfismo, eso es igual a:
+\[
+    \sum (\varphi(a_i) + \varphi(b_i))b^i
+\]
+ 
+Usando que $B$ es un anillo y por ello hay distributividad, eso es igual a
 
-Si ahora aplicamos $\Phi(f+g) = \sum \varphi(c_i)b^i = \sum \varphi(a_i + b_i)b^i$. 
+\[
+    \sum (\varphi(a_i)b^i + \varphi(b_i)b^i).
+\]
+ 
+Por la asociatividad generalizada, es igual a:
 
-Como $\varphi$ es homomorfismo, eso es igual a:
- $\sum (\varphi(a_i) + \varphi(b_i))b^i$.
+\[
+\sum \varphi(a_i)b^i + \sum \varphi(b_i)b^i = \Phi(f) + \Phi(g)
+\]
+
+Por lo que queda probado para la suma.
  
- Usando que $B$ es un anillo y por ello hay distributividad, eso es igual a: $\sum (\varphi(a_i)b^i + \varphi(b_i)b^i)$.
+Ahora probaremos el producto. Recordemos que, de la definición:
  
- Por la asociatividad generalizada eso es igual a: $\sum \varphi(a_i)b^i + \sum \varphi(b_i)b^i = \Phi(f) + \Phi(g)$ Por lo que queda probado para la suma.
- 
- Ahora probaremos el producto:
- 
- $fg = \sum c_k x^k$ con $c_k  = \sum_{i+j = k} a_ib_j$\\
+\[
+fg = \sum c_k x^k \text{ con $c_k$ }  = \sum_{i+j = k} a_ib_j
+\]
  
  Así: \[\Phi(f*g) = \sum_n\varphi(c_n)b^n = \sum \varphi\left(\sum_{i+j = n} a_ib_j\right)b^n = \sum_n \left( \sum_{i+j = n} \varphi(a_i)\varphi(b_j)\right)b^n\]
  
@@ -689,11 +700,79 @@ f(x):B \to B
 \hspace{1cm}b \mapsto f(b)
 \]
 
-Sin embargo, un polinomio es mucho más que la función de evaluación que él mismo define. Estudiaremos el caso $A[x_1,...,x_r]$
+Sin embargo, un polinomio es mucho más que la función de evaluación que él mismo define.
 
-\begin{ndef}[Polinomios de $r$ variables con coeficientes en $A$]
-Sea $A$ un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
-Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
+Estudiaremos el anillo de polinomios en varias variables.
+
+\begin{ndef}[Monomio en $r$ variables]
+  Sean $A$ un anillo conmutativo, $p_1, \dots, p_r \in \mathbb{N}$ y $x_1, \dots, x_r$ símbolos que no denoten ningún elemento de $A$.
+  Entonces
+
+  \[
+      \prod_{i=0}^r x_i^{p_i}
+  \]
+
+  es un monomio en $r$ variables con coeficientes en $A$. Si $p = (p_1, \dots, p_r)$, denotamos $X^p = \prod_{i=0}^r x_i^{p_i}$.
+\end{ndef}
+
+\begin{ndef}[Anillo de polinomios en $r$ variables sobre un anillo conmutativo]
+  Sean $A$ un anillo conmutativo y $x_1, \dots, x_r$, con $r \in \mathbb{N}$ símbolos que no denoten ningún elemento de $A$. Entonces, se define el anillo de polinomios en
+  $r$ variables sobre $A$ como
+
+  \[
+      A[x_1, \dots, x_r] = \left\{ \sum_{(b,p) \in B\times P} bX^p : 
+      \begin{array}{l}
+        B = \{b_1, \dots, b_n\} \subseteq A \\
+        P = \{p_1, \dots, p_n\} \subset \mathbb{N}^r \\
+        n \in \mathbb{N}
+      \end{array} \right\}
+   \]
+
+      Es decir, el conjunto de las combinaciones lineales finitas con coeficientes en $A$ de monomios en $r$ variables sobre $A$.
+\end{ndef}
+
+Este anillo de polinomios es igual al que se puede obtener tomando anillos de polinomios sobre anillos de polinomios sucesivamente,
+es decir:
+
+\[
+    A[x_1, \dots, x_{s}][x_{s+1}, \dots, x_{r}] = A[x_1, \dots, x_r]
+\]
+    
+para cualquier número de variables $x_1, \dots, x_r$ y cualquier permutación de ellas.
+
+Ilustraremos este hecho en el caso $r=2$, $A[x][y]$.
+
+Definimos
+
+\[
+f=\sum f_i y^i,\ f_i = \sum_j a_{ij}x^j
+\]
+
+Luego
+
+\[
+f = \sum_i \left(\sum_j a_{ij}x^j \right)y^i = \sum_{i,j} a_{ij}x^iy^j
+\]
+
+Como $A$ es un anillo conmutativo, se tiene que $A[x][y] = A[y][x] = A[x,y]$.
+
+Después de esto, vamos a demostrarlo en el caso general.
+
+\begin{nprop}
+  Sea $A$ un anillo conmutativo. Entonces
+
+  \[
+     A[x_1, \dots, x_{r-1}][x_r] = A[x_1, \dots, x_r]
+  \]
+\end{nprop}
+
+\begin{proof}
+  Si $f \in A[x_1, \dots, x_{r-1}][x_r]$
+\end{proof}
+
+%% \begin{ndef}[Polinomios de $r$ variables con coeficientes en $A$]
+%% Sea $A$ un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
+%% Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
 	
 \begin{proof}\hfill 
 
@@ -739,7 +818,6 @@ Ahora, podemos desarrollar de la misma forma el producto y ver que:
 Por lo que queda probado nuestro resultado.
 \end{proof}
 
-\end{ndef}
 
 \begin{ndef} \textbf{($A[x][y]$)}
 \hfill \\
