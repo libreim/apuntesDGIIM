@@ -720,10 +720,10 @@ Estudiaremos el anillo de polinomios en varias variables.
   $r$ variables sobre $A$ como
 
   \[
-      A[x_1, \dots, x_r] = \left\{ \sum_{(b,p) \in B\times P} bX^p : 
+      A[x_1, \dots, x_r] = \left\{ \sum_{i=0}^n b_iX^{p_i} : 
       \begin{array}{l}
-        B = \{b_1, \dots, b_n\} \subseteq A \\
-        P = \{p_1, \dots, p_n\} \subset \mathbb{N}^r \\
+        B = \{b_0, \dots, b_n\} \subseteq A \\
+        P = \{p_0, \dots, p_n\} \subset \mathbb{N}^r \\
         n \in \mathbb{N}
       \end{array} \right\}
    \]
@@ -762,91 +762,39 @@ Después de esto, vamos a demostrarlo en el caso general.
   Sea $A$ un anillo conmutativo. Entonces
 
   \[
-     A[x_1, \dots, x_{r-1}][x_r] = A[x_1, \dots, x_r]
+     A[x_1, \dots, x_{r-1}][x_r] \text{ y } A[x_1, \dots, x_r]
   \]
+
+   son isomorfos.
 \end{nprop}
 
 \begin{proof}
-  Si $f \in A[x_1, \dots, x_{r-1}][x_r]$
+  Si $f \in A[x_1, \dots, x_{r-1}][x_r]$,
+
+  \[
+       f = \sum_{i=0}^n f_i x_r^i,\ f_i = \sum_{j\in J} a_{ij} X^j,\ J = \{j_0, \dots, j_m\} \subset \mathbb{N}^{r-1}
+  \]
+
+  Luego
+
+  \[
+      f = \sum_{(i,j) \in \{1,\dots,n\}\times J} a_{ij}X^j x_r^i
+  \]
+
+  Definimos $\Phi : A[x_1, \dots, x_{r-1}][x_r] \to A[x_1, \dots, x_r]$:
+
+  \[
+    \Phi \left(\sum_{(i,j) \in \{1,\dots,n\}\times J} a_{ij}X^j x_r^i\right) = \sum_{i=0}^{nm} b_i X^{p_i},\ 
+    \begin{array}{l}
+      B = \{ b_k = a_{ij} : jn + i = k \} \\
+      P = \{ p_k = q_{ij} : q_{ij} \in \{1, \dots, n \} \times J, jn+i = k \}
+    \end{array}
+  \]
+
+  Se puede comprobar que este es un isomorfismo de anillo conmutativos.
+       
 \end{proof}
 
-%% \begin{ndef}[Polinomios de $r$ variables con coeficientes en $A$]
-%% Sea $A$ un anillo conmutativo. Consideramos $A[x_1,...x_r]$ inductivamente en $r$:\\
-%% Si $r>1$ entonces $A[x_1,...,x_r] = A[x_1,...,x_{r-1}][x_r]$\\
-	
-\begin{proof}\hfill 
-
-\begin{itemize}
-
-	\item $r=1$:
-\[
-f(x_1) \in A[x_1] \hspace{1cm} \sum_{i \geq 0}a_i x^i \hspace{0.5cm} a_i \in A \hspace{0.5cm} \exists K: a_{i1} = 0 \hspace{0.3cm} \forall i > K
-\]
-	\item $r> 1$
-\[
-f(x_1,...,x_r) = \sum_{i1,\dots,ir \ge 0} a_{i1,...,ir} x_1^{i1}...x_r^{ir}: \hspace{0.3cm} \exists K: a_i,...,a_r  = 0 \iff i_s > K
-\]
-Ahora, si vemos que:
-\[
-f_{ir}(x_1,...,x_{r-1}) = \sum_{i1,...ir > 0} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir-1} \in A[x_1,...,x_{r-1}]
-\]
-Entonces:
-\[
-\sum_{ir \geq 0} f_{ir}(x_1,...,x_{r-1})x_r^{ir}= \sum_{ir \geq 0}(\sum_{i1,...,ir > 0}a_1,...,a_r x_1^{i1},...,x_{r-1}^{ir-1})x_r^{ir} = 
-\]
-\[
-=\sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir}
-\]
-
-
-Ahora, definimos $g(x_1,...,x_r) = \sum_{i1,...ir} b_{i1},...,b_{ir} x_1^{i1},...,x_r^{ir}$. Ahora, sumamos:
-
-\[
-f(x_1,...,x_r)+g(x_1,...,x_r) = \sum_{i1,...ir} a_{i1},...,a_{ir} x_1^{i1},...,x_r^{ir} + \sum_{i1,...ir} b_{i1},...,b_{ir} x_1^{i1},...,x_r^{ir} = 
-\]
-\[
- = \sum_{i1,...,ir} (a_i+bi)x^{i1+ij}
-\]
-
-Ahora, podemos desarrollar de la misma forma el producto y ver que:
-
-\[
-(ax_1^{i1},...,x_r^{ir})(bx_1^{j1},...,x_r^{jr}) = abx_i^{i+j}x_2^{i_2+j_2}...x_r^{i_r+j_r}
-\]
-
-\end{itemize}
-Por lo que queda probado nuestro resultado.
-\end{proof}
-
-
-\begin{ndef} \textbf{($A[x][y]$)}
-\hfill \\
-Definimos $f=\sum f_i y^i\ |\ f_i \in A[x] : f_i = \sum_j a_{ij}x^j$\\
-Luego, $f = \sum_i (\sum_j a_{ij}x^j)y^i = \sum_{i,j} a_{ij}x^iy^j$\\
-
-Ahora, tomamos $g =\sum_{i,j} b_{ij}x^iy^j$ y sumamos:
-
-\[
-f+g = \sum_{i,j}(a_{ij}+b_{ij})x^iy^j
-\]
-
-Y, si $A[x][y]$ es un anillo, vemos que la multiplicación se realiza:
-\[
-(a_{ij}x^iy^j)(b_{mn}x^my^n) = a_{ij}b_{mn} x^{i+m}y^{j+n}
-\]
-
-
-Además, como es un anillo conmutativo $\Rightarrow$ $A[x][y] = A[y][x] = A[x,y]$
-
-	
-\end{ndef}
-
-
-\begin{ndef}
-	$A[x_1,...,x_n] = A[x_1,...,x_{n-1}][x_n]$
-
-Se puede probar que $A[x_1,...,x_n] = A[x_{\sigma(1)},...,x_{\sigma(n)}]$ siendo $\sigma$ una permutación de $\{1,2,...,n \}$
-\end{ndef}
 
 \begin{nprop}
 	
