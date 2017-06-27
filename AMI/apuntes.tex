@@ -738,26 +738,49 @@ Así, se tiene que $0 < d(x,a_n) < \frac{1}{n}\ \forall n\in \mathbb{N}$, de don
 De esta forma, queda probada la equivalencia.
 \end{proof}
 
+Podemos dar ahora un teorema importante que caracteriza a los compactos de $\R^n$.
 
-
-\begin{nprop}[Caracterización de compactos]
-Sea $A \subseteq \mathbb{R}^N$. Entonces: $$A\ es\ compacto \iff A\ es\ cerrado\ y\ acotado.$$
-\end{nprop}
-
-
+\begin{nth}[Teorema de Heine-Borel]
+Sea $A\subseteq \R^n$. Entonces:
+\[
+A \ es \ compacto \iff \text{ A es cerrado y acotado}
+\]
+\end{nth}
+\begin{proof}\hfill\\
+	\boxed{\Rightarrow}\\
+	Suponemos que $A \subset \mathbb{R}^n$ es compacto. Entonces, por su definición, $\forall \{x_n\} \subset A \ \exists \{x_{\sigma(n)}\}$ parcial de $\{x_n\}$ con $\{x_{\sigma(n)}\} \to x \in A$. Supongamos que $A$ no está acotado. Entonces, $\forall n \in \mathbb{N}, \ \exists a_n \in A : \ |a_n| \geq n$, por lo que $\{a_n\}$ no converge y por tanto $\sigma(n) \geq n \implies \{a_{\sigma(n)}\}$ no converge, por lo que $A$ está acotado.
+	
+	Supongamos ahora que $\{x_n\} \to x \implies \exists \{x_{\sigma(n)}\} \to x \in A$, y como sabemos que si una sucesión es convergente todas sus parciales convergen al mismo límite, entonces eso implica que $\{x_n\}\to x \in A$ por lo que toda sucesión converge a un punto de $A$, y así $A$ es cerrado.
+	\\
+	\boxed{\Leftarrow}\\
+	Supongamos ahora que $A$ es cerrado y acotado. Sea $\{x_n\}$ una sucesión cualquiera de puntos de $A$.
+	
+	Como $A$ es acotado, entonces $\exists R > 0 : \ \ A \subset B(0,R)$. Además, como $\{x_n\} \subset A \ \forall n \implies |x_n| < R \ \forall n \in \mathbb{N}$, así $\{x_n\}$ es acotada.
+	
+	Como $\{x_n\}$ es acotada, por el teorema de Bolzano Weierstrass, $\exists \sigma: \mathbb{N} \to \mathbb{N}$ estrictamente creciente con $\{x_{\sigma(n)}\}\to x \in \mathbb{R}^n$, y como $\{x_{\sigma(n)}\}$ es una subsucesión de puntos de $A$ que converge a $x$ y el conjunto $A$ es cerrado, entonces el límite de esta sucesión está en $A$ , es decir:
+	\[
+	\{x_{\sigma(n)}\}\to x \in A
+	\]
+Por lo que tenemos la definición de conjunto compacto.
+\end{proof}
 
 \begin{nprop}
 Sea $\{x_n\} \subseteq \mathbb{R}^N$ convergente a un $x_o \in \mathbb{R}^N$. Entonces, el conjunto \hfill \\$A = \{x_n:\ n=0,1,2,\dots \}$ es compacto.
 \end{nprop}
+\begin{proof}
+	La prueba de este resultado es sencilla. Como $\{x_n\}$ es convergente, entonces está acotada. Además, el conjunto de los puntos de la sucesión es un conjunto cerrado pues los puntos son conjuntos cerrados. Así, el conjunto $A$ es cerrado y acotado, luego es compacto.
+\end{proof}
 
 
 
 %%% Clasificación de conjuntos en R^N.
-\subsection{Clasificación de conjuntos en $\mathbb{R}^N$}
 
+\subsection{Clasificación de conjuntos en $\mathbb{R}^N$}
+En esta sección, vamos a intentar definir una serie de tipos de conjuntos sobre los que luego trataremos de establecer ciertas propiedades
 \begin{ndef}[Conjunto convexo]
 Un conjunto $A\subseteq \mathbb{R}^N$ se dice \textit{convexo} si $\forall x,y \in A$ se tiene que el segmento de extremos $x$ e $y$ está incluido en $A$. En otras palabras: $$A\ convexo\ \iff [x,y] = \{tx + (1-t)y: \ t\in [0,1]\} \subseteq A.$$
 \end{ndef}
+
 
 
 
@@ -870,17 +893,20 @@ Sean $(X,\tau_x),\ (Y,\tau_y)$ dos espacios topológicos, $A\subseteq X$, y $f:A
 %%% Teoremas sobre funciones continuas en R^N.
 \subsection{Teoremas sobre funciones continuas en $\mathbb{R}^N$}
 
+A continuación, daremos ciertos de los teoremas más usados en el análisis elemental. Se revisitarán los teoremas dados con anterioridad para funciones continuas en $\R$ y se enunciarán y probarán sus versiones correspondientes en $\R^n$ o en espacios métricos en general.
+
 
 
 \begin{nth}[Weierstrass]
 Sea $(X,d)$ un espacio métrico, $\emptyset \ne A \subseteq X$ compacto, y $f:A \longrightarrow \mathbb{R}$ continua en $A$. Entonces, $\exists x_1,x_2 \in A: \ f(x_1)\le f(x) \le f(x_2)\ \ \forall x\in A$. En otras palabras, la función $f$ alcanza su mínimo y su máximo.
 \end{nth}
 
-
-
 \begin{nth}[Weierstrass generalizado]
-Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne A \subseteq X$ compacto, y $f: A \longrightarrow Y$ continua. Entonces, $f(A)$ es compacto.
+Sean $(X,d)$, $(Y,d)$ espacios métricos, $\emptyset \ne K \subseteq X$ compacto, y $f: K \longrightarrow Y$ continua. Entonces, $f(K)$ es compacto.
 \end{nth}
+\begin{proof}
+		Sea $\{y_n\}\subseteq f(K)$ una sucesión cualquiera en $f(K)$. Para demostrar que $f(K)$ es compacto debemos demostrar que $\{y_n\}$ tiene una subsucesión convergente a algún punto de $f(K)$. Sea $y_n$ = $f(x_n)$ con $x_n \in K$, por ser A compacto $\{x_n\}$ tiene una subsucesión $\{x_{\sigma(n)}\}$ convergente a un $a \in K$. Por lo tanto, $\{f(x_{\sigma(n)})\}$ convergente a un $f(a) \in f(K)$, siendo $\{f(x_{\sigma(n)})\}$ una subsucesión de $\{f(x_{n})\}$, es decir, de $\{y_n\}$.
+\end{proof}
 
 
 
@@ -902,6 +928,7 @@ Por tanto, queda probado que $f(A)$ es arco-conexo en $\mathbb{R}^M$.
 Sea $\emptyset \ne A\subseteq \mathbb{R}^N$ conexo, y $f:A \longrightarrow \mathbb{R}^M$ continua. Entonces, $f(A)$ es conexo en $\mathbb{R}^M$.
 \end{nth}
 
+El siguiente resultado, tiene mucha relevancia en el estudio de la continuidad uniforme de funciones en un espacio métrico como es $\R^n$.
 \begin{nth}[Heine-Cantor]
 	Sea $\emptyset\ne A \subseteq \mathbb{R}^N$ compacto, y $f : A \longrightarrow \mathbb{R}^N$ continua. Entonces $f$ es uniformemente continua en $A$.
 \end{nth}

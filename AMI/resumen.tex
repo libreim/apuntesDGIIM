@@ -358,6 +358,14 @@ Ahora, $\forall \ \alpha, \beta \in \varphi([a,b])$ con $\alpha \leq \beta \impl
 \begin{nth}
 	Sea $f:A \to B$ continua y $K \subset A$ conexo. Entonces, $f(K)$ es conexo. Análogamente, si K es arco-conexo, entonces, f(K) es arco-conexo.
 \end{nth}
+\begin{proof}\hfill\\
+Haremos la prueba para conjuntos arco-conexos.\\
+Sean $X,Y\in f(A)$. Entonces, $\exists x,y \in A : X=f(x), \ Y=f(y)$. Como $A$ es arco-conexo, $\exists\varphi : [a,b]\longrightarrow \mathbb{R}^N \text{ continua tal que}\ \varphi(a) = x,\; \varphi(b)=y,\; \varphi([a,b]) \subseteq A$.
+
+
+Ahora, definimos $\psi := f\circ \varphi : [a,b] \longrightarrow \mathbb{R}^M$, que es continua por ser composición de funciones continuas. Entonces, se verifica que: $$\psi(a) = f(\varphi(a)) = f(x) = X;\quad \psi(b)= f(\varphi(b)) = f(y) = Y;\quad \psi([a,b]) = f(\varphi([a,b])) \subseteq f(A).$$
+Por tanto, queda probado que $f(A)$ es arco-conexo en $\mathbb{R}^M$.
+\end{proof}
 
 \begin{nth}[Teorema de Weierstrass]
 Sea $f:A \to B$ continua y $K\subset A$ un compacto. Entonces, $f(K)$ es compacto.	
