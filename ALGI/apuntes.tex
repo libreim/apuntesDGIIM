@@ -961,14 +961,14 @@ Con lo que $\exists$ inverso de $a = a^{k-1}$ y como $a$ es un elemento cualquie
 \end{nprop}
 
 
-Primero, presentaremos otros conceptos. Comenzaremos por repasar brevemente los conceptos de relación binaria y
+Antes de probar esta proposición, presentaremos otros conceptos. Comenzaremos por repasar brevemente los conceptos de relación binaria y
 relación de equivalencia, y definir el cociente de un conjunto por una relación de equivalencia. Esto nos servirá
 para construir el cuerpo de fracciones de un dominio de integridad, del que el dominio de integridad será un subanillo.
 
 \begin{ndef}[Relación binaria]
   Una relación binaria en un conjunto $A$ es un subconjunto de $A^2$.
   Si $\sim \ \subseteq A^2$ es una relación binaria y $(a,b) \in \sim$, se nota $a \sim b$
-  y se dice que ``$a$ y $b$ están relacionados mediante $\sim$''.
+  y se dice que ``$a$ está relacionado con $b$ mediante $\sim$''.
 \end{ndef}
 
 \begin{ndef}[Relación de equivalencia]
@@ -1073,6 +1073,8 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
   Con esta identificación $\dfrac{a}{b} = \dfrac{a}{1}\dfrac{1}{b} = ab^{-1}$.
 \end{nprop}
 
+A partir de ahora usaremos la identificación $a = \dfrac{a}{1}$.
+
 \begin{nprop}
   Sea $K$ un cuerpo y $A\le K$, $a,b\in A\ (b\not=0)$.
   \begin{align}
@@ -1111,42 +1113,64 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
 
 \begin{ndef}[Grado de un polinomio]
 
-Si $f=\sum a_i x^i \neq 0$ $\implies gr(f)=n\in \mathbb{N}$ si $a_n\neq 0$ y $a_m=0 \hspace{0.3cm} \forall m>n$ 
+  Si $f=\sum a_i x^i \neq 0$, entonces
+
+  $$gr(f)=n\in \mathbb{N} : a_n\neq 0 \text{ y } a_m=0 \hspace{0.3cm} \forall m>n$$ 
 
 El coeficiente $a_n$ se denomina coeficiente líder.
-
-\begin{itemize}
-	\item Si A es D.I, $f,g \in A[x]\implies gr(fg) = gr(f)+gr(g)$\\
-	(Si no es D.I, tenemos que $gr(fg) \le gr(f)+gr(g)$)
-\end{itemize}
 	
 \end{ndef}
+
+\begin{nprop}
+	Si A es D.I., $f,g \in A[x]\implies gr(fg) = gr(f)+gr(g)$.
+	En caso contrario, tenemos que $gr(fg) \le gr(f)+gr(g)$.
+\end{nprop}
 
 \begin{ndef}[Divisibilidad en D.I.]
 	
-Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divisor de b, b es un múltiplo de a):
+Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que $a$ divide a $b$ ($a$ es un divisor de $b$, $b$ es un múltiplo de $a$) si
+\[
+	\exists c \in A : b = ac 
+\]
+\end{ndef}
+
+\begin{nprop}
+  En las condiciones anteriores:
+  
 \begin{align}
-	& \exists c \in A : b = ac 
+	&\exists c \in A : b = ac 
 \\
-	\iff& La \hspace{0.2cm} ecuacion \hspace{0.2cm} ax=b \hspace{0.2cm} tiene\hspace{0.2cm}solucion
+	\iff& \text{La ecuación } ax=b \text{ tiene solución}
 \\
 \iff& \frac{b}{a} \in A
-\end{align}
+\end{align}  
+\end{nprop}
 
-\begin{proof}
-	$\boxed{\implies}$ Si a divide a b $\implies$ $\exists c: b=ac \implies \dfrac{b}{a} = \dfrac{ac}{a} = \dfrac{c}{1} = c \in A$\\
-	$\boxed{\Longleftarrow}$ si $\dfrac{b}{a}\in A \implies \dfrac{b}{a} = \dfrac{c}{1} \implies b = ac$
+\begin{proof}\hfill\\
+  \begin{itemize}
+  \item $\boxed{(1) \iff (2)}$ Es la definición de que la ecuación $ax = b$ tenga solución.
+  \item $\boxed{(1) \iff (3)}$
+    
+    $\boxed{\Longrightarrow}$ Si $a$ divide a $b$ $\implies$ $\exists c: b=ac \implies \dfrac{b}{a} = \dfrac{ac}{a} = \dfrac{c}{1} = c \in A$\\
+    $\boxed{\Longleftarrow}$ si $\dfrac{b}{a}\in A \implies \dfrac{b}{a} = \dfrac{c}{1} \implies b = ac$
+  \end{itemize}
+
 \end{proof}
-\end{ndef}
-\textbf{Notación:} Si a divide a b, escribiremos $a/b$
 
-\begin{nlist}
-	\item Los divisores de 1 son las unidades del anillo, los elementos del grupo $U(A)$
-	\item Las unidades son divisores de todos los elementos del anillo.
-	\item Dado $a\in A$, los elementos $ua$ con $u\in U(A)$ se llaman \emph{asociados de a}.
-	\item Si $u\in U(A)$, $\forall a \in A$, $ua/a$
-	
-\end{nlist}
+\textbf{Notación:} Si $a$ divide a $b$, escribiremos $a/b$.
+
+\begin{ndef}[Asociados de un elemento de un D.I.]
+  Sean $A$ un dominio de integridad y $a\in A$. Entonces los elementos $ua$ con $u\in U(A)$ se llaman \emph{asociados de a}.
+\end{ndef}
+
+\begin{nprop}\hfill
+  \begin{nlist}
+  \item Los divisores de 1 son las unidades del anillo, los elementos del grupo $U(A)$.
+  \item Las unidades son divisores de todos los elementos del anillo.
+  \item Si $u\in U(A)$, $\forall a \in A$, $ua/a$.
+    
+  \end{nlist}
+\end{nprop}
 
 \begin{ndef}
 	Los divisores triviales de un número son las unidades y sus asociados.
@@ -1155,48 +1179,57 @@ Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que a divide a b (a es un divi
 \begin{nprop}
 	Sean $a,b\neq 0$. Son equivalentes:
 	\begin{nlist}
-	\item a es asociado de b
-	\item b es asociado de a
+	\item $a$ es asociado de $b$.
+	\item $b$ es asociado de $a$.
 	\item $a/b \wedge b/a$, los asociados son los elementos que se dividen mutuamente
 	
 \end{nlist}
 \end{nprop}
 
+\begin{nprop} La divisibilidad verifica algunas propiedades:
+  
+  \begin{nlist}
+  \item Reflexión: $a/a$
+  \item Transitividad: $a/b \wedge b/c \implies a/c$
+  \item Si $a/b \wedge a/c \implies a/bx +cy\hspace{0.2cm} \forall x,y \in A$ 
+  \item Si $a/b \implies \hspace{0.2cm} \forall c\in A \hspace{0.2cm} a/bc$
+  \item Si $c\neq 0$ entonces $a/b \iff ac/bc$
+  \end{nlist}
+\end{nprop}
+
+\textbf{Notación:} si $a$ y $b$ son asociados, escribiremos $a \sim b$.
+
 \begin{ndef}[Irreducible]
 	
-	Sea $a\in A$ (D.I), $a\neq 0, a \notin U(A)$ es irreducible si sus únicos divisores son los triviales
+	Sean $A$ un dominio de integridad, $a\in A$, $a\neq 0, a \notin U(A)$. Se dice que $a$ es irreducible si sus únicos divisores son los triviales
 
-\begin{align}
-	\iff& si\hspace{0.2cm} b/a \implies b\in U(A) \vee b \sim a
+\begin{align*}
+	\iff& \text{si } b/a \implies b\in U(A) \vee b \sim a
 \\
-	\iff& si \hspace{0.2cm} a=bc \implies b\in U(A) \vee c \in U(A)
+	\iff& \text{si } a=bc \implies b\in U(A) \vee c \in U(A)
 \\
-	\iff& si \hspace{0.2cm} a=bc \implies a\sim b \vee c \sim a
+	\iff& \text{si } a=bc \implies a\sim b \vee c \sim a
 \\
-	\iff& si \hspace{0.2cm}a=bc \wedge b \notin U(A) \implies c \in U(A)
-\end{align}
-	
-Propiedades elementales:
-\begin{nlist}
-	\item Reflexión: $a/a$
-	\item Transitividad: $a/b \wedge b/c \implies a/c$
-	\item Si $a/b \wedge a/c \implies a/bx +cy\hspace{0.2cm} \forall x,y \in A$ 
-	\item Si $a/b \implies \hspace{0.2cm} \forall c \hspace{0.2cm} a/bc$
-	\item Si $c\neq 0$ entonces $a/b \iff ac/bc$
-\end{nlist}
+	\iff& \text{si } a=bc \wedge b \notin U(A) \implies c \in U(A)
+\end{align*}
 \end{ndef}
+
 
 \section{Dominios euclídeos}
 \begin{ndef}[Dominios euclídeos]
 
-	Un dominio euclídeo es un dominio de integridad, A, tal que haya definida una función $\varphi: A- \{0\} \to \mathbb{N} $ verificando:
+	Un dominio euclídeo es un dominio de integridad, $A$, tal que se pueda definir una función $\varphi: A- \{0\} \to \mathbb{N} $ que verifique:
 
 \begin{nlist}
 	\item $\varphi(ab) \ge \varphi(a)$
 	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q,r \in A : a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$
-	\item $\forall a,b \in A,\ b \neq 0 \quad \exists q \in A : a - bq = 0 \vee  \varphi(a-bq) < \varphi(b)$
+	%%\item $\forall a,b \in A,\ b \neq 0 \quad \exists q \in A : a - bq = 0 \vee  \varphi(a-bq) < \varphi(b)$
 \end{nlist}	
 \end{ndef}
+
+\begin{nota}
+  En algunos textos, se omite la primera propiedad, dado que a partir de una función que verifique la segunda, es posible definir una que verifique ambas.
+\end{nota}
 
 \begin{nota}
 	Si A es dominio euclídeo, entonces: 
