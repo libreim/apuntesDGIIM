@@ -490,12 +490,12 @@ Se puede comprobar que $\mathbb{Z}[\sqrt{n}]$ $\leq$ $\mathbb{Q}[\sqrt{n}]$ y qu
 
 
 \begin{nprop}
-	$\alpha \in a + b \sqrt{n} \in \ent[\sqrt{n]}$ es invertible $\iff$ $N(\alpha) \in \{-1,1\}$
+	$\alpha = a + b \sqrt{n} \in \ent[\sqrt{n]}$ es invertible $\iff$ $N(\alpha) \in \{-1,1\}$
 \end{nprop}
 
+\end{itemize}
 
-
-\item Anillos de series.
+\subsection*{Anillos de series.}
 \begin{ndef}
   Si $A$ es un anillo conmutativo y $x$ es un símbolo que no denota ningún elemento de $A$, el anillo de series con coeficientes en $A$, denotado con $A[[x]]$ esta definido como:
 
@@ -509,7 +509,6 @@ Y definimos la suma y el producto de la siguiente forma:\\
 \[ (ab) = \sum_{n\in \mathbb{N}} \left(\sum_{k=0}^n a_k b_{n-k}\right)x^n\]
 
 \end{ndef}
-\end{itemize}
 
 Se puede probar que con estas operaciones de suma y producto, $A[[x]]$ es un anillo.
 
@@ -610,12 +609,12 @@ Si $A$ es un anillo y $a \in A$ entonces: existe un homomorfismo $E_a: A[x] \to 
 \end{nprop}
 
 \begin{nprop}[3]
-Si $A \leq B$ es un subanillo y $b\in B$, la aplicación $E_b:A[x] \to B$ definida como $E_b(\sum_i a_i x^i) = \sum_i a_i b^i$ es un homomorfismo
+Si $A \leq B$ es un subanillo y $b\in B$, la aplicación $E_b:A[x] \to B$ definida como $E_b(\sum_i a_i x^i) = \sum_i a_i b^i$ es un homomorfismo.
 	
 \end{nprop}
 
 \begin{nprop}[Engloba a las anteriores]
-Si $\varphi:A \to B$ es un homomorfismo y $b\in B$, la aplicación $\Phi:A[x] \to B$ definida como $\Phi ( \sum_i a_i x^i) = \sum_i \varphi(a_i)b^i \in B$ es un homomorfismo 
+Si $\varphi:A \to B$ es un homomorfismo y $b\in B$, la aplicación $\Phi:A[x] \to B$ definida como $\Phi ( \sum_i a_i x^i) = \sum_i \varphi(a_i)b^i \in B$ es un homomorfismo.
 
 \end{nprop}
 
@@ -709,10 +708,10 @@ Estudiaremos el anillo de polinomios en varias variables.
   Entonces
 
   \[
-      \prod_{i=0}^r x_i^{p_i}
+      \prod_{i=1}^r x_i^{p_i}
   \]
 
-  es un monomio en $r$ variables con coeficientes en $A$. Si $p = (p_1, \dots, p_r)$, denotamos $X^p = \prod_{i=0}^r x_i^{p_i}$.
+  es un monomio en $r$ variables con coeficientes en $A$. Si $p = (p_1, \dots, p_r)$, denotamos $X^p = \prod_{i=1}^r x_i^{p_i}$.
 \end{ndef}
 
 \begin{ndef}[Anillo de polinomios en $r$ variables sobre un anillo conmutativo]
@@ -720,10 +719,10 @@ Estudiaremos el anillo de polinomios en varias variables.
   $r$ variables sobre $A$ como
 
   \[
-      A[x_1, \dots, x_r] = \left\{ \sum_{i=0}^n b_iX^{p_i} : 
+      A[x_1, \dots, x_r] = \left\{ \sum_{i=1}^n b_iX^{p_i} : 
       \begin{array}{l}
-        B = \{b_0, \dots, b_n\} \subseteq A \\
-        P = \{p_0, \dots, p_n\} \subset \mathbb{N}^r \\
+        B = \{b_1, \dots, b_n\} \subseteq A \\
+        P = \{p_1, \dots, p_n\} \subset \mathbb{N}^r \\
         n \in \mathbb{N}
       \end{array} \right\}
    \]
@@ -791,7 +790,7 @@ Después de esto, vamos a demostrarlo en el caso general.
     \end{array}
   \]
 
-  Se puede comprobar que este es un isomorfismo de anillo conmutativos.
+  Se puede comprobar que este es un isomorfismo de anillos conmutativos.
        
 \end{proof}
 
