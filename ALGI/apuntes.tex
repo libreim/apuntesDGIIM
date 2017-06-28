@@ -1178,7 +1178,7 @@ Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que $a$ divide a $b$ ($a$ es u
 	\begin{nlist}
 	\item $a$ es asociado de $b$.
 	\item $b$ es asociado de $a$.
-	\item $a/b \wedge b/a$, los asociados son los elementos que se dividen mutuamente
+	\item $a/b \wedge b/a$, los asociados son los elementos que se dividen mutuamente.
 	
 \end{nlist}
 \end{nprop}
@@ -1228,16 +1228,34 @@ Sea $A$ un D.I. Sean $a,b\in A$. Decimos entonces que $a$ divide a $b$ ($a$ es u
   En algunos textos, se omite la primera propiedad, dado que a partir de una función que verifique la segunda, es posible definir una que verifique ambas.
 \end{nota}
 
-\begin{nota}
-	Si A es dominio euclídeo, entonces: 
-$b/a \iff$ un resto de dividir a entre b es cero $\iff$ cualquier resto de dividir a entre b es 0 
-\end{nota}
-\begin{proof}
-	$\boxed{\implies}$ Por definición de b/a, $\implies \exists c \in A$ tal que $a=bc$ y por ser A un dominio euclídeo, $\implies \exists q,r \in 		A : 	a = bq + r $ con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
-\\
-Supongamos $r \neq 0$, entonces $\varphi(r) < \varphi(b)$. 
-$$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
-$$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b) \implies \textup{CONTRADICCIÓN}$$  
+
+\begin{nprop}
+  Si A es dominio euclídeo, entonces:
+ 
+  \[
+  \begin{array}{lll}
+    & b/a & (1) \\
+    \iff & \text{un resto de dividir $a$ entre $b$ es cero} & (2) \\
+    %%\iff & \text{cualquier resto de dividir $a$ entre $b$ es cero} & (3)
+  \end{array}
+  \]
+\end{nprop}
+
+\begin{proof}\hfill\\
+  %%\begin{itemize}
+  %%\item $\boxed{ (1) \iff (2) }$
+
+    $\boxed{\Longleftarrow}$ Trivial.
+    
+  $\boxed{\Longrightarrow}$ Por definición de $b/a$, $\implies \exists c \in A$ tal que $a=bc$ y por ser $A$ un dominio euclídeo, $\exists q,r \in A : a = bq + r $
+  con $r=0 \vee \varphi(r) < \varphi(b)$. La solución 	es evidentemente correcta para $r = 0$, veamos que sucede para $r \neq 	0$.
+    
+    Supongamos $r \neq 0$, entonces $\varphi(r) < \varphi(b)$. 
+    $$r = a - bq = bc - bq = b(c-q) \quad \quad c-q \neq 0$$
+    $$\varphi(r) = \varphi(b(c-q)) \ge \varphi(b)$$
+    Llegando a una contradicción.
+ %% \end{itemize}
+
 \end{proof}
 
 \begin{nth}[Teorema de Euclides]
@@ -1268,53 +1286,63 @@ Por lo que tenemos una contradicción con el comienzo de la suposición.
 	\item Ahora, si $r=r'\implies b(q' -q) = 0$ y $b\neq 0 \implies q' -q=0 \implies q' =q$
 \end{itemize}
 
-Probamos ahora la existencia. Sean $a,b \geq 0$
+Probamos ahora la existencia. Observemos que el caso general se puede reducir al caso $a \ge 0, b > 0$, de la
+siguiente forma:
+
+\begin{itemize}
+\item si $b<0$, entonces se toman $b' = -b, q' = -q$, y se escribe $a = b'q' +r, 0 \le r < |b'|$.
+\item si $a<0$ y $b>0$ (podemos asegurar que $b>0$ por el caso anterior), se toman $a' = -a$, $q' = -q -1, r' = b-r$
+  y se escribe $a = bq'+r', 0 \le r' < b$.
+\end{itemize}
+
+Por tanto, sean $a,b \geq 0$:
 
 \begin{itemize}
 	\item Si $ a < b \implies a = b*0 + a$, luego $q=0$ y $r=a$, ya los tenemos.
-	\item Si $a \geq b$, llamamos $R=\{a-bx: x\in \nat \quad a \geq bx\}\subseteq \nat$ que es no vacío, pues está al menos $x=1$.
+	\item Si $a \geq b$, llamamos $R=\{a-bx: x\in \nat \quad a \geq bx\}\subseteq \nat$ que es no vacío, pues está al menos $ a-b \ (\text{para } x=1)$.
 	
-	Ahora, por el principio de buena ordenación, $R$ tiene mínimo. Tomo $r=min(R)$. 
+	Ahora, por el principio de buena ordenación, $R$ tiene mínimo. Tomo $r=\min(R)$. 
 	
-$r=a+bq$ para cierto $q \in \nat$ y $ r \geq 0$.
+$r=a-bq$ para cierto $q \in \nat$ y $ r \geq 0$.
 
-Veremos ahora que $r < b$, por contradicción.
+Veremos que $r < b$, por contradicción.
 
 Supongamos $ r \geq b\implies r' = r-b \geq 0 \implies r' = a-bq -b = a -b(q+1)\implies r' \in R$.
 
-Podemos ver que $r' < r$ (pues $r'=r-b$) $\implies  r'$ está en $R$ y es menor que el mínimo, luego es una contradicción y tenemos que $r < b$
+Podemos ver que $r' < r$ (pues $r'=r-b$) $\implies  r'$ está en $R$ y es menor que el mínimo, luego es una contradicción y tenemos que $r < b$.
 
 \end{itemize}
-Por último, vamos a probar que $0 \leq r < \abs{b}$
+%% Por último, vamos a probar que $0 \leq r < \abs{b}$
 
-Supongamos: 
-\[
-r=0 \implies a=bq \begin{cases}
-	-a = b(-q)\\
-	-a = (-b)q \\
-	 a = (-b)(-q)\\	
-\end{cases}
-\]
+%% Supongamos: 
+%% \[
+%% r=0 \implies a=bq \begin{cases}
+%% 	-a = b(-q)\\
+%% 	-a = (-b)q \\
+%% 	 a = (-b)(-q)\\	
+%% \end{cases}
+%% \]
 
-Ahora, supongamos $r > 0$:
+%% Ahora, supongamos $r > 0$:
 
-\begin{itemize}
-	\item $-a = b(-q) -r = b(-q) -b + b -r = b(-q-1) +(b-r)$ y como $0 < r < b \implies b > b-r > 0$
-	\item $-a = (-b)q -r = (-b)q + b - b -r = -b(q+1) + (b-r)$ y por el mismo motivo, $b > b-r > 0$
-	\item $a = (-b)(-q) +r \implies 0 < r < b = \abs{-b}$
-\end{itemize}
+%% \begin{itemize}
+%% 	\item $-a = b(-q) -r = b(-q) -b + b -r = b(-q-1) +(b-r)$ y como $0 < r < b \implies b > b-r > 0$
+%% 	\item $-a = (-b)q -r = (-b)q + b - b -r = -b(q+1) + (b-r)$ y por el mismo motivo, $b > b-r > 0$
+%% 	\item $a = (-b)(-q) +r \implies 0 < r < b = \abs{-b}$
+%% \end{itemize}
 
-De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
+%% De esta forma, hemos cubierto todos los casos y hemos acabado la demostración
 \end{proof}
 
 \begin{ncor}
-$\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
-\[
-\varphi(a) \begin{cases}
-	a  \quad \textup{si } a \ge 0\\
-	-a \quad \textup{si } a < 0
-	
-\end{cases}\]
+$\ent$ es un dominio de Euclides con
+  \[
+  \begin{array}{lll}
+  \varphi & = & \abs{\;\cdot\;}: \ent \to \nat \\
+  \restr{\varphi}{\nat} & = & 1_{\nat} \\
+  \restr{\varphi}{\ent \setminus \nat} & = & -1_{\ent \setminus \nat}
+\end{array}
+\]
 \end{ncor}
 
 \begin{nth}[Teorema de Euclides para polinomios]
@@ -1331,19 +1359,19 @@ $\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
 	y que son únicos.
 \end{nth}
 
-\newpage
+%\newpage
 \begin{proof}
 	
-	Sean : $f = \sum_{i=0}^n a_i x^i$ y $g = \sum_{i=0}^m b_i x^i$ con $b_m \in U(A)$
+	Sean $f = \sum_{i=0}^n a_i x^i$ y $g = \sum_{i=0}^m b_i x^i$ con $b_m \in U(A)$
 	
 	\begin{itemize}
 	
-	\item Si $n< m \implies f = g * 0 + f \implies \exists q,r\in A[x] : f = gq+r$ con $q=0$ y $r = f$
+	\item Si $n< m \implies f = g * 0 + f \implies \exists q,r\in A[x] : f = gq+r$ con $q=0$ y $r = f$.
 	
 	\item Si $n\geq m$, razonamos por inducción en $n=gr(f)$
 	\begin{itemize}
 	
-	\item Si $n=0 \implies m = 0$ por tanto $f=a_0$ y $g=b_0$ pero con $b_0 \in U(A)$
+	\item Si $n=0 \implies m = 0$ por tanto $f=a_0$ y $g=b_0$ con $b_0 \in U(A)$
 	
 	De esta forma:
 	
@@ -1351,15 +1379,17 @@ $\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
 	f = a_0 = \frac{a_0}{b_0}b_0 = \frac{a_0}{b_0}b_0 + 0 = g\frac{a_0}{b_0}
 	\]
 	
-	Podemos tomar como hemos visto $q=\frac{a_0}{b_0}$ y $r=0$ y ya tenemos el q y r que buscábamos.
+	Podemos tomar como hemos visto $q=\frac{a_0}{b_0}$ y $r=0$ y tenemos el $q$ y $r$ que buscábamos.
 	
-	\item Si $n> 0$, haremos la inducción
+	\item Si $n> 0$, haremos la inducción.
 	
-	Vamos a considerar que $\frac{a_n}{b_m} = a_n b_m^{-1} \in A$. Tomamos entonces $x^{n-m}$.
+	  Consideramos $x^{n-m}g(x)$ y establecemos
+
+          $$f_1 = f - \frac{a_n}{b_m}x^{n-m}g\ \ (1)$$
 	
-	Consideramos $x^{n-m}g(x)$ y establecemos $f_1 = f - \frac{a_n}{b_m}x^{n-m}g$. Recordaremos esto como $(1)$.
-	
-	Entonces, podemos ver que $gr(f_1) < n$. Por hipótesis de inducción $\implies \exists q,r \in A[x] : f_1 = gq_1 + r$, que consideraremos como (2).
+	  Entonces, podemos ver que $gr(f_1) < n$. Por hipótesis de inducción
+
+          $$ \exists q,r \in A[x] : f_1 = gq_1 + r \ \ (2)$$
 	
 	Ahora, utilizando (1) y (2):
 	
@@ -1368,10 +1398,10 @@ $\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
 	 \]
 	 
 	 \[
-	 g(q_1 + \frac{a_n}{b_m}x^{n-m}) + r
+	 g\left(q_1 + \frac{a_n}{b_m}x^{n-m}\right) + r
 	 \]
 	
-	Encontramos así el q y el r que queríamos, probando la existencia.
+	Encontramos así el $q$ y el $r$ que queríamos, probando la existencia.
 	
 	Vamos a probar ahora la unicidad.
 	
@@ -1400,7 +1430,7 @@ $\ent$ es un dominio de Euclides con $\varphi = \abs{\;\cdot\;}: \ent \to \nat$
 \end{proof}
 
 \begin{ncor}
-	Si $K$ es un cuerpo, entonces $K[x]$ es un D.E con función euclídea:
+	Si $K$ es un cuerpo, entonces $K[x]$ es un D.E. con función euclídea:
 	
 	\[
 	gr: K[x]-\{0\} \to \nat
