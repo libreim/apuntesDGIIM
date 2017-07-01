@@ -1695,13 +1695,13 @@ fácilmente verificable; en ese caso, daremos una solución particular y a parti
 
 \begin{nlist}
 	\item Sea $d=(a,b)\implies$ entonces la ecuación tiene solución $\iff d/c$
-	\item Supongamos que tiene solución. Supongamos también que $d= au+bv \circledast$
+	\item Supongamos que tiene solución. Supongamos también que $d= au+bv$
 \[
 \frac{a}{d}= a',\quad \frac{b}{d}=b',\quad \frac{c}{d}=c'\implies da'x + db'y = dc' \implies d(a'x+b'y)=dc'\]
 \[ \implies a'x+b'y = c'
 \]
 Esta ecuación tiene las mismas soluciones que la ecuación diofántica inicial. Llamaremos a esta la ecuación ``reducida''.\\
-$\circledast\quad d/a ,\quad d/b \implies 1=a'u +b 'v $. Podemos hallar así los coeficientes de Bezout.\\
+
 
 Como $c'= a'(c'u)+b'(c'v)$ y ahí tenemos una solución particular. Conociendo esta, podemos hallar todas las soluciones. Si llamamos $x_0 =c'u$ e $y_0 = c'v$
 
@@ -1714,7 +1714,7 @@ Si $(x_0,y_0)$ es la solución particular, entonces la solución general es el c
 \begin{proof}[Demostración de iii)]
 
 \[
-a'x + b'y = a'(x_0 +kb') + b'(y_o - ka') = a'x_0 + a'kb' + b'y_0 - a'kb' = 
+a'x + b'y = a'(x_0 +kb') + b'(y_0 - ka') = a'x_0 + a'kb' + b'y_0 - a'kb' = 
 \]
 \[
 a'x_0 +b'y_0 = c'
@@ -1742,7 +1742,7 @@ Supongamos que tenemos dos elementos $a,b$ y queremos hallar su mcd.
 	\item Si $a \ne 0 \ne b$
 	
 	Construimos una sucesión: $r_1,r_2,\cdots, r_n, \cdots , r_m, r_{m+1} = 0$.\\
-	Recordamos que A es un D.E con función euclídea $\varphi : A-\{0\} \to \nat $\\
+	Recordamos que A es un D.E. con función euclídea $\varphi : A-\{0\} \to \nat $\\
 	Si $\varphi(a) \geq \varphi(b)\implies r_1 = a$ y $r_2 = b$. En el otro caso, lo hacemos al revés, es decir  $r_1 = b $ y $r_2 = a$.\\
 	Si $r_{n-1} \ne 0 \implies r_n= $ resto de dividir $r_{n-2}$ entre $r_{n-1} \implies$
 	
@@ -1772,20 +1772,19 @@ d = r_m = au + bv
 \end{nprop}
 
 \begin{ejemplo}
-	Un agricultor lleva al mercado 80 sandías y 30 melones. La venta le ha sido rentable, pues ha vendido cada pieza por más de 3 euros, que es lo que le costó producirlos. Vuelve a casa con 600 euros. Calcular precio de sandías y melones.\\
-	(El ejercicio se resuelve resolviendo la ecuación diofántica $80x +30y = 600$ , hallando primero la solución general que viene dada por $x = -60 + 3k$ ; $y = 180 - 8k$ y luego tomando que x e y tienen que ser mayores que 3, viendo que la solución es que $k=22$).
+  Un agricultor lleva al mercado 80 sandías y 30 melones. La venta le ha sido rentable, pues ha vendido cada pieza por más de 3 euros, que es lo que le costó producirlos. Vuelve a casa con 600 euros. Calcular precio de sandías y melones.
+  
+	(El ejercicio se resuelve resolviendo la ecuación diofántica $80x +30y = 600$ , hallando primero la solución general que viene dada por $x = -60 + 3k$ ; $y = 180 - 8k$ y luego tomando que $x$ e $y$ tienen que ser mayores que 3, viendo que la solución es que $k=22$).
 \end{ejemplo}
 
 \section{Mínimo común múltiplo. Ecuaciones en congruencias}
 \begin{ndef}[Mínimo común múltiplo]
-	Sea $a, b \in A =DI \\ m \in A $ es un mínimo común múltiplo de a y b, notando por $m = mcm(a,b) = [a,b]$  \\
-Si se verifica que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de $m$. Esto implica: 
+	Sean $A$ un D.I., y $a, b \in A$. Entonces $m$ es un mínimo común múltiplo de $a$ y $b$,y lo notamos $m = mcm(a,b) = [a,b]$,
+si se verifica que $m$ es un múltiplo común de de $a$ y $b$ y que el conjunto de los múltiplos comunes a ambos es igual al conjunto de múltiplos de $m$, formalmente: 
 \begin{enumerate}
-\item $a/m \ y \ b/m$
-\item Si $a/c$ y $b/c \Rightarrow m/c$ \\
+\item $a/m \text{ y } b/m$.
+\item Si $a/c$ y $b/c \Rightarrow m/c$.
 \end{enumerate}
-
-Del mismo modo se define para $[a_1, a_2, ..., a_r],r \in \mathbb{N}$.
 
 \textbf{Propiedades. }
 \begin{nlist}
@@ -1854,16 +1853,16 @@ $\implies d_1d /d \implies \exists x \in A : d = dd_1 x \implies 1 = d_1 x \impl
 $\implies m,k$ son asociados y como k era $mcd(m,m1) \implies$ m también lo es.
 \end{proof}
 
-\subsection{ Congruencias}
-Sea A un anillo, $I \subset A$ un ideal. $a,b \in A$ son 'congruentes módulo I' si $a-b \in I\\$(Equivalentemente, si $\exists x \in I : a = b+x$). La notaremos:
+\subsection{Congruencias}
+Sean $A$ un anillo, $I \subset A$ un ideal. $a,b \in A$ son ``congruentes módulo I'' si $a-b \in I$. Equivalentemente, si $\exists x \in I : a = b+x$. La notaremos:
 \[
-a \equiv b mod(I) \quad o \quad a \equiv_ I b
+a \equiv b mod(I) \quad o \quad a \equiv_I b
 \]
 Otra notación. En un DIP $I = (m) = mA$
 \[
-a \equiv bmod(mA) \to^{notacion} a \equiv b mod(m) ( \iff m/a-b \iff a-b = qm)
+a \equiv b \mod(mA) \to^{\text{notación}} a \equiv b \mod(m)\ (\iff m/a-b \iff a-b = qm)
 \]
-Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.\\
+Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún $q$.
 
 \textbf{Propiedades}
 
@@ -1871,21 +1870,21 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 	\item $\equiv$ es una relación de equivalencia.
 	\begin{itemize}
 		\item $a \equiv a$
-		\item $a \equiv b \iff b \equiv a$ (dem:\ $a-b = (-1)(b-a) \in I$)
-		\item $a \equiv b$ y $b \equiv c \implies a \equiv c$ (dem:\ $a-b\in I, b-c \in I \implies a-c \in I$)
+		\item $a \equiv b \iff b \equiv a$ (dem.:\ $a-b = (-1)(b-a) \in I$)
+		\item $a \equiv b$ y $b \equiv c \implies a \equiv c$ (dem.:\ $a-b\in I, b-c \in I \implies a-c \in I$)
 	\end{itemize}
 	
 	\item $a\equiv b \iff \forall c : a+ c \equiv b + c$
-	\item $a\equiv b$ y $c \equiv d \implies a+c \equiv b + d$ (dem: usando $(ii)$ y $(i)$)
+	\item $a\equiv b$ y $c \equiv d \implies a+c \equiv b + d$ (dem.: usando $(ii)$ y $(i)$)
 	\item $a \equiv 0 \iff a \in I$
-	\item $a \equiv b \implies \forall c : ac  \equiv bc$
-	\item $a \equiv b$, $c \equiv d \implies ac \equiv bd$ (dem:\ $(v)$ y luego uso\ $(i)$)
-	\item $ac \equiv bc mod(mc) $ y $c \ne 0 \implies a\equiv b mod(m)$\\
+	\item $a \equiv b \implies \forall c\in A : ac  \equiv bc$
+	\item $a \equiv b$, $c \equiv d \implies ac \equiv bd$ (dem.:\ $(v)$ y luego uso\ $(i)$)
+	\item $ac \equiv bc \mod(mc) $ y $c \ne 0 \implies a\equiv b \mod(m)$\\
 
 \begin{proof}
-	$ac \equiv bc mod(mc) \iff mc/(a-b)c \iff^{c\ne 0} m/a-b \iff a\equiv b mod(m)$
+	$ac \equiv bc \mod(mc) \iff mc/(a-b)c \iff^{c\ne 0} m/a-b \iff a\equiv b \mod(m)$
 \end{proof}
-	\item Si $(c,m) = 1$, entonces: $ac\equiv bcmod(m) \iff a \equiv bmod(m)$\\
+	\item Si $(c,m) = 1$, entonces: $ac\equiv bc\mod(m) \iff a \equiv b\mod(m)$\\
 	\begin{proof}
 	$ac\equiv bc \implies m/(a-b)c \implies$, como $(c,m) = 1 \implies m/a-b$
 \end{proof}
@@ -1896,39 +1895,42 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún q.
 \subsection{Ecuaciones en Congruencias}
 \begin{nprop}[Ecuaciones en congruencias]
 
-Estudiaremos la ecuación $ax \equiv b mod(m)$ (1)
+  Estudiaremos la ecuación
+
+  $$ax \equiv b \mod(m) \  \ (1)$$
+  
 \begin{itemize}
-	\item Si $m = 0 \implies$ la ecuación es $ax = b$
-	\item Si $a = 0\implies $ la ecuación es $0x \equiv 0 mod(m) \implies$ tiene solución: todo el anillo
-	\item $a,b \ne 0$
+	\item Si $m = 0 \implies$ la ecuación es $ax = b$.
+	\item Si $a = 0\implies $ la ecuación es $0x \equiv 0 \mod(m) \implies$ tiene solución: todo el anillo.
+	\item $a,b \ne 0$.
 	\begin{enumerate}
 	
-	\item Si $d = (a,m)$ la ecuación tiene solución $\iff  d/b$\\
-	\begin{proof}
-	(1), tiene solución $\iff \exists x \in A : ax \equiv bmod(m) \iff \exists x \in A : m/ax-b \iff \exists x,y \in A : (ax-b) = my \iff \exists x,y \in A: ax -my  = b$, que es una ecuación diofántica, que sabemos ya que tiene solución $\iff d =(a,m) \ y  \ d/b$
+	\item Si $d = (a,m)$ la ecuación tiene solución $\iff  d/b$. \\
+        \begin{proof}
+	(1) tiene solución $\iff \exists x \in A : ax \equiv b\mod(m) \iff \exists x \in A : m/ax-b \iff \exists x,y \in A : (ax-b) = my \iff \exists x,y \in A: ax -my  = b$, que es una ecuación diofántica, que sabemos ya que tiene solución $\iff d =(a,m) \ y  \ d/b$.
 \end{proof}
 	\item  Supongamos que tiene solución. Consideramos $a'= \frac{a}{d}$, $b'= \frac{b}{d}$ y $m' = \frac{m}{d}$.
 	
-	Ahora, usando $(1) = da'x \equiv db'mod(dm')$, esta es equivalente a $a'x \equiv b' mod(m')$ a la que llamaremos (2). Esta es su reducida. Tiene las mismas soluciones pero $(a',m') = 1$.
+	Ahora, usando (1), $da'x \equiv db'\mod(dm')$, esta es equivalente a $a'x \equiv b' \mod(m')$ a la que llamaremos (2). Esta es su reducida. Tiene las mismas soluciones pero $(a',m') = 1$.
 	
 	Podemos hallar los coeficientes de Bezout: $u,v \in A :  1 = a'u + b'v$. Esto nos lleva a ver que:
 	\[
-	a'u \equiv 1 mod(m') \implies a'ub' \equiv b' mod(m')
+	a'u \equiv 1 \mod(m') \implies a'ub' \equiv b' \mod(m')
 	\]
 	Y así tenemos que $x_0 = ub'$ es una solución particular.
 	
-	\item La solución general es de la forma: $x = x_0 +km' \quad k \in A$. Equivalentemente, es de la forma $x \equiv x_0 mod(m')$\\
+	\item La solución general es de la forma: $x = x_0 +km' \quad k \in A$. Equivalentemente, es de la forma $x \equiv x_0 \mod(m')$\\
 	\begin{proof}
-	Si $x_0$ es una solución particular $\implies a'x_0 \equiv b'mod(m')$\\
-	Si sustituimos $x_0$ por x pues son congruentes obtenemos: $a'x \equiv b' mod(m')$.\\
+	Si $x_0$ es una solución particular $\implies a'x_0 \equiv b'\mod(m')$\\
+	Si sustituimos $x_0$ por $x$ pues son congruentes obtenemos: $a'x \equiv b' \mod(m')$.\\
 	Vamos a suponer que:
 	\[
 	\begin{rcases}
-	a'x \equiv b' mod(m')\\
-	a' x_0 \equiv b' mod(m')
-\end{rcases} \implies a'x \equiv a'x_0 mod(m')
+	a'x \equiv b' \mod(m')\\
+	a' x_0 \equiv b' \mod(m')
+\end{rcases} \implies a'x \equiv a'x_0 \mod(m')
 	\]
-Por la transitividad. Pero $a'$ y $m'$ son primos entre sí, luego $x \equiv x_0 mod(m')$
+Por la transitividad. Pero $a'$ y $m'$ son primos entre sí, luego $x \equiv x_0 \mod(m')$
 \end{proof}
 
 \item Diremos que una solución particular $x_1$ es óptima si $x_1 = 0$ ó $\varphi(x_1) < \varphi(m')$ siendo $\varphi$ la función euclídea de A.\\
@@ -1941,7 +1943,7 @@ x_0 = m'q + x_1 \begin{cases}
 	
 \end{cases}
 \]
-Y $x_1$ es una solución parcial óptima. En este caso, la solución general óptima es: $x\equiv x_1 mod(m')$
+Y $x_1$ es una solución parcial óptima. En este caso, la solución general óptima es: $x\equiv x_1 \mod(m')$
 \end{enumerate}
 \end{itemize}
 	
@@ -1953,24 +1955,24 @@ En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaci
 
 \[
 \begin{rcases}
-	a_1x \equiv b_1 mod(m1)\\
-	a_2x \equiv b_2 mod(m2)
+	a_1x \equiv b_1 \mod(m1)\\
+	a_2x \equiv b_2 \mod(m2)
 \end{rcases}(1) \begin{rcases}
-	x \equiv a mod(m)\\
-	x \equiv b mod(n)
+	x \equiv a \mod(m)\\
+	x \equiv b \mod(n)
 \end{rcases}(2)
 \]
 
 \begin{nth}[Teorema Chino]
-	El sistema tiene solución $\iff a \equiv b mod((m,n))$
+	El sistema tiene solución $\iff a \equiv b \mod((m,n))$
 \end{nth}
 \begin{proof}
 	Sea $d=(m,n)$. \\
-	Si tomamos $x = a+km; \quad \exists k: a+km \equiv b mod(n) \iff km \equiv b-a mod(n) \iff d/b-a \iff b\equiv amod(d)$
+	Si tomamos $x = a+km; \quad \exists k: a+km \equiv b \mod(n) \iff km \equiv b-a \mod(n) \iff d/b-a \iff b\equiv a\mod(d)$
 \end{proof}
 
 Ahora, supuesto que tiene solución, vamos a hallar las soluciones particular y general del problema.\\
-Si $y_0$ es una solución particular de $my \equiv b-a mod(n)$, entonces su solución general es: $$y = y_0 + k\frac{n}{(m,n)} \quad k \in A$$
+Si $y_0$ es una solución particular de $my \equiv b-a \mod(n)$, entonces su solución general es: $$y = y_0 + k\frac{n}{(m,n)} \quad k \in A$$
 Entonces $x_0 = a + my_0$ es una solución particular del sistema dado en (2) y por tanto la solución general de 2 viene dada por:
 
 \[
@@ -1980,13 +1982,13 @@ x = a +m(y_0 +  k\frac{n}{(m,n)}) \quad k \in A
  = a+my_0 + k \frac{mn}{(m,n)} = x_0 +k[m,n] \quad k \in A
 \]
 \[
-\implies x \equiv x_0 mod [m,n]
+\implies x \equiv x_0 \mod [m,n]
 \]
-Pero si $x_0 = [m,n]q + x_1$ con $x_1 = 0 $ ó $\varphi(x_1) < \varphi([m,n])$ entonces tenemos que $$x_0 \equiv x_1 mod([m,n])$$
+Pero si $x_0 = [m,n]q + x_1$ con $x_1 = 0 $ ó $\varphi(x_1) < \varphi([m,n])$ entonces tenemos que $$x_0 \equiv x_1 \mod([m,n])$$
 
 Y obtenemos que la solución general óptima de nuestro sistema es:
 \[
-x \equiv x_1 mod([m,n])
+x \equiv x_1 \mod([m,n])
 \]
 
 
@@ -1994,14 +1996,14 @@ x \equiv x_1 mod([m,n])
 	Si $f(x) \in A[x], \ a \in A$ entonces $f(a) =$ resto de dividir $f$ entre $x-a$.
 	Equivalentemente, $f = (x-a)q+r$ donde $r\in A$. Así, $f(a) = r$.
 	
-	En forma de congruencias: $f \equiv f(a)mod(x-a)$.
+	En forma de congruencias: $f \equiv f(a)\mod(x-a)$.
 \end{nth}
 \section{Anillos de Congruencias. Conjuntos Cocientes}
 
 Sea $A$ un anillo cualquiera. Sea también $I \subseteq A$ un Ideal de $A$.\\
-Sabemos que $a \equiv b mod(I) \iff a-b \in I$. Vamos a denotar:
+Sabemos que $a \equiv b \mod(I) \iff a-b \in I$. Vamos a denotar:
 \[
-[a] = \{ b: b\equiv a mod(I)\} = \bar{a} = a + I
+[a] = \{ b: b\equiv a \mod(I)\} = \bar{a} = a + I
 \]
 Que sabemos que es un subconjunto de A y al que llamaremos la clase de congruencia de $a$.\\
 Denotaremos también:
@@ -2012,7 +2014,7 @@ Denotaremos también:
 
 \textbf{Propiedades}:\\
 \begin{itemize}
-	\item $  [a]=[b] \iff a \equiv b mod (I) $
+	\item $  [a]=[b] \iff a \equiv b \mod (I) $
 	\item $[a] + [b] = [a+b]$
 	\item $[a][b] = [ab] $
 	\item Si $[a] = [a']$ y $[b] = [b'] \implies \begin{cases}
@@ -2064,7 +2066,7 @@ Además, $F$ está bien definida: es biyectiva y, por tanto, es un isomorfismo.
 	Vamos a probar que está bien definida (inyectividad y sobreyectividad) y que es un homomorfismo.
 	
 	Veamos primero que si $[a] = [b] \implies f(a) = f(b)$\\
-	Si $[a] = [b] \implies a \equiv b mod(Ker(f)) \implies a = x+b$ para algún $x\in Ker(f)$\\
+	Si $[a] = [b] \implies a \equiv b \mod(Ker(f)) \implies a = x+b$ para algún $x\in Ker(f)$\\
 	$\implies f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b)$\\
 	
 	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
@@ -2074,7 +2076,7 @@ Además, $F$ está bien definida: es biyectiva y, por tanto, es un isomorfismo.
 		\item $F(1) = f(1) = 1$
 \end{itemize}
 Probamos la inyectividad:\\
-Suponemos $F[a] = F[b] \implies f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f) \implies a \equiv bmod(Ker(f)) \implies [a] = [b]$.
+Suponemos $F[a] = F[b] \implies f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f) \implies a \equiv b\mod(Ker(f)) \implies [a] = [b]$.
 %Tomo $[a] \in Ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in Ker(f) \implies [a] = [0] = 0$
 
 Probamos la sobreyectividad:\\
@@ -2089,7 +2091,7 @@ Sea $b \in Im(f) \implies \exists a \in A : f(a) = b \implies F[a] = f(a) = b$. 
 	\varphi(r) < \varphi(b)
 \end{cases}$). Si seleccionamos un $b \in A, b \ne 0$ tal que $\varphi(1) < \varphi(b)$ entonces:\\
 $\forall a \in A, R_b(a)=$ resto de dividir a entre b; $R_b(a) = r \iff \begin{cases}
-	a \equiv r mod(b)\\
+	a \equiv r \mod(b)\\
 	r = 0 \quad o \quad \varphi(r) < \varphi(b)
 \end{cases}$
 Ahora, llamaremos: $$ A_b = \{ R_b(a): a \in A\} \subseteq A$$ que cumple:
@@ -2176,7 +2178,7 @@ De esta forma, podemos llevarnos los problemas a otros anillos para facilitar su
 \end{nprop}
 \begin{proof}
 	Vamos a probar i) y iii). Luego ii) y iv) son consecuencia del isomorfismo entre $A/(m)$ y $A_m$.\\
-	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1mod(m) \iff mcd(a,m) = 1$.
+	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1\mod(m) \iff mcd(a,m) = 1$.
 	
 	Sea $a \in A/(m) : a \notin U(A/(m)) \implies mcd(a,m) = d \ne 1$. Ahora, sea $a = da'$ y $m=dm'$
 	Pero m no divide a $m'$ pues en otro caso: $m'=mx \implies m' = dm'x \implies 1 = dx \implies d \in U(A)$, contradicción.
@@ -2223,7 +2225,7 @@ Utilizaremos el siguiente isomorfismo para simplificar esta prueba: $\ent_n \con
 \begin{enumerate}
 	\item $\exists x \in Z_n :  ax = b \iff \exists[x] \in \ent/(n) : [a][x] = [b] \iff \exists x \in \ent /(n) : ax \equiv_n b \iff d/b$. Quedando probado 1.
 	\item  Para demostrar 2., suponemos que d/b.\\
-	 Sean $a' = \frac{a}{b}, b' = \frac{b}{d}, n' = \frac{n}{d}$. Recuperamos la propiedad anterior, $a'x \equiv b'mod(n')$. De este expresión obtenemos la solución óptima: $x_0 : a'x_0 \equiv b'mod(n'), 0 \le x_0 \textless n'$. Siendo la solución general, $x \equiv x_0 mod(n')$.\\
+	 Sean $a' = \frac{a}{b}, b' = \frac{b}{d}, n' = \frac{n}{d}$. Recuperamos la propiedad anterior, $a'x \equiv b'\mod(n')$. De este expresión obtenemos la solución óptima: $x_0 : a'x_0 \equiv b'\mod(n'), 0 \le x_0 \textless n'$. Siendo la solución general, $x \equiv x_0 \mod(n')$.\\
 Ahora, si $x = x_0 + kn' \quad k \in \ent$, los $x$ que satisfacen nuestro problema original son los restos de estos elementos:\quad $\{x_0,\ x_0 + n',\ x_0 +2n',...,\ x_0 + (d-1)n'\}$, si $k \in \ent, 0 \le k \textless d \implies x_0 + kn' \textless \frac{n}{d} + (d-1)\frac{n}{d} = \frac{dn}{d} = n$. Por tanto, estas son las únicas soluciones.
 
 Podemos expresar las soluciones como $\{ [x] \in \ent /(n) : x = x_0 + kn', k \in \ent\}$. Si $k \in \ent \ y \ k = qd + r \ con \ 0 \le r \textless d, \ x_0 + kn' = x_0 + (qd + r)n' = x_0 + rn' + qdn'= x_0 + rn' +qn \implies [x_0 + kn'] = [x_0 + rn']$. Las soluciones de la ecuación original serán $\{[x_0],\ [x_0 + n'],\ [x_0 +2n'],...,\ [x_0 + (d-1)n']\} \subseteq \ent /(n) \cong \ent _n, \forall r, 0 \le r \le d - 1.$
@@ -2287,9 +2289,9 @@ Probaremos que es sobreyectivo:\\\\
 $([b]_m,[c]_n)$ ¿$\forall b,c \in \mathbb{Z}\quad \exists a \in \mathbb{Z} : [a]_m = [b]_m \text{ y } [a]_n = [c]_n$?
 
 ¿$\forall b,c \in \mathbb{Z}\quad \exists a \in \mathbb{Z} : \begin{cases}
-  a \equiv b mod(m)\\
-  a \equiv c mod(n)
-\end{cases}$?$ \iff b \equiv c mod(m,n) \implies b \equiv_1 c$
+  a \equiv b \mod(m)\\
+  a \equiv c \mod(n)
+\end{cases}$?$ \iff b \equiv c \mod(m,n) \implies b \equiv_1 c$
 
 Sí es sobreyectiva.
 
@@ -2320,12 +2322,12 @@ Por tanto, $ a^{\varphi(m)-1} = a^{-1} $ en $ \mathbb Z_{m} $
 
 
 \begin{nth}[Teorema de Euler]
-	$ \forall a \in \mathbb Z $ si $(a,m) = 1 \implies a^{\varphi(m)} \equiv 1 $ mod(m)
+	$ \forall a \in \mathbb Z $ si $(a,m) = 1 \implies a^{\varphi(m)} \equiv 1 \mod(m)$.
 \end{nth}
 
 
 \begin{nth}[Teorema pequeño de Fermat]
-	Si p es irreducible, $ \forall a \in \mathbb Z, $ $ a^{p} \equiv a \cdot mod(p) $ 
+	Si p es irreducible, $ \forall a \in \mathbb Z, $ $ a^{p} \equiv a \cdot \mod(p) $ 
 \end{nth}
 
 
@@ -3352,7 +3354,7 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 \end{nota}
 
 \begin{nota}
-	Si $\mu(M) = \mu(x) \ne 0$, la aplicación $\varphi :A/\mu(x) \to M$ tal que $[a]\mapsto ax$ está bien definida ( si $a \equiv b mod(\mu(x)) \implies a = b+q\mu(x) \implies ax = bx +q\mu(x)x = bx$), es lineal, sobreyectiva e inyectiva (si $\varphi([a]) = 0 \implies ax = 0 \implies  \mu(x)/a \implies [a] = 0$) , por lo que
+	Si $\mu(M) = \mu(x) \ne 0$, la aplicación $\varphi :A/\mu(x) \to M$ tal que $[a]\mapsto ax$ está bien definida ( si $a \equiv b \mod(\mu(x)) \implies a = b+q\mu(x) \implies ax = bx +q\mu(x)x = bx$), es lineal, sobreyectiva e inyectiva (si $\varphi([a]) = 0 \implies ax = 0 \implies  \mu(x)/a \implies [a] = 0$) , por lo que
 	\[
 	M  \cong A/(\mu(M))
 	\]
