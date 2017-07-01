@@ -1542,9 +1542,7 @@ Sea $A$ un anillo conmutativo. Dados $a,b \in A$ decimos que un elemento $d\in A
 
 \begin{ndef}[Ideal]
   En un anillo conmutativo se llama ideal a un subconjunto suyo no vacío que es cerrado para la suma y que ``absorbe'' el producto en todo
-  el anillo. Formalmente:
-  
-	Si $A$ es un anillo conmutativo, un subconjunto $\emptyset \not= I\subseteq A$ es un ideal si
+  el anillo. Formalmente, si $A$ es un anillo conmutativo, un subconjunto $\emptyset \not= I\subseteq A$ es un ideal si
 	\begin{nlist}
 		\item $a,b\in I \implies a+b\in I$
 		\item $a\in I, x\in A \implies ax \in I$
@@ -1682,14 +1680,18 @@ Hemos encontrado así un divisor común que es dividido por cualquier divisor co
 
 \subsection{Ecuaciones diofánticas en D.I.P.}
 
-En cualquier anillo, llamamos ecuaciones diofánticas a aquellas que son de la forma:
+En cualquier anillo $A$, llamamos ecuaciones diofánticas a aquellas que son de la forma:
 \[
-ax +by  = c
+ax +by  = c \quad a,b,c \in A
 \]
 
 \begin{nprop}[Lema de Euclides]
   Sean $a,b,c \in A$, con $A$ un D.I.P., tales que $c/ab$ y $(c,a)=1$. Entonces $c/b$.
 \end{nprop}
+
+A continuación vamos a estudiar las soluciones de las ecuaciones diofánticas en un D.I.P., en tres pasos.
+Comenzaremos por dar una condición suficiente y necesaria para que una ecuación tenga solución,
+fácilmente verificable; en ese caso, daremos una solución particular y a partir de ella, la general.
 
 \begin{nlist}
 	\item Sea $d=(a,b)\implies$ entonces la ecuación tiene solución $\iff d/c$
