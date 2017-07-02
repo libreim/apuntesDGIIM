@@ -167,6 +167,8 @@
   \right|_{#2} % this is the delimiter
   }}
 
+% Imagen de una aplicación.
+\DeclareMathOperator*{\img}{img}
 
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
@@ -553,17 +555,17 @@ $\varphi(\prod_{i = 1}^n a_i) = \prod_{i = 1}^n\varphi(a_i)$
 \end{itemize}
 
 
-Estas propiedades nos dicen que $Im(\varphi) = \{ \varphi(x): x \in A\} \leq B$ es un subanillo.
+Estas propiedades nos dicen que $\img(\varphi) = \{ \varphi(x): x \in A\} \leq B$ es un subanillo.
 
 \begin{nprop}
 	Si $\varphi$ es monomorfismo, entonces la aplicación restringida:
 \[
-A \to Im(\varphi)\]
+A \to \img(\varphi)\]
 \[
 a \mapsto \varphi(a)
 \]
 
-es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong Im(\varphi)$.\\
+es un epimorfismo y por ello es un isomorfismo, podemos decir que $A \cong \img(\varphi)$.\\
 \end{nprop}
 
 
@@ -1066,7 +1068,7 @@ Para finalizar, se puede probar que es un cuerpo probando las propiedades de ani
   \]
 
   Que cumple que $i(a+b) = i(a)+i(b)$ y que $i(ab)=i(a)i(b)$, y además es un monomorfismo.
-  Así, $A \stackrel{i}{\cong} Img(i)$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\dfrac{a}{1}$.
+  Así, $A \stackrel{i}{\cong} \img(i)$ es un isomorfismo y $A\le\mathbb{Q}(A) \text{ con } a=\dfrac{a}{1}$.
   Con esta identificación $\dfrac{a}{b} = \dfrac{a}{1}\dfrac{1}{b} = ab^{-1}$.
 \end{nprop}
 
@@ -1856,7 +1858,7 @@ $\implies m,k$ son asociados y como k era $mcd(m,m1) \implies$ m también lo es.
 \subsection{Congruencias}
 Sean $A$ un anillo, $I \subset A$ un ideal. $a,b \in A$ son ``congruentes módulo I'' si $a-b \in I$. Equivalentemente, si $\exists x \in I : a = b+x$. La notaremos:
 \[
-a \equiv b mod(I) \quad o \quad a \equiv_I b
+a \equiv b \mod(I) \quad \text{ o } \quad a \equiv_I b
 \]
 Otra notación. En un DIP $I = (m) = mA$
 \[
@@ -1892,7 +1894,7 @@ Para algún $q$ en el último paso, y en ese caso $\iff a = b+qm$ para algún $q
 	
 \end{nlist}
 
-\subsection{Ecuaciones en Congruencias}
+\subsection{Ecuaciones en congruencias}
 \begin{nprop}[Ecuaciones en congruencias]
 
   Estudiaremos la ecuación
@@ -1949,7 +1951,7 @@ Y $x_1$ es una solución parcial óptima. En este caso, la solución general óp
 	
 \end{nprop}
 
-\subsection{Sistemas de Ecuaciones en Congruencias}
+\subsection{Sistemas de ecuaciones en congruencias}
 
 En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaciones en congruencias, que sabemos que se puede expresar de la forma:
 
@@ -1963,12 +1965,11 @@ En este caso, vamos a abordar un problema en el que tenemos un sistema de ecuaci
 \end{rcases}(2)
 \]
 
-\begin{nth}[Teorema Chino]
-	El sistema tiene solución $\iff a \equiv b \mod((m,n))$
+\begin{nth}[Teorema chino del resto]
+	El sistema tiene solución $\iff a \equiv b \mod((m,n))$.
 \end{nth}
 \begin{proof}
-	Sea $d=(m,n)$. \\
-	Si tomamos $x = a+km; \quad \exists k: a+km \equiv b \mod(n) \iff km \equiv b-a \mod(n) \iff d/b-a \iff b\equiv a\mod(d)$
+	Sea $d=(m,n)$. Si tomamos $x = a+km; \quad \exists k: a+km \equiv b \mod(n) \iff km \equiv b-a \mod(n) \iff d/b-a \iff b\equiv a\mod(d)$.
 \end{proof}
 
 Ahora, supuesto que tiene solución, vamos a hallar las soluciones particular y general del problema.\\
@@ -1993,94 +1994,123 @@ x \equiv x_1 \mod([m,n])
 
 
 \begin{nth}[Teorema de Ruffini]
-	Si $f(x) \in A[x], \ a \in A$ entonces $f(a) =$ resto de dividir $f$ entre $x-a$.
+	Si $f(x) \in A[x], \ a \in A$ entonces $f(a)$ es el resto de dividir $f$ entre $x-a$.
 	Equivalentemente, $f = (x-a)q+r$ donde $r\in A$. Así, $f(a) = r$.
 	
 	En forma de congruencias: $f \equiv f(a)\mod(x-a)$.
 \end{nth}
-\section{Anillos de Congruencias. Conjuntos Cocientes}
-
-Sea $A$ un anillo cualquiera. Sea también $I \subseteq A$ un Ideal de $A$.\\
-Sabemos que $a \equiv b \mod(I) \iff a-b \in I$. Vamos a denotar:
-\[
-[a] = \{ b: b\equiv a \mod(I)\} = \bar{a} = a + I
-\]
-Que sabemos que es un subconjunto de A y al que llamaremos la clase de congruencia de $a$.\\
-Denotaremos también:
-\[
- A/I = \{[a]: a \in A\}
-\]
+\section{Anillos de congruencias. Anillo cociente.}
 
 
-\textbf{Propiedades}:\\
-\begin{itemize}
-	\item $  [a]=[b] \iff a \equiv b \mod (I) $
-	\item $[a] + [b] = [a+b]$
-	\item $[a][b] = [ab] $
-	\item Si $[a] = [a']$ y $[b] = [b'] \implies \begin{cases}
+\begin{ndef}[Clase de congruencia respecto de un ideal]
+  Sean $A$ un anillo conmutativo, $I \subseteq A$ y $a \in A$. Si definimos la relación de equivalencia
+
+  \[
+    a \circeq b \iff a - b \in I
+  \]
+
+  es decir, ``ser congruente módulo $I$'', entonces la clase de congruencia de $a$ respecto de $I$ es la clase de equivalencia de $a$ respecto de $\circeq$. La notamos
+
+  \[
+    [a] = \bar{a} = a+I
+  \]
+\end{ndef}
+
+
+
+\begin{ndef}[Anillo cociente]
+  Sean $A$ un anillo conmutativo e $I$ un ideal suyo. Entonces se define el anillo cociente de $A$ por $I$, $(A/I, \oplus, \odot)$:
+
+  \[
+  \begin{array}{l}
+    A/I = { [a] = a+I : a \in A} \\
+    %% Estas llaves son necesarias, sin ellas se invoca un error oscuro de LaTeX: https://www.sharelatex.com/learn/Errors/Missing_number,_treated_as_zero
+    {[a]} \oplus [b] = [a+b] \\
+    {[a]} \odot [b] = [ab]
+  \end{array}
+  \]
+\end{ndef}
+
+Se puede comprobar que estas operaciones están bien definidas y que con ellas $A/I$ es un anillo conmutativo. Probaremos que están bien definidas:
+
+Si $[a] = [a']$ y $[b] = [b'] \implies \begin{cases}
 	[a+b] = [a' +b']\\
 	[ab] = [a'b']
-\end{cases}$\\
+\end{cases}$
 
 \begin{proof}
-	$a\equiv_I a'$ y $b \equiv_I b' \implies \begin{cases}
+  \[
+  a\equiv_I a' \text{ y } b \equiv_I b' \implies \begin{cases}
 	a+b \equiv_I a'+b'\\
 	ab \equiv_I a'b'
-\end{cases}\implies \begin{cases}
+        \end{cases}\implies \begin{cases}
 	[a+b] = [a'+b']\\
 	[ab] = [a'b']
-\end{cases}$
+  \end{cases}
+  \]
 \end{proof}
-	\item $[0] = I$
-\end{itemize}
+
 
 \begin{nprop}
-	Si $f_i:A \to B$ es un homomorfismo de anillo, $Img(g) = \{f(a): a \in A\} \leq B$ es un subanillo. Entonces, $Ker(f) = \{a \in A: f(a) = 0\}$ es un ideal.
-	\begin{proof}
-	Vamos a probar que este ideal es cerrado para sumas y para múltiplos. Para ello, en ambos casos usaremos que $f$ es un homomorfismo.
-	\[
-	Si f(a) = 0 \ y \ f(b) = 0,\]\[
-	f(a+b) = f(a)+f(b) = 0 + 0 = 0\]\[
-	f(ab) = f(a)f(b) = 0*0 = 0
-	\]
+  Si $f:A \to B$ es un homomorfismo de anillos, $\ker(f) = \{a \in A: f(a) = 0\}$ es un ideal de $A$. \\
+  
+  \begin{proof}
+   Vamos a probar que $\ker(f)$ es cerrado para sumas y para múltiplos. Para ello, en ambos casos usaremos que $f$ es un homomorfismo.
+    
+  \[
+     \text{Si } a,b \in \ker(f) \implies
+     \begin{cases}
+       f(a+b) = f(a)+f(b) = 0 + 0 = 0 \\
+       f(ab) = f(a)f(b) = 0*0 = 0
+     \end{cases}
+  \]
 \end{proof}
-Además, $f$ es un monomorfismo $\iff Ker(f) = 0$
-\begin{proof}
+  
+Además, $f$ es un monomorfismo $\iff \ker(f) = 0$
+\begin{proof}\hfill\\
 	\boxed{\Rightarrow} Trivial\\
-	\boxed{\Leftarrow} Si $f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f)$ pero hemos dicho que $Ker(f) = 0 \implies a-b = 0 \implies a = b$
+	\boxed{\Leftarrow} Si $f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in \ker(f)$ pero hemos dicho que $\ker(f) = 0 \implies a-b = 0 \implies a = b$.
 \end{proof}
 \end{nprop}
 
-\begin{nth}[Teorema de Isomorfía]
+\begin{nth}[Teorema de isomorfía]
 	Si $f:A \to B$ es un homomorfismo, se induce un isomorfismo de anillos:
 	\[
-	A/Ker(f) \cong Im(f)
+	A/\ker(f) \cong \img(f)
 	\]
 	\[
 	F:[a] \longmapsto f(a)
 	\]
-	
-Además, $F$ está bien definida: es biyectiva y, por tanto, es un isomorfismo.
+
 
 \begin{proof}
-	Vamos a probar que está bien definida (inyectividad y sobreyectividad) y que es un homomorfismo.
-	
-	Veamos primero que si $[a] = [b] \implies f(a) = f(b)$\\
-	Si $[a] = [b] \implies a \equiv b \mod(Ker(f)) \implies a = x+b$ para algún $x\in Ker(f)$\\
-	$\implies f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b)$\\
+  Para probar el resultado tenemos que probar tres cosas:
+  
+  \begin{nlist}
+  \item $F$ está bien definida.
+  \item $F$ es biyectiva.
+  \item $F$ es un homomorfismo de anillos.
+  \end{nlist}
+  
+  Vamos a probar que está bien definida. Es decir, que sin importar el representante de la clase de congruencia que tomemos,
+  el valor de la aplicación para esa clase es el mismo. Esto es, $[a] = [b] \implies F([a]) = F([b])$.
+  
+	Si $[a] = [b] \implies a \equiv b \mod(\ker(f)) \implies a = x+b$ para algún $x\in \ker(f)$. Luego $F([a]) = f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b) = F([b])$.
 	
 	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
 	\begin{itemize}
-		\item $F([a]+[b]) = F([a+b]) = f(a+b)$ Pero como f es un homomorfismo por hipótesis $\implies f(a)+f(b) = F[a] + F[b]$
-		\item $F([a][b]) = F([ab]) = f(ab)$ pero f vuelve a ser un homomorfismo, luego $f(a)f(b) = F[a]F[b]$
+		\item $F([a]+[b]) = F([a+b]) = f(a+b) = f(a)+f(b) = F([a]) + F([b])$
+		\item $F([a][b]) = F([ab]) = f(ab) = f(a)f(b) = F([a])F([b])$
 		\item $F(1) = f(1) = 1$
-\end{itemize}
-Probamos la inyectividad:\\
-Suponemos $F[a] = F[b] \implies f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in Ker(f) \implies a \equiv b\mod(Ker(f)) \implies [a] = [b]$.
-%Tomo $[a] \in Ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in Ker(f) \implies [a] = [0] = 0$
+        \end{itemize}
 
-Probamos la sobreyectividad:\\
-Sea $b \in Im(f) \implies \exists a \in A : f(a) = b \implies F[a] = f(a) = b$. Como $f$ es sobreyectiva, $\forall b \in Im(f), \ \exists [a]$ que se aplica en $b$.
+Probamos la inyectividad:
+        
+$F([a]) = F([b]) \implies f(a) = f(b) \implies f(a-b) = 0 \implies a-b \in \ker(f) \implies a \equiv b\mod(\ker(f)) \implies [a] = [b]$.
+%Tomo $[a] \in \ker(F) \implies F[a] = 0 \implies f(a) = a \implies a \in \ker(f) \implies [a] = [0] = 0$
+
+La sobreyectividad es trivial por la sobreyectividad de $f$ en su imagen.
+
 \end{proof}
 
 \end{nth}
@@ -2154,7 +2184,7 @@ Pero también:\\
 	Por último: $R_m(1) = 1$ por $\varphi(1) < \varphi(m)$
 \end{proof}
 \end{nprop}
-Además, $Im(R_m) = A_m$ y $Ker(R_m) = (m) = mA = \{mx : x\in A\}$.
+Además, $\img(R_m) = A_m$ y $\ker(R_m) = (m) = mA = \{mx : x\in A\}$.
 
 También hay un isomorfismo:
 
@@ -2295,7 +2325,7 @@ $([b]_m,[c]_n)$ ¿$\forall b,c \in \mathbb{Z}\quad \exists a \in \mathbb{Z} : [a
 
 Sí es sobreyectiva.
 
-$ker(f) = (mn)$, pues $m$ y $n$ son primos entre sí. Ahora, como $f$ es sobreyectiva, por el teorema de isomorfía tenemos el resultado.
+$\ker(f) = (mn)$, pues $m$ y $n$ son primos entre sí. Ahora, como $f$ es sobreyectiva, por el teorema de isomorfía tenemos el resultado.
 \end{proof}
 
 \begin{ncor}
@@ -3350,7 +3380,7 @@ Dado un cierto $x\in M$, podemos ver el conjunto $\{a : ax = 0\} \subseteq A$. E
 En particular, si estamos en un módulo cíclico (generado por un único elemento), entonces $\mu(M) = \mu(x)$ salvo asociados.
 
 \begin{nota}
-	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, es lineal, sobreyectiva y es inyectiva, pues $ker(\varphi) = \{0\}$ (el anulador minimal es el cero), por tanto, es un isomorfismo, $M \cong A$.
+	En estos casos, si $\mu(x) = 0$, la aplicación $\varphi: A \to M$ que lleva a cada elemento de A en M de forma $a \mapsto ax$, es lineal, sobreyectiva y es inyectiva, pues $\ker(\varphi) = \{0\}$ (el anulador minimal es el cero), por tanto, es un isomorfismo, $M \cong A$.
 \end{nota}
 
 \begin{nota}
@@ -3407,12 +3437,12 @@ En particular, si estamos en un módulo cíclico (generado por un único element
 
 \begin{nprop}
 	\[
-	\sum_{i=1}^n a_i x_i  = 0 \iff (a_1,...,a_n) \in Ker(\varphi)
+	\sum_{i=1}^n a_i x_i  = 0 \iff (a_1,...,a_n) \in \ker(\varphi)
 	\]
-	En particular, que se verifiquen las relaciones de dependencia que aparecen en la presentación, significa que $F_1,...,F_m \in Ker(\varphi)$.
-	Y decir que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación significa que si $F=(a_1,...a_n) \in Ker(\varphi) \implies F$ es combinación lineal de $F_1,...,F_m$, por tanto, estamos diciendo que
+	En particular, que se verifiquen las relaciones de dependencia que aparecen en la presentación, significa que $F_1,...,F_m \in \ker(\varphi)$.
+	Y decir que cualquier relación de dependencia entre $x_1,...,x_n$ es combinación lineal de las que aparecen en la presentación significa que si $F=(a_1,...a_n) \in \ker(\varphi) \implies F$ es combinación lineal de $F_1,...,F_m$, por tanto, estamos diciendo que
 	\[
-	Ker(\varphi) = (F_1,...,F_m)
+	\ker(\varphi) = (F_1,...,F_m)
 	\]
 \end{nprop}
 
@@ -3437,14 +3467,14 @@ Realizando estas operaciones, siempre podemos llegar a obtener la forma normal d
 \end{nprop}
 Es más, si ahora consideráramos un nuevo epimorfismo $\varphi: A^n \to M$ tal que $\varphi (a_1,...a_n) = \sum a_i y_i$ y 
 \[
-Ker(\varphi)= \ \langle\  d_1e_1 \ \ , .... , \ \ d_r e_r \ \rangle
+\ker(\varphi)= \ \langle\  d_1e_1 \ \ , .... , \ \ d_r e_r \ \rangle
 \]
 con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y lo demás son ceros).
 
 \begin{nprop}
 	Se puede comprobar que:
 	\[
-	ay_i = 0 \implies \varphi (ae_i) = 0 \implies ae_i \in Ker(\varphi) \implies ae_i = b_1d_1e_1+...+b_rd_re_r
+	ay_i = 0 \implies \varphi (ae_i) = 0 \implies ae_i \in \ker(\varphi) \implies ae_i = b_1d_1e_1+...+b_rd_re_r
 	\]
 	\[
 	\implies b_1d_1e_1+...+b_rd_re_r - ae_i = 0
@@ -3459,7 +3489,7 @@ con $e_i$ el vector de la base canónica (tiene un 1 en la posición i-ésima y 
 	$M \oplus_i Ay_i$, todo elemento de M se expresa de forma única como combinación lineal de elementos de $A$
 \end{nprop}
 \begin{proof}
-	Supongamos que $\sum a_i y_i = 0 \implies \varphi(\sum a_i e_i ) = 0 \implies \sum a_ie_i \in Ker (\varphi) $\\
+	Supongamos que $\sum a_i y_i = 0 \implies \varphi(\sum a_i e_i ) = 0 \implies \sum a_ie_i \in \ker (\varphi) $\\
 	$\implies a_1e_1+...+ a_re_r+...+a_ne_n = b_1d_1e_1+...+b_rd_re_r \implies a_i = 0 \ \ \forall i > r$\\
 	$\implies a_iy_i = 0$
 	
