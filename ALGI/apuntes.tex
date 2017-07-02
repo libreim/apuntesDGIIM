@@ -170,6 +170,9 @@
 % Imagen de una aplicación.
 \DeclareMathOperator*{\img}{img}
 
+% Divisores de un elemento de un anillo
+\DeclareMathOperator*{\rdiv}{div}
+
 %---------------------------------------------------------------------------
 %   CABECERA Y PIE DE PÁGINA
 %---------------------------------------------------------------------------
@@ -2074,13 +2077,14 @@ Además, $f$ es un monomorfismo $\iff \ker(f) = 0$
 \end{nprop}
 
 \begin{nth}[Teorema de isomorfía]
-	Si $f:A \to B$ es un homomorfismo, se induce un isomorfismo de anillos:
-	\[
-	A/\ker(f) \cong \img(f)
-	\]
-	\[
-	F:[a] \longmapsto f(a)
-	\]
+  Si $f:A \to B$ es un homomorfismo, se induce un isomorfismo de anillos:
+  
+  \[
+  \begin{array}{lrll}
+    F: &  A/\ker(f) & \cong & \img(f) \\
+       & [a] & \mapsto & f(a)
+  \end{array}
+  \]
 
 
 \begin{proof}
@@ -2095,14 +2099,14 @@ Además, $f$ es un monomorfismo $\iff \ker(f) = 0$
   Vamos a probar que está bien definida. Es decir, que sin importar el representante de la clase de congruencia que tomemos,
   el valor de la aplicación para esa clase es el mismo. Esto es, $[a] = [b] \implies F([a]) = F([b])$.
   
-	Si $[a] = [b] \implies a \equiv b \mod(\ker(f)) \implies a = x+b$ para algún $x\in \ker(f)$. Luego $F([a]) = f(a) = f(b+x) = f(b) +f(x) = f(b) + 0 = f(b) = F([b])$.
-	
-	Vamos a ver ahora que es un homomorfismo $F:[a] \mapsto f(a)$
-	\begin{itemize}
+  Si $[a] = [b] \implies a-b \in \ker(f) \implies f(a-b) = 0 \implies F([a]) = f(a) = f(b) = F([b])$.
+
+  Vamos a ver ahora que es un homomorfismo
+  \begin{itemize}
 		\item $F([a]+[b]) = F([a+b]) = f(a+b) = f(a)+f(b) = F([a]) + F([b])$
 		\item $F([a][b]) = F([ab]) = f(ab) = f(a)f(b) = F([a])F([b])$
-		\item $F(1) = f(1) = 1$
-        \end{itemize}
+		\item $F([1]) = f(1) = 1$
+  \end{itemize}
 
 Probamos la inyectividad:
         
@@ -2116,23 +2120,29 @@ La sobreyectividad es trivial por la sobreyectividad de $f$ en su imagen.
 \end{nth}
 
 \begin{nprop}
-	Sea $A$ un Dominio Euclídeo con función euclídea $\varphi :A-\{0\} \to \nat$ tal que en $A$ hay unicidad de cocientes y restos (Esto es: $\forall a,b \in A: b\ne 0 \implies \exists ! q,r\in A : a=bq+r \begin{cases}
-	r = 0 \\
+  Sea $A$ un dominio euclídeo con función euclídea $\varphi :A-\{0\} \to \nat$ tal que en $A$ hay unicidad de cocientes y restos. Esto es:
+
+  $$\forall a,b \in A: b\ne 0 \implies \exists ! q,r\in A : a=bq+r \text{ y } \begin{cases}
+	r = 0 \text{ o} \\
 	\varphi(r) < \varphi(b)
-\end{cases}$). Si seleccionamos un $b \in A, b \ne 0$ tal que $\varphi(1) < \varphi(b)$ entonces:\\
-$\forall a \in A, R_b(a)=$ resto de dividir a entre b; $R_b(a) = r \iff \begin{cases}
-	a \equiv r \mod(b)\\
+  \end{cases}$$
+
+  Si seleccionamos un $b \in A, b \ne 0$ tal que $\varphi(1) < \varphi(b)$ entonces:\\
+
+  $$\forall a \in A, R_b(a) = r \iff \begin{cases}
+	a \equiv r \mod(b) \text{ y} \\
 	r = 0 \quad o \quad \varphi(r) < \varphi(b)
-\end{cases}$
+  \end{cases}$$
+  
 Ahora, llamaremos: $$ A_b = \{ R_b(a): a \in A\} \subseteq A$$ que cumple:
 
 \begin{enumerate}
 	\item Si $r\in A_b \implies R_b(r) = r$
-	\item $R_b(a+a') = R_b(R_b(a) + R_b(a'))$\\
+	\item $R_b(a+a') = R_b(R_b(a) + R_b(a')) \ \ \forall a,a' \in A$ \\
 	\begin{proof}
-	$R_b(a+a') \equiv a+a' \equiv_b R_b(a) +R_b(a') \equiv_b R_b(R_b(a) + R_b(a'))$
+	$R_b(a+a') \equiv_b a+a' \equiv_b R_b(a) +R_b(a') \equiv_b R_b(R_b(a) + R_b(a'))$.
 \end{proof}
-	\item $R_b(aa') = R_b(R_b(a)R_b(a'))$
+	\item $R_b(aa') = R_b(R_b(a)R_b(a')) \ \ \forall a,a' \in A$
 \end{enumerate}
 
 Además, se define la suma y el producto de $r,r' \in A_b$ de la forma:
@@ -2144,32 +2154,25 @@ Además, se define la suma y el producto de $r,r' \in A_b$ de la forma:
 Con estas operaciones, $A_b$ es un anillo.
 \end{nprop}
 
+\begin{nprop}[Isomorfismo entre unidades]
+  Sean $A$ y $B$ anillos conmutativos, y $f: A \to B$ un isomorfismo. Entonces $\restr{f}{U(A)} : U(A) \to U(B)$
+  es un isomorfismo.
+\end{nprop}
 
-Se comprueba que si $f: A \to B$ es un isomorfismo, entonces:
+\begin{proof}
+  $a \in U(A) \implies \exists a^{-1} : aa^{-1} = 1 \implies f(a)f(a^{-1}) = 1 \implies f(a) \in U(B) \text{ y } f(a)^{-1} = f(a^{-1})$.
+  El resto de propiedades de isomorfismo se deducen de que $f$ es un isomorfismo.
+\end{proof}
 
-Si $a \in U(A)$,$\exists a^{-1}: aa^{-1} = 1\implies f(a)f(a^{-1}) = f(1) = 1 \implies f(a) \in U(B)$
+\begin{nprop}[Isomorfismo entre divisores de cero]
+  Sean $A$ y $B$ anillos conmutativos, y $f: A \to B$ un isomorfismo. Entonces $\restr{f}{\rdiv_0(A)} : \rdiv_0(A) \to \rdiv_0(B)$
+  es un isomorfismo.
+\end{nprop}
 
-Así, surge la aplicación: $f: U(A) \to U(B)$ isomorfismo en la que si $b\in U(B) \implies \exists b^{-1} \in B : bb^{-1} = 1$
+\begin{proof}
+  Análoga a la anterior: $a \in \rdiv_0(A) \implies \exists a' \in A, a' \ne 0 : aa' = 0 \implies f(a)f(a') = 0 \text{ y } f(a') \ne 0$.
+\end{proof}
 
-
-Pero también:\\
- $\begin{rcases}
-	\exists a \in A: f(a) = b\\
-	\exists a' \in A: f(a') = b'
-\end{rcases} f(aa') = f(a)f(a') =bb' = 1 \implies aa' = 1 \implies a \in U(A)$
-
-\begin{ndef}[Divisores de Cero]
-	Si a es divisor de cero de $A$, $\exists a'\ne 0 : aa' = 0 \implies f(a)f(a') = 0$ con $f(a') \ne 0 \implies f(a)$ es divisor de cero en $B$
-	
-	Análogamente, surge el isomorfismo entre los divisores de cero de dos Anillos A y B:
-	$$f: DivCero(A) \to DivCero(B)$$ Si b es divisor de B y $b=f(a)$ para cierto $a \in A\implies  a \in $ D. Cero de A.
-	
-	$\implies \exists b' \ne 0 : bb' = 0$
-	
-	Luego:
-	
-	Si $b' = f(a')\implies f(a)f(a') = 0 \implies f(aa') = 0 \implies aa' = 0$ y con $a'\ne 0 \implies a$ es divisor de cero de A.
-\end{ndef}
 
 \begin{nprop}
 		Sea A un D.E. con función euclídea $\varphi$ donde hay unicidad en cocientes y restos y si $m\in A: m\ne 0$ y $ \varphi(1) < \varphi(m)$.
