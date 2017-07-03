@@ -2175,31 +2175,44 @@ Con estas operaciones, $A_b$ es un anillo.
 
 
 \begin{nprop}
-		Sea A un D.E. con función euclídea $\varphi$ donde hay unicidad en cocientes y restos y si $m\in A: m\ne 0$ y $ \varphi(1) < \varphi(m)$.
+  Sean $A$ un D.E. con función euclídea $\varphi$, en el que hay unicidad en cocientes y restos; y $m\in A: m\ne 0$ con $ \varphi(1) < \varphi(m)$.
 	
-		Consideramos $A_m = \{R_m(a): a \in A\}$ donde, como ya sabemos, $\begin{cases}
+  Consideramos $A_m = \{R_m(a): a \in A\}$ donde, como ya sabemos,
+
+  $$\begin{array}{l}
 	r+r' = R_m(r+r')\\
 	rr' = R_m(rr')
-\end{cases}$ Veamos que es un homomorfismo.\\
-\begin{proof}
-	$R_m(a+b) = R_m(a) + R_m(b) = R_m(R_m(a)+R_m(b))$ donde la primera suma es en A, la segunda es en $A_m$ y la tercera dentro del paréntesis vuelve a ser en $A$\\
-	$R_m(ab) = R_m(a)R_m(b) = R_m(R_m(a)R_m(b))$ luego el producto también está bien definido.\\
-	Por último: $R_m(1) = 1$ por $\varphi(1) < \varphi(m)$
+  \end{array}$$
+
+  Veamos que $R_m$ es un homomorfismo.\\
+  \begin{proof}
+    Notando por $\oplus$ la suma en $A_m$,
+
+    \[
+    \begin{array}{l}
+      R_m(a+b) = R_m(R_m(a)+R_m(b)) = R_m(a) \oplus R_m(b) \\
+      R_m(ab) = R_m(a)R_m(b) = R_m(R_m(a)R_m(b))
+    \end{array}
+    \]
+
+    Por último: $R_m(1) = 1$ por $\varphi(1) < \varphi(m)$.
 \end{proof}
 \end{nprop}
+
 Además, $\img(R_m) = A_m$ y $\ker(R_m) = (m) = mA = \{mx : x\in A\}$.
 
-También hay un isomorfismo:
+\begin{ncor}
+  Sean $A$ un DE y $m \in A$. Entonces $A/(m)$ y $A_m$ son isomorfos con
 
-\[
-A/(m)  \cong A_m
-\]\[
-[a]\mapsto R_m(a)
-\]\[
-[r] \mapsfrom r
-\]
+  \[
+  \begin{array}{lrll}
+    F : & A/(m) & \cong & A_m \\
+        & [a] & \mapsto & R_m(a)
+  \end{array}
+  \]
+\end{ncor}
 
-De esta forma, podemos llevarnos los problemas a otros anillos para facilitar su resolución.
+
 
 \begin{nprop} Sea $a \in A$
 	\begin{nlist}
@@ -2211,11 +2224,19 @@ De esta forma, podemos llevarnos los problemas a otros anillos para facilitar su
 \end{nprop}
 \begin{proof}
 	Vamos a probar i) y iii). Luego ii) y iv) son consecuencia del isomorfismo entre $A/(m)$ y $A_m$.\\
-	Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1\mod(m) \iff mcd(a,m) = 1$.
+
+        $\boxed{i)}$ Sea $[a] \in U(A/(m)) \iff \exists x \in A: [a][x] = [1] \iff \exists x \in A : ax \equiv 1\mod(m) \iff (a,m) = 1$.
 	
-	Sea $a \in A/(m) : a \notin U(A/(m)) \implies mcd(a,m) = d \ne 1$. Ahora, sea $a = da'$ y $m=dm'$
-	Pero m no divide a $m'$ pues en otro caso: $m'=mx \implies m' = dm'x \implies 1 = dx \implies d \in U(A)$, contradicción.
-	Ahora, tomo $[a][m'] = [am'] = [da'm'] = [a'm'] = [0]$ por ser un múltiplo de m' (congruencia módulo m'), así que [a] es divisor de cero.
+	$\boxed{iii)}$ Sea $a \in A$. Entonces la aplicación dada por $x \mapsto ax$ puede ser
+
+        \begin{itemize}
+        \item Inyectiva: entonces es sobreyectiva por ser $A/(m)$ finito. Por tanto, existe $x \in A$ tal que $ax = 1$, luego $a$ es una unidad.
+        \item No inyectiva: entonces existen $u,v \in A, \ u \ne v$ tales que $au = av$, luego $a(u-v) = 0$ y $u-v \ne 0$.
+        \end{itemize}
+
+        %% TODO: poner que unidades y div. de cero son disjuntos en una proposición.
+        Ahora, si esta aplicación no es sobreyectiva, entonces no puede ser inyectiva (de nuevo porque $A/(m)$ es finito), por tanto $a$ es divisor de cero.
+        Si es sobreyectiva, $a$ es una unidad. Además, sabemos que los divisores de cero y las unidades de un anillo son disjuntos.
 \end{proof}
 
 \begin{ncor}
