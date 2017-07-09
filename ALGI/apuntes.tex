@@ -2394,18 +2394,56 @@ Además, $\img(R_m) = A_m$ y $\ker(R_m) = (m) = mA = \{mx : x\in A\}$.
 	En las mismas condiciones, son equivalentes:
 
 	\begin{nlist}
-	\item m es irreducible
-	\item A/(m) ó $(A_m)$ es DI
-	\item A/(m) ó $(A_m)$ es un cuerpo
+	\item m es irreducible.
+	\item $A/(m)$  (resp. $(A_m)$) es un D.I.
+	\item $A/(m)$ ó (resp. $(A_m)$) es un cuerpo.
 \end{nlist}
 \end{ncor}
-\begin{proof}
+\begin{proof}\hfill \\
 	$\boxed{iii) \implies ii)}$ Todo cuerpo es un dominio de integridad.\\
 	$\boxed{ii) \implies iii)}$ Supongamos $[a] \in A/(m) $ si $[a] \ne [0]$ entonces, por la proposición anterior, $a$ es una unidad.
 
 	$\boxed{i) \implies iii)}$ Sea $[a] \in A/(m), [a] \ne [0] = 0 \implies m$ no divide a $a \implies (a,m) = 1$, como m es irreducible, sus únicos divisores son m y 1 salvo asociados $\implies [a] \in U(A/(m))$
 
-	$\boxed{ii)\implies i)}$ Supongamos que m no es irreducible $\implies m = ab$ con a y b divisores propios $\implies m$ no divide a $a$ y m no divide a $b$ $\implies [a] \ne 0 $ y $[b] \ne 0$ en $A/(m)$ pero $[a][b] = [ab] = [m] = [0] = 0$ y como [a] y [b] son distintos de cero $\implies A/(m)$ no es DI, en contradicción con la hipótesis.
+	$\boxed{ii)\implies i)}$ Supongamos que $m$ no es irreducible $\implies m = ab$ con $a$ y $b$ divisores propios $\implies m$ no divide a $a$ y $m$ no divide a $b$ $\implies [a] \ne 0 $ y $[b] \ne 0$ en $A/(m)$ pero $[a][b] = [ab] = [m] = [0] = 0$ y como $[a]$ y $[b]$ son distintos de cero $\implies A/(m)$ no es D.I., en contradicción con la hipótesis.
+\end{proof}
+
+\begin{ndef}[Característica de una anillo]
+  Sea $(A, +, \cdot)$. Su característica es el menor $n \in \nat$ tal que
+  \[
+     \underbrace{1 + \dots + 1 = 0}_{n \text{ sumandos}}
+  \]
+
+   donde $1$ es el elemento neutro multiplicativo del anillo. De no existir tal número, se dice que tiene característica cero.
+\end{ndef}
+
+\begin{nprop}
+  La característica de un cuerpo finito es distinta de cero.
+\end{nprop}
+
+\begin{proof}
+  Solo hay que observar que, de ser cero, el cuerpo tendría infinitos elementos, pues al sumar 1 (que no es el elemento neutro para la adición) se obtiene un elemento distinto.
+\end{proof}
+
+\begin{nprop}
+  Si $(F, +, \cdot)$ es un cuerpo finito, entonces su característica es un número primo.
+\end{nprop}
+
+\begin{proof}
+  Sea $p$ la característica de $F$. Razonando por contradicción, supongamos que $p = ab$, con $a$ y $b$ distintos de uno, por tanto distintos de $p$.
+  Entonces $\sum_{i=1}^a \sum_{i=1}^b 1 = 0$. Como $b$ no es la característica de $F$, $q := \sum_{i=1}^b 1 \ne 0$. Luego $q \sum_{i=1}^a 1 = 0$. Como $a$ tampoco
+  es la característica de $F$, $\sum_{i=1}^a 1$ es un divisor de cero no nulo, lo cual es una contradicción con la hipótesis de que $F$ es un cuerpo.
+\end{proof}
+
+\begin{nprop}
+  Si $F$ es un cuerpo finito, entonces $|F| = p^n$, con $p, n \in \nat$ y $p$ la característica de $F$.
+\end{nprop}
+
+%% TODO: Demostrar que $F$ es un cuerpo sobre $\mathbb{Z}_p$, y no sobre otro cuerpo de restos de \mathbb{Z}
+\begin{proof}
+  Por las propiedades de $F$ como cuerpo, se puede comprobar que $F$ es un espacio vectorial sobre $\ent_{p}$ (y no sobre otro cuerpo de restos de $\ent$).
+  Ahora, su dimensión es necesariamente finita, sea esta $n$. Entonces, si $\{v_1, \dots, v_n\}$ es una base del espacio,
+  sabemos que cada vector del mismo se expresa de forma única como $a_1v_1 + \dots + a_nv_n$, con $a_i \in \ent_{p}$, por tanto el espacio tiene $p^n$ elementos.
 \end{proof}
 
 En $\ent_n$ si $p \geq 2$ es un irreducible y $\ent_p $ es un cuerpo. En general, si $K$ es un cuerpo y $f(x) = \sum a_i x^i \in K[x]$ es de grado $n \implies K[x]_{f(x)}$
@@ -2553,7 +2591,7 @@ $ \varphi(p) = p(1-\frac{1}{p}) = p-1 \implies a^{p-1} = 1 $ en $ \mathbb Z_{p} 
 
 
 
-\section{Dominio de Factorización Única (DFU)}
+\section{Dominio de factorización única (DFU)}
 
 Un Dominio de Integridad, A, es llamado un DFU si $\forall a \in A, a\ne 0$ y $a\notin U(A)$, entonces $\exists$ irreducibles $q_1 ,...,q_r \in A : a = q_1 ...q_r$ tales que la factorización es esencialmente única en el sentido de que si $q_1' ,...,q_s' \in A $ con $q_j$ irreducible $\implies r = s$ y $\exists \sigma:\{1,...,r\} \cong \{1,...,s\}$ una permutación tal que $q_i'$ es asociado con $q_{\sigma(i)}$
 
@@ -3089,7 +3127,7 @@ Entonces $f$ es irreducible.
 	El polinomio : $y^3 + x^2y^2 +xy + x \in \ent[x,y]$, pues el primo $p=x$ divide a todos los coeficientes menos al líder y su cuadrado no divide a todos los coeficientes.
 \end{ejemplo}
 
-\begin{nprop}[Cambio de Anillo]
+\begin{nprop}[Cambio de anillo]
 	Sean A y B dominios de integridad (así, el grado del producto es el producto de los grados). Sea $\phi : A[x] \to B[x]$ un homomorfismo en el que $gr(\phi(f))  \leq gr(f)$.
 
 	Si $f\in A[x] : gr(\phi(f))= gr(f)$ y $\phi(f)$ no tiene divisores de grado $r \implies f$ tampoco tiene divisores de grado $r$
@@ -3132,7 +3170,7 @@ Entonces $f$ es irreducible.
 
 
 
-\section{Matrices sobre Anillos conmutativos}
+\section{Matrices sobre anillos conmutativos}
 Sea $K$ un cuerpo, y consideremos $\mathcal{M}_{mxn}(K)$ y  $\mathcal{M}_{n}(K)$. Imaginemos ahora que $A\leq K$ es un subanillo. De esta forma, podemos concebir las matrices que están en este conjunto: $\mathcal{M}_{mxn}(A)$ ó  $\mathcal{M}_{n}(A)$ .
 
 Así, si sumáramos dos matrices que estuvieran en  $\mathcal{M}_{mxn}(A)$, nos quedaría una matriz cuyas entradas están en el subanillo A. Lo mismo ocurre con la multiplicación.
@@ -3526,7 +3564,7 @@ Si $I \leq A$ es un ideal, si tomamos $M= A/I$, entonces se verfican:
 que es un isomorfismo.
 \end{ejemplo}
 
-\section{Clasificación de los módulos finitamente generados sobre un Dominio Euclídeo.}
+\section{Clasificación de los módulos finitamente generados sobre un dominio euclídeo.}
 
 Para comprenderlo mejor, vamos a ver primero un caso particular sencillo.
 \subsection{Módulos cíclicos}
