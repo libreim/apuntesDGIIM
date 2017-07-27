@@ -1,0 +1,79 @@
+\ProvidesPackage{config}
+
+% ---------------------------------------------------------------------------
+%  RECURSOS
+% ---------------------------------------------------------------------------
+
+% Ruta donde buscar gráficos
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
+
+% ---------------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------------
+
+% Título del documento.
+\renewcommand{\asignatura}{Geometría III}
+
+% Autor del documento.
+\renewcommand{\autor}{LibreIM}
+
+\renewcommand{\grado}{Doble Grado de Informática y Matemáticas}
+
+\renewcommand{\universidad}{Universidad de Granada}
+
+\renewcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
+
+% ---------------------------------------------------------------------------
+%  PAQUETES
+% ---------------------------------------------------------------------------
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+
+% ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\definecolor{50}{HTML}{FFF3E0}
+\definecolor{300}{HTML}{FFB74D}
+\definecolor{500}{HTML}{FF9800}
+\definecolor{700}{HTML}{F57C00}
+\definecolor{900}{HTML}{E65100}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Renombrar la R de los reales
+
+\newcommand{\R}{\mathbb{R}}
+
+% Flechitas de los vectores de tamaño apropiado
+\renewcommand{\vec}{\overrightarrow}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
