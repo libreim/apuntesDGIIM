@@ -2,3 +2,8 @@
 Recursos/Plantillas/by-nc-sa-eps-converted-to.pdf
 *.texpadtmp
 .shippable.yml
+*.log
+*.aux
+*.out
+*.toc
+.DS_Store
