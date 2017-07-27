@@ -1,513 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% 
-% Apuntes de la asignatura Análisis Matemático II.
-% Doble Grado de Informática y Matemáticas.
-% Universidad de Granada.
-% Curso 2016/17.
-% 
-% 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo (@guillegalor)
-% Antonio Coín (@antcc)
-% Sofía Almeida (@SofiaAlmeida)
-% Miguel Lentisco (@AlfaOmegaX)
-% Luis Ortega (@Ludvins)
-% 
-% Agradecimientos:
-% Andrés Herrera (@andreshp) y Mario Román (@M42) por
-% las plantillas base.
-% 
-% Sitio original:
-% https://github.com/libreim/apuntesDGIIM/
-% 
-% Licencia:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-% ------------------------------------------------------------------------------
-% ACKNOWLEDGMENTS
-% ------------------------------------------------------------------------------
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Plantilla básica de Latex en Español.
-% 
-% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
-% 
-% Es una plantilla básica para redactar documentos. Utiliza el paquete fancyhdr
-% para darle un estilo moderno pero serio.
-% 
-% La plantilla se encuentra adaptada al español.
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Plantilla de Trabajo
-% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
-% al castellano y a las necesidades de escribir informática y matemáticas.
-% 
-% Editada por: Mario Román
-% 
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Short Sectioned Assignment
-% LaTeX Template
-% Version 1.0 (5/5/12)
-% 
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-% 
-% Original author:
-% Frits Wenneker (http://www.howtotex.com)
-% 
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-% Tipo de documento y opciones.
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[11pt, a4paper]{article}
-
-% ---------------------------------------------------------------------------
-% PAQUETES
-% ---------------------------------------------------------------------------
-
-% Idioma y codificación para Español.
-\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
-\selectlanguage{spanish} 
-% \usepackage[T1]{fontenc}
-
-% Fuente utilizada.
-\usepackage{courier}    % Fuente Courier.
-\usepackage{microtype}  % Mejora la letra final de cara al lector.
-
-% Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
-\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
-\usepackage{lastpage}   % Referencia a la última página.
-\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
-\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
-\usepackage{geometry}            % Geometría de las páginas.
-
-% Símbolos y matemáticas.
-\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
-\usepackage{upgreek}
-\usepackage{mathrsfs}
-
-\usepackage{mdframed}
-
-% Gráficos
-
-\usepackage{pgf,tikz}
-\usepackage{tkz-euclide}
-\usetkzobj{all}
-
-% Otros.
-\usepackage{enumitem}   % Listas mejoradas.
-\usepackage{hyperref}
-\usepackage{graphicx}   % Gráficos.
-\usepackage[space]{grffile}  % Permitir espacios en rutas de gráficos
-\usepackage{xcolor}     % Colores.8
-
-% Fuentes personalizadas
-
-\usepackage[scaled=.9]{newpxtext,newpxmath}
-\usepackage[scaled=.85]{FiraSans}
-\usepackage[T1]{fontenc}
-%\usepackage[italic]{mathastext}
-
-% Código para ajustar las fuentes matemáticas al estilo del texto
-% que le rodea
-
-\DeclareMathVersion{sans}
-\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
-\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
-\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
-\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
-\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
-
-\DeclareMathVersion{boldsans}
-\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
-\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
-\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
-\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
-\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
-
-\newif\IfInSansMode
-\let\oldsf\sffamily
-\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
-\let\oldmd\mdseries
-\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
-\let\oldbf\bfseries
-\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-   \mathversion{bold}\fi\relax}
-\let\oldnorm\normalfont
-\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
-\let\oldrm\rmfamily
-\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
-
-% Colores
-
-\definecolor{50}{HTML}{E8F5E9}
-\definecolor{300}{HTML}{81C784}
-\definecolor{500}{HTML}{4CAF50}
-\definecolor{700}{HTML}{388E3C}
-
-% ---------------------------------------------------------------------------
-% OPCIONES PERSONALIZADAS
-% ---------------------------------------------------------------------------
-
-% Formato de texto.
-\linespread{1.3}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlist{leftmargin=.5in}   % Indentación para las listas.
-
-% Estilo de página.
-\pagestyle{fancy}
-\fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
-
-% Estilo de las cabeceras
-
-\titleformat{\section}
-  {\Large\bfseries\sffamily}{\thesection}{1em}{}
-\titleformat{\subsection}
-  {\Large\sffamily}{\thesubsection}{1em}{}[
-\vspace{.5em}%
-]
-\titleformat{\subsubsection}
-  {\sffamily}{\thesubsubsection}{1em}{}
-
-% Estilo de enlaces
-\hypersetup{
-  % hidelinks = true,   % Oculta todos los enlaces.
-  colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
-  linkcolor=black,     % Color de enlaces genéricos
-  citecolor={blue!50!black},   % Color de enlaces de referencias
-  urlcolor={blue!80!black}     % Color de enlaces de URL
-}
-
-% Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/} {Recursos/Plantillas/} {./img/} {AMII/img/}}
-
-% Redefinir entorno de demostración (reducir espacio superior)
-% \makeatletter
-% \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-% \makeatother
-
-% Aumentar el tamaño del interlineado
-\linespread{1.3}
-
-% Permitir salto de página en ecuaciones
-\allowdisplaybreaks
-
-
-% ---------------------------------------------------------------------------
-% COMANDOS PERSONALIZADOS
-% ---------------------------------------------------------------------------
-
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}    
-
-% Fracción grande: \ddfrac{}{}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-% Texto en negrita en modo matemática: \bm{}
-\newcommand{\bm}[1]{\boldsymbol{#1}}
-
-% Línea horizontal.
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
-
-% Letras de conjuntos
-\newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
-
-% Sucesiones
-\newcommand{\xn}{\{x_n\}}
-\newcommand{\fn}{\{f_n\}}
-
-% Letra griega "chi" en línea con el texto
-\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi 
-
-% Letra 'omega'
-\newcommand{\W}{\Omega}
-\newcommand{\w}{\omega}
-
-% Conjunto vacío
-\renewcommand{\O}{\emptyset}
-
-% ---------------------------------------------------------------------------
-% CABECERA Y PIE DE PÁGINA
-% ---------------------------------------------------------------------------
-
-\renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
-
-\renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
-
-%\addtolength{\headheight}{4ex}
-\renewcommand{\headrulewidth}{0pt}
-
-\addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
-
-\fancypagestyle{section}{%
-  \fancyhead{}
-  %\addtolength{\headheight}{-10ex}
-  %\renewcommand{\headheight}{0pt}%
-  %\setlength{\footskip}{-48pt}%
-  \fancyfoot[LE,RO]{\Large\sffamily\thepage}
-  \renewcommand{\headrulewidth}{0pt}%
-  \renewcommand{\footrulewidth}{0pt}%
-}
-
-\let\originalsection\section
-\RenewDocumentCommand{\section}{som}{%
-  \IfBooleanTF{#1}
-    {\originalsection*{#3}}
-    {\IfNoValueTF{#2}
-      {\originalsection{#3}}
-      {\originalsection[#2]{#3}}%
-    }%
-  \thispagestyle{section}%
-}
-
-\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
-\fancyhead[LO,RE]{\sffamily{\leftmark}}
-\fancyfoot[LE,RO]{\Large\sffamily\thepage}
-
-
-
-% ---------------------------------------------------------------------------
-% ENTORNOS PARA MATEMÁTICAS
-% ---------------------------------------------------------------------------
-
-% Nuevo estilo para definiciones.
-\newtheoremstyle{definition-style} % Nombre del estilo.
-{}               % Espacio por encima.
-{}               % Espacio por debajo.
-{}                   % Fuente del cuerpo.
-{}                   % Identación.
-{\bf\sffamily}                % Fuente para la cabecera.
-{.}                  % Puntuación tras la cabecera.
-{.5em}               % Espacio tras la cabecera.
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
-
-% Nuevo estilo para notas.
-\newtheoremstyle{remark-style} 
-{10pt}                
-{10pt}                
-{}                   
-{}                   
-{\itshape \sffamily}          
-{.}                  
-{.5em}               
-{}                  
-
-% Nuevo estilo para teoremas y proposiciones.
-\newtheoremstyle{theorem-style}
-{}                
-{}                
-{}           
-{}                  
-{\bfseries \sffamily}             
-{.}                
-{.5em}           
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\bf \sffamily}              
-{}                 
-{.5em}               
-{\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}  
-
-% Nuevo estilo para la demostración
-%\renewenvironment{proof}{{\itshape \sffamily Demostración \\}}{\hspace*{\fill}\qed}
-
-\makeatletter
-\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape\sffamily#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-\makeatother
-
-% Configuración general de mdframe, los estilos de los teoremas, etc
-\mdfsetup{skipabove=12pt,skipbelow=12pt,innertopmargin=12pt,innerbottommargin=4pt}
-
-% Creamos los 'marcos' de los estilos
-
-\mdfdefinestyle{nth-frame}{
-	linewidth=2pt, %
-	linecolor= 500, % 
-	%linecolor=black,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, % 
-	rightmargin=0pt, %
-	innerrightmargin=0pt, % % 
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}% 
-
-\mdfdefinestyle{nprop-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	%linecolor= gray, 
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=0em, 
-	rightmargin=0pt, %
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}%       
-
-\mdfdefinestyle{ndef-frame}{
-	linewidth=2pt, %
-	linecolor= 300, % 
-	%linecolor= gray!50,
-	backgroundcolor= 50,
-	%backgroundcolor= gray!5,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em, 
-	rightmargin=0pt, % 
-	innertopmargin=1.5em,%
-	innerbottommargin=1em, % 
-	splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}% 
-
-\mdfdefinestyle{ejemplo-frame}{
-	linewidth=0pt, %
-	linecolor= 300, % 
-	%backgroundcolor= 50,
-	leftline=false, %
-	rightline=false, %
-	leftmargin=0pt, %
-	innerleftmargin=1.5em, %
-	innerrightmargin=1.5em, 
-	rightmargin=0pt, % 
-	innertopmargin=0em,%
-	innerbottommargin=0em, % 
-	splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}%                
-
-% Asignamos los marcos a los estilos
-
-\surroundwithmdframed[style=nth-frame]{nth}
-\surroundwithmdframed[style=nprop-frame]{nprop}
-\surroundwithmdframed[style=nprop-frame]{ncor}
-\surroundwithmdframed[style=ndef-frame]{ndef}
-\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
-                 
-% Asignamos los estilos definidos anteriormente a los entornos correspondientes
-% Teoremas, proposiciones y corolarios.
-\theoremstyle{theorem-style}
-\newtheorem{nth}{Teorema}[section]
-\newtheorem{nprop}{Proposición}[section]
-\newtheorem{ncor}{Corolario}[section]
-\newtheorem{lema}{Lema}[section]
-% Definiciones.
-\theoremstyle{definition-style}
-\newtheorem{ndef}{Definición}[section]
-
-% Notas.
-\theoremstyle{remark-style}
-\newtheorem*{nota}{Nota}
-
-% Ejemplos.
-\theoremstyle{example-style}
-\newtheorem{ejemplo}{Ejemplo}[section]
-
-
-
-% Listas ordenadas con números romanos (i), (ii), etc.
-\newenvironment{nlist}
-{\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
-
-
-% ---------------------------------------------------------------------------
-% PÁGINA DE TÍTULO
-% ---------------------------------------------------------------------------
-
-% Título del documento.
-\newcommand{\subject}{Análisis Matemático II}
-
-% Autor del documento.
-\newcommand{\docauthor}{Doble Grado en Ingeniería Informática y Matemáticas}
-
-% Título
-\title{
-  \normalfont \normalsize 
-  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
-  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-  \huge \sffamily\subject\\ % Título.
-  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
-}
-
-% Autor.
-\author{\Large\sffamily{\docauthor}}
-
-% Fecha.
-\date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
-
-
-
-% ---------------------------------------------------------------------------
-% COMIENZO DEL DOCUMENTO
-% ---------------------------------------------------------------------------
-
-\begin{document}
-
-\maketitle  % Título.
-\vfill
-\begin{center}
-  \includegraphics{by-nc-sa.pdf}  % Licencia.
-\end{center}
-\newpage
-\tableofcontents    % Índice
-\newpage
-
-
-% --------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 % Introducción.
-% --------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \section*{Introducción}
 
@@ -515,18 +8,18 @@
 
 \newpage
 
-% --------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 % Convergencia uniforme y puntual.
-% --------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
 \section{Convergencia uniforme y puntual}
 De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo con sucesiones de funciones. Dado $\emptyset \ne A \subseteq \R^N$, podemos tomar para cada $n \in \mathbb{N}$ una función $f_n : A \to \R^M$, y formar así una sucesión de funciones que notaremos $\{f_n\}$. El conjunto de funciones de $A$ en $\mathbb{R}^M$ lo denotaremos por $\mathcal{F}(A,\mathbb{R}^M)$. Durante este apartado la referencia básica es \cite[Capítulo 5]{marsden}.
 
 \begin{ndef}[Convergencia punto a punto] Diremos que una sucesión de funciones $\fn$ \textit{converge puntualmente} a una función $f\in \mathcal{F}(A,\mathbb{R}^M)$ si $\forall x \in A, \ \{f_n(x)\} \rightarrow f(x)$. Esto es, si se verifica lo siguiente:
   \[
-    \forall x\in A\ \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \epsilon 
+    \forall x\in A\ \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \epsilon
   \]
-  En ocasiones denotaremos la convergencia puntual como $\fn \xrightarrow {c.p} f$. 
+  En ocasiones denotaremos la convergencia puntual como $\fn \xrightarrow {c.p} f$.
 \end{ndef}
 
 
@@ -543,12 +36,12 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo 
 \end{nota}
 
 \begin{nprop} \label{unif_puntual}
-  Si $\fn\to f \text{ uniformemente} \implies \fn \to f \text{ puntualmente}$. 
+  Si $\fn\to f \text{ uniformemente} \implies \fn \to f \text{ puntualmente}$.
 \end{nprop}
 
   \begin{nota}
     El recíproco no es cierto en general. Sin embargo, ambos conceptos son equivalentes si para cada $f_n : A \rightarrow \R^M$ que forma la sucesión, el conjunto A es finito. En efecto, si $A$ es finito, y $\{f_n(x)\} \xrightarrow {c.p} f(x) \ \forall x \in A$, entonces tomamos $n_0$ como el máximo de los $n_0(x)$ que nos da la convergencia puntual en cada $x \in A$, y $\fn$ converge uniformemente en $A$.
-  \end{nota}	
+  \end{nota}
 
 La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas. El conjunto de las funciones continuas entre un conjunto $A$ y $\R^M$ se denota como $\mathcal{C}(A,\R^M)$.
 
@@ -567,11 +60,11 @@ La necesidad del concepto de convergencia uniforme se aprecia bien en el siguien
     $$\exists \delta > 0 \text{ tal que si } |x-a| < \delta \text{ para } x \in A \text{ entonces } \abs{f_n(x)-f_n(a)} < \dfrac{\epsilon}{3}$$
     De igual forma que con $a$, por la convergencia uniforme podemos afirmar que dado $x \in A$, $\abs{f_n(x)-f(x)}<\dfrac{\epsilon}{3}$.
     Llegados a este punto, si unimos las desigualdades obtenidas hasta ahora podemos afirmar que:
-    $$ \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon $$  
+    $$ \abs{f(x)-f(a)} \le \abs{f(x)-f_n(x)} + \abs{f_n(x)-f_n(a)}+\abs{f_n(a)-f(a)} < \epsilon $$
   Por tanto, hemos probado que dado $\epsilon > 0$, \ $\exists \delta>0:\ \begin{rcases}
     \abs{x-a}<\delta\\
     x\in A
-  \end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$. Es decir, hemos probado que $f$ es continua. 
+  \end{rcases} \implies \abs{f(x)-f(a)}<\epsilon$. Es decir, hemos probado que $f$ es continua.
 \end{proof}
 
 Veamos algunos ejemplos de sucesiones de funciones:
@@ -624,7 +117,7 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 \end{nprop}
 
   \begin{proof} \hfill \\
-    \boxed{\Rightarrow}	 $\fn \xrightarrow {c.u} f \implies \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \Rightarrow |f_n(x) - f(x)| < \frac{\epsilon}{2}\ \forall x \in A$. Entonces, dados $m,n \ge n_0$ se tiene que: 
+    \boxed{\Rightarrow}	 $\fn \xrightarrow {c.u} f \implies \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \Rightarrow |f_n(x) - f(x)| < \frac{\epsilon}{2}\ \forall x \in A$. Entonces, dados $m,n \ge n_0$ se tiene que:
     $$ |f_n(x) - f_m(x)| \le |f_n(x) - f(x)| + |f_m(x) - f(x)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$$
 
     \boxed{\Leftarrow} Sea $x \in A$ fijo. Entonces, es claro que $\{f_n(x)\} \subseteq \mathbb{R}^M$ es una sucesión de Cauchy. Como $\mathbb{R}^M$ es completo, tenemos que $\{f_n(x)\} \xrightarrow {c.p} f(x)\ \forall x \in A$. Ahora, tomando límite cuando $m \to \infty$ en la expresión de la hipótesis, y teniendo en cuenta que el último $<$ se transforma en $\le$: $$\forall \epsilon > 0\ \exists n_0 \in \mathbb{N}:\ n \ge n_0 \implies |f_n(x) - f(x)| \le \frac{\epsilon}{2} < \epsilon\ \ \forall x \in A$$
@@ -672,7 +165,7 @@ Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}
   \begin{proof} El razonamiento es análogo al anterior, utilizando esta vez el criterio de Cauchy visto anteriormente.
   \end{proof}
 
-Es importante recalcar que estamos suponiendo que el subconjunto $A$ es compacto. Podemos extender el resultado anterior, considerando el espacio $(\mathcal{C}_B(A,\mathbb{R}^M), \|\cdot\|_{\infty})$, donde: 
+Es importante recalcar que estamos suponiendo que el subconjunto $A$ es compacto. Podemos extender el resultado anterior, considerando el espacio $(\mathcal{C}_B(A,\mathbb{R}^M), \|\cdot\|_{\infty})$, donde:
 
 $\mathcal{C}_B(A,\mathbb{R}^M) := \{ f:A \longrightarrow \mathbb{R}^M: \text{$f$ es continua y acotada}\}$
 
@@ -719,7 +212,7 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
     \]
     Es decir, $\{f_n(x)\}$ converge puntualmente en $(a,b)$ a $G(x)$. Ahora, $G$ es de clase 1 por ser $g(t)$ continua, y además, tenemos que $G(x_0) = f(x_0)$.
     Por otro lado, es claro que $G' = g$.
-    
+
     Pero también $\{f_n(x)\} \xrightarrow {c.p} f(x)$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1((a,b))$ y $f' = G' = g$.
   \end{proof}
 
@@ -729,7 +222,7 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
 
   \begin{proof}
     Probaremos únicamente que $\fn \to f$ uniformemente. El resto de la tesis se sigue de aplicar el \textit{Teorema \ref{5}}.
-    
+
     Sea $\epsilon > 0$. Por un lado, como $\{f'_n\}$ converge uniformemente, aplicamos el \textit{Criterio de Cauchy} para obtener un $k_1 \in \mathbb{N}$ tal que: $$p,q \ge k_1 \implies |f'_p(y) - f'_q(y)| < \frac{\epsilon}{2 (b-a)}$$
     Del mismo modo, como $\{f_n(\alpha)\}$ es una sucesión de números reales convergente, es de Cauchy, y obtenemos un $k_2 \in \mathbb{N}$ tal que: $$p,q \ge k_2 \implies |f_p(\alpha) - f_q(\alpha)| < \frac{\epsilon}{2}$$
     Ahora, defino $K := k_1 + k_2$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$ y $p,q \ge K$: $$|f_p(x) - f_q(x)| = |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_q(x) - (f_p(\alpha) - f_q(\alpha))| + |f_p(\alpha) - f_q(\alpha)| $$ $$= |f_{pq}(x) - f_{pq}(\alpha)| + |f_p(\alpha) - f_q(\alpha)| \overset{T.V.M}{=} |x-\alpha||f'_{pq}(z_x)| + |f_p(\alpha) - f_q(\alpha)|$$ $$= \left|x-\alpha \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)| < (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
@@ -758,7 +251,7 @@ En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de
 \end{ndef}
 
 \begin{nota}
-  Este concepto es muy parecido al de función uniformemente continua. De hecho, como $A$ es compacto y todas las $f$ son continuas, sabemos por el \textit{Teorema de Heine-Cantor} que todas ellas son uniformemente continuas. Sin embargo, para poder afirmar que $B$ es equicontinuo, es necesario que el número $\delta$ sea válido sea quien sea $f$. 
+  Este concepto es muy parecido al de función uniformemente continua. De hecho, como $A$ es compacto y todas las $f$ son continuas, sabemos por el \textit{Teorema de Heine-Cantor} que todas ellas son uniformemente continuas. Sin embargo, para poder afirmar que $B$ es equicontinuo, es necesario que el número $\delta$ sea válido sea quien sea $f$.
 \end{nota}
 
 \begin{nprop} Sea $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Si B es finito, entonces es equicontinuo.
@@ -776,7 +269,7 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
   Pero $f$ no es continua, por lo que $\fn$ no converge uniformemente en $[0,1]$. De hecho, $\fn$ no puede tener ninguna sucesión parcial que converja uniformemente, pues en otro caso, el límite uniforme de la sucesión parcial sería $f$, que no es continua.
 
-  Por otro lado, $\|f_n\|_{\infty} = \text{máx} \ \{ |f_n(x)|:\ x \in [0,1]\} = r$, y entonces $f_n \in \overline{B}_{\infty}(0,r)$. 
+  Por otro lado, $\|f_n\|_{\infty} = \text{máx} \ \{ |f_n(x)|:\ x \in [0,1]\} = r$, y entonces $f_n \in \overline{B}_{\infty}(0,r)$.
 
   Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B}_{\infty}(0,r)$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B}_{\infty}(0,r)$. Esto prueba que $\overline{B}_{\infty}(0,r)$ no es compacta.
 
@@ -784,11 +277,11 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 \end{ejemplo}
 
 \begin{ndef}[Sucesión acotada]
-  Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es acotada si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es acotado. 
+  Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es acotada si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es acotado.
 \end{ndef}
 
 \begin{ndef}[Sucesión equicontinua]
-  Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es equicontinua si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es equicontinuo. 
+  Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es equicontinua si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es equicontinuo.
 \end{ndef}
 
 Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado equivalente en $\mathcal{C}(A,\mathbb{R}^M)$.
@@ -820,7 +313,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 
     Por inducci\'on, concluimos que
     $
-    \forall k\in N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N   
+    \forall k\in N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N
     $ tal que
     \[
       \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
@@ -847,10 +340,10 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
       \sigma (n):= \varphi_n(n)= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
     \]
 
-    Puesto que $\sigma_1, \dots ,\sigma_n$ son estrictamente crecientes, 
+    Puesto que $\sigma_1, \dots ,\sigma_n$ son estrictamente crecientes,
     \[
       \begin{aligned}
-        \sigma (n) = \ & \sigma_n ( \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)) 
+        \sigma (n) = \ & \sigma_n ( \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n))
         \geq \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n)
         \\
         >& \ \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n-1) = \sigma (n-1) , \ \forall n\geq 2
@@ -858,7 +351,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
     \]
     donde hemos usado que $\sigma_n(k) \ge k \ \forall k \in \mathbb{N}$, y también que la composición de funciones estrictamente crecientes es estrictamente creciente. Por tanto, $\sigma$ es estrictamente creciente; es decir,  $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsucesión de $\{f_n\}$. A\'un m\'as, es inmediato comprobar que
     \[
-      \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } 
+      \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de }
       \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
     \]
     As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in N \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
@@ -871,12 +364,12 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
     \underline{Paso 2.} Probaremos el siguiente resultado técnico: Dado $\delta>0$, $\exists r_1,...,r_k \in A \cap \mathbb Q^N$ tales que $\exists \ i=1,...,k : |x-r_i| < \delta \ \ \forall x \in A$.
 
     Por ser $A$ compacto, todo recubrimiento de abiertos del conjunto $A$ admite un subrecubrimiento finito del mismo. Definimos el conjunto de bolas abiertas $B=\{B(r,\delta) : r \in A\cap \mathbb Q^N \}$. Como $\mathbb{Q}$ es denso en $\mathbb{R}$, el conjunto $B$ recubre a $A$. Por tanto, como $A$ es compacto, existe un subrecubrimiento finito del mismo que también lo recubre. Es decir, $$\exists r_1,\dots, r_k \in A\cap \mathbb Q^N \ \text{tales que} \ A \subseteq \bigcup_{i=1}^k B(r_i,\delta)$$
-    
+
     Dado $x \in A$, por ser el anterior un subrecubrimiento finito de $A$, se tiene que\\ $\exists i \in \{1,\dots,k\}$ tal que $x \in B(r_i,\delta)$. Por tanto, $|x-r_i| <\delta$.
 
     \underline{Paso 3}. Concluimos probando que la sucesión $\{g_n\}$ converge uniformemente en $A$, donde $g_n := f_{\sigma(n)}$.
 
-    Sea $\epsilon>0$ fijo. Por la equicontinuidad de $f_n$, 
+    Sea $\epsilon>0$ fijo. Por la equicontinuidad de $f_n$,
     $\exists\delta>0$ tal que
     \[
       \left.
@@ -894,7 +387,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
       \begin{aligned}
         |g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(r_i)| + |g_n(r_i)-g_m(r_i)|+|g_m(r_i)-g_m(x)|
         \\
-        &<\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
+        &<\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)|
         + \frac{\varepsilon}{3} .
       \end{aligned}
     \]
@@ -907,7 +400,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
     \]
     y as\'{\i}
     \[
-      n,m\geq n_0 \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)| 
+      n,m\geq n_0 \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)|
       + \frac{\varepsilon}{3} <\varepsilon , \ \ \forall x\in A
     \]
     Puesto que en $\mathcal{C}(A,\mathbb R^M )$ la convergencia equivale a la convergencia uniforme, se concluye aplicando el \textit{Criterio de Cauchy} a la sucesión $\{g_n\} = \{f_{\sigma(n)}\}$.
@@ -920,12 +413,12 @@ Como conclusión de este capítulo, presentamos el siguiente corolario, que nos 
 
   \begin{proof} \hfill \\
     \boxed{\Rightarrow} Ya sabemos que un conjunto compacto de un espacio métrico es cerrado y acotado. Veamos que además es equicontinuo.
-    
+
     Sea $\epsilon >0$ fijo. La familia $\{ B(f, \varepsilon/3) \, : \, f\in B\}$ ($B(f, \varepsilon/3)$ son bolas abiertas en $\mathcal{C}(A, \mathbb{R}^M))$ es un recubrimiento abierto de B puesto que $$B\subseteq \bigcup_{f\in B} B(f, \varepsilon/3).$$
     Luego, por la compacidad de $B,\ \exists f_1, \dots, f_n \in$ B tales que $$B \subseteq \displaystyle \bigcup_{i=1}^n B(f_i, \varepsilon/3).$$
     Observemos que para cualquier $f\in B(f_i, \varepsilon/3)$ se verifica que
     $|f(x)-f_i(x)| < \varepsilon/3 , \ \ \forall x\in A$. Además, como $A$ es compacto, cada una de las funciones continuas $f_i \ (i=1,\dots,n)$ será uniformemente continua. Por tanto, existirá para cada una de ellas un número $\delta_i>0$ tal que $$\left. \begin{array}{c} |x-y|<\delta_i \\ x,y\in A \end{array}  \right\} \Rightarrow |f_i(x)-f_i(y)| <\varepsilon/3$$
-    Por consiguiente, si tomamos $\delta = \min \{\delta_i \, :\, i=1,\dots,n\} >0$, tendremos que cualquier $f\in B \subseteq \bigcup_{i=1}^n B(f_i, \varepsilon/3)$ debe pertenecer a una bola $B(f_i, \varepsilon/3)$ para algún $i\in\{1,\dots ,n\}$, y así si se tiene $$\left. \begin{array}{c} |x-y|<\delta \leq \delta_i \\ x,y\in A \end{array}  \right\}$$ 
+    Por consiguiente, si tomamos $\delta = \min \{\delta_i \, :\, i=1,\dots,n\} >0$, tendremos que cualquier $f\in B \subseteq \bigcup_{i=1}^n B(f_i, \varepsilon/3)$ debe pertenecer a una bola $B(f_i, \varepsilon/3)$ para algún $i\in\{1,\dots ,n\}$, y así si se tiene $$\left. \begin{array}{c} |x-y|<\delta \leq \delta_i \\ x,y\in A \end{array}  \right\}$$
 
     Entonces, es claro que $\displaystyle |f(x)-f(y)| \le |f(x)-f_i(x)|+|f_i(x)-f_i(y)|+|f_i(y)-f(y)| < \varepsilon/3+\varepsilon/3+\varepsilon/3<\varepsilon.$
 
@@ -948,11 +441,11 @@ Como conclusión de este capítulo, presentamos el siguiente corolario, que nos 
 De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos ahora a estudiar series de funciones. La referencia básica sigue siendo \cite[Capítulo 5]{marsden}.
 
 \begin{ndef}[Sumas parciales]
-  Sea $\Omega\subseteq \mathbb R^N$ un conjunto. 
+  Sea $\Omega\subseteq \mathbb R^N$ un conjunto.
   Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathbb R^M$, se llama sumas parciales $S_k$ a la funci\'on definida en $\Omega$ mediante
-  \[ 
+  \[
     S_k (x) = \sum_{n=1}^{k} f_n(x),\ \ x\in\Omega.
-  \] 
+  \]
 \end{ndef}
 
 \begin{ndef}[Serie de funciones]
@@ -962,12 +455,12 @@ De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos
 
 El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales $S_n$. Por tanto, tenemos de nuevo dos tipos de convergencia.
 \begin{ndef}[Convergencia de series de funciones]
-  Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subseteq \Omega$, diremos 
+  Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subseteq \Omega$, diremos
   $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\ c.p.\ en\ A.$$
 
-  $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n \} \longrightarrow S \mbox{ c.u. en }A.$$ 
+  $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n \} \longrightarrow S \mbox{ c.u. en }A.$$
 
-  Diremos que $S$ es la suma de la serie de funciones: 
+  Diremos que $S$ es la suma de la serie de funciones:
   \[
     S=\displaystyle \sum_{n=1}^{\infty} f_n \mbox{ puntualmente (resp. uniformemente) en $A$.}
   \]
@@ -978,7 +471,7 @@ El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones s
 \end{nprop}
 
   \begin{proof}
-    Es claro que $\forall n \in \N,\ f_n = S_{n} - S_{n-1}$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que: 
+    Es claro que $\forall n \in \N,\ f_n = S_{n} - S_{n-1}$. Aplicando límites en la igualdad anterior, y sabiendo que $\sum_{n\ge 0} f_n$ converge uniformemente en $B$, tenemos que:
     $$\lim_{n \to \infty} \{f_n(x)\} = \lim_{n \to \infty} \{S_n(x)\} - \lim_{n \to \infty} \{S_{n - 1}(x)\} = S(x) - S(x) = 0\quad \forall x \in B$$
   \end{proof}
 
@@ -995,7 +488,7 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 
 
 \begin{nth} \label{8}
-  Si la serie $\sum_{n\geq 1} f_n $ de funciones continuas $f_n:[a,b]\longrightarrow \mathbb R$ es uniformemente convergente, entonces 
+  Si la serie $\sum_{n\geq 1} f_n $ de funciones continuas $f_n:[a,b]\longrightarrow \mathbb R$ es uniformemente convergente, entonces
   $
   \displaystyle \int_a^b \sum_{n=1}^{\infty} f_n (x) \, dx =  \sum_{n=1}^{\infty} \int_a^b f_n (x) \, dx  .
   $
@@ -1009,7 +502,7 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 
 
 \begin{nth} \label{9}
-  Si para $f_n\in \mathcal{C}^1(a,b)$  la serie  $\sum_{n\geq 1} f_n $ es  c.p.  en $(a,b)$ y  la serie  $ \sum_{n\geq 1} f'_n $ es  c.u. en (a,b), entonces la suma $\displaystyle \sum_{n=1}^{\infty} f_n $ es una funci\'on de  $\mathcal{C}^1(a,b)$ con 
+  Si para $f_n\in \mathcal{C}^1(a,b)$  la serie  $\sum_{n\geq 1} f_n $ es  c.p.  en $(a,b)$ y  la serie  $ \sum_{n\geq 1} f'_n $ es  c.u. en (a,b), entonces la suma $\displaystyle \sum_{n=1}^{\infty} f_n $ es una funci\'on de  $\mathcal{C}^1(a,b)$ con
   $
   \displaystyle \left( \sum_{n=1}^{\infty} f_n \right)' =  \sum_{n=1}^{\infty}  f'_n  .
   $
@@ -1024,19 +517,19 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 \subsection{Criterios de convergencia para series de funciones}
 
 \begin{nth}[Criterio de Weierstrass] \label{10}
-  Si existen constantes $ M_{n} $ positivas tales que $ |f_{n}(x)| \leq M_{n}\ \ \forall x \in A$ y la serie de números reales $ \sum_{n \ge 1}M_{n} $ es convergente, entonces la serie de funciones $ \sum_{n \ge 1}f_{n} $ es convergente uniformemente (y absolutamente) en A.  
+  Si existen constantes $ M_{n} $ positivas tales que $ |f_{n}(x)| \leq M_{n}\ \ \forall x \in A$ y la serie de números reales $ \sum_{n \ge 1}M_{n} $ es convergente, entonces la serie de funciones $ \sum_{n \ge 1}f_{n} $ es convergente uniformemente (y absolutamente) en A.
 \end{nth}
 
 \begin{proof}
     Por el criterio de Cauchy para la convergencia de una serie de números positivos (las sumas parciales son de Cauchy), se tiene que:
     $$ \forall \epsilon > 0\ \exists n_{0} \in \mathbb{N}:\ M_{n} + \dots + M_{n+k} < \epsilon\ \  \forall n \geq n_{0}\ \forall k \in \mathbb{N} $$
-    
+
     Usando que $ |f_{n}(x)| \leq M_{n}\ \forall x \in A $ y la desigualdad triangular obtenemos:
     $$ |f_{n}(x) + \dots + f_{n+k}(x)| \leq |f_{n}(x)| + \dots + |f_{n+k}(x)| \leq M_{n} + \dots + M_{n+k} < \epsilon\ \ \forall x \in A $$
-    
+
     Y por tanto:
     $$\forall \epsilon > 0\ \exists n_{0} \in \mathbb{N}:\ |f_{n}(x) + \dots + f_{n+k}(x)| < \epsilon\ \  \forall n \geq n_{0}\ \forall k \in \mathbb{N}\ \forall x \in A $$
-    
+
     Como la sucesión de sumas parciales de la serie de funciones $\sum_{n\ge 1} f_n$ converge uniformemente, queda probado que dicha serie converge uniformemente en A.
   \end{proof}
 
@@ -1046,10 +539,10 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 \end{nth}
 %%% TODO: añadir demostración Criterio de Abel
 
-\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$ 
+\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$
 
   Entonces, la serie $\displaystyle \sum_{n\ge 1} \phi_n(x)f_n(x)$ converge uniformemente en $A$.
-  
+
 \end{nth}
 
 %%% TODO: añadir demostración Criterio de Dirichlet
@@ -1058,8 +551,8 @@ Veamos un ejemplo de aplicación de estos criterios.
 
 \begin{ejemplo}
   Probar que la serie $\displaystyle \sum_{n \ge 1} \frac{(-1)^n}{n} e^{-nx}$ converge uniformemente en $[0, \infty)$.
-  
-  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.  
+
+  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.
 \end{ejemplo}
 
 
@@ -1081,7 +574,7 @@ Veamos una característica importante de las series de potencias, que nos ayuda 
   En la definición anterior, permitimos que $R = \infty$, tomando como convenio que $\frac{1}{0} = \infty$ y $\frac{1}{\infty} = 0$.
 \end{nota}
 
-\begin{ndef}[Disco de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos el disco de convergencia $D(a,R) := \{ x : |x-a| < R\}$. 
+\begin{ndef}[Disco de convergencia] Dada una serie de potencias $\sum_{n \ge 0} a_n(x-a)^n$, definimos el disco de convergencia $D(a,R) := \{ x : |x-a| < R\}$.
 \end{ndef}
 
 \begin{nota}
@@ -1091,7 +584,7 @@ Veamos una característica importante de las series de potencias, que nos ayuda 
 El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones anteriores.
 
 \begin{nth} \label{13}
-  La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$  
+  La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$
   \begin{nlist}
   \item converge uniformemente en $D(a,R')$ para cualquier $R'<R$ (en particular, converge absolutamente para todo $x\in D(a,R)$).
   \item no converge si $x\not\in \overline{D(a,R)}$.
@@ -1107,7 +600,7 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     \]
     y el primer apartado se concluye aplicando el criterio de Weierstrass.
 
-    Para ver que la serie converge absolutamente en todo el disco, sea $x \in D(a,R)$. Entonces, siempre podemos encontrar un radio $R'$ tal que $|x-a| < R' < R$. En consecuencia, $x \in D(a,R')$, y por lo que acabamos de probar, tenemos garantizada la convergencia (en valor absoluto) de la serie en el punto $x$. 
+    Para ver que la serie converge absolutamente en todo el disco, sea $x \in D(a,R)$. Entonces, siempre podemos encontrar un radio $R'$ tal que $|x-a| < R' < R$. En consecuencia, $x \in D(a,R')$, y por lo que acabamos de probar, tenemos garantizada la convergencia (en valor absoluto) de la serie en el punto $x$.
 
     \textit{(ii)} Basta observar que si la serie $\sum_{n\geq 0} a_n (x-a)^n$ es convergente en un punto $x\not= a$, entonces $\left\{ a_n (x-a)^n \right\} \to 0$, y tomando $\epsilon = 1$ en la definición de convergencia tenemos que:
     \[
@@ -1118,39 +611,39 @@ El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones
     Es decir, si la serie converge, necesariamente $x \in \overline{D(a,R)}.$
   \end{proof}
 
-Por último, veamos un teorema sobre derivación e integración de series de potencias. Para ello, notemos que si $R$ es el radio de convergencia de la serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$, podemos definir la función $S$ en $D(a,R)$ mediante: \[ 
+Por último, veamos un teorema sobre derivación e integración de series de potencias. Para ello, notemos que si $R$ es el radio de convergencia de la serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$, podemos definir la función $S$ en $D(a,R)$ mediante: \[
   S(x):= \sum_{n= 0}^\infty a_n (x-a)^n
   , \ \ \forall x\in  D(a,R)
-\] 
+\]
 
 \begin{nth} \label{14}
-  Sea $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$ una serie de potencias. Entonces, se verifican las siguientes afirmaciones:	
+  Sea $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$ una serie de potencias. Entonces, se verifican las siguientes afirmaciones:
   \begin{nlist}
   \item La suma $S(x)=\displaystyle\sum_{n= 0}^\infty a_n (x-a)^n$ es una función $\mathcal{C}^\infty$ en el disco de convergencia $D(a,R)$.
   \item $S'(x)= \displaystyle\sum_{n= 1}^\infty n a_n (x-a)^{n-1}$, esto es,
     \[
       \displaystyle\frac{d}{dx} \left( \sum_{n= 0}^\infty a_n (x-a)^n \right) =  \sum_{n= 1}^\infty \frac{d}{dx} \left( a_n (x-a)^n \right), \quad x \in D(a,R).
     \]
-  \item 
+  \item
     $\displaystyle \int_a^x S(t)\, dt =   \sum_{n= 0}^\infty \frac{a_n}{n+1} (x-a)^{n+1}$, esto es,
     \[
-      \int_a^x  \sum_{n= 0}^\infty a_n (t-a)^n \, dt 
+      \int_a^x  \sum_{n= 0}^\infty a_n (t-a)^n \, dt
       =  \sum_{n= 0}^\infty \int_a^x a_n (t-a)^n \, dt, \quad x \in D(a,R).
     \]
   \end{nlist}
   \end{nth}
-  
+
   \begin{proof} \hfill
   \begin{nlist}
-     \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ de forma que se cumpla $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas. 
-  
+     \item Veamos que $S(x)$ es continua en todo el disco de convergencia. Para ello, sea $x \in D(a,R)$, y tomo $R' < R$ de forma que se cumpla $x \in D(a,R')$. Entonces, la serie $\sum_{n\geq 0} a_n (x-a)^n$ converge uniformemente a $S(x)$ en $D(a,R')$, y concluimos que $S(x)$ es continua, por ser el límite uniforme de funciones continuas.
+
    Ahora, demostraremos que la serie derivada tiene el mismo radio de convergencia, y podemos aplicar el mismo argumento para concluir que es continua. La prueba se completa por inducción, viendo que efectivamente la serie es $\mathcal C^\infty$ en el disco de convergencia.
-   
+
    En efecto, $\displaystyle\limsup_{n\to\infty}\sqrt[n]{n a_n} = \limsup_{n\to\infty} \sqrt[n]{n} \frac{1}{R}$, pero $\sqrt[n]{n} \to 1$, sin más que aplicar el criterio de la raíz.
-   
+
    \item Sea $x \in D(a,R)$. Entonces, teniendo en cuenta $(i)$, y de igual forma que hicimos antes, obtenemos que $\sum_{n\ge0} na_n(x-a)^{n-1}$ converge uniformemente en $D(a,R')$. Concluimos aplicando el \textit{Teorema} \ref{9} sobre derivación de una serie de funciones.
    \item La prueba es análoga a $(ii)$, aplicando en este caso el \textit{Teorema} \ref{8} sobre integración de series de funciones.
-  \end{nlist}	
+  \end{nlist}
   \end{proof}
 
 
@@ -1168,18 +661,18 @@ Nos preguntamos ahora si cualquier función $\mathcal{C}^{\infty}$ se puede escr
 Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficiente para que una funci\'on $f\in \mathcal{C}^\infty$ coincida con la suma de su serie de Taylor.
 
 \begin{nth} \label{15}
-  Si una funci\'on de clase $\mathcal{C}^\infty$ en un intervalo $I$ verifica 
+  Si una funci\'on de clase $\mathcal{C}^\infty$ en un intervalo $I$ verifica
   \[
     \exists M>0 \ : \  |f^{n)}(x)|\leq M, \ \ \forall x\in I
   \]
-  entonces 
+  entonces
   \[
     f(x) = \sum_{n=0}^\infty \frac{f^{n)} (a)}{n!} (x-a)^n , \ \ \forall x\in I.
   \]
 \end{nth}
 
   \begin{proof}
-    Fijamos $x \in I$, y observamos que las sumas parciales $S_k(x)$ de la serie son el polinomio de Taylor de orden $k$: 
+    Fijamos $x \in I$, y observamos que las sumas parciales $S_k(x)$ de la serie son el polinomio de Taylor de orden $k$:
     \[
       P_k(x) =  \sum_{n=0}^k \frac{f^{n)} (a)}{n!} (x-a)^n,
     \]
@@ -1194,7 +687,7 @@ Haciendo uso del teorema de Taylor, podemos ver la siguiente condici\'on suficie
 Como consecuencia de este teorema, podemos escribir algunas funciones elementales como la suma de su serie de Taylor, en el punto $a = 0$.
 
 \begin{ejemplo}
-  $e^x = \displaystyle \sum_{n=0}^\infty  \frac{x^n}{n!}$. 
+  $e^x = \displaystyle \sum_{n=0}^\infty  \frac{x^n}{n!}$.
 \end{ejemplo}
 
 \begin{ejemplo}
@@ -1218,7 +711,7 @@ Por tanto, la pregunta que nos hacíamos equivale a preguntarse si toda función
 Un contraejemplo sería la función $f: \mathbb{R} \longrightarrow \mathbb{R}$ dada por: $$f(x) = \begin{cases}
   e^{-1/x^2} & \text{si } x\ne 0\\
   0 & \text{si } x=0
-\end{cases}$$ Es claro que $f \in \mathcal{C}^{\infty}$ y que $f \ne 0$. Además, se tiene que $f(0) = 0$, y $f^{k)}(0) = 0\ \ \forall k \ge 1$. 
+\end{cases}$$ Es claro que $f \in \mathcal{C}^{\infty}$ y que $f \ne 0$. Además, se tiene que $f(0) = 0$, y $f^{k)}(0) = 0\ \ \forall k \ge 1$.
 
 Si $f$ se escribiese como su suma de Taylor, tendríamos que, en el punto $a=0$: $$f(x) = \sum_{n=0}^{\infty} \frac{f^{n)}(0)}{n!} \cdot x^n =  \sum_{n=0}^{\infty} \frac{0}{n!}\cdot x^n = 0\ \ \forall x \in \mathbb{R}$$
 
@@ -1264,12 +757,12 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
   \item $\displaystyle \Omega \backslash A \in \mathscr A, \quad \forall A \in \mathscr A$
   \item $\displaystyle \bigcup_{n=1}^\infty A_n \in \mathscr A, \quad \forall \{A_n\} \subset \mathscr A$
   \end{nlist}
-  
+
 \end{ndef}
 
 \begin{nprop}
-  Si $\mathscr A$ es una $\sigma$-álgebra sobre un conjunto $\Omega$, se verifican las siguientes propiedades: 
-  
+  Si $\mathscr A$ es una $\sigma$-álgebra sobre un conjunto $\Omega$, se verifican las siguientes propiedades:
+
   \begin{nlist}
   \item $\emptyset \in \mathscr A$
   \item $\displaystyle \{A_i : i = 1,\dots,n\} \subseteq \mathscr A \implies \bigcup_{i=1}^n A_i \in \mathscr A$
@@ -1281,9 +774,9 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 
   \begin{proof}
     La propiedad $(i)$ es trivial, notando que $\emptyset = \Omega^c$. Para comprobar $(ii)$, formamos la sucesión $\{A_1,\dots,A_n,\emptyset,\emptyset, \emptyset, \dots\} \subseteq \mathscr A$, y aplicamos la definición de $\sigma$-álgebra.
-    
+
     La propiedad $(iii)$ se demuestra usando las leyes de De Morgan: $$\Omega - \left( \bigcup_{n=1}^\infty A_n \right) = \bigcap_{n=1}^\infty (\Omega - A_n)$$ y usando el mismo argumento que en $(ii)$, vemos fácilmente que se verifica $(iv)$.
-    
+
     Por último, $(v)$ se deriva del hecho de que $A - B = (\Omega - B) \cap A$.
   \end{proof}
 
@@ -1312,7 +805,7 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 \begin{ndef}[$\sigma$-álgebra de Borel] Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $\mathcal B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. Además, $\mathcal B(\Omega)$ es la $\sigma$-álgebra más pequeña que contiene a $\tau$.
 \end{ndef}
 
-Formalmente, si $\Lambda = \left\{ \mathscr A : \mathscr A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathscr A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathscr A \in \Lambda} \mathscr A$$ 
+Formalmente, si $\Lambda = \left\{ \mathscr A : \mathscr A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathscr A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathscr A \in \Lambda} \mathscr A$$
 Para ver que $\mathcal B(\Omega)$ es una $\sigma$-álgebra, basta observar que, dada una sucesión \mbox{$\{A_n\} \subseteq \mathcal B(\Omega)$}, tenemos que $A_n \in \mathscr A \ \ \forall \mathscr A \in \Lambda$. Como cada $\mathscr A \in \Lambda$ es una $\sigma$-álgebra, se tiene que: $$\bigcup_{n=1}^\infty A_n \in \mathscr A, \quad \forall \mathscr A \in \Lambda \implies \bigcup_{n=1}^\infty A_n \in \mathcal B(\Omega)$$
 
 El resto de propiedades se comprueban de forma análoga.
@@ -1379,8 +872,8 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \end{ndef}
 
 
-\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathscr A)$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces: 
-  
+\begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathscr A)$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
+
   \[
   \begin{array}{lll}
     \text{f es medible} & \iff & \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0\\
@@ -1414,9 +907,9 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 
   \begin{proof}
 	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathscr A$ una $\sigma-$álgebra.
-	
+
 	La demostración para $g_2(\omega)$ es análoga. La medibilidad de $g_3(\omega)$ se deriva del hecho de que $$g_3(\omega) = \limsup f_n(\omega) = \inf_{n \ge 1} \left\{\sup_{k\ge n} f_k(\omega) \right\}$$ Así, podemos ver la función como $g_3(\omega) = \inf \{h_n(\omega) : n \in \mathbb{N}\}$, donde $h_n(\omega) := \sup \{f_k(\omega) : k \ge n\}$. Combinando lo demostrado anteriormente, concluimos que $g_3(\omega)$ es medible. De nuevo, la prueba para $g_4(\omega)$ es análoga.
-	
+
 La última afirmación proviene de que si $\fn \to f$, entonces $\limsup f_n = \liminf f_n =$ $=\lim f_n$.
 \end{proof}
 
@@ -1430,7 +923,7 @@ La última afirmación proviene de que si $\fn \to f$, entonces $\limsup f_n = \
 Centraremos ahora nuestra atención en estudiar funciones sencillas o \textit{simples}, que nos servirán más adelante como base para construir una integral.
 
 \begin{ndef}[Funciones simples positivas]
-  Diremos que una función medible $s: \Omega \to [0,\infty)$ es simple positiva si 
+  Diremos que una función medible $s: \Omega \to [0,\infty)$ es simple positiva si
   $s(\Omega) \text{ es un conjunto finito}$.
 \end{ndef}
 
@@ -1454,7 +947,7 @@ Una característica importante de las funciones simples es que siempre se pueden
   \[
     s = \sum_{k=1}^m \alpha_k \rchi_{A_k}
   \]
-  
+
   Siendo esta la descomposición canónica de $s$, que es única si $\alpha_1 < \alpha_2 <  \cdots <\alpha_m$.
 \end{nprop}
 
@@ -1471,7 +964,7 @@ En general, reservaremos las letras $\alpha_k$ y $A_k$ para denotar las constant
 \end{nprop}
 
   \begin{proof}
-    Como $s,t: \Omega \longrightarrow [0,\infty)$ son simples positivas $\implies s(\Omega) , \ t(\Omega)$ son conjuntos finitos. Supongamos que $s(\Omega) =\{ a_1, \dots ,a_n\}$  y $t(\Omega) = \{ b_1, \dots ,b_m\}$ . 
+    Como $s,t: \Omega \longrightarrow [0,\infty)$ son simples positivas $\implies s(\Omega) , \ t(\Omega)$ son conjuntos finitos. Supongamos que $s(\Omega) =\{ a_1, \dots ,a_n\}$  y $t(\Omega) = \{ b_1, \dots ,b_m\}$ .
 
     La imagen por $s+ t$ sería
     $$(s+t)(\Omega) \subseteq \{ a_i + b_j \, :\, i=1,\dots ,n \ ; \ j=1,\dots ,m\}$$
@@ -1480,7 +973,7 @@ En general, reservaremos las letras $\alpha_k$ y $A_k$ para denotar las constant
     Similarmente, $$(st)(\Omega ) \subseteq \{ a_i \cdot b_j \, : \, i=1,\dots ,n \ ; \ j=1,\dots ,m \}$$
     que también es un conjunto finito, probando que la función producto $st$ es simple.
 
-    Finalmente, como $\alpha< \infty$, la función $\alpha s:\Omega \longrightarrow [0,\infty)$. Además, 
+    Finalmente, como $\alpha< \infty$, la función $\alpha s:\Omega \longrightarrow [0,\infty)$. Además,
     $$(\alpha s)(\Omega) = \{ \alpha a_i \,:\, i=1,\dots ,n \},$$
     que es un  conjunto finito, probando que $\alpha s$ es simple.
   \end{proof}
@@ -1512,15 +1005,15 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 \end{nth}
 \begin{proof}\hfill
 
-  \boxed{ii)\implies i)} 
+  \boxed{ii)\implies i)}
   Es consecuencia directa de la \textit{Proposición \ref{p1}}, al ser $f$ el límite de funciones medibles.
-  
-  \boxed{i)\implies ii)} La idea principal se basa en dividir el dominio de $f$. Fijado un $n \in \mathbb{N}$, consideramos los conjuntos: 
+
+  \boxed{i)\implies ii)} La idea principal se basa en dividir el dominio de $f$. Fijado un $n \in \mathbb{N}$, consideramos los conjuntos:
     \begin{itemize}
       \item $F_n := \{\omega \in \Omega : f(\omega) \geq n\}$\\
       \item $E_{n,k} := \left\{\omega \in \Omega : \dfrac{k-1}{2^n} \leq f(\omega) < \dfrac{k}{2^n}\right\}$, \text{ para } $1 \leq k \leq n2^n$\\
     \end{itemize}
-  
+
   Veamos gráficamente ambos conjuntos, para un $n\in \mathbb{N}$ fijo:
   \begin{center}
 	\includegraphics[ext=.pdf,height=13.5\baselineskip]{thLebesgue.pdf}
@@ -1529,7 +1022,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
   \[
     \Omega = F_n \cup \left( \bigcup_{k=1}^{n2^n}E_{n,k} \right)
   \]
-  
+
   y podemos definir las funciones
   \[
     s_n := n\text{\huge {$\chi$}}_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \text{\huge {$\chi$}}_{E_{n,k}}
@@ -1538,36 +1031,36 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 
   Ahora, ${s_n}$ es monótona creciente, pues:
       \begin{align*}
- s_{n+1}-s_n =&  \sum_{k=1}^{(n+1)2^{n+1}} \frac{k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,k}} 
-				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+ s_{n+1}-s_n =&  \sum_{k=1}^{(n+1)2^{n+1}} \frac{k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,k}}
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}}
 				\\
-			&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} 
+			&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
 				\\ %\pause
-			=& \sum_{k=1}^{(n+1)2^{n}} \left[ \frac{2k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,2k}} 
+			=& \sum_{k=1}^{(n+1)2^{n}} \left[ \frac{2k-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,2k}}
 									+ \frac{(2k-1)-1}{2^{n+1}} \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 									\\
 			&
-				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}}
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
 				\\
 %				\pause
-			\geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+			\geq& \sum_{k=1}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}}
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 %									\\
 %			&
-				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}}
 				\\
 				&+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
 				\\
-				=& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+				=& \sum_{k=1}^{n2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}}
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
-				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}} 
+				- \sum_{k=1}^{n2^n} \frac{k-1}{2^n} \text{\huge $\chi$}_{E_{n,k}}
 				\\
-				+&\sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+				+&\sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}}
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
                                 \\
-                                = & \sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}} 
+                                = & \sum_{k=1+n 2^n}^{(n+1)2^{n}} \frac{k-1}{2^{n}} \left[  \text{\huge $\chi$}_{E_{n+1,2k}}
 									+ \text{\huge $\chi$}_{E_{n+1,2k-1}}  \right]
 				+	(n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n}
  \end{align*}
@@ -1583,14 +1076,14 @@ Donde la última igualdad se obtiene usando que $E_{n+1, 2k} \cup E_{n+1, 2k-1}=
 \[
  \dots \
  \bigcup
- \left( E_{n+1, (1+n)2^{n+1}-1} \cup E_{n+1, (1+n)2^{n+1}} \right) 
+ \left( E_{n+1, (1+n)2^{n+1}-1} \cup E_{n+1, (1+n)2^{n+1}} \right)
  =F_{n} \setminus F_{n+1},
 \]
 
 tenemos que $\displaystyle s_{n+1}-s_n \geq  n \text{\huge{$\chi$}}_{F_{n}\setminus F_{n+1}}+ (n+1) \text{\huge{$\chi$}}_{F_{n+1}} - n \text{\huge{$\chi$}}_{F_n} \geq 0$.
 
 
-Probamos para acabar que $\{ s_n(\omega)\} \to f(\omega) \ \ \forall \omega\in\Omega$. En efecto, sea $\omega\in\Omega$ fijo. 
+Probamos para acabar que $\{ s_n(\omega)\} \to f(\omega) \ \ \forall \omega\in\Omega$. En efecto, sea $\omega\in\Omega$ fijo.
  \begin{itemize}
  \item Si $f(\omega)=\infty \implies \omega\in F_n, $ $\forall n\in \mathbb N$
  \[
@@ -1615,7 +1108,7 @@ Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
 
   \begin{proof}
     Por el \textit{Teorema de aproximación de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
-    
+
     La demostración para $ \alpha f$ y $fg$ es análoga.
   \end{proof}
 
@@ -1626,7 +1119,7 @@ Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
 
 \subsection{Integral de funciones medibles positivas}
 
-Abordamos ahora el problema de definir una integral asociada a funciones medibles positivas. Para ello, formalizaremos el concepto de \textit{medida}, que nos permitirá asignar a cada conjunto medible un número $m \in [0,\infty]$, que entenderemos como la \textit{medida} de ese conjunto. 
+Abordamos ahora el problema de definir una integral asociada a funciones medibles positivas. Para ello, formalizaremos el concepto de \textit{medida}, que nos permitirá asignar a cada conjunto medible un número $m \in [0,\infty]$, que entenderemos como la \textit{medida} de ese conjunto.
 
 \begin{ndef}[Medida]
   Si $(\Omega, \mathscr A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathscr A \rightarrow [0, \infty]$ verificando:
@@ -1652,17 +1145,17 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
   \end{nlist}
 \end{nprop}
 
-\begin{proof}\hfill 
+\begin{proof}\hfill
 \begin{nlist}
     \item Escribimos convenientemente el conjunto B, y aplicamos la definición de medida:
 $$B= ( B\setminus A) \cup A \Longrightarrow \mu(B)= \mu ( (B\setminus A) + \mu(A)) \geq \mu(A)	$$
 \item Sabemos que si los conjuntos $A_k$ son disjuntos se da la igualdad. Si no lo son,  podemos considerar los conjuntos:
 $$B_1=A_1, \ B_2=A_2\setminus B_1, B_3 = A_3 \setminus (B_1 \cup B_2),\dots , B_n=A_n \setminus (B_1 \cup \dots \cup B_{n-1}), \dots $$
 
-Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disjuntos dos a dos. Por la propiedad $(i)$,  $\mu (B_k) \leq \mu (A_k)$, y tenemos 
+Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disjuntos dos a dos. Por la propiedad $(i)$,  $\mu (B_k) \leq \mu (A_k)$, y tenemos
 
   $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \mu \left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) \leq \sum_{k=1}^\infty \mu(A_k)$$
-  
+
   \item Pongamos $B_1 = A_1$, $B_n = A_{n} \setminus A_{n-1} \ \forall n \in \mathbb{N}$. Entonces, dado $n \in \mathbb{N}$ se tiene $\bigcup_{k=1}^n B_k = \bigcup_{k=1}^nA_k=A_n$, con $B_k$  disjuntos dos a dos, y también $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$. Por tanto: $$\mu\left(\bigcup_{k=1}^\infty A_k \right) = \mu\left( \bigcup_{k=1}^\infty B_k \right) = \sum_{k=1}^\infty \mu(B_k) = \lim_{n\to\infty} \sum_{k=1}^n \mu(B_k) = \lim_{n\to\infty} \mu\left(\bigcup_{k=1}^n B_k \right) = \lim_{n\to\infty} \mu\left( A_n \right)$$
 \end{nlist}
 \end{proof}
@@ -1670,7 +1163,7 @@ Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disj
 
 
 \begin{ejemplo}[Medida contadora]
-\[ 
+\[
  \mu: 2^\Omega\longrightarrow [0,\infty] , \
  \mu (A) = \left\{ \begin{array}{ll}
                                \text{card\,} A , & \text{ si } A \text{ es finito,}
@@ -1679,13 +1172,13 @@ Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disj
                               \end{array}
                               \right.
  \]
- 
+
  Es claro que $\mu(\emptyset) = |\emptyset| = 0$, y si $A_k \cap A_j = 0$, se tiene que $\mu(A_k \cup A_j) = |A_k| + |A_j| = $\\ $= \mu(A_k) + \mu(A_j)$. Si alguno de ellos no es finito, la suma será $\infty$ por la aritmética definida en $[0,\infty]$.
-	
+
 \end{ejemplo}
 
 \begin{ejemplo}[Medida de Dirac]
-Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathscr A \longrightarrow [0,\infty ]$ dada por 
+Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathscr A \longrightarrow [0,\infty ]$ dada por
  \[
  \delta_\omega (A) = \left\{ \begin{array}{ll}
                                 1, & \text{ si } \omega\in A,
@@ -1694,18 +1187,18 @@ Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$,
                               \end{array}
                               \right.
  \]
- 
+
  Fijemos $\omega \in \Omega$. Claramente $\delta_\omega(\emptyset) = 0$, porque el conjunto vacío no contiene ningún punto. Ahora, si $A_k \cap A_j = \emptyset$, pueden darse dos casos:
- 
+
 \begin{itemize}
     \item $\omega \in A_k\cup A_j \implies \omega \in A_k$ o bien $\omega \in A_j$. Supongamos $\omega \in A_k$. Entonces, $\delta_\omega(A_k\cup A_j) = 1 = 1 + 0 = \delta_\w(A_k) + \delta_\w(A_j)$.
     \item $\w \notin A_k\cup A_j \implies \w \notin A_k$ y $\w \notin A_j$. Entonces, $\delta_\omega(A_k\cup A_j) = 0 = 0 + 0 =\delta_\w(A_k) + \delta_\w(A_j)$.
 \end{itemize}
-	
+
 \end{ejemplo}
 
 \begin{ejemplo}[Medida de Lebesgue]
-	 Si $(\Omega = \mathbb R^N, \mathscr A= \mathcal B(\mathbb R^N))$ espacio medible, la medida de Lebesgue es $\lambda: \mathscr A \to [0,\infty]$ dada por  
+	 Si $(\Omega = \mathbb R^N, \mathscr A= \mathcal B(\mathbb R^N))$ espacio medible, la medida de Lebesgue es $\lambda: \mathscr A \to [0,\infty]$ dada por
  \[
  \lambda ([a_1,b_1]\times  [a_2,b_2]\times \dots [a_N,b_N]) = (b_1-a_1) (b_2-a_2) \dots (b_N-a_N)
  \]
@@ -1714,7 +1207,7 @@ Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$,
 Estamos ya en disposición de definir lo que entenderemos por integral de una función medible positiva, en el marco de un espacio de medida $(\W, \mathscr A, \mu)$. Como ya dijimos, el problema se reducirá a estudiar integrales asociadas a funciones simples, las cuales definimos a continuación.
 
 \begin{ndef}[Integral de función simple positiva]
-  Si $E \in \mathscr A$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como: 
+  Si $E \in \mathscr A$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como:
   \[
     \int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
   \]
@@ -1722,7 +1215,7 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
 
 Comprobemos ahora que la definición es consistente, es decir, que el valor de la integral no depende de la representación de $s$. Sea $s = \sum_{j=1}^m \beta_j \rchi_{B_j}$ con $\{B_j\}_{j=1}^m$ medibles y disjuntos, y $\{\beta_1,\dots,\beta_m\} \subseteq [0,\infty)$. Sabemos por la \textit{Proposición \ref{caract_simples}} que $s$ es simple. Además, supongamos que $s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su descomposición canónica.
 
-Observemos que puede ocurrir que $\beta_i = \beta_j$ para algún $i\neq j$. Teniendo esto en cuenta, definimos $I_k := \{j \in \{1,\dots,m\} : \beta_j = \alpha_k\}$, y entonces $$A_k = \bigcup_{j\in I_k} B_j$$ Realizando transformaciones algebraicas, tenemos que $$\sum_{j=1}^m \beta_j\mu(E \cap B_j) = \sum_{k=1}^n \sum_{j \in I_k} \beta_j \mu(E \cap B_j) = \sum_{k=1}^n \alpha_k \sum_{j \in I_k} \mu(E \cap B_j) \overset{(*)}{=} \sum_{k=1}^n \alpha_k  \mu \left(\bigcup_{j \in I_k} E \cap B_j \right) = $$ 
+Observemos que puede ocurrir que $\beta_i = \beta_j$ para algún $i\neq j$. Teniendo esto en cuenta, definimos $I_k := \{j \in \{1,\dots,m\} : \beta_j = \alpha_k\}$, y entonces $$A_k = \bigcup_{j\in I_k} B_j$$ Realizando transformaciones algebraicas, tenemos que $$\sum_{j=1}^m \beta_j\mu(E \cap B_j) = \sum_{k=1}^n \sum_{j \in I_k} \beta_j \mu(E \cap B_j) = \sum_{k=1}^n \alpha_k \sum_{j \in I_k} \mu(E \cap B_j) \overset{(*)}{=} \sum_{k=1}^n \alpha_k  \mu \left(\bigcup_{j \in I_k} E \cap B_j \right) = $$
 
 $$= \sum_{k=1}^n \alpha_k  \mu \left(E \cap\bigcup_{j \in I_k} B_j \right) = \sum_{k=1}^n \alpha_k  \mu (E \cap A_k)$$
 
@@ -1744,8 +1237,8 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
 \begin{proof} Supongamos que $\displaystyle s = \sum_{k=1}^n \alpha_k\rchi_{A_k}$ (descomposición canónica).\hfill
     \begin{nlist}
 	\item Sabemos que $\alpha s$ es una función simple, por ser producto de una simple y un escalar. De hecho, $\displaystyle \alpha s = \sum_{k=1}^n \alpha \alpha_k \rchi_{A_k}$. Entonces, se tiene que: $$\int_E \alpha s\, d\mu = \sum_{k=1}^n \alpha \alpha_k \mu (E\cap A_k) = \alpha \sum_{k=1}^n \alpha_k \mu (E\cap A_k) = \alpha \int_E s\, d\mu$$
-	\item Basta observar lo siguiente: $$\int_{A\cup B} s\, d\mu = \sum_{k=1}^n \alpha_k\cdot \mu((A\cup B)\cap A_k) = \sum_{k=1}^n \alpha_k \cdot \mu((A\cap A_k)\cup (B \cap A_k)) \overset{(*)}{=}$$ $$=\sum_{k=1}^n \alpha_k \left( \mu(A\cap A_k) +  \mu(B \cap A_k)\right) = \sum_{k=1}^n \alpha_k \mu(A\cap A_k) + \sum_{k=1}^n \alpha_k \mu(B\cap A_k) =$$ $$= \int_A s\, d\mu + \int_B s\, d\mu,$$ 
-	
+	\item Basta observar lo siguiente: $$\int_{A\cup B} s\, d\mu = \sum_{k=1}^n \alpha_k\cdot \mu((A\cup B)\cap A_k) = \sum_{k=1}^n \alpha_k \cdot \mu((A\cap A_k)\cup (B \cap A_k)) \overset{(*)}{=}$$ $$=\sum_{k=1}^n \alpha_k \left( \mu(A\cap A_k) +  \mu(B \cap A_k)\right) = \sum_{k=1}^n \alpha_k \mu(A\cap A_k) + \sum_{k=1}^n \alpha_k \mu(B\cap A_k) =$$ $$= \int_A s\, d\mu + \int_B s\, d\mu,$$
+
 	donde $(*)$ es consecuencia de la \textit{aditividad} de $\mu$, teniendo en cuenta que $(A\cap A_k)$ y $(B\cap A_k)$ son disjuntos, por serlo $A$ y $B$.
 \end{nlist}
 \end{proof}
@@ -1756,7 +1249,7 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
   \[
     \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ $s$ es simple positiva}, \ s \leq f\right\}
   \]
-  
+
 \end{ndef}
 
 Veamos ahora un teorema importante que, dada una sucesión de funciones convergente, nos permite bajo ciertas condiciones ``intercambiar la integral con el límite''. Antes, necesitaremos el siguiente
@@ -1766,8 +1259,8 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 	Sea $s:\W \to [0,\infty)$ simple. Entonces, $\varphi:\mathscr A \to [0,\infty]$ dada por $$\varphi(E) = \int_E s\, d\mu, \quad \forall E \in \mathscr A$$ es una medida.
 \end{lema}
 
-	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\O) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$ 
-	
+	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\O) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$
+
 	donde $(*)$ es consecuencia de la \textit{Proposición \ref{int_simples} ii}. Por tanto, $\varphi$ es aditiva, luego es una medida.
 	    %%% TODO: Estilo de referencias a un apartado en específico de una proposición.
 \end{proof}
@@ -1784,12 +1277,12 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \boxed{\geq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
     \[
     \left\{ s  : \begin{array}{r} \text{ $s$ simple positiva}\\
-        s \leq f_n 
+        s \leq f_n
       \end{array}\right\}  \subseteq \left\{ s: \begin{array}{r} \text{ $s$ es simple positiva}\\
         s\leq f_{n+1}
-	
+
       \end{array} \right\} \subseteq \left\{s: \begin{array}{r}\text{ $s$ es simple positiva}\\ s \leq f
-	
+
       \end{array}\right\}
     \]
     Tomando supremos de las respectivas integrales, esto implica que:
@@ -1800,7 +1293,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \[
       \int_E f\, d \mu = sup \left\{\int_E s\, d\mu : \begin{array}{r} \text{ $s$ es simple positiva}\\
         s \leq f
-	
+
       \end{array}\right\}
     \]
     basta ver que
@@ -1812,18 +1305,18 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \]
     pues al tomar el supremo de la primera integral, se mantiene el orden y tendríamos lo buscado. Vamos a probar este hecho. Sea $s: \Omega \to [0,\infty)$ simple positiva tal que $s \leq f$. Fijamos $\rho \in (0,1)$, y para cada $n \in \mathbb{N}$ definimos
     \[
-      E_n := \{\omega \in E : \rho s(\omega) \leq f_n(\omega)\} 
+      E_n := \{\omega \in E : \rho s(\omega) \leq f_n(\omega)\}
     \]
-    Tenemos que los conjuntos $E_n$ son medibles, puesto que la función $h:= f_n -\rho s$ es medible, y por tanto $E_n = h^{-1}([0,\infty))$ es medible para cada $n \in \mathbb{N}$. Además, claramente $E_n \subseteq E_{n+1} \ \forall n \in \mathbb{N}$, pues $\fn$ es creciente, y se verifica que $$E = \bigcup_{n=1}^\infty E_n$$ Para verlo, sea $\w \in E$. Si $f(\w) = 0 \implies s(\w) = 0 \implies \w \in E_1$. En otro caso, $\rho s(\w) < f(\w)$, pues $\rho < 1$. Entonces, $\exists n \in \mathbb{N}: \w \in E_n$. 
+    Tenemos que los conjuntos $E_n$ son medibles, puesto que la función $h:= f_n -\rho s$ es medible, y por tanto $E_n = h^{-1}([0,\infty))$ es medible para cada $n \in \mathbb{N}$. Además, claramente $E_n \subseteq E_{n+1} \ \forall n \in \mathbb{N}$, pues $\fn$ es creciente, y se verifica que $$E = \bigcup_{n=1}^\infty E_n$$ Para verlo, sea $\w \in E$. Si $f(\w) = 0 \implies s(\w) = 0 \implies \w \in E_1$. En otro caso, $\rho s(\w) < f(\w)$, pues $\rho < 1$. Entonces, $\exists n \in \mathbb{N}: \w \in E_n$.
     %%% TODO: La función h es medible, pero no positiva. Arreglar
     Ahora, se tiene lo siguiente, donde $\varphi$ es la medida definida en el \textit{Lema \ref{phi}}:
     \begin{equation} \label{eq1}
       \rho\varphi(E_n) = \rho \int_{E_n} s\, d\mu = \int_{E_n} \rho s\, d \mu \overset{\text{def. $E_n$}}{\leq} \int_{E_n}f_n\, d\mu \leq \int_E f_n\, d\mu
     \end{equation}
-    %%% WARNING: ¿estamos usando sin demostrarlo que \rho s <= f_n \implies \int \rho s <= \int f_n ??? 
+    %%% WARNING: ¿estamos usando sin demostrarlo que \rho s <= f_n \implies \int \rho s <= \int f_n ???
     La última desigualdad es así porque para toda función simple $s \leq f_n$ se tiene que $\int_{E_n}s\,d\mu \leq \int_E s\, d \mu$, como consecuencia de que $E_n \cap A_k \subseteq E \cap A_k$ y la monotonía de $\mu$.
 
-    Ahora, como $\varphi$ es una medida, si $n \to \infty$ en \eqref{eq1}, entonces: 
+    Ahora, como $\varphi$ es una medida, si $n \to \infty$ en \eqref{eq1}, entonces:
     $$\rho \varphi(E) =  \rho\int_E s\, d\mu \implies \rho \int_E s\,d\mu \leq \lim_{n\to \infty}\int_E f_n\, d\mu$$ Donde hemos usado que $\varphi(E_n) \to \varphi(E)$ cuando $n\to\infty$, porque $\{E_n\}$ es una sucesión encajada de conjuntos medibles, y $\varphi$ es una medida (\textit{Proposición \ref{prop_medida} iii}).
     Por último, hacemos tender $\rho\to 1$, y concluimos la prueba:
     \[
@@ -1844,9 +1337,9 @@ Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \m
   \[
     \int_E \alpha f\, d\mu = \alpha \int_E f\, d\mu
   \]
-  
+
 \item Monotonía $$g(\omega) \leq f(\omega) \ \forall \omega \in \Omega \implies \int_E g\, d\mu \leq \int_E f\, d \mu$$
-  
+
   %%% TODO: revisar nombre de la propiedad
 \item Integración en un conjunto más grande $$\int_E f\, d \mu =  \int_\Omega f\rchi_E \,d\mu$$
 
@@ -1856,16 +1349,16 @@ Sean \\ $f,g:\Omega \to [0,\infty]$ medibles positivas, $\alpha \in \R, E \in \m
 
 \begin{proof}\hfill
 \begin{nlist}
-    \item Ya sabemos por el \textit{Corolario \ref{arit_medibles}} que $f+g$, $fg$ y $\alpha f$ son medibles. 
+    \item Ya sabemos por el \textit{Corolario \ref{arit_medibles}} que $f+g$, $fg$ y $\alpha f$ son medibles.
     $$\dots$$
     Recordemos que tomamos el convenio $\alpha \cdot \infty = \infty, \ \alpha \cdot 0 = 0$.
-    
+
     \item
     \item
     \item Veamos la primera implicación. Empezamos notando que si $\mu(E) = 0$, entonces $\int_E s\,d\mu = 0$ para toda función simple $s$. En efecto, si $s = \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su forma canónica, entonces: $$\int_E s\,d\mu = \sum_{k=1}^n \alpha_k \mu(E \cap A_k) = \sum_{k=1}^n \alpha_k \cdot 0 = 0,$$ donde hemos usado que $\mu(E\cap A_k) = 0\ \forall k \in \{1,\dots,n\}$ por la monotonía de $\mu$, notando que $E\cap A_k \subseteq E$.
-    
+
     Por tanto, $\displaystyle \sup\left\{\int_E s\,d\mu : s \text{ es simple positiva, } s \le f \right\} = 0$, y hemos acabado.
-    
+
     Para la segunda implicación, observemos que $f=0$ es simple, pues el único valor que toma es el 0. Por tanto: $$\int_E f\,d\mu =  \sum_{k=1}^n 0\cdot \mu(E) = 0$$
 \end{nlist}
 \end{proof}
@@ -1897,7 +1390,7 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
     \[
       \lim_{k \to \infty} \int_E S_k\, d\mu = \int_E \lim_{k\to \infty} S_k\, d\mu \implies \lim_{k \to \infty} \int_E \sum_{n=1}^k f_n\, d\mu = \int_E \sum_{n=1}^\infty f_n \overset{\text{Proposición \ref {int_medibles}} \ i}\implies
     \]
-    
+
     \[
     \implies \lim_{k\to\infty} \sum_{n=1}^k \int_E f_n\,d\mu = \int_E \sum_{n=1}^\infty f_n\,d\mu \implies \sum_{n=1}^\infty \int_E f_n\,d\mu = \int_E \sum_{n=1}^\infty f_n\,d\mu
     \]
@@ -1910,19 +1403,19 @@ Para finalizar este apartado, veamos dos teoremas importantes, ambos consecuenci
   \]
 \end{lema}
 
-  \begin{proof} Definimos $g_k(\omega) :=  \underset{n\geq k}{\text{inf\,} } f_n(\omega )$. Sabemos que $\{g_k\}$ es monótona creciente por definición, y además es una sucesión de funciones medibles por la \textit{Proposición \ref{p1}}. Entonces, tenemos que: $$\underset{n\to \infty}{\text{lim\,inf\,}} f_n (\omega ) = \underset{k\geq 1}{\text{sup\,}}  \left\{ \underset{n\geq k}{\text{inf\,} } f_n(\omega )\right\}  =  \underset{k\geq 1}{\text{sup\,}} g_k(\omega) = \lim_{k\to\infty} g_k(\w)$$ 
-  
+  \begin{proof} Definimos $g_k(\omega) :=  \underset{n\geq k}{\text{inf\,} } f_n(\omega )$. Sabemos que $\{g_k\}$ es monótona creciente por definición, y además es una sucesión de funciones medibles por la \textit{Proposición \ref{p1}}. Entonces, tenemos que: $$\underset{n\to \infty}{\text{lim\,inf\,}} f_n (\omega ) = \underset{k\geq 1}{\text{sup\,}}  \left\{ \underset{n\geq k}{\text{inf\,} } f_n(\omega )\right\}  =  \underset{k\geq 1}{\text{sup\,}} g_k(\omega) = \lim_{k\to\infty} g_k(\w)$$
+
 Ahora, aplicando el \hyperref[tcm]{\textit{T.C.M}}, se tiene que:
 \[
-\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu  =  \int_E \underset{k\to \infty}{\text{lim}} g_k\, d\mu 
- =  \underset{k\to \infty}{\text{lim}}  \int_E g_k d\mu 
+\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu  =  \int_E \underset{k\to \infty}{\text{lim}} g_k\, d\mu
+ =  \underset{k\to \infty}{\text{lim}}  \int_E g_k d\mu
 \]
 
 Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega $ (por definición de ínfimo). Además, se tiene que $g_k \le \inf_{n\ge k}\ f_k$. Aplicamos la monotonía de la integral:
 \[
-\int_E g_k\, d\mu  \leq \inf_{n\ge k} \int_E f_n\, d\mu 
+\int_E g_k\, d\mu  \leq \inf_{n\ge k} \int_E f_n\, d\mu
 \overset{k\to\infty}{\implies}
-\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu 
+\int_E \underset{n\to \infty}{\text{lim\,inf\,}} f_n\, d\mu
 \leq   \underset{k\to \infty}{\lim \text{inf}} \int_E f_k\, d\mu
 \]
 %%% WARNING: Por qué está completa la prueba poniendo solo \lim en lugar de \liminf en la última desigualdad?
@@ -1935,8 +1428,8 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 
 \begin{nth}[Convergencia dominada de Lebesgue]
   Sean $f_n : \Omega \rightarrow \R$ funciones medibles y $E \in \mathscr A$. Además, supongamos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, supongamos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \ \forall \omega \in E$. Entonces,
-  
-  $$ \lim_{n \to \infty} \int_E f_n d \mu = \int_E  \left( \lim_{n \to \infty} f_n \right) d \mu$$ 
+
+  $$ \lim_{n \to \infty} \int_E f_n d \mu = \int_E  \left( \lim_{n \to \infty} f_n \right) d \mu$$
 \end{nth}
 
 \begin{nota}
@@ -1949,39 +1442,39 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 
 \begin{proof}
   Definimos $g_n(\omega) := 2g(\omega)\rchi_E(\omega) - \abs{f_n(\omega) - f(\omega)} \chi_E (\omega)$, que es integrable. Es claro que $\{g_n(\omega)\} \rightarrow 2g(\omega)\rchi_E(\omega)$, ya que $f_n(\omega) \rightarrow f(\omega)$ y $\rchi_E$ es acotada.
-  
+
   Vamos a ver además que $g_n \geq 0$ y es medible en $\Omega$ porque $$|f_n - f| \leq |f_n| + |f| \leq g + g = 2g\rchi_E(\omega)$$
-  Por el \textit{Lema de Fatou}, 
+  Por el \textit{Lema de Fatou},
   $$\liminf_{n \to \infty} \int_{\Omega} g_n d \mu \geq \int_{\Omega} \liminf_{n \to \infty} g_n d \mu = 2 \int_{\Omega} g\rchi_E(\omega)d\mu$$
-  
+
   $$\liminf_{n \to \infty} \left[\int_{\Omega} 2g(\omega)\rchi_E(\omega) d\mu - \int_{\Omega} \abs{f_n(\omega) - f(\omega)}\rchi_E(\omega) d \mu \right] \leq 2\int_{\Omega} g\rchi_E(\omega) d \mu$$
 
   Como recordatorio, $$\text{si } \exists \lim_{n \to \infty} x_n \text{ entonces } \liminf_{n \to \infty} (x_n + y_n) = \lim_{n \to \infty} x_n + \liminf_{n \to \infty} y_n$$ Además, $$\liminf_{n \to \infty} x_n = - \limsup_{n \to \infty} (- x_n)$$
   Luego entonces
-  
+
   $$2 \int_{\Omega} g(\omega)\rchi_E(\omega) d \mu + \liminf_{n \to \infty} \left[-\int_{\Omega} \abs{f_n - f} \rchi_E(\omega) d \mu \right]$$
-  
+
   $$ = 2 \int_{\Omega} g \rchi_E(\omega) d \mu - \limsup_{n \to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E(\omega) d \mu$$
-  
+
   En resumen,
-  
+
   $$2 \int_{\Omega} g \rchi_E(\omega) d \mu - \limsup_{n \to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E(\omega) d \mu \geq 2 \int_{\Omega} g \rchi_{E} d \mu$$
-  
+
   $$\int_{\Omega} g \rchi_{E} d \mu = \int_{\Omega} g  d \mu < \infty \Rightarrow \limsup_{n \ to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E d \mu \leq 0$$
-  
+
   $$\Rightarrow 0 \leq \liminf_{n \to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E d \mu \leq \limsup_{n \to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E d \mu = 0$$
-  
+
   $$\Rightarrow \exists \lim_{n \to \infty} \int_{\Omega} \abs{f_n - f} \rchi_E d \mu = 0$$
-  
-  Sustituyendo $\Omega$  por $E$ hemos probado entonces que 
+
+  Sustituyendo $\Omega$  por $E$ hemos probado entonces que
   $$\lim_{n \to \infty} \int_{E} \abs{f_n - f} d \mu = 0$$
-  
+
   $$- \int_E \abs{f_n - f} d \mu \leq \int_E (f_n - f) d \mu \leq \int_E \abs{f_n - f} d \mu$$
-  
+
   Sumando entonces $\displaystyle \int_E f d \mu$ a cada término tenemos
-  
+
   $$ - \int_E \abs{f_n - f} d \mu + \int_E f d \mu \leq \int_E f_n d \mu \leq \int_E \abs{f_n - f} d \mu + \int_E f d \mu$$
-  
+
   Y si finalmente, tomando $\lim_{n \to \infty}$ tenemos que
   $$ \exists \lim_{n \to \infty} \int_E f_n d \mu = \int_E f d \mu$$
 \end{proof}
@@ -1998,15 +1491,15 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
   $$ \liminf_{n\to \infty} \int_\Omega (f_n -h)\, d\mu \geq \int_\Omega \liminf_{n\to \infty}(f_n - h)\, d\mu$$
   $$  \liminf_{n\to \infty}\int_\Omega f_n\, d\mu   - \int_\Omega h\, d\mu \geq \int_\Omega \liminf_{n\to \infty} f_n\, d\mu - \int_\Omega h\, d\mu$$
   Y podemos suprimir los miembros iguales para concluir la prueba.
-\end{proof} 
+\end{proof}
 
 \begin{nth}[Teorema de la convergencia monótona para funciones integrables]
-  Sean $f_n: \Omega \to \R$ funciones integrables y $f_n(\omega) \leq f_{n+1} \ \ \ \forall \omega \in \Omega$. Supongamos también que $\{\int_\Omega f_n d\mu\}$ es una sucesión acotada superiormente. Entonces: 
+  Sean $f_n: \Omega \to \R$ funciones integrables y $f_n(\omega) \leq f_{n+1} \ \ \ \forall \omega \in \Omega$. Supongamos también que $\{\int_\Omega f_n d\mu\}$ es una sucesión acotada superiormente. Entonces:
   $$ \begin{cases}
     f(\omega):= \lim_{n\to \infty}f_n(\omega) \text{ es integrable}\\
     \lim_{n \to \infty} \int_\Omega f_n d\mu = \int_{\Omega}\lim_{n\to \infty} f_n d\mu
   \end{cases}$$
-  
+
 \end{nth}
 \begin{proof}
   Sabemos que $f_1 \leq f_2 \leq \cdots \leq f_n \leq \cdots $. Como queremos que sean positivas, definimos $h_n:= f_n - f_1$, que es medible por diferencia de medibles y monótona creciente. Así, tenemos las condiciones para aplicar el teorema de la convergencia monótona para funciones medibles positivas y ver que:
@@ -2026,7 +1519,7 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
 
 \begin{nprop} Sea $f:\mathscr A \to [0,\infty]$ medible. Entonces, se verifican las siguientes afirmaciones:
   \begin{nlist}
-	
+
   \item $\displaystyle \int_\Omega f\, d\mu < \infty \implies \mu(\{\omega \in \Omega: f(\omega) =  \infty\}) = 0$
   \item $\displaystyle \int_\Omega f\, d\mu = 0 \iff \mu(\{\omega \in \Omega : f(w) > 0\}) = 0$
 \end{nlist}
@@ -2037,14 +1530,14 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
     \item Llamemos $E := \{\w \in \W: f(\w) = \infty\} \subseteq \W$. Se tiene que $E$ es medible, pues es diferencia de conjuntos medibles: $E = f^{-1}[0,\infty] \setminus f^{-1}[0,\infty)$. Veamos el contrarrecíproco: $$\int_\W f\, d\mu \ge \int_E f\,d\mu \ge \int_E n\rchi_E\,d\mu = n\mu(E) \quad \forall n \in \mathbb{N}$$
     Como $n\mu(E) \to \infty$ cuando $n\to \infty$, tenemos lo buscado.
     \item Veamos las dos equivalencias:
-    
+
     \boxed{\Rightarrow}  Empezamos probando que si $s$ es una función simple positiva con integral $\int_\Omega s \, d\mu = 0$, entonces $\mu(\{ \omega\in\Omega \, :\, s(\omega) >0\} ) = 0$. En efecto, si $$s(\omega)=\sum_{i=1}^m \alpha_i \text{\Large$\chi$}_{A_i}, \quad (\alpha_1,\alpha_2,\dots,\alpha_m > 0)$$ entonces $\displaystyle A:=\{ \omega\in\Omega \, :\, s(\omega) >0\} = \bigcup_{i=1}^m A_i$, y $\displaystyle \int_\Omega s \, d\mu = \sum_{i=1}^m \alpha_i \mu (A_i) = 0 \implies\mu(A_i)=0\ \forall i=1,\dots , m$, por lo que $\mu(A)=0 $.
 
-Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{Teorema de convergencia monótona}: 
+Ahora, por el \textit{Teorema de aproximación de Lebesgue} existe una sucesión de funciones simples positivas $\{ s_n(\omega)\}\nearrow f(\omega)$. Por el \textit{Teorema de convergencia monótona}:
 
 $$0\leq \int_\Omega s_n \, d\mu \nearrow \int_\Omega f\, d\mu = 0,$$
 
-es decir, $\displaystyle \int_\Omega s_n \, d\mu=0$, y por lo acabado de probar, $\mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0 \ \forall n$. 
+es decir, $\displaystyle \int_\Omega s_n \, d\mu=0$, y por lo acabado de probar, $\mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0 \ \forall n$.
 
 Claramente, $\{ \omega\in\Omega \, :\,f(\omega) >0\}\subseteq \{ \omega\in\Omega \, :\, s_n(\omega) >0\}$ y, por tanto, $$0\leq \mu (\{ \omega\in\Omega \, :\,f(\omega) >0\} ) \leq \mu(\{ \omega\in\Omega \, :\, s_n(\omega) >0\} ) = 0$$
 
@@ -2074,13 +1567,13 @@ Vamos a dar algunas definiciones:
 
 \begin{proof}
   Para probarlo, tenemos que demostrar que $$ \int_{\Omega} \frac{|f|}{\left( \int_{_\Omega} |f|^p d \mu \right)^{\frac{1}{p}}} \frac{|g|}{\left( \int_{_\Omega} |g|^q d \mu \right)^{\frac{1}{q}}} d \mu \leq 1$$
-  
+
   Aplicamos Young
-  
+
   $$\int_{\Omega} \frac{|f|}{\left( \int_{_\Omega} |f|^p d \mu \right)^{\frac{1}{p}}} \frac{|g|}{\left( \int_{_\Omega} |g|^q d \mu \right)^{\frac{1}{q}}} d \mu \leq $$
-  
+
   %FIXME: FALTAN COSAS
-  
+
   Se da la igualdad cuando $\displaystyle \frac{|f|^p}{\int_{\Omega} |f|^p d \mu } = \frac{|g|^q}{\int_{\Omega} |g|^q d \mu }$
 \end{proof}
 
@@ -2089,7 +1582,7 @@ Vamos a dar algunas definiciones:
   \[
     f,g\in \mathcal{L}^p(\Omega), \quad f\sim  g \iff f(\omega)= g(\omega) \ \ \ a.e. \omega \in \Omega
   \]
-  
+
 \end{ndef}
 
 
@@ -2113,16 +1606,16 @@ Ejercicio:
 \end{nth}
 \begin{proof}
   Ya hemos probado que el espacio es normado. Probemos ahora que es completo.\\
-  
+
   Sea $\{ F_n\} \subset L^p(\Omega)$ una sucesión de Cauchy: $\forall \epsilon > 0 \ \ \exists n_0 \in \mathbb N : n,m \geq n_0 \implies \| F_n - F_m \|_p < \epsilon$.
   Tomo entonces $\epsilon = \dfrac{1}{2}$. Entonces, por la definición $\exists n_1 \in \mathbb N$ tal que si $n,m \geq n_1 \implies \| F_n - F_m \|_p < \epsilon $.
   Si tomo $\epsilon = \dfrac{1}{2^2}$, $\exists n_2 > n_1 \ : \ n,m \geq n_2 \implies \| F_n - F_m \|_p < \epsilon$.\\
   Sucesivamente, podemos definir $\epsilon= \dfrac{1}{2^k}$ y entonces $\exists n_k : \ n_k > n_{k-1} > \cdots > n_1 : \ \ m,n \geq n_k \implies \| F_n - F_m \|_p < \epsilon$
-  
+
   Así, podemos definir una aplicación $\sigma: \mathbb N \to \mathbb N$ que lleva $k \mapsto n_k 0 \sigma(k)$ estrictamente creciente ($\sigma(k) > \sigma(k-1)$ y podemos tomar $\{F_{\sigma(k)}\}$ como una subsucesión y teniendo que: $\| F_{\sigma(k+1)} - F_{\sigma(k)} \|_p < \dfrac{1}{2^k}$.
-  
+
   Teniendo esta subsucesión, vamos a probar que es convergente. Para facilitar la tarea, vamos a tomar esta subsucesión como una sucesión, sin tener en cuenta la sucesión inicial durante un tiempo.
-  
+
   Definimos entonces:
   \[
     g_n := \sum_{k=1}^n |f_{\sigma(k+1)} - f_{\sigma(k)}|
@@ -2133,39 +1626,39 @@ Ejercicio:
   \]
   Entonces, por el Teorema de la convergencia monótona:
   \[
-    \int_\Omega |g_n|^p d\mu \to \int_\Omega |g|^p d\mu \implies (\int_\Omega |g_n|^p d\mu)^{1/p} \to (\int_\Omega |g|^p d\mu)^{1/p} 
+    \int_\Omega |g_n|^p d\mu \to \int_\Omega |g|^p d\mu \implies (\int_\Omega |g_n|^p d\mu)^{1/p} \to (\int_\Omega |g|^p d\mu)^{1/p}
   \]
   \[
     \implies \|g_n\|_p \to \|g\|_p
   \]
   Y por el teorema de la convergencia monótona:
   \[
-    \|g\|_p = \lim_{n\to \infty} \|g_n\|_p \leq 1  
+    \|g\|_p = \lim_{n\to \infty} \|g_n\|_p \leq 1
   \]
   Esto indica que:
   \[
     \int_\Omega |g|^p d\mu \leq 1 \implies g \in \mathcal L ^p(\Omega) \implies \mu(\{ \omega \in \Omega : g(\omega) = \infty\}) = 0
   \]
-  
+
   Consideramos el conjunto:
   \[
     E = \{ \omega \in \Omega : g(\omega) < \infty\}
-  \]	
+  \]
   Podemos considerar ahora :
   \[
     f_{\sigma(k)} = f_{\sigma(k)} \mathcal X _E \implies F_{\sigma(k)} = [f_{\sigma(k)}] = f_{\sigma(k)} \mathcal X _E
   \]
-  
+
   \begin{nota}
     La diferencia entre  $f_{\sigma(k)}$ y $f_{\sigma(k)}\mathcal X _E$ es que la que está multiplicada por la función característica nunca puede tomar valores en infinito.
   \end{nota}
-  
+
   Si $G = [g] = [g \mathcal X _E]$, podemos afirmar sin pérdida de generalidad que $g(\omega) < \infty \ \ \ \forall \omega \in \Omega$ donde $g$ es un representante de la clase $[g]$.
-  
+
   Sabiendo que:
   \[
     \sum_{k \geq 1} |f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega)| \text{ es convergente}
-  \]	
+  \]
   pues lo habíamos dicho antes, entonces:
   \[
     \sum_{k \geq 1} f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega) \text{ es absolutamente convergente}
@@ -2174,7 +1667,7 @@ Ejercicio:
   \[
     \exists h(\omega):= \sum_{k=1}^\infty (f_{\sigma(k+1)}(\omega) - f_{\sigma(k)}(\omega))
   \]
-  medible por ser límite puntual de medibles y 
+  medible por ser límite puntual de medibles y
   \[
     h(\omega) = \lim_{k \to \infty}[f_{\sigma(k+1)}(\omega) -f_{\sigma(1)}(\omega)]
   \]
@@ -2182,13 +1675,13 @@ Ejercicio:
   \[
     f_{\sigma(k+1)}(\omega) \to h(\omega) + f_{\sigma(1)}(\omega)
   \]
-  
+
   %%% TODO: completar:
   Falta añadir por qué $g(\omega) + f_{\sigma(1)} \in \mathcal L ^p (\Omega)$
-  
-  
-  
-  
+
+
+
+
   Y entonces, $\exists \{ F_{\sigma(n)}\}$ convergente en $L^p(\Omega)$ y , como $\{F_n\}$ es de Cauchy, entonces $\{F_n\}$ es convergente en $L^p(\Omega)$.
 \end{proof}
 
@@ -2262,7 +1755,7 @@ $\int_{\Omega}f_{n}^{p}d\mu \rightarrow \int_{\Omega}f^{p}d\mu$ y $\|f - f_{n}\|
 $f_{n} \rightarrow f$ en $\mathcal L^{p}(\Omega) \Leftrightarrow \|f_{n}-f\|_{p}
 \rightarrow 0 \Leftrightarrow \|[f_{n}]-[f]\|_{p} \rightarrow 0 \Leftrightarrow
 {[f_{n}]} \rightarrow [f]]$ $L^{p}(\Omega)$ es lo que llamamos
-\textit{convergencia p-media}. 
+\textit{convergencia p-media}.
 
 El corolario \ref{jose} es una "vuelta" de la última implicación de
 convergencia. Pero solo lo podemos afinar por una sucesión parcial.
@@ -2320,7 +1813,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
   c.u. $\omega \in F$.
 
   % WARNING: Acaba de decir no se qué de una propiedad de no se qué medida que dice
-  % que está mal ayuda antcc      
+  % que está mal ayuda antcc
 
 \end{proof}
 
@@ -2351,7 +1844,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
    0$ tal que si $E \in \mathscr A$ y $\mu(E) < \delta$ entonces $\displaystyle \int_E |f|^p d\mu < \frac{\varepsilon}{2^p}$.
 
    Como $\{f_n\} \rightarrow f$ con  $\frac{\varepsilon^{\frac{1}{p}}}{2} > 0$ $\Rightarrow \exists n_0 \in \N$ tal que si $n
-   \geq n_0$ entonces $\|f_n - f\|_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$ 
+   \geq n_0$ entonces $\|f_n - f\|_{\mathcal L^p(\Omega)} < \frac{\varepsilon^{\frac{1}{p}}}{2}$
 
    $$\left(\int_E |f_n|^p d\mu\right)^{\frac{1}{p}} = \|f_n\|_{ L^p(E)} \leq \|f_n -
    f\|_{ L^(E)}+ \|f\|_{ L^p(E)} \leq \|f_n - f\|_{
@@ -2375,7 +1868,7 @@ convergencia. Pero solo lo podemos afinar por una sucesión parcial.
 
   \boxed{\Leftarrow}
 
-  
+
 \end{proof}
 
 Vamos a ver ahora el Teorema de Fubini y Tonelli, que nos permite reducir la integración en un
@@ -2432,7 +1925,7 @@ Supongamos $f: \R^N \times \R^M \rightarrow \R$ y suponemos que $f \in L^1(\R^N
   \end{cases} = (b -a) \rchi_{(c, d)} (y)\]
   % FIXME Falta una línea aquí y el "punto 3" (en este documento no están numeradas).
 %\int_{\R}
-  
+
 \end{ejemplo}
 
 \begin{nota}
@@ -2497,7 +1990,7 @@ El ``truco'' para resolver esta integral es utilizar:
   $4D$. Definimos $D$ como $\{ (x, y) \in [0, R] \times [0, R] : x^2 + y^2 \leq
   R^2 \}$. El área de $D$ es:
   \begin{align*}
-    \text{área } = \int_D 1 \ dxdy 
+    \text{área } = \int_D 1 \ dxdy
   \end{align*}
 \end{minipage} \hfill
 \begin{minipage}[b]{0.35\textwidth}
@@ -2633,7 +2126,7 @@ $$\int_{\R^3}f(x,y,z) \ dxdydz = \int_0^{\infty} \left[ \int_{-\pi}^{\pi} \left(
 
     $$\overline {\int}f = inf \left \{ \sum_{i=1}^{n} M_i(x_i - x_{i-1}) : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \right \}$$
 
-    con $m_i = inf \{ f(x) : x_{i-1} < x < x_i \}$ y $M_i = sup \{ f(x) : x_{i-1} < x < x_i \}$. 
+    con $m_i = inf \{ f(x) : x_{i-1} < x < x_i \}$ y $M_i = sup \{ f(x) : x_{i-1} < x < x_i \}$.
 \end{ndef}
 
 \begin{ndef}[Integral de Riemann]
@@ -2645,9 +2138,9 @@ $$\mathcal R(I) = \{ f : [a, b] \rightarrow \R \text{ acotada } : f \text{ es \t
 $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \textit{Lebesgue-integrable}} \}$$
 
 \begin{nth}
-    Sea $I = [a, b] \subset \R$ un intervalo y $f : [a, b] \rightarrow \R$ una función acotada. Entonces, 
+    Sea $I = [a, b] \subset \R$ un intervalo y $f : [a, b] \rightarrow \R$ una función acotada. Entonces,
     $$f \in \mathcal R(I) \Leftrightarrow f \text{ es continua a.e. en } [a, b]$$
-    Además, $\mathcal R(I) \subset \mathcal L (I)$ con 
+    Además, $\mathcal R(I) \subset \mathcal L (I)$ con
     $$ \mathcal R \int_a^b f = \int_{(a,b)} f \ dx $$
 \end{nth}
 
@@ -2661,7 +2154,7 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
     Consideramos también $A^n_i := (x^n_{i-1}, x^n_i), \ s_n := \sum^{2^n}_{i=1} m^n_i \rchi_{A_{i}}, \ t_n := \sum^{2^n}_{i=1} M^n_i \rchi_{A_{i}}$.
 
     \begin{nota}
-        $s_n$ y $t_n$ son funciones simples positivas $(f \geq 0)$ con 
+        $s_n$ y $t_n$ son funciones simples positivas $(f \geq 0)$ con
         \begin{align*}
             \label{}
             (b - a) \underset{[a,b]}{\text{inf}} f &\leq s_1(x) \leq \hdots \leq s_n(x) \leq s_{n+1}(x) \leq \hdots \leq f(x) \\
@@ -2681,7 +2174,7 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
     Se dice que una función $f : [a, b] \rightarrow \R$ es absolutamente continua si $\forall \varepsilon > 0 \exists \delta > 0$ tal que $$ \begin{rcases}
         a \leq x_1 \leq \hdots \leq x_n \leq b \\
         \sum^{n}_{i=0} (x_i - x_{i-1}) < \delta
-    \end{rcases} \Rightarrow  \sum^{n}_{i=0} |f(x_i) - f(x_{i-1})| < \varepsilon$$ 
+    \end{rcases} \Rightarrow  \sum^{n}_{i=0} |f(x_i) - f(x_{i-1})| < \varepsilon$$
 \end{ndef}
 
 \begin{nprop}
@@ -2711,7 +2204,7 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
         \item $\displaystyle g(c) \leq g(d) \ y \ \frac{g(x_k) - g(x_{k-1})}{x_k - x_{k-1}} < - A \ \ \forall k \in S$
         \item $ \displaystyle g(c) \geq g(d) \ y \ \frac{g(x_k) - g(x_{k-1})}{x_k - x_{k-1}} > A \ \ \forall k \in S$
     \end{itemize}
-    Entonces, $ \displaystyle \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| > |g(d) - g(c)| + A \sum^{}_{k \in S} (x_k - x_{k-1})$ 
+    Entonces, $ \displaystyle \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| > |g(d) - g(c)| + A \sum^{}_{k \in S} (x_k - x_{k-1})$
 
 \end{lema}
 
@@ -2725,7 +2218,7 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
 
     $$\overline{D} f (x) := \lim_{y \to x} sup \frac{f(y) - f(x)}{y -x}, \underline{D} f (x) := \lim_{y \to x} inf \frac{f(y) - f(x)}{y -x}$$
 
-    Necesitamos demostrar que el siguiente conjunto tiene medida cero: \begin{align*} 
+    Necesitamos demostrar que el siguiente conjunto tiene medida cero: \begin{align*}
         \left\{ x \in [a, b] : \nexists f'(x) = \lim_{y \to x} \frac{f(y) - f(x)}{y - x} \in [0, +\infty] \right\} &= \{ x \in [a, b] : \underline{D} f(x) < \overline{D} f(x) \} \\
             & \subseteq \{ x \in [a, b] : f \text{ es continua en } x \text{ y } \underline{D} f(x) < \overline{D} f(x) \} \\
             & \cup \{ x \in [a, b] : f \text{ no es continua en } x \}
@@ -2757,7 +2250,7 @@ $$\mathcal L(I) = \{ f : [a, b] \rightarrow \R \text{ medible } : f \text{ es \t
         \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| &= \sum^{n}_{k=1} \bigg\lvert  f(x_k) - \frac{r+s}{2}x_k - \left( f(x_{k-1}) - \frac{r+s}{2} x_{k-1} \right) \bigg\rvert \\
                                              &\leq \sum^{n}_{k=1} |f(x_k) - f(x_{k-1}) | + |B| (b-a)  \\
                                              &= \sum^{n}_{k=1}  (f(x_k) - f(x_{k-1})) + |B|(b-a) \\
-                                             &= f(b) - f(a) + |B|(b-a)  
+                                             &= f(b) - f(a) + |B|(b-a)
     \end{align*}
 Esto nos permite decir que \begin{align*}
     \exists T :&= sup \left\{ \sum^{n}_{k=1} |g(x_k) - g(x_{k-1})| : P = \{ x_0 = a < x_1 < \hdots < x_n = b \} \in \mathcal P ([a, b]) \right\} \\
@@ -2778,7 +2271,7 @@ $E \setminus P = \cup_{k=1}^n E \cap (x_{k-1}) = \left\{ x \in (x_{k-1}, x_k) : 
 
 Posibilidad 1.
 
-Usando que $g$ es continua en $x$, 
+Usando que $g$ es continua en $x$,
 \begin{align*}
     \label{}
     \lim_{z \nearrow x} g(z) = g(x) \Rightarrow \lim_{n \nearrow x} \frac{g(y) - g(z)}{y-z} = \frac{g(y)-g(x)}{y-x} < - A \\
@@ -2787,7 +2280,7 @@ Usando que $g$ es continua en $x$,
 
 Posibilidad 2.
 
-Usando que $g$ es continua en $x$, 
+Usando que $g$ es continua en $x$,
 \begin{align*}
     \label{}
     \lim_{z \searrow x} g(z) = g(x) \Rightarrow \lim_{n \searrow x} \frac{g(y) - g(z)}{y-z} = \frac{g(y)-g(x)}{y-x} < - A \\
@@ -2809,7 +2302,7 @@ Volviendo a lo anterior, para cada $k = 1, 2, \hdots, n$. Puede ocurrir que:
     \frac{g(b_x) - g(a_x)}{b_x - a_x} > A
 \end{align*}
 
-%$x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap (x_k, x_{k-1}) = \{ x \in (x_k, x_{k-1}) : g \text{ es continua en } x, \underline{D} g(x) < -A < A < \overline{D} g(x) \}$ 
+%$x \in E \setminus P \Rightarrow \exists k = 1, \hdots, n$ tal que $x \in E \cap (x_k, x_{k-1}) = \{ x \in (x_k, x_{k-1}) : g \text{ es continua en } x, \underline{D} g(x) < -A < A < \overline{D} g(x) \}$
 
 %FIXME: Y aquí ya me cansé. Completar.
 \end{proof}
@@ -2820,7 +2313,7 @@ Volviendo a lo anterior, para cada $k = 1, 2, \hdots, n$. Puede ocurrir que:
 
 \begin{proof}
 
-  
+
 \end{proof}
 
 
@@ -2847,11 +2340,3 @@ Volviendo a lo anterior, para cada $k = 1, 2, \hdots, n$. Puede ocurrir que:
   1987.
 
 \end{thebibliography}
-
-
-
-% ---------------------------------------------------------------------------
-% FIN DEL DOCUMENTO
-% ---------------------------------------------------------------------------
-
-\end{document}

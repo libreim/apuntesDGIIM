@@ -1,481 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% 
-% Ejercicios resueltos de Análisis Matemático II.
-% Doble Grado de Informática y Matemáticas.
-% Universidad de Granada.
-% Curso 2016/17.
-% 
-% 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Guillermo Galindo (@guillegalor)
-% Antonio Coín (@antcc)
-% Sofía Almeida (@SofiaAlmeida)
-% Miguel Lentisco (@AlfaOmegaX)
-% Luis Ortega (@Ludvins)
-% 
-% Agradecimientos:
-% Andrés Herrera (@andreshp) y Mario Román (@M42) por
-% las plantillas base.
-% 
-% Sitio original:
-% https://github.com/libreim/apuntesDGIIM/
-% 
-% Licencia:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-% ------------------------------------------------------------------------------
-% ACKNOWLEDGMENTS
-% ------------------------------------------------------------------------------
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Plantilla básica de Latex en Español.
-% 
-% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
-% 
-% Es una plantilla básica para redactar documentos. Utiliza el paquete fancyhdr
-% para darle un estilo moderno pero serio.
-% 
-% La plantilla se encuentra adaptada al español.
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Plantilla de Trabajo
-% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
-% al castellano y a las necesidades de escribir informática y matemáticas.
-% 
-% Editada por: Mario Román
-% 
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Short Sectioned Assignment
-% LaTeX Template
-% Version 1.0 (5/5/12)
-% 
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-% 
-% Original author:
-% Frits Wenneker (http://www.howtotex.com)
-% 
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-% Tipo de documento y opciones.
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[11pt, a4paper]{article}
-
-
-% ---------------------------------------------------------------------------
-% PAQUETES
-% ---------------------------------------------------------------------------
-
-% Idioma y codificación para Español.
-\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
-\selectlanguage{spanish} 
-% \usepackage[T1]{fontenc}
-
-% Fuente utilizada.
-\usepackage{courier}    % Fuente Courier.
-\usepackage{microtype}  % Mejora la letra final de cara al lector.
-
-% Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
-\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
-\usepackage{lastpage}   % Referencia a la última página.
-\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
-\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
-\usepackage{geometry}            % Geometría de las páginas.
-
-% Símbolos y matemáticas.
-\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
-\usepackage{upgreek}
-
-\usepackage{mdframed}
-\usepackage{xcolor}
-
-
-% Otros.
-\usepackage{enumitem}   % Listas mejoradas.
-\usepackage[hidelinks]{hyperref}
-\usepackage{graphicx}   % Gráficos.
-\usepackage{caption}
-
-% Dibujos Tikz
-\usepackage{pgf,tikz}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows,calc,intersections,through,backgrounds}
-
-% Fuentes personalizadas
-
-\usepackage[scaled=.85]{newpxtext,newpxmath}
-\usepackage[scaled=.85]{FiraSans}
-\usepackage[T1]{fontenc}
-
-% Código para ajustar las fuentes matemáticas al estilo del texto
-% que le rodea
-
-\DeclareMathVersion{sans}
-\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
-\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
-\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
-\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
-\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
-
-\DeclareMathVersion{boldsans}
-\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
-\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
-\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
-\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
-\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
-
-\newif\IfInSansMode
-\let\oldsf\sffamily
-\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
-\let\oldmd\mdseries
-\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
-\let\oldbf\bfseries
-\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-   \mathversion{bold}\fi\relax}
-\let\oldnorm\normalfont
-\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
-\let\oldrm\rmfamily
-\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
-
-% Colores
-
-\definecolor{50}{HTML}{E8F5E9}
-\definecolor{300}{HTML}{81C784}
-\definecolor{500}{HTML}{4CAF50}
-\definecolor{700}{HTML}{388E3C}
-
-% ---------------------------------------------------------------------------
-% OPCIONES PERSONALIZADAS
-% ---------------------------------------------------------------------------
-
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Formato de texto.
-\linespread{1.3}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlist{leftmargin=.5in}   % Indentación para las listas.
-
-% Estilo de página.
-\pagestyle{fancy}
-\fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
-
-% Estilo de las cabeceras
-
-\titleformat{\section}
-  {\Large\bfseries\sffamily}{\thesection}{1em}{}
-\titleformat{\subsection}
-  {\large\sffamily}{\thesubsection}{1em}{}
-
-% Estilo de enlaces
-\hypersetup{
-  % hidelinks = true,   % Oculta todos los enlaces.
-  colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
-  linkcolor=black,     % Color de enlaces genéricos
-  citecolor={blue!50!black},   % Color de enlaces de referencias
-  urlcolor={blue!80!black}     % Color de enlaces de URL
-}
-
-% Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
-
-% Redefinir entorno de demostración (reducir espacio superior)
-% \makeatletter
-% \renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-% \makeatother
-
-% Aumentar el tamaño del interlineado
-\linespread{1.3}
-
-% Permitir salto de página en ecuaciones
-\allowdisplaybreaks
-
-% ---------------------------------------------------------------------------
-% COMANDOS PERSONALIZADOS
-% ---------------------------------------------------------------------------
-
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}    
-
-% Fracción grande: \ddfrac{}{}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-% Texto en negrita en modo matemática: \bm{}
-\newcommand{\bm}[1]{\boldsymbol{#1}}
-
-% Línea horizontal.
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
-
-% Letras de conjuntos
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-
-% Sucesiones
-\newcommand{\xn}{\{x_n\}}
-\newcommand{\fn}{\{f_n\}}
-
-% Letra griega "chi" en línea con el texto
-\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi 
-
-% Letra 'omega'
-\newcommand{\W}{\Omega}
-\newcommand{\w}{\omega}
-
-
-% ---------------------------------------------------------------------------
-% CABECERA Y PIE DE PÁGINA
-% ---------------------------------------------------------------------------
-
-\renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
-
-\renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
-
-%\addtolength{\headheight}{4ex}
-\renewcommand{\headrulewidth}{0pt}
-
-\addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
-
-\fancypagestyle{section}{%
-  \fancyhead{}
-  %\addtolength{\headheight}{-10ex}
-  %\renewcommand{\headheight}{0pt}%
-  %\setlength{\footskip}{-48pt}%
-  \fancyfoot[LE,RO]{\Large\sffamily\thepage}
-  \renewcommand{\headrulewidth}{0pt}%
-  \renewcommand{\footrulewidth}{0pt}%
-}
-
-\let\originalsection\section
-\RenewDocumentCommand{\section}{som}{%
-  \IfBooleanTF{#1}
-    {\originalsection*{#3}}
-    {\IfNoValueTF{#2}
-      {\originalsection{#3}}
-      {\originalsection[#2]{#3}}%
-    }%
-  \thispagestyle{section}%
-}
-
-\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
-\fancyhead[LO,RE]{\sffamily{\leftmark}}
-\fancyfoot[LE,RO]{\Large\sffamily\thepage}
-
-% ---------------------------------------------------------------------------
-% ENTORNOS PARA MATEMÁTICAS
-% ---------------------------------------------------------------------------
-
-% Nuevo estilo para definiciones.
-\newtheoremstyle{definition-style} % Nombre del estilo.
-{}               % Espacio por encima.
-{}               % Espacio por debajo.
-{}                   % Fuente del cuerpo.
-{}                   % Identación.
-{\bf\sffamily}                % Fuente para la cabecera.
-{.}                  % Puntuación tras la cabecera.
-{.5em}               % Espacio tras la cabecera.
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}     % Especificación de la cabecera (actual: nombre en negrita).
-
-% Nuevo estilo para notas.
-\newtheoremstyle{remark-style} 
-{10pt}                
-{10pt}                
-{}                   
-{}                   
-{\itshape \sffamily}          
-{.}                  
-{.5em}               
-{}                  
-
-% Nuevo estilo para teoremas y proposiciones.
-\newtheoremstyle{theorem-style}
-{}                
-{}                
-{}           
-{}                  
-{\bfseries \sffamily}             
-{.}                
-{.5em}           
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
-
-
-% Configuración general de mdframe, los estilos de los teoremas, etc
-\mdfsetup{skipabove=12pt,skipbelow=12pt,innertopmargin=12pt,innerbottommargin=4pt}
-
-% Creamos los 'marcos' de los estilos
-
-\mdfdefinestyle{nth-frame}{
-	linewidth=2pt, %
-	linecolor= 500, % 
-	%linecolor=black,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, % 
-	rightmargin=0pt, %
-	innerrightmargin=0pt, % % 
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}% 
-
-\mdfdefinestyle{nprop-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	%linecolor= gray, 
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=0em, 
-	rightmargin=0pt, %
-	%splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}%       
-
-\mdfdefinestyle{ndef-frame}{
-	linewidth=2pt, %
-	linecolor= 300, % 
-	%linecolor= gray!50,
-	backgroundcolor= 50,
-	%backgroundcolor= gray!5,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em, 
-	rightmargin=0pt, % 
-	innertopmargin=1.5em,%
-	innerbottommargin=1em, % 
-	splittopskip=\topskip, %
-	%splitbottomskip=\topskip, %
-}%               
-
-% Asignamos los marcos a los estilos
-
-\surroundwithmdframed[style=nth-frame]{nth}
-\surroundwithmdframed[style=nprop-frame]{nprop}
-\surroundwithmdframed[style=nprop-frame]{ncor}
-\surroundwithmdframed[style=ndef-frame]{ndef}
-\surroundwithmdframed[style=ndef-frame]{ejer}
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\bf \sffamily}              
-{:}                 
-{.5em}               
-{}                   
-
-% Teoremas, proposiciones y corolarios.
-\theoremstyle{theorem-style}
-\newtheorem{nth}{Teorema}[section]
-\newtheorem{nprop}{Proposición}[section]
-\newtheorem{ncor}{Corolario}[section]
-\newtheorem{lema}{Lema}[section]
-% Definiciones.
-\theoremstyle{definition-style}
-\newtheorem{ndef}{Definición}[section]
-\newtheorem{ejer}{Ejercicio}[section]
-
-% Notas.
-\theoremstyle{remark-style}
-\newtheorem*{nota}{Nota}
-\newtheorem*{sol}{Solución}
-
-
-% Ejemplos.
-\theoremstyle{example-style}
-\newtheorem{ejemplo}{Ejemplo}[section]
-
-% Listas ordenadas con números romanos (i), (ii), etc.
-\newenvironment{nlist}
-{\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
-
-
-% ---------------------------------------------------------------------------
-% PÁGINA DE TÍTULO
-% ---------------------------------------------------------------------------
-
-% Título del documento.
-\newcommand{\subject}{Análisis Matemático II: Ejercicios resueltos}
-
-% Autor del documento.
-\newcommand{\docauthor}{Doble Grado en Ingeniería Informática y Matemáticas}
-
-% Título
-\title{
-  \normalfont \normalsize 
-  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
-  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-  \huge Análisis Matemático II\\ \Large{Ejercicios resueltos}\\ % Título.
-  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
-}
-
-% Autor.
-\author{\Large\sffamily{\docauthor}}
-
-% Fecha.
-\date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
-
-
-
-% ---------------------------------------------------------------------------
-% COMIENZO DEL DOCUMENTO
-% ---------------------------------------------------------------------------
-
-\begin{document}
-
-\maketitle  % Título.
-\vfill
-\begin{center}
-  \includegraphics{by-nc-sa}  % Licencia.
-\end{center}
-\newpage
-\tableofcontents    % Índice
-\newpage
-
 % --------------------------------------------------------------------------------
 % Sucesiones y series de funciones.
 % --------------------------------------------------------------------------------
@@ -489,7 +11,7 @@
   \begin{sol}
     Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
     \begin{itemize}
-      
+
     \item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
     \item Homogeneidad. Si $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
     \item Desigualdad triangular.
@@ -500,7 +22,7 @@
     Para demostrar que ${f_n} \to f$  c.u. en A $\iff f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$, solo tenemos que observar que ${f_n} \to f$  c.u. en A  significa que: $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow |f_n(x)-f(x) |<\epsilon , \ \forall x\in A,$$
     lo cual equivale a decir $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow \|f_n-f\|_\infty = sup_{x \in A} |f_n-f| \leq \epsilon , \ \forall x\in A,$$
     es decir, $f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$.
-    
+
     Por último, $\mathcal{C}_B(A, \mathbb R^M)$ es de Banach si es completo, es decir si toda sucesión $\{ f_n\}$ (de funciones en $\mathcal{C}_B(A, \mathbb R^M)$) de Cauchy converge. La prueba es análoga a la que se hizo para ver que $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, era completo. La única diferencia será que tras probar la convergencia uniforme de $f_n$ a una función  $f$, deberemos probar que $f\in \mathcal{C}_B(A,\mathbb{R}^M)$, es decir que el límite uniforme de la sucesión $\{f_n\}$ de funciones continuas y acotadas es una función continua y acotada. Veámoslo.
 
     Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que $n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A$. Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
@@ -551,23 +73,23 @@
     Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 
     Por tanto, $\varphi$ es un homeomorfismo.
-  \end{sol}	
+  \end{sol}
 
 
 \begin{ejer}
-  
+
   Sea $\{ f_n \}$ una sucesión de funciones reales uniformemente continuas en todo $\mathbb R$ que converge uniformemente a una función real $f$. ¿Puede concluirse que  la función $f$ es necesariamente uniformemente continua?
 \end{ejer}
 
   \begin{sol}
     La respuesta es afirmativa. Veamos la prueba.
-    
+
     Dado $\epsilon>0$, como $f_n \rightarrow f$ converge uniformemente, $\exists k>0$
     tal que $$n>k \Rightarrow |f_n(x)-f(x)| < \epsilon/3, \ \ \forall x \in A.$$
-    Por otro lado, por ser $f_k$ uniformemente continua en $A$, 
+    Por otro lado, por ser $f_k$ uniformemente continua en $A$,
     $\exists \delta >0$ tal que $$\forall x,y \in A\ \textrm{con\ }|x-y| < \delta,\textrm{se\ tiene\ }|f_k(x)-f_k(y)| < \epsilon /3$$
     Juntando ambas informaciones: $$|f(x)-f(y)| \leq |f(x)-f_k(x)| + |f_k(x)-f_k(y)| + |f_k(y)-f(y)| < \epsilon$$
-    Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ \textrm{con\ }|x-y|<\delta\ \textrm{se\ verifica\ }|f(x)-f(y)| < \epsilon$$ 
+    Es decir, hemos probado que dado $\epsilon>0$, existe $\delta>0$ tal que $$\forall x,y \in A\ \textrm{con\ }|x-y|<\delta\ \textrm{se\ verifica\ }|f(x)-f(y)| < \epsilon$$
     Por tanto, $f$ es uniformemente continua.\qed
   \end{sol}
 
@@ -577,7 +99,7 @@
 
  \begin{sol}
     Sabemos que para $0\le x<1$, $f_n(x)=x-x^n \to x$, y para $x=1$, tenemos que $f_n(x)=1-1^n = 0 \to 0$. Por tanto, el límite puntual es: $$f(x)= \left\{ \begin{array}{lcc} x & si & 0 \le x < 1 \\ \\ 0 & si & x=1  \end{array} \right.$$
-    Como cada $f_n$ es continua y $f$ no es continua, no hay convergencia uniforme. 
+    Como cada $f_n$ es continua y $f$ no es continua, no hay convergencia uniforme.
   \end{sol}
 
 \begin{ejer}
@@ -585,7 +107,7 @@
 \end{ejer}
 
   \begin{sol}
-    En efecto, la sucesión de funciones converge uniformemente. En primer lugar, $\fn \xrightarrow {c.p} f=0$ por ser potencia de base menor que $1$. Además, por ser una función potencial, el valor máximo que toma es $0.99999^n$. Por tanto: $|x^n| \leq 0.99999^n \to 0$, luego $\fn$ converge uniformemente a $f=0$. 
+    En efecto, la sucesión de funciones converge uniformemente. En primer lugar, $\fn \xrightarrow {c.p} f=0$ por ser potencia de base menor que $1$. Además, por ser una función potencial, el valor máximo que toma es $0.99999^n$. Por tanto: $|x^n| \leq 0.99999^n \to 0$, luego $\fn$ converge uniformemente a $f=0$.
   \end{sol}
 
 \begin{ejer}
@@ -601,19 +123,19 @@
 
   \textbf{a)} $\ \displaystyle \sum_{n\geq1} \frac{sen^k(nx)}{n^2}, \quad k > 0$
 
-  
+
 
   \textbf{b)} $\displaystyle \sum_{n\geq1} \left(\frac{x^n}{n!}\right)^2$
 
-  
+
 
   \textbf{c)} $\displaystyle \sum_{n\geq1} \frac{1}{x^2+n^2}$
 
- 
+
 
   \textbf{d)} $\displaystyle \sum_{k\geq1} \frac{x^k}{k^2}$
 
-  
+
   \textbf{e)} $\displaystyle \sum_{k\geq1} k! x^k$
 
   \end{ejer}
@@ -621,38 +143,38 @@
 \begin{sol}[a]
     Notemos lo siguiente: $\displaystyle |sen(nx)| \le 1 \implies \left|\frac{sen^k(nx)}{n^2}\right| \leq \frac{1}{n^2}$. Además, ya sabemos que la serie $\displaystyle \sum_{n \ge 1} \frac{1}{n^2}$ es convergente. Por tanto, aplicando el \textit{Criterio de Weierstrass}, tenemos que: $$\sum_{n\ge1} \frac{sen^k(nx)}{n^2}\ \text{converge uniformemente (y absolutamente).}$$
   \end{sol}
-  
+
   \begin{sol}[b1] Podemos reescribir la serie tal que así: $\displaystyle \sum_{n\ge1} \frac{x^{2n}}{(n!)^2}$. Entonces, dado $M>0$, se tiene que, si $|x|\le M$:
     $$\begin{rcases}
       \frac{x^{2n}}{(n!)^2} \leq \frac{M^{2n}}{(n!)^2}\\
       \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2} \ converge
-    \end{rcases} \overset{\text{Criterio Weierstrass}}{\implies} \ \left(\frac{x^{n}}{n!}\right)^2 \ \text{es c.u en}\ [-M,M]$$ 
-    
+    \end{rcases} \overset{\text{Criterio Weierstrass}}{\implies} \ \left(\frac{x^{n}}{n!}\right)^2 \ \text{es c.u en}\ [-M,M]$$
+
     Donde la convergencia de $\displaystyle \sum_{n\ge 1} \frac{M^{2n}}{(n!)^2}$ viene dada por el \textit{Criterio del cociente:} $$\lim_{n\to\infty}\ddfrac{\ddfrac{M^{2(n+1)}}{((n+1)!)^2}}{\frac{M^{2n}}{(n!)^2}} = \lim_{n\to\infty} \frac{M^2}{(n+1)^2} = 0 < 1.$$
 
     Como $M$ era una constante arbitraria, concluimos que la serie converge uniformemente en cualquier intervalo acotado de $\mathbb{R}$.
   \end{sol}
 
   \begin{sol}[b2] Podemos ver la serie como una serie de potencias $\displaystyle \sum_{k \ge 1} a_kx^k$, donde: $$a_k = \begin{cases} 0 & si \ k \ impar \\ \displaystyle \frac{1}{(n!)^2} & si \ k \ par \end{cases}$$
-    
+
     Podemos aplicar el \textit{Criterio del cociente}, de forma muy similar al caso anterior, para ver que el radio de convergencia de la serie es $R = \infty$. Por tanto, $D(0,R) = \mathbb{R}$, y se tiene que $\forall M \in \mathbb{R}^+$ la serie converge uniformemente en $[-M,M]$.
   \end{sol}
-  
+
    \begin{sol}[c]
     Nos basta la simple observación de que podemos acotar el término general de la serie (es siempre positivo) por una constante $M_n$, de tal suerte que $\sum_{n\ge1} M_n$ es convergente, y aplicar el \textit{Criterio de comparación}. Así: $$0 \le \frac{1}{x^2 + n^2} \le \frac{1}{n^2}\ \forall x \in \mathbb{R} \implies \sum_{n\ge 1} \frac{1}{x^2 + n^2} \ \text{converge uniformemente en } \mathbb{R}.$$
-    
+
   \end{sol}
-  
+
   \begin{sol}[d]
     Como es una serie de potencias, calculamos su radio de convergencia: $$R^{-1} = \lim_{k\to\infty} \frac{a_{k+1}}{a_k} = \lim_{k\to\infty} \ddfrac{\frac{1}{(k+1)^2}}{\frac{1}{k^2}} = \lim_{k\to\infty} \left(\frac{k}{k+1}\right)^2 = 1 \implies R = 1$$
     Por tanto, ya sabemos que la serie converge uniformemente cuando $|x| < 1$, y no converge cuando $|x| > 1$. Solo nos falta por estudiar el caso $|x|=1$: $$|x| = 1 \implies \left| \frac{x^k}{k^2} \right| = \frac{|x|^k}{k^2} = \frac{1}{k^2}$$
-    
+
     Sabemos que $\displaystyle \sum_{k\ge1} \frac{1}{k^2}$ es convergente, por lo que, en virtud del \textit{Criterio de Weierstrass}, la serie $\displaystyle \sum_{k\ge1}\frac{x^k}{k^2}$ converge uniformemente cuando $|x| = 1$.
   \end{sol}
 
  \begin{sol}[e]
     Se trata de una serie de potencias, donde $a_k = k!$. Calculamos su radio de convergencia: $$R^{-1} = \lim_{k\to\infty} \frac{a_{k+1}}{a_k} = \lim_{k\to\infty} \frac{(k+1)!}{k!} = \lim_{k\to\infty} k + 1 = \infty \implies R=0$$
-    
+
     Por tanto, la serie no converge si $|x| > R = 0$ (es decir, si $x\ne 0$). Si $|x| = 0$, tenemos que: $$\sum_{k\ge1} k! \cdot0^k = \sum_{k\ge1} 0 = 0 \ \text{(convergente)}$$
     En general, \textbf{una serie de potencias siempre es convergente en su centro}.
   \end{sol}
@@ -664,11 +186,11 @@
 
  \begin{sol}
     Para probarlo, se podría estudiar la convergencia de la serie de potencias, o también desarrollar el término de la izquierda como su suma de Taylor, y ver que coinciden. Sin embargo, procederemos de otro modo.
-    
+
     En primer lugar, notemos que $\displaystyle kx^{k-1} = \frac{d}{dx}(x^k)$. Por tanto, estudiemos el carácter de la serie $\displaystyle \sum_{k\ge0} x^k$. Como es una serie de potencias, calculamos su radio de convergencia, y tenemos que $R = 1$, pues $a_k=1 \ \forall k \ge 0$.
-    
+
     Por otro lado, consideramos la función $\displaystyle f(x) = \frac{1}{1-x}$. Sin mucho esfuerzo, podemos probar por inducción que $f^{k)}(0) = k! \ \ \forall k \ge 0$. Tenemos entonces que, tomando $a=0$ en el \textit{Teorema de Taylor} aplicado a $f(x)$: $$f(x) = \frac{1}{1-x} = \sum_{k=0}^\infty x^k \quad \forall x \in (-1,1),$$
-    
+
     pues, en este caso, el resto de Taylor tiende a $0$ dentro del disco de convergencia. Sabemos también que la serie es derivable, y dentro del disco de convergencia, se da la siguiente igualdad, derivando en ambos miembros: $$\frac{1}{(1-x)^2} = \sum_{k=1}^\infty kx^{k-1}\quad \forall x \in (-1,1)$$
   \end{sol}
 
@@ -683,7 +205,7 @@
 \begin{sol}
     Sea $A = [0,+\infty)$, y tomo $f_k$ tales que $0 \le f_k(x) \le \frac{1}{k}$, y que además su integral se mantenga constante y distinta de 0. Un ejemplo de una tal función es:
 
-    $$f_k(x) = 
+    $$f_k(x) =
     \begin{cases}
       1/k & si \ \ 0 \le x \le k \\
       0 & si \ \ x \ge k
@@ -726,36 +248,36 @@
   \item $\mathcal L^{\infty} (\Omega)$ es un espacio vectorial.
   \item $\mathcal L^{p} (\Omega)$ es un espacio vectorial.
   \end{enumerate}
-  
-  
+
+
 \end{ejer}
 
 \begin{sol}
-    
+
     3.
     Dado $\alpha \in \mathbb K$, $f \in \mathcal L^p (\Omega)$. Entonces $\abs{\alpha f}^p = \abs{\alpha}^p \cdot \abs{f}^p$.
-    Como $f, g \in \mathcal L^p(\Omega) \Rightarrow f + g \in \mathcal L^p(\Omega)$ y $ \displaystyle \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{p}} \leq \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}}$	
-    
+    Como $f, g \in \mathcal L^p(\Omega) \Rightarrow f + g \in \mathcal L^p(\Omega)$ y $ \displaystyle \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{p}} \leq \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}}$
+
     $$\int_{\Omega} \abs{f+g}^p d \mu = \int_{\Omega}\abs{f+g}^{p-1} \abs{f+g}d \mu \leq \int_{\Omega} \abs{f+g}^{p-1} \abs{f}d \mu + \int_{\Omega} \abs{f+g}^{p-1} \abs{g}d \mu$$
-    
+
     Utilizando la desigualdad de Young:
-    
+
     $$\leq \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} \left( |f+g|^{p-1} \right)^q d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
-    
+
     $$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |f|^{p} d \mu \right]^{\frac{1}{p}} + \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \int_{\Omega} |g|^{p} d \mu \right]^{\frac{1}{p}}$$
-    
-    $$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
-    
-    $$= \left[ \int_{\Omega} \left[ |f|+|g| \right]^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$	
-    
-    $$ \leq 2^{p-1} \int_{\Omega} \left( |f|^p + |g|^p) d \mu \right)^{\frac{1}{q}} < \infty$$	
-    
+
+    $$= \left[ \int_{\Omega} |f+g|^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$
+
+    $$= \left[ \int_{\Omega} \left[ |f|+|g| \right]^{p} d \mu \right]^{\frac{1}{q}} \left[ \left( \int_{\Omega} |f|^{p} d \mu \right)^{\frac{1}{p}} + \left( \int_{\Omega} |g|^{p} d \mu \right)^{\frac{1}{p}} \right]$$
+
+    $$ \leq 2^{p-1} \int_{\Omega} \left( |f|^p + |g|^p) d \mu \right)^{\frac{1}{q}} < \infty$$
+
   \end{sol}
 
 
 \begin{ejer}
   Dada $g : \Omega \rightarrow \mathbb R$ medible positiva. Entonces:
-  
+
   $$\int_{\Omega} g d \mu = 0 \Leftrightarrow g = 0 \text{ a. e. } x \in \Omega$$
 \end{ejer}
 
@@ -767,7 +289,7 @@
   Dados $\Omega \supset E_{1,k} \supset E_{2,k} \supset \hdots \supset E_{n,k} \supset
   E_{n+1,k} \supset \hdots$ entonces si $\mu(\Omega) < \infty \Rightarrow
   \lim_{n\to\infty} \mu(E_{n,k}) = \mu(\bigcap_{n \in \mathbb N}
-  E_{n,k})$. 
+  E_{n,k})$.
 \end{ejer}
 
 \begin{ejer}
@@ -822,7 +344,7 @@
   \end{tikzpicture}
     \captionof{figure}{Representación gráfica de la función $f_n(\omega)$}
 
-  
+
 \end{ejer}
 
 \begin{ejer}
@@ -859,12 +381,12 @@
       Si desde un principio tomamos $\frac{\varepsilon}{2}$ en lugar de
     simplemente $\varepsilon$ nos quedará $\varepsilon$ al final y no $2\varepsilon$.
     \end{nota}
-   
+
   \end{sol}
 
 \begin{ejer}
   Dada una función $f: k \rightarrow \R$ continua y $K \subset \R^N$ un
-  compacto, entonces $f \in \mathcal L^1(K)$.  
+  compacto, entonces $f \in \mathcal L^1(K)$.
 \end{ejer}
 
   \begin{sol}
@@ -887,7 +409,7 @@
     $|f| \leq M = M \chi_k$ luego $$\int_K Md\mu = M\mu(K) \leq M \mu (B) <
     \infty$$ $$\int_K |f|d\mu \leq \int_K Md\mu \leq M\mu(B) < \infty \Rightarrow
     |f| \in \mathcal L^1(K).$$
-    
+
   \end{sol}
 
 \begin{ejer}
@@ -911,7 +433,7 @@
     \ dy \right) \ dx$$
 \end{ejer}
 
-\begin{sol} 
+\begin{sol}
 %  $$\int_A f \ dxdy = \int_{\R^2} f(x, y) \rchi_A(x,y) \ dxdy$$
 \end{sol}
 
@@ -948,7 +470,7 @@
 
 \begin{ejer}
     $\int_A x \ dxdy$, $A = \{ (x,y) \in \R^2 : x^2 + y^2 \leq 2 \} = f^{-1}((-\infty, 0])) \ \ \ f(x,y) = x^2+y^2-2x$ es continua y medible.
-\end{ejer} 
+\end{ejer}
 
 \begin{sol}
     Primero intentamos dibujar el conjunto A. Podemos imaginarnos también el conjunto A en coordenadas polares. Así, $x = \rho \ cos \theta$ y $y = \rho \ sen \theta $ con $\rho \in [0, +\infty)$ y $\theta \in (-\pi, \pi)$. Por tanto, el conjunto $A' = \{ (\rho, \theta) \in [0, +\infty) \times (-\pi, \pi) : \rho \leq 2 \rho / cos \theta \}$.
@@ -964,7 +486,7 @@
     \begin{align*}
         \label{}
         \int cos^4 \theta \ d\theta &= \int cos^2 \theta cos^2 \theta \ d\theta = \int \frac{1 + cos(2\theta)}{2} \frac{1 + cos (2 \theta)}{2} / d \theta \\
-                                    &= \frac{1}{4} \int [1 + 2cos(2\theta) + cos^2(2 \theta)] \ d\theta = \hdots + \frac{1}{4} \int cos^2(2\theta) \ d\theta 
+                                    &= \frac{1}{4} \int [1 + 2cos(2\theta) + cos^2(2 \theta)] \ d\theta = \hdots + \frac{1}{4} \int cos^2(2\theta) \ d\theta
     \end{align*}
     % FIXME: Miguel va a acabar este ejercicio.
 \end{sol}
@@ -986,7 +508,7 @@
     \end{cases}$$ teniendo en cuenta que  $x^2 + y^2 = \rho^2$.
 
     Definimos el conjunto $A' = \{(\rho, \theta, z) : 1 \leq \rho^2 \leq 2, z\rho^2 \leq 1, z \geq 0 \} = \{ (\rho, \theta, z) \in [0, +\infty) \times (-\pi, \pi) \times \R : 1 \leq \rho \leq \sqrt{2}, 0 \leq z \leq \frac{1}{\rho^2} \}$. Intentamos dibujar el conjunto:
-    % TODO: ¿Hacer el dibujo? 
+    % TODO: ¿Hacer el dibujo?
 
     Ahora vamos a calcular la integral del conjunto $A'$.
 
@@ -1014,8 +536,8 @@
         \begin{align*}
             \label{}
             \int e^{-xy} \ sen x \ dx &\left( \begin{cases}
-                h = sen \ x \\ 
-                dv = e^{-xy} \ dx \\ 
+                h = sen \ x \\
+                dv = e^{-xy} \ dx \\
                 v = \frac{e^{-xy}}{-y}
     \end{cases} \right) = - \frac{e^{-xy} \ sen x}{y} + \frac{1}{y} \int e^{-xy} \ cos x \ dx \\
                                       &= - \frac{e^{xy} \ sen x}{y} + \frac{1}{y} \left( - \frac{e^{xy} \ cos x}{y} - \int \frac{e^{-xy}}{y}(sen x) \ dx \right) \\
@@ -1037,16 +559,16 @@
         \end{align*}
 
     Para simplificar la notación a continuación, llamamos $$ g(y, R) =  \frac{1}{1+y^2} \left[ 1 - e^{-Ry} (y \ sen R + cos R) \right]$$
-    
+
         Para acabar nos queda calcular el valor del límite:
         \begin{align*}
             \label{}
-            \lim_{R \to \infty} \int_0^{\infty} g(y, R) \ dy = \int_0^{\infty} \lim_{R \to \infty} g(y,R) \ dy = \int_{0}^{\infty} \frac{1}{1+y^2} \ dy = \frac{\pi}{2} 
+            \lim_{R \to \infty} \int_0^{\infty} g(y, R) \ dy = \int_0^{\infty} \lim_{R \to \infty} g(y,R) \ dy = \int_{0}^{\infty} \frac{1}{1+y^2} \ dy = \frac{\pi}{2}
         \end{align*}
 
         \begin{align*}
             \label{}
-            \lim_{n \to \infty} \int_0^{\infty} g(y, R_n) \ dy &\underset{th. \ conv. \ dominada}{=} \int_0^{\infty} \lim_{n \to \infty} g(y, R_n) = \int_0^{+\infty} \frac{1}{1 + y^2} \ dy \\ 
+            \lim_{n \to \infty} \int_0^{\infty} g(y, R_n) \ dy &\underset{th. \ conv. \ dominada}{=} \int_0^{\infty} \lim_{n \to \infty} g(y, R_n) = \int_0^{+\infty} \frac{1}{1 + y^2} \ dy \\
                                                                &= \frac{\pi}{2}
         \end{align*}
             \end{sol}
@@ -1076,7 +598,7 @@
             \begin{sol}
                 \begin{align*}
                     \label{}
-                    \int (x^2 + y^2) \ dxdxy = \int_0^1 \left(  \int_{\pi}^{\pi} r^2 \cdot r \ d\theta \right) \ dr &= \int_0^1 r^3 \cdot 2\pi \ dr \\ 
+                    \int (x^2 + y^2) \ dxdxy = \int_0^1 \left(  \int_{\pi}^{\pi} r^2 \cdot r \ d\theta \right) \ dr &= \int_0^1 r^3 \cdot 2\pi \ dr \\
                             &= 2\pi \frac{r^4}{4} \bigg\rbrack_{r=0}^{r=1} = \frac{\pi}{2}
                 \end{align*}
 
@@ -1088,7 +610,7 @@
                 Describamos ahora el conjunto $\overline{B}(1, 0, 1)$ \begin{align*}
                     \label{}
                     \left\{ (x, y) \in \R^2 : (x-1) + y^2 \leq 1 \right\} &= \left\{ (r, \theta) \in [0, \infty) \times [-\pi, \pi] : (r \ cos \theta - 1)^2 + (r \ sen \theta)^2 \leq 1 \right\} \\
-                        A &= \left\{ (r, \theta) \in [0, \infty) \times [-\pi, \pi] : r^2-2r \ cos \theta \leq 0 \right\} 
+                        A &= \left\{ (r, \theta) \in [0, \infty) \times [-\pi, \pi] : r^2-2r \ cos \theta \leq 0 \right\}
                 \end{align*}
 
                 Si tomamos $$ \begin{rcases}
@@ -1106,13 +628,13 @@
             \end{sol}
 
             \begin{ejer}
-                Calcula $\int_A (x^2 + y^2) \ dxdy $ con 
+                Calcula $\int_A (x^2 + y^2) \ dxdy $ con
                 \begin{align*}
                     A &= \left\{ (x,y) \in \R^2 : x^2 + y^2 \leq 2y, x^2 + y^2 \leq 1, x > 0 \right\}
                 \end{align*}
             \end{ejer}
 
-            \begin{sol} 
+            \begin{sol}
                 Vemos que $A = B_{\R^2} (0,1),1) \cup B_{\R^2} ((0,0),1) \cup \lbrack\text{Primer y cuarto cuadrante}\rbrack$.
 
                 Hacemos el cambio de coordenadas: $$ \begin{rcases}
@@ -1132,9 +654,9 @@
                     &= \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} \left( \int_0^1 r^3 \ dr \right) \ d\theta + \int_0^{\frac{\pi}{6}} \left( \int_0^{2sen \ \theta} r^3 \ dr \right) \ d\theta
                 \end{align*}
 
-                
+
                 {\sffamily \textit{De forma cartesiana:}}
-                
+
                 Calculamos la intersección de los conjuntos: \begin{align*}
                     \label{}
                     \begin{rcases}
@@ -1153,5 +675,3 @@
                                               &= \int_{0}^{\frac{\sqrt{3}}{2}} \bigg\lbrack x^2y + \frac{y^3}{3} \bigg\rbrack_{y=1 - \sqrt{1-x^2}}^{y=\sqrt{1-x^2}} \ dx = \hdots
                 \end{align*}
             \end{sol}
-
-\end{document}
