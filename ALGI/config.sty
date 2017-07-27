@@ -1,0 +1,102 @@
+\ProvidesPackage{config}
+
+% ---------------------------------------------------------------------------
+%  RECURSOS
+% ---------------------------------------------------------------------------
+
+% Ruta donde buscar gráficos
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {./img/}, {ALGI/img/}, {ALGI/}}
+
+% ---------------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------------
+
+% Título del documento.
+\renewcommand{\asignatura}{Álgebra I}
+
+% Autor del documento.
+\renewcommand{\autor}{LibreIM}
+
+\renewcommand{\grado}{Doble Grado de Informática y Matemáticas}
+
+\renewcommand{\universidad}{Universidad de Granada}
+
+\renewcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
+
+% ---------------------------------------------------------------------------
+%  PAQUETES
+% ---------------------------------------------------------------------------
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+
+% Títulos de figuras
+\usepackage{capt-of}
+
+% Posición de figuras
+\usepackage{float}
+
+% ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\definecolor{50}{HTML}{FFEBEE}
+\definecolor{300}{HTML}{E57373}
+\definecolor{500}{HTML}{F44336}
+\definecolor{700}{HTML}{D32F2F}
+\definecolor{900}{HTML}{B71C1C}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Números enteros: \ent
+\providecommand{\ent}{\mathbb{Z}}
+
+% Números racionales: \rac
+\providecommand{\rac}{\mathbb{Q}}
+
+% Números naturales: \nat
+\providecommand{\nat}{\mathbb{N}}
+
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Restricción de una aplicación.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+% Imagen de una aplicación.
+\DeclareMathOperator*{\img}{img}
+
+% Divisores de un elemento de un anillo
+\DeclareMathOperator*{\rdiv}{div}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}

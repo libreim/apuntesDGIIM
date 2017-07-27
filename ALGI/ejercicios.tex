@@ -1,248 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Ejercicios de la asignatura Álgebra I.
-% Doble Grado de Informática y Matemáticas.
-% Universidad de Granada.
-% Curso 2016/17.
-% 
-% 
-% Colaboradores:
-% Javier Sáez (@fjsaezm)
-% Daniel Pozo (@danipozodg)
-% Pedro Bonilla (@pedrobn23)
-% Antonio Coín (@antcc)
-% Miguel Lentisco (@AlfaOmegaX)
-% Sofía Almeida (@SofiaAlmeida)
-% Jesús Sánchez de Lechina (@jojelupipa)
-% Laura Gómez (@lauragg)
-% Johanna Capote (@jocaro97)
-% Antonio Martín (@amartinruiz23)
-% 
-% Agradecimientos:
-% Andrés Herrera (@andreshp) y Mario Román (@M42) por
-% las plantillas base.
-%
-% Sitio original:
-% https://github.com/libreim/apuntesDGIIM/
-%
-% Licencia:
-% CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Relación 1}
 
-%------------------------------------------------------------------------------
-%   ACKNOWLEDGMENTS
-%------------------------------------------------------------------------------
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Plantilla básica de Latex en Español.
-%
-% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
-%
-% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
-% estilo moderno pero serio.
-%
-% La plantilla se encuentra adaptada al español.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%
-% Plantilla de Trabajo
-% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
-% al castellano y a las necesidades de escribir informática y matemáticas.
-%
-% Editada por: Mario Román
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Short Sectioned Assignment
-% LaTeX Template
-% Version 1.0 (5/5/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Frits Wenneker (http://www.howtotex.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% Tipo de documento y opciones.
-\documentclass[11pt, a4paper, titlepage]{article}
-
-
-%---------------------------------------------------------------------------
-%   PAQUETES
-%---------------------------------------------------------------------------
-
-% Idioma y codificación para Español.
-\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
-\selectlanguage{spanish} 
-%\usepackage[T1]{fontenc}
-
-% Fuente utilizada.
-\usepackage{courier}    % Fuente Courier.
-\usepackage{microtype}  % Mejora la letra final de cara al lector.
-
-% Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer títulos propios.
-\usepackage{lastpage}   % Referencia a la última página.
-\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
-\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
-\usepackage{geometry}            % Geometría de las páginas.
-
-% Símbolos y matemáticas.
-\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
-\usepackage{upgreek}
-
-% Otros.
-\usepackage{enumitem}   % Listas mejoradas.
-\usepackage[hidelinks]{hyperref}
-\usepackage{float}
-
-\usepackage{titlesec}
-%---------------------------------------------------------------------------
-%   OPCIONES PERSONALIZADAS
-%---------------------------------------------------------------------------
-
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Formato de texto.
-\linespread{1.1}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlist{leftmargin=.5in}   % Indentación para las listas.
-
-% Estilo de página.
-\pagestyle{fancy}
-\fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm,headheight=1cm,headsep=0.5cm}   % Márgenes y cabecera.
-
-% Redefinir entorno de demostración (reducir espacio superior)
-\makeatletter
-\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-\makeatother
-
-% Cambiar sections 
-
-
-%---------------------------------------------------------------------------
-%   COMANDOS PERSONALIZADOS
-%---------------------------------------------------------------------------
-
-% Números enteros: \ent
-\providecommand{\ent}{\mathbb{Z}}
-
-% Números racionales: \rac
-\providecommand{\rac}{\mathbb{Q}}
-
-% Números naturales: \nat
-\providecommand{\nat}{\mathbb{N}}
-
-
-% Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}    
-
-% Fracción grande: \ddfrac{}{}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-% Texto en negrita en modo matemática: \bm{}
-\newcommand{\bm}[1]{\boldsymbol{#1}}
-
-% Línea horizontal.
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
-
-
-%---------------------------------------------------------------------------
-%   CABECERA Y PIE DE PÁGINA
-%---------------------------------------------------------------------------
-
-% Cabecera del documento.
-\renewcommand\headrule{
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize 
-	\end{minipage}
-}
-
-% Texto de la cabecera.
-\lhead{\subject}  % Izquierda.
-\chead{}            % Centro.
-\rhead{\docauthor}    % Derecha.
-
-% Pie de página del documento.
-\renewcommand\footrule{                                 
-	\begin{minipage}{1\textwidth}
-		\hrule width \hsize   
-	\end{minipage}\par
-}
-
-% Texto del pie de página.
-\lfoot{}                                                 % Izquierda
-\cfoot{}                                                 % Centro.
-\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}} % Derecha.
-
-
-%---------------------------------------------------------------------------
-%   ENTORNOS PARA MATEMÁTICAS
-%---------------------------------------------------------------------------
-
-% Listas ordenadas con números romanos (i), (ii), etc.
-\newenvironment{nlist}
-{\begin{enumerate}
-\renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-{\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-  {\left.\begin{aligned}}
-  {\end{aligned}\right\rbrace}
-
-
-
-%---------------------------------------------------------------------------
-%   PÁGINA DE TÍTULO
-%---------------------------------------------------------------------------
-
-% Título del documento.
-\newcommand{\subject}{Ejercicios resueltos Álgebra I}
-
-% Autor del documento.
-\newcommand{\docauthor}{Doble Grado de Informática y Matemáticas}
-
-% Título
-\title{
-  \normalfont \normalsize 
-  \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
-  \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-  \huge \subject\\ % Título.
-  \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
-}
-
-% Autor.
-\author{\Large{\docauthor}}
-
-% Fecha.
-\date{\vspace{-1.5em} \normalsize Curso 2016/17}
-
-
-%---------------------------------------------------------------------------
-%   COMIENZO DEL DOCUMENTO
-%---------------------------------------------------------------------------
-\begin{document}
-\maketitle
-
-\section{\Huge{Relación 1}}
-
-\subsection{\LARGE{Ejercicio 3}}
+\subsection{Ejercicio 3}
 
 \textbf{¿Cuál de los siguientes conjuntos son subanillos de los anillos indicados?}
 
@@ -276,12 +35,12 @@ Con $a_0 = 1, -1$ y $a_i = 0, i > 0$ tenemos el elemento neutro del producto y s
 
 \textit{iv.} $ {f(x) = \sum a_ix^1 \in \mathbb{Z}[x] | 2 / a_2} \subseteq \mathbb{Z}[x]$
 
-Este subconjunto no es un anillo ya que $1, -1 \in \mathbb{Z}[x]$ no están en él ya que todos sus elementos son monomios de la forma $a_ix^1$. 
+Este subconjunto no es un anillo ya que $1, -1 \in \mathbb{Z}[x]$ no están en él ya que todos sus elementos son monomios de la forma $a_ix^1$.
 
 
-\section{\Huge{Relación 2}}
+\section{Relación 2}
 
-\subsection{\LARGE{Ejercicio 1}}
+\subsection{Ejercicio 1}
 
 \textbf{Calcular las soluciones enteras positivas de la ecuación diofántica $ 138x + 30y = 12150 $.}
 
@@ -435,7 +194,7 @@ $$ x = 2025 \cdot 2 + 5 \cdot k = 4050 + 5k $$
 $$ y = 2025 \cdot -9 - 23 \cdot k = -18225 - 23k $$
 $$ k \in \{ t \in \mathbb{Z} : -810 < t < -792 \} $$
 
-\subsection{\LARGE{Ejercicio 2}}
+\subsection{{Ejercicio 2}}
 
 \textbf{“Cuarenta y seis náufragos cansados arribaron a una bella isla. Allí
 encontraron ciento veintiséis montones de cocos, de no más de cincuenta cada uno,
@@ -502,7 +261,7 @@ Segunda solución: \\
 x = 5 (cocos por montón) \\
 y = 14 (cocos a cada náufrago) \\
 
-\subsection{\LARGE{Ejercicio 3}}
+\subsection{{Ejercicio 3}}
 
 \textbf{Disponemos de 15 euros para comprar 40 sellos de correos, de 10, 40, y
 60 céntimos y, al menos, necesitamos 2 de cada tipo ¿Cuántos sellos de cada clase
@@ -554,7 +313,7 @@ $$ z \leq 36 \implies -31,3.. \geq k \implies k \leq -32 $$
 Luego k estará acotado así:
 $$ k \in \{ t \in \ent : -42 \leq t \leq -37 \}$$
 
-\subsection{\LARGE{Ejercicio 4}}
+\subsection{{Ejercicio 4}}
 
 \textbf{Llueve y, en un mercadillo improvisado en Moscú, un paraguas nos cuesta
 190 rublos. Disponemos solo de billetes de 3 rublos, y el vendedor solo de 5 rublos
@@ -603,7 +362,7 @@ En particular podremos hacer la compra-venta con k = -63, luego las soluciones m
 - x = 65 (billetes de 3 rublos entregados) \\
 - y = 1 (billetes de 5 rublos devueltos) \\
 
-\subsection{\LARGE{Ejercicio 5}}
+\subsection{{Ejercicio 5}}
 
 \textbf{En una torre eléctrica, se nos ha roto una pata de 4 m de altura. Para
 equilibrarlo provisionalmente, disponemos de 7 discos de madera de 50 cm de grosor
@@ -641,7 +400,7 @@ Divisiones hechas: \\
 
 Y obtenemos las ecuaciones generales:
 $$ x = -40 + 3k $$
-$$ y = 80 - 5k $$ 
+$$ y = 80 - 5k $$
 $$ k \in \ent $$
 
 Acotamos la k, sabiendo que x e y deben ser positivos o 0; y además solo podemos usar 7 discos de 50cm y 12 de 30cm como máximo:
@@ -660,7 +419,7 @@ Segunda solución:
 - x = 5 (discos de 50cm) \\
 - y = 5 (discos de 30cm) \\
 
-\subsection{\LARGE{Ejercicio 6}}
+\subsection{{Ejercicio 6}}
 
 \textbf{En el mes pasado, hemos gastado 13 euros y 20 céntimos en 12 llamadas
 telefónicas a Alemania y Francia, y solo nos cobran el establecimiento de llamada.
@@ -718,7 +477,7 @@ Luego tenemos una única solución, k = -109, que nos da: \\
 - z = 105 (cent. cuesta una llamada a Francia) \\
 - z + 15 = 120 (cent. cuesta una llamada a Alemania) \\
 
-\subsection{\LARGE{Ejercicio 7}}
+\subsection{{Ejercicio 7}}
 
 \textbf{Una persona va al supermercado y compra 12 cajas de vino, unas de blanco y otras de tinto, por 1200 euros. Si el blanco vale 30 euros más por caja que el tinto, y ha comprado el mínimo posible de tinto ¿Cuántas cajas habrá comprado de cada uno?}
 
@@ -772,7 +531,7 @@ En concreto, tenemos que hay una única solución, k vale -16, luego las solucio
 - z = 80 (euros vale cada caja de vino tinto) \\
 - z + 30 = 110 (euros vale cada caja de vino blanco) \\
 
-\subsection{\LARGE{Ejercicio 8}}
+\subsection{{Ejercicio 8}}
 
 \textbf{Un vendedor en el mercado tiene un cesto de manzanas de (muy poco)
 más de mil. Haciendo grupos de 30 sobran 20 y haciendo grupos de 40 sobran 30.
@@ -827,12 +586,12 @@ En concreto, la solución mínima k = -9, tenemos: \\
 - x = 35 (grupos de 30 manzanas) \\
 - y = 26 (grupos de 40 manzanas) \\
 
-	\subsection{\LARGE{Ejercicio 10 - 2 en K[x]}}
+	\subsection{{Ejercicio 10 - 2 en K[x]}}
 	\textbf{2. Calcular el máximo común divisor y el mínimo común múltiplo, en el anillo $Z_{3}$[x], de los polinomios $x^{4}+x^{3}-x-1$ y $x^{5}+x^{4} -x-1$. Encontrar todos los polinomios f (x) y g(x) en $Z_{3}$[x], con grado de g(x) igual a 7, tales que $(x^{4}+x^{3}-x-1)$ f(x)+$(x^{5}+x^{4} -x-1)$ g(x) = $x^{4}+x^{2}+1$ \\ }
-	
-	
+
+
      \underline{Máximo común divisor} \\
-     
+
 	\begin{center}
 	\begin{tabular}{r|cc}
 	$x^{5}+x^{4} -x-1$ & 1 & 0 \\
@@ -841,64 +600,64 @@ En concreto, la solución mínima k = -9, tenemos: \\
 	0
 	\end{tabular}
 	\end{center}
-     
+
      Las divisiones realizadas han sido : \\
-     
+
      $\bullet$ ($x^{5}+x^{4} -x-1$)/($x^{4}+x^{3}-x-1$) \\
-     
+
      \noindent{Cociente: x} \\
      Resto:  $x^{2}-1 $\\
-     
+
      $\bullet$ ($x^{4}+x^{3}-x-1$)/($x^{2}-1 $) \\
-     
+
       \noindent{Cociente: $x^{2}+x+1$ } \\
       Resto:  0\\
-      
+
       Así, el máximo común divisor es $x^{2}-1$ \\
-     
+
      \underline{Mínimo común múltiplo} \\
-     
+
      Usamos que [a,b]=$\displaystyle{\frac { ab }{ (a,b) } }$ \\
-     
+
      ($x^{5}+x^{4} -x-1$)($x^{4}+x^{3}-x-1$) = $x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$ \\
-     
+
     ($x^{9}+2x^{8}+x^{7}-x^{6}-x^{3}+x^{2}+2x+1$)/($x^{2}-1$) = $x^{7}-x^{6}-x^{5}+x^{4}-x^{3}+x^{2}+x-1$ \\
-     
+
 Por lo tanto, el mínimo común múltiplo es $x^{7}-x^{6}-x^{5}+x^{4}-x^{3}+x^{2}+x-1$
 \ \\
-     
-     \underline{Ecuación diofántica} 
-     
-     Dividiendo por el máximo común divisor la ecuación para obtener al reducida (vemos que tiene solución) queda: \\
-     
-     $(x^{2}+x+1)$ f(x)+$(x^{3}+x^{2}+x+1)$ g(x) = $x^{2}+2$ \\
-     
-     Aplicando la igualdad de Bezout (a partir de los cálculos del máximo común divisor): \\
-     
-     $(x^{2}+x+1)(-x)$+$(x^{3}+x^{2}+x+1)$ (1) = 1 \\
-     
-     $(x^{2}+x+1)$$(-x^{3}-2x)$+$(x^{3}+x^{2}+x+1)$ $(x^{2}+2)$ = $x^{2}+2$ \\
-     
-     Obtenemos como solución particular: \\
-     
-     $f_{0}$(x) = $-x^{3}-2x$ \\
-     
-     $g_{0}$(x) = $x^{2}+2$ \\
-     
-     La solución general quedaría: \\
-     
-     $f$(x) = $-x^{3}-2x +k(x)(x^{3}+x^{2}+x+1)$  \\
-     
-     $g$(x) = $x^{2}+2 -k(x)(x^{2}+x+1)$ \\
-     
-     Para cumplir la condición  g(x) igual a 7 observamos que el grado de k(x) tiene que ser igual a 5. De este modo, todas soluciones pedidas son las que se obtienen a partir de la general para todos los k(x) de $Z_{3}$[x] tal que gr(k(x)) = 5. 
 
-\subsection{\LARGE{Ejercicio 15 - 1 en $\ent [\sqrt{n}]$}}
+     \underline{Ecuación diofántica}
+
+     Dividiendo por el máximo común divisor la ecuación para obtener al reducida (vemos que tiene solución) queda: \\
+
+     $(x^{2}+x+1)$ f(x)+$(x^{3}+x^{2}+x+1)$ g(x) = $x^{2}+2$ \\
+
+     Aplicando la igualdad de Bezout (a partir de los cálculos del máximo común divisor): \\
+
+     $(x^{2}+x+1)(-x)$+$(x^{3}+x^{2}+x+1)$ (1) = 1 \\
+
+     $(x^{2}+x+1)$$(-x^{3}-2x)$+$(x^{3}+x^{2}+x+1)$ $(x^{2}+2)$ = $x^{2}+2$ \\
+
+     Obtenemos como solución particular: \\
+
+     $f_{0}$(x) = $-x^{3}-2x$ \\
+
+     $g_{0}$(x) = $x^{2}+2$ \\
+
+     La solución general quedaría: \\
+
+     $f$(x) = $-x^{3}-2x +k(x)(x^{3}+x^{2}+x+1)$  \\
+
+     $g$(x) = $x^{2}+2 -k(x)(x^{2}+x+1)$ \\
+
+     Para cumplir la condición  g(x) igual a 7 observamos que el grado de k(x) tiene que ser igual a 5. De este modo, todas soluciones pedidas son las que se obtienen a partir de la general para todos los k(x) de $Z_{3}$[x] tal que gr(k(x)) = 5.
+
+\subsection{{Ejercicio 15 - 1 en $\ent [\sqrt{n}]$}}
 
 \textbf{En el anillo $\ent [\sqrt{n}]$ calcular \\
 	a) mcd($2-3\sqrt{-2},1+\sqrt{-2}$), mcm($2-3\sqrt{-2},1+\sqrt{-2}$).\\
 	b) En $\ent [\sqrt{n}]$, calcula mcd($3+\sqrt{3},2$) y mcm($3+\sqrt{3},2$).}
-	
+
 a) Calcularemos primero el mcd, para ello usaremos el método de la tabla que venimos haciendo
 desde siempre (ver ejercicio 1 de esta relación). Sin embargo, para calcular la norma tendremos
 que multiplicar el número por su conjugado, en general:
@@ -963,7 +722,7 @@ $$ \frac{2}{-1-\sqrt{3}} = 1-\sqrt{3} \implies q = 1-\sqrt{3}, r = 0 $$
 Luego $ mcd(3+\sqrt{3},2) = 1-\sqrt{3} $, y entonces:
 $$ mcm(3+\sqrt{3},2) = \frac{(3+\sqrt{3})(2)}{1-\sqrt{3}} = -2\sqrt{3} $$
 
-\subsection{\LARGE{Ejercicio 16 - 2 en $\ent [\sqrt{n}]$}}
+\subsection{{Ejercicio 16 - 2 en $\ent [\sqrt{n}]$}}
 
 \textbf{Probar que en el anillo $\ent[\sqrt{2}]$ el entero cuadrático $2+\sqrt{2}$ y su conjugado $2-\sqrt{2}$ son asociados.
 ¿Quiénes son su máximo común divisor y su mínimo común múltiplo?}
@@ -982,7 +741,7 @@ $$ \sqrt{2-\sqrt{2}}{2+\sqrt{2}} = 3-2\sqrt{2} $$
 Vemos que efectivamente son asociados, ya que uno se divide al otro. En este caso el máximo común divisor puede cogerse como
 cualquiera de los dos, y el mínimo común múltiplo sería el contrario al que hemos elegido.
 
-\subsection{\LARGE{Ejercicio 17 - 3 en $\ent [\sqrt{n}]$}}
+\subsection{{Ejercicio 17 - 3 en $\ent [\sqrt{n}]$}}
 
 \textbf{a) Determinar un entero de Gauss $\alpha \in \ent [i]$, tal que al dividirlo por 3 da resto i, mientras su resto al dividirlo 3 + 2i es 1 + i.}
 
@@ -1028,9 +787,9 @@ b)
 
 
 \pagebreak
-\section{\Huge{Relación 3}}
+\section{{Relación 3}}
 
-\subsection{\LARGE{Ejercicio 1}}
+\subsection{{Ejercicio 1}}
 
 \textbf{ Discutir, usando congruencias, la validez de las siguientes afirmaciones:}
 
@@ -1058,7 +817,7 @@ Ahora, como nos ha salido que la potencia es 13, aplicamos la función $\varphi$
 Por último, como tenemos los dos números en la misma base, tenemos que ver si los exponentes son congruentes módulo 12.
 
 \[
-621 \equiv_{12} 42 \implies 9 \equiv_{12} 6	
+621 \equiv_{12} 42 \implies 9 \equiv_{12} 6
 \]
 
 Por lo que no son congruentes módulo 12, luego los dos números iniciales no dan el mismo resto al dividirlos por 13.
@@ -1117,7 +876,7 @@ El número vendrá dado: $a_n*10^{n}+ a_{n-1}*10^{n-1} + ... + a_1 * 10 + a_0$.
 
 Pero, tomando todas la demás cifras menos las dos últimas, su suma es congruente con 0 módulo 4, luego  basta ver si los dos últimos es congruente con 0 módulo 4, pero eso es el enunciado, luego queda probado.
 
-\subsection{\LARGE{Ejercicio 4}}
+\subsection{{Ejercicio 4}}
 \textbf{Una banda de 13 piratas se reparten N monedas de oro, pero le sobran 8. Dos mueren, las vuelven a repartir y sobran 3. Luego se ahogan 3 y sobran 5. ¿Cuál es la mínima cantidad posible N de monedas?}\\
 
 \[
@@ -1166,7 +925,7 @@ Multiplicamos por 4 y así obtendremos una solución particular
 
 5 $\cdot$ (-8) $\equiv$ 4 mod(11) $\Rightarrow$ $x_{0}$ = -8
 
-Sustituimos y nos queda $N_{0}$ = -811 
+Sustituimos y nos queda $N_{0}$ = -811
 
 N $\equiv$ -811 mod(1144) = 333 mod(1144) (donde 1144 = [11,104])
 
@@ -1175,7 +934,7 @@ N = 333 + 1144 $\cdot$ k\\
 \textbf{Solución}: La cantidad mínima de monedas sería cuando k vale 0. Entonces el número de monedas es 333\\
 
 
-\subsection{\LARGE{Ejercicio 6}}
+\subsection{{Ejercicio 6}}
 \textbf{Antonio, Pepe y Juan son tres campesinos que principalmente se
 dedican al cultivo de la aceituna. Este año la producción de los olivos de
 Antonio fue tres veces la de los de Juan y la de Pepe cinco veces la de los
@@ -1228,7 +987,7 @@ Tenemos que hacer transformaciones hasta llegar a dejar la $x$ sola en cada una 
 \]
 Y este es el sistema final a resolver. Para ello, resolvemos dos primero y luego resolvemos esos dos con el siguiente. Resolvemos el de las dos primeras:
 
-Vemos que la primera ecuación es : $x = 21+y*25$ lo quenos lleva a la congruencia: $21 +y*25 \equiv 1 mod(7) \implies 4y \equiv 1 mod(7) \implies y \equiv 2 mod(7)$ por tanto la solución óptima es $y_0 = 2$ y ahora si $y=2$, eso implica que (volviendo a la x que habíamos despejado) $x_0 = 21+50 = 71$ y si volvemos a expresarlo como congruencias nos queda $x \equiv 71 mod(175)$. 
+Vemos que la primera ecuación es : $x = 21+y*25$ lo quenos lleva a la congruencia: $21 +y*25 \equiv 1 mod(7) \implies 4y \equiv 1 mod(7) \implies y \equiv 2 mod(7)$ por tanto la solución óptima es $y_0 = 2$ y ahora si $y=2$, eso implica que (volviendo a la x que habíamos despejado) $x_0 = 21+50 = 71$ y si volvemos a expresarlo como congruencias nos queda $x \equiv 71 mod(175)$.
 
 Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
 \[
@@ -1238,7 +997,7 @@ Hemos reducido una ecuación, ahora tendríamos que volver a resolver el sistema
 \end{cases}
 \]
 
-\subsection{\LARGE{Ejercicio 11 - 1 parte K[x] y $\ent\sqrt{n}$}}
+\subsection{{Ejercicio 11 - 1 parte K[x] y $\ent\sqrt{n}$}}
 
 \textbf{(1). Probar el teorema de Ruffini:} \textit{si $f(x) \in A[x]$, entonces $f(a)$ es igual al resto de dividir $f(x)$ entre $x-a$}.\\
 
@@ -1277,12 +1036,12 @@ Primero simplificamos la expresión, llegando a $g(x)\cdot x \equiv 6\ mod\ (x-1
 \begin{tabular}{c|cc}
 \textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
 $x$           & 1          & 0           \\
-$x-1$         & 0          & 1           \\ 
-1             & 1          & -1          \\ 
+$x-1$         & 0          & 1           \\
+1             & 1          & -1          \\
 \end{tabular}
-\end{center} 
+\end{center}
 
-Vemos que $(x,x-1) = 1$, y haciendo uso de la identidad de Bezout, nos queda que $1 = \bm{1}\cdot x + \bm{(-1)}\cdot (x-1)$. Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que $1\cdot x \equiv 1\ mod\ (x-1)$, y multiplicando por $6$ tenemos que $6\cdot x \equiv 6\ mod\ (x-1)$. Si comparamos esta expresión con la ecuación original, es evidente que $g_0(x) = 6$ es una solución particular. Entonces, $f_0(x) = 6 + 6x$ es una solución particular del sistema, y la solución general será: 
+Vemos que $(x,x-1) = 1$, y haciendo uso de la identidad de Bezout, nos queda que $1 = \bm{1}\cdot x + \bm{(-1)}\cdot (x-1)$. Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que $1\cdot x \equiv 1\ mod\ (x-1)$, y multiplicando por $6$ tenemos que $6\cdot x \equiv 6\ mod\ (x-1)$. Si comparamos esta expresión con la ecuación original, es evidente que $g_0(x) = 6$ es una solución particular. Entonces, $f_0(x) = 6 + 6x$ es una solución particular del sistema, y la solución general será:
 \begin{equation} \label{eq:rel3_parte2_ej1_1}
 f(x) \equiv f_0(x)\ mod\ ([x,x+1]) \Rightarrow f(x) \equiv 6 + 6x\ mod\ (x^2 - x)
 \end{equation}
@@ -1295,30 +1054,30 @@ La solución general de \eqref{eq:rel3_parte2_ej1_1} es $f(x) = (6 + 6x) + h(x)\
 \begin{tabular}{c|cc}
 \textbf{r}    & \textbf{u} & \textbf{v}  \\ \hline
 $x^2-x$           & 1          & 0           \\
-$x^2+x+1$         & 0          & 1           \\ 
-$-2x-1$             & 1          & -1          \\ 
+$x^2+x+1$         & 0          & 1           \\
+$-2x-1$             & 1          & -1          \\
 $\frac{3}{4}$       & $\frac{1}{2}x + \frac{1}{4}$ & $\frac{-1}{2}x + \frac{3}{4}$
 \end{tabular}
-\end{center} 
+\end{center}
 
-Vemos que $(x^2-x,x^2+x+1) = \frac{3}{4}$, y haciendo uso de la identidad de Bezout, nos queda lo siguiente: 
-$$\frac{3}{4} = \bm{(\frac{1}{2}x + \frac{1}{4})}\cdot (x^2-x) + \bm{(-\frac{1}{2}x + \frac{3}{4})}\cdot (x^2+x+1)$$ 
+Vemos que $(x^2-x,x^2+x+1) = \frac{3}{4}$, y haciendo uso de la identidad de Bezout, nos queda lo siguiente:
+$$\frac{3}{4} = \bm{(\frac{1}{2}x + \frac{1}{4})}\cdot (x^2-x) + \bm{(-\frac{1}{2}x + \frac{3}{4})}\cdot (x^2+x+1)$$
 
 Dividimos ahora la ecuación por $\frac{3}{4}$, y tenemos que:
 $$ 1 = \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x)+ \left(-\frac{2}{3}x + 1\right) \cdot (x^2+x+1)$$
 
-Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que: 
-$$\left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv 1\ mod\ (x^2+x+1)$$ 
+Como esta forma es la de las soluciones de una ecuación en congruencia, deducimos que:
+$$\left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv 1\ mod\ (x^2+x+1)$$
 
 y ahora multiplicamos por $-3x-3$:
-$$(-3x-3)\cdot \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv -3x-3\ mod\ (x^2+x+1)$$ 
+$$(-3x-3)\cdot \left(\frac{2}{3}x + \frac{1}{3}\right)\cdot (x^2-x) \equiv -3x-3\ mod\ (x^2+x+1)$$
 
-Si comparamos esta expresión con la ecuación original, es evidente que una solución particular es $g_0(x) = (-3x-3)\cdot(\frac{2}{3}x + \frac{1}{3}) = -2x^2 -3x -1$. Podemos calcular una solución partícular óptima, ya que esta no lo es, sin más que calcular su resto al dividirla por $x^2 + x +1$, que es $1-x$. Entonces, $f_0(x) = 6 + 6x + (1-x)(x^2-x) = -x^3 + 2x^2 + 5x + 6$ es una solución particular del sistema, y la solución general será: 
+Si comparamos esta expresión con la ecuación original, es evidente que una solución particular es $g_0(x) = (-3x-3)\cdot(\frac{2}{3}x + \frac{1}{3}) = -2x^2 -3x -1$. Podemos calcular una solución partícular óptima, ya que esta no lo es, sin más que calcular su resto al dividirla por $x^2 + x +1$, que es $1-x$. Entonces, $f_0(x) = 6 + 6x + (1-x)(x^2-x) = -x^3 + 2x^2 + 5x + 6$ es una solución particular del sistema, y la solución general será:
 $$f(x) \equiv f_0(x)\ mod\ ([x^2-x,x^2+x+1]) \Rightarrow f(x) \equiv -x^3 + 2x^2 + 5x + 6\ mod\ (x^4 - x)$$
 
 Entonces, el polinomio pedido sería justamente $f(x) = -x^3 + 2x^2 + 5x + 6$, y podemos comprobar que, efectivamente, se cumplen las condiciones del enunciado.
 
-\subsection{\LARGE{Ejercicio 13 - 3 parte K[x] y $\ent\sqrt{n}$}}
+\subsection{{Ejercicio 13 - 3 parte K[x] y $\ent\sqrt{n}$}}
 
 \textbf{Determinar los polinomios $f(x) \in \rac [x]$ de grado menor o igual que tres que satisfacen el sistema de congruencias}
 
@@ -1329,11 +1088,11 @@ Entonces, el polinomio pedido sería justamente $f(x) = -x^3 + 2x^2 + 5x + 6$, y
 \end{rcases}
 \]
 
-En primer lugar, reescribimos la primera ecuación para sustituirla en la segunda. 
+En primer lugar, reescribimos la primera ecuación para sustituirla en la segunda.
 $$f(x) \equiv x - 1\ mod(x^2+1) \implies f(x) = x-1 + (x^2+1)g(x)^\circledast$$
 
 Reemplazando lo obtenido, tenemos:
-$$x-1 + (x^2+1)g(x) \equiv x+1\ mod(x^2+x+1)$$ 
+$$x-1 + (x^2+1)g(x) \equiv x+1\ mod(x^2+x+1)$$
 Pasamos el x-1 restando:
 $$(x^2+1)g(x) \equiv 2\ mod(x^2+x+1)$$
 Resolvemos esta ecuación, que tendrá solución si, y solo si, $(x^2+1,\ x^2+x+1)/2$. Así, hallamos el mcd a través de la tablita correspondiente:
@@ -1352,7 +1111,7 @@ $x$ & 1 & -1 \\
 Obtenemos de esta forma que $(x^2+1,\ x^2+x+1) = 1$, que divide a 2, por tanto, habrá solución. Partiendo de la identidad de Bezout: $1 = (x^2+x+1)(-x) + (x^2+1)(x+1)$, la transformamos en una ecuación en congruencia (si vemos la ecuación como $(x^2+x+1)(x) = (x^2+1)(x+1) - 1$, por la definición de congruencia) $(x^2+1)(x+1) \equiv 1\ mod(x^2+x+1)$, multiplicando por 2, encontramos la g(x) buscada: $(x^2+1)(2x+2) \equiv 2\ mod(x^2+x+1)$.
 $g(x)=2x+2$.
 
-Sustituyendo en $^\circledast$ el polinomio g(x) recién encontrado llegaremos a $f_0$(x), solución parcial del sistema. 
+Sustituyendo en $^\circledast$ el polinomio g(x) recién encontrado llegaremos a $f_0$(x), solución parcial del sistema.
 
 $$f_0(x) = x-1 + (x^2+1)g(x) = x-1 + (x^2+1)(2x+2) = 2x^3+2x^2+3x+1$$
 
@@ -1367,7 +1126,7 @@ Como el ejercicio pide aquellos polinomios de grado menor o igual que tres, nos 
 \textbf{Solución:} $f_0(x) = 2x^3+2x^2+3x+1$
 
 
-\subsection{\LARGE{Ejercicio 15 - 5 parte K[x] y $\ent\sqrt{n}$}}
+\subsection{{Ejercicio 15 - 5 parte K[x] y $\ent\sqrt{n}$}}
 
 \textbf{En el anillo $Z[\sqrt3]$, resolver la congruencia.
 $$ (1+ \sqrt3)x \equiv 9 - 4\sqrt3 \ mod(2\sqrt3)$$}
@@ -1380,7 +1139,7 @@ Como $N(1 + \sqrt3) < N(2 \sqrt 3)$ pondremos primero $2 \sqrt3$\\ \\
 \multicolumn{1}{l|}{$2\sqrt3$}    & 1 & 0 &  &  \\
 \multicolumn{1}{l|}{$1 + \sqrt3$} & 0 & 1 &  &  \\
 \multicolumn{1}{l|}{0} &   &   &  &  \\
-                                &   &   &  & 
+                                &   &   &  &
 \end{tabular}
 
 Sabemos que el resto es 0 puesto que:\\
@@ -1388,11 +1147,11 @@ $$ \frac{2 \sqrt3}{1 + \sqrt3} = \frac{(2\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \
 Por lo tanto, el cociente de esta división es $ 3 - \sqrt3 $ y de resto cero. Quedando el mcd de $(1 + \sqrt 3)$ y $(2\sqrt3)$ es $(1 + \sqrt 3)$. Veamos si $(1 + \sqrt 3)$ divide $ 9 -4 \sqrt3$.\\
 $$ \frac{9 - 4\sqrt3}{1 + \sqrt3} = \frac{(9 - 4\sqrt3)(1 - \sqrt3)}{(1 + \sqrt3)(1 - \sqrt3)} = \frac{9 - 9\sqrt3 - 4\sqrt4 + 4{(\sqrt3)}^{2}}{1 - {(\sqrt3)}^{2} } = \frac{21 -13\sqrt3}{-2} = \frac{13\sqrt3 - 21}{2} = \frac{13}{2}\sqrt3 - \frac{21}{2}$$
 El cociente la division es $q = 6$ y el resto es: \\
-$$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$ 
+$$r = (9 -4\sqrt3) - 6 \cdot (1 + \sqrt3) = 9 -4\sqrt3 - 6 -6\sqrt3 = 3 - 10\sqrt{3} \neq 0$$
 Como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$. Esta ecuación no tiene solución.
 
-\section{\LARGE{Ejercicio 16 - 6 parte K[x] y $\ent\sqrt{n}$}}
-\textbf{En el anillo $\mathbb{Z}$[i], resolver el siguiente sistema de congruencias:} 
+\section{{Ejercicio 16 - 6 parte K[x] y $\ent\sqrt{n}$}}
+\textbf{En el anillo $\mathbb{Z}$[i], resolver el siguiente sistema de congruencias:}
 
 \[
 	\begin{cases}
@@ -1404,7 +1163,7 @@ Como $(1 + \sqrt 3)$ no divide $ 9 -4 \sqrt3$. Esta ecuación no tiene solución
 
 \emph{Resolución. \\ }
 
-Empezaremos resolviendo el sistema: 
+Empezaremos resolviendo el sistema:
 \[
 	\begin{cases}
 	x \equiv i\ \ \ \ \ \ \ \ mod\ (3)\\
@@ -1413,15 +1172,15 @@ Empezaremos resolviendo el sistema:
 \]
 
  Para ello hallaremos la solución particular de $x \equiv i\ mod\ (3)$. Como i es una unidad del anillo, entonces $\forall a \in \mathbb{Z}[i] \Rightarrow (a,i) = i.$ Los coeficientes de Bezout son $0*3 + 1*i = 1$ de manera trivial. Entonces la solución general de la primera ecuación sería $x = i + 3*k$. \\
- 
+
  Ahora sustituimos x en la segunda ecuación, y nos queda la ecuación $i + 3k \equiv\ 1 +i\ mod (3+2i) $ de manera equivalente $3k\ \equiv\ 1\ mod\ (3+2i)$. Ahora sacaremos los coeficientes de Bezout de 3 y 3+2i.
- 
+
 \begin{center}
 \begin{tabular}{c|cc}
      & 3+2i & 3       \\
 3+2i & 1    & 0       \\
 3    & 0    & 1       \\
--i   & 1    & -1-i   
+-i   & 1    & -1-i
 \end{tabular}
 \end{center}
 
@@ -1440,13 +1199,13 @@ Ahora cogemos el sistema:
 \]
 
  Para resolverlo y hallar (por fin) la solución final haremos lo mismo: hallar la solución general de la primera ecuación (ya resuelta) y sustituir en la segunda, mcm de los módulos y terminamos.\\
- 
+
  Solución primera ecuación: $4i-3+ k''(9i-6)$.\\
- 
- Sustituimos segunda: $4i-3+ k''(9i-6) \equiv 3+2i \ \ mod\ (4+i) \rightarrow 
+
+ Sustituimos segunda: $4i-3+ k''(9i-6) \equiv 3+2i \ \ mod\ (4+i) \rightarrow
  (9i-6)k''\equiv 6-2i \ \ mod\ (4+i)$ \\
- 
- Hallamos coeficientes de bezout y mcd:  \\ 
+
+ Hallamos coeficientes de bezout y mcd:  \\
 
 \begin{center}
 \begin{tabular}{c|cc}
@@ -1457,12 +1216,12 @@ Ahora cogemos el sistema:
 i    & -2   & 4i-1
 \end{tabular}
 \end{center}
- 
- Enunciamos solución particular y un indicio de la general: Como $(9i-6)(-2) \equiv i\ mod\ (4i-1) \Rightarrow $ 
+
+ Enunciamos solución particular y un indicio de la general: Como $(9i-6)(-2) \equiv i\ mod\ (4i-1) \Rightarrow $
  $(9i-6)(-2)(-6i-2) \equiv i(-6i-2)\ mod\ (4i-1) \Rightarrow (9i-6)(12i+4) \equiv (6-2i)\ mod\ (4i-1) \Rightarrow k'' = (12i+4) + [9i-6,4+i] k''' $\\
- 
- Calculamos [9i-6,4+i]: $\frac{30i-33}{i}=30-33i$\\ 
- 
+
+ Calculamos [9i-6,4+i]: $\frac{30i-33}{i}=30-33i$\\
+
  Solución general: $(12i+4) + (30-33i) k'''$
 
 
@@ -1470,11 +1229,11 @@ i    & -2   & 4i-1
 
 
 \pagebreak
-\section{\Huge{Relación 4}}
+\section{{Relación 4}}
 
 
 
-\subsection{ \LARGE{Ejercicio 1}}
+\subsection{ {Ejercicio 1}}
 
 \textbf{Resuelve las ecuaciones siguientes en los anillos que se indican:}
 
@@ -1535,7 +1294,7 @@ Luego resulta que $2^{30}\equiv_7 2^6 \equiv_7 1$
 Por lo que $x_0 = 2$ y la solución es $x=2$
 
 
-\subsection{\LARGE{Ejercicio 2}}
+\subsection{{Ejercicio 2}}
 
 \textbf{Determina cuántas unidades y cuántos divisores de cero tienen los anillos:}
 
@@ -1566,14 +1325,14 @@ $$Recordaremos\ que\ los\ valores\ de\ \lambda\ en\ \varphi(\alpha)\ del\ tipo\ 
 
 Volvemos a hacer lo mismo, $\varphi(1000) = 1000\cdot(1-\frac{1}{2})\cdot(1-\frac{1}{5}) = $\textbf{400 unidades} y por tanto hay \textbf{600 divisores de cero}.
 
-\subsection{\LARGE{Ejercicio 3}}
+\subsection{{Ejercicio 3}}
 
 \textbf{Determina si la igualdad a = b es cierta en los siguientes casos:}
 
 \emph{Como la interpretación de los paréntesis puede dar lugar a malinterpretaciones consideraremos en los dos primeros apartados la base como un número elevado a otro, y en los dos siguientes consideraremos una base que está elevada a un exponente el cual es base de otra potencia.}
 
 \textbf{\underline{1) $\mathbf{a = (9^{55})^9\ y\ b = (7^{70})^{55}\ en\ el\ anillo\ \ent_{21} }$}}
-\\\\ 
+\\\\
 Partiremos de que $9^{55^9} = 9^{495}$, pero (como 9 y 21 son primos relativos) podemos calcular la función $\varphi$ de Euler para saber cuantas unidades hay en el anillo y ver “con qué frecuencia se repiten los valores de las potencias”
 
 Entonces: $\varphi(21) = 21\cdot\frac{2}{3}\cdot\frac{6}{7} = 12$
@@ -1623,7 +1382,7 @@ $3^{55^{70}} \equiv_{22} 3^{R_{\varphi(22)}(55^{70})}$
 Aquí entonces tenemos que hallar cuál es la solución de $R_{10}(55^{70}) = R_{10}(5^{70}).$
 Pero rápidamente observamos que $5^1\equiv_{10}...\equiv_{10}5^n\equiv_{10}5$
  y por tanto $R_{10}(5^{70}) = 5$
- 
+
 En este momento ya podemos calcular cuánto vale $3^{55^{70}}$, que es congruente con $3^5$
 
 $$3^1\equiv_{22}3\quad;\quad3^2\equiv_{22}9\quad;\quad3^3\equiv_{22}5\quad;\quad3^4\equiv_{22}15\quad;\quad \mathbf{3^5\equiv_{22}1}$$
@@ -1636,7 +1395,7 @@ $$4^1\equiv_{22}4\quad;\quad 4^2\equiv_{22}16\quad;\quad 4^3\equiv_{22}20\quad;\
 
 De esto sacamos que se repiten cada 5, o visto de otra manera, esto quiere decir que $4^{55^{70}}\equiv_{22} 4^{R_5(55^{70})} $, pero como $R_5(55) = 0 \Rightarrow 4^{55^{70}}\equiv_{22} 4^5$
 
-Uniendo ambos resultados vemos que el producto de esto nos queda $1\cdot 12 = \mathbf{12 = a}$ 
+Uniendo ambos resultados vemos que el producto de esto nos queda $1\cdot 12 = \mathbf{12 = a}$
 
 
 Y ahora calculamos $b$:
@@ -1676,7 +1435,7 @@ Obteniendo como resultado \textbf{a = 11 · 1 = 11}
 Para b calculamos el producto de:
 
 $2^{70^{22}}\equiv_{22}2^{R_{10}(70^{22})}\equiv_{22}2^{10}\equiv_{22}12$
- 
+
 \emph{(Como 2 y 22 son primos estudiamos las repeticiones de las potencias de 2 en $\ent_{22})$}
 
 $5^{70^{22}}\equiv_{22}5^{R_{10}(70^{22})}\equiv_{22}1$
@@ -1688,7 +1447,7 @@ Y finalizamos concluyendo que $\mathbf{a \neq b}$
 
 
 
-\subsection{\LARGE{Ejercicio 5 - 2 en anillos de restos de K[x]}} 
+\subsection{{Ejercicio 5 - 2 en anillos de restos de K[x]}}
 
 \textbf{Sea $\mathcal{F}_9 = \ent_3[x]_{ x^2 +1}$ el anillo de restos del anillo $\ent_3[x]$ módulo $x^2 +1$.}
 
@@ -1705,7 +1464,3 @@ Por tanto, este anillo tiene 9 polinomios:
 Para ello, tenemos que ver si $x^2+1$ es un irreducible en $\ent_3[x]$. Vemos si tiene raíces, dándole los valores 0, 1 y 2 y vemos que en ningún caso el resultado es cero, por tanto es irreducible por la afirmación: Si $f(x)$ no es irreducible $\exists x-a : x-a/f \implies f(a) = 0$
 
 Entonces, $\mathcal{F}_9$ es un cuerpo.
-
-
-
-\end{document}
