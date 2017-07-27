@@ -1,457 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Ejercicios de la asignatura Modelos Matemáticos I.
-% Doble Grado de Informática y Matemáticas.
-% Universidad de Granada.
-% Curso 2016/17.
-% 
-% 
-%
-% Agradecimientos:
-% Andrés Herrera (@andreshp) y Mario Román (@M42) por
-% las plantillas base.
-%
-% Sitio original:
-% https://github.com/libreim/apuntesDGIIM/
-%
-% Licencia:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%------------------------------------------------------------------------------
-%   ACKNOWLEDGMENTS
-%------------------------------------------------------------------------------
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Plantilla básica de Latex en Español.
-%
-% Autor: Andrés Herrera Poyatos (https://github.com/andreshp) 
-%
-% Es una plantilla básica para redactar documentos. Utiliza el paquete  fancyhdr para darle un
-% estilo moderno pero serio.
-%
-% La plantilla se encuentra adaptada al español.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%
-% Plantilla de Trabajo
-% Modificación de una plantilla de Latex de Frits Wenneker para adaptarla 
-% al castellano y a las necesidades de escribir informática y matemáticas.
-%
-% Editada por: Mario Román
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Short Sectioned Assignment
-% LaTeX Template
-% Version 1.0 (5/5/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Frits Wenneker (http://www.howtotex.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% Tipo de documento y opciones.
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[11pt, a4paper]{article}
-
-
-%---------------------------------------------------------------------------
-%   PAQUETES
-%---------------------------------------------------------------------------
-
-% Idioma y codificación para Español.
-\usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
-\selectlanguage{spanish} 
-%\usepackage[T1]{fontenc}
-
-% Fuente utilizada.
-\usepackage{courier}    % Fuente Courier.
-\usepackage{microtype}  % Mejora la letra final de cara al lector.
-
-% Diseño de página.
-\usepackage{fancyhdr}   % Utilizado para hacer cabeceras y pies de página.
-\usepackage{titlesec} 	% Utilizado para hacer títulos propios.
-\usepackage{lastpage}   % Referencia a la última página.
-\usepackage{extramarks} % Marcas extras. Utilizado en pie de página y cabecera.
-\usepackage[parfill]{parskip}    % Crea una nueva línea entre párrafos.
-\usepackage{geometry}            % Geometría de las páginas.
-
-% Símbolos y matemáticas.
-\usepackage{amssymb, amsmath, amsthm, amsfonts, amscd}
-\usepackage{upgreek}
-
-\usepackage{mdframed}
-\usepackage{xcolor}
-%\usepackage{enumerate}
-
-
-% Otros.
-\usepackage{enumitem}   % Listas mejoradas.
-\usepackage[hidelinks]{hyperref}
-\usepackage{pgfplots}
-\usepackage{graphicx}            % Gráficos.
-
-% Dibujos Tikz
-\usepackage{pgf,tikz}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows,calc,intersections,through,backgrounds}
-
-% Fuentes personalizadas
-
-\usepackage[scaled=.85]{newpxtext,newpxmath}
-\usepackage[scaled=.85]{FiraSans}
-\usepackage[T1]{fontenc}
-
-%   OPCIONES PERSONALIZADAS
-%---------------------------------------------------------------------------
-
-\DeclareMathVersion{sans}
-\SetSymbolFont{operators}{sans}{OT1}{cmbr}{m}{n}
-\SetSymbolFont{letters}{sans}{OML}{cmbr}{m}{it}
-\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-\SetMathAlphabet{\mathit}{sans}{OT1}{cmbr}{m}{sl}
-\SetMathAlphabet{\mathbf}{sans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
-\SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
-
-\DeclareMathVersion{boldsans}
-\SetSymbolFont{operators}{boldsans}{OT1}{cmbr}{b}{n}
-\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}{boldsans}{OMS}{cmbrs}{b}{n}
-\SetMathAlphabet{\mathit}{boldsans}{OT1}{cmbr}{b}{sl}
-\SetMathAlphabet{\mathbf}{boldsans}{OT1}{cmbr}{bx}{n}
-\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
-\SetSymbolFont{largesymbols}{boldsans}{OMX}{iwona}{bx}{n}
-
-\newif\IfInSansMode
-\let\oldsf\sffamily
-\renewcommand*{\sffamily}{\oldsf\mathversion{sans}\InSansModetrue}
-\let\oldmd\mdseries
-\renewcommand*{\mdseries}{\oldmd\IfInSansMode\mathversion{sans}\fi\relax}
-\let\oldbf\bfseries
-\renewcommand*{\bfseries}{\oldbf\IfInSansMode\mathversion{boldsans}\else%
-\mathversion{bold}\fi\relax}
-\let\oldnorm\normalfont
-\renewcommand*{\normalfont}{\oldnorm\InSansModefalse\mathversion{normal}}
-\let\oldrm\rmfamily
-\renewcommand*{\rmfamily}{\oldrm\InSansModefalse\mathversion{normal}}
-
-% Colores
-
-\definecolor{50}{HTML}{E3F2FD}
-\definecolor{300}{HTML}{64B5F6}
-\definecolor{500}{HTML}{2196F3}
-\definecolor{700}{HTML}{1976D2}
-\definecolor{900}{HTML}{0D47A1}
-
-% ---------------------------------------------------------------------------
-% OPCIONES PERSONALIZADAS
-% ---------------------------------------------------------------------------
-
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Formato de texto.
-\linespread{1.3}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlist{leftmargin=.5in}   % Indentación para las listas.
-
-% Estilo de página.
-\pagestyle{fancy}
-\fancyhf{}
-\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}   % Márgenes y cabecera.
-
-% Estilo de las cabeceras
-
-\titleformat{\section}
-{\Large\bfseries\sffamily}{\thesection}{1em}{}
-\titleformat{\subsection}
-{\large\sffamily}{\thesubsection}{1em}{}
-
-% Estilo de enlaces
-\hypersetup{
-    % hidelinks = true,   % Oculta todos los enlaces.
-    colorlinks = true,   % Muestra todos los enlaces, sin bordes alrededor.
-    linkcolor=black,     % Color de enlaces genéricos
-    citecolor={blue!50!black},   % Color de enlaces de referencias
-    urlcolor={blue!80!black}     % Color de enlaces de URL
-}
-
-% Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}}
-
-% Redefinir entorno de demostración (reducir espacio superior)
-\makeatletter
-\renewenvironment{proof}[1][\proofname] {\vspace{-15pt}\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\it#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-\makeatother
-
-% Aumentar el tamaño del interlineado
-\linespread{1.3}
-
-% Numerar las ecuaciones del entorno {equation} con respecto a las secciones
-\numberwithin{equation}{section}
-
-%---------------------------------------------------------------------------
-%   COMANDOS PERSONALIZADOS
-%---------------------------------------------------------------------------
-
-% Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}    
-
-% Fracción grande: \ddfrac{}{}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-% Texto en negrita en modo matemática: \bm{}
-\newcommand{\bm}[1]{\boldsymbol{#1}}
-
-% Línea horizontal.
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
-
-% Renombrar la R de los reales
-
-\newcommand{\R}{\mathbb{R}}
-
-
-
-%---------------------------------------------------------------------------
-%   CABECERA Y PIE DE PÁGINA
-%---------------------------------------------------------------------------
-
-
-\renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
-
-\renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
-
-%\addtolength{\headheight}{4ex}
-\renewcommand{\headrulewidth}{0pt}
-
-\addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
-
-\fancypagestyle{section}{%
-    \fancyhead{}
-    %\addtolength{\headheight}{-10ex}
-    %\renewcommand{\headheight}{0pt}%
-    %\setlength{\footskip}{-48pt}%
-    \fancyfoot[LE,RO]{\Large\sffamily\thepage}
-    \renewcommand{\headrulewidth}{0pt}%
-    \renewcommand{\footrulewidth}{0pt}%
-}
-
-\let\originalsection\section
-\RenewDocumentCommand{\section}{som}{%
-    \IfBooleanTF{#1}
-    {\originalsection*{#3}}
-    {\IfNoValueTF{#2}
-        {\originalsection{#3}}
-        {\originalsection[#2]{#3}}%
-    }%
-    \thispagestyle{section}%
-}
-
-\fancyhead[LE,RO]{\rule[-4ex]{0pt}{2ex}\sffamily\textsl{\rightmark}}
-\fancyhead[LO,RE]{\sffamily{\leftmark}}
-\fancyfoot[LE,RO]{\Large\sffamily\thepage}
-
-%---------------------------------------------------------------------------
-%   ENTORNOS PARA MATEMÁTICAS
-%---------------------------------------------------------------------------
-
-% Nuevo estilo para definiciones.
-\newtheoremstyle{definition-style} % Nombre del estilo.
-{}               % Espacio por encima.
-{}               % Espacio por debajo.
-{}                   % Fuente del cuerpo.
-{}                   % Identación.
-{\bf\sffamily}                % Fuente para la cabecera.
-{.}                  % Puntuación tras la cabecera.
-{.5em}               % Espacio tras la cabecera.
-{\thmname{#1}\thmnote{ #3}}     % Especificación de la cabecera (actual: nombre en negrita).
-
-% Nuevo estilo para notas.
-\newtheoremstyle{remark-style} 
-{10pt}                
-{10pt}                
-{}                   
-{}                   
-{\itshape \sffamily}          
-{.}                  
-{.5em}               
-{}                  
-
-% Nuevo estilo para teoremas y proposiciones.
-\newtheoremstyle{theorem-style}
-{}                
-{}                
-{}           
-{}                  
-{\bfseries \sffamily}             
-{.}                
-{.5em}           
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
-
-
-% Configuración general de mdframe, los estilos de los teoremas, etc
-\mdfsetup{skipabove=12pt,skipbelow=12pt,innertopmargin=12pt,innerbottommargin=4pt}
-
-% Creamos los 'marcos' de los estilos
-
-\mdfdefinestyle{nth-frame}{
-    linewidth=2pt, %
-    linecolor= 500, % 
-    %linecolor=black,
-    topline=false, %
-    bottomline=false, %
-    rightline=false,%
-    leftmargin=0pt, %
-    innerleftmargin=1em, % 
-    rightmargin=0pt, %
-    innerrightmargin=0pt, % % 
-    %splittopskip=\topskip, %
-    %splitbottomskip=\topskip, %
-}% 
-
-\mdfdefinestyle{nprop-frame}{
-    linewidth=2pt, %
-    linecolor= 300, %
-    %linecolor= gray, 
-    topline=false, %
-    bottomline=false, %
-    rightline=false,%
-    leftmargin=0pt, %
-    innerleftmargin=1em, %
-    innerrightmargin=0em, 
-    rightmargin=0pt, %
-    %splittopskip=\topskip, %
-    %splitbottomskip=\topskip, %
-}%       
-
-\mdfdefinestyle{ndef-frame}{
-    linewidth=2pt, %
-    linecolor= 300, % 
-    %linecolor= gray!50,
-    backgroundcolor= 50,
-    %backgroundcolor= gray!5,
-    topline=false, %
-    bottomline=false, %
-    rightline=false,%
-    leftmargin=0pt, %
-    innerleftmargin=1em, %
-    innerrightmargin=1em, 
-    rightmargin=0pt, % 
-    innertopmargin=1.5em,%
-    innerbottommargin=1em, % 
-    splittopskip=\topskip, %
-    %splitbottomskip=\topskip, %
-}%               
-
-% Asignamos los marcos a los estilos
-
-\surroundwithmdframed[style=nth-frame]{nth}
-\surroundwithmdframed[style=nprop-frame]{nprop}
-\surroundwithmdframed[style=nprop-frame]{ncor}
-\surroundwithmdframed[style=ndef-frame]{ndef}
-\surroundwithmdframed[style=ndef-frame]{ejer}
-
-% Nuevo estilo para ejemplos.
-\newtheoremstyle{example-style}
-{10pt}                
-{10pt}                
-{}                  
-{}                   
-{\bf \sffamily}              
-{:}                 
-{.5em}               
-{}                   
-
-% Teoremas, proposiciones y corolarios.
-\theoremstyle{theorem-style}
-\newtheorem{nth}{Teorema}[section]
-\newtheorem{nprop}{Proposición}[section]
-\newtheorem{ncor}{Corolario}[section]
-\newtheorem{lema}{Lema}[section]
-% Definiciones.
-\theoremstyle{definition-style}
-\newtheorem{ndef}{Definición}[section]
-\newtheorem{ejer}{Ejercicio}[section]
-
-% Notas.
-\theoremstyle{remark-style}
-\newtheorem*{nota}{Nota}
-\newtheorem*{sol}{Solución}
-
-% Ejemplos.
-\theoremstyle{example-style}
-\newtheorem{ejemplo}{Ejemplo}[section]
-
-% Listas ordenadas con números romanos (i), (ii), etc.
-\newenvironment{nlist}
-{\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-{\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
-
-    %---------------------------------------------------------------------------
-    %   PÁGINA DE TÍTULO
-    %---------------------------------------------------------------------------
-
-    % Título del documento.
-    \newcommand{\subject}{Modelos Matemáticos I}
-
-    % Autor del documento.
-    \newcommand{\docauthor}{Doble Grado en Ingeniería Informática y Matemáticas}
-
-    % Título
-    \title{
-        \normalfont \normalsize 
-        \textsc{Universidad de Granada} \\ [25pt]    % Texto por encima.
-        \horrule{0.5pt} \\[0.4cm] % Línea horizontal fina.
-        \huge \subject\\ % Título.
-        \horrule{2pt} \\[0.5cm] % Línea horizontal gruesa.
-    }
-
-    % Autor.
-    \author{\Large\sffamily{\docauthor}}
-
-    % Fecha.
-    \date{\vspace{-1.5em} \normalsize \sffamily Curso 2016/17}
-
-
-    %---------------------------------------------------------------------------
-    %   COMIENZO DEL DOCUMENTO
-    %---------------------------------------------------------------------------
-    \begin{document}
-
-    \maketitle  % Título.
-    \tableofcontents    % Índice
-    \vfill
-    \begin{center}
-        \includegraphics{by-nc-sa}  % Licencia.
-    \end{center}
-    \newpage
-
-
     %----------------------------
     %   Introducción.
     %----------------------------
@@ -463,7 +9,7 @@
     \[
         x _{n+1} =  1/3 x_n +2^n
     \]
-    Hallar una solución del tipo $x_n=c2^n$. 
+    Hallar una solución del tipo $x_n=c2^n$.
 
     Llo primero es ver que esta ecuación es una ecuación en diferencias de primer orden lineal no homogénea. Vamos a hallar el $c$ que nos piden. Entonces:
     \[
@@ -515,7 +61,7 @@
     \[
         \begin{rcases}
             x _{n+1} = (2+i) x_n + 1 \\
-            x _{n+1}^* = (2+i) x_n^* +  1 
+            x _{n+1}^* = (2+i) x_n^* +  1
         \end{rcases}
     \]
     Restamos y tenemos que:
@@ -534,7 +80,7 @@
     \[
         \begin{rcases}
             x _{n+1} =0.5 x_n + 0.25 y_n \\
-            y _{n+1} = 0.75 y_n +  0.5 x_n 
+            y _{n+1} = 0.75 y_n +  0.5 x_n
         \end{rcases}
     \]
     Sabemos que $x_n+y_n = 1$, que es el $100\%$ de los clientes. Podemos despejar así una en función de la otra y nos queda:
@@ -688,7 +234,7 @@
     \subsection{Ejercicio 17}
     En cierto mercado, los precios de determinado producto siguen una din\'amica basada en los postulados del modelo de la telaraña pero se ha observado que las funciones de oferta y demanda vienen dadas por:
 
-    \[ 
+    \[
         O(p) = 1 + p^{2}, \ D(p) = c - dp
     \]\
 
@@ -708,12 +254,12 @@
         O(p_{n-1}) = D (p_n) \Rightarrow
     \]
 
-    \[ 
-        \Rightarrow 1 + p_{n-1}^{2} = c - dp_n \Rightarrow 
+    \[
+        \Rightarrow 1 + p_{n-1}^{2} = c - dp_n \Rightarrow
     \]
 
-    \[ 
-        \Rightarrow p_n = \frac{c-1}{d} - \frac{p_{n-1}^{2}}{d} \Rightarrow 
+    \[
+        \Rightarrow p_n = \frac{c-1}{d} - \frac{p_{n-1}^{2}}{d} \Rightarrow
     \]
 
     puesto que $d>0$
@@ -722,7 +268,7 @@
         \Rightarrow p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n)
     \]
 
-    Para calcular el punto de equilibrio ($\alpha$) tenemos que resolver la ecuaci\'on 
+    Para calcular el punto de equilibrio ($\alpha$) tenemos que resolver la ecuaci\'on
 
     \[
         \alpha = F(\alpha) \Rightarrow
@@ -743,7 +289,7 @@
     Dado que $\alpha$ es el precio de equilibrio y \'este es un n\'umero real entonces se tiene que dar que el discriminante sea mayor que 0 lo cual es cierto ya que c$>$1 y d$>$0. Adem\'as se tiene que el precio de equilibrio es un n\'umero positivo así que debemos escoger aquellos $\alpha$s que sean positivos. As\'i se verifica que :
 
     \[
-        d^{2} +4c-4 > d^{2} \Rightarrow 
+        d^{2} +4c-4 > d^{2} \Rightarrow
     \]
 
     \[
@@ -756,7 +302,7 @@
         \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2}
     \]
 
-    b) 
+    b)
     Recordemos que para que un punto de equilibrio sea localmente asintóticamente estable (L.A.E.) se tienen que dar dos condiciones: la primera es que la funci\'on sea de clase 1 y segundo que el valor absoluto de la derivada evaluada en el punto de equilibrio sea menor que 1. Como podemos ver $F \in C^{\infty}$ luego, en particular, $F \in C^{1}$, basta con ver para que valores de c y d se tiene que la mencionada derivada sea menor que 1.
 
     \[
@@ -764,7 +310,7 @@
     \]
 
     \[
-        \Rightarrow |F'(x)| = |\frac{-2}{d}x| 
+        \Rightarrow |F'(x)| = |\frac{-2}{d}x|
     \]
 
     \[
@@ -792,7 +338,7 @@
     \]
 
     \[
-        \Rightarrow 4d^{2} > d^{2}+4c-4 \Rightarrow 
+        \Rightarrow 4d^{2} > d^{2}+4c-4 \Rightarrow
     \]
 
     \[
@@ -802,7 +348,7 @@
     Si d = 2 y c = 4
 
     \[
-        \Rightarrow 3*4 - 4*4 +4 = 0 
+        \Rightarrow 3*4 - 4*4 +4 = 0
     \]
 
     Luego la condici\'on anterior no nos garantiza que ese punto sea L.A.E.
@@ -819,7 +365,7 @@
     \]
 
     \[
-        |F(x)|' = |-x| = x 
+        |F(x)|' = |-x| = x
     \]
 
     Sustituyendo $\alpha$ por x:
@@ -844,7 +390,7 @@
 
     Por tanto, es inestable.
 
-    c) Si c = 3 , d = 2 y $p_0 = 1$ , entonces usando que : 
+    c) Si c = 3 , d = 2 y $p_0 = 1$ , entonces usando que :
 
     \[
         p_{n+1} = \frac{c-1}{d} - \frac{p_{n}^{2}}{d} = F(p_n) \Rightarrow
@@ -867,12 +413,12 @@
 
     Podemos ver que el punto de equilibrio es un atractor y que la funci\'on converge a dicho punto:
     \[
-        \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} = \frac{-2+\sqrt{4 +12-4}}{2} = \frac{-2+2\sqrt{3}}{2} = -1+\sqrt{3}  
+        \alpha = \frac{-d+\sqrt{d^{2} +4c-4}}{2} = \frac{-2+\sqrt{4 +12-4}}{2} = \frac{-2+2\sqrt{3}}{2} = -1+\sqrt{3}
     \]
 
     \
 
-    Para realizar este gr\'afico he usado wxmaxima, en concreto, la orden 
+    Para realizar este gr\'afico he usado wxmaxima, en concreto, la orden
 
     \[
         staircase(1-(1/2)*x^2,1,100,[x,0,1.5],[y,0,1.5]);
@@ -930,7 +476,7 @@
         \begin{rcases}
             1.5 = a-10b\\
             1 = a-20b
-        \end{rcases} 
+        \end{rcases}
         \begin{cases}
             a = 2 \\
             b = 0.05
@@ -1001,7 +547,7 @@
         x_{n+2} + a_1x_{n+1} + a_0x_n = 0, \quad n \ge 0
     \end{equation}
 
-    Si sustuimos en (\ref 1) los valores $n=0$ y $n=1$ para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obtenemos el siguiente sistema de ecuaciones: 
+    Si sustuimos en (\ref 1) los valores $n=0$ y $n=1$ para la solución particular $\{\overline{x_n}\}_{n\ge0}$, obtenemos el siguiente sistema de ecuaciones:
 
 $$\begin{cases} 5 + 2a_1 + a_0 = 0\\ 12 + 5a_1 + 2a_0 = 0 \end{cases}$$
 
@@ -1012,11 +558,11 @@ $$\begin{cases} 5 + 2a_1 + a_0 = 0\\ 12 + 5a_1 + 2a_0 = 0 \end{cases}$$
 
     \textbf{b)} Dé una expresión de la solución general de la ecuación en diferencias.
 
-    Resolvemos la ecuación (\ref 2) como ya sabemos. Comenzamos hallando las raíces del polinomio característico: 
+    Resolvemos la ecuación (\ref 2) como ya sabemos. Comenzamos hallando las raíces del polinomio característico:
 
 $$p(\lambda) =  \lambda^2 - 2\lambda - 1 = 0 \iff \lambda = \frac{2 \pm \sqrt{8}}{2} \iff \begin{cases} \lambda_1 = 1 + \sqrt{2}\\ \lambda_2 = 1 - \sqrt{2} \end{cases}$$
 
-    Como $\lambda_1$ y $\lambda_2$ son dos raíces distintas de $p(\lambda)$, sabemos que $\{ X_{\lambda_1}, X_{\lambda_2} \}$ es una base del espacio de soluciones $\Sigma$, donde 
+    Como $\lambda_1$ y $\lambda_2$ son dos raíces distintas de $p(\lambda)$, sabemos que $\{ X_{\lambda_1}, X_{\lambda_2} \}$ es una base del espacio de soluciones $\Sigma$, donde
 
     $$X_{\lambda_1} = \{ \lambda_1^n \}_{n\ge 0} \quad ; \quad X_{\lambda_2} = \{ \lambda_2^n \}_{n\ge0}$$
     Por tanto, la solución general $\{x_n\}_{n\ge0}$ será una combinación lineal de la base $\{ X_{\lambda_1}, X_{\lambda_2} \}$, es decir:
@@ -1108,7 +654,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
     La condición (2) es trivial. Suma de números positivos es positiva.
 
     Y de la condición (3) obtenemos:
-    $$k < \frac{1}{b}$$ 
+    $$k < \frac{1}{b}$$
 
     Con esto deducimos finalmente que converge si:
     \[
@@ -1127,10 +673,10 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
     \begin{sol}
         Sea $A \in \mathcal M_{r}(\mathbb C)$ y sea $p(\lambda) = |A - \lambda I| = (-1)^r(\lambda^r + c_{r-1}\lambda^{r-1} + \hdots + c_1\lambda + c_0)$ su polinomio característico, con $c_i \in \mathbb{C}$. Llamemos $C = A - \lambda I$. Sabemos que: $$C^{-1} = \frac{1}{|C|} \cdot Adj(C)^T \implies |C|I = C \ Adj(C)^T$$
 
-        Entonces, tendremos que 
+        Entonces, tendremos que
         \begin{equation} \label {th_cayley}
             p(\lambda)I = (A - \lambda I) \ Adj(A-\lambda I)^T
-        \end{equation} 
+        \end{equation}
 
         Consideremos la matriz $B = Adj(A - \lambda I)$. Como las entradas de $B$ son polinomios en $\lambda$, podemos separar para cada $0 \le i \le r$ los coeficientes del término $\lambda^i$, y formar una matriz de números $B_i$ tal que:
         \begin{align*}
@@ -1158,12 +704,12 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
             \label{}
             p(A) &= (-1)^r \left[ A^r + c_{r-1}A^{r-1} + c_{r-2}A^{r-2} + \hdots + c_1A + c_0I \right] \\
                  &= (-1)^r \left[ IA^r + (c_{r-1}I)A^{r-1} + \hdots + c_1IA + c_0I \right] \\
-                 &= -A^{r}B_{r-1}+A^{r-1}(-B_{r-2}+AB_{r-1}) + \hdots + A(-B_0 + AB_1)A + AB_0 \\ 
+                 &= -A^{r}B_{r-1}+A^{r-1}(-B_{r-2}+AB_{r-1}) + \hdots + A(-B_0 + AB_1)A + AB_0 \\
                  &= 0
         \end{align*}
     \end{sol}
 
-    \begin{ejer}[3] 
+    \begin{ejer}[3]
         Sea $A$ una matriz $4 \times 4$ con un valor propio $\lambda = 3$ de
         multiplicidad algebraica 4. Escriba todas las formas canónicas de Jordan
         asociadas a $A$ posibles.
@@ -1175,36 +721,36 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
             3 & & & \\
               & 3 & & \\
               & & 3 & \\
-              & & & 3 
-        \end{pmatrix} \ \ \ 
+              & & & 3
+        \end{pmatrix} \ \ \
         J_2 =
         \begin{pmatrix}
             3 & 1 & & \\
               & 3 & 1 & \\
               & & 3 & 1 \\
-              & & & 3 
+              & & & 3
         \end{pmatrix} \ \ \
         J_3 =
         \begin{pmatrix}
             3 & 1 & & \\
               & 3 & & \\
               & & 3 & \\
-              & & & 3 
+              & & & 3
         \end{pmatrix}$$
 
-        $$J_4 = 
+        $$J_4 =
         \begin{pmatrix}
             3 & 1 & & \\
               & 3 & 1 & \\
               & & 3 & \\
-              & & & 3 
+              & & & 3
         \end{pmatrix} \ \ \
         J_5 =
         \begin{pmatrix}
             3 & 1 & & \\
               & 3 & & \\
               & & 3 & 1 \\
-              & & & 3 
+              & & & 3
         \end{pmatrix}$$
     \end{sol}
 
@@ -1298,7 +844,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
         $$ N = \begin{pmatrix}
             0 & 1 \\
             0 & 0
-        \end{pmatrix}, \quad M = 
+        \end{pmatrix}, \quad M =
         \begin{pmatrix}
             0 & 1 & 0 \\
             0 & 0 & 1\\
@@ -1342,7 +888,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
 
         \begin{align*}
             \label{}
-            J^n_\lambda = 
+            J^n_\lambda =
             \begin{pmatrix}
                 \lambda^n & n\lambda^{n-1} & \begin{pmatrix}
                     n\\
@@ -1376,7 +922,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
         a + d = 0\\
         bc = 0\\
         ad = 0
-    \end{cases} \implies 
+    \end{cases} \implies
     \begin{cases}
         a = d = 0\\
         b = 0 \text{ ó } c = 0
@@ -1384,11 +930,11 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
 
     Es decir, las matrices nilpotentes de orden $2$ son de la forma: $$\begin{pmatrix}
         0 & 0\\
-        c & 0	
-    \end{pmatrix} \quad \text{ó} \quad 
+        c & 0
+    \end{pmatrix} \quad \text{ó} \quad
     \begin{pmatrix}
         0 & c\\
-        0 & 0	    
+        0 & 0
     \end{pmatrix}, \quad c \in \mathbb{C}.$$
 \end{sol}
 
@@ -1475,7 +1021,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
         \alpha & 0 & 0 \\
         0 & \beta & 0
     \end{pmatrix},$$
-    donde $\alpha, \beta \in ]0, 1[$. Encuentra las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\alpha, \beta)$. 
+    donde $\alpha, \beta \in ]0, 1[$. Encuentra las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\alpha, \beta)$.
 \end{ejer}
 
 \begin{sol}
@@ -1501,12 +1047,12 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
     \end{pmatrix}$$ donde $\delta, \gamma \geq 0$. \begin{enumerate}[label=\alph*)]
         \item Encuentre las regiones donde se produce extinción, crecimiento ilimitado o convergencia a equilibrio en el plano de parámetros $(\delta, \gamma)$.
         \item Describa la pirámide de edad a largo plazo correspondiente a los valores $\delta = \frac{1}{2}, \gamma = 1$.
-        
+
     \end{enumerate}
 \end{ejer}
 
 \begin{sol}\hfill
-    \begin{enumerate}[label=\alph*)]        
+    \begin{enumerate}[label=\alph*)]
         \item $R = \frac{1}{2} + \frac{1}{2}\delta + \frac{1}{4}\gamma$
             \begin{align*}
                 \label{}
@@ -1534,7 +1080,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
                 \end{vmatrix} &= \left( \frac{1}{2} - \lambda \right)\lambda^2 - \frac{1}{2}\left( \frac{-\lambda}{2} - \frac{1}{2} \right) \\
                               &= -\lambda^3 + \frac{1}{2}\lambda^2 + \frac{1}{4}\lambda + \frac{1}{4}
             \end{align*}
-        
+
             $p(1) = 0 \Rightarrow \lambda_1 = 1$
 
             Buscamos $v_1 : (L - I)v_1 = 0$
@@ -1575,7 +1121,7 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
             \end{pmatrix} \ \ \ \ \frac{V}{||V||_1} = \begin{pmatrix}
                 \frac{4}{7} \\
                 \frac{2}{7} \\
-                \frac{1}{7} 
+                \frac{1}{7}
             \end{pmatrix}$$
      \end{enumerate}
 \end{sol}
@@ -1583,8 +1129,8 @@ $$\begin{cases} \overline{x_0} = c_1 + c_2 = 1\\ \overline{x_1} = c_1(1+\sqrt{2}
 \begin{ejer}[20]
   Una determinada población está estructurada en base a tres grupos diferentes de edad: crías (hasta los 3 años),
 jóvenes (de 3 a 6 años) y adultos (de 6 a 9 años). Es conocido que cada cría engendra en media una nueva cría, cada
-joven engendra en media 1,5 crı́as y cada adulto engendra en media 0,5 crı́as. Además, las observaciones arrojan el
-dato de que la mitad de las crı́as llegan a jóvenes, en tanto que sólo el 20 \% de los jóvenes sobrevive.
+joven engendra en media 1,5 crías y cada adulto engendra en media 0,5 crías. Además, las observaciones arrojan el
+dato de que la mitad de las crías llegan a jóvenes, en tanto que sólo el 20 \% de los jóvenes sobrevive.
 
 \begin{itemize}
 \item Construya la matriz del modelo.
@@ -1600,16 +1146,16 @@ de edad).
   \item    La matriz de Leslie del modelo queda como sigue:
 
     \begin{center}
-      \begin{pmatrix}
-        
+      $\begin{pmatrix}
+
         1 & 1.5 & 0.5\\
         0.5 & 0 & 0\\
         0 & 0.2 & 0
-        
-      \end{pmatrix}
+
+      \end{pmatrix}$
     \end{center}
 
- 
+
  \item    Al cabo de seis años, la distribución será
 
 
@@ -1638,5 +1184,3 @@ de edad).
     \]
   \end{enumerate}
 \end{sol}
-
-\end{document}

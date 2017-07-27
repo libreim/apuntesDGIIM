@@ -1,0 +1,109 @@
+\ProvidesPackage{config}
+
+% ---------------------------------------------------------------------------
+%  RECURSOS
+% ---------------------------------------------------------------------------
+
+% Ruta donde buscar gráficos
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
+
+% ---------------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------------
+
+% Título del documento.
+\renewcommand{\asignatura}{Modelos\\Matemáticos I}
+
+% Autor del documento.
+\renewcommand{\autor}{LibreIM}
+
+\renewcommand{\grado}{Doble Grado de Informática y Matemáticas}
+
+\renewcommand{\universidad}{Universidad de Granada}
+
+\renewcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
+
+% ---------------------------------------------------------------------------
+%  PAQUETES
+% ---------------------------------------------------------------------------
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+
+% Títulos de figuras
+\usepackage{capt-of}
+
+% Posición de figuras
+\usepackage{float}
+
+% ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\definecolor{50}{HTML}{E3F2FD}
+\definecolor{300}{HTML}{64B5F6}
+\definecolor{500}{HTML}{2196F3}
+\definecolor{700}{HTML}{1976D2}
+\definecolor{900}{HTML}{0D47A1}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Renombrar la R de los reales
+\newcommand{\R}{\mathbb{R}}
+
+% Flechitas de los vectores de tamaño apropiado
+\renewcommand{\vec}{\overrightarrow}
+
+% Letra lambda
+\newcommand{\la}{\lambda}
+
+% Polinomio característico
+\newcommand{\pl}{p(\lambda)}
+
+% Matriz 2x2
+\newcommand{\m}[4]{%
+  \begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}
+}
+
+% Matriz 3x3
+\newcommand{\mm}[9]{%
+  \begin{pmatrix} #1 & #2 & #3\\ #4 & #5 & #6\\ #7 & #8 & #9\end{pmatrix}
+}
+
+% Determinante 2x2
+\newcommand{\detm}[4]{%
+  \begin{vmatrix} #1 & #2 \\ #3 & #4\end{vmatrix}
+}
+% Determinante 3x3
+\newcommand{\detmm}[9]{%
+  \begin{vmatrix} #1 & #2 & #3\\ #4 & #5 & #6\\ #7 & #8 & #9\end{vmatrix}
+}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
