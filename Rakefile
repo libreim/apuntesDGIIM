@@ -54,7 +54,7 @@ task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
 task :acomputadores => (pdf_for FileList["AC/Resúmenes/Tema*.md"])
-task :pdoo => (pdf_for FileList["PDOO/guia_ruby.md"])
+task :pdoo => (pdf_for FileList["PDOO/apuntes.tex", "PDOO/cheatsheets/*.tex"])
 task :algoritmica => (pdf_for FileList["ALGO/*.md"])
 
 # Generating pdfs from Latex sources
