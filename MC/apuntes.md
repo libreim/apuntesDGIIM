@@ -23,7 +23,7 @@ Un alfabeto es un conjunto finito $A$. Sus elementos se llamarán \emph{símbolo
 \end{ndef}
 
 \begin{ejemplo}
-$A = \{0, 1\}$, $B = $
+$A = \{0, 1\}$, $B = $ <!-- compeltar el ejemplo -->
 \end{ejemplo}
 
 \begin{ndef}[Palabra]
@@ -43,7 +43,7 @@ La palabra vacía es la palabra de longitud cero. La notaremos $\varepsilon$.
 Si $u, v \in A^*$, $u = a_1 \hdots a_n$, $v = b_1 \hdots b_m$ se llama concatenación de $u$ y $v$ a la cadena $u.v$ (o simplemente $uv$).
 
 \begin{ndef}[Prefijo]
-Si $u \in A*$ entonces $v$ es un \emph{prefijo} de $u$ si $\exists z \in A^*$ tal que $vz = u$. Un prefijo $v$ de $u$ se dice propio si $v \neq \varepsilon$ y $v \neq u$.
+Si $u \in A^*$ entonces $v$ es un \emph{prefijo} de $u$ si $\exists z \in A^*$ tal que $vz = u$. Un prefijo $v$ de $u$ se dice \emph{propio} si $v \neq \varepsilon$ y $v \neq u$.
 \end{ndef}
 
 <!-- falta definición de sufijo -->
