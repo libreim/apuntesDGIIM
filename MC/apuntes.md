@@ -57,3 +57,42 @@ Si $u = 010$, entonces $u^3 = 010010010$.
 \begin{nprop}
 El conjunto de lenguajes sobre $A^*$ (si $A$ no es vacío) nunca es numerable.
 \end{nprop}
+
+\begin{ndef}
+	Llamamos \textit{lenguaje generado} por una gramática $G = (V, T, P, S)$ al conjunto de cadenas formadas por símbolos terminales que son derivables a partir del símbolo de partida.
+\end{ndef}
+
+\subsubsection{Jerarquía de Chomsky} % (fold)
+\label{ssub:jerarquía_de_chomsky}
+- Tipo 0: Cualquier gramática, sin restricciones. Son los lenguajes recursivamente enumerables.
+- Tipo 1: Si todas las producciones tienen la formaa $\alpha_1A\alpha_2 \rightarrow \alpha_1 \beta \alpha_2$, donde 
+- Tipo 2: Si cualquier producción tiene la forma $A \rightarrow \alpha$, donde $A \in V, \alpha \in (V \cup T)^*$. Los lenguajes que se generan son lenguajes independientes del contexto.
+- Tipo 3: Son independientes del contecxto y además toda producción es de la forma: $A \rightarrow uB$ ó $A \rightarrow u$, donde $u \in T^*$ y $A, B \in V$. Se generan conjuntos regulares.
+
+\subsubsection{Clases de lenguajes} % (fold)
+\label{ssub:clases_de_lenguajes}
+
+Un lenguaje se dice que es de tipo $i (i = 0, 1, 2, 3)$ si y solo si es generado por una gramática de tipo $i$. La clase o familia de languajes de tipo $i$ se denota por $L_i$.
+
+\begin{nprop}
+ 	$L_3 \subseteq L_2 \subseteq L_1 \subseteq L_0$
+ \end{nprop} 
+
+\section{Autómatas finitos y expresiones regulares} % (fold)
+\label{sec:autómatas_finitos_y_expresiones_regulares}
+
+\subsection{Autómata finito determinista} % (fold)
+\label{sub:autómata_finito_determinista}
+
+Veamos un ejemplo. Supongamos que queremos reconocer palabras que son direcciones de correo electrónico del tipo `nombre@dominio.exten`, donde `nombre` es una palabra formada por dígitos y caracteres alfabéticos, y `ddominio` y `extensión` son palabras formadas por símbolos alfabéticos. ¿Cómo podemos especificar un algoritmo que identifique las palabras que corresponden a este patrón?
+
+\begin{ndef}
+	Un \textit{autómata finito} es una quintupla $M = (Q, A, \delta, q_0, F)$ donde:
+	\begin{itemize}
+		\item $Q$ es un conjunto finito llamado \textit{conjunto de estados}
+		\item $A$ es un alfabeto llamado \textit{alfabeto de entrada}.
+		\item $\delta$ es una aplicación llamada \textit{función de transición} $\delta: Q \prod A \rightarrow Q$.
+		\item $q_0$ es un elemento de $Q$, llamado \textit{estado inciial}.
+		\item $F$ es un subconjunto de Q, llamado conjunto de \textit{estados finales}.
+	\end{itemize}
+\end{ndef}
