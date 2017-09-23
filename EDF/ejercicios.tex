@@ -118,3 +118,46 @@
 	$x = \frac{y(t)}{l(t)} = e^{\frac{1}{2}\cdot t^2}\cdot (-3\cdot e^{-\frac{1}{2}\cdot t^2}\Big|_{t_0}^{t} + c)$  
 	Con lo que habríamos obtenido la solución del problema.
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones exactas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones exactas}
+
+\begin{ejer}
+	Resuelve la ecuación diferencial $sen(t\cdot x) + t\cdot x\cdot cos(t\cdot x) + t^2\cdot cos(t\cdot x)\cdot x'$  
+\end{ejer}
+\begin{sol}
+	Este tipo de ecuaciones tienen la forma $P(t,x) + Q(t,x)\cdot x' = 0$.  
+	Debemos comprobar que se da la condición de exactitud, es decir:  
+	$\frac{\partial P(t,x)}{\partial x} = \frac{\partial Q(t,x)}{\partial t}$  
+	Si esta condición se cumple y estamos en un dominio estrellado como es nuestro caso, entonces sabemos que existe la función solución U(t,x).  
+	$\frac{\partial P(t,x)}{\partial x} = cos(t\cdot x)\cdot t + t\cdot cos(t\cdot x) - t^2\cdot x\cdot sen(t\cdot x)$  
+	$\frac{\partial Q(t,x)}{\partial t} = 2\cdot t\cdot cos(t\cdot x) - t^2\cdot x\cdot sen(t\cdot x)$  
+	Como podemos comprobar en este caso se cumple la condición de exactitud y estamos en un dominio estrellado por lo que sabemos que $\exists U(t,x)$ tal que $\frac{\partial U(t,x)}{\partial t} = P(t,x)$ y $\frac{\partial U(t,x)}{\partial x} = Q(t,x)$  
+	Para obtener la función U(t,x) vamos a integrar la función P(t,x) con respecto a t.  
+	$\int P(t,x)\cdot dt = \int sen(t\cdot x) + t\cdot x\cdot cos(t\cdot x)\cdot dt = \int sen(t\cdot x)\cdot dt + x\cdot \int t\cdot cos(t\cdot x)\cdot dt$  
+	La primera integral la resolvemos de manera inmediata:  
+	$\int sen(t\cdot x)\cdot dt = \frac{-cos(t\cdot x)}{x} + c$  
+	La segunda la tenemos que resolver por partes:  
+	$$
+	\begin{cases}
+	u = t \\
+	dv = cos(t\cdot x)
+	\end{cases}
+	\begin{cases}
+	du = 1 \\
+	v = \frac{sen(t\cdot x)}{x}
+	\end{cases}
+	$$  
+	Resolviendo con la fórmula de integración por partes:  
+	$\int t\cdot cos(t\cdot x)\cdot dt = \frac{t\cdot sen(t\cdot x)}{x}-\int \frac{sen(t\cdot x)}{x}\cdot dt$  
+	$\int \frac{sen(t\cdot x)}{x}\cdot dt = \frac{-cos(t\cdot x)}{x^2}$  
+	$x\cdot \int t\cdot cos(t\cdot x)\cdot dt = t\cdot sen(t\cdot x) + \frac{cos(t\cdot x)}{x}$  
+	Con lo que:  
+	$\int P(t,x)\cdot dt = -\frac{cos(t\cdot x)}{x} + t\cdot sen(t\cdot x) + \frac{cos(t\cdot x)}{x} + c = t\cdot sen(t\cdot x) + c$  
+	De donde obtenemos que $U(t,x) = t\cdot sen(t\cdot x) + c + \phi (x)$  
+	Para obtener este factor en función de x que nos queda tenemos que derivar con respecto a x e igualarlo con Q(t,x) para sacarlo.  
+	$\frac{\partial U(t,x)}{\partial x} = t^2\cdot cos(t\cdot x) + \phi '(x)$  
+	De donde sacamos que $\phi '(x) = 0$ y por lo tanto es una constante que podemos agrupar con la constante de integración.  
+	$U(t,x) = t\cdot sen(t\cdot x) + c$
+\end{sol}
