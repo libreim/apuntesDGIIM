@@ -234,3 +234,51 @@
 	$\frac{x}{t}\cdot (\frac{x}{t}-2) = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c}$  
 	$\frac{x^2}{t^2}-2\cdot \frac{x}{t} = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c} \Rightarrow x^2 - 2\cdot t\cdot x = t^4 + 2\cdot t^3\cdot e^c + t^2\cdot e^{2\cdot c}$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones reducibles a homogéneas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones reducibles a homogéneas}
+
+\begin{ejer}
+	Resolver las siguientes ecuaciones:  
+	- $y' = \frac{x-y+1}{x+y-3}$   
+	- $y' = \frac{2\cdot x-y+2}{4\cdot x - 2\cdot y + 3}$  
+\end{ejer}
+\begin{sol}
+	- En el primero de los casos comenzamos obteniendo el punto de corte de las rectas:  
+	$\begin{cases}
+	x-y+1 = 0 \\
+	x+y-3 = 0
+	\end{cases}$
+	
+	De donde obtenemos sumando las dos ecuaciones:  
+	
+	$$
+	\begin{cases}
+	2\cdot x-2 = 0 \\
+	x+y-3 = 0
+	\end{cases}
+	$$  
+	
+	De donde obtenemos que los puntos de corte son $x=1$ e $y=2$.  
+	Hacemos el cambio de variable siguiente:  
+	
+	$$
+	\begin{cases}
+	x=u+1\\
+	y = v+2
+	\end{cases}
+	$$ 
+	
+	Sustituyendo este cambio de variable en la ecuación original:  
+	
+	$\frac{dv}{du} =  \frac{u+1-v-2+1}{u+1+v+2-3} = \frac{u-v}{u+v}$  
+	Con lo que hemos convertido la ecuación inicial en una homogénea.  
+	
+	- Intentamos hallar el punto de corte de las dos rectas dadas pero vemos que son paralelas. Si nos fijamos vemos que $2\cdot x -y$ es factor común de ambas rectas y con ello vamos a hacer el cambio de variable.  
+	$v = 2\cdot x - y \Rightarrow dv = 2\cdot dx - dy \Rightarrow dy = 2\cdot dx - dv$  
+	$(2\cdot dx - dv)\cdot (2\cdot v + 3) = v+2\cdot dx$  
+	$4\cdot v\cdot dx - 2\cdot v\cdot dv + 6\cdot dx - \cdot dv = v\cdot dx + 2\cdot dx$  
+	$3\cdot v\cdot dx - 2\cdot v \cdot dv + 4\cdot dx -3\cdot dv = 0 \Rightarrow (3\cdot v + 4)\cdot dx = (2\cdot v + 3)\cdot dv$  
+	$dx = \frac{2\cdot v + 3}{3\cdot v + 4}\cdot dv$  
+\end{sol}
