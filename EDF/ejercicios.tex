@@ -437,3 +437,30 @@
 	Este es el caso si tenemos raíces reales diferentes, en caso de tener raíces repetidas, por ejemplo $\lambda = 1$ raíz doble el sistema fundamental de soluciones sería $c_1\cdot e^x + c_2\cdot x\cdot e^x$.  
 	Si tenemos raíces complejas $\lambda = \alpha \pm \beta \cdot i$ entonces el sistema fundamental de soluciones sería $c_1\cdot e^{\alpha \cdot x}\cdot sen(\beta \cdot x) + c_2\cdot e^{\alpha \cdot x}\cdot cos(\beta \cdot x)$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones de segundo orden con variación de las constantes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones de segundo orden con variación de las constantes}
+
+\begin{ejer}
+	A continuación se describe el modelo de resolución.
+\end{ejer}
+\begin{sol}
+	En el método de variación de las constantes vamos a proponer como soluciones para la particular de la homogénea soluciones del tipo $x(t) = c_1(t)\cdot \phi_1 (t) + c_2(t)\cdot \phi_2 (t)$  
+	Esto se hace para ecuaciones con la forma $x'' + a_1 (t)\cdot x' + a_0 (t)\cdot x = b(t)$  
+	Se imponen las ligaduras siguientes para obtener condiciones sobre $c_1$ y $c_2$:  
+	$$
+	\begin{cases}
+	c_1'\cdot \phi_1 + c_2' \cdot \phi_2 = 0 \\
+	c_1'\cdot \phi_1' + c_2'\cdot \phi_2' = b
+	\end{cases}
+	$$
+	En el caso de las ecuaciones de tercer grado tenemos las ligaduras:  
+	$$
+	\begin{cases}
+	c_1'\cdot \phi_1 + c_2'\cdot \phi_2 + c_3'\cdot \phi_3 = 0 \\
+	c_1'\cdot \phi_1' + c_2'\cdot \phi_2' + c_3'\cdot \phi_3' = b
+	\end{cases}
+	$$
+	Con esto obtenemos expresiones de la derivada de $c_i$ y obtenemos cada constante integrando.
+\end{sol}
