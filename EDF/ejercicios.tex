@@ -41,3 +41,26 @@
 	La población en el año 2000 será de 80 millones.
 \end{sol}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones de Bernoulli %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones de Bernoulli}
+\begin{ejer}
+	Resuelve la siguiente ecuación de Bernoulli: $(t^2\cdot x^2-1)\cdot x' + 2\cdot t\cdot x^3=0$ haciendo $x=z^\alpha$
+\end{ejer}
+\begin{sol}
+	Las ecuaciones de bernoulli son de la forma $x' = a(t)\cdot x^q + b(t)\cdot x$ y debemos aplicar el siguiente cambio de variable para resolverlas:  
+	$\begin{cases}
+	s=t \\
+	y=x^{1-q}
+	\end{cases}$  
+	Ponemos la ecuación dada en forma normal:  
+	$x' = \frac{-2\cdot t\cdot x^3}{t^2\cdot x^2-1} = \frac{-2\cdot t\cdot z^{3\cdot \alpha}}{t^2\cdot z^{2\cdot \alpha}-1} = -2+z^{3\cdot \alpha}\cdot (\frac{1}{t^2}\cdot z^{-2\cdot \alpha}-1) = -2\cdot \frac{1}{t}\cdot z^{\alpha} - 2\cdot t\cdot z^{3\cdot \alpha} = \frac{-2}{t}\cdot x -2\cdot t\cdot x^3$  
+	Después del cambio sugerido por el enunciado hemos obtenido una ecuación de Bernoulli.  
+	Después de este cambio para resolver la ecuación tenemos que hacer el cambio de variable propuesto inicialmente:  
+	$\begin{cases}
+	s = t \\
+	y = x^{-2}
+	\end{cases}$  
+	De donde obtenemos $y' = -2\cdot \frac{1}{x^3}\cdot x' = \frac{4}{x^2}\cdot (\frac{1}{t}-t\cdot x^2) = \frac{4}{t}\cdot y - 4\cdot t$  
+	Con lo que hemos obtenido una ecuación lineal.
+\end{sol}
