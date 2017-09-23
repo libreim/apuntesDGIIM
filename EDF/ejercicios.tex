@@ -335,3 +335,88 @@
 	Como solución nos queda $x = t^2\cdot e^t - t^2\cdot e^{-t}\cdot c + t^2\cdot k$  
 	De esta forma obtenemos las soluciones de la ecuación que nos dan como SFS $-t^2\cdot e^{-t}$, $t^2$ y como solución particular de la completa $t^2\cdot e^t$.
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones de segundo orden con coeficientes indeterminados %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones de segundo orden con coeficientes indeterminados}
+
+\begin{ejer}
+	A continuación se describe el modelo de resolución de estos ejercicios.
+\end{ejer}
+\begin{sol}
+	Cuando tenemos una ecuación diferencial de orden superior completa tenemos que es de la forma $a(x)\cdot y'' + b(x)\cdot y' + c(x) = r(x)$  
+	Para este método necesitamos que $r(x)$ sea un polinomio, seno, coseno, exponencial o una mezcla de estas. Podemos distinguir dos casos:  
+	- Caso 1: No hay relación entre las soluciones de la homogénea y r(x)  
+	En este caso vamos a proponer como son el tipo de soluciones particulares de la homogénea que debemos encontrar. Para ello vamos a usar la ecuación diferencial de orden superior homogénea $y'' - 5\cdot y' + 6\cdot y = 0$ que tiene como soluciones $y_h = c_1\cdot e^{3\cdot x} + c_2\cdot e^{2\cdot x}$  
+	
+	1. $y''-5\cdot y'+6\cdot y = x^3 + x$  
+	En este caso se propone como solución particular de la homogénea un polinomio general del mismo grado que $r(x)$, es decir, $y_p = A+B\cdot x + C\cdot x^2 + D\cdot x^3$  
+	2. $y''-5\cdot y' + 6\cdot y = 20\cdot sen(8\cdot x)$ en este caso debemos proponer una solución del tipo $y_p = A\cdot sen(8\cdot x) + B\cdot cos(8\cdot x)$. Esto se tiene en consideración siempre que aparezca una función seno o coseno.
+	3. $y''-5\cdot y' + 6\cdot y = 12\cdot e^{5\cdot x}$. Para el caso de las exponenciales debemos proponer como solución $y_p = A\cdot e^{5\cdot x}$   
+	
+	Para resolver los coeficientes que nos quedan debemos aplicar la ecuación diferencial a la solución particular obtenida e igualar los coeficientes.
+	1. $y_p = A+B\cdot x + C\cdot x^2 + D\cdot x^3$  
+	$y_p' = B+2\cdot C\cdot x + 3\cdot D\cdot x^2$  
+	$y_p'' = 2\cdot C + 6\cdot D\cdot x$  
+	Sustituyendo en la ecuación diferencial original:  
+	$2\cdot C + 6\cdot D\cdot x - 5\cdot D - 10\cdot C\cdot x - 15\cdot D\cdot x^2 + 6\cdot A + 6\cdot B\cdot x + 6\cdot X\cdot x^2 + 6\cdot D\cdot x^3 =\\= x^3\cdot 6\cdot D + x^2\cdot (6\cdot C - 15\cdot D) + x\cdot (6\cdot D - 10\cdot C + 6\cdot B) + 2\cdot C - 5\cdot B + 6\cdot A$  
+	Igualamos los coeficientes:  
+	
+	$$
+	\begin{cases}
+	1 = 6D \\
+	0 = 6\cdot C-15\cdot D \\
+	1 = 6\cdot D - 10\cdot C + 6\cdot B \\
+	0 = 2\cdot C - 5\cdot B + 6\cdot A
+	\end{cases}
+	\Rightarrow
+	\begin{cases}
+	D = \frac{1}{6} \\
+	C = \frac{5}{12} \\
+	B = \frac{19}{36} \\
+	A = \frac{69}{216} \\
+	\end{cases}
+	$$
+	Con lo que obtenemos la solución particular $y_p = \frac{69}{216} + \frac{19}{36}\cdot x + \frac{5}{12}\cdot x^2 + \frac{1}{6}\cdot x^3$  
+	
+	2. $y_p = A\cdot sen(8\cdot x) + B\cdot cos(8\cdot x)$  
+	$y_p' = 8\cdot A\cdot cos(8\cdot x) - 8\cdot B\cdot sen(8\cdot x)$  
+	$y_p'' = -16\cdot A\cdot sen(8\cdot x) - 16\cdot B\cdot cos(8\cdot x)$  
+	Sustituyendo de nuevo en la ecuación diferencial:  
+	$sen(8\cdot x)\cdot (-16\cdot A + 40\cdot B + 6\cdot A) + cos(8\cdot x)\cdot (-16\cdot B + 40\cdot A + 6\cdot B)$
+	$$
+	\begin{cases}
+	40\cdot B - 10\cdot A = 20 \\
+	40\cdot A - 10\cdot B = 0
+	\end{cases}
+	\Rightarrow
+	\begin{cases}
+	40\cdot B - 10\cdot A = 20 \\
+	160\cdot A - 40\cdot B = 0
+	\end{cases}
+	\Rightarrow
+	\begin{cases}
+	A = \frac{2}{15} \\
+	B = -\frac{8}{15}
+	\end{cases}
+	$$
+	Con lo que obtenemos la solución particular $y_p = \frac{2}{15}\cdot sen(8\cdot x) - \frac{8}{15}\cdot cos(8\cdot x)$
+	
+	Si tenemos una suma de funciones de este tipo la solución particular se da sumando las soluciones particulares correspondientes a cada una de las funciones.  
+	En el caso del producto se multiplican las soluciones particulares:  
+	- $y'' - 5\cdot y' + 6\cdot y = x^2\cdot e^{6\cdot x}$  
+	$y_p = (A+B\cdot x + C\cdot x^2)\cdot e^{6\cdot x}$  
+	- $y'' - 5\cdot y' + 6\cdot y = x^3\cdot sen(3\cdot x)$  
+	$y_p = (A+B\cdot x + C\cdot x^2 + D\cdot x^3)\cdot sen(3\cdot x) + (E + F\cdot x + G\cdot x^2 + H\cdot x^3)\cdot cos(3\cdot x)$  
+	- $y'' - 5\cdot y' + 6\cdot y = sen(5\cdot x)\cdot e^{-2\cdot x}$  
+	$y_p = (A\cdot sen(5\cdot x) + B\cdot cos(5\cdot x))\cdot e^{-2\cdot x}$  
+	
+	- Caso 2: r(x) tiene funciones en común con las soluciones de la homogénea.  
+	En este caso debemos exponer la solución que daríamos en el caso 1 y multiplicar por x hasta que no encontremos funciones en común.  
+	$y'' + 6\cdot y' + 13\cdot y =e^{-3\cdot x}\cdot cos(2\cdot x)$ tiene como soluciones de la homogénea $y_h = e^{-3\cdot x}\cdot (c_1\cdot cos(2\cdot x) + c_2\cdot sen(2\cdot x))$  
+	Proponemos la solución como si estuviéramos en el caso 1:  
+	$y_p = (A\cdot sen(2\cdot x) + B\cdot cos(2\cdot x))\cdot e^{-3\cdot x}$  
+	Esta solución claramente comparte funciones con las soluciones de la homogénea, multiplicamos por x:  
+	$y_p = x\cdot (A\cdot sen(2\cdot x) + B\cdot cos(2\cdot x))\cdot e^{-3\cdot x}$  
+	Esta ya no tiene funciones en común y nos vale como solución particular.
+\end{sol}
