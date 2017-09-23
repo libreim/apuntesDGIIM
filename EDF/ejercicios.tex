@@ -5,3 +5,21 @@
 %% https://github.com/nacheteam                                                %%
 %%                                                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Desintegración radioactiva}
+\begin{ejer}
+	Un reactor transforma plutonio 239 en uranio 238 que es relativamente estable para
+	uso industrial. Después de 15 años se determina que 0.0043 por ciento de la cantidad
+	inicial A 0 de plutonio se ha desintegrado. Determina la semivida (tiempo necesario
+	para que la cantidad inicial de los átomos se reduzca a la mitad) de este isótopo si
+	la rapidez de desintegración es proporcional a la cantidad restante.
+\end{ejer}
+\begin{sol}
+	Se toma como ecuación diferencial para la desintegración radioactiva la $m'(t)=-\lambda \cdot m(t)$ siendo $m(t)$ la masa en cada instante t.  
+	Sabemos que después de 15 años hay $0.9957 \cdot A_0$ de masa siendo $A_0$ la masa que había inicialmente.  
+	Integrando la ecuación diferencial dada obtenemos que $m(t) = c\cdot e^{-\lambda \cdot t}$. Con esto procedemos a obtener la constante $\lambda$.  
+	$0.9957\cdot A_0 = A_0\cdot e^{-\lambda \cdot 15}$ con lo que $0.9957 = e^{-\lambda \cdot 15}$ de donde sacamos $ln(0.9957) = -15\cdot \lambda$ y por lo tanto obtenemos como constante $\lambda = \frac{ln(0.9957)}{-15}$.  
+	Para calcular el tiempo de semivida tenemos ahora que ver en qué instante t obtenemos la mitad de la cantidad inicial con la constante que hemos despejado.  
+	$\frac{1}{2}\cdot A_0 = A_0\cdot e^{\frac{ln(0.9957)}{15}\cdot t} \rightarrow \frac{ln(\frac{1}{2})}{\frac{ln(0.9957)}{15}}=t \rightarrow t = \frac{15\cdot ln(\frac{1}{2})}{ln(0.9957)} = 2412.753$ años.  
+	La solución es que el tiempo de semivida es de 2412.753 años.
+\end{sol}
