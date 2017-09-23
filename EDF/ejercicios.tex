@@ -203,3 +203,34 @@
 	Integrando obtenemos que $\mu  = u$ y por tanto el factor integrante obtenido es:  
 	$\mu (x,y) = x^{-5}\cdot y^2$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones homogéneas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones homogéneas}
+\begin{ejer}
+	Resuelve la siguiente ecuación diferencial: $x+(x-t)\cdot x' = 0$
+\end{ejer}
+\begin{sol}
+	Ponemos la ecuación diferencial en forma normal.  
+	$x' = \frac{-x}{x-t} = \frac{-\frac{x}{t}}{\frac{x}{t}-1}$  
+	De esta forma ya la tenemos como una ecuación diferencial homogénea, es decir, en función de $\frac{x}{t}$.  
+	Hacemos el cambio de variable $u = \frac{x}{t}$ de donde obtenemos que $x = u\cdot t \Rightarrow x' = u + t\cdot u'$.  
+	Igualando las dos expresiones que tenemos de x':  
+	$\frac{-u}{u-1} = u + t\cdot u' \Rightarrow u' = (\frac{-u}{u-1}-u)\cdot \frac{1}{t}$.  
+	De donde hemos obtenido una ecuación resoluble por variables separadas.
+	$u' = (\frac{-u-u\cdot (u-1)}{u-1})\cdot \frac{1}{t}$  
+	$\int \frac{u-1}{-u-u\cdot (u-1)}\cdot du = \int \frac{1}{t}\cdot dt$
+	Obtenemos la descomposición del denominador para poder integrar como una racional.  
+	$u^2 -2\cdot u = u\cdot (u-2)$  
+	$\frac{u-1}{u\cdot (u-2)} = \frac{A}{u} + \frac{B}{u-2}$  
+	$u-1 = A\cdot (u-2)  + B\cdot u \Rightarrow A=\frac{1}{2} \ y \ B=\frac{1}{2}$  
+	Terminamos por lo tanto la integral:  
+	$\frac{1}{2}\cdot \int \frac{1}{u}\cdot du + \frac{1}{2}\cdot \int \frac{1}{u-2}\cdot du = \int \frac{1}{t}\cdot dt$  
+	$\frac{1}{2}\cdot ln|u| + \frac{1}{2}\cdot ln|u-2| = ln|t| + c$  
+	$ln|u\cdot (u-2)|^{\frac{1}{2}} = ln|t| + c$  
+	$\sqrt{u\cdot (u-2)} = t + e^c$  
+	$u\cdot (u-2) = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c}$  
+	Deshaciendo el cambio del principio:  
+	$\frac{x}{t}\cdot (\frac{x}{t}-2) = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c}$  
+	$\frac{x^2}{t^2}-2\cdot \frac{x}{t} = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c} \Rightarrow x^2 - 2\cdot t\cdot x = t^4 + 2\cdot t^3\cdot e^c + t^2\cdot e^{2\cdot c}$
+\end{sol}
