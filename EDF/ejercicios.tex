@@ -464,3 +464,85 @@
 	$$
 	Con esto obtenemos expresiones de la derivada de $c_i$ y obtenemos cada constante integrando.
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sistemas de ecuaciones diferenciales %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sistemas de ecuaciones diferenciales}
+
+\begin{ejer}
+	A continuación se describe el modelo de resolución.
+\end{ejer}
+\begin{sol}
+	Tenemos una ecuación de la forma $x' = A\cdot x + b$ con A una matriz.  
+	Lo primero que debemos hacer es obtener los valores propios de la matriz para obtener una forma de Jordan a la que sea semejante. Esta forma de Jordan nos va a facilitar obtener $e^{A\cdot t}$.  
+	Cuando obtenemos los valores propios podemos proponer cuáles son las posibles formas de Jordan y estudiando el rango de $A-\lambda \cdot I$ para cada valor propio distinguimos la forma de Jordan. Después de esto proponemos que como $A\cdot P = P\cdot J$ con una $P = (v1|v2|v3)$ genérica y obtenemos condiciones de ellos del tipo $A\cdot v_i = a_1\cdot v1 + a_2\cdot v_2 + a_3\cdot v_3$  
+	A partir de estas condiciones obtenemos si están o no en el núcleo y calculando el núcleo de cada matriz que nos quede obtenemos los vectores $v_1, v_2, v_3$.  
+	A partir de la matriz de Jordan obtenemos que $e^{A\cdot t} = P\cdot e^{t\cdot J}\cdot P^{-1}$ teniendo en consideración que:  
+	- Si
+	$$A=
+	\begin{pmatrix}
+	\lambda & 0 & ... & 0 \\
+	0 & \lambda & ... & 0 \\
+	. & . & ... & . \\
+	. & . & ... & . \\
+	. & . & ... & . \\
+	0 & 0 & ... & \lambda
+	\end{pmatrix}
+	$$  
+	entonces la matriz $e^{t\cdot A}$ es:  
+	$$
+	\begin{pmatrix}
+	e^{\lambda \cdot t} & 0 & ... & 0 \\
+	0 & e^{\lambda \cdot t} & ... & 0 \\
+	. & . & ... & . \\
+	. & . & ... & . \\
+	. & . & ... & . \\
+	0 & 0 & ... & e^{\lambda \cdot t}
+	\end{pmatrix}
+	$$
+	- Si
+	$$
+	\begin{pmatrix}
+	\lambda & 1 & 0 & ... & 0 \\
+	0 & \lambda & 1 & ... & 0 \\
+	. & . & . & ... & . \\
+	. & . & . & ... & . \\
+	. & . & . & ... & . \\
+	0 & 0 & 0 & ... & 1 \\
+	0 & 0 & 0 & ... & \lambda \\
+	\end{pmatrix}
+	$$  
+	entonces la matriz $e^{t\cdot A}$ es:  
+	$$
+	e^{\lambda \cdot t}
+	\begin{pmatrix}
+	1 & t & t^2 & ... & \frac{t^{n-1}}{(n-1)!} \\
+	0 & 1 & t & ... & \frac{t^{n-2}}{(n-2)!} \\
+	. & . & . & ... & . \\
+	. & . & . & ... & . \\
+	. & . & . & ... & . \\
+	0 & 0 & 0 & ... & t \\
+	0 & 0 & 0 & ... & 1 \\
+	\end{pmatrix}
+	$$
+	- Si
+	$$
+	\begin{pmatrix}
+	a & b \\
+	-b & a
+	\end{pmatrix}
+	$$
+	entonces tenemos que $e^{A\cdot t}$ es:
+	$$
+	e^{a\cdot t}
+	\begin{pmatrix}
+	cos(b\cdot t) & sen(b\cdot t) \\
+	-sen(b\cdot t) & cos(b\cdot t)
+	\end{pmatrix}
+	$$
+	
+	Esta matriz obtenida es la matriz fundamental principal en 0 y por tanto podemos expresar todas las soluciones como esta matriz por un vector de constantes.  
+	Para obtener la solución del sistema de ecuaciones completo tenemos que:  
+	$x_p(t) = \Phi(t)\cdot \int_{t_0}^{t}\Phi^{-1}(s)\cdot b(s)\cdot ds$  
+	Las soluciones del sistema completo son las soluciones de la homogénea mas la solución particular obtenida de la completa.
+\end{sol}
