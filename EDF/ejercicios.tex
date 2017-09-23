@@ -316,3 +316,22 @@
 	Por lo tanto hemos obtenido nuestra solución:  
 	$x(t) = e^t - ln|t^2-1| + c$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Rebajamiento de orden %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Rebajamiento de orden}
+
+\begin{ejer}
+	Resuelve la siguiente ecuación diferencial previo rebajamiento de orden: $t^2\cdot x'' + t\cdot (t-4)\cdot x' + 2\cdot (3-t)\cdot x = 2\cdot t\cdot e^t$ con $x_1(t) = t^2$
+\end{ejer}
+\begin{sol}
+	Hacemos el cambio de variable $x= u\cdot t^2$  
+	$x' = u'\cdot t^2 + u\cdot 2\cdot t$  
+	$x'' = 2\cdot u + 4\cdot u'\cdot t + u''\cdot t^2$  
+	Sustituimos en la ecuación diferencial del principio obteniendo:
+	$u'+u'' = 2\cdot e^t$  
+	Hacemos el cmabio de variable $u' = v$ que nos lleva a la ecuación $v+v' = 2\cdot e^t$  
+	$v' = 2\cdot e^t  - v$ que es una ecuación lineal.  
+	Como solución nos queda $x = t^2\cdot e^t - t^2\cdot e^{-t}\cdot c + t^2\cdot k$  
+	De esta forma obtenemos las soluciones de la ecuación que nos dan como SFS $-t^2\cdot e^{-t}$, $t^2$ y como solución particular de la completa $t^2\cdot e^t$.
+\end{sol}
