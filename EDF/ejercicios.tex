@@ -88,3 +88,33 @@
 	Deshaciendo el cambio de variable:  
 	$y = \sqrt{-\frac{4}{3}\cdot (ln|x| + c)}\cdot x$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones lineales %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones lineales}
+
+\begin{ejer}
+	Resuelve la siguiente ecuación lineal: $x'-t\cdot x = 3\cdot t$
+\end{ejer}
+\begin{sol}
+	Ponemos la ecuación en forma normal $x' = t\cdot x + 3\cdot t$ y realizamos el cambio de variable correspondiente para resolver las ecuaciones lineales.  
+	$\begin{cases}
+	s = t \\
+	y = l(t)\cdot x
+	\end{cases}$  
+	Derivamos el cambio de variable haciendo la derivada de y con respecto a s.  
+	$\frac{dy}{ds} = l'(s)\cdot x(s) + l(s)\cdot x(s)' = l'(s)\cdot x(s) + l(s)\cdot (s\cdot x + 3\cdot s) = x\cdot [l'(s) + l(s)\cdot s] + l(s)\cdot 3\cdot s$  
+	Imponemos que $l'(s) + s\cdot l(s) = 0 \Rightarrow l'(s) = -s\cdot l(s)$ y resolvemos esta ecuación diferencial para obtener l(s) como una ecuación de variables separadas.  
+	$l(s) = e^{-\frac{1}{2}\cdot t^2}$  
+	Con esto ya lo podemos sustituir en la ecuación de y(s) dada inicialmente y resolver el problema.  
+	$y(s) = \int_{s_0}^{s}l(u)\cdot 3\cdot u\cdot du = \int_{s_0}^{s}e^{-\frac{1}{2}\cdot u^2}\cdot 3\cdot u\cdot du = -3\cdot \int_{s_0}^{s}e^{-\frac{1}{2}\cdot u^2}\cdot (-u)\cdot du = -3\cdot e^{\frac{1}{2}\cdot u^2} \Big|_{s_0}^{s} + c$  
+	Deshacemos el cambio de variable que hicimos al principio:  
+	$\begin{cases}
+	t=s \\
+	x = \frac{y}{l(t)}
+	\end{cases}$
+	
+	Obtenemos la x:  
+	$x = \frac{y(t)}{l(t)} = e^{\frac{1}{2}\cdot t^2}\cdot (-3\cdot e^{-\frac{1}{2}\cdot t^2}\Big|_{t_0}^{t} + c)$  
+	Con lo que habríamos obtenido la solución del problema.
+\end{sol}
