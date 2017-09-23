@@ -161,3 +161,45 @@
 	De donde sacamos que $\phi '(x) = 0$ y por lo tanto es una constante que podemos agrupar con la constante de integración.  
 	$U(t,x) = t\cdot sen(t\cdot x) + c$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Factores integrantes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Factores integrantes}
+\begin{ejer}
+	Resuelve la ecuación diferencial $(3\cdot x\cdot y^2 - 4\cdot y) + (3\cdot x - 4\cdot x^2\cdot y)\cdot y' = 0$  buscando un factor integrante del tipo $\mu (x,y) = \mu (x^n\cdot y^m)$
+\end{ejer}
+\begin{sol}
+	En este caso tenemos que:  
+	$P(x,y) = 3\cdot x\cdot y^2 - 4\cdot y$  
+	$Q(x,y) = 3\cdot x - 4\cdot x^2\cdot y$  
+	Con estas dos ecuaciones tenemos que no se cumple la condición de exactitud. Si multiplicamos por el factor integrante ambas funciones obtenemos la nueva ecuación diferencial sobre la que obtendremos condiciones para el factor integrante.  
+	$\tilde{P}(x,y) = \mu (x^n\cdot y^m)\cdot (3\cdot x\cdot y^2 - 4\cdot y)$  
+	$\tilde{Q}(x,y) = \mu (x^n\cdot y^m)\cdot (3\cdot x - 4\cdot x^2\cdot y)$  
+	Obtenemos la condición de exactitud para $\tilde{P}(x,y)$ y $\tilde{Q}(x,y)$ para obtener las condiciones necesarias para el factor integrante.  
+	$\frac{\partial \tilde{P}(x,y)}{\partial y} = m\cdot y^{m-1}\cdot x^n\cdot \mu '(x^n\cdot y^m)\cdot (3\cdot x\cdot y^2-4\cdot y) + \mu (x^n\cdot y^m)\cdot (6\cdot x\cdot y - 4)$  
+	$\frac{\partial \tilde{Q}(x,y)}{\partial x} = n\cdot x^{n-1}\cdot y^m\cdot \mu '(x^n\cdot y^m)\cdot (3\cdot x - 4\cdot x^2\cdot y) + \mu (x^n\cdot y^m)\cdot (3-8\cdot x\cdot y)$  
+	Igualamos ambas para obtener condiciones sobre $\mu (x^n\cdot y^m)$  
+	$\mu '(x^n\cdot y^m)\cdot (m\cdot y^{m-1}\cdot x^n\cdot (3\cdot x\cdot y^2 - 4\cdot y)-n\cdot x^{n-1}\cdot y^m\cdot (3\cdot x - 4\cdot x^2\cdot y)) = \mu (x^n\cdot y^m)\cdot (7-14\cdot x\cdot y)$   
+	$\frac{\mu '(x^n\cdot y^m)}{\mu (x^n\cdot y^m)} = \frac{7-14\cdot x\cdot y}{y^m\cdot x^n\cdot((3\cdot m + 4\cdot n)\cdot x\cdot y - 4\cdot m - 3\cdot n)}$  
+	Igualamos lo del paréntesis con el numerador para que sean iguales y los podamos eliminar:  
+	$$
+	\begin{cases}
+	3\cdot m + 4\cdot n = -14 \\
+	-4\cdot m - 3\cdot n = 7
+	\end{cases}
+	\begin{cases}
+	12\cdot m + 16\cdot n = -56 \\
+	-12\cdot m - 9\cdot n = 21
+	\end{cases}
+	\begin{cases}
+	7\cdot n = -35 \\
+	-4\cdot m  +15 = 7
+	\end{cases}
+	$$
+	De donde obtenemos que $n=-5$ y $m=2$. Por lo tanto nos queda:  
+	$\frac{\mu '(x^n\cdot y^m)}{\mu (x^n\cdot y^m)} = \frac{1}{x^{-5}\cdot y^2}$  
+	Resolvemos como una ecuación de variables separadas llamando $u = x^{-5}\cdot y^2$  
+	$\frac{d\mu}{du} = \frac{1}{u}\cdot \mu \Rightarrow \frac{d\mu}{\mu} = \frac{1}{u}\cdot du$  
+	Integrando obtenemos que $\mu  = u$ y por tanto el factor integrante obtenido es:  
+	$\mu (x,y) = x^{-5}\cdot y^2$
+\end{sol}
