@@ -300,3 +300,19 @@
 	La solución general de la ecuación de riccati se obtiene sumando la particular dada por el enunciado más la que hemos obtenido en la resolución.  
 	$y(t) = e^{y\cdot x} + x + x = e^{y\cdot x} + 2x$
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Variables separadas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Variables separadas}
+
+\begin{ejer}
+	Resuelve la siguiente ecuación diferencial:  
+	$x' = e^t - \frac{2\cdot}{t^2-1}$ 
+\end{ejer}
+\begin{sol}
+	$x' = f(t)\cdot g(x) \Rightarrow \frac{dx}{dt} = f(t)\cdot g(x) \Rightarrow \frac{dx}{g(x)} = f(t)\cdot dt$  
+	Al hacer esto sólo tenemos que integrar en ambos lados para obtener la ecuación diferencial que queremos.  
+	$\int dx = \int e^t - \frac{2\cdot t}{t^2-1}\cdot dt = \int e^t - \int \frac{2\cdot t}{t^2-1} = e^t - ln|t^2-1| + c$  
+	Por lo tanto hemos obtenido nuestra solución:  
+	$x(t) = e^t - ln|t^2-1| + c$
+\end{sol}
