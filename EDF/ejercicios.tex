@@ -23,3 +23,16 @@
 	$\frac{1}{2}\cdot A_0 = A_0\cdot e^{\frac{ln(0.9957)}{15}\cdot t} \rightarrow \frac{ln(\frac{1}{2})}{\frac{ln(0.9957)}{15}}=t \rightarrow t = \frac{15\cdot ln(\frac{1}{2})}{ln(0.9957)} = 2412.753$ años.  
 	La solución es que el tiempo de semivida es de 2412.753 años.
 \end{sol}
+
+\section{Poblaciones}
+\begin{ejer}
+	La población de Malthusilandia (país cuyo crecimiento sigue la ley de Malthus) era de 20 millones en 1980 y se había duplicado en 1990. ¿Qué población tendrá en el año 2000?
+\end{ejer}
+\begin{sol}
+	Para este tipo de problemas usamos la ecuación diferencial $m'(t) = \lambda \cdot m(t)$ de donde obtenemos integrando $m(t) = c\cdot e^{\lambda \cdot t}$.  
+	Sabemos que en el instante t=0 la población es de 20 millones, por lo tanto $20M = c\cdot e^{\lambda \cdot 0} = c$. Por lo tanto c=20M.  
+	Sabemos que la población 10 años después es de 40 millones, por lo tanto $m(10) = 40M \Rightarrow 40M = 20M \cdot e^{\lambda \cdot 10} \Rightarrow 2 = e^{\lambda \cdot 10} \Rightarrow \lambda = \frac{ln(2)}{10}$.  
+	Si queremos saber que población habrá en el 2000, es decir, en t = 20 sólo tenemos que sustituir en la fórmula.  
+	$m(20) = 20M\cdot e^{\frac{ln(2)}{10}\cdot 20} = 80M$.  
+	La población en el año 2000 será de 80 millones.
+\end{sol}
