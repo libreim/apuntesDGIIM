@@ -64,3 +64,27 @@
 	De donde obtenemos $y' = -2\cdot \frac{1}{x^3}\cdot x' = \frac{4}{x^2}\cdot (\frac{1}{t}-t\cdot x^2) = \frac{4}{t}\cdot y - 4\cdot t$  
 	Con lo que hemos obtenido una ecuación lineal.
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Curva ortogonal %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Curva ortogonal}
+\begin{ejer}
+	Obtén la familia de curvas ortogonales a la familia de curvas:  
+	$y^2 = 2\cdot x^2\cdot (1-c\cdot x)$ con $c\in \mathbb{R}$
+\end{ejer}
+\begin{sol}
+	En primer lugar obtenemos la expresión de c:  
+	$y^2 = 2\cdot x^2 \cdot (1-c\cdot x)\Rightarrow \frac{y^2}{2\cdot x^2} = 1-c\cdot x \Rightarrow c\cdot x = 1-\frac{y^2}{2\cdot x^2} \Rightarrow c = \frac{1}{x} - \frac{y^2}{2\cdot x^3}$  
+	Obtenemos ahora la expresión de y' y sustituimos la expresión de c obtenida:  
+	$2\cdot y\cdot y' = 4\cdot x - c\cdot 6\cdot x^2$  
+	$y' = \frac{4\cdot x}{2\cdot y}-\frac{c\cdot 6\cdot x^2}{2\cdot y} = 2\cdot \frac{x}{y}-c\cdot 3\cdot \frac{x^2}{y} = 2\cdot \frac{x}{y}-(\frac{1}{x}-\frac{y^2}{2\cdot x^3})\cdot 3\cdot \frac{x^2}{y} = 2\cdot \frac{x}{y}-3\cdot \frac{x}{y} + \frac{3}{2}\cdot \frac{y}{x} = \frac{3}{2}\cdot \frac{y}{x} - \frac{x}{y}$  
+	Para obtener la familia ortogonal tenemos que cambiarle el signo y hacer el inverso:  
+	$y' = -\frac{2}{3}\cdot \frac{x}{y} + \frac{y}{x}$  
+	Esta ecuación es una de tipo homogénea por lo que hacemos el cambio $u = \frac{y}{x} \Rightarrow y = u\cdot x\Rightarrow y' = u+x\cdot u'$  e igualamos las expresiones de y' obtenidas:  
+	$\frac{-2}{3\cdot u} + u = u + x\cdot u'\Rightarrow u' = \frac{-2}{3\cdot u\cdot x} = \frac{-2}{3\cdot u}\cdot \frac{1}{x}$  
+	Nos ha salido una ecuación de variables separadas que resolvemos:  
+	$\frac{du}{dx} = \frac{-2}{3\cdot u}\cdot \frac{1}{x}\Rightarrow \frac{-3}{2}\cdot \int u\cdot du = \int \frac{1}{x}\cdot dx$  
+	$-\frac{3}{2}\cdot \frac{u^2}{2} = ln|x| + c \Rightarrow u = \sqrt{-\frac{4}{3}\cdot(ln|x| + c)}$  
+	Deshaciendo el cambio de variable:  
+	$y = \sqrt{-\frac{4}{3}\cdot (ln|x| + c)}\cdot x$
+\end{sol}
