@@ -282,3 +282,21 @@
 	$3\cdot v\cdot dx - 2\cdot v \cdot dv + 4\cdot dx -3\cdot dv = 0 \Rightarrow (3\cdot v + 4)\cdot dx = (2\cdot v + 3)\cdot dv$  
 	$dx = \frac{2\cdot v + 3}{3\cdot v + 4}\cdot dv$  
 \end{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones de Riccati %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ecuaciones de Riccati}
+
+\begin{ejer}
+	Resolver la ecuación diferencial $y' = y^2 - x\cdot y + 1$ con $y_p(x) =x$
+\end{ejer}
+\begin{sol}
+	Hacemos el cambio de variable $w = \frac{1}{y-x}$  
+	$w' = \frac{-y' + 1}{(y-x)^2} = \frac{x\cdot y - y^2}{(y-x)^2} = \frac{y\cdot (x-y)}{(y-x)^2} = \frac{y}{x-y} = -y\cdot w$  
+	Integrando la ecuación que hemos obtenido para w obtenemos que $w = e^{-y\cdot x}$  
+	Deshaciendo el cambio de variable de antes
+	$w\cdot (y-x) = 1 \Rightarrow w\cdot y - w\cdot x = 1 \Rightarrow y = \frac{1+x\cdot w}{w}$  
+	Con lo que obtenemos la solución $y = \frac{1+e^{-y\cdot x}\cdot x}{e^{-y\cdot x}} = e^{y\cdot x} + x$  
+	La solución general de la ecuación de riccati se obtiene sumando la particular dada por el enunciado más la que hemos obtenido en la resolución.  
+	$y(t) = e^{y\cdot x} + x + x = e^{y\cdot x} + 2x$
+\end{sol}
