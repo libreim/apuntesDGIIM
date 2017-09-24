@@ -12,7 +12,9 @@ task :default => [
        :mmi,
        :acomputadores,
        :pdoo,
-       :algoritmica
+       :algoritmica,
+       :edf,
+       :prob
        # add your task here
      ] do
   TARGET = "apuntes.tar.gz"
@@ -56,11 +58,15 @@ task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 task :acomputadores => (pdf_for FileList["AC/Resúmenes/Tema*.md"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.tex", "PDOO/cheatsheets/*.tex"])
 task :algoritmica => (pdf_for FileList["ALGO/*.md"])
+task :edf => (pdf_for FileList["EDF/edf.tex"])
+task :prob => (pdf_for FileList["PROB/prob.tex"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
   begin
-    2.times { sh %(TEXINPUTS="./#{t.source.split("/")[0...-1].join("/")}:" pdflatex --shell-escape --interaction=nonstopmode "#{t.source}") }
+    2.times {
+        sh %(TEXINPUTS="./#{t.source.split("/")[0...-1].join("/")}:" pdflatex --shell-escape --interaction=nonstopmode "#{t.source}")
+    }
   rescue StandardError => e
     puts "\e[31m[ERROR] Couldn't generate #{t.name}\e[m"
   ensure
