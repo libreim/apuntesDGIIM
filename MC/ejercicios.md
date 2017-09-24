@@ -22,5 +22,34 @@
 \end{sol}
 
 \begin{ejer}
-	Encontrar una 
+	Encontrar una
 \end{ejer}
+
+\section{Tema 1 - Relación}
+\begin{ejer}
+	Describir el lenguaje generado por la siguiente gramática,
+	\begin{center}
+		\begin{tabular}{ccc}
+			$S \rightarrow XYX$ \\
+			$X \rightarrow aX | bX | \epsilon$ \\
+			$Y \rightarrow bbb$
+		\end{tabular}
+	\end{center}
+\end{ejer}
+
+\begin{sol}
+	$L(G) = \{ub^3w: u,w \in {\{a,b\}}^{*}\}$ $\equiv$ Palabras que contienen al menos 3 b seguidas.
+\end{sol}
+
+\begin{ejer}
+	\begin{center}
+		\begin{tabular}{cc}
+			$S \rightarrow aX$ \\
+			$X \rightarrow aX | bX | \epsilon$
+		\end{tabular}
+	\end{center}
+\end{ejer}
+
+\begin{sol}
+	$L(G)=\{au: u\in\{{a,b\}^{*}}\}$ $\equiv$ Palabras que empiezan por a.
+\end{sol}
