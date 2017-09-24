@@ -96,3 +96,14 @@ Veamos un ejemplo. Supongamos que queremos reconocer palabras que son direccione
 		\item $F$ es un subconjunto de Q, llamado conjunto de \textit{estados finales}.
 	\end{itemize}
 \end{ndef}
+
+\begin{ndef}[Diagrama de transición]
+	Es un grafo en el que:
+	\begin{itemize}
+		\item Hay un nodo por cada estado
+		\item Por cada transición $\delta(q, a) = p$ hay un arco de $q$ a $p$ con la etiqueta $a$.
+		\item El estado inicial está indicado con un ángulo entrante. Los estados finales están indicados con una doble circunferencia.
+	\end{itemize}
+
+	% Insertar grafo
+\end{ndef}

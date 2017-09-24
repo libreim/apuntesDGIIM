@@ -22,5 +22,5 @@
 \end{sol}
 
 \begin{ejer}
-	
+	Encontrar una 
 \end{ejer}
