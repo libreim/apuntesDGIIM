@@ -200,12 +200,12 @@
 
 \begin{ejer}
 	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
-	\begin{enumerate}
+	\begin{itemize}
 		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
 		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
 		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
 		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
-	\end{enumerate}
+	\end{itemize}
 \end{ejer}
 
 \begin{sol}
@@ -319,4 +319,91 @@
 
 \begin{sol}
 	L* es siempre numerable, pero no se por qué (completar)
+\end{sol}
+
+\begin{ejer}
+	Dados dos homomorfismos $f:A^* \rightarrow B^*, g:A^* \rightarrow B^*$, se dicen que son iguales si $f(x)=g(x), \forall x \in A^{*}$. ¿Existe un procedimiento algorítmico para comprobar si dos homomorfismos son iguales?
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Sea $L \subseteq A^*$ un lenguaje arbitrario. Sea $C_0 = L$ y definamos los lenguajes $S_i$ y $C_i$, para todo $i\geq1$, por $S_i = C^{+}_{i-1}$ y $C_{i} = \overline{S_i}$
+	\begin{enumerate}
+		\item ¿Es $S_i$ siempre, nunca o a veces igual a $C_2$? Justifica la respuesta.
+		\item Demostrar que $S_2 = C_3 $, cualquiera que sea $L$. (Pista: Demuestra que $C_3$ es cerrado para la concateación).
+	\end{enumerate}
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Demuestra que para todo alfabeto $A$, el conjunto de los lenguajes finitos sobre dicho alfabeto es numerable.
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Dada la gramática $G = (\{S,A\},\{a,b\},P,S)$ donde $P = \{ S \rightarrow abAS,abA \rightarrow baab, S \rightarrow a, A \rightarrow b \}.$ Determinar el lenguaje que genera.
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Sea la gramática $G=(V,T,P,S)$ donde:
+		\begin{itemize}
+			\item $V = \{ <numero>,<digito>\}$
+			\item $T = \{0,1,2,3,4,5,6,7,8,9\}$
+			\item $S = <numero>$
+			\item Las reglas de producción $P$ son:
+				\begin{itemize}
+					\item $<numero>\rightarrow <numero>,<digito> $
+					\item $<numero>\rightarrow <digito> $
+					\item $<digito>\rightarrow 0|1|2|3|4|5|6|7|8|9 $
+				\end{itemize}
+		\end{itemize}
+	Determinar el lenguaje que genera.
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Sea la gramática $G = (\{A,S\},\{a,b\},S,P)$ donde las reglas de producción son:
+	 	\begin{center}
+			\begin{tabular}{cccc}
+				$ S \rightarrow aS $ \\
+				$ S \rightarrow aA $ \\
+				$ A \rightarrow bA $ \\
+				$ A \rightarrow b $
+			\end{tabular}
+		\end{center}
+	Determinar el lenguaje generado por la gramática.
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ejer}
+	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
+	\begin{itemize}
+		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
+		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
+	\end{itemize}
+\end{ejer}
+
+\begin{sol}
+
 \end{sol}
