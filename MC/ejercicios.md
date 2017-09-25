@@ -207,3 +207,116 @@
 		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
 	\end{enumerate}
 \end{ejer}
+
+\begin{sol}
+	Todas son de tipo 3 menos el 4.
+	\begin{enumerate}
+		\item Reglas:
+			\begin{center}
+				\begin{tabular}{cc}
+					$ S \rightarrow aS | bX | cS | \epsilon $ \\
+					$ X \rightarrow aS | cS | \epsilon $
+				\end{tabular}
+			\end{center}
+		\item Reglas (comprobar):
+			\begin{center}
+				\begin{tabular}{cc}
+					$ S \rightarrow aS | bS | cS | bbX $ \\
+					$ X \rightarrow aX | bX | cX | \epsilon $
+				\end{tabular}
+			\end{center}
+		\item Reglas:
+			\begin{center}
+				\begin{tabular}{cc}
+					$ S \rightarrow aS | bS | cX $ \\
+					$ X \rightarrow aX | bX | cS | \epsilon $
+				\end{tabular}
+			\end{center}
+		\item Reglas:
+			\begin{center}
+				\begin{tabular}{cccccc}
+					$ S \rightarrow S_1 | S_2 $ \\
+					$ S_1 \rightarrow B | BS_1 $ \\
+					$ S_2 \rightarrow C | CS_2 $ \\
+					$ B \rightarrow bX | cBB | aB $ \\
+					$ C \rightarrow cX | bCC | aC $ \\
+					$ X \rightarrow bC | aX | cB | \epsilon $
+				\end{tabular}
+			\end{center}
+	\end{enumerate}
+\end{sol}
+
+\begin{ejer}
+% Cambiar lista
+	Encontrar las gramáticas:
+	\begin{enumerate}
+		\item Dado el alfabeto $A = \{ a,b \} $ determinar si es posible encontrar una gramática libre de contexto que genere las palabras de longitud impar, y mayor o igual que 3, tales que la primera letra coincida con la letra central de la palabra.
+
+		\item Dado el alfabeto $A = \{ a,b \} $ determinar si es posible encontrar una gramática libre de contexto que genere las palabras de longitud par, y mayor o igual que 2, tales que las dos letras centrales coincidan.
+
+	\end{enumerate}
+\end{ejer}
+
+\begin{sol}
+	Gramáticas de tipo 2.
+	\begin{enumerate}
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{cccc}
+				$ S \rightarrow aAX | bBX $ \\
+				$ A \rightarrow a | XAX $ \\
+				$ B \rightarrow b | XBX $ \\
+				$ X \rightarrow a | b $
+			\end{tabular}
+		\end{center}
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{cc}
+				$ S \rightarrow aa | bb | XSX $ \\
+				$ X \rightarrow a | b $
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+\end{sol}
+
+\begin{ejer}
+	Determinar si el lenguaje generado por la gramática
+	\begin{center}
+		\begin{tabular}{ccc}
+			$ S \rightarrow SS $ \\
+			$ S \rightarrow XXX $ \\
+			$ X \rightarrow aX | Xa | b $
+		\end{tabular}
+	\end{center}
+	es regular. Justificar la respuesta.
+\end{ejer}
+
+\begin{sol}
+	Obtenemos el lenguaje que es: $ L(G) = \{ u \in {\{ a,b \}}^{*} : N_b(u) = 3k, k \in \mathbb{N} \} \equiv $ Palabras que contienen b un número múltiplo de 3. Con memoria finita podemos reconocer si hay un número múltiplo de b (cada 3), luego debemos encontrar una gramática de tipo 3 (regular):
+
+	\begin{center}
+		\begin{tabular}{cccc}
+			$ S \rightarrow aS | bS_1 $ \\
+			$ S_1 \rightarrow aS_1 | bS_2 $ \\
+			$ S_2 \rightarrow aS_2 | bS_3 $\\
+			$ S_3 \rightarrow aS_3 | bS_1 | \epsilon $
+		\end{tabular}
+	\end{center}
+\end{sol}
+
+\begin{ejer}
+	Dado un lenguaje $L$ sobre un alfabeto $A$, caracterizar cuando $L^* = L$
+\end{ejer}
+
+\begin{sol}
+	$L$ tiene que cumplir: $\epsilon \in L$ y que L sea submonoide.
+	L es submonoide si: $u,v \in L \rightarrow uv \in L$
+\end{sol}
+
+\begin{ejer}
+	Dado un lenguaje $L$ sobre un alfabeto $A$, determinar si $L^*$ es siempre, nunca o a veces numerable.
+\end{ejer}
+
+\begin{sol}
+	L* es siempre numerable, pero no se por qué (completar)
+\end{sol}
