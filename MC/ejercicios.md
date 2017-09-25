@@ -120,4 +120,90 @@
 
 \begin{ejer}
 	Encontrar gramáticas de tipo 2 para los siguientes lenguajes sobre el alfabeto $\{ a,b \}$. En cada caso determinar si los lenguajes generados son de tipo 3, estudiando si existe una gramática de tipo 3 que los genera.
+
+% Cambiar listas
+	\begin{enumerate}
+		\item Palabras en la que el número de $b$ no es tres.
+		\item Palabras que tienen 2 o 3 $b$.
+		\item Palabras que no contienen la subcadena $ab$.
+		\item Palabras que no contienen la subcadena $baa$.
+	\end{enumerate}
+\end{ejer}
+
+\begin{sol}
+	Todos son de tipo 3.
+
+	\begin{enumerate}
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{ccccc}
+				$ S \rightarrow aS | bS_1 | \epsilon $ \\
+				$ S_1 \rightarrow aS_1 | bS_2 | \epsilon $ \\
+				$ S_2 \rightarrow aS_2 | bS_3 | \epsilon $ \\
+				$ S_3 \rightarrow aS_3 | bS_4 $ \\
+				$ S_4 \rightarrow aS_4 | bS_4 | \epsilon $
+			\end{tabular}
+		\end{center}
+
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{cccc}
+			$ S \rightarrow aS | bS_1 $ \\
+			$ S_1 \rightarrow aS_1 | bS_2 $ \\
+			$ S_2 \rightarrow aS_2 | bS_3 | \epsilon $ \\
+			$ S_3 \rightarrow aS_3 | \epsilon $
+			\end{tabular}
+		\end{center}
+
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{cc}
+				$ S \rightarrow aA | bB | \epsilon $ \\
+				$ A \rightarrow aA | \epsilon $
+			\end{tabular}
+		\end{center}
+
+		\item Reglas:
+		\begin{center}
+			\begin{tabular}{ccc}
+				$ S \rightarrow aS | bB | \epsilon $ \\
+				$ B \rightarrow bB | aA | \epsilon $ \\
+				$ A \rightarrow bB | \epsilon $
+			\end{tabular}
+		\end{center}
+	\end{enumerate}
+\end{sol}
+
+\begin{ejer}
+	Encontrar una gramática libre del contexto que genere el lenguaje
+		\begin{center}
+			$ L = \{ 1u1 | u \in {\{0,1\}}^{*} \} $
+		\end{center}
+\end{ejer}
+
+\begin{sol}
+	Gramática tipo 2:
+	\begin{center}
+	\begin{tabular}{cc}
+		$ S \rightarrow 1X1 $ \\
+		$ X \rightarrow 0X | 1X | \epsilon $
+	\end{tabular}
+	\end{center}
+	Si es gramática tipo 3:
+	\begin{center}
+		\begin{tabular}{cc}
+		$ S \rightarrow 1A $ \\
+		$ A \rightarrow 1A | 0A | 1 $
+		\end{tabular}
+	\end{center}
+\end{sol}
+
+\begin{ejer}
+	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
+	\begin{enumerate}
+		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
+		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
+	\end{enumerate}
 \end{ejer}
