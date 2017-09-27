@@ -205,7 +205,20 @@
 		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
 		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
 		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
+	\end{itemize}\begin{ejer}
+	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
+	\begin{itemize}
+		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
+		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
+		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
 	\end{itemize}
+\end{ejer}
+
+\begin{sol}
+
+\end{sol}
+	(Mismo ejercicio que el 19)
 \end{ejer}
 
 \begin{sol}
@@ -318,7 +331,7 @@
 \end{ejer}
 
 \begin{sol}
-	L* es siempre numerable, pero no se por qué (completar)
+	L* es siempre numerable porque A* es numerable (visto en clase) y L* está contenido en A*.
 \end{sol}
 
 \begin{ejer}
@@ -388,20 +401,6 @@
 			\end{tabular}
 		\end{center}
 	Determinar el lenguaje generado por la gramática.
-\end{ejer}
-
-\begin{sol}
-
-\end{sol}
-
-\begin{ejer}
-	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
-	\begin{itemize}
-		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
-		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
-		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
-		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
-	\end{itemize}
 \end{ejer}
 
 \begin{sol}
