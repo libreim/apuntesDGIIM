@@ -94,14 +94,14 @@
 
 	Este lenguaje es de tipo 3, ya que se puede generar por la siguiente gramática de tipo 3:
 
-		\begin{center}
-			\begin{tabular}{cccc}
-				$ S \rightarrow \epsilon | X $ \\
-				$ X \rightarrow bX | aY $ \\
-				$ Y \rightarrow bY | aZ  | aS $ \\
-				$ Z \rightarrow aY | bZ | \epsilon $
-			\end{tabular}
-		\end{center}
+	\begin{center}
+		\begin{tabular}{cccc}
+			$ S \rightarrow \epsilon | X $ \\
+			$ X \rightarrow bX | aY $ \\
+			$ Y \rightarrow bY | aZ  | aS $ \\
+			$ Z \rightarrow aY | bZ | \epsilon $
+		\end{tabular}
+	\end{center}
 \end{sol}
 
 \begin{ejer}
@@ -204,20 +204,8 @@
 		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
 		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
 		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
-		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
-	\end{itemize}\begin{ejer}
-	Encontrar si es posible una gramática lineal por la derecha o una gramática libre del contexto que genere el lenguaje $L$ supuesto que $L \subset {\{a,b,c\}}^{*}$ y verifica:
-	\begin{itemize}
-		\item $u \in L \iff u$ no contiene dos símbolos $b$ consecutivos.
-		\item $u \in L \iff u$ contiene dos símbolos $b$ consecutivos.
-		\item $u \in L \iff u$ contiene un número impar de símbolos $c$.
-		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símnolos $c$.
+		\item $u \in L \iff u$ no contiene el mismo número de símbolos $b$ que de símbolos $c$
 	\end{itemize}
-\end{ejer}
-
-\begin{sol}
-
-\end{sol}
 	(Mismo ejercicio que el 19)
 \end{ejer}
 
