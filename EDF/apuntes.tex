@@ -11,12 +11,26 @@ con sus derivadas. Para formalizar este concepto, vamos a dar algunas definicion
 Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
 
 \begin{ndef}[Ecuación diferencial]
-  Sean $D \subseteq \R^{k+2}$ un dominio, $\upphi : D \to \R$ continua, $I \subseteq \R$ un intervalo y $x \in \mathcal{C}^k(I)$
-  tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$.
+  Sean $D \subseteq \R^{k+2}$ un dominio, $\upphi : D \to \R$ continua.
 
-  Entonces la ecuación
+  Entonces la expresión
   \[\upphi(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) = 0\]
   es una ecuación diferencial de orden $k$.
+\end{ndef}
+
+\begin{ndef}[Solución de una ecuación diferencial]
+  Sean 
+  \begin{itemize}
+  \item $\upphi : D \subseteq \R^{k+2} \to \R$ una función de una ecuación diferencial
+  \item $I \subseteq \R$ un intervalo
+  \item $x \in \mathcal{C}^k(I)$ tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$
+  \end{itemize}
+
+  Entonces, $x$ es solución de la ecuación diferencial dada por $\upphi$ si
+
+  \[
+    \upphi(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) = 0 \ \forall t \in I
+  \]
 \end{ndef}
 
 \section{Ecuaciones de primer orden}
@@ -64,7 +78,7 @@ $x(t)x'(t) = 1$\\
 $ \upphi(t,x,y) = xy - 1$\\
 $ \varphi(t) = \sqrt{2t+1}  $\\
 
-$\varphi$ esta definida en $[-1/2, \inf)$ y $\varphi$ es derivable en $(-1/2, \infty)$\\
+$\varphi$ esta definida en $[-1/2, \infty)$ y $\varphi$ es derivable en $(-1/2, \infty)$\\
 ¿Es la función $\varphi$ en $I = (-1/2, \infty)$ solución de la ecuación?
 
 \begin{itemize}
