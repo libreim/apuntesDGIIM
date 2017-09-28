@@ -366,7 +366,7 @@
 			\item $S = <numero>$
 			\item Las reglas de producción $P$ son:
 				\begin{itemize}
-					\item $<numero>\rightarrow <numero>,<digito> $
+					\item $<numero>\rightarrow <numero><digito> $
 					\item $<numero>\rightarrow <digito> $
 					\item $<digito>\rightarrow 0|1|2|3|4|5|6|7|8|9 $
 				\end{itemize}
