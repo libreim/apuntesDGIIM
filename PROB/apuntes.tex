@@ -7,34 +7,34 @@
 
 \subsubsection*{Concepto de $\sigma$-álgebra}
 Sea un conjunto $\Omega$, una
-familia de subconjuntos $\mathcal{A}$ es $\sigma$-álgebra sobre $\Omega$ si: 
+familia de subconjuntos $\mathscr{A}$ es $\sigma$-álgebra sobre $\Omega$ si: 
 \begin{enumerate}
-\item $\Omega \in \mathcal{A}$
-\item Si $A \in \mathcal{A} \Rightarrow \overline{A} \in \mathcal{A}$
-\item Si $A_1, A_2, A_3\ldots \in \mathcal{A} \Rightarrow \displaystyle \bigcup_{n \in \mathbb{N}}^{\infty} A_n \in \mathcal{A}$
+\item $\Omega \in \mathscr{A}$
+\item Si $A \in \mathscr{A} \Rightarrow \overline{A} \in \mathscr{A}$
+\item Si $\left\{A_n\right\}_{n \in \N} \in \mathscr{A} \Rightarrow \displaystyle \bigcup_{n \in \mathbb{N}} A_n \in \mathscr{A}$
 \end{enumerate}
 Una $\sigma$-álgebra es una clase de conjuntos cerrada para el complementario y unión numerable. Existen una serie de propiedades inmediatas derivadas:
 \begin{itemize}
-	\item $\emptyset \in \mathcal{A}$
-	\item $\mathcal{A}$ es cerrada para la  intersección numerable.
+	\item $\emptyset \in \mathscr{A}$
+	\item $\mathscr{A}$ es cerrada para la  intersección numerable (se obtiene tomando complementarios en la unión numerable).
 \end{itemize}
 
 \subsubsection*{Espacio medible}
 
-Al par ($\Omega$, $\mathcal{A}$) se le llama espacio medible, y a los conjuntos que pertenecen a $\mathcal{A}$ se les denomina conjuntos medibles.
+Al par ($\Omega$, $\mathscr{A}$) se le llama espacio medible, y a los conjuntos que pertenecen a $\mathscr{A}$ se les denomina conjuntos medibles.
 
 \subsection{Límites en sucesiones de conjuntos}
 
 \subsubsection{Límites en sucesiones monótonas}
 
-Si tomamos la relación de inclusión entre conjuntos ($\subseteq$) como una relación de orden, podemos hablar sin ningún tipo de problema de sucesiones monótonas. En este sentido, una sucesión   $\{A_n\}_{n \in \mathbb{N}}$  creciente de conjuntos cumpliría que $A_i \subseteq A_{i+1}, \forall i \in \mathbb{N}$. De forma análoga para sucesión decreciente de conjuntos.\\
+Si tomamos la relación de inclusión entre conjuntos ($\subseteq$) como una relación de orden, podemos hablar de sucesiones monótonas. En este sentido, una sucesión   $\left\{A_n\right\}_{n \in \mathbb{N}}$  creciente de conjuntos cumpliría que $A_i \subseteq A_{i+1}, \forall i \in \mathbb{N}$, y una sucesión decreciente de conjuntos cumpliría la condición análoga.\\
 
-El límite de una sucesión creciente de conjuntos $\{A_n\}_{n \in \mathbb{N} }$ se puede definir
+El límite de una sucesión creciente de conjuntos $\left\{A_n\right\}_{n \in \mathbb{N} }$ se puede definir
 $$\lim_{n\to\infty} A_n = \bigcup_{k=1}^{\infty} A_k$$
 
-Esta definición aprovecha la relación de orden entre los conjuntos de la sucesión para afirmar que \textit{si un elemento está en el último conjunto de la sucesión, entonces está en todos los anteriores, y por tanto en \textbf{todos}}, por ello se puede utilizar una intersección numerable (que está perfectamente definida) para formalizar el concepto.\\
+Esta definición aprovecha la relación de orden entre los conjuntos de la sucesión para afirmar que \textit{si un elemento está en algún conjunto de la sucesión, entonces está en todos los posteriores}, por ello se puede utilizar una unión numerable (que está perfectamente definida) para formalizar el concepto.\\
 
-Con una intuición análoga se define el límite de una sucesión decreciente de conjuntos. Si $\{A_n\}_{n\in\mathbb{N}}$ es una sucesión decreciente de conjuntos, entonces:
+Con una intuición análoga se define el límite de una sucesión decreciente de conjuntos. Si $\left\{A_n\right\}_{n\in\mathbb{N}}$ es una sucesión decreciente de conjuntos, entonces:
 
 $$ \lim_{n\to\infty} A_n = \bigcap_{k=1}^{\infty} A_k $$
 
@@ -44,19 +44,19 @@ No solo se puede hablar de límites en sucesiones monótonas.
 Para definir los límites en sucesiones arbitrarias de conjuntos tenemos que recurrir a los conceptos de límite inferior y superior. 
 La intuición de estos límites superior e inferior pasan por el concepto de las colas de la sucesión.\\
 
-Dada una sucesión de conjuntos $\{A_n\}_{n\in\mathbb{N} }$ podemos considerar el conjunto
+Dada una sucesión de conjuntos $\left\{A_n\}\right_{n\in\mathbb{N} }$ podemos considerar el conjunto
 
 $$ B_n = \bigcap_{k=n}^{\infty} A_k $$
 
-y este conjunto contiene aquellos elementos que están en \textbf{todos} los $A_k$ para $k \geq n$. Es fácil probar que la sucesión $\{B_n\}_{n\in\mathbb{N}}$ es una sucesión creciente de conjuntos, y por tanto se puede obtener el límite $\lim_{n\to\infty} B_n$. Informalmente, ese límite es un conjunto que contiene a todos los elementos de $A_n$ que están en todos los conjuntos $A_k$ a partir de cierto $n\in\mathbb{N}$. Definimos el límite inferior de $A_n$ como
+y este conjunto contiene aquellos elementos que están en \textbf{todos} los $A_k$ para $k \geq n$. Es fácil probar que la sucesión $\left\{B_n\right\}_{n\in\mathbb{N}}$ es una sucesión creciente de conjuntos, y por tanto se puede obtener el límite $\lim_{n\to\infty} B_n$. Informalmente, ese límite es un conjunto que contiene a todos los elementos de $A_n$ que están en todos los conjuntos $A_k$ a partir de cierto $n\in\mathbb{N}$. Definimos el límite inferior de $A_n$ como
 
 $$ \liminf A_n = \lim_{n\to\infty} B_n = \bigcup_{n\in\mathbb{N}} \bigcap_{k=n}^{\infty} A_n $$
 
-Análogamente, podríamos definir la sucesión de conjuntos $\{C_n\}_{n\in\mathbb{N}}$ como
+Análogamente, podríamos definir la sucesión de conjuntos $\left\{C_n\right\}_{n\in\mathbb{N}}$ como
 
 $$ C_n = \bigcup_{k=n}^{\infty} A_n $$
 
-Cada $C_n$ contiene todos los elementos que están presentes en algún $A_k$ para $k \geq n$. Es fácil también ver que la sucesión $\{C_n\}_{n\in\mathbb{N}}$ es una sucesión decreciente de conjuntos, y por tanto su límite también está bien definido. Se puede definir entonces el límite superior de $\{A_n\}_{n\in\mathbb{N}}$ como
+Cada $C_n$ contiene todos los elementos que están presentes en algún $A_k$ para $k \geq n$. Es fácil también ver que la sucesión $\left\{C_n\right\}_{n\in\mathbb{N}}$ es una sucesión decreciente de conjuntos, y por tanto su límite también está bien definido. Se puede definir entonces el límite superior de $\left\{A_n\}\right_{n\in\mathbb{N}}$ como
 
 $$ \limsup A_n = \lim_{n\to\infty} C_n = \bigcap_{n\in\mathbb{N}} \bigcup_{k=n}^{\infty} A_n $$
 
@@ -76,22 +76,34 @@ en caso de que límite superior e inferior coincidan.
 
 \subsection{Funciones sobre conjuntos}
 
-Una vez definidos los conceptos sobre conjuntos con los que vamos a trabajar, pasamos a definir las funciones sobre conjuntos. Vamos entonces a definir lo que es una función de conjunto. Sean los espacios medibles ($\Omega$, $\mathcal{A}$) y($\Omega'$, $\mathcal{A}'$), definimos la función:
-$$ X: \mathcal{A} \to \mathcal{A}'$$
-$$ A \longrightarrow X(A)$$
+Una vez definidos los conceptos sobre conjuntos con los que vamos a trabajar, pasamos a definir las funciones sobre conjuntos. Si ($\Omega$, $\mathscr{A}$) y($\Omega'$, $\mathscr{A}'$) son espacios medibles, llamaremos función de conjunto a una función:
+\[ 
+\begin{array}{llll}
+  X: & \mathscr{A} & \to & \mathscr{A}' \\
+     & A & \mapsto & X(A)
+\end{array}
+\]
 
-A raíz de esta definición podemos definir también lo que se conoce como función inversa. Dada una función $X$, la función inversa de $X$, $X^{-1}$, asigna a cada conjunto $A' \in \mathcal{A}'$ el conjunto $A \in \mathcal{A}$ tal que $X(A) = A'$. La propiedad básica que cumplen las funciones inversas es que preservan las operaciones e inclusiones de conjuntos.
+A raíz de esta definición podemos definir también lo que se conoce como función inversa. Dada una función $X$, la función inversa de $X$, $X^{-1}$, asigna a cada conjunto $A' \in \mathscr{A}'$ el conjunto $A \in \mathscr{A}$ tal que $X(A) = A'$. Esto sujeto a las condiciones usuales de inyectividad y sobreyectividad. La propiedad básica que cumplen las funciones inversas es que preservan las operaciones e inclusiones de conjuntos.
 
 \subsection{Concepto de $\sigma$-aditividad}
-Sea un conjunto $\Omega$ y una $\sigma$-álgebra $\mathcal{A}$ sobre $\Omega$. Definimos la función de conjunto:
-$$\varphi : \mathcal{A} \rightarrow \mathbb{R}$$
-\begin{center}
-$\varphi (A)$ es único\\
-\end{center}
-Se dice que $\varphi$ es aditiva si $\varphi\left(\displaystyle\sum_{1}^{n}A_k\right)=\displaystyle\sum_1^n\varphi(A_k)$\\
-Se dice que $\varphi$ es $\sigma$-aditiva si $\varphi\left(\displaystyle\sum_1^\infty A_k\right)=\displaystyle\sum_1^\infty \varphi(A_k)$
-\subsubsection{Función subaditiva}
-Sea $\varphi$ definida como antes. Se dice que $\varphi$ es \textbf{subaditiva} si $\varphi(A \cup B) \leq \varphi(A) + \varphi(B)$
+\begin{ndef}[Función aditiva, $\sigma$-aditiva y subaditiva]
+  Sea un conjunto $\Omega$ y una $\sigma$-álgebra $\mathscr{A}$ sobre $\Omega$ y sea
+  $$\varphi : \mathscr{A} \rightarrow \mathbb{R}$$
+  %% \begin{center}
+  %% $\varphi (A)$ es único\\
+  %% \end{center}
+  \begin{itemize}
+    \item Se dice que $\varphi$ es \textbf{subaditiva} si $\varphi(A \cup B) \leq \varphi(A) + \varphi(B)$
+  \item  Se dice que $\varphi$ es \textbf{aditiva} si $\varphi\left(\displaystyle\sum_{k=1}^{n}A_k\right)=\displaystyle\sum_{k=1}^n\varphi(A_k)$
+  \item  Se dice que $\varphi$ es \textbf{$\sigma$-aditiva} si $\varphi\left(\displaystyle\sum_{k=1}^\infty A_k\right)=\displaystyle\sum_{k=1}^\infty \varphi(A_k)$
+  \end{itemize}
+  
+  \begin{itemize}
+  \end{itemize}
+
+\end{ndef}
+
 \begin{lema}
 Si $\exists B\, : \, \varphi(B)<\infty \Rightarrow \varphi(\emptyset)=0$
 \end{lema}
@@ -169,13 +181,13 @@ Una vez demostrado este teorema, vamos a ver un teorema que nos relaciona las pr
 \begin{nth}
 Teorema del supremo e ínfimo\\
 
-Sea $\varphi$ una función $\sigma$-aditiva sobre una $\sigma$-álgebra $\mathcal{A}$. Entonces, existen $C,D \in \mathcal{A}$ tales que $\varphi (C) = \sup \varphi$ y $\varphi (D) = \inf \varphi$
+Sea $\varphi$ una función $\sigma$-aditiva sobre una $\sigma$-álgebra $\mathscr{A}$. Entonces, existen $C,D \in \mathscr{A}$ tales que $\varphi (C) = \sup \varphi$ y $\varphi (D) = \inf \varphi$
 \end{nth}
 
 \begin{proof}
-Probaremos la existencia del conjunto $C$. La del conjunto $D$ es análoga. Si $\varphi(A) = \infty$ para algún $A \in \mathcal{A}$, entonces podemos establecer $A = C$ y la demostración del teorema es trivial. Entonces, supongamos que $\varphi < \infty$ y dado que el valor $-\infty$ está excluido, $\varphi$ es finita.\\
+Probaremos la existencia del conjunto $C$. La del conjunto $D$ es análoga. Si $\varphi(A) = \infty$ para algún $A \in \mathscr{A}$, entonces podemos establecer $A = C$ y la demostración del teorema es trivial. Entonces, supongamos que $\varphi < \infty$ y dado que el valor $-\infty$ está excluido, $\varphi$ es finita.\\
 
-Entonces, existe una sucesión $\{A_n\} \subset \mathcal{A}$ tal que $\varphi(A_n) \to \sup \varphi$. Sea $A = \cup A_n $ y para cada $n$, consideramos la partición de $A$ en $2^n$ conjuntos $A_{nm}$ de la forma $\displaystyle \cap_{k=1}^n A'_k$, donde $A'_k = A_k$ o $A - A_k$. Para $n < n'$, cada conjunto $A_{nm}$ es una suma finita de conjuntos $A_{n'm'}$. Sea ahora $B_n$ la suma de los conjuntos $A_{nm}$ para los cuales $\varphi$ es no negativa. Si no hay ninguno, entonces $B_n = \emptyset$. Entonces, tenemos por un lado que $A_n$ es la suma de algunos de los $A_{nm}$, y por otro lado, para $n' > n$, cada conjunto $A_{n'm'}$ está dentro de $B_n$ o son disjuntos. Entonces tenemos
+Entonces, existe una sucesión $\left\{A_n\}\right \subset \mathscr{A}$ tal que $\varphi(A_n) \to \sup \varphi$. Sea $A = \cup A_n $ y para cada $n$, consideramos la partición de $A$ en $2^n$ conjuntos $A_{nm}$ de la forma $\displaystyle \cap_{k=1}^n A'_k$, donde $A'_k = A_k$ o $A - A_k$. Para $n < n'$, cada conjunto $A_{nm}$ es una suma finita de conjuntos $A_{n'm'}$. Sea ahora $B_n$ la suma de los conjuntos $A_{nm}$ para los cuales $\varphi$ es no negativa. Si no hay ninguno, entonces $B_n = \emptyset$. Entonces, tenemos por un lado que $A_n$ es la suma de algunos de los $A_{nm}$, y por otro lado, para $n' > n$, cada conjunto $A_{n'm'}$ está dentro de $B_n$ o son disjuntos. Entonces tenemos
 $$ \varphi(A_n) \leq \varphi(B_n) \leq \varphi (B_n \cup B_{n+1} \cup ... \cup B_{n'}) $$
 Tomando $n' \to +\infty$, se sigue de la continuidad por debajo que
 $$ \varphi(A_n) \leq \varphi (B_n) \leq \varphi \left( \cup_{k=n}^{+\infty} B_k\right) $$
@@ -193,19 +205,19 @@ Una función de conjuntos $\mu^\circ$ es una medida si verifica:
 \item $\mu^\circ(\emptyset)=0$
 \end{itemize}
 
-A la tupla ($\Omega$, $\mathcal{A}$, $\mu_{\mathcal{A}}$) se le denomina espacio de medida.\\
+A la tupla ($\Omega$, $\mathscr{A}$, $\mu_{\mathscr{A}}$) se le denomina espacio de medida.\\
 
 Una \textbf{medida exterior} es una función de conjuntos positiva y $\sigma$-subaditiva, es decir, no se cumple la primera propiedad. La $\sigma$-subaditividad implica que $\mu(A \cup B) \leq \mu(A) + \mu(B)$.\\
 
 Para que una medida exterior fuera una medida tendría que ser $\sigma$-aditiva. Es decir, la falla la primera condición. Sí que es positiva ya que $\mu^\circ(\emptyset)=0$ y es creciente. Esta medida exterior se aplica a cualquier conjunto. Va a haber unos subconjuntos en los que la función se comporte como si fuera aditiva.\\
 
-Una vez definido el concepto de medida, vamos a dar ahora el de probabilidad. Una probabilidad $\mathcal{P}$ sobre un espacio medible ($\Omega$, $\mathcal{A}$) es una medida que además cumple que $\mathcal{P}(\Omega)=1$. Por tanto, tiene las siguientes propiedades:\\
+Una vez definido el concepto de medida, vamos a dar ahora el de probabilidad. Una probabilidad $\mathcal{P}$ sobre un espacio medible ($\Omega$, $\mathscr{A}$) es una medida que además cumple que $\mathcal{P}(\Omega)=1$. Por tanto, tiene las siguientes propiedades:\\
 
 $\mathcal{P}(\emptyset)=0$\\
-$\forall A \in \mathcal{A}, 0 \leq \mathcal{P}(A) \leq 1$\\
+$\forall A \in \mathscr{A}, 0 \leq \mathcal{P}(A) \leq 1$\\
 Es una función $\sigma$-aditiva\\
 
-De forma análoga al concepto de espacio de medida, podemos definir ahora el de espacio probabilístico. Un espacio probabilístico es una tupla formada por un conjunto $\Omega$, una $\sigma$-álgebra sobre ese conjunto, $\mathcal{A}$, y una función de probabilidad $\mathcal{P}$.
+De forma análoga al concepto de espacio de medida, podemos definir ahora el de espacio probabilístico. Un espacio probabilístico es una tupla formada por un conjunto $\Omega$, una $\sigma$-álgebra sobre ese conjunto, $\mathscr{A}$, y una función de probabilidad $\mathcal{P}$.
 
 \begin{nth}
 Teorema de sucesión
@@ -249,26 +261,26 @@ Por último, $\mu^\circ(\emptyset) = \mu(\emptyset) = 0$
 \end{proof}
 
 \begin{nth}
-Sea $\mu^\circ$ una medida exterior sobre la $\sigma$-álgebra $\mathcal{A}$, y sea $\mathcal{A}^\circ$ la clase de conjuntos $\mu^\circ$-medibles:
+Sea $\mu^\circ$ una medida exterior sobre la $\sigma$-álgebra $\mathscr{A}$, y sea $\mathscr{A}^\circ$ la clase de conjuntos $\mu^\circ$-medibles:
 \begin{itemize}
-\item $\mathcal{A}^\circ$ es un $\sigma$-campo
-\item $\mu^\circ$ en $\mathcal{A}^\circ$ es una medida
+\item $\mathscr{A}^\circ$ es un $\sigma$-campo
+\item $\mu^\circ$ en $\mathscr{A}^\circ$ es una medida
 \end{itemize}
 \end{nth}
 
 \begin{proof}
-Primero, veamos que $\mathcal{A}^\circ$ es un álgebra. Sea $A \in \mathcal{A}^\circ$, entonces $A^c \in \mathcal{A}^\circ$ dado que la definición de $\mu^\circ$-medibilidad es simétrica. Sean entonces $A,B \in \mathcal{A}^\circ$. Entonces:
+Primero, veamos que $\mathscr{A}^\circ$ es un álgebra. Sea $A \in \mathscr{A}^\circ$, entonces $A^c \in \mathscr{A}^\circ$ dado que la definición de $\mu^\circ$-medibilidad es simétrica. Sean entonces $A,B \in \mathscr{A}^\circ$. Entonces:
 $$ \mu^\circ(D) = \mu^\circ(AD) + \mu^\circ(A^cD) = $$
 $$ = \mu^\circ(ABD) + \mu^\circ(AB^cD) + \mu^\circ(A^cBD) + \mu^\circ(A^cB^cD) \geq$$
 $$ \geq \mu^\circ(ABD) + \mu^\circ (AB^cD \cup A^cBD \cup A^cB^cD) =$$
 $$ = \mu^\circ(ABD) + \mu^\circ(AB)^cD$$
-Dado entonces que $\mathcal{A}^\circ$ es cerrada bajo la operación complementario e intersección finita, lo es para la unión finita, así que nos encontramos ante un álgebra. Veamos ahora que $\mu^\circ$ es aditiva en $\mathcal{A}^\circ$. Sean $A,B \in \mathcal{A}^\circ$ disjuntos. Entonces:
+Dado entonces que $\mathscr{A}^\circ$ es cerrada bajo la operación complementario e intersección finita, lo es para la unión finita, así que nos encontramos ante un álgebra. Veamos ahora que $\mu^\circ$ es aditiva en $\mathscr{A}^\circ$. Sean $A,B \in \mathscr{A}^\circ$ disjuntos. Entonces:
 $$\mu^\circ(A+B) = \mu^\circ((A+B)A) + \mu^\circ((A+B)A^c) = \mu^\circ(A) + \mu^\circ(B)$$
-Y teniendo que $\mu^\circ(A) \geq \mu^\circ(\emptyset) = 0$, $\mu^\circ$ sobre $\mathcal{A}^\circ$ es una función aditiva y positiva. Para completar la prueba, veamos que $\mu^\circ$ es $\sigma$-aditiva. Sean $A_n \in \mathcal{A}^\circ$, $A = \displaystyle \sum A_n$. Tomamos los conjuntos $B_n = \displaystyle \sum_{k=1}^n A_k \in \mathcal{A}^\circ$. Tenemos que:
+Y teniendo que $\mu^\circ(A) \geq \mu^\circ(\emptyset) = 0$, $\mu^\circ$ sobre $\mathscr{A}^\circ$ es una función aditiva y positiva. Para completar la prueba, veamos que $\mu^\circ$ es $\sigma$-aditiva. Sean $A_n \in \mathscr{A}^\circ$, $A = \displaystyle \sum A_n$. Tomamos los conjuntos $B_n = \displaystyle \sum_{k=1}^n A_k \in \mathscr{A}^\circ$. Tenemos que:
 $$ \mu^\circ(D) \geq \mu^\circ (B_nD) + \mu^\circ (B_n^cD) \geq \sum_{k=1}^n\mu^\circ(A_kD) + \mu^\circ(A^cD) $$
 Haciendo $n \to +\infty$
 $$\mu^\circ(D) \geq \sum_{n=1}^{+\infty} \mu^\circ(A_nD) + \mu^\circ(A^cD) \geq \mu^\circ(AD) + \mu^\circ(A^cD)$$
-Además queda demostrado que $A \in \mathcal{A}^\circ$, así que tenemos que $\mathcal{A}^\circ$ es un $\sigma$-campo.
+Además queda demostrado que $A \in \mathscr{A}^\circ$, así que tenemos que $\mathscr{A}^\circ$ es un $\sigma$-campo.
 Por último, tomando $D = A$, tenemos que $\mu^\circ(A) \geq \displaystyle \sum \mu^\circ(A_n) \Rightarrow \mu^\circ(A) = \sum \mu^\circ(A_n) \Rightarrow \mu^\circ$ es una medida.
 
 \qed
@@ -276,7 +288,7 @@ Por último, tomando $D = A$, tenemos que $\mu^\circ(A) \geq \displaystyle \sum 
 
 \begin{nth}
 de extensión de Carathéodory\\
-Dada una medida $\mu$ sobre un álgebra $\mathcal{C}$, existe una extensión $\mu^\circ$ sobre la $\sigma$-álgebra minimal sobre $\mathcal{C}$ ($\mathcal{A}(\mathcal{C})$). Además, si $\mu$ es finita, la extensión es única.
+Dada una medida $\mu$ sobre un álgebra $\mathcal{C}$, existe una extensión $\mu^\circ$ sobre la $\sigma$-álgebra minimal sobre $\mathcal{C}$ ($\mathscr{A}(\mathcal{C})$). Además, si $\mu$ es finita, la extensión es única.
 \end{nth}
 
 \begin{proof}
@@ -284,22 +296,22 @@ Dada una medida $\mu$ sobre un álgebra $\mathcal{C}$, existe una extensión $\m
 
 $\forall A \in \mathcal{C}, \forall D \in \mathcal{C}, \forall \varepsilon>0, \exists \{A_j\} \subset \mathcal{C}$ recubrimiento de $D$ tal que
 $$\mu^\circ(D) + \varepsilon \geq \sum \mu(A_j) \geq \sum \mu (AA_j) + \sum \mu (A^cA_j) \geq \mu^\circ(AD) + \mu^\circ(A^cD) \Rightarrow$$
-$$ \stackrel{\varepsilon \to 0}{\Rightarrow} \mu^\circ(D) \geq \mu^\circ(AD) + \mu^\circ(A^cD), A \in \mathcal{A}^\circ \Rightarrow \mathcal{C} \subseteq \mathcal{A}^\circ, \mathcal{A}(\mathcal{C}) \subseteq \mathcal{A}^\circ $$
-Por los dos teoremas que hemos demostrado antes, la restricción $\mu^\circ$ sobre $\mathcal{A}(\mathcal{C})$ es una extensión de $\mu$ a una medida sobre $\mathcal{A}(\mathcal{C})$. Ahora, veamos que es única. Para ello, sean $\mu_1, \mu_2$ extensiones de $\mu$. Sea entonces el conjunto $\mathcal{M} = \{A: \mu_1(A) = \mu_2(A)\} \Rightarrow \mathcal{C} \subset \mathcal{M}$. Tenemos entonces que:
+$$ \stackrel{\varepsilon \to 0}{\Rightarrow} \mu^\circ(D) \geq \mu^\circ(AD) + \mu^\circ(A^cD), A \in \mathscr{A}^\circ \Rightarrow \mathcal{C} \subseteq \mathscr{A}^\circ, \mathscr{A}(\mathcal{C}) \subseteq \mathscr{A}^\circ $$
+Por los dos teoremas que hemos demostrado antes, la restricción $\mu^\circ$ sobre $\mathscr{A}(\mathcal{C})$ es una extensión de $\mu$ a una medida sobre $\mathscr{A}(\mathcal{C})$. Ahora, veamos que es única. Para ello, sean $\mu_1, \mu_2$ extensiones de $\mu$. Sea entonces el conjunto $\mathcal{M} = \{A: \mu_1(A) = \mu_2(A)\} \Rightarrow \mathcal{C} \subset \mathcal{M}$. Tenemos entonces que:
 $$ \Omega \in \mathcal{C} \Rightarrow \Omega \in \mathcal{M} \Rightarrow \mu_1(\Omega) = \mu_2(\Omega) = \mu(\Omega) < \infty \Rightarrow \mu_1, \mu_2 \: finitos $$
 $$ A \in \mathcal{M} \Rightarrow \mu_1(A^c) = \mu(\Omega) - \mu_1(A) = \mu(\Omega) - \mu_2(A) = \mu_2(A^c) \Rightarrow A^c \in \mathcal{M} $$
 $$ A,B \in \mathcal{M} \Rightarrow \mu_1(A+B) = \mu_1(A) + \mu_1(B) = \mu_2(A) + \mu_2(B) = \mu_2(A+B) \Rightarrow A+B \in \mathcal{M}$$
 Entonces, de momento $\mathcal{M}$ es un campo.\\
 
-Sean ahora $\{A_n\} \subset \mathcal{M}$ monótona, entonces $\mu_1(\lim A_n) = \lim \mu_1(A_n) = \lim \mu_2(A_n) = \mu_2(\lim A_n) \Rightarrow \mathcal{M}$ cerrada frente al límite de sucesiones monótonas $\Rightarrow \mathcal{M} \sigma$-álgebra que contiene a $\mathcal{C}$, por tanto, contiene a la $\sigma$-álgebra minimal sobre $\mathcal{C}$
-$$ \mathcal{A}(\mathcal{C}) \subseteq \mathcal{M} \Rightarrow \mu_1 = \mu_2 \: en \: \mathcal{A}(\mathcal{C})$$
+Sean ahora $\left\{A_n\}\right \subset \mathcal{M}$ monótona, entonces $\mu_1(\lim A_n) = \lim \mu_1(A_n) = \lim \mu_2(A_n) = \mu_2(\lim A_n) \Rightarrow \mathcal{M}$ cerrada frente al límite de sucesiones monótonas $\Rightarrow \mathcal{M} \sigma$-álgebra que contiene a $\mathcal{C}$, por tanto, contiene a la $\sigma$-álgebra minimal sobre $\mathcal{C}$
+$$ \mathscr{A}(\mathcal{C}) \subseteq \mathcal{M} \Rightarrow \mu_1 = \mu_2 \: en \: \mathscr{A}(\mathcal{C})$$
 
 \qed
 \end{proof}
 
 \section{Funciones medibles}
 
-Una vez definidos los conceptos sobre espacios de medida y espacios probabilísticos, vamos a aproximarnos al concepto de función medible. Para ello, daremos dos definiciones de función medible, para demostrar más adelante que estas dos definiciones son equivalentes. Empecemos con la definición constructiva de función medible. Dado que nos interesa que el codominio sea $\mathbb{R}$, trabajaremos con funciones definidas entre un espacio medible ($\Omega$, $\mathcal{A}$) y ($\mathbb{R}$, $\mathcal{B}$), donde $\mathcal{B}$ representa la $\sigma$-álgebra de Borel.\\
+Una vez definidos los conceptos sobre espacios de medida y espacios probabilísticos, vamos a aproximarnos al concepto de función medible. Para ello, daremos dos definiciones de función medible, para demostrar más adelante que estas dos definiciones son equivalentes. Empecemos con la definición constructiva de función medible. Dado que nos interesa que el codominio sea $\mathbb{R}$, trabajaremos con funciones definidas entre un espacio medible ($\Omega$, $\mathscr{A}$) y ($\mathbb{R}$, $\mathcal{B}$), donde $\mathcal{B}$ representa la $\sigma$-álgebra de Borel.\\
 
 Primero, se define la función puntual $X: \Omega \to \mathbb{R}$, que asigna a cada $\omega \in \Omega$ un número $x = X(\omega)$ único. Llamaremos a esta función variable aleatoria. Utilizaremos de aquí en adelante la siguiente notación:
 
@@ -315,7 +327,7 @@ Sea entonces la función $X = \displaystyle \sum_j x_jI_{A_j}$, donde $A_j$ son 
 
 Esta definición que hemos dado es constructiva, y por tanto, nos será muy útil para la definición constructiva de las integrales. No obstante, para enunciar y demostrar las propiedades de las funciones medibles, suele ser más útil la definición descriptiva siguiente:\\
 
-\textbf{Definición descriptiva de función medible:} Sea una función $\varphi : \mathcal{A} \rightarrow \mathcal{B}$. Se dice que $\varphi$ es medible si $\forall B \in \mathcal{B} \Rightarrow \varphi^{-1}(B) \in \mathcal{A}$. Es decir, una función se dice medible si la imagen inversa de todo conjunto medible es medible.\\
+\textbf{Definición descriptiva de función medible:} Sea una función $\varphi : \mathscr{A} \rightarrow \mathcal{B}$. Se dice que $\varphi$ es medible si $\forall B \in \mathcal{B} \Rightarrow \varphi^{-1}(B) \in \mathscr{A}$. Es decir, una función se dice medible si la imagen inversa de todo conjunto medible es medible.\\
 
 No obstante, se puede dar, a raíz de esta, otra definición más económica:\\
 
@@ -374,13 +386,13 @@ Sean $X$ función medible y $g$ función boreliana. Entonces, $g(X)$ es medible.
 \end{nth}
 
 \begin{proof}
-$$(gX)^{-1}(B)=X^{-1}(g^{-1}(B))\in \mathcal{A}$$
+$$(gX)^{-1}(B)=X^{-1}(g^{-1}(B))\in \mathscr{A}$$
 \qed
 \end{proof}
 
 \subsection{Convergencia en probabilidad y convergencia casi segura}
 
-Vamos a establecer ahora criterios que nos permitan comparar variables aleatorias. Dado un espacio de probabilidad ($\Omega$, $\mathcal{A}$, $\mathcal{P}$), se dice que dos variables aleatorias son equivalentes si:
+Vamos a establecer ahora criterios que nos permitan comparar variables aleatorias. Dado un espacio de probabilidad ($\Omega$, $\mathscr{A}$, $\mathcal{P}$), se dice que dos variables aleatorias son equivalentes si:
 $$ X\mathcal{R}Y \Leftrightarrow \mathcal{P}[X = Y] = 1$$
 Análogamente:
 $$X(\omega) = Y(\omega) \hspace{1cm} \forall \omega \in \Omega \setminus \Lambda, \  \mathcal{P}(\Lambda) = 0$$
@@ -493,9 +505,9 @@ $$\lim\mathbb{X}_n(\omega)=\mathbb{X}(\omega)\hspace{0.5cm} \omega \in A$$
 
 \subsection{Integral de una función de conjunto}
 
-Para el cálculo de probabilidades, nos será muy útil el concepto de integral sobre funciones de conjunto. Este concepto nos servirá para calcular lo que se conoce como la esperanza matemática de una variable aleatoria $X$. En este apartado trabajaremos sobre el espacio de probabilidad $(\Omega, \mathcal{A}, \mathcal{P})$. Comenzaremos definiendo la integral para las funciones simples, para dar luego una definición de integral para funciones no negativas y por último para funciones cualesquiera.\\
+Para el cálculo de probabilidades, nos será muy útil el concepto de integral sobre funciones de conjunto. Este concepto nos servirá para calcular lo que se conoce como la esperanza matemática de una variable aleatoria $X$. En este apartado trabajaremos sobre el espacio de probabilidad $(\Omega, \mathscr{A}, \mathcal{P})$. Comenzaremos definiendo la integral para las funciones simples, para dar luego una definición de integral para funciones no negativas y por último para funciones cualesquiera.\\
 
-Sea entonces $\{A_k\} \in \mathcal{A}$, tal que $\displaystyle \sum_k A_k = \Omega$, partición medible del espacio. Sea entonces la función simple $X = \displaystyle \sum_{j=1}^m x_jI_{A_j},\ x_j \geq 0$. La integral de la función $X$ se define como:
+Sea entonces $\{A_k\} \in \mathscr{A}$, tal que $\displaystyle \sum_k A_k = \Omega$, partición medible del espacio. Sea entonces la función simple $X = \displaystyle \sum_{j=1}^m x_jI_{A_j},\ x_j \geq 0$. La integral de la función $X$ se define como:
 $$\int_{\Omega} X d\mathcal{P} = \sum_{j=1}^m x_j\mathcal{P}_{A_j}$$
 Ahora, para cualquier función no negativa $X$, se define la integral de la función como:
 $$\int_{\Omega} X d\mathcal{P} = \lim \int_{\Omega}X_n d \mathcal{P}$$
@@ -531,7 +543,7 @@ $\displaystyle X \stackrel{c.s}{=} Y \rightarrow \int X d\mathcal{P} = \int Y d\
 
 \subsubsection{Definición general}
 
-Dado un espacio probabilístico $(\Omega, \mathcal{A}, P)$ y una v.a. $X$, se define la esperanza matemática de $X$ como:
+Dado un espacio probabilístico $(\Omega, \mathscr{A}, P)$ y una v.a. $X$, se define la esperanza matemática de $X$ como:
 $$E(X)=\int_{\Omega}XdP=\int_{\omega \in \Omega}{X(\omega)dP(\omega)}$$
 \\
 
@@ -618,7 +630,7 @@ Vamos a ver algunas desigualdades que nos permitirán a posteriori simplificar e
 
 \textbf{Definición: Momento r-ésimo}\\
 
-Dado un espacio probabilístico ($\Omega$, $\mathcal{A}$, $\mathcal{P}$) y una variable aleatoria $X$, se define el momento r-ésimo o de orden r de la variable $X$ a:
+Dado un espacio probabilístico ($\Omega$, $\mathscr{A}$, $\mathcal{P}$) y una variable aleatoria $X$, se define el momento r-ésimo o de orden r de la variable $X$ a:
 $$ EX^r = \int X^r \, d \mathcal{P} $$
 Dicho momento existe si $E|X|^r < \infty$
 
@@ -668,7 +680,7 @@ $$ g(a)\mathcal{P}(A) \ \leq\ Eg(X) \ \leq \ c.s.\sup g(X)\mathcal{P}(A) + g(a) 
 \subsubsection{Aplicaciones}
 \begin{enumerate}
 \item Usando la desigualdad básica con $g(X) = X^r$ y $E|X_n - X|^r \to 0 \Rightarrow X_n \stackrel{\mathcal{P}}{\rightarrow} X$
-\item ($\Omega$, $\mathcal{A}$, $\mathcal{P}$) $\stackrel{\mathcal{P}}{\rightarrow}$ ($\mathbb{R}$, $\mathcal{B}$), definimos ahora $\mathcal{P}^X(\mathcal{B}) = \mathcal{P}(X^{-1}(\mathcal{B}))$. $\mathcal{P}^X$ es una probabilidad, ya que $\mathcal{P}^X(\mathbb{R}) = 1, \mathcal{P}^X(\mathcal{B}) \geq 0, \mathcal{P}^X(\sum B_j) = \sum \mathcal{P}^X(B_j)$, y $EX = \displaystyle \int_{x \in \mathbb{R}} x d \mathcal{P}^X(x)$; $Eg(X) = \displaystyle \int_{y \in \mathbb{R}} g d \mathcal{P}^Y(y) = \displaystyle \int_{x \in \mathbb{R}} g(x) d \mathcal{P}^X(x)$
+\item ($\Omega$, $\mathscr{A}$, $\mathcal{P}$) $\stackrel{\mathcal{P}}{\rightarrow}$ ($\mathbb{R}$, $\mathcal{B}$), definimos ahora $\mathcal{P}^X(\mathcal{B}) = \mathcal{P}(X^{-1}(\mathcal{B}))$. $\mathcal{P}^X$ es una probabilidad, ya que $\mathcal{P}^X(\mathbb{R}) = 1, \mathcal{P}^X(\mathcal{B}) \geq 0, \mathcal{P}^X(\sum B_j) = \sum \mathcal{P}^X(B_j)$, y $EX = \displaystyle \int_{x \in \mathbb{R}} x d \mathcal{P}^X(x)$; $Eg(X) = \displaystyle \int_{y \in \mathbb{R}} g d \mathcal{P}^Y(y) = \displaystyle \int_{x \in \mathbb{R}} g(x) d \mathcal{P}^X(x)$
 \end{enumerate}
 
 \subsection{Convergencia en r-medida}
@@ -830,7 +842,7 @@ Tenemos que $F_{t_1,...,t_n}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}]) = F_{t_1
 \begin{lema}
 Lema de Borel-Cantelli
 \\\\
-Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
+Sea $(\Omega,\mathscr{A},P) \, , \, A_n \in \mathscr{A}$. Entonces:
 \begin{itemize}
 <<<<<<< HEAD
 \item $\displaystyle\sum P(A_n) < \infty \Longrightarrow P(\displaystyle \lim \sup A_n)=0$
