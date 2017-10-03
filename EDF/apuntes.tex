@@ -140,9 +140,26 @@ Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
 \end{nth}
 
-% TODO: prueba
-%% \begin{proof}
-%% \end{proof}
+% TODO: revisar prueba.
+
+
+\begin{proof}
+
+$g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)$\\
+
+$G(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1}$ derivable.\\
+
+Sea $x_0 \in (c,d)$. $G(x_0) \in  V$, $\ F(t) = \int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.\\
+
+$t \to G(x_0)+\int_{t_0}^t f(s) ds  \in V$ cuando $t,t_0 \in I$.\\
+
+$\exists t_0 \in I$ t.q. $\forall t \in I, \ G^{-1}(G(x_0) + F(t))$ esta bien definida.\\
+
+$x'(t) = \frac{1}{G'(G^{-1}(G(x_0) + F(t)))}$
+
+
+\end{proof}
+
   
 \section{Cambio de variable en ecuaciones diferenciales}
 El objetivo del cambio de variable será transformar una ecuación en una más fácilmente resoluble.
@@ -153,7 +170,7 @@ Vamos a estudiar el caso de las ecuaciones diferenciales de primer orden.
 Consideramos una ecuación de este tipo en forma normal:
 
 \[
-  x' = F(t, x), F : D \subseteq \R^2 \to \R
+  x' = F(t, x),\ F : D \subseteq \R^2 \to \R \ \ \ \ (E)
   \]
 
   y un difeomorfismo
@@ -165,8 +182,26 @@ Consideramos una ecuación de este tipo en forma normal:
   \]
 
   de forma que, si $\tilde{F} = F \circ \varphi$, la ecuación
-  \[ \dfrac{dy}{ds} = \tilde{F}(s, y) \]
+  \[ \dfrac{dy}{ds} = \tilde{F}(s, y) \ \ \ \ \tilde{E}\]
   es equivalente a la que estamos considerando.
+
+
+\begin{nprop}
+
+Dado $\varphi = (\varphi _1, \varphi _2) : D \to \tilde{D}$ un difeomorfismo, tal que 
+\[
+\dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t)) F(t,x(t)) \neq 0 \forall (t,x) \in D
+\]
+
+Entonces el cambio de variable:
+\[
+s := \varphi _1(t,x)\\
+y := \varphi _2 (t,x)
+\]
+transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\tilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y reciprocamente.
+\end{nprop}
+
+\begin{proof}
 
   De una parte, sabemos que $\dfrac{dy}{ds} = \dfrac{dy}{dt}\dfrac{dt}{ds}$. De otra, si $x(t)$
   es solución de la ecuación
@@ -186,7 +221,35 @@ Consideramos una ecuación de este tipo en forma normal:
 
   \[
   \dfrac{dy}{ds} = \dfrac{dy}{dt}\dfrac{dt}{ds} = \dfrac{\dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t))F(t, x)}{\dfrac{\partial \varphi_2}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_2}{\partial x}(t, x(t))F(t, x)}
-  = \dfrac{\dfrac{\partial \varphi_1}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_1}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}{\dfrac{\partial \varphi_2}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_2}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}
+  = \dfrac{\dfrac{\partial \varphi_1}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_1}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}{\dfrac{\partial \varphi_2}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_2}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))} = \tilde{F}(s,y)
   \]
 
   % TODO: insertar ejemplo de uso
+
+\end{proof}
+
+\subsection{Ecuación homogénea.}
+
+Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma $x' = f(\frac{x}{t}) \ \implies \ F(t,x) = f(\frac{x}{t})$, con $t \neq 0, \frac{x}{t} \in (a,b)$.\\
+$$Dom(F) = \{(t,x)\in \R ^2 : t \neq 0, \ \frac{x}{t} \in (a,b)\}$$\\
+Podemos dividir el dominio de F en dos dominios:\\
+$D_1 = \{(t,x) \in \R ^2 : t > 0, \ at < x < bt\}$\\
+$D_2 = \{(t,x) \in \R ^2 : t < 0, \ at > x > bt\}$\\
+
+Realizamos un cambio de variable:
+\[
+s = t\\
+y = \frac{x}{t}
+\]
+
+Los nuevos dominios son:
+\[
+\tilde{D}_1 = \{s > 0, a < y < b\}\\
+\tilde{D}_2 = \{s < 0, a > y > b\}
+\]
+
+La ecuación diferencial queda como una función de variables separadas:
+
+$$y' = \frac{1}{s}(f(y) - y)$$
+
+
