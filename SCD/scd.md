@@ -113,7 +113,7 @@ En el coend es espera a que se terminen todas las sentencias. Hace explícuto qu
 
 #### Concepto de exclusión mutua
 
-Se´gun el modelo abstracto, los procesoso concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
+Según el modelo abstracto, los procesoso concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
 
 En general, se dice que hay una condición de sincronización cuando esto ocurre, es decir, que hay alguna restricción sobre el orden en el que se pueden mezclar las instrucciones de distontos procesos.
 
