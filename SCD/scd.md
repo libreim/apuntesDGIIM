@@ -108,3 +108,19 @@ Sew pueden usar definiciones estáticas de grupos de procesos similares que solo
 Las sentencias en un bloque delimitado por cobegin-coend comienzan su ejecución todas ellas a la vez.
 
 En el coend es espera a que se terminen todas las sentencias. Hace explícuto qué rutinas van a ejecutarse concurrentemente.
+
+### Exclusión mutua y sincronización
+
+#### Concepto de exclusión mutua
+
+Se´gun el modelo abstracto, los procesoso concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
+
+En general, se dice que hay una condición de sincronización cuando esto ocurre, es decir, que hay alguna restricción sobre el orden en el que se pueden mezclar las instrucciones de distontos procesos.
+
+Un caso particular es la exclusión mutua, secuencias finitas de intrucciones que deben ejecutarse de principio a fin por un único proceso, sin que a la vez otro proceso las esté ejecutando también.
+
+La restricción se refiere a una o varias secuencias de instrucciones consecutivas que aparecen en el texto de uno o varios procesos. Al conjunto de dicas secuencias de instrucciones se le denomina sección crítica (SC). Ocurre exclusión mutua (EM) cuando los procesos solo funcionan correctamente si, en cada instante de tiempo, hay como mucho uno de ellos ejecutando cualquier instrucciuón de la serie crítica.
+
+El solapamiento de las instrucciones debe ser tal que cada secuencia de instrucciones de la SC se ejecuta como mucho por un proceso de principio a fin, sin que durante ese tiempo otros procesos ejecuten ninguna de estas instrucciones ni otras de la misma SC.
+
+Un ejemplo típico de EM ocurre en procesos con memoria compartida que acceden para leer y modificar variables o estructuras de datos comunes usando operaciones no atómicas.
