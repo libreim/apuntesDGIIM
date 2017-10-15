@@ -155,3 +155,25 @@ Ejemplos:
 - Equidad: tipo particular de propiedad de v ivacidad. Un proceso que desee progresar debe hacerlo con justicia relativa con respecto a los demás. Más ligado a la implementación y a veces incumplida: existen distintos grados.
 
 ### 5. Verificación de programas concurrentes
+
+#### 5.1 Introducción
+
+¿Cómo demostrar que un programa cumple una determinada propiedad?
+
+- Posibilidad: realizar diferentes ejecuciones del programa y comprobar que se verifica la propiedad. Problema: sólo permite considerar un número limitado de hostorias (interfoliaciones) de ejecución y no demuestra que no existan casos indeseables.
+
+- Enfoque operacional: Análisis exhaustivo de casos. Se chequea la corrección de todas las posibles historias. Problema: su utilidad está muy limitada cuando se aplica a programas concurrentes complejos ya que el número de interfoliaciones crece exponencialmente con el número de instrucciones de los procesos.
+
+#### 5.2 Enfoque axiomático
+
+Se define un sistema lógico formal que perminte establecer propiedades de programas en base a axiomas y reflas de inferencia. Se usan formas lógicas (asertos) para caracterizar un conunto de estados. Las sentencias atómicas actúan como transformadores de predicados (asertos). Los teoremas en la la lógica tienen la forma:
+*{P} S {Q}*
+Si la ejecución de la sentencia *S* empieza en algún estado en el que es verdaddero el predicado *P* (precondición), entonces el predicado *Q* (poscondición) será verdadero en el estado resultante.
+
+El trabajo que conllev ala prueva de corrección es proporcional al número de sentencias atómicas del programa.
+
+Invariante global es un predicado que referencia variables globales siendo cierto en el estado inicial de cada proceso y manteniéndose cierto ante cualquier asignación dentro de los procesos.
+
+Ejemplo para productor consumidor:
+
+*consumidos <= producidos <= consumidos + 1*
