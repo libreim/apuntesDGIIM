@@ -109,9 +109,9 @@ Las sentencias en un bloque delimitado por cobegin-coend comienzan su ejecución
 
 En el coend es espera a que se terminen todas las sentencias. Hace explícuto qué rutinas van a ejecutarse concurrentemente.
 
-### Exclusión mutua y sincronización
+### 3. Exclusión mutua y sincronización
 
-#### Concepto de exclusión mutua
+#### 3.1  Concepto de exclusión mutua
 
 Según el modelo abstracto, los procesoso concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
 
@@ -124,3 +124,34 @@ La restricción se refiere a una o varias secuencias de instrucciones consecutiv
 El solapamiento de las instrucciones debe ser tal que cada secuencia de instrucciones de la SC se ejecuta como mucho por un proceso de principio a fin, sin que durante ese tiempo otros procesos ejecuten ninguna de estas instrucciones ni otras de la misma SC.
 
 Un ejemplo típico de EM ocurre en procesos con memoria compartida que acceden para leer y modificar variables o estructuras de datos comunes usando operaciones no atómicas.
+
+#### 3.2 Condición de sincronización
+
+En general, en un programa concurrente compuesto de varios procesos, una condición de sincornización establece que no son correctas todas las posibles interfoliaciones de las secuencias de instrucciones atómicas de los procesos. Eso ocurre típicamente cuando, en un punto concreto de su ejecución, uno o varios procesos deven esperar a que se cumpla una determinada condición global.
+
+Ejemplo: productor-consumidor
+
+### 4. Propiedades de los sistemas concurrentes
+
+Una propiedad de un programa concurrente es un atributo del programa que es cierto para todas las posibles secuencias de interfoliación. Hay de dos tipos
+
+##### Propiedades de seguridad
+
+Son condiciones que deben cumplirse en cada instante (nunca sucederá algo malo). Requeridas en especificaciones estáticas del programa. Son fáciles de demostrar y para cumplirlas se suelen restringir las posibles interfoliaciones.
+
+Ejemplos:
+
+- Exclusión mutua: 2 procesos nunca entrelazan ciertas subsecuencias de operaciones.
+- Ausencia de interbloqueo: nunca ocurrirá que los procesos se encuentren esperando algo que nunca sucederá.
+- Propiedad de seguridad en el productor-consumidor: el consumidor debe consumir todos los datos producidos por el productor en el orden en el que se van produciendo.
+
+##### Propiedades de vivacidad
+
+Son propiedades que deben cumplirse eventualmente (realmente sucede algo bueno). So propiedades dinámicas, más difíciles de probar.
+
+Ejemplos:
+
+- Ausencia de inanición: un proceso o grupo de procesos no puede ser indefinidamente pospuesto. En algún momento, podrá avanzar.
+- Equidad: tipo particular de propiedad de v ivacidad. Un proceso que desee progresar debe hacerlo con justicia relativa con respecto a los demás. Más ligado a la implementación y a veces incumplida: existen distintos grados.
+
+### 5. Verificación de programas concurrentes
