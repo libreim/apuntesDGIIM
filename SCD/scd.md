@@ -113,9 +113,9 @@ En el coend es espera a que se terminen todas las sentencias. Hace explícuto qu
 
 #### 3.1  Concepto de exclusión mutua
 
-Según el modelo abstracto, los procesoso concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
+Según el modelo abstracto, los procesos concurrentes ejecutan sus instrucciones atómicas de forma que, en principio, el entremezclado en el tiempo es arbitrario. Sin embargo, en un conjunto de porcesos que no son independientes entre sí (cooperativos) algunas de las posibles formas de combinar las secuencias no son válidas.
 
-En general, se dice que hay una condición de sincronización cuando esto ocurre, es decir, que hay alguna restricción sobre el orden en el que se pueden mezclar las instrucciones de distontos procesos.
+En general, se dice que hay una condición de sincronización cuando esto ocurre, es decir, que hay alguna restricción sobre el orden en el que se pueden mezclar las instrucciones de distintos procesos.
 
 Un caso particular es la exclusión mutua, secuencias finitas de intrucciones que deben ejecutarse de principio a fin por un único proceso, sin que a la vez otro proceso las esté ejecutando también.
 
@@ -127,7 +127,7 @@ Un ejemplo típico de EM ocurre en procesos con memoria compartida que acceden p
 
 #### 3.2 Condición de sincronización
 
-En general, en un programa concurrente compuesto de varios procesos, una condición de sincornización establece que no son correctas todas las posibles interfoliaciones de las secuencias de instrucciones atómicas de los procesos. Eso ocurre típicamente cuando, en un punto concreto de su ejecución, uno o varios procesos deven esperar a que se cumpla una determinada condición global.
+En general, en un programa concurrente compuesto de varios procesos, una condición de sincronización establece que no son correctas todas las posibles interfoliaciones de las secuencias de instrucciones atómicas de los procesos. Eso ocurre típicamente cuando, en un punto concreto de su ejecución, uno o varios procesos deben esperar a que se cumpla una determinada condición global.
 
 Ejemplo: productor-consumidor
 
@@ -152,7 +152,7 @@ Son propiedades que deben cumplirse eventualmente (realmente sucede algo bueno).
 Ejemplos:
 
 - Ausencia de inanición: un proceso o grupo de procesos no puede ser indefinidamente pospuesto. En algún momento, podrá avanzar.
-- Equidad: tipo particular de propiedad de v ivacidad. Un proceso que desee progresar debe hacerlo con justicia relativa con respecto a los demás. Más ligado a la implementación y a veces incumplida: existen distintos grados.
+- Equidad: tipo particular de propiedad de vivacidad. Un proceso que desee progresar debe hacerlo con justicia relativa con respecto a los demás. Más ligado a la implementación y a veces incumplida: existen distintos grados.
 
 ### 5. Verificación de programas concurrentes
 
@@ -160,17 +160,17 @@ Ejemplos:
 
 ¿Cómo demostrar que un programa cumple una determinada propiedad?
 
-- Posibilidad: realizar diferentes ejecuciones del programa y comprobar que se verifica la propiedad. Problema: sólo permite considerar un número limitado de hostorias (interfoliaciones) de ejecución y no demuestra que no existan casos indeseables.
+- Posibilidad: realizar diferentes ejecuciones del programa y comprobar que se verifica la propiedad. Problema: sólo permite considerar un número limitado de historias (interfoliaciones) de ejecución y no demuestra que no existan casos indeseables.
 
 - Enfoque operacional: Análisis exhaustivo de casos. Se chequea la corrección de todas las posibles historias. Problema: su utilidad está muy limitada cuando se aplica a programas concurrentes complejos ya que el número de interfoliaciones crece exponencialmente con el número de instrucciones de los procesos.
 
 #### 5.2 Enfoque axiomático
 
-Se define un sistema lógico formal que perminte establecer propiedades de programas en base a axiomas y reflas de inferencia. Se usan formas lógicas (asertos) para caracterizar un conunto de estados. Las sentencias atómicas actúan como transformadores de predicados (asertos). Los teoremas en la la lógica tienen la forma:
+Se define un sistema lógico formal que permite establecer propiedades de programas en base a axiomas y reglas de inferencia. Se usan formas lógicas (asertos) para caracterizar un conjunto de estados. Las sentencias atómicas actúan como transformadores de predicados (asertos). Los teoremas en la la lógica tienen la forma:
 *{P} S {Q}*
-Si la ejecución de la sentencia *S* empieza en algún estado en el que es verdaddero el predicado *P* (precondición), entonces el predicado *Q* (poscondición) será verdadero en el estado resultante.
+Si la ejecución de la sentencia *S* empieza en algún estado en el que es verdadero el predicado *P* (precondición), entonces el predicado *Q* (poscondición) será verdadero en el estado resultante.
 
-El trabajo que conllev ala prueva de corrección es proporcional al número de sentencias atómicas del programa.
+El trabajo que conlleva la prueba de corrección es proporcional al número de sentencias atómicas del programa.
 
 Invariante global es un predicado que referencia variables globales siendo cierto en el estado inicial de cada proceso y manteniéndose cierto ante cualquier asignación dentro de los procesos.
 
