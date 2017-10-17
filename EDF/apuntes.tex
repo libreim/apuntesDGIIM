@@ -108,6 +108,8 @@ También se puede despejar $x'$ de la ecuación para hallar la forma normal:
 
 \[ x' = \frac{1}{x} \implies \upphi(t, x, y) = y-\frac{1}{x} \]
 
+Y podemos elegir entonces dos dominios distintos:
+
 \[ 
 \begin{array}{l}
   D_1 = \R \times (0,+\infty )\times \R \\
@@ -171,17 +173,25 @@ Sabemos que $x(t) = k$, $k \in \R$ es una familia de soluciones, para las que $x
 no es constante, vamos a dar condiciones bajo las cuales la solución a un problema de valores iniciales dado por esa
 ecuación es única.
 
-Suponemos ademas que $g(x) \neq 0$, $x\in (c,d)$.\\
+Suponemos además que $g(x) \neq 0 \ \forall x\in (c,d)$.
+
 Sea $x(t)$ solución de la ecuación $\implies x:I \to \R$ tal que $I\subset (a,b),$ con $ x(t)\in (c,d), \forall t \in I$
 
-$\exists x'(t), \forall t \in I$ tal que $\frac{x'(t)}{g(x(t))} = f(t), \forall t \in I$\\
-Fijado $t_0 \in I$\\
-\[\int_{t_0}^{t}\frac{x'(t)}{g(x(t))} ds = \int_{t_0}^{t} f(s) ds, \forall t \in I \implies G(x(t)) - G(x(t_0)) = \int_{t_0}^{t}f(s) ds\] \\
-$G'(u) = \frac{1}{g(u)}$ tiene signo constante. Es estrictamente monótona. Por el teorema de la función inversa:
-\[x(t) = G^{-1}(G(x_0) + \int_{t_0}^{t}f(s) ds), \forall t \in I\]
+Entonces $\dfrac{x'(t)}{g(x(t))} = f(t), \forall t \in I$
+
+Fijado $t_0 \in I$, tal que $x(t_0) = x_0$
+
+\[\int_{t_0}^{t}\frac{x'(t)}{g(x(t))} ds = \int_{t_0}^{t} f(s) ds, \forall t \in I \implies G(x(t)) - G(x(t_0)) = \int_{t_0}^{t}f(s) ds\]
+
+Donde $G$ es una primitiva de $\dfrac{1}{g}$. $G'(u) = \dfrac{1}{g(u)}$ tiene signo constante, luego $G$ es estrictamente monótona. Por el teorema de la función inversa, existe $G^{-1}$ y por tanto:
+
+\[x(t) = G^{-1}\left(G(x_0) + \int_{t_0}^{t}f(s) ds\right), \forall t \in I\]
+
+Por tanto, dado un problema de valores iniciales para una ecuación de esta forma, con $g$ no nula en ningún punto, las soluciones son de esta forma. Veamos ahora la unicidad de la solución.
 
 \begin{nth}
-Sea $f\in C(a,b), g\in C(c,d)$, con $g(u) \neq 0, \forall u \in (c,d)$. Entonces dado $t_0 \in (a,b), x_0 \in (c,d)$, existe una única solución de $x' = f(t)g(x)$ que cumple $x(t_0) = x_0$\\
+  Sea $f\in C(a,b), g\in C(c,d)$, con $g(u) \neq 0, \forall u \in (c,d)$. Entonces dado $t_0 \in (a,b), x_0 \in (c,d)$, existe una única solución de $x' = f(t)g(x)$ que cumple que $x(t_0) = x_0$.
+  
 Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
 \end{nth}
@@ -191,17 +201,20 @@ Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
 \begin{proof}
 
-$g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)$\\
+\[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)\]
 
-$G(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1}$ derivable.\\
+\[G(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
 
-Sea $x_0 \in (c,d)$. $G(x_0) \in  V$, $\ F(t) = \int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.\\
+Con $V$ un abierto y $G(x_0) \in V$.
+Sean $x_0 \in (c,d)$ y $\ F(t) = \displaystyle\int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.
 
-$t \to G(x_0)+\int_{t_0}^t f(s) ds  \in V$ cuando $t,t_0 \in I$.\\
+Como $V$ es abierto y $F$ es continua, existe $\tilde{I}$ tal que
 
-$\exists t_0 \in I$ t.q. $\forall t \in I, \ G^{-1}(G(x_0) + F(t))$ esta bien definida.\\
+\[t \mapsto G(x_0)+\int_{t_0}^t f(s) ds  \in V \text{ cuando } t,t_0 \in \tilde{I}\]
 
-$x'(t) = \frac{1}{G'(G^{-1}(G(x_0) + F(t)))}$
+Por tanto, $G^{-1}\left(G(x_0) + F(t)\right), \ \forall t \in I$ está bien definida y por el teorema de la función inversa:
+
+\[x'(t) = \frac{1}{G'(G^{-1}(G(x_0) + F(t)))}\]
 
 
 \end{proof}
