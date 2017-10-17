@@ -11,18 +11,19 @@ con sus derivadas. Para formalizar este concepto, vamos a dar algunas definicion
 Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
 
 \begin{ndef}[Ecuación diferencial]
-  Sean $D \subseteq \R^{k+2}$ un dominio, $\upphi : D \to \R$ continua.
+  Sean $D \subseteq \R^{k+2}$ un dominio y $\upphi : D \to \R$ continua.
 
   Entonces la expresión
-  \[\upphi(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) = 0\]
+  \[\upphi\left(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)\right) = 0\]
   es una ecuación diferencial de orden $k$.
 \end{ndef}
+
 
 \begin{ndef}[Solución de una ecuación diferencial]
   Sean 
   \begin{itemize}
   \item $\upphi : D \subseteq \R^{k+2} \to \R$ una función de una ecuación diferencial
-  \item $I \subseteq \R$ un intervalo
+  \item $I \subseteq \R$ un intervalo abierto
   \item $x \in \mathcal{C}^k(I)$ tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$
   \end{itemize}
 
@@ -33,93 +34,128 @@ Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
   \]
 \end{ndef}
 
-\section{Ecuaciones de primer orden}
-\[ \upphi(t, x(t), x'(t)) = 0,   \upphi(t,x,y) = 0  \]
+\begin{ndef}[Problema de valores iniciales]
+  Un problema de valores iniciales es un sistema de ecuaciones
+
+  \[
+  \begin{cases}
+    \upphi\left(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)\right) = 0 \\
+    x(t_0) = x_0
+  \end{cases}
+  \]
+
+  Donde $\upphi$ determina una ecuación diferencial y $t_0$ y $x_0$ son dados.
+\end{ndef}
+
+\section{Ecuaciones diferenciales de primer orden}
+
+\begin{ndef}[Forma normal de una ecuación diferencial de primer orden]
+  Si $\upphi : D \subseteq \R^{3} \to \R$ determina una ecuación diferencial de primer orden y existe $f : \R^2 \to \R$ tal que
+
+  \[
+  \begin{array}{ll}
+    \upphi\left(t,x(t),x'(t)\right) = 0 & (1) \iff \\
+    x' = f\left(t,x\right) & (2)
+  \end{array}
+  \]
+
+  Se dice que (2) es la forma normal de (1).
+  
+\end{ndef}
+
+
+Vamos a ver algunos ejemplos de ecuaciones diferenciales de primer orden y soluciones suyas (marcadas con subíndices).
 
 \begin{ejemplo}
 \[x(t)^2 + x'(t)^2 = 4 \]
-\[ \upphi(t,x,y) = x^2+y^2 = 4\]
-\[ x_1(t) = 2 \]
-\[ x_2(t) = -2 \]
-\[ x_3(t) = \sqrt{2}\sen t \]
-\[ x_4(t) = \sqrt{2}\cos t \]
-\[ x_5(t) = \sqrt{2}\cos(t+\alpha) \text{ con } \alpha\in\R \]
+\[ \upphi(t,x,y) = x^2+y^2 -4\]
+Soluciones:
+\[ 
+\begin{array}{ll}
+  x_1(t) = 2 & x_2(t) = -2 \\
+  x_3(t) = \sqrt{2}\sen t & x_4(t) = \sqrt{2}\cos t \\
+  x_5(t) = \sqrt{2}\cos(t+\alpha) \text{ con } \alpha\in\R
+\end{array}
+\]
 \end{ejemplo}
 
 \begin{ejemplo}
 
 \[ x'(t) = 7x(t) \]
 \[ \upphi(t,x,y) = y - 7x \]
-\[ x_1(t) = e^{7t} \]
-\[ x_2(t) = ke^{7t} \text{ con } k \in \R \] 
+Soluciones:
+\[ x_1(t) = e^{7t}, \quad  x_2(t) = ke^{7t} \text{ con } k \in \R \] 
 
 
 \end{ejemplo}
 
-Dada $\upphi: D\subset\R^3\to\R$ continua.
-$D$ dominio abierto y conexo.
-$\upphi(t,x,y)\in\R$
-
-\begin{ndef}
-
-Una solución de la ecuación $\upphi(t, x(t), x'(t)) = 0$ es una función $x:I\to\R$ que cumple:
-\begin{itemize}
-\item $I$ es un intervalo abierto de $\R$
-\item $\exists x'(t), \forall t \in I$
-\item $(t, x(t), x'(t)) \in D, \forall t \in I$
-\item $\upphi(t,x(t),x'(t)) = 0, \forall t \in I$
-\end{itemize}
-
-\end{ndef}
-
 
 \begin{ejemplo}
-$x(t)x'(t) = 1$\\
-$ \upphi(t,x,y) = xy - 1$\\
-$ \varphi(t) = \sqrt{2t+1}  $\\
+La ecuación $x(t)x'(t) = 1$ está dada por $\upphi(t,x,y) = xy - 1$. ¿Es $\varphi(t) = \sqrt{2t+1}$ una solución de la ecuación?
 
-$\varphi$ esta definida en $[-1/2, \infty)$ y $\varphi$ es derivable en $(-1/2, \infty)$\\
-¿Es la función $\varphi$ en $I = (-1/2, \infty)$ solución de la ecuación?
+$\varphi$ está definida en $[-1/2, \infty)$ y es derivable en $I = (-1/2, \infty)$
 
 \begin{itemize}
 \item $I$ es abierto de $\R$
 \item $\exists \varphi'(t) = \frac{1}{\sqrt{2t+1}}, \forall t \in I$
 \item $(t, \varphi(t), \varphi'(t)) \in D = \R^3, \forall t \in I$
-\item $\upphi(t, \varphi(t), \varphi'(t)) = 0$
+\item $\upphi\left(t, \varphi(t), \varphi'(t)\right) = 0$
 \end{itemize}
 
-Cuando en una ecuación diferencial aparezca la $x'(t)$ despejada, se dice que esta en forma \textbf{normal}. 
+Comprobamos que por tanto que es solución.
 
-$x'(t) = F(t,x(t))$ 1º orden\\
+También se puede despejar $x'$ de la ecuación para hallar la forma normal:
 
-$x'(t) = \frac{1}{x(t)} \implies \upphi(t,x,y) = y - 1/x$\\
-$D_1 = \R \times (0,+\infty )\times \R$\\
-$D_1 = \R \times (-\infty ,0)\times \R$\\
-Como el 0 no era solución son la misma ecuación.
+\[ x' = \frac{1}{x} \implies \upphi(t, x, y) = y-\frac{1}{x} \]
+
+\[ 
+\begin{array}{l}
+  D_1 = \R \times (0,+\infty )\times \R \\
+  D_2 = \R \times (-\infty ,0)\times \R
+\end{array}
+\]
+
+Nótese que al dividir por $x$, hemos eliminado la solución cero, pero como no era solución son la misma ecuación.
 
 
 \end{ejemplo}
 
-\section{Ecuación de crecimiento constante}
+\subsection{Ecuación de crecimiento constante}
 
-$x(t)$ cantidad o proporción de población en el instante t.\\
-$x'(t) = kx(t)$ k constante.\\
-$x(t) = Ae^{kt}$ es solución, $\forall A \in \R$\\
-$\upphi(t,x,y)= y - kx,$    $ \upphi:\R^3 \to \R$ continua.\\
+Dedicaremos esta sección a una clase de ecuaciones particular, aquellas que son de la forma
+
+\[ x' = kx,\ \ k\in \R \ \ (E) \]
+
+Estas ecuaciones son ecuaciones diferenciales de primer orden, y en particular, si vienen dadas en esta forma, están en forma normal.
+
+Las soluciones a esta ecuación tienen una interpretación en álgunos ámbitos, donde $x(t)$ es una cantidad o proporción de población en el instante $t$ respecto de algún tiempo inicial.\\
+
 
 \begin{nth}
-Sea $\varphi(t)$ una solución definida en $I\subset \R$, entonces, $\varphi (t) = Ae^{kt} \forall t \in I$ para algún $A\in \R$
+  Sean $I \subseteq \R$ un intervalo abierto y $\varphi(t)$ una solución de $(E)$, entonces,
+  \[\varphi (t) = Ae^{kt} \forall t \in I\]
+
+  para algún $A\in \R$.
 
 \end{nth}
 
 \begin{proof}
-Sea $\varphi(t)$ solución de $x'(t) = kx(t)$ definida en $I$. Para cada $t\in I$ considero $e^{-kt}\varphi (t)$ es derivable.\\
-$(e^{-kt}\varphi (t))' = -ke^{-kt}\varphi (t) + e^{-kt}\varphi' (t) = -ke^{-kt}\varphi (t) + e^{-kt}k\varphi (t) =$\\$ e^{-kt}\varphi (t) (-k+k) = 0, \forall t \in I$\\
-Como I es conexo $\implies e^{-kt}\varphi = A$, $\forall t \in I$ $\implies \varphi(t)=Ae^{kt}$, $\forall t \in I$
+  Sea $\varphi(t)$ solución de $x'(t) = kx(t)$ definida en $I$. Para cada $t\in I$ considero $e^{-kt}\varphi (t)$, que es derivable.
+  
+  \[
+  \begin{array}{l}
+    (e^{-kt}\varphi (t))' = -ke^{-kt}\varphi (t) + e^{-kt}\varphi' (t) = -ke^{-kt}\varphi (t) + e^{-kt}k\varphi (t) = e^{-kt}\varphi (t) (-k+k) = 0, \forall t \in I
+  \end{array}
+  \]
+
+  Por tanto
+
+  \[
+      e^{-kt}\varphi(t) = A, \ A\in \R \implies \varphi(t) = Ae^{kt}
+  \]
+  
 \end{proof}
 
-
-Un problema de valores iniciales consiste en buscar la o las soluciones de la ecuación diferencial que pasan por un punto concreto, es decir, $x(t_0)=x_0$.
 
 \section{Variables separadas}
 
