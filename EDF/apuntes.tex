@@ -311,4 +311,129 @@ La ecuación diferencial queda como una función de variables separadas:
 
 $$y' = \frac{1}{s}(f(y) - y)$$
 
+\subsubsection{Ecuaciones reducibles a homogéneas}
+
+Tenemos una ecuación diferencial de la forma: 
+\[
+F(t,x) = f\Big( \frac{ax+bt+c}{a'x+b't+c'} \Big)
+\]
+
+Donde si $c,c' = 0$ entonces la ecuación ya es homogénea.
+
+Supongamos que las rectas del plano $ax + bt+c=0$ y $a'x+b't+c'=0$ tienen un punto de corte en $(\alpha, \beta ) \in \R^2$.
+
+Entonces tomamos el cambio de variable:
+\begin{align*}
+s &= t-\alpha \\
+y &= x - \beta
+\end{align*}
+
+% TODO: Explicar porque es un difeomorfistmo válido.
+
+Entonces tenemos: 
+\[
+\frac{dy}{ds} = \frac{dx}{dt} = f\Big( \frac{a(y+\beta ) + b (s+\alpha ) + c}{a'(y+\beta ) + b'(s+ \alpha ) + c'} \Big)
+\]
+\[
+y' = f \bigg( \frac{a \frac{y}{s} + b}{a'\frac{y}{s} + b'} \bigg) = g\Big( \frac{y}{s}\Big)
+\]
+
+\subsubsection{La ecuación lineal}
+
+En este caso, tenemos una ecuación diferencial de la forma $F(x,t) = \alpha (t)x + \beta ( t)$ con $\alpha , \beta \in C(a,b)$, donde tenemos que $F:(a,b)\times \R \to \R$ es lineal en x.
+
+Tomamos la ecuación homogénea asociada:
+\[
+x' = \alpha (t) x
+\]
+Sabemos que las soluciones de esta ecuación son:
+\[
+x(t) = A e^{\int_{t_0}^{t} \alpha (s) ds}  \ \forall t \in (a,b), \ A in \R
+\]
+
+Supongamos que $\varphi _1$ y $\varphi _2 $ son dos soluciones de la ecuación diferencial inicial en $I$. Entonces, sea $x := \varphi _1  - \varphi _2  \ \implies \ x' = \alpha x$.
+
+Esto quiere decir que sea $\varphi$ una solución, toda solución es $\varphi (t) + A e^{\int_{t_0}^{t} \alpha (s) ds}$.
+
+Eso quiere decir que nuestro problema se reduce a buscar una unica solución, para ello lo que vamos a hacer es que nuestra constante ($A$) dependa de $t$, $\varphi (t) = A(t) e^{\int_{t_0}^{t} \alpha (s) ds}$
+
+% TODO: Completar esto
+
+
+\begin{nprop}
+Sean $P,Q \in C^1(D)$ con $D$ dominio de $\R^2$, si $\exists F\in C^1 (D)$ t.q. $\frac{\partial F}{\partial t} = P \ \ \frac{\partial F}{\partial x} = Q$, entonces, $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+\end{nprop}
+
+\begin{proof}
+\[
+P,Q \in C^1 (D) \ \implies F \in C^2 (D) \ \implies \frac{\partial ^2 F}{\partial t \partial x} = \frac{\partial Q}{\partial t} = \frac{\partial P}{\partial x} = \frac{\partial ^2 F}{\partial x \partial t}
+\]
+\end{proof}
+
+\begin{ndef}
+Se dice que $D \in \R ^n$ es estrellado si $\exists x_0 \in D$ t.q. $\forall x \in D \ [x_0, x] \subset D$
+\end{ndef}
+
+\begin{nth}
+Sean $P,Q \in C^1(D)$ con $D$ dominio de $\R^2$ y estrellado, con $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+Entonces $\exists F \in C^2 (D)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+\end{nth}
+
+\begin{proof}
+Tomamos el punto que hace $D$ estrellado como origen.
+\[
+F(t,x) := t \int _0 ^1 P(\lambda t, \lambda x) d\lambda + x \int _0 ^1 Q(\lambda t, \lambda x ) d\lambda
+\]
+
+La función esta bien definida en las integrales por ser $D$ estrellado.
+
+\[
+\frac{\partial F}{\partial t} (t,x) = \int _0 ^1 P(\lambda t, \lambda x) d\lambda + t \int _0 ^1 \lambda \frac{\partial P}{\partial t}(\lambda t, \lambda x) d\lambda + x\int _0 ^1 \lambda \frac{\partial Q}{\partial t}(\lambda t, \lambda x) d\lambda = ... = P
+\]
+ % TODO: Completar los ...
+\[
+\frac{\partial F}{\partial x} (t,x) =  ... = Q
+\]
+
+\end{proof}
+
+A esta función $F$ se la suele llamar una función potencial $\nabla F = (P,Q)$
+
+\begin{nth}
+Sea $g: D\times [a,b]$ de clase 1, tal que: 
+
+\[
+(x_1,..., x_n, t) \to g(x_1,... x_n, t)
+\]
+Sea $f$ una función tal que: 
+\[
+f(x_1,...,x_n) = \int _a ^b g \ dt
+\]
+Entonces $f$ es de clase 1 y $\frac{\partial f}{\partial x_i} = \int _a ^b \frac{\partial g}{\partial x_i}$
+
+
+\end{nth}
+\begin{ndef}
+Sean $P,Q \in C^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+\end{ndef}
+
+Supongamos una ecuación como la de la proposición anterior, con $(t_0, x_0) \in D$ t.q. $Q(t_0, x_0) \neq 0$. Entonces $\exists \varepsilon > 0$ t.q. $B  := B( (t_0 x_0 ), \varepsilon) \subset D$ es un subconjunto estrellado $\implies \ \exists F \in C^2 (B)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+
+Entonces considero  $F(x,t) = F(x_0, t_0)$ que define $x=x(t)$ en un entorno $I$ de $t_0$
+
+% TODO: Ejemplo de uso
+
+\begin{ndef}
+Sean $P,Q \in C^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice que $\mu (t,x)$ es un factor integrante para la ecuación si:
+\begin{enumerate}
+\item $\mu(t,x) \neq 0 \ \forall (t,x) \in D$
+\item $\mu \in C^1 (D)$
+\item $\mu (t,x)P(t,x) + \mu (t,x)Q(t,x) x' = 0$ es una ecuación exacta.
+
+Nota: Siempre existe un factor integrante.
+\end{enumerate}
+
+\end{ndef}
+
+
 
