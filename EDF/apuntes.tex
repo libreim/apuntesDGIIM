@@ -203,7 +203,7 @@ Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
 \[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)\]
 
-\[G(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
+\[G'(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
 
 Con $V$ un abierto y $G(x_0) \in V$.
 Sean $x_0 \in (c,d)$ y $\ F(t) = \displaystyle\int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.
@@ -241,7 +241,7 @@ Consideramos una ecuación de este tipo en forma normal:
   \]
 
   de forma que, si $\tilde{F} = F \circ \varphi$, la ecuación
-  \[ \dfrac{dy}{ds} = \tilde{F}(s, y) \ \ \ \ \tilde{E}\]
+  \[ \dfrac{dy}{ds} = \tilde{F}(s, y) \ \ \ \ (\tilde{E})\]
   es equivalente a la que estamos considerando.
 
 
@@ -249,13 +249,15 @@ Consideramos una ecuación de este tipo en forma normal:
 
 Dado $\varphi = (\varphi _1, \varphi _2) : D \to \tilde{D}$ un difeomorfismo, tal que 
 \[
-\dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t)) F(t,x(t)) \neq 0 \forall (t,x) \in D
+\frac{d\varphi_1}{dt} = \dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t)) F(t,x(t)) \neq 0 \ \forall (t,x) \in D
 \]
 
 Entonces el cambio de variable:
 \[
-s := \varphi _1(t,x)\\
-y := \varphi _2 (t,x)
+\begin{array}{l}
+  s := \varphi _1(t,x)\\
+  y := \varphi _2 (t,x)
+\end{array}
 \]
 transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\tilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y reciprocamente.
 \end{nprop}
@@ -289,35 +291,52 @@ transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F
 
 \subsection{Ecuación homogénea.}
 
-Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma $x' = f(\frac{x}{t}) \ \implies \ F(t,x) = f(\frac{x}{t})$, con $t \neq 0, \frac{x}{t} \in (a,b)$.\\
-$$Dom(F) = \{(t,x)\in \R ^2 : t \neq 0, \ \frac{x}{t} \in (a,b)\}$$\\
-Podemos dividir el dominio de F en dos dominios:\\
-$D_1 = \{(t,x) \in \R ^2 : t > 0, \ at < x < bt\}$\\
-$D_2 = \{(t,x) \in \R ^2 : t < 0, \ at > x > bt\}$\\
+Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma
+
+\[x' = f\left(\frac{x}{t}\right) \ \implies \ F\left(t,x\right) = f\left(\frac{x}{t}\right)\]
+
+con $t \neq 0, \frac{x}{t} \in (a,b)$.
+
+\[Dom(F) = \left\{(t,x)\in \R ^2 : t \neq 0, \ \frac{x}{t} \in (a,b)\right\}\]
+
+Podemos dividir el dominio de F en dos dominios (abiertos y conexos):\\
+\[
+\begin{array}{l}
+  D_1 = \{(t,x) \in \R ^2 : t > 0, \ at < x < bt\}\\
+  D_2 = \{(t,x) \in \R ^2 : t < 0, \ at > x > bt\}
+\end{array}
+\]
 
 Realizamos un cambio de variable:
 \[
-s = t\\
-y = \frac{x}{t}
+\begin{array}{l}
+  s = t\\
+  y = \dfrac{x}{t}
+\end{array}
 \]
 
 Los nuevos dominios son:
 \[
-\tilde{D}_1 = \{s > 0, a < y < b\}\\
-\tilde{D}_2 = \{s < 0, a > y > b\}
+\begin{array}{l}
+  \tilde{D}_1 = \{s > 0, a < y < b\}\\
+  \tilde{D}_2 = \{s < 0, a > y > b\}
+\end{array}
 \]
 
-La ecuación diferencial queda como una función de variables separadas:
+La ecuación diferencial queda como una ecuación de variables separadas:
 
-$$y' = \frac{1}{s}(f(y) - y)$$
+$$y' = \frac{1}{s}\left(f(y) - y\right)$$
+
+que sabemos resolver.
 
 \subsubsection{Ecuaciones reducibles a homogéneas}
 
 Tenemos una ecuación diferencial de la forma: 
 \[
-F(t,x) = f\Big( \frac{ax+bt+c}{a'x+b't+c'} \Big)
+F(t,x) = f\left( \frac{ax+bt+c}{a'x+b't+c'} \right)
 \]
 
+% WARNING: no entiendo por qué si c,c' = 0 es homogénea
 Donde si $c,c' = 0$ entonces la ecuación ya es homogénea.
 
 Supongamos que las rectas del plano $ax + bt+c=0$ y $a'x+b't+c'=0$ tienen un punto de corte en $(\alpha, \beta ) \in \R^2$.
