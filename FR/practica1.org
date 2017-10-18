@@ -1,0 +1,61 @@
+
+#+latex_header: \hypersetup{colorlinks=true,linkcolor=black}
+
+* Práctica 1
+
+
+** Información
+
+*** Telnet
+
+Para habilitar el servicio telnet hay que editar el archivo ~/etc/xinetd.d/telnet~ y cambiar la variable correspondiente.
+Para que el equipo solo sea accesible desde una IP especifica añadimos la linea ~only_from = <IP>~ al archivo telnet.
+
+Para registrar los intentos de log con telnet añadimos en el archivo telnet las lineas:
+
++ Escoger donde y como se guardaran los logs: ~log_type = FILE <file>~.\\
+- Que información guardamos de los logs fallidos: ~log_on_failure += HOST~.\\
++ Qué información guardamos de los logs validos: ~log_on_success += HOST~.\\
+
+*** FTP
+
+Para configurar que ftp no funcione en /standalone/ (Y utilizar  el servidio xinetd), hay que editar en ~/etc/vsftpd.conf~ y cambiar ~listen = no~. Para impedir el acceso anónimo ~anonymous_enable=no~. 
+Para permitir acceder a cuentas locales ~local_enable = yes~.\\
+Para crear una lista de usuarios que se puedan conectar añadimos al fichero ~/etc/vsftpd.conf~, ~userlist_enable=YES~ ~userlist_file=/etc/vsftp.user_list~ ~userlist_deny=NO~ Esto ultimo significaque la lista no es para denegar acceso.
+Los usuarios en cuestion deben estar escritos en el fichero de antes.
+
+
+*** Apache
+
+Para alterar la pagina de inicio cambiamos el archivo ~/var/www/index.html~.\\
+
+Para cambiar el puerto hay que cambiarlo en los archivos ~/etc/apache2/ports.conf~ y ~/etc/apache2/sites-enabled/000-default~.\\
+
+Para crear unos usuarios restringidos: ~htpasswd -c <ruta/fichero>~
+
+En la ruta ~/var/www/<pagina restringida>.htaccess~ añadimos las lineas:
+
+#+BEGIN_SRC ssh
+
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile "<fichero de usuarios restringidos>"
+Require valid-user
+
+#+END_SRC
+
+Es necesario editar el archivo ~/etc/apache2/sites-enabled/000-default~ y añadir las siguientes lineas:
+~/etc/apache2/apache2.config~
+#+BEGIN_SRC ssh
+
+<Directory "/var/www/<pagina restringida>">
+
+AllowOverride All
+</Directory>
+
+#+END_SRC
+
+
+
+
+
