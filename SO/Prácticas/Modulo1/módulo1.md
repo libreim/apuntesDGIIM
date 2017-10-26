@@ -433,6 +433,20 @@ Opciones útiles:
 
 * **crontab -e** nos lleva a un editor para poder editar el archivo cron.
 
+Palabras reservadas para ficheros *crontab*:
+
+* **@reboot**  ejecuta una vez, al iniciar el sistema
+
+* **@yearly**   ejecuta una vez al año, el primer día *(equivalente a @annually)*
+
+* **@mounthly** ejecuta una vez al mes, el primer día
+
+* **@weekly**   ejecuta una vez a la semana
+
+* **@daily** ejecuta una vez al día *(equivalente a @midnight)*
+
+* **@hourly** ejecuta una vez a la hora
+
 
 ##### Variables de entorno
 
