@@ -34,7 +34,7 @@ También podríamos crear el grupo y añadir el usuario directamente con un arch
 ~~~
 
 
-Creamos el usuario con *newusers*, donde **addanonimo.txt* es el fichero que contiene la línea anteriormente indicada.
+Creamos el usuario con *newusers*, donde *addanonimo.txt* es el fichero que contiene la línea anteriormente indicada.
 ~~~
 	newusers /root/addanonimo.txt
 ~~~
@@ -54,10 +54,12 @@ Restringimos la shell si no creamos el usuario pasándole el archivo con la opci
 	usermod --shell="/bin/bash -r" anonimo
 ~~~
 
-El ejercicio lo hemos realizado asignando eliminados como grupo principal, si queremos que pertenezca a eliminados pero sin ser el principal. En el fichero de texto:
+El ejercicio lo hemos realizado asignando eliminados como grupo principal, si queremos que pertenezca a eliminados pero sin ser el principal, en el fichero de texto:
 ~~~
 	anonimo:x:591:591::/home/anonimo:/bin/bash -r
 ~~~
+*591 es el guid de su grupo principal*
+
 Creamos el usuario
 ~~~
 	newusers /root/addanonimo.txt
@@ -259,7 +261,7 @@ mount -L LABEL_ext3 -r -noexec /mnt/SA_ext3
 ### Ejercicio 6
 ***6. [15% puntuación] Construir una orden para ver que proceso esta consumiendo mayor porcentaje de tiempo de CPU y una vez detectado le rebaje la prioridad 5 unidades.***
 
-La idea es volcar una ejecución de top una vez a un archivo, cogerle la línea en la que está el primer proceso(*top* ordena por % de consumo de cpu) y con cut, cortarle el primer campo, usando un espacio de delimitador. El campo va en -fn donde n es el campo, mirarlo a mano ya que a veces pone más de un espacio. 
+La idea es volcar una ejecución de top una vez a un archivo, cogerle la línea en la que está el primer proceso(*top* ordena por % de consumo de cpu) y con cut, cortarle el primer campo, usando un espacio de delimitador. El campo va en -fn donde n es el campo.
 ~~~
 
 	renice -n 5 `top -n 1 | sed -n 8p | sed "s/ \+/ /g" | cut -d " " -f2`
