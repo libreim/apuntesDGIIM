@@ -1,4 +1,3 @@
-
 \section{Primeras definiciones}
 
 En esta asignatura estudiaremos ecuaciones diferenciales, es decir, ecuaciones que relacionan una función $x \in \mathcal{C}^k(I)$
@@ -8,68 +7,69 @@ con sus derivadas. Para formalizar este concepto, vamos a dar algunas definicion
   Sea $D \subseteq \R^N$. Diremos que es un dominio si es abierto y conexo.
 \end{ndef}
 
-Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
+\begin{nota}
+Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.	
+\end{nota}
+
+Durante todo el desarrollo de los apuntes, reservaremos la letra $D$ para representar un dominio. Por un lado, necesitamos poder derivar, por lo que es natural exigir que $D$ sea abierto. Por otro, muchos de los resultados que se aplican a funciones continuas exigen la conexión, por lo que es también una propiedad deseable.
 
 \begin{ndef}[Ecuación diferencial]
   Sean $D \subseteq \R^{k+2}$ un dominio y $\upphi : D \to \R$ continua.
 
-  Entonces la expresión
-  \[\upphi\left(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)\right) = 0\]
+  Entonces la relación
+  \[\upphi\left(t, x(t), x'(t), \dots, x^{k)}(t)\right) = 0\]
   es una ecuación diferencial de orden $k$.
 \end{ndef}
 
+Pensamos en $t$ como la variable independiente, y en $x=x(t)$ como una función que representa la incógnita de nuestra ecuación (también llamada variable dependiente).
 
 \begin{ndef}[Solución de una ecuación diferencial]
-  Sean 
+  Sea $\upphi : D \subseteq \R^{k+2} \to \R$ una ecuación diferencial e $I \subseteq \R$ un intervalo abierto. Diremos que $x:I\to \R$ es una solución de la ecuación si cumple: 
   \begin{itemize}
-  \item $\upphi : D \subseteq \R^{k+2} \to \R$ una función de una ecuación diferencial
-  \item $I \subseteq \R$ un intervalo abierto
-  \item $x \in \mathcal{C}^k(I)$ tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$
+  \item $\exists x^{i)}(t), \ \forall t \in I, \ \forall i=1,\dots,k$
+  \item $(t, x(t), x'(t), \dots, x^{k)}(t)) \in D, \ \forall t \in I$
+  \item $\upphi(t, x(t), x'(t), \dots, x^{k)}(t)) = 0, \ \forall t \in I$
   \end{itemize}
-
-  Entonces, $x$ es solución de la ecuación diferencial dada por $\upphi$ si
-
-  \[
-    \upphi(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) = 0 \ \forall t \in I
-  \]
 \end{ndef}
 
 \begin{ndef}[Problema de valores iniciales]
-  Un problema de valores iniciales es un sistema de ecuaciones
+  Dada una ecuación diferencial $\upphi:D \subseteq \R\times\R^{k+1}$, un problema de valores iniciales es un sistema de ecuaciones
 
   \[
   \begin{cases}
-    \upphi\left(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)\right) = 0 \\
-    x(t_0) = x_0
+    \upphi\left(t, x(t), x'(t), \dots, x^{k)}(t)\right) = 0 \\
+    \left(x(t_0),x'(t_0),\dots,x^{k-1)}(t_0)\right) = x_0
   \end{cases}
   \]
+  %%% REVIEW
 
-  Donde $\upphi$ determina una ecuación diferencial y $t_0$ y $x_0$ son dados.
+  Donde $(t_0,x_0) \in$ ???? es un punto dado, llamado \textbf{condición inicial}.
 \end{ndef}
+
+\begin{nota} Cuando $k\ge2$, se tiene que $x_0=(x_{01},x_{02},\dots,x_{0k})$
+	
+\end{nota}
 
 \section{Ecuaciones diferenciales de primer orden}
 
 \begin{ndef}[Forma normal de una ecuación diferencial de primer orden]
-  Si $\upphi : D \subseteq \R^{3} \to \R$ determina una ecuación diferencial de primer orden y existe $f : \R^2 \to \R$ tal que
-
+Una ecuación diferencial de primer orden está en forma normal cuando la derivada aparece despejada, es decir, existe $F : D\subseteq \R^2 \to \R$ tal que podemos expresar la ecuación como
   \[
-  \begin{array}{ll}
-    \upphi\left(t,x(t),x'(t)\right) = 0 & (1) \iff \\
-    x' = f\left(t,x\right) & (2)
-  \end{array}
+    x' = F\left(t,x\right)
   \]
 
-  Se dice que (2) es la forma normal de (1).
-  
 \end{ndef}
 
+\begin{nota} Al pasar una ecuación diferencial a forma normal se podrían perder soluciones.
+	
+\end{nota}
 
-Vamos a ver algunos ejemplos de ecuaciones diferenciales de primer orden y soluciones suyas (marcadas con subíndices).
+Vamos a ver ahora algunos ejemplos de ecuaciones diferenciales de primer orden y sus soluciones (marcadas con subíndices).
 
 \begin{ejemplo}
-\[x(t)^2 + x'(t)^2 = 4 \]
+\[x(t)^2 + x'(t)^2 = 4, \text{ o equivalentemente,} \]
 \[ \upphi(t,x,y) = x^2+y^2 -4\]
-Soluciones:
+Algunas soluciones son:
 \[ 
 \begin{array}{ll}
   x_1(t) = 2 & x_2(t) = -2 \\
@@ -81,17 +81,16 @@ Soluciones:
 
 \begin{ejemplo}
 
-\[ x'(t) = 7x(t) \]
+\[ x'(t) = 7x(t), \text{ o equivalentemente,}\]
 \[ \upphi(t,x,y) = y - 7x \]
 Soluciones:
-\[ x_1(t) = e^{7t}, \quad  x_2(t) = ke^{7t} \text{ con } k \in \R \] 
-
+\[ x_1(t) = e^{7t}, \quad  x_2(t) = Ke^{7t} \text{ con } K \in \R \] 
 
 \end{ejemplo}
 
 
 \begin{ejemplo}
-La ecuación $x(t)x'(t) = 1$ está dada por $\upphi(t,x,y) = xy - 1$. ¿Es $\varphi(t) = \sqrt{2t+1}$ una solución de la ecuación?
+¿Es $\varphi(t) = \sqrt{2t+1}$ una solución de la ecuación $x(t)x'(t) = 1$?
 
 $\varphi$ está definida en $[-1/2, \infty)$ y es derivable en $I = (-1/2, \infty)$
 
@@ -105,11 +104,9 @@ $\varphi$ está definida en $[-1/2, \infty)$ y es derivable en $I = (-1/2, \inft
 Comprobamos que por tanto que es solución.
 
 También se puede despejar $x'$ de la ecuación para hallar la forma normal:
-
 \[ x' = \frac{1}{x} \implies \upphi(t, x, y) = y-\frac{1}{x} \]
 
 Y podemos elegir entonces dos dominios distintos:
-
 \[ 
 \begin{array}{l}
   D_1 = \R \times (0,+\infty )\times \R \\
@@ -117,52 +114,68 @@ Y podemos elegir entonces dos dominios distintos:
 \end{array}
 \]
 
-Nótese que al dividir por $x$, hemos eliminado la solución cero, pero como no era solución son la misma ecuación.
+Nótese que al dividir por $x$, hemos eliminado la solución $x\equiv 0$, pero como no era solución son la misma ecuación.
 
 
 \end{ejemplo}
 
-\subsection{Ecuación de crecimiento constante}
+\subsection{Modelos de tasa de crecimiento}
 
-Dedicaremos esta sección a una clase de ecuaciones particular, aquellas que son de la forma
+Podemos pensar en una función $x(t)$ que represente una cantidad o proporción de población en el instante $t$ respecto de algún tiempo inicial. Entonces, definimos la tasa de crecimiento como
+\[
+\frac{x'(t)}{x(t)}
+\]
 
-\[ x' = kx,\ \ k\in \R \ \ (E) \]
+Veamos dos modelos que se ajustan a este problema, donde la tasa de crecimiento será constante en uno y variable en otro.
 
-Estas ecuaciones son ecuaciones diferenciales de primer orden, y en particular, si vienen dadas en esta forma, están en forma normal.
-
-Las soluciones a esta ecuación tienen una interpretación en álgunos ámbitos, donde $x(t)$ es una cantidad o proporción de población en el instante $t$ respecto de algún tiempo inicial.\\
-
+\subsubsection{Ecuación de crecimiento constante}
+Si la tasa de crecimiento es constante, digamos $k \in \R$, la ecuación queda como sigue:
+\begin{equation}
+	x' = kx, \label{cre_const} \tag{E}
+\end{equation} 
 
 \begin{nth}
-  Sean $I \subseteq \R$ un intervalo abierto y $\varphi(t)$ una solución de $(E)$, entonces,
-  \[\varphi (t) = Ae^{kt} \forall t \in I\]
+  Sean $I \subseteq \R$ un intervalo abierto y $\varphi(t)$ una solución de \eqref{cre_const}. Entonces,
+  \[\varphi (t) = Ae^{kt}, \ \forall t \in I\]
 
   para algún $A\in \R$.
 
 \end{nth}
 
 \begin{proof}
-  Sea $\varphi(t)$ solución de $x'(t) = kx(t)$ definida en $I$. Para cada $t\in I$ considero $e^{-kt}\varphi (t)$, que es derivable.
-  
+  Sea $\varphi(t)$ solución de $x'(t) = kx(t)$ definida en $I$. Para cada $t\in I$ considero $e^{-kt}\varphi (t)$, que es derivable y su derivada viene dada por:
   \[
   \begin{array}{l}
-    (e^{-kt}\varphi (t))' = -ke^{-kt}\varphi (t) + e^{-kt}\varphi' (t) = -ke^{-kt}\varphi (t) + e^{-kt}k\varphi (t) = e^{-kt}\varphi (t) (-k+k) = 0, \forall t \in I
+    (e^{-kt}\varphi (t))' = -ke^{-kt}\varphi (t) + e^{-kt}\varphi' (t) = -ke^{-kt}\varphi (t) + e^{-kt}k\varphi (t) = e^{-kt}\varphi (t) (-k+k) = 0, \ \forall t \in I
   \end{array}
   \]
 
-  Por tanto
-
+  Por tanto, como $I$ es conexo y $e^{-kt}\varphi(t)$ es continua en $I$, se tiene que:
   \[
-      e^{-kt}\varphi(t) = A, \ A\in \R \implies \varphi(t) = Ae^{kt}
+      e^{-kt}\varphi(t) = A, \text{ con} \ A\in \R \implies \varphi(t) = Ae^{kt}, \ \forall t \in I
   \]
-  
 \end{proof}
 
+\subsubsection{Ecuación logística o de Verhulst}
 
-\section{Variables separadas}
+El problema de considerar una tasa de crecimiento constante es que, si es positiva, las soluciones (la población) crecen de forma indefinida. Una forma más adecuada de enfocar el problema es considerar un parámetro $b$ que represente la capacidad del hábitat en cuestión, y pensar que la rapidez con la que varía la población es proporcional al número de individuos que hay en un instante y al número de individuos que faltan para alcanzar $b$.
+\[
+x'(t) = ax(t)(b-x(t)), \ a,b > 0
+\]
+
+Para resolver esta ecuación, emplearemos la técnica de resolución de ecuaciones de variables separadas, que veremos a continuación. 
+% En cualquier caso, una solución general puede consultarse en el \textbf{Ejercicio \ref{logistica}}.
+
+%%% TODO: hacer ejercicio y referenciar.
+
+
+\section{Métodos elementales de integración}
+
+
+\subsection{Variables separadas}
+
 
 Consideramos la ecuación
-
 \[
 x' = f(t)g(x)
 \]
@@ -220,7 +233,7 @@ Por tanto, $G^{-1}\left(G(x_0) + F(t)\right), \ \forall t \in I$ está bien defi
 \end{proof}
 
   
-\section{Cambio de variable en ecuaciones diferenciales}
+\subsection{Cambio de variable en ecuaciones diferenciales}
 El objetivo del cambio de variable será transformar una ecuación en una más fácilmente resoluble.
 Vamos a estudiar el caso de las ecuaciones diferenciales de primer orden.
 
@@ -289,7 +302,7 @@ transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F
 
 \end{proof}
 
-\subsection{Ecuación homogénea.}
+\subsection{Ecuación homogénea}
 
 Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma
 
