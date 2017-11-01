@@ -5,14 +5,14 @@
 % ---------------------------------------------------------------------------
 
 % Ruta donde buscar gráficos
-\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
+\graphicspath{{../Recursos/Plantillas/}, {Recursos/Plantillas/}, {./img/}, {EDFI/img/}, {EDFI/}}
 
 % ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
 
 % Título del documento.
-\renewcommand{\asignatura}{Ecuaciones\\Diferenciales}
+\renewcommand{\asignatura}{Ecuaciones\\Diferenciales I}
 
 % Autor del documento.
 \renewcommand{\autor}{LibreIM}
@@ -99,11 +99,3 @@
 \newenvironment{rcases}
 {\left.\begin{aligned}}
     {\end{aligned}\right\rbrace}
-
-% Restricción de una aplicación.
-\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
-  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
-  #1 % the function
-  \vphantom{\big|} % pretend it's a little taller at normal size
-  \right|_{#2} % this is the delimiter
-  }}
