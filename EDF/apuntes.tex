@@ -1,7 +1,7 @@
 
 \section{Primeras definiciones}
 
-En esta asignatura estudiaremos ecuaciones diferenciales, es decir, ecuaciones que relacionan una función $x \in \mathcal{C}^k(I)$
+En esta asignatura estudiaremos ecuaciones diferenciales, es decir, ecuaciones que relacionan una función $x \in \mathscr{C}^k(I)$
 con sus derivadas. Para formalizar este concepto, vamos a dar algunas definiciones.
 
 \begin{ndef}[Dominio]
@@ -24,7 +24,7 @@ Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
   \begin{itemize}
   \item $\upphi : D \subseteq \R^{k+2} \to \R$ una función de una ecuación diferencial
   \item $I \subseteq \R$ un intervalo abierto
-  \item $x \in \mathcal{C}^k(I)$ tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$
+  \item $x \in \mathscr{C}^k(I)$ tal que $(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) \in D$
   \end{itemize}
 
   Entonces, $x$ es solución de la ecuación diferencial dada por $\upphi$ si
@@ -45,6 +45,15 @@ Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.
   \]
 
   Donde $\upphi$ determina una ecuación diferencial y $t_0$ y $x_0$ son dados.
+\end{ndef}
+
+\begin{ndef}[Unicidad global de soluciones]
+  Dado un problema de valores iniciales, se dice que tiene una solución globalmente única si existe una
+  solución $x$ definida en un intervalo maximal $I$ tal que si $x_1$ es otra solución definida en $I_1$, entonces $I_1 \subseteq I$ y $x_1 = x|_{I_1}$.
+\end{ndef}
+
+\begin{ndef}[Unicidad local de soluciones]
+  Dado un problema de valores iniciales, con la restricción $x(t_0) = x_0$, se dice que tiene una solución localmente única si dadas dos soluciones $x_1,x_2$ definidas en $I_1,I_2$ respectivamente, $\exists \tilde{I} \subseteq I_1 \cap I_2$, con $t_0 \in \tilde{I}$ tal que $x_1|_{\tilde{I}} = x_2|_{\tilde{I}}$.
 \end{ndef}
 
 \section{Ecuaciones diferenciales de primer orden}
@@ -201,6 +210,12 @@ Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
 \begin{proof}
 
+Hemos visto que si $x$ es una solución definida en un intervalo $\tilde{I}$, es de la forma
+
+\[
+x(t) = G^{-1}\left(G(x_0) + \int_{t_0}^t f(s)ds\right),\ t\in I
+\]  
+  
 \[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)\]
 
 \[G'(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
@@ -208,13 +223,17 @@ Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 Con $V$ un abierto y $G(x_0) \in V$.
 Sean $x_0 \in (c,d)$ y $\ F(t) = \displaystyle\int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.
 
-Como $V$ es abierto y $F$ es continua, existe $\tilde{I}$ tal que
+Como $V$ es abierto y $F$ es continua, existe $\tilde{I} \ni t_0$ tal que
 
-\[t \mapsto G(x_0)+\int_{t_0}^t f(s) ds  \in V \text{ cuando } t,t_0 \in \tilde{I}\]
+\[t \mapsto G(x_0)+\int_{t_0}^t f(s) ds  \in V \text{ cuando } t\in \tilde{I}\]
 
-Por tanto, $G^{-1}\left(G(x_0) + F(t)\right), \ \forall t \in I$ está bien definida y por el teorema de la función inversa:
+Por tanto, $x(t) = G^{-1}\left(G(x_0) + F(t)\right), \ \forall t \in \tilde{I}$ está bien definida y por el teorema de la función inversa:
 
-\[x'(t) = \frac{1}{G'(G^{-1}(G(x_0) + F(t)))}\]
+\[x'(t) = \frac{F'(t)}{G'(G^{-1}(G(x_0) + F(t)))} \stackrel{\text{TFC}}{=} g\left(G^{-1}\left(G(x_0) + F(t)\right)\right)f(t) = g(x(t))f(t),\ t\in \tilde{I}\]
+
+y
+
+\[x(t_0) = x_0,\ t\in \tilde{I}\]
 
 
 \end{proof}
@@ -259,7 +278,7 @@ Entonces el cambio de variable:
   y := \varphi _2 (t,x)
 \end{array}
 \]
-transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\tilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y reciprocamente.
+transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\tilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y recíprocamente.
 \end{nprop}
 
 \begin{proof}
@@ -291,11 +310,17 @@ transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F
 
 \subsection{Ecuación homogénea.}
 
-Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma
+Sean $P, Q: \R^2 \to \R$ funciones homogéneas de índice $\alpha$, y sea la ecuación
+
+\[ x' = \frac{P(t,x)}{Q(t,x)} \]
+
+Entonces
+
+\[ x' = \frac{P(t,tx/t)}{Q(t,tx/t)} =  \frac{t^{\alpha}P(1, \frac{x}{t})}{t^{\alpha}Q(1, \frac{x}{t})} = f\left(\frac{x}{t}\right) \]
 
 \[x' = f\left(\frac{x}{t}\right) \ \implies \ F\left(t,x\right) = f\left(\frac{x}{t}\right)\]
 
-con $t \neq 0, \frac{x}{t} \in (a,b)$.
+con $t \neq 0,\ f: I \text{ intervalo} \to \R, \dfrac{x}{t} \in (a,b)$.
 
 \[Dom(F) = \left\{(t,x)\in \R ^2 : t \neq 0, \ \frac{x}{t} \in (a,b)\right\}\]
 
@@ -339,7 +364,14 @@ F(t,x) = f\left( \frac{ax+bt+c}{a'x+b't+c'} \right)
 % WARNING: no entiendo por qué si c,c' = 0 es homogénea
 Donde si $c,c' = 0$ entonces la ecuación ya es homogénea.
 
-Supongamos que las rectas del plano $ax + bt+c=0$ y $a'x+b't+c'=0$ tienen un punto de corte en $(\alpha, \beta ) \in \R^2$.
+Supongamos que las rectas del plano $ax + bt+c=0$ y $a'x+b't+c'=0$ tienen un punto de corte en $(\alpha, \beta ) \in \R^2$. Este punto verifica:
+
+\[
+\begin{cases}
+  a\alpha + b\beta + c = 0\\
+  a'\alpha + b'\beta + c' = 0
+\end{cases}
+\]
 
 Entonces tomamos el cambio de variable:
 \begin{align*}
@@ -347,9 +379,7 @@ s &= t-\alpha \\
 y &= x - \beta
 \end{align*}
 
-% TODO: Explicar porque es un difeomorfistmo válido.
-
-Entonces tenemos: 
+Que verifica que $\frac{ds}{dt} = 1 \ne 0$. Tenemos: 
 \[
 \frac{dy}{ds} = \frac{dx}{dt} = f\Big( \frac{a(y+\beta ) + b (s+\alpha ) + c}{a'(y+\beta ) + b'(s+ \alpha ) + c'} \Big)
 \]
@@ -359,28 +389,44 @@ y' = f \bigg( \frac{a \frac{y}{s} + b}{a'\frac{y}{s} + b'} \bigg) = g\Big( \frac
 
 \subsubsection{La ecuación lineal}
 
-En este caso, tenemos una ecuación diferencial de la forma $F(x,t) = \alpha (t)x + \beta ( t)$ con $\alpha , \beta \in C(a,b)$, donde tenemos que $F:(a,b)\times \R \to \R$ es lineal en x.
+En este caso, tenemos una ecuación diferencial de la forma
+\[x' = F(x,t) = \alpha (t)x + \beta ( t) \tag{E} \label{eclineal} \]
+
+con $\alpha , \beta \in C(a,b)$, donde es inmediato que $F:(a,b)\times \R \to \R$ es lineal en $x$.
 
 Tomamos la ecuación homogénea asociada:
 \[
 x' = \alpha (t) x
 \]
+
 Sabemos que las soluciones de esta ecuación son:
 \[
-x(t) = A e^{\int_{t_0}^{t} \alpha (s) ds}  \ \forall t \in (a,b), \ A in \R
+x(t) = A e^{\int_{t_0}^{t} \alpha (s) ds}  \ \forall t \in (a,b), \ A \in \R
 \]
 
 Supongamos que $\varphi _1$ y $\varphi _2 $ son dos soluciones de la ecuación diferencial inicial en $I$. Entonces, sea $x := \varphi _1  - \varphi _2  \ \implies \ x' = \alpha x$.
 
-Esto quiere decir que sea $\varphi$ una solución, toda solución es $\varphi (t) + A e^{\int_{t_0}^{t} \alpha (s) ds}$.
+Por tanto, toda solución es $\varphi (t) + A e^{\int_{t_0}^{t} \alpha (s) ds}$, con $\varphi$ una solución concreta de la ecuación.
 
-Eso quiere decir que nuestro problema se reduce a buscar una unica solución, para ello lo que vamos a hacer es que nuestra constante ($A$) dependa de $t$, $\varphi (t) = A(t) e^{\int_{t_0}^{t} \alpha (s) ds}$
+Eso quiere decir que nuestro problema se reduce a buscar una única solución, para ello lo que vamos a hacer es que nuestra constante ($A$) dependa de $t$, $\varphi (t) = A(t) e^{\int_{t_0}^{t} \alpha (s) ds}$ (método de variación de las constantes).
 
-% TODO: Completar esto
+Si existen $I \subseteq (a,b)$ intervalo y $A \in \mathscr{C}^1(I)$ tal que
+$\varphi(t) = A(t) e^{\int_{t_0}^t \alpha(s)ds}$ es solución de \eqref{eclineal}, debe darse que
+
+\[
+ \varphi'(t) = A'(t)e^{\int_{t_0}^t \alpha(s) ds} + A(t)\alpha(t)e^{\int_{t_0}^t \alpha(s) ds} = A'(t)e^{\int_{t_0}^t \alpha(s) ds} + \alpha(t)\varphi(t)
+ \]
+
+ Luego, basta que $A'(t)e^{\int_{t_0}^t \alpha(s) ds} = \beta(t) \ \forall t \in I$, es decir,
+
+ \[
+ A'(t) = e^{-\int_{t_0}^t \alpha(s) ds}\beta(t) \implies A(t) = \int_{t_0}^t e^{-\int_{t_0}^t \alpha(s) ds}\beta(t)
+ \]
+
 
 
 \begin{nprop}
-Sean $P,Q \in C^1(D)$ con $D$ dominio de $\R^2$, si $\exists F\in C^1 (D)$ t.q. $\frac{\partial F}{\partial t} = P \ \ \frac{\partial F}{\partial x} = Q$, entonces, $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$, si $\exists F\in \mathscr{C}^1 (D)$ tal que $\frac{\partial F}{\partial t} = P \ \ \frac{\partial F}{\partial x} = Q$, entonces, $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
 \end{nprop}
 
 \begin{proof}
@@ -390,48 +436,53 @@ P,Q \in C^1 (D) \ \implies F \in C^2 (D) \ \implies \frac{\partial ^2 F}{\partia
 \end{proof}
 
 \begin{ndef}
-Se dice que $D \in \R ^n$ es estrellado si $\exists x_0 \in D$ t.q. $\forall x \in D \ [x_0, x] \subset D$
+Se dice que $D \subseteq \R ^n$ es estrellado si $\exists x_0 \in D$ tal que $\forall x \in D \ \ [x_0, x] \subset D$
 \end{ndef}
 
 \begin{nth}
-Sean $P,Q \in C^1(D)$ con $D$ dominio de $\R^2$ y estrellado, con $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
-Entonces $\exists F \in C^2 (D)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$ y estrellado en $x_0$, con $\dfrac{\partial P}{\partial x} = \dfrac{\partial Q}{\partial t}$ en $D$.
+Entonces $\exists F \in \mathscr{C}^2 (D)$ tal que $\dfrac{\partial F}{\partial t} = P$ y $\dfrac{\partial F}{\partial x} = Q$
 \end{nth}
 
 \begin{proof}
-Tomamos el punto que hace $D$ estrellado como origen.
+Suponemos, sin pérdida de generalidad, que $x_0 = (0,0)$.
 \[
 F(t,x) := t \int _0 ^1 P(\lambda t, \lambda x) d\lambda + x \int _0 ^1 Q(\lambda t, \lambda x ) d\lambda
 \]
 
 La función esta bien definida en las integrales por ser $D$ estrellado.
 
+En el siguiente desarrollo usaremos la siguiente proposición:
+
+\begin{nprop}
+  Sean $D \subseteq \R^n$ un dominio y $g: D\times [a,b] \to \R \in \mathscr{C}^1(D\times [a,b])$
+
+Sea $f$ una función tal que: 
 \[
-\frac{\partial F}{\partial t} (t,x) = \int _0 ^1 P(\lambda t, \lambda x) d\lambda + t \int _0 ^1 \lambda \frac{\partial P}{\partial t}(\lambda t, \lambda x) d\lambda + x\int _0 ^1 \lambda \frac{\partial Q}{\partial t}(\lambda t, \lambda x) d\lambda = ... = P
+f(x_1,\dots,x_n) = \int _a ^b g(x_1,\dots,x_n,t) \ dt
+\]
+Entonces $f$ es de clase 1 y $\dfrac{\partial f}{\partial x_i} = \displaystyle\int _a ^b \dfrac{\partial g}{\partial x_i}$
+
+
+\end{nprop}
+
+\[
+\begin{array}{l}
+  \frac{\partial F}{\partial t} (t,x) = \int _0 ^1 P(\lambda t, \lambda x) d\lambda + t \int _0 ^1 \lambda \frac{\partial P}{\partial t}(\lambda t, \lambda x) d\lambda + x\int _0 ^1 \lambda \frac{\partial Q}{\partial t}(\lambda t, \lambda x) d\lambda =\\
+  \int_0^1 P(\lambda t, \lambda x)d\lambda + \left[\int_0^1 \lambda\left( t\frac{\partial P}{\partial t}(\lambda t, \lambda x)d\lambda + x\frac{\partial P}{\partial x}(\lambda t, \lambda x)d\lambda \right) \right] = P
+\end{array}
+
 \]
  % TODO: Completar los ...
 \[
-\frac{\partial F}{\partial x} (t,x) =  ... = Q
+\frac{\partial F}{\partial x} (t,x) =  = Q
 \]
 
 \end{proof}
 
 A esta función $F$ se la suele llamar una función potencial $\nabla F = (P,Q)$
 
-\begin{nth}
-Sea $g: D\times [a,b]$ de clase 1, tal que: 
 
-\[
-(x_1,..., x_n, t) \to g(x_1,... x_n, t)
-\]
-Sea $f$ una función tal que: 
-\[
-f(x_1,...,x_n) = \int _a ^b g \ dt
-\]
-Entonces $f$ es de clase 1 y $\frac{\partial f}{\partial x_i} = \int _a ^b \frac{\partial g}{\partial x_i}$
-
-
-\end{nth}
 \begin{ndef}
 Sean $P,Q \in C^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
 \end{ndef}
