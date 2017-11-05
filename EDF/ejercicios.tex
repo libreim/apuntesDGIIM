@@ -218,21 +218,12 @@
 	Igualando las dos expresiones que tenemos de x':  
 	$\frac{-u}{u-1} = u + t\cdot u' \Rightarrow u' = (\frac{-u}{u-1}-u)\cdot \frac{1}{t}$.  
 	De donde hemos obtenido una ecuación resoluble por variables separadas.
-	$u' = (\frac{-u-u\cdot (u-1)}{u-1})\cdot \frac{1}{t}$  
-	$\int \frac{u-1}{-u-u\cdot (u-1)}\cdot du = \int \frac{1}{t}\cdot dt$
-	Obtenemos la descomposición del denominador para poder integrar como una racional.  
-	$u^2 -2\cdot u = u\cdot (u-2)$  
-	$\frac{u-1}{u\cdot (u-2)} = \frac{A}{u} + \frac{B}{u-2}$  
-	$u-1 = A\cdot (u-2)  + B\cdot u \Rightarrow A=\frac{1}{2} \ y \ B=\frac{1}{2}$  
-	Terminamos por lo tanto la integral:  
-	$\frac{1}{2}\cdot \int \frac{1}{u}\cdot du + \frac{1}{2}\cdot \int \frac{1}{u-2}\cdot du = \int \frac{1}{t}\cdot dt$  
-	$\frac{1}{2}\cdot ln|u| + \frac{1}{2}\cdot ln|u-2| = ln|t| + c$  
-	$ln|u\cdot (u-2)|^{\frac{1}{2}} = ln|t| + c$  
-	$\sqrt{u\cdot (u-2)} = t + e^c$  
-	$u\cdot (u-2) = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c}$  
-	Deshaciendo el cambio del principio:  
-	$\frac{x}{t}\cdot (\frac{x}{t}-2) = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c}$  
-	$\frac{x^2}{t^2}-2\cdot \frac{x}{t} = t^2 + 2\cdot t\cdot e^c + e^{2\cdot c} \Rightarrow x^2 - 2\cdot t\cdot x = t^4 + 2\cdot t^3\cdot e^c + t^2\cdot e^{2\cdot c}$
+        
+	\[u' = \left(\frac{-u-u(u-1)}{u-1}\right)\frac{1}{t} = \left(\frac{-u^2}{u-1}\right)\frac{1}{t}\]
+        
+	\[\int \frac{u-1}{-u^2}du = \int \frac{1}{t}dt\]
+
+        \[ \int -\frac{u}{u^2}du + \int \frac{1}{u^2}du = -\log \abs{u} - \frac{1}{u} + C = \log \abs{t} \]
 \end{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ecuaciones reducibles a homogéneas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
