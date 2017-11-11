@@ -216,7 +216,7 @@ Donde $G$ es una primitiva de $\dfrac{1}{g}$. $G'(u) = \dfrac{1}{g(u)}$ tiene si
 Por tanto, dado un problema de valores iniciales para una ecuación de esta forma, con $g$ no nula en ningún punto, las soluciones son de esta forma. Veamos ahora la unicidad de la solución.
 
 \begin{nth}
-  Sea $f\in C(a,b), g\in C(c,d)$, con $g(u) \neq 0, \forall u \in (c,d)$. Entonces dado $t_0 \in (a,b), x_0 \in (c,d)$, existe una única solución de $x' = f(t)g(x)$ que cumple que $x(t_0) = x_0$.
+  Sea $f\in \mathscr{C}(a,b), g\in \mathscr{C}(c,d)$, con $g(u) \neq 0, \forall u \in (c,d)$. Entonces dado $t_0 \in (a,b), x_0 \in (c,d)$, existe una única solución de $x' = f(t)g(x)$ que cumple que $x(t_0) = x_0$.
   
 Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
 
@@ -233,7 +233,7 @@ Hemos visto que si $x$ es una solución definida en un intervalo $\tilde{I}$, es
 x(t) = G^{-1}\left(G(x_0) + \int_{t_0}^t f(s)ds\right),\ t\in I
 \]  
   
-\[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in C(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in C^{1}(c,d)\]
+\[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in \mathscr{C}(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in \mathscr{C}^{1}(c,d)\]
 
 \[G'(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
 
@@ -395,12 +395,12 @@ Que verifica que $\frac{ds}{dt} = 1 \ne 0$. Tenemos:
 y' = f \bigg( \frac{a \frac{y}{s} + b}{a'\frac{y}{s} + b'} \bigg) = g\Big( \frac{y}{s}\Big)
 \]
 
-\subsubsection{La ecuación lineal}
+\subsection{La ecuación lineal de orden 1}
 
 En este caso, tenemos una ecuación diferencial de la forma
 \[x' = F(x,t) = \alpha (t)x + \beta ( t) \tag{E} \label{eclineal} \]
 
-con $\alpha , \beta \in C(a,b)$, donde es inmediato que $F:(a,b)\times \R \to \R$ es lineal en $x$.
+con $\alpha , \beta \in \mathscr{C}(a,b)$, donde es inmediato que $F:(a,b)\times \R \to \R$ es lineal en $x$.
 
 Tomamos la ecuación homogénea asociada:
 \[
@@ -439,7 +439,7 @@ Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$, si $\exists F\in \mat
 
 \begin{proof}
 \[
-P,Q \in C^1 (D) \ \implies F \in C^2 (D) \ \implies \frac{\partial ^2 F}{\partial t \partial x} = \frac{\partial Q}{\partial t} = \frac{\partial P}{\partial x} = \frac{\partial ^2 F}{\partial x \partial t}
+P,Q \in \mathscr{C}^1 (D) \ \implies F \in \mathscr{C}^2 (D) \ \implies \frac{\partial ^2 F}{\partial t \partial x} = \frac{\partial Q}{\partial t} = \frac{\partial P}{\partial x} = \frac{\partial ^2 F}{\partial x \partial t}
 \]
 \end{proof}
 
@@ -448,8 +448,8 @@ Se dice que $D \subseteq \R ^n$ es estrellado si $\exists x_0 \in D$ tal que $\f
 \end{ndef}
 
 \begin{nth}
-Sean $P,Q \in C^1(D)$ con $D$ dominio de $\R^2$ y estrellado, con $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
-Entonces $\exists F \in C^2 (D)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$ y estrellado, con $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+Entonces $\exists F \in \mathscr{C}^2 (D)$ tal que $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
 \end{nth}
 
 \begin{proof}
@@ -504,20 +504,20 @@ Entonces $f$ es de clase 1 y $\frac{\partial f}{\partial x_i} = \int _a ^b \frac
 
 \end{nth}
 \begin{ndef}
-Sean $P,Q \in C^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+Sean $P,Q \in \mathscr{C}^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
 \end{ndef}
 
-Supongamos una ecuación como la de la proposición anterior, con $(t_0, x_0) \in D$ t.q. $Q(t_0, x_0) \neq 0$. Entonces $\exists \varepsilon > 0$ t.q. $B  := B( (t_0 x_0 ), \varepsilon) \subset D$ es un subconjunto estrellado $\implies \ \exists F \in C^2 (B)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+Supongamos una ecuación como la de la proposición anterior, con $(t_0, x_0) \in D$ t.q. $Q(t_0, x_0) \neq 0$. Entonces $\exists \varepsilon > 0$ t.q. $B  := B( (t_0 x_0 ), \varepsilon) \subset D$ es un subconjunto estrellado $\implies \ \exists F \in \mathscr{C}^2 (B)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
 
 Entonces considero  $F(x,t) = F(x_0, t_0)$ que define $x=x(t)$ en un entorno $I$ de $t_0$
 
 % TODO: Ejemplo de uso
 
 \begin{ndef}
-Sean $P,Q \in C^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice que $\mu (t,x)$ es un factor integrante para la ecuación si:
+Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice que $\mu (t,x)$ es un factor integrante para la ecuación si:
 \begin{enumerate}
 \item $\mu(t,x) \neq 0 \ \forall (t,x) \in D$
-\item $\mu \in C^1 (D)$
+\item $\mu \in \mathscr{C}^1 (D)$
 \item $\mu (t,x)P(t,x) + \mu (t,x)Q(t,x) x' = 0$ es una ecuación exacta.
 
 Nota: Siempre existe un factor integrante.
@@ -525,5 +525,5 @@ Nota: Siempre existe un factor integrante.
 
 \end{ndef}
 
-
+\subsection{Ecuaciones lineales de orden k}
 
