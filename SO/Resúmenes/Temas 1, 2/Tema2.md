@@ -82,7 +82,7 @@ El SO tiene una colección de colas con el estado de todos los procesos. Suele h
 
 El diagrama de estados por lotes es:
 
-![Diagrama de Estados](./Sistemas Operativos/Resúmenes/Temas 1, 2/Imagen1T2.png)
+![Diagrama de Estados](./Imagen1T2.png)
 
 ### Colas de Estados
 
@@ -265,7 +265,7 @@ La variable state de task_estruct especifica el estado actual de un proceso.
 
 ### Modelo de procesos/hilos en Linux
 
-![Diagrama de estados]{diagrama.png}
+![Diagrama de estados](./diagrama.PNG)
 
 ## El árbol de procesos
 
@@ -275,7 +275,7 @@ Cada *task_struct* tiene un puntero:
 2. A una lista de hijos (llamada children): struct list_head children
 3. A una lista de hermanos (llamada sibling): struct list_head sibling
 
-![Arbol de procesos]{diagrama2.png}
+![Arbol de procesos](./diagrama2.PNG)
 
 ### Implementación de hilos en Linux
 
