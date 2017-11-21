@@ -527,3 +527,109 @@ Nota: Siempre existe un factor integrante.
 
 \subsection{Ecuaciones lineales de orden k}
 
+
+\section{Sistemas lineales de ecuaciones diferenciales}
+
+Sea una ecuación diferencial de la forma $x' = Ax+b$ donde $A: I \ \to \M_n (\R)$ y $b:I \ \to \R ^n$ continuas.
+
+\begin{nota}
+
+  \[
+  M_n (\R) \sim \R ^{n^2} \\
+  M_n (\R) \sim L_M : \R ^n \ \to \ \R ^n
+
+  ||M|| = max { |Mx| : x \in \R ^n , \ |x| = 1}
+  \]
+
+  Propiedades:
+
+  \begin{itemize}
+  \item $||I_n || = 1$
+  \item $ |Mx| \leq ||M|| |x|$
+  \item $ ||MA|| \leq ||M|| ||A||$
+  \end{itemize}
+
+\end{nota}
+
+\begin{ndef}
+
+  Una solución de la ecuación es una función $x \in C^1 (I, \R ^n )$ tal que $x'(t) = A(t) x(t) + b(t) \ \forall t \in I$
+
+\end{ndef}
+
+Sea $f\in C([a,b], \R ^n ) \ \implies \ \int_a ^b f(t) dt = \int _a ^b f_i (t) dt _{i = 1..n} $ con $f = (f_i)_{i = 1...n}$ y además, $ \abs{ \int _a ^b f(t) dt } \leq \int_a ^b \abs{f(t)} dt $
+
+\begin{nth}
+
+  Dado $t_0 \in I$, $x_0 \in \R ^n $, $\exists ! x $ solución de $x' = A(t)x+b(t)$ que cumple $x(t_0) = x_0 $
+
+\end{nth}
+
+\begin{proof}
+
+  Supongamos $x \in C^1 (I, \R ^n) $ tal que $x' = A(t) x + b(t) \forall t \in I$ y $x(t_0) = x_0$.
+
+  \[
+  \int _{t_0} ^t x'(s) ds = \int _{t_0} ^t A(s)x(s) + b(s) ds\\
+  x(t) = x_0 + \int _{t_0} ^t A(s)x(s) + b(s) ds \ \forall t \in I \ \ \ (1)
+  \]
+
+  Hemos visto que toda solución del sistema comple $(1)$.
+
+  \begin{rcases}
+    Supongamos ahora $x \in C (I, \R ^n)$ que cumple $(1)$.\\
+    $A(s)x(s) + b(s) \in C (I, \R ^n )$\\
+
+  \end{rcases}
+  $\overset{\text{T.F.C}}{\inmplies} x \in C ^1 (I, \R^n), \ x'(t) = A(t)x(t) + b(t) \ \forall t \in I, \ \x(t_0 ) x_0 $
+  Ahora tenemos que si una función cumple $(1)$ entonces es solución.
+
+
+\end{proof}
+
+Ahora nuestro problema se reduce a buscar una función $x \in C (I , \R ^n)$ que cumpla $(1)$ y $x(t_0) = x_0 $.
+Para ello defininimos:
+
+\[
+x_{k+1} (t) = x_0 + \int _{t_0} ^t A(s)x_k (s) + b(s) ds \ \forall t \in I
+\]
+
+Esto recibe el nombre de iteraciones de Picard o aproximaciones sucesivas.
+
+Sea $J \subset I$ con $t_0 \in J$ compacto. Entonces la sucesión ${x_k}$ converge uniformemente en $J$ y $x(t) = x_0 + \int A(s)x(s) + b(s) de $
+
+\begin{proof}
+
+  Fijo $J$ compacto tal que $t_0 \in J$.\\
+
+  \begin{rcases}
+    $J compacto$\\
+    $A \in C ( I, M_n (\R))$
+  \end{rcases}
+
+  $\implies \underset{t \in J}{\max} || A(t) || = A_J , \ \ \underset{t \in J}{max} |b(t)| = b_J $
+
+  Tenemos que $x_k = x_0 + \sum_{j=0}^{k-1} (x_{j+1} - x_j)$
+
+  Sabemos que $x_k$ converge $\iff \ \sum_{j=0}^{\infty} (x_{j+1} - x_j )$ converge. Para ver que la serie converge vamos a utilizar el criterio de Weierstrass. Para ello vamos a acotar $|x_{j+1} - x_j |$. Se puede probar por inducción que:
+  \[
+  |x_{k+1} (t) - x_k (t) | \leq (A_J |x_0| + b_J) (A_J )^k \frac{|t-t_0| ^{k-1}}{(k+1)!} \ t \in J\\
+  \sum_{k=0}^{\infty} x_{k+1} (t) - x_k (t) \leq \sum_{k=0} ^{\infty} (A_J |x_0| + b_J) A_J ^k \frac{|t-t_0|^{k+1}}{(k+1)!} = (A_J |x_0| + b_J) \frac{1}{A_J} (e^{A_J (t-t_0)}-1)
+  \]
+  Como la serie converge, $x_k$ converge uniformemente en $J$.
+
+  Veamos ahora la unicidad de la solución.
+
+  Supongamos $y \in C(I,\R ^n)$ solución de $(1)$. Sea $\var{I} = \{ t \in I \ : x(t) = y(t) \}$. El procedimiento va a ser, utilizar que $I$ es conexo y que $\var{I}$ es abierto y cerrado para ver que $I=\var{I}$. $\var{I}$ es cerrado trivialmente, veamos que es abierto:
+
+  Sea $t_1 \in \var{I}, \{t_0 , t\} \in \mathring{J}$, $\delta > 0$ tal que $(t_1 - \delta , t_1 + \delta ) \subset J$ y $\delta A_J < 1$.\\
+  Sea $t \in [t_1 - \delta, t_1 + \delta]$ $x(t) = x(t_1 ) + \int_{t_1} ^{t} A(s)x(s)+b(s) ds$
+
+  \[
+  |x(t) - y(t)| = \abs{\inf _{t_1} ^t A(s)(x(s) - y(s)) ds} \leq \abs{\int _{t_1} ^t A_J (x(s) - y(s)) ds} \leq A_J \delta \underset{[t_1 - \delta , t_1 + \delta]}{max} |x(t) - y(t)| 
+  \]
+
+  Sea $t^*$ el valor donde se alcanza el máximo anterior, si $t=t^* \implies x(t^*) = y(^*)$
+
+  
+\end{proof}
