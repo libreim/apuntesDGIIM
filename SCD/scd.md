@@ -6,21 +6,21 @@
 
 #### 1.1 Modelos básicos relacionados con la concurrencia
 
-- Programa secuencial: Declaraciones de datos y conjunto de instrucciones sobre dichos datos que se deben ejecutar en secuencia.
+- **Programa secuencial**: Declaraciones de datos y conjunto de instrucciones sobre dichos datos que se deben ejecutar en secuencia.
 
-- Programa concurrente: conjunto de programas secuenciales ordinarios que se pueden ejecutar *lógicamente* en paralelo.
+- **Programa concurrente**: conjunto de programas secuenciales ordinarios que se pueden ejecutar *lógicamente* en paralelo.
 
-- Proceso: Ejecución de un programa secuencial.
+- **Proceso**: Ejecución de un programa secuencial.
 
-- Concurrencia: Describe el potencial para ejecución paralela, es decir, el solapamiento real o virtual de varias actividades en el tiempo.
+- **Concurrencia**: Describe el potencial para ejecución paralela, es decir, el solapamiento real o virtual de varias actividades en el tiempo.
 
-- Programación concurrente: Conjunto de notaciones y técnicas de programación usadas para expresar paralelismo potencial y resolver problemas de sincreonización y comunicación. La programación concurrente es independiente de la implementación del paralelismo. Es una abstracción.
+- **Programación concurrente**: Conjunto de notaciones y técnicas de programación usadas para expresar paralelismo potencial y resolver problemas de sincreonización y comunicación. La programación concurrente es independiente de la implementación del paralelismo. Es una abstracción.
 
-- Programación paralela: Su principal objetivo es acelerar la resolución d eproblemas concretos mediante el aprovechamiento de la capacidad de procesamiento en paralelo del hardware disponible.
+- **Programación paralela**: Su principal objetivo es acelerar la resolución d eproblemas concretos mediante el aprovechamiento de la capacidad de procesamiento en paralelo del hardware disponible.
 
-- Programación distribuida: Su principal objetivo es hacer que varios componentes software localizados en diferentes ordenadores trabajen juntos.
+- **Programación distribuida**: Su principal objetivo es hacer que varios componentes software localizados en diferentes ordenadores trabajen juntos.
 
-- Programación de tiempo real: Se centra en al programación de sistemas que están funcionando continuamente, recibiendo entradas y enviando salidas a/desde componentes hardware en los que se trabaja con restricciones muy estrictas en cuanto a la respuesta temporal.
+- **Programación de tiempo real**: Se centra en al programación de sistemas que están funcionando continuamente, recibiendo entradas y enviando salidas a/desde componentes hardware en los que se trabaja con restricciones muy estrictas en cuanto a la respuesta temporal.
 
 
 
