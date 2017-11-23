@@ -380,11 +380,154 @@ Es similar a SE, pero se intenta corregir el problema de la falta de equitativid
 
 El proceso señalador se bloquea justo después de ejecutar signal. El proceso señalado entra de forma inmediata en el monitor. Está asgurado el estado que perminte al rpoceso señalado continuar la ejecución del procedimiento del monitor en el que se bloqueó. El proceso señalador entra en una nueva cola de procesos que espera para acceder al monitor, que podemos llamar cola de procesos urgentes. Los porcesos de la cola de procesos urgentes tienen preferencia para acceder al monitor frente a los procesos que esperan en la cola del monitor. Es la semántica que se supone en los ejemplos vistos.
 
-##### Análisis comparativo d elas diferentes semánticas
+##### Análisis comparativo de las diferentes semánticas
 
 - Potencia expresiva: todas las semánticas son capaces de resolver los mismos problemas.
 - Facilidad de uso: La semántica SS condiciona el estilo de programación y puede llevar a aumentar de forma artificial el número de procedimientos.
 - Eficiencia
-  - Se y SU resultan ineficientes cuando no hay código tras signal, ya que en ese caso implican que el señalador emplea tiempo en desbloquearse y después reactivarse, pero justo a continuación abandona el monitor sin hacer nada.
+  - SE y SU resultan ineficientes cuando no hay código tras signal, ya que en ese caso implican que el señalador emplea tiempo en desbloquearse y después reactivarse, pero justo a continuación abandona el monitor sin hacer nada.
   - La semánctica SC es un poco ineficiente al obligar a usar un bucle para cada instrucción signal.
 
+#### 3.9. Verificación de programas con monitores
+
+La verificación d ela corrección de un programa concurrente con monitores requieres:
+
+- Probar la corrección de cada monitor
+- Probar la corrección de cada proceso de forma aislada
+- Probar la corrección de la ejecución concurrente de los procesos implicados
+
+El programador no debe conocer a priori la interfoliación concreta de llamadas a los procedimientos del monitor. El enfoque de verificación que vamos a seguir utiliza una invariante de monitor:
+
+- Establece una relación constante entre valores permitidos de las variables del monitor y/o las interfoliaciones que ocurren.
+- Debe ser cierto siempre, excepto cuando un proceso está ejecutando código en EM (cambiando el estado del monitor).
+
+El invariante del monitor será una función lógica que se evalua en cada estado en términos de los valores de las variables permanentes en ese estado y/o las posibles interfoliaciones que han ocurrido hasta llegar a ese estado. El invariante debe ser cierto siempre que no haya un proceso ejecutándose en el monitor. Debe ser cierto por tanto:
+
+- En el estado inicial, después de la inicialización de las variables permanentes.
+- Antes y después de cada llamada a un procedimiento del monitor.
+- Antes y después de cada operación wait.
+- Antes y depsués de cada operación signal.
+
+Justo antes de signal sobre una variable de condición, además, debe ser cierta la condición lógica asociada a dicha variable.
+
+### 4. Soluciones software con espera ocupada para la EM
+
+En esta sección veremos diversas soluciones para lograr la exclusión mutua en una sección crítica usando variables ocmpartidas entre los procesos o hebras involucrados.
+- Estos algoritmos usan dichas variables para hacer espera ocupada cuando sea necesario en el protocolo de entrada.
+- Los algoritmos que resuelven este problema no son triviales, y menos para más d edos procesos. En la actualidad se conocen distintas soluciones ocn distintas propiedades, veremos el algoritmo de Dekker (para 2 procesos) y el de Peterson (para 2 y para un número arbitrario de procesos).
+- Previamente a esos algoritmos, veremos la estructura de los procesos con secciones críticas y las propiedades que deben cumplir los algoritmos.
+
+#### 4.1. Estructura de los procesos con secciones críticas
+Para analizar las soluciones a EM asumimos que un proceso que incluya un bloque considerado como secicón crítica (SC) tendrá dicho bloque estructurado en tres etapas:
+
+1. Protocolo de entrada (PE): una serie de isntrcciones que incluyen psoiblemente espera, en los casos en los que no se pueda conceder acceso a la sección crítica.
+2. Sección crítica (SC): instrucciones que solo pueden ser ejcutadas por un proceso como mucho.
+3. Protocolo de salida (PS): instrucciones que permiten que otros procesos puedan conocer que este proceso ha terminado la sección crítica.
+
+Todas las sentencias que no forman parte de ninguna de estas tres etapas se denominan resto de sentencias (RS).
+
+Para que se puedan implementar soluciones correctas al problema de EM, es necesario suponer que los procesos siempre terminan una sección crítica y emplean un intervalo de tiempo finito desde que comienzan hasta que la terminan. Durante el tiempo que un proceso se encuentra en una sección crítica, nunca:
+- Finaliza o aborta.
+- Es finalizado o abortado externamiente.
+- Entra en un bucle infinito.
+- Es bloqueado o suspendido indefinidamente de forma externamiente.
+
+En general, es deseable que el tiempo empleado en las secciones críticas sea el menor posible
+
+#### 4.1. Propiedades para la exclusión mutua
+
+Para que un algoritmo para EM sea correcto, se deben cumplir cada una de estas tres propiedades mínimas:
+1. Exclusión mutua
+2. Progreso
+3. Espera limitada
+además, hay propiedades deseables adicionales que también deben complirse:
+4. Eficiencia
+5. Equidad
+Si vien consideramos correcto un algoritmo que no sea muy eficiente o para el que no pueda demostrarse claramente la equidad.
+
+##### Propiedad de exclusión mutua
+
+Es la propiedad fundamental apra el problema de la sección crítica. Establece que en cada instante de tiempo, y para cada sección crítica existente, habrá como mucho un proceso ejecutando alguna sentencia de dicha región crítica.
+
+En esta sección veremos soluciones de memoria compartida que permiten un único proceso en una sección crítica. Si bien esta es la propiedad fundamiental, no puede conseguise de cualquier forma, y para ello se establecen las otras dos condiciones mínimas que veremos a continuación.
+
+
+##### Propiedad de progreso
+
+Consideremos una SC en un instante en el cual no hay ningún proceso ejecutándola, pero sí hay procesos en el PE compitiendo por entrar a la SC. La propiedad de progreso establece:
+
+Un algortimo de EM debe de estar diseñado de forma tal que:
+1. Después de un intervalo de tiempo finito desde que ingresó en el primero proceso al PE, uno de los procesos en el mismo podrá acceder al SC.
+2. La sección del proceso anterior es completamente independiente del comportamiento de los procesos que durante todo ese intervalo no han estado en SC ni han intentado acceder.
+
+Cuando la condición (1) no se da, se dice que ocurre un interbloqueo, ya que todos los procesos en el PE quedan en espera ocupada indefinidamente sin que ninguno pueda avanzar.
+
+##### Espera limitada
+
+Supongamos que un proceso emplea un intervalo de tiempo en el PE intentando acceder a un SC. Durante ese intervalo de itmpo, cualquier otro proceso activo puede entrar un número arbitrario de veces n a ese mismo PE y lograr acceso a la SC (incluyendo la posibilidad de que n = 0). La pripiedad de espera limitada establece que:
+
+Un algoritmo de exclusión mutua debe estar diseñado de forma que n nunca será superior a un valor máximo determinado.
+
+Esto implica que las esperas en el PE siempre serán finitas.
+
+##### Propiedades deseables: eficiencia y equidad
+
+Las propiedades deseables son estas:
+
+- Eficiencia. Los protocolos de entrara y salida deben emplear poco tiempo de procesamiento (excluyendo las esperas ocupadas del PE), y las variables compartidas deben usar poca cantidad de memoria.
+
+- Equidad: En los casos en que haya varios procesos compitiendo por acceder auna SC (de forma repetida en el tiempo), no debería existir la posibilidad de que sistemáticamente se perjudique a algunos y se beneficie a otros.
+
+#### 4.3. Refinamiento sucesivo de Dijsktra
+
+El refinamiento sucesivo de Dijsktra hace referencia a una serie de algoritmos que intentan resolver el problema de la exclusión mutua.
+- Se comienza desde una versión simple, incorrecta, y se hacen sucesivas mejoras para intentar cumplir las tres propiedades.
+- La versión final correcta se denomina algoritmo de Dekker.
+- Por simplicidad, veremos algoritmos para dos procesos únicamente.
+- Se asume que hay dos procesos, P0 y P1, cada uno de ellos ejecuta un bucle infinito conteniendo: protocolo de entrada, sección crítica, protocolo de salida y otras sentencias del proceso.
+
+#### 4.4. Algoritmo de Dekker
+
+El algortimo de Dekker es correcto y se puede interpretar como el final del refinamiento sucesivo de Dijkstra.
+- Al igual que en la versión 5, cada proceso incorpora una espera de cortesía durante la cual le cede al otro la posiblidad de entrar al SC cuando ambos coinciden en PE.
+- Para evitar interbloqueos, la espera de cortesía solo la realiza uno de los dos procesos, de forma alterna, mediante una variable turno.
+- La variable de turno permite tambíen saber cuando acabar la espera de cortesía, qeu se implementa mediante un bucle.
+
+#### 4.5. Algoritmo de Peterson
+
+Este es otro algoritmo correcto para EM, más simple que el de Dekker.
+- Al igual que el de Dekker, usa dos variables lógicas que expresan la presencia de cada proceso en el PE o la SC, más una variable de turno que permite romper el interbloqueo en caso de acceso simultáneo al PE.
+- La asignación a la variable de turno se hace al inicio del PE en lugar de en el PS, con lo cual, en caso de acceso simultáneo al PE, el segundo proceso en ejecutar la asignación (atómica) al turno da preferencia al otro (el primero en llegar).
+- A diferencia del algoritmo de Dekker, el PE no usa dos bucles anidados, sino que unifica ambos en uno solo.
+
+### 5. Soluciones hardware con espera ocupada (cerrojos) para EM
+
+#### 5.1. Introducción
+
+Los cerrojos constituyen una solución hardware basada en espera ocupada que puede usarse en procesos concurrentes con memoria compartida para solucionar el problema de la exclusión mutua.
+- La espera ocupada constituye un blucke que se ejevuta hasta que ningún otro proeso esté ejecutando intrucciones de sección crítica.
+- Existe un valor lógico en una posición de memoria compartida (llamado cerrojo) que indica si algún proceso está en sección crítica.
+- En el protocolo de salida se actualiza el cerrojo de forma que se refleje que la SC ha quedado libre.
+
+#### 5.2. La instrucción TestAndSet
+
+Es una instrucción máquina disponible en el repertorio de algunos procesadores. Admite como argumento la dirección de memoria de la variable lógica que actúa como cerrojo. Se invoca como una función desde LLPP de alto nivel, y ejecuta estas acciones:
+1. Lee el valor anterior del cerrojo
+2. Pone el cerrojo a true
+3. Devuelve el valor anterior del cerrojo
+Durante su ejecución, ninguna otra instrucción ejecutada por otro proceso puede leer ni escribir la variable lógica: por tanto, se ejecuta de forma atómica.
+
+#### 5.3 Desventajas de los cerrojos
+
+Los cerrojos constituyen una solución válida para EM que consume poca memoria y es eficiente en tiempo, sin embargo:
+
+- Las esperas ocupadas consume tiempo de CPU que podría dedicarse a otros procesos para hacer trabajo útil.
+- Se puede acceder directamente a los cerrojos y por tanto un programa erróneo o escrito malintencionadamente puede poner un cerrojo en un estado incorrecto, pudiendo dejar a otros procesos indefinidamente en espera ocupada.
+- No se cumplen condiciones de equidad.
+
+#### 5.4. Uso de los cerrojos
+
+Las desventajas indicadas hacen que el uso de cerrojos sea restringido, en el sentido de que:
+
+- Por seguridad, normalmente solo se  usan desde componentes software que forman parte del sistema operativo, librerías de hebras, de tiempo real o similares.
+- Para evitar la pérdida de eficiencia que supone la espera ocupada, se usan solo en casos en los que la ejecución de la SC conlleva un intervalo de tiempo muy corto.
