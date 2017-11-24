@@ -1,0 +1,398 @@
+\documentclass{article}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm]{geometry}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{amsmath,amsthm,mathtools}
+\usepackage{amsfonts,amssymb,latexsym}
+
+\usepackage[spanish]{babel} \usepackage[doument]{ragged2e}
+
+\newcommand{\closure}[1]{\mkern
+  1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\interior}[1]{{\kern0pt#1}^{\mathrm{o}}}
+
+\selectlanguage{spanish} \usepackage[utf8]{inputenc}
+\setlength{\parindent}{10mm}
+
+\theoremstyle{remark,bold} \newtheorem{exercise}{Ejercicio}
+\newtheorem*{solution}{Solución}
+
+\usepackage{upgreek}
+
+\begin{document}
+
+\title{Exámen parcial de Topología I \\ Curso 16/17}
+\date{}
+%\author{David Cabezas Berrido}
+\maketitle
+
+% Ejercicio 1
+\begin{exercise} (4 puntos) Un espacio topológico $(X, \mathcal{T})$
+  se llama Hausdorff si para cualquier par de puntos $x, y \in X$ con $x
+  \neq y$, existen entornos $V \in \mathcal{U}^x$ y $W \in
+  \mathcal{U}^y$ cumpliendo $V \cap W = \emptyset$.
+
+  \begin{enumerate}
+    
+  \item Probar que si $(X, \mathcal{T})$ es un espacio topológico
+    Hausdorff, entonces cualquier punto suyo es un subconjunto cerrado.
+    
+  \item Probar que cualquier subespacio topológico de un espacio
+    Hausdorff es Hausdorff.
+    
+  \item Probar que el producto topológico de dos espacios Hausdorff es
+    Hausdorff.
+    
+  \item Probar que un espacio topológico $(X, \mathcal{T})$ es
+    Hausdorff si y sólo si la diagonal
+    \[\Delta = \{(x,x) \in X \times X \text{ }| \text{ } x \in X\}\]
+    es un subconjunto cerrado de $(X \times X, \mathcal{T} \times
+    \mathcal{T})$.
+    
+  \item Sean $f,g : (X,\mathcal{T}) \longrightarrow (X',
+    \mathcal{T}')$ funciones continuas y supongamos que $(X',
+    \mathcal{T}')$ es un espacio Hausdorff. Probar que
+    \[\{x \in X \text{ } | \text { } f(x) = g (x)\}\] es un
+    subconjunto cerrado de X.
+    
+  \item Si $(X, d)$ es un espacio métrico, probar que $(X,
+    \mathcal{T}(d))$ es un espacio Hausdorff.
+    
+  \end{enumerate}
+  
+\end{exercise}
+
+% Solución 1
+\begin{solution}
+  
+  \text{ }
+  
+  \begin{enumerate}
+
+  \item Elegimos cualquier punto $x \in X$, debemos probar que el
+    conjunto $\{x\}$ es cerrado en $X$, para ello elegimos un punto
+    cualquiera del complementario, $y \in X \backslash \{x\}$, y probamos
+    que existe un entorno de $y$ contenido en el conjunto.
+
+    Como $X$ es Hausdorff, existen $V \in \mathcal{U}^x$ y $W \in
+    \mathcal{U}^y$ cumpliendo $V \cap W = \emptyset$. Es claro que $x \in
+    V$, luego como la intersección es vacía tiene que darse $x \notin
+    W$. Esto implica $W \subseteq X \backslash \{x\}$ y por tanto $X
+    \backslash \{x\}$ es abierto y $\{x\}$ cerrado como queríamos.
+
+  \item Tomamos $A \subseteq X$, si $A = \emptyset$ o tiene un sólo
+    punto, satisface trivialmente la condición. De lo contrario, tomamos
+    $x, y \in A$, con $x \neq y$, tenemos $V \in \mathcal{U}^x$ y $W \in
+    \mathcal{U}^y$ con $V \cap W = \emptyset$. Por ser $V$ y $W$ entornos,
+    existen $\mathcal{O}_x,\mathcal{O}_y \in \mathcal{T}$ cumpliendo $x
+    \in \mathcal{O}_x \subseteq V$, $y \in \mathcal{O}_y \subseteq W$. En
+    la topología inducida $\mathcal{T}_A$, $\mathcal{O}_x \cap A$ y
+    $\mathcal{O}_y \cap A$ son abiertos y por tanto entornos de $x$ e $y$
+    respectivamente. Además $\mathcal{O}_x \cap \mathcal{O}_y = \emptyset$
+    y por tanto $(\mathcal{O}_x \cap A) \cap (\mathcal{O}_y \cap A) =
+    \emptyset$. Luego el subespacio $(A, \mathcal{T})$ es Hausdorff.
+
+  \item Sean $(X, \mathcal{T})$ e $(Y, \mathcal{T}')$ espacios
+    topológicos Hausdorff. Tomamos $p, q \in (X \times Y, \mathcal{T}
+    \times \mathcal{T}')$ distintos, donde $p = (x_p,y_p)$ y $q =
+    (x_q,y_q)$. Como $p \neq q$, ambas coordenadas no pueden coincidir,
+    podemos suponer que $x_p \neq x_q$ (si $x_p = x_q$ se tendrá $y_p \neq
+    y_q$ y la demostración es análoga). Como $(X, \mathcal{T})$ es
+    Hausdorff, existen $V \in \mathcal{U}^{x_p}$ y $W \in
+    \mathcal{U}^{x_q}$ con $V \cap W = \emptyset$, y por ser $V$ y $W$
+    entornos, existen $\mathcal{O}_{x_p},\mathcal{O}_{x_q} \in
+    \mathcal{T}$ con $x_p \in \mathcal{O}_{x_p} \subseteq V$, $x_q \in
+    \mathcal{O}_{x_q} \subseteq W$. Ahora probemos que $V' =
+    \mathcal{O}_{x_p} \times Y$ y $W' = \mathcal{O}_{x_q} \times Y$
+    satisfacen la condición. Es claro que son abiertos (producto de
+    abiertos), por lo que $V' \in \mathcal{U}^p$, $W' \in
+    \mathcal{U}^q$. Ahora tomemos $z = (x_z,y_z) \in V' \cap W'$, entonces
+    $x_z \in \mathcal{O}_{x_p} \cap \mathcal{O}_{x_q}$, pero esta
+    intersección es vacía, luego debe darse $V' \cap W' = \emptyset$. Por
+    tanto concluimos que $(X \times Y, \mathcal{T} \times \mathcal{T}')$
+    es Hausdorff.
+
+  \item $(\Longrightarrow)$ Supongamos que $(X, \mathcal{T})$ es
+    Hausdorff, vamos a probar que
+    \[(X \times X) \backslash \Delta = \{(x,y) \in X \times X \text{ }
+      | \text{ } x \neq y \}\] es abierto en $(X, \mathcal{T})$. Para ello
+    tomamos un punto $(x,y) \in (X \times X) \backslash \Delta$, por lo
+    que tendremos $x, y \in X$ con $x \neq y$. Como $(X, \mathcal{T})$ es
+    Hausdorff, existen $V \in \mathcal{U}^x$ y $W \in \mathcal{U}^y$ con
+    $V \cap W = \emptyset$ y por tanto $\mathcal{O}_x,\mathcal{O}_y \in
+    \mathcal{T}$ cumpliendo $x \in \mathcal{O}_x \subseteq V$, $y \in
+    \mathcal{O}_y \subseteq W$. $\mathcal{O}_x \times \mathcal{O}_y$ es
+    entorno de $(x,y)$ y está contenido en $(X \times X) \backslash
+    \Delta$, ya que si existiera un punto en $(\mathcal{O}_x \times
+    \mathcal{O}_y) \cap \Delta$ sería de la forma $(z,z)$ y tendríamos $z
+    \in \mathcal{O}_x \cap \mathcal{O}_y$, que es imposible porque esta
+    intersección es vacía. Por tanto $(X \times X) \backslash \Delta$ es
+    abierto y $\Delta$ cerrado.
+
+    $(\Longleftarrow)$ Supongamos que $(X \times X) \backslash \Delta$
+    es abierto, debemos probar que $(X, \mathcal{T})$ es Hausdorff.
+
+    Tomamos $x, y \in X$ cumpliendo $x \neq y$, por lo que $(x, y) \in
+    (X \times X) \backslash \Delta$. Como es abierto, existe un abierto
+    básico $\mathcal{O} \times \mathcal{O}'$ (con $\mathcal{O},
+    \mathcal{O}' \in \mathcal{T}$) cumpliendo $(x,y) \in \mathcal{O}
+    \times \mathcal{O}' \subseteq (X \times X) \backslash \Delta$.
+    $\mathcal{O}$ y $\mathcal{O}'$ son entornos de $x$ e $y$
+    respectivamente, probemos que son disjuntos. Si $\exists z \in
+    \mathcal{O} \cap \mathcal{O}'$, el punto $(z,z) \in \mathcal{O} \times
+    \mathcal{O}' \cap \Delta$, lo cual es imposible porque $\mathcal{O}
+    \times \mathcal{O}' \subseteq (X \times X) \backslash \Delta$. Por
+    tanto tiene que darse $\mathcal{O} \cap \mathcal{O}' = \emptyset$,
+    luego $(X, \mathcal{T})$ es Hausdorff.
+
+  \item Llamemos $A$ al conjunto $\{x \in X \text{ } | \text{ } f(x) =
+    g(x) \}$, definamos $h : (X, \mathcal{T}) \longrightarrow (X' \times
+    X', \mathcal{T}' \times \mathcal{T}')$, $h(x) = (f(x), g(x))$. Como
+    $f$ y $g$ son continuas, $h$ lo es, además sabemos que la diagonal \\
+    (llamémosla $\Delta'$) de $(X', \mathcal{T}')$ es cerrada en $(X'
+    \times X', \mathcal{T}' \times \mathcal{T}')$ por ser $(X',
+    \mathcal{T}')$ Hausdorff. Usamos que la imagen inversa por una función
+    continua de un cerrado es cerrada para probar lo que queremos.
+    \[h^{-1}(\Delta') = \{x \in X \text{ } | \text{ } h(x) \in
+      \Delta'\} = \{x \in X \text{ } | \text{ } (f(x), g(x)) \in \Delta' \}
+      = \{x \in X \text{ } | \text{ } f(x) = g(x) \} = A\] Como $\Delta'$ es
+    cerrado, $A'$ lo es.
+
+  \item Tomemos $x, y \in X$ con $x \neq y$, sea $r = \frac{d(x,
+      y)}{2} > 0$. Tomamos $V = B(x, r)$ y $W = B(y, r)$, es claro que $V
+    \in \mathcal{U}^x$ y $W \in \mathcal{U}^y$, falta probar que son
+    disjuntos. Para ello suponemos $\exists z \in V \cap W$, entonces se
+    tiene que $d(x, z) < r$ y $d(y, z) < r$, pero esto es imposible, ya
+    que se daría \[d(x, y) \leqslant d(x, z) + d(z, y) < r + r = d(x, y)\]
+    lo cual es absurdo. Por tanto $V \cap W = \emptyset$ y $(X,
+    \mathcal{T}(d))$ es Hausdorff.
+    
+  \end{enumerate}
+
+\end{solution}
+
+% Ejercicio 2
+\begin{exercise} (3 puntos) Sea $X$ un conjunto y $A, B$ subconjuntos
+  no vacíos de $X$ cumpliendo $A \subseteq B$. Se define
+  \[\mathcal{T} = \{\mathcal{O} \subseteq X \text{ } | \text{ }
+    \mathcal{O} \subseteq X \backslash A\} \cup \{\mathcal{O} \subseteq X
+    \text{ } | \text{ } B \subseteq \mathcal{O}\}.\]
+  
+  \begin{enumerate}
+    
+  \item Probar que $\mathcal{T}$ es una topología en $X$.
+    
+  \item Calcular el interior, la adherencia y la frontera de los
+    subconjuntos A y B.
+    
+  \item Hallar una base de la topología $\mathcal{T}$.
+
+  \item Hallar una base de entornos y el sistema de entornos de un
+    punto $x \in A$.
+    
+  \end{enumerate}
+  
+\end{exercise}
+
+% Solución 2
+\begin{solution}
+
+  Los abiertos de $(X, \mathcal{T})$ son los subconjuntos de $X$ que
+  no intersecan con $A$ y los que contienen a $B$.
+
+  \begin{enumerate}
+    
+  \item El conjunto vacío es abierto en la topología porque está
+    incluido en $X \backslash A$, y $X$ es abierto porque continene a $B$.
+
+    Sea $\{\mathcal{O}_\lambda\}_{\lambda \in \Lambda}$ una familia de
+    abiertos de la topología. Probemos que $\bigcup\limits_{\lambda \in
+      \Lambda}\mathcal{O}_\lambda$ también es abierto, si $\exists \lambda_0
+    \in \Lambda$ cumpliendo $B \subseteq \mathcal{O}_{\lambda_0}$,
+    entonces
+    \[B \subseteq \mathcal{O}_{\lambda_0} \subseteq
+      \bigcup\limits_{\lambda \in \Lambda}\mathcal{O}_\lambda\] por lo
+    que la unión es abierta. De lo contrario, debe de darse
+    $\mathcal{O}_\lambda \subseteq X \backslash A \text{ } \forall
+    \lambda \in \Lambda$, y por tanto
+    $\bigcup\limits_{\lambda \in \Lambda}\mathcal{O}_\lambda \subseteq
+    X \backslash A$, luego la unión es abierta en la topología.
+
+    Ahora consideremos $\{\mathcal{O}_i\}_{i=1}^n$ y probemos que
+    $\bigcap\limits_{i=1}^n\mathcal{O}_i$ también es abierto, si $\exists
+    k \in \{1, \ldots, n\}$ cumpliendo $\mathcal{O}_k \subseteq X
+    \backslash A$, entonces
+    \[\bigcap\limits_{i=1}^n\mathcal{O}_i \subseteq \mathcal{O}_k
+      \subseteq X \backslash A \vspace{2mm}\] por lo que la intersección es
+    abierta. De lo contrario, debe de darse $B \subseteq \mathcal{O}_i
+    \text{ } \forall i \in \{1, \ldots, n\}$, y por tanto $B \subseteq
+    \bigcap\limits_{i=1}^n\mathcal{O}_i$, luego la intersección pertenece
+    a la topología. \vspace{2mm}
+
+  \item Si $A = B$, $B \subseteq A$, entonces $A$ es abierto en la
+    topología y se tiene $\interior{A} = A$. \\ Si $A$ está contenido
+    propiamente en $B$, entonces $A$ no es abierto, porque obviamente no
+    está contenido en $X \backslash A$, y cualquier subconjunto suyo no
+    vacío tampoco lo estará, por lo que tenemos $\interior{A} =
+    \emptyset$.
+    
+    $X \backslash A \subseteq X \backslash A$, por lo que $X
+    \backslash A$ es abierto, luego $A$ es cerrado y se tiene $\closure{A}
+    = A$.
+    
+    Si $A = B$, $A$ es abierto y cerrado a la vez, luego su frontera
+    es vacía.
+    $$Fr(A) = \closure{A} \backslash \interior{A} = A \backslash A =
+    \emptyset$$
+
+    De lo contrario su frontera es el propio $A$ \vspace{-4mm}
+
+    $$Fr(A) = \closure{A} \backslash \interior{A} = A \backslash \emptyset =
+    A$$
+
+    $B \subseteq B$, por lo que $B$ es abierto en la topología y se
+    tiene $\interior{B} = B$.
+    
+    Como $A \subseteq B$, se tiene $X \backslash B \subseteq X
+    \backslash A$, por lo que el complementario de $B$ es abierto y se da
+    $\closure{B} = B$.
+
+    $B$ es abierto y cerrado a la vez, por lo que su frontera es vacía
+    \vspace{-4mm}
+    
+    $$Fr(B) = \closure{B} \backslash \interior{B} = B \backslash B =
+    \emptyset$$
+
+  \item Para hallar una base, podemos unir un conjunto de abiertos
+    cuyas uniones generen todos los abiertos $\mathcal{O}$ cumpliendo
+    $\mathcal{O} \subseteq X \backslash A$ y otro cuyas uniones generen
+    los abiertos $\mathcal{O}$ cumpliendo $B \subseteq
+    \mathcal{O}$. Consideremos las siguientes familias de abiertos
+    \[\mathcal{B}_1 = \big\{\{x\} \text{ } | \text{ } x \in X
+      \backslash A\big\}\]
+    \[\mathcal{B}_2 = B \cup \big\{B \cup \{x\} \text{ } | \text{ } x
+      \in X \backslash B\big\} \]
+
+    Sea $\mathcal{\mathcal{O}}$ un abierto cualquiera de la topología,
+    si $\mathcal{\mathcal{O}} \subseteq X \backslash A$ entonces
+    \[\mathcal{\mathcal{O}} = \bigcup\limits_{x \in
+        \mathcal{\mathcal{O}}}\{x\} \hspace{2mm} \text{donde} \hspace{2mm}
+      \{x\} \in \mathcal{B}_1 \hspace{4mm} \forall x \in
+      \mathcal{\mathcal{O}} \vspace{-1mm}\] De lo contrario, se tendrá $B
+    \subseteq \mathcal{\mathcal{O}}$ y por tanto $\mathcal{\mathcal{O}} =
+    B \in \mathcal{B}_2$ o
+    \[\mathcal{\mathcal{O}} = B \hspace{1mm} \cup \bigcup\limits_{x
+        \in \mathcal{\mathcal{O}} \backslash B}\{x\} = \bigcup\limits_{x \in
+        \mathcal{\mathcal{O}} \backslash B} \big(B \cup \{x\}\big)
+      \hspace{2mm} \text{donde} \hspace{2mm} \big(B \cup \{x\}\big) \in
+      \mathcal{B}_2 \hspace{4mm} \forall x \in \mathcal{\mathcal{O}}
+      \backslash B\]
+
+    Tomamos $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$, por lo
+    que acabamos de probar, cualquier abierto de la topología se puede
+    expresar como unión de elementos de $\mathcal{B}$ y por tanto
+    $\mathcal{B}$ es base de la topología $\mathcal{T}$.
+
+  \item $x \in A$, por lo tanto cualquier abierto
+    $\mathcal{\mathcal{O}}$ que contenga a $x$ tendrá que cumplir $B
+    \subseteq \mathcal{\mathcal{O}}$, luego todo entorno de $x$ debe
+    contener a $B$. Como el propio $B$ es abierto y $x \in B$, es entorno
+    de $x$. Por tanto $\beta^x = \{B\}$.
+    
+  \end{enumerate}
+  
+\end{solution}
+
+\newpage
+
+% Ejercicio 3
+\begin{exercise} (3 puntos) Sea $F : \mathbb{R}^{n+1} \backslash \{0\}
+  \longrightarrow \mathbb{S}^n \times (0, \infty)$ la aplicación
+  definida por \vspace{2mm}
+  \[F(x) = \bigg(\frac{x}{\|x\|},\|x\|\bigg) \hspace{4mm} \forall x
+    \in \mathbb{R}^{n+1} \backslash \{0\}.  \vspace{2mm}\]
+
+  \begin{enumerate}
+
+  \item Probar que $F$ es un homeomorfismo de $(\mathbb{R}^{n+1}
+    \backslash \{0\}, \mathcal{T}_u)$ sobre $(\mathbb{S}^n \times (0,
+    \infty), \mathcal{T}_u \times \mathcal{T}_u)$.
+
+  \item Probar que $G : (\mathbb{R}^{n+1} \backslash \{0\},
+    \mathcal{T}_u) \longrightarrow (\mathbb{S}^n, \mathcal{T}_u)$,
+    definida por \vspace{2mm}
+    \[G(x) = \frac{x}{\|x\|} \hspace{6mm} \forall x \in
+      \mathbb{R}^{n+1} \backslash \{0\}, \vspace{-2mm}\] es una aplicación
+    abierta.
+
+  \end{enumerate}
+  
+\end{exercise}
+
+% % Solución 3
+\begin{solution}
+
+  \text{ }
+  
+  \begin{enumerate}
+
+  \item $F : \mathbb{R}^{n+1} \backslash \{0\} \longrightarrow
+    \mathbb{S}^n \times (0, \infty)$ es continua si $F : \mathbb{R}^{n+1}
+    \backslash \{0\} \longrightarrow \mathbb{R}^{n+1} \times \mathbb{R}$
+    lo es. Basta comprobar que cada una de sus componentes es continua:
+    $F_1 : \mathbb{R}^{n+1} \backslash \{0\} \longrightarrow \mathbb{S}^n$
+    y $F_2 : \mathbb{R}^{n+1} \backslash \{0\} \longrightarrow (0,
+    \infty)$ dadas por \vspace{2mm}
+    \[F_1(x) = \frac{x}{\|x\|}; \text{ } F_2(x) = \|x\| \hspace{6mm}
+      \forall x \in \mathbb{R}^{n+1} \backslash \{0\} \vspace{4mm}\] son
+    continuas, la función que a cada vector le asigna su norma es
+    continua, y $F_1$ es cociente de continuas. $F = F_1 \times F_2$, por
+    lo tanto es continua.
+
+    Ahora probemos que $F$ tiene inversa, definimos $F^{-1} :
+    \mathbb{S}^n \times (0, \infty) \longrightarrow \mathbb{R}^{n+1}
+    \backslash \{0\}$ como
+    \[F^{-1}(s,t) = ts \hspace{6mm} \forall s \in \mathbb{S}^n, \text{
+      } \forall t \in (0, \infty)\] Necesitamos probar que $F(F^{-1}(s, t))
+    = (s, t) \hspace{4mm} \forall s \in \mathbb{S}^n, \hspace{2mm} \forall
+    t \in (0, \infty)$ y \\ $F^{-1}(F(x)) = x \hspace{4mm} \forall x \in
+    \mathbb{R}^{n+1}$.
+    
+    $s \in \mathbb{S}^n, \hspace{2mm} t \in (0, \infty)$ \vspace{-2mm}
+    
+    \[F(F^{-1}(s, t)) = F(ts) = \bigg(\frac{ts}{\|ts\|}, \|ts\|\bigg)
+      \\ \vspace{4mm} = \bigg(\frac{ts}{|t|\|s\|}, |t| \|s\|\bigg) = (s,
+      t)\]
+
+    Ya que $|t| = t$ y $\|s\| = 1$. \vspace{2mm}
+    
+    $ x \in \mathbb{R}^{n+1} \backslash \{0\}$ \vspace{-2mm}
+
+    \[F^{-1}(F(x)) = F^{-1}\bigg(\frac{x}{\|x\|},\|x\|\bigg) = \|x\|
+      \frac{x}{\|x\|} = x \]
+
+    Con esto hemos probado que $F$ tiene inversa, por lo que es
+    biyectiva. Obviamente, $F^{-1}$ es continua, por lo que $F$ es una
+    biyección continua con inversa continua, un homeomorfismo de
+    $(\mathbb{R}^{n+1} \backslash \{0\}, \mathcal{T}_u)$ sobre
+    $(\mathbb{S}^n \times (0, \infty), \mathcal{T}_u \times
+    \mathcal{T}_u)$.
+
+  \item Consideramos la proyección $\pi : \mathbb{S}^n \times (0,
+    \infty) \longrightarrow \mathbb{S}^n$ definida por $\pi(s,t) = s
+    \hspace{2mm} \forall s \in \mathbb{S}^n \hspace{2mm} \forall t \in (0,
+    \infty)$, que sabemos que es abierta. Además, como $F$ es
+    homomorfismo, en particular es abierta. Podemos expresar $G$ como $\pi
+    \circ F$. Por lo que si consideramos cualquier abierto
+    $\mathcal{\mathcal{\mathcal{O}}} \in \mathcal{T}_u$ se tiene
+    \[G(\mathcal{\mathcal{O}}) = (\pi \circ F)(\mathcal{\mathcal{O}})
+      = \pi(F(\mathcal{\mathcal{O}}))\] $F(\mathcal{\mathcal{O}})$ es
+    abierto por que $F$ es abierta, y $\pi(F(\mathcal{\mathcal{O}}))$ es
+    abierto porque $\pi$ es abierta. Por tanto $G$ es abierta.
+    
+  \end{enumerate}
+  
+\end{solution}
+
+\end{document}
