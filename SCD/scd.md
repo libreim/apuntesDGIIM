@@ -196,19 +196,22 @@ Ejemplo para productor consumidor:
 
 ### 1. Introducción a la sincronización en memoria compartida
 
-En este tema estudiaremos solcuiones para exclusión mutua y sincronización basadas en el uso de memoria compartida entre los procesos involucrados. Las soluciones pueden ser
-- Bajo nivel con espera ocupada. Basadas en programas que contienen explícitamente instrucciones de bajo nivel para la lectura y escritura directamente a la memoria compartida y bucles para realizar las esperas.
+En este tema estudiaremos soluciones para exclusión mutua y sincronización basadas en el uso de memoria compartida entre los procesos involucrados. Las soluciones pueden ser:
 
-- Alto nivel. Partiendo de las anteriores, se diseña una capa software por encima que ofrece un interfaz a las aplicaciones. La sincronización se consigue bloqueando un proceso cuando deba esperar.
+- **Bajo nivel con espera ocupada**. Basadas en programas que contienen explícitamente instrucciones de bajo nivel para la lectura y escritura directamente a la memoria compartida y bucles para realizar las esperas.
 
-#### Soluciones a bajo nive con espera ocupada
+- **Alto nivel**. Partiendo de las anteriores, se diseña una capa software por encima que ofrece un interfaz a las aplicaciones. La sincronización se consigue bloqueando un proceso cuando deba esperar.
 
-Cuando un proceso debe esperar a que ocurra un evento o sea cierta determinada condición, entra en un bucle indefinido el cual continuamente comprueba si la situación ya se da o no (espera ocupada). Este tipo de solcuoines se pueden dividir en dos categorías:
+#### Soluciones a bajo nivel con espera ocupada
 
-- Soluciones software. Operaciones sencillas de lectura y escritura de datos simples en la memoria compartida.
-- Soluciones hardware (cerrojos). Basadas en la existencia de instrucciones máquina específicas dentro del repertorio de instrucciones de los procesadores involucrados.
+Cuando un proceso debe esperar a que ocurra un evento o sea cierta determinada condición, entra en un bucle indefinido el cual continuamente comprueba si la situación ya se da o no (espera ocupada). Este tipo de soluciones se pueden dividir en dos categorías:
+
+- **Soluciones software**. Operaciones sencillas de lectura y escritura de datos simples en la memoria compartida.
+- **Soluciones hardware (cerrojos)**. Basadas en la existencia de instrucciones máquina específicas dentro del repertorio de instrucciones de los procesadores involucrados.
 
 Las soluciones de bajo nivel con espera ocupada se prestan a errores, producen algoritmos complicados y tienen un impacto negativo en la eficiencia. En las soluciones de alto nivel se ofrecen interfaces de acceso a estructuras de datos y además se usa bloqueo de procesos en lugar de espera ocupada.
+
+Entre estas soluciones de alto nivel se encuentran **semáforos**, **regiones críticas condicionales** y **monitores**. Todas estas las iremos detallando a continuación.
 
 ### 2. Semáforos para sincronización
 
@@ -217,16 +220,23 @@ Las soluciones de bajo nivel con espera ocupada se prestan a errores, producen a
 Los semáforos constituyen un mecanismo que soluciona o aminora los problemas de las soluciones de bajo nivel, y tienen un ámbito más amplio:
 
 - No se usa espera ocupada, sino bloqueo de procesos (uso más eficiente de CPU).
+
 - Resuelven fácilmente el problema de exclusión mutua con esquemas de uso sencillos.
+
 - Se pueden usar para resolver problemas de sincronización.
+
 - El mecanismo se implmenta mediante instancias de una estructura de datos a las que se accede únicamente mediante subprogramas específicos. Esto aumenta la seguridad y la simplicidad.
 
 Los semáforos exigen que los procesos en espera no ocupen la CPU, esto implica que:
 
 - Un proceso en ejecución debe poder solicitar quedarse bloqueado.
+
 - Un proceso bloqueado no puede ejecutar instrucciones en la CPU.
+
 - Un proceso en ejecución debe poder solicitar que se desbloquee (se reanude) algún otro proceso bloqueado.
+
 - Deben poder existir simultáneamente varios conjuntos de procesos bloqueados.
+
 - Cada petición de bloque o desbloqueo se debe referir a alguno de estos conjuntos.
 
 Todo esto requiere el uso de servicios externos proporcionados por el sistema operativo o la librería de hebras.
@@ -246,13 +256,13 @@ Estas estructuras de datos residen en memoria compartida. Al inicio de un progra
 
 #### 2.3. Operaciones sobre los semáforos
 
-Además de la inicializacíon, solo hay dos operaciones básicas que se pueden realizar sobre una variable del tipo semáforo (que llamamos ses):
+Además de la inicializacíon, solo hay dos operaciones básicas que se pueden realizar sobre una variable del tipo semáforo (que llamamos s):
 
-- sem_wait(s)
-  1. Si el valor de s es 0, bloquear el proceso, que será reanudado después en un isntante en el que el valor ya es 1.
+- **sem_wait(s)**
+  1. Si el valor de s es 0, bloquear el proceso, que será reanudado después en un instante en el que el valor ya es 1.
   2. Decrementar el valor del semáforo en una unidad.
 
-- sem_signal(s)
+- **sem_signal(s)**
   1. Incrementar el valor de s en una unidad.
   2. Si hay procesos esperando en s, reanudar uno de ellos.
 
@@ -280,8 +290,9 @@ La solución es parecida a espera única, pero en un bucle infinito. Se utiliza 
 
 Los semáforos resuelven de una forma eficniente y sencilla el problema de exclusión mutua y problemas sencillos de sincronización, sin embargo:
 
-- los problemas de sincronización más complejos se resuelven de forma más compleja
-- al igual que los cerrojos, programas erróneos o malintencionados pueden provocar que haya procesos bloqueados indefinidamente o en estado incorrecto.
+- Los problemas de sincronización más complejos se resuelven de forma más compleja
+
+- Al igual que los cerrojos, programas erróneos o malintencionados pueden provocar que haya procesos bloqueados indefinidamente o en estado incorrecto.
 
 En la siguiente sección veremos una solución a más alto nivel sin estas limitaciones.
 
@@ -289,25 +300,25 @@ En la siguiente sección veremos una solución a más alto nivel sin estas limit
 
 #### 3.1. Introducción. Definición de monitor
 
-C.A.R. Hoare en 1947 introduce el concepto de monitor. Es un mecanismo de lato nivel que perminte definir objetos abstractos compartidos, que incluyen:
+C.A.R. Hoare en 1947 introduce el concepto de monitor. Es un mecanismo de alto nivel que perminte definir objetos abstractos compartidos, que incluyen:
 
 - Una colección de variables encapsuladas (datos) que representan un recurso compartido por varios procesos.
 
 - Un conjunto de procedimientos para manipular el recurso: afectan a las variables encapsuladas.
 
-Ambos conjuntos de elementos perminten al programador invocar los procedimientos de forma que en ellos
+Ambos conjuntos de elementos permiten al programador invocar los procedimientos de forma que en ellos:
 
-- Se garantiza el acceso en exclusión mutua a las variables encapsuladas.
-- Se implementa la sincronización requerida por el problema mediante esperas bloqueadas.
+- Se garantice el acceso en exclusión mutua a las variables encapsuladas.
+- Se implemente la sincronización requerida por el problema mediante esperas bloqueadas.
 
-Un monitor es un recurso compartido que se usa como un objeto al que se accede conscurrentemente.
+Un monitor es un recurso compartido que se usa como un objeto al que se accede concurrentemente.
 
 - El usuario solo puede acceder al recurso mediante un conjunto de operaciones.
 - El usuario ignora la/s variable/s que representan al recurso y la implementación de las operaciones asociadas.
 - La exclusión mutua en el acceso a los procedimientos del monitor está garantizada por definición.
 - La implementación del monitor garantiza que nunca dos procesos estarán ejecutando simultáneamente algún procedimiento del monitor.
 
-Las propiedades descritas de los monitores los hacen preferibles respecto de los emáforos, dado que el uso de monitores facilita el deseño e implementaciónd de programas libres de errores.
+Las propiedades descritas de los monitores los hacen preferibles respecto de los semáforos, dado que el uso de monitores facilita el diseño e implementación de programas libres de errores.
 
 - Las variables están protegidas: solo pueden leerse o modificarse desde el código del monitor.
 
@@ -315,7 +326,7 @@ Las propiedades descritas de los monitores los hacen preferibles respecto de los
 
 ##### Componentes de un monitor.
 
-- Las variables permanentes son el estado interno del monitor. Sólo pueden ser accedidas dentro del monitor. Permianecen sin modificaciones entre dos llamadas consecutivas a procedimientos del monitor.
+- Las variables permanentes son el estado interno del monitor. Sólo pueden ser accedidas dentro del monitor. Permanecen sin modificaciones entre dos llamadas consecutivas a procedimientos del monitor.
 
 - Procedimientos. Modifican el estado interno. Pueden tener variables y parámetros locales, que toman un nuevo valor en cada activación del procedimiento. Algunos constituyen una interfaz externa del monitor y podrán ser llamados por los procesos que comparten el recurso.
 
@@ -325,34 +336,40 @@ Las propiedades descritas de los monitores los hacen preferibles respecto de los
 
 *Comunicación monitor-mundo exterior*: Cuando un proceso necesita operar sobre un recurso compartido controlado por un monitor deberá realizar una llamada a uno de los procedimientos exportados por el monitor usando los parámetros actuales apropiados. Mientras el proceso está ejecutando algún proceidmiento del monitor decimos que el proceso está dentro del monitor.
 
-*Exclusión mutua*: Si un proceso P está dentro de un monitor, cualquier otro proceso Q que llame a un procedimiento de ese monitor deberá esperar hasta que P salga del mismo. Esta política de acceso asegura que las variables permanentes nunca sona ccedidas concurrentemente. El acceso exclusivo entre los procedimientos del monitor debe estar garantizado en la implementación de los monitores.
+*Exclusión mutua*: Si un proceso P está dentro de un monitor, cualquier otro proceso Q que llame a un procedimiento de ese monitor deberá esperar hasta que P salga del mismo. Esta política de acceso asegura que las variables permanentes nunca son accedidas concurrentemente. El acceso exclusivo entre los procedimientos del monitor debe estar garantizado en la implementación de los monitores.
 
 *Monitores son objetos pasivos*: Después de ejecutarse el código de inicialización, un monitor es un objeto pasivo y el código de sus procedimientos solo se ejecuta cuando estos son invocados por los procesos.
 
-*Instancias de monitores*: En algunos casos es conveniente crear múltiples instancias independientes de un monitor. Cada instancia tiene sur variables permanentes propias. La exclusión mutua ocurre en casa instancia por separado. Esto facilita mucho escribir código reentrante.
+*Instancias de monitores*: En algunos casos es conveniente crear múltiples instancias independientes de un monitor. Cada instancia tiene sus variables permanentes propias. La exclusión mutua ocurre en cada instancia por separado. Esto facilita mucho escribir código reentrante.
 
 ##### Cola del monitor para exclusión mutua
 
 El control de la exclusión mutua se basa en la existencia de la cola del monitor:
 - Si un proceso está dentro del monitor y otro intenta ejecutar un procedimiento del monitor, este último proceso queda bloqueado y se inserta en la cola del monitor.
+
 - Cuando un proceso abandona el monitor, se desbloquea un proceso de la cola, que ya puede entrar al monitor.
+
 - Si la cola del monitor está vacía, el monitor está libre y el primer proceso que ejecute una llamada a uno de sus procedimientos, entrará en el monitor.
-- Para garantizar la vivacidad del sistema, la planificación de la cola debe seguir una plítica FIFO.
+
+- Para garantizar la vivacidad del sistema, la planificación de la cola debe seguir una política FIFO.
 
 #### 3.3. Sincronización de monitores
 
 Para implementar la sincronización, se requiere de una facilidad para que los procesos hagan esperas bloqueadas, hasta que sea cierta determinada condición. Para cada condición distinta que los procesos pueden eventualmente tener que esperar en un monitor, se debe declarar una variable permanente de tipo condition. A esas variables las llamamos señales o variables de condición.
 
-Cada variable de condición tiene asociada una lista o cula inicialmente vacía de procesos en espera hasta que la condición se haga cierta.
+Cada variable de condición tiene asociada una lista o cola inicialmente vacía de procesos en espera hasta que la condición se haga cierta.
+
 Para una cualquiera de estas variables, un proceso puede invocar las operaciones wait y signal (esperar a la condición y señalar que la condición ocurre).
 
-Además, cond.queue() devuelve true si hay algún proceso esperando en la cola de cond, y false en caso contrario.
+Además, cond.queue() devuelve true si hay algún proceso esperando en la cola  cond, y false en caso contrario.
 
 Dado que los procesos pueden estar dentro del monitor, pero bloqueados:
 
 - Cuando un proceso llama a wait y queda bloqueado, se debe liberar la exclusión mutua del monitor, si no se hiciese, se produciría un interbloqueo con seguridad.
-- Cuando un proceso es reactivado después de una espera, adquiere d enuevo la exlusión mutua antes de ejecutar la sentencia siguiente a wait.
-- Más d eun proceso podrá estar dentro de monitor, aunque solo uno de ellos estará ejecutándose, el resto estarán bloqueados en variables de condición.
+
+- Cuando un proceso es reactivado después de una espera, adquiere de nuevo la exlusión mutua antes de ejecutar la sentencia siguiente a wait.
+
+- Más de un proceso podrá estar dentro de monitor, aunque solo uno de ellos estará ejecutándose, el resto estarán bloqueados en variables de condición.
 
 #### 3.5. Colas de condición con prioridad
 
@@ -360,21 +377,23 @@ Por defecto se usan colas de espera FIFO. Sin embargo a veces resulta útil disp
 
 #### 3.7. Semántica de las señales de los monitores
 
-Cuando un proceso hace signal en una cola no vacía, se denomina proceso señalador. El proceso que espera en la cola y se reactiva se denomina señalado. Suponemos que hay un código restante del monitor tras el wait y el signal. Inmediatamente después de señalar, no es posible que ambos continuen la ejecución de su código restante, ya que no se cumpliría la exclusión mutua del monitor. Uno de los dos pued einmediatamente ejecutar su código restante, pero entonces el otro no puede hacerlo. Se denomina semántica de señales a la política que establece la forma concreta en que se recuelve el conflicto tras hacerse un signal en una cola no vacía.
+Cuando un proceso hace signal en una cola no vacía, se denomina proceso señalador. El proceso que espera en la cola y se reactiva se denomina señalado. Suponemos que hay un código restante del monitor tras el wait y el signal. Inmediatamente después de señalar, no es posible que ambos continuen la ejecución de su código restante, ya que no se cumpliría la exclusión mutua del monitor. Uno de los dos puede inmediatamente ejecutar su código restante, pero entonces el otro no puede hacerlo. Se denomina semántica de señales a la política que establece la forma concreta en que se recuelve el conflicto tras hacerse un signal en una cola no vacía.
 
 - El proceso señalador continúa su ejecución tras el signal. El señalado espera bloqueado hasta que puede adquirir la EM de nuevo (SC: señalar y continuar).
 
 - El proceso señalado se reactiva inmediatamente. El señalador:
-  - abandola el monitor tras hacer el signal sin ejevutar el código después de dicho signal (SS: señalar y salir).
+  - abandona el monitor tras hacer el signal sin ejecutar el código después de dicho signal (SS: señalar y salir).
+  
   - queda bloqueado a la espera en:
     - la cola del monitor, junto con otros posibles procesos que quieren comenzar a ejecutar código del monitor (SE: señalar y esperar)
-    - una cola específica para esto, con mayor priotidad que esos procesos (SU: señalar y espera urgente)
+  
+  - una cola específica para esto, con mayor priotidad que esos procesos (SU: señalar y espera urgente)
 
 ##### Señalar y continuar
 
-El proceso señalado continúa su ejecución dentro del monitor después del signal. El proceso señalado abandola la cola de condición y espera en la cola del monitor para readquierir la EM.
+El proceso señalado continúa su ejecución dentro del monitor después del signal. El proceso señalado abandona la cola de condición y espera en la cola del monitor para readquirir la EM.
 
-Tanto el señalador como otros procesos peuden hacer falsa la condición después de que el señalado abandone la cola de condición. Por tanto, en el proceso señalado no se puede garantizar que la condición asociada a cond es cierta al terminar el cond.wait(), y por lo que es necesario volver a comprobarla entonces. Esta semántica obliga a programar la operación wait en un bucle.
+Tanto el señalador como otros procesos pueden hacer falsa la condición después de que el señalado abandone la cola de condición. Por tanto, en el proceso señalado no se puede garantizar que la condición asociada a cond es cierta al terminar el cond.wait(), y por lo que es necesario volver a comprobarla entonces. Esta semántica obliga a programar la operación wait en un bucle.
 
 ##### Señalar y salir
 
@@ -392,7 +411,7 @@ Está asegurado el estado que permite al proceso señalado continuar la ejecuci�
 
 Es similar a SE, pero se intenta corregir el problema de la falta de equitatividad indicado.
 
-El proceso señalador se bloquea justo después de ejecutar signal. El proceso señalado entra de forma inmediata en el monitor. Está asgurado el estado que perminte al rpoceso señalado continuar la ejecución del procedimiento del monitor en el que se bloqueó. El proceso señalador entra en una nueva cola de procesos que espera para acceder al monitor, que podemos llamar cola de procesos urgentes. Los porcesos de la cola de procesos urgentes tienen preferencia para acceder al monitor frente a los procesos que esperan en la cola del monitor. Es la semántica que se supone en los ejemplos vistos.
+El proceso señalador se bloquea justo después de ejecutar signal. El proceso señalado entra de forma inmediata en el monitor. Está asegurado el estado que perminte al proceso señalado continuar la ejecución del procedimiento del monitor en el que se bloqueó. El proceso señalador entra en una nueva cola de procesos que espera para acceder al monitor, que podemos llamar cola de procesos urgentes. Los procesos de la cola de procesos urgentes tienen preferencia para acceder al monitor frente a los procesos que esperan en la cola del monitor. Es la semántica que se supone en los ejemplos vistos.
 
 ##### Análisis comparativo de las diferentes semánticas
 
@@ -404,7 +423,7 @@ El proceso señalador se bloquea justo después de ejecutar signal. El proceso s
 
 #### 3.9. Verificación de programas con monitores
 
-La verificación d ela corrección de un programa concurrente con monitores requieres:
+La verificación de la corrección de un programa concurrente con monitores requiere:
 
 - Probar la corrección de cada monitor
 - Probar la corrección de cada proceso de forma aislada
@@ -413,6 +432,7 @@ La verificación d ela corrección de un programa concurrente con monitores requ
 El programador no debe conocer a priori la interfoliación concreta de llamadas a los procedimientos del monitor. El enfoque de verificación que vamos a seguir utiliza una invariante de monitor:
 
 - Establece una relación constante entre valores permitidos de las variables del monitor y/o las interfoliaciones que ocurren.
+
 - Debe ser cierto siempre, excepto cuando un proceso está ejecutando código en EM (cambiando el estado del monitor).
 
 El invariante del monitor será una función lógica que se evalua en cada estado en términos de los valores de las variables permanentes en ese estado y/o las posibles interfoliaciones que han ocurrido hasta llegar a ese estado. El invariante debe ser cierto siempre que no haya un proceso ejecutándose en el monitor. Debe ser cierto por tanto:
@@ -426,44 +446,60 @@ Justo antes de signal sobre una variable de condición, además, debe ser cierta
 
 ### 4. Soluciones software con espera ocupada para la EM
 
-En esta sección veremos diversas soluciones para lograr la exclusión mutua en una sección crítica usando variables ocmpartidas entre los procesos o hebras involucrados.
+En esta sección veremos diversas soluciones para lograr la exclusión mutua en una sección crítica usando variables compartidas entre los procesos o hebras involucrados.
+
 - Estos algoritmos usan dichas variables para hacer espera ocupada cuando sea necesario en el protocolo de entrada.
-- Los algoritmos que resuelven este problema no son triviales, y menos para más d edos procesos. En la actualidad se conocen distintas soluciones ocn distintas propiedades, veremos el algoritmo de Dekker (para 2 procesos) y el de Peterson (para 2 y para un número arbitrario de procesos).
+
+- Los algoritmos que resuelven este problema no son triviales, y menos para más de dos procesos. En la actualidad se conocen distintas soluciones con distintas propiedades, veremos el algoritmo de Dekker (para 2 procesos) y el de Peterson (para 2 y para un número arbitrario de procesos).
 - Previamente a esos algoritmos, veremos la estructura de los procesos con secciones críticas y las propiedades que deben cumplir los algoritmos.
 
 #### 4.1. Estructura de los procesos con secciones críticas
 Para analizar las soluciones a EM asumimos que un proceso que incluya un bloque considerado como secicón crítica (SC) tendrá dicho bloque estructurado en tres etapas:
 
-1. Protocolo de entrada (PE): una serie de isntrcciones que incluyen psoiblemente espera, en los casos en los que no se pueda conceder acceso a la sección crítica.
-2. Sección crítica (SC): instrucciones que solo pueden ser ejcutadas por un proceso como mucho.
+1. Protocolo de entrada (PE): una serie de instrucciones que incluyen posiblemente espera, en los casos en los que no se pueda conceder acceso a la sección crítica.
+
+2. Sección crítica (SC): instrucciones que solo pueden ser ejecutadas por un proceso como mucho.
+
 3. Protocolo de salida (PS): instrucciones que permiten que otros procesos puedan conocer que este proceso ha terminado la sección crítica.
 
 Todas las sentencias que no forman parte de ninguna de estas tres etapas se denominan resto de sentencias (RS).
 
 Para que se puedan implementar soluciones correctas al problema de EM, es necesario suponer que los procesos siempre terminan una sección crítica y emplean un intervalo de tiempo finito desde que comienzan hasta que la terminan. Durante el tiempo que un proceso se encuentra en una sección crítica, nunca:
+
 - Finaliza o aborta.
+
 - Es finalizado o abortado externamiente.
+
 - Entra en un bucle infinito.
+
 - Es bloqueado o suspendido indefinidamente de forma externamiente.
+
 
 En general, es deseable que el tiempo empleado en las secciones críticas sea el menor posible
 
 #### 4.1. Propiedades para la exclusión mutua
 
 Para que un algoritmo para EM sea correcto, se deben cumplir cada una de estas tres propiedades mínimas:
+
 1. Exclusión mutua
+
 2. Progreso
+
 3. Espera limitada
-además, hay propiedades deseables adicionales que también deben complirse:
+
+Además, hay propiedades deseables adicionales que también deben complirse:
+
 4. Eficiencia
+
 5. Equidad
-Si vien consideramos correcto un algoritmo que no sea muy eficiente o para el que no pueda demostrarse claramente la equidad.
+
+Si bien consideramos correcto un algoritmo que no sea muy eficiente o para el que no pueda demostrarse claramente la equidad.
 
 ##### Propiedad de exclusión mutua
 
-Es la propiedad fundamental apra el problema de la sección crítica. Establece que en cada instante de tiempo, y para cada sección crítica existente, habrá como mucho un proceso ejecutando alguna sentencia de dicha región crítica.
+Es la propiedad fundamental para el problema de la sección crítica. Establece que en cada instante de tiempo, y para cada sección crítica existente, habrá como mucho un proceso ejecutando alguna sentencia de dicha región crítica.
 
-En esta sección veremos soluciones de memoria compartida que permiten un único proceso en una sección crítica. Si bien esta es la propiedad fundamiental, no puede conseguise de cualquier forma, y para ello se establecen las otras dos condiciones mínimas que veremos a continuación.
+En esta sección veremos soluciones de memoria compartida que permiten un único proceso en una sección crítica. Si bien esta es la propiedad fundamental, no puede conseguirse de cualquier forma, y para ello se establecen las otras dos condiciones mínimas que veremos a continuación.
 
 
 ##### Propiedad de progreso
@@ -471,14 +507,16 @@ En esta sección veremos soluciones de memoria compartida que permiten un único
 Consideremos una SC en un instante en el cual no hay ningún proceso ejecutándola, pero sí hay procesos en el PE compitiendo por entrar a la SC. La propiedad de progreso establece:
 
 Un algortimo de EM debe de estar diseñado de forma tal que:
-1. Después de un intervalo de tiempo finito desde que ingresó en el primero proceso al PE, uno de los procesos en el mismo podrá acceder al SC.
+
+1. Después de un intervalo de tiempo finito desde que ingresó en el primero proceso al PE, uno de los procesos en el mismo podrá acceder a la SC.
+
 2. La sección del proceso anterior es completamente independiente del comportamiento de los procesos que durante todo ese intervalo no han estado en SC ni han intentado acceder.
 
 Cuando la condición (1) no se da, se dice que ocurre un interbloqueo, ya que todos los procesos en el PE quedan en espera ocupada indefinidamente sin que ninguno pueda avanzar.
 
 ##### Espera limitada
 
-Supongamos que un proceso emplea un intervalo de tiempo en el PE intentando acceder a un SC. Durante ese intervalo de itmpo, cualquier otro proceso activo puede entrar un número arbitrario de veces n a ese mismo PE y lograr acceso a la SC (incluyendo la posibilidad de que n = 0). La pripiedad de espera limitada establece que:
+Supongamos que un proceso emplea un intervalo de tiempo en el PE intentando acceder a un SC. Durante ese intervalo de tiempo, cualquier otro proceso activo puede entrar un número arbitrario de veces n a ese mismo PE y lograr acceso a la SC (incluyendo la posibilidad de que n = 0). La propiedad de espera limitada establece que:
 
 Un algoritmo de exclusión mutua debe estar diseñado de forma que n nunca será superior a un valor máximo determinado.
 
@@ -488,30 +526,40 @@ Esto implica que las esperas en el PE siempre serán finitas.
 
 Las propiedades deseables son estas:
 
-- Eficiencia. Los protocolos de entrara y salida deben emplear poco tiempo de procesamiento (excluyendo las esperas ocupadas del PE), y las variables compartidas deben usar poca cantidad de memoria.
+- **Eficiencia**. Los protocolos de entrara y salida deben emplear poco tiempo de procesamiento (excluyendo las esperas ocupadas del PE), y las variables compartidas deben usar poca cantidad de memoria.
 
-- Equidad: En los casos en que haya varios procesos compitiendo por acceder auna SC (de forma repetida en el tiempo), no debería existir la posibilidad de que sistemáticamente se perjudique a algunos y se beneficie a otros.
+- **Equidad**: En los casos en que haya varios procesos compitiendo por acceder a una SC (de forma repetida en el tiempo), no debería existir la posibilidad de que sistemáticamente se perjudique a algunos y se beneficie a otros.
 
 #### 4.3. Refinamiento sucesivo de Dijsktra
 
 El refinamiento sucesivo de Dijsktra hace referencia a una serie de algoritmos que intentan resolver el problema de la exclusión mutua.
+
 - Se comienza desde una versión simple, incorrecta, y se hacen sucesivas mejoras para intentar cumplir las tres propiedades.
+
 - La versión final correcta se denomina algoritmo de Dekker.
+
 - Por simplicidad, veremos algoritmos para dos procesos únicamente.
+
 - Se asume que hay dos procesos, P0 y P1, cada uno de ellos ejecuta un bucle infinito conteniendo: protocolo de entrada, sección crítica, protocolo de salida y otras sentencias del proceso.
 
 #### 4.4. Algoritmo de Dekker
 
 El algortimo de Dekker es correcto y se puede interpretar como el final del refinamiento sucesivo de Dijkstra.
+
 - Al igual que en la versión 5, cada proceso incorpora una espera de cortesía durante la cual le cede al otro la posiblidad de entrar al SC cuando ambos coinciden en PE.
+
 - Para evitar interbloqueos, la espera de cortesía solo la realiza uno de los dos procesos, de forma alterna, mediante una variable turno.
-- La variable de turno permite tambíen saber cuando acabar la espera de cortesía, qeu se implementa mediante un bucle.
+
+- La variable de turno permite tambíen saber cuando acabar la espera de cortesía, que se implementa mediante un bucle.
 
 #### 4.5. Algoritmo de Peterson
 
 Este es otro algoritmo correcto para EM, más simple que el de Dekker.
+
 - Al igual que el de Dekker, usa dos variables lógicas que expresan la presencia de cada proceso en el PE o la SC, más una variable de turno que permite romper el interbloqueo en caso de acceso simultáneo al PE.
+
 - La asignación a la variable de turno se hace al inicio del PE en lugar de en el PS, con lo cual, en caso de acceso simultáneo al PE, el segundo proceso en ejecutar la asignación (atómica) al turno da preferencia al otro (el primero en llegar).
+
 - A diferencia del algoritmo de Dekker, el PE no usa dos bucles anidados, sino que unifica ambos en uno solo.
 
 ### 5. Soluciones hardware con espera ocupada (cerrojos) para EM
@@ -519,16 +567,23 @@ Este es otro algoritmo correcto para EM, más simple que el de Dekker.
 #### 5.1. Introducción
 
 Los cerrojos constituyen una solución hardware basada en espera ocupada que puede usarse en procesos concurrentes con memoria compartida para solucionar el problema de la exclusión mutua.
-- La espera ocupada constituye un blucke que se ejevuta hasta que ningún otro proeso esté ejecutando intrucciones de sección crítica.
+
+- La espera ocupada constituye un bucle que se ejecuta hasta que ningún otro proceso esté ejecutando intrucciones de sección crítica.
+
 - Existe un valor lógico en una posición de memoria compartida (llamado cerrojo) que indica si algún proceso está en sección crítica.
+
 - En el protocolo de salida se actualiza el cerrojo de forma que se refleje que la SC ha quedado libre.
 
 #### 5.2. La instrucción TestAndSet
 
 Es una instrucción máquina disponible en el repertorio de algunos procesadores. Admite como argumento la dirección de memoria de la variable lógica que actúa como cerrojo. Se invoca como una función desde LLPP de alto nivel, y ejecuta estas acciones:
+
 1. Lee el valor anterior del cerrojo
+
 2. Pone el cerrojo a true
+
 3. Devuelve el valor anterior del cerrojo
+
 Durante su ejecución, ninguna otra instrucción ejecutada por otro proceso puede leer ni escribir la variable lógica: por tanto, se ejecuta de forma atómica.
 
 #### 5.3 Desventajas de los cerrojos
@@ -536,7 +591,9 @@ Durante su ejecución, ninguna otra instrucción ejecutada por otro proceso pued
 Los cerrojos constituyen una solución válida para EM que consume poca memoria y es eficiente en tiempo, sin embargo:
 
 - Las esperas ocupadas consume tiempo de CPU que podría dedicarse a otros procesos para hacer trabajo útil.
+
 - Se puede acceder directamente a los cerrojos y por tanto un programa erróneo o escrito malintencionadamente puede poner un cerrojo en un estado incorrecto, pudiendo dejar a otros procesos indefinidamente en espera ocupada.
+
 - No se cumplen condiciones de equidad.
 
 #### 5.4. Uso de los cerrojos
