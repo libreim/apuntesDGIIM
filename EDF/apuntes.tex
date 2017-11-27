@@ -82,7 +82,7 @@ Algunas soluciones son:
 \[ 
 \begin{array}{ll}
   x_1(t) = 2 & x_2(t) = -2 \\
-  x_3(t) = \sqrt{2}\sen t & x_4(t) = \sqrt{2}\cos t \\
+  x_3(t) = \sqrt{2}\sin t & x_4(t) = \sqrt{2}\cos t \\
   x_5(t) = \sqrt{2}\cos(t+\alpha) \text{ con } \alpha\in\R
 \end{array}
 \]
@@ -532,12 +532,16 @@ Nota: Siempre existe un factor integrante.
 
 Sea una ecuación diferencial de la forma $x' = Ax+b$ donde $A: I \ \to \mathscr{M}_n (\R)$ y $b:I \ \to \R ^n$ continuas.
 
-\begin{nota}
+\begin{nota} Sabemos del álgebra lineal que:
 
+  \begin{enumerate}
+  \item $\mathscr{M}_n (\R) \cong \R ^{n^2}$
+  \item $\mathscr{M}_n (\R) \cong \mathscr{L}(\R^n)$
+  \end{enumerate}
+
+  Y que en $\mathscr{M}_n(\R)$ se puede definir una norma mediante
   \[
-  M_n (\R) \sim \R ^{n^2} \\
-  M_n (\R) \sim L_M : \R ^n \ \to \ \R ^n\\
-  ||M|| = max { |Mx| : x \in \R ^n , \ |x| = 1}
+  \|M\| = \max { \|Mx\| : x \in \R ^n , \ |x| = 1}
   \]
 
   Propiedades:
