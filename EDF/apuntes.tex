@@ -525,7 +525,7 @@ Son ecuaciones de la forma:
 Con $I$ un intervalo abierto de $\R$, $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$.
 Si $b = 0$, se dice que la ecuación es homogénea. En otro caso, es completa.
 
-\begin{nth}
+\begin{nth} \label{unicidadeclinsup}
   Sean $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$. Dado $t_0\in I$, y dados $\alpha_i\in\R, \ i=0,\dots,k-1$,
   existe una única función $x\in\mathscr{C}^k(I)$ que verifica \eqref{eclinealsup} y tal que $x^{i)}(t_0) = \alpha_i$.
 \end{nth}
@@ -562,6 +562,41 @@ Por tanto, una condición suficiente para la independencia lineal es
 Observamos que
 
 \[ \{ t, t^2, \dots, t^n \} \text{ son l.i. } \ \forall n\in \N \]
+
+luego $\dim \mathscr{C}^k(I) = \infty$.
+
+Ahora, consideramos el operador lineal
+
+\[
+\begin{array}{llll}
+  L: & \mathscr{C}^k(I) & \to & \mathscr{C}(I)\\
+    & x & \mapsto & x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x
+\end{array}
+\]
+
+y vemos que el conjunto de soluciones de \eqref{eclinealsup} es $\ker L$. Por otro lado,
+consideramos
+
+\[
+\begin{array}{llll}
+  \Phi_{t_0}: & \ker L & \to & \R^k\\
+    & x & \mapsto & 
+  \begin{pmatrix}
+    x(t_0)\\
+    \vdots\\
+    x^{k-1)}(t_0)
+  \end{pmatrix}
+\end{array}
+\]
+
+que es:
+
+\begin{itemize}
+\item Inyectiva por la unicidad de soluciones dados $t_0$ y $\alpha_i$, dada por \ref{unicidadeclinsup}.
+\item Sobreyectiva por la existencia dada por el mismo teorema.
+\end{itemize}
+
+Concluimos que $\dim \ker L = k$.
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
