@@ -489,20 +489,6 @@ Entonces $f$ es de clase 1 y $\dfrac{\partial f}{\partial x_i} = \displaystyle\i
 
 A esta función $F$ se la suele llamar una función potencial $\nabla F = (P,Q)$
 
-\begin{nth}
-Sea $g: D\times [a,b]$ de clase 1, tal que: 
-
-\[
-(x_1,..., x_n, t) \to g(x_1,... x_n, t)
-\]
-Sea $f$ una función tal que: 
-\[
-f(x_1,...,x_n) = \int _a ^b g \ dt
-\]
-Entonces $f$ es de clase 1 y $\frac{\partial f}{\partial x_i} = \int _a ^b \frac{\partial g}{\partial x_i}$
-
-
-\end{nth}
 \begin{ndef}
 Sean $P,Q \in \mathscr{C}^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
 \end{ndef}
@@ -519,14 +505,63 @@ Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice
 \item $\mu(t,x) \neq 0 \ \forall (t,x) \in D$
 \item $\mu \in \mathscr{C}^1 (D)$
 \item $\mu (t,x)P(t,x) + \mu (t,x)Q(t,x) x' = 0$ es una ecuación exacta.
-
-Nota: Siempre existe un factor integrante.
 \end{enumerate}
+
+%%% TODO: justificar esta nota
+\begin{nota}
+  Siempre existe un factor integrante.
+\end{nota}
 
 \end{ndef}
 
-\subsection{Ecuaciones lineales de orden k}
+\subsection{Ecuaciones lineales de orden $k$}
 
+Son ecuaciones de la forma:
+
+\[ 
+  x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = b(t) \tag{L} \label{eclinealsup}
+\]
+
+Con $I$ un intervalo abierto de $\R$, $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$.
+Si $b = 0$, se dice que la ecuación es homogénea. En otro caso, es completa.
+
+\begin{nth}
+  Sean $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$. Dado $t_0\in I$, y dados $\alpha_i\in\R, \ i=0,\dots,k-1$,
+  existe una única función $x\in\mathscr{C}^k(I)$ que verifica \eqref{eclinealsup} y tal que $x^{i)}(t_0) = \alpha_i$.
+\end{nth}
+
+\begin{proof}
+  Este teorema se verá como un caso particular del teorema para sistemas de ecuaciones lineales.
+\end{proof}
+
+\subsubsection{Independencia lineal de funciones}
+Si $f_0, \dots, f_n\in \mathscr{C}^n(I)$, consideramos
+
+\[
+\left\{\begin{array}{lcl}
+  \alpha_0 f_0(t) + \dots + \alpha_n f_n(t) & = & 0\\
+  \vdots\\
+  \alpha_0 f^{n)}_0(t) + \dots + \alpha_n f^{n)}_n(t) & = & 0
+\end{array}\right.
+\]
+
+que para cada $t\in I$ da un sistema de ecuaciones lineal homogéneo con $n+1$ ecuaciones e incógnitas. Si para
+algún $t\in I$ la única solución es la trivial, lo será para todo $t\in I$.
+
+Por tanto, una condición suficiente para la independencia lineal es
+
+\[
+\begin{vmatrix}
+  f_0(t) & \dots & f_n(t)\\
+  \vdots &  & \vdots\\
+  f_0^{n)}(t) & \cdots & f_n^{n)}(t)
+\end{vmatrix} \ne 0 \text{ para algún } t\in I
+\]
+
+\subsubsection{Estructura del conjunto de soluciones}
+Observamos que
+
+\[ \{ t, t^2, \dots, t^n \} \text{ son l.i. } \ \forall n\in \N \]
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
