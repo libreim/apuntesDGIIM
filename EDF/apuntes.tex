@@ -518,9 +518,12 @@ Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice
 
 Son ecuaciones de la forma:
 
-\[ 
+\begin{equation}
   x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = b(t) \tag{L} \label{eclinealsup}
-\]
+\end{equation}
+\begin{equation}
+  x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = 0 \tag{H} \label{eclinhom}
+\end{equation}
 
 Con $I$ un intervalo abierto de $\R$, $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$.
 Si $b = 0$, se dice que la ecuación es homogénea. En otro caso, es completa.
@@ -551,12 +554,14 @@ algún $t\in I$ la única solución es la trivial, lo será para todo $t\in I$.
 Por tanto, una condición suficiente para la independencia lineal es
 
 \[
-\begin{vmatrix}
+\mathcal{W}(f_0,\dots,f_n)(t) = \begin{vmatrix}
   f_0(t) & \dots & f_n(t)\\
   \vdots &  & \vdots\\
   f_0^{n)}(t) & \cdots & f_n^{n)}(t)
 \end{vmatrix} \ne 0 \text{ para algún } t\in I
 \]
+
+A $\mathcal{W}(f_0,\dots,f_n)$ se le llama \emph{wronskiano} de $f_0,\dots,f_n$. Cabe notar que esta no es condición suficiente.
 
 \subsubsection{Estructura del conjunto de soluciones}
 Observamos que
@@ -574,8 +579,8 @@ Ahora, consideramos el operador lineal
 \end{array}
 \]
 
-y vemos que el conjunto de soluciones de \eqref{eclinealsup} es $\ker L$. Por otro lado,
-consideramos
+y vemos que el conjunto de soluciones de \eqref{eclinhom} es $\ker L$, y por tanto tiene
+estructura de subespacio vectorial. Por otro lado, consideramos el operador lineal
 
 \[
 \begin{array}{llll}
@@ -592,11 +597,84 @@ consideramos
 que es:
 
 \begin{itemize}
-\item Inyectiva por la unicidad de soluciones dados $t_0$ y $\alpha_i$, dada por \ref{unicidadeclinsup}.
-\item Sobreyectiva por la existencia dada por el mismo teorema.
+\item Inyectivo por la unicidad de soluciones dados $t_0$ y $\alpha_i$, dada por \ref{unicidadeclinsup}.
+\item Sobreyectivo por la existencia dada por el mismo teorema.
 \end{itemize}
 
-Concluimos que $\dim \ker L = k$.
+Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker L = k$.
+
+\begin{nprop}
+  Sean $I$ un intervalo y $\{\varphi_1,\dots,\varphi_n\}$ soluciones de \eqref{eclinealsup}. Son equivalentes:
+  \begin{nlist}
+  \item $\{\varphi_1,\dots,\varphi_n\}$ son un sistema fundamental de soluciones, es decir, una base del espacio de soluciones.
+  \item $\mathcal{W}(\varphi_0,\dots,\varphi_n)(t) \ne 0 \ \ \forall t\in I$
+  \item $\exists t_0\in I \ \ \mathcal{W}(\varphi_0,\dots,\varphi_n)(t_0) \ne 0$
+  \end{nlist}
+\end{nprop}
+
+\begin{proof}
+  $ii)\implies iii)$ es trivial y $iii)\implies i)$ está probado en la sección anterior. Probemos $i) \implies ii)$.
+
+  Si $\sum_i \alpha_i \varphi_i = 0 \implies \alpha_i = 0 \ \ \forall i=1,\dots,n$ y tenemos
+
+  \[
+  \left\{\begin{array}{lcl}
+    \sum_i \alpha_i \varphi_i(t_0) & = & 0\\
+    \vdots\\
+    \sum_i \alpha_i \varphi^{n-1)}_i(t_0) & = & 0
+  \end{array}\right.
+  \]
+
+  buscamos la solución que en $t_0\in I$ verifica $x^{i)}(t_0) = 0 \ \forall i=0,\dots,n-1$. La solución $x = 0$
+  lo verifica y es la única por \ref{unicidadeclinsup}. Entonces, $x = \sum_i \alpha_i \varphi_i = 0 \implies \alpha_i = 0$ y
+  el sistema solo tiene la solución trivial para todo $t_0\in I$.
+  \end{proof}
+
+Ahora, vamos a estudiar el conjunto de soluciones de la ecuación completa \eqref{eclinealsup}.
+Llamamos
+
+\[ Z_b = \{\text{soluciones de \eqref{eclinealsup}}\} = L^{-1}(b) = x_p + \ker L \]
+
+Por lo que $Z_b$ tiene estructura de subespacio afín.
+
+Para hallar la solución particular $x_p$, usamos el método de variación de las constantes.
+Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i$ tales que
+
+\[ 
+\left\{\begin{array}{l}
+  \sum_{i=1}^n c_i'(t) \varphi_i(t) = 0\\
+  \vdots\\
+  \sum_{i=1}^n c_i'(t) \varphi_i^{n-1}(t) = 0
+\end{array} \tag{C} \label{cond}\right.
+\]
+
+Entonces,
+
+\[
+\begin{array}{lcl}
+  x_p'(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i(t)} + \sum_{i=1}^n c_i(t) \varphi_i'(t)\\
+  x_p''(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i'(t)} + \sum_{i=1}^n c_i(t) \varphi_i''(t)\\
+  \vdots\\
+  x_p^{n)}(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i^{n-1)}(t)} + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
+\end{array}
+\]
+
+Las condiciones dadas en \eqref{cond}, para cada $t\in I$, forman un sistema compatible determinado, por ser $\mathcal{W}(\varphi_1,\dots,\varphi_n)(t) \ne 0 \ \forall t\in I$.
+Por la regla de Cramer:
+
+\[
+c_i'(t) = 
+\frac{\begin{vmatrix}
+  \varphi_1(t) & \dots & \stackrel{i)}{0} & \dots & \varphi_n(t)\\
+  \varphi_1' & \dots & 0 & \dots & \varphi_n'(t)\\
+  \vdots & & \vdots & & \vdots\\
+  \varphi_1^{n-1)}(t) & \dots & b(t) & \dots & \varphi_n^{n-1)}(t)\\
+\end{vmatrix}}{\mathcal{W}(\varphi_1,\dots,\varphi_n)(t)} \in \mathscr{C}(I)
+\]
+
+y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivamente, solución de \eqref{eclinealsup}, como queríamos.
+
+
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
