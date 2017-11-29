@@ -638,10 +638,11 @@ Llamamos
 Por lo que $Z_b$ tiene estructura de subespacio afín.
 
 Para hallar la solución particular $x_p$, usamos el método de variación de las constantes.
+
 Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i$ tales que
 
 \[ 
-\left\{\begin{array}{l}
+\left\{\begin{array}{>{\displaystyle}l}
   \sum_{i=1}^n c_i'(t) \varphi_i(t) = 0\\
   \vdots\\
   \sum_{i=1}^n c_i'(t) \varphi_i^{n-1}(t) = 0
@@ -650,14 +651,14 @@ Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i$ tales que
 
 Entonces,
 
-\[
-\begin{array}{lcl}
-  x_p'(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i(t)} + \sum_{i=1}^n c_i(t) \varphi_i'(t)\\
-  x_p''(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i'(t)} + \sum_{i=1}^n c_i(t) \varphi_i''(t)\\
+
+\begin{align*}
+  x_p'(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i(t)} + \sum_{i=1}^n c_i(t) \varphi_i'(t)\\
+  x_p''(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i'(t)} + \sum_{i=1}^n c_i(t) \varphi_i''(t)\\
   \vdots\\
-  x_p^{n)}(t) & = & \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i^{n-1)}(t)} + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
-\end{array}
-\]
+  x_p^{n)}(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i^{n-1)}(t)} + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
+\end{align*}
+
 
 Las condiciones dadas en \eqref{cond}, para cada $t\in I$, forman un sistema compatible determinado, por ser $\mathcal{W}(\varphi_1,\dots,\varphi_n)(t) \ne 0 \ \forall t\in I$.
 Por la regla de Cramer:
@@ -710,7 +711,24 @@ Sea una ecuación diferencial de la forma $x' = Ax+b$ con $A: I \to \mathscr{M}_
 
 \end{ndef}
 
-Sea $f\in C([a,b], \R ^n ) \ \implies \ \int_a ^b f(t) dt = \left(\int _a ^b f_i (t) dt\right) _{i = 1..n} $ con $f = (f_i)_{i = 1...n}$ y además, $ \abs{ \int _a ^b f(t) dt } \leq \int_a ^b \abs{f(t)} dt $
+\begin{ndef}
+  Sea $f\in C([a,b], \R ^n )$, con componentes integrables. Definimos
+  \[ \int_a ^b f(t) dt = \left(\int _a ^b f_i (t) dt\right) _{i = 1..n} \]
+\end{ndef}
+
+\begin{nprop}
+  En las condiciones de la definición anterior,
+  \[ \left\|\int _a ^b f(t) dt\right\| \leq \int_a ^b \|f(t)\| dt \]
+\end{nprop}
+
+\begin{proof}
+\begin{align*}
+  \left\|\int _a ^b f(t) dt\right\| &=  \left\| \lim_n \sum_{k=1}^n f(t_{n,k})(t_{n,k} - t_{n,k-1}) \right\|\\
+  & = \lim_n \left\|  \sum_{k=1}^n f(t_{n,k})(t_{n,k} - t_{n,k-1}) \right\|\\
+  & \le \lim_n  \sum_{k=1}^n \left\| f(t_{n,k}) \right\|(t_{n,k} - t_{n,k-1})\\
+  & = \int_a ^b \|f(t)\| dt
+\end{align*}
+\end{proof}
 
 \begin{nth}
 
