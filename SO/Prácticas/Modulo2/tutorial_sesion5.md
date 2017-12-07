@@ -369,7 +369,7 @@ sigprocmask(SIG_UNBLOCK, &set, NULL);
 Este fragmento de código crea una nueva máscara(también llamado conjunto de señales), *set*, al que le añade la señal *SIGINT*. Mediante el uso de *sigprocmask*, desbloquea todas las señales que contienen la máscara *set* dada como argumento. En este caso, se desbloquea la señal *SIGINT*, que es la que contenía la máscara.
 
 Para finalizar este documento, vamos a ilustrar un ejemplo algo más elaborado que el código anterior. El ejemplo corresponde al código del ejercicio 4 de la sesión 5 de las pŕacticas de Sistemas Operativos. 
-Su funcionamiento es sencillo, desactiva la señal SIGTERM y le dice al proceso que tenga como máscara una que hemos creado y modificado con *sigprocmask*. El ejemplo es de poca utilidad, pero tiene un buen valor ilustrativo de la función *sigprocmask*.
+Su funcionamiento es sencillo, desactiva la señal SIGTERM y la vuelve a activar después de una pausa de 10 segundos. El ejemplo es de poca utilidad, pero tiene un buen valor ilustrativo de la función *sigprocmask*.
 ~~~c
 // tarea12.c
 
@@ -420,7 +420,7 @@ int main (int argc, char *argv[])
     //10 segundos en los que podemos mandarle la señal SIGTERM que la tendrá en cuenta cuando la vuelva a activar
     sleep (10);
 
-    //El proceso toma como suya la máscara conj_mascaras_original
+    //El proceso toma como suya la máscara conj_mascaras_original, así restauramos la señal SIGTERM
     if (sigprocmask(SIG_SETMASK, &conj_mascaras_original, NULL) < 0) {
        perror ("segundo sigprocmask");
        exit(EXIT_FAILURE);
@@ -438,13 +438,13 @@ La explicación del código viene implícita en el mismo mediante comentarios, s
 ~~~c
 sigprocmask(SIG_BLOCK, &conjunto_mascaras, &conj_mascaras_original)
 ~~~
-Esta orden, mediante *SIG_BLOCK*, bloquea las señales que contiene conjunto_mascaras, en nuestro caso, SIGTERM. Dichas señales bloqueadas las almacena en la máscara de señales *conj_mascaras_original* dado como tercer argumento.
+Esta orden, en primer lugar, se guarda la máscara de señales actual del proceso en *conj_mascaras_original*. Después, se bloquea la señal contenida en *conjunto_mascaras* y se toma este mismo conjunto como la máscara de señales para el prroceso
 
 En segundo lugar:
 ~~~c
 sigprocmask(SIG_SETMASK, &conj_mascaras_original, NULL)
 ~~~
-Como el tercer argumento es NULL, trabajamos sobre *conj_mascaras_original*. La orden *SIG_SETMASK* le dice al proceso que haga suya, como máscara de señales, *conj_mascaras_original*.
+Como el tercer argumento es NULL, trabajamos sobre *conj_mascaras_original*. La orden *SIG_SETMASK* le dice al proceso que haga suya, como máscara de señales, *conj_mascaras_original*. Así, nos hacemos con la antigua, que no tenía la señal *SIGTERM* bloqueada
 
 
 <!--El objetivo de este documento ha sido explicar, como buenamente he podido, el manejo de señales de la sesión 5 de SO, dado que el guión de prácticas apenas contiene la sintaxis de las instrucciones acompañada de algún ejemplo suelto. No obstante, al información es válida para cualquier tarea de manejo de señales en C. Todos los códigos recogidos en el documento son de mi autoría, a excepción de los citados con la correspondiente referencia. Eres libre de añadir, editar y compartir el documento, perteneciente al repositorio de apuntes de github.com/libreim. ~~Víctor Castro Serrano, curso 2017-2018, DGIIM, UGR.-->
