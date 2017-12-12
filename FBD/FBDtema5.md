@@ -145,3 +145,59 @@ En los índices BITMAP, para cada valor que toma la clave almacena una secuenia 
 | Ineficiente para consultas usando predicados OR   | Eficiente para consultas usando predicados OR  |
 
 
+## Acceso directo
+
+El acceso directo es una forma de acceder a un registro almacenado. En este caso, no tenemos estructura adicional sino que usamos un algoritmo para identificar la posición del registro deseado. Para ello, debemos tener un campo que identifique unívocamente al registro.
+
+Lo usual es qu eno se pueda establecer una clave física totalmetne correlativa y única, por lo que nuestro algoritmo deberá tener una entrada de un campo clave y proporcionará una salida que será un valor entero positivo transformable en RID.
+
+Estos algoritmos de direccionamiento no suelen mantener el orden de la clave. Los registros no están almacenados según el orden de su clave física. Es por ello por lo que tendremos problemas a la hora de recuperar intervalos de datos.
+
+Los algoritmos usados son variados. Si la clave es alfanumérica, se transforma a un valor numérico. Algunos comunes son los de los cuadrados centrales, congruencias, desplazamiento o conversión de base.
+
+Estos algoritmos tienen varios problemas:
+* Es muy dificil encontrar una transformación que dé un valor entero positivo en un rango de valores limitado tal que dos claves diferentes den siempre valores distintos.
+
+* Producen huecos , zonas vacías del rango de salida, no asignadas por el algoritmo, que generan huecos en el fichero de datos.
+
+* Para gestionar colisiones y huecos tenemos que combinar acceso directo y listas de colisión, que mantienen los registros con claves que producen colisión en dichas lista. Si estas listas crecen el acceso directo no resulta adecuado pues hay que mantener las listas y la zona de desbordamiento es casi como el fichero original.
+
+## Hashing básico
+
+Aparece para solucionar el problema del acceso directo. Ya que los valores de las claves no estaban uniformemente distribuidos en un intervalo, sino que se acumulan en una parte de él, lo que se hace es asignar más espacio a esa parte.
+
+Así, se divide el fichero en _buckets_ (cubos) y el algoritmo asingará cubos, no direcciones concretos. En cada bucket habrá más de un registro y ciertos rangos de valores tendrán asignados más buckets que otros. Complementamos esto con el uso de cubos de desbordamiento.
+
+Tendremos como parámetros por tanto:
+* Número de cubos
+* Tamaño de los cubos
+* La transformada clave/dirección, que tiene en cuenta la distrubución de la clave para que los cubos queden equitativamente rellenos.
+
+
+Para _insertar_ un registro, trasnformamos la clave, localizamos su cubo, se inserta si hay sitio y si no se sitúa en el cubo de desbordamiento conectando el cubo a donde realmente le corresponde el registro.
+
+Para _buscar_ un registro, transformamos la clave, localizamos su cubo y dentro del cubo buscamos secuencialmente y luego en los cubos de desbordamiento.
+
+## Hashing dinámico
+
+El hashing básico tiene el problema de que hay que conocer la distribución previa de las claves para asignar los buckets, de lo contrario sigue habiendo huecos y colisiones. Además, al aumentar el número de registro,s hay más registros en las páginas de desbordamiento y a veces hay que reorganizar los datos.
+
+El Hashing dinámico trabaja partiendo de una configuración uniforme y de pocos cubos y generando los restantes cuando los necesite, asignando a los rangos conforme la afluencia de registros lo pide.
+
+¿Cómo se hace?
+
+El valor transformado del campo clave da una entrada de una tabla índice que está en memoria. Allí está la dirección del cubo donde están los registros que tienen asociado este valor transformado (puede que varias entradas de la tabla lleven al mismo cubo). Cuando se insertan más registros, se generan nuevos cubos y cambian las saldias de la tabla índice.
+
+Partimos de:
+* k una clave física para direccionar
+* k' = h(k) un entero en un intervalo
+* n un número de bits que tiene k' en binario
+* d, los primeros d dígitos de k', que seleccionan el cubo donde está el registro(pseudoclave)
+* $b < d <= n$, pues inicialmente el archivo tiene $2^b$ cubos distintos y como máximo tendrá $2^d$.
+
+Entonces, si tenemos una tabla índice con $2^d$ filas, en la primera columna se sitúan las posibles soluciones de $d$ dígitos binarios (d es llamada la profundidad global de la tabla). Entonces, las entradas cuyos $b$ primeros dígitos son iguales apuntan al mismo cubo. Todos los cubos suelen tener profundidad local igual a b. Por último, al llenar un cubo se divide en dos, poniendo en uno los registros con el dígito $b+1$ de k' a 0 y en otro los que tienen el dígito $b+1$ igual a 1. Aumenta entonces la profundidad local en uno.
+
+De este modo, solventamos los problemas del acceso directo, aunque tenemos inconvenientes pues tenemos que usar una tabla índice adicional( y por tanto acceder más a disco si no cabe en memoria) , y el tamaño de la tabla depende de $d$ (primeros dígitos de $k' = h(k)$. 
+
+
+
