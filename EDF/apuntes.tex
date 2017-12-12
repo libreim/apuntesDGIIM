@@ -606,7 +606,7 @@ que es:
 Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker L = k$.
 
 \begin{ndef}[Sistema fundamental de soluciones]
-  Un \emph{sistema fundamental de soluciones} de \eqref{eclinealsup} es una base del espacio vectorial de soluciones de \eqref{eclinealsup}.
+  Un \emph{sistema fundamental de soluciones} de \eqref{eclinhom} es una base del espacio vectorial de soluciones de \eqref{eclinhom}.
 
   \begin{nota}
     En ocasiones usaremos las siglas SFS.
@@ -614,7 +614,7 @@ Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker 
 \end{ndef}
 
 \begin{nprop}
-  Sean $I$ un intervalo y $\{\varphi_1,\dots,\varphi_n\}$ soluciones de \eqref{eclinealsup}. Son equivalentes:
+  Sean $I$ un intervalo y $\{\varphi_1,\dots,\varphi_n\}$ soluciones de \eqref{eclinhom}. Son equivalentes:
   \begin{nlist}
   \item $\{\varphi_1,\dots,\varphi_n\}$ son un SFS.
   \item $\mathcal{W}(\varphi_0,\dots,\varphi_n)(t) \ne 0 \ \ \forall t\in I$
@@ -654,8 +654,9 @@ Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i$ tales que
 \[ 
 \left\{\begin{array}{>{\displaystyle}l}
   \sum_{i=1}^n c_i'(t) \varphi_i(t) = 0\\
+  \sum_{i=1}^n c_i'(t) \varphi_i'(t) = 0\\
   \vdots\\
-  \sum_{i=1}^n c_i'(t) \varphi_i^{n-1}(t) = 0
+  \sum_{i=1}^n c_i'(t) \varphi_i^{n-1}(t) = b(t)
 \end{array} \tag{C} \label{cond}\right.
 \]
 
@@ -666,7 +667,7 @@ Entonces,
   x_p'(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i(t)} + \sum_{i=1}^n c_i(t) \varphi_i'(t)\\
   x_p''(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i'(t)} + \sum_{i=1}^n c_i(t) \varphi_i''(t)\\
   \vdots\\
-  x_p^{n)}(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i^{n-1)}(t)} + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
+  x_p^{n)}(t) & = b(t) + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
 \end{align*}
 
 
@@ -683,7 +684,13 @@ c_i'(t) =
 \end{vmatrix}}{\mathcal{W}(\varphi_1,\dots,\varphi_n)(t)} \in \mathscr{C}(I)
 \]
 
-y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivamente, solución de \eqref{eclinealsup}, como queríamos.
+y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivamente, solución de \eqref{eclinealsup}, como queríamos:
+
+\begin{align*}
+  x_p^{k)} + a_{k-1}(t)x_p^{k-1)} + \dots + a_1(t)x_p' + a_0(t)x_p =\\
+  b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t) + a_{k-1}(t)\sum_{i=1}^k c_i(t) \varphi_i^{k-1)}(t) + \dots + a_{0}(t)\sum_{i=1}^k c_i(t) \varphi_i(t) =\\
+  b(t) + \sum_{i=1}^k c_i(t) \left[ \sum_{j=1}^k\underbrace{ \left( \varphi_j^{k)} + \sum_{t=1}^{k-1}a_t \varphi_j^{t)} \right)}_{=0 \text{ ($\varphi_j$ solución de \eqref{eclinhom})} }  \right]
+\end{align*}
 
 
 
