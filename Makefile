@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 YARN := yarn
-VENDOR_DIR = assets/vendor/
+VENDOR_DIR = assets/vendor
 JEKYLL := jekyll
 
 PROJECT_DEPS := package.json
@@ -24,12 +24,12 @@ update: $(PROJECT_DEPS)
 	$(YARN) upgrade
 
 include-yarn-deps:
-	mkdir -p $(VENDOR_DIR)
-	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
-	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js $(VENDOR_DIR)
-	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js.map $(VENDOR_DIR)
-	cp node_modules/bootstrap/scss/_variables.scss $(VENDOR_DIR)
-	cp node_modules/bootstrap/scss/_functions.scss $(VENDOR_DIR)
+	mkdir -p $(VENDOR_DIR)/
+	mkdir -p $(VENDOR_DIR)/bootstrap/scss
+	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)/
+	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js $(VENDOR_DIR)/
+	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js.map $(VENDOR_DIR)/
+	cp -r node_modules/bootstrap/scss/* $(VENDOR_DIR)/bootstrap/scss
 
 build: install include-yarn-deps
 	$(JEKYLL) build
