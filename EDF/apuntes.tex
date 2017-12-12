@@ -696,7 +696,11 @@ y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivam
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
-Sea una ecuación diferencial de la forma $x' = Ax+b$ con $A: I \to \mathscr{M}_n (\R)$ y $b:I \to \R ^n$ continuas.
+Vamos a estudiar la ecuación diferencial
+
+\[x' = Ax+b \tag{S} \label{sistemaedf} \]
+
+con $A\in \mathscr{C}(I, \mathscr{M}_N(\R))$ y $b\in \mathscr{C}(I, \R^N)$, de la que buscaremos soluciones $x\in \mathscr{C}^1(I, \R^N)$.
 
 \begin{nota} Sabemos del álgebra lineal que:
 
@@ -722,14 +726,14 @@ Sea una ecuación diferencial de la forma $x' = Ax+b$ con $A: I \to \mathscr{M}_
 
 \begin{ndef}
 
-  Una solución de la ecuación es una función $x \in C^1 (I, \R ^n )$ tal que
+  Una solución de la ecuación es una función $x \in \mathscr{C}^1 (I, \R ^n )$ tal que
 
   \[x'(t) = A(t) x(t) + b(t) \ \forall t \in I\]
 
 \end{ndef}
 
 \begin{ndef}
-  Sea $f\in C([a,b], \R ^n )$, con componentes integrables. Definimos
+  Sea $f\in \mathscr{C}([a,b], \R ^n )$, con componentes integrables. Definimos
   \[ \int_a ^b f(t) dt = \left(\int _a ^b f_i (t) dt\right) _{i = 1..n} \]
 \end{ndef}
 
@@ -755,18 +759,17 @@ Sea una ecuación diferencial de la forma $x' = Ax+b$ con $A: I \to \mathscr{M}_
 
 \begin{proof}
 
-  Supongamos $x \in C^1 (I, \R ^n) $ tal que $x' = A(t) x + b(t) \forall t \in I$ y $x(t_0) = x_0$.
+  Supongamos $x \in \mathscr{C}^1 (I, \R ^n) $ tal que $x' = A(t) x + b(t) \forall t \in I$ y $x(t_0) = x_0$.
 
-  \[
-  \int _{t_0} ^t x'(s) ds = \int _{t_0} ^t A(s)x(s) + b(s) ds\\
-  x(t) = x_0 + \int _{t_0} ^t A(s)x(s) + b(s) ds \ \forall t \in I \ \ \ (1)
-  \]
+ \begin{equation}
+   \int _{t_0} ^t x'(s) = \int _{t_0} ^t (A(s)x(s) + b(s)) \implies x(t) = x_0 + \int _{t_0} ^t (A(s)x(s) + b(s)) \ \forall t \in I (1)
+ \end{equation}
 
-  Hemos visto que toda solución del sistema cumple $(1)$.
+  Hemos visto que toda solución del sistema cumple (1).
 \[
   \begin{rcases}
-    \text{Supongamos ahora } x \in C (I, \R ^n) \text{que cumple } (1).\\
-    A(s)x(s) + b(s) \in C (I, \R ^n )\\
+    \text{Supongamos ahora } x \in C (I, \R ^n) \text{que cumple (1)}.\\
+    A(s)x(s) + b(s) \in C (I, \R ^n )
   \end{rcases}
 \]
   	
