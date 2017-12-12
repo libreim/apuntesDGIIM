@@ -8,9 +8,4 @@ author:
   name:       DGIIM
   url:        http://yourhomepage.com
 
-# Sass
-sass:
-    load_paths:
-        - _sass
-
 
