@@ -1,7 +1,8 @@
 # Setup
 title:        apuntesDGIIM
 tagline:      Apuntes colaborativos del Doble Grado.
-baseurl:      ""
+baseurl:      "https://libreim.github.io/apuntesDGIIM/"
+url:          "https://libreim.github.io/apuntesDGIIM/"
 
 # About/contact
 author:
