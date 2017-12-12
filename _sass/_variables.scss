@@ -17,5 +17,9 @@ $container-max-widths: (
 $primary: #024855;
 $jumbotron-bg: #D8F7F4;
 
+@media screen and (max-width: 540px) {
+    $display3-size: 2.5rem;
+}
+
 @import "../assets/vendor/bootstrap/scss/functions";
 @import "../assets/vendor/bootstrap/scss/variables";
