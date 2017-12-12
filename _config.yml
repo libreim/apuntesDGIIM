@@ -1,5 +1,5 @@
 # Setup
-title:        Apuntes DGIIM
+title:        apuntesDGIIM
 tagline:      Apuntes colaborativos del Doble Grado.
 baseurl:      ""
 paginate:     1
@@ -15,3 +15,11 @@ gems:
 
 #Others
 markdown: kramdown
+
+# Sass
+sass:
+    load_paths:
+        - _sass
+        - node_modules
+
+

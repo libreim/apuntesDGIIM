@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="es-es">
   
   {% include head.html %}
 
   <body>
     {% include page-header.html %}
 
-    <section class="main-content">
-      
-      {{ content }}
+    <div class="container">
+ 		{{ content }}
+	</div>  
 
-      {% include page-footer.html %}
+    {% include page-footer.html %}
 
-    </section>
+
+    <script src="{{'/assets/vendor/jquery.min.js' | absolute_url}}"></script>
+	<script src="{{'/assets/vendor/bootstrap.bundle.js' | absolute_url}}"></script>
+
+
 
   </body>
 </html>
