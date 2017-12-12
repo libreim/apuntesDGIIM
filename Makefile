@@ -28,6 +28,8 @@ include-yarn-deps:
 	cp node_modules/jquery/dist/jquery.min.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js $(VENDOR_DIR)
 	cp node_modules/bootstrap/dist/js/bootstrap.bundle.js.map $(VENDOR_DIR)
+	cp node_modules/bootstrap/scss/_variables.scss $(VENDOR_DIR)
+	cp node_modules/bootstrap/scss/_functions.scss $(VENDOR_DIR)
 
 build: install include-yarn-deps
 	$(JEKYLL) build

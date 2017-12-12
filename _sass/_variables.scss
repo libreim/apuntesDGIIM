@@ -17,5 +17,5 @@ $container-max-widths: (
 $primary: #024855;
 $jumbotron-bg: #D8F7F4;
 
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
+@import "../assets/vendor/functions";
+@import "../assets/vendor/variables";
