@@ -30,11 +30,17 @@ def pandoc_rule *inputs
   inputs.each do |i|
     rule ".pdf" => ->(f){sources_for f, i} do |t|
       begin
+        dir = t.name.split("/")[-2]
+        template_name = dir.downcase + ".tex"
         sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
-        sh %(pandoc --latex-engine pdflatex "#{t.source}" -o "#{t.name}")
+        Dir.chdir dir
+        sh %(pandoc --latex-engine pdflatex apuntes.md ejercicios.md --template #{template_name} -o #{"../"+t.name.sub("apuntes", dir.downcase)} --listings)
       rescue StandardError => e
         @error_log << "\e[31mNo se pudo generar #{t.name}\e[m"
+      ensure
+        Dir.chdir ".."
       end
+
     end
   end
 end
