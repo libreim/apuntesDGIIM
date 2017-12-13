@@ -12,6 +12,7 @@ task :default => [
 #       :sistemas,
        :geoiii,
        :ies,
+       :mc,
        :mmi,
        :ac,
 #       :pdoo,
@@ -60,6 +61,7 @@ task :fr => (pdf_for FileList["FR/apuntes.md"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :ies => (pdf_for FileList["IES/apuntes.md"])
+task :mc => (pdf_for FileList["MC/apuntes.md"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
 task :ac => (pdf_for FileList["AC/apuntes.md"])
