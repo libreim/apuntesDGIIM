@@ -1,25 +1,233 @@
----
-title: Resumen Estructuras de Datos    	# Título
-author: Jesús Sánchez de Lechina Tejada # Nombre del autor
-header-includes:    	 	        	# Incluir paquetes en LaTeX
-toc: true                   			# Índice
-numbersections: false       			# Numeración de secciones
-fontsize: 11pt              			# Tamaño de fuente
-geometry: margin=1in        			# Tamaño de los márgenes
----
+# Tema 1 - Función de eficiencia.
+
+El proceso que vamos a realiar es extraer la función que marca la
+eficiencia del código de nuestro programa. Existe una funcion "timer"
+que me permite ver el tiempo que ha transcurrido en una seccion del
+codigo que desee.
+
+### Notacion O grande.
+
+Se dice que una f(n) = O(g(n)) si a partir de un m, f(n)&lt;= k · g(n),
+donde k es una constante. Para usar este tipo de comparación podemos
+utilizar simplificacion de funciones a su estructura básica.
+
+### Hallar la función de eficiencia.
+
+Lo primero es dividir el codigo en trozos, y tenemos en cuenta que si:
+
+1.  Los troxos son independientes, la función de la union es O del
+    máximo de las funciones de cada uno.
+2.  Los trozos son anidados o dependientes, la función de la unión es O
+    del producto de las funciones de cada uno.
+
+Teniendo en cuenta que cada accion cuenta como la unidad, es decir:
+
+    for(int i = 0; i < n; i++){
+      cout << "Lmao";
+    }
+
+Serian n iteraciones de valor 1. Sabiendo que la iteracion i++ tambien
+es una operación pero no tiene sentido tenerlo en cuenta ya que 2n =
+O(n), de igual forma que la asignacióndel principio del bucle, y la
+comparación que se realiza, es decir, contaremos las operaciones simples
+como una única.
+
+Análisis de sentencias
+----------------------
+
+### Bucles
+
+### Sentencias IF-ELSE
+
+Es una sencencia en la que usamos la regla del máximo, ocurrirá el if o
+el else y el máximo de los 2 marca la eficiencia del bloque.
+
+Puede ser que la condición no sea una sentencia elemental, entonces
+habría que tenerla en cuenta, pero si es una sentencia trivial, la
+sentencia será O(1)
 
 
-\newpage
+    if(A[0][0]== 0)
+    {
+      for(i = 0; i < n; i++)
+      {
+        for(j = 0; j < n; j++)
+        A[i][j] = 0;
+      }
+    }
+    else
+    {
+      for(k = 0; k < n; k++)
+      {
+        A[k][k] = 1;
+      }
+    }
 
-# Introducción #
+En este caso, tenemos que tomar máximo entre O(n^2^) (lo que cuesta el
+if) y O(n)(lo que cuesta el else). Por ello, la eficiencia del código es
+O(n^2^).
+
+### Bloques de Sentencias
+
+En este caso, si tenemos bloques independientes se va tomando la regla
+del máximo para todos los bloques
+
+### Llamadas a funciones
+
+Hay que mirar cuánto cuesta la llamada a la función, es muy importante
+para la ejecución del código.
+
+Analizamos un ejemplo de un código de 30 líneas de las transparencias
+del profesor.
+
+1.  Ejemplos
+
+    Cuando en los bucles haya i =2, i\*=4,i\*=n... entonces la
+    eficiencia será logaritmo en base n de lo que haya dentro del bucle.
+
+# Tema 2 - Abstracción.
+
+### Uso de Template.
+
+Nos permite seleccionar el tipo de dato que vamos a utilizar en tiempo
+de ejecución. Declarando:
+
+    template <class T, int n>
+
+    class array_n {
+    private:
+        T items[n];
+      };
+
+Creando un objeto de esta clase de la forma:
+
+    array_n<int,1000> w
+
+Creando un metodo de la forma:
+
+    template <class T>
+    T VectorDinamico::componente(int i) const
+    {
+      return datos[i];
+    }
+
+La compilación a la hora de usar templates es distinta a la que estamos
+acostumbrados. En lugar de hacer un *\#include* \`\`/clase.h/'' en el
+archivo **.cpp**, se incluirá el archivo *\#include* \`\`/clase.cpp/''
+al final del archivo **.h**.
+
+### Clase vector dinámico
+
+Vamos a estudiar una clase que tenga un vector de datos y el número de
+elementos.Un primer ejemplo con tipo de dato float sería:
+
+    class VectorDinamico{
+
+      float* datos;
+      int ns;
+    }
+
+### Iteradores
+
+Pretendemos hacer recorridos mucho más rápido. No volvermos a recorrer
+vectores haciendo v\[i\]. Usaremos los punteros para iterar, de la
+forma:
+
+
+    double *v = &a.
+    double *p;
+    double * fin;
+    fin = v+n;
+    for(p = v; p!= fin; ++p)
+      cout << *p << endl;
+
+Nota: en un compilador moderno, simplemente activando la optimización de
+código se consigue el mismo aumento en el rendimiento.
+
+Definiremos incluso un nuevo tipo de dato llamado iterator, haciéndolo
+de la forma:
+
+    typedef double* iterator;
+    iterator begin(double* v, int n){
+      return v;
+    }
+    iterator end(double* v, int n){
+      return v+n;
+    }
+
+    /**--------------------------*/
+    iterator p;
+    for(p=begin(v,n); p!=end(v,n);++p)
+      cout << *p << endl;
+
+### Pilas
+
+Son estructuras de datos lineales, secuencias de elementos dispuestos en
+una dimensión. Tienen estructura *LIFO* (last in, first out)
+
+No usaremos el concepto de posición, sólo trabajaremos con el tope de la
+estructura. En realidad, sí podemos recorrerla pero debemos salvaguardar
+los elementos , pues para acceder al siguiente elemento tenemos que
+borrar el anterior.
+
+-   Para insertar un elemento, se inserta siempre al principio de la
+    pila, añadiendo físicamente
+-   Para borrar un elemento, se elimina y el puntero que había al
+    primero se lleva al segundo
+-   Como la pila no tiene recorridos, no tienen iteradores.
+-   Las funciones básicas son Tope, Poner, Quitar, Vaciar.
+
+Hay que recordar que los elementos de la pila se guardan en orden
+contrario al que fueron insertados. Por tanto si los imprimimos, por ser
+de tipo *LIFO* salen del primero que hemos insertado al último. En la
+práctica, usaremos las pilas con Celdas Enlazadas.
+
+
+    #ifndef __PILA_H__
+    #define __PILA_H__
+
+    typedef char Tbase;
+
+    struct CeldaPila{
+        Tbase elemento;
+        CeldaPila *sig;
+    };
+
+    class Pila{
+
+        CeldaPila *primera;
+
+      public:
+
+        Pila();
+        Pila(const Pila& p);
+        ~Pila();
+        Pila& operator= (const Pila& pila);
+
+        void poner(Tbase c);
+        void quitar();
+        Tbase tope() const;
+        bool vacia() const;
+    };
+
+### Colas
+
+Una cola es una estructura de datos lineal en la que lso elementos se
+suprimen e insertan por extremos opuestos. Son estructuras *FIFO*. En
+una cola, si tenemos dos elementos
+
+Usaremos el operador *%*, que transforma una estructura lineal en una
+linear circular. Al igual que en las colas, no tengo acceso a los
+elementos si no destruimos la cola.
+
+
+# Resumen general
 
 Este es un resumen de los contenidos de la asignatura Estructuras de
 Datos. Realizado con el fin de recopilar los conceptos más importantes
 de la asignatura.
 
-\newpage
-
-# Eficiencia #
+## Eficiencia #
 
 Es importante a la hora de evaluar algoritmos conocer su eficiencia,
 es decir, el tiempo que tardan en completar el algoritmo en tanto a
@@ -30,7 +238,7 @@ mediciones durante la ejecución del algoritmo. Como *teórica*,
 basándonos en el número de instrucciones que necesitaría nuestro
 algoritmo. Nos centraremos en este estudio.
 
-## Órdenes de eficiencia ##
+### Órdenes de eficiencia ##
 
 Decimos que un algoritmo tiene un tiempo de ejecución de orden
 **T(n)**, y estos pueden ser:
@@ -45,7 +253,7 @@ Decimos que un algoritmo tiene un tiempo de ejecución de orden
 
 -\textbf{$c^n$}: Exponencial
 
-## Notación O(n) ##
+### Notación O(n) ##
 
 Para simplificar los cálculos de la eficiencia teórica usamos la
 notación “*O grande*”, que usamos para comparar algoritmos.
@@ -63,7 +271,7 @@ dada una función $f(n) = n^2+3n+5$ sería $O(n^2)$.
 
 \newpage
 
-## Operaciones ##
+### Operaciones ##
 
 1. **Elementales**: (asignación, lectura, esscritura...)
 
@@ -73,7 +281,7 @@ El tiempo invertido en el bucle es la suma del tiempo invertido en
 cada iteración.
 
 <p align="center">
-![Eficiencia bucle](./Estructura de datos/pics/Eficiencia-Bucle.png "Eficiencia de un bucle")
+![Eficiencia bucle](./img/Eficiencia-Bucle.png "Eficiencia de un bucle")
 </p>
 
 
@@ -138,7 +346,7 @@ código es por tanto \textbf{O(n$\cdot$log$_2$n)}
 
 \newpage
 
-# Abstracción #
+## Abstracción #
 
 Podemos esbozar una idea de lo que es la abstracción considerando esta
 como la formación de una imagen del objeto a abstraer. Esta imagen la
@@ -152,7 +360,7 @@ abstracta, como para realizar la iteración sobre un objeto sin
 importarnos la implementación u organización del mismo.
 
 
-## Conceptos sobre la abstracción ##
+### Conceptos sobre la abstracción ##
 
 A la hora de representar un TDA hay algunos elementos que merecen ser
 diferenciados del resto:
@@ -240,13 +448,13 @@ T array_n::componente(int i) const {
 ```
 
 
-# Tipo de Datos Abstracto #
+## Tipo de Datos Abstracto #
 
 Los **TDA** como ya hemos explicado anteriormente, cumplen la función
 de la abstracción a la hora de representar algún objeto. Veremos los
 principales TDAs lineales.
 
-## Pilas ##
+### Pilas ##
 
 Se conocen como estructuras LIFO (last in first out) donde cada
 elemento se introduce a continuación del último insertado, y sólo
@@ -267,7 +475,7 @@ dirección a la que apunta el anterior a la de la nueva celda y el
 puntero de esta a NULL.
 
 
-## Colas ##
+### Colas ##
 
 En estas las inserciones y eliminaciones se realizan en extremos
 opuestos, siguiendo una estructura FIFO (first in first out) donde
@@ -286,7 +494,7 @@ se pueda insertar en cualquier lugar en tanto a un valor de prioridad
 dada, mientras que el acceso o el borrado se produce en un extremo
 llamado frente.
 
-## Listas ##
+### Listas ##
 
 Son otro tipo de estructura de datos mucho más generales que estas
 anteriores. Se caracterizan porque sus elementos son accesibles en
@@ -303,9 +511,9 @@ puntero al elemento siguiente y otro al anterior).
 
 \newpage
 
-# Plantillas e iteradores #
+## Plantillas e iteradores #
 
-## Abstracción por parametrización ##
+### Abstracción por parametrización ##
 
 El concepto de abstracción por parametrización que comentábamos en un
 principio se ve claramente reflejado en el uso de una plantilla o
@@ -337,7 +545,7 @@ T array_n::componente(int i) const {
 }
 ```
 
-## Abstracción por iteración ##
+### Abstracción por iteración ##
 
 Pese a esto nos pueden surgir diversos problemas a la hora de acceder
 a cada uno de los elementos que componen un contenedor. Es aquí donde
@@ -398,7 +606,7 @@ void escribir(const T &contenedor) {
 
 \newpage
 
-# Standard Template Library #
+## Standard Template Library #
 
 Una de las librerías de contenedores más importantes es la STL, que
 implementa de manera eficiente estos contenedores aportándole una
@@ -410,58 +618,58 @@ importantes presentes en la STL. Su implementación y el conjunto de
 funciones con el que podemos manejarlos lo podemos consultar en
 cualquier referencia externa.
 
-## Contenedores directos ##
+### Contenedores directos ##
 
 Garantizan el acceso a cualquier componente a tiempo constante:
 
-### Vector dinámico ###
+#### Vector dinámico ###
 
 El contenedor **vector**, que implementa un vector dinámico sin tener que
 preocuparnos de reservar espacio. 
 
 
-## Contenedores asociativos ##
+### Contenedores asociativos ##
 
 Gestionan los datos mediante claves que les identifican y permiten su
 recuperación eficiente mediante esta clave.
 
-### Conjunto (set) ###
+#### Conjunto (set) ###
 
 El tipo **set** abstrae la idea de conjunto matemático, permite recoger
 una colección de valores que no se repiten. Además podemos saber de
 manera eficiente si un valor está contenido o no en el conjunto.
 
-### Bolsa (multiset) ###
+#### Bolsa (multiset) ###
 
 Es análogo al conjunto, pero con la diferencia de que **multiset** permite
 almacenar valores repetidos.
 
-### Diccionario (map) ###
+#### Diccionario (map) ###
 
 El tipo **map** es una estructura que almacena implementando una
 relación clave-valor, cada clave es única y nos permite recuperar su
 valor correspondiente mediante el uso de esta clave.
 
 
-## Contenedores secuenciales ##
+### Contenedores secuenciales ##
 
 Son aquellos que se organizan de manera lineal (primer elemento,
 segundo, ...) y que quedan identificados por la posición. Entre estos
 se encuentran el ya mencionado **vector**.
 
-### Lista (list) ###
+#### Lista (list) ###
 
 Contenedor que almacena sus elementos en forma de sucesión,
 permitiendo por tanto el acceso secuencial a este. Cada elemento
 establece quién es el siguiente de la sucesión.
 
-### Pila (stack) ###
+#### Pila (stack) ###
 
 Representada como una sucesión de objetos que limita la forma en la
 que se acceden a estos, así como introducir y borrar elementos, que
 sólo puede hacerse por un extremo de la secuencia llamada tope.
 
-### Cola (queue) ###
+#### Cola (queue) ###
 
 Representado como una sucesión de objetos que limita la forma en la
 que se añaden/eliminan elementos de esta. Así pues sólo podemos
@@ -470,7 +678,7 @@ recuperar/borrar del extremo opuesto *frente*.
 
 \newpage
 
-# Árboles #
+## Árboles #
 
 Un árbol es un tipo de estructura consiste en un conjunto de nodos
 separados por niveles donde cada nodo mantiene una relación con un
@@ -504,7 +712,7 @@ delante de este.
 ```
 
 
-## Árbol binario ##
+### Árbol binario ##
 
 Es un árbol cuyos nodos sólo pueden tener a lo sumo un hijo a la
 izquierda y otro a la derecha. Donde ser hijo izquierda o hijo derecha
@@ -524,7 +732,7 @@ en la parte privada de la clase por un lado el struct nodo que tiene
 una serie de punteros al padre, hijo izquierda e hijo derecha y la
 etiqueta de este, y por otro tiene un puntero al nodo raíz. 
 
-## Recorridos##
+### Recorridos##
 
 Los árboles pueden ser recorridos en profundidad de las siguientes
 maneras recursivas:
@@ -551,13 +759,13 @@ Por lo general, **un árbol no puede ser definido por un único recorrido**.
 
 
 
-## Árboles especiales ##
+### Árboles especiales ##
 
 Existen algunos árboles que, por motivos de eficiencia en su
 tratamiento, se han diseñado con una estructura característica. A
 continuación veremos algunos ejemplos de ello.
 
-### Árboles Binarios de Búsqueda (ABB) ###
+#### Árboles Binarios de Búsqueda (ABB) ###
 
 En este árbol todos sus nodos cumplen una propiedad, todos los
 elementos almacenados en el subárbol izquierdo  de un nodo son menores o iguales
@@ -569,7 +777,7 @@ Su tiempo de búsqueda es muy eficiente, del orden $O(log_2(n)$. Sin
 embargo, las inserciones y borrados son muy ineficientes $O(n)$.
 
 
-### Árboles Binarios Parcialmente Ordenados (APO) ###
+#### Árboles Binarios Parcialmente Ordenados (APO) ###
 
 Este arbol cumple la condición de que la etiqueta de cada nodo es
 menor o igual que las etiquetas de sus hijos, manteniéndose tan
@@ -581,7 +789,7 @@ posición 0 sería la raíz, y el hijo izquierdo de un nodo M[k] si
 existe estará en la posición M[2k+1] mientras que el hijo derecho
 estaría en el M[2k+2].
 
-### Árboles Equilibrados (AVL) ###
+#### Árboles Equilibrados (AVL) ###
 
 Los árboles AVL (Adison-Velskii Landis) son una versión optimizada de
 los ABB para poder mejorar las búsquedas en estos. Consiste en que,
@@ -594,7 +802,7 @@ Sus operaciones de inserción y borrado tienen un orden de eficiencia logarítmi
 
 \newpage
 
-# Tabla Hash #
+## Tabla Hash #
 
 La tabla hash es una estructura que no opera por comparaciones entre
 valores clave, sino que para obtener la localización de una clave k
@@ -612,7 +820,7 @@ posible de colisiones y además diseñar métodos de resolución de
 colisiones para cuando estas se produzcan.
 
 
-## Funciones hash comunes ##
+### Funciones hash comunes ##
 
 Entre los tipos más comunes de funciones hash se encuentran:
 
@@ -643,7 +851,7 @@ tablas sean de tamaño arbitrario. El tamaño de la tabla debe de ser
 por lo menos igual que el número de claves y la mejor elección es
 tomar M como un número primo mayor que el número de claves.
 
-## Tratamiento de colisiones ##
+### Tratamiento de colisiones ##
 
 Prácticamente todos los tipos de funciones hash producen colisiones,
 por lo que es igual de importante encontrar un mecanismo para la
@@ -652,7 +860,7 @@ en una operación de consulta, la búsqueda se realice eficientemente.
 
 Atendiendo a la estructura de datos elegida podemos usar:
 
-### Hashing abierto ###
+#### Hashing abierto ###
 
 Para estructuras de datos dinámicas (listas). Es usado cuando no
 conocemos el número de elementos que vamos a ubicar en la tabla hash.
@@ -680,11 +888,11 @@ El conjunto de números {23,45,16,26,40,14,5,12,9,25} con $f(x) = x\
 \%\ 13$:
 
 <p align="center">
-![Hashing abierto](./Estructura de datos/pics/Hash abierto.png "Hash abierto listas y sinónimos")
+![Hashing abierto](./img/Hash abierto.png "Hash abierto listas y sinónimos")
 </p>
 
 
-### Hashing cerrado ###
+#### Hashing cerrado ###
 
 Usado en estructuras estáticas (vectores). Cuando sabemos exactamente
 cuantos elementos se ubicarán en la tabla hash.
