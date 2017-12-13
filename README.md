@@ -4,4 +4,4 @@ Un proyecto colaborativo llevado a cabo por alumnos del Doble Grado de Ingenier�
 
 Los apuntes se compilan automáticamente cuando se hace push al repositorio y los puedes encontrar en la [web del repositorio](https://libreim.github.io/apuntesDGIIM/).
 
-En la [wiki](https://github.com/libreim/apuntesDGIIM/wiki) encontrars ms información.
+En la [wiki](https://github.com/libreim/apuntesDGIIM/wiki) encontrars más información.
