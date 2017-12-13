@@ -10,9 +10,9 @@ task :default => [
 #       :sistemas,
        :geoiii,
        :mmi,
-       :acomputadores,
+       :ac,
 #       :pdoo,
-#       :algoritmica,
+       :algo,
        :edf,
        :prob
        # add your task here
@@ -55,9 +55,9 @@ task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
-task :acomputadores => (pdf_for FileList["AC/apuntes.md"])
+task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.tex", "PDOO/cheatsheets/*.tex"])
-task :algoritmica => (pdf_for FileList["ALGO/*.md"])
+task :algo => (pdf_for FileList["ALGO/apuntes.md"])
 task :edf => (pdf_for FileList["EDF/edf.tex"])
 task :prob => (pdf_for FileList["PROB/prob.tex"])
 
