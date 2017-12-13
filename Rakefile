@@ -5,7 +5,7 @@ task :default => [
        :algi,
        :ami,
        :amii,
-#       :ecomputadores,
+       :ec,
 #       :edatos,
 #       :sistemas,
        :geoiii,
@@ -48,7 +48,7 @@ end
 #-------------------------------------------#
 task :algi => (pdf_for FileList["ALGI/algi.tex"])
 task :ami => (pdf_for FileList["AMI/ami.tex", "AMI/resumen.tex"])
-task :ecomputadores => (pdf_for FileList["EC/*.md"])
+task :ec => (pdf_for FileList["EC/apuntes.md"])
 task :edatos => (pdf_for FileList["ED/*.org", "ED/*.md"])
 #task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
