@@ -7,6 +7,7 @@ task :default => [
        :amii,
        :ec,
        :ed,
+       :fbd,
 #       :sistemas,
        :geoiii,
        :mmi,
@@ -50,6 +51,8 @@ task :algi => (pdf_for FileList["ALGI/algi.tex"])
 task :ami => (pdf_for FileList["AMI/ami.tex", "AMI/resumen.tex"])
 task :ec => (pdf_for FileList["EC/apuntes.md"])
 task :ed => (pdf_for FileList["ED/apuntes.md"])
+task :edf => (pdf_for FileList["EDF/edf.tex"])
+task :fbd => (pdf_for FileList["FBD/apuntes.md"])
 #task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
@@ -58,7 +61,6 @@ task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.tex", "PDOO/cheatsheets/*.tex"])
 task :algo => (pdf_for FileList["ALGO/apuntes.md"])
-task :edf => (pdf_for FileList["EDF/edf.tex"])
 task :prob => (pdf_for FileList["PROB/prob.tex"])
 
 # Generating pdfs from Latex sources
