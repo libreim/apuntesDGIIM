@@ -29,17 +29,17 @@
 \setlength\parskip{7pt}
 
 % ---------------------------------------------------------------------------
+% CONFIGURACIÓN PERSONALIZADA
+% ---------------------------------------------------------------------------
+
+\usepackage{config}
+
+% ---------------------------------------------------------------------------
 % PAQUETES BÁSICOS
 % ---------------------------------------------------------------------------
 
 % IDIOMA
-\usepackage[utf8]{inputenc}
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
-
-% MATEMÁTICAS
-\usepackage{amsmath}    % Paquete básico de matemáticas
-\usepackage{amsthm}     % Teoremas
-\usepackage{mathrsfs}   % Fuente para ciertas letras utilizadas en matemáticas
 
 % FUENTES
 \usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
@@ -51,30 +51,9 @@
 % MÁRGENES
 \usepackage[margin=2.5cm, top=3cm]{geometry}
 
-% LISTAS
-\usepackage{enumitem}       % Mejores listas
-\setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
-
 %  OTROS
 \usepackage{hyperref}   % Enlaces
 \usepackage{graphicx}   % Permite incluir gráficos en el documento
-
-% ---------------------------------------------------------------------------
-% COLORES
-% ---------------------------------------------------------------------------
-
-\usepackage{xcolor}     % Permite definir y utilizar colores
-
-\definecolor{50}{HTML}{ECEFF1}
-\definecolor{100}{HTML}{CFD8DC}
-\definecolor{200}{HTML}{B0BEC5}
-\definecolor{300}{HTML}{90A4AE}
-\definecolor{400}{HTML}{78909C}
-\definecolor{500}{HTML}{607D8B}
-\definecolor{600}{HTML}{546E7A}
-\definecolor{700}{HTML}{455A64}
-\definecolor{800}{HTML}{37474F}
-\definecolor{900}{HTML}{263238}
 
 % ---------------------------------------------------------------------------
 % FUENTE DE MATEMÁTICAS ADAPTABLE EN SANS-SERIF
@@ -153,86 +132,6 @@
 % ---------------------------------------------------------------------------
 
 \usepackage{mdframed}
-
-%% DEFINICIONES DE LOS ESTILOS
-
-% Nuevo estilo para definiciones
-\newtheoremstyle{definition-style}  % Nombre del estilo
-{}                                  % Espacio por encima
-{}                                  % Espacio por debajo
-{}                                  % Fuente del cuerpo
-{}                                  % Identación
-{\bf\sffamily}                      % Fuente para la cabecera
-{.}                                 % Puntuación tras la cabecera
-{.5em}                              % Espacio tras la cabecera
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
-
-% Nuevo estilo para notas
-\newtheoremstyle{remark-style}
-{10pt}
-{10pt}
-{}
-{}
-{\itshape \sffamily}
-{.}
-{.5em}
-{}
-
-% Nuevo estilo para teoremas y proposiciones
-\newtheoremstyle{theorem-style}
-{}
-{}
-{}
-{}
-{\bfseries \sffamily}
-{.}
-{.5em}
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
-
-% Nuevo estilo para ejemplos
-\newtheoremstyle{example-style}
-{10pt}
-{10pt}
-{}
-{}
-{\bf \sffamily}
-{}
-{.5em}
-{\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}
-
-% Nuevo estilo para la demostración
-
-\makeatletter
-\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape\sffamily#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
-\makeatother
-
-%% ASIGNACIÓN DE LOS ESTILOS
-
-% Teoremas, proposiciones y corolarios
-\theoremstyle{theorem-style}
-\newtheorem{nth}{Teorema}[section]
-\newtheorem{nprop}{Proposición}[section]
-\newtheorem{ncor}{Corolario}[section]
-\newtheorem{lema}{Lema}[section]
-
-% Definiciones
-\theoremstyle{definition-style}
-\newtheorem{ndef}{Definición}[section]
-
-% Notas
-\theoremstyle{remark-style}
-\newtheorem*{nota}{Nota}
-
-% Ejemplos
-\theoremstyle{example-style}
-\newtheorem{ejemplo}{Ejemplo}[section]
-
-% Ejercicios y solución
-\theoremstyle{definition-style}
-\newtheorem{ejer}{Ejercicio}[section]
-
-\theoremstyle{remark-style}
-\newtheorem*{sol}{Solución}
 
 %% MARCOS DE LOS ESTILOS
 
@@ -319,29 +218,6 @@
 \surroundwithmdframed[style=ejer-frame]{ejer}
 \surroundwithmdframed[style=ejemplo-frame]{ejemplo}
 \surroundwithmdframed[style=ejemplo-frame]{sol}
-
-% ---------------------------------------------------------------------------
-% CONFIGURACIÓN DE LA PORTADA
-% ---------------------------------------------------------------------------
-
-\newcommand{\asignatura}{%
-  Asignatura de\\
-  nombre largo\\
-}
-
-\newcommand{\autor}{Autor}
-
-\newcommand{\grado}{Grado en el que se imparte}
-
-\newcommand{\universidad}{Universidad}
-
-\newcommand{\enlaceweb}{ejemplo.github.io}
-
-% ---------------------------------------------------------------------------
-% CONFIGURACIÓN PERSONALIZADA
-% ---------------------------------------------------------------------------
-
-\usepackage{config}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---------------------------------------------------------------------------
