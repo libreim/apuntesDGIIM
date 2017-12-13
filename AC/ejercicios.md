@@ -48,7 +48,7 @@
 \end{ejer}
 
 \begin{ejer}
-    Suponga que en un CC‐NUMA de red estática de 4 nodos (N0‐N3) se implementa un protocolo
+    Suponga que en un CC-NUMA de red estática de 4 nodos (N0-N3) se implementa un protocolo
 MSI basado en directorios sin difusión con dos estados en el directorio (válido e inválido). Cada nodo tiene 8
 GBytes de memoria y una línea de cache supone 64 Bytes. Considere que el directorio utiliza vector de bits
 completo.
