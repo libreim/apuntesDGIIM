@@ -1,6 +1,7 @@
 # ![apuntes](Recursos/readme/hero.png)
 
-Repositorio de apuntes del Doble Grado en Ingeniería Informática y Matemáticas de la Universidad de Granada.
-El objetivo de este repositorio es construir unos apuntes de referencia de forma colaborativa. Más información en 
-la [wiki](https://github.com/libreim/apuntesDGIIM/wiki). Si solo quieres los PDF, [aquí](https://libreim.github.io/apuntesDGIIM/) los tienes.
+Un proyecto colaborativo llevado a cabo por alumnos del Doble Grado de Ingeniería Informática y Matemáticas de la Universidad de Granada. Tenemos el objetivo de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.
 
+Los apuntes se compilan automáticamente cuando se hace push al repositorio y los puedes encontrar en la [web del repositorio](https://libreim.github.io/apuntesDGIIM/).
+
+En la [wiki](https://github.com/libreim/apuntesDGIIM/wiki) encontrars ms información.
