@@ -8,6 +8,7 @@ task :default => [
        :ec,
        :ed,
        :fbd,
+       :fr,
 #       :sistemas,
        :geoiii,
        :mmi,
@@ -53,6 +54,7 @@ task :ec => (pdf_for FileList["EC/apuntes.md"])
 task :ed => (pdf_for FileList["ED/apuntes.md"])
 task :edf => (pdf_for FileList["EDF/edf.tex"])
 task :fbd => (pdf_for FileList["FBD/apuntes.md"])
+task :fr => (pdf_for FileList["FR/apuntes.md"])
 #task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
