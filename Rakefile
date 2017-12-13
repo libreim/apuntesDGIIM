@@ -15,7 +15,7 @@ task :default => [
        :mc,
        :mmi,
        :ac,
-#       :pdoo,
+       :pdoo,
        :algo,
        :edf,
        :prob
@@ -65,7 +65,7 @@ task :mc => (pdf_for FileList["MC/apuntes.md"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
 task :ac => (pdf_for FileList["AC/apuntes.md"])
-task :pdoo => (pdf_for FileList["PDOO/apuntes.tex", "PDOO/cheatsheets/*.tex"])
+task :pdoo => (pdf_for FileList["PDOO/apuntes.md"])
 task :algo => (pdf_for FileList["ALGO/apuntes.md"])
 task :prob => (pdf_for FileList["PROB/prob.tex"])
 
