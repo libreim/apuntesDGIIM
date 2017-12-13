@@ -947,7 +947,7 @@ Pseudocódigo:
 BranchAndBound(nodoRaiz[n]){
   C= Cola con prioridad vacía
   Cota= COTA(nodoRaiz)
-  MejorCoste= +∞
+  MejorCoste= +infty
   
   Mientras C no esté vacía, hacer:
     x= Quitar Primer Elemento de C
