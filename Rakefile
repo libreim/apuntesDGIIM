@@ -16,6 +16,7 @@ task :default => [
        :mmi,
        :ac,
        :pdoo,
+       :scd,
        :algo,
        :edf,
        :prob
@@ -66,6 +67,7 @@ task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
 task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.md"])
+task :scd => (pdf_for FileList["SCD/apuntes.md"])
 task :algo => (pdf_for FileList["ALGO/apuntes.md"])
 task :prob => (pdf_for FileList["PROB/prob.tex"])
 
