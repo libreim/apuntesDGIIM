@@ -5,14 +5,14 @@ task :default => [
        :algi,
        :ami,
        :amii,
-       :ecomputadores,
-       :edatos,
-       :sistemas,
+#       :ecomputadores,
+#       :edatos,
+#       :sistemas,
        :geoiii,
        :mmi,
        :acomputadores,
-       :pdoo,
-       :algoritmica,
+#       :pdoo,
+#       :algoritmica,
        :edf,
        :prob
        # add your task here
@@ -50,7 +50,7 @@ task :algi => (pdf_for FileList["ALGI/algi.tex"])
 task :ami => (pdf_for FileList["AMI/ami.tex", "AMI/resumen.tex"])
 task :ecomputadores => (pdf_for FileList["EC/*.md"])
 task :edatos => (pdf_for FileList["ED/*.org", "ED/*.md"])
-task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
+#task :sistemas => (pdf_for FileList["SO/repasoFS.md", "SO/Prácticas/Modulo2/LlamadasSistema.md", "SO/Resúmenes/Temas 1, 2/*.md", "SO/Resúmenes/Temas 3, 4/*.md", "SO/Ejercicios relación 1,2/*.md", "SO/Ejercicios relación 3,4/*.md"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
