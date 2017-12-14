@@ -216,10 +216,10 @@ $$x_* =  \alpha x_* + \beta \implies  x_* = \dfrac{\beta}{1 - \alpha}$$
 	\begin{proof}
 	Vamos a hacer un razonamiento por inducción:
 	\begin{enumerate}
-	\item Si $n=1$. Entonces, $\alpha = r(cos\theta +i\sen\theta)$, trivial.
+	\item Si $n=1$. Entonces, $\alpha = r(cos\theta +i \ sen\theta)$, trivial.
 	\item Supuesto cierto para cierto $n$, lo demostraremos para $n+1$:
 	\[
-	\alpha^{n+1} = \alpha\alpha^n =  [r(cos(\theta) +i\sen(\theta))] [r^n(cos(n\theta) +i\sen(n\theta))]=
+	\alpha^{n+1} = \alpha\alpha^n =  [r(cos(\theta) +i \ sen(\theta))] [r^n(cos(n\theta) +i\ sen(n\theta))]=
 	\]
 	\[
 	r^{n+1}[cos(\theta) cos(n\theta) +i sen(\theta) cos(n\theta) + isen(n\theta) cos(\theta) - sen(\theta) sen(n\theta)] = \]
@@ -2518,7 +2518,7 @@ Para algún índice $i \in \{1,2,\hdots,N-1\},\  a_ia_{i+1}> 0$.
         Queremos ver que $ r < \lambda_1$.
         \begin{align*}
             \label{}
-            \frac{1}{\mu} &= \frac{1}{r(cos \ \theta + i \ sen \ \theta)} = \frac{1}{r}\frac{cos \ \theta - i \ sen \ \theta}{(cos \ \theta + i \ \sen \theta)(cos \ \theta - i \ sen \ \theta)} \\
+            \frac{1}{\mu} &= \frac{1}{r(cos \ \theta + i \ sen \ \theta)} = \frac{1}{r}\frac{cos \ \theta - i \ sen \ \theta}{(cos \ \theta + i \ \ sen \theta)(cos \ \theta - i \ sen \ \theta)} \\
                           &= \frac{1}{r}(cos \ \theta - i \ sen \ \theta) \\
             \frac{1}{\mu^j} &=  \frac{1}{r^j}(cos \ j\theta - i \ sen \ j\theta)
         \end{align*}
@@ -2870,7 +2870,7 @@ $a_{12}>0$ luego hay una flecha con origen 2 y llegada 1
 Y repetir con todos.
 \begin{figure}[H]
 	\caption{Grafo resultante.}
-	\centering \includegraphics{./img/grafo_1.pdf}
+	\centering \includegraphics{grafo_1.pdf}
 \end{figure}
 
 ¿Está el grafo fuertemente conectado? Para $m=2$ sí, (puedo ir cualquier nodo a otro en 2 pasos, en el caso de los cortos por ejemplo sería: 1 a 2, 2 a 2)
@@ -2880,7 +2880,7 @@ Y repetir con todos.
 Determine la matriz de adyacencia del grafo:
 \begin{figure}[H]
 	\caption{Grafo dado.}
-	\centering \includegraphics{./img/grafo_2.pdf}
+	\centering \includegraphics{grafo_2.pdf}
 \end{figure}
 
 Solo tenemos que contar que la fila $i$-ésima son las flechas que llegan al nodo $í$-ésimo

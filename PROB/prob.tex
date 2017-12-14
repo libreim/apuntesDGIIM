@@ -22,11 +22,11 @@
 % ---------------------------------------------------------------------------
 
 %\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[11pt, a4paper, oneside]{memoir}
+\documentclass[10pt, a4paper]{article}
 
 \linespread{1.3}            % Espaciado entre líneas.
 \setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlength\parskip{6pt}
+\setlength\parskip{7pt}
 
 % ---------------------------------------------------------------------------
 % CONFIGURACIÓN PERSONALIZADA
@@ -40,11 +40,11 @@
 
 % IDIOMA
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
-\unaccentedoperators
 
 % FUENTES
 \usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
 \usepackage{FiraSans}                 % Fuente sans serif
+\usepackage[T1]{fontenc}
 \usepackage[italic]{mathastext}     % Utiliza la fuente del documento
                                     % en los entornos matemáticos
 
@@ -52,7 +52,7 @@
 \usepackage[margin=2.5cm, top=3cm]{geometry}
 
 %  OTROS
-\usepackage[hidelinks]{hyperref}   % Enlaces
+\usepackage{hyperref}   % Enlaces
 \usepackage{graphicx}   % Permite incluir gráficos en el documento
 
 % ---------------------------------------------------------------------------
@@ -130,6 +130,8 @@
 % ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
 % ---------------------------------------------------------------------------
+
+\usepackage{mdframed}
 
 %% MARCOS DE LOS ESTILOS
 
@@ -217,12 +219,6 @@
 \surroundwithmdframed[style=ejemplo-frame]{ejemplo}
 \surroundwithmdframed[style=ejemplo-frame]{sol}
 
-% Estilos propios de los apuntes de Probabilidad
-
-\surroundwithmdframed[style=nth-frame]{theorem}
-\surroundwithmdframed[style=nprop-frame]{lemma}
-\surroundwithmdframed[style=nprop-frame]{criterion}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---------------------------------------------------------------------------
 % COMIENZO DEL DOCUMENTO
@@ -236,8 +232,7 @@
 % ---------------------------------------------------------------------------
 
 \newpagecolor{500}\afterpage{\restorepagecolor} % Color de la página
-\AtBeginShipoutNext{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
-\begin{titlingpage}
+\begin{titlepage}
 
   % Título del documento
 	\parbox[t]{\textwidth}{
@@ -259,15 +254,16 @@
 		\texttt{\enlaceweb}
 	}
 
-\end{titlingpage}
+\end{titlepage}
 
 % ---------------------------------------------------------------------------
 % PÁGINA DE LICENCIA
 % ---------------------------------------------------------------------------
 
+\thispagestyle{empty}
 \null
 \vfill
-\thispagestyle{empty}
+
 %% Información sobre la licencia
 \parbox[t]{\textwidth}{
   \includegraphics{by-nc-sa.pdf}\\[4pt]
@@ -280,14 +276,11 @@
   \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}
 }
 
-\newpage
-
 % ---------------------------------------------------------------------------
 % PORTADA INTERIOR
 % ---------------------------------------------------------------------------
 
-\AtBeginShipoutNext{\AtBeginShipoutNext{\AtBeginShipoutDiscard}}
-\begin{titlingpage}
+\begin{titlepage}
 
   % Título del documento
 	\parbox[t]{\textwidth}{
@@ -309,7 +302,7 @@
 		\texttt{\enlaceweb}
 	}
 
-\end{titlingpage}
+\end{titlepage}
 
 % ---------------------------------------------------------------------------
 % ÍNDICE
@@ -323,9 +316,11 @@
 % CONTENIDO
 % ---------------------------------------------------------------------------
 
+\part{Teoría}
 \input{apuntes}
 \newpage
 
+\part{Ejercicios}
 \input{ejercicios}
 
 \end{document}
