@@ -1,8 +1,0 @@
-# Apuntes Llamadas al sistema
-
-## Trabajo con archivos
-
-Tenemos 5 llamadas principales para trabajar con archivos
-* Open, que devuelve **fd** (file descriptor), un entero que indica cuál es el estado que tenemos respecto del archivo, es decir los permisos y dónde se encuentra si existe.
-* Read, que lee un
-* Write, para escribir dentro del archivo. Puede ocurrir que se genere un vacío en el archivo si sólo tiene X bytes e intentamos escribir en la posición x+n con n> 1
