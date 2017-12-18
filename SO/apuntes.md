@@ -2347,7 +2347,7 @@ getcwd devuelve el directorio de trabajo actual para cada proceso.
 >El objetivo es aprender a abrir, cerrar y crear ficheros mediante llamadas al sistema, así como leer y escribir en los mismos.
 
 Veamos un primer ejemplo, en el que creamos un fichero y escribiremos una frase dentro de él.
-~~~c
+```c
 #include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
@@ -2394,13 +2394,13 @@ int main(int argc, char *argv[]) {
 
 	return EXIT_SUCCESS;
 	}
-~~~
+```
 
 El objetivo del programa es escribir los dos mensajes en un fichero, *archivo_salida*, que vienen dados por dos cadenas de caracteres. 
 Primero tenemos que abrir el fichero de salida. Si no existe, lo creamos. El fichero de salida lo referenciamos mediante la variable *f1*.
-~~~c
+```c
 f1=open("archivo_salida",O_CREAT|O_TRUNC|O_WRONLY,S_IRUSR|S_IWUSR)
-~~~
+```
 
 En primer lugar, la orden ``open`` devuelve el descriptor del fichero de salida, que le damos el nombre de *fichero_salida*. Se almacenará en el entero *f1* que declaramos antes. Si es negativo, es que se ha producido un error al abrirlo, de ahí la comprobación del *if* y el aborto del programa de cumplirse la comprobación.
 1.El primer argumento de la orden ``read`` es la ruta del fichero de salida. Como no le estamos dando ninguna ruta, se asume el directorio de trabajo actual, desde donde ejecutamos el programa.
@@ -2411,14 +2411,14 @@ Ahora pasamos a escribir en el fichero. Con la función ``strlen`` conocemos la 
 La función ``write```escribe en el fichero dado como primer argumento, mediante su descriptor de fichero, *f1*, los n primeros bytes indicados mediante el tercer argumento, los cuales los extrae del segundo argumento. Como queremos escribir la cadena1 entera, pues le decimos que coja tantos como indica longitud, que era la longitud de la cadena obtenida con strlen.
 
 El número de escritos no es necesario almacenarlo en una variable, podemos escribir y hacer la comprobación directamente:
-~~~c
+```c
 longitud = strlen(cadena2);
 
 if(write(f1,cadena2,longitud) != longitud) {
 	perror("\nError en segundo write.");
 	exit(EXIT_FAILURE);
 	}
-~~~
+```
 Con este segundo *write*, hemos escrito la segunda cadena al final de la primera, ya que cuando hicimos el primer *write* el offset se quedó apuntando al final del fichero, por lo que la siguiente escritura empezó en esa posición.
 
 
@@ -2430,7 +2430,7 @@ La llamada al sistema **umask** fija la máscara de permisos para el proceso y d
 Para entender un poco mejor las máscaras puede consultarse el siguiente enlace [https://wiki.archlinux.org/index.php/Umask_(Espa%C3%B1ol)](https://wiki.archlinux.org/index.php/Umask_(Espa%C3%B1ol))
 
 Como primer ejercicio se proporciona un programa para decir qué hace. El programa basicamente cambia los permisos de dos archivos dados. Se han añadido comentarios al código para facilitar su entendimiento.
-~~~c
+```c
 #include<sys/types.h>
 #include<unistd.h>		
 #include<sys/stat.h>
@@ -2477,13 +2477,13 @@ int main(int argc, char *argv[]) {
 
 	return EXIT_SUCCESS;
 }
-~~~
+```
 
 ## Trabajo con funciones estándar de manejo de directorios
 Una vez leídas las funciones de manejo de direcotorios(opendir,readdir...), vamos a resolver el ejercicio número 3.Se pide construir un programa que reciba como argumentos un directorio y un número en octal de 4 dígitos. El programa deberá cambiar los permisos de todos los archivos que contiene el directorio a los permisos especificados en el segun argumento. 
 Además, el programa debe imprimir los permisos que tenía el archivo antes del cambio y los nuevos tras haberlos modificado. Si no se han podido cambiar los permisos, mostrar un mensaje de error con los permisos antiguos.
 El código es el siguiente, explicado con comentarios:
-~~~c
+```c
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -2567,7 +2567,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
-~~~
+```
 Un ejemplo de ejecución para cambiar los permisos a 777 (en octal, 1411), sería ``/ejercicio2 /home/victor/Descargas 1411``.
 *Importante: para rutas de directorio muy largas, puede dar un core. Para resolverlo, aumentar el tamaño de cadena*
 
@@ -2578,7 +2578,7 @@ Puede comprobarse con un ``ls -la```en la terminal. Por tanto, debemos verificar
 
 Los archivos que se cuentan tienen que cumplir que tengan permiso de ejecución para *grupos* y para *otros*, de lo contrairo, no los tendremos en cuenta. También tenemos que imprimir el nombre del archivo, número de inodo y tamaño total que ocupan todos los archivos que cumplen la condición citada. 
 Para comprobar los permisos, tenemos que definir un macro.
-~~~c
+```c
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -2659,12 +2659,12 @@ int main(int argc, char *argv[]) {
   printf("Existen %d archivos regulares con permiso de ejecución para grupos y otros\n\n", n);
   printf("El tamaño total ocupado por dichos archivos es %d bytes\n\n", tam);
 }
-~~~
+```
 
 ## La llamada ntfw()
 Esta llamada permite recorrer recursivamente un sub-árbol y realizar algunas operaciones sobre ellos, si necesidad de hacerlo a mano.
 Realizamos el ejercicio anterior implementando la función ``ntfw()``. Se presenta el código y posteriormente se explica.
-~~~c
+```c
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -2704,14 +2704,14 @@ int main(int argc, char *argv[]) {
 
   exit(0);
 }
-~~~
+```
 
 El ejercicio sigue la misma estructura que el ejemplo propuesto previamente en el guión de prácticas. Definimos una función *count* que recibe la ruta de la entrada del directorio. Comprueba si es un archivo regular y tiene los permisos correspondientes, en cuyo caso, incrementa las variables correspondientes e imprime el inodo del archivo.
 
 En el main, llamamos a la función *ntfw*:
-~~~c
+```c
 nftw(argc >= 2 ? argv[1] : ".", count, 20, 0) != 0
-~~~
+```
 La función, recibe como primer argumento un path que contendrá el directorio a examinar. Si le pasamos al programa un directorio como argumento, a la función le pasamos dicho path, sino, asumimos el directorio actual. Obsérvese que esta disyuntiva se ha realizado implícitamente, podríamos haber hecho las comprobaciones fuera y pasarle a *ntfw* una cadena con el directorio a examinar.
 El segundo argumento es la función que va a realizar *ntfw* sobre el directorio al recorrerlo recursivamente, la cual recibe automáticamente el path dado a *ntfw*.
 El tercer argumento, *20*, es el número máximo de directorios abiertos sobre los que puede estar trabajando la función. Cuanto mayor sea este número, más rápida será la ejecución, pero a costa de consumir más memoria. Finalemente, el cuarto argumento, indica que si la función *count* ha ido bien devuelve un cero. En caso contrario, si se ha producido algún tipo de error, se aborta la ejecución.
@@ -2721,7 +2721,7 @@ El tercer argumento, *20*, es el número máximo de directorios abiertos sobre l
 
 ## Creación de procesos
 Una vez leída la introducción del guión de prácticas, veamos el primer ejemplo propuesto, que tiene el siguiente código:
-~~~c
+```c
 #include <sys/types.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -2737,7 +2737,7 @@ void main() {
 	printf("Identificador del proceso padre: %d\n", id_padre);
 	sleep(60);
 }
-~~~
+```
 En primer lugar, se declaran dos variables de tipo *pid_t* para almacenar dos PIDs de dos procesos. Los PIDs son valores enteros, pero en vez de declararlos como *int*, lo declaramos como *pid_t*, que es un *typedef*. Está definido así ya que algunos sistemas, los PIDs se almacenan com enteros, mientras que en otros se almacenan como *unsigned short*.
 
 La orden *getpid()* devuelve el PID del proceso actual, lo almacenamos en *id_proceso*. 
@@ -2746,7 +2746,7 @@ La orden *getppid()*, devuelve el PID del proceso padre. ¿Quién es el padre de
 
 ## Llamada al sistema fork. Procesos padre e hijo
 La llamada al sistema ``fork()`` se utiliza para crear un proceso hijo. Cuando en un programa invocamos a ``fork()``, se crea un hijo del proceso, que contendrá el mismo código y contenido que el padre. La orden ``fork()`` devuelve un PID, que será 0 si el proceso corresponde al hijo y un entero positivo si corresponde al padre. La mejor forma de verlo es con un ejemplo. Vamos a ejecutar un programa que cree un proceso hijo, imprimiendo el prceso que es con su PID correspondiente.
-~~~c
+```c
 #include <stdio.h>
  
 int main() {
@@ -2772,7 +2772,7 @@ int main() {
 		printf("HIJO: mi padre tiene el pid: %d\n", getppid());
 	}
 }
-~~~
+```
 
 Este programa crea un proceso hijo. Cuando invocamos a *fork()*, creamos el proceso hijo, con una copia del código del actual.
 En el proceso padre, fork() almacena en la variable *pid* el PID actual del proceso. En el proceso hijo, devuelve un 0. 
@@ -2783,7 +2783,7 @@ Si estamos en el hijo, la variable *pid* vale 0, por lo que entra en la parte de
 
 Habiendo entendido esto, podemos resolver el ejercicio 1 de la sesión. Se pide implementar un programa que dado un número como argumento, cree un proceso hijo. El hijo debe informar si es un número par o impar. El padre comprobará si el número es divisible por 4. 
 El mecanismo es exactamente el mismo que en el ejemplo anterior. Basta con sustituir los mensajes que imprimos para informar, por las operaciones correspondientes que pide el ejercicio. El código resultante sería algo así:
-~~~c
+```c
 #include<sys/types.h>						
 #include<unistd.h>		 
 #include<stdio.h>
@@ -2827,10 +2827,10 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
-~~~
+```
 
 Para el ejercicio 2, basta leer detenidamente el código y las notas proporcionadas. Veamos el ejercicio 3. La explicación viene implícita en el código.
-~~~c
+```c
 /*
 Jerarquía de procesos tipo 1
 */
@@ -2846,7 +2846,7 @@ for(i = 1; i < nprocs; i++) {
 	if(childpid)
 		break;
 }
-~~~
+```
 
 Por tanto, vamos creando hijos con un bucle *for*. Recordemos que en los hijos se va copiando el código del padre. Como se sale el bucle cuando estamos en el padre, lo que hace este fragmento de código es crear un hijo y en el padre no hace nada. En el hijo, se crea otro hijo de nuevo. Ahora, el proceso hijo tiene un hijo que acaba de crear, y él mismo, una vez creado el hijo, no hace nada. 
 Por tanto, lo que se hace es crear un proceso detrás de otro recursivamente. De manera que debajo del padre tenemos un hijo, debajo otro hijo, y así sucesivamente. Sería algo así.
@@ -2854,7 +2854,7 @@ padre->hijo->hijo->hijo.....
 
 Es un poco lioso al principio, pero leyéndolo detenidamente se acaba comprendiendo.
 
-~~~c
+```c
 /*
 Jerarquía de procesos tipo 2
 */
@@ -2868,14 +2868,14 @@ for(i=1; i < nprocs; i++) {
 	if(!childpid)
 		break;
 }
-~~~
+```
 
 Este otro fragmento de código hace justo lo contrario. Cuando está en el hijo, no hace nada, mientras que en el padre itera para crear otor hijo. Por tanto, tenemos un proceso padre, del que cuelgan, al mismo nivel, todos sus hijos
 
 ## Trabajo con llamadas al sistema wait, waitpid y exit
 Con estas llamadas podemos sincronizar los procesos hijos con los procesos padre. Por ejemplo, podemos decirle al padre que se espere a que acabe su hijo antes de continuar con su ejecución, con la orden ``waitpid``.
 En el ejercicio 4, se pide implementar un programa que cree 5 procesos hijo, identificándose con un mensaje en la salida estándar(la terminal). El padre debe esperar a la finalización de los hijos. Cada vez que detecte la finalización de un hijo, informando de los hijos que les quedan vivos.
-~~~c
+```c
 #include<sys/types.h>
 #include<unistd.h>
 #include<stdio.h>
@@ -2903,14 +2903,14 @@ int main(){
 		printf("Solo me quedan %i hijos vivos\n", i);
 		}
 }
-~~~
+```
 Primero se crean los hijos. Una vez creados, el padre los espera. Podríamos haber metido el segundo bucle *for* en un condicional con ``if(PID > 0)```pero dado que dentro del hijo, hacemos ``exit(0)``, esto no es necesario.
 
 La orden ``wait`` espera a que finalice un hijo. Cuando un hijo termina, se almacena en la variable *estado* que ha terminado, devoldiendo ``wait`` el PID del proceso que ha terminado, para almacenarlo en PID. La orden *wait* espera a que termine un hijo, mientras no termina, actualizo su estado en la variable *estado*.
 Si queremos esperar a un hijo concreto, debemos usar la orden ``waitpid``, que nos permite seleccionar el hijo al que queremos esperar. El uso de *wait* es equivalente a declarar *waitpid* de la siguiente manera:
-~~~c
+```c
 waitpid(-1, &estado, 0)
-~~~
+```
 
 Por defecto, *waitpid* espera a que termine el proceso, especificado mediante su PID, dado en el primer argumento, aunque esto puede modificarse mediante opciones especificadas en el tercer argumento. Para más información, puede consultarse el man.
 
@@ -2918,7 +2918,7 @@ Por tanto, como hemos creado 5 hijos, iteramos 5 veces sobre *wait*, cada vez qu
 
 
 El ejercicio se podría haber interpretado de otra forma. El código presentado a continuación crea un hijo. El padre, espera a que muera el hijo, y una vez que el hijo ha acabado, procede a crear el siguiente hijo. De eesta forma, el padre nunca tiene más de un hijo a la vez:
-~~~c
+```c
 #include<sys/types.h>	
 #include<unistd.h>		
 #include<stdio.h>
@@ -2952,12 +2952,12 @@ int main() {
 
   return 0;
 }
-~~~
+```
 
 En el siguiente ejercicio, se propone esperar primero a los hijos creados en orden impar(1º,3º,5º) y después a los de orden par (2º,4º). Por tanto, tenemos que utilizar la orden *waitpid* en vez de *wait*, ya que vamos a esperar a un hijo concreto. En concreto, vamos a esperar a los hijos así: 1-3-5-2-4, donde el 1 es el primer hijo creado, el 3 es el tercero creado...
 
 La idea es tener un vector de PIDs y esperar a los procesos iterando primero sobre los índices pares y después sobre los impares. Recordemos que los vectores en C empiezan en 0, por lo que la posición 1 corresponderá al hijo 2, no al creado en primer lugar. El código viene comentado.
-~~~c
+```c
 #include<sys/types.h>	
 #include<unistd.h>		
 #include<stdio.h>
@@ -3000,7 +3000,7 @@ int main() {
 
   return 0;
 }
-~~~
+```
 
 ## Familia de llamadas al sistema **exec**
 En C, existen un conjunto de llamadas al sistema que permiten ejecutar un programa distinto al que se está ejecutando en el programa padre, la familia de llamadas exec. Cada una de estas llamadas tienen unos argumentos y se comportan de una manera concreta. 
@@ -3009,7 +3009,7 @@ Por ejemplo, a ``execl`` le pasamos los argumentos del programa, uno a uno como 
 Es importante destacar que cuando llamamos a una orden ``exec``, se destruye el espacio de direcciones de nuestro programa para crear un nuevo, por lo que invocar a ``exec`` es lo último que debemos hacer en nuestro programa, ya que lo que esté a continuación no se invocará. 
 
 En el siguiente programa, se crea un hijo que ejecutará una orden. El padre, espera a que acabe el hijo antes de finalizar.
-~~~c
+```c
 //tarea5.c
 //Trabajo con llamadas al sistema del Subsistema de Procesos conforme a POSIX 2.10
 
@@ -3050,10 +3050,10 @@ printf("\nMi hijo %d ha finalizado con el estado %d\n",pid,estado>>8);
 exit(EXIT_SUCCESS);
 
 }
-~~~
+```
 
 Para el ejercicio 7, se propone escribir un programa que acepte como argumentos el nombre de un programa, sus argumentos si los tiene, y opcionalmente la cadena *bg*. Nuestro programa deberá ejecutar el programa pasado como primer argumento en *foreground* si no se especifica la cadena *bg* y en *background* en caso contrario. Si el programa tiene argumentos hay que ejecutarlos con éstos.
-~~~c
+```c
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<unistd.h>
@@ -3102,7 +3102,7 @@ int main(int argc, char* argv[]) {
 
   return 0;
 }
-~~~
+```
 *El último if que se encarga de mantener o no el programa en background, ha sido sacado de stackoverflow, pero no he conseguido recuperar el enlace de donde fue sacado*
 
 
@@ -3124,9 +3124,9 @@ Por defecto, las señales existentes en POSIX tienen una acción asociada, aunqu
 La *máscara de bloqueo de señales* de un proceso es el conjunto de señales bloqueadas que tiene un proceso. Si una señal está bloqueada, el proceso no la interpreta hasta que se desbloquee. Si mientras está bloqueada una señal, se envía varias veces, el proceso solo la tiene en cuenta una vez. Las señales pueden bloquearse y activarse manualmente como veremos a lo largo de eset documento.
 
 Cada señal tiene un valor entero asociado. Así, la señal *SIGINT* que comentamos antes, podemos manejarla el valor *2*, en vez tener que escribir *SIGINT*. Para mandar una señal a un proceso que se está ejecutando, tenemos que abrir una nueva sesión de la terminal (o en la misma si se está ejecutando en segundo plano) y utilizar la orden *kill*, con la siguiente sintaxis:
-~~~
+```
 kill -s VALUE PID
-~~~
+```
 Donde la opción ``-s`` indica que le vamos a mandar una señal al proceso, VALUE es la señal a mandar. Comentamos que, sustituir VALUE por *SIGINT* es equivalente a sustituirlo por *2*. PID es el pid del proceso al que queremos mandarle la señal. Para conocer el pid de un proceso, podemos utilizar la orden ``top``.
 
 Dado que el objetivo de este documento es entender y aprender a utilizar las señales en C, no se va a desarrollar mucho la sintaxis ni las opciones de las órdenes relacionadas con las señales. Para ello se puede consultar el documento *LLamadasSistema.md* que recoge lo anteriormente descrito.
@@ -3144,7 +3144,7 @@ Para la explicación, vamos a utilizar ejemplos, que incrementarán gradualmente
 Como primer ejemplo, vamos a hacer un programa que trabaje solo con dos señales. La señal 1, incrementará en una unidad un contador inicializado en 0, la señal 2, terminará el proceso.
 
 La señales 1 y 2, por defecto, no realizan lo que queremos, tenemos que asociarle una función. El código del programa es el siguiente:
-~~~c
+```c
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
@@ -3168,7 +3168,7 @@ int main() {
   
   while (1);
 }
-~~~
+```
 
 *Para ejecutarlo, como se comentó anteriormente, lo ejecutamos en una terminal, abrimos otra terminal distinta y escribimos kill -s N PID, donde N es la señal y PID el del proceso al que le queremos mandar la señal.*
 
@@ -3180,7 +3180,7 @@ Veamos otro ejemplo, el mecanismo del siguiente programa es muy similar. EL prog
 
 El código está documentado por su autor, por lo que se comentará brevemente. Como mecanismos de seguridad, dentro de las funciones, activa y desactiva algunas señales, utilizando para ello ``signal (value, SIG_IGN)``, comentada anteriormente. El hecho de ignorar la señal, tiene relación con lo explicado de señales bloqueadas e ignoradas.
 
-~~~c
+```c
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
@@ -3243,12 +3243,12 @@ void contar ()
     // Volvemos a asociar SIGINT con la función cortar() para la próxima vez que el usuario pulse CTRL+C.
     signal (SIGINT, contar);
 }
-~~~
+```
 *La autoría de este código corresponde al blog nideaderedes.urlansoft.com*
 
 
 Ahora vamos a pasar a resolver el ejercicio 2 de la sesión. Se trata de escribir un programa en C que imprima las veces que se ha enviado la señal e imprima las que no puede manejar, *SIGKILL* y *SIGSTOP*, 9 y 19 respectivamente. El código es el siguiente.
-~~~c
+```c
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -3289,13 +3289,13 @@ int main() {
   while (1);
 
 }
-~~~
+```
 La explicación del código viene comentada dentro del mismo, en vez de desglosarlo fuera de él para evitar que se alargue demasiado el documento. Notar que aunque en el bucle *for* hayamos intentado modificar las señales 9 y 19, su comportamiento no se ha modificado, ya que el sistema lo impide, pero no da errores ni de ejecución ni de compilación.
 
 Ahora, para afianzar conceptos, vamos a hacerle algunas modificaciones. Contaremos las llamadas de la 1 a la 15, y la 16 la reservamos para abortar el proceso(a parte de la 9 y 19 que lo son por defecto). Cuando mandemos la señal 16, el proceso terminará, mostrando un mensaje por pantalla. El mensaje se muestra ya que lo hemos programado así, a diferencia de lo que ocurre al usar las llamadas 9 y 19.
 Las llamadas de la 17 a la 31, las vamos a desactivar, ya que no las usaremos ni queremos tenerlas en cuenta. Si el usuario realiza una de estas llamadas, el sistema, por defecto, termina el proceso.
 
-~~~c
+```c
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -3344,14 +3344,14 @@ int main() {
   while (1);
 
 }
-~~~
+```
 
 De nuevo, en el mismo código se explica lo que se va haciendo.
 
 
 ## Manejando señales, otra forma de hacerlo. La estructura sigaction
 Otra forma de realizar los ejemplos anteriores, es con el uso de la estructura **sigaction**. La idea es la misma, asociar una función creada por nosotros a las señales que queramos. Para ello, en vez de usar la función ``signal(value,function)``, utilizaremos ``sigaction(int value, const struct sigaction *act,NULL)``. Realmente el último parámetro no es NULL siempre, pero nosotros siempre la invocaremos así. Para más información, se puede consultar el *man*. El siguiente código corresponde al 3º ejemplo realizado, es decir, el ejercicio 2. 
-~~~c
+```c
 
 #include <sys/types.h>
 #include <unistd.h>
@@ -3396,14 +3396,14 @@ int main() {
 
   while(1);
 }
-~~~
+```
 
 Creamos la estrucutura *sigaction* y a su campo *sa_handler*, le asociamos nuestra función *handler*, que lleva nuestro contador. Así, cuando invoquemos a *sigaction* como función, se podrá asociar a la señal indicada nuestra función. Es una forma un poco más tediosa de resolver el ejercicio, aunque nos es de utilidad para entender mejor los conceptos que vamos a tratar a continuación.
 
 ## Trabajo con las llamadas al sistema sigsuspend y sigprocmask
 El siguiente código suspende la ejecución del proceso actual hasta que recibe una señal distinta de SIGUSR1.
 
-~~~c
+```c
 #include <stdio.h>
 #include <signal.h>
 
@@ -3419,7 +3419,7 @@ sigaddset(&new_mask, SIGUSR1);
 sigsuspend(&new_mask);
 
 }
-~~~
+```
 
 En C, podemos suspender la ejecución de un proceso con ayuda de las órdenes sigsuspend y sigprocmask. El codigo anterior, si le mandamos la señal SIGUSR1, sigue suspendido, mientras que si le mandamos cualquier otra termina la suspensión. Para ello, lo que hacemos es crear una máscara de señales(ver definición al principio del documento). Esta máscara contendrá la señal SIGUSR1, que se la pasaremos a la orden sigsuspend, que mantiene en suspensión el proceso mientras le pasemos las señales que contiene la máscara, es decir, mientras le mandemos la señal SIGUSR1.
 
@@ -3431,7 +3431,7 @@ En C, podemos suspender la ejecución de un proceso con ayuda de las órdenes si
 
 Veamos otro ejemplo. Mediante los mismos mecanismos, ahora queremos justo lo contrario. Mientras le pasemos cualquier llamada, el proceso está en suspensión, y cuando le pasemos al proceso la llamada SIGSUR1, saldrá de su estado de suspensión.
 ¿Qué hacemos? Pues justo lo contrario, meter en la máscara todas las señales excepto SIGUSR1. Dado que meter las señales una a una sería muy tedioso, echamos mano de la función *sigfillset*. El código es el siguiente:
-~~~c
+```c
 #include <stdio.h>
 #include <signal.h>
 
@@ -3452,14 +3452,14 @@ int main() {
   //El proceso sigue en suspensión mientras le mandemos una señal de la máscara que no sea SIGUSR1
   sigsuspend(&new_mask);
 }
-~~~
+```
 La explicación es justo lo que viene comentado dentro del código. Creamos la máscara y la vaciamos como en el ejemplo anterior. Con la función *sigfillset*, le metemos a la máscara todas las llamadas al sistema. Como queremos que con SIGUSR1 acabe la suspensión del proceso, tenemos que borrarla de la máscara, ya que *sigfillset* nos la ha añadido. Finalemente, llamamos a *sigsuspend* pasándole la máscara, tal y como realizamos anteriormente.
 
 ### sigprocmask
 En las versiones más recientes de Linux, es común utilizar la orden ``sigprocmask`` para manejar las máscaras de señales. Su sintaxis es:
-~~~
+```
 int sigprocmask(int how, const sigset_t *set, sigset_t *oset);
-~~~
+```
 Devuelve 0 si se ha ejecutado correctamente, -1 si se ha producido un error. 
 Primero, si *oset* no es un puntero nulo, la máscara de señales actual para el proceso es devuelta a través de *oset*.
 Segundo, si *set* no es un puntero nulo, entonces el argumento *how* indica como se modifica la máscara actual. Resumiéndolos, los valores de *how* pueden ser:
@@ -3468,17 +3468,17 @@ Segundo, si *set* no es un puntero nulo, entonces el argumento *how* indica como
 3. SIG_SETMASK: la nueva máscara de señales para el proceso es a la que viene apuntada por *set*
 
 Un breve ejemplo de uso es el siguiente:
-~~~c
+```c
 sigset_t set;
 sigemptyset(&set);
 sigaddset(&set, SIGINT);
 sigprocmask(SIG_UNBLOCK, &set, NULL);
-~~~~
+```~
 Este fragmento de código crea una nueva máscara(también llamado conjunto de señales), *set*, al que le añade la señal *SIGINT*. Mediante el uso de *sigprocmask*, desbloquea todas las señales que contienen la máscara *set* dada como argumento. En este caso, se desbloquea la señal *SIGINT*, que es la que contenía la máscara.
 
 Para finalizar este documento, vamos a ilustrar un ejemplo algo más elaborado que el código anterior. El ejemplo corresponde al código del ejercicio 4 de la sesión 5 de las pŕacticas de Sistemas Operativos. 
 Su funcionamiento es sencillo, desactiva la señal SIGTERM y la vuelve a activar después de una pausa de 10 segundos. El ejemplo es de poca utilidad, pero tiene un buen valor ilustrativo de la función *sigprocmask*.
-~~~c
+```c
 // tarea12.c
 
 #include <signal.h>
@@ -3540,18 +3540,18 @@ int main (int argc, char *argv[])
        printf ("\nSenal recibida\n");
    exit(EXIT_SUCCESS);
 }
-~~~
+```
 
 La explicación del código viene implícita en el mismo mediante comentarios, solo resaltaremos un par de cosas. En primer lugar:
-~~~c
+```c
 sigprocmask(SIG_BLOCK, &conjunto_mascaras, &conj_mascaras_original)
-~~~
+```
 Esta orden, en primer lugar, se guarda la máscara de señales actual del proceso en *conj_mascaras_original*. Después, se bloquea la señal contenida en *conjunto_mascaras* y se toma este mismo conjunto como la máscara de señales para el prroceso
 
 En segundo lugar:
-~~~c
+```c
 sigprocmask(SIG_SETMASK, &conj_mascaras_original, NULL)
-~~~
+```
 Como el tercer argumento es NULL, trabajamos sobre *conj_mascaras_original*. La orden *SIG_SETMASK* le dice al proceso que haga suya, como máscara de señales, *conj_mascaras_original*. Así, nos hacemos con la antigua, que no tenía la señal *SIGTERM* bloqueada
 
 \part{Anexo: Tutoriales de las sesiones}
