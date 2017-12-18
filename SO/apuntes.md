@@ -2359,7 +2359,7 @@ Veamos un primer ejemplo, en el que creamos un fichero y escribiremos una frase 
 #include<string.h> //Para poder usar strlen
 
 int main(int argc, char *argv[]) {
-	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las praćticas de 	Sistemas Operativos. Espero que te sirva :).\n";
+	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las práticas de 	Sistemas Operativos. Espero que te sirva :).\n";
 	char cadena2[150]="No dudes en compartir y modificar lo que creas conveniente, a través de github.com/libreim/apuntesDGIIM\n";
 	int f1;
 
