@@ -752,7 +752,7 @@ $$\varphi_X(t)=E(e^{itX})=\int_{-\infty}^{\infty}e^{itx}f_{X}(x)=E(cos(tX))+iE(s
 
 \chapter{Independencia}
 \section{Concepto de independencia}
-\textbf{Definición: }Se dice que los eventos $A_t$ son independientes si para todo subconjunto finito $(t_i,\ldots ,t_n)$ se tiene que:
+\textbf{Definición: }Sea un espacio probabilístico $(\Omega,\mathcal{A},\mathcal{P})$. Se dice que los eventos $\{A_t : t\in T \}\in \mathcal{A}$ son independientes si para todo subconjunto finito $(t_1,\ldots ,t_n)\in T$ se tiene que:
 $$P\bigcap_{k=1}^n A_{t_k}=\displaystyle\prod_{k=1}^{n}P\, A_{t_k}$$
 De hecho, el concepto de independencia es relativo a la familia de clases. Una colección de clases de eventos se dice independiente si seleccionando un evento arbitrario de cada clase dichos eventos son independientes. 
 
@@ -762,11 +762,28 @@ De hecho, el concepto de independencia es relativo a la familia de clases. Una c
 Se tiene que las subclases de clases independientes son independientes.
 \end{theorem}
 
+\begin{proof}
+	La demostración es trivial puesto que si todos los conjuntos de una clase cumplen la propiedad, también la han de cumplir un subconjunto de esta.
+\end{proof}
+
 \section{Suma de variables aleatorias independientes}
-\subsubsection{Teorema de Borel}
+\subsubsection{Teorema de las funciones Borel}
 \begin{theorem}
 Las funciones de Borel $g(X_i)$ de funciones aleatorias independientes son independientes.
 \end{theorem}
+
+
+\begin{proof}
+Las clases $\mathcal{B}_t\subset \mathcal{B}(X_t) = X_t'(\mathcal{B})$ son indep. $\implies$ g induce un sub $\sigma$-campo $\mathcal{B}_t$ de eventos contenidos en $\mathcal{B}(X_t) \ (\mathcal{B}(g(X_t)) \subset \mathcal{B}(X_t))$
+\\
+
+
+($X_t$ indep.)
+
+Sea $g$ función de Borel $\implies$ $(g \circ X_t)$ son independientes.
+\qed
+\end{proof}
+
 \subsubsection{Teorema de extensión}
 \begin{theorem}
 Los $\sigma$-campos minimales sobre clases independientes cerradas para la intersección finita son independientes.
@@ -777,15 +794,40 @@ Esto tiene tres aplicaciones fundamentales:
 \item Si la imagen inversa $\mathcal{C}_t$ de las clases de todos los intervalos $(-\infty, x_t)$ en los espacios de Borel $R_t$ son independientes, también lo son las imágenes inversas $\mathcal{B}_t$ de los campos de Borel en $R_t$. Para todo $\mathcal{C}_t$, éste es cerrado para la intersección finita y $\mathcal{B}_t$ es el $\sigma$ campo minimal sobre $\mathcal{C}_t$
 \item Sean $\mathcal{B}_t$ campos de eventos y sea $T_s$ un subconjunto de $T$. El $\sigma$ campo $\mathcal{B}_T$ compuesto por componentes $\mathcal{B}_t$, con $t\in T_s$, es el $\sigma$ campo minimal sobre la clase $\mathcal{C}$ de todas las intersecciones finitas de eventos $A_t$ y contiene a todos sus componentes
 \end{enumerate}
+\begin{proof}
+
+Sean $\mathcal{C}_1 \dots \mathcal{C}_n \ con \ \mathcal{C}_i^* \subset \mathcal{C}_i \ i=1\dots n \implies \mathcal{C}_i^* \ son \ independientes.$
+\\
+\begin{itemize}
+\item $\o$ y los eventos c.s.
+
+$\{\mathcal{C}_1 \cup \o \cup \Omega \cup \dots \}, \dots , \{\mathcal{C}_n \cup \o \cup \Omega \cup \dots \}$ $A_i' \subset A_i \in \mathcal{C}_i \ i=1\dots n.$
+\\
+\item Las diferencias apropiadas a sus elementos, en concreto los complementarios.
+
+$P(A_1 - A_1') A_2\dots A_n = PA_1\dots A_n - PA_1'\dots A_n = \prod_{i=1}^{n}PA_{i} - PA_1'\prod_{i=1}^{n}PA_i$
+\\
+\item La suma contable de sus elementos.
+
+$P(\sum_{j=1}^{n}A_1^j)A_2\dots A_n = \sum_{j=1}^{n}PA_1^jA_2\dots A_n = \sum_{j=1}^{n}PA_1^jPA_2\dots PA_n = P(\sum_{j=1}^{n}A_1^j)PA_2\dots PA_n$
+\\
+\item Los limites de sequencias de sus elementos.
+
+$\lim A_{1}^m \shortrightarrow A_{1} \ si \ m \shortrightarrow \infty$
+
+$PA_1A_2\dots A_n \shortleftarrow PA_1^mA_2\dots A_n = PA_1^mPA_2\dots PA_n \shortrightarrow PA_1PA_2\dots PA_n$
+\end{itemize}
+\qed
+\end{proof}
 \subsubsection{Teorema de composición}
 \begin{theorem}
-Los $\sigma$-campos compuestos son independientes si y solo si sus $\sigma$-subcampos finitamente compuestos son independientes
+Los $\sigma$-campos compuestos son independientes si y solo si sus $\sigma$-subcampos finitamente compuestos son independientes.
 \end{theorem}
 \subsection{Familia de variables aleatorias}
-Una familia de variables aleatorias $X_{T_s}=\{ X_t : t\in T_s \}$ induce $\sigma$-campos $\mathcal{B}(X_{T_s})$ de eventos
+Una familia de variables aleatorias $X_{T_s}=\{ X_t : t\in T_s \}$ induce $\sigma$-campos $\mathcal{B}(X_{T_s})$ de eventos.
 \subsubsection{Teorema de las familias}
 \begin{theorem}
-Las familias de variables aleatorias son independientes si y solo si sus subfamilias finitas son mutuamente independientes
+Las familias de variables aleatorias son independientes si y solo si sus subfamilias finitas son mutuamente independientes.
 \end{theorem}
 \section{Multiplicación de variables aleatorias independientes}
 \textbf{Definición: } Las variables aleatorias $X_t\, , \, t\in T$ son independientes si para cada clase finita $(S_{t_1},\ldots , S_{t_n})$ de conjuntos de Borel en $\mathbb{R}$,
@@ -894,6 +936,8 @@ Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
 \subsubsection{Criterio cero-uno de Borel}
 \begin{criterion} 
   \ 
+Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
+
 \begin{itemize}
 \item Si $ A_n$ son independientes 
   \begin{itemize}
@@ -925,7 +969,7 @@ $$ X_n \stackrel{c.s.}{\rightarrow} 0 \Leftrightarrow \sum_n P([X_n \geq \vareps
   
 $\sum P([|X_n| \geq \varepsilon]) = 0 
 \ \Leftrightarrow \
-P(\lim \sup ([|X_n] \geq \varepsilon])) = 0 
+P(\lim \sup ([|X_n| \geq \varepsilon])) = 0 
 \ \Leftrightarrow \
 \displaystyle P ( \bigcap_n \bigcup_{k=n} [|X_n| \geq \varepsilon]) = 0 
 \ \Leftrightarrow \
@@ -995,8 +1039,9 @@ El Teorema del Límite Central, que desarrollaremos más adelante, es una consec
 
 \subsection{Ley fuerte de Borel de los grandes números} % Pag 244 del Loeve
 Con las hipótesis anteriores de la ley de Bernouilli de los grandes números, entonces: $$\dfrac{S_n}{n}-p \stackrel{c.s.}{\longrightarrow}0$$
+\subsection{Teorema de aproximación de Weierstrass}
 \begin{theorem}
-Sea f(x) continua en $[0,1] \Rightarrow \exists {P_n(x)}$ tal que $\lim P_n (x) = f(x)$ uniformemente $ \forall x \in [0,1]$.
+Sea f(x) continua en $[0,1]$ se aproxima por el polinomio de Berstein $\Rightarrow \exists {B_n(x)}$ tal que $\lim B_n (x) = f(x)$ uniformemente $ \forall x \in [0,1]$.
 \end{theorem}
 \begin{proof}*
 \end{proof}
@@ -1053,7 +1098,7 @@ $$ \sigma^2 S_n=\sum_{k=1}^n \sigma^2 X_k \hspace{1.5cm} \text{(Igualdad de Bien
 
 \textbf{Demostración}
 
-Sean $X_1$, $X_2$ integrables, como el centramiento no modifica la varianza, podemos asumir, cuando computamos varianzas, que esas variables aleatorias están centradas a la media. Entonces:
+Sean $X_1$, $X_2$, ... integrables, como el centramiento no modifica la varianza, podemos asumir, cuando computamos varianzas, que esas variables aleatorias están centradas a la media. Entonces:
 $$\sigma^2 S_n=ES_n^2=\sum_{k=1}^n EX_k^2+\sum_{j,k=1, j\not = k}^n EX_jX_k=\sum_{k=1}^n\sigma^2 X_k$$
 como $X_j$ y $X_k$ son independientes, tenemos que:
 $$EX_jX_k=EX_j\cdot EX_k=0$$
