@@ -2347,7 +2347,7 @@ getcwd devuelve el directorio de trabajo actual para cada proceso.
 >El objetivo es aprender a abrir, cerrar y crear ficheros mediante llamadas al sistema, así como leer y escribir en los mismos.
 
 Veamos un primer ejemplo, en el que creamos un fichero y escribiremos una frase dentro de él..
-~~~c
+```c
 #include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
@@ -2389,13 +2389,13 @@ int main(int argc, char *argv[]) {
 
 	return EXIT_SUCCESS;
 	}
-~~~
+```
 
 El objetivo del programa es escribir los dos mensajes en un fichero, *archivo_salida*, que vienen dados por dos cadenas de caracteres. 
 Primero tenemos que abrir el fichero de salida. Si no existe, lo creamos. El fichero de salida lo referenciamos mediante la variable *f1*.
-~~~c
+```c
 f1=open("archivo_salida",O_CREAT|O_TRUNC|O_WRONLY,S_IRUSR|S_IWUSR)
-~~~
+```
 
 En primer lugar, la orden ``open`` devuelve el descriptor del fichero de salida, que le damos el nombre de *fichero_salida*. Se almacenará en el entero *f1* que declaramos antes. Si es negativo, es que se ha producido un error al abrirlo, de ahí la comprobación del *if* y el aborto del programa de cumplirse la comprobación.
 1.El primer argumento de la orden ``read`` es la ruta del fichero de salida. Como no le estamos dando ninguna ruta, se asume el directorio de trabajo actual, desde donde ejecutamos el programa.
@@ -2406,18 +2406,18 @@ Ahora pasamos a escribir en el fichero. Con la función ``strlen`` conocemos la 
 La función ``write```escribe en el fichero dado como primer argumento, mediante su descriptor de fichero, *f1*, los n primeros bytes indicados mediante el tercer argumento, los cuales los extrae del segundo argumento. Como queremos escribir la cadena1 entera, pues le decimos que coja tantos como indica longitud, que era la longitud de la cadena obtenida con strlen.
 
 El número de escritos no es necesario almacenarlo en una variable, podemos escribir y hacer la comprobación directamente:
-~~~c
+```c
 longitud = strlen(cadena2);
 
 if(write(f1,cadena2,longitud) != longitud) {
 	perror("\nError en segundo write.");
 	exit(EXIT_FAILURE);
 	}
-~~~
+```
 Con este segundo *write*, hemos escrito la segunda cadena al final de la primera, ya que cuando hicimos el primer *write* el offset se quedó apuntando al final del fichero, por lo que la siguiente escritura empezó en esa posición.
 
 Veamos una variante. Supongamos que queremos escribir primero la segunda cadena en vez de la primera. Bastaría con hacer lo mismo que antes pero en el orden contrario. Otra forma es movernos por el fichero con la función ``lseek``. El código es el siguiente:
-~~~c
+```c
 #include<unistd.h>
 #include<stdio.h>
 #include<stdlib.h>
@@ -2469,26 +2469,26 @@ int main(int argc, char *argv[]) {
 
 	return EXIT_SUCCESS;
 	}
-~~~
+```
 Como vemos, primero se escribe la cadena1 y después la cadena2, pero en el documento de salida se ha escrito al revés. ¿Qué ha cambiado en el código?
 Con ``lseak`` podemos situarnos donde queramos en el fichero, pero tenemos como problema de que si en esa posición (o posteriores) había algo escrito, reemplazaremos lo que había por que escribamos, ya que *lseek* solo apunta, no desplaza el contenido. Por tanto, para no solapar la segunda cadena con la primera, antes de escribir la primera cadena, calculamos cuanto ocupa la segunda. Así, si la segunda ocupa por ejemplo 40 bytes, nos situamos con *lseek* en la posición 40 del fichero, para que cuando escribamos al segunda cadena, la primera no se vea alterada. Antes del primer *write*:
-~~~c
+```c
 int longitud = strlen(cadena2);
 
 	if(lseek(f1,longitud,SEEK_SET) < 0) {
 		perror("\nError en lseek");
 		exit(EXIT_FAILURE);
 	}
-~~~
+```
 ``lseak`` devuelve -1 si se ha producido un error. El primer parámetro, *f1*, es el fichero con el que queremos trabajar. El segundo, *longitud*, que contiene los bytes que ocupa cadena2, son los n bytes que queremos desplazarnos. Con el tercer argumento, *SEEK_SET*, indicamos que esos n bytes queremos contarlos a partir de la posición 0 del fichero.
 
 Tras escribir la primera cadena, utilizamos de nuevo ``lseak`` para situarnos al principio del documento y escribir la segunda cadena:
-~~~c
+```c
 if(lseek(f1,0,SEEK_SET) < 0) {
 		perror("\nError en lseek");
 		exit(EXIT_FAILURE);
 	}
-~~~
+```
 Basta eliminar el primer *lseek* del código para comprobar que pueden mezclarse las cadenas en el documento de salida.
 
 
@@ -2496,7 +2496,7 @@ Con esta información, vamos a resolver el ejercicio 2, que pide escribir el con
 
 El código viene explicado con comentarios.
 
-~~~c
+```c
 #include<sys/types.h>
 #include<sys/stat.h>
 #include<fcntl.h>
@@ -2572,13 +2572,13 @@ int main(int argc, char *argv[]) {
 	close(fd);
 	close(fout);
 }
-~~~
+```
 
 ## La estructura stat
 La estructura **stat** permite almacenar los metadatos de un archivo mediante una llamada al sistema. Para más información, consultar el man y el guión de prácticas. 
 En el ejemplo propuesto, se realiza un programa que permite saber de qué tipo es un fichero, mediante la estructura *stat* y macros de C, a los que se les pasa como argumento el campo *st_mode*. Por ejemplo, ``S_ISDIR(atributos.st_mode)`` devuelve 1 si el archivo (hemos almacenado sus metadatos en el *stat* llamado *atributos*) es un directorio, sino, devuelve 0. Utilizando todos los marcos podemos detectar el tipo de archivo. Con esto, basta leer el código despacio para entenderlo, así que no se comentará para no alargar el tutorial.
 *Al programa podemos pasarle más de un argumento, cada uno será un archivo*
-~~~c
+```c
 /*
 tarea2.c
 Trabajo con llamadas al sistema del Sistema de Archivos ''POSIX 2.10 compliant''
@@ -2622,7 +2622,7 @@ for(i=1;i<argc;i++) {
 
 return EXIT_SUCCESS;
 }
-~~~
+```
 
 
 # Tutorial sesión 2: llamadas al sistema para el Sistema de Archivos (parte II)
