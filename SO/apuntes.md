@@ -2337,7 +2337,7 @@ getcwd devuelve el directorio de trabajo actual para cada proceso.
 
 
 
-
+\part{Anexo: Tutoriales de las sesiones}
 
 <!--El objetivo de este anexo ha sido explicar, como buenamente he podido, el uso de algunas funciones de las sesiones de SO. No obstante, la información es válida para cualquier tarea de manejo de señales en C. Todos los códigos recogidos en el documento son de mi autoría, a excepción de los citados con la correspondiente referencia. Eres libre de añadir, editar y compartir el documento, perteneciente al repositorio de apuntes de github.com/libreim. ~~Víctor Castro Serrano, curso 2017-2018. DGIIM, UGR.-->
 
@@ -3349,7 +3349,7 @@ int main() {
 De nuevo, en el mismo código se explica lo que se va haciendo.
 
 
-## Manejando señales, otra forma de hacerlo. La estructura sigaction
+## Manejando señales. La estructura sigaction
 Otra forma de realizar los ejemplos anteriores, es con el uso de la estructura **sigaction**. La idea es la misma, asociar una función creada por nosotros a las señales que queramos. Para ello, en vez de usar la función ``signal(value,function)``, utilizaremos ``sigaction(int value, const struct sigaction *act,NULL)``. Realmente el último parámetro no es NULL siempre, pero nosotros siempre la invocaremos así. Para más información, se puede consultar el *man*. El siguiente código corresponde al 3º ejemplo realizado, es decir, el ejercicio 2. 
 ```c
 
@@ -3554,7 +3554,7 @@ sigprocmask(SIG_SETMASK, &conj_mascaras_original, NULL)
 ```
 Como el tercer argumento es NULL, trabajamos sobre *conj_mascaras_original*. La orden *SIG_SETMASK* le dice al proceso que haga suya, como máscara de señales, *conj_mascaras_original*. Así, nos hacemos con la antigua, que no tenía la señal *SIGTERM* bloqueada
 
-\part{Anexo: Tutoriales de las sesiones}
+
 
 
 
