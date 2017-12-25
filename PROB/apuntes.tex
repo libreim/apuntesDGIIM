@@ -112,7 +112,7 @@ Si $\varphi(A_n)\geq 0 \Longrightarrow A_n^{+}=A_n$ y $A_n^{-}=\emptyset$\\
 Si $\varphi(A_n)<0 \Longrightarrow A_n^{+}=\emptyset$ y $A_n^{-}=A_n$\\
 Entonces $\varphi(\displaystyle\sum A_n^{+})=\displaystyle\sum\varphi(A_n^{+})$ y $\varphi(\displaystyle\sum A_n^{-})=\displaystyle\sum\varphi(A_n^{-})$, ambas finitas. Sumando ambas cantidades obtenemos que $\displaystyle\sum(\vert \varphi(A_i)\vert)<\infty$
 
-\qed
+
 \end{proof}
 
 \begin{theorem}
@@ -128,7 +128,7 @@ Veamos que es no decreciente $(A \subseteq B \Rightarrow \varphi (A) \leq \varph
 
 Veamos ahora que es subaditiva $(\varphi(\bigcup_{j} A_j) \le \sum_j \varphi(A_j))$.Veamos que 
 $\varphi(\bigcup_{i} A_i) = \varphi(A_1 + A_1^c A_2 + ... + A_1^cA_2^c...A_n+ ...) =^1 \varphi(A_1) + \varphi(A_1^c A_2) + ... + \varphi(A_1^cA_2^c...A_n) + ... \leq  \sum_i \varphi(A_i)$ donde en 1 usamos que son disjuntos para aplicar la subaditividad.
-\qed
+
 \end{proof}
 
 \section{Continuidad en funciones sobre conjuntos}
@@ -171,7 +171,7 @@ $$ \varphi \left( \sum_{k=1}^{\infty} A_k \right) = \varphi \left( \sum_{k=1}^{n
 
 Y tomando límites tenemos que
 $$ \varphi \left( \sum_{k=n+1}^{\infty} A_k \right) \to \varphi (\emptyset) = 0 $$
-\qed
+
 \end{proof}
 
 Una vez demostrado este teorema, vamos a ver un teorema que nos relaciona las propiedades del supremo e ínfimo de una función $\sigma$-aditiva con los conjuntos sobre los que está dicha función definida:
@@ -190,7 +190,7 @@ $$ \varphi(A_n) \leq \varphi(B_n) \leq \varphi (B_n \cup B_{n+1} \cup ... \cup B
 Tomando $n' \to +\infty$, se sigue de la continuidad por debajo que
 $$ \varphi(A_n) \leq \varphi (B_n) \leq \varphi \left( \cup_{k=n}^{+\infty} B_k\right) $$
 Haciendo tender ahora $n \to +\infty$ y tomando $\displaystyle C = \lim \cup_{k = n}^{+\infty} B_k$ se sigue, por la continuidad por arriba, que $\sup \varphi \leq \varphi(C)$. Pero $\varphi(C) \leq \sup \varphi$, y por tanto se tiene que $\varphi(C) = \sup \varphi$, como queríamos.
-\qed
+
 \end{proof}
 
 \chapter{Medidas y probabilidades}
@@ -268,7 +268,7 @@ Claramente es no decreciente, ya que si $A \subseteq B$, todo recubrimiento de $
 
 Por último, $\mu^\circ(\emptyset) = \mu(\emptyset) = 0$
 
-\qed
+
 \end{proof}
 
 \begin{theorem}
@@ -294,7 +294,7 @@ $$\mu^\circ(D) \geq \sum_{n=1}^{+\infty} \mu^\circ(A_nD) + \mu^\circ(A^cD) \geq 
 Además queda demostrado que $A \in \mathcal{A}^\circ$, así que tenemos que $\mathcal{A}^\circ$ es un $\sigma$-campo.
 Por último, tomando $D = A$, tenemos que $\mu^\circ(A) \geq \displaystyle \sum \mu^\circ(A_n) \Rightarrow \mu^\circ(A) = \sum \mu^\circ(A_n) \Rightarrow \mu^\circ$ es una medida.
 
-\qed
+
 \end{proof}
 
 \begin{theorem}
@@ -317,12 +317,12 @@ Entonces, de momento $\mathcal{M}$ es un campo.\\
 Sean ahora $\{A_n\} \subset \mathcal{M}$ monótona, entonces $\mu_1(\lim A_n) = \lim \mu_1(A_n) = \lim \mu_2(A_n) = \mu_2(\lim A_n) \Rightarrow \mathcal{M}$ cerrada frente al límite de sucesiones monótonas $\Rightarrow \mathcal{M} \sigma$-álgebra que contiene a $\mathcal{C}$, por tanto, contiene a la $\sigma$-álgebra minimal sobre $\mathcal{C}$
 $$ \mathcal{A}(\mathcal{C}) \subseteq \mathcal{M} \Rightarrow \mu_1 = \mu_2 \: en \: \mathcal{A}(\mathcal{C})$$
 
-\qed
+
 \end{proof}
 
 \chapter{Funciones medibles}
 
-Antes de nada, vamos a puntualizar unas características básicas de la inversa de una función que podrían pasar desapercividas:
+Antes de nada, vamos a puntualizar unas características básicas de la inversa de una función que podrían pasar desapercibidas:
 
 \begin{lemma}
   Sea $X: \Omega \to \overline{\mathbb{R}}$ y $S',S, S_t \subset \mathbb{R} \forall t \in \mathbb{N}$
@@ -386,7 +386,7 @@ y
 $$X_n(\omega) = \pm n \quad para \quad  X(\omega) = \pm \infty$$
 se tiene entonces que $X_n \to X$ y esto, con lo anterior, prueba la equivalencia de las dos definiciones de función medible.
 
-\qed
+
 \end{proof}
 
 %Este lemma era la definición descriptiva de función medible.
@@ -403,7 +403,7 @@ Si $X$ es elemental, tenemos que $\displaystyle g(X) = g\Big(\sum_jx_jI_{A_j}\Bi
 Si $X$ es el límite de funciones elementales:
 $$g(X) = g(\lim X_n) = \lim g(X_n) = \lim \sum_j g(x_j)I_{A_j}$$
 
-\qed
+
 \end{proof}
 
 Para este teorema introduceremos el concepto de función boreliana. Esta es una función $g:(\mathbb{R},\mathcal{B})\to(\mathbb{R},\mathcal{B})$ tal que $g^{-1}(B)\in \mathcal{B}, \forall B\in\mathcal{B}$
@@ -416,7 +416,7 @@ Sean $X$ función medible y $g$ función boreliana. Entonces, $g(X)$ es medible.
 
 \begin{proof}
 $$(g(X))^{-1}(B)=X^{-1}(g^{-1}(B))\in \mathcal{A}$$
-\qed
+
 \end{proof}
 
 \section{Convergencia en probabilidad y convergencia casi segura}
@@ -440,7 +440,7 @@ $$|X-Y |=|X - X_n - Y + X_n | \leq |X_n - X|+| X_n-Y |$$
 $$P[|X - Y| \geq \varepsilon] \leq P[|X_n - X | \geq \frac{\varepsilon}{2} ] + P[| X_n - Y | \geq \frac{\varepsilon}{2}] \rightarrow 0$$
 Y por tanto, $X \mathcal{R} Y$
 
-\qed
+
 \end{proof}
 
 \subsection{Definición de convergencia uniforme en u}
@@ -457,7 +457,7 @@ La convergencia en probabilidad implica la convergencia uniforme
 $$ \mid X_{n+u} - X_n \mid \ \leq \ \mid X_{n+u} - X \mid + \mid X - X_n \mid \Rightarrow$$
 $$ \Rightarrow \mathcal{P}[\mid X_{n+u} - X_n \mid \geq \varepsilon] \ \leq \ \mathcal{P}\Big[\mid X_{n+u} - X \mid \geq \frac{\varepsilon}{2}\Big] + \mathcal{P}\Big[\mid X_{n} - X \mid \geq \frac{\varepsilon}{2}\Big] \to 0$$
 
-\qed
+
 \end{proof}
 
 \subsection{Propiedades}
@@ -508,7 +508,7 @@ X_n\stackrel{\mathcal{P}}{\longrightarrow}X
 \begin{proof}
 $$0=\displaystyle\lim_{n\rightarrow\infty}P\bigcup_{m\geq n}[|X_m - X|\geq \epsilon ]\geq\displaystyle\lim_{n\rightarrow\infty}P[|X_n - X|\geq \epsilon ]$$
 
-\qed
+
 \end{proof}
 
 \begin{lemma}
@@ -527,7 +527,7 @@ $$\Longleftarrow$$
 ${\mathbb{X}_n(\omega)}$ de Cauchy
 \end{center}
 $$\lim\mathbb{X}_n(\omega)=\mathbb{X}(\omega)\hspace{0.5cm} \omega \in A$$
-\qed
+
 \end{proof}
 
 \chapter{Esperanza matemática}
@@ -553,7 +553,7 @@ Sean $X = \displaystyle \sum x_jI_{A_j}$ e $Y = \displaystyle \sum y_kI_{B_k}$. 
 Si calculamos ahora las integrales:
 $$ \int (X+Y)d\mathcal{P} = \sum_k + \sum_j (x_j + y_k) \mathcal{P}(A_jB_k) =$$
 $$ = \sum_j x_j \mathcal{P}(A_j) + \sum_k y_k \mathcal{P}(B_k) = \int Xd\mathcal{P} + \int Yd\mathcal{P}\\$$
-\qed
+
 \end{proof}
 
 $\displaystyle \int_{A+B} X d\mathcal{P} = \int_A X d\mathcal{P} + \int_B X d \mathcal{P}$\\
@@ -574,7 +574,6 @@ $\displaystyle X \stackrel{c.s}{=} Y \rightarrow \int X d\mathcal{P} = \int Y d\
 
 Dado un espacio probabilístico $(\Omega, \mathcal{A}, P)$ y una v.a. $X$, se define la esperanza matemática de $X$ como:
 $$E(X)=\int_{\Omega}XdP=\int_{\omega \in \Omega}{X(\omega)dP(\omega)}$$
-\\
 
 La esperanza matemática se define de forma distinta si estamos trabajando con una v.a. discreta o continua. En el caso de una v.a. discreta, sea $P(x_i)$ su función de probabilidad. Definimos la esperanza matemática como:
 $$E(X)=x_1P[X=x_1]+\ldots + x_n P[X=x_n]=\sum_{i=1}^{n}{x_i P(x_i)}$$
@@ -609,7 +608,7 @@ $$X \leq lim Y_n \leq X
 lim \int X_n \leq \int lim Y_n \leq lim \int X_n$$
 De donde extraemos que $\lim Y_n = X$ y que $\displaystyle \int X = lim \int X_n$
 
-\qed
+
 \end{proof}
 
 \subsection{Teorema de Fatou-Lebesgue}
@@ -633,7 +632,7 @@ En otro caso:
 \item $X_n - Y \geq 0 \Rightarrow \lim \inf E(X_n) - \lim \inf E(Y) \geq E(\lim \inf X_n) - E(\lim \inf Y)$
 \item $Z - X_n \geq 0 \Rightarrow - \lim \inf E(-X_n) \geq - E(\lim \inf - X_n) \Rightarrow \lim \sup E(X_n) \leq E(\lim \sup X_n)$
 \end{enumerate}
-\qed
+
 \end{proof}
 
 \subsection{Teorema de la convergencia dominada}
@@ -650,7 +649,7 @@ De nuevo, tenemos que $Y_n' \stackrel{\mathcal{P}}{\rightarrow} 0$. Tomando ahor
 \implies 
 \displaystyle \int Y_n'' \rightarrow 0 \stackrel{unic.lim.}{\implies} \lim \sup \int Y_n = 0 \stackrel{Y_n \geq 0}{\implies} \int Y_n \rightarrow 0$
 
-\qed
+
 \end{proof}
 
 \subsection{Desigualdades}
@@ -703,7 +702,7 @@ $$ Eg(A) = \int_A g(X) d\mathcal{P} + \int_{A^c} g(X) d\mathcal{P} $$
 $$ g(a)\mathcal{P}(A)\ \leq\ \int_A g(X)d\mathcal{P} \ \leq \ c.s.\sup g(X)\mathcal{P}(A) $$
 $$ 0 \ \leq \ \int_{A^c} g(X) d\mathcal{P} \ \leq \ g(a) $$
 $$ g(a)\mathcal{P}(A) \ \leq\ Eg(X) \ \leq \ c.s.\sup g(X)\mathcal{P}(A) + g(a) $$
-\qed
+
 \end{proof}
 
 \subsubsection{Aplicaciones}
@@ -781,7 +780,7 @@ Las clases $\mathcal{B}_t\subset \mathcal{B}(X_t) = X_t'(\mathcal{B})$ son indep
 ($X_t$ indep.)
 
 Sea $g$ función de Borel $\implies$ $(g \circ X_t)$ son independientes.
-\qed
+
 \end{proof}
 
 \subsubsection{Teorema de extensión}
@@ -813,11 +812,11 @@ $P(\sum_{j=1}^{n}A_1^j)A_2\dots A_n = \sum_{j=1}^{n}PA_1^jA_2\dots A_n = \sum_{j
 \\
 \item Los limites de sequencias de sus elementos.
 
-$\lim A_{1}^m \shortrightarrow A_{1} \ si \ m \shortrightarrow \infty$
+$\lim A_{1}^m \rightarrow A_{1} \ si \ m \rightarrow \infty$
 
-$PA_1A_2\dots A_n \shortleftarrow PA_1^mA_2\dots A_n = PA_1^mPA_2\dots PA_n \shortrightarrow PA_1PA_2\dots PA_n$
+$PA_1A_2\dots A_n \leftarrow PA_1^mA_2\dots A_n = PA_1^mPA_2\dots PA_n \rightarrow PA_1PA_2\dots PA_n$
 \end{itemize}
-\qed
+
 \end{proof}
 \subsubsection{Teorema de composición}
 \begin{theorem}
@@ -854,7 +853,7 @@ $$ 0 \leq X_n \uparrow X, \ 0 \leq Y_n \uparrow Y \implies X_nY_n \uparrow XY$$
 $$ E(X_nY_n) = E(X_n)E(Y_n)$$
 De donde se extrae por el teorema de la convergencia monótona que $E(XY) = E(X)E(Y)$
 
-\qed
+
 \end{proof}
 
 \subsubsection{Teorema de la multiplicación}
@@ -882,7 +881,7 @@ Como ni $X$ ni $Y$ degeneran a $0$,
 % por tanto $E(|X|)$ y $E(|Y|)$ no desvanecen % No sé lo que es desvanecer, Loeve facts
 $E(|X|)$ y $E(|Y|)$ son finitas y, por tanto, $X$ e $Y$ son integrables.
 
-\qed
+
 \end{proof}
 
 \subsubsection{Teorema de equivalencia}
@@ -906,7 +905,7 @@ Aplicación directa del teorema de la multiplicación.\\
 $iii) \Rightarrow ii)$\\
 Tenemos que $F_{t_1,...,t_n}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}]) = F_{t_1}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}])$\\$F_{t_2}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}])...F_{t_n}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}])$. Haciendo $a_t \rightarrow - \infty$, $b \uparrow x_t$ tenemos $ii)$
 
-\qed
+
 \end{proof}
 
 \subsubsection{Lema de Borel-Cantelli}
@@ -930,7 +929,7 @@ Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
   $$P(\limsup A_n)=P\lim B_n=\lim P\, B_n = \lim_n P\bigcup_{k=n}^\infty A_k \leq \lim_n \sum_{k=n}^\infty P\, A_k=0$$
   El recíproco no es cierto.
   
-\qed
+
 \end{proof}
 
 \subsubsection{Criterio cero-uno de Borel}
@@ -954,7 +953,7 @@ Usamos las sucesiones definidas anteriormente, para el caso 0 queda probado con 
 $$P(\displaystyle\limsup A_n)^c = P(\liminf A_n^c)=P(\bigcup_{n}\bigcap_{k=n}A_k^c)=P(\lim_{n}\bigcap_{k=n}A_k^c)=$$
 $$\lim_n P(\bigcap_{k=n}A_k^c)=\lim_n \prod_{k=n}(1-P(A_k))\leq \lim_{n}\prod_{k=n} e^{-P(A_n)}=\lim_n e^{-\sum_k P(A_k)}=0$$
 
-\qed
+
 \end{proof}
 
 De esta ley se extraen una serie de corolarios importantes:\\
@@ -979,7 +978,7 @@ P (\lim_n \bigcup_{k=n} [|X_n| \geq \varepsilon])
 \ \Leftrightarrow \
 X_n \stackrel{c.s.}{\rightarrow} 0$
 
-\qed
+
 
 \textbf{Corolario 3: }
 
@@ -992,7 +991,7 @@ ${X_n}$ son independientes y $ X_n \stackrel{\mathbb{P}}{\rightarrow} 0 \Leftrig
 $\exists X_{n_k}: P[|X_{n_k}| \geq \frac{1}{2^k}] \ \leq \ \frac{1}{2^k}$\\
 $\displaystyle \sum_k P ([|X_{n_k}| \geq \frac{1}{2^k}]) \leq \sum_k \frac{1}{2^k} = 1 \Leftrightarrow X_{n_k} \stackrel{c.s.}{\rightarrow}0$
 
-\qed
+
 
 
 Pasamos ahora a ver otra ley importante en el estudio de la probabilidad, la cual se conoce como la ley 0-1 de Kolmogorov. Para ello, comenzamos definiendo el concepto de $\sigma$-campo cola.\\
@@ -1015,7 +1014,7 @@ $$ P(AA) = P(A)P(A) = P(A)\, \ \forall A \in \mathcal{C} \Rightarrow P(A) = \{0,
 $ii)$\\
 Los límites de las sucesiones de variables aleatorias independientes son $\mathcal{C}$-medibles (también para limsup). Por tanto, es una variable aleatoria que degenera
 
-\qed
+
 \end{proof}
 
 A raíz de esta ley, podemos extraer también un corolario.\\
@@ -1103,7 +1102,7 @@ $$\sigma^2 S_n=ES_n^2=\sum_{k=1}^n EX_k^2+\sum_{j,k=1, j\not = k}^n EX_jX_k=\sum
 como $X_j$ y $X_k$ son independientes, tenemos que:
 $$EX_jX_k=EX_j\cdot EX_k=0$$
 
-\qed
+
 
 
 \
