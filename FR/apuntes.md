@@ -4,11 +4,18 @@
 
 ## Sistemas de comunicación y redes
 
-Un sistema de comunicación es una infraestructura que permite el intercamio de información.
+Un sistema de comunicación es una infraestructura que permite el
+intercambio de información. 
 
-De una forma más extensa: Entendemos por una red como un sistema de comunicación con sistemas finales autónomos que facilita el intercambio eficaz y transparente de la información.
+De una forma más extensa: Entendemos por una red como un sistema de
+comunicación con sistemas finales autónomos que facilita el
+intercambio eficaz y transparente de la información. 
 
-Debemos saber que los sistemas finales son aquellos que tienen capacidad de procesar información; que un intercambio se considera eficaz si maximiza el uso de los recursos como el ancho de banda entre otros y que es transparente si actúa con independencia de las diferencias del sistema entre la fuente y el destino.
+Debemos saber que los sistemas finales son aquellos que tienen
+capacidad de procesar información; que un intercambio se considera
+eficaz si maximiza el uso de los recursos como el ancho de banda entre
+otros y que es transparente si actúa con independencia de las
+diferencias del sistema entre la fuente y el destino. 
 
 Razones para usar redes:
 
@@ -28,20 +35,163 @@ Podemos clasificar las redes:
     * Punto a punto
 
 
-Tenemos varios problemas a resolver respecto a la transparencia y eficacia en la transmisión de información con una red, entre ellos: El método de transmisión de la información y su traducción; compartición del medio y la segmentación de la información; control del flujo y de errores, en el enlace y también extremo a extremo; control del encaminamiento o enrutamiento de los mensajes; control de congestión; entrega ordenada de los mensajes; gestión del diálogo o turno de palabra; representación o sintaxis de los datos; significado o semántica de los datos.
+Tenemos varios problemas a resolver respecto a la transparencia y
+eficacia en la transmisión de información con una red, entre ellos: El
+método de transmisión de la información y su traducción; compartición
+del medio y la segmentación de la información; control del flujo y de
+errores, en el enlace y también extremo a extremo; control del
+encaminamiento o enrutamiento de los mensajes; control de congestión;
+entrega ordenada de los mensajes; gestión del diálogo o turno de
+palabra; representación o sintaxis de los datos; significado o
+semántica de los datos. 
 
-Aprendereos a solucionar todo esto utilizando el modelo OSI(Open System Interconnection) de la ISO que pese a ser un modelo estándar tiene un interés puramente académico. Pese a ello, este modelo de 7 capas es la base del modelo TCP/IP que es el que realmente se utiliza a día de hoy.
+Aprendereos a solucionar todo esto utilizando el modelo OSI(Open
+System Interconnection) de la ISO que pese a ser un modelo estándar
+tiene un interés puramente académico. Pese a ello, este modelo de 7
+capas es la base del modelo TCP/IP que es el que realmente se utiliza
+a día de hoy. 
+
 
 
 ### Estructura y elementos de una red
 
-Los **hosts** son los sistemas finales autónomos y la *subred* es la infraestructura para el transporte de información. Las subredes están formadas por nodos que se conectan mediante nodos o elementos de conmutación.
+Los **hosts** son los sistemas finales autónomos y la *subred* es la
+infraestructura para el transporte de información. Las subredes están
+formadas por nodos que se conectan mediante nodos o elementos de
+conmutación. 
 
 ## Diseño y estandarización de redes
 
+### **Modelo OSI**
+Grupo 1 de capas:
+- Capa Física: Conexión ordenador-punto de acceso. Mueven los bits
+  dentro de la trama de un nodo al siguiente.
+
+- Capa de Enlace: Permite la comunicación entre dos nodos directamente
+  conectados. Delimita la trama (nombre que se le da a los paquetes de
+  la capa de enlace) y controla errores y flujo. 
+  
+Grupo 2:
+- Capa de Red: Nos ofrece la capacidad de enrutamiento que permite
+  llevar a los paquetes desde un origen a un destino. Controla además
+  la congestión, evitando el envío de paquetes a nodos
+  congestionados. Incluye el protocolo IP, que es único y hace que se
+  haga referencia a esta capa como la capa IP.
+
+Abstrae toda la comunicación para que únicamente se preocupe del nodo
+inicial y nodo destino como si estuvieran conectados directamente.
+
+Grupo 3:
+
+
+- Capa de Transporte: Transporta los mensajes entre los extremos
+  finales de la comunicación. Existen dos protocolos de transporte,
+  UDP y TCP. Proporciona control de errores y control de flujo.
+
+- Capa de Sesión: Controla el "turno de palabra" y las tareas de
+  sincronización, es decir, decide quién y en qué momento envía
+  información.
+
+- Capa de Presentación: Permite una traducción desde el "idioma de la
+  red" al "idioma de la aplicación", que se puedan entender los datos
+  intercambiados. Incluye cifrado y compresión.
+  
+- Capa de Aplicación: Son las aplicaciones finales, que tienen su
+  propio protocolo (http, ftp, por ejemplo). A los paquetes que
+  transmite se les conoce como "*mensajes*".
+
 ## Terminología y servicios
 
+
+## Terminología y servicios:
+
+Comunicación **virtual** (horizontal) vs **real**(vertical).
+
+La comunicación virtual es cómo la capa N-ésima de la primera entidad
+que se comunica envía un mensaje a la N-ésima capa de la segunda
+entidad receptora. Mientras que la real refleja como cada capa se
+comunica con su capa inmediatamente inferior hasta que llega a la capa
+física que transmite la información y se comunica con la capa
+inmediatamente superior hasta llegar a la capa original.
+
+**Retardos en la comunicación:**
+
+El **tiempo de transmisión** es lo que tardan los bits del paquete en
+emitirse. Depende de la velocidad de transmisión y el número de bits a
+enviar.
+
+$$T_t = \frac{P(b)}{V_t (bps)}$$
+
+El **tiempo de propagación** es el tiempo que el primer bit tarda hasta
+llegar a su destino. La velocidad de propagación depende del medio
+físico del enlace y se mide en metros por segundo. (Distancia a
+recorrer entre velocidad de propagación
+
+$$T_p = \frac{D(m)}{V_p(m/s)}$$
+
+La fibra óptica aumenta el ancho de banda para poder transmitir más
+bits a la vez, y por tanto aumenta la velocidad de las transmisiones.
+
+Además de estos tiempos, cuando un nodo recibe un paquete y lo procesa
+para reenviarlo se producen **retardos de procesamiento**, cuando el
+nodo recibe dicho paquete y procesa su información, y **retardos de
+cola**, cuando el mensaje espera en una cola a que todos los mensajes
+que llegaron antes que él sean enviados.
+
+
+**Servicios:**
+- **Orientado a conexión (OC)**. Tales como TCP, su objetivo es evitar
+  las pérdidas. Se abre una conexión, haciendo que cliente y servidor
+  intercambien información de control antes de que se produzca el
+  intercambio a nivel de aplicación. Se usa en aplicaciones donde se
+  quieran evitar las pérdidas de información.
+  
+- **No orientado a conexion (NOC)**. Tales como UDP,  proporciona unos
+  servicios básicos, sin establecer una conexión previa, por lo que no
+  garantiza la correcta entrega del mensaje. Se usa en aplicaciones de
+  tiempo real.
+
+- **Confirmado (fiable)**. Pueden garantizar la entrega sin errores y
+  en el orden correcto.
+  
+- **No confirmado (no fiable)**. No garantizan la entrega correcta del
+  mensaje.
+
 ## Internet: arquitectura y direccionamiento
+
+Existe una jerarquía en el sistema por el cual nos conectamos a
+internet:
+
+* Intranets: Wifi, ethernet
+
+* Redes de acceso del ISP (Internet Service Provider): Cable
+  telefónico (xDLS,ISDN), cable (coax), HFC(Hybrid Fiber Coax),
+  FTTH(Fiber-To-The-Home)
+
+* Redes troncales (ATM, SDH, SONET, etc) de grandes operadores de
+  telecomunicaciones.
+  
+  
+**Tipos de Tier de ISP:**
+
+* Tier 1: Los grandes proovedores hacen acuerdos de peering para no
+  cobrarse los servicios mutuamente, sino que solo gestionan el
+  tráfico entre ellos. Sólo tienen acuerdos de peering. Se conocen
+  como redes troncales y tienen cobertura internacional.
+
+* Tier 2: Tienen tanto acuerdos de peering como pagos a otros ISP más
+  grandes que puedan gestionar su tráfico. Tienen cobertura
+  regional/nacional.
+
+* Tier 3: Pagan por los acuerdos de tránsito. No pueden permitirse
+ negociar para hacer peering. Necesitan conectarse a internet a través
+ de un ISP de tier 2.
+ 
+ Para conocer cómo se dirigen las conexiones y cómo se identifican los
+ destinatarios se usan diversos elementos. La dirección IP, en la capa
+ de red, identifica a los hosts. Para los humanos es más sencillo usar
+ los nombres de dominio, los cuales traducen las direcciones del
+ lenguaje humano a su correspondiente dirección IP.
 
 \part{Prácticas}
 
