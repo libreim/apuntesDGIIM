@@ -195,6 +195,363 @@ internet:
 
 \part{Prácticas}
 
+\newpage
+
+# Tema 2. Servicios y Protocolos de Aplicación en Internet
+
+## Introducción a las aplicaciones web
+
+Todas las aplicaciones finales que usamos se basan en otros
+protocolos. Los protocolos que use la aplicación estarán basados en
+otros de transporte como UDP y TCP y estos a su vez en protocolos de
+internet como IP, que son los que finalmente tienen acceso a la red.
+
+Generalmente se comportan de acuerdo a una estructura
+cliente-servidor. En este existe un host que siempre está activo, el
+servidor, con IP permanente y pública. Y este presta un servicio a las
+solicitudos de muchos otros hosts, que son sus clientes, con IP que
+puede ser dinámica y privada y no se comunican entre sí. Estos, por su
+parte, pueden estar activos de manera permanente o intermitente.
+
+Los servidores se agrupan en granjas o clústeres, también denominados
+centros de datos, que permiten dar soporte a todas las peticiones de
+sus clientes sin ser desbordados.
+
+### **Sockets**
+
+La comunicación entre diversos hosts se realiza mediante el uso de
+sockets por parte de los procesos que se encuentran tanto en servidor
+como en el cliente.
+
+El proceso cliente es el que inicia la comunicación, mientras que el
+proceso servidor es el que espera a ser contactado. Es por esto por lo
+que necesita tener una IP permanente y pública. Además, para recibir
+mensajes, un proceso debe tener un identificador, compuesto por una IP
+y un puerto.
+
+**Retardo en cola:**
+
+Para estimar los retardos en cola se usa teoría de colas. El retardo
+en cola es:
+
+$$ R = \frac{\lambda (T_s)^2}{1-\lambda T_s} $$
+
+Donde $T_s$ es el tiempo de servicio y $\lambda$ es el ratio de
+llegada de solicitudes.
+
+Esta expresión se puede usar para calcular el retardo en cola en un
+router.
+
+### Protocolo de aplicación
+
+Una pregunta que nos podemos hacer es qué define a un protocolo. Y
+estos están definidos por el tipo de servicio que sea, el tipo de
+mensaje que emita, su sintaxis, semántica y sus reglas.
+
+**Tipos:**
+
+* Protocolos de dominio público: Definidos en RFCs (Request For
+  Comments). Son tales como HTTP, SMTP, FTP, IP...
+  
+* Protocolos propietarios. Tales como skype.
+
+* In-band vs out-of-band: Cuando la gestión se realiza por la misma
+  vía que la comunicación frente a cuando se usa una vía paralela.
+  
+* Stateful vs stateless: Cuando la aplicación guarda información sobre
+  todo lo que ocurrió desde el inicio de la misma frente a cuando no
+  la guarda.
+  
+* Persistentes vs no persistentes: Cuando el protocolo hace uso de
+  conexiones persistentes frente a cuando no.
+  
+Normalmente los protocolos son flexibles, tendiendo a tener una
+cabecera fija y una serie de "trozos" que pueden ser opcionales u
+obligatorios. Estos trozos, a su vez, pueden incluir alguna cabecera
+específica más una serie de datos en forma de parámetros que pueden
+ser fijos o de longitud variable, con formato TLV (Un campo para el
+tipo de parámetro, otro para la longitud y otro para el valor del
+parámetro. Es destacable que *todos los parámetros comienzan en
+múltiplos de 4 bytes*, pudiendo requerir relleno.
+
+<!-- 4/09/2017-->
+Una aplicación debe de tener unos requisitos, entre estos se encuentran:
+
+* **Pérdidas de datos:** Algunas aplicaciones pueden tolerar las
+  pérdidas de datos, tales como streamings de audio/vídeo, pero otras
+  deben de asegurar la fiabilidad de la transferencia (transferencia de
+  archivos).
+  
+* **Requisitos temporales:** También pueden necesitar el mínimo 
+  retraso (delay) para ser efectivos. Un streaming también tiene el
+  requisito de que este retraso no sea excesivo, o en los videojuegos
+  es necesaria esa sincronización para evitar el lag.
+  
+* **Rendimiento(Throughput):** Algunas apps también necesitan un ritmo
+  determinado de envío de datos.
+  
+* **Seguridad:** La encriptación, autenticación y no repudio (no
+  puedes negar ser el remitente de un envío de datos) son
+  factores importantes en las aplicaciones.
+  
+
+## Protocolos de transporte
+
+En la capa de transporte existen diversos protocolos:
+
+* **Servicio TCP:** Está orientado a conexión (establecer una conexión
+  entre los dos involucrados previo al envío), este transporte es
+  fiable ante pérdidas, con control de flujo y de congestión.
+  
+* **Servicio UDP:** No está orientado a conexión, es decir, no se
+  comprueba que ambos estén preparados para realizar la
+  comunicación. A su vez carece de todas las propiedades que acabamos
+  de destacar sobre TCP.
+  
+Estos al ser usuarios del protocolo IP (Capa de red) no garantizan el
+retardo acotado, las fluctuaciones acotadas, el mínimo throughput y la
+seguridad requerida.
+
+## Servicios de Nombres de Dominio (DNS)
+
+Es un servicio (implementado en un servidor) que se encarga de
+traducir los nombres a direcciones IP.
+
+Tiene una estructura jerárquica en dominios:
+
+ParteLocal.dominioNivelN.(...).dominioNivel1
+
+Donde Nivel1 es el dominio genérico.
+
+La ICANN se encarga de delegar los nombres y números asignados.
+
+Cuando un host quiere solicitar una determinada página a un servidor
+web introduce el nombre de dicho servidor web. El navegador extrae el
+nombre del host a partir del URL y lo pasa a la aplicación DNS. El
+cliente DNS envía una consulta con dicho nombre al servidor DNS, tras
+procesarlo, el servidor le responde con una dirección IP
+correspondiente, mediante el cual ya puede iniciar la conexión.
+
+<!-- 11/10/2017 -->
+
+### Resolución distribuida
+
+El ordenador original no resuelve todo el nombre del dominio. Este
+conecta con un servidor que será el encargado de conectar
+iterativamente con el resto de servidores. 
+
+De esta manera nos conectaríamos con los servidores “.”, los de
+dominio (Top-Level Domain, TDL), servidores Locales y servidores
+Autorizados y Zona.
+
+Un host solicitaría la dirección de una URL (www.una.direccion.com) a su
+servidor local. Este envía la petición a un servidor raíz, el cual
+toma el sufijo (.com) y le responde al DNS local una lista de
+direcciones responsables de dicho dominio (los responsables del
+sufijo .com). Estos responsables son servidores TLD (top level
+domain) y a continuación se les envía una petición a estos. El
+servidor TLD examina el sufijo (direccion.com) y responde con la
+dirección del servidor DNS autorizado que puede dar la dirección del
+URL inicial. Después el servidor local consulta a dicho servidor DNS
+autorizado y este le responde con la dirección IP de la URL inicial
+(www.una.direccion.com).
+
+**Gestión de la base de datos DNS:**
+
+Como hemos comprobado la base de datos está distribuida. Esto implica
+que cada zona debe tener al menos un servidor de autoridad, y en cada
+zona habrá servidores primarios y secundarios, que bien tendran la
+copia master de la base de datos o bien la obtendrán a partir de los
+primarios. Existen sólo 13 servidores raíz. Existe un servicio de
+caché que permite agilizar las consultas.
+
+Los servidores pueden dar una **respuesta con autoridad**, si tiene
+autoridad sobre la zona en la que se encuentra el nombre solicitado y
+devuelve la dirección IP. Una **respuesta sin autoridad**, cuando no
+tienen autoridad pero tienen la respuesta en caché. O bien puede no
+conocer la respuesta, lo que implicaría una consulta a un servidor superior.
+
+## La navegación Web
+
+El protocolo de transferencia de hipertexto, **HTTP**, es el protocolo
+de la capa de aplicación de la web y se encuentra en el corazón de la
+Web. Este se implementa en dos programas, un cliente y un servidor.
+
+Una página web es un fichero (HTML) formado por objetos, que pueden
+ser ficheros HTML, imágenes, applets y demás tipos de archivos. Cada
+objeto se direcciona con una URL. La mayoría de las páginas web tienen
+un archivo base  HTML donde se referencian los objetos que están
+contenidos en esa web. Tiene su **puerto bien definido**, el 80. 
+
+El protocolo HTTP sigue un modelo cliente-servidor. El cliente es el
+que pide, recibe y muestra objetos web mediante el browser. El
+servidor por su parte es el que envía los objetos web en respuesta a
+peticiones. 
+
+### Características HTTP
+
+**TCP al puerto 80:** Inicio de conexión TCP, envío HTTP, cierre de
+conexión TCP.
+
+**HTTP es “stateless” $\rightarrow$ Cookies:** El servidor no mantiene
+la informacióń sobre las peticiones de los clientes. Esto puede
+implicar, por ejemplo, que cuando recibe dos peticiones idénticas del
+mismo cliente devuelve el objeto solicitado en lugar de devolver
+ningún tipo de error o mensaje informativo.
+
+La conexión puede ser persistente o no persistente. En el primer caso
+se pueden enviar múltiples objetos sobre una única conexión TCP entre
+cliente y servidor, mientras que la no persistente crea nueva conexión
+para cada objeto a enviar.
+
+El persistente tiene un tiempo de transmisión total menor que el no
+persistente. Pero el no persistente permite gestionar mejor los
+recursos del servidor, pues no tiene que mantener el socket abierto
+durante toda la conexión, a cambio, al tener que establecer una
+conexión por objeto reduce su velocidad.
+
+Hay dos tipos de mensajes HTTP: request y reponse. La petición de un
+elemento y su concesión. Cada uno de ellos tiene un formato
+específico, donde se indica la información concreta que se desea
+solicitar, o, en caso de ser desarrolladores de la página, mensajes de
+gestión. (GET,POST,HEAD,PUT,DELETE)
+Las respuestas se asemejan a las peticiones en cuanto a la
+indicación de un estado y cabecera, pero adicionalmente poseen el
+cuerpo de la entidad, donde se encuentra el objeto solicitado. La
+línea de estado indica un código de respuesta (200 OK, 301 moved
+permanently, 400 bad request, 505 HTTP version not supported).
+
+
+**Caché:** Cuando se solicitan numerosas veces algo a un servidor es
+conveniente configurar un proxy intermedio que almacene dicha
+solicitud. De ese modo quien solicite ese mismo servicio no
+involucrará al servidor original sino al proxy, este sólo le envía una
+petición al servidor original para saber si es necesario actualizar la
+caché o no. Si no dispone de esta solicitud tendrá que inevitablemente
+solicitar al servidor original.
+
+## Correo Electrónico
+
+### Proceso de envío de correo electrónico
+En el correo electrónico intervienen dos clientes que enviarán y
+recibirán el correo cuando ellos decidan. El procedimiento es el
+siguiente:
+
+El usuario de origen utiliza su user agent para mandar el correo a su
+servidor de correo, se envía mediante SMTP o HTTP. Una vez hecho esto,
+el servidor del que envía el mensaje crea una conexión TCP con el
+servidor de correo del usuario destinatario y lo envía, este envío sí
+que se produce con SMTP. El servidor de destino almacena el mensaje en
+la bandeja de entrada del usuario destino. El destinatario usará su
+agente de usuario arbitrariamente para leer el mensaje utilizando
+POP3 (Post Office Protocol), IMAP (Internet Mail Access Protocol) o
+HTTP. 
+
+(La diferencia entre POP3 e IMAP es que POP3 no puede ser usado por
+usuarios "nómadas" que quieran acceder desde distintos hosts a su
+correo, pues una vez recibidos los archivos, estos sólo permanecen en
+el receptor. IMAP permite mantener una carpeta bandeja de entrada en
+un servidor IMAP, donde puede gestionar ahí su correo.
+
+## Protocolos Seguros
+
+Hay unos aspectos destacables de la seguridad en internet:
+
+* **Confidencialidad:** Sólo quien esté autorizado a acceder a la
+  información puede hacerlo.
+  
+* **Responsabilidad:** Autenticación, confirmar que los agentes de
+  comunicación son quien dicen ser. No repudio: No se pueda negar la
+  autoría de una acción y que la acción se ha hecho. Control de
+  accesos: Garantía de identidad para el acceso.
+  
+* **Integridad:** La información no debe ser manipulada.
+
+* **Disponibilidad:** El acceso a los servicios debe estar regulado
+  para evitar, por ejemplo, ataques Denial Of Service.
+  
+También hay un conjunto de mecanismos de seguridad:
+
+* **Cifrado Simétrico:** Utilizamos la misma clave para
+  cifrar/descifrar (DES,3DES,AES,RC4).
+  
+* **Cifrado Asimétrico:** Una clave distinta para encriptar y para
+  desencriptar (Diffie & Hellman, RSA).
+  
+  Se pueden combinar simétrico y asimétrico, le envío al receptor la
+  clave del cifrado simétrico cifrada con su clave pública, él la
+  desencriptará con su privada y así compartiremos la clave simétrica
+  para aumentar la velocidad de las comunicaciones.
+  
+* **Message Authentication Code:** Hay que impedir que se modifiquen
+  los archivos de envío durante el mismo. El mensaje se pasa por un
+  hash con una clave que no se puede modificar sin tener la misma
+  clave.  (MD5, SHA-1...)
+  
+* **Firma Digital:** Se pasa por un hash el mensaje, se cifra con la
+  clave privada y cualquier receptor puede descifrar la firma y
+  comparar el resultado con el hash del mensaje recibido, si coinciden
+  se garantizaría la autoría.
+
+* **Certificado:** Para asegurar que las claves pertenecen al
+  remitente existen terceros que lo garantizan. Estos terceros son
+  confiados y aceptados “públicamente”.
+
+<!-- 8/11/2017 -->
+
+Diversos **ejemplos** de seguridad criptográfica en distintas capas son:
+
+* **Capa de aplicación:** PGP (Pretty Good Privacy), SSH (Secure Shell).
+
+* **Capa de sesión** (entre aplicación y transporte): SSL (Secure
+  Socket Layer) ,TSL (Transport Secure Layer).
+
+* **Capa de Red:** IPSec(VPN)
+
+También existen elementos de seguridad Perimetral y Gestión de
+riesgos:
+
+* **Firewall:** Sistema que limita los accesos a los elementos de
+  nuestro ordenador. También UTMs se están implementando últimamente,
+  son una extensión de firewalls.
+  
+* **Sistemas de detección de intrusiones** IDS. En red NIDS, en host
+  HIDS. Analizan el tráfico y detectan posibles ataques y anomalías.
+  
+* **Antivirus, evaluación de vulnerabilidades, seguridad en
+  Aplicaciones**, filtrado web/anti-spam.
+  
+* **Advanced Thread Detection:** Listas donde se comparte información
+  de seguridad. Así se permite enterarse cuanto antes de problemas de
+  seguridad.
+  
+* **SEMs, SIEMs:** Realiza el conjunto de las funcionalidades
+  anteriores.
+  
+
+## Aplicaciones multimedia
+
+Son de audio y vídeo. Se procura mejorar la calidad del servicio.
+
+Las aplicaciones de flujo almacenado no dan problemas de delay, sin
+embargo el throughput es más exigente. Sin embargo el delay en
+emisores en directo no pueden tener delay, su velocidad de transmisión
+sigue siendo igual de importante.
+
+Todas estas requieren un alto ancho de banda. Son tolerantes a
+pérdidas de datos. Tienen un Delay y un Jitter(variabilidad del delay)
+acotado. Hacen uso además de multicast (Ejemplo YouTube en las diapositivas).
+
+
+## Aplicaciones para la interconectividad de redes locales
+
+* **DHCP:** Nos permite configurar dinámicamente direcciones IP
+
+* **DynDNS, No-IP:** Servicios en la red privda con IP pública
+  variable, configuración de acceso necesaria
+  
+* **UPnP:** "Pervasive adhoc com". Comunicación dispositivo <-> NAT
+
 # Práctica 1
 
 ¡Reiniciar el servicio correspondiente tras los cambios en sus archivos
