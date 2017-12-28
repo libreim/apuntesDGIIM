@@ -518,7 +518,7 @@ Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice
 
 \section{La ecuación lineal de orden superior}
 
-Son ecuaciones de la forma:
+Son ecuaciones de la forma: 
 
 \begin{equation}
   x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = b(t) \tag{L} \label{eclinealsup}
@@ -640,6 +640,17 @@ Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker 
   el sistema solo tiene la solución trivial para todo $t_0\in I$.
   \end{proof}
 
+\begin{nprop}[Fórmula de Liouville]
+  Sean $\{\varphi_1,...,\varphi_k\}$ soluciones de L[$x$]=0. Entonces, dado $t_0 \in I$ se cumple
+  \[
+  \mathcal{W}(\varphi_1,...,\varphi_k)(t) = \mathcal{W}(\varphi_1,...,\varphi_k)(t_0) e^{- \int_{t_0}^t \! a_{k-1}(s) \, \mathrm{d}s } \qquad \forall t \in I
+  \]
+\end{nprop}
+
+%%% TODO: Añadir la demostración
+
+\subsubsection{La ecuación completa}
+
 Ahora, vamos a estudiar el conjunto de soluciones de la ecuación completa \eqref{eclinealsup}.
 Llamamos
 
@@ -647,16 +658,21 @@ Llamamos
 
 Por lo que $Z_b$ tiene estructura de subespacio afín.
 
-Para hallar la solución particular $x_p$, usamos el método de variación de las constantes.
+\begin{nprop}[Principio de superposición]
+  Si $x_i$ es solución de L$[x] = b_i$, $i=1,...,n$ entonces $x = \sum_{i=1}^n\alpha_ix_i$ es una solución de L[x] = $b$ con $b = \sum_{i=1}^n\alpha_ib_i$.
+\end{nprop}
 
-Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i$ tales que
+Para hallar la solución particular $x_p$, usamos el \textbf{método de variación de las constantes}.
+
+Conociendo un SFS de la ecuación homogénea asociada hallaremos $x_p$. Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i \in \mathscr{C}(I)$. Buscamos $c_i$ tales que $x_p(t) \in Z_b$. Veremos que es suficiente con que verifiquen las siguientes condiciones:
 
 \[ 
 \left\{\begin{array}{>{\displaystyle}l}
-  \sum_{i=1}^n c_i'(t) \varphi_i(t) = 0\\
-  \sum_{i=1}^n c_i'(t) \varphi_i'(t) = 0\\
+  \sum_{i=1}^k c_i'(t) \varphi_i(t) = 0\\
+  \sum_{i=1}^k c_i'(t) \varphi_i'(t) = 0\\
   \vdots\\
-  \sum_{i=1}^n c_i'(t) \varphi_i^{n-1}(t) = b(t)
+  \sum_{i=1}^k c_i'(t) \varphi_i^{k-2)}(t) = 0\\
+  \sum_{i=1}^k c_i'(t) \varphi_i^{k-1)}(t) = b(t)
 \end{array} \tag{C} \label{cond}\right.
 \]
 
@@ -664,24 +680,24 @@ Entonces,
 
 
 \begin{align*}
-  x_p'(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i(t)} + \sum_{i=1}^n c_i(t) \varphi_i'(t)\\
-  x_p''(t) & = \cancelto{0}{\sum_{i=1}^n c_i'(t) \varphi_i'(t)} + \sum_{i=1}^n c_i(t) \varphi_i''(t)\\
+  x_p'(t) & = \cancelto{0}{\sum_{i=1}^k c_i'(t) \varphi_i(t)} + \sum_{i=1}^k c_i(t) \varphi_i'(t)\\
+  x_p''(t) & = \cancelto{0}{\sum_{i=1}^k c_i'(t) \varphi_i'(t)} + \sum_{i=1}^k c_i(t) \varphi_i''(t)\\
   \vdots\\
-  x_p^{n)}(t) & = b(t) + \sum_{i=1}^n c_i(t) \varphi_i^{n)}(t)\\
+  x_p^{k)}(t) & = b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t)\\
 \end{align*}
 
 
-Las condiciones dadas en \eqref{cond}, para cada $t\in I$, forman un sistema compatible determinado, por ser $\mathcal{W}(\varphi_1,\dots,\varphi_n)(t) \ne 0 \ \forall t\in I$.
+Las condiciones dadas en \eqref{cond}, para cada $t\in I$, forman un sistema compatible determinado, por ser $\mathcal{W}(\varphi_1,\dots,\varphi_k)(t) \ne 0 \ \forall t\in I$.
 Por la regla de Cramer:
 
 \[
 c_i'(t) = 
 \frac{\begin{vmatrix}
-  \varphi_1(t) & \dots & \stackrel{i)}{0} & \dots & \varphi_n(t)\\
-  \varphi_1' & \dots & 0 & \dots & \varphi_n'(t)\\
+  \varphi_1(t) & \dots & \stackrel{i)}{0} & \dots & \varphi_k(t)\\
+  \varphi_1' & \dots & 0 & \dots & \varphi_k'(t)\\
   \vdots & & \vdots & & \vdots\\
-  \varphi_1^{n-1)}(t) & \dots & b(t) & \dots & \varphi_n^{n-1)}(t)\\
-\end{vmatrix}}{\mathcal{W}(\varphi_1,\dots,\varphi_n)(t)} \in \mathscr{C}(I)
+  \varphi_1^{k-1)}(t) & \dots & b(t) & \dots & \varphi_k^{k-1)}(t)\\
+\end{vmatrix}}{\mathcal{W}(\varphi_1,\dots,\varphi_k)(t)} \in \mathscr{C}(I)
 \]
 
 y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivamente, solución de \eqref{eclinealsup}, como queríamos:
@@ -689,10 +705,8 @@ y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivam
 \begin{align*}
   x_p^{k)} + a_{k-1}(t)x_p^{k-1)} + \dots + a_1(t)x_p' + a_0(t)x_p =\\
   b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t) + a_{k-1}(t)\sum_{i=1}^k c_i(t) \varphi_i^{k-1)}(t) + \dots + a_{0}(t)\sum_{i=1}^k c_i(t) \varphi_i(t) =\\
-  b(t) + \sum_{i=1}^k c_i(t) \left[ \sum_{j=1}^k\underbrace{ \left( \varphi_j^{k)} + \sum_{t=1}^{k-1}a_t \varphi_j^{t)} \right)}_{=0 \text{ ($\varphi_j$ solución de \eqref{eclinhom})} }  \right]
+  b(t) + \sum_{i=1}^k c_i(t) \underbrace{ \left( \varphi_i^{k)} + \sum_{j=1}^{k-1}a_j \varphi_i^{j)} + a_0\varphi_i\right)}_{=0 \text{ ($\varphi_i$ solución de \eqref{eclinhom})} }  
 \end{align*}
-
-
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
