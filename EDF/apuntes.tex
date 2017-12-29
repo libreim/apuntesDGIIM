@@ -514,7 +514,7 @@ Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice
 
 \end{ndef}
 
-\newpage+
+\newpage
 
 \section{La ecuación lineal de orden superior}
 
@@ -649,6 +649,65 @@ Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker 
 
 %%% TODO: Añadir la demostración
 
+\subsubsection{Encontrar un SFS}
+\begin{itemize}
+\item Caso 1: Coeficientes constantes\\
+  Sabemos que $L\left[e^{rt}\right] = \left(r^k + a_{k-1}r^{k-1}+\dots+a_1r+a_0\right)e^{rt},\ r \in \R$ y el polinomio característico asociado a \ref{eclinhom} es $p(\lambda) = \lambda^k +a_{k-1}\lambda^{k-1}+\dots+a_1\lambda+a_0$. Utilizando ambas cosas enunciaremos una serie de proposiciones que nos permitirán hallar un SFS de una ecuación homogénea.
+
+  \begin{nprop}
+    Si $r$ es raíz de $p(\lambda)=0$, entonces $e^{rt}$ es solución de $L[x] = 0$.
+  \end{nprop}
+
+  \begin{proof}
+    Si $p(r)=0$, entonces $L\left[e^{rt}\right] = 0$ y, por tanto, $e^{rt} \in kerL$.
+  \end{proof}
+
+  \begin{nota}
+    Si las raíces son simples, entonces $\{e^{r_1t},\dots,e^{r_kt}\}$ es un SFS.
+  \end{nota}
+  
+  \begin{nprop}
+    Si $r$ es raíz de $p(\lambda)$ de multiplicidad $m$, entonces $\{e^{rt}, te^{rt},\dots,t^{m-1}e^{rt}\} \subseteq kerL$.
+  \end{nprop}
+
+  \begin{ncor}
+    Si $p(\lambda)$ tiene $k$ raíces reales, donde $s$ de ellas son distintas, entonces un SFS es
+    \[
+    \left\{e^{r_1t},\dots,t^{m_1-1}e^{r_1t},e^{r_2t},\dots,e^{r_St},\dots,t^{m_s-1}e^{r_st}\right\}
+    \]
+  \end{ncor}
+
+  Si las raíces son complejas, $r = a+ib$ ($a-ib$ también es raíz),  entonces $L\left[e^{(a+ib)t}\right] = 0$. Sabemos que $e^{(a+ib)t} = e^{at}(\cos(bt)+i\sin(bt))$ y por la linealidad de $L$ tenemos: $L\left[e^{(a+ib)t}\right] = L\left[e^{at}\cos(bt)\right] + iL\left[e^{at}\sin(bt)\right] = 0$. $e^{at}\cos(bt)$ y $e^{at}\sin(bt)$
+  son soluciones de \ref{eqlinhom} y además son linealmente independientes.
+  \begin{ncor}
+    Si $p(\lambda)$ tiene $k$ raíces complejas de multiplicidad $m_i$, un SFS es:
+    \[
+    \left\{e^{a_1t}\cos(b_1t), e^{a_1t}\sin(b_1t), te^{a_1t}\cos(b_1t), te^{a_1t}\sin(b_1t),\dots,t^{m_1-1}e^{a_1t}\cos(b_1t), t^{m-1}e^{a_1t}\sin(b_1t), e^{a_2t}\cos(b_2t),\dots\right\}
+    \]
+  \end{ncor}
+\item Caso 2: Ecuaciones de orden $k$ donde conocemos $k-1$ soluciones\\
+  Si conocemos $k-1$ soluciones, para encontrar la solución que nos falta para tener un SFS utilizaremos el método de \textbf{rebajamiento de orden}. Si $\varphi \in \mathscr{C}^k(I)$ es solución, el cambio $x = u\varphi$ transforma \ref{eqlinhom} en otra ecuación homogénea de orden $k-1$.
+\end{itemize}
+
+\subsubsection{La ecuación de Euler}
+Un caso particular de ecuación homogénea que también podemos resolver es la siguiente ecuación:
+\[
+t^kx^{k)}+a_{k-1}t^{k-1}x^{k-1)}+\dots+a_1tx'+a_0x=0
+\]
+
+Para resolver esta ecuación realizaremos el cambio de variable:
+\[
+\begin{cases}
+  t=e^s,\quad t>0\\
+  t=-e^s,\quad t<0
+\end{cases}
+\]
+
+Con este cambio llevamos la ecuación de partida a otra donde los coeficientes son constantes. Por ejemplo, en el caso $k=2$:
+\[
+t^2x''+atx'+bx = 0 \leadsto y''+(a-1)y'+by = 0
+\]
+
 \subsubsection{La ecuación completa}
 
 Ahora, vamos a estudiar el conjunto de soluciones de la ecuación completa \eqref{eclinealsup}.
@@ -707,6 +766,8 @@ y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivam
   b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t) + a_{k-1}(t)\sum_{i=1}^k c_i(t) \varphi_i^{k-1)}(t) + \dots + a_{0}(t)\sum_{i=1}^k c_i(t) \varphi_i(t) =\\
   b(t) + \sum_{i=1}^k c_i(t) \underbrace{ \left( \varphi_i^{k)} + \sum_{j=1}^{k-1}a_j \varphi_i^{j)} + a_0\varphi_i\right)}_{=0 \text{ ($\varphi_i$ solución de \eqref{eclinhom})} }  
 \end{align*}
+
+El método de variación de las constantes es universal, se aplica a cualquier función continua $b(t)$, sin embargo, los cálculos pueden ser muy largos. Existe un segundo método, \textbf{coeficientes indeterminados} que nos permite encontrar una solución particular para la ecuación de coeficientes constantes. En este método, cuando $b(t) = p(t)e^{at}\cos(bt) + q(t)e^{at}\sin(bt)$, donde $p$ y $q$ son polinomios en $t$ de grado $n$ ($n$ es el mayor de los dos grados), si el polinomio característico no tiene raíces complejas, buscamos una solución particular que sea de la misma forma, su estructura será: $x_p = p_1(t)e^{at}\cos(bt) + q_1(t)e^{at}\sin(bt)$. Derivando $x_p$ y sustituyendo en \eqref{eclinealsup} podemos despejar $p_1$ y $q_1$. Si tenemos una raíz compleja de multiplicidad $m$, la solución particular será de la forma $x_p = \left(p_1(t)e^{at}\cos(bt) + q_1(t)e^{at}\sin(bt)\right)t^m$.
 
 \section{Sistemas lineales de ecuaciones diferenciales}
 
