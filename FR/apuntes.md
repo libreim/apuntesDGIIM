@@ -4,18 +4,17 @@
 
 ## Sistemas de comunicación y redes
 
-Un sistema de comunicación es una infraestructura que permite el
-intercambio de información. 
+Un **sistema de comunicación** es una infraestructura (tanto hardware como software) que permite el
+intercambio de información.
 
-De una forma más extensa: Entendemos por una red como un sistema de
-comunicación con sistemas finales autónomos que facilita el
-intercambio eficaz y transparente de la información. 
-
-Debemos saber que los sistemas finales son aquellos que tienen
+Debemos saber que los **sistemas finales** o **hosts** son aquellos que tienen
 capacidad de procesar información; que un intercambio se considera
 eficaz si maximiza el uso de los recursos como el ancho de banda entre
 otros y que es transparente si actúa con independencia de las
-diferencias del sistema entre la fuente y el destino. 
+diferencias del sistema entre la fuente y el destino.
+
+Una **red** es un un sistema de comunicación con sistemas finales autónomos que facilita el intercambio eficaz y transparente de la información. 
+
 
 Razones para usar redes:
 
@@ -43,13 +42,13 @@ errores, en el enlace y también extremo a extremo; control del
 encaminamiento o enrutamiento de los mensajes; control de congestión;
 entrega ordenada de los mensajes; gestión del diálogo o turno de
 palabra; representación o sintaxis de los datos; significado o
-semántica de los datos. 
+semántica de los datos.
 
 Aprendereos a solucionar todo esto utilizando el modelo OSI(Open
 System Interconnection) de la ISO que pese a ser un modelo estándar
 tiene un interés puramente académico. Pese a ello, este modelo de 7
 capas es la base del modelo TCP/IP que es el que realmente se utiliza
-a día de hoy. 
+a día de hoy.
 
 
 
@@ -58,7 +57,7 @@ a día de hoy.
 Los **hosts** son los sistemas finales autónomos y la *subred* es la
 infraestructura para el transporte de información. Las subredes están
 formadas por nodos que se conectan mediante nodos o elementos de
-conmutación. 
+conmutación.
 
 ## Diseño y estandarización de redes
 
@@ -69,8 +68,8 @@ Grupo 1 de capas:
 
 - Capa de Enlace: Permite la comunicación entre dos nodos directamente
   conectados. Delimita la trama (nombre que se le da a los paquetes de
-  la capa de enlace) y controla errores y flujo. 
-  
+  la capa de enlace) y controla errores y flujo.
+
 Grupo 2:
 - Capa de Red: Nos ofrece la capacidad de enrutamiento que permite
   llevar a los paquetes desde un origen a un destino. Controla además
@@ -95,7 +94,7 @@ Grupo 3:
 - Capa de Presentación: Permite una traducción desde el "idioma de la
   red" al "idioma de la aplicación", que se puedan entender los datos
   intercambiados. Incluye cifrado y compresión.
-  
+
 - Capa de Aplicación: Son las aplicaciones finales, que tienen su
   propio protocolo (http, ftp, por ejemplo). A los paquetes que
   transmite se les conoce como "*mensajes*".
@@ -145,7 +144,7 @@ que llegaron antes que él sean enviados.
   intercambien información de control antes de que se produzca el
   intercambio a nivel de aplicación. Se usa en aplicaciones donde se
   quieran evitar las pérdidas de información.
-  
+
 - **No orientado a conexion (NOC)**. Tales como UDP,  proporciona unos
   servicios básicos, sin establecer una conexión previa, por lo que no
   garantiza la correcta entrega del mensaje. Se usa en aplicaciones de
@@ -153,7 +152,7 @@ que llegaron antes que él sean enviados.
 
 - **Confirmado (fiable)**. Pueden garantizar la entrega sin errores y
   en el orden correcto.
-  
+
 - **No confirmado (no fiable)**. No garantizan la entrega correcta del
   mensaje.
 
@@ -170,8 +169,8 @@ internet:
 
 * Redes troncales (ATM, SDH, SONET, etc) de grandes operadores de
   telecomunicaciones.
-  
-  
+
+
 **Tipos de Tier de ISP:**
 
 * Tier 1: Los grandes proovedores hacen acuerdos de peering para no
@@ -186,7 +185,7 @@ internet:
 * Tier 3: Pagan por los acuerdos de tránsito. No pueden permitirse
  negociar para hacer peering. Necesitan conectarse a internet a través
  de un ISP de tier 2.
- 
+
  Para conocer cómo se dirigen las conexiones y cómo se identifican los
  destinatarios se usan diversos elementos. La dirección IP, en la capa
  de red, identifica a los hosts. Para los humanos es más sencillo usar
@@ -252,19 +251,19 @@ mensaje que emita, su sintaxis, semántica y sus reglas.
 
 * Protocolos de dominio público: Definidos en RFCs (Request For
   Comments). Son tales como HTTP, SMTP, FTP, IP...
-  
+
 * Protocolos propietarios. Tales como skype.
 
 * In-band vs out-of-band: Cuando la gestión se realiza por la misma
   vía que la comunicación frente a cuando se usa una vía paralela.
-  
+
 * Stateful vs stateless: Cuando la aplicación guarda información sobre
   todo lo que ocurrió desde el inicio de la misma frente a cuando no
   la guarda.
-  
+
 * Persistentes vs no persistentes: Cuando el protocolo hace uso de
   conexiones persistentes frente a cuando no.
-  
+
 Normalmente los protocolos son flexibles, tendiendo a tener una
 cabecera fija y una serie de "trozos" que pueden ser opcionales u
 obligatorios. Estos trozos, a su vez, pueden incluir alguna cabecera
@@ -281,19 +280,19 @@ Una aplicación debe de tener unos requisitos, entre estos se encuentran:
   pérdidas de datos, tales como streamings de audio/vídeo, pero otras
   deben de asegurar la fiabilidad de la transferencia (transferencia de
   archivos).
-  
-* **Requisitos temporales:** También pueden necesitar el mínimo 
+
+* **Requisitos temporales:** También pueden necesitar el mínimo
   retraso (delay) para ser efectivos. Un streaming también tiene el
   requisito de que este retraso no sea excesivo, o en los videojuegos
   es necesaria esa sincronización para evitar el lag.
-  
+
 * **Rendimiento(Throughput):** Algunas apps también necesitan un ritmo
   determinado de envío de datos.
-  
+
 * **Seguridad:** La encriptación, autenticación y no repudio (no
   puedes negar ser el remitente de un envío de datos) son
   factores importantes en las aplicaciones.
-  
+
 
 ## Protocolos de transporte
 
@@ -302,12 +301,12 @@ En la capa de transporte existen diversos protocolos:
 * **Servicio TCP:** Está orientado a conexión (establecer una conexión
   entre los dos involucrados previo al envío), este transporte es
   fiable ante pérdidas, con control de flujo y de congestión.
-  
+
 * **Servicio UDP:** No está orientado a conexión, es decir, no se
   comprueba que ambos estén preparados para realizar la
   comunicación. A su vez carece de todas las propiedades que acabamos
   de destacar sobre TCP.
-  
+
 Estos al ser usuarios del protocolo IP (Capa de red) no garantizan el
 retardo acotado, las fluctuaciones acotadas, el mínimo throughput y la
 seguridad requerida.
@@ -338,7 +337,7 @@ correspondiente, mediante el cual ya puede iniciar la conexión.
 
 El ordenador original no resuelve todo el nombre del dominio. Este
 conecta con un servidor que será el encargado de conectar
-iterativamente con el resto de servidores. 
+iterativamente con el resto de servidores.
 
 De esta manera nos conectaríamos con los servidores “.”, los de
 dominio (Top-Level Domain, TDL), servidores Locales y servidores
@@ -381,12 +380,12 @@ Una página web es un fichero (HTML) formado por objetos, que pueden
 ser ficheros HTML, imágenes, applets y demás tipos de archivos. Cada
 objeto se direcciona con una URL. La mayoría de las páginas web tienen
 un archivo base  HTML donde se referencian los objetos que están
-contenidos en esa web. Tiene su **puerto bien definido**, el 80. 
+contenidos en esa web. Tiene su **puerto bien definido**, el 80.
 
 El protocolo HTTP sigue un modelo cliente-servidor. El cliente es el
 que pide, recibe y muestra objetos web mediante el browser. El
 servidor por su parte es el que envía los objetos web en respuesta a
-peticiones. 
+peticiones.
 
 ### Características HTTP
 
@@ -445,7 +444,7 @@ que se produce con SMTP. El servidor de destino almacena el mensaje en
 la bandeja de entrada del usuario destino. El destinatario usará su
 agente de usuario arbitrariamente para leer el mensaje utilizando
 POP3 (Post Office Protocol), IMAP (Internet Mail Access Protocol) o
-HTTP. 
+HTTP.
 
 (La diferencia entre POP3 e IMAP es que POP3 no puede ser usado por
 usuarios "nómadas" que quieran acceder desde distintos hosts a su
@@ -459,35 +458,35 @@ Hay unos aspectos destacables de la seguridad en internet:
 
 * **Confidencialidad:** Sólo quien esté autorizado a acceder a la
   información puede hacerlo.
-  
+
 * **Responsabilidad:** Autenticación, confirmar que los agentes de
   comunicación son quien dicen ser. No repudio: No se pueda negar la
   autoría de una acción y que la acción se ha hecho. Control de
   accesos: Garantía de identidad para el acceso.
-  
+
 * **Integridad:** La información no debe ser manipulada.
 
 * **Disponibilidad:** El acceso a los servicios debe estar regulado
   para evitar, por ejemplo, ataques Denial Of Service.
-  
+
 También hay un conjunto de mecanismos de seguridad:
 
 * **Cifrado Simétrico:** Utilizamos la misma clave para
   cifrar/descifrar (DES,3DES,AES,RC4).
-  
+
 * **Cifrado Asimétrico:** Una clave distinta para encriptar y para
   desencriptar (Diffie & Hellman, RSA).
-  
+
   Se pueden combinar simétrico y asimétrico, le envío al receptor la
   clave del cifrado simétrico cifrada con su clave pública, él la
   desencriptará con su privada y así compartiremos la clave simétrica
   para aumentar la velocidad de las comunicaciones.
-  
+
 * **Message Authentication Code:** Hay que impedir que se modifiquen
   los archivos de envío durante el mismo. El mensaje se pasa por un
   hash con una clave que no se puede modificar sin tener la misma
   clave.  (MD5, SHA-1...)
-  
+
 * **Firma Digital:** Se pasa por un hash el mensaje, se cifra con la
   clave privada y cualquier receptor puede descifrar la firma y
   comparar el resultado con el hash del mensaje recibido, si coinciden
@@ -514,20 +513,20 @@ riesgos:
 * **Firewall:** Sistema que limita los accesos a los elementos de
   nuestro ordenador. También UTMs se están implementando últimamente,
   son una extensión de firewalls.
-  
+
 * **Sistemas de detección de intrusiones** IDS. En red NIDS, en host
   HIDS. Analizan el tráfico y detectan posibles ataques y anomalías.
-  
+
 * **Antivirus, evaluación de vulnerabilidades, seguridad en
   Aplicaciones**, filtrado web/anti-spam.
-  
+
 * **Advanced Thread Detection:** Listas donde se comparte información
   de seguridad. Así se permite enterarse cuanto antes de problemas de
   seguridad.
-  
+
 * **SEMs, SIEMs:** Realiza el conjunto de las funcionalidades
   anteriores.
-  
+
 
 ## Aplicaciones multimedia
 
@@ -549,7 +548,7 @@ acotado. Hacen uso además de multicast (Ejemplo YouTube en las diapositivas).
 
 * **DynDNS, No-IP:** Servicios en la red privda con IP pública
   variable, configuración de acceso necesaria
-  
+
 * **UPnP:** "Pervasive adhoc com". Comunicación dispositivo <-> NAT
 
 # Práctica 1
