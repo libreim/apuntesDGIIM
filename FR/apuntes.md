@@ -13,7 +13,7 @@ eficaz si maximiza el uso de los recursos como el ancho de banda entre
 otros y que es transparente si actúa con independencia de las
 diferencias del sistema entre la fuente y el destino.
 
-Una **red** es un un sistema de comunicación con sistemas finales autónomos que facilita el intercambio eficaz y transparente de la información. 
+Una **red** es un un sistema de comunicación con sistemas finales autónomos que facilita el intercambio eficaz y transparente de la información.
 
 
 Razones para usar redes:
@@ -57,7 +57,7 @@ a día de hoy.
 Los **hosts** son los sistemas finales autónomos y la *subred* es la
 infraestructura para el transporte de información. Las subredes están
 formadas por nodos que se conectan mediante nodos o elementos de
-conmutación.
+conmutación (routers, switches o estaciones base).
 
 ## Diseño y estandarización de redes
 
