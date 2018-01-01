@@ -553,10 +553,326 @@ acotado. Hacen uso además de multicast (Ejemplo YouTube en las diapositivas).
 
 * **UPnP:** "Pervasive adhoc com". Comunicación dispositivo <-> NAT
 
+# Tema 3. Capa de Transporte en Internet
+
+Como sabemos un protocolo de la capa de transporte proporciona una
+abstracción de la comunicación de manera que podemos operar con dos
+hosts distantes como si estuvieran conectados directamente.
+
+Estos protocolos están implementados en los hosts terminales, pero no
+en los routers de la red. La capa de transporte transforma el mensaje
+en paquetes de capa de transporte conocidos como **segmentos**. Esto
+por lo general se hace dividiendo el mensaje original en fragmentos
+más pequeños y añadiendo una cabecera a cada uno de ellos. Tras esto
+la capa de transporte pasa a la capa de red, que gestiona con paquetes
+de capa de red el envío (en un datagrama).
+
+En internet hay dos protocolos que ofrecen distintos tipos de
+servicios para la capa de transporte, **TCP y UDP**.
+
+**Multiplexación y demultiplexación:**
+
+Un concepto importante para entender estos protocolos es saber cómo se
+comunican las aplicaciones, los procesos, con la capa de transporte,
+pues estos no se comunican directamente, sino que hacen uso de
+**sockets** intermediarios. A la hora de enviar un mensaje un proceso
+pasa a los sockets la información, la capa de transporte coge la
+información de estos sockets para crear los segmentos y pasarlos a la
+capa de red. Esta es la **multiplexación**. El procedimiento de
+recepción, donde la capa de transporte del receptor obtiene la
+información de la capa de red y la entrega a los socjets
+correspondientes es la **demultiplexación**.
+
+Cada uno de estos protocolos usa distintos tipos de sockets, con
+distinto funcionamiento. A continuación se explicarán estos
+protocolos.
+
+
+## Protocolo: User Datagram Protocol (UDP)
+
+Es un servicio de entrega de mejor esfuerzo (best effort), pues no
+garantiza la correcta entrega de todos los segmentos, pero hará todo
+lo que pueda para ello. 
+
+No es un servicio orientado a conexión, lo que implica que no es
+fiable y que ni hay garantías de entrega ordenada ni control de
+congestión, pues su principal desempeño es entregar la información tan
+rápida como se pueda.
+
+Entre sus ventajas destacan el control a nivel de aplicación sobre los
+datos que se envían y cuándo se envían, pues en cuanto lo indica la
+aplicación, UDP los empaqueta y los envía inmediatamente, sin
+mecanismos de control de flujo. Además, al no establecer ningún tipo
+de conexión evita retardos por ese motivo. Todo esto tiene
+adicionalmente una menor sobrecarga en la cabecera de los paquetes.
+
+Estos motivos hacen de UDP un protocolo ideal para aplicaciones
+tolerantes a fallos y sensibles a retardos, como las aplicaciones
+multimedia o, incluso, DNS.
+
+Las tareas de multiplexación y demultiplexación se realizan asignando
+un puerto disponible al socket del emisor, indicando el puerto de
+destino (y la dirección IP), entonces se realiza el mejor esfuerzo
+para entregar el datagrama. Cuando llega el paquete este es examinado
+en el destino y se entrega al socket apropiado según el número de
+puerto asociado. El socket UDP consta únicamente de puerto y dirección
+IP de destino.
+
+<!-- 15/11/2017 -->
+## Protocolo: Transmission Control Protocol (TCP)
+
+Es un servicio orientado a conexión, con una entrega ordenada
+garantizada. Es además full-duplex. TCP garantiza una entrega fiable
+sobre una capa de red no fiable (IP).
+
+La multiplexación y demultiplexación varían frente a UDP, aquí los
+sockets están identificados por cuatro elementos: Puerto e IP de
+destino y puerto e IP de origen.
+
+Tiene un sistema de control de flujo de detección y recuperación de
+errores (ARQ, Automatic Repeat reQuest). Esto se implementa mediante
+temporizadores que esperan la confirmación de la recepción (ACK, que
+es acumulativo, es decir, si se recibe un ack posterior es porque se
+ha recibido todo lo anterior correctamente). Si se agota el tiempo se
+reenvía el paquete. Trabaja sobre ventanas adaptables que veremos más
+adelante. 
+
+Utiliza “piggybacking”, es decir, en un paquete que va en un sentido
+de la comunicación se añade información sobre el otro sentido de la
+comunicación. Así aprovechan los paquetes de datos para incluir
+información de control.
+
+Todas estas propiedades nos aseguran que es fiable en el control de
+congestión y flujo. 
+
+La información a enviar por TCP se divide en segmentos TCP. 
+Cada uno de esos segmentos contiene **información del puerto origen y
+destino**. Además contiene información relativa a sí misma y a la
+posición que ocupa esta información respecto al total,**número de
+secuencia y número de acuse (ACK)**, el primero es el número
+del primer byte del segmento dentro del flujo de bytes que se
+inicializa a un valor aleatorio elegido por los hosts, mientras que
+el segundo es un valor que indica el número de secuencia que el
+receptor está esperando recibir, es decir, el siguiente byte a
+leer. Junto a esto se incluye la **longitud de la cabecera del
+paquete**, junto a un espacio reservado para usos concretos, flags,
+bytes acerca del control de flujo, comprobación (**checksum**) y un
+puntero a datos que hay que incluir de manera urgente, por ejemplo
+datos de control para subir a la capa de aplicación. 
+
+*(Un ejemplo de esto es un servicio streaming al que se le solicita cambiar
+la compresión del vídeo debe de procesarse antes que el resto de los
+datos sobre el vídeo que se deben de procesar “más tranquilamente”).*
+
+La cantidad de información de la capa de aplicación que se transmite
+en cada uno de estos paquetes está limitada por el tamaño máximo del
+segmento (**MSS**, Maximum Segment Size), que generalmente está
+definido por la longitud de la trama más larga de la capa de enlace
+que el host emisor puede enviar (también conocida como unidad máxima
+de transmisión, MTU, Maximum Transmission Unit).
+
+### Control de la conexión:
+
+El intercambio de información tiene tres fases.
+
+1. **Establecimiento de la conexión** (sincronizar el número de secuencia
+   y reservar recursos). Este es el denominado acuerdo en tres fases o
+   *three-way handshake*. Consiste en el envío de un segmento al
+   receptor que no contiene información de la capa de aplicación (un
+   número aleatorio, paquete SYN), una respuesta de este al emisor,
+   indicando que ya está disponible para la recepción (que devuelve un
+   valor una unidad mayor, como reconocimiento, SYN-ACK), y un tercer
+   segmento que puede llevar carga útil (al receptor se le envía otro
+   valor una unidad mayor que la última recibida, a modo de
+   reconocimiento, para que ambos hayan recibido un reconocimiento por
+   parte del otro, ACK), este último no necesita ser respondido. 
+   
+2. Intercambio de datos (full-duplex). Full-duplex indica que este
+   intercambio de datos puede ser bidireccional, un host puede estar
+   enviando datos a otro mientras está recibiendo datos del mismo.
+   
+3. Cierre de la conexión (liberar recursos). Proceso que se asemeja al
+   three-way handshake. 
+
+
+Se abre activamente el cliente y pasivamente el servidor. En esto se
+ven involucrados diversos bits y campos de control.
+
+El proceso que se realiza para finalizar la conexión consiste en lo
+siguiente:
+
+Para liberar todos los buffers y variables del host el cliente decide
+cerrar la conexión. Este ejecuta un comando de cierre que hace que el
+cliente TCP envíe un segmento especial al proceso servidor. Este
+segmento contiene el bit FIN activo y el servidor le responde con el
+reconocimiento. Posteriormente el servidor envía su propio segmento de
+desconexión, con el bit FIN activo. El cliente lo recibe y envía el
+reconocimiento para que ambos queden con sus recursos liberados.
+
+**Otros detalles:**
+Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
+
+La inicialización se inicia por el ISN, que es elegido por el
+Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores. 
+El sistema lo elige, y el estándar sugiere utilizar un contador entero
+incrementado en uno por cada 4 microsegundos. Esto protege de
+coincidencias, pero no de sabotajes.
+
+El incremento se realiza según los bytes de carga útil (payload). El
+nuevo número de secuencia se genera a partir de la suma del número de
+secuencia anterior más el número de bytes de carga útil. 
+Los flags SYN y FIN incrementan en 1 el número de secuencia.
+
+**Ejercicio:**
+Se desea transferir con protocolo TCP un archivo de L bytes usando un
+MSS(Maximum Segment Size) de 536.
+
+a) ¿Cuál es el valor máximo de L tal que los números de secuencia de
+TCP no se agoten?
+
+b) Considerando una velocidad de transmisión de 155 Mbps y un total de
+66 bytes para las cabeceras de las capas de transporte, red y enlace
+de datos, e ignorando las limitaciones debidas al control de flujo y
+congestión, calcule el tiempo qeu se tarda en transmitir el archivo en
+A.
+
+
+a) Un segmento tiene $2^{32}$ valores distintos, pero luego tiene dos
+bits del SYN y del FIN. En total el valor máximo de L para que no
+desborde es $2^{32}-2$.
+
+b) Dados los bytes de las cabeceras buscamos obtener el total y luego
+dividimos por la velocidad de transmisión.
+
+Dividimos L entre el tamaño del segmento para saber cuántos segmentos
+tenemos. Cogemos el entero inmediatamente superior de
+$\frac{2^{32}-2}{536}$ para calcular el número de segmentos. Luego
+calculamos el número de bytes así: N_segmentos * 66 + L
+
+Conocidos el número de bytes a transmitir simplemente tenemos que
+dividir por la velocidad $\frac{(N_{segmentos}\cdot 66 + L)\cdot 8}{155\cdot 10^6bps}$
+
+
+<!--22/11/2017 -->
+
+### Control de errores y de flujo:
+
+El control de flujo regula ámbitos como la velocidad de transmisión,
+mientras que el de errores comprueba si se transmiten correctamente
+los paquetes.
+
+Después del three-way handshake comienza la conexión. Un paquete (con
+su retardo de transmisión al ser enviado) se transmite al receptor
+(que lo recibe en un tiempo de propagación. El receptor le responde
+con un paquete minúsculo que sólo tendría un breve retardo de
+propagación (paquete con las cabeceras).
+<!-- DUDA: Esto suponiendo que la comunicación no esté siendo -->
+<!-- "full-duplex", es decir, que el receptor no quiera enviar nada? -->
+
+Por tanto el tiempo total sería igual a dos veces el retardo de
+propagación, más el tiempo de tranmisión del paquete inicial, más el
+tiempo de transmisión del paquete de respuesta (tiempo despreciable),
+más el tiempo de recepción de este último (también despreciable).
+
+En la práctica se realizan envíos en ventanas de varios paquetes como
+este. Es una **ventana deslizante** pues cada vez que recibe la
+confirmación de la recepción de un paquete permite enviar uno nuevo,
+manejando así un número fijo de paquetes. 
+
+**Control de errores**:
+
+Estudia el checksum de los paquetes, si el receptor desecha un
+paquete, el emisor, tras acabar el temporizador del paquete sin haber
+recibido una confirmación, reenvía el paquete. Si se envían dos
+paquetes y se recibe el ACK del último que se envió entonces queda
+confirmada la correcta entrega del paquete anterior.
+
+
+Existen una serie de reglas de generación del ACK para cuando ocurren
+determinados eventos para evitar cualquier tipo de error:
+
+* Cuando llega el segmento de manera ordenada con todo lo anterior ya
+  confirmado: Esperar un tiempo determinado (hasta 500 ms) por si se
+  recibe un nuevo segmento enviar el ACK de este último y así ahorrar
+  un envío.
+  
+* Cuando llega un segmento de manera ordenada pero hay pendiente un
+  ACK retrasado: Se envía el ACK único acumulativo, de este modo nos
+  aseguramos de que no se reciban más de dos paquetes sin confirmar el
+  ACK.
+  
+* Cuando llega desordenado el segmento con un número de secuencia
+  mayor que el esperado, implicando una discontinuidad: Se envía un
+  ACK repetido, con el valor del siguiente byte de la secuencia
+  esperado.
+  
+* Cuando llega un segmento que completa una discontinuidad parcial o
+  totalmente: Confirma el ACK inmediatamente si el segmento comienza
+  en el extremo inferior de la discontinuidad.
+  
+<!-- DUDA: Cómo puede producirse una discontinuidad si el ACK se -->
+<!-- reenvía duplicado cuando le llega un valor "adelantado" -->
+
+
+Los timeouts del control de errores varían dinámicamente. Esto se
+realiza mediante una estimación de la situación en la red. 
+
+En primer lugar el timeout tiene que ser mayor que el tiempo de ida y
+vuelta (RTT). Al menos dos veces el tiempo de transmisión. Luego hay
+que controlas si es demasiado corto, pues produciría timeouts
+prematuros, o demasiado largo, pues generaría grandes esperas
+innecesarias.
+
+Para calcular el RTT que usaremos para estimar el timeout usamos la
+siguiente fórmula:
+
+$$x_t = x_{t-1}\alpha + y_t(1-\alpha) ; \alpha \in [0,1)$$
+
+Donde $x_t$ es el RTT estimado en un instante determinado , $x_{t-1}$
+es el cálculo previo del RTT estimado y $y_t$ el RTT que se acaba de
+medir. $\alpha$ será el peso de la media ponderada que le otorgará más
+peso a las medidas antiguas o a la reciente.
+
+<!-- 29/11/2017 -->
+
+**Control de flujo:** 
+Los datos que se reciben correctamente pasan de los segmentos a un
+buffer de recepción, pero estos sólo pasaran a la capa de aplicación
+cuando los recursos correspondientes estén libres. De este modo TCP
+proporciona este procedimiento para evitar que el emisor sature al
+receptor.
+
+Es un esquema crediticio el receptor avisa al emisor de lo que puede
+aceptar.
+
+Se proporciona un servicio de control de flujo manteniendo en el
+emisor una variable conocida como **ventana de recepción** (al ser
+full-duplex hay una ventana a cada lado). Se utiliza el campo ventana
+(WINDOW) en el segmento TCP para establecer la ventana ofertada.
+
+El receptor responde al emisor con el número de bytes que tiene libre
+en su ventana, si este le responde con 0 es que no puede recibir más
+paquetes. El emisor tiene que esperar a recibir un nuevo paquete con
+el mismo ack pero con un valor de window mayor que cero.
+
+**Control de congestión:**
+
+Actuando de manera parecida al control de flujo da respuesta a los
+problemas que pueda causar la congestión de la red IP.
+
+En el emisor se usa una ventana y un umbral, inicialmente VCongestion
+= MaximumSegmentSize, y Umbral es un valor arbitrario inicializado por
+el emisor y ambos son regulados cuando se produce algún timeout.
+
+Si VCongestion < Umbral, por cada ACK recibido (crece
+exponencialmente, por cada ack que se reciba, si llegan dos, de la
+ventana se liberan dos y se aumenta en dos más) 
+
 # Práctica 1
 
 ¡Reiniciar el servicio correspondiente tras los cambios en sus archivos
 de configuración!
+
 
 Información
 -----------
