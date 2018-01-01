@@ -222,6 +222,8 @@ La comunicación entre diversos hosts se realiza mediante el uso de
 sockets por parte de los procesos que se encuentran tanto en servidor
 como en el cliente.
 
+Un socket es la interfaz entre el proceso de la aplicación y el protocolo de la capa de transporte. La aplicación del lado emisor empuja los mensajes a través del socket. En el otro lado del socket, el protocolo de la capa de transporte tiene la responsabilidad de llevar los mensajes hasta el socket de recepción.
+
 El proceso cliente es el que inicia la comunicación, mientras que el
 proceso servidor es el que espera a ser contactado. Es por esto por lo
 que necesita tener una IP permanente y pública. Además, para recibir
