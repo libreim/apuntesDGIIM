@@ -395,10 +395,10 @@ peticiones.
 conexión TCP.
 
 **HTTP es “stateless” $\rightarrow$ Cookies:** El servidor no mantiene
-la informacióń sobre las peticiones de los clientes. Esto puede
+la información sobre las peticiones de los clientes. Esto puede
 implicar, por ejemplo, que cuando recibe dos peticiones idénticas del
 mismo cliente devuelve el objeto solicitado en lugar de devolver
-ningún tipo de error o mensaje informativo.
+ningún tipo de error o mensaje informativo. Para identificar a los usuarios y su actividad se utilizan cookies, archivos que se almacenan en el sistema terminal del usuario y son gestionados por su navegador.
 
 La conexión puede ser persistente o no persistente. En el primer caso
 se pueden enviar múltiples objetos sobre una única conexión TCP entre
