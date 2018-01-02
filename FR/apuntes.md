@@ -361,7 +361,7 @@ autorizado y este le responde con la dirección IP de la URL inicial
 
 Como hemos comprobado la base de datos está distribuida. Esto implica
 que cada zona debe tener al menos un servidor de autoridad, y en cada
-zona habrá servidores primarios y secundarios, que bien tendran la
+zona habrá servidores primarios y secundarios, que bien tendrán la
 copia master de la base de datos o bien la obtendrán a partir de los
 primarios. Existen sólo 13 servidores raíz. Existe un servicio de
 caché que permite agilizar las consultas.
@@ -592,7 +592,7 @@ protocolos.
 
 Es un servicio de entrega de mejor esfuerzo (best effort), pues no
 garantiza la correcta entrega de todos los segmentos, pero hará todo
-lo que pueda para ello. 
+lo que pueda para ello.
 
 No es un servicio orientado a conexión, lo que implica que no es
 fiable y que ni hay garantías de entrega ordenada ni control de
@@ -635,7 +635,7 @@ temporizadores que esperan la confirmación de la recepción (ACK, que
 es acumulativo, es decir, si se recibe un ack posterior es porque se
 ha recibido todo lo anterior correctamente). Si se agota el tiempo se
 reenvía el paquete. Trabaja sobre ventanas adaptables que veremos más
-adelante. 
+adelante.
 
 Utiliza “piggybacking”, es decir, en un paquete que va en un sentido
 de la comunicación se añade información sobre el otro sentido de la
@@ -643,9 +643,9 @@ comunicación. Así aprovechan los paquetes de datos para incluir
 información de control.
 
 Todas estas propiedades nos aseguran que es fiable en el control de
-congestión y flujo. 
+congestión y flujo.
 
-La información a enviar por TCP se divide en segmentos TCP. 
+La información a enviar por TCP se divide en segmentos TCP.
 Cada uno de esos segmentos contiene **información del puerto origen y
 destino**. Además contiene información relativa a sí misma y a la
 posición que ocupa esta información respecto al total,**número de
@@ -658,7 +658,7 @@ leer. Junto a esto se incluye la **longitud de la cabecera del
 paquete**, junto a un espacio reservado para usos concretos, flags,
 bytes acerca del control de flujo, comprobación (**checksum**) y un
 puntero a datos que hay que incluir de manera urgente, por ejemplo
-datos de control para subir a la capa de aplicación. 
+datos de control para subir a la capa de aplicación.
 
 *(Un ejemplo de esto es un servicio streaming al que se le solicita cambiar
 la compresión del vídeo debe de procesarse antes que el resto de los
@@ -685,14 +685,14 @@ El intercambio de información tiene tres fases.
    segmento que puede llevar carga útil (al receptor se le envía otro
    valor una unidad mayor que la última recibida, a modo de
    reconocimiento, para que ambos hayan recibido un reconocimiento por
-   parte del otro, ACK), este último no necesita ser respondido. 
-   
+   parte del otro, ACK), este último no necesita ser respondido.
+
 2. Intercambio de datos (full-duplex). Full-duplex indica que este
    intercambio de datos puede ser bidireccional, un host puede estar
    enviando datos a otro mientras está recibiendo datos del mismo.
-   
+
 3. Cierre de la conexión (liberar recursos). Proceso que se asemeja al
-   three-way handshake. 
+   three-way handshake.
 
 
 Se abre activamente el cliente y pasivamente el servidor. En esto se
@@ -713,14 +713,14 @@ reconocimiento para que ambos queden con sus recursos liberados.
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 
 La inicialización se inicia por el ISN, que es elegido por el
-Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores. 
+Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 El sistema lo elige, y el estándar sugiere utilizar un contador entero
 incrementado en uno por cada 4 microsegundos. Esto protege de
 coincidencias, pero no de sabotajes.
 
 El incremento se realiza según los bytes de carga útil (payload). El
 nuevo número de secuencia se genera a partir de la suma del número de
-secuencia anterior más el número de bytes de carga útil. 
+secuencia anterior más el número de bytes de carga útil.
 Los flags SYN y FIN incrementan en 1 el número de secuencia.
 
 **Ejercicio:**
@@ -777,7 +777,7 @@ más el tiempo de recepción de este último (también despreciable).
 En la práctica se realizan envíos en ventanas de varios paquetes como
 este. Es una **ventana deslizante** pues cada vez que recibe la
 confirmación de la recepción de un paquete permite enviar uno nuevo,
-manejando así un número fijo de paquetes. 
+manejando así un número fijo de paquetes.
 
 **Control de errores**:
 
@@ -795,27 +795,27 @@ determinados eventos para evitar cualquier tipo de error:
   confirmado: Esperar un tiempo determinado (hasta 500 ms) por si se
   recibe un nuevo segmento enviar el ACK de este último y así ahorrar
   un envío.
-  
+
 * Cuando llega un segmento de manera ordenada pero hay pendiente un
   ACK retrasado: Se envía el ACK único acumulativo, de este modo nos
   aseguramos de que no se reciban más de dos paquetes sin confirmar el
   ACK.
-  
+
 * Cuando llega desordenado el segmento con un número de secuencia
   mayor que el esperado, implicando una discontinuidad: Se envía un
   ACK repetido, con el valor del siguiente byte de la secuencia
   esperado.
-  
+
 * Cuando llega un segmento que completa una discontinuidad parcial o
   totalmente: Confirma el ACK inmediatamente si el segmento comienza
   en el extremo inferior de la discontinuidad.
-  
+
 <!-- DUDA: Cómo puede producirse una discontinuidad si el ACK se -->
 <!-- reenvía duplicado cuando le llega un valor "adelantado" -->
 
 
 Los timeouts del control de errores varían dinámicamente. Esto se
-realiza mediante una estimación de la situación en la red. 
+realiza mediante una estimación de la situación en la red.
 
 En primer lugar el timeout tiene que ser mayor que el tiempo de ida y
 vuelta (RTT). Al menos dos veces el tiempo de transmisión. Luego hay
@@ -835,7 +835,7 @@ peso a las medidas antiguas o a la reciente.
 
 <!-- 29/11/2017 -->
 
-**Control de flujo:** 
+**Control de flujo:**
 Los datos que se reciben correctamente pasan de los segmentos a un
 buffer de recepción, pero estos sólo pasaran a la capa de aplicación
 cuando los recursos correspondientes estén libres. De este modo TCP
@@ -866,7 +866,7 @@ el emisor y ambos son regulados cuando se produce algún timeout.
 
 Si VCongestion < Umbral, por cada ACK recibido (crece
 exponencialmente, por cada ack que se reciba, si llegan dos, de la
-ventana se liberan dos y se aumenta en dos más) 
+ventana se liberan dos y se aumenta en dos más)
 
 # Práctica 1
 
