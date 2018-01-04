@@ -272,18 +272,18 @@ Consideramos una ecuación de este tipo en forma normal:
 
   \[
   \begin{array}{lll}
-    \varphi : & D \to \tilde{D} \\ 
+    \varphi : & D \to \widetilde{D} \\ 
   \end{array}
   \]
 
-  de forma que, si $\tilde{F} = F \circ \varphi$, la ecuación
-  \[ \dfrac{dy}{ds} = \tilde{F}(s, y) \ \ \ \ (\tilde{E})\]
+  de forma que, si $\widetilde{F} = F \circ \varphi$, la ecuación
+  \[ \dfrac{dy}{ds} = \widetilde{F}(s, y) \ \ \ \ (\widetilde{E})\]
   es equivalente a la que estamos considerando.
 
 
 \begin{nprop}
 
-Dado $\varphi = (\varphi _1, \varphi _2) : D \to \tilde{D}$ un difeomorfismo, tal que 
+Dado $\varphi = (\varphi _1, \varphi _2) : D \to \widetilde{D}$ un difeomorfismo, tal que 
 \[
 \frac{d\varphi_1}{dt} = \dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t)) F(t,x(t)) \neq 0 \ \forall (t,x) \in D
 \]
@@ -295,7 +295,7 @@ Entonces el cambio de variable:
   y := \varphi _2 (t,x)
 \end{array}
 \]
-transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\tilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y recíprocamente.
+transforma (E) en otra equivalente $(\widetilde{E}) \ \ \ \ \frac{dy}{ds} = \widetilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\widetilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y recíprocamente.
 \end{nprop}
 
 \begin{proof}
@@ -316,7 +316,7 @@ transforma (E) en otra equivalente $(\tilde{E}) \ \ \ \ \frac{dy}{ds} = \tilde{F
   Con lo cual
   \[
   \dfrac{dy}{ds} = \dfrac{dy}{dt}\dfrac{dt}{ds} = \dfrac{\dfrac{\partial \varphi_2}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_2}{\partial x}(t, x(t))F(t, x)}{\dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t))F(t, x)}
-  = \dfrac{\dfrac{\partial \varphi_2}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_2}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}{\dfrac{\partial \varphi_1}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_1}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))} = \tilde{F}(s,y)
+  = \dfrac{\dfrac{\partial \varphi_2}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_2}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}{\dfrac{\partial \varphi_1}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_1}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))} = \widetilde{F}(s,y)
   \]
 
   % TODO: insertar ejemplo de uso
@@ -352,8 +352,8 @@ Realizamos un cambio de variable:
 Los nuevos dominios son:
 \[
 \begin{array}{l}
-  \tilde{D}_1 = \{s > 0, a < y < b\}\\
-  \tilde{D}_2 = \{s < 0, a > y > b\}
+  \widetilde{D}_1 = \{s > 0, a < y < b\}\\
+  \widetilde{D}_2 = \{s < 0, a > y > b\}
 \end{array}
 \]
 
@@ -887,7 +887,7 @@ Sea $J \subset I$ con $t_0 \in J$ compacto. Entonces la sucesión ${x_k}$ conver
 
   Veamos ahora la unicidad de la solución.
 
-  Supongamos $y \in C(I,\R ^n)$ solución de $(1)$. Sea $\tilde{I} = \{ t \in I \ : x(t) = y(t) \}$. El procedimiento va a ser, utilizar que $I$ es conexo y que $\tilde{I}$ es abierto y cerrado para ver que $I=\tilde{I}$. $\tilde{I}$ es cerrado trivialmente, veamos que es abierto:
+  Supongamos $y \in C(I,\R ^n)$ solución de $(1)$. Sea $\tilde{I} = \{ t \in I \ : x(t) = y(t) \}$. El procedimiento va a ser, utilizar que $I$ es conexo y que $\tilde{I}$ es abierto y cerrado para ver que $I=\tilde{I}$. $\widetilde{I}$ es cerrado trivialmente, veamos que es abierto:
 
   Sea $t_1 \in \tilde{I}, \{t_0 , t\} \in \mathring{J}$, $\delta > 0$ tal que $(t_1 - \delta , t_1 + \delta ) \subset J$ y $\delta A_J < 1$.\\
   Sea $t \in [t_1 - \delta, t_1 + \delta]$ $x(t) = x(t_1 ) + \int_{t_1} ^{t} A(s)x(s)+b(s) ds$
