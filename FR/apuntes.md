@@ -439,12 +439,10 @@ recibirán el correo cuando ellos decidan. La arquitectura del sistema de correo
 siguiente:
 
 El usuario de origen utiliza su user agent para mandar el correo a su
-servidor de correo, se envía mediante SMTP o HTTP. Una vez hecho esto,
-el servidor del que envía el mensaje crea una conexión TCP con el
-servidor de correo del usuario destinatario y lo envía, este envío sí
-que se produce con SMTP. El servidor de destino almacena el mensaje en
+servidor de correo, se envía mediante SMTP o HTTP. El protocolo SMTP consiste en una conexión TCP con el
+servidor de correo destinatario mediante el puerto 25. El servidor de destino almacena el mensaje en
 la bandeja de entrada del usuario destino. El destinatario usará su
-agente de usuario arbitrariamente para leer el mensaje utilizando
+agente de usuario arbitrariamente para leer el mensaje utilizando los protocolos
 POP3 (Post Office Protocol), IMAP (Internet Mail Access Protocol) o
 HTTP.
 
