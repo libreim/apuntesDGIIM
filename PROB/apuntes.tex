@@ -242,9 +242,11 @@ Para que una medida exterior fuera una medida tendría que ser $\sigma$-aditiva.
 
 Una vez definido el concepto de medida, vamos a dar ahora el de probabilidad. Una probabilidad $\mathcal{P}$ sobre un espacio medible ($\Omega$, $\mathcal{A}$) es una medida que además cumple que $\mathcal{P}(\Omega)=1$. Por tanto, tiene las siguientes propiedades:\\
 
-$\mathcal{P}(\emptyset)=0$\\
-$\forall A \in \mathcal{A}, 0 \leq \mathcal{P}(A) \leq 1$\\
-Es una función $\sigma$-aditiva\\
+\begin{itemize}
+	\item $\mathcal{P}(\emptyset)=0$
+	\item $\forall A \in \mathcal{A}, 0 \leq \mathcal{P}(A) \leq 1$
+	\item Es una función $\sigma$-aditiva
+\end{itemize}
 
 De forma análoga al concepto de espacio de medida, podemos definir ahora el de espacio probabilístico. Un espacio probabilístico es una tupla formada por un conjunto $\Omega$, una $\sigma$-álgebra sobre ese conjunto, $\mathcal{A}$, y una función de probabilidad $\mathcal{P}$.
 
@@ -279,6 +281,10 @@ Teorema de sucesión
 \section{Teorema de extensión de Carathéodory}
 
 Una vez vistas las definiciones anteriores de medida y medida exterior, vamos a ver un teorema fundamental, que nos servirá para justificar la forma en la que haremos el cálculo de probabilidades a posteriori. Veamos dos lemas antes que nos serán necesarios para la demostración del teorema principal.\\
+
+\textbf{Definición:} Si $\varphi, \varphi'$ son dos funciones de conjuntos sobre $\mathcal{A}$ y $\mathcal{A}'$ respectivamente, y toman los mismos valores en un subconjunto común $\mathcal{A}''$, se dice que coinciden en este subconjunto.
+
+\textbf{Definición:} Si $\mathcal{A} \subset \mathcal{A}'$ y $\varphi, \varphi'$ coinciden en $\mathcal{A}$, decimos que $\varphi$ es una restricción de $\varphi'$, o que $\varphi'$ es una \textbf{extensión} de $\varphi$
 
 \textbf{Definición:} Un conjunto $A\in S(\Omega)$ es $\mu^\circ$-medible si se cumple que $\mu^\circ(D) \geq \mu^\circ(AD)+\mu^\circ(A^cD), \forall D \in S(\Omega)$\\
 
