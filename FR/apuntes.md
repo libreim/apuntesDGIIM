@@ -446,12 +446,13 @@ agente de usuario arbitrariamente para leer el mensaje utilizando los protocolos
 POP3 (Post Office Protocol), IMAP (Internet Mail Access Protocol) o
 HTTP.
 
-(La diferencia entre POP3 e IMAP es que POP3 no puede ser usado por
+La diferencia entre POP3 e IMAP es que POP3 no puede ser usado por
 usuarios "nómadas" que quieran acceder desde distintos hosts a su
 correo, pues una vez recibidos los archivos, estos sólo permanecen en
 el receptor. IMAP permite mantener una carpeta bandeja de entrada en
-un servidor IMAP, donde puede gestionar ahí su correo.
+un servidor IMAP, donde puede gestionar ahí su correo. A causa de esto IMAP requiere mayor tiempo de conexión y utiliza más recursos del servidor.
 
+El principal problema de SMTP es que no requiere autenticación, lo que permite que cualquiera pueda enviar correo a cualquier persona o grupo de personas. Esta característica hace posible la existencia de correo basura o spam. Los servidores SMTP modernos intentan minimizar este comportamiento permitiendo que solo hosts conocidos accedan al servidos SMTP. Los servidores que no ponen tales restricciones se llaman open relay.
 ## Protocolos Seguros
 
 Hay unos aspectos destacables de la seguridad en internet:
