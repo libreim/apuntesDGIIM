@@ -858,15 +858,75 @@ el mismo ack pero con un valor de window mayor que cero.
 **Control de congestión:**
 
 Actuando de manera parecida al control de flujo da respuesta a los
-problemas que pueda causar la congestión de la red IP.
+problemas que pueda causar la congestión de la red IP. La finalidad de
+este es evitar que el emisor llegue a saturar la red. (Tanto el ancho
+de banda de las líneas como los buffers en los dispositivos de
+interconexión).
 
-En el emisor se usa una ventana y un umbral, inicialmente VCongestion
-= MaximumSegmentSize, y Umbral es un valor arbitrario inicializado por
-el emisor y ambos son regulados cuando se produce algún timeout.
+La principal solución que se propone es limitar el tráfico generado. Y
+esto se puede estudiar de distintas maneras:
 
-Si VCongestion < Umbral, por cada ACK recibido (crece
-exponencialmente, por cada ack que se reciba, si llegan dos, de la
-ventana se liberan dos y se aumenta en dos más)
+- Control de congestión terminal a terminal: Cuando la capa de red no
+  proporciona un soporte explícito a la capa de transporte esta se
+  guía por comportamientos observados a través de la red, tales como
+  la pérdida de paquetes o los retrasos.
+  
+- Control de congestión asistido por la red: Los routers proporcionan
+  una realimentación explícita al emisor informando de la congestión
+  de la red, y puede ser tan simple como informar de la existencia de
+  congestión en algún enlace de la red mediante el uso de un bit.
+
+TCP ha de usar el primer tipo de control, pues IP no proporciona una
+realimentación explícita a los sistemas terminales en cuanto a
+congestión de la red.
+
+En el emisor se usa una **ventana de congestión** y un umbral,
+inicialmente VCongestion = MaximumSegmentSize, y Umbral es un valor
+arbitrario inicializado por el emisor y ambos son regulados cuando se
+produce algún timeout, es decir, TCP es auto-temporizado. Esta ventana
+limita la velocidad de transmisión para evitar la congestión. Si se
+pierde un segmento se deberá reducir la ventana, si se recibe el ACK
+correctamente puede aumentarse.
+
+Esto se define por el **algoritmo de control de congestión de TCP**,
+que tiene los siguientes estados:
+
+1. **Arranque lento:** Cuando se inicia una conexión TCP el valor
+   inicial de la ventana es igual al MSS, como hemos dicho
+   antes. Puesto que lo ideal sería poder aprovechar al máximo el
+   ancho de banda, para esto se aumenta el tamaño de la ventana,
+   agrandándola en tantos MSS como reconocidos en ese momento,
+   "duplicándola" de este modo cada período de tiempo RTT. Por esto
+   decimos que tiene un arranque lento, pero un crecimiento
+   exponencial. Este crecimiento se detiene cuando se produce una
+   pérdida de paquete (señalada por un timeout), que reduce el tamaño
+   de la ventana a la mitad y otorga este valor al umbral. También
+   puede estar limitada por un umbral tomado con anterioridad. Cuando
+   se alcanza o sobrepasa el valor del umbral se finaliza el arranque
+   lento y se pasa a la prevención de la congestión.
+   
+2. **Prevención de la congestión:** Al entrar en este estado en lugar
+   de duplicar el valor de la ventana, simplemente se aumenta el
+   tamaño de esta en un MSS. Generalmente cuando llega un paquete de
+   reconocimiento. Este crecimiento lineal debe detenerse igualmente
+   para evitar la congestión, comportándose igual que cuando se
+   produce un timeout. Si en lugar de un timeout se produce una
+   pérdida de paquete detectada por el recibimiento de tres ACK
+   duplicados el comportamiento es menos drástico, por tanto reduce el
+   tamaño de la ventana a la mitad y, si está implementado entra en
+   recuperación rápida. **TCP Tahoe** no tiene recuperación
+   rápida. Tras una pérdida limita a 1 MSS la ventana de congestión y
+   entra en estado de arranque lento.
+   
+3. **Recuperación rápida:** Sólo implementada en **TCP Reno**, la
+   ventana se incrementa en 1 MSS por cada ACK duplicado recibido
+   correspondiente al segmento que falta y que ha causado la pérdida
+   que le hizo entrar en este estado. Si llega un ACK para el segmento
+   que falta, se entra de nuevo en el estado de prevención de la
+   congestión. Si en este modo se produce otra pérdida se vuelve al
+   estado de arranque lento.
+   
+   
 
 # Práctica 1
 
