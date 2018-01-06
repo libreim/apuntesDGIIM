@@ -434,8 +434,8 @@ solicitar al servidor original.
 ## Correo Electrónico
 
 ### Proceso de envío de correo electrónico
-En el correo electrónico intervienen dos clientes que enviarán y
-recibirán el correo cuando ellos decidan. El procedimiento es el
+El correo electrónico es un servicio de red que perminte a los usuarios enviar y recibir mensajes y archivos rápidamente mediante sistemas de comunicación electrónicos. En el correo electrónico intervienen dos clientes que enviarán y
+recibirán el correo cuando ellos decidan. La arquitectura del sistema de correo se basa en subsistemas consistentes de agente de transferencia (mueve mensajes del origen al destino, por lo general son demonios) y agente de usuario (programas locales que permiten al usuario leer y enviar correo). El procedimiento es el
 siguiente:
 
 El usuario de origen utiliza su user agent para mandar el correo a su
