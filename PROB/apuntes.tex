@@ -6,7 +6,15 @@
 \section{Introducción: Espacio medible}
 
 \subsection*{Concepto de $\sigma$-álgebra}
-Sea un conjunto $\Omega$, una
+Definamos primero la estructura de álgebra. Dado un espacio $\Omega$, una clase de subconjuntos de $\Omega$, $\mathcal{Q} \subset P(\Omega)$ tiene estructura de álgebra si y solo si:
+\begin{enumerate}
+	\item $\Omega \in \mathcal{Q}$
+	\item $\forall A \in \mathcal{Q} \implies A^c \in \mathcal{Q}$
+	\item $\forall A,B \in \mathcal{Q} \implies A \cup B \in \mathcal{Q}$
+\end{enumerate}
+
+
+Una vez vista esta definición, sea un conjunto $\Omega$, una
 familia de subconjuntos $\mathcal{A}$ es $\sigma$-álgebra sobre $\Omega$ si: 
 \begin{enumerate}
 \item $\Omega \in \mathcal{A}$
@@ -66,6 +74,16 @@ A partir de estas definiciones, es fácil comprobar que
 
 $$ \liminf A_n \subseteq \limsup A_n $$
 
+Basta ver que un $\omega$ cualquiera de $\liminf A_n$ está en $\limsup A_n$. En efecto,
+\[
+\omega \in \liminf A_n \implies \omega \in \cup_{k=1}^\infty \cap_{n=k}^\infty A_n \implies \omega \in \cap_{n=k}^\infty A_n
+\]
+para algún $k$ finito, luego $\omega$ pertenece a una infinidad de $A_n$ y así:
+\[
+\omega \in \limsup A_n 
+\]
+Por lo que tenemos el resultado.
+
 \subsection{Límite de una sucesión de conjuntos}
 
 Diremos que una sucesión de conjuntos tiene límite si su límite inferior y superior coinciden, y el límite tendrá dicho  valor. Es decir,
@@ -88,9 +106,15 @@ $$\varphi : \mathcal{A} \rightarrow \mathbb{R}$$
 \begin{center}
 $\varphi (A)$ es único\\
 \end{center}
-Se dice que $\varphi$ es aditiva si $\varphi\left(\displaystyle\sum_{1}^{n}A_k\right)=\displaystyle\sum_1^n\varphi(A_k)$\\
-Se dice que $\varphi$ es $\sigma$-aditiva si $\varphi\left(\displaystyle\sum_1^\infty A_k\right)=\displaystyle\sum_1^\infty \varphi(A_k)$
+Se dice que $\varphi$ es aditiva si
+\[
+\forall \{A_i\}_{i=1,...,n} \in A \text{ con } A_i \cup A_j = \emptyset, \ i \ne j , \varphi( \cup_{i=1}^n A_i ) = \sum_{i=1}^n \varphi(A_i)
+\]
 
+Se dice que $\varphi$ es $\sigma$-aditiva si
+\[
+\forall \{A_i\}_{n\in N}, \ A_n \in A \text{ con } A_i \cup A_j = \emptyset, \ i \ne j , \varphi( \cup_{i=1}^\infty A_n ) = \sum_{i=1}^\infty \varphi(A_n)
+\]
 
 \subsubsection{Función subaditiva}
 Sea $\varphi$ definida como antes. Se dice que $\varphi$ es \textbf{subaditiva} si $\varphi(A \cup B) \leq \varphi(A) + \varphi(B)$
@@ -196,7 +220,7 @@ Haciendo tender ahora $n \to +\infty$ y tomando $\displaystyle C = \lim \cup_{k 
 \chapter{Medidas y probabilidades}
 
 \section{Concepto de medida, media exterior y probabilidad}
-Una función de conjuntos $\mu^\circ$ es una medida si verifica:
+Una función de conjuntos $\mu^\circ$ es una \textbf{medida} si verifica:
 \begin{itemize}
 \item Es $\sigma$-aditiva, es decir,  $\mu^\circ (\cup A_j) = \displaystyle \sum \mu^\circ (A_j)$
 \item Es no decreciente $A\subset B \, \mu^\circ(A)\leq \mu^\circ(B)$
@@ -205,7 +229,14 @@ Una función de conjuntos $\mu^\circ$ es una medida si verifica:
 
 A la tupla ($\Omega$, $\mathcal{A}$, $\mu_{\mathcal{A}}$) se le denomina espacio de medida.\\
 
-Una \textbf{medida exterior} es una función de conjuntos positiva y $\sigma$-subaditiva, es decir, no se cumple la primera propiedad. La $\sigma$-subaditividad implica que $\mu(A \cup B) \leq \mu(A) + \mu(B)$.\\
+Una \textbf{medida exterior} es una función de conjuntos que cumple:
+\begin{itemize}
+	\item Es positiva
+	\item Es $\sigma$-subaditiva, es decir: $\forall \{A_n\}_{n\in N} \subset P(\Omega),$ se tiene:
+	\[
+	 \mu^e(\bigcup_{n=1}^\infty A_N) \leq \sum_{n=1}^\infty \mu^e(A_n)
+	\]
+\end{itemize} 
 
 Para que una medida exterior fuera una medida tendría que ser $\sigma$-aditiva. Es decir, la falla la primera condición. Sí que es positiva ya que $\mu^\circ(\emptyset)=0$ y es creciente. Esta medida exterior se aplica a cualquier conjunto. Va a haber unos subconjuntos en los que la función se comporte como si fuera aditiva.\\
 
