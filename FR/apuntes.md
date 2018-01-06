@@ -870,7 +870,7 @@ esto se puede estudiar de distintas maneras:
   proporciona un soporte explícito a la capa de transporte esta se
   guía por comportamientos observados a través de la red, tales como
   la pérdida de paquetes o los retrasos.
-  
+
 - Control de congestión asistido por la red: Los routers proporcionan
   una realimentación explícita al emisor informando de la congestión
   de la red, y puede ser tan simple como informar de la existencia de
@@ -904,7 +904,7 @@ que tiene los siguientes estados:
    puede estar limitada por un umbral tomado con anterioridad. Cuando
    se alcanza o sobrepasa el valor del umbral se finaliza el arranque
    lento y se pasa a la prevención de la congestión.
-   
+
 2. **Prevención de la congestión:** Al entrar en este estado en lugar
    de duplicar el valor de la ventana, simplemente se aumenta el
    tamaño de esta en un MSS. Generalmente cuando llega un paquete de
@@ -917,7 +917,7 @@ que tiene los siguientes estados:
    recuperación rápida. **TCP Tahoe** no tiene recuperación
    rápida. Tras una pérdida limita a 1 MSS la ventana de congestión y
    entra en estado de arranque lento.
-   
+
 3. **Recuperación rápida:** Sólo implementada en **TCP Reno**, la
    ventana se incrementa en 1 MSS por cada ACK duplicado recibido
    correspondiente al segmento que falta y que ha causado la pérdida
@@ -925,8 +925,8 @@ que tiene los siguientes estados:
    que falta, se entra de nuevo en el estado de prevención de la
    congestión. Si en este modo se produce otra pérdida se vuelve al
    estado de arranque lento.
-   
-   
+
+
 
 # Práctica 1
 
