@@ -579,7 +579,7 @@ pasa a los sockets la información, la capa de transporte coge la
 información de estos sockets para crear los segmentos y pasarlos a la
 capa de red. Esta es la **multiplexación**. El procedimiento de
 recepción, donde la capa de transporte del receptor obtiene la
-información de la capa de red y la entrega a los socjets
+información de la capa de red y la entrega a los sockets
 correspondientes es la **demultiplexación**.
 
 Cada uno de estos protocolos usa distintos tipos de sockets, con
