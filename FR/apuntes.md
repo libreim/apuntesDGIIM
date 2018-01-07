@@ -732,7 +732,7 @@ TCP no se agoten?
 b) Considerando una velocidad de transmisión de 155 Mbps y un total de
 66 bytes para las cabeceras de las capas de transporte, red y enlace
 de datos, e ignorando las limitaciones debidas al control de flujo y
-congestión, calcule el tiempo qeu se tarda en transmitir el archivo en
+congestión, calcule el tiempo que se tarda en transmitir el archivo en
 A.
 
 
