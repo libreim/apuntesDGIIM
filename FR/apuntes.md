@@ -647,7 +647,7 @@ congestión y flujo.
 La información a enviar por TCP se divide en segmentos TCP.
 Cada uno de esos segmentos contiene **información del puerto origen y
 destino**. Además contiene información relativa a sí misma y a la
-posición que ocupa esta información respecto al total,**número de
+posición que ocupa esta información respecto al total, **número de
 secuencia y número de acuse (ACK)**, el primero es el número
 del primer byte del segmento dentro del flujo de bytes que se
 inicializa a un valor aleatorio elegido por los hosts, mientras que
@@ -711,7 +711,7 @@ reconocimiento para que ambos queden con sus recursos liberados.
 **Otros detalles:**
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 
-La inicialización se inicia por el ISN, que es elegido por el
+La inicialización se inicia por el ISN, que es elegido por el sistema. 
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 El sistema lo elige, y el estándar sugiere utilizar un contador entero
 incrementado en uno por cada 4 microsegundos. Esto protege de
