@@ -62,7 +62,9 @@ conmutación (routers, switches o estaciones base).
 ## Diseño y estandarización de redes
 
 ### **Modelo OSI**
+
 Grupo 1 de capas:
+
 - Capa Física: Conexión ordenador-punto de acceso. Mueven los bits
   dentro de la trama de un nodo al siguiente.
 
@@ -71,6 +73,7 @@ Grupo 1 de capas:
   la capa de enlace) y controla errores y flujo.
 
 Grupo 2:
+
 - Capa de Red: Nos ofrece la capacidad de enrutamiento que permite
   llevar a los paquetes desde un origen a un destino. Controla además
   la congestión, evitando el envío de paquetes a nodos
@@ -453,6 +456,17 @@ el receptor. IMAP permite mantener una carpeta bandeja de entrada en
 un servidor IMAP, donde puede gestionar ahí su correo. A causa de esto IMAP requiere mayor tiempo de conexión y utiliza más recursos del servidor.
 
 El principal problema de SMTP es que no requiere autenticación, lo que permite que cualquiera pueda enviar correo a cualquier persona o grupo de personas. Esta característica hace posible la existencia de correo basura o spam. Los servidores SMTP modernos intentan minimizar este comportamiento permitiendo que solo hosts conocidos accedan al servidos SMTP. Los servidores que no ponen tales restricciones se llaman open relay.
+
+## MIME
+
+MIME (Multipurpose Internet Email Extension) es un estándar de intercambio a través de Internet de todo tipo de archivos. Fue diseñado para e-mails pero finalmente es tambien importante en protocolos de comunicación externos al email. 
+
+Cuando se envía un mensaje con este protocolo, este mensaje tiene una serie de campos para facilitar la comprensión del mensaje, tales como:
+
+* Content-Transfer-Encoding: El método de codificación, como ASCII7, ASCII 8, binaria o base64.
+* Content-type: El tipo de datos que se van a transferir, que puede ser Text, Image, Audio, Application, Message...
+* Content-ID: identificador único
+
 ## Protocolos Seguros
 
 Hay unos aspectos destacables de la seguridad en internet:
