@@ -195,7 +195,6 @@ internet:
  los nombres de dominio, los cuales traducen las direcciones del
  lenguaje humano a su correspondiente dirección IP.
 
-\part{Prácticas}
 
 \newpage
 
@@ -565,6 +564,8 @@ acotado. Hacen uso además de multicast (Ejemplo YouTube en las diapositivas).
   variable, configuración de acceso necesaria
 
 * **UPnP:** "Pervasive adhoc com". Comunicación dispositivo <-> NAT
+
+\newpage
 
 # Tema 3. Capa de Transporte en Internet
 
