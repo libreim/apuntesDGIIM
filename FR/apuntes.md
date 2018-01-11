@@ -574,7 +574,7 @@ abstracción de la comunicación de manera que podemos operar con dos
 hosts distantes como si estuvieran conectados directamente.
 
 Estos protocolos están implementados en los hosts terminales, pero no
-en los routers de la red. La capa de transporte transforma el mensaje
+en los routers de la red. La capa de transporte **transforma** el mensaje
 en paquetes de capa de transporte conocidos como **segmentos**. Esto
 por lo general se hace dividiendo el mensaje original en fragmentos
 más pequeños y añadiendo una cabecera a cada uno de ellos. Tras esto
