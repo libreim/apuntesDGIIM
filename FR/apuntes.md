@@ -818,7 +818,7 @@ realiza mediante una estimación de la situación en la red.
 
 En primer lugar el timeout tiene que ser mayor que el tiempo de ida y
 vuelta (RTT). Al menos dos veces el tiempo de transmisión. Luego hay
-que controlas si es demasiado corto, pues produciría timeouts
+que controlar si es demasiado corto, pues produciría timeouts
 prematuros, o demasiado largo, pues generaría grandes esperas
 innecesarias.
 
