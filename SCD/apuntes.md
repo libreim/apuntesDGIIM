@@ -875,3 +875,123 @@ En múltiples problemas numéricos un cálculo se repite y cada vez que se obtie
 #### 2.4 Encauzamiento (pipelining)
 
 El problema se divide en una serie de tareas que se han de completar después de otra. Cada tarea se ejecuta por un proceso separado. Los procesos se organizan en un cauce dnde cada proceso se corresponde con una etapa del acuce y es responsable de una tarea particular. Cada etapa del cauce contribuirá al problema global y devuelve información que es necesaria para etapas posteriores del cauce. Patrón de comunicación muy simple ya que se establece un flujo de datos entre las tereas adyacentes en el cauce.
+
+### 3. Mecanismos de alto nivel en sistemas distribuidos
+
+#### 3.1 Introducción. LLamada a procedimiento
+
+Los mecanismos vistos hasta ahora presentan un bajo nivel de abstracción. Veremos mecanismos de mayor nivel de abstracción:
+- Llamada a procedimiento remoto (RPC)
+- Invocación remota de métodos (RMI)
+
+Ambos están basados en el método habitual por el cual un proceso llamador hace una llamada a procedimiento:
+1. El llamador indica el nombre del procedimiento y los valores de los parámetros.
+2. El proceso llamador ejecuta el código del procedimiento.
+3. Cuando el procedimiento termina, el llamador obtiene los resultados y continúa ejecutando el código tras la llamada.
+
+En el modelo de invocación remota o llamada a procedimiento remoto se dan los mismos pasos, pero es otro procedimiento (el proceso llamado) el que ejecuta el código del procedimiento.
+1. El llamador indica el nombre del procedimiento y los valores de los parámetros.
+2. El proceso llamador se queda bloqueado. EL proceso llamado ejecuta el código del procedimiento.
+3. Cuando el procedimiento termina, el llamador obtiene los resultados y continúa ejecutando el código tras la llamada.
+
+RPC representa estas características:
+- El flujo de comunicaciones es bidireccional.
+- Se permite que varios procesos invoquen un procedimiento gestionado por otro proceso.
+
+#### 3.2 El paradigma cliente-servidor
+
+Es el paradigma más frecuente en programación distribuida. Hay una relación asimétrica entre dos procesos: cliente y servidor.
+
+- Proceso servidor: gestiona un recurso y ofrece un servicio a otros procesos (clientes) para permitir que puedan acceder al recurso. Puede estar ejecutándose durante un largo periodo de tiempo, pero no hace nada útil mientras espera peticiones de los clientes.
+
+- Proceso cliente: necesita el servicio y envía un mensaje de petición al servidor solicitando algo asociado al servicio proporcionado por el servidor.
+
+## Tema 4. Introducción a los sistemas de tiempo real
+
+### 1. Concepto de sistemas de tiempo real. Medidas de tiempo y modelo de tareas.
+
+#### 1.1 Definición, tipos y ejemplo
+
+Sistemas de tiempo real constituyen un tipo de sistema en el que la ejecución del sistema se debe producir dentro de unos plazos de tiempo predefinidos para que funcione con suficiente garantía. En un sistema además concurrente será necesario que todos los procesos sobre un procesador o sobre varios se ejecuten en los plazos de tiempo predefinidos.
+
+Habitualmente suele asociarse la denominación de sistema de tiempo real a los siguientes tipos de sistemas:
+- Sistema en línea: siempre está disponible, pero no se garantiza una respuesta en un intercalo de tiempo acotado.
+- Sistema interactivo. Suele ofrecer una respuesta en un tiempo acotado, aunque no importa si ocasionalmente tarda más.
+- Sistema de respuesta rápida: el sistema ofrece una respuesta en un tiempo acotado y lo más corto posible.
+
+#### 1.2 Propiedades de los sistemas de tiempo real
+
+Al depender la corrección del sistema de las restricciones temporales, los sistemas de tiempo real tienen que cumplir una serie de propiedades:
+- Reactividad
+- Predecibilidad
+- Confiabilidad
+
+Reactividad: el sistema tiene que interaccionar con el entorno y responder de la manera esperada a los estímulos externos de un intervalo de tiempo previamente definido.
+
+Predecibilidad: tener un comportamiento predecible implica que la ejecución del sistema tiene que ser determinista, y por lo tanto, se debe garantizar su ejecución dentro del plazo de tiempo definido.
+- Las respuestas han de producirse dentro de las restricciones temporales impuestas por el entorno, que suelen ser diferentes para cada proceso del sistema.
+- Es necesario conocer el comportamiento temporal de los componentes software y hardware utilizados, así como el lenguaje de programación.
+- Si no se puede tener un conocimiento temporal exacto, hay que definir marcos de tiempo acotados.
+
+Confiabilidad: la confiabilidad mide el grado de confianza que se tiene en el sistema. Depende de:
+- Disponibilidad: capacidad de proporcionar servicios siempre que se solicita.
+- Robustez o tolerancia a fallos: capacidad de operar en situaciones excepcionales sin poseer un comportamiento catastrófico.
+- Fiabilidad: capacidad de ofrecer siempre los mismos resultados bajo las mismas condiciones.
+- Seguridad: capacidad de protegerse ante ataques o fallos accidentales o delierados, y no la no vulverabilidad de los datos.
+Cuando esta propiedad es crítica el sistema se denomina sistema de tiempo real cítico.
+
+#### 1.3 Modelo de Tareas
+Una tarea es un conjunto de acciones que describen el comportamiento del sistema o parte de él en base a la ejecución secuencial de un trozo de código. Equivalente a proceso o hebra.
+- La tarea satisface una necesidad funcional concreta.
+- La tarea tiene definida unas restricciones temporales a partir de los atributos temporales.
+- Una tarea activada es una tarea en ejecución o pendiente de ejecutar.
+- Decimos que una tarea se activa cuando se hace necesario ejecutarla una vez.
+- El instante de activación de una tarea es el instante de tiempo a partir del cual debe ejecutarse (cuando pasa de desactivada a activada).
+
+Los recursos son elementos disponibles para la ejecución de las tareas. Se distinguen dos tipos de recursos:
+- Recursos activos: procesador, red...
+- Recuross pasivos: datos, ememoria, dispositivos de E/S...
+
+Asumimos que cada CPU disponible se dedica a ejecutar una o varias tareas, de acuerdo al esquema de planificación en uso. Si una CPU ejecuta más de una tarea, el tiempo de la CPU debe repartirse entre varias tareas.
+
+Los requisitos de un sistema de tiempo real obligan a asociar un conjunto de atributos temporales a cada tarea de un sistema. Estos atributos son restricciones acerca de cuando se ejecuta activa cada tarea y cuanto puede tardar en completarse desde que se activa.
+
+La planificación de tareas es una labor de diseño que determina como se le asignan a lo largo del tiempo a cada tarea los recursos activos de un sistema, de forma que se garantice el cumplimiento de las restricciones dadas por los atributos temporales de la tarea.
+
+Atributos temporales de una tarea:
+- TIempo de cómputo o de ejecución (C): tiempo necesario para la ejecucición de la tarea.
+- Tiempo de respuesta (R): tiempo que ha necesitado el proceso para completarse totalmente a partir del instante de activación.
+- PLazo de respuesta máxima (D): define el máximo de tiempo de respuesta posible.
+- Periodo (T): intervalo de tiempo entre dos actividades sucesivas en el caso de una tarea periódica.
+
+Tipos de tareas según la recurrencia de sus actividades:
+
+- Aperiódicas: se activan en instantes arbitrarios (no tiene T).
+- Periódicas: repetitivas, T es el tiempo exacto entre activaciones.
+- Esporádicas: reptitiva, T es intervalo mínimo entre activaciones.
+
+##### Diseño de la planificación de tareas
+El problema de la planificación supone:
+- Determinar los procesadores disponibles a los que se puede asociar las tareas.
+- Determinar las relaciones de dependencia de las tareas:
+  - Relaciones de precedencia que hay entre las distintas tareas.
+  - Determinar los recursos comunes a los que accenden las distintas tareas.
+- Determinar el orden de ejecución de las tareas para garantizar las restricciones especificadas.
+
+Para determinar la planificabilidad de un conjunto de tareas se requiere un esquema de planificación que cubra los dos siguientes aspectos:
+- Un algoritmo de plafinicación, que define un criterio (política de planificación) que determina el orden de acceso de las tareas a los distintos procesadores.
+- Un método de análisis que permite predecir el comportamiento temporal del sistema, y determina si la planificabilidad es factible bajo las condiciones o restricciones especificadas.
+  - Se pueden comprobar si los requisitos temporales están garantizados en todos los casos posibles.
+  - En general es estudia el peor comportamiento posible, es deecir, con el WCET (Worst Case Execution Time).
+
+##### Cálculo del WCET
+
+Suponemos que siempre se conoce el valor WCET (Cw) que es el máximo valor de C para cualquier ejecución posible de dicha tarea. Hay dos formas de obtener Cw:
+- Medida directa del tiempo de ejecución (en el peor caso) en la plataforma de ejecución. Se realizan múltiples experimentos, y se hace una estadística.
+- Análisis del código. Se basa en calcular el peor tiempo. Se descompone el código en un grafo de bloques secuenciales. Se calcula el tiempo de ejecución de cada bloque. Se busca el camino más largo.
+
+Mientras que no se diga lo contrario, asumimos que siempre se tarda lo mismo (C) en ejecutar una tarea determinada. Por lo tanto se cumple C = Cw.
+
+##### Restricciones temporales de una tarea
+
+Para determinar la planificación del sistema necesitamos conocer las restricciones temporales de cada tarea del sistema. Las restricciones temporales para un conjunto de n tareas periódicas se especifican dando una tabla con los valores Ti, Ci y Di para cada una de ellas. La i-ésima tarea ocupa una fracción Ci/Ti del tiempo total de una CPU. El factor de utilización U es la suma de esas fracciones para todas las tareas. En un hardware con p procesadores disponibles para ejecutar las tareas, si U > p entonces el sistema no es planificable: incluso dedicando a ejecutar tareas el 100% del tiempo de cada uno de los p procesadores, alguna tarea no podrá acabar su período.
