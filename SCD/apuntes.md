@@ -725,3 +725,82 @@ Sin embargo no hay orden entre estas acciones:
 Se puede iniciar la lectura (IL) antes de que ocurra el emparejamiento (EM). Si esto se hace:
 - El SPM deberá almacenar temporalmente algunos o todos los bytes de la variable origen en alguna zona de memoria (en el lado del emisor).
 - Esa zona se llama almacén temporal de datos.
+
+##### Mensajes en tránsito. Memoria
+Por la hipótesis de progreso finito, el intervalo de tiempo entre la solicitud de envío y el fin de la escritura tiene una duración no predecible. Estre SE y FE se dice que el mensaje está en tránsito. El SPM necesita usar memoria temporal para todos los mensajes en tránsito que esté gestionando en un momento dado. La cantidad de memoria necesaria dependerá de diversos detalles (tamaño y número de los mensajes en tránsito, velocidad de la transmisión de datos, política de envío de mensajes, etc). Dicha memoria puede estar ubicada en el nodo emisor y/o en el receptor y/0 en nodos intermedios, si los hay. En un momento dado, el SPM puede detectar que no tiene suficiente memoria para almacenamiento en el emisor hasta asegurarse de que hay memoria para enviar los datos.
+
+Las operaciones podrían no ser seguras: el valor que el emisor pretendía enviar podría no ser el mismo que el receptor recibe:
+
+- Operación de envío recepción segura: se puede garantizar a priori el valor de var_orig antes del envío (antes de SE) coincidirá con el valor de var_dest tras la recepción (después de FE)
+- Operación de envío-recepción insegura se da en dos casos:
+  - Envío inseguro: ocurre cuando es posible modificar el balor de var_orig entre SE y FL.
+  - Recepción insegura: ocurre cuando se puede acceder a var_dest entre SR y FE, si se lee antes de recibirlo totalmente o se modifica después de haberse recibido parcialmente.
+
+- Operaciones seguras:
+  - Devuelven el control cuando se garantiza la seguridad: send no espera a la recepción, receive sí espera.
+  - Existen dos mecanismos para el paso de mensajes seguro: envío y recepción síncronos y envío asíncrono seguro.
+- Operaciones inseguras:
+  - Devuelven el control inmediatamente tras hacerse la solicitud de envío o recepción, sin garantizar la seguridad.
+  - EL programador debe asegurar que no se alteran las variables mientras el mensaje está en tránsito.
+  - Existen sentencias adicionales para comprobar el estado de la operación.
+
+##### Operaciones síncronas. Comportamiento
+
+s_send(variable_origen,ident_priceso_receptor)
+
+Realiza el envío de los datos y espera bloqueado hasta que los datos hayan terminado de leerse en el emisor y se hayan iniciado y emparejado un reveive en el receptor. s_send no termina antes de que ocurran FL y EM.
+
+receive(variable_destino, ident_proceso_emisor)
+
+Espera bloqueado hasta que el emisor emita un mensaje con destino al proceso receptor (si no lo había hecho ya) y hasta que hayan terminado de escribirse los datos en la zona de memoria designada en la variable destino. receive no termina antes de que ocurra FE.
+
+Las oreraciones síncronas exigen cita entre emisor y receptor: la operación s_send no devuelve el control hasta que el receive correspondiente sea alcanzado por el receptor. El intercambio de mensaje constituye un punto de sincronización entre emisor y receptor. El emisor podría hacer aserciones acerca del estado del receptor.
+
+Las operaciones síncronas son fáciles de implementar pero poco flexibles. Solo son adecuadas cuando send y receive se inicial al mismo tiempo aproximadamente. Es necesario alternar llamadas en intercambios.
+
+##### Envío asíncrono seguro
+
+send (variable, id_proceso_receptor)
+
+Inicia el envío de los datos designados y espera bloqueado hasta que hayan terminado de copiarse todos los datos de variable a algún lugar seguro. Tras la copia de los datos designados, devuelve el control sin que tengan que haberse recibido los datos en el receptor. Por tanto, se devuelve el control después de FL. Se suele usar junto con la recepción síncrona (receive).
+
+En definitica, el fin de send no depende de la actividad del receptor. Puede ocurrir antes, durante o después de la recepción.
+
+Ventajas:
+- El uso de send lleva en general a menores tiempos de espera bloqueada que s_send, ya que no es necesario esperar el emparejamiento.
+- Usar send es generalmente más eficiente en tiempo y preferible cuando el emisor no tiene que esperar la recepción.
+
+Inconvenientes:
+- send requiere memoria para almacenamiento temporal, la cual, en algunos casos, puede crecer mucho o indefinidamente.
+- El SPM puede tener que tretrasar el inicio de lectura (IL) en el lado del emisor, cuando ddtecta que no dispone de memoria suficiente para copiar los bytes y no se ha producido aún el emparejamiento con ningún receptor.
+- Aunque send sea asíncrono, si se utiliza con receive puede producir interbloqueo.
+
+##### Operaciones inseguras
+
+Las operaciones seguras son menos eficientes, en tiempo y en memoria. La alternativa son las operaciones de inicio de envío o recepción: devuelven el control antes de que sea seguro modificar (envío) o leer datos (recepción).
+
+Deben existir sentencias de chequeo de estado_ indican si los datos pueden alterarse o leerse sin comprometer la seguridad.
+
+Una vez iniciada la operación, el usuario puede realizar cualquier cómputo que no dependa de la finalización de la operación y , cuando sea necesario, chequeará su estado.
+
+Operaciones:
+
+i_send (variable_orig, id_proc_receptor, var_resguardo)
+
+Indica al SPM que comience una operación de envío al receptor. Se regista la solicitud de envío (SE) y acaba. NO espera a FL ni a ninguna acción del receptor. var_resguardo permite consultar después el estado del envío.
+
+i_receive(var_dest, id_proc_emisor, var_resguardo)
+
+Indica al SPM que se inicie una recepción de un mensaje del emisor. Se registra la solicitud de receción (SR) y acaba. No espera a FE ni a ninguna acción del emisor. var_resguardo permite consultar después el estado de la recepción.
+
+Cuando un proces hace i_send o i_receive puede continuar trabajando hasta que llega el momento en que debe esperar a que termine la operación. Se disponen de estos dos procedimientos:
+
+wait_send(var_resguardo)
+
+Se invoca por el proceso emisor, y lo bloquea hasta que la operación de envío asociada a var_resguardo ha lelgado al instalte FL.
+
+wait_recv(var_resguardo)
+
+Se invoca por el proceso receptor, que queda bloequeado hasta que la operación de recepción asociada a var_resguardo haya llegado  al instante FE.
+
+Estas operaciones perminten a los procesos emisor y receptor hacer trabajo útil concurrentemente con la operación de envío y recepción. Mejora el tiempo de esprea ociosa que se puede emplear en computación a cambio de una reestruucturación del programa, más complejo de programar.
