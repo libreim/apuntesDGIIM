@@ -36,11 +36,11 @@ En multiprocesadores, tanto de memoria compartida o en sistemas distribuidos, me
 #### 2.2 Modelo abstracto de concurrencia
 
 ##### Sentencia atómica
-Una sentencia o instrucción de un proceso en un programa concurrente es atómica (indivisble) si siempre se ejecuta de principio a fin sin verse afectada por otras sentencias en ejecución de otros procesos del programa. 
+Una sentencia o instrucción de un proceso en un programa concurrente es atómica (indivisble) si siempre se ejecuta de principio a fin sin verse afectada por otras sentencias en ejecución de otros procesos del programa.
 
-* No se verá afectada cuando el funcionamiento de dicha instrucción no dependa nunca de como se estén ejecutando otras instrucciones. 
+* No se verá afectada cuando el funcionamiento de dicha instrucción no dependa nunca de como se estén ejecutando otras instrucciones.
 
-* El funcionamiento de una instrucción se define por su efecto en el estado de ejecución del programa justo cuando acaba. 
+* El funcionamiento de una instrucción se define por su efecto en el estado de ejecución del programa justo cuando acaba.
 
 * El estado de ejecución está formado por los valores de las variables y los registros de todos los procesos.
 
@@ -383,10 +383,10 @@ Cuando un proceso hace signal en una cola no vacía, se denomina proceso señala
 
 - El proceso señalado se reactiva inmediatamente. El señalador:
   - abandona el monitor tras hacer el signal sin ejecutar el código después de dicho signal (SS: señalar y salir).
-  
+
   - queda bloqueado a la espera en:
     - la cola del monitor, junto con otros posibles procesos que quieren comenzar a ejecutar código del monitor (SE: señalar y esperar)
-  
+
   - una cola específica para esto, con mayor priotidad que esos procesos (SU: señalar y espera urgente)
 
 ##### Señalar y continuar
@@ -602,3 +602,126 @@ Las desventajas indicadas hacen que el uso de cerrojos sea restringido, en el se
 
 - Por seguridad, normalmente solo se  usan desde componentes software que forman parte del sistema operativo, librerías de hebras, de tiempo real o similares.
 - Para evitar la pérdida de eficiencia que supone la espera ocupada, se usan solo en casos en los que la ejecución de la SC conlleva un intervalo de tiempo muy corto.
+
+## Tema 3. Sistemas basados en paso de mensajes
+
+### 1. Mecanismos básicos en sistemas basados en paso de mensajes
+
+#### 1.1 Introducción
+
+Sistemas distribuidos: conjunto de procesos en uno o varios ordenadores que no comparten memoria, pero se transmiten datos a través de una red. Facilita la distribución de datos y recursos. Soluciona el problema de la escalabilidad y el elevado coste. Presenta mayor dificultad de programación ya que no hay direcciones de memoria comunes y mecanismos como los monitores son inviables.
+
+A las acciones que se realizan en memoria común (asignación, estructuración) se le añaden dos nuevas, envío y recepción, que afectan al entorno externo. Permiten comunicar procesos que se ejecutan en paralelo.
+
+#### 1.2 Vista lógica de la  arquitectura y modelo de ejecución
+
+##### Vista lógica de la arquitectura
+Existen N procesos, cada uno con su espacio de direcciones propio (memoria). Los procesos se comunican mediante envío y recepción de mensajes. EN un mismo procesador pueden residir físicamente varios procesos. Por motivos de eficiencia, frecuentemente se adopta la política de alojar un único proceso en cada procesador disponible. Cada iteración requiere cooperación entre 2 procesos: el propietario de los datos (emisor) debe intervenir aunque no haya conexión lógica con el evento tratado en el receptor.
+
+##### Estructura de un programa de paso de mensajes. SPMD
+
+Diseñar un código diferente para cada proceso puede ser complejo. Una solución es el estilo SPMD (Single Program Multiple Data):
+
+- Todos los procesos ejecutan el mismo código fuente.
+- Cada proceso puede procesar datos distintos y/o ejecutar flujos de control distintos.
+
+##### Estructura de un programa de paso de mensajes. MPMD
+
+Otra opción es usar el estilo MPMD (Multiple Program Multiple Data):
+
+- Cada proceso ejecuta el mismo o diferentes programas de un conjunto de ficheros ejecutables.
+- Los diferentes procesos pueden usar datos diferentes.
+
+#### 1.3 Primitivas básicas de paso de mensajes
+
+El paso de un mensaje entre dos procesos constituye una transferencia de una secuencia finita de bytes.
+1. Se leen de una viariable del proceso emisor (var_orig).
+2. Se transfieren a través de alguna red de interconexión.
+3. Se escriben en una ariable del proceso receptor (var_dest).
+Implica sincronización: los bytes acaban de recibirse después de iniciado el envío. Ambas variables son del mismo tipo. EL efecto neto final es equivalente a una hipotética asignación (var_dest := var_orig).
+
+##### Primitivas básicas de paso de mensajes
+
+EL proceso emisor realiza el envío invocando a send, y el proceso receptor realiza la recepción invocando a receive. La sintaxis es:
+
+- send (variable origen, identificador_proceso_destino)
+- receive (variable destino, identificador_proceso_origen)
+
+Cada proceso nombra explícitamente al otro, indicando su nombre de proceso como identificador.
+
+¿Cómo identifica el emisor al receptor del mensaje y viceversa? Existen dos posibilidades:
+
+- Denominación directa estática
+  - El emisor identifica explícitamente al receptor y viceversa.
+  - Para la identificación de usan identificadores de procesos. Cada identificador es un valor (típicamente un entero) biunívocamente asociado a un proceso en tiempo de compilación.
+
+- Denominación indirecta
+  - Los mensajes se depositan en almacenes intermedios que son accesibles desde todos los procesos.
+  - El emisor nombra un buzón al que envía. El receptor nombra un buzón desde el que quiere recibir.
+
+##### Denominación directa estática
+
+Ventajas
+- No hay retardo para establecer la identificación (los símbolos P0 Y P1 se traducen en dos enteros en una implementación).
+
+Inconvenientes
+- Cambios en la identificación requieren recompilar el código.
+- Sólo permite comucicación en pares.
+
+
+##### Denominación directa con identificación asimétrica
+
+Existen otras posibilidades llamadas esquemas asimétricos: el emisor identifica al receptor, pero el receptor no indica un emisor específico.
+
+El receptor inicia una recepción, pero indica que acepta recibir el mensaje de cualqueir otro posible proceso emisor. Una vez recibido el mensaje, el recoptor puede conocer que proceso ha sido emisor, de dos formas, ya que el identificador del emisor puede formar parte de los metadatos del mensaje o puede ser un parámetro de salida de receive. También es posible especificar que el emisor debe pertenecer a un subconjunto de todos los posibles emisores (se deben definir previamente los subconjuntos de forma coordinada).
+
+##### Denominación indirecta
+En la denominación indirecta, el emisor y el receptor identifican un buzón o canal intermedio a través del cual se transmiten los mensajes. El uso de buzanes da mayor flexibilidad ya que permite comunicaicón entre múltiples receptores y emisores.
+
+Existen tres tipos de buzones: canales (uno a uno), puertos (muchos a uno) y buzones generales (muchos a muchos).
+
+Un mensaje enviado a un buzón general permanece en dicho buzón hasta que hay sido leído por todos los procesos receptores potenciales.
+
+##### Declaración estática vs dinámica
+
+Los identificadores de proceso suelen ser valores enteros, cada uno de ellos está biunívocamente asociado a un proceso del programa concurrente. Se pueden gestionar:
+- Estáticamente: en el código fuente se asocian explícitamente los números enteros a los procesos:
+  - Ventaja: es muy eficiente en tiempo.
+  - Inconveniente: cambios en la estructura del programa requieren adaptar el código fuente y recompilarlo.
+
+- Dinámicamente: el identificador numérico de cada proceso se calcula en tiempo de ejecución cuando es necesario:
+  - Desventajas: es menos eficiente en tiempo, más complejo.
+  - Ventaja: el código puede seguir siendo válido aunque cambie el número de procesos de cada tipo.
+
+##### Instantes críticos en el lado del emisor
+
+Para poder transmitir un mensaje el sistema de paso de mensajes (SPM), en el lado del emisor, debe dar estos pasos:
+
+1. Fin del registro de la soliucitud de envío (SE): después de iniciada la llamada send, el SPM registra los identificadores de ambos procesos, y la dirección y tamaño de la variable origen.
+2. Inicio de lectura (IL): el SPM lee el primer byte de todos los que forman el valor de la variable origen.
+3. FIn de lectura (FL): el SPM lee el último byte de todos los que forman el valor de la variable origen.
+
+##### Instantes críticos en el lado del receptor
+
+En el lado del receptor, el SPM debe dar estos pasos:
+1. Fin del registro de la solicitud de recepción (SR): después de iniciado receive, el SPM registra los identificadores de procesos y la dirección y tamaño de la variable de destino.
+2. Fin del emparejamiento (EM): el SPM espera hasta que se haya registrado una solicitud de envío que case con la recepción anterior. Entonces se emparejan ambas.
+3. Inicio de escritura (IE): el SPM escribe en la variable de destino el primer byte recibido.
+4. Fin de escritura (FE): el SPM escribe en la variable de destino el último byte recibido.
+
+##### Sincronización en el SPM para la transmisión
+
+La transmisión de mensajes supone sicronización:
+
+- El emparejamiento solo puede completarse después de registrada la solucitud de envío, es decir, SE < EM
+- Antes de que se escriba el primer byte en el receptor, se debe haber comenzado ya la lectura en el emisor, por tanto IL < IE.
+- Antes de que se acaben de escribir los datos en el receptor, se deben haber acabado de leer en el emisor, es decir FL < FE.
+- Por transitividad, IL<FE.
+
+Sin embargo no hay orden entre estas acciones:
+- No hay orden predefinido entre SE y SR.
+- No hay orden predefinido entre EM y IL (ni FL).
+
+Se puede iniciar la lectura (IL) antes de que ocurra el emparejamiento (EM). Si esto se hace:
+- El SPM deberá almacenar temporalmente algunos o todos los bytes de la variable origen en alguna zona de memoria (en el lado del emisor).
+- Esa zona se llama almacén temporal de datos.
