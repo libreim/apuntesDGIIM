@@ -803,4 +803,75 @@ wait_recv(var_resguardo)
 
 Se invoca por el proceso receptor, que queda bloequeado hasta que la operación de recepción asociada a var_resguardo haya llegado  al instante FE.
 
-Estas operaciones perminten a los procesos emisor y receptor hacer trabajo útil concurrentemente con la operación de envío y recepción. Mejora el tiempo de esprea ociosa que se puede emplear en computación a cambio de una reestruucturación del programa, más complejo de programar.
+Estas operaciones perminten a los procesos emisor y receptor hacer trabajo útil concurrentemente con la operación de envío y recepción. Mejora el tiempo de espera ociosa que se puede emplear en computación a cambio de una reestructuración del programa, más complejo de programar.
+
+Limitaciones:
+- La duración del trabajo útil podría ser muy distinta que la de cada transmisión.
+- Se descarta la posibilidad de esperar más de un posible emisor.
+
+Para solventar estos problemas se pueden usar dos funciones para comprobación de estado de transmisión de un mensaje. No suponen bloqueo:
+
+test_send(var_resguardo)
+
+Función lógica que se invoca por el emisor. Si el envío asociado a var_resguardo ha llegado al fin de la lectura (FL), devuelve true, si no devuelve false.
+
+test_recv(var_resguardo)
+
+Función lógica que se invoca por el receptor. Si el envío asociado a var_resguardo ha llegado al fin de la escritura (FE), devuelve true. Si no devuelve false.
+
+Usando la opreación i_receive junto con las de test, se usa espera ocupada, de forma que_
+- Se espera un mensaje cualquiera proveniente de varios emisores.
+- Tras recibir el primero de los mensajes se ejecuta una acción, independientemente de cual sea el emisor de ese mensaje.
+- Entre la recepción del primer mensaje y la acción el retraso es normalmente pequeño.
+
+Sin embargo, con las primitivas vistas, no es posible cumplir estos requisitos usando espera bloqueada. Es inevitable seleccionar de antemano de que emisor queremos esperar recibir en primer lugar, y este emisor no coincide necesariamente con el emisor del primer mensaje que realmente podría recibirse.
+
+#### 1.4 Espera selectiva
+
+Espera selectiva es una operación que perminte espera bloqueada de múltiples emisores. Se usan las palabras clave select y when.
+
+Para aplicarlautilizamos un proceso intermedio entre emisor y receptor, buffer.
+
+Una guarda es ejecutable en un momento de la ejecuación de un porceso P cuando se dan las condiciones:
+- La condición de la guarda se evalúa en ese momento a true.
+- SI tiene sentencia de entrada, entonces el proceso origen nombrado ya ha iniciado en ese momento una sentencia send con destino al proceso P, que casa con el receive.
+
+Una guarda será potencialmente ejecutable si se dan estas dos condiciones:
+- La condición de la guarda se evalúa a true.
+- Tiene una sentencia de entrada, sentencia que nombra a un proceso que no ha iniciado aún un send hacia P.
+
+Una guarda será no ejecutable en el resto de casos, en los que forzosamente la condición de la guarda se evalúa a false.
+
+Para ejecutar select, al inicio se selecciona una alternativa:
+- Si hay guardas ejecutables con sentencias de entrada se selecciona aquella cuyo send se inició antes.
+- Si hay guardas ejecutables, pero ninguna tiene una sentencia de entrada se selecciona aleatoriamente una cualquiera.
+- SI no hay ninguna guarda ejecutable, pero sí hay guardas potencialmente ejecutables se espera bloqueado a que alguno de los procesos nombrados en esas guardas inicie un send, en ese momento acaba la espera y se selecciona la guarda correspondiente a ese proceso.
+- Si no hay guardas ejecutables ni potencialmente ejecutables no se selecciona ninguna guarda.
+
+Una vez se ha intentado seleccionar la guarda:
+- Si no se ha podido, no se hace nada y se finaliza la ejecución de select.
+- Si se ha podido, se dan estos dos pasos en la secuencia:
+  1. Si esa guarda tiene sentencia de entrada, se ejecuta el receive y se recibe el mensaje.
+  2. Se ejecuta la sentencia asociada a la alternativa y después finaliza la ejecución de select.
+
+Hay que tener en cuenta que select conlleva potencialmente esperas, y por tanto se pueden producir esperas indefinidas (interbloqueo).
+
+### 2. Paradigmas de interacción de procesos en programas distribuidos
+
+#### 2.1 Introducción
+
+Paradigma de interacción define un esquema de interacción entre procesos y una estructura de control que aparece en múltiples programas:
+- Unos pocos paradigmas de interacción se utilizan repetidamente para desarrollar muchos programas distribuidos.
+- Se usan principalmente en programación paralela, excepto el cliente servidor que es más general.
+
+#### 2.2 Maestro-esclavo
+
+En este aptrón de interacción intervienen dos entidades: un procedimiento maestro y múltiples procesos esclavos. El proceso maestro descompone el problema en subtareas y las distribuye entre los esclavos. Va recibiendo resultados parciales para producir el resultado final. Los procesos esclavos ejecutan un ciclo muy simple hasta que el maestro informa del final del cómputo.
+
+#### 2.3 Iteración síncrona
+
+En múltiples problemas numéricos un cálculo se repite y cada vez que se obtiene se utiliza el resultado para el siguiente cálculo. El proceso se repite hasta obtener los resultados deseados. A menudo se pueden realizar los cálculos de cada iteración de manera concurrente. En un bucle diversos procesos comienzan juntos en el inicio de cada iteración. La siguiente iteración no puede comenzar hasta que todos los procesos hayan acabado la previa. Los procesos suelen intercambiar información en cada iteración.
+
+#### 2.4 Encauzamiento (pipelining)
+
+El problema se divide en una serie de tareas que se han de completar después de otra. Cada tarea se ejecuta por un proceso separado. Los procesos se organizan en un cauce dnde cada proceso se corresponde con una etapa del acuce y es responsable de una tarea particular. Cada etapa del cauce contribuirá al problema global y devuelve información que es necesaria para etapas posteriores del cauce. Patrón de comunicación muy simple ya que se establece un flujo de datos entre las tereas adyacentes en el cauce.
