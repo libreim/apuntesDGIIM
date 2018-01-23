@@ -62,7 +62,9 @@ conmutación (routers, switches o estaciones base).
 ## Diseño y estandarización de redes
 
 ### **Modelo OSI**
+
 Grupo 1 de capas:
+
 - Capa Física: Conexión ordenador-punto de acceso. Mueven los bits
   dentro de la trama de un nodo al siguiente.
 
@@ -71,6 +73,7 @@ Grupo 1 de capas:
   la capa de enlace) y controla errores y flujo.
 
 Grupo 2:
+
 - Capa de Red: Nos ofrece la capacidad de enrutamiento que permite
   llevar a los paquetes desde un origen a un destino. Controla además
   la congestión, evitando el envío de paquetes a nodos
@@ -192,7 +195,6 @@ internet:
  los nombres de dominio, los cuales traducen las direcciones del
  lenguaje humano a su correspondiente dirección IP.
 
-\part{Prácticas}
 
 \newpage
 
@@ -453,6 +455,17 @@ el receptor. IMAP permite mantener una carpeta bandeja de entrada en
 un servidor IMAP, donde puede gestionar ahí su correo. A causa de esto IMAP requiere mayor tiempo de conexión y utiliza más recursos del servidor.
 
 El principal problema de SMTP es que no requiere autenticación, lo que permite que cualquiera pueda enviar correo a cualquier persona o grupo de personas. Esta característica hace posible la existencia de correo basura o spam. Los servidores SMTP modernos intentan minimizar este comportamiento permitiendo que solo hosts conocidos accedan al servidos SMTP. Los servidores que no ponen tales restricciones se llaman open relay.
+
+## MIME
+
+MIME (Multipurpose Internet Email Extension) es un estándar de intercambio a través de Internet de todo tipo de archivos. Fue diseñado para e-mails pero finalmente es tambien importante en protocolos de comunicación externos al email. 
+
+Cuando se envía un mensaje con este protocolo, este mensaje tiene una serie de campos para facilitar la comprensión del mensaje, tales como:
+
+* Content-Transfer-Encoding: El método de codificación, como ASCII7, ASCII 8, binaria o base64.
+* Content-type: El tipo de datos que se van a transferir, que puede ser Text, Image, Audio, Application, Message...
+* Content-ID: identificador único
+
 ## Protocolos Seguros
 
 Hay unos aspectos destacables de la seguridad en internet:
@@ -552,6 +565,8 @@ acotado. Hacen uso además de multicast (Ejemplo YouTube en las diapositivas).
 
 * **UPnP:** "Pervasive adhoc com". Comunicación dispositivo <-> NAT
 
+\newpage
+
 # Tema 3. Capa de Transporte en Internet
 
 Como sabemos un protocolo de la capa de transporte proporciona una
@@ -559,7 +574,7 @@ abstracción de la comunicación de manera que podemos operar con dos
 hosts distantes como si estuvieran conectados directamente.
 
 Estos protocolos están implementados en los hosts terminales, pero no
-en los routers de la red. La capa de transporte transforma el mensaje
+en los routers de la red. La capa de transporte **transforma** el mensaje
 en paquetes de capa de transporte conocidos como **segmentos**. Esto
 por lo general se hace dividiendo el mensaje original en fragmentos
 más pequeños y añadiendo una cabecera a cada uno de ellos. Tras esto
@@ -647,7 +662,7 @@ congestión y flujo.
 La información a enviar por TCP se divide en segmentos TCP.
 Cada uno de esos segmentos contiene **información del puerto origen y
 destino**. Además contiene información relativa a sí misma y a la
-posición que ocupa esta información respecto al total,**número de
+posición que ocupa esta información respecto al total, **número de
 secuencia y número de acuse (ACK)**, el primero es el número
 del primer byte del segmento dentro del flujo de bytes que se
 inicializa a un valor aleatorio elegido por los hosts, mientras que
@@ -711,7 +726,7 @@ reconocimiento para que ambos queden con sus recursos liberados.
 **Otros detalles:**
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 
-La inicialización se inicia por el ISN, que es elegido por el
+La inicialización se inicia por el ISN, que es elegido por el sistema. 
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 El sistema lo elige, y el estándar sugiere utilizar un contador entero
 incrementado en uno por cada 4 microsegundos. Esto protege de
