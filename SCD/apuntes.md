@@ -959,9 +959,9 @@ Los requisitos de un sistema de tiempo real obligan a asociar un conjunto de atr
 La planificación de tareas es una labor de diseño que determina como se le asignan a lo largo del tiempo a cada tarea los recursos activos de un sistema, de forma que se garantice el cumplimiento de las restricciones dadas por los atributos temporales de la tarea.
 
 Atributos temporales de una tarea:
-- TIempo de cómputo o de ejecución (C): tiempo necesario para la ejecucición de la tarea.
+- Tiempo de cómputo o de ejecución (C): tiempo necesario para la ejecución de la tarea.
 - Tiempo de respuesta (R): tiempo que ha necesitado el proceso para completarse totalmente a partir del instante de activación.
-- PLazo de respuesta máxima (D): define el máximo de tiempo de respuesta posible.
+- Plazo de respuesta máxima (D): define el máximo de tiempo de respuesta posible.
 - Periodo (T): intervalo de tiempo entre dos actividades sucesivas en el caso de una tarea periódica.
 
 Tipos de tareas según la recurrencia de sus actividades:
@@ -995,3 +995,92 @@ Mientras que no se diga lo contrario, asumimos que siempre se tarda lo mismo (C)
 ##### Restricciones temporales de una tarea
 
 Para determinar la planificación del sistema necesitamos conocer las restricciones temporales de cada tarea del sistema. Las restricciones temporales para un conjunto de n tareas periódicas se especifican dando una tabla con los valores Ti, Ci y Di para cada una de ellas. La i-ésima tarea ocupa una fracción Ci/Ti del tiempo total de una CPU. El factor de utilización U es la suma de esas fracciones para todas las tareas. En un hardware con p procesadores disponibles para ejecutar las tareas, si U > p entonces el sistema no es planificable: incluso dedicando a ejecutar tareas el 100% del tiempo de cada uno de los p procesadores, alguna tarea no podrá acabar su período.
+
+### 2. Esquemas de planificación
+
+##### Tipos de esquemas de planificación
+
+Para un sistema monoprocesador son los siguientes:
+- Planificación estática off-line sin prioridades (ejecutivo cíclico)
+- Planificación basada en prioridades de tareas
+  - Estática: prioridades preasignadas, no cambian.
+    - RMS (Rate Monotonic Scheduling): prioridad a la tarea con menor período T.
+    - DMS (Deadline Monotonic Scheduling): prioridad a la tarea con menor deadline D.
+  - Dinámicas: prioridades cambiantes durante la ejecución
+    - EDF (Earliest Deadline First): prioridad a la tarea con el deadline más próximo.
+    - LLF (Least Laxity First): prioridad a tarea de menor holgura (tiempo hasta deadline menos tiempo de ejecución restante)
+
+#### 2.1 Planificación cíclica
+
+La planificación se basa en diseñar un programa (ejecutivo cíclico) que implementa un plan de ejecución (plan principal) que garantice los requerimientos temporales. El programa es un bucle infinito tal que cada iteración tiene una duración prefijada, siempre igual. EL bucle se denomina ciclo principal. En cada iteración del bucle principal se ejecuta otro bucle acotado con k iteraciones (k es constante). Cada iteración dura siempre lo mismo y en ella se ejecutan completamente una o varias tareas. A este bucle interno (acotado) se le denomina ciclo secundario. El extrelazado de las tareas en cada iteración del ciclo principal es siempre el mismo. Una iteración número i del ciclo secundario puede tener un entrelazado distinto a otra iteración número j (1<= i, j <=k).
+
+Las duraciones de ambos ciclos son valores enteros (se supone que el tiempo se mide en múltiplos enteros de alguna unidad de tiempo). La duración del ciclo principal se denomina hiperperiodo y se escribe como T_M. EL hiperperiodo es el mínimo común múltiplo de los periodos de todas las tareas. Por tanto, los instantes de inicio de cada iteración del ciclo principal coinciden con los instantes en los cuales todas las tareas se activan de nuevo a la vez. La duración del ciclo secundario se denomina T_s. Se debe cumplir que T_M = kT_s.
+
+Para seleccionar un valor apropiado para T_s se deben tener en cuenta estas restricciones y sugerencias:
+- Restricciones: necesariamente se cumplen estas dos
+  - T_s es necesariamente divisor de T_M
+  - El valor de T_s tiene que ser mayor o igual que el tiempo de cómputo (Ci) de cualquier tarea.
+- Sugerencia: es aconsejable intentar en principio que el ciclo secundario sea menor o igual que el mínimo deadline.
+
+Propiedades de la plafinifación cíclica:
+
+- No hay concurrencia en la ejecución. Cada ciclo secundario es una secuencia de llamadas a procedimientos. No se necesita un núcleo de ejecución multitarea.
+- Los procedimientos pueden compartir datos. No se necesitan mecanismos de exclusión mutua como los semáforos o monitores.
+- No hace falta analizar el comportamiento temporal. El sistema es correcto por construcción.
+
+Problemas:
+
+- Dificultad para incorporar tareas con periodos largos
+- Las tareas esporádicas son difíciles de tratar. Se puede utilizar un servidor de consulta.
+- El plan cíclico del proyecto es difícil de construir. Si los periodos son de diferentes órdenes de magnitud el número de ciclos secundarios se hace muy grande. Puede ser necesario partir de una tarea en varios procedimientos. Es el caso más general de sistemas en tiempo real críticos.
+- Es poco flexible y difícil de mantener. Cada vez que se cambia una tarea hay que rehacer la planificación.
+
+### 2. Planificación con prioridades
+La planificación con prioridades permite solventar los problemas descritos. Cada tarea tiene asociado un valor entero positivo, llamado prioridad de la tarea. Es un atributo entero no negativo de las tareas, que depende de sus atributos temporales y/o el enlazamiento entre ellas. Por convención se asigna números enteros mayores a tareas más urgentes. Las prioridades pueden ser constantes fijadas de antemano (estáticas) o bien pueden cambiar con el tiempo (dinámicas), en este caso se deben calcular cada vez que hay que consultarlas.
+
+En este tipo de planificaciones debe existir una componente software (scheduler) capaz de:
+- Asignar el procesador a una tarea activa o ejecutable (despachar la tarea).
+- Suspender una tarea en ejecución cuando es necesario.
+- Una tarea puede estar en viarios estados (suspendida, ejecutable, ejecutándose).
+- Las tareas ejecutables se despachan para su ejecución en orden de prioridad.
+
+El planificador actúa en cada instante de tiempo en el que ocurren alguno de estos eventos:
+- Una o más tareas se activan (pasan a ejecutable).
+- La tarea en ejecución termina (pasa al estado de suspendida).
+
+A continuación, selecciona cualquier tarea A con una prioridad actual P_A máxima entre todas las ejecutables. Después:
+- Si la CPU está libre, A pasa a ejecutándose.
+- Si la CPU está ejecutando una tarea B con prioridad actual P_B:
+  - Si P_A > P_B la tarea A pasa a estado ejecutándose y B pasa a estado suspendido.
+  - Si P_A <= P_B no hay cambios.
+
+Al inicio, todas las tareas se activan a la vez.
+
+##### Planificación RMS
+Rate Monotonic Scheduling es un método de planificación estático on-line con asignación mayor priotidad a las tareas más frecuentes (con menor período).
+- A cada tarea i se le asigna una prioridad P_i basada en su periodo. Cuanto menor sea el período mayor su prioridad.
+- Esta asignación de prioridades es óptima en el caso de que todas las tareas sean periódicas, y el plazo de respuesta máxima D coincida con el periodo.
+
+##### Test de planificabilidad
+Los test de planificabilidad permiten determinar si el conjunto de tareas del sistema es planificable según un algoritmo de planificación antes de su ejecución. Existen diversos tipos de test aplicables seǵun el algoritmo de planificación:
+- Test de planificación suficientes: en caso de exito en la aplciación del test el sistema es planificable. En caso contrario no tentmos información, podría ser planificable o no.
+- Test de planificación exactos: en caso de exito la aplicación es planificable. En caso contrario el sistema no es planificable.
+
+El test de Liu & Layland es un test suficiente, determina la planificabilidad de un sistema de n tareas periódicas independientes con prioridades RMS. Se usan dos valores realies, el factor de utilización (U) y el factur de utilización máximo (U_0(n)) para n tareas.
+
+Un sistema pasa el test si el factor de utilización es menor o igual que el máximo posible. En ese caso el sistema es planificable. En caso contrario no se puede afirmar nada.
+
+Si una planificación no pasa el test hay que hacer el cronograma y verificar que:
+- para cada tarea i se cumple el plazo de respuesta R < D
+- esto se debe verificar para un hiperperiodo.
+
+##### Planificación EDF
+Es un esquema de planificación con prioridades dinámicas. Se denomina EDF, o bien primero el más urgente.
+La asignación de prioridad se establece una prioridad más alta a la que se encuentre más próxima a su deadline.
+Características:
+- En caso de igualdad se hace una elección no determinista de la siguiente tarea a ejecutar.
+- Es un algoritmo de planificación dinámica, dado que la prioridad de cada tarea cambia durante la evolción del sistema.
+- Es más óptimo porque no es necesario que las tareas sean periódicas.
+- Es menos pesimista que RMS.
+
+El test de planificación Liu & Layland se puede aplicar también a EDF. En este caso un sistema pasa el test si el factor de utilización es igual o menor que la unidad. Esto implica que la planificación EDF puede aplicarse a más sistemas que la planificación RMS. El test en este caso es exacto.
