@@ -2,24 +2,25 @@
 require_relative "rake_helpers"
 
 task :default => [
+       :ac,
        :algi,
+       :algo,
        :ami,
        :amii,
        :ec,
        :ed,
+       :edf,
        :fbd,
        :fr,
        :geoiii,
        :ies,
        :mc,
        :mmi,
-       :ac,
        :pdoo,
+       :prob,
        :scd,
        :so,
-       :algo,
-       :edf,
-       :prob
+       :vci,
        # add your task here
      ] do
   TARGET = "apuntes.tar.gz"
@@ -51,25 +52,27 @@ end
 #       task :example => (pdf_for FileList["tema*.tex"])
 #
 #-------------------------------------------#
+
+#task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
+task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :algi => (pdf_for FileList["ALGI/algi.tex"])
+task :algo => (pdf_for FileList["ALGO/apuntes.md"])
 task :ami => (pdf_for FileList["AMI/ami.tex", "AMI/resumen.tex"])
+task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :ec => (pdf_for FileList["EC/apuntes.md"])
 task :ed => (pdf_for FileList["ED/apuntes.md"])
 task :edf => (pdf_for FileList["EDF/edf.tex"])
 task :fbd => (pdf_for FileList["FBD/apuntes.md"])
 task :fr => (pdf_for FileList["FR/apuntes.md"])
-task :amii => (pdf_for FileList["AMII/amii.tex"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :ies => (pdf_for FileList["IES/apuntes.md"])
 task :mc => (pdf_for FileList["MC/apuntes.md"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
-#task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
-task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.md"])
+task :prob => (pdf_for FileList["PROB/prob.tex"])
 task :scd => (pdf_for FileList["SCD/apuntes.md"])
 task :so => (pdf_for FileList["SO/apuntes.md"])
-task :algo => (pdf_for FileList["ALGO/apuntes.md"])
-task :prob => (pdf_for FileList["PROB/prob.tex"])
+task :vci => (pdf_for FileList["VCI/Ejercicios.tex"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
