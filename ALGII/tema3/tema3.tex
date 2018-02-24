@@ -1,0 +1,304 @@
+\subsection{Definición de subgrupo. Ejemplos y primeros resultados.}
+
+\begin{ndef}[Subgrupos de un grupo]
+Sea G un grupo. Un subgrupo H de G es un subconjunto no vacío de G que es cerrado bajo productos e inversos. Lo denotaremos como $H \le G$.
+\end{ndef}
+
+Claramente, un subgrupo H de un grupo G es en sí mismo un grupo con la operación producto de G restringida a los elementos de H ya que la operación producto de G es interna en H y la operación inversión también. Además el elemento neutro también debe ser el mismo sin más que operar en $x 1 = 1$.
+
+\begin{ejemplo}
+1. Subgrupos impropios de un grupo: todo grupo G admite dos subgrupos llamados impropios. El subgrupo trivial $1 = {1}$ y el total G. Al resto de subgrupos se le llama subgrupos propios.
+2. $\mathbb{Q}^{*} \le \mathbb{R}^{*} \le \mathbb{C}^{*}$\\
+$\mu_n \le \mathbb{C}^{*}$\\
+$m|n \Rightarrow \mu_m \le \mu_n$\\
+3. En $D_n$ tenemos el subgrupo de las rotaciones $H = \{1,r,r^2,...,r^{n-1}\}$ y subgrupos cíclicos de orden 2 $K = \{1,s\}$ y $L = \{1,r^is\}$. Sin embargo, el conjunto de las simetrías $\{1,s,rs,r^2s,...,r^{n-1}s\}$ no es un subgrupo de $D_n$.\\
+4. En $S_4$ podemos considerar un subgrupo tipo Klein $K = \{1,\alpha_1 = (12)(34),\alpha_2=(13)(24),\alpha_3=(14)(23)\}$.
+\end{ejemplo}
+
+\begin{nprop}[Criterio de subgrupo]\label{proposition:criterio-subgrupo}
+Un subconjunto H no vacío de un grupo G es un subgrupo si y sólo si se verifica que
+$\forall x,y \in G$ se tiene $xy^{-1} \in H$.
+\end{nprop}
+
+\begin{proof}
+$\Rightarrow$ Si asumimos que H es un subgrupo de G como es cerrado para inversos e $y \in H$ entonces $y^{-1} \in H$ y como H es cerrado para productos y $x \in H$ se tiene que $xy^{-1} \in H$.
+
+$\Leftarrow$ Supongamos que $\forall x,y \in G$ se tiene $xy^{-1} \in H$. Sea $u,v \in H$ y veamos que $uv \in H$ tomemos $x = u,y = v^{-1}$ entonces por hipótesis $xy^{-1} = u(v^{-1})^{-1} = uv \in H$. Veamos también que H es cerrado para inversos. Sea $y \in H$ como la unidad también está en H, tomando $x = 1$ el producto $xy^{-1} = 1y^{-1} = y^{-1} \in H$ de donde H es cerrado para inversos.
+\end{proof}
+
+\begin{nprop}[Criterio de subgrupo para subconjuntos finitos]
+Sea G un grupo y H un subconjunto finito no vacío de G. 
+
+H es un subgrupo de G $\iff$ el producto es interno en H.
+\end{nprop}
+
+\begin{proof}
+$\Rightarrow$ Es parte de la definición de subgrupo. \\
+$\Leftarrow$ Falta demostrar que H es cerrado para inversos. Como H es finito necesariamente existen $k,r \in \mathbb{N}, k>r$ tales que $x^k = x^r$ luego $x^{k-r} = 1$ de donde $x^{k-r-1} = x^{-1}$. 
+\end{proof}
+
+\begin{nprop}[Teorema de correspondencia entre homomorfismos y subgrupos]
+1.Los homomorfismos preservan los subgrupos. Si $f:G \rightarrow G'$ es un homomorfismo de grupos, $H \le G$ y $H' \le G'$ entonces $f(H) \le G'$ y $f^{-1}(H') \le G$.\\
+2. Definimos el núcleo de un homomorfismo f como $Ker(f) = f^{-1}(\{1\})$ y la imagen del homomorfismo f como $Im(f) = f(G)$. Claramente, el núcleo y la imagen son subgrupos de G y G' respectivamente. Además, f es monomorfismo $\iff Ker(f) = \{1\}$ y f es epimorfismo $\iff Im(f) = G'$.
+\end{nprop}
+\begin{proof}
+1. En efecto, por ser $H \le G$ se verifica que $\forall x,y \in H \, xy^{-1} \in H$ y por ser $f$ homomorfismo, dados $f(x),f(y) \in f(H)$, $f(x)f(y)^{-1} = f(xy^{-1}) \in f(H)$. 
+
+De forma análoga, por ser $H' \le G'$ se verifica que $\forall x,y \in H', xy^{-1} \in H'$ y por ser $f$ homomorfismo, si $x_1 = f^{-1}(x)$ y $x_2 = f^{-1}(y)$ entonces $f(x_1x_2^{-1}) = f(x_1)f(x_2)^{-1} = xy^{-1}$ y eso nos dice que $x_1x_2^{-1} \in f^{-1}(H')$.
+
+2. Si $f$ es monomorfismo y tomo $x \in Ker(f)$ entonces $f(x) = 1$ pero siempre $f(1) = f(1 \cdot 1) = f(1)f(1)$ de donde $f(1) = 1$ pero entonces $x = 1$, con lo que $Ker(f) = \{1\}$.
+
+Si $Ker(f) = \{1\}$ entonces $f$ es inyectiva ya que si $f(x) = f(y)$ entonces $f(x)f(y)^{-1} = f(xy^{-1}) = 1$ de donde $xy^{-1} \in Ker(f)$ y por tanto $xy^{-1} = 1$ de donde $x = y$.
+
+Por otro lado la equivalencia para el epimorfismo es la propia definición de sobreyectividad.
+\end{proof}
+
+\subsection{Retículo de subgrupos de un grupo.}
+
+\begin{ndef}[Retículo de subgrupos]
+Recordemos que un retículo es un conjunto ordenado en el que cualquier par de elementos tiene supremo e ínfimo.
+
+Si G es un grupo, denotaremos por $Sub(G) = \{H : H$ es un subgrupo de G$\}$. Se verifica que $Sub(G)$ tiene estructura de retículo y está ordenado por la relación de inclusión.
+\end{ndef}
+
+\begin{nprop}[Ínfimo y supremo en el retículo de subgrupos]
+1. Si $\{H_i\}_{i \in I}$ es una familia de subgrupos de un grupo G entonces $\cap_{i \in I} H_i$ es un subgrupo de G.
+
+2. Si $H_1,H_2 \in Sub(G)$ entonces $inf\{H_1,H_2\} = H_1 \cap H_2$ y $sup\{H_1,H_2\} = \cap_{K \in Sub(G), H_i \le K \, i = 1,2} K$, esto es, el ínfimo es el heredado de la relación de orden de las partes de un conjunto y el supremo es la intersección de los subgrupos de G que contienen a $H_1$ y a $H_2$.
+\end{nprop}
+
+\begin{proof}
+Utilizamos el criterio de subgrupo teniendo en cuenta que como $ 1 \in \cap_{i \in I} H_i$ entonces $\cap_{i \in I} H_i$ es no vacía.
+
+Si $H_1,H_2 \in Sub(G)$, claramente, al ser $H_1 \cap H_2$ un subgrupo debe ser el ínfimo pues es heredado de la relación de orden de las partes de un conjunto. Por otro lado, la intersección dada por $\cap_{K \in Sub(G), H_i \le K \, i = 1,2} K$ es no vacía ya que $H_1 \le G$ y $H_2 \le G$. Veamos que en efecto es el supremo.
+
+Claramente, $H_1 \le \cap K$ y $H_2 \le \cap K$. Por otro lado, si $L \in Sub(G)$ tal que $H_1 \le L$ y $H_2 \le L$ entonces L está en la lista de subgrupos intersecados y por tanto $\cap K \le L$.
+\end{proof}
+
+\begin{ejemplo}[La unión de subgrupos no tiene por qué ser un subgrupo]
+En $D_4$ consideramos $H_1 = \{1,s\} \le D_4$ y $H_2 = \{1,rs\} \le D_4$ pero 
+$H_1 \cup H_2 = \{1,s,rs\} \nleq D_4$
+
+De hecho, si tengo dos subgrupos $H,K \le G$ entonces $H \cup K \le G \iff H \subseteq G$ o $K \subseteq G$.
+\end{ejemplo}
+
+La fórmula que me hemos dado para el supremo de subgrupos es muy poco práctica. Esto motiva las siguientes definiciones.
+
+\subsection{Producto de subgrupos.}
+
+\begin{ndef}[Producto de subgrupos]
+Sea G un grupo, X e Y subconjuntos no vacíos de G. Entonces el producto de X e Y es
+$$XY = \{xy:x \in X,y \in Y\}$$
+\end{ndef}
+
+El siguiente teorema del producto lo hemos encontrado atribuido a Ledermann:
+
+\begin{nprop}[Teorema del producto]\label{theorem:teorema-producto}
+Sean $H,K$ subgrupos de un grupo G. Entonces:
+
+HK es un subgrupo de G $\iff HK = KH$
+en cuyo caso $H \lor K = HK$
+\end{nprop}
+\begin{proof}
+%Veamos primero la doble implicación. 
+
+%Si $HK$ es un subgrupo de $G$. Entonces dados $h,k \in %HK$ tendríamos que $HK \ni (h^{-1}k^{-1})^{-1} = kh$ y %por tanto $KH \subseteq HK$. Recíprocamente, si $h,k \in %HK$ entonces 
+\end{proof}
+
+Una forma de generalizar el teorema del producto es hacer infinitos productos con lo que se elimina la hipótesis de conmutación.
+
+\begin{nprop}
+Sean $H,K$ subgrupos de un grupo G. Entonces $H \lor K = \{h_1k_1...h_rk_r: h_i \in H,k_i \in K,r \ge 1\}$
+\end{nprop}
+\begin{proof}
+Llamemos productos infinitos al miembro de la derecha y denotémoslo por $P$.
+
+Dados $x = \prod_{i = 1}^r h_ik_i, y = \prod_{i = 1}^s h_i'k_i'$ se tiene que $xy^{-1} = (\prod_{i = 1}^r h_ik_i)(1k_s')(h_s'^{-1}k_{s-1}'^{-1})\cdots(k_2'^{-1}1) \in P$. Por tanto, $P$ es un subgrupo de $G$. 
+
+Por otra parte, como $H,K \le P$ sin más que considerar elementos de la forma $h = h \cdot 1,k = 1 \cdot k$ y como si $H,K \le L$ entonces $P \le L$ al ser la operación producto interna, se tiene que $P$ es ciertamente el supremo de $H$ y $K$.  
+\end{proof}
+
+\subsection{Subgrupo generado por un conjunto.}
+
+\begin{ndef}[Subgrupo generado por un conjunto]
+Sea G un grupo y X un subconjunto no vacío de G. Definimos el subgrupo de G generado por X y denotado por $<X>$ como el menor subgrupo de G que contiene a X, esto es, 
+$<X> = \cap_{K \in Sub(G),X \subseteq K} K$.
+\end{ndef}
+
+\begin{ndef}[Conjunto generador de un grupo]
+Sea G un grupo y X un subconjunto no vacío de G. Si $G = <X>$ diremos que X es un conjunto de generadores de G.
+\end{ndef}
+
+Este definición permite entender mejor la noción de supremo, en efecto, si $H,K$ son subgrupos de G entonces $H \lor K = \cap_{T \le G, H,K \le T} T = \cap_{T \le G, H \cup K \subseteq T} T = <H \cup K>$, o sea, que el supremo de dos subgrupos es el subgrupo generado por su unión.
+
+\begin{nprop}[Expresión del subgrupo generado como palabras]
+Sea X un subconjunto no vacío de un grupo G. Entonces $<X> = \{x_1^{n_1}...x_r^{n_r}:x_i \in X,n_i \in \mathbb{Z},r \ge 1\}$
+\end{nprop}
+\begin{proof}
+Para empezar demuestro que el miembro derecho es un subgrupo. Llamemos a este conjunto de la derecha el conjunto de las palabras en $X$ y denotemoslo por $T$. 
+
+Si $a = x_1^{n_1} \cdots x_2^{n_r}, b = y_1^{m_1} \cdots y_s^{m_s}$ son palabras en $X$ entonces $ab^{-1} =  x_1^{n_1} \cdots x_2^{n_r}y_s^{-m_s} \cdots y_1^{-m_1}$ es una palabra en $X$. 
+
+Por tanto, el conjunto de las palabras en $X$ es un subrupo de $G$ para el producto. 
+
+Vamos a ver por doble inclusión que ambos subgrupos son iguales. 
+
+$\subseteq)$ Como $X \subseteq T$, claramente, $<X> \subseteq T$ ya que $<X>$ es el más pequeño de los subgrupos que contienen a $X$. 
+
+$\supseteq)$ Como $<X>$ es un subgrupo de $G$ y $X \subseteq <X>$, necesariamente $T \subseteq <X>$. 
+\end{proof}
+
+\begin{nprop}[Subgrupo generado por un conjunto finito]
+Sea X un subconjunto no vacío de un grupo finito G. Entonces: $$\langle X \rangle = \{x_1^{n_1}...x_r^{n_r}:x_i \in X,n_i \ge 0,r \ge 1\}$$
+\end{nprop}
+\begin{proof}
+Llamemos palabras directas al miembro de la derecha de la igualdad anterior y denotémoslo por $T$. 
+
+Por lo anterior $T \subseteq <X>$. Ahora, como $G$ es finito, en $\{x,x^2,\cdots\}$ existirán $i,j$ tales que $x^i = x^j, i > j$ luego $x^{i-j} = 1$ y por tanto $T$ contiene a los inversos de los elemntos de $X$. En consecuencia, se tiene la otra inclusión.
+\end{proof}
+
+\begin{ndef}[Subgrupo cíclico generado por un elemento]
+Sea G un grupo. Si $X = \{a\}$ entonces $<X> = <a>$ y lo llamaremos el subgrupo cíclico generado por a. Claramente $<a> = {a^n : n \in \mathbb{Z}}$ y en el caso en que G sea finito $<a> = {a^n : n \ge 0}$
+\end{ndef}
+
+\begin{ndef}[Grupo cíclico]
+Sea G un grupo. Si $X = \{a\}$ es un conjunto de generadores de G entonces $G = <a>$ y diremos que G es un grupo cíclico.
+\end{ndef}
+
+\begin{ejemplo}
+1. $\mathbb{Z} = <1> = <-1>$ teniendo en cuenta que la operación es la suma. De hecho veremos más adelante que todo grupo cíclico infinito es isomorfo a $\mathbb{Z}$.\\
+2. $D_n = <r,s>$. \\
+3. $S_n = <X>$ donde $X = \{(ij):1 \le i,j \le n\}$
+\end{ejemplo}
+
+\subsection{Teorema de Lagrange.}
+
+\begin{ndef}[Clases laterales asociadas a un subgrupo]
+Si G es un grupo, H es un subgrupo de G y $x \in G$ definimos $xH = \{xh:h \in H\}$ y $Hx = \{hx:h \in H\}$.
+
+Diremos que dos elementos $x,y \in G$ están relacionados por la izquierda si $y \in xH$ o equivalentemente $x \in yH$, dicho de otro modo, $xy^{-1} \in H$ o bien $y^{-1}x \in H$. Lo denotaremos por $x \sim_{I} y$.
+
+Diremos que dos elementos $x,y \in G$ están relacionados por la derecha si $y \in Hx$ o equivalentemente $x \in Hy$, dicho de otro modo, $xy^{-1} \in H$ o bien $yx^{-1} \in H$. Lo denotaremos por $x \sim_{D} y$.
+
+Se comprueba fácilmente que estas relaciones son de equivalencia y que la clase de equivalencia de un elemento x por la izquierda es xH y por la derecha es Hx.
+
+Al conjunto de las clases de equivalencia por la izquierda lo denotaremos por $G/H := \{xH : x \in G \}$ y al conjunto de las clases de equivalencia por la derecha lo denotaremos por $H/G := \{Hx : x \in G \}$.
+\end{ndef}
+
+\begin{nprop}
+1. Las clases de equivalencia forman una partición de G. Además, se tiene que $xH = yH \iff x \sim_{I} y$ y $Hx = Hy \iff x \sim_{D} y$. \\
+2. Existen biyecciones $f:H \rightarrow xH$ y $g:H \rightarrow Hx$ para cualquier $x \in G$. Existe una biyección $\lambda:G/H \rightarrow H/G$. En particular, el dominio y el codominio de estas biyecciones tienen el mismo número de elementos.
+\end{nprop}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{ndef}[Índice de un subgrupo de un grupo]
+Sea G un grupo finito y H un subgrupo de G. Definimos el índice de H en G como el número de clases laterales a izquierda o derecha por la relación equivalencia anterior. Esto es, $[G:H] = |G/H| = |H/G|$. En otras palabras el índice es el número de partes de la partición inducida por H.
+\end{ndef}
+
+\begin{nth}[Teorema de Lagrange]
+Sea G un grupo finito y $H \le G$ entonces $|G| = [G:H]|H|$
+\end{nth}
+
+\begin{proof}
+Pongamos $G = \sum_{i=1}^{[G:H]} x_iH$ donde entendemos el símbolo $\sum$ como suma disjunta y $x_i$ son representantes de las clases de equivalencia por la izquierda. Entonces tomando órdenes $|G| = \sum_{i=1}^{[G:H]} |x_iH| =  \sum_{i=1}^{[G:H]} |H| = [G:H]|H|$.
+\end{proof}
+
+\begin{ncor}
+Si G es un grupo finito y $H \le G$ entonces el orden de H divide al orden de G. 
+\end{ncor}
+
+\subsection{Orden de un elemento.}
+
+\begin{ndef}[Orden de un elemento]
+Sea G un grupo y $a \in G$. Definimos el orden de a como 
+$ord(a) = 
+\begin{cases}
+min\{r \ge 1:a^r = 1	\} & si \, \exists r \ge 1 : a^r = 1 \\
+\infty & en \, otro \, caso
+\end{cases}$
+
+Claramente, si G es finito el orden de sus elementos es finito.
+\end{ndef}
+
+\begin{nprop}[Otra definición del orden de un elemento]
+El orden de un elemento es igual al orden del subgrupo que genera si es finito y es infinito si el subgrupo generado es infinito.
+\end{nprop}
+
+\begin{proof}
+Veamos en primer lugar que si $ord(a) = n$ entonces $<a> = \{1,a,...,a^{n-1}\}$.
+
+Por definición $<a> = \{a^r:r \in \mathbb{Z}\}$ y dividiendo r entre n tendremos $r = nq + s$ donde $0 \le s < n$. Resulta que $a^r = a^s \in \{1,a,...,a^{n-1}\}$. Luego hemos demostrado que $\{a^r:r \in \mathbb{Z}\} \subseteq \{1,a,...,a^{n-1}\}$. Y como la otra inclusión es evidente hemos demostrado la igualdad. Y más adelante veremos que dos grupos cíclicos del mismo orden son isomorfos.
+
+Si $ord(a) = \infty$ entonces el grupo cíclico generado por a es isomorfo al grupo de los números enteros con la suma $<a> = \{a^r:r \in \mathbb{Z}\} \cong \mathbb{Z}$ mediante el isomorfismo $f:\mathbb{Z} \rightarrow <a>$ tal que $f(n) = a^n$.
+\end{proof}
+
+\begin{ncor}
+Si G es un grupo finito entonces para cualquier $a \in G$ se verifica que $ord(a) | |G|$.
+\end{ncor}
+
+\begin{nprop}[Propiedades del orden de un elemento]
+Suponiendo que el orden de a es finito: \\
+1. $a^m = 1$ con $m \ge 1 \iff ord(a) | m$ \\
+2. $ord(a^r) = \frac{ord(a)}{mcd(ord(a),r)}$ \\
+3. $<a>$ tiene $\phi(ord(a))$ generadores distintos. \\
+En cualquier caso: \\
+4. El orden es un invariante por isomorfismo. Esto es, si $f:G \rightarrow G'$ es un isomorfismo entonces $ord(a) = ord(f(a))$ para cualquier a.
+\end{nprop}
+\begin{proof}
+Sea $n = ord(a)$,
+
+(1) $\Rightarrow$ Supongamos que $a^m = 1$ y si escribimos $m = nq + r$ con $0 \le r < n$ entonces $1=a^m = a^{nq}a^r = a^r$ y necesariamente debe ser $r = 0$ ya que si no tendríamos un entero menor que n que como potencia de a da uno en contradicción con la definición de orden de un elemento. Luego $m = nq$ y por tanto $n | m$
+
+$\Leftarrow$ Si $n|m$ entonces $m = nq$ y entonces $a^m = a^{nq} = (a^n)^q = 1$.
+
+(2) Gracias a (1) como $(a^r)^{\frac{n}{mcd(n,r)}} = (a^n)^{\frac{r}{mcd(n,r)}} = 1$ entonces $ord(a^r) | \frac{n}{mcd(n,r)}$. 
+
+Por otro lado, supongamos que $(a^r)^m = 1$ y veamos que entonces $\frac{n}{mcd(n,r)} | m$. Claramente $n | rm$ luego $rs = nt$ para cierto t y entonces $\frac{r}{mcd(n,r)}m = \frac{n}{mcd(n,r)}t$ luego $\frac{n}{mcd(n,r)} | \frac{r}{mcd(n,r)}m$ y como $mcd\left(\frac{r}{mcd(n,r)},\frac{n}{mcd(n,r)}\right) = 1$ por el lema de Euclides necesariamente $\frac{n}{mcd(n,r)} | m$. Y concluimos que $\frac{n}{mcd(n,r)} | ord(a^r)$.
+
+(3) Utilizando (2) $ord(a^r) = \frac{n}{mcd(n,r)}$ y por tanto si $mcd(n,r) = 1$  se verificará que $<a> = <a^r>$ ya que ambos conjuntos tienen el mismo número de elementos distintos y están escogidos de la misma familia. Por tanto se trata de determinar cuantos valores r verifican que $mcd(n,r) = 1$, esto es precisamente $\phi(n)$.
+
+(4) Supongamos para empezar que n es finito. $f(a)^n=f(a^n)=f(1)=1$ luego $n |ord(f(a))$ y sea ahora cualquier m tal que $f(a)^m = 1$ entonces $1 = f(a)^m = f(a^m)$ y como f es inyectiva necesariamente $a^m = 1$ por (1) debe ser $n | m$ luego $ord(f(a)) | n$ y por tanto $n = ord(f(a))$.
+
+Supongamos ahora que n es infinito y supongamos por reducción al absurdo que existe una potencia m tal que $f(a)^m = 1$ entonces $f(a^m) = 1$ y por la inyectividad $a^m = 1$ en contradicción con el hecho de que el orden de a es infinito.
+\end{proof}
+
+\begin{nprop}[Cálculo del orden de permutación]
+1. Sean $\alpha,\beta \in S_n$ dos permutaciones disjuntas entonces $ord(\alpha\beta) = mcm(ord(\alpha),ord(\beta))$.\\
+2. Dado $\alpha \in S_n$ con $\alpha \neq 1$ entonces $ord(\alpha) = mcm(\text{longitudes de los ciclos disjuntos en que descompone} \alpha)$.
+\end{nprop}
+\begin{proof}
+
+\end{proof}
+
+\subsection{Clasificación de los grupos cíclicos y descripción del retículo de subgrupos.}
+
+\begin{nth}[Teorema de clasificación]
+1. Si H y H' son dos grupos cíclicos del mismo orden entonces son isomorfos.\\
+2. Si G es un grupo cíclico generado por a entonces si $ord(a) = n$ entonces $G \cong (\mathbb{Z}_n,+)$ y si $ord(a) = \infty$ entonces $G \cong (\mathbb{Z},+)$. Al grupo cíclico de orden n lo denotaremos $C_n = <x:x^n = 1>$.\\
+3. Si G es un grupo de orden $|G| = p$ con p un número primo entonces $G \cong C_p$.
+\end{nth}
+\begin{proof}
+
+\end{proof}
+
+Obsérvese también en este momento que los grupos cíclicos son abelianos.
+
+\begin{nth}[Descripción del retículo de subgrupos de un grupo cíclico]
+1. Si G es grupo cíclico infinito entonces $G \cong \mathbb{Z}$ y $Sub(\mathbb{Z}) = \{n\mathbb{Z}:n \ge 0\}$ y la relación de inclusión viene dada por $m\mathbb{Z} \subseteq n\mathbb{Z} \iff n|m$. \\
+Supongamos que G es un grupo cíclico finito es decir es de la forma $C_n = \langle x:x^n = 1 \rangle$.\\
+2. Si $d|n$ entonces $\langle x^{n/d} \rangle$ es un subgrupo de $C_n$ cíclico de orden d. \\
+3. Si H es un subgrupo de $C_n$ no trivial y $s = min\{r \ge 1:x^r \in H\}$ entonces $s|n$ y $H = <x^s>$. \\
+4. (Identificación de subgrupos) Denotemos por $Div(n)$ a los divisores de n. La aplicación $$f:Div(n) \rightarrow Sub(C_n)$$ tal que $$d \mapsto <x^{n/d}>$$ es una biyección.  \\
+5. (Relación de inclusión) Sean $d_1,d_2 \in Div(n)$. $$<a^{n/d_1}> \; \le \; <a^{n/d_2}> \iff d_1|d_2$$ 
+\end{nth}
+\begin{proof}
+\begin{enumerate}
+\item El isomorfismo es trivial. Para ver que los subgrupos de $\mathbb{Z}$ son precisamente los múltiplos de los números naturales, puede consultarse \cite{dorronsoro} página 58. La relación de orden es similar a la que se deducía en los retículos de ideales principales puestos en correspondencia con el retículos de enteros ordenados por divisibilidad. 
+\item Por la proposición sobre las propiedades del orden de un elemento, tenemos que $ord(x^{n/d}) = \frac{ord(x)}{mcd(n,n/d)} = \frac{n}{n/d} = d$. Sabíamos además que $d = ord(x^{n/d}) = |\langle x^{n/d} \rangle|$, de donde el grupo cíclico generado por $x^{n/d}$ tiene precisamente, $d$ elementos. 
+\item 
+\item 
+\end{enumerate}
+\end{proof}

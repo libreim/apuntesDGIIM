@@ -1,0 +1,304 @@
+\subsection{Grupos simples y series normales}
+
+\begin{ndef}[Serie normal y refinamiento]
+Dado un grupo G, una serie normal de G es una sucesión finita de grupos de la forma $$\{1\} = H_0 \trianglelefteq H_1 \trianglelefteq ... \trianglelefteq H_n = G \;\;\;(1)$$ A los grupos $H_i$ se les llama términos de la serie y a los cocientes $H_i/H_{i-1}$ se les llama factores de G.
+
+La serie se dice propia si las inclusiones son todas estrictas, esto es, si $H_i \propernormal H_{i+1} \, i = 0,1,...,n-1$. En este caso diremos que la longitud  de la serie es n (esto es, $G$ no se cuenta).
+
+Supongamos una serie normal $$\{1\} = K_0 \trianglelefteq K_1 \trianglelefteq ... \trianglelefteq K_m = G\;\;\;(2)$$ Diremos que la serie (1) es un refinamiento de la serie (2) si $m \le n$ y además todos los grupos de (2) aparecen en (1) (esto es, si la serie (1) es más larga que la serie (2)). El refinamiento se dirá propio si $m < n$.
+\end{ndef}
+
+\begin{ejemplo}
+1. $\{1\} \trianglelefteq A_4 \trianglelefteq S_4$\\
+2. $\{1\} \trianglelefteq K \trianglelefteq S_4$\\
+3. $\{1\} \trianglelefteq K \trianglelefteq A_4 \le S_4$ refina a las dos series anteriores.\\
+4. $\{1\} \trianglelefteq C_2 \trianglelefteq K \trianglelefteq A_4 \trianglelefteq S_4$ donde $C_2$ no es normal en $A_4$ ni en $S_4$. De hecho, no hay más refinamientos de esta.
+\end{ejemplo}
+
+\begin{ndef}[Serie de composición]
+Una serie de composición de un grupo G es una serie normal, propia y que no admite refinamientos propios. Los factores de una serie de composición se llaman factores de composición de G (ya que sólo dependen de G).
+\end{ndef}
+
+(Motivar la definición de grupo simple como en 168 del libro de la UNAM).
+
+\begin{ndef}[Grupo simple]
+Un grupo G es simple si $G \neq \{1\}$ y no tiene subgrupos normales propios.
+\end{ndef}
+
+Claramente, la noción de grupo simple se mantiene por isomorfismo.
+
+\begin{ejemplo}
+1. Si $|G| = p$ primo entonces G es simple ya que ni siquiera tiene subgrupos propios. \\
+2. Si G es abeliano, G es simple $\iff G \cong C_p$ con p un número primo.
+
+En efecto, 
+
+$\Leftarrow$ Si $G \cong C_p$ con p primo los subgrupos de G son los impropios. \\
+$\Rightarrow$ Si G es abeliano y simple para empezar G no es trivial por definición y entonces podemos tomar $x \in G \setminus \{1\}$ y como G es abeliano el subgrupo $<x>$ será normal en G. Como G es simple, necesariamente $G = <x>$, luego G es cíclico.
+
+Faltaría por ver que G es de orden finito. Para ello consideremos el orden de x. Si fuera infinito entonces $G \cong \mathbb{Z}$ pero $\mathbb{Z}$ no es simple porque tiene infinitos subgrupos y la simplicidad es un invariante por isomorfismo.
+
+Además necesariamente el orden del grupo debe ser primo. Pues si no fuera primo existirían subgrupo propios según el teorema que describe el retículo de subgrupos de un grupo cíclico y como el grupo es abeliano se tendría que serían normales.
+\end{ejemplo}
+
+El siguiente teorema caracteriza a los grupos simples como los ladrillos básicos de construcción de las series de composición al modo de los números primos en $\mathbb{Z}$.
+
+\begin{nth}[Condición de factores simples]
+Sea $\{1\} = H_0 \trianglelefteq H_1 \trianglelefteq ... \trianglelefteq H_n = G$ una serie normal. 
+
+La serie es de composición $\iff H_i/H_{i-1}$ son simples para todo $i = 1,...,n$.
+\end{nth}
+\begin{proof}
+$\Rightarrow$ Supóngase que la serie es de composición y supongamos por reducción al absurdo que existe un i tal que $H_i/H_{i-1}$ no es simple. Por tanto existiría un subgrupo normal propio $K/H_{i-1}$ que por el segundo teorema isomorfismo implicaría que $H_{i-1} \propernormal K \propernormal H_{i}$. Ahora bien, por ser una serie de composición no puede admitir refinamientos propios y llegamos a una contradicción.
+
+$\Leftarrow$ Para empezar el hecho de que los cocientes sean simples $H_i/H_{i-1}$ me dice que la serie es propia ya que $H_i/H_{i-1} \neq \{1\} \implies H_{i-1} \propernormal H_i$.
+
+Supongamos ahora que $\{1\} = K_0 \trianglelefteq K_1 \trianglelefteq ... \trianglelefteq K_m = G$ es un refinamiento propio de la serie (con lo que en particular $m > n$). Sea $K_l$ el mayor de los que no aparecen en la serie original de modo que $l < m$ y además $K_{l+1}$ aparece en la original. Sea $K_{l+1} = H_r$. 
+
+Se tiene que $H_{r-1} \propernormal K_l \propernormal K_{l+1} = H_r$ de donde $K_l/H_{r-1} \propernormal H_r/H_{r-1}$ y $K_l/H_{r-1}$ es no trivial. Como $H_r/H_{r-1}$ es simple llegamos a una contradicción.
+\end{proof}
+
+\begin{ejemplo}
+1. Probemos que en efecto la serie $\{1\} \trianglelefteq C_2 \trianglelefteq K \trianglelefteq A_4 \trianglelefteq S_4$ no admite refinamientos propios. Para ello calculamos los cocientes sucesivos. 
+
+$C_2/\{1\} \cong C_2$ que es simple puesto que es abeliano.\\
+$K/C_2 \cong C_2$ ya que $|K/C_2| = 2$.\\
+$A_4/K \cong C_3$ ya que $|A_4/K| = 3$.\\
+$S_4/A_4 \cong C_2$ ya que $|S_4/A_4| = 2$.
+ 
+2.$\mathbb{Z}$ no tiene series de composición.
+
+Si tuviera una serie de composición $\{0\} = t_1\mathbb{Z} \trianglelefteq ... \trianglelefteq t_{n-1}\mathbb{Z} \trianglelefteq \mathbb{Z}$, en particular $(t_1\mathbb{Z})/\{0\} \cong t_1\mathbb{Z}$ debería ser simple, pero se trata de un grupo abeliano que tiene como subgrupos los múltiplos de $t_1$ y los subgrupos de un grupo abeliano son todos normales.
+\end{ejemplo}
+
+\begin{nth}[Existencia de una serie de composición para grupos finitos]
+Si G es un grupo finito entonces tiene al menos una serie de composición.
+\end{nth}
+\begin{proof}
+Procedamos por inducción fuerte sobre $|G|$. 
+
+Si $|G| = 2$ entonces la serie $\{1\} \trianglelefteq G$ es una serie de composición.\\
+Si $|G| > 2$ entonces tomamos $K$ el mayor subgrupo normal contenido propiamente en $G$. Obsérvese que al menos $\{1\}$ es normal en $G$ y que existirá un mayor subgrupo normal ya que el retículo de subgrupos es finito. 
+
+Por hipótesis de inducción, dicho subgrupo $K$ admite una serie de composición $$\{1\} = K_0 \trianglelefteq K_1 \trianglelefteq ... \trianglelefteq K_r = K$$ de modo que la serie $$\{1\} = K_0 \trianglelefteq K_1 \trianglelefteq ... \trianglelefteq K \trianglelefteq G$$ es una serie de composición para $G$.
+\end{proof}
+
+\begin{ejemplo}
+La serie de composición del grupo no tiene por qué ser única. Así $\{1\} \propernormal <r^2> \propernormal <r> \propernormal D_4$ y si $K = <r^2,s>$ es uno de los subgrupos de Klein tenemos $\{1\} \propernormal <s> \propernormal K \propernormal D_4$. Y observamos que los factores en ambos casos son isomorfos a $C_2$.
+\end{ejemplo}
+
+La pregunta es si dadas dos series de composición existirá alguna relación entre ellas.
+
+\begin{ndef}[Series equivalentes]
+Dadas dos series normales de G, $$\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$$ y $$\{1\} = H_0 \trianglelefteq H_1 \trianglelefteq ... \trianglelefteq H_n = G$$ Diremos que estas dos series son equivalentes o isomorfas si:
+
+1) m = n\\
+2) $\exists \sigma \in S_n$ tal que $G_i/G_{i-1} \cong H_{\sigma(i)}/H_{\sigma(i)-1}$ con $i=1,...,n$. 
+
+Esto es, tienen la misma longitud y factores isomorfos salvo el orden en que ocurren.
+\end{ndef}
+
+Probamos a continuación el Cuarto teorema de isomorfía, que nos será útil para demostrar para demostrar el lema de Schreier para lo cual usaremos dos lemas previos.
+
+\begin{nprop}[Ley Modular o Regla de Dedekind]
+Sea $G$ un grupo. $A,B,C \le G$ con $A \le C$. Entonces $A(B \cap C) = (AB) \cap C$
+\end{nprop}
+\begin{proof}
+Procedemos por doble inclusión
+
+$\subseteq$ Si tomo un elemento de $A(B \cap C)$ entonces es producto de un elemento $a \in A$ y de un elemento de $x \in B \cap C$. Como $x \in B$ se tiene que $ax \in AB$ y como $A \le C$ se tiene que $ax \in C$ de done $ax \in (AB) \cap C$.
+
+$\supseteq$ Recíprocamente si tomo un elemento de $(AB) \cap C$ entonces será de la forma $z = ab$ con $z \in C$ y $a \in A$,$b \in B$. Pero $a$ también está en $C$ y eso nos permite afirmar que $b = a^{-1}ab \in C$ de donde $z \in A(B \cap C)$. Como se quería.
+\end{proof}
+
+\begin{nprop}[Consecuencia del tercer teorema de isomorfía]\label{lemma:consecuencia-tercer-teorema-isomorfia}
+Sea $G$ un grupo. $A,B,C \le G$ y $B \trianglelefteq A$. Entonces se verifica:\\
+i) $B \cap C \cong A \cap C$ y $\frac{A \cap C}{B \cap C} \cong \frac{B(A \cap C)}{B}$\\
+ii) Si además $C \trianglelefteq G$ entonces $BC \trianglelefteq AC$ y $\frac{AC}{BC} \cong \frac{A}{B(A \cap C)}$
+\end{nprop}
+\begin{proof}
+i) Basta aplicar el tercer teorema de isomorfismo con $H = A \cap C$ y $K = B$.\\
+ii) Puesto que $C \trianglelefteq G$ por la proposición \ref{theorem:teorema-producto} se tendrá que $BC,AC \le G$ y como $B \trianglelefteq A$ claramente $BC \le AC$.
+
+Veamos que $BC \trianglelefteq AC$. Sea $ac \in AC$ y $bc' \in BC$, entonces $(ac)(bc')(ac)^{-1} = (aca^{-1})(aba^{-1})(ac'c^{-1}a^{-1}) \in CBC = BCC = BC$ por ser $B \trianglelefteq A$, $C \trianglelefteq G$ y $BC =CB$.
+
+El isomorfismo se deduce al aplicar el tercer teorema de isomorfismo para $H = A$ y $K = BC$ teniendo en cuenta que por la regla de Dedekind $(BC) \cap A \cong B(A \cap C)$ y que $HK = ABC = AC$ ya que $B \le A$.
+\end{proof}
+
+\begin{nprop}[Cuarto teorema de isomorfía]
+Sea G un grupo y $C_1,A_1,C_2,A_2$ subgrupos de G tales que $C_1 \trianglelefteq A_1$ y $C_2 \trianglelefteq A_2$. Entonces:
+
+1. $(A_1 \cap C_2)C_1 \trianglelefteq (A_1 \cap A_2)C_1$.\\
+2. $(C_1 \cap A_2)C_2 \trianglelefteq (A_1 \cap A_2)C_2$.\\
+3. $(A_1 \cap A_2)C_1/(A_1 \cap C_2)C_1 \cong (A_1 \cap A_2)C_2/(A_2 \cap C_1)C_2$.
+\end{nprop}
+\begin{proof}
+Considérese como espacio ambiente $A_2$ y apliquemos el tercer teorema de isomorfismo para $K = C_2$ y $H = A_1 \cap A_2$. Entonces $H \cap K = A_1 \cap A_2 \cap C_2 = A_1 \cap C_2 \trianglelefteq A_1 \cap A_2$ y análogamente $A_2 \cap C_1 \trianglelefteq A_1 \cap A_2$. Entonces es fácil razonar que su producto $B = (A_1 \cap C_2)(A_2 \cap C_1) \trianglelefteq A_1 \cap A_2$ (para ello utilícese la proposición \ref{theorem:teorema-producto} y el teorema \ref{theorem:criterio-normalidad}). 
+
+Aplicamos el apartado ii) del lema \ref{lemma:consecuencia-tercer-teorema-isomorfia} para el producto $B$, $A = A_1 \cap A_2$ y $C = C_1$ entonces $$BC = BC_1 = (A_1 \cap C_2)(A_2 \cap C_1)C_1 = (A_1 \cap C_2)C_1 \trianglelefteq (A_1 \cap A_2)C_1$$ y $$\frac{AC}{BC} \cong \frac{(A_1 \cap A_2)C_1}{(A_1 \cap C_2)C_1} \cong \frac{A}{B(A \cap C)} = \frac{A_1 \cap A_2}{B(A_1 \cap A_2 \cap C_1)} = \frac{A_1 \cap A_2}{(A_1 \cap C_2)(A_2 \cap C_1)}$$. Por simetría se obtendría el punto 2 y el segundo isomorfismo.
+\end{proof}
+
+\begin{nth}[Lema de refinamiento de Schreier (1928)]
+Dos series de un grupo G admiten refinamientos equivalentes.
+\end{nth}
+\begin{proof}
+Sean $$\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$$ y $$\{1\} = H_0 \trianglelefteq H_1 \trianglelefteq ... \trianglelefteq H_m = G$$ dos series normales para el grupo $G$. 
+
+Para $i \in I_n$ y $j \in I_m$ notaremos $G_{ij} = (G_i \cap H_j)G_{i-1}$ $(i \neq 0)$ y $H_{ij} = (H_{j} \cap G_i) H_{j-1}$ $(j \neq 0)$. Se tiene que $$G_{i-1} = G_{i0} \le G_{i1} \le ... \le G_{im} = G_i \;\;\; (1)$$ y $$H_{j-1} = H_{0j} \le H_{1j} \le ... \le H_{nj} = H_j \;\;\; (2)$$
+
+Usando el lema con $C_1 = G_{i-1} \trianglelefteq A_1 = G_i$ y $C_2 = H_{j-1} \trianglelefteq A_2 = H_j$ de aquí se obtiene que $G_{ij-1} \trianglelefteq G_{ij}$ y que $H_{i-1j} \trianglelefteq H_{ij}$ y se obtiene que en (1) y (2) las series son normales. Además, por el cuarto teorema de isomorfía $G_{ij}/G_{ij-1} \cong H_{ij}/H_{i-1j}$.
+
+Para ver que las series obtenidas son equivalentes basta ver que tienen la misma longitud. 
+
+$1 = G_0 \trianglelefteq G_{10} \trianglelefteq G_{11} \trianglelefteq ... \trianglelefteq G_{1m} = G_1 = G_{20} \trianglelefteq G_{21} \trianglelefteq ... \trianglelefteq G_{2m} = G_2 \trianglelefteq ... \trianglelefteq G_{nm} = G_n = G$
+
+Cuya longitud es $n+(m-1)n = nm$.
+
+$1 = H_0 \trianglelefteq H_{01} \trianglelefteq H_{02} \trianglelefteq ... \trianglelefteq G_{n1} = H_1 = H_{02} \trianglelefteq H_{12} \trianglelefteq ... \trianglelefteq H_{n2} = H_2 \trianglelefteq ... \trianglelefteq H_{nm} = H_m = G$
+
+Cuya longitud es $nm$.
+\end{proof}
+
+
+\begin{nth}[Teorema de Jordan-Hölder]
+Sea G un grupo finito, entonces:\\
+1) Toda serie normal de G admite un refinamiento que es una serie de composición de G.\\
+2) Cualesquiera dos series de composición de G son equivalentes.
+\end{nth}
+\begin{proof}
+1. Denotemos por $S_1$ a una serie normal de $G$ y por $S_2$ a una serie de composición de $G$, que existe puesto que $G$ es finito. Por el lema de refinamiento de Schreier ambas series admiten refinamientos equivalentes. 
+
+$S_1$ admite un refinamiento equivalente a un refinamiento de $S_2$ y como $S_2$ es de composición el refinamiento de $S_1$ es equivalente a la serie $S_2$.
+
+Pero una serie que sea equivalente a una serie de composición necesariamente ha de ser una serie de composición ya que los factores de ambas series salvo el orden son isomorfos y como los de la serie de composición son simples por la condición de factores simples se deduce que tenemos una serie de composición.
+
+2. Por el lema de refinamiento de Schreier las series de composición $S_1$ y $S_2$ admiten refinamientos equivalentes. Pero como $S_1$ y $S_2$ son series de composición sus refinamientos coinciden con $S_1$ y $S_2$ luego son equivalentes.
+\end{proof}
+
+\begin{ndef}[Longitud y factores de un grupo finito]
+Sea G un grupo finito.
+
+La longitud de G es la longitud de cualquier serie de composición de G. Lo denotaremos por L(G).\\
+Los factores de composición de G son los factores de cualquiera de sus series de composición. Al conjunto de los factores de composición lo denotaremos por Fact(G).
+\end{ndef}
+
+\subsection{Grupos solubles}
+
+\begin{ndef}[Grupo soluble]
+Un grupo G es soluble si tiene una serie normal: $$\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$$ cuyos factores $G_i/G_{i-1}$ con $i=1,...,n$ son abelianos.
+\end{ndef}
+
+Notemos que la solubilidad de un grupo es invariante por homomorfismo.
+
+\begin{ejemplo}
+Todo grupo abeliano es soluble ya que $\{1\} \trianglelefteq G$ es una serie normal y además $G/\{1\} = G$ es abeliano.
+\end{ejemplo}
+
+\begin{nth}[Caracterización por factores de un grupo finito soluble]
+Sea G un grupo finito. Entonces equivalen:
+
+1) Los factores de composición de G son cíclicos de orden primo.\\
+2) G tiene una serie normal con factores cíclicos.\\
+3) G es soluble.
+\end{nth}
+\begin{proof}
+Claramente $1) \implies 2) \implies 3)$.
+
+Veamos que $3) \implies 1)$. En efecto, sea $\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$ una serie normal para $G$ cuyos cocientes $G_i/G_{i-1}$ son abelianos con $i = 1, ... ,n$.
+
+Por el teorema de Jordan-Hölder dicha serie admite un refinamiento que es una serie de composición $\{1\} = H_0 \trianglelefteq H_1 \trianglelefteq ... \trianglelefteq H_m = G$. Si demostramos que los cocientes además de ser simples son abelianos habríamos terminado ya que un grupo abeliano y simple es cíclico de orden primo. 
+
+Consideremos $G_{j-1} \trianglelefteq H_{r-1} \propernormal H_{r} \trianglelefteq G_{j}$ y por el segundo teorema de isomorfismo tenemos que $H_r/H_{r-1} \cong (H_r/G_{j-1})/(H_{r-1}/G_{j-1})$ y dado que $H_r/G_{j-1} \le G_j/G_{j-1}$ que es abeliano, es también él mismo abeliano. En consecuencia el cociente es abeliano y por isomorfismo hemos acabado.
+\end{proof}
+
+\begin{ejemplo}
+$S_2$ es un grupo abeliano y por tanto es soluble. Se verifica que $Fact(S_2) = \{C_2\}$.\\
+En $S_3$ tenemos la serie de composición $\{1\} \trianglelefteq A_3 \trianglelefteq S_3$ de donde $Fact(S_3) = \{C_2,C_3\}$ y por tanto $S_3$ es un grupo soluble.\\
+En $S_4$ consideramos la serie de composición $\{1\} \trianglelefteq C \trianglelefteq K \trianglelefteq A_4 \trianglelefteq S_4$ con factores $Fact(S_4) = \{C_2,C_3,C_2,C_2\}$ y por tanto $S_4$ es un grupo soluble.
+\end{ejemplo}
+
+\begin{nprop}[Relación de la solubilidad con cocientes y subgrupos]
+Sea $G$ un grupo:
+
+1. Si $G$ es soluble y $H \le G \implies H$ es soluble.\\
+2. Si $G$ es soluble y $N \trianglelefteq G \implies G/N$ es soluble.\\
+3. Si $N \trianglelefteq G$ tal que $N$ y $G/N$ son solubles $\implies$ G es soluble.
+\end{nprop}
+\begin{proof}
+1. Sea $\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$ con $G_i/G_{i-1}$ abeliano. Vamos a ver que $\{1\} = G_0 \cap H \trianglelefteq G_1 \cap H \trianglelefteq ... \trianglelefteq G_n \cap H= G$ hace soluble a $H$.
+
+Considerando como espacio ambiente $H_i$ tenemos la normalidad de $G_{i-1} \trianglelefteq G_i$ y podemos aplicar el tercer teorema de isomorfía a $K = G_{i-1}$ y $H = H \cap H_i$ de modo que $\frac{H \cap G_i}{H \cap G_{i-1}} = \frac{H \cap G_i}{H \cap G_{i} \cap G_{i-1}} \cong \frac{(H \cap G_i)G_{i-1}}{G_{i-1}} \le \frac{G_i}{G_{i-1}}$ que es un grupo abeliano. Se concluye ya que los subgrupos de grupos abelianos son abelianos.
+
+2. Como en 1. sea $\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$ con $G_i/G_{i-1}$ abeliano. Entonces claramente (revisar notas) $G_iN \trianglelefteq G_{i+1}N$ y la serie $\{1\} = G_0N/N \trianglelefteq G_1N/N \trianglelefteq ... \trianglelefteq G_nN/N = G/N$ nos dirá que $G/N$ es abeliano.
+
+En efecto, $\frac{G_iN/N}{G_{i-1}N/N} \cong \frac{G_iN}{G_{i-1}N} \cong \frac{G_i}{G_i \cap G_{i-1}N} \cong \frac{G_i/G_{i-1}}{\frac{G_i \cap G_{i-1}N}{G_{i-1}}}$. Donde en la primera igualdad se utiliza el segundo teorema de isomorfismo gracias a la normalidad de $N$ en $G$ y en la segunda igualdad se utiliza el tercer teorema de isomorfismo con $H = G_{i}$ y $K = G_{i-1}N$ y en la última igualdad se vuelve a usar el segundo teorema de isomorfismo con la normalidad de $G_{i-1}$ en $G_i$. Por ser el numerador abeliano se deduce que los cocientes de la nueva serie son abelianos y hemos acabado.
+
+3. De la solubilidad de $N$ deducimos que existe una serie $\{1\} = N_0 \trianglelefteq N_1 \trianglelefteq ... \trianglelefteq N_r = N$ con $N_i/N_{i-1}$ abeliano. Como $G/N$ es soluble existe otra serie $\{1\} = G_0/N \trianglelefteq G_1/N \trianglelefteq ... \trianglelefteq G_n/N = G/N$ con $(G_i/N)/(G_{i-1}/N) \cong G_i/G_{i-1}$ abeliano.
+
+Por tanto la serie $\{1\} = N_0 \trianglelefteq N_1 \trianglelefteq ... \trianglelefteq N_r = N = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$ hace al grupo $G$ soluble.
+\end{proof}
+
+\begin{ncor}[Solubilidad de los grupos diédricos]
+$D_n$ es un grupo soluble $\forall n \ge 3$.
+\end{ncor}
+\begin{proof}
+Consideremos $N = <r>$. Como $[D_n:N] = 2$ sabemos que $N \trianglelefteq D_n$. Como $N$ es abeliano, es soluble y como $|D_n/N| = 2$ entonces $D_n/N \cong C_2$ que es un grupo abeliano y por tanto es soluble. Finalmente, aplicando 3. se llega a que $D_n$ es soluble.
+\end{proof}
+
+\begin{nth}[Teorema de Abel]
+$A_n$ es un grupo simple $\forall n \ge 5$.
+\end{nth}
+
+\begin{ncor}[Solubilidad de los grupos de permutaciones]
+$S_n$ es soluble $\iff n \le 4$.
+\end{ncor}
+\begin{proof}
+En efecto, si $n \le 4$ por el ejemplo anterior anterior sabemos que $S_n$ es soluble. Ahora, si $n > 4$ sabemos que $A_n$ es simple por el teorema de Abel y por tanto la serie $\{1\} \trianglelefteq A_n \trianglelefteq S_n$ es una serie de composición ya que sus factores son $\{C_2,A_n\}$ que son simples y ya que $A_n$ no es cíclico ni de orden primo por la caracterización por factores de un grupo finito soluble se tiene que $S_n$ no es soluble.
+\end{proof}
+
+\begin{ndef}[Subgrupo conmutador]
+Dado un grupo $G$ y $x,y \in G$, su conmutador es $[x,y] := xyx^{-1}y^{-1}$. Es claro que $xy = [x,y]yx$ y es por ello que se llama conmutador. El subgrupo conmutador o primer derivado de $G$ es $$[G:G] := <\{[x,y]:x,y \in G\}>$$
+\end{ndef}
+
+\begin{nprop}[Propiedades del subgrupo conmutador]
+1. $G$ es abeliano $\iff [G,G] = 1$.\\
+2. $[G,G] \trianglelefteq G$.\\
+3. $G/[G,G]$ es abeliano y se le llama el abelianizado del grupo $G$, $G_{ab}$.\\
+4. Si $f:G \rightarrow A$ es un homomorfismo y $A$ es abeliano entonces $[G,G] \le Ker(f)$.\\
+5. Si $N \trianglelefteq G$ entonces $G/N$ es abeliano $\iff [G,G] \le N$. En otras palabras, el conmutador es el subgrupo más pequeño que hace abeliano al cociente.
+\end{nprop}
+\begin{proof}
+1. Es evidente.\\
+2. Basta usar la condición de normalidad $a[x,y]a^{-1} = [axa^{-1},aya^{-1}] \in [G:G]$.\\
+3. $(x[G:G])(y[G:G]) = (xy)[G:G] = (yx[y^{-1}x^{-1}])[G:G] = yx[G:G] = (y[G:G])(x[G:G])$.\\
+4. $f([x,y]) = f(x)f(y)f(x)^{-1}f(y)^{-1} = f(x)f(x)^{-1}f(y)f(y)^{-1} = 1$ de donde $[x,y] \in Ker(f)$.\\
+5. $\Leftarrow$ Si $[G:G] \triangleleft N$ entonces $(xN)(yN)=(xy)N=[x,y]yxN=yxN = (yN)(xN)$.\\
+$\Rightarrow$ Si $G/N$ es abeliano entonces $[G:G] \le Ker(p) = N$ donde $p$ es la proyección canónica.
+\end{proof}
+
+\begin{ndef}[Derivado y serie derivada de un grupo]
+Dado un grupo $G$, el n-ésimo derivado de $G$ es por recurrencia:
+
+$G^{0}:= G$\\
+$G^{1}:= [G,G]$\\
+$G^{n+1}:=[G^{n},G^{n}]$ $n \ge 1$\\
+
+En estas condiciones tenemos una serie normal, en general no finita de la forma $$G^{n+1} \trianglelefteq G^{n} \trianglelefteq ... \trianglelefteq G^{1} \trianglelefteq G$$ llamada serie derivada del grupo $G$ cuyos factores son abelianos.
+\end{ndef}
+
+\begin{nth}[Caracterización por derivados de un grupo soluble]
+Sea $G$ un grupo:
+
+$G$ es soluble $\iff \exists n $ tal que $G^{n} = \{1\}$.
+
+En otras palabras, $G$ es soluble si y sólo si la serie derivada es finita.
+\end{nth}
+\begin{proof}
+$\Rightarrow$ Si $G$ es soluble y $\{1\} = G_0 \trianglelefteq G_1 \trianglelefteq ... \trianglelefteq G_n = G$ es una serie tal que $G_i/G_{i-1}$ es abeliano entonces vamos a probar que para todo $k$ se verifica que $G^{k)} \le H_{n-k}$. De donde para $k = n$ se tendría que $G^{n)} \le H_{n-n} = H_0 = \{1\}$ de donde $G^{n)} = \{1\}$.
+
+Para $k = 1$ se verifica que como $G/G_{n-1}$ es abeliano entonces $[G,G]  \le G_{n-1}$. 
+
+Para $k > 1$ tomemos como hipótesis de inducción que $G^{k)} \le G_{n-k}$. Por tanto como $G_{n-k}/G_{n-(k+1)}$ es abeliano entonces $G^{k+1)} \le [G_{n-k},G_{n-k}] \le G_{n-(k+1)}$. Y hemos acabado.
+
+$\Leftarrow$ En efecto, si $\exists n $ tal que $G^{n} = \{1\}$ entonces la serie derivada es finita y sus cocientes son abelianos por la propiedad del abelianizado.
+\end{proof}

@@ -1,0 +1,75 @@
+\subsection{G-conjuntos}
+
+\begin{ndef}[Acción por la izquierda]
+Sea G un grupo y X un conjunto no vacío.
+
+Una acción por la izquierda del grupo G sobre el conjunto X consiste en una aplicación $G \times X \rightarrow X$ tal que $(g,x) \mapsto g_x$ cumpliendo dos condiciones:
+
+1. $1_x = x$ $\forall x \in X$.\\
+2. $(g_1g_2)_x = g_{1_{g_{2_x}}}$ $\forall g_1,g_2 \in X$ y $x \in X$.
+
+A $X$ se llamará G-conjunto y $G$ se llamará dominio de operadores. Al valor $g_x$ se le llama "g actuando sobre x". 
+\end{ndef}
+
+\begin{nprop}[Representación asociada a una acción]
+Dar una acción de $G$ sobre $X$ equivale a dar un homomorfismo $G \rightarrow S(X)$.
+\end{nprop}
+\begin{proof}
+Para cada $g \in G$ definiríamos la aplicación $\phi(g):X \rightarrow X$ tal que $x \mapsto g_x$. A esta aplicación se la conoce como representación asociada a la acción.
+
+Recíprocamente, dado un homomorfismo de grupos $\phi:G \rightarrow S(X)$ la aplicación $G \times X \rightarrow X$ tal que $(g,x) \mapsto g_x:= \phi(g)(x)$ es una acción por la izquierda.
+\end{proof}
+
+\begin{ndef}[Núcleo de una acción, acción fiel]
+Definimos el núcleo de una acción como el núcleo de su homomorfismo representante $\phi$ esto es $Ker(\phi) = \{g \in G: \phi(g) = id_X\} = \{g \in G:g_x = x \; \forall x \in X\}$.
+
+Diremos que una acción es fiel si $Ker(\phi) = \{1\}$.
+\end{ndef}
+
+\begin{ejemplo}
+1. Dados G y X arbitrarios, la acción trivial es $G \times X \rightarrow X$ tal que $g_x = x \; \forall g \in G$ y $\forall x \in X$. La representación asociada es el homomorfismo trivial de $G$ a $S(X)$.\\
+2. La restricción de una acción $\phi:G \times X \rightarrow X$ a un subgrupo $H \le G$ es también una acción $\phi':H \times X \rightarrow X$ dada por la composición de la inclusión $i$ y la acción $\phi$.\\
+3. Sea $G = S_n$ y $X = I_n$ entonces $S(X) = S_n$ y la identidad en $S_n$ define la acción $S_n \times X \rightarrow X$ dada por $(\sigma,i) \mapsto \sigma(i)$. Esta acción es fiel.\\
+4. Sea $G=S_n$ y $X$ cualquiera no vacío. Notamos por $X^n$ al producto cartesiano de X n veces. Se tiene la siguiente acción $G \times X^n \rightarrow X^n$ tal que $(\sigma,(x_1,...,x_n)) \mapsto (x_{\sigma^{-1}(1)},...,x_{\sigma^{-1}(n)})$. Esta acción es fiel.\\
+5. Si $G$ es un grupo cualquiera y tomamos $X=G$. Definimos la acción por traslación de $G$ sobre sí mismo como $G \times G \rightarrow G$ tal que $(g,h) \mapsto g_h:=gh$. Esta acción es fiel.\\
+6. Sea g un grupo finito y tomamos $X=G$. La acción por conjugación de $G$ sobre sí mismo es $G \times G \rightarrow G$ tal que $(g,h) \mapsto ghg^{-1}$ y además su representación asociada es la que a cada elemento le hace corresponder su automorfismo interior. Su núcleo coincide con el centro del grupo, $Z(G)$.\\
+7. Sea $G$ un grupo y $X = Sub(G)$. Consideremos la acción $G \times Sub(G) \rightarrow Sub(G)$ tal que $(g,H) \mapsto gHg^{-1}$. Claramente $Ker(\phi) = \{g \in G:gH = Hg \; \forall Sub(G)\}$. Obsérvese que es una generalización de la acción por conjugación.
+\end{ejemplo}
+
+\begin{nth}[Teorema de Cayley]
+Todo grupo finito es isomorfo a un subgrupo del grupo de permutaciones del mismo orden que el grupo.
+\end{nth}
+\begin{proof}
+Sea $|G|=n$ entonces naturalmente $S(G) \cong S_n$. 
+
+Consideremos la acción por translación sobre $G$, $\phi$. Como $\phi$ es un monomorfismo, su dominio y su imagen son isomorfos, esto es, $\phi(G) \cong G$. Téngase en cuenta también que $\phi(G)$ es un subgrupo de $S(G)$. Por tanto, sabemos que $G$ es isomorfo a un subgrupo de $S(G)$. El primer isomorfismo nos dice que es isomorfo a un subgrupo de $S_n$.
+\end{proof}
+
+\begin{ndef}[Órbitas y acción transitiva]
+Dados $x,y \in X$ diremos que $x \sim y \iff \exists g \in G$ tal que $y = g_x$. 
+
+Se tiene una relación de equivalencia cuya clase de equivalencia es: $$O(x) = \{y \in G:y \sim x\} = \{g_x:x \in G\}$$ En otras palabras la órbita de un elemento es el resultado de aplicar todos los elementos de $G$ a x. 
+
+La acción es transitiva si $\forall x,y \in X.O(x) = O(y)$, esto es, si $\forall x,y \in X. \exists g \in G$ tal que $y = g_x$.
+\end{ndef}
+
+\begin{ndef}[Estabilizador]
+Para cada $x \in X$ el estabilizador de $x$ en $G$ es $Stab_G(x) = \{g \in G:g_x = x\}$. Se verifica que el estabilizador es un subgrupo de $G$.
+\end{ndef}
+
+\begin{nprop}[Relación entre el estabilizador y las órbitas]
+1. Sea $G$ es un grupo finito actuando sobre un conjunto $X$. Entonces para cada $x \in X$, $O(x)$ es finito y además $|O(x)| = [G:Stab_G(x)]$. En particular, $|O(x)|$ $|$ $|G|$.\\
+2. Si $O(x) = O(y)$ entonces los estabilizadores son subgrupos conjugados. Esto es, $\exists g \in G:g Stab_G(x) g^{-1} = Stab_G(y)$.
+\end{nprop}
+
+\begin{ndef}[Elementos fijos por una acción]
+$x \in X$ es fijo por la acción si $g_x = x$ $\forall g \in G$. De forma equivalente se tiene que $O(x) = \{x\}$ o bien que $Stab_G(x) = G$. Al conjunto de elementos fijos por la acción lo denotaremos por $Fix_G(X)$.
+\end{ndef}
+
+\begin{ejemplo}
+1. Consideramos la acción por translación. Claramente la órbita de cualquier elemento h es $$O(h) = G$$ En particular, es una acción transitiva. 
+
+Además $$Stab_G(h) = \{1\}$$ y por tanto $$Fix(G) = \emptyset$$
+
+2. Consideremos la acción por conjugación. Claramente la órbita de cualquier elemento h es $$O(h) = \{ghg^{-1}:g \in G\}$$ a esto lo llamaremos clase de conjugación del elemento h y lo denotaremos por $Cl(h)$. El estabilizador será $$Stab_G(h) = \{g \in G:ghg^{-1}  = h\}$$ a esto se le llama centralizador y lo denotaremos por $C_G(h)$.El nombre de centralizador proviene de la siguiente igualdad: $$Fix(G) = Z(G) = \cap_{h \in G} C_G(h)$$ 
+ \end{ejemplo}

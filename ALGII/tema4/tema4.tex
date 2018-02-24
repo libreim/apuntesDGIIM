@@ -1,0 +1,299 @@
+\subsection{Subgrupos normales}
+
+\begin{ndef}[Subgrupo normal]
+Sea N un subgrupo de un grupo G. 
+
+N es normal en G $\iff \forall a \in G. aN = Na$ 
+
+en cuyo caso escribiremos $N \unlhd G$.
+\end{ndef}
+
+\begin{ejemplo}
+\begin{enumerate}
+\item Todos los subgrupos de un grupo abeliano son normales.
+\item Los subgrupos impropios de un grupo son normales.
+\item $A_3 \trianglelefteq S_3$ pero $<(12)> \ntrianglelefteq S_3$.
+\item El subgrupo de las rotaciones de $D_3$ es normal en $D_3$.
+\end{enumerate}
+\end{ejemplo}
+
+\begin{nprop}[Conjugado de un subgrupo por un elemento]
+Sea H un subgrupo de un grupo G. Para cada $a \in G$ el conjunto $aHa^{-1} = \{axa^{-1}:x \in H\}$ es un subgrupo de G que llamaremos el conjugado de H por el elemento a. 
+\end{nprop}
+\begin{proof}
+Utilizaremos el criterio \ref{proposition:criterio-subgrupo}. En efecto, dados dos elementos de $aHa^{-1}$ sean $ah_1a^{-1}$, $ah_2a^{-1}$ entonces $(ah_1a^{-1})(ah_2a^{-1})^{-1} = ah_1a^{-1}ah_2^{-1}a^{-1} = ah_1h_2^{-1}a^{-1}$ y como $H$ es un subgrupo, se verifica que $h_1h_2^{-1} \in H$ de donde $ah_1h_2^{-1}a^{-1} \in aHa^{-1}$.
+\end{proof}
+
+\begin{nth}[Condición de normalidad]\label{theorem:criterio-normalidad}
+Sea N un subgrupo de un grupo G. 
+
+$N \unlhd G \iff aNa^{-1} = N  \, \forall a \in G \iff aNa^{-1} \le N \, \forall a \in G$ 
+
+esto es, un subgrupo es normal si contiene a todos sus conjugados.
+\end{nth}
+\begin{proof}
+La clave de esta demostración es darse cuenta que la operación "multiplicar por un elemento de un grupo" mantiene cardinalidades ya que la aplicación $f:N \rightarrow aN$ tal que $f(n) = an$ es biyectiva.
+
+$\Rightarrow$ Si $N \unlhd G$ entonces por definición $aN = Na \, \forall a \in G$. Por tanto, $aNa^{-1} = Naa^{-1} = N$. Esto implica que $aNa^{-1} \le N \, \forall a \in G$.
+
+$\Leftarrow$ Supongamos que $aNa^{-1} \le N \, \forall a \in G$. Como $aNa^{-1}$ tiene el mismo cardinal que $N$ y $aNa^{-1} \le N$, se tiene la igualdad es decir que $aNa^{-1} = N \, \forall a \in G$. Asumiendo la igualdad, entonces $aN = aa^{-1}Na = Na$ de donde se deduce la normalidad.
+\end{proof}
+
+\begin{ejemplo}
+1. Si $f:G \rightarrow G'$ es un homomorfismo entonces $Ker(f) \trianglelefteq G$.
+
+En efecto, sea $a \in G$ y $n \in Ker(f)$ entonces $ana^{-1} \in Ker(f)$ ya que $f(ana^{-1}) = f(a)f(n)f(a^{-1}) = f(a)f(a^{-1}) = f(aa^{-1}) = f(1) = 1$.
+
+2. $K = \{1,(12)(34),(13)(24),(14)(23)\} \trianglelefteq S_4$.
+
+Si $\alpha \in S_4$ y $\beta \in K$ entonces por la proposición \ref{proposition:propiedades-ciclos} $\alpha \beta  \alpha^{-1} = \alpha (ij)(kl) \alpha^{-1} =\alpha (ij) \alpha^{-1} \alpha (kl) \alpha^{-1} = (\alpha(i) \alpha(j))(\alpha(k) \alpha(l)) \in K$ ya que se tiene en cuenta que como  $i \neq j \neq k \neq l$ entonces las imágenes también son distintas y que los ciclos disjuntos conmutan.
+\end{ejemplo}
+
+\begin{nprop}[Condición de normalidad para subgrupos finitamente generados]
+Si $N = <x_1,...,x_r>  \le G$ entonces $N \unlhd G \iff ax_ia^{-1} \in N \, \forall a \in G$ con $i = 1,...r$.
+\end{nprop}
+\begin{proof}
+$<X> = \{x_1^{n_1}...x_r^{n_r}:x_i \in X,n_i \in \mathbb{Z},r \ge 1\}$
+
+$\Rightarrow$ Por el criterio \ref{theorem:criterio-normalidad} $aNa^{-1} \le N \, \forall a \in G$ de donde claramente $ax_ia^{-1} \in N \, \forall a \in G$.
+
+$\Leftarrow$ Supongamos que $ax_ia^{-1} \in N \, \forall a \in G$ y veamos que $aNa^{-1} \le N \, \forall a \in G$. Como $N = <x_1,...,x_r>$ podemos tomar un elemento genérico de $N$ sea $x_1^{n_1}...x_r^{n_r}$ y demostrar que el producto $ax_1^{n_1}...x_r^{n_r}a^{-1} \in N$.
+
+Para empezar, si $x_i \in \{x_1,...,x_r\}$ y $n \in \mathbb{Z}$ entonces $ax_i^na^{-1} \in N$ ya que si $n$ es positivo se trata de una simple inducción en $n$ y si $n$ es negativo entonces considero que $ax_i^na^{-1} = a(x_i^{-n})^{-1}a^{-1} = (ax_i^{-n}a^{-1})^{-1}$ y como $ax_i^{-n}a^{-1} \in N$ entonces $(ax_i^{-n}a^{-1})^{-1} \in N$.
+
+Ahora, como $r \ge 1$ podemos aplicar inducción para probar que $ax_1^{n_1}...x_r^{n_r}a^{-1} \in N$ para lo que basta introducir $a$ y $a^{-1}$ entre cada potencia $x_i$.
+\end{proof}
+
+\begin{ejemplo}
+$A_n \trianglelefteq S_n \, \forall n \geq 2$.
+
+Basta utilizar el hecho de que $A_n$ está generado por los ciclos de longitud tres y que $\alpha (ijk) \alpha^{-1} = (\alpha(i)\alpha(j)\alpha(k))$.
+\end{ejemplo}
+
+\begin{nth}[Extensión del teorema de correspondencia entre subgrupos y homomorfismos]
+Sea $f: G_1 \rightarrow G_2$ un homomorfismo.\\
+1. Si $H_2 \trianglelefteq G_2$ entonces $f^{-1}(H_2) \trianglelefteq G_1$. \\
+2. Si $H_1 \trianglelefteq G_1$ y f es epimorfismo entonces $f(H_1) \trianglelefteq G_2$. \\
+Como consecuencia la normalidad de un subgrupo es invariante por epimorfismo.
+\end{nth}
+\begin{proof}
+Usemos el criterio \ref{theorem:criterio-normalidad}. 
+
+1. Sea $g \in G_1$ y $h \in f^{-1}(H_2)$. Veamos que $ghg^{-1} \in f^{-1}(H_2)$. En efecto, como $f(ghg^{-1}) = f(g)f(h)f(g)^{-1} \in H_2$ ya que por hipótesis $f(h) \in G_2$ y $f(g) \in G_2$ y $H_2 \trianglelefteq G_2$.
+
+2. Sea $h=f(h_1) \in f(H_1)$ y $g \in G_2$. Como $f$ es epimorfismo entonces existe $g_1 \in G_1$ tal que $g = f(g_1)$ entonces $ghg^{-1} = f(g_1)f(h_1)f(g_1)^{-1} = f(g_1h_1g_1^{-1}) \in f(H_1)$ ya que $H_1 \trianglelefteq G_1$.
+
+Claramente si $f$ es epimorfismo $f$ preserva hacia adelante y hacia detrás los subgrupos normales.
+\end{proof}
+
+\subsection{Grupo cociente}
+
+\begin{ndef}[Grupo cociente]
+Sea G un grupo y $N \unlhd G$ y consideremos el conjunto de las clases laterales a izquierda $G/N$. Definimos el producto en dicho conjunto como $(aN)(bN) = (ab)N$. Es fácil comprobar que con esta definición $G/N$ tiene estructura de grupo y lo llamaremos grupo cociente de G por N.
+\end{ndef}
+
+\begin{ejemplo}
+1. Si G es abeliano entonces G/N es abeliano para cualquier subgrupo N de G.
+\end{ejemplo}
+
+\begin{ndef}[Proyección canónica]
+La aplicación $p:G \rightarrow G/N$ tal que $p(a) = aN$ es un epimorfismo llamado proyección canónica.
+\end{ndef}
+
+\begin{nprop}[Retículo de subgrupos del grupo cociente]
+Sea G un grupo y $N \unlhd G$ entonces se verifica:
+
+1. Si $H \le G$ y $N \le H$ entonces $N \unlhd H$ y podemos definir el grupo cociente $H/N$ que será un subgrupo de $G/N$.\\
+2. Si $H_1,H_2$ son subgrupos tales que N es normal en $H_1$ y en $H_2$ entonces $\frac{H_1}{N} = \frac{H_2}{N} \iff H_1 = H_2$. \\
+3. Si L es un subgrupo del cociente entonces existe un único H subgrupo de G tal que N es subgrupo de H y $L = H/N$.
+
+En consecuencia $Sub(G/N) = \{\frac{H}{N}:H \in Sub(G)$ y $N \le H\}$
+\end{nprop}
+\begin{proof}
+1. Se aplica la condición de normalidad y se ve claramente que si $N \unlhd G$ entonces necesariamente es normal en todo subgrupo contenido en G. Obsérvese que esto no quiere decir que la normalidad sea transitiva es decir que $H_1 \unlhd H_2 \unlhd H_3$ no quiere decir que $H_1 \unlhd H_3$. Un buen ejemplo de esto se tiene en $D_4$ con $\{1,s\} \unlhd \{1,s,r^2,r^2s\} \unlhd D_4$ pero $\{1,s\} \ntrianglelefteq D_4$.
+
+Veamos ahora que $H/N \le G/N$ usando el criterio de subgrupo. Sean $xN,yN \in H/N$ entonces $(xN)(yN)^{-1} = (xy^{-1})N$ y ya que H es un subgrupo se verifica que $(xy^{-1})N \in H/N$.
+
+2. $\Rightarrow$ Lo hacemos por doble inclusión. En efecto, sea $x \in H_1$ entonces $xN \in H_1/N = H_2/N$ por tanto existe $y \in H_2$ tal que $xN = yN$ luego $xy^{-1} \in N \le    H_2$ luego $x \in H_2$. Análogamente se procede para la otra inclusión.
+
+$\Leftarrow$ Es evidente.
+
+3. ¿Quién puede ser el subgrupo que estamos buscando? Si entendemos el paso al cociente como 'pegar' elementos en uno solo el subgrupo que buscamos es precisamente el que al pegarse da L. La función de pegado es la famosa proyección canónica esto es: $$H:=p^{-1}(L) = \{x \in G : p(x) \in L\} = \{x \in G:xN \in L\}$$ Claramente, $N \le H$ ya que N es el elemento neutro del cociente y la igualdad se deduce por doble inclusión. La unicidad es consecuencia de 2.
+
+Por 3, $Sub(G/N) \subseteq \{\frac{H}{N}:H \in Sub(G)$ y $N \le H\}$ y por 1, se tiene la otra inclusión.
+\end{proof}
+
+\subsection{Teoremas de isomorfismo}
+
+\begin{nprop}[Teorema de factorización de un homomorfismo mediante la proyección canónica]
+Sea $f:G \rightarrow G'$ un homomorfismo de grupos y sea $N \trianglelefteq G$ con $N \le Ker(f)$ entonces existe un único homomorfismo $\bar{f}:G/N \rightarrow G'$ tal que $\bar{f} \circ p = f$. Además:
+
+(1) $\bar{f}$ es epimorfismo $\iff$ f es epimorfismo \\
+(2) $\bar{f}$ es monomorfismo $\iff N = Ker(f)$
+\end{nprop}
+\begin{proof}
+Veamos que $\bar{f}$ está bien definido. Si $aN = a'N \iff a'^{-1}a \in N \Rightarrow_{N \le Ker(f)} f(a'^{-1}a) = f(a'^{-1})f(a) = f(a')^{-1}f(a) = 1 \Rightarrow f(a) = f(a')$. Además claramente $f$ es un homomorfismo de grupos y $\bar{f} \circ p = f$.
+
+Veamos ahora la unicidad. Sea g otro homomorfismo $g:G/N \rightarrow G'$ tal que $g \circ p = f$ entonces $(g \circ p)(a) = g(aN) = f(a)$ y por tanto $g = \bar{f}$.
+
+Veamos (1). $Im(\bar{f}) = \{\bar{f}(aN):aN \in G/N\} = \{f(a):a \in G\} = Im(f)$. \\
+Veamos (2). $Ker(\bar{f}) = \{xN \in G/N :\bar{f}(xN) = f(x) = 1\} =  Ker(f)/N$ y la doble implicación se sigue del hecho de que si $\bar{f}$ es inyectiva entonces $Ker(\bar{f}) = \{1\}$ y por tanto $Ker(f) = N$ y si $Ker(f) = N$ entonces $Ker(\bar{f}) = \{1\}$ de donde $\bar{f}$ es inyectiva.
+\end{proof}
+
+El siguiente teorema nos dice que la única manera de definir un homomorfismo es llevar las clases módulo el núcleo cada una a un cierto valor distinto. 
+
+También se puede entender el teorema como que todo homomorfismo se puede imitar mediante un paso al cociente seguido de un isomorfismo. 
+
+\begin{nth}[Primer teorema de isomorfismo]
+Sea $f:G \rightarrow G'$ un homomorfismo de grupos entonces $G/Ker(f) \cong Img(f)$ mediante el isomorfismo $aKer(f) \mapsto f(a)$.
+\end{nth}
+\begin{proof}
+Apliquemos el teorema de factorización al epimorfismo $f:G \rightarrow Img(f)$ teniendo en cuenta que $N=Ker(f) \trianglelefteq G$ y se obtiene que la aplicación $\bar{f}:G/Ker(f) \rightarrow Img(f)$ tal que $\bar{f}(aKer(f)) = f(a)$ es el único isomorfismo.
+\end{proof}
+
+\begin{ncor}[Fórmula de las dimensiones]
+Sea $f:G \rightarrow G'$ un homomorfismo con $G$ un grupo finito entonces $|G| = |Ker(f)||Im(f)|$.
+\end{ncor}
+\begin{proof}
+Como $G/Ker(f) \cong Img(f)$ entonces $|G/Ker(f)| = \frac{|G|}{|Ker(f)|} = |Img(f)|$.
+\end{proof}
+
+La lectura adecuada del siguiente teorema indica como única condición previa para que se dé el isomorfismo la normalidad del subgrupo que es despejado por el isomorfismo.
+
+\begin{nth}[Segundo teorema de isomorfismo o del doble cociente]
+Sea G un grupo y $N \trianglelefteq G$.\\ Sea $H \in Sub(G)$ tal que $N \le H$. Entonces:\\
+$H/N \trianglelefteq G/N \iff H \trianglelefteq G$ y en tal caso $G/H \cong \frac{G/N}{H/N}$ mediante el isomorfismo $aH \mapsto (aN)H/N$.
+\end{nth}
+\begin{proof}
+$\Rightarrow$ Supongamos que $H/N \trianglelefteq G/N$. Para ver que $H \trianglelefteq G$ vamos a ver que es el núcleo de cierto homomorfismo.
+
+Consideremos las proyecciones canónicas p,q de G en $G/N$ y de $G/N$ en $(G/N)/(H/N)$ respectivamente de modo que la composición es $f=q \circ p:x \mapsto (xN)H/N$ y calculemos el núcleo. $$Ker(f) = \{x \in G:f(x) = H/N\} = \{x \in G:xN \in H/N\}$$ y comprobamos que este último conjunto es igual a H por doble inclusión.
+
+Claramente $H \subseteq Ker(f)$. Veamos la otra inclusión. Si $x \in Ker(f) \Rightarrow xN \in H/N$ es decir, que existe $h \in H$ tal que $xN = hN \Rightarrow h^{-1}x \in N \le H$ luego existe $h' \in H$ tal que $h^{-1}x = h' \Rightarrow x \in H$.
+
+$\Leftarrow$ Supongamos que $H \trianglelefteq G$ y usemos el criterio de normalidad (claramente $H/N \le G/N$). Dado $xN \in G/N$ consideramos $(xN)(hN)(x^{-1}N) = (xhx^{-1})N$ y por la normalidad de H en G se tiene la implicación.
+
+Finalmente, aplicando el primer teorema de isomorfismo se tiene que $G/H = G/Ker(f)  \equiv Img(f) = (G/N)/(H/N)$.
+\end{proof}
+
+La lectura adecuada del siguiente teorema indica como única condición previa para que se dé el isomorfismo la normalidad del subgrupo que divide en solitario en el grupo total.
+
+\begin{nth}[Tercer teorema de isomorfismo]
+Sea G un grupo y $H,K \le Sub(G)$ siendo $K \trianglelefteq G$. Entonces:\\
+1. $HK = KH$ y por tanto $HK \in Sub(G)$ y $K \trianglelefteq HK$.\\
+2. $H \cap K \trianglelefteq H$.\\
+3. $H/H \cap K \cong HK/K$.
+\end{nth}
+\begin{proof}
+1. Sea $x \in HK$ entonces $x = hk$ con $h \in H, k \in K$ y al ser $K \trianglelefteq G$ se tiene la igualdad $hK = Kh$. Por tanto, existirá un $k' \in K$ tal que $x = k'h$ de donde $x \in KH$. La otra inclusión es análoga y se tiene la igualdad $HK = KH$.
+
+Por el teorema \ref{theorem:teorema-producto}, se tiene que $HK \in Sub(G)$ y claramente $K \trianglelefteq HK$. 
+
+2. Demostraremos este apartado mediante el uso de la aplicación $g=p \circ i: H \rightarrow G/K$ tal que $g(x) = xK$. Por tanto, $$Ker(g) = \{h \in H:hK = K\} = \{h \in H: h \in K\} = H \cap K$$ Además, $$Img(g) = \{g(h):h \in H\} = \{hK: h \in H\} = HK/K$$ Obsérvese que como K no está incluído en H no se tiene H/K sino HK/K. Esto es así porque HK es el supremo de H y K y por tanto los contiene a ambos. Dado un h puedo arrancar un k de la K.
+ 
+3. Es consecuencia del primer teorema de isomorfismo.
+\end{proof}
+
+\subsection{Producto directo}
+
+\subsubsection{Producto directo de grupos}
+
+\begin{ndef}[Producto directo de grupos]
+Dados $G_1,...,G_n$ grupos su producto directo es el conjunto: $$G_1 \times ... \times G_n = \{(x_1,...,x_n):x_i \in G_i,1 \le i \le n\}$$ junto con la operación producto componente a componente: $$(g_1,\ldots,g_n)(g_1',\ldots,g_n') = (g_1g_1',\ldots,g_ng_n')$$ Lo denotaremos por $\prod_{k=1}^{n} G_k$.
+\end{ndef}
+
+\begin{ndef}[Proyecciones e inyecciones canónicas]
+La proyección canónica sobre la i-ésima componente es la aplicación $p_i:\prod_{k=1}^{n} G_k \rightarrow G_i$ tal que $p_i((x_1,...,x_n)) = x_i$. Claramente, las proyecciones canónicas son epimorfismos.
+
+La inyección canónica desde la j-ésima componente es la aplicación $u_j:G_j \rightarrow \prod_{k=1}^{n} G_k$ tal que $u_j(x) = (1,...,x,...,1)$ donde la x está situada en el j-ésimo lugar. Claramente, las inyecciones canónicas son monomorfismos.
+\end{ndef}
+
+Obsérvese que si $K_i \le G_i$ entonces $\prod_{i=1}^{n} K_i \le \prod_{i=1}^{n} G_i$.
+
+\begin{ejemplo}[Un subgrupo del producto que no es producto de subgrupos]
+En $\mathbb{Z} \times \mathbb{Z}$, la diagonal $\{(x,x):x \in \mathbb{Z}\}$ es un subgrupo del producto que no es producto de subgrupos.
+\end{ejemplo}
+
+\begin{nprop}[Factores del producto]
+Sean $G_1,...,G_n$ grupos y $G = \prod_{k=1}^{n} G_k$. \\
+1. $G_j \cong Img(u_j)$ e identificando $G_j$ con dicha imagen $G_j \trianglelefteq G$ y $G/G_j \cong \prod_{k=1,k \neq j}^{n} G_k$. \\
+2. $\prod_{k=1,k \neq j}^{n} G_k \cong Ker(p_j)$ e identificando $\prod_{k=1,k \neq j}^{n} G_k$ con $Ker(p_j)$ tendríamos $\prod_{k=1,k \neq j}^{n} G_k \trianglelefteq G$.\\ 
+3. Con las identificaciones dadas en 1., si $x \in G_i$ e $y \in G_j$ con $i \neq j$ entonces $xy = yx$.
+\end{nprop}
+\begin{proof}
+1. Como $u_j$ es un monomorfismo es claro que $Img(u_j) \cong G_j$. Considerando el homomorfismo $\phi:G \rightarrow G_1 \times ... \times G_{j-1} \times G_{j+1} \times ... \times G_n$ tal que $\phi((g_1,...,g_n)) = (g_1,...,g_{j-1},g_{j+1},...,g_n)$ se tendrá que $Ker(\phi) = G_j$ luego $G_j$ es normal en G. Por el primer teorema de isomorfismo $G/G_j = \prod_{k=1,k \neq j}^{n} G_k$.
+
+2. Obsérvese que $Ker(p_j) = \{(g_1,...,g_{j-1},1,g_{j+1},...,g_n):g_j \in G_j \, \forall j \neq i\}$ y la aplicación $\phi:Ker(p_j) \rightarrow \prod_{k=1,k \neq j}^{n} G_k$ tal que $\phi((g_1,...,1,...,g_n)) = (g_1,...,g_n)$.
+
+3. $xy = (1,...,1,g_i,1,...,g_j,...,1) = yx$.
+\end{proof}
+
+En resumen, tenemos que formalmente se identificará $$G_j = \{(1,...,g...,1):g \in G_i\}$$ y $$\prod_{k=1,k \neq j}^{n} G_k = \{(g_1,...,1,...,g_n):g_i \in G_i\}$$
+
+\subsubsection{Producto directo de homomorfismos}
+
+\begin{ndef}
+Sean $f_i:G_i \rightarrow H_i$ homomorfismos de grupos con $i=1,...,n$. El homomorfismo producto es $$\prod f_i:\prod_{i=1}^{n} G_i \rightarrow \prod_{i=1}^{n} H_i$$ tal que $(x_1,...,x_n) \mapsto (f_1(x_1),...,f_n(x_n))$.
+\end{ndef}
+
+Sean $p_i,q_i$ las proyecciones desde los productos $\prod_{i=1}^{n} G_i$ y $\prod_{i=1}^{n} H_i$ y consideremos el siguiente diagrama:
+
+$$
+\begin{matrix}
+\prod_{i=1}^{n} G_i&\stackrel{\prod f_i}{\longrightarrow}&\prod_{i=1}^{n} H_i\\
+\downarrow{p_i}&&\downarrow{q_i}\\
+G_i&\stackrel{f_i}{\longrightarrow}&H_i
+\end{matrix}
+$$
+
+\begin{nprop}[Propiedad universal del homomorfismo producto]
+1. $\prod f_i$ es el único homomorfismo que hace conmutativo al diagrama anterior es decir que se da $q_i(\prod f_i) = f_i p_i$ con $i=1,...,n$.\\
+2. $\prod f_i$ es monomorfismo (respectivamente epimorfismo, isomorfismo) $\iff f_i$ es monomorfismo (respectivamente epimorfismo, isomorfismo) $\forall i=1,...,n$.
+\end{nprop}
+
+Consideremos ahora el monomorfismo $$\phi:Aut(G_1) \times ... \times Aut(G_n) \rightarrow Aut(G_1 \times ... \times G_n)$$ tal que $$(f_1,...,f_n) \mapsto \prod_{i=1}^{n} f_i$$.
+
+\begin{nth}[Caracterización del producto directo]
+Sean $G_1,...,G_n$ grupo finitos.
+
+1. $|\prod_{i=1}^{n} G_i| = \prod_{i=1}^{n} |G_i|$.\\
+2. $ord((x_1,...,x_n)) = mcm(ord(x_1),...,ord(x_n))$.\\
+Supongamos ahora que $mcd(|G_i|,|G_j|) = 1$ $\forall i \neq j$ entonces:\\
+3. Si $G_i$ es un grupo cíclico $\implies \prod_{i=1}^{n} G_i$ es cíclico.\\
+4. Si $L \le \prod_{i=1}^{n} G_i$ entonces existen $K_i \le G_i$ tal que $L = \prod_{i=1}^{n} K_i$.\\
+5. $\prod_{i=1}^{n} Aut(G_i) \cong Aut(\prod_{i=1}^{n} G_i)$ y el isomorfismo es $\phi$.
+\end{nth}
+
+\subsubsection{Producto directo interno}
+
+\begin{ndef}[Producto directo interno]
+Sea $G$ un grupo, $H,K \le G$ y $\lambda:H \times K \rightarrow G$ tal que $\lambda((h,k)) = hk$.
+
+$G$ es producto directo interno de $H$ y $K$ si $\lambda$ es un isomorfismo. Esto permite reconocer $G$ como producto directo (externo) de dos de sus subgrupos.
+\end{ndef}
+
+\begin{nth}[Condiciones de producto directo interno]
+Son equivalentes:\\
+1. $\lambda$ es un isomorfismo.\\
+2. $H,K \trianglelefteq G$, $HK = G$ y $H \cap K = \{1\}$.\\
+3. $hk = kh$ $\forall k \in K$ y $h \in H$, $G = H \lor K$ y $H \cap K = \{1\}$.\\
+4. $hk = kh$ $\forall k \in K$ y $h \in H$ y además para cada $g \in G$ $\exists  ! h \in H, k \in K$ tales que $g = hk$
+\end{nth}
+
+Generalizamos para n subgrupos.
+
+Tomados $H_1,...H_n \le G$ consideramos el homomorfismo $\phi:\prod H_i \rightarrow G$ tal que $(h_1,...,h_n) \mapsto h_1...h_n$.
+
+En cualquiera de las situaciones del siguiente teorema diremos que $G$ es producto directo interno de $H_1$ ... $H_n$.
+
+\begin{nth}[Condiciones de producto directo interno]
+Son equivalentes:
+
+1. $\phi$ es un isomorfismo.\\
+2. $H_i \trianglelefteq G$ $\forall i = 1,...,n$, $\prod_{i=1}^{n} H_i = G$ y $(H_1...H_{i-1}) \cap H_i = \{1\}$ $\forall i = 2,...,n$.\\
+3. $h_i h_j = h_j h_i$ $\forall h_i \in H_i$ $\forall h_j \in H_j$ $\forall i \neq j$, $G = H_1 \lor ... \lor H_n$,$(H_1...H_{i-1})\cap H_i$ $\forall i=2,...,n$.\\
+4. $h_ih_j = h_jh_i$ $\forall h_i \in H_i$ $\forall h_j \in H_j$ $\forall i \neq j$, tal que para cada $g \in G$ $\exists ! h_1 \in H_1,...,h_n \in H_n$ tal que $g = h_1...h_n$.
+\end{nth}
+
+
+

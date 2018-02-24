@@ -1,0 +1,44 @@
+\subsection{Clasificación de los grupos de orden menor o igual que 15}
+
+Los grupos de orden primo $p \in \{2,3,5,7,9,11,13\}$ son isomorfos a $C_p$. 
+
+Los grupos de orden $p^2$ son abelianos luego son isomorfos a $C_{p^2}$ o $C_p \times C_p$. 
+
+En consecuencia los grupos de orden 4,9 también están clasificados. 
+
+\begin{nprop}
+Sea $p$ un primo con $p > 2$ y $G$ un grupo con $|G| = 2p$ entonces $G \cong C_{2p}$ o $G \cong D_p$. 
+\end{nprop}
+
+\subsection{Producto semidirecto de grupos}
+
+\begin{nprop}[Definición del producto semidirecto]
+Sean $H,K$ dos grupos y sea $\theta:K \to Aut(H)$ un homomorfismo de grupos. Sabemos del tema 6 que este homomorfismo representa una acción $K \times H \to H$ definida por $k \star h = \theta(k)(h)$. 
+
+$H \times K$ con el producto definido como $(h_1,k_1)(h_2,k_2) = (h_1(k_1 \star h_2),k_1k_2)$ es un grupo que llamaremos producto semidirecto de $H$ por $K$ relativo a $\theta$ y denotaremos por $H \rtimes_{\theta} K$. 
+\end{nprop}
+
+\begin{nth}[Producto semidirecto interno]
+Sean $H,K \le G$ verificando:
+
+\begin{enumerate}
+\item $H \trianglelefteq G$
+\item $HK = G$
+\item $H \cap K = \{1\}$
+\end{enumerate}
+
+Sea $\theta:K \to Aut(H)$ dada por $\theta(k)(h) = khk^{-1}$ donde la operación producto es la del grupo $G$. Entonces: $$H\rtimes_{\theta}K \cong G$$
+
+En cuyo caso diremos que $G$ es producto semidirecto interno de $H$ y $K$.
+\end{nth}
+
+
+
+
+
+
+
+
+
+
+

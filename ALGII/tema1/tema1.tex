@@ -1,0 +1,56 @@
+\subsection{El anillo de enteros módulo n}
+
+Para cada $n \ge 1$ consideramos $\mathbb{Z}_n$ que es el conjunto obtenido como cociente $\mathbb{Z}/n\mathbb{Z}$. Esto es, mediante la relación de equivalencia: $$x \sim y \iff x,y \in \mathbb{Z}_n \iff x-y \in n\mathbb{Z} \iff n | (x-y)$$
+
+Considerando en $\mathbb{Z}_n$ la estructura de dominio euclídeo tenemos que por algoritmo de Euclides: $$\forall a,b \in \mathbb{Z} \; b \neq 0 \; \exists! q,r \; a = bq+r \; con \; 0 \leq r < |b| $$ y por tanto existen exactamente n clases de equivalencia en $\mathbb{Z}_n$ y una colección de representantes es $\{0,1,...,n-1\}$.
+
+Denotaremos al resto $r$ como $r = res(a,b)$ o $a \equiv r \; mod(b)$ y para poder operar con los representantes adecuados definiremos las operaciones: $$i+j = res(i+j,n)$$ y $$i \cdot j = res(i \cdot j,n)$$.
+
+\begin{nprop}
+$\mathbb{Z}_n$ es un anillo conmutativo cuyo elemento neutro para la suma es la clase cuyo representante es el cero y cuyo elemento neutro para el producto es la clase cuyo representante es el uno. Además:
+
+$\mathbb{Z}_n$ es un cuerpo $\iff n$ es un número primo.
+\end{nprop}
+
+\begin{proof}
+
+Demostraremos sólo la última afirmación. 
+
+$\Rightarrow$ Por reducción al absurdo, si $\mathbb{Z}_n$ es un cuerpo y asumimos que n no es primo entonces n puede factorizarse como $n = r \cdot s$ donde $1 < r,s < n$. Luego en $\mathbb{Z}_n$ se verifica que $0 = r \cdot s$ y por tanto a o b son divisores de cero. Esto es una contradicción ya que un cuerpo es siempre un dominio de integridad y en un dominio de integridad no hay divisores de cero distintos de cero.
+
+$\Leftarrow$ Por otro lado, si n es primo y tomamos $1 \leq r \leq n-1$ se verifica que $mcd(r,n) = 1$ y por el teorema de Bézout $\exists a,b \in \mathbb{Z}_n$ tales que $1 = an + br$ y tomando restos en $\mathbb{Z}_n$ queda que $1 = br$ de donde b es el inverso de r.
+
+\end{proof}
+
+Recordemos que las unidades de un anillo era el conjunto: $$U(A) = \{a \in A : \exists a^{-1} \in A \; tal \; que \; aa^{-1}=1=a^{-1}a\}$$ Las unidades de los anillos de enteros $\mathbb{Z}_n$ son conocidas:
+
+\begin{nprop}[Unidades de los anillos de restos módulo n]
+U($\mathbb{Z}_n$) = $\{r \in \mathbb{Z}_n : r \neq 0 \; y \; mcd(r,n) = 1 \}$
+\end{nprop}
+
+\begin{proof}
+
+Llamemos A = $\{r \in \mathbb{Z}_n : r \neq 0 \; y \; mcd(r,n) = 1 \}$ y probemos la igualdad con U($\mathbb{Z}_n$) por doble inclusión.
+
+Veamos que $A \subseteq U(\mathbb{Z}_n)$. Si $a \in A$ por el teorema de Bézout $\exists r,s \in U(\mathbb{Z}_n)$ tales que $1 = nr+as$ y tomando restos módulo n se verificará que $1 = as$. Luego $a \in U(\mathbb{Z}_n)$.
+
+Veamos que $U(\mathbb{Z}_n) \subseteq A$. Si $u \in U(\mathbb{Z}_n)$ tenemos que en $\mathbb{Z}_n$, $\exists u^{-1}$ tal que $uu^{-1} = 1$ y por tanto, en $\mathbb{Z}$ tendremos que $uu^{-1} = 1 + ny$. Sea $d = mcd(u,n)$ entonces $d$ divide a u y divide a n por lo que debe dividir a 1, y por tanto, debe ser 1.
+
+\end{proof}
+
+\subsection{Función phi de Euler}
+
+\begin{ndef}[Función phi de Euler]
+La función phi de Euler está dada por: $$\phi(n) := |U(\mathbb{Z}_n)|$$
+\end{ndef}
+
+\begin{nprop}[Propiedades de la función phi de Euler]
+1. Si $mcd(m,n) = 1$ entonces $\phi(mn) = \phi(m) \phi(n)$. \\
+2. Si $p \ge 1$ es un número primo entonces $\phi(p^{e}) = p^{e-1}(p-1)$.
+\end{nprop}
+
+\begin{proof}
+Veamos 1. Usamos la propiedad de las unidades del anillo producto que dice que $$U(\mathbb{Z}_m \times \mathbb{Z}_n) = U(\mathbb{Z}_m) \times U(\mathbb{Z}_n)$$ y el teorema chino de los restos que dice que $$mcd(m,n) = 1 \iff \mathbb{Z}_{mn} \cong \mathbb{Z}_m \times \mathbb{Z}_n$$ De este modo, aplicando la primera propiedad se obtiene que $$|U(\mathbb{Z}_m \times \mathbb{Z}_n)| = |U(\mathbb{Z}_m)| \times |U(\mathbb{Z}_n)| = \phi(m) \phi(n)$$ y aplicando la segunda y el hecho de que los isomorfismos mantienen el número de unidades del anillo tendremos que $$\phi(mn) = |U(\mathbb{Z}_{mn})| = |U(\mathbb{Z}_m \times \mathbb{Z}_n)|$$
+
+Veamos 2. Sea $p \ge 1$ un número primo. $$\phi(p^e) = |U(\mathbb{Z}_{p^e})| = |\{r \in U(\mathbb{Z}_{p^e}) : r \neq 0, mcd(r,p^e) = 1\}| = |\mathbb{Z}_{p^e}|-|\{0,p,2p,...,(p-1)p^{e-1}\}| = p^e - p^{e-1} = p^{e-1}(p-1)$$
+\end{proof}

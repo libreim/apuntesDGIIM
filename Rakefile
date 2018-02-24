@@ -4,6 +4,7 @@ require_relative "rake_helpers"
 task :default => [
        :ac,
        :algi,
+       :algii,
        :algo,
        :ami,
        :amii,
@@ -56,6 +57,7 @@ end
 #task :algoritmica=> (pdf_for Filelist["Algorítmica/Algorítmica.org"])
 task :ac => (pdf_for FileList["AC/apuntes.md"])
 task :algi => (pdf_for FileList["ALGI/algi.tex"])
+task :algii => (pdf_for FileList["ALGII/algii.tex"])
 task :algo => (pdf_for FileList["ALGO/apuntes.md"])
 task :ami => (pdf_for FileList["AMI/ami.tex", "AMI/resumen.tex"])
 task :amii => (pdf_for FileList["AMII/amii.tex"])
