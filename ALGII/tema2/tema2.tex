@@ -231,8 +231,8 @@ $Q_2 = \{
 1 := \begin{bmatrix}
     1 & 0  \\
     0 & 1 
--1 := \end{bmatrix},
-\begin{bmatrix}
+\end{bmatrix},
+-1 := \begin{bmatrix}
     -1 & 0  \\
     0 & -1 
 \end{bmatrix},
@@ -285,23 +285,28 @@ Otra forma de presentar el grupo de klein es $K = <x,y : x^2 = y^2 = 1, xy = yx>
 
 Para $n \ge 2$ definimos el n-ésimo grupo alternado $A_n$ como el conjunto de las permutaciones pares de $S_n$. Esto es: $$A_n = Ker(s) = \{\alpha \in S_n : \alpha \, es \, par\} \le S_n$$ Donde s es la aplicación signatura y Ker es el núcleo de dicha aplicación, conceptos que explicaremos pero que demuestran automáticamente que $A_n$ es un grupo. Además, se puede demostrar que el orden de $A_n$ es $\frac{n!}{2}$.
 
-\subsection{Homomorfismos.}
+\subsection{Morfismos.}
 
-\begin{ndef}[Homomorfismos de grupos]
-Sean H y G dos grupos. Definimos un homomorfismo de grupos de G en H como una aplicación $f:G \rightarrow H$ tal que $$f(xy) = f(x)f(y) \; \forall x,y \in G$$
+\begin{ndef}[Morfismos de grupos]
+Sean H y G dos grupos. Definimos un morfismo (u homomorfismo) de grupos de G en H como una aplicación $f:G \rightarrow H$ tal que $$f(xy) = f(x)f(y) \; \forall x,y \in G$$
+$$ f(1) = 1$$
 
-Diremos que f es monomorfismo si es inyectiva, que f es epimorfismo si es sobreyectiva y que es isomorfismo si es biyectiva. Esto último lo denotaremos por $\cong$.
+Diremos que f es monomorfismo si es inyectiva, que f es epimorfismo si es sobreyectiva y que es isomorfismo si es invertible. Esto último lo denotaremos por $\cong$.
 \end{ndef}
 
 \begin{ejemplo}
-La aplicación signatura $s:S_n \rightarrow \mu_2$ es un homomorfismo de grupos.
+La aplicación signatura $s:S_n \rightarrow \mu_2$ es un morfismo de grupos.
 
 En efecto, sean $\alpha,\beta \in S_n$ entonces por el teorema \ref{theorem:paridad-permutacion} podemos escribir $\alpha = \tau_1...\tau_r$ y $\beta = \tau_1'...\tau_s'$ de donde $s(\alpha) = (-1)^r$ y $s(\beta) = (-1)^s$. Pero entonces $\alpha\beta = \tau_1...\tau_r\tau_1'...\tau_s'$ luego $s(\alpha\beta) = (-1)^{r+s}$ de modo que $s(\alpha\beta) = s(\alpha)s(\beta)$.
 \end{ejemplo}
 
 \begin{nprop}
-1. Para todo grupo G, la aplicación identidad $1:G \rightarrow G$ es un homomorfismo de grupos. \\
-2. Si G,H y L son grupos y $f:G \rightarrow H$, $g:H \rightarrow L$ son dos homomorfismos (respectivamente monomorfismos, epimorfismos o isomorfismos) entonces $g \circ f:G \rightarrow L$ es un homomorfismos (respectivamente monomorfismo, epimorfismo o isomorfismo). \\
+Un morfismo es isomorfismo $\iff$ es biyectivo.
+\end{nprop}
+
+\begin{nprop}
+1. Para todo grupo G, la aplicación identidad $1:G \rightarrow G$ es un morfismo de grupos. \\
+2. Si G,H y L son grupos y $f:G \rightarrow H$, $g:H \rightarrow L$ son dos morfismos (respectivamente monomorfismos, epimorfismos o isomorfismos) entonces $g \circ f:G \rightarrow L$ es un morfismos (respectivamente monomorfismo, epimorfismo o isomorfismo). \\
 3. Si $f:G \rightarrow H$ es un isomorfismo entonces $f^{-1}:H \rightarrow G$ es también es un isomorfismo, $f \circ f^{-1} = 1_G$ y  $f^{-1} \circ f = 1_G$.
 \end{nprop}
 
