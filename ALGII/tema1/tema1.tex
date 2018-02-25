@@ -1,7 +1,9 @@
-\subsection{El anillo de enteros módulo n}
+\section{El anillo de enteros módulo n}
 
-Para cada $n \ge 1$ consideramos $\mathbb{Z}_n$ que es el conjunto obtenido como cociente $\mathbb{Z}/n\mathbb{Z}$. Esto es, mediante la relación de equivalencia: $$x \sim y \iff x,y \in \mathbb{Z}_n \iff x-y \in n\mathbb{Z} \iff n | (x-y)$$
-
+Para cada $n \ge 1$ consideramos el conjunto $\mathbb{Z}_n$, obtenido mediante el cociente $\mathbb{Z}\,/\,n\mathbb{Z}$. O lo que es lo mismo, mediante la relación de equivalencia:
+\begin{equation*}
+	x \sim y \iff x,y \in \mathbb{Z}_n \iff x-y \in n\mathbb{Z} \iff n | (x-y)\,.
+\end{equation*}
 Considerando en $\mathbb{Z}_n$ la estructura de dominio euclídeo tenemos que por algoritmo de Euclides: $$\forall a,b \in \mathbb{Z} \; b \neq 0 \; \exists! q,r \; a = bq+r \; con \; 0 \leq r < |b| $$ y por tanto existen exactamente n clases de equivalencia en $\mathbb{Z}_n$ y una colección de representantes es $\{0,1,...,n-1\}$.
 
 Denotaremos al resto $r$ como $r = res(a,b)$ o $a \equiv r \; mod(b)$ y para poder operar con los representantes adecuados definiremos las operaciones: $$i+j = res(i+j,n)$$ y $$i \cdot j = res(i \cdot j,n)$$.
@@ -38,7 +40,7 @@ Veamos que $U(\mathbb{Z}_n) \subseteq A$. Si $u \in U(\mathbb{Z}_n)$ tenemos que
 
 \end{proof}
 
-\subsection{Función phi de Euler}
+\section{Función phi de Euler}
 
 \begin{ndef}[Función phi de Euler]
 La función phi de Euler está dada por: $$\phi(n) := |U(\mathbb{Z}_n)|$$

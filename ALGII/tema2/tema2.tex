@@ -1,124 +1,143 @@
-\subsection{Definición de grupo y primeras propiedades}
+\section{Definición de grupo y primeras propiedades}
 
 \begin{ndef}
-Un grupo consiste de un conjunto G no vacío junto con una operación interna $G \times G \rightarrow G$ que llamaremos producto y tal que a cada pareja $(x,y)$ le asigna el elemento $xy$ y que verifica las siguientes propiedades:
+Un grupo es una estructura algebraica formada por un conjunto $G$ y una operación interna 
+$G \times G \to G$ a la que llamaremos \textit{producto}. Esta operación asigna a cada pareja $(x,y)$ el elemento $xy$ y verifica las siguientes propiedades:
+\begin{enumerate}
+  \item Asociativa: para todo $x,y,z \in G, \ (xy)z = x(yz)\,.$
+  \item Existencia de elemento neutro: existe en $G$ un elemento, que notamos como $1$, de tal forma que  $1x = 1 = x1$ para todo $x \in G$\,.
+  \item Existencia de elemento simétrico: para todo $x \in G$ existe un elemento, que notamos como $x^{-1}$, tal que $x^{-1}x = 1 = xx^{-1}$\,.
+\end{enumerate}
+Se dice que $G$ es un grupo \textit{conmutativo} o \textit{abeliano} si verifica una cuarta propiedad: \begin{enumerate}
+  \item[4.] Para todo $x, y \in G$, $xy = yx$\,.
+\end{enumerate}
 
-1. Asociativa: $\forall x,y,z \in G (xy)z = x(yz)$ \\
-2. Existencia de elemento neutro: $\exists 1 \in G : 1x = 1 = x1 \forall x \in G$ \\
-3. Existencia de elemento simétrico: $\forall x \in G \exists x^{-1} \in G$ tal que $x^{-1}x = 1 = xx^{-1}$ 
-
-Además se dice que G es un grupo conmutativo o abeliano si verifica:
-
-4. $\forall x,y \in G \; xy = yx$
 \end{ndef}
 
 \begin{nprop}
-Sea G un grupo:
+Un grupo $G$ verifica las siguientes propiedades:
+\begin{enumerate}
+  \item El elemento neutro es único.
+  \item Para cada $x \in G$ el inverso es único.
+  \item (Propiedad involutiva). Para cada $x \in G$, $(x^{-1})^{-1} = x$\,.
+  \item Para cualesquiera $a,b \in G$, las ecuaciones $aX = b$\, y \,$Ya = b$ tienen solución única.
+  \item Si $xx = x$ entonces $x=1$.
+  \item Para cada $(x_1,x_2,...,x_n) \in G^{n}$ definimos $\prod_{i=1}^{n} a_i = a_1\hdots a_n$ inductivamente como \begin{equation*}
+    \prod_{i=1}^{1} a_i = a_1 \quad \text{y para } n \geq 1, \quad \prod_{i=1}^{n} a_i = \left(\prod_{i=1}^{n-1} a_i\right)a_n\,.
+  \end{equation*}
+  \item (Propiedad asociativa generalizada). Para cada $1 \leq m < n$ se verifica \begin{equation*}
+    \prod_{1}^{n} a_i = \left(\prod_{1}^{m} a_i\right)\left(\prod_{m+1}^{n} a_i\right)\,.
+  \end{equation*}
+  \item Se cumple la siguiente igualdad \begin{equation*}
+    \left(\prod_{1}^n a_i\right)^{-1} = \prod_{n}^{1} a_i^{-1} = a_n^{-1}...a_1^{-1}\,.
+  \end{equation*}
+  \item Si para $a_1 = a_2 = \hdots = a_n$ definimos \begin{equation*}
+    a^n = \prod_{1}^{n} a_i\,,
+  \end{equation*} se verifica que para cualesquiera $r,s \ge 1$ se tiene $a^ra^s= a^{r+s}$\,.
+  \item Para todo $n \ge 1$ se verifica que $\left(a^n\right)^{-1} = \left(a^{-1}\right)^n$ y podemos definir $a^{-n} = \left(a^n\right)^{-1} = \left(a^{-1}\right)^n$\, y \,$a^0 = 1$\,.
+  \item (Producto de potencias de la misma base y potencia de una potencia). Para cualesquiera $r,s \in \mathbb{Z}$ se verifica $a^ra^s = a^{r+s}$\, y\, $a^{rs} = \left(a^r\right)^s$.
+\end{enumerate}
 
-1. El elemento neutro es único. \\
-2. Para cada $x \in G$ el inverso es único. \\
-3. Para cada $x \in G$, $(x^{-1})^{-1} = x$. (Propiedad involutiva) \\
-4. Para cualesquiera $a,b \in G$, las ecuaciones $aX = b$ y $Ya = b$ tienen solución única. \\
-5. Si $xx = x$ entonces $x=1$. \\
-6. Para cada $(x_1,x_2,...,x_n) \in G^{n}$ definimos $\prod_{i=1}^{n} a_i = a_1...a_n$ inductivamente como $\prod_{i=1}^{1} a_i = a_1$ y para $n \geq 1$ $\prod_{i=1}^{n} a_i = (\prod_{i=1}^{n-1} a_i)a_n$.
-
-Para cada $1 \leq m < n$ se verifica $\prod_{1}^{n} a_i = (\prod_{1}^{m} a_i)(\prod_{m+1}^{n} a_i)$. (Propiedad asociativa generalizada)\\
-7. $(\prod_{1}^n a_i)^{-1} = \prod_{n}^{1} a_i^{-1} = a_n^{-1}...a_1^{-1}$. \\
-8. Si para $a_1 = a_2 = ... = a_n$ definimos $a^n := \prod_{1}^{n} a_i$. Se verifica que $\forall r,s \ge 1$ se tiene $a^ra^s= a^{r+s}$  \\
-9. $\forall n \ge 1$ se verifica $(a^n)^{-1} = (a^{-1})^n$ y podemos definir $a^{-n} := (a^n)^{-1} = (a^{-1})^n$ y $a^0 := 1$. \\
-10. $\forall r,s \in \mathbb{Z}$ se verifica $a^ra^s = a^{r+s}$ y $a^{rs} = (a^r)^s$ (Producto de potencias de la misma base y potencia de una potencia)
 \end{nprop}
-\begin{proof}
-(fácil) \\
-1. Asúmase que $z_1,z_2$ son elementos neutros. Entonces dado un $e \in G$, $z_1 + e = e = z_2 + e = z_2$. De modo que $z_1 = z_2$. \\
-2. Asúmase que $i_1,i_2$ son dos elementos inversos de un $x$. Entonces dado un $e \in G$, $i_1 = i_1 \cdot 1 = i_1 \cdot x \cdot i_2 = 1 \cdot i_2 = i_2$ \\
-3. Se tiene que $(x^{-1})^{-1}$ es el inverso de $x^{-1}$. También $x$ es inverso de $x^{-1}$. Como el inverso es único se tiene que $(x^{-1})^{-1} = x$. \\
-4.
+\begin{proof}\hfill
+\begin{enumerate}
+  \item Asúmase que $z_1,z_2$ son elementos neutros. Entonces dado un $e \in G$, $z_1 + e = e = z_2 + e = z_2$. De modo que $z_1 = z_2$\,.
+  \item Asúmase que $i_1,i_2$ son dos elementos inversos de un $x$. Entonces dado un $e \in G$, $i_1 = i_1 \cdot 1 = i_1 \cdot x \cdot i_2 = 1 \cdot i_2 = i_2$\,.
+  \item Se tiene que $(x^{-1})^{-1}$ es el inverso de $x^{-1}$. También $x$ es inverso de $x^{-1}$. Como el inverso es único se tiene que $(x^{-1})^{-1} = x$\,.
+\end{enumerate}
 \end{proof}
 
 \begin{nprop}[Definición sin conmutación]
-Sea G un conjunto no vacío con una operación interna $G \times G \rightarrow G$ verificando:
-
-1. $\forall x,y,z \in G$ se verifica $(xy)z = x(yz)$. \\
-2. $\exists 1 \in G$ tal que $x1 = x \; \forall x \in G$. \\
-3. $\forall x \in G \; \exists x^{-1}$ tal que $xx^{-1} = 1$. \\
-
-entonces se verifica que para todo $x \in G$:
-
-1. $x1 = x = 1x$ \\
-2. $x^{-1}x = 1 = xx^{-1}$
-
+Sea $G$ un conjunto no vacío con una operación interna $G \times G \to G$ que verifica:
+\begin{enumerate}
+  \item Para cualesquiera $x,y,z \in G$ se verifica $(xy)z = x(yz)$\,.
+  \item Existe el elemento $1 \in G$ tal que $x1 = x \quad \forall x \in G$\,.
+  \item Para todo $x \in G \; \exists x^{-1}$ tal que $xx^{-1} = 1$\,.
+\end{enumerate}
+Con estas condiciones se verifica que para todo $x \in G$,
+\begin{enumerate}
+  \item $x1 = x = 1x$\,,
+  \item $x^{-1}x = 1 = xx^{-1}$\,,
+\end{enumerate}
 de modo que las condiciones anteriores son necesarias y suficientes para que G sea un grupo.
 \end{nprop}
 
-\begin{ndef}[Orden de un grupo. Tabla de Cayley.]
-Si G es un grupo finito, el número de elementos de G lo llamaremos orden de G y lo denotaremos por $|G|$. Además si $G = \{x_1,x_2,...,x_n\}$ podemos representarlo por su tabla de Cayley que aparece en la Tabla 1.
+\begin{ndef}[Orden de un grupo. Tabla de Cayley]
+Si $G$ es un grupo finito, el número de elementos de $G$ lo llamaremos \textit{orden} de G y lo denotaremos por $|G|$. Además si $G = \{x_1,x_2,\hdots,x_n\}$, podemos representarlo por su \textit{tabla de Cayley}:
 
 \begin{table}
 \centering
 \caption{Tabla de Cayley genérica}
-\begin{tabular}{l|llll}
- & \textbf{$x_1$} & \textbf{...} & \textbf{$x_n$} \\
+\begin{tabular}{c|cccc}
+ & \textbf{$x_1$} & \hdots & \textbf{$x_n$} \\
 \hline
-\textbf{$x_1$} & $x_1 x_1$ & ... & $x_1 x_n$\\
-\textbf{...} & ... & ... & ... \\
-\textbf{$x_n$} & $x_n x_1$ & ... & $x_n x_n$\\
+\textbf{$x_1$} & $x_1 x_1$ & \hdots & $x_1 x_n$\\
+\vdots & \vdots & \ddots & \vdots \\
+\textbf{$x_n$} & $x_n x_1$ & \hdots & $x_n x_n$\\
 \end{tabular}
 \end{table}
 \end{ndef}
 
-Algunas propiedades interesantes de esta tabla es que nos dice si el grupo es abeliano si y sólo si la tabla es simétrica y que en cada fila o columna aparece una y solo una vez cada elemento del grupo.
+Esta tabla nos proporciona información útil. Por ejemplo, podemos demotrar que un grupo es abeliano si y solo si su tabla de Cayley es simétrica y que en cada fila o columna aparece una única vez cada elemento del grupo.
 
-\subsection{Ejemplos de grupos}
+\section{Ejemplos de grupos}
 
-\subsubsection{Anillos y unidades de un anillo.}
+\subsection{Anillos y unidades de un anillo.}
 
-Si A es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(U(A),\cdot)$ es un grupo que será abeliano si A es un anillo conmutativo (esto es, si la operación producto es conmutativa). Esto nos da ya numerosos ejemplos:
+Si $A$ es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(\mathcal U(A),\,\cdot)$ es un grupo que será abeliano si dicha operación producto es conmutativa. Esto nos da ya numerosos ejemplos:
 
-$\mathbb{Z}-U(\mathbb{Z})=\{-1,1\}$ \\
-$\mathbb{Q}-\mathbb{Q}^{*}$ \\
-$\mathbb{R}-\mathbb{R}^{*}$ \\
-$\mathbb{C}-\mathbb{C}^{*}$ \\
-$\mathbb{Z}_n-U(\mathbb{Z}_n)$ nótese $|\mathbb{Z}_n| = n,|U(\mathbb{Z}_n)| = \phi(n)$ 
+\begin{itemize}
+  \item $\mathbb{Z}-\mathcal U\left(\mathbb{Z}\right)=\{-1,1\}$\,.
+  \item $\mathbb{Q}-\mathbb{Q}^{*}$\,.
+  \item $\mathbb{R}-\mathbb{R}^{*}$\,.
+  \item $\mathbb{C}-\mathbb{C}^{*}$\,.
+  \item $\mathbb{Z}_n-\mathcal U\left(\mathbb{Z}_n\right)$\,. Nótese que $|\mathbb{Z}_n| = n,|\mathcal U\left(\mathbb{Z}_n\right)| = \phi(n)$\,.
+\end{itemize}
 
-\subsubsection{Grupo de las raíces n-ésimas de la unidad.}
+\subsection{Grupo de las raíces n-ésimas de la unidad.}
 
 Consideramos para $n \ge 2$ el conjunto $\mu_n = \{z \in \mathbb{C}^{*} : z^n = 1\}$ con la operación producto de números complejos. 
 
 Otra forma de representar este grupo y la operación correspondiente de forma explícita es la siguiente:
-$$\mu_n = \{\xi_k = cos(\frac{2k\pi}{n})+isen(\frac{2k\pi}{n}) : 0 \le k < n-1 \}$$
+$$\mu_n = \left\{\xi_k = \cos\left(\frac{2k\pi}{n}\right)+i\sin\left(\frac{2k\pi}{n}\right) : 0 \le k < n-1 \right\}$$
 $$\xi_k \cdot \xi_r = \xi_{res(k+r,n)} \; 0 \le k,r < n$$
 
 de modo que esta es la versión multiplicativa de $(\mathbb{Z}_n,+)$, esto es, son isomorfos.
 
-\subsubsection{Grupo lineal general de orden n.}
+\subsection{Grupo lineal general de orden n.}
 
-Consideramos para $n \ge 2$ el conjunto de las matrices de orden n con coeficientes sobre un cuerpo K, $M_n(K)$. construido sobre él se tiene el grupo lineal general de orden n definido como $Gl_n(K) := U(M_n(K))$. Claramente $Gl_n(K) = \{A \in M_n(K) : |A| \neq 0\}$ y será un grupo con el producto de matrices que en general no es abeliano.
+Consideramos para $n \ge 2$ el conjunto de las matrices de orden n con coeficientes sobre un cuerpo $K$, $\mathcal M_n(K)$. Construido sobre él se tiene el \textit{grupo lineal general} de orden n definido como \begin{equation*}
+  \operatorname{GL}_n(K) := \mathcal U(\mathcal M_n(K)) = \{A \in \mathcal M_n(K) : |A| \neq 0\}\,.
+\end{equation*}Es un grupo con el producto de matrices, que en general no es abeliano.
 
-\subsubsection{Grupos simétricos}
+\subsection{Grupos simétricos}
 
-Sea X un conjunto no vacío. El grupo de permutaciones de X, denotado S(X), es el conjunto de todas las aplicaciones biyectivas de X en X esto es $S(X) = \{f:X \rightarrow X \; : \; f \; es \; biyectiva\}$ donde la operación considerada es la composición de funciones.
+Sea $X$ un conjunto no vacío. El grupo de permutaciones de $X$, denotado $\mathcal S(X)$ es el conjunto de todas las aplicaciones biyectivas de $X$ en $X$, esto es $\mathcal S(X) = \left\{f:X \rightarrow X \, \text{ tal que } \, f \, \text{ es biyectiva}\right\}$, donde la operación considerada es la composición de funciones.
 
-Para $n \ge 2$ definiremos el n-ésimo grupo simétrico o grupo de permutaciones de n elementos como $S_n = S(\{1,...,n\})$. Claramente, $|S_n| = n!$.
+Para $n \ge 2$ definiremos el n-ésimo \textit{grupo simétrico} o \textit{grupo de permutaciones} de n elementos como $\mathcal S_n = \mathcal S(\{1,\hdots,n\})$. Claramente, $|\mathcal S_n| = n!$\,.
 
-Representaremos un elemento $\alpha \in S_n$ como 
-$\alpha = \bigl(\begin{smallmatrix}
-  1 & 2 & \cdots & n \\
-  \alpha(1) & \alpha(2) & \cdots & \alpha(n) 
-\end{smallmatrix}\bigr)$
-y dadas dos permutaciones $\alpha,\beta \in S_n$ su producto es 
-$\alpha \beta = \bigl(\begin{smallmatrix}
-  1 & 2 & \cdots & n \\
-  \alpha(\beta(1)) & \alpha(\beta(2)) & \cdots & \alpha(\beta(n)) 
-\end{smallmatrix}\bigr)$.
+Representaremos un elemento $\alpha \in \mathcal S_n$ como \begin{equation*}
+  \alpha = \begin{pmatrix}
+    1 & 2 & \hdots & n \\
+    \alpha(1) & \alpha(2) & \hdots & \alpha(n) 
+  \end{pmatrix}\,.
+\end{equation*}
+Dadas dos permutaciones $\alpha,\beta \in \mathcal S_n$ su producto es \begin{equation*}
+  \alpha \beta = \begin{pmatrix}
+    1 & 2 & \hdots & n \\
+    \alpha(\beta(1)) & \alpha(\beta(2)) & \hdots & \alpha(\beta(n))
+  \end{pmatrix}\,.
+\end{equation*}
 
-Se verifica que $S_n$ es conmutativo si y sólo si $n=2$.
+Se verifica que $\mathcal S_n$ es conmutativo si y sólo si $n=2$.
 
 \begin{ndef}[Permutaciones disjuntas]
-Se dice que dos permutaciones $\alpha,\beta \in S_n$ son disjuntas si lo que mueve una lo deja fija la otra, esto es, $\alpha(x) \neq x \Rightarrow \beta(x) = x$.
+Se dice que dos permutaciones $\alpha,\beta \in \mathcal S_n$ son \textit{disjuntas} si \textit{lo que mueve una lo deja fija la otra}, esto es, \begin{equation*}
+  \alpha(x) \neq x \Rightarrow \beta(x) = x\,.
+\end{equation*}
 \end{ndef}
 
-\begin{nprop}
+\begin{nprop} 
 Las permutaciones disjuntas conmutan.
 \end{nprop}
 \begin{proof}
@@ -128,13 +147,21 @@ En otro caso, podríamos tener que $\beta(x) \neq x$ en cuyo caso se aplica un r
 \end{proof}
 
 \begin{ndef}[Ciclo]
-Una permutación es un ciclo si existen $x_1,...,x_r$ tales que $\alpha(x_1) = x_2,...,\alpha(x_r) = x_1$ y $\alpha(x) = x \; \forall x \notin \{x_1,...,x_r\}$. Lo denotaremos $\alpha = (x_1 \, x_2 \, ... \, x_r)$ y diremos que tiene longitud r. 
+
+Una permutación $\alpha$ es un \textit{ciclo} si: \begin{enumerate}
+  \item Existen $x_1, \hdots, x_r$ tales que $\alpha(x_1) = x_2, \hdots, \alpha(x_r) = x_1$\,.
+  \item $\alpha(x) = x$ para todo $x \notin \{x_1,\hdots,x_r\}$\,.
+\end{enumerate}
+
+Denotaremos un ciclo como  $\alpha = (x_1 \, x_2 \, \hdots \, x_r)$ y diremos que tiene \textit{longitud} $r$.
 \end{ndef}
 
-Observemos que esta notación no es unívoca y que un ciclo de longitud r tiene r notaciones diferentes. Observemos también que dos ciclos $\alpha = (x_1 \, x_2 \, ... \, x_r)$ y $\beta = (y_1 \, x_2 \, ... \, y_s)$ son disjuntos $\iff \{x_1 \, x_2 \, ... \, x_r \} \cap \{y_1 \, x_2 \, ... \, y_s \} = \emptyset$ lo que motiva el nombre utilizado.
+Observemos que esta notación no es unívoca y que un ciclo de longitud $r$ tiene $r$ notaciones diferentes. Observemos también que dos ciclos \begin{equation*}
+  \alpha = (x_1 \, x_2 \, ... \, x_r) \text{ y } \beta = (y_1 \, y_2 \, ... \, y_s)
+\end{equation*}son disjuntos si y solo si $\{x_1 \, x_2 \, ... \, x_r \} \cap \{y_1 \, x_2 \, ... \, y_s \} = \emptyset$, lo que motiva el nombre utilizado.
 
 \begin{nth}[Descomposición de una permutación en producto de ciclos disjuntos]
-Sea $n \ge 2$. Toda permutación distinta de la identidad en $S_n$ se expresa como producto de ciclos disjuntos de manera única salvo el orden de los ciclos y su primer elemento.
+Toda permutación distinta de la identidad en $\mathcal S_n$ (con $n \ge 2$) se expresa como producto de ciclos disjuntos de manera única, salvo el orden de los ciclos y su primer elemento.
 \end{nth}
 
 \begin{proof}
@@ -159,25 +186,34 @@ Ahora, para $m = 1$ necesariamente se tendrá $m' = 1$ ya que en caso contrario 
 Aplicando la hipótesis de inducción fuerte, si $m > 1$ del hecho de que $\alpha = \alpha_1\alpha_2...\alpha_m = \alpha_1\beta_2...\beta_{m'}$ se deduce $\alpha_2...\alpha_m = \beta_2...\beta_{m'}$. De donde se tendrá que $m = m'$ y $\alpha_i = \beta_i$ con $i=2,...,m$.
 \end{proof}
 
-\begin{nprop}[Propiedades de los ciclos]\label{proposition:propiedades-ciclos}
-Sea $n \ge 2$ y consideremos el grupo $S_n$:
+\begin{ndef}[Trasposición]
+Una \textit{trasposición} es un ciclo de longitud dos.
+\end{ndef}
 
-1. $(x_1 \, x_2 \, ... \, x_r)^{-1} = (x_r \, x_{r-1} \, ... \, x_1)$ (inverso de un ciclo)\\
-2. $(x_1 \, x_2 \, ... \, x_r) = (x_1 \, x_2)(x_2 \, x_3)...(x_{r-1} \, x_r)$ (descomposición en transposiciones)\\
-3. $\forall \alpha \in S_n \; \alpha (x_1 \, x_2 \, ... \, x_r) \alpha^{-1} = (\alpha(x_1) \, \alpha(x_2) \, ... \, \alpha(x_r))$. (conjugado)\\
-4. $(x_1 \, x_2 \, ... \, x_r)^k \neq 1$ si $1 \le k < r$ y $(x_1 \, x_2 \, ... \, x_r)^r = 1$. (el orden de un ciclo coincide con su longitud).
+\begin{nprop}[Propiedades de los ciclos]
+\label{proposition:propiedades-ciclos}
+Sea $n \ge 2$ y consideremos el grupo $\mathcal S_n$:
+
+\begin{enumerate}
+  \item (Inverso de un ciclo). $(x_1 \, x_2 \, \hdots \, x_r)^{-1} = (x_r \, x_{r-1} \, \hdots \, x_1)$\,.
+  \item (Descomposición en trasposiciones) \begin{equation*}
+    (x_1 \, x_2 \, \hdots \, x_r) = (x_1 \, x_2)(x_2 \, x_3) \hdots (x_{r-1} \, x_r)\,.
+  \end{equation*}
+  \item (Conjugado). Para todo $\alpha \in \mathcal S_n\,,$ \begin{equation*}
+    \alpha (x_1 \, x_2 \, ... \, x_r) \alpha^{-1} = \left(\alpha(x_1) \, \alpha(x_2) \, ... \, \alpha(x_r)\right)\,.
+  \end{equation*}
+  \item El orden de un ciclo coincide con su longitud: \begin{equation*}
+    (x_1 \, x_2 \, ... \, x_r)^k \neq 1 \quad \text{si} \quad 1 \le k < r \quad \text{y}\quad (x_1 \, x_2 \, ... \, x_r)^r = 1\,.
+  \end{equation*}
+\end{enumerate}
 \end{nprop}
 
 \begin{proof}
 
 \end{proof}
 
-\begin{ndef}[Transposición]
-Una transposición es un ciclo de longitud dos.
-\end{ndef}
-
-\begin{nth}[Teorema sobre la paridad de una permutación]\label{theorem:paridad-permutacion} 
-Dada una permutación $\alpha \in S_n$ y dos expresiones de $\alpha$ como producto de transposiciones $\alpha = \tau_1...\tau_r$ y $\alpha' = \tau_1'...\tau_s'$. Entonces $r \equiv s \, (mod \, 2)$.
+\begin{nth}[Paridad de una permutación]\label{theorem:paridad-permutacion} 
+Dada una permutación $\alpha \in \mathcal S_n$ y dos expresiones de $\alpha$ como producto de trasposiciones, $\alpha = \tau_1\hdots\tau_r$\, y $\alpha = \tau_1'\hdots\tau_s'$\,. Entonces $r \equiv s \mod 2$\,.
 \end{nth}
 
 \begin{proof}
@@ -199,18 +235,20 @@ Para $\alpha$ arbitrario tenemos que si $\alpha = \tau_1...\tau_r = \tau_1'...\t
 \end{proof}
 
 \begin{ndef}[Signatura de una permutación]
-Diremos que una permutación $\alpha$ es par si se expresa como producto de un número par de transposiciones y diremos que es impar si se expresa como producto de un número impar de transposiciones. La signatura de una permutación será el número $s(\alpha)$ definido como $s(\alpha) = 1$ si $\alpha$ es una permutación par y $s(\alpha) = -1$ si $s(\alpha)$ es una permutación impar.
+Diremos que una permutación $\alpha$ es \textit{par} si se expresa como producto de un número par de trasposiciones y diremos que es \textit{impar} si se expresa como producto de un número impar de trasposiciones. La \textit{signatura} de una permutación será el número $s(\alpha)$ definido como $s(\alpha) = 1$ si $\alpha$ es una permutación par y $s(\alpha) = -1$ si $s(\alpha)$ es una permutación impar.
 \end{ndef}
 
-\subsubsection{Grupos diédricos.}
+\subsection{Grupos diédricos.}
 
-Para $n \ge 3$ definimos el n-ésimo grupo diédrico como el grupo de movimientos del plano real $\mathbb{R}^2$ que dejan fijo el polígono regular de n lados, esto es, $D_n = \{T:\mathbb{R}^2 \rightarrow \mathbb{R}^2 :$ T es isometría  y  $T(P_n) = P_n\}$ donde la operación es la composición de aplicaciones. Se verifica que $|D_n| = 2n$ donde conocemos explícitamente los elementos del grupo:
-
-$R_k$ es el giro centrado en el origen y ángulo $\frac{2k\pi}{n}$ con $0 \le k < n$.
-$S_1,...,S_n$ son las simetrías respecto de los n ejes de simetría de $P_n$, esto es:
+Para $n \ge 3$ definimos el n-ésimo \textit{grupo diédrico} ($D_n$) como el grupo de movimientos del plano real $\mathbb{R}^2$ que dejan fijo el polígono regular de $n$ lados, $P_n$\,. Formalmente, \begin{equation*}
+  D_n = \{T:\mathbb{R}^2 \to \mathbb{R}^2 : T \text{ es isometría y } \,  T(P_n) = P_n\}\,.
+\end{equation*} La operación de este grupo es la composición de aplicaciones. Se verifica que $|D_n| = 2n$ donde conocemos explícitamente los elementos del grupo:
 \begin{itemize}
-\item Si n es impar son las rectas que unen cada vértice con el origen.
-\item Si n es par son las rectas que unen vértices opuestos o los puntos medios de lados opuestos.
+  \item $R_k$ es el giro centrado en el origen y ángulo $\frac{2k\pi}{n}$, con $0 \le k < n$.
+  \item $S_1,...,S_n$ son las simetrías respecto de los n ejes de simetría de $P_n$, esto es: \begin{itemize}
+    \item Si n es impar son las rectas que unen cada vértice con el origen.
+    \item Si n es par son las rectas que unen vértices opuestos o los puntos medios de lados opuestos.
+  \end{itemize}
 \end{itemize}
   
 Este grupo se puede manejar de forma abstracta con las siguientes identidades fundamentales:
@@ -224,7 +262,7 @@ $D_n = <r,s : r^n = 1 = s^2,sr = r^{-1}s>$
 
 este tipo de notación indica a la izquierda los elementos que generan el grupo (en un sentido que precisaremos más tarde) y a la derecha las reglas de operación en el mismo. Notemos que estos grupos no son conmutativos.
 
-\subsubsection{Grupo de los cuaternios.}
+\subsection{Grupo de los cuaternios.}
 
 Consideremos el conjunto 
 $Q_2 = \{
@@ -271,7 +309,7 @@ $(-1)x = x(-1) = -x$ con $x = i,j,k$
 
 el resto de relaciones se deduce a partir de estas. Se puede aplicar la regla del tornillo considerando el eje x como la unidad i (eje que sale hacia nosotros), el eje y como la unidad j (eje horizontal) y el eje z como la unidad k (eje vertical).
 
-\subsubsection{Grupo de Klein.}
+\subsection{Grupo de Klein.}
 
 \begin{ndef}[Producto directo de grupos]
 Dados dos grupos $G_1$ y $G_2$ definimos su producto directo como el grupo $$G_1 \times G_2 = \{(x_1,x_2):x_1 \in G_1,x_2 \in G_2\}$$ con la operación $$(x_1,x_2)(y_1,y_2) = (x_1y_1,x_2y_2)$$
@@ -281,11 +319,11 @@ El grupo de Klein es $\mu_2 \times \mu_2 = \{(1,1),(1,-1),(-1,1),(-1,-1)\}$ junt
 
 Otra forma de presentar el grupo de klein es $K = <x,y : x^2 = y^2 = 1, xy = yx>$.
 
-\subsubsection{Grupo alternado.}
+\subsection{Grupo alternado.}
 
 Para $n \ge 2$ definimos el n-ésimo grupo alternado $A_n$ como el conjunto de las permutaciones pares de $S_n$. Esto es: $$A_n = Ker(s) = \{\alpha \in S_n : \alpha \, es \, par\} \le S_n$$ Donde s es la aplicación signatura y Ker es el núcleo de dicha aplicación, conceptos que explicaremos pero que demuestran automáticamente que $A_n$ es un grupo. Además, se puede demostrar que el orden de $A_n$ es $\frac{n!}{2}$.
 
-\subsection{Morfismos.}
+\section{Morfismos}
 
 \begin{ndef}[Morfismos de grupos]
 Sean H y G dos grupos. Definimos un morfismo (u homomorfismo) de grupos de G en H como una aplicación $f:G \rightarrow H$ tal que $$f(xy) = f(x)f(y) \; \forall x,y \in G$$
