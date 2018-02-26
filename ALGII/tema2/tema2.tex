@@ -71,24 +71,28 @@ de modo que las condiciones anteriores son necesarias y suficientes para que G s
 \end{nprop}
 
 \begin{ndef}[Orden de un grupo]
-Si $G$ es un grupo finito, el número de elementos de $G$ lo llamaremos \textit{orden} de G y lo denotaremos por $|G|$.
+Llamamos \textit{orden} al número de elementos de un grupo finito $G$ y lo notamos como $|G|$.
 \end{ndef}
 
-Si $G = \{x_1,x_2,\hdots,x_n\}$, podemos representarlo por su \textit{tabla de Cayley}:
+\begin{ndef}[Tabla de Cayley]
+  La \textit{tabla de Cayley} de un grupo describe cómo es su operación. Para un grupo cualquiera $G = \{x_1,x_2,\hdots,x_n\}$, es de la forma:
 
-\begin{figure}[H]
-\centering
-%\caption{Tabla de Cayley genérica}
-\begin{tabular}{c|cccc}
- & \textbf{$x_1$} & \hdots & \textbf{$x_n$} \\
-\hline
-\textbf{$x_1$} & $x_1 x_1$ & \hdots & $x_1 x_n$\\
-\vdots & \vdots & \ddots & \vdots \\
-\textbf{$x_n$} & $x_n x_1$ & \hdots & $x_n x_n$\\
-\end{tabular}
-\end{figure}
+  \begin{table}
+  \centering
+  \caption{Tabla de Cayley para un grupo $G$.}
+    \begin{tabular}{c|cccc}
+       & \textbf{$x_1$} & \hdots & \textbf{$x_n$} \\
+      \hline
+      \textbf{$x_1$} & $x_1 x_1$ & \hdots & $x_1 x_n$\\
+      \vdots & \vdots & \ddots & \vdots \\
+      \textbf{$x_n$} & $x_n x_1$ & \hdots & $x_n x_n$\\
+    \end{tabular}
+  \end{table}
+\end{ndef}
 
-Esta tabla nos proporciona información útil. Por ejemplo, podemos demostrar que un grupo es abeliano si y solo si su tabla de Cayley es simétrica y que en cada fila o columna aparece una única vez cada elemento del grupo.
+\begin{ncor}
+  Un grupo es abeliano si y solo si su tabla de Cayley es simétrica y en cada fila o columna aparece una única vez cada elemento del grupo.
+\end{ncor}
 
 \subsection{Ejemplos de grupos}
 
@@ -96,43 +100,43 @@ Esta tabla nos proporciona información útil. Por ejemplo, podemos demostrar qu
 
 Si $A$ es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(U(A),\,\cdot)$ es un grupo que será abeliano si dicha operación producto es conmutativa. Esto nos da ya numerosos ejemplos:
 
-\begin{itemize}
-  \item $\mathbb{Z}$: $U\left(\mathbb{Z}\right)=\{-1,1\}$\,.
-  \item $\mathbb{Q}$: $\mathbb{Q}^{*}$\,.
-  \item $\mathbb{R}$: $\mathbb{R}^{*}$\,.
-  \item $\mathbb{C}$: $\mathbb{C}^{*}$\,.
-  \item $\mathbb{Z}_n$: $U\left(\mathbb{Z}_n\right)$\,. Nótese que $|\mathbb{Z}_n| = n,|U\left(\mathbb{Z}_n\right)| = \phi(n)$\,.
-\end{itemize}
+\begin{itemize*}[label=,itemjoin=\hspace{2em},before=\hspace{\zadlen}]
+  \item $\mathbb{Z}-\mathcal U\left(\mathbb{Z}\right)=\{-1,1\}$\,,
+  \item $\mathbb{Q}-\mathbb{Q}^{*}$\,,
+  \item $\mathbb{R}-\mathbb{R}^{*}$\,,
+  \item $\mathbb{C}-\mathbb{C}^{*}$\,,
+  \item $\mathbb{Z}_n-\mathcal U\left(\mathbb{Z}_n\right)$\,.
+\end{itemize*}\marginnote{Nótese que $|\mathbb{Z}_n| = n,|\mathcal U\left(\mathbb{Z}_n\right)| = \phi(n)$\,.}
 
 \subsubsection{Grupo de las raíces n-ésimas de la unidad.}
 
-Consideramos para $n \ge 2$ el conjunto $\mu_n = \{z \in \mathbb{C}^{*} : z^n = 1\}$ con la operación producto de números complejos. 
+El conjunto $\mu_n = \{z \in \mathbb{C}^{*} : z^n = 1\,,\ n \geq 2\}$, llamado conjunto de las \textit{raíces n-ésimas de la unidad}, unido con la operación producto de los números complejos, forman el grupo de nombre análogo.
 
 Otra forma de representar este grupo y la operación correspondiente de forma explícita es la siguiente:
-$$\mu_n = \left\{\xi_k = \cos\left(\frac{2k\pi}{n}\right)+i\sin\left(\frac{2k\pi}{n}\right) : 0 \le k < n-1 \right\}$$
-$$\xi_k \cdot \xi_r = \xi_{\res(k+r,n)} \; 0 \le k,r < n$$
+$$\mu_n = \left\{\xi_k = \cos\left(\frac{2k\pi}{n}\right)+i\sin\left(\frac{2k\pi}{n}\right),\quad k=0,1,\dots ,n-1\right\}\,,$$
+$$\xi_k \cdot \xi_r = \xi_{res(k+r,n)} \; 0 \le k,r < n\,.$$
 
-de modo que esta es la versión multiplicativa de $(\mathbb{Z}_n,+)$, esto es, son isomorfos.
+Podemos afirmar que esta es la versión multiplicativa de $(\mathbb{Z}_n,+)$, es decir, son isomorfos.
 
 \subsubsection{Grupo lineal general de orden n.}
 
-Consideramos para $n \ge 2$ el conjunto de las matrices de orden n con coeficientes sobre un cuerpo $K$, $\mathcal M_n(K)$. Construido sobre él se tiene el \textit{grupo lineal general} de orden n definido como \begin{equation*}
-  \operatorname{GL}_n(K) := U(\mathcal M_n(K)) = \{A \in \mathcal M_n(K) : |A| \neq 0\}\,.
-\end{equation*}Es un grupo con el producto de matrices, que en general no es abeliano.
+A partir del conjunto de las matrices orden $n \geq 2$ con coeficientes sobre un cuerpo $K$, $\mathcal M_n(K)$, y el producto usual de matrices, podemos obtener el \textit{grupo lineal general} de orden $n$, definido como \begin{equation*}
+  \operatorname{GL}_n(K) := \mathcal U(\mathcal M_n(K)) = \{A \in \mathcal M_n(K) : |A| \neq 0\}\,.
+\end{equation*}
 
 \subsubsection{Grupos simétricos}
 
-Sea $X$ un conjunto no vacío. El grupo de permutaciones de $X$, denotado $\mathcal S(X)$ es el conjunto de todas las aplicaciones biyectivas de $X$ en $X$, esto es $\mathcal S(X) = \left\{f:X \rightarrow X \, \text{ tal que } \, f \, \text{ es biyectiva}\right\}$, donde la operación considerada es la composición de funciones.
+Dado un conjunto no vacío $X$, definimos el \textit{grupo de sus permutaciones} o \textit{grupo simétrico}, $\mathcal S(X)$\,, como el grupo formado por el conjunto de todas las aplicaciones biyectivas de $X$ en $X$ y la operación de composición de funciones.
 
-Para $n \ge 2$ definiremos el n-ésimo \textit{grupo simétrico} o \textit{grupo de permutaciones} de n elementos como $\mathcal S_n = \mathcal S(\{1,\hdots,n\})$. Claramente, $|\mathcal S_n| = n!$\,.
+En particular, el \textit{enésimo} grupo simétrico o grupo de permutaciones de $n$ elementos se define como $\mathcal S_n = \mathcal S\left(\{1,\dots,n\}\right)$. Es trivial comprobar que $|\mathcal S_n| = n!$\,.
 
-Representaremos un elemento $\alpha \in \mathcal S_n$ como \begin{equation*}
+Para representar un elemento $\alpha \in \mathcal S_n$, al que llamaremos \textit{permutación}, utilizaremos la notación \begin{equation*}
   \alpha = \begin{pmatrix}
     1 & 2 & \hdots & n \\
     \alpha(1) & \alpha(2) & \hdots & \alpha(n) 
   \end{pmatrix}\,.
 \end{equation*}
-Dadas dos permutaciones $\alpha,\beta \in \mathcal S_n$ su producto es \begin{equation*}
+El producto de dos permutaciones viene dado por su composición: \begin{equation*}
   \alpha \beta = \begin{pmatrix}
     1 & 2 & \hdots & n \\
     \alpha(\beta(1)) & \alpha(\beta(2)) & \hdots & \alpha(\beta(n))
@@ -142,7 +146,7 @@ Dadas dos permutaciones $\alpha,\beta \in \mathcal S_n$ su producto es \begin{eq
 Se verifica que $\mathcal S_n$ es conmutativo si y sólo si $n=2$.
 
 \begin{ndef}[Permutaciones disjuntas]
-Se dice que dos permutaciones $\alpha,\beta \in \mathcal S_n$ son \textit{disjuntas} si \textit{lo que mueve una lo deja fija la otra}, esto es, \begin{equation*}
+Se dice que dos permutaciones $\alpha,\beta \in \mathcal S_n$ son \textit{disjuntas} si \textit{lo que mueve una lo deja fijo la otra}, esto es, \begin{equation*}
   \alpha(x) \neq x \Rightarrow \beta(x) = x\,.
 \end{equation*}
 \end{ndef}
@@ -159,7 +163,7 @@ En otro caso, podríamos tener que $\beta(x) \neq x$ en cuyo caso se aplica un r
 \begin{ndef}[Ciclo]
 
 Una permutación $\alpha$ es un \textit{ciclo} si: \begin{enumerate}
-  \item Existen $x_1, \hdots, x_r$ tales que $\alpha(x_1) = x_2, \hdots, \alpha(x_r) = x_1$\,.
+  \item Existen $x_1, \dots, x_r$ tales que $\alpha(x_1) = x_2, \hdots, \alpha(x_r) = x_1$\,.
   \item $\alpha(x) = x$ para todo $x \notin \{x_1,\hdots,x_r\}$\,.
 \end{enumerate}
 
@@ -171,7 +175,7 @@ Observemos que esta notación no es unívoca y que un ciclo de longitud $r$ tien
 \end{equation*}son disjuntos si y solo si $\{x_1 \, x_2 \, ... \, x_r \} \cap \{y_1 \, x_2 \, ... \, y_s \} = \emptyset$, lo que motiva el nombre utilizado.
 
 \begin{nth}[Descomposición de una permutación en producto de ciclos disjuntos]
-Toda permutación distinta de la identidad en $\mathcal S_n$ (con $n \ge 2$) se expresa como producto de ciclos disjuntos de manera única, salvo el orden de los ciclos y su primer elemento.
+Toda permutación distinta de la identidad en $\mathcal S_n$ (con $n \ge 2$) puede expresarse como producto de ciclos disjuntos de manera única, salvo el orden de los ciclos y su primer elemento.
 \end{nth}
 
 \begin{proof}
@@ -202,7 +206,7 @@ Una \textit{trasposición} es un ciclo de longitud dos.
 
 \begin{nprop}[Propiedades de los ciclos]
 \label{proposition:propiedades-ciclos}
-Sea $n \ge 2$ y consideremos el grupo $\mathcal S_n$:
+Consideremos el grupo $\mathcal S_n$, con $n \ge 2$\,. Los ciclos sumplen las siguientes propiedades:
 
 \begin{enumerate}
   \item (Inverso de un ciclo). $(x_1 \, x_2 \, \hdots \, x_r)^{-1} = (x_r \, x_{r-1} \, \hdots \, x_1)$\,.
@@ -263,61 +267,62 @@ Para $n \ge 3$ definimos el n-ésimo \textit{grupo diédrico} ($D_n$) como el gr
   
 Este grupo se puede manejar de forma abstracta con las siguientes identidades fundamentales:
 
-$r^n = 1 = s^2$\\
-$sr = r^{-1}s$
+\begin{itemize*}[label=,itemjoin=\hspace{2em},before=\hspace{\zadlen}]
+  \item $r^n = 1 = s^2$\,,
+  \item $sr = r^{-1}s$\,,
+\end{itemize*}\\
+de modo que se suele presentar el grupo $D_n$ en la forma: \begin{equation*}
+  D_n = \langle\, r,s : r^n = 1 = s^2,\,sr = r^{-1}s\,\rangle\,.
 
-de modo que se suele presentar el grupo $D_n$ en la forma:
-
-$D_n = <r,s : r^n = 1 = s^2,sr = r^{-1}s>$
-
-este tipo de notación indica a la izquierda los elementos que generan el grupo (en un sentido que precisaremos más tarde) y a la derecha las reglas de operación en el mismo. Notemos que estos grupos no son conmutativos.
+\end{equation*} Este tipo de notación indica a la izquierda los elementos que generan el grupo (en un sentido que precisaremos más tarde) y a la derecha las reglas de operación en el mismo. Notemos que estos grupos no son conmutativos.
 
 \subsubsection{Grupo de los cuaternios.}
 
-Consideremos el conjunto 
-$Q_2 = \{
-1 := \begin{bmatrix}
-    1 & 0  \\
-    0 & 1 
-\end{bmatrix},
--1 := \begin{bmatrix}
-    -1 & 0  \\
-    0 & -1 
-\end{bmatrix},
-i := \begin{bmatrix}
-    0 & 1  \\
-    -1 & 0 
-\end{bmatrix},
--i := \begin{bmatrix}
-    0 & -1  \\
-    1 & 0 
-\end{bmatrix},
-j := \begin{bmatrix}
-    0 & i  \\
-    i & 0 
-\end{bmatrix},
--j := \begin{bmatrix}
-    0 & -i  \\
-    -i & 0 
-\end{bmatrix},
-k := \begin{bmatrix}
-    i & 0  \\
-    0 & -i 
-\end{bmatrix},
--k := \begin{bmatrix}
-    -i & 0  \\
-    0 & i 
-\end{bmatrix} \}$
-de matrices invertibles de orden dos y con coeficientes complejos y consideremos la operación dada por el producto usual de matrices. Dibujando la tabla de Cayley podemos ver que de hecho no es un grupo abeliano.
+Consideremos el conjunto de matrices invertibles de orden dos y con coeficientes complejos $Q_2 = \{1, -1, i, -i, j, -j, k, -k\}$, donde
+\begin{center}
+  \begin{tabular}{cccc}
+    1 =\begin{bmatrix}
+                1 & 0  \\
+                0 & 1 
+    \end{bmatrix}\,, & -1 = \begin{bmatrix}
+                -1 & 0  \\
+                0 & -1 
+              \end{bmatrix}\,, & i = \begin{bmatrix}
+                0 & 1  \\
+                -1 & 0 
+              \end{bmatrix}\,, & -i = \begin{bmatrix}
+                0 & -1  \\
+                1 & 0 
+              \end{bmatrix}\,,\\[2em]
+    j = \begin{bmatrix}
+                0 & i  \\
+                i & 0 
+              \end{bmatrix}\,, &
+    -j = \begin{bmatrix}
+                0 & -i  \\
+                -i & 0 
+              \end{bmatrix}\,, &
+    k = \begin{bmatrix}
+                i & 0  \\
+                0 & -i
+              \end{bmatrix}\,, &
+    -k = \begin{bmatrix}
+                -i & 0  \\
+                0 & i
+              \end{bmatrix}\,.
+  \end{tabular}
+\end{center}
+Este conjunto, unido a la operación dada por el producto usual de matrices forman el \textit{grupo de los cuaternios}. Dibujando la tabla de Cayley podemos ver que de hecho no es un grupo abeliano.
 
 De nuevo, se puede dar una representación abstracta de este grupo mediante las relaciones:
+\begin{center}
+  \begin{tabular}{ccc}
+    $(-1)^2 = 1$\,, & $i^2 = j^2 = k^2 = -1$\,, & $ij = k$\,,\\
+    \multicolumn{3}{c}{$(-1)\,x = x\,(-1) = -x$, \enspace con $x = i,j,k$}
+  \end{tabular}
+\end{center}
 
-$(-1)^2 = 1$ \\
-$i^2 = j^2 = k^2 = -1$ \\
-$ij = k$ \\
-$(-1)x = x(-1) = -x$ con $x = i,j,k$
-
-el resto de relaciones se deduce a partir de estas. Se puede aplicar la regla del tornillo considerando el eje x como la unidad i (eje que sale hacia nosotros), el eje y como la unidad j (eje horizontal) y el eje z como la unidad k (eje vertical).
+El resto de relaciones se deduce a partir de estas. Se puede aplicar la \textit{regla del tornillo} considerando el eje X como la unidad $i$ (eje que sale hacia nosotros), el eje Y como la unidad $j$ (eje horizontal) y el eje Z como la unidad $k$ (eje vertical).
 
 \subsubsection{Grupo de Klein.}
 
@@ -327,19 +332,25 @@ Dados dos grupos $G_1$ y $G_2$ definimos su producto directo como el grupo $$G_1
 
 El grupo de Klein es $\mu_2 \times \mu_2 = \{(1,1),(1,-1),(-1,1),(-1,-1)\}$ junto con la operación del producto de grupos.
 
-Otra forma de presentar el grupo de klein es $K = <x,y : x^2 = y^2 = 1, xy = yx>$.
+Otra forma de presentar el grupo de Klein es \begin{equation*}
+  K = \langle x, y \,: x^2 = y^2 = 1, \enspace xy = yx \rangle\,.
+\end{equation*}
 
 \subsubsection{Grupo alternado.}
 
-Para $n \ge 2$ definimos el n-ésimo grupo alternado $A_n$ como el conjunto de las permutaciones pares de $S_n$. Esto es: $$A_n = Ker(s) = \{\alpha \in S_n : \alpha \, es \, par\} \le S_n$$ Donde s es la aplicación signatura y Ker es el núcleo de dicha aplicación, conceptos que explicaremos pero que demuestran automáticamente que $A_n$ es un grupo. Además, se puede demostrar que el orden de $A_n$ es $\frac{n!}{2}$.
+Para $n \ge 2$ definimos el n-ésimo grupo alternado $A_n$ como el conjunto de las permutaciones pares de $S_n$. Esto es: $$A_n = Ker(\sigma) = \{\alpha \in S_n : \alpha \, es \, par\} \le S_n$$ Donde $\sigma$ es la aplicación signatura y Ker es el núcleo de dicha aplicación, conceptos que explicaremos pero que demuestran automáticamente que $A_n$ es un grupo. Además, se puede demostrar que el orden de $A_n$ es $\frac{n!}{2}$.
 
 \subsection{Morfismos}
 
-\begin{ndef}[Morfismos de grupos]
-Sean H y G dos grupos. Definimos un morfismo (u homomorfismo) de grupos de G en H como una aplicación $f:G \rightarrow H$ tal que $$f(xy) = f(x)f(y) \; \forall x,y \in G$$
-$$ f(1) = 1$$
+\begin{ndef}[Morfismo de grupos]
+Sean $H$ y $G$ dos grupos. Definimos un \textit{morfismo} (u \textit{homomorfismo}) de grupos de $G$ en $H$ como una aplicación \begin{equation*}
+  f:G \to H
+\end{equation*} que verifica: \begin{enumerate}
+  \item $f(xy) = f(x)\,f(y) \;$ para cualesquiera $x,y \in G$\,.
+  \item $f(1) = 1$\,.
+\end{enumerate}
 
-Diremos que f es monomorfismo si es inyectiva, que f es epimorfismo si es sobreyectiva y que es isomorfismo si es invertible. Esto último lo denotaremos por $\cong$.
+Diremos que f es \textit{monomorfismo} si es inyectiva, que f es \textit{epimorfismo} si es sobreyectiva y que es \textit{isomorfismo} si es invertible. Esto último lo denotaremos por $\cong$\,.
 \end{ndef}
 
 \begin{ejemplo}
@@ -349,13 +360,14 @@ En efecto, sean $\alpha,\beta \in S_n$ entonces por el teorema \ref{theorem:pari
 \end{ejemplo}
 
 \begin{nprop}
-Un morfismo es isomorfismo $\iff$ es biyectivo.
+Un morfismo es isomorfismo si y solo si es biyectivo.
 \end{nprop}
 
-\begin{nprop}
-1. Para todo grupo G, la aplicación identidad $1:G \rightarrow G$ es un morfismo de grupos. \\
-2. Si G,H y L son grupos y $f:G \rightarrow H$, $g:H \rightarrow L$ son dos morfismos (respectivamente monomorfismos, epimorfismos o isomorfismos) entonces $g \circ f:G \rightarrow L$ es un morfismos (respectivamente monomorfismo, epimorfismo o isomorfismo). \\
-3. Si $f:G \rightarrow H$ es un isomorfismo entonces $f^{-1}:H \rightarrow G$ es también es un isomorfismo, $f \circ f^{-1} = 1_G$ y  $f^{-1} \circ f = 1_G$.
+\begin{nprop}\hfill \begin{enumerate}
+  \item Para todo grupo G, la aplicación identidad $1:G \to G$ es un morfismo de grupos.
+  \item Si G, H y L son grupos y\, $f:G \rightarrow H$ \, y\, $g:H \rightarrow L$ son dos morfismos (respectivamente monomorfismos, epimorfismos o isomorfismos) entonces las composición $g \circ f:G \rightarrow L$\, también es un morfismo (respectivamente monomorfismo, epimorfismo o isomorfismo).
+  \item Si \,$f:G \to H$ es un isomorfismo entonces \,$f^{-1}:H \to G$ es también un isomorfismo y $f \circ f^{-1} = 1_G$\, y \,$f^{-1} \circ f = 1_G$.
+\end{enumerate}
 \end{nprop}
 
-Uno de los problemas que trataremos es la clasificación de grupos finitos. La clasificación de grupos abelianos finitos es materia del Álgebra I y se clasificarán los grupos abelianos no finitos hasta el orden quince. El objetivo es dado un tamaño del grupo saber cuántos grupos no isomorfos hay.
+El principal problema a tratar en esta asignatura es la clasificación de grupos finitos. La clasificación de grupos abelianos finitos es materia del Álgebra I. Se clasificarán los grupos abelianos no finitos hasta el orden quince. El objetivo es, dado el tamaño del grupo, saber cuántos grupos no isomorfos hay.
