@@ -1,6 +1,6 @@
 \subsection{Definición de grupo y primeras propiedades}
 
-\begin{ndef}
+\begin{ndef}[Grupo]
 Un grupo es una estructura algebraica formada por un conjunto $G$ y una operación interna 
 $G \times G \to G$ a la que llamaremos \textit{producto}. Esta operación asigna a cada pareja $(x,y)$ el elemento $xy$ y verifica las siguientes propiedades:
 \begin{enumerate}
@@ -14,6 +14,18 @@ Se dice que $G$ es un grupo \textit{conmutativo} o \textit{abeliano} si verifica
 
 \end{ndef}
 
+\begin{nota}[Notación]
+  Para cada $(x_1,x_2,...,x_n) \in G^{n}$ definimos $\prod_{i=1}^{n} a_i = a_1\hdots a_n$ inductivamente como \begin{equation*}
+    \prod_{i=1}^{1} a_i = a_1 \quad \text{y para } n \geq 1, \quad \prod_{i=1}^{n} a_i = \left(\prod_{i=1}^{n-1} a_i\right)a_n\,.
+  \end{equation*}
+\end{nota}
+
+\begin{nota}[Notación]
+  Para $a_1 = a_2 = \hdots = a_n$ definimos \begin{equation*}
+    a^n = \prod_{1}^{n} a_i
+  \end{equation*}
+\end{nota}
+
 \begin{nprop}
 Un grupo $G$ verifica las siguientes propiedades:
 \begin{enumerate}
@@ -22,18 +34,13 @@ Un grupo $G$ verifica las siguientes propiedades:
   \item (Propiedad involutiva). Para cada $x \in G$, $(x^{-1})^{-1} = x$\,.
   \item Para cualesquiera $a,b \in G$, las ecuaciones $aX = b$\, y \,$Ya = b$ tienen solución única.
   \item Si $xx = x$ entonces $x=1$.
-  \item Para cada $(x_1,x_2,...,x_n) \in G^{n}$ definimos $\prod_{i=1}^{n} a_i = a_1\hdots a_n$ inductivamente como \begin{equation*}
-    \prod_{i=1}^{1} a_i = a_1 \quad \text{y para } n \geq 1, \quad \prod_{i=1}^{n} a_i = \left(\prod_{i=1}^{n-1} a_i\right)a_n\,.
-  \end{equation*}
   \item (Propiedad asociativa generalizada). Para cada $1 \leq m < n$ se verifica \begin{equation*}
     \prod_{1}^{n} a_i = \left(\prod_{1}^{m} a_i\right)\left(\prod_{m+1}^{n} a_i\right)\,.
   \end{equation*}
   \item Se cumple la siguiente igualdad \begin{equation*}
-    \left(\prod_{1}^n a_i\right)^{-1} = \prod_{n}^{1} a_i^{-1} = a_n^{-1}...a_1^{-1}\,.
+    \left(\prod_{1}^n a_i\right)^{-1} = \prod_{n}^{1} a_i^{-1} = a_n^{-1}\dots a_1^{-1}\,.
   \end{equation*}
-  \item Si para $a_1 = a_2 = \hdots = a_n$ definimos \begin{equation*}
-    a^n = \prod_{1}^{n} a_i\,,
-  \end{equation*} se verifica que para cualesquiera $r,s \ge 1$ se tiene $a^ra^s= a^{r+s}$\,.
+  \item Se verifica que para cualesquiera $r,s \ge 1$ se tiene $a^ra^s= a^{r+s}$\,.
   \item Para todo $n \ge 1$ se verifica que $\left(a^n\right)^{-1} = \left(a^{-1}\right)^n$ y podemos definir $a^{-n} = \left(a^n\right)^{-1} = \left(a^{-1}\right)^n$\, y \,$a^0 = 1$\,.
   \item (Producto de potencias de la misma base y potencia de una potencia). Para cualesquiera $r,s \in \mathbb{Z}$ se verifica $a^ra^s = a^{r+s}$\, y\, $a^{rs} = \left(a^r\right)^s$.
 \end{enumerate}
@@ -41,8 +48,9 @@ Un grupo $G$ verifica las siguientes propiedades:
 \end{nprop}
 \begin{proof}\hfill
 \begin{enumerate}
-  \item Asúmase que $z_1,z_2$ son elementos neutros. Entonces dado un $e \in G$, $z_1 + e = e = z_2 + e = z_2$. De modo que $z_1 = z_2$\,.
-  \item Asúmase que $i_1,i_2$ son dos elementos inversos de un $x$. Entonces dado un $e \in G$, $i_1 = i_1 \cdot 1 = i_1 \cdot x \cdot i_2 = 1 \cdot i_2 = i_2$\,.
+  \item Asúmase que $z_1,z_2$ son elementos neutros. Entonces dado un $e \in G$, $z_1e = e = z_2e$. De modo que $z_1 = z_2$\,.
+  \item Asúmase que $i_1,i_2$ son dos elementos inversos de un $x$. Entonces dado un $e \in G$,
+    $$i_1 = i_1  1 = i_1  x  i_2 = 1  i_2 = i_2$$\,.
   \item Se tiene que $(x^{-1})^{-1}$ es el inverso de $x^{-1}$. También $x$ es inverso de $x^{-1}$. Como el inverso es único se tiene que $(x^{-1})^{-1} = x$\,.
 \end{enumerate}
 \end{proof}
@@ -102,7 +110,7 @@ Consideramos para $n \ge 2$ el conjunto $\mu_n = \{z \in \mathbb{C}^{*} : z^n = 
 
 Otra forma de representar este grupo y la operación correspondiente de forma explícita es la siguiente:
 $$\mu_n = \left\{\xi_k = \cos\left(\frac{2k\pi}{n}\right)+i\sin\left(\frac{2k\pi}{n}\right) : 0 \le k < n-1 \right\}$$
-$$\xi_k \cdot \xi_r = \xi_{res(k+r,n)} \; 0 \le k,r < n$$
+$$\xi_k \cdot \xi_r = \xi_{\res(k+r,n)} \; 0 \le k,r < n$$
 
 de modo que esta es la versión multiplicativa de $(\mathbb{Z}_n,+)$, esto es, son isomorfos.
 
