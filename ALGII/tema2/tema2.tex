@@ -1,4 +1,4 @@
-\section{Definición de grupo y primeras propiedades}
+\subsection{Definición de grupo y primeras propiedades}
 
 \begin{ndef}
 Un grupo es una estructura algebraica formada por un conjunto $G$ y una operación interna 
@@ -62,12 +62,15 @@ Con estas condiciones se verifica que para todo $x \in G$,
 de modo que las condiciones anteriores son necesarias y suficientes para que G sea un grupo.
 \end{nprop}
 
-\begin{ndef}[Orden de un grupo. Tabla de Cayley]
-Si $G$ es un grupo finito, el número de elementos de $G$ lo llamaremos \textit{orden} de G y lo denotaremos por $|G|$. Además si $G = \{x_1,x_2,\hdots,x_n\}$, podemos representarlo por su \textit{tabla de Cayley}:
+\begin{ndef}[Orden de un grupo]
+Si $G$ es un grupo finito, el número de elementos de $G$ lo llamaremos \textit{orden} de G y lo denotaremos por $|G|$.
+\end{ndef}
 
-\begin{table}
+Si $G = \{x_1,x_2,\hdots,x_n\}$, podemos representarlo por su \textit{tabla de Cayley}:
+
+\begin{figure}[H]
 \centering
-\caption{Tabla de Cayley genérica}
+%\caption{Tabla de Cayley genérica}
 \begin{tabular}{c|cccc}
  & \textbf{$x_1$} & \hdots & \textbf{$x_n$} \\
 \hline
@@ -75,26 +78,25 @@ Si $G$ es un grupo finito, el número de elementos de $G$ lo llamaremos \textit{
 \vdots & \vdots & \ddots & \vdots \\
 \textbf{$x_n$} & $x_n x_1$ & \hdots & $x_n x_n$\\
 \end{tabular}
-\end{table}
-\end{ndef}
+\end{figure}
 
-Esta tabla nos proporciona información útil. Por ejemplo, podemos demotrar que un grupo es abeliano si y solo si su tabla de Cayley es simétrica y que en cada fila o columna aparece una única vez cada elemento del grupo.
+Esta tabla nos proporciona información útil. Por ejemplo, podemos demostrar que un grupo es abeliano si y solo si su tabla de Cayley es simétrica y que en cada fila o columna aparece una única vez cada elemento del grupo.
 
-\section{Ejemplos de grupos}
+\subsection{Ejemplos de grupos}
 
-\subsection{Anillos y unidades de un anillo.}
+\subsubsection{Anillos y unidades de un anillo.}
 
-Si $A$ es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(\mathcal U(A),\,\cdot)$ es un grupo que será abeliano si dicha operación producto es conmutativa. Esto nos da ya numerosos ejemplos:
+Si $A$ es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(U(A),\,\cdot)$ es un grupo que será abeliano si dicha operación producto es conmutativa. Esto nos da ya numerosos ejemplos:
 
 \begin{itemize}
-  \item $\mathbb{Z}-\mathcal U\left(\mathbb{Z}\right)=\{-1,1\}$\,.
-  \item $\mathbb{Q}-\mathbb{Q}^{*}$\,.
-  \item $\mathbb{R}-\mathbb{R}^{*}$\,.
-  \item $\mathbb{C}-\mathbb{C}^{*}$\,.
-  \item $\mathbb{Z}_n-\mathcal U\left(\mathbb{Z}_n\right)$\,. Nótese que $|\mathbb{Z}_n| = n,|\mathcal U\left(\mathbb{Z}_n\right)| = \phi(n)$\,.
+  \item $\mathbb{Z}$: $U\left(\mathbb{Z}\right)=\{-1,1\}$\,.
+  \item $\mathbb{Q}$: $\mathbb{Q}^{*}$\,.
+  \item $\mathbb{R}$: $\mathbb{R}^{*}$\,.
+  \item $\mathbb{C}$: $\mathbb{C}^{*}$\,.
+  \item $\mathbb{Z}_n$: $U\left(\mathbb{Z}_n\right)$\,. Nótese que $|\mathbb{Z}_n| = n,|U\left(\mathbb{Z}_n\right)| = \phi(n)$\,.
 \end{itemize}
 
-\subsection{Grupo de las raíces n-ésimas de la unidad.}
+\subsubsection{Grupo de las raíces n-ésimas de la unidad.}
 
 Consideramos para $n \ge 2$ el conjunto $\mu_n = \{z \in \mathbb{C}^{*} : z^n = 1\}$ con la operación producto de números complejos. 
 
@@ -104,13 +106,13 @@ $$\xi_k \cdot \xi_r = \xi_{res(k+r,n)} \; 0 \le k,r < n$$
 
 de modo que esta es la versión multiplicativa de $(\mathbb{Z}_n,+)$, esto es, son isomorfos.
 
-\subsection{Grupo lineal general de orden n.}
+\subsubsection{Grupo lineal general de orden n.}
 
 Consideramos para $n \ge 2$ el conjunto de las matrices de orden n con coeficientes sobre un cuerpo $K$, $\mathcal M_n(K)$. Construido sobre él se tiene el \textit{grupo lineal general} de orden n definido como \begin{equation*}
-  \operatorname{GL}_n(K) := \mathcal U(\mathcal M_n(K)) = \{A \in \mathcal M_n(K) : |A| \neq 0\}\,.
+  \operatorname{GL}_n(K) := U(\mathcal M_n(K)) = \{A \in \mathcal M_n(K) : |A| \neq 0\}\,.
 \end{equation*}Es un grupo con el producto de matrices, que en general no es abeliano.
 
-\subsection{Grupos simétricos}
+\subsubsection{Grupos simétricos}
 
 Sea $X$ un conjunto no vacío. El grupo de permutaciones de $X$, denotado $\mathcal S(X)$ es el conjunto de todas las aplicaciones biyectivas de $X$ en $X$, esto es $\mathcal S(X) = \left\{f:X \rightarrow X \, \text{ tal que } \, f \, \text{ es biyectiva}\right\}$, donde la operación considerada es la composición de funciones.
 
@@ -238,7 +240,7 @@ Para $\alpha$ arbitrario tenemos que si $\alpha = \tau_1...\tau_r = \tau_1'...\t
 Diremos que una permutación $\alpha$ es \textit{par} si se expresa como producto de un número par de trasposiciones y diremos que es \textit{impar} si se expresa como producto de un número impar de trasposiciones. La \textit{signatura} de una permutación será el número $s(\alpha)$ definido como $s(\alpha) = 1$ si $\alpha$ es una permutación par y $s(\alpha) = -1$ si $s(\alpha)$ es una permutación impar.
 \end{ndef}
 
-\subsection{Grupos diédricos.}
+\subsubsection{Grupos diédricos.}
 
 Para $n \ge 3$ definimos el n-ésimo \textit{grupo diédrico} ($D_n$) como el grupo de movimientos del plano real $\mathbb{R}^2$ que dejan fijo el polígono regular de $n$ lados, $P_n$\,. Formalmente, \begin{equation*}
   D_n = \{T:\mathbb{R}^2 \to \mathbb{R}^2 : T \text{ es isometría y } \,  T(P_n) = P_n\}\,.
@@ -262,7 +264,7 @@ $D_n = <r,s : r^n = 1 = s^2,sr = r^{-1}s>$
 
 este tipo de notación indica a la izquierda los elementos que generan el grupo (en un sentido que precisaremos más tarde) y a la derecha las reglas de operación en el mismo. Notemos que estos grupos no son conmutativos.
 
-\subsection{Grupo de los cuaternios.}
+\subsubsection{Grupo de los cuaternios.}
 
 Consideremos el conjunto 
 $Q_2 = \{
@@ -309,7 +311,7 @@ $(-1)x = x(-1) = -x$ con $x = i,j,k$
 
 el resto de relaciones se deduce a partir de estas. Se puede aplicar la regla del tornillo considerando el eje x como la unidad i (eje que sale hacia nosotros), el eje y como la unidad j (eje horizontal) y el eje z como la unidad k (eje vertical).
 
-\subsection{Grupo de Klein.}
+\subsubsection{Grupo de Klein.}
 
 \begin{ndef}[Producto directo de grupos]
 Dados dos grupos $G_1$ y $G_2$ definimos su producto directo como el grupo $$G_1 \times G_2 = \{(x_1,x_2):x_1 \in G_1,x_2 \in G_2\}$$ con la operación $$(x_1,x_2)(y_1,y_2) = (x_1y_1,x_2y_2)$$
@@ -319,11 +321,11 @@ El grupo de Klein es $\mu_2 \times \mu_2 = \{(1,1),(1,-1),(-1,1),(-1,-1)\}$ junt
 
 Otra forma de presentar el grupo de klein es $K = <x,y : x^2 = y^2 = 1, xy = yx>$.
 
-\subsection{Grupo alternado.}
+\subsubsection{Grupo alternado.}
 
 Para $n \ge 2$ definimos el n-ésimo grupo alternado $A_n$ como el conjunto de las permutaciones pares de $S_n$. Esto es: $$A_n = Ker(s) = \{\alpha \in S_n : \alpha \, es \, par\} \le S_n$$ Donde s es la aplicación signatura y Ker es el núcleo de dicha aplicación, conceptos que explicaremos pero que demuestran automáticamente que $A_n$ es un grupo. Además, se puede demostrar que el orden de $A_n$ es $\frac{n!}{2}$.
 
-\section{Morfismos}
+\subsection{Morfismos}
 
 \begin{ndef}[Morfismos de grupos]
 Sean H y G dos grupos. Definimos un morfismo (u homomorfismo) de grupos de G en H como una aplicación $f:G \rightarrow H$ tal que $$f(xy) = f(x)f(y) \; \forall x,y \in G$$
