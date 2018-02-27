@@ -38,8 +38,12 @@
     text-shadow: none;
 }
 
+.btn:hover:link {
+    background-color: #111;
+}
+
 .btn:link {
-    background: none !important;
+    background: transparent;
 }
 
 .sidenote, .marginnote {
@@ -142,6 +146,11 @@
 
 .subject-link-disabled {
     text-align: center;
+}
+
+.subject-link svg {
+    padding-left: .5em;
+    padding-right: .5em;
 }
 
 @media (max-width: 760px) {
