@@ -1,0 +1,72 @@
+---
+layout: estilo
+---
+
+<h1>Guía de estilo de <i>apuntesDGIIM</i></h1>
+
+<section>
+	<p>Unos apuntes bien escritos son mucho más útiles. Por eso te pedimos que a la hora de escribir apuntes intentes seguir las siguientes reglas, pues te van a ayudar a producir contenido de mejor calidad.</p>
+	<p>Estas reglas no son una ocurrencia, son prácticas recomendadas por el <i>Chicago Manual of Style</i><label for="sn-chicago-manual-of-style" class="margin-toggle sidenote-number"></label></span><input type="checkbox" id="sn-chicago-manual-of-style" class="margin-toggle"/><span class="sidenote">El <a href="http://www.chicagomanualofstyle.org/home.html"><em>Chicago Manual of Style</em></a> es un reputado libro de estilo publicado desde 1906 por la University of Chicago Press.</span> y por el creador de LaTeX, Donald Knuth<label for="sn-mathematical-writing-knuth" class="margin-toggle sidenote-number"></label></span><input type="checkbox" id="sn-mathematical-writing-knuth" class="margin-toggle"/><span class="sidenote">En 1987 el creador de LaTeX, junto a otros profesores, impartió <a href="http://jmlr.csail.mit.edu/reviewing-papers/knuth_mathematical_writing.pdf"><em>un curso</em></a> sobre escritura matemática en la Universidad de Standford.</span>; entre otros.</p>
+	<ol class="rule-list">
+		<li class="rule">Los símbolos de fórmulas distintas deben estar separados por palabras.
+			<p class="example-type">Mal</p>
+			<div class="example">
+				<p>Consideremos \(S_q, q < p\).</p>
+			</div>
+			<p class="example-type">Bien</p>
+			<div class="example">
+				<p>Consideremos \(S_q\), donde \(q < p\).</p>
+			</div>
+		</li>
+		<li class="rule">No empieces una oración con un símbolo.
+				<p class="example-type">Mal</p>
+				<div class="example">
+					<p>\(x^n - a\) tiene \(n\) ceros distintos.</p>
+				</div>
+				<p class="example-type">Bien</p>
+				<div class="example">
+					<p>El polinomio \(x^n - a\) tiene \(n\) ceros distintos.</p>
+				</div>
+		</li>
+		<li class="rule">No utilices los símbolos \(\Rightarrow, \forall, \exists, \in\); reemplázalos por la palabra correspondiente. (Excepto en apuntes de lógica.)
+		</li>
+		<li class="rule">El texto que precede a un teorema, proposición, algoritmo, etc., debe ser una frase completa o acabar con dos puntos.
+			<p class="example-type">Mal</p>
+			<div class="example">
+				<p>Lo que nos lleva al</p>
+				<p><span class="nth-header">Teorema 2. </span>El cuadrado de la hipotenusa de un triángulo rectángulo es igual a la suma de los cuadrados de los otros dos lados.</p>
+			</div>
+			<p class="example-type">Bien</p>
+			<div class="example">
+				<p>El resultado que acabamos de presentar nos permite afirmar lo siguiente:</p>
+				<p><span class="nth-header">Teorema 2. </span>El cuadrado de la hipotenusa de un triángulo rectángulo es igual a la suma de los cuadrados de los otros dos lados.</p>
+			</div>
+		</li>
+		<li class="rule">El enunciado de un teorema debe ser independiente, sin depender de suposiciones hechas en el texto que le precede.
+		</li>
+		<li class="rule">Utiliza la primera persona del plural para escribir todo el texto.
+		</li>
+		<li class="rule">Varía la estructura y las palabras utilizadas para evitar monotonía.
+		</li>
+		<li class="rule">No escribas una ristra de fórmulas. Escribe paso por paso, explicando cómo se obtiene cada resultado.
+		</li>
+		<li class="rule">Intenta explicar los conceptos complicados de forma informal para ayudar a comprenderlos.
+		</li>
+		<li class="rule">Motiva adecuadamente los conceptos o teoremas que vayas a explicar. Explica su utilidad y sus consecuencias.
+		</li>
+		<li class="rule">No utilices la misma notación para dos cosas distintas. Por otro lado, utiliza una notación consistente para aquello que repitas.
+		</li>
+		<li class="rule">Destaca las fórmulas importantes en una línea separada.
+		</li>
+		<li class="rule">Las fórmulas matemáticas también deben cumplir las reglas de puntuación. Termina con puntos y comas según el texto que aparezca a continuación. Es conveniente dejar un pequeño espacio antes con <code>\,</code><label for="mn-punct-spacing" class="margin-toggle">&#8853;</label>
+			<input type="checkbox" id="mn-punct-spacing" class="margin-toggle"/>
+			<span class="marginnote">
+			  El comando <code>\,</code> inserta un espacio equivalente al de <code>\thinspace</code> (.16667em) en modo texto o al de <code>\thinmuskip </code> (3mu) en modo matemáticas.
+			</span>.
+		</li>
+	</ol>
+</section>
+
+
+
+

@@ -1,0 +1,26 @@
+.example-type, .example > p {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.example {
+    margin-left: 1em;
+}
+
+.example p {
+    font-size: 90%;
+}
+
+.example-type {
+    font-family: "Alegreya Sans SC";
+    font-weight: 700;
+}
+
+.nth-header {
+    font-family: "Alegreya Sans";
+    font-weight: 700;
+}
+
+.sidenote {
+    margin-bottom: 0.75em;
+}
