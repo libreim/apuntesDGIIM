@@ -2,139 +2,244 @@
 layout: default
 ---
 
-<div class="jumbotron">
-  <h1 class="display-3 font-weight-bold">apuntesDGIIM</h1>
-  <p class="lead">Un proyecto colaborativo llevado a cabo por alumnos del Doble Grado de Ingeniería Informática y Matemáticas de la Universidad de Granada. Tenemos el objetivo de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.</p>
-  <hr class="my-4">
-  <p>Los apuntes se compilan automáticamente cuando se hace <i>push</i> al repositorio. Puedes descargar un archivo comprimido con todos los apuntes o seleccionar los que te interesen más abajo.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="https://dgiimcloud.ml/PDF/apuntes.tar.gz" role="button"><i class="fas fa-file-archive"></i> Descarga todos los apuntes</a>
-    <a class="btn btn-primary btn-lg" href="https://github.com/libreim/apuntesDGIIM" role="button" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-  </p>
-</div>
+<h1><i>apuntesDGIIM</i></h1>
 
-<div class="alert alert-danger" role="alert">
-  Todos los apuntes son susceptibles de contener errores.
-</div>
+<section>
+	<p>Un proyecto colaborativo llevado a cabo por alumnos del Doble Grado de Ingeniería Informática y Matemáticas de la Universidad de Granada. Tenemos el objetivo de elaborar una serie de apuntes propios de las asignaturas a partir de los que se toman en las clases.</p>
 
-<div id="accordion" class="accordion">
-	<div class="card m-b-0">
-		<div class="card-header" role="tab" id="headingOne">
-			<h5 class="mb-0">
-				<a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-					Primer curso
-				</a>
-			</h5>
-		</div>
-		<div id="collapseOne" class="card-block collapse">
-			<h4 class="card-title">Primer cuatrimestre</h4>
-			<div class="list-group">
-				<p class="list-group-item list-group-item-action disabled">Geometría I</p>
-				<p class="list-group-item list-group-item-action disabled">Cálculo I</p>
-				<p class="list-group-item list-group-item-action disabled">Fundamentos Físicos y Tecnológicos</p>
-				<p class="list-group-item list-group-item-action disabled">Lógica y Métodos Discretos</p>
-				<p class="list-group-item list-group-item-action disabled">Fundamentos de Software</p>
-				<p class="list-group-item list-group-item-action disabled">Fundamentos de Programación</p>
-			</div>
+	<p>Puedes consultar la Guía de Estilo <a href="{{ site.baseurl }}/estilo">aquí</a>.</p>
 
-			<br>
+	<hr>
+	<p>Los apuntes se compilan automáticamente cuando se hace <i>push</i> al repositorio. Puedes descargar un archivo comprimido con todos los apuntes o seleccionar los que te interesen más abajo.</p>
+	<p><i>Todos los apuntes son susceptibles de contener errores.</i></p>
+	<br>
+	<p class="btn-group">
+		<a class="btn" href="https://dgiimcloud.ml/PDF/apuntes.tar.gz" role="button"><i class="fas fa-file-archive"></i> Descarga todos los apuntes</a>
+		<a class="btn" href="https://github.com/libreim/apuntesDGIIM" role="button" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+	</p>
+</section>
 
-			<h4 class="card-title">Segundo cuatrimestre</h4>
-			<div class="list-group">
-				<p class="list-group-item list-group-item-action disabled">Geometría II</p>
-				<p class="list-group-item list-group-item-action disabled">Cálculo II</p>
-				<p class="list-group-item list-group-item-action disabled">Métodos Numéricos</p>
-				<p class="list-group-item list-group-item-action disabled">Estadística Descriptiva e Introducción a la Probabilidad</p>
-				<p class="list-group-item list-group-item-action disabled">Tecnología y Organización de Computadores</p>
-				<p class="list-group-item list-group-item-action disabled">Metodología de la Programación</p>
-			</div>
-		</div>
-
-		<div class="card-header" role="tab" id="headingTwo">
-			<h5 class="mb-0">
-				<a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-					Segundo curso
-				</a>
-			</h5>
-		</div>
-		<div id="collapseTwo" class="card-block collapse">
-			<h4 class="card-title">Primer cuatrimestre</h4>
-			<div class="list-group">
-				<a href="https://dgiimcloud.ml/PDF/AMI/ami.pdf" class="list-group-item list-group-item-action">Análisis Matemático I</a>
-				<a href="https://dgiimcloud.ml/PDF/ALGI/algi.pdf" class="list-group-item list-group-item-action">Álgebra I</a>
-				<p class="list-group-item list-group-item-action disabled">Topología I</p>
-				<a href="https://dgiimcloud.ml/PDF/ED/ed.pdf" class="list-group-item list-group-item-action">Estructuras de Datos</a>
-				<a href="https://dgiimcloud.ml/PDF/SO/so.pdf" class="list-group-item list-group-item-action">Sistemas Operativos</a>
-				<a href="https://dgiimcloud.ml/PDF/EC/ec.pdf" class="list-group-item list-group-item-action">Estructura de Computadores</a>
-			</div>
-
-			<br>
-
-			<h4 class="card-title">Segundo cuatrimestre</h4>
-			<div class="list-group">
-				<a href="https://dgiimcloud.ml/PDF/AMII/amii.pdf" class="list-group-item list-group-item-action">Análisis Matemático II</a>
-				<a href="https://dgiimcloud.ml/PDF/GEOIII/geoiii.pdf" class="list-group-item list-group-item-action">Geometría III</a>
-				<a href="https://dgiimcloud.ml/PDF/MMI/mmi.pdf" class="list-group-item list-group-item-action">Modelos Matemáticos I</a>
-				<a href="https://dgiimcloud.ml/PDF/ALGO/algo.pdf" class="list-group-item list-group-item-action">Algorítmica</a>
-				<a href="https://dgiimcloud.ml/PDF/AC/ac.pdf" class="list-group-item list-group-item-action">Arquitectura de Computadores</a>
-				<a href="https://dgiimcloud.ml/PDF/PDOO/pdoo.pdf" class="list-group-item list-group-item-action">Programación y Diseño Orientado a Objetos</a>
-			</div>
-		</div>
-
-		<div class="card-header" role="tab" id="headingThree">
-			<h5 class="mb-0">
-				<a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					Tercer curso
-				</a>
-			</h5>
-		</div>
-
-		<div id="collapseThree" class="card-block collapse">
-			<h4 class="card-title">Primer cuatrimestre</h4>
-			<div class="list-group">
-				<a href="https://dgiimcloud.ml/PDF/EDF/edf.pdf" class="list-group-item list-group-item-action">Ecuaciones Diferenciales I</a>
-				<a href="https://dgiimcloud.ml/PDF/PROB/prob.pdf" class="list-group-item list-group-item-action">Probabilidad</a>
-				<a href="https://dgiimcloud.ml/PDF/FBD/fbd.pdf" class="list-group-item list-group-item-action">Fundamentos de Bases de Datos</a>
-				<a href="https://dgiimcloud.ml/PDF/FR/fr.pdf" class="list-group-item list-group-item-action">Fundamentos de Redes</a>
-				<a href="https://dgiimcloud.ml/PDF/MC/mc.pdf" class="list-group-item list-group-item-action">Modelos de Computación</a>
-				<a href="https://dgiimcloud.ml/PDF/SCD/scd.pdf" class="list-group-item list-group-item-action">Sistemas Concurrentes y Distribuidos</a>
-			</div>
-
-			<br>
-
-			<h4 class="card-title">Segundo cuatrimestre</h4>
-			<div class="list-group">
-				<a href="https://dgiimcloud.ml/PDF/ALGII/algii.pdf" class="list-group-item list-group-item-action">Álgebra II</a>
-				<p class="list-group-item list-group-item-action disabled">Métodos Numéricos II</p>
-				<p class="list-group-item list-group-item-action disabled">Variable Compleja</p>
-				<p class="list-group-item list-group-item-action disabled">Fundamentos de Ingeniería del Software</p>
-				<p class="list-group-item list-group-item-action disabled">Ingeniería de Servidores</p>
-				<p class="list-group-item list-group-item-action disabled">Inteligencia Artificial</p>
-			</div>
-		</div>
-		
-		<div class="card-header" role="tab" id="headingFive">
-			<h5 class="mb-0">
-				<a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-					Quinto curso
-				</a>
-			</h5>
-		</div>
-
-		<div id="collapseFive" class="card-block collapse">
-			<h4 class="card-title">Primer cuatrimestre</h4>
-			<div class="list-group">
-				<a href="https://dgiimcloud.ml/PDF/IES/ies.pdf" class="list-group-item list-group-item-action">Ingeniería, Empresa y Sociedad</a>
-			</div>
-
-			<br>
-
-			<h4 class="card-title">Segundo cuatrimestre</h4>
-			<div class="list-group">
-			</div>
-		</div>
-
-
-		
+<section>
+	<button class="accordion"><span>Primer curso</span></button>
+	<div class="panel">
+		<p><i>Primer cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Cálculo I</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Geometría I</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Fundamentos Físicos y Tecnológicos</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Fundamentos de Programación</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Fundamentos de Software</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Lógica y Métodos Discretos</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+		</table>
+		<br>
+		<p><i>Segundo cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Cálculo II</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Estadística Descriptiva e Introducción a la Probabilidad</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Geometría II</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Métodos Numéricos</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Metodología de la Programación</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Tecnología y Organización de Computadores</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+		</table>
+		<br>
 	</div>
+
+	<button class="accordion">Segundo curso</button>
+	<div class="panel">
+		<p><i>Primer cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Álgebra I</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/ALGI/algi.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Análisis Matemático I</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/AMI/ami.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Topología I</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Estructura de Computadores</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/EC/ec.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Estructuras de Datos</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/ED/ed.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Sistemas Operativos</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/SO/so.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+		</table>
+		<br>
+		<p><i>Segundo cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Análisis Matemático II</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/AMII/amii.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Geometría III</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/GEOIII/geoiii.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Modelos Matemáticos I</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/MMI/mmi.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Algorítmica</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/ALGO/algo.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Arquitectura de Computadores</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/AC/ac.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Programación y Diseño Orientado a Objetos</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/PDOO/pdoo.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+		</table>
+		<br>
+	</div>
+
+	<button class="accordion">Tercer curso</button>
+	<div class="panel">
+		<p><i>Primer cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Ecuaciones Diferenciales I</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/EDF/edf.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Probabilidad</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/PROB/prob.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Fundamentos de Bases de Datos</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/FBD/fbd.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Fundamentos de Redes</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/FR/fr.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Modelos de Computación</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/MC/mc.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Sistemas Concurrentes y Distribuidos</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/SCD/scd.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+		</table>
+		<br>
+
+		<p><i>Segundo cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Álgebra II</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/ALGII/algii.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+			<tr>
+				<td>Métodos Numéricos II</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Variable Compleja I</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Fundamentos de Ingeniería del Software</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Ingeniería de Servidores</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+			<tr>
+				<td>Inteligencia Artificial</td>
+				<td class="no-download" colspan="2"><i>No hay apuntes disponibles</i></td>
+			</tr>
+		</table>
+		<br>
+	</div>
+
+	<button class="accordion">Cuarto curso</button>
+	<div class="panel">
+		<p><i>Primer cuatrimestre</i></p>
+		<br>
+		<p><i>Segundo cuatrimestre</i></p>
+		<br>
+	</div>
+
+	<button class="accordion">Quinto curso</button>
+	<div class="panel">
+		<p><i>Primer cuatrimestre</i></p>
+		<table class="subject-table">
+			<tr>
+				<td>Ingeniería, Empresa y Sociedad</td>
+				<td class="subject-link" colspan="2"><a href="https://dgiimcloud.ml/PDF/IES/ies.pdf"><i class="fas fa-file-pdf"></i></a></td>
+			</tr>
+		</table>
+		<br>
+		<p><i>Segundo cuatrimestre</i></p>
+		<br>
+	</div>
+
+</section>
+	
+
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.maxHeight){
+					panel.style.maxHeight = null;
+				} else {
+					panel.style.maxHeight = panel.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
 </div>

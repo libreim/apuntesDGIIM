@@ -6,15 +6,11 @@
   <body>
     {% include page-header.html %}
 
-    <div class="container">
- 		{{ content }}
-	</div>  
-
+    <article>
+      {{ content }}
+    </article>
+ 		
     {% include page-footer.html %}
-
-
-    <script src="{{ site.url }}/assets/vendor/jquery.min.js"></script>
-    <script src="{{ site.url }}/assets/vendor/bootstrap.bundle.js"></script>
 
   </body>
 </html>
