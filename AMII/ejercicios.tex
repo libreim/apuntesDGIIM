@@ -217,15 +217,15 @@
 \begin{ejer}
   Sea $E= \{ f \in C_b(A,\mathbb{R}) : f(x)>0, \forall x \in \mathcal{A} \}$. Probar que $E$ es abierto en $(C_b(A,\mathbb{R}) , \| \cdot \|_\infty )$ (espacio métrico de las funciones continuas y acotadas de $A \in \mathbb{R}^n}$ en $\mathbb{R}$).
   La norma está definida como $\|f\|_{\infty} = sup \{|f(x)|: x \in A\}$
-  
+
 \end{ejer}
 
 \begin{sol}
-    Tomamos arbitrariamente una función $f \in C_b(A,\mathbb{R})$. Sabemos que $f$ está acotada por ser $f \in C_b(A,\mathbb{R}) \subset ( \mathcal{C} ( \mathcal{A} , \mathbb{R} ) , \| \cdot \|_\infty )$. Por tanto $ \exists \alpha \in \mathbb{R} : \alpha \geq f(x) \forall x \in A$. Como $f(x) > 0 \forall x \in \A$, en particular $\alpha \in \mathbb{R^+}.$ Tenemos por tanto que $\alpha \gep f(x) > 0 \forall x \in A$.
-    Sea ahora $g \in E$ definida como $g(x) = \alpha \forall x \in A$. Tomamos la bola abierta $B(g,\alpha) \in E$. Si probamos que $f \in B(g,\alpha)$ habremos terminado la demostración. $ \|g - f\| = sup \{ |g(x) - f(x)| : x \in A\} = sup \{ |\alpha - f(x)| : x \in A\}$. Como $\alpha \geq f(x)$, $|\alpha - f(x)| \leq |\alpha| = \alpha.$ Nótese que $f(x) > 0$ luego se da la desigualdad estricta, $|\alpha - f(x)| < \alpha$ por lo que $f \in B(g,\alpha) \in E$, concluyendo la demostración.    
+    Tomamos arbitrariamente una función $f \in C_b(A,\mathbb{R})$. Sabemos que $f$ está acotada por ser $f \in C_b(A,\mathbb{R}) \subset ( \mathcal{C} ( \mathcal{A} , \mathbb{R} ) , \| \cdot \|_\infty )$. Por tanto $ \exists \alpha \in \mathbb{R} : \alpha \geq f(x) \forall x \in A$. Como $f(x) > 0 \forall x \in A$, en particular $\alpha \in \mathbb{R^+}.$ Tenemos por tanto que $\alpha \geq f(x) > 0 \forall x \in A$.
+    Sea ahora $g \in E$ definida como $g(x) = \alpha \forall x \in A$. Tomamos la bola abierta $B(g,\alpha) \in E$. Si probamos que $f \in B(g,\alpha)$ habremos terminado la demostración. $ \|g - f\| = sup \{ |g(x) - f(x)| : x \in A\} = sup \{ |\alpha - f(x)| : x \in A\}$. Como $\alpha \geq f(x)$, $|\alpha - f(x)| \leq |\alpha| = \alpha.$ Nótese que $f(x) > 0$ luego se da la desigualdad estricta, $|\alpha - f(x)| < \alpha$ por lo que $f \in B(g,\alpha) \in E$, concluyendo la demostración.
   \end{sol}
-  
-  
+
+
 
 \newpage
 
