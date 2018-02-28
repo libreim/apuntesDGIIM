@@ -94,9 +94,6 @@ td p{margin:0px;}
 </li><li class="li-toc"><a href="#sec9">2.2  Ejemplos de grupos</a>
 <ul class="toc"><li class="li-toc">
 <a href="#sec10">2.2.1  Anillos y unidades de un anillo</a>
-</li><li class="li-toc"><a href="#sec11">2.2.2  Grupo de las raíces n-ésimas de la unidad</a>
-</li><li class="li-toc"><a href="#sec12">2.2.3  Grupo lineal general de orden n</a>
-</li><li class="li-toc"><a href="#sec13">2.2.4  Grupos simétricos</a>
 </li></ul>
 </li></ul>
 </li></ul>
@@ -148,11 +145,11 @@ Asociativa: para todo \(x,y,z \in G, \ (xy)z = x(yz)\,.\)
 Se dice que \(G\) es un grupo <span style="font-style:italic">conmutativo</span> o <span style="font-style:italic">abeliano</span> si verifica una cuarta propiedad: <ol class="enumerate" type=1><li class="li-enumerate">
  Para todo \(x, y \in G\), \(xy = yx\) .
 </li></ol></div><p>[Notación]
-Para cada \((x_1,x_2,...,x_n) \in G^{n}\) definimos \(\prod_{i=1}^{n} a_i = a_1\hdots a_n\) inductivamente como \begin{equation*}
+Para cada \((x_1,x_2,...,x_n) \in G^{n}\) definimos \(\prod_{i=1}^{n} a_i = a_1\dots a_n\) inductivamente como \begin{equation*}
     \prod_{i=1}^{1} a_i = a_1 \quad \text{y para } n \geq 1, \quad \prod_{i=1}^{n} a_i = \left(\prod_{i=1}^{n-1} a_i\right)a_n\,.
   \end{equation*}
 </p><p>[Notación]
-Para \(a_1 = a_2 = \hdots = a_n\) definimos \begin{equation*}
+Para \(a_1 = a_2 = \dots = a_n\) definimos \begin{equation*}
     a^n = \prod_{1}^{n} a_i
   \end{equation*}
 </p><div class="theorem"><span style="font-weight:bold">Proposición 1</span>  
@@ -194,14 +191,14 @@ de modo que las condiciones anteriores son necesarias y suficientes para que G s
 </div><div class="theorem"><span style="font-weight:bold">Definición 2</span> <span style="font-weight:bold">(Orden de un grupo)</span>  
 Llamamos <span style="font-style:italic">orden</span> al número de elementos de un grupo finito \(G\) y lo notamos como \(|G|\).
 </div><div class="theorem"><span style="font-weight:bold">Definición 3</span> <span style="font-weight:bold">(Tabla de Cayley)</span>  
-La <span style="font-style:italic">tabla de Cayley</span> de un grupo describe cómo es su operación. Para un grupo cualquiera \(G = \{x_1,x_2,\hdots,x_n\}\), es de la forma:
+La <span style="font-style:italic">tabla de Cayley</span> de un grupo describe cómo es su operación. Para un grupo cualquiera \(G = \{x_1,x_2,\dots,x_n\}\), es de la forma:
 <blockquote class="table"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
 <div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Table 2.1: Tabla de Cayley para un grupo \(G\).</td></tr>
 </table></div>
-<table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n\) </td></tr>
-<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > \(x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1 x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1 x_n\)</td></tr>
+<table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >…</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n\) </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > \(x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1 x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >…</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_1 x_n\)</td></tr>
 <tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > ⋮</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >⋮</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >⋱</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >⋮</td></tr>
-<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > \(x_n\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n x_n\)</td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > \(x_n\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n x_1\)</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >…</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >\(x_n x_n\)</td></tr>
 </table>
 <div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
 </div><div class="theorem"><span style="font-weight:bold">Corolario 1</span>  
@@ -210,13 +207,15 @@ Un grupo es abeliano si y solo si su tabla de Cayley es simétrica y en cada fil
 <!--TOC section id="sec9" Ejemplos de grupos-->
 <h2 id="sec9" class="section">2.2  Ejemplos de grupos</h2><!--SEC END -->
 <!--TOC subsection id="sec10" Anillos y unidades de un anillo-->
-<h3 id="sec10" class="subsection">2.2.1  Anillos y unidades de un anillo</h3><!--SEC END --><p>Si \(A\) es un anillo entonces \((A,\,+)\) es un grupo abelianoEsta primera noción es trivial, puesto que para definir un anillo necesitamos una operación suma que cumple las mismas propiedades que las requeridas a los grupos.. Por otro lado el grupo \((\mathcal U(A),\,\cdot)\) será abeliano si dicha operación producto (\(\cdot\)) es conmutativa. Esto nos da ya numerosos ejemplos:</p><p>[label=,itemjoin=  ,before=]
+<h3 id="sec10" class="subsection">2.2.1  Anillos y unidades de un anillo</h3><!--SEC END --><p>Si \(A\) es un anillo entonces \((A,\,+)\) es un grupo abeliano<span class="marginnote">
+Esta primera noción es trivial, puesto que para definir un anillo necesitamos una operación suma que cumple las mismas propiedades que las requeridas a los grupos.</span>. Por otro lado el grupo \((\mathcal U(A),\,\cdot)\) será abeliano si dicha operación producto (\(\cdot\)) es conmutativa. Esto nos da ya numerosos ejemplos:</p><p>[label=,itemjoin=  ,before=]
 \(\mathbb{Z}-\mathcal U\left(\mathbb{Z}\right)=\{-1,1\}\) ,
 \(\mathbb{Q}-\mathbb{Q}^{*}\) ,
 \(\mathbb{R}-\mathbb{R}^{*}\) ,
 \(\mathbb{C}-\mathbb{C}^{*}\) ,
 \(\mathbb{Z}_n-\mathcal U\left(\mathbb{Z}_n\right)\) .
-Nótese que \(|\mathbb{Z}_n| = n,|\mathcal U\left(\mathbb{Z}_n\right)| = \phi(n)\) .</p>
+<span class="marginnote">
+Nótese que \(|\mathbb{Z}_n| = n,|\mathcal U\left(\mathbb{Z}_n\right)| = \phi(n)\) .</span></p>
 <!--TOC subsection id="sec11" Grupo de las raíces n-ésimas de la unidad-->
 <h3 id="sec11" class="subsection">2.2.2  Grupo de las raíces n-ésimas de la unidad</h3><!--SEC END --><p>El conjunto \(\mu_n = \{z \in \mathbb{C}^{*} : z^n = 1\,,\ n \geq 2\}\), llamado conjunto de las <span style="font-style:italic">raíces n-ésimas de la unidad</span>, unido con la operación producto de los números complejos, forman el grupo de nombre análogo. [1.2cm]
 [width=]5th-roots-unity
@@ -231,13 +230,13 @@ Las cinco raíces quintas de la unidad.
 <!--TOC subsection id="sec13" Grupos simétricos-->
 <h3 id="sec13" class="subsection">2.2.4  Grupos simétricos</h3><!--SEC END --><p>Dado un conjunto no vacío \(X\), definimos el <span style="font-style:italic">grupo de sus permutaciones</span> o <span style="font-style:italic">grupo simétrico</span>, \(\mathcal S(X)\) , como el grupo formado por el conjunto de todas las aplicaciones biyectivas de \(X\) en \(X\) y la operación de composición de funciones.</p><p>En particular, el <span style="font-style:italic">enésimo</span> grupo simétrico o grupo de permutaciones de \(n\) elementos se define como \(\mathcal S_n = \mathcal S\left(\{1,\dots,n\}\right)\). Es trivial comprobar que \(|\mathcal S_n| = n!\) .</p><p>Para representar un elemento \(\alpha \in \mathcal S_n\), al que llamaremos <span style="font-style:italic">permutación</span>, utilizaremos la notación \begin{equation*}
   \alpha = \begin{pmatrix}
-    1 & 2 & \hdots & n \\
-    \alpha(1) & \alpha(2) & \hdots & \alpha(n) 
+    1 & 2 & \dots & n \\
+    \alpha(1) & \alpha(2) & \dots & \alpha(n) 
   \end{pmatrix}\,.
 \end{equation*}</p><p>El producto de dos permutaciones viene dado por su composición: \begin{equation*}
   \alpha \beta = \begin{pmatrix}
-    1 & 2 & \hdots & n \\
-    \alpha(\beta(1)) & \alpha(\beta(2)) & \hdots & \alpha(\beta(n))
+    1 & 2 & \dots & n \\
+    \alpha(\beta(1)) & \alpha(\beta(2)) & \dots & \alpha(\beta(n))
   \end{pmatrix}\,.
 \end{equation*}</p><p>Se verifica que \(\mathcal S_n\) es conmutativo si y sólo si \(n=2\).</p><div class="theorem"><span style="font-weight:bold">Definición 1</span> <span style="font-weight:bold">(Permutaciones disjuntas)</span>  
 Se dice que dos permutaciones \(\alpha,\beta \in \mathcal S_n\) son <span style="font-style:italic">disjuntas</span> si <span style="font-style:italic">lo que mueve una lo deja fijo la otra</span>, esto es, \begin{equation*}
@@ -249,9 +248,9 @@ Las permutaciones disjuntas conmutan.
 Supongamos que \(	\alpha(x) \neq x\), de modo que \(\beta(x) = x\). Por tanto, \(\alpha(\beta(x)) = \alpha(x)\) y, por otro lado, \(\beta(\alpha(x)) = \alpha(x)\) ya que como \(\alpha\) tiene que ser inyectiva y \(\alpha(x) \neq x\), tiene que ser \(\alpha(\alpha(x)) \neq x\) luego \(\beta\) fija a \(\alpha(x)\) y se tiene la igualdad.</p><p>En otro caso, podríamos tener que \(\beta(x) \neq x\) en cuyo caso se aplica un razonamiento análogo al anterior. Finalmente, si \(\alpha(x) = x = \beta(x)\) entonces claremente \(\alpha(\beta(x)) = x = \beta(\alpha(x))\).
 </p><p><br>
 </p><div class="theorem"><span style="font-weight:bold">Definición 2</span> <span style="font-weight:bold">(Ciclo)</span>  <p>Una permutación \(\alpha\) es un <span style="font-style:italic">ciclo</span> si: </p><ol class="enumerate" type=1><li class="li-enumerate">
-Existen \(x_1, \dots, x_r\) tales que \(\alpha(x_1) = x_2, \hdots, \alpha(x_r) = x_1\) .
-</li><li class="li-enumerate">\(\alpha(x) = x\) para todo \(x \notin \{x_1,\hdots,x_r\}\) .
-</li></ol><p>Denotaremos un ciclo como \(\alpha = (x_1 \, x_2 \, \hdots \, x_r)\) y diremos que tiene <span style="font-style:italic">longitud</span> \(r\).
+Existen \(x_1, \dots, x_r\) tales que \(\alpha(x_1) = x_2, \dots, \alpha(x_r) = x_1\) .
+</li><li class="li-enumerate">\(\alpha(x) = x\) para todo \(x \notin \{x_1,\dots,x_r\}\) .
+</li></ol><p>Denotaremos un ciclo como \(\alpha = (x_1 \, x_2 \, \dots \, x_r)\) y diremos que tiene <span style="font-style:italic">longitud</span> \(r\).
 </p></div><p>Observemos que esta notación no es unívoca y que un ciclo de longitud \(r\) tiene \(r\) notaciones diferentes. Observemos también que dos ciclos \begin{equation*}
   \alpha = (x_1 \, x_2 \, ... \, x_r) \text{ y } \beta = (y_1 \, y_2 \, ... \, y_s)
 \end{equation*}son disjuntos si y solo si \(\{x_1 \, x_2 \, ... \, x_r \} \cap \{y_1 \, x_2 \, ... \, y_s \} = \emptyset\), lo que motiva el nombre utilizado.</p><div class="theorem"><span style="font-weight:bold">Teorema 1</span> <span style="font-weight:bold">(Descomposición de una permutación en producto de ciclos disjuntos)</span>  
@@ -264,9 +263,9 @@ Una <span style="font-style:italic">trasposición</span> es un ciclo de longitud
 </div><div class="theorem"><span style="font-weight:bold">Proposición 2</span> <span style="font-weight:bold">(Propiedades de los ciclos)</span>  
 <a id="proposition:propiedades-ciclos"></a>
 Consideremos el grupo \(\mathcal S_n\), con \(n \ge 2\) . Los ciclos sumplen las siguientes propiedades:<ol class="enumerate" type=1><li class="li-enumerate">
-(Inverso de un ciclo). \((x_1 \, x_2 \, \hdots \, x_r)^{-1} = (x_r \, x_{r-1} \, \hdots \, x_1)\) .
+(Inverso de un ciclo). \((x_1 \, x_2 \, \dots \, x_r)^{-1} = (x_r \, x_{r-1} \, \dots \, x_1)\) .
 </li><li class="li-enumerate">(Descomposición en trasposiciones) \begin{equation*}
-    (x_1 \, x_2 \, \hdots \, x_r) = (x_1 \, x_2)(x_2 \, x_3) \hdots (x_{r-1} \, x_r)\,.
+    (x_1 \, x_2 \, \dots \, x_r) = (x_1 \, x_2)(x_2 \, x_3) \dots (x_{r-1} \, x_r)\,.
   \end{equation*}
 </li><li class="li-enumerate">(Conjugado). Para todo \(\alpha \in \mathcal S_n\,,\) \begin{equation*}
     \alpha (x_1 \, x_2 \, ... \, x_r) \alpha^{-1} = \left(\alpha(x_1) \, \alpha(x_2) \, ... \, \alpha(x_r)\right)\,.
@@ -276,7 +275,7 @@ Consideremos el grupo \(\mathcal S_n\), con \(n \ge 2\) . Los ciclos sumplen la
   \end{equation*}
 </li></ol></div><p><span style="font-weight:bold">Proof.</span></p><p><br>
 </p><div class="theorem"><span style="font-weight:bold">Teorema 2</span> <span style="font-weight:bold">(Paridad de una permutación)</span>  <a id="theorem:paridad-permutacion"></a> 
-Dada una permutación \(\alpha \in \mathcal S_n\) y dos expresiones de \(\alpha\) como producto de trasposiciones, \(\alpha = \tau_1\hdots\tau_r\)  y \(\alpha = \tau_1'\hdots\tau_s'\) . Entonces \(r \equiv s \mod 2\) .
+Dada una permutación \(\alpha \in \mathcal S_n\) y dos expresiones de \(\alpha\) como producto de trasposiciones, \(\alpha = \tau_1\dots\tau_r\)  y \(\alpha = \tau_1'\dots\tau_s'\) . Entonces \(r \equiv s \mod 2\) .
 </div><p><span style="font-weight:bold">Proof.</span>
 La idea para demostrar este teorema es empezar con el caso de la identidad y demostrar que si mediante una transposición intercambio dos elementos, luego los tengo que volver a intercambiar. Luego, para cualquier permutación \(\alpha\) se aplicará que \(1 = \alpha\alpha^{-1}\). Veámoslo.</p><p>Supongamos que \(1 = \tau_1...\tau_r\) y demostremos que r no puede ser impar. Lo hacemos por el método del descenso infinito. Claramente, si \(r = 1\) no es posible descomponer la identidad en una sola transposición. Supongamos que r es un número impar mayor que uno y elijamos un elemento m que aparezca por primera vez en cierta transposición \(\tau_j\). Entonces \(j < r\) porque si no m se movería y no volvería a su lugar. Veamos los posibles casos que se nos pueden presentar para el producto de las transposiciones \(\tau_j\) y \(\tau_{j+1}\).</p><p>\(\tau_j\tau_{j+1}=
 \begin{cases}
