@@ -216,13 +216,44 @@
 
 \begin{ejer}
   Sea $E= \{ f \in C_b(A,\mathbb{R}) : f(x)>0, \forall x \in \mathcal{A} \}$. Probar que $E$ es abierto en $(C_b(A,\mathbb{R}) , \| \cdot \|_\infty )$ (espacio métrico de las funciones continuas y acotadas de $A \in \mathbb{R}^n}$ en $\mathbb{R}$).
+
   La norma está definida como $\|f\|_{\infty} = sup \{|f(x)|: x \in A\}$
 
 \end{ejer}
 
 \begin{sol}
-    Tomamos arbitrariamente una función $f \in C_b(A,\mathbb{R})$. Sabemos que $f$ está acotada por ser $f \in C_b(A,\mathbb{R}) \subset ( \mathcal{C} ( \mathcal{A} , \mathbb{R} ) , \| \cdot \|_\infty )$. Por tanto $ \exists \alpha \in \mathbb{R} : \alpha \geq f(x) \forall x \in A$. Como $f(x) > 0 \forall x \in A$, en particular $\alpha \in \mathbb{R^+}.$ Tenemos por tanto que $\alpha \geq f(x) > 0 \forall x \in A$.
-    Sea ahora $g \in E$ definida como $g(x) = \alpha \forall x \in A$. Tomamos la bola abierta $B(g,\alpha) \in E$. Si probamos que $f \in B(g,\alpha)$ habremos terminado la demostración. $ \|g - f\| = sup \{ |g(x) - f(x)| : x \in A\} = sup \{ |\alpha - f(x)| : x \in A\}$. Como $\alpha \geq f(x)$, $|\alpha - f(x)| \leq |\alpha| = \alpha.$ Nótese que $f(x) > 0$ luego se da la desigualdad estricta, $|\alpha - f(x)| < \alpha$ por lo que $f \in B(g,\alpha) \in E$, concluyendo la demostración.
+    Tomamos arbitrariamente una función $f \in C_b(A,\mathbb{R})$. Sabemos que $f$ está acotada por ser $f \in C_b(A,\mathbb{R}) \subset ( \mathcal{C} ( \mathcal{A} , \mathbb{R} ) , \| \cdot \|_\infty )$. Por tanto $ \exists \alpha \in \mathbb{R} : \alpha \geq f(x) \forall x \in A$. 	
+     Como $f(x) > 0 \forall x \in A$, en particular $\alpha \in \mathbb{R^+}.$ Tenemos por tanto que $\alpha \geq f(x) > 0 \forall x \in A$.
+
+    Sea ahora $g \in E$ definida como $g(x) = \alpha \forall x \in A$. Tomamos la bola abierta $B(g,\alpha) \in E$. Si probamos que $f \in B(g,\alpha)$ habremos terminado la demostración. $ \|g - f\| = sup \{ |g(x) - f(x)| : x \in A\} = sup \{ |\alpha - f(x)| : x \in A\}$. Como $\alpha \geq f(x)$, $|\alpha - f(x)| \leq |\alpha| = \alpha.$ 
+
+Nótese que $f(x) > 0$ luego se da la desigualdad estricta, $|\alpha - f(x)| < \alpha$ por lo que $f \in B(g,\alpha) \in E$, concluyendo la demostración.
+
+
+  \end{sol}
+
+
+\begin{ejer}
+  Sean $f_n:[0,1]\longrightarrow \mathbb{R}$ funciones continuas tales que $|f_n(x)| \leq T$ para un $T \in \mathbb{N}$ fijo, cumpliéndose $\forall n \in \mathbb{N}$ y $\forall x \in [0,1]$. Supongamos que las derivadas $\{f_n'\}$ existen y están uniformemente acotadas en ]0,1[. 	Demostrar que $f_n$ tiene una subsucesión convergente.
+
+ Nota: $\{f_n'\}$ uniformemente acotada en ]0,1[ $\Leftrightarrow$ $\exists M > 0 : |f_n'(x)| \leq C$ $\forall n \in \mathbb{N}$ y $\forall x \in ]0,1[$.
+
+\end{ejer}
+
+\begin{sol}
+   Demostraremos el ejercicio utilizando el Teorema de Arzela-Ascoli. Para ello tenemos que comprobar las hipótesis de que $\{f_n : n \in \mathbb{N}\}$ es un conjunto acotado y equicontinuo. Que el conjunto está acotado es inmediato, ya que $||f_n||_\infty = sup_{0<x<1}|f_n(x)| \leq T$. Veamos que es equicontinuo.
+
+	En primer lugar, como $f_n$ es continua y las derivadas $f_n'$ están uniformemente acotadas, podemos aplicar la desigualdad del valor medio para el caso escalar, obteniendo así:
+
+	$|f_n(x) - f_n(y)| \leq M|x-y|$ para algún $M > 0$ fijo y $\forall x,y \in ]0,1[$.
+
+	Definimos ahora $\delta$ como $\delta = M / \epsilon > 0$. Tomamos $x,y \in$ $]0,1[$ tal que $|x-y|<\delta$. Finalemente buscamos la desigualdad necesaria para probar la equicontinuidad. De la desigualdad del valor medio anterior y la última desigualdad mostrada, tenemos lo siguiente:
+
+	$|f_n(x) - f_n(y)| \leq M|x-y| < M\delta = M \frac{\epsilon}{M} = \epsilon$. Hemos llegado a que $|f_n(x) - f_n(y)| < \epsilon$, probando así la equicontinuidad.
+
+	Por el Teorema de Arzela-Ascoli existe una subsucesión $\{f_{\sigma_(n)}\}$ convergente, como queríamos probar.
+
+
   \end{sol}
 
 
