@@ -1,14 +1,3 @@
----
-title: Prácticas Ingeniería de Servidores						# Título
-author: DGIIM 		# Nombre del autor
-header-includes:      	 	        	# Incluir paquetes en LaTeX
-toc: true                   			# Índice
-numbersections: false       			# Numeración de secciones
-fontsize: 11pt              			# Tamaño de fuente
-geometry: margin=1in        			# Tamaño de los márgenes
----
-
-\newpage
 # Práctica 1
 
 ## Conceptos previos

@@ -15,6 +15,7 @@ task :default => [
        :fr,
        :geoiii,
        :ies,
+       :ise,
        :mc,
        :mmi,
        :pdoo,
@@ -68,6 +69,7 @@ task :fbd => (pdf_for FileList["FBD/apuntes.md"])
 task :fr => (pdf_for FileList["FR/apuntes.md"])
 task :geoiii => (pdf_for FileList["GEOIII/geoiii.tex"])
 task :ies => (pdf_for FileList["IES/apuntes.md"])
+task :ise => (pdf_for FileList["ISE/apuntes.md"])
 task :mc => (pdf_for FileList["MC/apuntes.md"])
 task :mmi => (pdf_for FileList["MMI/mmi.tex"])
 task :pdoo => (pdf_for FileList["PDOO/apuntes.md"])
