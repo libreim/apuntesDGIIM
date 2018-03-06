@@ -7,11 +7,11 @@ Sea G un grupo. Un subgrupo H de G es un subconjunto no vacío de G que es cerra
 Claramente, un subgrupo H de un grupo G es en sí mismo un grupo con la operación producto de G restringida a los elementos de H ya que la operación producto de G es interna en H y la operación inversión también. Además el elemento neutro también debe ser el mismo sin más que operar en $x 1 = 1$.
 
 \begin{ejemplo}
-1. Subgrupos impropios de un grupo: todo grupo G admite dos subgrupos llamados impropios. El subgrupo trivial $1 = {1}$ y el total G. Al resto de subgrupos se le llama subgrupos propios.
+1. Subgrupos impropios de un grupo: todo grupo G admite dos subgrupos llamados impropios. El subgrupo trivial $1 = {1}$ y el total G. Al resto de subgrupos se le llama subgrupos propios.\\
 2. $\mathbb{Q}^{*} \le \mathbb{R}^{*} \le \mathbb{C}^{*}$\\
 $\mu_n \le \mathbb{C}^{*}$\\
 $m|n \Rightarrow \mu_m \le \mu_n$\\
-3. En $D_n$ tenemos el subgrupo de las rotaciones $H = \{1,r,r^2,...,r^{n-1}\}$ y subgrupos cíclicos de orden 2 $K = \{1,s\}$ y $L = \{1,r^is\}$. Sin embargo, el conjunto de las simetrías $\{1,s,rs,r^2s,...,r^{n-1}s\}$ no es un subgrupo de $D_n$.\\
+3. En $D_n$ tenemos el subgrupo de las rotaciones $H = \{1,r,r^2,...,r^{n-1}\}$ y subgrupos cíclicos de orden 2: $K = \{1,s\}$ y $L = \{1,r^is\}$. Sin embargo, el conjunto de las simetrías $\{1,s,rs,r^2s,...,r^{n-1}s\}$ no es un subgrupo de $D_n$.\\
 4. En $S_4$ podemos considerar un subgrupo tipo Klein $K = \{1,\alpha_1 = (12)(34),\alpha_2=(13)(24),\alpha_3=(14)(23)\}$.
 \end{ejemplo}
 
@@ -23,7 +23,7 @@ $\forall x,y \in G$ se tiene $xy^{-1} \in H$.
 \begin{proof}
 $\Rightarrow$ Si asumimos que H es un subgrupo de G como es cerrado para inversos e $y \in H$ entonces $y^{-1} \in H$ y como H es cerrado para productos y $x \in H$ se tiene que $xy^{-1} \in H$.
 
-$\Leftarrow$ Supongamos que $\forall x,y \in G$ se tiene $xy^{-1} \in H$. Sea $u,v \in H$ y veamos que $uv \in H$ tomemos $x = u,y = v^{-1}$ entonces por hipótesis $xy^{-1} = u(v^{-1})^{-1} = uv \in H$. Veamos también que H es cerrado para inversos. Sea $y \in H$ como la unidad también está en H, tomando $x = 1$ el producto $xy^{-1} = 1y^{-1} = y^{-1} \in H$ de donde H es cerrado para inversos.
+$\Leftarrow$ Supongamos que $\forall x,y \in G$ se tiene $xy^{-1} \in H$. Sea $u,v \in H$ y veamos que $uv \in H$ tomemos $x = u,y = v^{-1}$ entonces por hipótesis $xy^{-1} = u(v^{-1})^{-1} = uv \in H$. Veamos también que H es cerrado para inversos. Sea $y \in H$, como la unidad también está en H, tomando $x = 1$ el producto $xy^{-1} = 1y^{-1} = y^{-1} \in H$ de donde H es cerrado para inversos.
 \end{proof}
 
 \begin{nprop}[Criterio de subgrupo para subconjuntos finitos]
@@ -82,7 +82,7 @@ $H_1 \cup H_2 = \{1,s,rs\} \nleq D_4$
 De hecho, si tengo dos subgrupos $H,K \le G$ entonces $H \cup K \le G \iff H \subseteq G$ o $K \subseteq G$.
 \end{ejemplo}
 
-La fórmula que me hemos dado para el supremo de subgrupos es muy poco práctica. Esto motiva las siguientes definiciones.
+La fórmula que hemos dado para el supremo de subgrupos es muy poco práctica. Esto motiva las siguientes definiciones.
 
 \subsection{Producto de subgrupos.}
 
@@ -100,9 +100,8 @@ HK es un subgrupo de G $\iff HK = KH$
 en cuyo caso $H \lor K = HK$
 \end{nprop}
 \begin{proof}
-%Veamos primero la doble implicación. 
-
-%Si $HK$ es un subgrupo de $G$. Entonces dados $h,k \in %HK$ tendríamos que $HK \ni (h^{-1}k^{-1})^{-1} = kh$ y %por tanto $KH \subseteq HK$. Recíprocamente, si $h,k \in %HK$ entonces 
+$\Rightarrow$ Si $HK$ es un subgrupo de $G$. Entonces dados $h,k \in HK$ tendríamos que $HK \ni (h^{-1}k^{-1})^{-1} = kh$ y, por tanto, $KH \subseteq HK$. La otra inclusión se demuestra de manera análoga.\\
+$\Leftarrow$ La unidad pertenece a $HK$. Dados $hk, h'k' \in HK$ el producto $hkh'k'$ podemos verlo como $h(kh')k'$ donde $kh' \in KH$, pero como $KH = HK$, existen $h'',k'' \in HK$ tales que $hkh'k' = hh''kk'' \in HK$. Para un elemento $hk \in HK$ su inverso $(hk)^{-1} = k^{-1}h^{-1} \in KH = HK$. Por tanto, $HK$ es un subgrupo.  
 \end{proof}
 
 Una forma de generalizar el teorema del producto es hacer infinitos productos con lo que se elimina la hipótesis de conmutación.
@@ -129,7 +128,7 @@ $<X> = \cap_{K \in Sub(G),X \subseteq K} K$.
 Sea G un grupo y X un subconjunto no vacío de G. Si $G = <X>$ diremos que X es un conjunto de generadores de G.
 \end{ndef}
 
-Este definición permite entender mejor la noción de supremo, en efecto, si $H,K$ son subgrupos de G entonces $H \lor K = \cap_{T \le G, H,K \le T} T = \cap_{T \le G, H \cup K \subseteq T} T = <H \cup K>$, o sea, que el supremo de dos subgrupos es el subgrupo generado por su unión.
+Esta definición permite entender mejor la noción de supremo, en efecto, si $H,K$ son subgrupos de G entonces $H \lor K = \cap_{T \le G, H,K \le T} T = \cap_{T \le G, H \cup K \subseteq T} T = <H \cup K>$, o sea, que el supremo de dos subgrupos es el subgrupo generado por su unión.
 
 \begin{nprop}[Expresión del subgrupo generado como palabras]
 Sea X un subconjunto no vacío de un grupo G. Entonces $<X> = \{x_1^{n_1}...x_r^{n_r}:x_i \in X,n_i \in \mathbb{Z},r \ge 1\}$
@@ -158,7 +157,7 @@ Por lo anterior $T \subseteq <X>$. Ahora, como $G$ es finito, en $\{x,x^2,\cdots
 \end{proof}
 
 \begin{ndef}[Subgrupo cíclico generado por un elemento]
-Sea G un grupo. Si $X = \{a\}$ entonces $<X> = <a>$ y lo llamaremos el subgrupo cíclico generado por a. Claramente $<a> = {a^n : n \in \mathbb{Z}}$ y en el caso en que G sea finito $<a> = {a^n : n \ge 0}$
+Sea G un grupo. Si $X = \{a\}$ entonces $<X> = <a>$ y lo llamaremos el subgrupo cíclico generado por $a$. Claramente $<a> = \{a^n : n \in \mathbb{Z}\}$ y en el caso en que G sea finito $<a> = \{a^n : n \ge 0\}$
 \end{ndef}
 
 \begin{ndef}[Grupo cíclico]
