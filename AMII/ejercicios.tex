@@ -222,20 +222,40 @@
 \end{ejer}
 
 \begin{sol}
-   Demostraremos el ejercicio utilizando el Teorema de Arzela-Ascoli. Para ello tenemos que comprobar las hipótesis de que $\{f_n : n \in \mathbb{N}\}$ es un conjunto acotado y equicontinuo. Que el conjunto está acotado es inmediato, ya que $||f_n||_\infty = sup_{0<x<1}|f_n(x)| \leq T$. Veamos que es equicontinuo.
+   Demostraremos el ejercicio utilizando el Teorema de Arzelà-Ascoli. Para ello tenemos que comprobar las hipótesis de que $\{f_n : n \in \mathbb{N}\}$ es un conjunto acotado y equicontinuo. Que el conjunto está acotado es inmediato, ya que $||f_n||_\infty = sup_{0<x<1}|f_n(x)| \leq T$. Veamos que es equicontinuo.
 
 	En primer lugar, como $f_n$ es continua y las derivadas $f_n'$ están uniformemente acotadas, podemos aplicar la desigualdad del valor medio para el caso escalar, obteniendo así:
 
 	$|f_n(x) - f_n(y)| \leq M|x-y|$ para algún $M > 0$ fijo y $\forall x,y \in ]0,1[$.
 
-	Dado un $\epsilon > 0$, definimos $\delta$ como $\delta = M / \epsilon > 0$. Tomamos $x,y \in$ $]0,1[$ tal que $|x-y|<\delta$. Finalemente buscamos la desigualdad necesaria para probar la equicontinuidad. De la desigualdad del valor medio anterior y la última desigualdad mostrada, tenemos lo siguiente:
+	Dado un $\epsilon > 0$, definimos $\delta$ como $\delta = M / \epsilon > 0$. Tomamos $x,y \in$ $]0,1[$ tal que $|x-y|<\delta$. Finalmente buscamos la desigualdad necesaria para probar la equicontinuidad. De la desigualdad del valor medio anterior y la última desigualdad mostrada, tenemos lo siguiente:
 
-	$|f_n(x) - f_n(y)| \leq M|x-y| < M\delta = M \frac{\epsilon}{M} = \epsilon$. Hemos llegado a que $|f_n(x) - f_n(y)| < \epsilon$, probando así la equicontinuidad.
+	$$|f_n(x) - f_n(y)| \leq M|x-y| < M\delta = M \frac{\epsilon}{M} = \epsilon$$ 
 
-	Por el Teorema de Arzela-Ascoli existe una subsucesión $\{f_{\sigma_(n)}\}$ convergente, como queríamos probar.
+	Hemos llegado a que $|f_n(x) - f_n(y)| < \epsilon$, probando así la equicontinuidad.
+
+	Por el Teorema de Arzelà-Ascoli existe una subsucesión $\{f_{\sigma_(n)}\}$ convergente, como queríamos probar.
 
 
   \end{sol}
+  
+  
+\begin{ejer}
+	Sean $f_n:[a,b]\shortrightarrow\mathbb{R}$ funciones uniformemente acotadas y continuas. Definimos $F_n:[a,b]\shortrightarrow\mathbb{R}$ como $$F_n(x) = \int_{a}^{x} f_n(t) dt$$.
+	Probar que $\exists \{F_{nk}\}$ subsucesión (sucesión parcial) de $F_n$ convergente uniformemente en $[a,b]$.
+	
+\end{ejer}
+
+\begin{sol}
+La idea es de nuevo aplicar el Teorema de Arzelà-Ascoli. Comprobamos las hipótesis necesarias. Para probar la equicontinuidad, aprovechamos también que las funciones están uniformemente acotadas, deduciendo esta expresión:
+$$|F_n(x) - F_n(y)| = |\int_{x}^{y} f_n(t) dt| \leq |\int_{x}^{y} Mdt| = M|x-y| \forall n \in \mathbb{N} y \forall x,y \in [a,b] $$.
+Donde $M > 0$ es la cota de las funciones $f_n$. Dado $epsilon > 0, \exists \delta = \epsilon/M > 0$ tal que si $|x-y| < \delta$, entonces $\Rightarrow |F_n(x) - F_n(y)| \leq M|x-y|<M \epsilon/M = \epsilon \forall n \in \mathbb{N}$ y $\forall x,y \in [a,b]$.
+
+Así, queda probada la equicontinuidad del conjunto $\{|F_n : n \in \mathbb{N}|\}$. Vamos a probar que está acotado. Para ello basta utilizar que las $f_n$ están acotadas, en la expresión de la integral que define a $F_n$.
+$$|F_n(x)| = |\int{a}^{x} f_n(t)dt| \leq M|a-x| \leq M(b-a) \forall x \in [a,b], \forall n \in \mathbb{N}$$.
+
+Por tanto, tenemos que $$\|F_n(x)\|_\infty \leq M(b-a)$$ por lo que el conjunto $\{|F_n : n \in \mathbb{N}|\}$ está acotado en $$C(a[b],\mathbb{R})$$. El Teorema de Arzelà-Ascoli nos proporciona la existencia de la subsucesión $\{F_{nk}\}$ convergente uniformemente que buscábamos.
+\end{sol}
 
 
 
