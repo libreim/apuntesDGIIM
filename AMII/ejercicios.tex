@@ -239,7 +239,7 @@
 
   \end{sol}
   
-  
+\newpage  
 \begin{ejer}
 	Sean $f_n:[a,b]\shortrightarrow\mathbb{R}$ funciones uniformemente acotadas y continuas. Definimos $F_n:[a,b]\shortrightarrow\mathbb{R}$ como $$F_n(x) = \int_{a}^{x} f_n(t) dt$$.
 	Probar que $\exists \{F_{nk}\}$ subsucesión (sucesión parcial) de $F_n$ convergente uniformemente en $[a,b]$.
@@ -248,13 +248,13 @@
 
 \begin{sol}
 La idea es de nuevo aplicar el Teorema de Arzelà-Ascoli. Comprobamos las hipótesis necesarias. Para probar la equicontinuidad, aprovechamos también que las funciones están uniformemente acotadas, deduciendo esta expresión:
-$$|F_n(x) - F_n(y)| = |\int_{x}^{y} f_n(t) dt| \leq |\int_{x}^{y} Mdt| = M|x-y| \forall n \in \mathbb{N} y \forall x,y \in [a,b] $$.
-Donde $M > 0$ es la cota de las funciones $f_n$. Dado $epsilon > 0, \exists \delta = \epsilon/M > 0$ tal que si $|x-y| < \delta$, entonces $\Rightarrow |F_n(x) - F_n(y)| \leq M|x-y|<M \epsilon/M = \epsilon \forall n \in \mathbb{N}$ y $\forall x,y \in [a,b]$.
+$$|F_n(x) - F_n(y)| = |\int_{x}^{y} f_n(t) dt| \leq |\int_{x}^{y} Mdt| = M|x-y| \forall n \in \mathbb{N} y \forall x,y \in [a,b] $$
+Donde $M > 0$ es la cota de las funciones $f_n$. Dado $\epsilon > 0,$ $\exists$ $\delta = \epsilon/M > 0$ tal que si $|x-y| < \delta$, entonces $\Rightarrow |F_n(x) - F_n(y)| \leq M|x-y|<M frac{\epsilon}{M} = \epsilon$ $\forall n \in \mathbb{N}$ y $\forall x,y \in [a,b]$.
 
-Así, queda probada la equicontinuidad del conjunto $\{|F_n : n \in \mathbb{N}|\}$. Vamos a probar que está acotado. Para ello basta utilizar que las $f_n$ están acotadas, en la expresión de la integral que define a $F_n$.
-$$|F_n(x)| = |\int{a}^{x} f_n(t)dt| \leq M|a-x| \leq M(b-a) \forall x \in [a,b], \forall n \in \mathbb{N}$$.
+Así, queda probada la equicontinuidad del conjunto $\{F_n : n \in \mathbb{N}\}$. Vamos a probar que está acotado. Para ello basta utilizar que las $f_n$ están acotadas, en la expresión de la integral que define a $F_n$.
+$$|F_n(x)| = |\int_{a}^{x} f_n(t)dt| \leq M|a-x| \leq M(b-a)$ $\forall x \in [a,b], \forall n \in \mathbb{N}$$
 
-Por tanto, tenemos que $$\|F_n(x)\|_\infty \leq M(b-a)$$ por lo que el conjunto $\{|F_n : n \in \mathbb{N}|\}$ está acotado en $$C(a[b],\mathbb{R})$$. El Teorema de Arzelà-Ascoli nos proporciona la existencia de la subsucesión $\{F_{nk}\}$ convergente uniformemente que buscábamos.
+Por tanto, tenemos que $$\|F_n(x)\|_\infty \leq M(b-a)$$ por lo que el conjunto $\{F_n : n \in \mathbb{N}\}$ está acotado en $C(a[b],\mathbb{R})$. El Teorema de Arzelà-Ascoli nos proporciona la existencia de la subsucesión $\{F_{nk}\}$ convergente uniformemente que buscábamos.
 \end{sol}
 
 
