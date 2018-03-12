@@ -191,7 +191,7 @@ información de las particiones en los dos discos duros.
 En CentOS tendremos un único disco duro, con una partición física y
 otra mapeada.
 
-La preparación de la máquina es el mismo que para ubuntu, por defecto
+La preparación de la máquina es la mismo que para ubuntu, por defecto
 todas las opciones iniciales.
 
 Del mismo modo añadimos en el controlador de la unidad óptica la
@@ -246,14 +246,14 @@ imagen e iniciamos la **instalación por defecto**.
 11. Para probar si esto ha funcionado procederemos a montar el volumen
     que hemos creado con `mkdir /mnt/vartmp` y luego con `mount
     /dev/cl/newvar /mnt/vartmp` y posteriormente comprobar que podemos
-    camiar a ese directorio y la información que se nos proporciona es
+    cambiar a ese directorio y la información que se nos proporciona es
     correcta. Con `df -h` observaremos el punto de montaje y más
     información al respecto.
 
 12. `systemctl isolate runlevel1` cambia el modo, así si usamos
 	`systemctl status` veremos que estamos en modo mantenimiento. Así
 	ya podremos hacer la copia del contenido de /var `cp
-	--preserve=context(<o all en su defecto>) -r /var/* /mnt/vartemp`
+	--preserve=context(<o all en su defecto>) -r /var/* /mnt/vartmp`
 	(o en lugar de la opción `--preserve=<opcion>` podemos usar `-a`.
 
 	<!-- systemctl isolate runlevel1.target -> modo monousuario
@@ -419,9 +419,9 @@ rm -r -f /varRAID para borrar todo lo que se quede colgando del directorio, así
 ## Configuración de la Red y las máquinas virtuales
 
 ### General
-Debemos crear una red nat en la configuración general de
-virtualbox. Una vez creada editaremos sus propiedades y añadiremos una
-red en las redes solo-anfitrion (llamada vbox0), accedemos a
+Debemos crear una red NAT en la configuración general de
+VirtualBox. Una vez creada editaremos sus propiedades y añadiremos una
+red en las redes sólo-anfitrión (llamada vbox0), accedemos a
 propiedades y modificamos la IPv4, 192.168.58.1 al servidor DHCP  le
 ponemos dirección la misma (acabada en .100), la máscara 255.255.255.0
 y para el rango en el límite inferior y superior le damos valores
@@ -434,7 +434,7 @@ nuevas y añadiendo la interfaz de red. Esto se observa en
 iremos a la configuración de la máquina virtual. En red nos conectamos
 en el segundo adaptador a la red solo-anfitrión y lo conectamos a la
 red que hemos creado en el paso anterior. Y al volver a iniciar la
-máquina virtual con `ifconfig` observaremos que se ha aparecido una
+máquina virtual con `ifconfig` observaremos que ha aparecido una
 nueva interfaz, y con lspci | grep ether se verá el nuevo
 "ethercontroller".
 
@@ -469,15 +469,15 @@ interfaz. Por lo general, cada vez que añadamos un adaptador de red
 tendremos que añadir un script que configure esa interfaz, pues no
 será creado por defecto.
 
-copiaremos el archivo de la interfaz enp0s3 al uno nuevo llamado
+copiaremos el archivo de la interfaz enp0s3 (`ifcfg-enp0s3`) a uno nuevo terminado en 
 enp0s8, con `cp` en el directorio `cd /etc/sysconfig/network-scripts/`
 Habrá que cambiar el `NAME`, `DEVICE`, eliminar la línea de `UUID`
 
 ### Configurar IPs estáticas
 
 **CentOS:**
-En el archivo de configuración (script) de la interfaz enp0s8 lo
-dejamos únicamente con lo siguiente:
+
+Dejamos el archivo de configuración (script) de la interfaz enp0s8 únicamente con lo siguiente:
 
 ```
 TYPE=Ethernet
@@ -489,10 +489,11 @@ IPADDR=192.168.56.110
 NETMASK=255.255.255.0
 ```
 Ahora si hacemos `ip addr` vemos que aún no se ha actualizado la
-información. La actualizaremos con `ifup enp0s8` `ifdown enp0s8` o
+información. La actualizaremos con `ifdown enp0s8`, `ifup enp0s8` o
 reiniciando la máquina.
 
 **UbuntuServer:**
+
 Para Ubuntu tenemos que ir al archivo `/etc/network/interfaces` y lo
 editamos de manera que el final del fichero, relativo a la última
 interfaz que hemos añadido, quede así:
