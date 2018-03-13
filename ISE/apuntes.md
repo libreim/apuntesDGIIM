@@ -301,7 +301,7 @@ Desde el exterior creamos dos discos duros, y una vez iniciada la máquina compr
 
 Utilizamos `dhclient` para poder tener internet, lo cual nos interesará para instalar mdadm.
 
-`mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdb`
+`mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc`
 
 Esto último comprobamos con `lsblk` que se haya creado correctamente.
 
