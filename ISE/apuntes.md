@@ -295,11 +295,15 @@ imagen e iniciamos la **instalación por defecto**.
 
 Primero debemos instalar una versión limpia de CentOS.
 
-Desde el exterior creamos dos discos duros, y una vez iniciada la máquina comprobamos que estos dos discos extra estén en con `lsblk`
+Desde el exterior creamos dos discos duros, y una vez iniciada la máquina comprobamos que estos dos discos extra están con `lsblk`
 
 <!-- img/P1_S3_initialdisks.PNG  -->
 
-Utilizamos `dhclient` para poder tener internet, lo cual nos interesará para instalar mdadm.
+Utilizamos `dhclient` para poder tener internet, lo cual nos interesará para instalar `mdadm`. Otra opción es utilizar `ifup enp0s3`.
+
+Instalamos `mdadm` con el comando `yum install mdadm`.
+
+Creamos el RAID1 en los discos añadidos:
 
 `mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc`
 
@@ -307,9 +311,9 @@ Esto último comprobamos con `lsblk` que se haya creado correctamente.
 
 <!-- img/P1_S3_mdadm.PNG -->
 
-`pvdisplay` muestra los volúmenes físicos (physical volume).
+Creamos un volumen físico a partir del RAID: `pvcreate /dev/md0`. `pvdisplay` muestra los volúmenes físicos (physical volume).
 
-Creamos otro grupo de volúmenes, llamado "pmraid1". Con `vgs` podemos ver los grupos de volúmenes.
+Creamos otro grupo de volúmenes asociado al volumen físico recién creado, llamado "pmraid1". Con `vgs` podemos ver los grupos de volúmenes.
 
 `vgcreate pmraid1 /dev/md0` para crear el grupo de volúmenes.
 
@@ -340,19 +344,19 @@ Restauramos el contexto con  `restorecon /var`.
 
 `umount /mnt/vartemp`
 
-Debemos modificar el fstab
+Debemos modificar `/etc/fstab`
 
 (En vi pulsamos i para insertar)
 
 En la última línea escribimos:
 
-/dev/mapper/pmraid1-newvar(tabulador)var(tabulador)xfs(tab)defaults(tab)0(tab)0
+/dev/mapper/pmraid1-newvar(tabulador)/var(tabulador)xfs(tab)defaults(tab)0(tab)0
 
 Y guardamos. Esto permitirá que cada vez que reiniciemos la máquina se guarde todo en el RAID
 
 Con `systemctl isolate default.target` podemos "reiniciar" la máquina para ver que esos datos están guardados. También si lo hacemos manualmente lo podemos comprobar.
 
-A continuación borramos un disco de los dos del RAID e intentamos iniciar normalmente.
+A continuación, borramos un disco de los dos del RAID e intentamos iniciar normalmente.
 
 
 **Cifrado con LUKS**
@@ -378,25 +382,29 @@ Aquí ponemos en la última línea una almohadilla para comentarlo.
 
 Reiniciamos.
 
-Si hacemmos lsblk podemos ver que se está montando tras el reinicio y podemos proceder al cifrado.
+Si hacemos `lsblk` podemos ver qué se está montando tras el reinicio y podemos proceder al cifrado.
 
 `cryptsetup luksFormat /dev/mapper/pmraid1-newvar`
 
 Metemos como contraseña "practicas,ISE"
 
-cryptsetup luksOpen /dev/pmraid1/newvar pmraid1-newvar_crypt
+`cryptsetup luksOpen /dev/pmraid1/newvar pmraid1-newvar_crypt`
 
-Creamos un sistema de archivos con mkfs -t xfs /dev/mapper/pmraid1-newvar_crypt
+Creamos un sistema de archivos con 
+
+```
+mkfs -t xfs /dev/mapper/pmraid1-newvar_crypt`
 
 mkdir /mnt/varCifr
 
 mount /dev/mapper/pmraid1-newvar_crypt /mnt/varCifr
+```
 
-(comprobable con lsblk)
+(comprobable con `lsblk`)
 
 Pasamos los datos del punto de montaje temporal
 
-cp -a /varRAID/* /mnt/varCifr
+	cp -a /varRAID/* /mnt/varCifr
 
 Ahora debemos modificar los ficheros de Linux
 
