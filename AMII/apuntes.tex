@@ -43,7 +43,11 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo 
     El recíproco no es cierto en general. Sin embargo, ambos conceptos son equivalentes si para cada $f_n : A \rightarrow \R^M$ que forma la sucesión, el conjunto A es finito. En efecto, si $A$ es finito, y $\{f_n(x)\} \xrightarrow {c.p} f(x) \ \forall x \in A$, entonces tomamos $n_0$ como el máximo de los $n_0(x)$ que nos da la convergencia puntual en cada $x \in A$, y $\fn$ converge uniformemente en $A$.
   \end{nota}
 
-La necesidad del concepto de convergencia uniforme se aprecia bien en el siguiente teorema, junto con los ejemplos que aparecen a continuación. Normalmente, las funciones con las que trabajemos serán continuas. El conjunto de las funciones continuas entre un conjunto $A$ y $\R^M$ se denota como $\mathcal{C}(A,\R^M)$.
+  La necesidad del concepto de convergencia uniforme se aprecia bien
+  en el siguiente teorema, junto con los ejemplos que aparecen a
+  continuación. Normalmente, las funciones con las que trabajemos
+  serán continuas. El conjunto de las funciones continuas entre un
+  conjunto $A$ y $\R^M$ se denota como $\mathcal{C}(A,\R^M)$.
 
 \begin{nth}
   \label{2}
@@ -90,7 +94,6 @@ Veamos algunos ejemplos de sucesiones de funciones:
   \]
 \end{ejemplo}
 
-
 Vamos a estudiar la convergencia puntual de la sucesión del ejemplo (1.1):
 
 Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{1}{n}$, luego $f_n(x) = 0$. Por otra parte, $f_n(0) = 1\ \forall n\in \N$. Concluimos que
@@ -128,7 +131,7 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la \textit{Proposición \ref{unif_puntual}} anterior sí es cierto.
 
 \begin{nth}
-  \label{dini}
+  \label{1}
   Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
   \begin{nlist}
@@ -286,37 +289,122 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
 Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado equivalente en $\mathcal{C}(A,\mathbb{R}^M)$.
 
-\begin{nth}[Arzelà-Ascoli] \label{6} Toda sucesión de funciones en $\mathcal{C}(A,\mathbb{R}^M)$ que sea equicontinua y acotada admite una sucesión parcial convergente.
+\begin{lema}
+  Todo subconjunto $A$ (no tiene porqué ser compacto) de
+  $\mathbb{R}^N$ tiene un subconjunto numerable denso en \'el. Esto
+  es, $\exists C \subseteq A$ numerable cumpliendo
+  $A \subseteq \overline{C}$.
+\end{lema}
+
+\begin{proof}
+  Para cualquier natural $m$, tomemos $\varepsilon = \frac{1}{m}$,
+  usando que $\mathbb{Q}^N$ es numerable se tendr\'a
+  $\mathbb{Q}^N = \{r_1, r_2, r_3, \ldots\}$ con
+  $r_i \in \mathbb{Q}^N \quad \forall i \in \mathbb{N}$, y usando
+  que $\mathbb{Q}^N$ es denso en $\mathbb{R}$
+ 
+  \[A \subseteq \mathbb{R}^N = \bigcup\limits_{x \in \mathbb{Q}^N}B(x,
+    \varepsilon) = \bigcup\limits_{i=1}^\infty B(r_i, \varepsilon)\]
+
+  Notemos que esta familia numerable de bolas abiertas recubre a $A$,
+  por lo que algunas de ellas tendrán intersección no vacía con $A$.
+  
+  Definimos el conjunto
+  \[C_m = \{c_i \in A \cap B(r_i,\varepsilon) \ : A \cap
+    B(r_i,\varepsilon) \neq \emptyset, \ i \in \mathbb{N}\} = \{c_i
+    \in A \cap B(r_i, {\scriptstyle\frac{1}{m}}) \ : A \cap
+    B(r_i,{\scriptstyle\frac{1}{n}}) \neq \emptyset, \ i \in
+    \mathbb{N}\}\]
+
+  Es importante el hecho de que s\'olo hemos tomado un
+  ``representante'' $c_i$ por cada bola que interseque con $A$, esto
+  nos asegura que el conjunto $C_m$ sea numerable.
+
+  Como podemos hacer esto para todo natural $m$, podemos definir el
+conjunto \(C = \bigcup\limits_{m=1}^\infty C_m\), que es unión
+numerable de conjuntos numerables, por tanto numerable. Falta
+probar $A \subseteq \overline{C}$.
+
+Sea $x \in A$.~
+$x \in \overline{C} \iff \forall \varepsilon > 0, \ B(x, \varepsilon)
+\cap C \neq \emptyset$. Tomamos $n \in \mathbb{N}$ de forma que
+$\frac{1}{n} < \frac{\varepsilon}{2}$. Como sabíamos que
+$A \subseteq \mathbb{R}^N = \overline{\mathbb{Q}^N}$, existir\'a un
+$r_i \in \mathbb{Q}^N$ tal que $x \in B(r_i, \frac{1}{n})$. Por lo que
+hemos probado antes, $\exists c_i \in C_n \subseteq C$ cumpliendo
+$c_i \in B(r_i, \frac{1}{n}) \cap A$, por lo que tenemos
+$|x-r_i| < \frac{1}{n}$ y $|c_i-r_i| < \frac{1}{n}$. Por la
+desigualdad triangular deducimos lo que queremos
+\[|x - c_i| \leq |x-r_i| + |r_i-c_i| < \frac{2}{n} < \varepsilon
+  \implies c_i \in B(x, \varepsilon) \cap C \neq \emptyset \implies
+  c_i \in B(x, \varepsilon) \cap C \implies x \in \overline{C}\]
+
+\end{proof}
+
+\begin{nth}[Arzelà-Ascoli] \label{6} Toda sucesi\'on de funciones de
+  $\mathcal{C}(A,\mathbb{R}^M)$ que sea equicontinua y acotada admite
+  una sucesión parcial convergente.
 \end{nth}
 
-\begin{proof} Dividiremos la demostración en varios pasos.
+\begin{proof} Dividiremos la demostraci\'on en varios pasos.
 
-    \underline{Paso 1.} Vamos a probar que $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $\mathbb{Q}^N\cap A$.
-    Recordemos que, puesto que $\mathbb Q$ es numerable:
+  \underline{Paso 1:} Probaremos el siguiente resultado técnico: \\
+  Dado $\delta>0$, $\exists c_1,...,c_k \in A$ tales que
+  $\exists \ i=1,\ldots,k : |x-c_i| < \delta \ \ \forall x \in A$.
+
+  Por el lema, existe un conjunto $C \subseteq A$ numerable y denso en
+  $A$. Luego tendremos el siguiente recubrimiento abierto de A:
+  \[A \subseteq \bigcup\limits_{c \in C}B(c, \delta)\]
+
+  Como $A$ es compacto, existe un subrecubrimiento finito,
+  $\exists c_1,\ldots,c_k$ tales que
+  \[A \subseteq \bigcup\limits_{i=1}^{\infty}B(c_i, \delta)\]
+
+  Dado $x \in A$, $\exists i \in \{1,\ldots,k\}$ tal que
+  $x \in B(c_i,\delta)$. Por tanto, $|x-c_i| <\delta$.
+    
+  \underline{Paso 2:} Vamos a probar que
+  $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente
+  tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $C$. Recordemos
+  que, puesto que $C$ es numerable: $\exists N\subseteq \N$ tal que
+  $\exists \phi :N \longrightarrow C$ biyectiva. Denotamos
+  $c_k=\phi(k) \in C$ (enumeraci\'on de $C$). Por otra parte,
+  observemos lo siguiente:
     \[
-      A\cap \mathbb Q^N \mbox{ es numerable } \implies \exists N\subseteq \N: \ \
-      \exists \phi :N \longrightarrow  A\cap \mathbb Q^N  \mbox{ biyectiva}
+      \{f_n \} \mbox{ equiacotada } \implies \exists M>0 \, : \,
+      |f_n(x) |\leq M , \, \forall x\in A , \, \forall n\in \mathbb N.
     \]
-    Denotamos $r_k=\phi(k) \in  A\cap \mathbb Q^N $ (enumeraci\'on de $A\cap \mathbb Q^N $). Por otra parte, observemos lo siguiente:
+    En particular, $\{ f_n (c_1)\}$ es una sucesi\'on acotada en
+    $\mathbb R^M$, y por tanto podemos aplicar el \textit{Teorema de
+      Bolzano-Weierstrass} para ver que
+    $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$
+    estrictamente creciente tal que la subsucesión
+    $\{ f_{\sigma_1 (n)} (c_1) \}$ de $\{ f_{n} (c_1) \}$ es
+    convergente hacia un vector de $\mathbb R^M$ que denotaremos como
+    $f(c_1)$:
     \[
-      \{f_n \} \mbox{ equiacotada } \implies \exists M>0 \, : \, |f_n(x) |\leq M , \, \forall x\in A , \, \forall n\in \mathbb N.
-    \]
-    En particular, $\{ f_n (r_1)\}$ es una sucesi\'on acotada en $\mathbb R^M$, y por tanto podemos aplicar el \textit{Teorema de Bolzano-Weierstrass} para ver que $\exists \sigma_1:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_1 (n)} (r_1) \}$ de $\{ f_{n} (r_1) \}$ es convergente hacia un vector de  $\mathbb R^M$  que denotaremos como $f(r_1)$:
-    \[
-      \{ f_{\sigma_1 (n)} (r_1) \} \longrightarrow f(r_1).
+      \{ f_{\sigma_1 (n)} (c_1) \} \longrightarrow f(c_1).
     \]
 
-    Como también tenemos la acotaci\'on de $\{ f_{\sigma_1 (n)} (r_2) \} $, deducimos de nuevo aplicando el \textit{Teorema de Bolzano-Weierstrass} que $\exists \sigma_2:\mathbb N \longrightarrow \mathbb N$ estrictamente creciente tal que la subsucesión $\{ f_{\sigma_2 \circ\sigma_1 (n)} (r_2) \}$ de $\{ f_{\sigma_1 (n)} (r_2) \}$ es convergente hac\'{\i}a un vector que denotaremos como $f(r_2)$:
+    Como también tenemos la acotaci\'on de
+    $\{ f_{\sigma_1 (n)} (c_2) \} $, deducimos de nuevo aplicando el
+    \textit{Teorema de Bolzano-Weierstrass} que
+    $\exists \sigma_2:\mathbb N \longrightarrow \mathbb N$
+    estrictamente creciente tal que la subsucesión
+    $\{ f_{\sigma_2 \circ\sigma_1 (n)} (c_2) \}$ de
+    $\{ f_{\sigma_1 (n)} (c_2) \}$ es convergente hacia un vector que
+    denotaremos como $f(c_2)$:
     \[
-      \{ f_{\sigma_2 \circ \sigma_1 (n)} (r_2) \} \longrightarrow f(r_2).
+      \{ f_{\sigma_2 \circ \sigma_1 (n)} (c_2) \} \longrightarrow f(c_2).
     \]
 
     Por inducci\'on, concluimos que
     $
-    \forall k\in N \ \exists \sigma_k :\mathbb N \nearrow  \mathbb N
+    \forall k\in N \ \exists \sigma_k :\mathbb N \nearrow \mathbb N
     $ tal que
     \[
-      \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \}_{n\in\mathbb N}  \longrightarrow f(r_k).
+      \{ f_{\sigma_k \circ \dots \circ \sigma_2 \circ\sigma_1 (n)}
+      (c_k) \}_{n\in\mathbb N} \longrightarrow f(c_k).
     \]
 
     Si definimos $\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1$, podemos visualizar las sucesiones anteriores, cada una en una fila:
@@ -349,61 +437,83 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
         >& \ \sigma_{n-1} \circ \dots \sigma_2 \circ\sigma_1 (n-1) = \sigma (n-1) , \ \forall n\geq 2
       \end{aligned}
     \]
-    donde hemos usado que $\sigma_n(k) \ge k \ \forall k \in \mathbb{N}$, y también que la composición de funciones estrictamente crecientes es estrictamente creciente. Por tanto, $\sigma$ es estrictamente creciente; es decir,  $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsucesión de $\{f_n\}$. A\'un m\'as, es inmediato comprobar que
+    donde hemos usado que
+    $\sigma_k(n) \ge n \ \forall n \in \mathbb{N}$, y también que la
+    composición de funciones estrictamente crecientes es estrictamente
+    creciente. Por tanto, $\sigma$ es estrictamente creciente; es
+    decir, $\{f_{\sigma (n)} \}_{n\in\mathbb N}$ es una subsucesión de
+    $\{f_n\}$. A\'un m\'as, es inmediato comprobar que
     \[
-      \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de }
-      \{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}  \}_{n\in\mathbb N} .
+      \{f_{\sigma (n)}\}_{n\geq k} \mbox{ es una subsucesi\'on de } \{
+      f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)}
+      \}_{n\in\mathbb N} .
     \]
-    As\'{\i}, como la sucesión $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (r_k) \} \to f(r_k)$, tenemos que $\{f_{\sigma (n)} (r_k) \}_{n\in\mathbb N} \longrightarrow f(r_k)$ $\forall k\in N$, puesto que el comportamiento de un número finito de términos no afecta a la convergencia. Por último, como $\{r_k : k \in N \}$ era una enumeración de $A \cap \mathbb Q^N$, concluimos que:
+    As\'{\i}, como la sucesión
+    $\{ f_{\sigma_k \circ \dots \sigma_2 \circ\sigma_1 (n)} (c_k) \}
+    \to f(c_k)$, tenemos que
+    $\{f_{\sigma (n)} (c_k) \}_{n\in\mathbb N} \longrightarrow f(c_k)$
+    $\forall k\in N$, puesto que el comportamiento de un número finito
+    de términos no afecta a la convergencia. Por último, como
+    $\{c_k : k \in N \}$ era una enumeración de $C$, concluimos que:
     \[
-      \{f_{\sigma (n)} (r) \}_{n\in\mathbb N} \longrightarrow f(r), \ \forall r\in A\cap \mathbb Q^N.
+      \{f_{\sigma (n)} (c) \}_{n\in\mathbb N} \longrightarrow f(c)
+      \mbox{ puntualmente } \ \forall c\in C.
     \]
 
-    Notemos que en este paso no ha sido necesario utilizar la equicontinuidad.
+    Notemos que en este paso no ha sido necesario utilizar la
+    equicontinuidad.
 
-    \underline{Paso 2.} Probaremos el siguiente resultado técnico: Dado $\delta>0$, $\exists r_1,...,r_k \in A \cap \mathbb Q^N$ tales que $\exists \ i=1,...,k : |x-r_i| < \delta \ \ \forall x \in A$.
+    \underline{Paso 3}. Concluimos probando que la sucesión $\{g_n\}$
+    converge uniformemente en $A$, donde $g_n := f_{\sigma(n)}$.
 
-    Por ser $A$ compacto, todo recubrimiento de abiertos del conjunto $A$ admite un subrecubrimiento finito del mismo. Definimos el conjunto de bolas abiertas $B=\{B(r,\delta) : r \in A\cap \mathbb Q^N \}$. Como $\mathbb{Q}$ es denso en $\mathbb{R}$, el conjunto $B$ recubre a $A$. Por tanto, como $A$ es compacto, existe un subrecubrimiento finito del mismo que también lo recubre. Es decir, $$\exists r_1,\dots, r_k \in A\cap \mathbb Q^N \ \text{tales que} \ A \subseteq \bigcup_{i=1}^k B(r_i,\delta)$$
-
-    Dado $x \in A$, por ser el anterior un subrecubrimiento finito de $A$, se tiene que\\ $\exists i \in \{1,\dots,k\}$ tal que $x \in B(r_i,\delta)$. Por tanto, $|x-r_i| <\delta$.
-
-    \underline{Paso 3}. Concluimos probando que la sucesión $\{g_n\}$ converge uniformemente en $A$, donde $g_n := f_{\sigma(n)}$.
-
-    Sea $\epsilon>0$ fijo. Por la equicontinuidad de $f_n$,
-    $\exists\delta>0$ tal que
+    Sea $\epsilon>0$ fijo. Por la equicontinuidad de $f_n$ (y por
+    tanto de $g_n$), $\exists\delta>0$ tal que
     \[
       \left.
         \begin{array}{c}
-          |x-y| <\delta
-          \\
           x,y\in A
+          \\
+          |x-y| <\delta
         \end{array}
       \right\}
       \implies |g_n(x)-g_n(y)|<\frac{\varepsilon}{3} , \ \forall n\in\mathbb N.
     \]
 
-    Así, si para todo $x\in A$ consideramos el punto  $r_i\in A\cap \mathbb Q^N$ ($i \in \{1,\dots,k\}$) dado por el paso 2, tendremos:
+    Así pues, si para todo $x\in A$ consideramos el punto $c_i\in C$
+    ($i \in \{1,\dots,k\}$) dado por el paso 1 aplicado a ese
+    $\delta$ (se cumplirá $|x-c_i| < \delta$), tendremos
     \[
       \begin{aligned}
-        |g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(r_i)| + |g_n(r_i)-g_m(r_i)|+|g_m(r_i)-g_m(x)|
+        |g_n(x)-g_m(x)| &\leq |g_n(x)-g_n(c_i)| +
+        |g_n(c_i)-g_m(c_i)|+|g_m(c_i)-g_m(x)|
         \\
-        &<\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)|
-        + \frac{\varepsilon}{3} .
+        &<\frac{\varepsilon}{3} +|g_n(c_i)-g_m(c_i)| +
+        \frac{\varepsilon}{3}
       \end{aligned}
     \]
 
+    Ya que cada sucesi\'on $\{ g_n(c_i)\}$ es convergente a $f(c_i)$
+    para cualquier $i \in \{ 1,\dots ,k\}$, cada una de estas $k$
+    sucesiones es de Cauchy. En consecuencia
+    \[\forall i \in \{ 1,\dots ,k\} \quad \exists n_i \in \mathbb{N} :
+    p,q \geq n_i \implies |g_p(c_i) - g_q(c_i)| <
+    \frac{\varepsilon}{3}\]
 
-
-    Ya que cada sucesi\'on $\{ g_n(r_i)\}$ es convergente a $f(r_i)$ para cualquier $i\in \{ 1,\dots ,k\}$, cada una de estas $k$ sucesiones  es de Cauchy. En consecuencia, $\exists n_0\in\mathbb N$ ({dependiente solo de los puntos $r_i$ e independiente de $x$}) tal que
+  Tomamos $n_0 = \text{max}\{c_i: i = 1,\ldots, k\}$ ({dependiente de
+    los puntos $c_i$ e independiente de $x$}), se cumple que
     \[
-      n,m\geq n_0 \implies |g_n(r_i)-g_m(r_i)| <\frac{\varepsilon}{3} , \ \forall i\in \{ 1,\dots ,k\}
+      p,q \geq n_0 \implies |g_p(c_i)-g_q(c_i)| <\frac{\varepsilon}{3}
+      \quad \forall i\in \{ 1,\dots ,k\}
     \]
     y as\'{\i}
     \[
-      n,m\geq n_0 \implies |g_n(x)-g_m(x)| <\frac{\varepsilon}{3} +|g_n(r_i)-g_m(r_i)|
-      + \frac{\varepsilon}{3} <\varepsilon , \ \ \forall x\in A
+      p,q \geq n_0 \implies |g_p(x)-g_q(x)| <\frac{\varepsilon}{3}
+      +|g_n(c_i)-g_m(c_i)| + \frac{\varepsilon}{3} <\varepsilon
     \]
-    Puesto que en $\mathcal{C}(A,\mathbb R^M )$ la convergencia equivale a la convergencia uniforme, se concluye aplicando el \textit{Criterio de Cauchy} a la sucesión $\{g_n\} = \{f_{\sigma(n)}\}$.
+    Puesto que en $\mathcal{C}(A,\mathbb R^M )$ la convergencia
+    equivale a la convergencia uniforme, se concluye aplicando el
+    \textit{Criterio de Cauchy} a la sucesión
+    $\{g_n\} = \{f_{\sigma(n)}\}$.
   \end{proof}
 
 Como conclusión de este capítulo, presentamos el siguiente corolario, que nos sirve para caracterizar los conjuntos compactos.
