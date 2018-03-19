@@ -373,12 +373,12 @@ Hacemos el backup preservando el contexto
 
 `mkdir /varRAID`
 
-`cp -a /var/* /varRAID`
+`cp -a /var/. /varRAID`
 
 <!--Aquí tal vez había que desmontar con umount el disco-->
 `vi /etc/fstab`
 
-Aquí ponemos en la última línea una almohadilla para comentarlo.
+Aquí ponemos en la última línea una almohadilla para comentarlo, ya que no podemos encriptar un dispositivo en uso.
 
 Reiniciamos.
 
@@ -412,17 +412,17 @@ Ahora debemos modificar los ficheros de Linux
 
 Editamos con vi este archivo para dejar únicamente:
 
-"pmraid1-newvar_crypt UUID-<correspondienteUUID>" none
+"pmraid1-newvar_crypt UUID-\<correspondienteUUID\>" none
 
-Y en fstab también lo editamos para que la última línea tenga añadido el ``_crypt`` al final del nombre del dispositivo a montar en la última línea (correspondiente al disco cifrado)
+Y en fstab también lo editamos para que la última línea tenga añadido el ``_crypt`` al final del nombre del dispositivo a montar en la última línea (correspondiente al disco cifrado).
 
-Desmontamos varCifr
+Desmontamos varCifr.
 
-mount -a  y mostramos con lsblk para ver que esos cambios son permanentes
+`mount -a`  y mostramos con `lsblk` para ver que esos cambios son permanentes.
 
 Al reiniciar nos pedirá la clave de cifrado de dicho disco ("practicas,ISE").
 
-rm -r -f /varRAID para borrar todo lo que se quede colgando del directorio, así como se debería borrar cualquier "archivo residual".
+`rm -r -f /varRAID` para borrar todo lo que se quede colgando del directorio, así como se debería borrar cualquier "archivo residual".
 
 ## Configuración de la Red y las máquinas virtuales
 
