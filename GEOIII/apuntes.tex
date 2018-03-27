@@ -576,13 +576,19 @@ Para toda homotecia, el centro, un punto y su imagen están alineados.
 
 
 \begin{nth}[Recta de Euler]
-  Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados en la recta de Euler.
+  Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados en la recta de Euler. Además $G$ triseca al segmento $\overrightarrow{OH}$.
 \end{nth}
 \begin{proof}
-  Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón).
+  Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia ($h$) de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón).
   Ahora, si $G',O',H'$ son los centros de $A'B'C'$ y $G,O,H$ los centros de $ABC$, tenemos que $G'=G$ y $O=H'$. Sabemos que la homotecia $h$ lleva $G \to G$, $O \to O'$ y $H \to H' = O$.
 
-  Entonces, si aplicamos $h$ al centro G, a un punto $H$ y a su imagen $O$, por el ejercicio anterior, están alineados.
+  Entonces, si aplicamos $h$ al centro G, a un punto $H$ y a su imagen $O$, por la proposición anterior, están alineados.
+
+  Para comprobar que $G$ triseca al segmento que forman $O$ y $H$ es suficiente aplicar la definición de hometecia $h_{\lambda,C}(P) = \lambda P + (1-h)C$. Así
+  \[
+    h_{\frac{-1}{2}, G}(H) = \frac{-1}{2}H + \frac{3}{2}G = O \implies G = \frac{2}{3}O + \frac{1}{3}H
+  \]
+    
 
 \end{proof}
 
