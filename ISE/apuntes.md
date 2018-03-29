@@ -516,11 +516,12 @@ comentar/eliminar
 ```
 
 \newpage
+
 # Práctica 2
 
 ## Sesión 1. Instalación y configuración de un servidor SSH
 
-Recordaremos que la ip de la máquina de CentOS era: `192.168.56.110`
+Recordaremos que la IP de la máquina de CentOS era: `192.168.56.110`
 y la de UbuntuServer era: `192.168.56.105`
 
 
@@ -536,15 +537,15 @@ implementaciones. Usaremos `openssh-server`, y es nombrado proceso
 El cliente SSH es el que usaremos para conectarnos a dicho servidor.
 
 Podemos instalarlo con `apt` o con `tasksel`. En tasksel seleccionamos
-el paquete que deseamos (OpenSSH-server)con la barra espaciadora.
+el paquete que deseamos (OpenSSH-server) con la barra espaciadora.
 
 Una vez descargado podemos comprobar que funcione haciendo ssh al
 localhost.
 
 #### **Cambiando el puerto:**
 
-La configuración de ssh se puede cambiar en `/etc/ssh/ssh_config`.
-Mientras que la configuración de sshd se puede cambiar en `/etc/ssh/sshd_config`.
+La configuración de ssh (cliente) se puede cambiar en `/etc/ssh/ssh_config`.
+Mientras que la configuración de sshd (servidor) se puede cambiar en `/etc/ssh/sshd_config`.
 
 Si queremos que ssh se conecte a un puerto determinado editamos el primer
 archivo, mientras que si queremos que el servidor sshd escuche en otro
