@@ -7,8 +7,8 @@ En esta asignatura estudiaremos la geometría afín. Nos centraremos en el plano
 %%% TODO: completar introducción.
 \newpage
 
-\section{El espacio afín}
-\begin{ndef}[Espacio afín]
+\section{El espacio af\'in}
+\begin{ndef}[Espacio af\'in]
   Sea $E$ un conjunto no vacío. Diremos que $E$ es un \textit{espacio afín} asociado a un espacio vectorial $V$ si existe una aplicación
   \begin{align*}
     \varphi: E \times E & \rightarrow V \\
@@ -437,7 +437,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   Es claro que $A' = \left(\frac{1}{2}B + \frac{1}{2}C\right)$. Tomamos $\lambda = \frac{1}{3}$, por lo que $\mu = \frac{2}{3}$ ya que el punto que buscamos se encuentra en la mediana. Sustituyendo estos valores en la ecuación anterior:
 
   $$\dfrac{1}{3}A + \dfrac{2}{3}\left(\dfrac{1}{2}B+\dfrac{1}{2}C\right) = \frac{1}{3}A + \frac{1}{3}B + \frac{1}{3}C = G$$
-	Después, una vez que sabemos que este punto se encuentra en la recta en la recta que une el punto medio con su vértice homólogo, como este se expresa como un tercio del vértice más otros dos puntos no alineados, este punto triseca claramente a esa recta.
+	Después, una vez que sabemos que este punto se encuentra en la recta en la recta que une el punto medio con su vértice homólogo, como este se expresa como un tercio del vértice más otros dos puntos no alineados, este punto triseca claramente a ese segmento.
 \end{proof}
 
 \begin{nota}
@@ -474,7 +474,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{proof}\hfill
   \begin{nlist}
     \item Trivial.
-    \item La mediatriz está dada por $L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
+    \item La mediatriz está dada por $\mathcal L = \{P\in\mathbb{R}^2, \mu(P,A) = \mu(P,B)\iff \mu(P,A)^2 = \mu(P,B)^2\}$. Sea $P(x,y),A(x_1,y_1),B(x_2,y_2)$, entonces $\mu(P,A)^2 = |P|^2+|A|^2-2\langle A,P\rangle  = |P|^2+|B|^2-2\langle B,P\rangle = \mu(P,B)^2 \implies$ $$ \frac{|A|^2-|B|^2}{2} =\langle A-B,P\rangle  = \langle\vec{BA},P\rangle $$
     Donde podemos ver que $\frac{|A|^2-|B|^2}{2}$ es una constante y $\langle\vec{BA},P\rangle $ genera la recta:
     \[
       r: \vec{BA}_1x+ \vec{BA}_2y - \frac{|A|^2-|B|^2}{2} = 0
@@ -521,16 +521,15 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
   El triángulo doble $DEF$ de un triángulo $ABC$ es el triángulo tal que $ABC$ es el triángulo medio de $DEF$.
 \end{ndef}
 
-\begin{ndef}
+\begin{nota}
   Todo triángulo $ABC$ tiene un triángulo doble asociado, el cual es el hallado en la proposición anterior.
-\end{ndef}
-
+\end{nota}
 
 \begin{nprop}
   Si $ABC$ es un triángulo y $A'B'C'$ su triángulo medio, entonces las alturas de $A'B'C'$ son las mediatrices de $ABC$ y $O=H'$
 \end{nprop}
 \begin{proof}
-  Si tomamos $m_{BC}$ podemos comprobar que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
+  Si tomamos $m_{BC}$ sabemos que pasa por $A'$ y es perpendicular a $\vec{BC}$, por lo que es perpendicular a $\vec{B'C'}$, por lo que será la altura del triángulo medio que pasa por $A'$. Análogamente ocurre con los $B'$ y $C'$, por tanto, $O=H'$.
 \end{proof}
 
 
@@ -558,7 +557,7 @@ Los \textit{triángulos} son polígonos que vienen dados por tres puntos no alin
 \begin{proof}\hfill
 \begin{enumerate}
 	\item $h(P)-h(Q)=(A+\lambda(\vec{AP})) -(A+\lambda(\vec{AQ})) = \lambda(A-P) - \lambda(A-Q) = \lambda (Q-P)$.
-	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}), \lambda(\vec {QQ'}))=^1 \lambda^2 \langle \vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
+	\item  Sean $r$ y $ s$, rectas perpendiculares, $P,P' \in r$ y $Q,Q'\in s$ puntos de las rectas. $\langle h(P) - h(P'),h(Q) - h(Q')\rangle  =  \langle \lambda (\vec{PP'}), \lambda(\vec {QQ'})\rangle=^1 \lambda^2 \langle \vec{PP'},\vec{QQ'}\rangle  = \lambda^2 \cdot 0 = 0 $, donde en 1 se ha usado la bilinealidad del producto escalar.
 	\item Si $h$ multiplica distancia por $\lambda$, las distancias iguales siguen siendo iguales, por lo que el conjunto de puntos que están a la misma distancia de dos rectas se mantiene.
 	\item Como $h$ lleva distancias iguales en distancias iguales, mantiene puntos medios. Además al mantener perpendicularidad, la recta perpendicular que pasa por el punto medio se mantiene.
 \end{enumerate}
@@ -571,7 +570,7 @@ Para toda homotecia, el centro, un punto y su imagen están alineados.
 \end{nprop}
 
 \begin{proof}
-	Sea la homotecia $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$ y el punto cualquiera$P$. Veamos que en la recta (única) que contiene a $P$ y a $ A$, $r= A + \mu \vec{AP}$,  contiene a $h_{A,\lambda} (P)$. Esto es obvio por la misma definición de homotecia.
+	Sea la homotecia $h_{A,\lambda}(P) = \lambda P + (1-\lambda)A = A+\lambda(\vec{AP})$ y el punto cualquiera $P$. Veamos que en la recta (única) que contiene a $P$ y a $ A$, $r= A + \mu \vec{AP}$,  contiene a $h_{A,\lambda} (P)$. Esto es obvio por la misma definición de homotecia.
 \end{proof}
 
 
@@ -579,7 +578,7 @@ Para toda homotecia, el centro, un punto y su imagen están alineados.
   Dado un triángulo $ABC$ no equilátero, entonces sus tres centros $G,O,H$ están alineados en la recta de Euler. Además $G$ triseca al segmento $\overrightarrow{OH}$.
 \end{nth}
 \begin{proof}
-  Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia ($h$) de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$.(Probarlo, aplicando la fórmula de la homotecia con su cent y su razón).
+  Tomamos el triángulo y su triángulo medio $A'B'C'$. Entonces, hay una homotecia ($h$) de centro $G$ y razón $\dfrac{-1}{2}$ que lleva $ABC$ en $A'B'C'$ (probarlo aplicando la fórmula de la homotecia con su centro y su razón).
   Ahora, si $G',O',H'$ son los centros de $A'B'C'$ y $G,O,H$ los centros de $ABC$, tenemos que $G'=G$ y $O=H'$. Sabemos que la homotecia $h$ lleva $G \to G$, $O \to O'$ y $H \to H' = O$.
 
   Entonces, si aplicamos $h$ al centro G, a un punto $H$ y a su imagen $O$, por la proposición anterior, están alineados.
