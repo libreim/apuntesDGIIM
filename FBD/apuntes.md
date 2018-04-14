@@ -94,13 +94,16 @@ Para el usuario:
 
 ## Una arquitectura con tres niveles
 
-¿Por qué organizar en niveles? Los usuarios pueden acceder a los
-mismos datos desde distintas perspectivas. Si un usuario cambia la
-forma de ver los datos no influye al resto. La organización global de
-los datos puede cambiarse sin afectar a los usuarios. Los usuarios no
-tienen por qué gestionar aspectos relativos a la representación física
-de los datos. El administrador de la base de datos puede cambiar la
-forma de representar los datos sin influir en los usuarios.
+**¿Por qué organizar en niveles?** 
+Los usuarios pueden acceder a los mismos datos desde distintas
+perspectivas. Si un usuario cambia la forma de ver los datos no
+influye al resto.
+La organización global de los datos puede cambiarse sin afectar a los
+usuarios. 
+Los usuarios no tienen por qué gestionar aspectos relativos a la
+representación física de los datos. El administrador de la base de
+datos puede cambiar la forma de representar los datos sin influir en
+los usuarios. 
 
 La percepción de los datos en un SGBD puede hacerse siguiendo tres
 niveles de abstracción:
@@ -115,7 +118,8 @@ establece la forma en que se implantan las estructuras de datos que
 organizan los niveles superiores.
 
 Nivel conceptual. Supone una abstracción global de la BD que integra y
-aglutina todas las percepciones que los usuarios tienen de ella.
+aglutina todas las percepciones que los usuarios tienen de ella. Tiene
+una visión global de los datos pero ningún detalle de almacenamiento.
 
 Nivel externo. A este nivel se definen todas las percepciones
 particulares de la BD por parte de los usuarios. Cada usuario puede
@@ -134,7 +138,7 @@ términos de registros y campos almacenados en el nivel
 interno. Independencia física:
 
 - Varía el nivel interno
-- Cambia la Correspondencia
+- Cambia la correspondencia
 - No varía el nivel conceptual
 
 ### Transformación externa/conceptual
@@ -153,8 +157,8 @@ esquemas externos.
 Independencia lógica:
 
 - Varía el esquema externo subyacente
-- Cambia la Correspondencia
-- No varía el esquema definido
+- Cambia la correspondencia
+- No varía el esquema externo dependiente
 
 ## Lenguajes de una BD
 
@@ -180,6 +184,8 @@ En la práctica todos estos sublenguajes se presentan bajo una
 implementación única. Cada sentencia trabaja sobre uno o varios
 niveles. Un sistema de privilegios discrimina quién puede ejecutar
 qué.
+
+El ejemplo más destacado es SQL.
 
 ## Arquitectura de un SBD
 
@@ -214,7 +220,8 @@ procesamiento.
   global. Las peticiones de datos formuladas desde una sede se
   traducen de forma transparente a peticiones en las sedes donde se
   encuentran esos datos.
-- Nivel de servidor de aplicaciones.
+- Nivel de servidor de aplicaciones. Evolución del servidor web que
+  proporcionan programas de aplicación a clientes ligeros.
 - Nivel de cliente. PCs ligeros dotados de configuraciones basadas en
   estándares abiertos. Basados en el carácter portátil con que se
   distribuyen las aplicaciones desde los servidores de
