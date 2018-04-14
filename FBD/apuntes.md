@@ -318,7 +318,7 @@ las conexiones existentes entre las entidades:
 
 - Nodos: registros
 - Arcos: enlaces entre registros (punteros)
-- Relaciones entre conjuntos de entidades: coenctores (registros
+- Relaciones entre conjuntos de entidades: conectores (registros
   especiales). Cada ocurrencia de un conector representa una
   asociación distinta.
 
