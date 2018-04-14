@@ -14,18 +14,19 @@ Sistemas gestor de base de datos: conjunto de elementos software con
 capacidad para definir, mantener y utilizar una base de datos. Un
 sistema gestor de bases de datos debe permitir definir estructuras de
 almacenamiento, acceder a datos de forma eficiente y segura, organizar
-la actualización multiusuario...
+la actualización de los datos y el acceso multiusuario...
 
 Elementos de una base de datos:
 
 - Datos: integrados (sin redundancia) y compartidos (útiles a varias
   aplicaciones).
+- Hardware: base de datos normal o distribuida.
 - Software: programas para definir las estructuras y gestionar los
   datos de la base de datos.
 - Usuarios: usuario final, programador de aplicaciones,
   administrador.
 
-Dato operativo: pieza de información que necesita una organización
+Dato operativo: pieza de información que necesita un proyecto
 para su funcionamiento.
 
 - Ítem básico: Elemento acerca del que se puede pedir información.
@@ -33,7 +34,7 @@ para su funcionamiento.
 - Relaciones: Conexiones lógicas entre ítems.
 
 Cuando se determinan y clasifican de esta forma todos los datos
-operativos, se obtiene el esquema lógico de la base de datos.
+operativos, se obtiene el **esquema lógico** de la base de datos.
 
 ## Concepto de independencia
 
@@ -46,7 +47,8 @@ permite realizar libremente cambios en la estructura física y
 descargar a las aplicaciones de problemas físicos.
 
 Independencia lógica. Existen dos tipos de estructura lógica: esquema
-lógico general y vistas de usuario. Cada aplicación debe poder
+lógico general(vista global) y vistas de usuario (datos a los que se
+deja acceso a un usuario). Cada aplicación debe poder
 organizar los datos según sus propios esquemas y acceder a los datos
 que le son necesarios.
 
@@ -55,14 +57,14 @@ que le son necesarios.
 - Posibilidad de cambios en los esquemas por parte de las aplicaciones
   y por parte de los administradores.
 
-## Objetivos de un sistema gestor de bases de datos
+## Objetivos de un sistema gestor de bases de datos (SGBD)
 
 - Independencia de datos.
 - Diseño y utilización orientada al usuario: los datos y aplicaciones
 deben ser accesibles a los usuarios de la manera más amigable
 posible. Para ello se debe soportar un modelo de datos teórico,
 facilidades de definición y un lenguaje de acceso y modificación.
-. Centralización: los datos deben gestionarse de forma centralizada e
+- Centralización: los datos deben gestionarse de forma centralizada e
 independiente de las aplicaciones.
 - Para el administrador de la base de datos, utilidades de gestión.
 - No redundancia. Los datos no deben estar duplicados. Gestión de
@@ -83,7 +85,7 @@ Para el usuario:
 - Usuario final: puede acceder a los datos.
 - Programador de aplicaciones: eliminar problemas de diseño lógico y
   físico, depuración de errores y mantenimiento general.
-- No es necesario un administrador de la base de datos.
+- Surge la figura del administrador de la base de datos.
 - Para el sistema: control centralizado, criterios de uniformación,
   generación de nuevas aplicaciones, equilibrio entre requerimientos
   conflictivos.
