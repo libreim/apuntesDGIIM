@@ -405,7 +405,7 @@ Esquema de una relación R: Atributos A1: D1,..., A:Dn
 Instancia de una relación: conjunto de tuplas que la componen en cada
 momento.
 
-Propiedades:
+## Propiedades de la estructura de datos relacional:
 Condición de normalización. Todos los valores de los atributos de una
 relación son atómicos. Valor atómico es un valor no
 estructurado. Cuando una relación cumple la primera condición de
@@ -427,17 +427,17 @@ esquema.
 Algunas veces no se conoce el valor de un atributo de determinada
 tupla. En esos casos a ese atributo de esa tupla se le asigna un valor
 nulo. Un valor nulo puede ser un valor desconocido o un atributo no
-aplicable. En cualquier caso, ese valor es un valor más de todos los
+aplicable. En cualquier caso, ese valor es un valor común a todos los
 dominios de la base de datos.
 
 ## Restricciones de integridad
 
 En una relación puede haber más de un conjunto de atributos que puedan
 ser elegidos como clave. Estos conjuntos se llaman claves
-candidatas. Una clave candidatas es un atributo o conjunto de
+candidatas. Una clave candidata es un atributo o conjunto de
 atributos que identifican a cada tupla en la relación y que, además,
 no existe un subconjunto de ellos que también identifiquen a la tupla
-en la relación. Una clave primaria es una clave primaria elegida por
+en la relación. Una clave primaria es una clave candidata elegida por
 el diseñador. Si se verifica la unicidad pero no la minimalidad se
 denomina superclave.
 
@@ -452,13 +452,13 @@ completa de los atributos que son claves de la entidad. Clave primaria
 o parte de ella no puede ser valor nulo.
 
 Clave externa: un conjunto de atributos en una relación que es una
-clave en otra (o en otra) relación. Podemos ver una clave externa como
-un conjunto de atributos de una relación cuyos valores en las tuplas
-deben coincidir con los valores de la clave primaria de las tuplas de
-otra relación. Si PK es la clave primaria de R y FK la clave externa
-de S con respecto a R verifica que el dominio activo de FK debe estar
-incluido en el dominio activo de PC para cualquier instancia de la
-base de datos.
+clave en otra (o en la misma) relación. Podemos ver una clave externa
+como un conjunto de atributos de una relación cuyos valores en las
+tuplas deben coincidir con los valores de la clave primaria de las
+tuplas de otra relación. Si PK es la clave primaria de R y FK la clave
+externa de S con respecto a R verifica que el dominio activo de FK
+debe estar incluido en el dominio activo de PC para cualquier
+instancia de la base de datos.
 
 Integridad referencial: una base de datos en la que todos los valores
 no nulos de una clave externa referencian valores reales de la clave
@@ -476,7 +476,7 @@ El SGBD debe encargarse de mantener las siguientes restricciones:
 - La unicidad de la clave primaria y las claves candidatas.
 - La restricción de integridad de identidad.
 - La integridad referencial:
-  - En inserción: rechazar tuplas insertadas si el calor de la clave
+  - En inserción: rechazar tuplas insertadas si el valor de la clave
     externa no concuerda en la relación referenciada para alguna tupla
     en el valor de su clave primaria. Si el valor para la clave
     externa es nulo y el diseño no lo permite habrá que rechazar
