@@ -715,6 +715,7 @@ ejecutará el bloque de código será la *thread master* o "*hebra 0*".
 
 \newpage
 
+
 # Seminario 2. Cláusulas OpenMP
 
 Las **cláusulas** son las encargadas de ajustar el comportamiento de
@@ -724,26 +725,55 @@ critical, barrier, atomic, flush, ordered o threadprivate.
 ## Ámbito de los datos por defecto. Compartición de datos.
 
 Es conveniente saber qué valores tomarán las variables dentro de una
-zona donde queramos hacer uso del paralelismo. Dejando claro si
-queremos que la memoria se comparta o en cada thread se mantengan unos
+zona donde queramos hacer uso del paralelismo. Tenemos que tener claro si
+queremos que la memoria se comparta o que en cada thread se mantengan unos
 datos privados.
 
 Por lo general las variables declaradas fuera de una región y las
-dinámicas son compartidas por los threads de la región. Mientras que
+dinámicas son compartidas por los threads de la región, mientras que
 las variables declaradas dentro son privadas.
 
-A excepción de esto nos encontramos los índices de los bucles for y
+A excepción de esto nos encontramos los índices de los bucles *for* y
 las variables declaradas *static*, que son privados y “públicas”
 respectivamente.
 
 ### Shared
 ```c
-#pragma omp parallel for shared(a,b,...,N)
-```
+#pragma omp parallel for shared(a,b,...,N)```
 
 Las variables indicadas por la lista son compartidas por los
 threads. Hay que tener cuidado cuando un thread lea lo que otro
 escribe en una variable de la lista.
+
+En el siguiente ejemplo inicializamos un vector y realizamos una pequeña operación sobre sus componentes, independiente entre ellas (lo que hagamos con la componente *i* no afecta a las otras). La operación la paralelizamos, compartiendo el vector *a[]* entre ellas.
+El ejemplo es meramente ilustrativo, la utilidad de usar shared en este caso es prácticamente nula.
+
+~~~c
+#include <stdio.h>
+#ifdef _OPENMP
+	#include <omp.h>
+#endif
+
+
+int main() {
+	int n = 7;
+	int a[n];
+
+	for(int i = 0; i < n; ++i)
+		a[i] = i+1;
+
+	//Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
+	#pragma omp parallel for shared(a)
+	for(int i = 0; i < n; ++i)
+		a[i] += i;
+
+	printf("Después del parallel for:\n");
+
+	for(int i = 0; i < n; ++i)
+		printf("a[%d] = %d\n",i,a[i]);
+}
+~~~
+La cláusula gana algo de sentido cuando la combinamos con la cláusula default, por lo que retomaremos este ejemplo cuando se explique dicha cláusula.
 
 ### Private
 ```c
@@ -753,20 +783,98 @@ escribe en una variable de la lista.
 De modo análogo a shared, indica una lista de variables cuya memoria
 no es compartida. Es importante saber que el valor de entrada y de
 salida están indefinidos aunque la variable haya sido definida antes
-de la región (por lo cual es necesario definirlas dentro de esta).
+de la región. Es decir, que por defecto, al entrar en la sección paralelizada no se sabe lo que vale, ni tampoco se sabe lo que valdrá al cerrar dicha zona. Por tanto, tenemos que definirla dentro (y si queremos, operar con ella), sabiendo así los valores que toma. Si no lo hacemos toma un valor basura, lo que hubiera en la dirección de memoria utilizada.
 
 Los índices de los bucles tienen un ámbito predeterminado privado si
-se usa la directiva for.
+se usa la directiva for, por lo que no hace falta especificarlo en la lista.
+
+En el siguiente ejemplo, queremos que cada hebra i imprima i. Como declaramos el número de hebra como privado (nthread) y el valor que debe imprimir como compartido, nos aseguramos que la hebra imprima correctamente nthread, pero valor es compartido, por lo que puede que una hebra cuando vaya a imprimir valor, justo antes, otra hebra modifique el valor, perdiendo el que le había asignado la hebra.
+
+Realizamos 3 iteraciones en cada hebra para poder apreciar algún fallo (puede darse que el resultado sea correcto, pero eso depende de las casuísticas a la hora de la ejecución).
+
+
+~~~c
+#include <stdio.h>
+#ifdef _OPENMP
+	#include <omp.h>
+#endif
+
+
+int main() {
+	int nthread = 0;
+	int valor = 0;
+
+	#pragma omp parallel sections shared(valor) private(nthread)
+	{
+		#pragma omp section
+		{
+			nthread = omp_get_thread_num();
+			valor = nthread;
+
+			for(int i = 0; i < 3; ++i)
+				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+		}
+
+		#pragma omp section
+		{
+			nthread = omp_get_thread_num();
+			valor = nthread;
+			for(int i = 0; i < 3; ++i)
+				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+		}
+
+		#pragma omp section
+		{
+			nthread = omp_get_thread_num();
+			valor = nthread;
+			for(int i = 0; i < 3; ++i)
+				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+		}
+
+		#pragma omp section
+		{
+			nthread = omp_get_thread_num();
+			valor = nthread;
+			for(int i = 0; i < 3; ++i)
+				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+		}
+	}
+
+}
+~~~
+
+
+
+Si ejecutamos el código anterior, observamos que algunas hebras imprimen un número que no se corresponde con ellas. Esto se debe a que otra hebra ha escrito antes de que la hebra actual imprima, produciéndose condiciones de carrera.
+
+~~~
+victor@victor-GL552VW:~/Documentos/Universidad/2º Cuatrimestre/AC/Practicas/codi
+gos_apuntes$ export OMP_SET_NUM_THREADS=4
+victor@victor-GL552VW:~/Documentos/Universidad/2º Cuatrimestre/AC/Practicas/codi
+gos_apuntes$ ./private
+Soy la hebra 0, debo imprimir 0
+Soy la hebra 0, debo imprimir 2
+Soy la hebra 0, debo imprimir 2
+Soy la hebra 2, debo imprimir 2
+Soy la hebra 2, debo imprimir 2
+Soy la hebra 2, debo imprimir 2
+Soy la hebra 1, debo imprimir 1
+Soy la hebra 1, debo imprimir 2
+Soy la hebra 1, debo imprimir 2
+Soy la hebra 3, debo imprimir 3
+Soy la hebra 3, debo imprimir 2
+Soy la hebra 3, debo imprimir 2
+~~~
+
+Si en lugar de declarar valor como shared, lo hacemos como private, el resultado de la ejecución es correcto.
 
 ### Lastprivate
 ```c
 #pragma omp parallel for lastprivate(a,b,...,N)
 ```
 
-Combina la protección que otorga private pero al salir de la región
-paralela le asigna a las variables de la lista el último valor en una
-ejecución secuencial. (En un bucle la ultima iteración y en una
-construcción sections el valor que tuviese tras la última sección).
+Cada hilo tiene una copia local del dato. La copia global será actualizada por el hilo que ejecuta la última iteración según el orden secuencial de programa.
+Después de explicar la siguiente directiva veremos un ejemplo combinado
 
 ### Firstprivate
 ```c
@@ -777,7 +885,36 @@ Combina la protección que otorga private pero al entrar en la región,
 en lugar de tener valores indefinidos, asigna los valores que tenía
 antes de entrar a cada variable de la lista para cada thread.
 
+Cada hilo tiene una copia local del dato. La copia local se inicializa con el valor de la copia global en el momento de encontrarse con la directiva a la que se aplica la cláusula.
+
 Útil para no olvidar la inicialización dentro de la región paralela cuando usamos variables private.
+
+~~~c
+#include <stdio.h>
+#ifdef _OPENMP
+#include <omp.h>
+#else
+#define omp_get_thread_num() 0
+#endif
+int main() {
+	int i, n = 7;
+	int a[n], suma=0;
+	for (i=0; i<n; i++)
+		a[i] = i;
+	#pragma omp parallel for firstprivate(suma) lastprivate(suma)
+		for (i=0; i<n; i++)
+		{
+			suma = suma + a[i];
+			printf(" thread %d suma a[%d] suma=%d \n",
+			omp_get_thread_num(),i,suma);
+		}
+		printf("\nFuera de la construcción parallel suma=%d\n",suma);
+}
+~~~
+
+En el seminario, se plantea si siempre se imprime el mismo valor fuera de la región parallel. Al declarar suma como firstprivate, cada hebra se inicializa a 0, ya que es el valor que tenía antes de entrar a la región paralelizada. Al declararla también como lastprivate, el valor que le asigne la última hebra a suma será el que se imprima fuera. Una explicación más detallada:
+
+Lo que se imprime fuera de la región parallel, va a ser el valor suma que tenga la última hebra que realiza ejecuciones en orden secuencial. Como tenemos 7 iteraciones y 4 hebras disponibles, las 3 primeras hacen 2 iteraciones cada una, y la última hebra realiza la última iteración, que es un 6, por lo que la suma fuera del parallel se imprime un 6. Si ahora limitamos la ejecución a 3 hebras con export OMP_NUM_THREADS=3, la primera hebra hace 3 iteraciones, la segunda dos y la tercera, que es la última, también hace 2 iteraciones, las dos últimas. Estas dos  últimas suman 5 y 6, 11 en total, por lo que la suma de la última hebra es un 11 y pone la suma global, la que está fuera del parallel, a 11, imprimiendo así un 11.
 
 ### Default
 Con `default(<none/shared>)` podemos alterar el comportamiento por
@@ -787,6 +924,38 @@ en la construcción por parte del programador.
 
 Podemos excluir del ámbito por defecto usando todas las cláusulas de
 compartición que hemos visto hasta ahora.
+
+
+El siguiente código es el mismo que hemos utilizado para explicar la cláusula shared, pero situando delante default(none). Si lo compilamos, se produce un error, ya que no se declara el ámbito de la variable n. Para el índice del bucle no hay problema ya que como habíamos comentado, por defecto los índices de los bucles son privados al paralelizar con for.
+
+Se soluciona cambiando shared(a) por shared(a,n).
+~~~c
+#include <stdio.h>
+#ifdef _OPENMP
+	#include <omp.h>
+#endif
+
+
+int main() {
+	int n = 7;
+	int a[n];
+  int i;
+
+	for(int i = 0; i < n; ++i)
+		a[i] = i+1;
+
+	//Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
+	#pragma omp parallel for default(none) shared(a)
+	for(i = 0; i < n; ++i)
+		a[i] += i;
+
+	printf("Después del parallel for:\n");
+
+	for(i = 0; i < n; ++i)
+		printf("a[%d] = %d\n",i,a[i]);
+}
+~~~
+
 
 ### Reduction
 ```c
@@ -798,6 +967,9 @@ según el operador indicado. Así de este modo se sumarán, restarán,
 multiplicarán... todas las variables del mismo nombre en distintos
 threads al final de la región tomando unos valores iniciales por
 defecto (el neutro para el correspondiente operador).
+
+Es decir, si declaramos ```reduction(+:suma)```, cada región paralelizada inicializa a 0 la variable suma (ver tabla inicializaciones abajo) y tras ejecutarse todas en paralelo, se suman todas las "sumas" que ha realizado cada hebra. Es como si tuviéramos una suma local para cada hebra y una suma global, donde a la suma global se le suma cada una de las locales.
+Al entrar en la región paralelizada cambia el valor al que dice la tabla, independientemente de lo que tuviera antes.
 
 **Operadores reduction (v3.0)**
 
@@ -839,11 +1011,40 @@ C/C++
 }
 ```
 
-Esta cláusula sólo se puede usar con la directiva single, y dentro de
+Esta cláusula solo se puede usar con la directiva single, y dentro de
 una región paralela copia el valor de la variable en el thread que
 ejecuta el single a la misma variable privada en los otros
 threads. Esto es usado comúnmente en lecturas o peticiones al usuario
 únicas.
+
+En el siguiente ejemplo, la hebra que realiza el single inicializa el valor de la variable a. El resto de hebras tomarán dicho valor para la variable, que la tienen como privada, lo que haga cada hebra no afecta a otras.
+
+~~~c
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+	int n = 9, i, b[n];
+	for (i=0; i<n; i++)
+	b[i] = -1;
+	#pragma omp parallel
+	{ int a;
+		#pragma omp single copyprivate(a)
+		{
+		printf("\nIntroduce valor de inicialización a: ");
+		scanf("%d", &a );
+		printf("\nSingle ejecutada por el thread %d\n",
+		omp_get_thread_num());
+		}
+		#pragma omp for
+		for (i=0; i<n; i++) b[i] = a;
+	}
+	printf("Depués de la región parallel:\n");
+	for (i=0; i<n; i++) printf("b[%d] = %d\t",i,b[i]);
+	printf("\n");
+}
+~~~
+
 
 # Seminario 3. Variables de OpenMP
 
