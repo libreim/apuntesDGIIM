@@ -486,7 +486,7 @@ de compilación, pero en los procesadores superescalares se suele
 implementar en el hardware, mediante el uso de **buffers de
 renombramiento**, que son consultados al captar los operandos para
 conocer si se han escrito en otros registros y que no ha habido
-renombramiento. 
+renombramiento.
 
 
 ## Lección 12. Consistencia del procesador y Procesamiento de saltos
@@ -925,6 +925,8 @@ en la construcción por parte del programador.
 Podemos excluir del ámbito por defecto usando todas las cláusulas de
 compartición que hemos visto hasta ahora.
 
+Si se utiliza shared como default, estamos indicando que todas las variables que se utilicen en la sección paralelizada son compartidas por defecto. Si queremos que una en concreto es privada, tendremos que especificarlo con private. Por otro lado, si utilizamos none, hay que especificar el ámbito de todas las variables. Si no se hace con todas, el compilador producirá un error.
+
 
 El siguiente código es el mismo que hemos utilizado para explicar la cláusula shared, pero situando delante default(none). Si lo compilamos, se produce un error, ya que no se declara el ámbito de la variable n. Para el índice del bucle no hay problema ya que como habíamos comentado, por defecto los índices de los bucles son privados al paralelizar con for.
 
@@ -1107,4 +1109,3 @@ kind: static dynamic guided auto runtime
 chunk: granularidad de la distribución
 
 Solo se usa en bucles. Define el modo en el que se granula el trabajo
-
