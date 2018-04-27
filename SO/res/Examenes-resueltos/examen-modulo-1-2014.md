@@ -2,8 +2,7 @@
 
 > Este exámen fue propuesto por el profesor José Antonio Gómez del departamento de LSI de la
 > ETSIIT, de la Universidad de Granada. 
-> Resuelto por Víctor Castro Serrano, alumno del DGIIM de la Universidad de Granada.
-> Toda aportación o modificación puede ser comunicada a LibreIM para su actualización.
+
 
 ###  Ejercicio 1
 ***1. [20% puntuación] Un bash shell restringido (bash -r) permite limitar algunas acciones del usuario que los usa, por ejemplo, no permite cambiar de directorio, ni utilizar nombres de archivos que contienen una barra /, ni cambiar las variables PATH y SHELL, ni redirigir las entradas/salidas, ni tampoco definir funciones. Se pide crear un usuario, denominado anonimo, que debe usar un shell restringido, tiene un UID con valor 590 y pertenecerá a un grupo denominado limitados con GID 1010. Su directorio homes será /home/anonimo y su cuenta debe estar activa solo 10 días.***
