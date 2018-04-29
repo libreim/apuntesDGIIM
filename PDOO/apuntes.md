@@ -159,8 +159,10 @@ public class Tienda<T> {
 Se define como la capacidad de una entidad (indentificador) de referenciar a objetos de diferentes clases (tipo) durante la ejecución de un programa.
 
 \subsection{Tipo estático y dinámico}
-\textbf{Tipo estático:} Tipo(clase) del que se declara la variable, no cambia durante la ejecución.
-\textbf{Tipo dinámico:} Clase a la que pertenece el objeto al que va referenciando una variable a lo largo de la ejecución Puede cambiar durante la ejecución.
+\begin{itemize}
+\item \textbf{Tipo estático:} Tipo(clase) del que se declara la variable, no cambia durante la ejecución.
+\item \textbf{Tipo dinámico:} Clase a la que pertenece el objeto al que va referenciando una variable a lo largo de la ejecución Puede cambiar durante la ejecución.
+\end{itemize}
 
 Java es un lenguaje con tipo estático y dinámico. Dado que Ruby no es un lenguaje fuertemente tipado, no tiene sentido hablar de tipo estático, todos los tipos son dinámicos.
 Un ejemplo es el siguiente. Supongamos que tenemos una clase Persona y una clase Alumno, la cual hereda de persona.
@@ -168,28 +170,34 @@ Un ejemplo es el siguiente. Supongamos que tenemos una clase Persona y una clase
 Persona p = new Persona();
 \end{lstlisting}
 
-El tipo estático de *p* es Persona, su tipo dinámico es Persona. No obstante, como Alumno hereda de Persona, podemos cambiar su tipo dinámico a Alumno:
+El tipo estático de \textit{p} es Persona, su tipo dinámico es Persona. No obstante, como Alumno hereda de Persona, podemos cambiar su tipo dinámico a Alumno:
 \begin{lstlisting}[language=Java]
 p = new Alumno();
 \end{lstlisting}
 Ahora el tipo dinámico de \textit{p} es Alumno.
 
 \subsection{Polimorfismo y ligadura dinámica}
-\textbf{Ligadura estática:} el enlace del método al mensaje se basa en el tipo estático de la variable y se realiza en tiempo de compilación. Se debe especificar el C++ y Objetive C. Java y Ruby no permiten hacer esto.
-\textbf{Ligadura dinámica:} el enlace del método al mensaje se basa en el tipo dinámico de la variable y se realiza en tiempo de ejecución. Es lo que emplean Java y Ruby.
+\begin{itemize}
+\item \textbf{Ligadura estática:} el enlace del método al mensaje se basa en el tipo estático de la variable y se realiza en tiempo de compilación. Se debe especificar el C++ y Objetive C. Java y Ruby no permiten hacer esto.
+
+\item \textbf{Ligadura dinámica:} el enlace del método al mensaje se basa en el tipo dinámico de la variable y se realiza en tiempo de ejecución. Es lo que emplean Java y Ruby.
+\end{itemize}
 
 No existe polimorfismo sin ligadura dinámica, ya que ésta permite que una variable referencia en tiempo de ejecución a objetos de diferente clase, así como que un mensaje se ligue a un método y otro dependiendo de la clase del objeto receptor en ese momento.
 
 En los lenguajes con tipo estático, las clases de objetos que puede referenciar una variable está limitada por el tipo estático de la variable. Existen unas reglas de compatibilidad en orientación a objetos:
-\textbf{Entre clases (a través de herencia):} el tipo dinámico de una variable puede ser la clase declarada, coincidiendo con su tipo estático, pero también puede ser de alguna de sus subclases, como veíamos en el ejemplo de la Persona. Podemos aplicar la regla " es un", "un alumno es una persona", luego está permitido referenciar a Alumno.
-\textbf{Entre interfaz y clases (a través de la realización):} el tipo dinámico de una variable puede ser el tipo estático de la interfaz que implementa. En este caso solo abordamos Java, ya que Ruby no cuenta con el concepto de interfaz.
+\begin{itemize}
+\item \textbf{Entre clases (a través de herencia):} el tipo dinámico de una variable puede ser la clase declarada, coincidiendo con su tipo estático, pero también puede ser de alguna de sus subclases, como veíamos en el ejemplo de la Persona. Podemos aplicar la regla \textit{es un}, \textit{un alumno es una persona}, luego está permitido referenciar a Alumno.
 
+\item \textbf{Entre interfaz y clases (a través de la realización):} el tipo dinámico de una variable puede ser el tipo estático de la interfaz que implementa. En este caso solo abordamos Java, ya que Ruby no cuenta con el concepto de interfaz.
+\end{itemize}
 Daremos un par de conceptos más antes de pasar a ilustrar ejemplos.
 
 \subsection{Errores de compilación y ejecución}
-
-\textbf{Error de compilación:} aunque la decisión del método a ejecutar dependa del objeto al que se haga referencia, si el tipo estático no dispone del método, obtendremos un error en tiempo de compilación. Podemos solucionarlo mediante un casting, con el que no convertimos el tipo, pero indicamos el tipo dinámico que se espera tener en tiempo de ejecución.
-\textbf{Error de ejecución:} se produce cuando no se corresponde el tipo dinámico de la variable con el tipo que se le ha indicado para evitar un error de compilación.
+\begin{itemize}
+\item \textbf{Error de compilación:} aunque la decisión del método a ejecutar dependa del objeto al que se haga referencia, si el tipo estático no dispone del método, obtendremos un error en tiempo de compilación. Podemos solucionarlo mediante un casting, con el que no convertimos el tipo, pero indicamos el tipo dinámico que se espera tener en tiempo de ejecución.
+\item \textbf{Error de ejecución:} se produce cuando no se corresponde el tipo dinámico de la variable con el tipo que se le ha indicado para evitar un error de compilación.
+\end{itemize}
 
 \subsection{Ejemplos prácticos y realizando casting}
 Con todos estos conceptos teóricos expuestos, ponemos unos ejemplos que ayudarán a entender los conceptos. Disponemos de una clase Persona, de la cual heredan una clase Alumno y una clase Profesor. El código de las clases es el siguiente:
@@ -273,7 +281,7 @@ public class Test {
 \end{lstlisting}
 
 La ligadura dinámica del método hablar() de p se realiza en tiempo de ejecución. Por tanto, durante la ejecución se decide qué método hablar se va a utilizar. Como  el tipo dinámico es Persona, se llamará al método hablar() que se implementó en la clase Persona. Se produce la siguiente salida
-\begin{lstlisting}
+\begin{lstlisting}[language=bash, style=terminal
 Soy una persona que habla. Me llamo Pepe
 \end{lstlisting}
 
@@ -284,7 +292,7 @@ p.hablar()
 \end{lstlisting}
 
 Produce como salida:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash, style=terminal
 Soy un alumno que habla, me llamo Pepe
 \end{lstlisting}
 
@@ -303,7 +311,7 @@ Persona p = new Alumno("Pepe");
 
 Compila y produce como salida:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash, style=terminal
 Soy un alumno que estudia
 \end{lstlisting}
 
@@ -315,12 +323,12 @@ Persona var4 = new Profesor("Pedro");
 \end{lstlisting}
 
 El error obtenido es este:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash, style=terminal
 Exception in thread "main" java.lang.ClassCastException: polimorfismo.Profesor cannot be cast to polimorfismo.Alumno
 \end{lstlisting}
 
 Nótese que el tipo estático era Persona. Si ahora decidimos que el tipo estático es Profesor, obtenemos un error de compilación. NetBeans nos notifica con el siguiente error:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash, style=terminal
 incompatible types: Profesor cannot be converted to Alumno
 \end{lstlisting}
 
@@ -364,15 +372,3 @@ En aquellos lenguajes sin tipo estático, como Ruby, no hya una limitación en c
 \subsection{Qué no es Polimorfismo}
 La sobrecarga de operadores, funciones o métodos y los tipos y clases parametrizables no son considerados polimorfismos.
 
-
-\begin{lstlisting}
-
-\end{lstlisting}
-
-\subsection{}
-
-\subsection{}
-
-\begin{lstlisting}
-
-\end{lstlisting}
