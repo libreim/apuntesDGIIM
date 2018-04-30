@@ -367,3 +367,63 @@ Proceso general:
 3. Representarlos, como clases, en el diagrama de conceptos
 
 Estrategias para identificar conceptos: Establecer una lista de categorías de conceptos y rellenarla a partir de la información que se dispone. Encontrar los términos que se correspondan con sustantivos o frases nominales; éstos van a ser los candidato sa conceptos.
+
+
+**Identificar e incorporar asociaciones**
+Una asociación es una conexión significativa y relevante entre conceptos
+
+1. Identificar las posibles asociaciones
+2. Representarlas en el diagrama y seleccionar las que sean válidas
+3. Asignarles nombre
+4. Identificar la multiplicidad
+
+**Incorporar generalizaciones**
+1. Identificar posibles generalizaciones. A partir de las descripción del problema y de las clases conceptuales identificadas, encontrar clases conceptuales con elementos comunes. Definir las relaciones de superclase y subclase.
+2. Validar las estructuras encontradas. Una subclase potencial debería estar de acuerdo con la regla del 100% (conformidad con la  definición de la superclase) y regla es-un (conformidad con la pertenencia al conjunto que define la superclase).
+3. Representarlas en el modelo conceptual.
+
+**Agregar atributos**
+1. Identificar atributos desde casos de uso y lista de requisitos, así como otras fuentes de información.
+2. Representarlos en el diagrama, en los conceptos o en las relaciones que correspondan.
+Tipos de atributos válidos:
+- Primitivos o valores puros de datos (entero, real, carácter, booleano, cadena...)
+- No primitivos (nombre de persona, número de teléfono, hora, fecha, dirección...)
+
+**Estructurar el modelo**
+Paquete: división del modelo agrupando conceptos que tienen una fuerte relación entre sí (facilita el modelado y la posterior representación mediante diagramas).
+
+Para estructurar el diagrama de conceptos o modelo de dominio:
+- Elementos que están en el mismo área de interés
+- Están juntos en una jerarquía de clases
+- Participan en los mismos casos de uso
+- Están fuertemente asociados
+
+#### Obtención del modelo de comportamiento
+Estudio adicional del dominio del problema en el que se añaden los requisitos funcionales al modelo del análisis (qué hace el sistema sin explicar cómo lo hace).
+El diagrama de secuencia del sistema es un diagrama de UML en el que se muestra cómo los eventos generados por los actores provocan la ejecución de una operación por el sistema, siendo visto este como una caja negra. Pasos a seguir, para todos los casos de uso:
+1. Identificar los actores que inician las operaciones.
+2. Asignar un nombre a todo el sistema.
+3. Identificar y nombrar las operaciones principales del sistema a partir de las descripciones de los casos de uso.
+4. Determinar los parámetros de las operaciones.
+5. Incluir las operaciones en la clase que identifica a todo el sistema.
+6. Hacer una descripción informal de la funcionalidad de cada operación.
+
+#### Contratos
+Documento que describe lo que una operación se propone lograr, sin decir cómo se conseguirá.
+Contenido del contrato:
+- Nombre (nombre de la operación y sus parámetros)
+- Responsabilidad (descripción informal de las responsabilidades que debe cumplir la operación)
+- Tipo (concepto, clase o interfaz responsable de la operación)
+- Notas (notas de diseño, algoritmos...)
+- Excepciones (casos excepcionales)
+- Salida (mensajes o datos que proporciona)
+- Precondiciones (suposición acerca del estado del sistema o de los objetos del modelo conceptual antes de ejecutar la operación)
+- Poscondiciones (estado del sistema  o de los objetos del modelo conceptual después de la ejecución de la operación)
+
+Directrices para la elaboración de un contrato:
+- El nombre de la operación viene del diagrama de secuencia del sistema correspondiente
+- Comenzar con las responsabilidades, describiendo informalmente el propósito de la operación, continuar con las poscondiciones y finalizar con las desmás secciones, especialmente con las precondiciones y excepciones.
+- Las poscondiciones deben describir los cambios de estado de un sistema, no sus acciones, estos son: creación y destrucción de objetos, creación y destrucción de enlaces, modificación de atributos.
+- Las poscondiciones deben expresarse mediante una frase verbal en pretérito.
+
+Para especificar las poscondiciones hay que identificar en el diagrama de conceptos los objetos que intervienen en la operación.
