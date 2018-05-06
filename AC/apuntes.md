@@ -256,36 +256,45 @@ código secuencial que no puede paralelizarse, los procesadores no se podrían u
 Las arquitecturas con TLP(Thread Level Parallelism) son:
 
 ### Multiprocesador:
-Varios threads en paralelo en varios procesadores.
+Varios threads en paralelo en un **computador** con varios procesadores, cada thread en un core/procesador distinto.
 
 Hay dos tipos:
 
-1. Memoria centralizada (*UMA*: Uniform Memory Access), en el que todos los procesadores tienen acceso a toda la memoria mediante una red de interconexión.
+1. Memoria centralizada (*UMA*: Uniform Memory Access), en el que todos los procesadores tienen acceso a toda la memoria mediante una red de interconexión. Tienen una mayor latencia y son poco escalables.
 
-2. Memoria distrubuida (*NUMA*: Non Uniform Memory Access), en el que cada procesador tiene su zona de memoria y se conectan mediante una red de interconexión.
+2. Memoria distribuida (*NUMA*: Non Uniform Memory Access), en el que cada procesador tiene su zona de memoria y se conectan mediante una red de interconexión. Tienen menor latencia y son escalables, pero requieren para ello distribución de datos y código.
 
 
-### Multiprocesador en un chip:
-Varios threads en un chip multicore.
-
-En estos, puede ocurrir que todos los cores tengan cachés independientes y /todos/ tengan alguna en común, o que estén agrupados para que /ciertos/ de los cores tengan cachés comunes o que no tengan ninguna caché común y conecten directamente al conmutador.
+### Multiprocesador en un chip o multicore:
+Ejecutan varios threads en paralelo en un **chip de procesamiento** multicore (cada thread en un core distinto). Existen distintas posibilidades en cuanto a la distribución de las cachés:
++ Los cores tengan cachés independientes y /todos/ tengan alguna caché común.
++ Agrupados para que todos los cores del mismo grupo tengan (a parte de sus cachés independientes) alguna caché común.
++ No tengan ninguna caché común y se conectan directamente al conmutador
 
 ### Core multithread:
-Modifican su estructura ILP(Instruction level parallelism) para ejecutar threads en paralelo.
+Modifican su estructura ILP(Instruction level parallelism) para ejecutar threads concurrentemente o en paralelo.
 
 1. Los procesadores segmentados ejecutan instrucciones concurrentemente segmentando el uso de sus componentes.
 
-2. Los procesadores VLIW(very large Instruction Word) y superescalares ejecutan instrucciones concurrentemente(segmentación) y en paralelo(emitiendo múltiples instrucciones a sus múltiples unidades funcionales).
+2. Los procesadores VLIW(very large Instruction Word) y superescalares ejecutan instrucciones concurrentemente (segmentación) y en paralelo(emitiendo múltiples instrucciones a sus múltiples unidades funcionales).
++ VLIW:
+    + Las instrucciones que se ejecutan en paralelo se captan juntas en memoria.
+    + Este conjunto de instrucciones conforman la palabra de instrucción muy larga a la que hace referencia la denominación VLIW.
+    + El hardware presupone que las instrucciones de una palabra son independientes: no tiene que encontrar instrucciones que pueden emitirse y ejecutarse en paralelo.
++ Superescalares:
+    + Tienen que encontrar instrucciones que puedan emitirse y ejecutarse en paralelo (disponen de hardware para extraer paralelismo a nivel de instrucción).
 
-Clasificación de cores multithread:
+### Clasificación de cores multithread:
 
-a. Temporal multithreading(TMT): Un core ejecuta varios threads, y la comuncación entre estas la controla el hardware, emitiendo instrucciones de un único thread por ciclo. A su vez, estos pueden ser:
+a. Temporal multithreading(TMT): Un core ejecuta varios threads, y la comunicación entre éstas la controla el hardware, emitiendo instrucciones de un único thread por ciclo. A su vez, estos pueden ser:
 
-    1. Fine-grain multithreading, la conmutación entre threads la hace el hardware sin coste, se hacen por turno rotatorio y por eventos de cierta latencia.
+    1. Fine-grain multithreading, la conmutación entre threads la hace el hardware sin coste, se hacen por turno rotatorio y por eventos de cierta latencia combinado con alguna técnica de planificación.
 
-    2. Coarse-grain multithreading, la conmutación la decide el hardware con algún coste, tras intervalos de tiempo prefijados o por eventos de cierta latencia. Pueden ser estáticos, que tienen instrucciones explícitas para conmutar y cambio de coste bajo o dinámicos, que conmutan cuando hay fallos de caché o interrupciones.
+    2. Coarse-grain multithreading, la conmutación la decide el hardware con algún coste (varía entre 0 y varios ciclos), tras intervalos de tiempo prefijados o por eventos de cierta latencia. Pueden ser :
+        + Estáticos: tienen instrucciones explícitas para conmutar e implícitas (instrucciones de carga, almacenamiento, salto) y cambio de coste bajo como ventaja, pero produce cambios de contexto innecesarios.
+        + Dinámicos:  conmutan cuando hay fallos de caché o interrupciones. Tiene como ventaja que reduce los cambios de contexto innecesarios pero aumenta la sobrecarga al cambiar de contexto
 
-b. Multihilo simultáneo(SMT): Se ejecutan en un core superescalar varios threads en paralelo, emitiendo instrucciones de varios threads en un ciclo.
+b. Multihilo simultáneo(SMT): se ejecutan en un core superescalar varios threads en paralelo, emitiendo instrucciones de varios threads en un ciclo.
 
 ## Coherencia del sistema de memoria
 
