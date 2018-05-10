@@ -378,18 +378,23 @@ Existen diferentes facetas a tener en cuenta a la hora de diseñar un protocolo 
 ### Consistencia de memoria
 
 Especifica las restricciones en el orden en el cual las operaciones de memoria (lectura y escritura) deben parecer haberse realizado. La coherencia sólo abarca operaciones realizadas por múltiples componentes en una misma dirección.
+En un procesador (o sistema uniprocesador), el orden en el que deben parecer haberse ejecutado los accesos a memoria es el orden secuencial especificado por el programador, denominado **orden del programa**.
 
 #### Consistencia secuencial
-Todas las operaciones de un único procesador parecen ejecutarse en el orden descrito por el programa de entrada al procesador. Todas las operaciones de memoria parecen ser ejecutadas una a la vez. Presenta el sistema de e a los programadores como una memoria global conectada a todos los procesadores a través de un conmutador central.
+Todas las operaciones de un único procesador parecen ejecutarse en el orden descrito por el programa de entrada al procesador. Todas las operaciones de memoria parecen ser ejecutadas una a la vez. Presenta el sistema de memoria a los programadores como una memoria global conectada a todos los procesadores a través de un conmutador central.
+Informalmente, diríamos que el modelo de consistencia secuencial require que todas las operaciones de memoria parezcan ser ejecutadas *una vez* (ejecución *atómica*) y que las instrucciones de un único porcesador (proceso) parezcan ejecutarse en el *orden descrito por el programa* de entrada al procesador.
 
 #### Modelos de consistencia relajados
 Relajan requisitos (orden, atomicidad) de consistencia de memoria para aumentar prestaciones.
++ **Orden del programa**. Los modelos pueden permitir que en el código ejecutado en un procesador se relaje en el orden entre dos accesos a distintas direcciones. Difieren en cuanto a los órdenes que permiten relajar; pueden permitir alterar el orden entre escrituras (W->W), entre lecturas (R->R), entre una lectura y una escritura posterior (W->R) o entre una escritura y una lectura posterior (W->R).
++ **Atomicidad**. Hay modelos que permiten que un procesaodr pueda leer el valor escrito por otro procesador antes de que esta escritura se haga visible para el resto de procesadores.
 
 ##### Modelo que relaja W->R
 Permiten que una lectura pueda adelantar a una escritura precia en el orden del programa, pero evita dependencia RAW. Lo implementan los sistemas con buffer de escritura para los procesadores. Generalmente permiten que el procesador pueda leer una dirección directamente del buffer. Hay sistemas en los que se permite que un procesador pueda leer la escritura de otro antes que el resto.
 
 ##### Modelo que relaja W->R y W->W
 Tiene buffer de escritura que permite que lecturas adelanten a escrituras en buffer. Permiten que el hardware solape escrituras a memoria en distintas direcciones, de forma que pueden llegar a la memoria principal o a caches de todos los procesadores fuera del orden del programa.
+
 ##### Modelo de ordenación débil
 Relaja W->R, W->W y R->W.
 
