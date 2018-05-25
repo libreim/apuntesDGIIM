@@ -366,7 +366,7 @@ Proceso general:
 2. Seleccionar los conceptos relevantes para el problema
 3. Representarlos, como clases, en el diagrama de conceptos
 
-Estrategias para identificar conceptos: Establecer una lista de categorías de conceptos y rellenarla a partir de la información que se dispone. Encontrar los términos que se correspondan con sustantivos o frases nominales; éstos van a ser los candidato sa conceptos.
+Estrategias para identificar conceptos: Establecer una lista de categorías de conceptos y rellenarla a partir de la información que se dispone. Encontrar los términos que se correspondan con sustantivos o frases nominales; éstos van a ser los candidatos a conceptos.
 
 
 **Identificar e incorporar asociaciones**
@@ -422,8 +422,92 @@ Contenido del contrato:
 
 Directrices para la elaboración de un contrato:
 - El nombre de la operación viene del diagrama de secuencia del sistema correspondiente
-- Comenzar con las responsabilidades, describiendo informalmente el propósito de la operación, continuar con las poscondiciones y finalizar con las desmás secciones, especialmente con las precondiciones y excepciones.
+- Comenzar con las responsabilidades, describiendo informalmente el propósito de la operación, continuar con las poscondiciones y finalizar con las demás secciones, especialmente con las precondiciones y excepciones.
 - Las poscondiciones deben describir los cambios de estado de un sistema, no sus acciones, estos son: creación y destrucción de objetos, creación y destrucción de enlaces, modificación de atributos.
 - Las poscondiciones deben expresarse mediante una frase verbal en pretérito.
 
 Para especificar las poscondiciones hay que identificar en el diagrama de conceptos los objetos que intervienen en la operación.
+
+## Tema 3. Diseño e implementación
+
+### 3.1 Fundamentos del diseño software
+El diseño es el proceso de aplicar distintas técnicas y principios con el principio de definir un dispositivo, proceso o sistema con los suficientes detalles como para permitir su realización física. El diseño software es el proceso de aplicar distintas técnicas y principios del diseño con el propósito de traducir el modelo de análisis a una representación del software (modelo de diseño) que pueda codificarse. El diseño se descompone en dos subprocesos:
+1. Diseño arquitectónico. Se describe cómo descomponer el sistema y organizarlo en los diferentes componentes (arquitectura del software).
+2. Diseño detallado. Se describe el comportamiento específico de cada uno de los componentes del software.
+
+Características:
+- El diseño implica una propuesta de solución al problema especificado en el análisis.
+- Es una actividad creativa que se apoya en la experiencia del diseñador.
+- Está apoyado por principios, técnicas, herramientas...
+- Es un proceso clave para la calidad del producto software.
+- Es la base para el resto de etapas del desarrollo.
+- Es un proceso de refinamiento.
+- El diseño va a garantizar que un programa funcione correctamente.
+Los principios del diseño ayudan a responder las siguientes preguntas:
+- ¿Qué criterios se usan para dividir el software en sus componentes individuales?
+- ¿Cómo se extraen los detalles de una función o estructura de datos a partir de la representación conceptual del software?
+- ¿Cuáles son los criterios que definen la calidad técnica de un diseño software?
+Los principios son:
+- Abstracción
+- División de problemas y modularidad
+- Ocultamiento de información
+- Independencia funcional
+
+#### Abstracción
+Mecanismo que permite determinar qué es relevante y qué no lo es en un nivel de detalle determinado, ayudando a obtener la modularidad adecuada para ese nivel de detalle. Tipos de abstracciones:
+- Abstracción de datos. Define un objeto compuesto por un conjunto de datos.
+- Abstracción de control. Define el sistema de control sin describir la información sobre su funcionamiento interno.
+- Abstracción procedimental. Se refiere a la secuencia de pasos que conforman un proceso determinado.
+#### División de datos y modularidad
+La división de problemas sugiere que cualquier problema complejo puede manejarse con más facilidad si se subdivide en elementos susceptibles de resolverse u optimizarse de manera independiente. La modularidad es la manifestación más común de la división de problemas. El software se divide en componentes con nombres distintos y abordables por separado, denominados módulos, que se integran para satisfacer los requisitos del problema.
+Ventajas de la modularidad:
+- Son más fáciles de entender y documentar que todo el subsistema o sistema.
+- Facilitan los cambios.
+- Reducen la complejidad.
+- Proporcionan implementaciones más sencillas.
+- Posibilitan el desarrollo en paralelo.
+- Permiten la prueba independiente (prueba de unidad).
+- Facilitan el encapsulamiento.
+#### Ocultamiento de información
+Los módulos deben especificarse y diseñarse de forma que la información (algoritmos y datos) contenida en un módulo sea inaccesible para los que no necesiten de ella. Ventajas:
+- Reduce la probabilidad de efectos colaterales.
+- Limita el impacto global de las decisiones de diseño locales.
+- Enfatiza la comunicación a través de interfaces controladas.
+- Disminuye el uso de datos globales.
+- Potencia la modularidad.
+- Produce software de calidad.
+#### Implementación funcional
+El software debe diseñarse de manera que cada módulo resuelva un subconjunto específico de requisitos y tenga una interfaz sencilla cuando se vea desde otras partes de la estructura del programa. La independencia se evalúa con dos criterios:
+- Cohesión. Un módulo cohesivo ejecuta una sola tarea, por lo que requiere interactuar poco con otros componentes en otras partes del programa. Idealmente se hace una sola cosa. La alta cohesión proporciona módulos fáciles de entender, reutilizar y mantener.
+- Acoplamiento. Indica la interconexión entre módulos en una estructura de software y depende, básicamente, de la complejidad de la interfaz entre módulos. El bajo acoplamiento proporciona módulos fáciles de entender y con menos efectos colaterales.
+
+Las herramientas de diseño son instrumentos que ayuda a representar los modelos de diseño software. Algunas de las más usuales son:
+- Diagramas UML: clase, interacción, paquetes, despliegue...
+- Cartas de estructura
+- Tablas de decisión
+- Diagramas de flujo de control
+- Diagramas de Nassi-Shneiderman
+- Lenguajes de diseño de programas
+
+Los métodos de diseño proporcionan las herramientas, técnicas y pasos a seguir para obtener diseños de forma sistemática. Características:
+- Principios en los que se basa
+- Mecanismos de traducción del modelo de análisis al modelo de diseño
+- Herramientas que permiten representar los componentes funcionales y estructurales
+- Heurísticas que permiten refinar el diseño
+- Criterios para evaluar la calidad del diseño
+Principales métodos de diseño:
+- Diseño estructurado de sistemas
+- Desarrollo de sitemas Jackson
+- Entidad-relación-atributo
+- Técnicas de modelado de objetos
+- Método Boock (diseño orientado a objetos)
+- Métodos orientados a objetos.
+
+El modelo del diseño a nivel general está formado por varios subsistemas de diseño conjunto con las interfaces que requieren o proporcionan estos subsistemas. Cada subsistema de diseño puede contener diferentes tipos de elementos de modelado de diseño, principalmente realización de casos de uso-diseño y clases de diseño.
+
+Se puede pensar en el modelo de diseño como una elaboración del modelo de análsis con detalles añadidos y soluciones técnicas específicas.
+Estrategia:
+1. Convertir el modelo de análisis en un modelo de diseño.
+2. Convertir el modelo de análisis en un modelo de diseño y usar una herramienta para recuperar una vista de análisis.
+3. Congelar el modelo de análisis y hacer una copia en un modelo de diseño.
+4. Mantener los dos modelos separados.
