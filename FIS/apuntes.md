@@ -511,3 +511,31 @@ Estrategia:
 2. Convertir el modelo de análisis en un modelo de diseño y usar una herramienta para recuperar una vista de análisis.
 3. Congelar el modelo de análisis y hacer una copia en un modelo de diseño.
 4. Mantener los dos modelos separados.
+
+### 3.2 Diseño de la arquitectura
+El diseño de la arquitectura es un proceso creativo que se interesa por entender cómo se debe organizar un sistema y cómo se tiene que diseñar la estructura global del sistema. Características:
+- Es la primera etapa en el proceso de diseño del software.
+- Es el enlace entre el diseño y la ingeniería de requisitos.
+- Proporciona un modelo arquitectónico que describe cómo se organiza el sistema en un conjunto de componentes (subsistemas) de comunicación.
+- Es la influencia dominante para los requisitos no funcionales.
+Importancia de la arquitectura
+- Facilita la comprensión de la estrcutra global del sistema.
+- Permite trabajar en los componentes de forma independiente.
+- Facilita las posibles extensiones del sistema.
+- Facilita la reutilización de los distintos componentes.
+Decisiones estructurales
+- Cómo se va a dividir el sistma en componentes
+- Cómo deben interactuar los componentes
+- Cuál va a ser la interfaz de cada componente.
+- Qué estilo arquitectónico se va a utilizar.
+El estilo arquitectónico depende de los requisitos no funcionales:
+- Rendimiento. La arquitectura se diseña para localizar las operaciones críticas dentro de un pequeño número de componentes desplegados en la misma computadora.
+- Seguridad. La arquitectura se diseña con una estructura, en capas, con los activos más críticos en las capas más internas, y con un alto nivel de validación de seguridad para esas capas.
+- Protección. La arquitectura se diseña para que las operaciones relacionadas con la protección se ubiquen en un componente individual o en un pequeño número de componentes.
+- Disponibilidad. La arquitectura se diseña para incluir componentes redundantes.
+- Facilidad de mantenimiento. La arquitectura se diseña usando componentes auto contenidos de grano fino que pueda cambiar con facilidad.
+
+Herramientas de representación:
+- Diagrama de paquetes. Describe el sistema en torno a agrupaciones lógicas y proporciona una primera estructura del sistema.
+- Diagrama de componentes. Representa una estructuración concreta del sistema a partir de los componentes software (sistemas) y su interrelación (interfaces).
+- Diagrama de despliegue. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada subsistema se despliega en ese hardware.
