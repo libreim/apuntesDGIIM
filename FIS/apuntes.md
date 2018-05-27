@@ -538,4 +538,115 @@ El estilo arquitectónico depende de los requisitos no funcionales:
 Herramientas de representación:
 - Diagrama de paquetes. Describe el sistema en torno a agrupaciones lógicas y proporciona una primera estructura del sistema.
 - Diagrama de componentes. Representa una estructuración concreta del sistema a partir de los componentes software (sistemas) y su interrelación (interfaces).
-- Diagrama de despliegue. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada subsistema se despliega en ese hardware.
+- Diagrama de despliegue. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada subsistema se despliega en ese hardware. Los nodos representan tipos de recursos computacionales sobre los que se pueden desplegar los artefactos para su ejecución. Los artefactos representan especificaciones de elementos concretos del mundo real.
+- Diagramas de componentes. Un componente es la unidad software que ofrece una serie de servicios a través de una o varias interfaces.
+
+### Estilos arquitectónicos
+Proporcionan un conjunto de subsistemas predefinidos, especificando sus responsabilidades e incluyendo reglas y guías para organizar las relaciones entre ellos. No proporcionan la arquitectura del sistema, sino una guía de como obtenerla.
+
+#### Arquitectura Modelo-Vista-Controlador
+Separa la presentación e interacción de los datos del sistema. El sistema se estructura en tres componentes lógicos que interactúan entre sí:
+- Modelo. Maneja los datos del sistema y las operaciones asociadas a esos datos.
+- Vista. Define y gestiona cómo se representan los datos al usuario.
+- Controlador. Dirige la interacción del usuario y pasa estas interacciones a vista y modelo.
+Principio de diseño:
+- Cada sistema puede diseñarse independientemente.
+- Se aumenta la cohesión de los subsistemas si la vista y el controlador se unen en una capa llamada interfaz de usuario.
+- Se reduce el acoplamiento puesto que la comunicación entre los subsistemas es mínima.
+Cuándo se usa:
+- Cuando existen múltiples formas de interactuar con los datos.
+- Cuando se desconocen los requisitos futuros para la interacción y la presentación.
+Ventajas:
+- Permite que los datos cambien de manera independiente de su representación (y viceversa).
+- Soporta diferentes representaciones de los mismos datos.
+- Los cambios en una representación se muestran en todos ellos.
+Desventajas:
+- Código adicional y complejidad de código cuando el modelo de datos y las interacciones son simples.
+#### Arquitectura en capas
+Organiza el sistema en capas con funcionalidad relacionada con cada capa- Una capa da servicios a la capa de encima y las capas de nivel inferior representan servicios núcleo que es probable que se utilicen a lo largo de todo el sistema.
+Principios de diseño:
+- Las capas se pueden diseñar, construir y probar independientemente.
+- Una capa bien diseñada presenta alta cohesión.
+- Una capa bien diseñada no tiene conocimiento de las capas superiores (ocultamiento de información).
+- Las capas deben estar desacopladas. Todas las dependencias en un sentido. Todas las dependencias en las interfaces.
+- Las capas inferiores se deben diseñar para representar servicios de bajo nivel (bajo acoplamiento).
+Cuándo se usa:
+- Al construir nuevas facilidades encima de los sistemas existentes.
+- Cuando el desarrollo se dispersa a través de varios equipos de trabajo.
+- Cuando existe un requisito de seguridad multinivel.
+Ventajas:
+- Permite la sustitución de capas completas siempre que se conserve la interfaz.
+- En cada capa se pueden incluir facilidades redundantes.
+Desventajas:
+- Es difícil ofrecer una separación limpia entre capas.
+- El rendimiento es un problema debido a los múltiples niveles de interpretación.
+#### Arquitectura de repositorio
+Todos los datos en un sistema se gestionan en un repositorio central, accesible a todos los componentes. Los componentes no interactúan directamente, sino solo a través del repositorio.
+Principios de diseño:
+- Se pueden diseñar sistemas independientes, aunque deben conocer el esquema de repositorio.
+- Cada subsistema tiene definida una funcionalidad específica (alta cohesión).
+- El acoplamiento de los subsistemas con el respositorio es alto.
+Cuándo se usa:
+- Cuando se tiene un sistema donde los grande volúmenes de información generados se deben almacenar durante mucho tiempo.
+- En sistemas en los que la inclusión de datos en el repositorio active una acción o herramienta.
+Ventajas:
+- Los componentes pueden ser independientes, no necesitan conocer la existencia de otros.
+- Los cambios en un componente se pueden propagar hacia todos los componentes.
+- La totalidad de datos se puede gestionar de manera consistente.
+Desventajas:
+- Los problemas en el repositorio afectan a todo el sistema.
+- Existencia de ineficiencias al organizar toda la comunicación a través del repositorio.
+- Quizás sea difícil distribuir el repositorio en varias computadoras.
+#### Arquitectura cliente-servidor
+La funcionalidad del sistema se organiza en servicios, y cada servicio lo entrega un servidor diferente. Los clientes son usuarios de dichos servicios y para usarlos ingresan a los servidores.
+Principios de diseño:
+- Permite diseñar, implementar y probar servidores y clientes independientemente.
+- Mejora la cohesión de los susbsistemas al proporcionar servicios específicos a los clientes.
+- Reduce el acoplamiento al establecer un canal de comunicación para el intercambio de mensajes.
+- Aumenta la abstracción al tener subsistemas distribuidos en nodos separados.
+Cuándo se usa:
+- Cuando desde varias ubicaciones se tiene que acceder a una base de datos compartida.
+- Cuando la carga de un sistema es variable.
+Ventajas:
+- Los servidores se pueden distribuir a través de una red.
+- Se pueden añadir fácilmente servidores o clientes extra.
+- Se pueden escribir clientes para nuevas plataformas sin modificar a los servidores.
+Desventajas:
+- Es susceptible de fallos del servidor.
+- El rendimiento es impredecible porque depende de la red.
+- Problemas administrativos cuando los servidores sean propiedad de distintas organizaciones.
+## Actividades del diseño arquitectónico
+Identificar los objetivos del sistema:
+- Identificar las cualidades deseables del sistema.
+- Obtener a partir de los requisitos no funcionales.
+- Seleccionar un pequeño conjunto de objetivos del diseño que el sistema debe satisfacer necesariamente.
+- Adquirir compromisos, puesto que muchos objetivos de diseño son contrapuestos.
+Determinar la arquitectura software:
+- Seleccionar el estilo arquitectónico que mejor se adapte.
+- Identificar subsistemas en el dominio del problema.
+- AÑadir subsistemas predefinidos de acuerdo al estilo arquitectónico seleccionado.
+Modelar la arquitectura software:
+- Diseñar la arquitectura en un diagrama de paquetes.
+- Elaborar el diagrama de componentes de la arquitectura.
+- Realizar el diagrama de despliegue.
+Diseñar la arquitectura en un diagrama de paquetes. Los doagramas de paquetes permite modelar una primera estructuración del sistema en base a uno o más paquetes.
+- Cada paquete agrupa a un conjunto de clases relacionadas semánticamente.
+- Los paquetes peuden guiar en la identificaićon de los subsistemas y/o componentes reutilizables.
+Al identificar los paquetes hay que tener en cuenta lo siguientes aspectos:
+- Identificar paquetes cohesivos y con poca interacción con otros paquetes de acuerdo con la arquitectura planteada.
+- Diseñar paquetes que se puedan reutlilzar en otros proyectos.
+- Integrar subsistemas de proyectos anteriores.
+- Evitar las dependencias cíclicas entre paquetes.
+Elaborar el diagrama de componentes. Los diagramas de componentes permiten estructurar el sistema de subsistemas en base a componentes que pueden reemplazarse. A partir del diagrama de paquetes determinar qué partes pueden definir componentes. Para ello habrá que:
+- Definir interfaces sumistradas de cada componentes para determinar las operaciones que pueden ser usadas por otros componentes.
+- Especificar las interfaces necesarias para cada componentes para poder desarrollar su funcionalidad.
+- Construir el componente de forma que su contenido interno sea independiente del exterior, salvo a través de las interfaces suministradas y necesarias.
+Refinar la descomposición en subsistemas.
+- Refinar los subsistemas hasta satisfacer los objetivos de diseño.
+- Establecer los siguientes aspectos genéricos:
+  - Correspondencia hardware-software
+  - Administración de datos persistentes
+  - Especificación de una política de control de accesos
+  - Diseño del flujo de control
+  - Diseño de la concurrencia y sincronización
+  - Definición de las condiciones del entorno
