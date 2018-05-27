@@ -541,10 +541,10 @@ Herramientas de representación:
 - Diagrama de despliegue. Especifica el hardware físico sobre el que se ejecutará el sistema software y cómo cada subsistema se despliega en ese hardware. Los nodos representan tipos de recursos computacionales sobre los que se pueden desplegar los artefactos para su ejecución. Los artefactos representan especificaciones de elementos concretos del mundo real.
 - Diagramas de componentes. Un componente es la unidad software que ofrece una serie de servicios a través de una o varias interfaces.
 
-### Estilos arquitectónicos
+#### Estilos arquitectónicos
 Proporcionan un conjunto de subsistemas predefinidos, especificando sus responsabilidades e incluyendo reglas y guías para organizar las relaciones entre ellos. No proporcionan la arquitectura del sistema, sino una guía de como obtenerla.
 
-#### Arquitectura Modelo-Vista-Controlador
+##### Arquitectura Modelo-Vista-Controlador
 Separa la presentación e interacción de los datos del sistema. El sistema se estructura en tres componentes lógicos que interactúan entre sí:
 - Modelo. Maneja los datos del sistema y las operaciones asociadas a esos datos.
 - Vista. Define y gestiona cómo se representan los datos al usuario.
@@ -562,7 +562,7 @@ Ventajas:
 - Los cambios en una representación se muestran en todos ellos.
 Desventajas:
 - Código adicional y complejidad de código cuando el modelo de datos y las interacciones son simples.
-#### Arquitectura en capas
+##### Arquitectura en capas
 Organiza el sistema en capas con funcionalidad relacionada con cada capa- Una capa da servicios a la capa de encima y las capas de nivel inferior representan servicios núcleo que es probable que se utilicen a lo largo de todo el sistema.
 Principios de diseño:
 - Las capas se pueden diseñar, construir y probar independientemente.
@@ -580,7 +580,7 @@ Ventajas:
 Desventajas:
 - Es difícil ofrecer una separación limpia entre capas.
 - El rendimiento es un problema debido a los múltiples niveles de interpretación.
-#### Arquitectura de repositorio
+##### Arquitectura de repositorio
 Todos los datos en un sistema se gestionan en un repositorio central, accesible a todos los componentes. Los componentes no interactúan directamente, sino solo a través del repositorio.
 Principios de diseño:
 - Se pueden diseñar sistemas independientes, aunque deben conocer el esquema de repositorio.
@@ -597,7 +597,7 @@ Desventajas:
 - Los problemas en el repositorio afectan a todo el sistema.
 - Existencia de ineficiencias al organizar toda la comunicación a través del repositorio.
 - Quizás sea difícil distribuir el repositorio en varias computadoras.
-#### Arquitectura cliente-servidor
+##### Arquitectura cliente-servidor
 La funcionalidad del sistema se organiza en servicios, y cada servicio lo entrega un servidor diferente. Los clientes son usuarios de dichos servicios y para usarlos ingresan a los servidores.
 Principios de diseño:
 - Permite diseñar, implementar y probar servidores y clientes independientemente.
@@ -615,7 +615,7 @@ Desventajas:
 - Es susceptible de fallos del servidor.
 - El rendimiento es impredecible porque depende de la red.
 - Problemas administrativos cuando los servidores sean propiedad de distintas organizaciones.
-## Actividades del diseño arquitectónico
+#### Actividades del diseño arquitectónico
 Identificar los objetivos del sistema:
 - Identificar las cualidades deseables del sistema.
 - Obtener a partir de los requisitos no funcionales.
