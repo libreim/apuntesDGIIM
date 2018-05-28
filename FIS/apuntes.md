@@ -650,3 +650,115 @@ Refinar la descomposición en subsistemas.
   - Diseño del flujo de control
   - Diseño de la concurrencia y sincronización
   - Definición de las condiciones del entorno
+### 3.3 Diseño e implementación de los casos de uso
+#### Patrones de diseño para asignar responsabilidades
+Responsabilidad. Contrato u obligación que debe tener un objeto en su comportamiento:
+- Hacer
+  - Hacer algo en uno mismo
+  - Iniciar una acción en otros objetos
+  - Controlar y coordinar actividades en otros objetos
+- Conocer
+  - Estar enterado de los datos privados encapsulados
+  - Estar enterado de la existencia de objetos conexos
+  - Estar enterado de las cosas que se pueden derivar o calcular
+Patrón de diseño. Descripción de un problema con su solución en un determinado contexto. Son una forma de reutilizar el conocimiento y la experiencia de otros diseñadores. Partes esenciales de un patrón:
+- Nombre. Que sea una referencia significativa al patrón.
+- Problema. Una descripción del problema que enuncie cúando se puede aplicar el patrón.
+- Solución. Una descripción de la solución de diseño, sus relaciones y responsabilidades. Es una plantilla para que unas oslución se instale en diferentes formas.
+- Consecuencias. Los resultados (buenos y malos) y las negociaciones de aplicar el patrón.
+#### Patrones GRAPS
+General Responsability Assignment Software Patterns. Describen los principios fundamentales del diseño de objetos y la asignación de responsabilidades, expresados como patrones.
+Características:
+- No expresan nuevos principios de la ingeniería del software.
+- Codifican conocimiento, expresiones y principios ya existentes.
+- Son un ejemplo de la fuerza de abstracción porque dan nombre a una idea compleja. Apoyan la incorporación de conceptos a nuestro sistema congnitivo y memoria. Facilitan la comunicación.
+
+**Experto en información**
+Problema: ¿Cuál es el princpiio general para asignar responsabilidades a objetos?
+Solución: Asignar responsabilidad a la clase que contine la información necesaria para llevarla a cabo.
+Consecuencias: Malas: en ocasiones va en contra de los principios de acoplamiento o cohesión. Buenas: mantiene el oculpamiento de información y distribuye el comportamiento.
+
+**Creador**
+Problema: ¿Quién debería ser el responsable de la creación de una instancia de alguna clase?
+Solución: Asignar a la clase B la responsabilidad de crear la instancia A cuando:
+- B agrega objetos de A
+- B contiene objetos de A
+- B registra objetos de A
+- B utiliza objetos de A
+- B tiene los datos de inicialización de A
+Consecuencias: Malas: No es conveniente su uso cuando se construye a partir de instancias existentes. Buenas: produce bajo acoplamiento.
+
+**Bajo acoplamiento**
+Problema: ¿Cómo soportar bajas dependencias, bajo impacto del cambio e incremento de la reutilización?
+Solución: Asignar una responsabilidad de manera que el acoplamiento permanezca bajo.
+Consecuencias: Malas: llevado a extremo puede ocasionar diseños pobres; en un conjunto de clases debe haber un nivel de acoplamiento moderado y adecuado. Buenas: no afectan los cambios en otros componentes. Fáciles de entender de manera aislada. Conveniente para reutilización.
+
+Formas comunes de acoplamiento:
+- El tipo X tiene un atributo que referencia a una isntancia del tipo Y o al propio tipo Y.
+- El objeto de Tipo X invoca a los servicios de un objeto de Tipo Y.
+- El tipo X tiene un método que referencia a una instancia de Tipo Y, o al propio Tipo Y, de algún modo.
+- El tipo X es una subclase, directa o indirecta, del tipo Y.
+- El tipo Y es una interfaz y el tipo X implementa esa interfaz.
+
+Grados de cohesión funcional:
+- Muy baja cohesión. Una única clase es responsable de muchas cosas en áreas funcionales diferentes.
+- Baja cohesión. Una única clase tiene la responsabilidad de una tarea compleja en un área funcional.
+- Alta cohesión. Una única clase tiene una responsabilidad moderada en un área funcional y colabora con otras clases para llevar a cabo las tareas.
+- Moderada cohesión. Una única clase tiene responsabilidades ligeras y únicas en unas pocas áreas diferentes que están lógicamente relacionadas con el concepto de la clase, pero no entre ellas.
+
+**Controlador**
+Problema: ¿Quién debe ser responsable de gestionar un evento de entrada al sistema?
+Solución: Asignar la responsabilidad de recibir o manejar un mensaje de evento del sistema a una clase que represente:
+- El sistema global, dispositivos o subsistemas.
+- El escenario de caso de uso en el que tiene lugar el evento del sistema.
+Consecuencias. Malas: controladores saturados. Buenas: se asegura que la lógica de la aplicación no se maneje en la interfaz. Aumento de la reutilziación y bajo nivel de acoplamiento. Posibilidad de razonar sobre el estado de los casos de uso.
+
+#### Elaboración del modelo de interacción de objetos
+Directrices generales:
+- Las bases principales para obtener los diagramas de interacción son los contratos y el modelo conceptual
+- El modelo conceptual sirve de guía para saber qué objetos pueden interaccionar en una operación.
+- Todo lo especificado en el contrato, especialmente las poscondiciones, excepciones y salidas, tienen que satisfacerse en el correspondiente diagrama de comunicación.
+- Para la elaboración de cada diagrama de comunicación se aplican los patrones de diseño.
+Pasos a seguir
+1. Elaborar los diagramas de interacción. Para cada operación especificada en los diagramas de secuencia.
+  - Tener presente el diagrama de conceptos y el contrato de la operación.
+  - Representar las relaciones del controlador con los objetos que intervienen en la interacción.
+  - Asignar responsabilidades a objetos.
+  - Establecer tipos de enlaces entre objetos.
+2. Inicialización del sistema
+3. Establecer relaciones entre el modelo y la interfaz de usuario
+
+### 3.4 Diseño de la estructura de objetos
+
+#### Modelado de la estructura de objetos
+Diagrama de clases del diseño.
+Describe gráficamente las especificaciones de las clases e interfaces software, y las relaciones entre estas, en una aplicación. Representa la solución a un problema. Puede contener los siguientes elementos:
+- Clases con sus atributos y operaciones
+- Interfaces con sus operaciones y constantes
+- Relaciones entre clases, entre interfaces o entre clases e interfaces
+- Información sobre el tipo de los atributos y parámetros
+- Navegabilidad de las asociaciones
+Herramienta para su representación : diagrama de clases UML.
+Pasos a seguir:
+1. Identificar y representar las clases
+2. Identificar y añadir las operaciones
+3. Añadir tipos de atributos y parámetros
+4. Identificar y representar las asociaciones y su navegabilidad
+5. Identificar y representar las relaciones de dependencia
+6. Incluir relaciones de generalización
+
+**Identificar y representar las clases**
+Todos los objetos en los diagramas de interacción tendrán su correspondiente clase en el diagrama de clases del diseño. Las clases identificadas tomarán sus atributos del modelo conceptual y de los diagramas de interacción.
+**Identificar y añadir operaciones**
+Todos los envíos de mensajes deben tener su operación en la clase correspondiente
+**Añadir tipos de atributos y parámetros**
+**Identificar y representar las asociaciones y su navegabilidad**
+Todos los enlaces estereotipados con <<A>> deben tener su correspondiente asociación. La navegabilidad la da la dirección del envío de mensaje y la multiplicidad la existencia de multiobjetos. Todos los enlaces estereotipados con <<L>>, <<P>> o <<G>> estarán en el diagrama de clases de diseño como una dependencia.
+**Incluir relaciones de generalización**
+Las generalizaciones que hay en el modelo conceptual también pueden aparecer en el diagrama de clases del diseño. Porceder de la siguiente forma:
+- En el diagrama de clases del diseño obtenido hasta ahora, observar:
+  - Clases con nombres que identifiquen las distintas clasificaciones de un conjunto de objetos.
+  - Clases con los mismos atributos.
+  - Clases con la misma asociación con una clase.
+  - Clases con operaciones con el mismo nombre o parecido (teniendo en cuenta la similitud del diagrama de comunicación correspondiente)
+- Si se da alguna o varias de estas situaciones establecer una generalización entre las clases, llevando a la superclase los atributos, operaciones y asociaciones comunes.
