@@ -1,0 +1,26 @@
+\section{Preliminares}
+En lo sucesivo,$\mathbb{K}$ será un cuerpo.
+\begin{ndef}[Extensión de un cuerpo]
+Una extensión de un cuerpo $\mathbb K$ es otro cuerpo $E$ que reconoce a $\mathbb K$ como un subcuerpo suyo. Esto es:
+\begin{itemize}
+\item $\mathbb K \subseteq E$
+\item $\mathbb K$ y $E$ tienen el mismo $0$ y $1$
+\item Se suman y multiplican elementos de $\mathbb K$ como si fueran de $E$.
+\end{itemize}
+Diremos que $E$ es un sobrecuerpo de $\mathbb K$. Lo notaremos $E/K$
+\end{ndef}
+
+\begin{nprop}
+Si $\sigma:\mathbb K \to E$ es un homomorfismo de cuerpos, entonces $\sigma$ es u monomorfismo.
+Exigiremos por ello que los cuerpos tengan al menos dos elementos, pues $1\ne0$.
+\end{nprop}
+\begin{proof}
+Supongamos $\sigma(a) = 0$ con $a\ne 0$. Entonces: $1 = \sigma(1) = f(aa^{-1}) = f(a)f(a^{-1}) = 0 \sigma(a^{-1}) = 0 \ \ \ !!!$
+\end{proof}
+
+Es por esto que los homomorfismos de cuerpos se llaman \textbf{inmersiones}. Además,como $\sigma$ es inyectiva, determina un isomorfismo $\mathbb K \cong \sigma(\mathbb K) \leq E$ .
+Cuando una inmersión $\sigma : \mathbb K to E$ es dada y bien conocida, es usual tratarla como inclusión,identificando (por abuso del lenguaje) cada elemento $a\in \mathbb K$ con su imagen $\sigma(a)$ en $E$, e identificamos $\mathbb K$ en $\sigma(\mathbb K)$, mirando a $\mathbb K$ como un subcuerpo de $E$ y a $E$ como una extensión de $\mathbb K$.
+
+\begin{ejemplo}
+Hay una inmersión $\sigma : \mathbb Q \to \mathbb R$, que lleva $\frac{m}{n}\mapsto mn^{-1}$
+\end{ejemplo}
