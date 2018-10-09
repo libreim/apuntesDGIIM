@@ -327,11 +327,6 @@
 \end{ejer}
 
 \begin{sol}
-Sea $x_0 \in A^* \Longrightarrow x_0=a_0...a_{n-1}, \quad, n=|A|$. Apliquemos f y g a $x_0$.
-\[f(x_0)=f(a_0...a_{n-1})=f(a_0)...f(a_{n-1})=g(a_0)...g(a_{n-1})=g(a_0...a_{n-1})=g(x_0)\]
-
-Luego para que esa igualdad se cumpla, $f$ y $g$ tienen que asignarle a cada elemento de $A$ (que es \textbf{finito}), el mismo elemento de $B$. Por lo que el procedimiento algorítmico si existe, y sería comprobar que:
-\[f(a_i)=g(a_i), \quad \forall i \in \{0,...,n-1\} \text{ con } a_i\in A\]
 
 \end{sol}
 
@@ -360,11 +355,6 @@ Luego para que esa igualdad se cumpla, $f$ y $g$ tienen que asignarle a cada ele
 \end{ejer}
 
 \begin{sol}
-Debido a $S \longrightarrow abAS$ y $S \longrightarrow a$, vemos que todas las palabras de $L(G)$ van a terminar en $a$. Después de aplicar $n$ veces la primera regla, tenemos dos opciones: sustituir $abA$ por $baab$, provocando así que después de cada 2 $a$, siempre vaya una $b$ (ya que lo único que puede seguir en la palabra es $abA$), o dejar $ab$ y sustituir $A$ por $b$, luego siempre que nos encontremos $a$ sola, le seguirán 2 $b$.
-
-Por lo tanto, el lenguaje generado es:
-
-L(G) = \{palabras en las que la cadena a es seguida por bb, y la cadena aa es seguida por b, y terminan en a.\}
 
 \end{sol}
 
@@ -386,10 +376,6 @@ L(G) = \{palabras en las que la cadena a es seguida por bb, y la cadena aa es se
 
 \begin{sol}
 
-El símbolo inicial es $S=<numero>$, o sea que siempre empezaremos por un número, que podremos sustituir por cualquier dígito del 0 al 9, generando así los números del 0 al 9. También podríamos aplicar la primera regla y volver a hacer lo anterior, generando los números del 10 al 19, y así hasta que queramos.
-
-Por lo tanto, el lenguaje generado es: L(G) = $\{\{0,1,2,3,4,5,6,7,8,9\}^*\}=\mathbb{N}$
-
 \end{sol}
 
 \begin{ejer}
@@ -406,8 +392,5 @@ Por lo tanto, el lenguaje generado es: L(G) = $\{\{0,1,2,3,4,5,6,7,8,9\}^*\}=\ma
 \end{ejer}
 
 \begin{sol}
-Aplicando cualquier regla de producción con $S$, la palabra va a empezara por $a$. Después de eso solo tenemos dos opciones, o seguir añadiendo $a$ o parar cuando apliquemos la regla $S\longrightarrow aA$ y hacer lo mismo con las $b$.
-
-Por lo tanto, el lenguaje generado es: $L(G) = \{a^ib^i,\quad i>0\}$
 
 \end{sol}
