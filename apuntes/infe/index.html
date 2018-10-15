@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        <title>Inferencia Estadística</title>
+  <style type="text/css">
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    
+  </style>
+      <link rel="stylesheet" href="./css/mobi.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body);
+  });</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" />
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  </head>
+
+<body>
+  <div class="site-aside-desktop-wrapper flex-center hide-on-mobile">
+    <div class="container-wider site-padding-bottom-0">
+      <div class="site-height-100 flex-left units-gap-big">
+        <aside class="unit-1-4 flex-vertical scroll-view toc">
+          <!-- sidebar -->
+          <div>
+              <h1 style="color: #795548">Inferencia Estadística</h1>
+              <h3>apuntesDGIIM</h3>
+        </div>
+        <hr>
+                    <ul>
+          <li><a href="#conceptos-básicos">Conceptos Básicos</a><ul>
+          <li><a href="#experimento-aleatorio">Experimento aleatorio</a></li>
+          <li><a href="#espacio-muestral">Espacio muestral</a></li>
+          <li><a href="#sigma-álgebra">Sigma-álgebra</a></li>
+          <li><a href="#probabilidad">Probabilidad</a></li>
+          <li><a href="#espacio-de-probabilidad">Espacio de probabilidad</a></li>
+          <li><a href="#probabilidad-condicionada">Probabilidad condicionada</a><ul>
+          <li><a href="#independencia-de-sucesos">Independencia de sucesos</a></li>
+          </ul></li>
+          <li><a href="#variable-aleatoria">Variable aleatoria</a><ul>
+          <li><a href="#distribución-de-una-variable-aleatoria">Distribución de una variable aleatoria</a></li>
+          <li><a href="#función-de-distribución">Función de distribución</a></li>
+          <li><a href="#función-masa-de-probabilidad">Función masa de probabilidad</a></li>
+          <li><a href="#función-de-densidad-de-probabilidad">Función de densidad de probabilidad</a></li>
+          <li><a href="#independencia-de-variables-aleatorias">Independencia de variables aleatorias</a></li>
+          <li><a href="#variables-aleatorias-independientes-e-idénticamente-distribuidas">Variables aleatorias independientes e idénticamente distribuidas</a></li>
+          <li><a href="#esperanza">Esperanza</a></li>
+          <li><a href="#varianza-y-desviación-típica">Varianza y desviación típica</a></li>
+          <li><a href="#momentos">Momentos</a></li>
+          </ul></li>
+          <li><a href="#modelos-de-probabilidad">Modelos de probabilidad</a><ul>
+          <li><a href="#discretos">Discretos</a></li>
+          <li><a href="#continuos">Continuos</a></li>
+          </ul></li>
+          </ul></li>
+          </ul>
+                  </aside>
+      </div>
+    </div>
+  </div>
+
+  <aside class="show-on-mobile">
+    <input type="checkbox" id="site-aside-toggle-checkbox" class="hide-on-mobile"
+      data-com.agilebits.onepassword.user-edited="yes">
+    <label class="site-aside-toggle-button" for="site-aside-toggle-checkbox">
+      <img src="./assets/menu.png" height="24">
+    </label>
+    <div class="site-aside-mobile-wrapper flex-vertical">
+      <div class="unit-1 scroll-view toc">
+        <!-- sidebar -->
+        <div>
+              <p><h1 style="color: #795548">Inferencia Estadística</h1></p>
+              <p><h2>apuntesDGIIM</h2></p>
+        </div>
+        <hr>
+                  <ul>
+          <li><a href="#conceptos-básicos">Conceptos Básicos</a><ul>
+          <li><a href="#experimento-aleatorio">Experimento aleatorio</a></li>
+          <li><a href="#espacio-muestral">Espacio muestral</a></li>
+          <li><a href="#sigma-álgebra">Sigma-álgebra</a></li>
+          <li><a href="#probabilidad">Probabilidad</a></li>
+          <li><a href="#espacio-de-probabilidad">Espacio de probabilidad</a></li>
+          <li><a href="#probabilidad-condicionada">Probabilidad condicionada</a><ul>
+          <li><a href="#independencia-de-sucesos">Independencia de sucesos</a></li>
+          </ul></li>
+          <li><a href="#variable-aleatoria">Variable aleatoria</a><ul>
+          <li><a href="#distribución-de-una-variable-aleatoria">Distribución de una variable aleatoria</a></li>
+          <li><a href="#función-de-distribución">Función de distribución</a></li>
+          <li><a href="#función-masa-de-probabilidad">Función masa de probabilidad</a></li>
+          <li><a href="#función-de-densidad-de-probabilidad">Función de densidad de probabilidad</a></li>
+          <li><a href="#independencia-de-variables-aleatorias">Independencia de variables aleatorias</a></li>
+          <li><a href="#variables-aleatorias-independientes-e-idénticamente-distribuidas">Variables aleatorias independientes e idénticamente distribuidas</a></li>
+          <li><a href="#esperanza">Esperanza</a></li>
+          <li><a href="#varianza-y-desviación-típica">Varianza y desviación típica</a></li>
+          <li><a href="#momentos">Momentos</a></li>
+          </ul></li>
+          <li><a href="#modelos-de-probabilidad">Modelos de probabilidad</a><ul>
+          <li><a href="#discretos">Discretos</a></li>
+          <li><a href="#continuos">Continuos</a></li>
+          </ul></li>
+          </ul></li>
+          </ul>
+              </div>
+    </div>
+  </aside>
+
+  <div class="site-article-wrapper">
+
+    <div class="flex-center">
+      <div class="container-wider">
+        <div class="flex-left units-gap-big">
+          <div class="site-height-0 site-aside hide-on-mobile unit-1-4"></div>
+          <article class="site-article unit-3-4 unit-1-on-mobile">
+            <!-- article -->
+              
+                        
+
+            <section id="conceptos-básicos" class="level1">
+            <h1>Conceptos Básicos</h1>
+            <section id="experimento-aleatorio" class="level2">
+            <h2>Experimento aleatorio</h2>
+            <p>Un <em>experimento aleatorio</em> es un proceso que puede repetirse de forma indefinida y que tiene un conjunto definido de posibles resultados bajo las mismas condiciones iniciales, y del que no se puede predecir el resultado exacto de cada experiencia particular.</p>
+            </section>
+            <section id="espacio-muestral" class="level2">
+            <h2>Espacio muestral</h2>
+            <p>Un espacio muestral es un conjunto, notado <span class="math inline">\(\Omega\)</span>, que enumera todos y cada uno de los posibles resultados de un evento.</p>
+            </section>
+            <section id="sigma-álgebra" class="level2">
+            <h2>Sigma-álgebra</h2>
+            <p>Dado <span class="math inline">\(\mathcal A \subseteq 2^{\Omega}\)</span> una colección de subconjuntos de <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\mathcal A\)</span> es una sigma-álgebra si se verifican las siguientes condiciones:</p>
+            <ol type="1">
+            <li><span class="math inline">\(\Omega \in \mathcal A\,\)</span>.</li>
+            <li>Si <span class="math inline">\(A \in \mathcal A\)</span>, entonces <span class="math inline">\(\Omega \setminus A \in \mathcal A\,\)</span>.</li>
+            <li>Si <span class="math inline">\(A_i \in \mathcal A\)</span> para <span class="math inline">\(i = 1, 2, ...\)</span>, entonces <span class="math inline">\(\cup_{n=1}^{\infty} A_i \in \mathcal A\,\)</span>.</li>
+            </ol>
+            </section>
+            <section id="probabilidad" class="level2">
+            <h2>Probabilidad</h2>
+            <p>Una probabilidad asigna a cada subconjunto <span class="math inline">\(A\)</span> de <span class="math inline">\(\mathcal A\)</span> un valor real, notado <span class="math inline">\(P(A)\)</span> de tal forma que se verifican las siguientes condiciones:</p>
+            <ol type="1">
+            <li><span class="math inline">\(P(\Omega) = 1\,\)</span>.</li>
+            <li><span class="math inline">\(P(A) \geq 0\)</span> para todo <span class="math inline">\(A \in \mathcal A\,\)</span>.</li>
+            <li><span class="math inline">\(P(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty}P(A_i)\)</span> para todo <span class="math inline">\(A_i \in \mathcal A\)</span> disjuntos dos a dos.</li>
+            </ol>
+            </section>
+            <section id="espacio-de-probabilidad" class="level2">
+            <h2>Espacio de probabilidad</h2>
+            <p>Un espacio de probabilidad es una terna <span class="math inline">\((\Omega, \mathcal A, P)\)</span> formada por un espacio muestral <span class="math inline">\(\Omega\)</span>, una sigma álgebra <span class="math inline">\(\mathcal A\)</span> y una probabilidad <span class="math inline">\(P\)</span>. Un espacio de probabilidad modela un experimento aleatorio.</p>
+            </section>
+            <section id="probabilidad-condicionada" class="level2">
+            <h2>Probabilidad condicionada</h2>
+            <p>Dado un espacio de probabilidad <span class="math inline">\((\Omega, \mathcal A, P)\)</span> y dos sucesos aleatorios <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, la probabilidad condicionada del suceso <span class="math inline">\(A\)</span> respecto a <span class="math inline">\(B\)</span> se denota <span class="math inline">\(P(A|B)\)</span> y se define por <span class="math inline">\(P(A|B) = \frac{P(A \cap B)}{P(B)}\)</span>, suponiendo que <span class="math inline">\(P(B) &gt; 0\,\)</span>.</p>
+            <section id="independencia-de-sucesos" class="level3">
+            <h3>Independencia de sucesos</h3>
+            <p>Dos sucesos aleatorios son <em>independientes</em> entre sí cuando la probabilidad de cada uno de ellos no está influida por el hecho de que el otro suceso ocurra o no.</p>
+            <p>Formalmente, un suceso <span class="math inline">\(A\)</span> es independiente de otro suceso <span class="math inline">\(B\)</span> si <span class="math inline">\(P(A|B) = P(A)\,\)</span>.</p>
+            <p>Podemos afirmar que dos sucesos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes si y solo si <span class="math inline">\(P(A \cap B) = P(A)P(B)\,\)</span>.</p>
+            </section>
+            </section>
+            <section id="variable-aleatoria" class="level2">
+            <h2>Variable aleatoria</h2>
+            <p>Intuitivamente una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio.</p>
+            <p>Formalmente, una variable aleatoria es una función medible <span class="math display">\[X:(\Omega, \mathcal A, P) \to (\mathbb R^n, \mathcal B)\,,\]</span> donde <span class="math inline">\((\Omega, \mathcal A, P)\)</span> es un espacio de probabilidad.</p>
+            <section id="distribución-de-una-variable-aleatoria" class="level3">
+            <h3>Distribución de una variable aleatoria</h3>
+            <p>A <span class="math inline">\(P_X = P \circ \, X^{-1}\)</span> se le llama <em>distribución de <span class="math inline">\(X\)</span> inducida por <span class="math inline">\(P\)</span></em>. Asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
+            </section>
+            <section id="función-de-distribución" class="level3">
+            <h3>Función de distribución</h3>
+            <p>En las condiciones anteriores, la función de distribución de <span class="math inline">\(X\)</span> se define como <span class="math inline">\(F_X(x)=P\lbrack X \leq x \rbrack=P(\{\omega\in \Omega:X(\omega) \leq x\})\,.\)</span></p>
+            </section>
+            <section id="función-masa-de-probabilidad" class="level3">
+            <h3>Función masa de probabilidad</h3>
+            <p>En las condiciones anteriores, y suponiendo que <span class="math inline">\(X\)</span> es una variable aleatoria discreta, su función masa de probabilidad se define como <span class="math inline">\(f_X(x)=P\lbrack X=x \rbrack=P(\{\omega\in \Omega:X(\omega)=x\})\,.\)</span></p>
+            <p>Esta función verifica:</p>
+            <ol type="1">
+            <li><span class="math inline">\(f_X(x) \geq 0\)</span> para todo <span class="math inline">\(x \in \mathbb R^n\)</span>, y</li>
+            <li><span class="math inline">\(\sum_{x \in \mathbb R^n} f_X(x) = 1\,\)</span>.</li>
+            </ol>
+            </section>
+            <section id="función-de-densidad-de-probabilidad" class="level3">
+            <h3>Función de densidad de probabilidad</h3>
+            <p>En las condiciones anteriores, y suponiendo que <span class="math inline">\(X\)</span> es una variable aleatoria continua, llamaremos función de densidad de probabilidad de <span class="math inline">\(X\)</span> a una función <span class="math inline">\(f_X:\mathbb R^n \to \mathbb R\)</span> medible tal que <span class="math inline">\(P\lbrack X \in B \rbrack= \int_B f_X(x)\mathop{}\!\mathrm{d}x\)</span> para todo <span class="math inline">\(B \in \mathcal B\)</span>.</p>
+            <p>Esta función verifica:</p>
+            <ol type="1">
+            <li><span class="math inline">\(f_X(x) \geq 0\)</span> para todo <span class="math inline">\(x \in \mathbb R^n\)</span>, y</li>
+            <li><span class="math inline">\(\int_{\mathbb R^n} f_X(x)\mathop{}\!\mathrm{d}x = 1\,\)</span>.</li>
+            </ol>
+            </section>
+            <section id="independencia-de-variables-aleatorias" class="level3">
+            <h3>Independencia de variables aleatorias</h3>
+            <p>Dos variables aleatorias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> se dice que son independientes si y solo si para cada <span class="math inline">\(a\)</span> y <span class="math inline">\(b\,\)</span>, los sucesos <span class="math inline">\(\lbrack X \leq a\rbrack\)</span> e <span class="math inline">\(\lbrack Y \leq b\rbrack\)</span> son independientes. Equivalentemente, <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, con funciones de distribución <span class="math inline">\(F_{X}(x)\)</span> y <span class="math inline">\(F_{Y}(y)\)</span> y funciones de densidad <span class="math inline">\(f_{X}(x)\)</span> y <span class="math inline">\(f_{Y}(y)\)</span> son independientes si y solo si la variable aleatoria combinada <span class="math inline">\((X, Y)\)</span> tiene función de distribución <span class="math inline">\(F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y),\)</span> o equivalentemente, si la función de densidad existe, <span class="math inline">\(f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\,\)</span>.</p>
+            <p>Un conjunto de variables aleatorias se dice <em>independiente dos a dos</em> si cada par de variables aleatorias del conjunto es independiente.</p>
+            <p>Un conjunto de variables aleatorias se dice que son <em>mutuamente independientes</em> si y solo si para cada subconjunto finito <span class="math inline">\(X_1, \dots, X_n\)</span> y cualquier secuencia finita de números <span class="math inline">\(a_1, \dots, a_n\)</span> los sucesos <span class="math inline">\(\lbrack X_1 \le a_1\rbrack, \ldots, \lbrack X_n \le a_n\rbrack\)</span> son independientes.</p>
+            </section>
+            <section id="variables-aleatorias-independientes-e-idénticamente-distribuidas" class="level3">
+            <h3>Variables aleatorias independientes e idénticamente distribuidas</h3>
+            <p>Un conjunto de variables aleatorias se consideran independientes e idénticamente distribuidas (i.i.d.) si cada variable aleatoria tiene la misma distribución de probabilidad y todas son mutuamente independientes.</p>
+            </section>
+            <section id="esperanza" class="level3">
+            <h3>Esperanza</h3>
+            <p>La <em>esperanza matemática</em> (también llamada <em>valor esperado</em>, o <em>media</em>) de una variable aleatoria <span class="math inline">\(X\)</span> es el número <span class="math inline">\(\operatorname E\lbrack X \rbrack\)</span> que formaliza la idea de valor medio de un fenómeno aleatorio.</p>
+            <p>Para una variable aleatoria discreta la esperanza se calcula de la forma: <span class="math inline">\(\operatorname E [X]=\sum _{i=1}^{n}x_{i}f_X(x_i)\,\)</span>, siendo <span class="math inline">\(f_X\)</span> la función masa de probabilidad de la variable aleatoria <span class="math inline">\(X\)</span>.</p>
+            <p>Para una variable aleatoria continua, la esperanza se calcula como: <span class="math inline">\(\operatorname E [X]=\int _{-\infty }^{\infty }xf_X(x)\mathop{}\!\mathrm{d}x\,\)</span>, siendo <span class="math inline">\(f_X\)</span> la función de densidad de probabilidad de la variable aleatoria <span class="math inline">\(X\)</span>.</p>
+            </section>
+            <section id="varianza-y-desviación-típica" class="level3">
+            <h3>Varianza y desviación típica</h3>
+            <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria con media finita <span class="math inline">\(\mu = \operatorname E[X]\)</span>. La <em>varianza de <span class="math inline">\(X\)</span></em>, denotada por <span class="math inline">\(\operatorname{Var}(X)\)</span> se define como <span class="math inline">\(\operatorname{Var}(X) = \operatorname E[(X - \mu)^2]\,\)</span>. Si <span class="math inline">\(X\)</span> tiene media infinita, o si la media de <span class="math inline">\(X\)</span> no existe, decimos que <span class="math inline">\(\operatorname{Var}(X)\)</span> no existe.</p>
+            <p>La <em>desviación típica</em> de <span class="math inline">\(X\)</span> es la raíz cuadrada no negativa de <span class="math inline">\(\operatorname{Var}(X)\)</span>, si existe.</p>
+            <p>Tanto la varianza como la desviación típica de una distribución nos proporcionan una medida de la dispersión de la distribución respecto a su media <span class="math inline">\(\mu\)</span>. Un valor pequeño de la varianza indica que la distribución de probabilidad está concentrada alrededor de <span class="math inline">\(\mu\)</span>, mientras que un valor grande suele indicar que la distribución tiene una mayor dispersión respecto a <span class="math inline">\(\mu\)</span>.</p>
+            </section>
+            <section id="momentos" class="level3">
+            <h3>Momentos</h3>
+            <p>Dada una variable aleatoria <span class="math inline">\(X\)</span> y un entero positivo <span class="math inline">\(k\)</span>, a la esperanza <span class="math inline">\(\operatorname E[X^k]\)</span> se le llama <em>momento <span class="math inline">\(k\)</span>-ésimo de <span class="math inline">\(X\)</span></em>. Se dice que el momento <span class="math inline">\(k\)</span>-ésimo existe si y solo si <span class="math inline">\(\operatorname E[|X|^k] \leq \infty\,\)</span>.</p>
+            <section id="momentos-centrados" class="level4">
+            <h4>Momentos centrados</h4>
+            <p>Dada una variable aleatoria <span class="math inline">\(X\)</span> para la que <span class="math inline">\(E[X] = \mu\)</span> para cada entero positivo <span class="math inline">\(k\)</span> a la esperanza <span class="math inline">\(\operatorname E[(X - \mu)^k]\)</span> se le llama <em><span class="math inline">\(k\)</span>-ésimo momento centrado de <span class="math inline">\(X\)</span></em> o <em>momento centrado de orden <span class="math inline">\(k\)</span> de <span class="math inline">\(X\)</span></em>.</p>
+            <p>El momento centrado centrado de orden 2 es la varianza.</p>
+            </section>
+            <section id="función-generatriz-de-momentos" class="level4">
+            <h4>Función generatriz de momentos</h4>
+            <p>Dada una variable aleatoria <span class="math inline">\(X\)</span> y un número real <span class="math inline">\(t\)</span>, definimos la <em>función generatriz de momentos (f.g.m.) de <span class="math inline">\(X\)</span></em> como <span class="math inline">\(M_X(t) = \operatorname E[e^{tX}]\,\)</span>.</p>
+            <p>Esta función depende únicamente de la distribución de <span class="math inline">\(X\)</span>: si <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> tienen la misma distribución, han de tener la misma función generatriz de momentos.</p>
+            <p>Sea <span class="math inline">\(X\)</span> una variable aleatoria cuya f.g.m. <span class="math inline">\(M_X(t)\)</span> es finita en un entorno del punto <span class="math inline">\(t = 0\,\)</span>. Entonces, para cada entero <span class="math inline">\(k &gt; 0\)</span>, el momento <span class="math inline">\(k\)</span>-ésimo de <span class="math inline">\(X\)</span>, <span class="math inline">\(\operatorname E[X^k]\)</span> es finito y lo podemos calcular como <span class="math inline">\(\operatorname E[X^k] = M_X(0)^{(k)}\,\)</span>.</p>
+            </section>
+            </section>
+            </section>
+            <section id="modelos-de-probabilidad" class="level2">
+            <h2>Modelos de probabilidad</h2>
+            <section id="discretos" class="level3">
+            <h3>Discretos</h3>
+            <section id="bernoulli" class="level4">
+            <h4>Bernoulli</h4>
+            <p>Una prueba de Bernoulli es un experimento aleatorio cuyos posibles resultados se agrupan en dos conjuntos excluyentes que llamaremos éxito (<span class="math inline">\(E\)</span>) y fracaso (<span class="math inline">\(F\)</span>), con respectivas probabilidades: <span class="math inline">\(p = P(E)\)</span> y <span class="math inline">\(1 − p = P(F)\)</span>.</p>
+            <p>Realizada una prueba de Bernoulli con <span class="math inline">\(P(E) = p\)</span> se considera la variable aleatoria <span class="math display">\[X = \begin{cases}
+               1 &amp;\text{si obtenemos éxito}\,,\\
+               0 &amp;\text{si obtenemos fracaso}\,.
+            \end{cases}\]</span></p>
+            <p>La función masa de probabilidad viene dada por <span class="math inline">\(P[X=0] = 1 - p\,,\)</span> y <span class="math inline">\(P[X=1]=p\,\)</span>. La esperanza de <span class="math inline">\(X\)</span> es <span class="math inline">\(\operatorname E[X] = p\)</span> y la varianza, <span class="math inline">\(\operatorname{Var}(X) = p(1-p)\,\)</span>.</p>
+            <p>Para indicar que <span class="math inline">\(X\)</span> es una variable aleatoria con distribución de Bernoulli con esperanza <span class="math inline">\(p\)</span> escribiremos <span class="math inline">\(X \sim B(1,p)\,\)</span>.</p>
+            </section>
+            <section id="binomial" class="level4">
+            <h4>Binomial</h4>
+            <p>Supongamos que realizamos <span class="math inline">\(n\)</span> pruebas de Bernoulli independientes, con <span class="math inline">\(P(E) = p\,\)</span> en cada prueba. Sea <span class="math inline">\(X\)</span> la variable “número de éxitos obtenidos en las <span class="math inline">\(n\)</span> pruebas”. Llamamos <em>distribución binomial</em> a la distribución de esta variable <span class="math inline">\(X\)</span>. Denotaremos por <span class="math inline">\(B(n, p)\)</span> a la distribución binomial de parámetros <span class="math inline">\(n =\)</span> número de pruebas de Bernoulli y <span class="math inline">\(p = P(E)\)</span> en cada prueba.</p>
+            <p>Dada <span class="math inline">\(X \sim B(n,p)\)</span>, su función masa de probabilidad es: <span class="math display">\[P[X = i] = \binom{n}{i}p^i(1-p)^{n-i}, \qquad i = 0, 1, \dots, n\,.\]</span></p>
+            <p>La esperanza de <span class="math inline">\(X\)</span> es <span class="math inline">\(\operatorname E[X] = n \cdot p\)</span> y la varianza, <span class="math inline">\(\operatorname{Var}(X) = n \cdot p \cdot (1-p)\,\)</span>.</p>
+            </section>
+            <section id="poisson" class="level4">
+            <h4>Poisson</h4>
+            <p>En el caso de que estemos interesados en estudiar el número de éxitos obtenidos en un número grande de pruebas independientes de Bernoulli con una probabilidad pequeña de éxito en cada prueba, podemos pensar que la distribución venga dada como límite de una distribución <span class="math inline">\(B(n,p)\)</span> con <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(p \to 0\,\)</span>. Si tenemos cierto control sobre el producto <span class="math inline">\(np\)</span>, digamos que <span class="math inline">\(np \to \lambda &lt; \infty\)</span> cuando <span class="math inline">\(n \to \infty\)</span> y <span class="math inline">\(p \to 0\)</span> podemos calcular el límite. Surge así la distribución de Poisson de parámetro <span class="math inline">\(\lambda &gt; 0\)</span> definida por la función de masa: <span class="math display">\[P[X = j] = \frac{\lambda^j\cdot e^{-\lambda}}{j\,!}\,, \qquad j=0,1,2,\dots.\]</span></p>
+            <p>Si <span class="math inline">\(X \sim \operatorname{Poisson}(\lambda)\)</span>, informalmente se obtiene que la esperanza de <span class="math inline">\(X\)</span> es <span class="math inline">\(\operatorname{E}(X) = \lim n\cdot p = \lambda\)</span> y la varianza, <span class="math inline">\(\operatorname{Var}(X) = \lim n\cdot p\cdot(1 - p) = \lambda\,\)</span>.</p>
+            </section>
+            </section>
+            <section id="continuos" class="level3">
+            <h3>Continuos</h3>
+            <section id="uniforme" class="level4">
+            <h4>Uniforme</h4>
+            <p>Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución uniforme en un intervalo <span class="math inline">\((a,b)\)</span>, notado <span class="math inline">\(X \sim U(a,b)\)</span>, si su función de densidad es: <span class="math display">\[f(x) = \begin{cases}
+              \frac{1}{b-a}\quad \text{si } x \in (a,b)\,,\\
+              0 \qquad \text{en otro caso}\,.
+            \end{cases}\]</span></p>
+            <p>Se tiene que <span class="math inline">\(\operatorname E[X] = \frac{a+b}{2}\)</span> y <span class="math inline">\(\operatorname{Var}(X) = \frac{1}{12}(b-a)^2\,\)</span>.</p>
+            </section>
+            <section id="exponencial" class="level4">
+            <h4>Exponencial</h4>
+            <p>Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución exponencial de parámetro <span class="math inline">\(\lambda &gt; 0\)</span>, notado <span class="math inline">\(X \sim \operatorname{Exp}(\lambda)\)</span>, si su función de densidad es: <span class="math display">\[f(x) = \begin{cases}
+              \lambda e^{-\lambda x}\quad \text{si } x &gt; 0\,,\\
+              0 \qquad\quad \text{si } x \leq 0\,.
+            \end{cases}\]</span></p>
+            <p>Se tiene que <span class="math inline">\(\operatorname E[X] = \frac{1}{\lambda}\)</span> y <span class="math inline">\(\operatorname{Var}(X) = \frac{1}{\lambda^2}\,\)</span>.</p>
+            </section>
+            <section id="normal" class="level4">
+            <h4>Normal</h4>
+            <p>Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución normal de media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span>, notado <span class="math inline">\(X \sim \mathcal N(\mu,\sigma^2)\)</span>, si su función de densidad es: <span class="math display">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad \text{para todo }\, x \in \mathbb R\,.\]</span></p>
+            <p>Se tiene que <span class="math inline">\(\operatorname E[X] = \mu\)</span> y <span class="math inline">\(\operatorname{Var}(X) = \sigma^2\,\)</span>.</p>
+            </section>
+            <section id="gamma" class="level4">
+            <h4>Gamma</h4>
+            <p>Antes de proceder al estudio de la distribución es preciso definir la <em>función gamma</em> que utilizaremos después: <span class="math display">\[\Gamma(p) = \int_o^{\infty}x^{p-1}e^{-x}\mathop{}\!\mathrm{d}x\,,\qquad p &gt; 0\,.\]</span></p>
+            <p>Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución exponencial de parámetros <span class="math inline">\(p, a &gt; 0\)</span>, notado <span class="math inline">\(X \sim \Gamma(p,a)\)</span>, si su función de densidad es: <span class="math display">\[f(x) = \begin{cases}
+              \frac{a^p}{\Gamma(P)}x^{p-1}e^{-ax}\,, \quad x &gt; 0\,,\\
+              0\,, \qquad\qquad\qquad x \leq 0\,.
+            \end{cases}\]</span></p>
+            <p>Se tiene que <span class="math inline">\(\operatorname E[X] = \frac{p}{a}\)</span> y <span class="math inline">\(\operatorname{Var}(X) = \frac{p}{a^2}\,\)</span>.</p>
+            <section id="distribución-chi-cuadrado" class="level5">
+            <h5>Distribución chi-cuadrado</h5>
+            <p>Es un caso particualr de la distribución Gamma. Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución chi-cuadrado de <span class="math inline">\(n\)</span> grados de libertad cuando <span class="math inline">\(p=n/2\)</span> y <span class="math inline">\(a=1/2\)</span>: <span class="math display">\[X \sim \chi^2(n) \equiv \Gamma(n/2, 1/2), \qquad n \in \mathbb N\,.\]</span></p>
+            </section>
+            </section>
+            <section id="beta" class="level4">
+            <h4>Beta</h4>
+            <p>Antes de proceder al estudio de la distribución es preciso definir la <em>función beta</em> que utilizaremos después: <span class="math display">\[\beta(p,q) = \int_0^1 x^{\,p-1}(1-x)^{q-1}\mathop{}\!\mathrm{d}x\,,\qquad p,q &gt; 0\,.\]</span></p>
+            <p>Una variable aleatoria <span class="math inline">\(X\)</span> sigue una distribución exponencial de parámetros <span class="math inline">\(p, q &gt; 0\)</span>, notado <span class="math inline">\(X \sim \Gamma(p,a)\)</span>, si su función de densidad es: <span class="math display">\[f(x) = \begin{cases}
+              \frac{1}{\beta(p,q)}x^{p-1}(1-x)^{q-1}\,, \quad 0 &lt; x &lt; 1\,,\\
+              0\,, \qquad\qquad\qquad\qquad\quad \text{en el resto}\,.
+            \end{cases}\]</span></p>
+            <p>Se tiene que <span class="math inline">\(\operatorname E[X] = \frac{p}{p+q}\)</span> y <span class="math inline">\(\operatorname{Var}(X) = \frac{pq}{(p+q)^2(p+q+1)}\,\)</span>.</p>
+            </section>
+            </section>
+            </section>
+            </section>
+
+                      </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
