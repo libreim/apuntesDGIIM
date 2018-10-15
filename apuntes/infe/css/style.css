@@ -6,21 +6,21 @@
 
 @font-face {
   font-family: Charter;
-  src: local("Charter"),
+  src: local("Charter Italic"),
        url(../fonts/charter_italic.woff) format('woff');
   font-style: italic;
 }
 
 @font-face {
   font-family: Charter;
-  src: local("Charter"),
+  src: local("Charter Bold"),
        url(../fonts/charter_bold.woff) format('woff');
   font-weight: bold;
 }
 
 @font-face {
   font-family: Charter;
-  src: local("Charter"),
+  src: local("Charter Bold Italic"),
        url(../fonts/charter_bold_italic.woff) format('woff');
   font-weight: bold;
   font-style: italic;
@@ -37,6 +37,26 @@
   src: local("Cooper Hewitt Bold"),
        url(../fonts/cooper-hewitt_semibold.woff) format('woff');
   font-weight: bold;
+}
+
+@font-face {
+  font-family: Iosevka;
+  src: local("Iosevka"),
+       url(../fonts/iosevka-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: Iosevka;
+  src: local("Iosevka-Bold"),
+       url(../fonts/iosevka-bold.woff) format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Iosevka;
+  src: local("Iosevka-Italic"),
+       url(../fonts/iosevka-italic.woff) format('woff');
+  font-style: italic;
 }
 
 body {
@@ -72,6 +92,30 @@ body {
 
 pre code {
   word-wrap: normal;
+  font-size: 18px;
+}
+
+code {
+  font-family: Iosevka;
+  
+}
+
+@media (max-width: 480px) {
+  pre code {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+  pre code {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 768px) {
+  pre code {
+    font-size: 16px;
+  }
 }
 
 article p {
