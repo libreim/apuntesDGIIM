@@ -1,27 +1,27 @@
 @font-face {
   font-family: Charter;
   src: local("Charter"),
-       url(./fonts/charter_regular.woff) format('woff');
+       url(../fonts/charter_regular.woff) format('woff');
 }
 
 @font-face {
   font-family: Charter;
   src: local("Charter"),
-       url(./fonts/charter_italic.woff) format('woff');
+       url(../fonts/charter_italic.woff) format('woff');
   font-style: italic;
 }
 
 @font-face {
   font-family: Charter;
   src: local("Charter"),
-       url(./fonts/charter_bold.woff) format('woff');
+       url(../fonts/charter_bold.woff) format('woff');
   font-weight: bold;
 }
 
 @font-face {
   font-family: Charter;
   src: local("Charter"),
-       url(./fonts/charter_bold_italic.woff) format('woff');
+       url(../fonts/charter_bold_italic.woff) format('woff');
   font-weight: bold;
   font-style: italic;
 }
@@ -29,13 +29,13 @@
 @font-face {
   font-family: Cooper Hewitt;
   src: local("Cooper Hewitt Medium"),
-       url(./fonts/cooper-hewitt_medium.woff) format('woff');
+       url(../fonts/cooper-hewitt_medium.woff) format('woff');
 }
 
 @font-face {
   font-family: Cooper Hewitt;
   src: local("Cooper Hewitt Bold"),
-       url(./fonts/cooper-hewitt_semibold.woff) format('woff');
+       url(../fonts/cooper-hewitt_semibold.woff) format('woff');
   font-weight: bold;
 }
 
