@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        <title>Informática Gráfica</title>
+  <style type="text/css">
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    
+  </style>
+    <style type="text/css">
+    a.sourceLine { display: inline-block; line-height: 1.25; }
+    a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+    a.sourceLine:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode { white-space: pre; position: relative; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    code.sourceCode { white-space: pre-wrap; }
+    a.sourceLine { text-indent: -1em; padding-left: 1em; }
+    }
+    pre.numberSource a.sourceLine
+      { position: relative; left: -4em; }
+    pre.numberSource a.sourceLine::before
+      { content: attr(data-line-number);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; pointer-events: all; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  }
+    @media screen {
+    a.sourceLine::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+      <link rel="stylesheet" href="css/mobi.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"></script><script>document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body);
+  });</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" />
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  </head>
+
+<body>
+  <div class="site-aside-desktop-wrapper flex-center hide-on-mobile">
+    <div class="container-wider site-padding-bottom-0">
+      <div class="site-height-100 flex-left units-gap-big">
+        <aside class="unit-1-4 flex-vertical scroll-view toc">
+          <!-- sidebar -->
+          <div>
+              <h1 style="color: #309688">Informática Gráfica</h1>
+              <h3>apuntesDGIIM</h3>
+        </div>
+        <hr>
+                    <ul>
+          <li><a href="#modelado-de-objetos">Modelado de Objetos</a><ul>
+          <li><a href="#transformaciones-geométricas">Transformaciones Geométricas</a><ul>
+          <li><a href="#transformaciones-en-opengl">Transformaciones en OpenGL</a></li>
+          </ul></li>
+          <li><a href="#modelos-jerárquicos.-representación-y-visualización">Modelos Jerárquicos. Representación y visualización</a><ul>
+          <li><a href="#modelos-jerárquicos-y-grafo-de-escena">Modelos Jerárquicos y grafo de escena</a></li>
+          <li><a href="#grafos-tipo-phigs">Grafos tipo PHIGS</a></li>
+          <li><a href="#representación-de-grafos">Representación de grafos</a></li>
+          </ul></li>
+          </ul></li>
+          </ul>
+                  </aside>
+      </div>
+    </div>
+  </div>
+
+  <aside class="show-on-mobile">
+    <input type="checkbox" id="site-aside-toggle-checkbox" class="hide-on-mobile"
+      data-com.agilebits.onepassword.user-edited="yes">
+    <label class="site-aside-toggle-button" for="site-aside-toggle-checkbox">
+      <img src="./assets/menu.png" height="24">
+    </label>
+    <div class="site-aside-mobile-wrapper flex-vertical">
+      <div class="unit-1 scroll-view toc">
+        <!-- sidebar -->
+        <div>
+              <p><h1 style="color: #309688">Informática Gráfica</h1></p>
+              <p><h2>apuntesDGIIM</h2></p>
+        </div>
+        <hr>
+                  <ul>
+          <li><a href="#modelado-de-objetos">Modelado de Objetos</a><ul>
+          <li><a href="#transformaciones-geométricas">Transformaciones Geométricas</a><ul>
+          <li><a href="#transformaciones-en-opengl">Transformaciones en OpenGL</a></li>
+          </ul></li>
+          <li><a href="#modelos-jerárquicos.-representación-y-visualización">Modelos Jerárquicos. Representación y visualización</a><ul>
+          <li><a href="#modelos-jerárquicos-y-grafo-de-escena">Modelos Jerárquicos y grafo de escena</a></li>
+          <li><a href="#grafos-tipo-phigs">Grafos tipo PHIGS</a></li>
+          <li><a href="#representación-de-grafos">Representación de grafos</a></li>
+          </ul></li>
+          </ul></li>
+          </ul>
+              </div>
+    </div>
+  </aside>
+
+  <div class="site-article-wrapper">
+
+    <div class="flex-center">
+      <div class="container-wider">
+        <div class="flex-left units-gap-big">
+          <div class="site-height-0 site-aside hide-on-mobile unit-1-4"></div>
+          <article class="site-article unit-3-4 unit-1-on-mobile">
+            <!-- article -->
+              
+                        
+
+            <section id="modelado-de-objetos" class="level1">
+            <h1>Modelado de Objetos</h1>
+            <section id="transformaciones-geométricas" class="level2">
+            <h2>Transformaciones Geométricas</h2>
+            <section id="transformaciones-en-opengl" class="level3">
+            <h3>Transformaciones en OpenGL</h3>
+            <section id="la-matriz-modelview-de-opengl" class="level4">
+            <h4>La matriz <em>Modelview</em> de OpenGL</h4>
+            <p>OpenGL almacena una matriz <span class="math inline">\(4\times4\)</span> <span class="math inline">\(M\)</span> que codifica una transformación geométrica, llamada <em>modelview matrix</em>. Se puede ver como la composición de otras dos, <span class="math inline">\(V\)</span> y <span class="math inline">\(N\)</span>:</p>
+            <ul>
+            <li><span class="math inline">\(N\)</span>, matriz de modelado que posiciona los puntos en su lugar de coordenadas del mundo.</li>
+            <li><span class="math inline">\(V\)</span>, matriz de vista que posiciona los puntos en su lugar en coordenadas relativas a la cámara.</li>
+            </ul>
+            <p>La matriz <em>modelview</em> <span class="math inline">\(M\)</span> se aplica a todos los puntos generados con <code>glVertex</code>.</p>
+            </section>
+            <section id="especificación-de-la-matriz-de-modelado" class="level4">
+            <h4>Especificación de la matriz de modelado</h4>
+            <p>Algo</p>
+            </section>
+            </section>
+            </section>
+            <section id="modelos-jerárquicos.-representación-y-visualización" class="level2">
+            <h2>Modelos Jerárquicos. Representación y visualización</h2>
+            <section id="modelos-jerárquicos-y-grafo-de-escena" class="level3">
+            <h3>Modelos Jerárquicos y grafo de escena</h3>
+            <p>En una escena <span class="math inline">\(S\)</span> se incluyen muchas instancias distintas de muchas mallas u objetos geométricos, <span class="math inline">\(S = \{O_1, O_2, \dots, O_n\}\)</span>.</p>
+            </section>
+            <section id="grafos-tipo-phigs" class="level3">
+            <h3>Grafos tipo PHIGS</h3>
+            <p>En los grafos tipo PHIGS (Programmer’s Hierarchical Interactive Graphics System) colocamos los objetos o enlaces a objetos debajo de las transformaciones que les afectan. Una transformación afecta a todos los objetos debajo de él.</p>
+            </section>
+            <section id="representación-de-grafos" class="level3">
+            <h3>Representación de grafos</h3>
+            <p>Los nodos del grafo son básicamente vectores de entradas.</p>
+            <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">class</span> NodoGrafoEscena : <span class="kw">public</span> Objeto3D {</a>
+            <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">protected</span>:</a>
+            <a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="bu">std::</span>vector&lt;EntradaNGE&gt; entradas; <span class="co">/* Vector de entradas */</span></a>
+            <a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="kw">public</span>:</a>
+            <a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="co">/* Visualiza utilizando OpenGL */</span></a>
+            <a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="kw">virtual</span> <span class="dt">void</span> visualizarGL(ContextoVis &amp;cv);</a>
+            <a class="sourceLine" id="cb1-7" data-line-number="7">}</a></code></pre></div>
+            </section>
+            </section>
+            </section>
+
+                      </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
