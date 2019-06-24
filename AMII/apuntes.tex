@@ -1535,6 +1535,58 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 \textbf{\underline{Aviso:} falta contenido al principio de esta sección. Además, a partir de aquí no están revisados los apuntes}.
 %% FIXME: FALTAN COSAS
 
+\begin{lema}
+Sea $(\Omega , \mathcal{A})$ espacio medible, $X,Y$ espacios topológicos.
+\begin{nlist}
+\item $f:\Omega\rightarrow X$ medible y $g:X\rightarrow Y$ continua. Entonces $gof$ es medible.
+\item $u,v:\Omega\rightarrow \mathbb{R}$ y $f:\Omega\rightarrow \mathcal{R}^2$ tal que $f(\omega)=(u(\omega),v(\omega))$. Entonces $f medible \leftrightarrow u,v$ medibles.
+\end{nlist}
+\end{lema}
+
+%% FIXME Falta demostracion
+
+\begin{nprop}
+    Sea $(\Omega , \mathcal{A})$ espacio medible
+    \begin{nlist}
+    \item $f:\omega\rightarrow\mathbb{C}$ medible entonces Re$f$,Im$f$, $|p|^p (p>0), \lambda f (\lambda\in\mathbb{C}$ son medibles.
+    \item $f:\Omega\rightarrow\mathbb{R}$ medible entonces $f^+ = \max\{f,0\}$,  $f^- = \min\{f,0\}$ son medibles.
+    \item $f,g:\Omega\rightarrow\mathcal{K}$ medibles. Entonces $f+g,fg,\lambda f$ son medibles ($\lambda\in\mathcal{K}$).
+    \item $f:\Omega\rightarrow\mathcal{K}\Rightarrow\exists\alpha:\omega\rightarrow\mathcal{K}$ medible tal que $f(\omega)=\alpha(\omega)|f(\omega)|$ y $|\alpha(\omega)|=1 \forall \omega\in\Omega$.
+    \item $f_n:\Omega\rightarrow\mathcal{K}$ medible y $f_n(\omega)\rightarrow f(\omega) \forall \omega\in\Omega$. Entonces $f$ es medible.
+    \end{nlist}
+\end{nprop}
+
+%% FIXME Falta demostracion
+
+\begin{ndef}
+    Si $f:\Omega\rightarrow\mathbb{R}$ medible, entonces $\int_\Omega fd\mu =\int_\Omega f^+ d\mu + \int_\Omega f^- d\mu$.
+    Supuesto que al menos una de estas integrales es finita. Si ambas integrales son finitas se dirá que $f$ es integrable.
+\end{ndef}
+
+\begin{nprop}
+    $f$ integrable si, y solo si, $|f|$ integrable.
+\end{nprop}
+%% FIXME Falta demostracion
+
+\begin{nprop}
+    Sea $(\Omega, \mathcal{A}, \mu )$ espacio de medida, $g,f:\Omega\rightarrow\mathbb{R}$ medibles, $E \in\mathcal{A}$
+    \begin{nlist}
+    \item Si $f$ acotada en $E$ y $\mu(E<\infty$ Entonces $f$ integrable en $E$ y
+    
+    $\inf_E f\mu(E)\leq\int_E fd\mu\leq\sup_E f\mu(E)$.
+    \item $f,g$ integrables en $E$ y $f(\omega)\leq g(\omega)\forall \omega\in E$ entonces $\int_E fd\mu \leq \int_E gd\mu$.
+    \item $f,g$ integravles en $E$, $\alpha\in\mathbb{R}$ Entonces $f+g,\alpha f$ integrbales en $E$ con
+    $\int_E (f+g)d\mu = \int_E fd\mu + \int_E gd\mu$ y $\int_E \alpha fd\mu = \alpha \int_E fd\mu$.
+    \item $f$ integrable en $E$ si y solo si $|f|$ integrable en $E$ con $|\int_E fd\mu| \leq \int_E |f|d\mu$.
+    \item $f$ integrable en $E, F\subset E, F\in\mathcal{A}$ Entonces $f$ es integrable en $F$ y $\int_F |f|d\mu \leq \int_E |f|d\mu$.
+    \item $\mu(E)=0$ Entonces $f$ es integrable en $E$ y $\int_E fd\mu=0$.
+    \item $f$ integrable en $E$ y $f=g$ a.e. en $E$. Entonces $g$ integrable em $E$ y $\int_E fd\mu ) \int_E gd\mu$.
+    \item $f$ integrable en $\Omega$ Entonces $\phi:\mathcal{A}\rightarrow K$ con $\phi(E)=\int_E fd\mu$ es medida compleja.
+    \end{nlist}
+\end{nprop}
+%% FIXME Falta demostracion
+
+
 
 \begin{nth}[Convergencia dominada de Lebesgue]
   Sean $f_n : \Omega \rightarrow \R$ funciones medibles y $E \in \mathscr A$. Además, supongamos que ${f_n(\omega)} \rightarrow f(\omega)$ c.p. con $\omega \in E$. Finalmente, supongamos que $\exists g: \Omega \rightarrow \R$ integrable tal que $|f_n(\omega)| \leq g(\omega) \ \forall \omega \in E$. Entonces,
@@ -1591,6 +1643,7 @@ Por último, sabemos que $g_k(\omega)\leq f_k(\omega) \ \forall \omega\in \Omega
 
 Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para acuñarlos. Comenzaremos con el \textit{Lema de Fatou}.
 
+
 \begin{nprop}[Lema de Fatou para funciones medibles]
   Sean $f_n: \Omega \to \R$ medibles. Supongamos que $\exists h: \Omega \to \R$ con $-\infty < \int_\Omega h d\mu := \int_\Omega h^+\, d\mu - \int_\Omega (-h^-)\, d\mu $ tal que $f_n(\omega) \geq h(\omega) \ \ \ \forall \omega \in \Omega$.\\
   Entonces:
@@ -1626,6 +1679,8 @@ Una vez que tenemos estos resultados, vamos a trabajar un poco con ellos para ac
 \begin{nprop}
   Sean $f,g: \Omega \to \R$. Si $f$ es medible y $f(\omega) =  g(\omega)$ a. e. $\forall \omega \in \Omega$, entonces $g$ es medible. Además, si $f$ es integrable, $g$ es integrable y $\int_\Omega f d\mu = \int_\Omega g d\mu$.
 \end{nprop}
+
+%% FIXME faltan teoremas, como el de derivacion bajo signo integral y la continuidad absoluta de la integral
 
 \begin{nprop} Sea $f:\mathscr A \to [0,\infty]$ medible. Entonces, se verifican las siguientes afirmaciones:
   \begin{nlist}
