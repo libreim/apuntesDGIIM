@@ -73,11 +73,11 @@ De igual manera que tratamos con sucesiones de puntos de $\R^N$ podemos hacerlo 
 
 Veamos algunos ejemplos de sucesiones de funciones:
 
-\begin{ejemplo}
+\begin{ejemplo} \label{ex:sucesion1}
   \[
     f_n : [0,1] \to \R,\ f_n(x) = \begin{cases}
-      0 & \text{si } x\ge \dfrac{1}{n}\\
-      -nx+1 & \text{si } 0\le x < \dfrac{1}{n}
+    -nx+1 & \text{si }  0\le x < \dfrac{1}{n}\\
+    0     & \text{si }  x\ge \dfrac{1}{n}
     \end{cases}
   \]
 \end{ejemplo}
@@ -88,15 +88,15 @@ Veamos algunos ejemplos de sucesiones de funciones:
   \]
 \end{ejemplo}
 
-\begin{ejemplo}
+\begin{ejemplo} \label{ex:sucesion3}
   \[
     f_n : [0,1] \to \R,\ f_n(x) = \dfrac{sen(nx)}{n}
   \]
 \end{ejemplo}
 
-Vamos a estudiar la convergencia puntual de la sucesión del ejemplo (1.1):
+Vamos a estudiar la convergencia puntual de la sucesión del ejemplo \ref{ex:sucesion1}:
 
-Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{1}{n}$, luego $f_n(x) = 0$. Por otra parte, $f_n(0) = 1\ \forall n\in \N$. Concluimos que
+Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{1}{n}$, luego $f_m(x) = 0$ para cada $m\ge n$. Por otra parte, $f_n(0) = 1\ \forall n\in \N$. Concluimos que
 
 \[
   \fn\to f = \begin{cases}
@@ -107,7 +107,7 @@ Primero, fijamos $x\in (0,1]$. Entonces, existe $n\in \N$ tal que $x \ge \dfrac{
 
 Observamos que la convergencia puntual no preserva la continuidad de las funciones. Esto implicaría que, con esta definición de convergencia, el espacio de funciones continuas en un conjunto no sería cerrado. Además, podemos comprobar que $\fn$ no converge uniformemente a $f$, pues en caso de hacerlo $f$ debería ser continua, por el \textit{Teorema \ref{2}}.
 
-Ahora estudiemos la convergencia uniforme del ejemplo (1.3):
+Ahora estudiemos la convergencia uniforme del ejemplo \ref{ex:sucesion3}:
 
 \[
   \forall\epsilon>0\ \exists K>\dfrac{1}{\epsilon}:\ \ n\ge K \implies \dfrac{\abs{sen(nx)}}{n} \le \dfrac{1}{n} \le \dfrac{1}{K} < \epsilon
@@ -130,14 +130,14 @@ Vemos que converge uniformemente a cero. Lo importante para esta demostración, 
 
 El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo ciertas condiciones, el recíproco de la \textit{Proposición \ref{unif_puntual}} anterior sí es cierto.
 
-\begin{nth}
+\begin{nth}[de Dini]
   \label{1}
   Sea $A\subseteq \R^N$ compacto, y funciones $f_k : A \to \mathbb{R}$ continuas, verificando:
 
   \begin{nlist}
   \item $f_k \geq 0$
-  \item $f_k(x) \geq f_{k+1}(x)\ \ \forall x \in A$ (la sucesión $\{f_k\}$ es monótona decreciente).
-  \item $f_k(x) \to 0\ c.p.\ \ \forall x \in A$
+  \item $f_k \geq f_{k+1}$ (la sucesión $\{f_k\}$ es monótona decreciente).
+  \item $f_k \to 0\ c.p.$
   \end{nlist}
 
   Entonces, $\{f_k\} \to 0$ uniformemente en $A$.
@@ -153,13 +153,15 @@ El siguiente resultado, conocido como \textit{Teorema de Dini}, muestra que bajo
 
 \subsection{El espacio de funciones continuas}
 
-Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}^M), \|\cdot\|_{\infty})$ es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así: $$\|f\|_{\infty} := m\acute{a}x \{ |f(x)|: x \in A\} = \underset{x\in A}{m\acute{a}x} \ |f(x)|$$
+Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}(A,\mathbb{R}^M), \|\cdot\|_{\infty})$
+es un espacio normado, donde la norma del máximo o \textit{norma uniforme} se define así:
+$$\left\|f\right\|_{\infty} := \max \left\{ |f(x)|: x \in A \right\} = \max_{x\in A}\ |f(x)|$$
 
 \begin{nprop} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, la convergencia de sucesiones equivale a la convergencia uniforme, esto es: $$\fn \rightarrow f\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f$$
 \end{nprop}
 
   \begin{proof} \hfill \\
-    $\|f_n - f \|_{\infty} \rightarrow 0 \iff \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow \underset{x \in A}{m\acute{a}x} \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
+	  $\|f_n - f \|_{\infty} \rightarrow 0 \iff \max_{x\in A}\ |f_n(x) - f(x)| \rightarrow 0 \iff \forall \epsilon > 0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow \max_{x\in A}  \ |f_n(x) - f(x)| < \epsilon \iff |f_n(x) - f(x)| < \epsilon\  \forall x \in A \iff \fn \xrightarrow {c.u} f.$
   \end{proof}
 
 \begin{nth}[$\mathcal{C}(A,\R^M)$ es completo] \label{3} En el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A$ compacto, también ser sucesión de Cauchy equivale a la convergencia uniforme, esto es: $$\fn\ es\ de\ Cauchy\ en\ \mathcal{C}(A,\mathbb{R}^M) \iff \fn \xrightarrow {c.u} f $$
@@ -170,18 +172,19 @@ Ya sabemos que dado $A\subseteq \mathbb{R}^N$ compacto, el espacio $(\mathcal{C}
 
 Es importante recalcar que estamos suponiendo que el subconjunto $A$ es compacto. Podemos extender el resultado anterior, considerando el espacio $(\mathcal{C}_B(A,\mathbb{R}^M), \|\cdot\|_{\infty})$, donde:
 
-$\mathcal{C}_B(A,\mathbb{R}^M) := \{ f:A \longrightarrow \mathbb{R}^M: \text{$f$ es continua y acotada}\}$
+\[
+	\mathcal{C}_B(A,\mathbb{R}^M) := \left\{ f:A \longrightarrow \mathbb{R}^M: \text{$f$ es continua y acotada}\right\},
+\]
 
-$\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
+\[
+	\|f\|_{\infty} := \sup_{x\in A} \ \ |f(x)|
+.\]
 
 \begin{nprop} El espacio $\mathcal{C}_B(A, \mathbb{R}^M)$ es un espacio de Banach, es decir, es un espacio normado y completo.
 \end{nprop}
 
   \begin{proof}
-
-    %%% FIXME: MEJORAR EL FORMATO PARA INDICAR DÓNDE SE ENCUENTRA EL EJERCICIO --------------
-
-    Puede consultarse en \textit{[Ejercicios, p.3]}.
+	  Puede consultarse en el ejercicio \ref{acotadas_banach}.
   \end{proof}
 
 
@@ -191,16 +194,16 @@ $\|f\|_{\infty} := \underset{x \in A}{sup} \ \ |f(x)|$
 
 Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme con los conceptos de derivación e integración.
 
-\begin{nth} \label{4} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \xrightarrow {c.u} \int_a^b f $$
+\begin{nth} \label{4} Sean $f, f_n \in \mathcal{C}([a,b],\mathbb{R})$ tales que $\fn \xrightarrow {c.u} f$. Entonces, $$\left\{\int_a^b f_n\right\} \rightarrow \int_a^b f $$
 
-  Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int_a^b \lim_{n\rightarrow \infty} f_n$$
+  Equivalentemente, podemos intercambiar la integral con el límite: $$\lim_{n\rightarrow \infty} \int_a^b f_n = \int_a^b \lim_{n\rightarrow \infty} f_n.$$
 \end{nth}
 
   \begin{proof} Dado $\displaystyle \epsilon >0\ \exists n_0 \in \mathbb{N}: n \ge n_0 \Rightarrow |f_n(x)-f(x)| < \frac{\epsilon}{b-a}\ \forall x \in [a,b]$. Entonces, $$\left| \int_a^b f_n - \int _a^b f \right| = \left| \int_a^b (f_n - f) \right| \le \int_a^b |f_n - f| < \int_a^b \frac{\epsilon}{b-a} = \epsilon$$
   \end{proof}
 
 \begin{nth} \label{5}
-  Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}((a,b))$. Supongamos que $ \{f_n(x)\} \to f(x)$ c.p. $\forall x \in (a,b)$, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en (a,b). Entonces, $f \in \mathcal{C}^1((a,b))$, y $f' = g$.
+  Sea $f_n\in \mathcal{C}^1(a,b) \ \forall n \in \mathbb{N}$, y sean $f,g \in \mathcal{C}(a,b)$. Supongamos que $ \{f_n\} \to f$ c.p., y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g $ en $(a,b)$. Entonces, $f \in \mathcal{C}^1(a,b)$, y $f' = g$.
 \end{nth}
 
   \begin{proof}
