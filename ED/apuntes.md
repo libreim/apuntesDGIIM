@@ -311,18 +311,17 @@ la última, todo ello dividido por 2 y multiplicado por el número de
 iteraciones totales.
 
 <u>*Ejemplo:*</u>
-
-
-\hspace*{1cm}1.\hspace*{2em} int n,j; int i=2; int x=0; \newline
-\hspace*{1cm}2.\hspace*{2em}	do \{ \newline
-\hspace*{1cm}3.\hspace*{6em}		j=1; \newline
-\hspace*{1cm}4.\hspace*{6em}		while (j$<=$i)\{ \newline
-\hspace*{1cm}5.\hspace*{8em}			j=j*2; \newline
-\hspace*{1cm}6.\hspace*{8em}			x++; \newline
-\hspace*{1cm}7.\hspace*{6em}		\}\newline
-\hspace*{1cm}8.\hspace*{6em}		i++; \newline
-\hspace*{1cm}9.\hspace*{4em}	\}while(i$<=$n);\\\\\newline
-
+```
+	int n,j; int i=2; int x=0;
+		do {
+			j=1;
+			while(j<=i) {
+				j=j*2;
+				x++;
+			}
+			i++;
+		} while(i<=n);
+```
 
 Con operaciones elementales en la primera línea, un bucle do-while que a
 su vez tiene un bucle while anidado, este bucle anidado no se recorre

@@ -674,7 +674,7 @@ b)
 
 Veamos un dibujo sobre las hebras:
 
-![hebras](Hebras.pdf)
+![hebras](./img/Hebras.pdf)
 
 El dibujo sobre los procesos hijo sería similar, excepto que no se compartiría el espacio de direcciones, ni los archivos abiertos(*), y cada uno tendría su propio PID.
 

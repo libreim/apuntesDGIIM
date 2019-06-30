@@ -283,7 +283,7 @@ El SO tiene una colección de colas con el estado de todos los procesos. Suele h
 
 El diagrama de estados por lotes es:
 
-![Diagrama de Estados](Imagen1T2.png)
+![Diagrama de Estados](./img/Imagen1T2.png)
 
 ### Colas de Estados
 
@@ -467,7 +467,7 @@ La variable state de task_estruct especifica el estado actual de un proceso.
 
 ### Modelo de procesos/hilos en Linux
 
-![Diagrama de estados](diagrama.PNG)
+![Diagrama de estados](./img/diagrama.PNG)
 
 ## El árbol de procesos
 
@@ -477,7 +477,7 @@ Cada *task_struct* tiene un puntero:
 2. A una lista de hijos (llamada children): struct list_head children
 3. A una lista de hermanos (llamada sibling): struct list_head sibling
 
-![Arbol de procesos](diagrama2.PNG)
+![Arbol de procesos](./img/diagrama2.PNG)
 
 ### Implementación de hilos en Linux
 
@@ -755,7 +755,7 @@ Cuando se tiene una falta de página ocurre lo siguiente:
 6. Desbloquear proceso
 7. Reiniciar la instrucción que provocó la falta de página
 
-![Esquema](paginacion_y_tlb.png)
+![Esquema](./img/paginacion_y_tlb.png)
 
 \newpage
 
@@ -772,7 +772,7 @@ Dividimos la tabla de páginas en partes del tamaño de una página. La direcci�
 | Número de página (k bits) p1 | Desplazamiento de página (n-k bits) p2 | Desplazamiento de página (m bits) d |
 |------------------------------|----------------------------------------|-------------------------------------|
 
-![Esquema de paginación a 2 niveles](pag_2niveles.png)
+![Esquema de paginación a 2 niveles](./img/pag_2niveles.png)
 
 ##### Páginas compartidas
 
@@ -888,7 +888,7 @@ Selección de una página:
    - No. R = 0, ir al siguiente paso y volver al paso 1
    - Sí. Seleccionar para sustituir e incrementar posición 
 
-![Comparación algoritmos de sustitución](comparacion.png)
+![Comparación algoritmos de sustitución](./img/comparacion.png)
 
 Influye más la cantidad de memoria principal disponible que el algoritmo de sustitución usado.
 
@@ -945,7 +945,7 @@ El **grado de multiprogramación** es un factor importante cuando hablamos de hi
 
 En cada referencia, determina el conjunto de trabajo: páginas referenciadas en el intervalor (t-x,t] y solo esas páginas son mantenidas en memoria principal.
 
-![Ejemplo algoritmo basado en el modelo del WS](ws.png)
+![Ejemplo algoritmo basado en el modelo del WS](./img/ws.png)
 
 ##### Algoritmo FFP (Frecuencia de Falta de Página)
 
@@ -955,7 +955,7 @@ Si el intervalo de tiempo es grande, mayor que Y, todas las páginas no referenc
 
 Se garantiza que el conjunto de páginas crece cuando las faltas de página son frecuentes y decrece cuando no lo son.
 
-![Ejemplo algoritmo FFP](ffp.png)
+![Ejemplo algoritmo FFP](./img/ffp.png)
 
 ## 3.4. Gestión de memoria en Linux
 
@@ -2359,7 +2359,7 @@ Veamos un primer ejemplo, en el que creamos un fichero y escribiremos una frase 
 #include<string.h> //Para poder usar strlen
 
 int main(int argc, char *argv[]) {
-	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las praćticas de 	Sistemas Operativos. Espero que te sirva :).\n";
+	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las prácticas de Sistemas Operativos. Espero que te sirva :).\n"
 	char cadena2[150]="No dudes en compartir y modificar lo que creas conveniente, a través de github.com/libreim/apuntesDGIIM\n";
 	int f1;
 
@@ -2429,7 +2429,7 @@ Veamos una variante. Supongamos que queremos escribir primero la segunda cadena 
 #include<string.h> //Para poder usar strlen
 
 int main(int argc, char *argv[]) {
-	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las praćticas de 	Sistemas Operativos. Espero que te sirva :).\n";
+	char cadena1[150]="¡Hola!Soy Víctor, he creado estos tutoriales para ayudar a comprender las prácticas de Sistemas Operativos. Espero que te sirva :).\n";
 	char cadena2[150]="No dudes en compartir y modificar lo que creas conveniente, a través de github.com/libreim/apuntesDGIIM\n";
 	int f1;
 
@@ -2513,7 +2513,7 @@ int main(int argc, char *argv[]) {
 	int fd, fout;
 
 	if(argc != 2) {
-		perror("\nNumero de argumentos invÃ¡lido.");
+		perror("\nNumero de argumentos inválido.");
 		exit(-1);
 	}
 
