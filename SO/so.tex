@@ -75,6 +75,11 @@
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+$endif$
+
 % ---------------------------------------------------------------------------
 % PAQUETES BÁSICOS
 % ---------------------------------------------------------------------------
