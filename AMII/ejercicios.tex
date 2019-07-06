@@ -12,11 +12,11 @@
     Empezamos probando que $(\mathcal{C}_B(A, \mathbb R^M), \|\cdot \|_\infty)$ es un espacio normado:
     \begin{itemize}
 
-    \item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
-    \item Homogeneidad. Si $k \in \mathbb R \text{ entonces } \|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty$.
+    \item  Positividad. En primer lugar puesto que la norma se ha definido como supremo de un conjunto de numeros positivos, tendremos que $\|f\|_\infty \geq 0$ para toda $f\in (\mathcal{C}_B(A, \mathbb R^M)$. Además, $\|f\|_\infty=0 \iff sup_{x \in A}|f(x)|=0 \iff f(x)=0, \ \forall x \in A \iff f$ es la función 0.
+    \item Homogeneidad. Si $k \in \mathbb R$, entonces $$\|kf\|_\infty=|k|\|f\|_\infty \iff sup_{x \in A}|kf(x)|=sup_{x \in A}|k||f(x)|=|k|sup_{x \in A}|f(x)| = |k| \| f\|_\infty.$$
     \item Desigualdad triangular.
-      $\|f+g\|_\infty \leq \|f|_\infty + \|g|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|$.
-      Para cualesquiera $f, g \in \mathcal{C}_B(A, \mathbb R^M)$.
+      $$\|f+g\|_\infty \leq \|f\|_\infty + \|g\|_\infty\iff sup_{x \in A}|f(x)+g(x)| \leq sup_{x \in A}|f(x)| + sup_{x \in A}|g(x)|.$$
+      Es decir, es una consecuencia de la desigualdad triangular de la norma en $\R^M$.
     \end{itemize}
 
     Para demostrar que ${f_n} \to f$  c.u. en A $\iff f_n \to f\ en\ \mathcal{C}_B(A, \mathbb R^M)$, solo tenemos que observar que ${f_n} \to f$  c.u. en A  significa que: $$\forall \epsilon>0 \ \ \exists n_0\in \mathbb N \ :\ n\geq n_0 \Rightarrow |f_n(x)-f(x) |<\epsilon , \ \forall x\in A,$$
@@ -25,7 +25,10 @@
 
     Por último, $\mathcal{C}_B(A, \mathbb R^M)$ es de Banach si es completo, es decir si toda sucesión $\{ f_n\}$ (de funciones en $\mathcal{C}_B(A, \mathbb R^M)$) de Cauchy converge. La prueba es análoga a la que se hizo para ver que $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, era completo. La única diferencia será que tras probar la convergencia uniforme de $f_n$ a una función  $f$, deberemos probar que $f\in \mathcal{C}_B(A,\mathbb{R}^M)$, es decir que el límite uniforme de la sucesión $\{f_n\}$ de funciones continuas y acotadas es una función continua y acotada. Veámoslo.
 
-    Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que $n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A$. Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
+    Recordemos que ya sabemos por teoría que $f$ es continua. Para la acotación, tomando $\epsilon = 1$ en la definición de convergencia uniforme, obtenemos un $n_0 \in \mathbb{N}$ tal que
+    \[n \ge n_0 \Rightarrow |f_n(x) - f(x)| < 1\ \forall x \in A.\]
+
+    Por otro lado, como $f_{n_0}$ es acotada, existe un $M>0$ tal que $|f_{n_0}(x)| \le M\ \forall x \in A$. Entonces, se tiene que: $$|f(x)| = |f(x) - f_{n_0}(x) + f_{n_0}(x)| \le |f(x) - f_{n_0}(x)| + |f_{n_0}(x)| < 1 + M, \ \ \forall x \in A$$
     Por tanto, $f$ está acotada.
   \end{sol}
 
@@ -54,21 +57,19 @@
     En resumen, hemos probado que $\forall \epsilon > 0 \ \ \exists k_0 \in \N$ (depediente de $\epsilon$ y $x_1,\dots, x_n)$ tal que $k\geq k_0 \implies |f_k(y)| = f_k(y) < \epsilon \ \ \forall y \in A$.
   \end{sol}
 
-\begin{ejer} Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
+  \begin{ejer} \label{bola_cerrada}
+	Probar que en el espacio $\mathcal{C}(A,\mathbb{R}^M)$, con $A \subseteq \mathbb{R}^N$ compacto, cualquier bola cerrada y centrada en el origen es homeomorfa a una bola cerrada y centrada en un punto arbitrario.
 
 \end{ejer}
 
 \begin{sol}
     Sea $\epsilon > 0$, y $\tilde f \in \mathcal C (A, \mathbb{R}^M)$. Consideremos la aplicación $\varphi: \overline{B}_\infty(0,\epsilon) \to \ \overline{B}_\infty(\tilde f, \epsilon) $ dada por $\varphi(f) = f + \tilde f$.
     Por un lado, $\varphi$ está bien definida, pues: $$\|\tilde f - \varphi(f) \|_\infty= \| \tilde f - f - \tilde f \|_\infty = \|f\|_\infty \le \epsilon \Rightarrow \varphi(f) \in \overline{B}_\infty(\tilde f, \epsilon)$$
-    Tenemos que $\varphi$ es continua, pues la preimagen de un entorno básico (bolas abiertas) es un entorno básico. Para verlo, en lugar de $\varphi$ vamos a tomar su extensión a todo el espacio (la llamaremos $\varphi'$), definiéndola de la misma forma ($f \mapsto f+\tilde f$). Entonces, se tiene que:
-    \[
-      \begin{array}{l}
-	\varphi'^{-1}(B_\infty(f, \epsilon)) = \{ g\in \mathcal{C}(A,\R^M) : \varphi'(g) = g + 	\tilde f \in B(f, \epsilon)\} =\\
-	= \{ g\in \mathcal{C}(A,\R^M) : \|f-\tilde f-g\|_\infty < \epsilon\} = B(f-\tilde f,\epsilon)
-      \end{array}
-    \]
+    $\varphi$ es continua por ser una isometría:
 
+    \[
+	    \| \varphi\left( f_1 \right) - \varphi\left( f_2 \right)   \|_\infty = \| f_1 + f - f_2 - f \|_\infty = \| f_1 - f_2 \|_\infty
+    .\] 
 
     Además, la inversa de $\varphi$ existe: $\varphi^-1(g) = g - \tilde f\ \ \forall g \in \overline{B}_\infty(\tilde f, \epsilon)$. Es continua por el mismo motivo que $\varphi$.
 

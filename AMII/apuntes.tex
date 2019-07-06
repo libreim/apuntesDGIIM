@@ -219,11 +219,11 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
     Es decir, $\{f_n(x)\}$ converge puntualmente en $(a,b)$ a $G(x)$. Ahora, $G$ es de clase 1 por ser $g(t)$ continua, y además, tenemos que $G(x_0) = f(x_0)$.
     Por otro lado, es claro que $G' = g$.
 
-    Pero también $\{f_n(x)\} \xrightarrow {c.p} f(x)$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1((a,b))$ y $f' = G' = g$.
+    Pero también $\{f_n(x)\} \xrightarrow {c.p} f(x)$ por hipótesis, por lo que necesariamente $\forall x \in (a,b)$ \\ $G(x) = f(x)$, esto es, $f \in \mathcal{C}^1(a,b)$ y $f' = G' = g$.
   \end{proof}
 
 \begin{ncor}
-  Sea $f_n\in \mathcal{C}^1((a,b)) \ \forall n \in \mathbb{N}$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g \in \mathcal C((a,b))$ en $(a,b)$. Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f' = g$.
+  Sea $f_n\in \mathcal{C}^1(a,b) \ \forall n \in \mathbb{N}$. Supongamos que $\exists \alpha \in (a,b)$ tal que $ \{f_n(\alpha)\}$ es convergente, y supongamos también que $\{f_n'\} \xrightarrow{c.u.} g \in \mathcal C((a,b))$ en $(a,b)$. Entonces, $\exists f: (a,b) \to \mathbb{R}$ tal que $\fn \to f$ uniformemente. Además, $f \in \mathcal{C}^1(a,b)$, y  $f' = g$.
 \end{ncor}
 
   \begin{proof}
@@ -231,16 +231,16 @@ Veamos ahora dos teoremas que relacionan el concepto de convergencia uniforme co
 
     Sea $\epsilon > 0$. Por un lado, como $\{f'_n\}$ converge uniformemente, aplicamos el \textit{Criterio de Cauchy} para obtener un $k_1 \in \mathbb{N}$ tal que: $$p,q \ge k_1 \implies |f'_p(y) - f'_q(y)| < \frac{\epsilon}{2 (b-a)}$$
     Del mismo modo, como $\{f_n(\alpha)\}$ es una sucesión de números reales convergente, es de Cauchy, y obtenemos un $k_2 \in \mathbb{N}$ tal que: $$p,q \ge k_2 \implies |f_p(\alpha) - f_q(\alpha)| < \frac{\epsilon}{2}$$
-    Ahora, defino $K := k_1 + k_2$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$ y $p,q \ge K$: $$|f_p(x) - f_q(x)| = |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_q(x) - (f_p(\alpha) - f_q(\alpha))| + |f_p(\alpha) - f_q(\alpha)| $$ $$= |f_{pq}(x) - f_{pq}(\alpha)| + |f_p(\alpha) - f_q(\alpha)| \overset{T.V.M}{=} |x-\alpha||f'_{pq}(z_x)| + |f_p(\alpha) - f_q(\alpha)|$$ $$= \left|x-\alpha \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)| < (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
+    Ahora, definimos $K := \max\{k_1, k_2\}$, y teniendo en cuenta el \textit{Teorema del Valor Medio}, se tiene que, dado $x \in (a,b)$ y $p,q \ge K$: $$|f_p(x) - f_q(x)| = |f_p(x) - f_p(\alpha) + f_p(\alpha) - f_q(\alpha) + f_q(\alpha) - f_q(x)|$$ $$\le |f_p(x) - f_q(x) - (f_p(\alpha) - f_q(\alpha))| + |f_p(\alpha) - f_q(\alpha)| $$ $$= |f_{pq}(x) - f_{pq}(\alpha)| + |f_p(\alpha) - f_q(\alpha)| \overset{T.V.M}{=} |x-\alpha||f'_{pq}(z_x)| + |f_p(\alpha) - f_q(\alpha)|$$ $$= \left|x-\alpha \right|\left| f'_p(z_x) - f'_q(z_x) \right| + |f_p(\alpha) - f_q(\alpha)| < (b-a) \cdot \frac{\epsilon}{2(b-a)} + \frac{\epsilon}{2} = \epsilon$$
 
-    donde $z_x$ está en el intervalo abierto de extremos $\alpha$ y $x$, y $f_{pq}(x) := f_p(x) - f_q(x)$. Observemos que en este razonamiento, el valor de $K$ \textbf{no depende de $x$}, sino exclusivamente de quién sea $\epsilon$. Por tanto, por el \textit{Criterio de Cauchy}, se tiene que $\{f_n\}$ converge uniformemente en $(a,b)$.
+    donde $z_x$ está en el intervalo abierto de extremos $\alpha$ y $x$, y $f_{pq}(x) := f_p(x) - f_q(x)$. Observemos que en este razonamiento, el valor de $K$ \textbf{no depende de $x$}, sino exclusivamente de $\epsilon$. Por tanto, por el \textit{Criterio de Cauchy}, se tiene que $\{f_n\}$ converge uniformemente en $(a,b)$.
   \end{proof}
 
 % --------------------------------------------------------------------------------
 % Compacidad en el espacio de funciones continuas.
 % --------------------------------------------------------------------------------
 
-\subsection{Conjuntos compactos de $\mathcal{C}(A, \mathbb{R}^M$)}
+  \subsection{Conjuntos compactos de $\mathcal{C}(A, \mathbb{R}^M)$}
 
 En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de $\mathcal{C}(A,\mathbb{R}^M)$. Para ello, necesitamos primero definir ciertos conceptos el espacio de funciones continuas. Salvo que se especifique lo contrario, $A$ será un subconjunto compacto de $\mathbb{R}^N$ en todo el apartado.
 
@@ -253,11 +253,11 @@ En este apartado, nuestro objetivo será caracterizar los conjuntos compactos de
 \end{nota}
 
 \begin{ndef}[Conjunto equicontinuo]
-  Sea $A \in \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es equicontinuo si $$\forall \epsilon > 0\ \exists \delta > 0:\ \begin{rcases} |x-y| < \delta\\ x,y \in A \end{rcases} \implies |f(x) - f(y)| < \epsilon \quad \forall f \in B$$
+  Sea $A \subseteq  \mathbb{R}^N$ compacto, $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Se dice que $B$ es equicontinuo si $$\forall \epsilon > 0\ \exists \delta > 0:\ \begin{rcases} |x-y| < \delta\\ x,y \in A \end{rcases} \implies |f(x) - f(y)| < \epsilon \quad \forall f \in B$$
 \end{ndef}
 
 \begin{nota}
-  Este concepto es muy parecido al de función uniformemente continua. De hecho, como $A$ es compacto y todas las $f$ son continuas, sabemos por el \textit{Teorema de Heine-Cantor} que todas ellas son uniformemente continuas. Sin embargo, para poder afirmar que $B$ es equicontinuo, es necesario que el número $\delta$ sea válido sea quien sea $f$.
+  Este concepto es muy parecido al de función uniformemente continua. De hecho, como $A$ es compacto y todas las $f$ son continuas, sabemos por el \textit{Teorema de Heine-Cantor} que todas ellas son uniformemente continuas. Sin embargo, para poder afirmar que $B$ es equicontinuo, es necesario que el número $\delta$ sea válido independientemente $f$.
 \end{nota}
 
 \begin{nprop} Sea $B \subseteq \mathcal{C}(A,\mathbb{R}^M)$. Si B es finito, entonces es equicontinuo.
@@ -279,7 +279,7 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
   Recordemos que en este espacio, ser convergente era equivalente a la convergencia uniforme. Por tanto, combinando ambas informaciones, hemos encontrado una sucesión de funciones $\fn \subseteq \overline{B}_{\infty}(0,r)$ tal que no es posible extraer una subsucesión convergente a un punto de $\overline{B}_{\infty}(0,r)$. Esto prueba que $\overline{B}_{\infty}(0,r)$ no es compacta.
 
-  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluimos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar \textit{[Ejercicios, p.4]}.
+  Además, sabemos que existe un homeomorfismo entre las bolas cerradas y centradas en el origen, y las bolas cerradas centradas en un punto arbitrario de $\mathcal{C}(A,\mathbb{R}^M)$. Como la compacidad es una propiedad topológica, concluimos que ninguna bola cerrada es compacta. Para una demostración más detallada de esta última afirmación, consultar el ejercicio \ref{bola_cerrada}.
 \end{ejemplo}
 
 \begin{ndef}[Sucesión acotada]
@@ -290,10 +290,10 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
   Se dice que una sucesión $\fn \subseteq \mathcal{C}(A,\mathbb{R}^M)$ es equicontinua si el conjunto $\{ f_n: n \in \mathbb{N}\}$ es equicontinuo.
 \end{ndef}
 
-Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado equivalente en $\mathcal{C}(A,\mathbb{R}^M)$.
+Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado análogo en $\mathcal{C}(A,\mathbb{R}^M)$.
 
 \begin{lema}
-  Todo subconjunto $A$ (no tiene porqué ser compacto) de
+  Todo subconjunto $A$ (no tiene por qué ser compacto) de
   $\mathbb{R}^N$ tiene un subconjunto numerable denso en \'el. Esto
   es, $\exists C \subseteq A$ numerable cumpliendo
   $A \subseteq \overline{C}$.
@@ -301,22 +301,25 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
 
 \begin{proof}
   Para cualquier natural $m$, tomemos $\varepsilon = \frac{1}{m}$,
-  usando que $\mathbb{Q}^N$ es numerable se tendr\'a
+  usando que $\mathbb{Q}^N$ es numerable se tendr\'a una enumeración, de forma que
   $\mathbb{Q}^N = \{r_1, r_2, r_3, \ldots\}$ con
   $r_i \in \mathbb{Q}^N \quad \forall i \in \mathbb{N}$, y usando
-  que $\mathbb{Q}^N$ es denso en $\mathbb{R}$
+  que $\mathbb{Q}^N$ es denso en $\mathbb{R}^N$
  
   \[A \subseteq \mathbb{R}^N = \bigcup\limits_{x \in \mathbb{Q}^N}B(x,
     \varepsilon) = \bigcup\limits_{i=1}^\infty B(r_i, \varepsilon)\]
 
   Notemos que esta familia numerable de bolas abiertas recubre a $A$,
-  por lo que algunas de ellas tendrán intersección no vacía con $A$.
+  por lo que algunas de ellas tendrán intersección no vacía con $A$, es decir, existe
+  $I \subseteq \N$ tal que $i\in I \implies B(r_i,\epsilon) \cap A \neq \emptyset$.
+  Entonces, el axioma de elección nos proporciona $c: I \to A$ de forma que $c_i := c(i) \in B\left( r_i, \epsilon \right) \cap A $ para cada $i\in I$.
+
+
   
   Definimos el conjunto
-  \[C_m = \{c_i \in A \cap B(r_i,\varepsilon) \ : A \cap
-    B(r_i,\varepsilon) \neq \emptyset, \ i \in \mathbb{N}\} = \{c_i
+  \[C_m = \{c_i  :   i \in I\} = \{c_i
     \in A \cap B(r_i, {\scriptstyle\frac{1}{m}}) \ : A \cap
-    B(r_i,{\scriptstyle\frac{1}{n}}) \neq \emptyset, \ i \in
+    B(r_i,{\scriptstyle\frac{1}{m}}) \neq \emptyset, \ i \in
     \mathbb{N}\}\]
 
   Es importante el hecho de que s\'olo hemos tomado un
@@ -324,7 +327,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
   nos asegura que el conjunto $C_m$ sea numerable.
 
   Como podemos hacer esto para todo natural $m$, podemos definir el
-conjunto \(C = \bigcup\limits_{m=1}^\infty C_m\), que es unión
+conjunto \(C = \bigcup_{m=1}^\infty C_m\), que es unión
 numerable de conjuntos numerables, por tanto numerable. Falta
 probar $A \subseteq \overline{C}$.
 
@@ -333,14 +336,16 @@ $x \in \overline{C} \iff \forall \varepsilon > 0, \ B(x, \varepsilon)
 \cap C \neq \emptyset$. Tomamos $n \in \mathbb{N}$ de forma que
 $\frac{1}{n} < \frac{\varepsilon}{2}$. Como sabíamos que
 $A \subseteq \mathbb{R}^N = \overline{\mathbb{Q}^N}$, existir\'a un
-$r_i \in \mathbb{Q}^N$ tal que $x \in B(r_i, \frac{1}{n})$. Por lo que
-hemos probado antes, $\exists c_i \in C_n \subseteq C$ cumpliendo
+$r_i \in \mathbb{Q}^N$ tal que $x \in B(r_i, \frac{1}{n})$. Por la discusión anterior, $\exists c_i \in C_n \subseteq C$ cumpliendo
 $c_i \in B(r_i, \frac{1}{n}) \cap A$, por lo que tenemos
 $|x-r_i| < \frac{1}{n}$ y $|c_i-r_i| < \frac{1}{n}$. Por la
 desigualdad triangular deducimos lo que queremos
-\[|x - c_i| \leq |x-r_i| + |r_i-c_i| < \frac{2}{n} < \varepsilon
+
+\[
+	|x - c_i| \leq |x-r_i| + |r_i-c_i| < \frac{2}{n} < \varepsilon
   \implies c_i \in B(x, \varepsilon) \cap C \neq \emptyset \implies
-  c_i \in B(x, \varepsilon) \cap C \implies x \in \overline{C}\]
+  c_i \in B(x, \varepsilon) \cap C \implies x \in \overline{C}
+.\]
 
 \end{proof}
 
@@ -412,21 +417,21 @@ desigualdad triangular deducimos lo que queremos
 
     Si definimos $\varphi_k:= \sigma_k \circ \dots \sigma_2 \circ\sigma_1$, podemos visualizar las sucesiones anteriores, cada una en una fila:
     \[
-      \begin{array}{lllllll}
+      \begin{array}{ccccccc}
         {f_{\varphi_1 (1)}}& f_{\varphi_1 (2)} & f_{\varphi_1 (3)} & \dots &f_{\varphi_1 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_1
         \\
         f_{\varphi_2 (1)} & {f_{\varphi_2 (2)}} & f_{\varphi_2 (3)} & \dots &f_{\varphi_2 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_2
         \\
         f_{\varphi_3 (1)} & f_{\varphi_3 (2)} & {f_{\varphi_3 (3)}} & \dots &f_{\varphi_3 (k)} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_3
         \\
-        \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
+        \vdots & \vdots & \vdots& \ddots &\vdots & \dots & \hspace{1.25cm} \vdots
         \\
         f_{\varphi_k (1)} & f_{\varphi_k (2)} & f_{\varphi_k (3)} & \dots &{f_{\varphi_k (k)}} & \dots & \hspace{0.25cm} \mbox{ c.p. en } r=r_k
         \\
-        \dots & \dots & \dots& \dots &\dots & \dots & \hspace{1.25cm} \dots
+        \vdots & \vdots & \vdots& \vdots &\vdots & \ddots & \hspace{1.25cm} \vdots
       \end{array}
     \]
-    Defino $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
+    Definimos $\sigma:\mathbb N\longrightarrow \mathbb N$ mediante
     \[
       \sigma (n):= \varphi_n(n)= \sigma_n \circ \dots \sigma_2 \circ\sigma_1 (n)
     \]
@@ -502,7 +507,7 @@ desigualdad triangular deducimos lo que queremos
     p,q \geq n_i \implies |g_p(c_i) - g_q(c_i)| <
     \frac{\varepsilon}{3}\]
 
-  Tomamos $n_0 = \text{max}\{c_i: i = 1,\ldots, k\}$ ({dependiente de
+  Tomamos $n_0 = \max\{n_i: i = 1,\ldots, k\}$ ({dependiente de
     los puntos $c_i$ e independiente de $x$}), se cumple que
     \[
       p,q \geq n_0 \implies |g_p(c_i)-g_q(c_i)| <\frac{\varepsilon}{3}
@@ -527,7 +532,7 @@ Como conclusión de este capítulo, presentamos el siguiente corolario, que nos 
   \begin{proof} \hfill \\
     \boxed{\Rightarrow} Ya sabemos que un conjunto compacto de un espacio métrico es cerrado y acotado. Veamos que además es equicontinuo.
 
-    Sea $\epsilon >0$ fijo. La familia $\{ B(f, \varepsilon/3) \, : \, f\in B\}$ ($B(f, \varepsilon/3)$ son bolas abiertas en $\mathcal{C}(A, \mathbb{R}^M))$ es un recubrimiento abierto de B puesto que $$B\subseteq \bigcup_{f\in B} B(f, \varepsilon/3).$$
+    Sea $\epsilon >0$ fijo. La familia $\{ B(f, \varepsilon/3) \, : \, f\in B\}$ es un recubrimiento abierto de $B$ puesto que $$B\subseteq \bigcup_{f\in B} B(f, \varepsilon/3).$$
     Luego, por la compacidad de $B,\ \exists f_1, \dots, f_n \in$ B tales que $$B \subseteq \displaystyle \bigcup_{i=1}^n B(f_i, \varepsilon/3).$$
     Observemos que para cualquier $f\in B(f_i, \varepsilon/3)$ se verifica que
     $|f(x)-f_i(x)| < \varepsilon/3 , \ \ \forall x\in A$. Además, como $A$ es compacto, cada una de las funciones continuas $f_i \ (i=1,\dots,n)$ será uniformemente continua. Por tanto, existirá para cada una de ellas un número $\delta_i>0$ tal que $$\left. \begin{array}{c} |x-y|<\delta_i \\ x,y\in A \end{array}  \right\} \Rightarrow |f_i(x)-f_i(y)| <\varepsilon/3$$
@@ -555,7 +560,7 @@ De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos
 
 \begin{ndef}[Sumas parciales]
   Sea $\Omega\subseteq \mathbb R^N$ un conjunto.
-  Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathbb R^M$, se llama sumas parciales $S_k$ a la funci\'on definida en $\Omega$ mediante
+  Dada una sucesi\'on $\{f_n \}$ de funciones $f_n : \Omega \longrightarrow \mathbb R^M$, se llama suma parcial $S_k$ a la funci\'on definida en $\Omega$ mediante
   \[
     S_k (x) = \sum_{n=1}^{k} f_n(x),\ \ x\in\Omega.
   \]
@@ -569,7 +574,7 @@ De forma análoga a como se hizo en el espacio euclídeo $\mathbb{R}^N$, pasamos
 El car\'acter de la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se basa en la correspondiente convergencia de la sucesi\'on de funciones $\{S_n\}$ formada por las sumas parciales $S_n$. Por tanto, tenemos de nuevo dos tipos de convergencia.
 \begin{ndef}[Convergencia de series de funciones]
   Si $S:\Omega\longrightarrow \mathbb R^M$ es una funci\'on y $A\subseteq \Omega$, diremos
-  $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\ c.p.\ en\ A.$$
+  $$\sum_{n\geq 1} f_n  \mbox{ es convergente puntualmente en } A \Leftrightarrow \{S_n \} \longrightarrow S\text{ c.p en A.}$$
 
   $$\sum_{n\geq 1} f_n  \mbox{ es convergente uniformente en }A \Leftrightarrow \{S_n \} \longrightarrow S \mbox{ c.u. en }A.$$
 
@@ -648,11 +653,11 @@ Puesto que  la convergencia de la serie $\sum_{n\geq 1} f_n$ de funciones se bas
 
 
 \begin{nth}[Criterio de Abel] \label{11} Sean $ A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, es decir, $\phi_{n+1}(x) \leq \phi_n (x)\ \forall x \in A.$ Supóngase que $\exists M$ tal que $|\phi_n (x)| \leq M\ \forall x \in A\ \forall n \in \mathbb{N}.$ Entonces, se tiene que
-  $$\sum_{n \ge 1} f_n(x)\ c. u.\ en\ A\, \implies \sum_{n \ge 1} \phi_n(x) f_n(x)\ c. u.\ en\ A.$$
+	$$\sum_{n \ge 1} f_n(x)\ \text{c.u. en A}, \implies \sum_{n \ge 1} \phi_n(x) f_n(x)\ \text{c.u. en A.}$$
 \end{nth}
 %%% TODO: añadir demostración Criterio de Abel
 
-\begin{nth}[Criterio de Dirichlet] \label{12} Sea $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$
+\begin{nth}[Criterio de Dirichlet] \label{12} Sean $A \subseteq \mathbb{R}^N\  y \ \phi_n : A \rightarrow \mathbb{R}$ tales que $\{\phi_n\}$ es una sucesión decreciente de funciones, que converge a 0 uniformemente, con $\phi_n \ge 0 \ \forall n \in \mathbb{N}$. Sea $\sum_{n \ge 1} f_n$ una serie de funciones, y supóngase que $\exists M$ tal que las sumas parciales de dicha serie están uniformemente acotadas, esto es, $$\left| \sum_{k=1}^n f_k(x) \right| \le M \ \ \forall x \in A, \ \forall n \in \mathbb{N}$$
 
   Entonces, la serie $\displaystyle \sum_{n\ge 1} \phi_n(x)f_n(x)$ converge uniformemente en $A$.
 
@@ -665,7 +670,7 @@ Veamos un ejemplo de aplicación de estos criterios.
 \begin{ejemplo}
   Probar que la serie $\displaystyle \sum_{n \ge 1} \frac{(-1)^n}{n} e^{-nx}$ converge uniformemente en $[0, \infty)$.
 
-  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge, por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.
+  Sea $\phi_n(x) = e^{-nx}$. Para $x \ge 0$, $\phi_n$ es decreciente, y además $|\phi_n(x)| = | e^{-nx} |  = |\frac{1}{e^{nx}} |\le 1$. Por otro lado, sabemos que la serie alternada $ \sum_{n \ge 1} \frac{(-1)^n}{n}$ converge (y al no depender de $x$, vista como serie de funciones, lo hace uniformemente), por el \textit{Criterio de Leibniz} para series de números reales. Por tanto, aplicando el \textit{Criterio de Abel}, la serie de partida converge uniformemente para $x \ge 0$.
 \end{ejemplo}
 
 
@@ -694,7 +699,7 @@ Veamos una característica importante de las series de potencias, que nos ayuda 
   Si $R = \infty$, entonces $D(a,R) = \mathbb{R}$.
 \end{nota}
 
-El siguiente teorema da sentido a la nomeclatura seguida en las dos definiciones anteriores.
+El siguiente teorema da sentido a la nomenclatura seguida en las dos definiciones anteriores.
 
 \begin{nth} \label{13}
   La serie de potencias $\displaystyle\sum_{n\geq 0} a_n (x-a)^n$
@@ -844,9 +849,11 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \section{Integral asociada a una medida}
 
-Recordemos por un momento la definición de integral de Riemann-Darboux. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior de una función $f$ en $[a,b]$ como: $$\underline{\int_a^b} f := \underset{P \in \mathcal P [a,b]}{sup} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{inf} f$$
+Recordemos por un momento la definición de integral de Riemann-Darboux. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior de una función $f$ en $[a,b]$ como: 
 
-$$\overline {\int_a^b} f := \underset{P \in \mathcal P [a,b]}{inf} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \underset{[x_i, x_{i+1}]}{sup} f$$
+ $$\underline{\int_a^b} f := \sup_{P \in \mathcal P [a,b]} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \inf_{[x_i, x_{i+1}]} f$$
+
+$$\overline {\int_a^b} f := \inf_{P \in \mathcal P [a,b]} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \sup_{[x_i, x_{i+1}]} f$$
 
 Entonces, el conjunto de funciones que son Riemann-integrables es: $$\mathcal R = \left\{ f:[a,b] \to \mathbb{R} \text{ acotada} : \overline {\int_a^b} f = \underline {\int_a^b} f\right\}$$
 
@@ -854,7 +861,7 @@ Si $f \in \mathcal R$, definimos su integral de Riemann como la correspondiente 
 
 En este apartado, nuestro objetivo será construir una integral que abarque un conjunto más amplio de funciones que las funciones Riemann-integrables. Esta será la \textbf{integral de Lebesgue}, que intenta establecer una relación entre el intervalo de integración y la función a integrar, principalmente al considerar una manera de \textit{medir} conjuntos.
 
-Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar a presentar la integral de Lebesgue. La referencia principal es esta vez \cite[Chapter 1]{rudin}.
+Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar a presentar la integral de Lebesgue. La referencia principal es esta vez \cite[Capítulo 1]{rudin}.
 
 
 % --------------------------------------------------------------------------------
@@ -916,9 +923,10 @@ Necesitaremos primero algunas nociones sobre teoría de la medida para comenzar 
 \end{proof}
 
 \begin{ndef}[$\sigma$-álgebra de Borel] Si $\Omega$ es un espacio topológico, se llama $\sigma$-álgebra de Borel $\mathcal B(\Omega)$ a la $\sigma-$álgebra engendrada por la topología $\tau$ de $\Omega$. Además, $\mathcal B(\Omega)$ es la $\sigma$-álgebra más pequeña que contiene a $\tau$.
-\end{ndef}
 
 Formalmente, si $\Lambda = \left\{ \mathscr A : \mathscr A \text{ es } \sigma \text{-álgebra y } \tau \subseteq \mathscr A \right\}$, definimos $$\mathcal B(\Omega) := \bigcap_{\mathscr A \in \Lambda} \mathscr A$$
+\end{ndef}
+
 Para ver que $\mathcal B(\Omega)$ es una $\sigma$-álgebra, basta observar que, dada una sucesión \mbox{$\{A_n\} \subseteq \mathcal B(\Omega)$}, tenemos que $A_n \in \mathscr A \ \ \forall \mathscr A \in \Lambda$. Como cada $\mathscr A \in \Lambda$ es una $\sigma$-álgebra, se tiene que: $$\bigcup_{n=1}^\infty A_n \in \mathscr A, \quad \forall \mathscr A \in \Lambda \implies \bigcup_{n=1}^\infty A_n \in \mathcal B(\Omega)$$
 
 El resto de propiedades se comprueban de forma análoga.
@@ -932,7 +940,7 @@ El resto de propiedades se comprueban de forma análoga.
   \begin{proof} \hfill \\
 	\boxed{\Rightarrow} Como $f$ es medible, se tiene que $f^{-1}(B) \in \mathscr A \ \forall B \in \mathcal B$, y como $\tau \subseteq \mathcal B$, se verifica automáticamente que la preimagen de cualquier abierto de $X$ es medible.
 
-\boxed{\Leftarrow} Defino $\mathcal M := \{ E \subseteq X: f^{-1}(E) \in \mathscr A\}$, y afirmo que $\mathcal M$ es una $\sigma$-álgebra sobre $X$. En efecto, utilizando que $\mathscr A$ es una $\sigma$-álgebra sobre $\Omega$, y las propiedades de la imagen inversa de conjuntos por una función:
+\boxed{\Leftarrow} Definimos $\mathcal M := \{ E \subseteq X: f^{-1}(E) \in \mathscr A\}$, y afirmo que $\mathcal M$ es una $\sigma$-álgebra sobre $X$. En efecto, utilizando que $\mathscr A$ es una $\sigma$-álgebra sobre $\Omega$, y las propiedades de la imagen inversa de conjuntos por una función:
 
 \begin{itemize}
 	\item $X \in \mathcal M$, porque $f^{-1}(X) = \Omega \in \mathscr A$.
@@ -945,7 +953,7 @@ El resto de propiedades se comprueban de forma análoga.
 Por otro lado, tenemos que, por hipótesis, $\tau \subseteq \mathcal M$. Como $\mathcal B$ es la más pequeña $\sigma$-álgebra sobre $X$ que contiene a $\tau$, necesariamente $\mathcal B \subseteq \mathcal M$. Pero entonces se cumple que \mbox{$f^{-1}(B) \in \mathscr A$} $\forall B \in \mathcal B$, concluyendo la prueba.
 \end{proof}
 
-En general, cuando consideremos un espacio $X$ sin decir explícitamente quién es la $\sigma-$álgebra asociada, daremos por hecho que se trata de la $\sigma$-álgebra de Borel $\mathcal B(X)$ asociada a la topología usual de $X$.
+En general, cuando consideremos un espacio $X$ sin decir explícitamente cuál es la $\sigma-$álgebra asociada, daremos por hecho que se trata de la $\sigma$-álgebra de Borel $\mathcal B(X)$ asociada a la topología usual de $X$.
 
 \begin{nprop} Sean $(X,\tau_X), (Y, \tau_Y)$ dos espacios topológicos, y $f:X\longrightarrow Y$ continua. Entonces, $f$ es medible.
 \end{nprop}
