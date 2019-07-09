@@ -292,7 +292,7 @@ El interés en ver cuáles son los conjuntos compactos de $\mathcal{C}(A,\mathbb
 
 Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los cerrados y acotados, el \textit{Teorema de Bolzano-Weierstrass} era una herramienta clave. Veamos ahora un resultado análogo en $\mathcal{C}(A,\mathbb{R}^M)$.
 
-\begin{lema}
+\begin{lema} \label{conjunto_denso}
   Todo subconjunto $A$ (no tiene por qué ser compacto) de
   $\mathbb{R}^N$ tiene un subconjunto numerable denso en \'el. Esto
   es, $\exists C \subseteq A$ numerable cumpliendo
@@ -967,7 +967,12 @@ En general, cuando consideremos un espacio $X$ sin decir explícitamente cuál e
 
 \subsubsection{Aritmética de $[0,\infty]$}
 
-Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. La topología asociada a este espacio viene dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
+Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. En general, cuando hablemos de la recta real extendida, entenderemos que está dotada de la siguiente topología: 
+
+\begin{ndef}[Topología de la recta real extendida] \label{topologia_real_ext}
+	La dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
+
+\end{ndef}
 
 Puesto que de ahora en adelante trabajaremos habitualmente en el espacio topológico $[0,\infty] \subseteq [-\infty,\infty]$, necesitamos definir ciertas operaciones y relaciones:
 \begin{nlist}
@@ -992,12 +997,24 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
   Una función $f: \Omega \to X = [0,\infty ]$ medible se llama función medible positiva.
 \end{ndef}
 
+\begin{lema} \label{abierto_union_numerable}
+	Sea $O \subseteq [0, +\infty]$ abierto. Entonces $O$ es unión numerable de abiertos básicos.
+\end{lema}
+
+\begin{proof}
+	Si $x\in O$, entonces existe un intervalo $I \subseteq O$ (que es un abierto básico, véase \ref{topologia_real_ext}) con $x\in I$. El axioma de elección nos proporciona,
+	para cada $x\in O$,  $I_x$ en estas condiciones. Por el lema \ref{conjunto_denso},  $O\cap \R$ tiene un conjunto numerable $C$ denso en él. Entonces, es claro que
+	\[
+		O\cap \R = \bigcup_{c\in C}I_c
+	.\] 
+	Si $+\infty\in O$, existe una familia de abiertos básicos $\{B_\lambda\}_{\lambda\in \Lambda}$ de tales que $O = \bigcup_{\lambda\in\Lambda} B_\lambda$, luego existe $\lambda\in\Lambda$ con $+\infty\in B_\lambda$. Definiendo  $I_{+\infty} := B_\lambda$, $O = (O\cap \R) \cup I_{+\infty}$.
+\end{proof}
 
 \begin{nprop}[Caracterización de funciones medibles positivas] \label{criterio_medibles} Sea $(\Omega,\mathscr A)$ un espacio de medida y $f:\Omega \to [0,\infty]$. Entonces:
 
   \[
   \begin{array}{lll}
-    \text{f es medible} & \iff & \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0\\
+    \text{$f$ es medible} & \iff & \{w \in \Omega : f(w) < \gamma \} \text{ es medible } \forall \gamma \geq 0\\
 
     & \iff & \{w \in \Omega : f(w) \leq \gamma \} \text{ es medible } \forall \gamma \geq 0\\
 
@@ -1007,15 +1024,29 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
     \end{array}
   \]
 \end{nprop}
-%%% TODO: FALTA DEMOSTRACIÓN ---------------------------------------------------------
+
+
+\begin{proof}
+Se hará para el primer caso únicamente. El resto son análogos. Observemos que:
+\[
+	\begin{array}{l}
+	\left( a,b \right) = [0,b) - [0,a)\quad \text{y}\\
+	(a,+\infty] = [0,+\infty] - \left(\bigcap_{n=1}^\infty[0,a+\frac{1}{n})\right).
+	\end{array}
+\] 
+
+Luego, $f^{-1}(a,b) = f^{-1}[0,b)\setminus f^{-1}[0,a),\ f^{-1}(a,+\infty] = \Omega - \left(\bigcap_{n=1}^\infty f^{-1}[0,a+\frac{1}{n})\right)$, medibles.
+Ahora, por ser las preimágenes por $f$ de los abiertos básicos medibles, y por ser cada abierto unión numerable de abiertos básicos (lema \ref{abierto_union_numerable}),
+es claro que $f$ es medible.
+\end{proof}
 
 \begin{nprop} \label {p1}
   Sea $(\Omega,\mathscr A)$ un espacio medible. Si $\{f_n\}$ es una sucesión de funciones medibles positivas en $\Omega$, entonces también son medibles las funciones definidas por:
   \[
-    g_1(\omega) =  sup\{f_n(\omega) : \ n \in \mathbb{N} \}
+    g_1(\omega) =  \sup\{f_n(\omega) : \ n \in \mathbb{N} \}
   \]
   \[
-    g_2(\omega) =  inf\{f_n(\omega) : \ n \in \mathbb{N} \}
+    g_2(\omega) =  \inf\{f_n(\omega) : \ n \in \mathbb{N} \}
   \]
   \[
     g_3(\omega) = \limsup_{n\to \infty} \ f_n(\omega)
@@ -1027,7 +1058,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 \end{nprop}
 
   \begin{proof}
-	Para ver que $g_1(w)$ es medible, basta comprobar que $g^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la \textit{Proposición \ref{criterio_medibles}}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathscr A$ una $\sigma-$álgebra.
+	Para ver que $g_1(w)$ es medible, basta comprobar que $g_{1}^{-1}[0,\gamma)$ es medible para todo $\gamma \ge 0$, en virtud de la proposición \ref{criterio_medibles}. En efecto: $$g^{-1}[0,\gamma) = \{\omega \in \Omega : \sup\{f_n(w) : n \in \mathbb{N}\} \in [0,\gamma)\} =$$  $$ = \{ \omega \in \Omega : f_n(w) \in [0,\gamma) \ \forall n \in \mathbb{N}\} = \bigcap_{n=1}^{\infty} f_n^{-1}[0,\gamma), $$ donde $f_n^{-1}[0,\gamma)$ es medible para cada $n$, por ser cada una de las $f_n$ medibles. Concluimos observando que la intersección numerable de medibles es medible, pues $\mathscr A$ una $\sigma-$álgebra.
 
 	La demostración para $g_2(\omega)$ es análoga. La medibilidad de $g_3(\omega)$ se deriva del hecho de que $$g_3(\omega) = \limsup f_n(\omega) = \inf_{n \ge 1} \left\{\sup_{k\ge n} f_k(\omega) \right\}$$ Así, podemos ver la función como $g_3(\omega) = \inf \{h_n(\omega) : n \in \mathbb{N}\}$, donde $h_n(\omega) := \sup \{f_k(\omega) : k \ge n\}$. Combinando lo demostrado anteriormente, concluimos que $g_3(\omega)$ es medible. De nuevo, la prueba para $g_4(\omega)$ es análoga.
 
@@ -1072,7 +1103,7 @@ Una característica importante de las funciones simples es que siempre se pueden
   Siendo esta la descomposición canónica de $s$, que es única si $\alpha_1 < \alpha_2 <  \cdots <\alpha_m$.
 \end{nprop}
 
-\begin{proof} La demostración es casi instantánea. En primer lugar, los conjuntos $A_k$ son medibles, pues se pueden escribir como diferencia de medibles: \mbox{$A_k = s^{-1}([0,\alpha_k])\backslash s^{-1}([0,\alpha_k))$.} Además, como $s(\Omega)$ es finito, trivialmente se verifica que $$\Omega = \bigcup_{k=1}^m A_k \quad ; \quad A_j \cap A_k = \emptyset \ \ \text{para } j \ne k$$
+\begin{proof} En primer lugar, los conjuntos $A_k$ son medibles, pues se pueden escribir como diferencia de medibles: \mbox{$A_k = s^{-1}[0,\alpha_k]\setminus s^{-1}[0,\alpha_k)$.} Además, como $s(\Omega)$ es finito, trivialmente se verifica que $$\Omega = \bigcup_{k=1}^m A_k \quad ; \quad A_j \cap A_k = \emptyset \ \ \text{para } j \ne k$$
 
   Por tanto, dado $\omega \in \Omega$, $\exists ! \ k_0 \in \{1,\dots,m\} \text{ tal que } \omega \in A_{k_0}$, de donde se deduce la descomposición canónica de $s$.
 \end{proof}
@@ -1109,10 +1140,10 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 \end{proof}
 
 \begin{nota}
-	La expresión de la función $t$ de la proposición anterior no es su descomposición canónica, pues podría darse el caso de que $B_i \cap B_j \neq \O$ para algún $i,j \in \{1,\dots,m\}$, $i\neq j$, y ya no podrían formar una partición de $\Omega$.
+	La expresión de la función $t$ de la proposición anterior no es su descomposición canónica, pues podría darse el caso de que $B_i \cap B_j \neq \emptyset$ para algún $i,j \in \{1,\dots,m\}$, $i\neq j$, y ya no podrían formar una partición de $\Omega$.
 \end{nota}
 
-\begin{nth}[Teorema de aproximación de Lebesgue]
+\begin{nth}[de aproximación de Lebesgue]
   Si $\Omega$ es un espacio medible y $f:\Omega \to [0,\infty]$ es una función, son equivalentes las siguientes afirmaciones:
   \begin{nlist}
   \item $f$ es medible
@@ -1127,7 +1158,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 \begin{proof}\hfill
 
   \boxed{ii)\implies i)}
-  Es consecuencia directa de la \textit{Proposición \ref{p1}}, al ser $f$ el límite de funciones medibles.
+  Es consecuencia directa de la proposición \ref{p1}, al ser $f$ límite de funciones medibles.
 
   \boxed{i)\implies ii)} La idea principal se basa en dividir el dominio de $f$. Fijado un $n \in \mathbb{N}$, consideramos los conjuntos:
     \begin{itemize}
@@ -1148,7 +1179,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
   \[
     s_n := n\text{\huge {$\chi$}}_{F_n} + \sum_{k=1}^{n2^n}\dfrac{k-1}{2^n}\cdot \text{\huge {$\chi$}}_{E_{n,k}}
   \]
-  Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimagen de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
+  Además, como $f$ es medible, entonces $F_n$ y $E_{n,k}$ son conjuntos medibles, al ser preimágenes de medibles. También tenemos que $s_n$ es medible para cada $n \in \mathbb{N}$ (por serlo $f$ y la función característica de un conjunto), y $s_n(\Omega)$ es finito, por lo que $s_n$ es simple $\forall n \in \mathbb{N}$.
 
   Ahora, ${s_n}$ es monótona creciente, pues:
       \begin{align*}
@@ -1218,10 +1249,15 @@ Probamos para acabar que $\{ s_n(\omega)\} \to f(\omega) \ \ \forall \omega\in\O
  \implies& s_n(\omega) = \frac{k-1}{2^n} = \frac{E(2^n f(\omega)+1)-1}{2^n} \longrightarrow f(\omega),
  \end{aligned}
   \]
-porque $\displaystyle 0\leq f(\omega) - s_n(\omega) = f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} \le \left(\text{Usamos } x-1\leq E(x)\right)$\\ $\displaystyle \leq f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0$
+  porque, notando por $E(x)$ a la parte entera de $x$, 
+
+  \[
+	  \displaystyle 0\leq f(\omega) - s_n(\omega) = f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} \quad \stackrel{x-1 \le E( x ) }{\le} \\ f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0
+  .\]
  \end{itemize}
 \vspace{0.5em}
-Además, hay convergencia uniforme en el caso $f(\omega) <\infty$.
+Además, hay convergencia uniforme en el caso $f(\omega) \le M <\infty$: sea $n_0 = E\left( M \right) +1$, entonces, la desigualdad anterior se da para
+cada $n \ge n_0$ y cada $\omega\in\Omega$.
 \end{proof}
 
 \begin{ncor}[Aritmética de funciones medibles positivas] \label{arit_medibles} Sea $\Omega$ un espacio medible, \mbox{$\alpha \in [0,\infty]$}, y $f,g : \Omega \to [0,\infty]$ medibles. Entonces, $f + g, \ fg, \ \alpha f$ son funciones medibles.
