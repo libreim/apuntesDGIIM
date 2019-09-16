@@ -23,6 +23,7 @@ task :default => [
        :scd,
        :so,
        :vci,
+       :emv,
        # add your task here
      ] do
   TARGET = "apuntes.tar.gz"
@@ -77,6 +78,7 @@ task :prob => (pdf_for FileList["PROB/prob.tex"])
 task :scd => (pdf_for FileList["SCD/apuntes.md"])
 task :so => (pdf_for FileList["SO/apuntes.md"])
 task :vci => (pdf_for FileList["VCI/Ejercicios.tex"])
+task :emv => (pdf_for FileList["EMV/apuntes.tex"])
 
 # Generating pdfs from Latex sources
 rule ".pdf" => ->(f){sources_for f, :tex} do |t|
