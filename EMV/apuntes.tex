@@ -1,35 +1,34 @@
 \section{Fundamentación probabilística de vectores aleatorios}
 
 \begin{ndef}[Variable Aleatoria]
-    % TODO Buscar la F concreta
-    Sea $(\Omega, F, P)$ un espacio probabilístico, una variable aleatoria es una función medible
-    \[
-    X:(\Omega, F) \rightarrow (\mathbb{R}, \mathbb{B}) \\
-    \omega \rightarrow X(\omega)
-    .\]
+    Sea $(\Omega, \mathcal{F}, P)$ un espacio probabilístico, una variable aleatoria es una función medible
+    \begin{align*}
+    X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}, \mathbb{B})\\
+    \omega &\mapsto X(\omega)
+    \end{align*}
     La condición de medibilidad es:
     \[
-    \forall B \in \mathbb{B}, X^{-1}(B) \in F
+    \forall B \in \mathbb{B}, X^{-1}(B) \in \mathcal{F}
     .\]
 \end{ndef}
 
 \begin{ndef}[Probabilidad inducida]
     La probabilidad inducida por una variable aleatoria $X$ a partir de $P$ se define como:
-    \[
-    P_{X}:\mathbb{B} \rightarrow [0,1] \\
-    P_{X}[B]:= P[X^{-1}(B)]
-    .\]
+    \begin{align*}
+    P_{X}:\mathbb{B} &\rightarrow [0,1] \\
+    B &\mapsto P[X^{-1}(B)].
+    \end{align*}
 \end{ndef}
 
 \begin{ndef}[Vector Aleatorio]
     Un vector aleatorio, $X = (X_1, \dots, X_p)$ es una función medible
-    \[
-    X:(\Omega, F) \rightarrow (\mathbb{R}^p, \mathbb{B}^p) \\
-    \omega \rightarrow X(\omega) = (X_1(\omega), \dots, X_p(\omega))
-    .\]
+    \begin{align*}
+    X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}^p, \mathbb{B}^p) \\
+    \omega &\mapsto X(\omega) = (X_1(\omega), \dots, X_p(\omega))
+    .\end{align*}
     La condición de medibilidad es:
     \[
-    \forall B \in \mathbb{B}^p, X^{-1}(B) \in F
+    \forall B \in \mathbb{B}^p, X^{-1}(B) \in \mathcal{F}
     .\]
 \end{ndef}
 
@@ -42,31 +41,31 @@
 
 \begin{ndef}[Función de distribución]
     Se define la función de distribución asociada a $P_X$ como:
-    \[
-    F_X:\mathbb{R}^p \rightarrow [0,1] \\
-    F_X(x) = P_X[X_1 \leq x_1, \dots, X_p \leq x_p]
-    .\]
+    \begin{align*}
+    F_X:\mathbb{R}^p &\rightarrow [0,1] \\
+    x=(x_1,\dots,x_p) &\mapsto P_X[X_1 \leq x_1, \dots, X_p \leq x_p]
+    .\end{align*}
 \end{ndef}
 
 \begin{ndef}[Función de densidad]
     Si existe una función $f_X$, integrable (en el sentido de Lebesgue) tal que
     \[
-    F_X(x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_X(u_1, \dots,  u_p) du_1 \dots du_p \forall x \in \mathbb{R}^p
+    F_X(x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_X(u_1, \dots,  u_p) du_1 \dots du_p \quad \forall x \in \mathbb{R}^p
     ,\]
     diremos que $f_X$ es la función de densidad asociada a  $F_X$. En el caso en que $f_X$ sea continua, se puede escribir como:
     \[
     % TODO Añadir lo de las derivadas
-    f_X(x) = \dots \forall X \in \mathbb{R}^p
+    f_X(x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_X(x) \quad \forall x \in \mathbb{R}^p
     .\]
 \end{ndef}
 
 En general, dado un conjunto producto (también llamado conjunto rectangular) $B \in \mathbb{B}^p$ con
 \[
-    B = B_1 \times \dots \times B_p, B_j \in \mathbb{B} j = 1, \dots, p
+    B = B_1 \times \dots \times B_p,\quad B_j \in \mathbb{B}, \quad j = 1, \dots, p
 .\]
 se tiene que
 \[
-P_X[B] \neq P_{X_1}[B_1]\cdot \dots \cdot P_{X_p}[B_p]
+P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p]
 \]
 
 \begin{ndef}
@@ -74,11 +73,24 @@ P_X[B] \neq P_{X_1}[B_1]\cdot \dots \cdot P_{X_p}[B_p]
 
     Equivalentemente, esto ocurre si y solo si
     \[
-    F_X (x) = F_{X_1} (x_1)\cdot \dots \cdot F_{X_p}(x_p) \forall x \in \mathbb{R}^p
+    F_X (x) = F_{X_1} (x_1)\cdot \dots \cdot F_{X_p}(x_p) \quad \forall x \in \mathbb{R}^p
     \]
 
-    Por último, en el caso continuo si y solo si
-    \[
-    f_X (x) = f_{X_1}(x_1) \cdot \dots \cdot f_{X_p}(x_p) \forall x \in \mathbb{R}^p
-    \]
+    Por último, en el caso continuo si y solo si $f_X (x) = f_{X_1}(x_1) \cdot \dots \cdot f_{X_p}(x_p) \quad \forall x \in \mathbb{R}^p$, salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
 \end{ndef}
+
+\begin{ndef}[Función característica]
+  Se define la función característica de un vector aleatorio $X = (X_1,\dots,X_p)$ como $\psi_X(t)=E[e^{it^TX}]$, $t\in \mathbb{R}^p$.
+\end{ndef}
+
+\begin{nth}[Unicidad]
+  La función característica de un vector aleatorio determina de forma única su distribución.
+\end{nth}
+
+\begin{nprop}
+  Las componentes de $X=(X_1,\dots,X_p)^T$ son independientes si, y solo si, $\psi_X(t)=E[e^{it^TX}] = \prod_{k=1}^p\psi_{X_k}(t_k)$.
+\end{nprop}
+
+\begin{nprop}
+  Si las componentes de $X=(X_1,\dots, X_p)$ son independientes, entonces la función característica de la variable $Y=\sum_{k=1}^p X_k$ es $\psi_Y(t)=E[e^{it^TY}] = \prod_{k=1}^p\psi_{X_k}(t)$.
+\end{nprop}
