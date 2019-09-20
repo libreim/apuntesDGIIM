@@ -77,7 +77,7 @@ P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 
 \begin{nth}[Unicidad]
   La función característica de un vector aleatorio determina de forma única su distribución.
-\end{nth}
+\end{nth})
 
 \begin{nprop}
   Las componentes de \(X=(X_1,\dots,X_p)^T\) son independientes si, y solo si \[\psi_X(t)=E[e^{it^TX}] = \prod_{k=1}^p\psi_{X_k}(t_k).\]
@@ -86,3 +86,213 @@ P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 \begin{nprop}
   Si las componentes de \(X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(Y=\sum_{k=1}^p X_k\) es \[\psi_Y(t)=E[e^{it^TY}] = \prod_{k=1}^p\psi_{X_k}(t).\]
 \end{nprop}
+
+\subsubsection{Función característica y transformaciones lineales}
+
+Sea $X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como
+\[
+Y = BX + b
+\]
+con $B \in M_{qxp}$ constante y $b\in \mathbb R ^n$.
+
+\begin{nprop}
+  La función característica de $Y$ se obtiene como:
+  \[
+  \psi_y(t) = E[e^{it^T Y}] = \dots = e^{it^T b} \psi_X(B^T t) \quad t = (t_1,\dots,t_q)^T \in \mathbb R^q
+  \]
+\end{nprop}
+%#TODO: escribir la forma matricial
+%#TODO: ¿Está amsmath incluido? Usar bmatrix de amsmath
+  En particular, si $X= ( X_{(1)}^T | X_{(2)}^T)^T$, $X=$ = ¡¡¡MATRIZ DE ARRIBA $X_1$ y abajo $X_2$!!!, con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría:
+  \[
+X_{(1)} = ( I_{k\times k} | O_{k \times(p-k)})X + O_{k\times 1}
+\]
+por lo que, para $t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
+\[
+\psi_{X_{(1)}}(t_{(1)}) = e^{it^T 0} \psi_X(\frac{I_{k\times k}}{0_{k\times(p-k)}} ) = \psi_X(\frac{t}{0_{(p-k)\times1}})
+\]
+
+\subsubsection{Función característica y función de densidad}
+
+La función de densidad (en el caso continuo) de un vector aleatorio $X = (X_1,\dots,X_p)^T$ y la correspondiente función caracerística constituyen un par de \emph{transformadas de Fourier}:
+\[
+\psi_X(t) = \int_{\mathbb R ^p} e^{i t^T x} f_X(x) dx 
+\]
+donde
+\[
+f_X(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i t^T x} \psi_X(t) dt
+\]
+
+
+\subsection{Aspectos generales sobre vectores aleatorios}
+\subsubsection{Esperanza y covarianza}
+\begin{ndef}
+  Sea $X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \textbf{vector de medias} de $X$ como:
+  \[
+  \mu_X = E[X] = \begin{bmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{bmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
+  \]
+  Siempre que existan \emph{todas} las esperanzas unidimensionales
+  \end{ndef}
+
+\begin{nprop}[Propiedad de linealidad]
+  Sea $Y = BX + b$ con $B \in M_{q\times p}$ constante y $b \in \mathbb R^q$ constante. Entonces,
+  \[
+\mu_Y = E[Y] = BE[X] + b = B\mu_X + b
+\]
+\end{nprop}
+%#TODO: Demostración(ejercicio)
+
+En el caso de matrices aleatorias, si $X\in M_{p\times q}$ es una matriz aleatoria, $B\in M_{m\times p}$ , $C \in M_{q\times n}$ , $D \in M_{m \times n}$, las tres constantes. Entonces, para $W = BXC + D$, una matriz aleatoria de dimensión $m\times n$, se tiene que:
+\[
+E[W] = (E[W_{kl}])_{(kl)} = B * E[X] * C + D \quad \quad \text{con} \quad E[X] = (E[X_{ij}])_{(ij)}
+\]
+
+\begin{ndef}
+  Se define la \textbf{matriz de covarianzas} del vector $X = (X_1,\dots,X_p)^T$ como:
+  \[
+\Sigma = Cov(X) = E[(X-\mu)(X-\mu)^T] = \begin{bmatrix} \sigma_{11} & \dots & \sigma_{1p} \\ \dots& \dots & \dots \\ \sigma_{p1} &  \dots & \sigma_{pp}\end{bmatrix}
+\]
+con $\sigma_{ij} = E[(X_i - \mu_i)(X_j - \mu_j)] = \sigma_{ji}$. Esto se define siempre que existan las esperanzas.\\
+En particular, $\sigma_{ii}=E[(X_i - \mu_i)^2] = Var(X_i) = \sigma_i^2$, con $\sigma_i$ la desviación típica.
+\end{ndef}
+
+\begin{nprop}[Propiedades elementales]
+  \begin{itemize}
+  \item $\Sigma$ es simétrica
+  \item Los elementos de la diagonal de $\Sigma$ son no negativos
+    \item La clase de matrices de covarianza en dimensión $p\times p$ coincide con la clase de matrices simétricas definidas no negativas
+    \end{itemize}
+  \end{nprop}
+%#TODO: demostración (Ejercicio)
+
+
+%#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
+Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$
+\begin{enumerate}
+\item Si $\Sigma$ es definida positiva ( se nota $\Sigma > 0$), entonces $\Sigma$ es no singular $(|\Sigma| > 0)$, y por tanto $\exists \Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.\\
+
+  \textbf{Notación.-} Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.\\
+
+  \begin{ndef}[Normalización]
+    Dado un vector aleatorio $X\sim(\mu,\Sigma)$ con $\Sigma>0$, se define su \textbf{normalización} en 'origen' y 'escala' como:
+    \[
+\mathcal Z = C^{-1}(X - \mu)
+\]
+para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ no es única, pues existen infinitas descomposiciones de $\Sigma$ de esa forma.
+
+  \end{ndef}
+  Para $\mathcal Z$, se tiene que:
+  \begin{itemize}
+    \item
+  $
+  E[\mathcal Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0
+  $
+
+\item $Cov(\mathcal Z) = E[\mathcal Z \mathcal Z ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]$ y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, ,se tiene en la igualdad anterior : $ Cov(\mathcal Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I * I = I \implies \mathcal Z \sim (0, I_{p\times p})$
+
+  \end{itemize}
+
+  \begin{ndef}
+    Se define la \textbf{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como:
+    \[
+    \Delta(X,\mu) = \{ (X-\mu)^T \Sigma (X-\mu) \} ^{\frac{1}{2}}
+    \]
+    que es una variable aleatoria.
+  \end{ndef}
+
+  Vamos a interpretar este resultado. Supongamos que tenemos una normalización de $X$:
+  \[
+  \Delta(X,\mu) = \{ (X-\mu)^T (CC^T)^{-1}(X-\mu)\}^{\frac{1}{2}} = \{ (X-\mu)^T (C^T)^{-1}C^{-1}(X-\mu)\}^{\frac{1}{2}} = \{\mathcal Z^T \mathcal Z\}^{\frac{1}{2}} = ||\mathcal Z||
+  \]
+  con norma la euclídea en $\mathbb R^p$. Así, hemos relacionado la distancia con la norma. Recordemos que $||\mathcal Z||$ es una variable aleatoria , pues es una aplicación de una función a un vector aleatorio.
+
+  \begin{nprop}
+    \begin{itemize}
+    \item Calcular $E[\Delta^2 (X,\mu)]$
+    \item La ecuación $\Delta(X,\mu) = k$ pcon $k\geq 0$ constante, define la \textbf{hipervariedad de contorno} correspondiente a aquellos puntos $x \in \mathbb R^p$ taes que, en el espacio transformado $\mathbb R^p$ por:
+      \[
+      x \mapsto z = C^{-1}(x-\mu)
+      \]
+      se sitúan en la esfera (euclídea, $p-$dimensional) de radio $k$ y centro en el origen.
+    \end{itemize}
+
+  \end{nprop}
+
+\item $\Sigma$ es \textbf{semidefinida positiva} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular ($\nexists $\Sigma ^{-1} $ ). Por tanto, se tiene que $rango(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in M_{p\times r}$ y cuyo rango es $r$.\\
+
+  \begin{ncor}
+    Con probabilidad $1$, las componentes del vector $X = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
+    \[
+    \alpha^T X = k, \quad \quad \alpha \in \mathbb R^p, \quad \alpha \ne 0 , \quad k \in \mathbb R
+    \]
+    
+  Por tanto, toda la variabilidad de $X$ se sitúa en un hiperplano afín (casi seguramente con respecto a la medida $P$)
+  \end{ncor}
+
+\end{enumerate}
+
+
+
+Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
+\begin{itemize}
+\item $|\Sigma| =  \prod_{j=1}^p \lambda_j$
+  \item $tr(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
+\end{itemize}
+
+
+\subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
+
+\begin{nth}
+  Sea $X = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución(conjunta, multidimensional) de $X$, queda unívocamente determinada por las distribuciones univariantes de la forma
+  \[
+\alpha ^T X, \quad \quad \forall \alpha \in \mathbb R ^p
+  \]
+\end{nth}
+\begin{proof}
+  Sea $Y_\alpha = \alpha^T X$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por:
+  \[
+  \psi_{Y_\alpha}(t) = E[e^{itY_\alpha}] = E [e^{it(\alpha^T X)}], \quad \forall t \in \mathbb R
+  \]
+  En particular, si $t=1$
+  \[
+  \psi_{Y_\alpha}(1) = E[e^{i\alpha^T X}] = \psi_X (\alpha)
+  \]
+  Es decir:
+  \[
+  \psi_X(t) = \psi_{Y_\alpha}(1), \quad \forall t \in \mathbb R ^p
+  \]
+\end{proof}
+
+\section{Momentos y Cumulantes}
+
+Sea $X= (X_1,\dots,X_p)^T$ el vector aleatorio con función característica $\phi_X(t)$, para cada $t\in \mathbb R^p$.
+\begin{ndef}
+  Se define el \textbf{momento} (no centrado) $p-$dimensional de orden $(r_1, \dots, r_p)$ de $X$ como:
+  \[
+\mu_{r_1,\dots,r_p}^{1,\dots,p} = E [ X_1^{r_1} \dots X_p^{r_p}]
+  \]
+\end{ndef}
+
+Los momentos se pueden obtener a partir de la función característica derivándose de su expansión de Taylor(respecto al origen).
+
+\[
+\phi_X(t) = E[e^{it^T X}] = E[\sum_{r=0}^\infty \frac{1}{r!}(i t^T X)^r] = \sum_{r= 0}^\infty \sum _{r_1+\dots + r_p = r} \mu_{r_1 \dots r_p}^{1 \dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
+\]
+En particular, podemos enunciar este teorema:
+\begin{nth}
+  Si $E=[|X_1|^{m_1} \dots |X_p|^{m_p}] < \infty$, entonces la función característica de $X$ es $(m_1, \dots, m_p)$ veces diferenciable y , si $m = m_1 + \dots + m_p$
+  \[
+\frac{\partial ^m}{\partial t_1^{m_1} \dots \partial t_p^{m_p}} \phi_X(t)| _{t = 0} = i^m \mu_{m_1}^1 \dots \mu_{m_p}^p
+  \]
+\end{nth}
+
+Consideremos el logaritmo de la función característica:
+\[
+\log \phi(t)
+\]
+\begin{ndef}
+  Se definen los \textbf{cumulantes} ($p-$dimensionales) de orden $(r_1 , \dots, r_p)$ como los coeficientes de la correspondiente expansión:
+  \[
+  \log \phi_X(t) =  \sum_{r= 0} \sum_{r_1+\dots + r_p = r} \mathcal K_{r_1 \dots r_P}^{1\dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
+  \]
+\end{ndef}
