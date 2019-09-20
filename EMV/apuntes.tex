@@ -164,7 +164,20 @@ En particular, $\sigma_{ii}=E[(X_i - \mu_i)^2] = Var(X_i) = \sigma_i^2$, con $\s
     \end{itemize}
   \end{nprop}
 %#TODO: demostración (Ejercicio)
+\begin{proof}[3]
+  $\boxed{\implies}$. Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $X$, y $\mu_X$ su vector de medias. Sea $\alpha \in \mathbb R^p$. Tenemos que probar que $\alpha^T \Sigma \alpha^T \geq 0$. Consideramos la variable aleatoria $\alpha^T X$. Se tiene:
+  \[
+  0 \leq Var(\alpha^T X) = E[(\alpha^T X - E[\alpha^T X])^2] = E[(\alpha^T X - \alpha^T \mu_X)^2] = E[(\alpha^T(X-\mu)^2] =^{(1)} E[\alpha^T(X-\mu)(X-\mu)^T \alpha] = \alpha^T E[(X-\mu)(X-\mu)^T] \alpha  = \alpha^T \Sigma \alpha
+\]
 
+Donde en 1 hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).\\
+
+$\boxed{\leftarrow}$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = rango(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
+
+%#TODO: Terminar demostración
+
+
+  \end{proof}
 
 %#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
 Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$
