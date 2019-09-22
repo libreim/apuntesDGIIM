@@ -71,6 +71,8 @@ P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
     Por último, esto ocurre en el caso continuo si y solo si \(f_X (x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
 \end{ndef}
 
+\subsection{Función característica}
+
 \begin{ndef}[Función característica]
     La \textit{función característica} de un vector aleatorio \(X = (X_1,\dots,X_p)\) se define como \[\psi_X(t)=E[e^{it^TX}], \quad t\in \mathbb{R}^p.\]
 \end{ndef}
@@ -87,7 +89,7 @@ P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
   Si las componentes de \(X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(Y=\sum_{k=1}^p X_k\) es \[\psi_Y(t)=E[e^{it^TY}] = \prod_{k=1}^p\psi_{X_k}(t).\]
 \end{nprop}
 
-\subsubsection{Función característica y transformaciones lineales}
+\subsubsection{Transformaciones lineales}
 
 Sea $X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como
 \[
@@ -112,7 +114,7 @@ por lo que, para $t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
 \psi_{X_{(1)}}(t_{(1)}) = e^{it^T 0} \psi_X(\frac{I_{k\times k}}{0_{k\times(p-k)}} ) = \psi_X(\frac{t}{0_{(p-k)\times1}})
 \]
 
-\subsubsection{Función característica y función de densidad}
+\subsubsection{Relación con la función de densidad}
 
 La función de densidad (en el caso continuo) de un vector aleatorio $X = (X_1,\dots,X_p)^T$ y la correspondiente función caracerística constituyen un par de \emph{transformadas de Fourier}:
 \[
@@ -276,7 +278,7 @@ Dicho esto, existen varias \textbf{medidas de variación global}.Podemos disting
   \]
 \end{proof}
 
-\section{Momentos y Cumulantes}
+\subsection{Momentos y cumulantes}
 
 Sea $X= (X_1,\dots,X_p)^T$ el vector aleatorio con función característica $\phi_X(t)$, para cada $t\in \mathbb R^p$.
 \begin{ndef}
