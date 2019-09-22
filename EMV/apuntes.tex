@@ -18,38 +18,38 @@
 \end{ndef}
 
 \begin{ndef}[Vector Aleatorio]
-    Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Un \textit{vector aleatorio}, $X = (X_1, \dots, X_p)$ es una función medible
+    Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Un \textit{vector aleatorio}, $\boldsymbol X = (X_1, \dots, X_p)$ es una función medible
     \begin{align*}
-    X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}^p, \mathbb{B}^p) \\
-    \omega &\mapsto X(\omega) = (X_1(\omega), \dots, X_p(\omega))
+      \boldsymbol X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}^p, \mathbb{B}^p) \\
+    \omega &\mapsto \boldsymbol X(\omega) = (X_1(\omega), \dots, X_p(\omega))
     \end{align*}
-    cuya condición de medibilidad es \(X^{-1}(B) \in \mathcal{F}\) para todo \(B \in \mathbb{B}^p\).
+    cuya condición de medibilidad es \(\boldsymbol X^{-1}(B) \in \mathcal{F}\) para todo \( B \in \mathbb{B}^p\).
 \end{ndef}
 
 \begin{ndef}[Probabilidad inducida]
-    La \textit{probabilidad inducida} por un vector aleatorio $X = (X_1, \dots, X_p)$ a partir de $P$ se define como
+    La \textit{probabilidad inducida} por un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ a partir de $P$ se define como
     \[
-    P_X[B] := P[X^{-1}(B)]
+    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]
     .\] para todo \(B \in \mathbb{B}^p\).
 \end{ndef}
 
 \begin{ndef}[Función de distribución]
-    Se define la \textit{función de distribución} asociada a $P_X$ como
+    Se define la \textit{función de distribución} asociada a $P_{\boldsymbol X}$ como
     \begin{align*}
-    F_X:\mathbb{R}^p &\rightarrow [0,1] \\
-    x=(x_1,\dots,x_p) &\mapsto P_X[X_1 \leq x_1, \dots, X_p \leq x_p]
-    .\end{align*}
+    F_{\boldsymbol X}:\mathbb{R}^p &\rightarrow [0,1] \\
+    \boldsymbol x=(x_1,\dots,x_p) &\mapsto P_{\boldsymbol X}[X_1 \leq x_1, \dots, X_p \leq x_p]\,.
+    \end{align*}
 \end{ndef}
 
 \begin{ndef}[Función de densidad]
     Si existe una función $f_X$ que sea integrable en el sentido de Lebesgue y tal que
     \[
-    F_X(x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_X(u_1, \dots,  u_p) du_1 \dots du_p \quad \text{para todo } x \in \mathbb{R}^p
+    F_{\boldsymbol X}(x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_{\boldsymbol X}(u_1, \dots,  u_p) \mathop{}\!\mathrm{d}u_1 \dots \mathop{}\!\mathrm{d}u_p \quad \text{para todo } \boldsymbol  x \in \mathbb{R}^p
     ,\]
-    diremos que $f_X$ es la \textit{función de densidad} asociada a  $F_X$. En el caso en que $f_X$ sea continua, se puede escribir como:
+    diremos que $f_{\boldsymbol X}$ es la \textit{función de densidad} asociada a  $F_{\boldsymbol X}$. En el caso en que $f_{\boldsymbol X}$ sea continua, se puede escribir como:
     \[
     % TODO Añadir lo de las derivadas
-    f_X(x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_X(x) \quad \text{para todo } x \in \mathbb{R}^p
+    f_{\boldsymbol X}(\boldsymbol x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_{\boldsymbol X}(\boldsymbol x) \quad \text{para todo } \boldsymbol x \in \mathbb{R}^p
     .\]
 \end{ndef}
 
@@ -59,48 +59,48 @@ En general, dado un conjunto producto (también llamado conjunto rectangular) $B
 .\]
 se tiene que
 \[
-P_X[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
+P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 \]
 
 \begin{ndef}
     Si en las condiciones anteriores se da la igualdad para todo conjunto producto en \(\mathbb{B}^p\), se dice que \(X_1, \dots, X_p\) son \textit{independientes}.
 
     Equivalentemente, esto ocurre si y solo si \(
-    F_X (x) = F_{X_1} (x_1) \cdots F_{X_p}(x_p)\,\) para todo \(x \in \mathbb{R}^p\).
+    F_{\boldsymbol X} (\boldsymbol x) = F_{X_1} (x_1) \cdots F_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\).
 
-    Por último, esto ocurre en el caso continuo si y solo si \(f_X (x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
+    Por último, esto ocurre en el caso continuo si y solo si \(f_{\boldsymbol X} (\boldsymbol x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
 \end{ndef}
 
 \subsection{Función característica}
 
 \begin{ndef}[Función característica]
-    La \textit{función característica} de un vector aleatorio \(X = (X_1,\dots,X_p)\) se define como \[\psi_X(t)=E[e^{it^TX}], \quad t\in \mathbb{R}^p.\]
+    La \textit{función característica} de un vector aleatorio \(\boldsymbol X = (X_1,\dots,X_p)\) se define como \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right], \quad \boldsymbol t\in \mathbb{R}^p.\]
 \end{ndef}
 
 \begin{nth}[Unicidad]
   La función característica de un vector aleatorio determina de forma única su distribución.
-\end{nth})
+\end{nth}
 
 \begin{nprop}
-  Las componentes de \(X=(X_1,\dots,X_p)^T\) son independientes si, y solo si \[\psi_X(t)=E[e^{it^TX}] = \prod_{k=1}^p\psi_{X_k}(t_k).\]
+  Las componentes de \(\boldsymbol X=(X_1,\dots,X_p)^T\) son independientes si, y solo si \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right] = \prod_{k=1}^p\psi_{X_k}(t_k)\,.\]
 \end{nprop}
 
 \begin{nprop}
-  Si las componentes de \(X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(Y=\sum_{k=1}^p X_k\) es \[\psi_Y(t)=E[e^{it^TY}] = \prod_{k=1}^p\psi_{X_k}(t).\]
+  Si las componentes de \(\boldsymbol X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(\boldsymbol Y=\sum_{k=1}^p X_k\) es \[\psi_{\boldsymbol Y}(\boldsymbol t)=E[e^{i\boldsymbol t^T\boldsymbol Y}] = \prod_{k=1}^p\psi_{X_k}(t).\]
 \end{nprop}
 
 \subsubsection{Transformaciones lineales}
 
 Sea $X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como
 \[
-Y = BX + b
+Y = BX + b\,,
 \]
 con $B \in M_{qxp}$ constante y $b\in \mathbb R ^n$.
 
 \begin{nprop}
   La función característica de $Y$ se obtiene como:
   \[
-  \psi_y(t) = E[e^{it^T Y}] = \dots = e^{it^T b} \psi_X(B^T t) \quad t = (t_1,\dots,t_q)^T \in \mathbb R^q
+  \psi_y(t) = E[e^{it^T Y}] = \dots = e^{it^T b} \psi_X(B^T t)\,, \quad t = (t_1,\dots,t_q)^T \in \mathbb R^q\,.
   \]
 \end{nprop}
 %#TODO: escribir la forma matricial
@@ -111,18 +111,18 @@ X_{(1)} = ( I_{k\times k} | O_{k \times(p-k)})X + O_{k\times 1}
 \]
 por lo que, para $t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
 \[
-\psi_{X_{(1)}}(t_{(1)}) = e^{it^T 0} \psi_X(\frac{I_{k\times k}}{0_{k\times(p-k)}} ) = \psi_X(\frac{t}{0_{(p-k)\times1}})
+\psi_{X_{(1)}}\left(t_{(1)}\right) = e^{it^T 0} \psi_X\left(\frac{I_{k\times k}}{0_{k\times(p-k)}}\right) = \psi_X\left(\frac{t}{0_{(p-k)\times1}}\right)\,.
 \]
 
 \subsubsection{Relación con la función de densidad}
 
-La función de densidad (en el caso continuo) de un vector aleatorio $X = (X_1,\dots,X_p)^T$ y la correspondiente función caracerística constituyen un par de \emph{transformadas de Fourier}:
+La función de densidad (en el caso continuo) de un vector aleatorio $X = (X_1,\dots,X_p)^T$ y la correspondiente función caracerística constituyen un par de \emph{transformadas de Fourier}, de forma que
 \[
-\psi_X(t) = \int_{\mathbb R ^p} e^{i t^T x} f_X(x) dx 
+\psi_X(t) = \int_{\mathbb R ^p} e^{i t^T x} f_X(x) \mathop{}\!\mathrm{d}x\,,
 \]
-donde
+y por otro lado
 \[
-f_X(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i t^T x} \psi_X(t) dt
+f_X(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i t^T x} \psi_X(t) \mathop{}\!\mathrm{d}t\,.
 \]
 
 
@@ -260,17 +260,17 @@ Dicho esto, existen varias \textbf{medidas de variación global}.Podemos disting
 \begin{nth}
   Sea $X = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución(conjunta, multidimensional) de $X$, queda unívocamente determinada por las distribuciones univariantes de la forma
   \[
-\alpha ^T X, \quad \quad \forall \alpha \in \mathbb R ^p
+\alpha ^T X, \quad \quad \forall \alpha \in \mathbb R ^p\,.
   \]
 \end{nth}
 \begin{proof}
-  Sea $Y_\alpha = \alpha^T X$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por:
+  Sea $Y_\alpha = \alpha^T X$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por
   \[
-  \psi_{Y_\alpha}(t) = E[e^{itY_\alpha}] = E [e^{it(\alpha^T X)}], \quad \forall t \in \mathbb R
+  \psi_{Y_\alpha}(t) = E\left[e^{itY_\alpha}\right] = E \left[e^{it(\alpha^T X)}\right] \quad \text{para todo } t \in \mathbb R\,.
   \]
   En particular, si $t=1$
   \[
-  \psi_{Y_\alpha}(1) = E[e^{i\alpha^T X}] = \psi_X (\alpha)
+  \psi_{Y_\alpha}(1) = E\left[e^{i\alpha^T X}\right] = \psi_X (\alpha)
   \]
   Es decir:
   \[
@@ -284,7 +284,7 @@ Sea $X= (X_1,\dots,X_p)^T$ el vector aleatorio con función característica $\ph
 \begin{ndef}
   Se define el \textbf{momento} (no centrado) $p-$dimensional de orden $(r_1, \dots, r_p)$ de $X$ como:
   \[
-\mu_{r_1,\dots,r_p}^{1,\dots,p} = E [ X_1^{r_1} \dots X_p^{r_p}]
+\mu_{r_1,\dots,r_p}^{1,\dots,p} = E [ X_1^{r_1} \dots X_p^{r_p}]\,.
   \]
 \end{ndef}
 
