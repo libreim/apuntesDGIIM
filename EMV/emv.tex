@@ -20,12 +20,23 @@
 % CONFIGURACIÓN BÁSICA DEL DOCUMENTO
 % ---------------------------------------------------------------------------
 
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[10pt, a4paper]{article}
+\documentclass[12pt]{scrartcl}
+\KOMAoptions{twoside=false}
+\usepackage[
+  autooneside=false,% use left and right marks with a onesided document
+  automark% set \leftmark and \rightmark automatically by \section and \subsection
+]{scrlayer-scrpage}
+\clearpairofpagestyles
+\chead{\leftmark}
+\cfoot*{\pagemark}
 
-\linespread{1.3}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlength\parskip{7pt}
+\usepackage{xpatch}
+% Fixing pagestyle for pages containing \section command
+\xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
+
+\linespread{1.2}
+\setlength{\parindent}{24pt}
+\setlength{\parskip}{0pt}
 
 % ---------------------------------------------------------------------------
 % CONFIGURACIÓN PERSONALIZADA
@@ -45,13 +56,10 @@
 \usepackage{FiraSans}                 % Fuente sans serif
 \usepackage[T1]{fontenc}
 \usepackage[italic]{mathastext}     % Utiliza la fuente del documento
-                                    % en los entornos matemáticos
-
-% MÁRGENES
-\usepackage[margin=2.5cm, top=3cm]{geometry}
-
-% OTROS
-\definecolor{webgreen}{rgb}{0, 0.6, 0}   % less intense green
+																		% en los entornos matemáticos
+																		
+\usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{0}
 
 \usepackage{graphicx}   % Permite incluir gráficos en el documento
 
@@ -73,61 +81,6 @@
 \usepackage{afterpage}
 
 % ---------------------------------------------------------------------------
-% CABECERA Y PIE DE PÁGINA
-% ---------------------------------------------------------------------------
-
-\usepackage{fancyhdr}   % Paquete para cabeceras y pies de página
-
-% Indica que las páginas usarán la configuración de fancyhdr
-\pagestyle{fancy}
-\fancyhf{}
-
-% Representa la sección de la cabecera
-\renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
-
-% Representa la subsección de la cabecera
-\renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
-
-% Parte derecha de la cabecera
-\fancyhead[LE,RO]{\sffamily\textsl{\rightmark} \hspace{1em}  \textcolor{500}{\rule[-0.4ex]{0.2ex}{1.2em}} \hspace{1em} \thepage}
-
-% Parte izquierda de la cabecera
-\fancyhead[RE,LO]{\sffamily{\leftmark}}
-
-% Elimina la línea de la cabecera
-\renewcommand{\headrulewidth}{0pt}
-
-% Controla la altura de la cabecera para que no haya errores
-\setlength{\headheight}{14pt}
-
-% ---------------------------------------------------------------------------
-% TÍTULOS DE PARTES Y SECCIONES
-% ---------------------------------------------------------------------------
-
-\usepackage{titlesec}
-
-% Estilo de los títulos de las partes
-\titleformat{\part}[hang]{\Huge\bfseries\sffamily}{\thepart\hspace{20pt}\textcolor{500}{|}\hspace{20pt}}{0pt}{\Huge\bfseries}
-\titlespacing*{\part}{0cm}{-2em}{2em}[0pt]
-
-% Reiniciamos el contador de secciones entre partes (opcional)
-\makeatletter
-\@addtoreset{section}{part}
-\makeatother
-
-% Estilo de los títulos de las secciones, subsecciones y subsubsecciones
-\titleformat{\section}
-  {\Large\bfseries\sffamily}{\thesection}{1em}{}
-
-\titleformat{\subsection}
-  {\Large\sffamily}{\thesubsection}{1em}{}[\vspace{.5em}]
-
-\titleformat{\subsubsection}
-  {\sffamily}{\thesubsubsection}{1em}{}
-
-% ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
 % ---------------------------------------------------------------------------
 
@@ -137,11 +90,11 @@
 
 % Configuración general de mdframe, los estilos de los teoremas, etc
 \mdfsetup{
-  skipabove=1em,
-  skipbelow=1em,
-  innertopmargin=1em,
-  innerbottommargin=1em,
-  splittopskip=2\topsep,
+	skipabove=6pt,
+  skipbelow=12pt,
+  innertopmargin=0em,
+  innerbottommargin=6pt,
+  %splittopskip=2\topsep,
 }
 
 % Definimos los marcos de los estilos
@@ -149,12 +102,12 @@
 \mdfdefinestyle{nth-frame}{
 	linewidth=2pt, %
 	linecolor= 500, %
-	topline=false, %
+	topline=true, %
 	bottomline=false, %
 	rightline=false,%
 	leftmargin=0em, %
-	innerleftmargin=1em, %
-  innerrightmargin=1em,
+	innerleftmargin=12pt, %
+  innerrightmargin=0pt,
 	rightmargin=0em, %
 }%
 
@@ -212,9 +165,9 @@
 
 % Asignamos los marcos a los estilos
 \surroundwithmdframed[style=nth-frame]{nth}
-\surroundwithmdframed[style=nprop-frame]{nprop}
-\surroundwithmdframed[style=nprop-frame]{ncor}
-\surroundwithmdframed[style=ndef-frame]{ndef}
+%\surroundwithmdframed[style=nprop-frame]{nprop}
+%\surroundwithmdframed[style=nprop-frame]{ncor}
+%\surroundwithmdframed[style=ndef-frame]{ndef}
 \surroundwithmdframed[style=ejer-frame]{ejer}
 \surroundwithmdframed[style=ejemplo-frame]{ejemplo}
 \surroundwithmdframed[style=ejemplo-frame]{sol}
@@ -231,7 +184,7 @@
 % PORTADA EXTERIOR
 % ---------------------------------------------------------------------------
 
-\newpagecolor{500}\afterpage{\restorepagecolor} % Color de la página
+\newpagecolor{500} % Color de la página
 \begin{titlepage}
 
   % Título del documento
@@ -255,6 +208,7 @@
 	}
 
 \end{titlepage}
+\restorepagecolor
 
 % ---------------------------------------------------------------------------
 % PÁGINA DE LICENCIA
@@ -265,14 +219,12 @@
 \vfill
 
 %% Información sobre la licencia
-\parbox[t]{\textwidth}{
+\parbox[t]{0.7\textwidth}{
   \includegraphics{by-nc-sa.pdf}\\[4pt]
   \raggedright % Texto alineado a la izquierda
-  \sffamily\large
-  {\Large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
-  Eres libre de distribuir y adaptar el material siempre que reconozcas a los\\
-  autores originales del documento, no lo utilices para fines comerciales\\
-  y lo distribuyas bajo la misma licencia.\\[4pt]
+  \sffamily
+  {\large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
+  Eres libre de distribuir y adaptar el material siempre que reconozcas a los autores originales del documento, no lo utilices para fines comerciales y lo distribuyas bajo la misma licencia.\\[4pt]
   \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}
 }
 

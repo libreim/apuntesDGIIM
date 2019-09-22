@@ -1,6 +1,23 @@
 \ProvidesPackage{config}
 
 % ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\usepackage{xcolor}     % Permite definir y utilizar colores
+
+\definecolor{50}{HTML}{EFEBE9}
+\definecolor{100}{HTML}{D7CCC8}
+\definecolor{200}{HTML}{BCAAA4}
+\definecolor{300}{HTML}{A1887F}
+\definecolor{400}{HTML}{8D6E63}
+\definecolor{500}{HTML}{795548}
+\definecolor{600}{HTML}{6D4C41}
+\definecolor{700}{HTML}{5D4037}
+\definecolor{800}{HTML}{4E342E}
+\definecolor{900}{HTML}{3E2723}
+
+% ---------------------------------------------------------------------------
 %  PAQUETES
 % ---------------------------------------------------------------------------
 
@@ -25,7 +42,7 @@
             bookmarksopen=false,     % true means only level 1
                                      % are displayed.
             colorlinks=true,
-            linkcolor=webgreen,
+            linkcolor=700,
             urlcolor=cyan]{hyperref}
 
 % Dibujos Tikz
@@ -46,23 +63,6 @@
 \graphicspath{{../_assets/}, {_assets/}, {./img/}, {EMV/img/}, {EMV/}}
 
 % ---------------------------------------------------------------------------
-%  COLORES
-% ---------------------------------------------------------------------------
-
-\usepackage{xcolor}     % Permite definir y utilizar colores
-
-\definecolor{50}{HTML}{EFEBE9}
-\definecolor{100}{HTML}{D7CCC8}
-\definecolor{200}{HTML}{BCAAA4}
-\definecolor{300}{HTML}{A1887F}
-\definecolor{400}{HTML}{8D6E63}
-\definecolor{500}{HTML}{795548}
-\definecolor{600}{HTML}{6D4C41}
-\definecolor{700}{HTML}{5D4037}
-\definecolor{800}{HTML}{4E342E}
-\definecolor{900}{HTML}{3E2723}
-
-% ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
 % ---------------------------------------------------------------------------
 
@@ -71,18 +71,18 @@
 % Nuevo estilo para definiciones
 \newtheoremstyle{definition-style}  % Nombre del estilo
 {}                                  % Espacio por encima
-{}                                  % Espacio por debajo
+{12pt}                                  % Espacio por debajo
 {}                                  % Fuente del cuerpo
 {}                                  % Identación
-{\bf\sffamily}                      % Fuente para la cabecera
+{\bfseries\sffamily}                      % Fuente para la cabecera
 {.}                                 % Puntuación tras la cabecera
 {.5em}                              % Espacio tras la cabecera
 {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
 
 % Nuevo estilo para notas
 \newtheoremstyle{remark-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
 {\itshape \sffamily}
@@ -94,7 +94,7 @@
 \newtheoremstyle{theorem-style}
 {}
 {}
-{}
+{\itshape}
 {}
 {\bfseries \sffamily}
 {.}
@@ -103,11 +103,11 @@
 
 % Nuevo estilo para ejemplos
 \newtheoremstyle{example-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
-{\bf \sffamily}
+{\bfseries \sffamily}
 {}
 {.5em}
 {\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}
@@ -146,64 +146,14 @@
 \theoremstyle{remark-style}
 \newtheorem*{sol}{Solución}
 
-% ---------------------------------------------------------------------------
-% COMANDOS PERSONALIZADOS
-% ---------------------------------------------------------------------------
 
-% Redefinir letra griega épsilon.
-\let\epsilon\upvarepsilon
-
-% Valor absoluto: \abs{}
-\providecommand{\abs}[1]{\lvert#1\rvert}
-
-% Fracción grande: \ddfrac{}{}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
-
-% Texto en negrita en modo matemática: \bm{}
-\newcommand{\bm}[1]{\boldsymbol{#1}}
-
-% Línea horizontal.
-\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
-
-% Letras de conjuntos
-\newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
-
-% Sucesiones
-\newcommand{\xn}{\{x_n\}}
-\newcommand{\fn}{\{f_n\}}
-
-% Máximo
-\let\max\relax
-\DeclareMathOperator{\max}{\text{máx}}
-
-% Letra griega "chi" en línea con el texto
-\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
-\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi
-
-% Letra 'omega'
-\newcommand{\W}{\Omega}
-\newcommand{\w}{\omega}
-
-% Conjunto vacío
-\renewcommand{\O}{\emptyset}
-
-% Listas ordenadas con números romanos (i), (ii), etc.
-\newenvironment{nlist}
-{\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
-  {\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
 % ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
 % Título del documento.
-\newcommand{\asignatura}{Estadística\\Multivariante}
+\newcommand{\asignatura}{Estadística Multivariante}
 % Autor del documento.
 \newcommand{\autor}{LibreIM}
-\newcommand{\grado}{Doble Grado de Informática y Matemáticas}
+\newcommand{\grado}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\universidad}{Universidad de Granada}
 \newcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
