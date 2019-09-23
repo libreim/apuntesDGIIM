@@ -86,109 +86,113 @@ P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 \end{nprop}
 
 \begin{nprop}
-  Si las componentes de \(\boldsymbol X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(\boldsymbol Y=\sum_{k=1}^p X_k\) es \[\psi_{\boldsymbol Y}(\boldsymbol t)=E[e^{i\boldsymbol t^T\boldsymbol Y}] = \prod_{k=1}^p\psi_{X_k}(t).\]
+  Si las componentes de \(\boldsymbol X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable \(\boldsymbol Y=\sum_{k=1}^p X_k\) es \[\psi_{\boldsymbol Y}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol Y}\right] = \prod_{k=1}^p\psi_{X_k}(t).\]
 \end{nprop}
 
 \subsubsection{Transformaciones lineales}
 
-Sea $X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como
+Sea $\boldsymbol X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $\boldsymbol Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como
 \[
-Y = BX + b\,,
+  \boldsymbol Y = B\boldsymbol X + \boldsymbol b\,,
 \]
-con $B \in M_{qxp}$ constante y $b\in \mathbb R ^n$.
+con $B \in M_{qxp}$ una matriz constante y $\boldsymbol b\in \mathbb R ^n$.
 
 \begin{nprop}
-  La función característica de $Y$ se obtiene como:
+  La función característica de $\boldsymbol Y$ se obtiene como:
   \[
-  \psi_y(t) = E[e^{it^T Y}] = \dots = e^{it^T b} \psi_X(B^T t)\,, \quad t = (t_1,\dots,t_q)^T \in \mathbb R^q\,.
+  \psi_{\boldsymbol Y}(\boldsymbol t) = E\left[e^{i\boldsymbol t^T \boldsymbol Y}\right] = \dots = e^{i\boldsymbol t^T \boldsymbol b} \psi_{\boldsymbol X}(B^T \boldsymbol t)\,, \quad \boldsymbol t = (t_1,\dots,t_q)^T \in \mathbb R^q\,.
   \]
 \end{nprop}
 %#TODO: escribir la forma matricial
 %#TODO: ¿Está amsmath incluido? Usar bmatrix de amsmath
-  En particular, si $X= ( X_{(1)}^T | X_{(2)}^T)^T$, $X=$ = ¡¡¡MATRIZ DE ARRIBA $X_1$ y abajo $X_2$!!!, con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría:
+  En particular, si $\boldsymbol X= \left( X_{(1)}^T | X_{(2)}^T\right)^T$, $X=$ = ¡¡¡MATRIZ DE ARRIBA $X_1$ y abajo $X_2$!!!, con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría:
   \[
 X_{(1)} = ( I_{k\times k} | O_{k \times(p-k)})X + O_{k\times 1}
 \]
-por lo que, para $t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
+por lo que, para $\boldsymbol t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
 \[
 \psi_{X_{(1)}}\left(t_{(1)}\right) = e^{it^T 0} \psi_X\left(\frac{I_{k\times k}}{0_{k\times(p-k)}}\right) = \psi_X\left(\frac{t}{0_{(p-k)\times1}}\right)\,.
 \]
 
 \subsubsection{Relación con la función de densidad}
 
-La función de densidad (en el caso continuo) de un vector aleatorio $X = (X_1,\dots,X_p)^T$ y la correspondiente función caracerística constituyen un par de \emph{transformadas de Fourier}, de forma que
+La función de densidad (en el caso continuo) de un vector aleatorio $\boldsymbol X = (X_1,\dots,X_p)^T$ y la correspondiente función característica constituyen un par de \emph{transformadas de Fourier}, de forma que
 \[
-\psi_X(t) = \int_{\mathbb R ^p} e^{i t^T x} f_X(x) \mathop{}\!\mathrm{d}x\,,
+\psi_{\boldsymbol X}(\boldsymbol t) = \int_{\mathbb R ^p} e^{i \boldsymbol t^T x} f_X(x) \mathop{}\!\mathrm{d}x\,,
 \]
 y por otro lado
 \[
-f_X(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i t^T x} \psi_X(t) \mathop{}\!\mathrm{d}t\,.
+f_{\boldsymbol X}(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i \boldsymbol t^T x} \psi_{\boldsymbol X}(t) \mathop{}\!\mathrm{d}t\,.
 \]
 
 
 \subsection{Aspectos generales sobre vectores aleatorios}
 \subsubsection{Esperanza y covarianza}
 \begin{ndef}
-  Sea $X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \textbf{vector de medias} de $X$ como:
+  Sea $\boldsymbol X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \textit{vector de medias} de $\boldsymbol X$ como:
   \[
-  \mu_X = E[X] = \begin{bmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{bmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
+  \boldsymbol \mu_{\boldsymbol X} = E[\boldsymbol X] = \begin{bmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{bmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
   \]
   Siempre que existan \emph{todas} las esperanzas unidimensionales
   \end{ndef}
 
 \begin{nprop}[Propiedad de linealidad]
-  Sea $Y = BX + b$ con $B \in M_{q\times p}$ constante y $b \in \mathbb R^q$ constante. Entonces,
+  Sea $\boldsymbol Y = B\boldsymbol X + \boldsymbol b$ con $B \in M_{q\times p}$ constante y $\boldsymbol b \in \mathbb R^q$ constante. Entonces,
   \[
-\mu_Y = E[Y] = BE[X] + b = B\mu_X + b
+    \boldsymbol \mu_{\boldsymbol Y} = E[\boldsymbol Y] = BE[\boldsymbol X] + \boldsymbol b = B\boldsymbol \mu_{\boldsymbol X} + \boldsymbol b\,.
 \]
 \end{nprop}
 %#TODO: Demostración(ejercicio)
 
-En el caso de matrices aleatorias, si $X\in M_{p\times q}$ es una matriz aleatoria, $B\in M_{m\times p}$ , $C \in M_{q\times n}$ , $D \in M_{m \times n}$, las tres constantes. Entonces, para $W = BXC + D$, una matriz aleatoria de dimensión $m\times n$, se tiene que:
+Podemos extender esta propiedad al caso de matrices aleatorias. Sea $X\in \mathcal M_{p\times q}$ es una matriz aleatoria, y $B\in \mathcal M_{m\times p}$ , $C \in \mathcal M_{q\times n}$ , $D \in \mathcal M_{m \times n}$ matrices constantes. Entonces, para $W = BXC + D$, una matriz aleatoria de dimensión $m\times n$, la matriz de medias viene dada por
 \[
-E[W] = (E[W_{kl}])_{(kl)} = B * E[X] * C + D \quad \quad \text{con} \quad E[X] = (E[X_{ij}])_{(ij)}
+E[W] = \left(E[W_{kl}]\right)_{(kl)} = B \cdot E[X] \cdot C + D\,, \quad \text{con } E[X] = \left(E[X_{ij}]\right)_{(ij)}\,.
 \]
 
 \begin{ndef}
-  Se define la \textbf{matriz de covarianzas} del vector $X = (X_1,\dots,X_p)^T$ como:
+  Se define la \textit{matriz de covarianzas} del vector $\boldsymbol X = (X_1,\dots,X_p)^T$ como:
   \[
-\Sigma = Cov(X) = E[(X-\mu)(X-\mu)^T] = \begin{bmatrix} \sigma_{11} & \dots & \sigma_{1p} \\ \dots& \dots & \dots \\ \sigma_{p1} &  \dots & \sigma_{pp}\end{bmatrix}
+\Sigma = \operatorname{Cov}(\boldsymbol X) = E\left[(\boldsymbol X-\boldsymbol \mu)(\boldsymbol X-\boldsymbol \mu)^T\right] = \begin{bmatrix} \sigma_{11} & \dots & \sigma_{1p} \\ \vdots& \ddots & \vdots \\ \sigma_{p1} &  \dots & \sigma_{pp}\end{bmatrix}\,,
 \]
-con $\sigma_{ij} = E[(X_i - \mu_i)(X_j - \mu_j)] = \sigma_{ji}$. Esto se define siempre que existan las esperanzas.\\
-En particular, $\sigma_{ii}=E[(X_i - \mu_i)^2] = Var(X_i) = \sigma_i^2$, con $\sigma_i$ la desviación típica.
+con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo puede definirse si existen todas las esperanzas. 
 \end{ndef}
 
+\begin{nota}
+  Los elementos de la diagonal de la matriz de covarianzas se pueden calcular como \[\sigma_{ii}=E\left[(X_i - \mu_i)^2\right] = \operatorname{Var}(X_i) = \sigma_i^2\,,\]siendo $\sigma_i$ la \textit{desviación típica}.
+\end{nota}
+
 \begin{nprop}[Propiedades elementales]
-  \begin{itemize}
-  \item $\Sigma$ es simétrica
-  \item Los elementos de la diagonal de $\Sigma$ son no negativos
-    \item La clase de matrices de covarianza en dimensión $p\times p$ coincide con la clase de matrices simétricas definidas no negativas
-    \end{itemize}
+  La matriz de covarianzas verifica las siguientes propiedades elementales:
+  \begin{enumerate}
+    \item Es simétrica.
+    \item Los elementos de su diagonal son no negativos.
+    \item La clase de matrices de covarianzas en dimensión $p\times p$ coincide con la clase de matrices simétricas definidas no negativas.
+    \end{enumerate}
   \end{nprop}
 %#TODO: demostración (Ejercicio)
-\begin{proof}[3]
-  $\boxed{\implies}$. Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $X$, y $\mu_X$ su vector de medias. Sea $\alpha \in \mathbb R^p$. Tenemos que probar que $\alpha^T \Sigma \alpha^T \geq 0$. Consideramos la variable aleatoria $\alpha^T X$. Se tiene:
-  \[
-  0 \leq Var(\alpha^T X) = E[(\alpha^T X - E[\alpha^T X])^2] = E[(\alpha^T X - \alpha^T \mu_X)^2] = E[(\alpha^T(X-\mu)^2] =^{(1)} E[\alpha^T(X-\mu)(X-\mu)^T \alpha] = \alpha^T E[(X-\mu)(X-\mu)^T] \alpha  = \alpha^T \Sigma \alpha
-\]
+\begin{proof}
+  Vamos a ver únicamente la demostración de la propiedad 3.
+  \begin{itemize}
+    \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha^T \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
+      0 \leq Var(\alpha^T X) = E[(\alpha^T X - E[\alpha^T X])^2] &= E[(\alpha^T X - \alpha^T \mu_X)^2] = E[(\alpha^T(X-\mu)^2]\\ 
+        &=^{(1)} E[\alpha^T(X-\mu)(X-\mu)^T \alpha] \\
+        &= \alpha^T E[(X-\mu)(X-\mu)^T] \alpha \\
+        &= \alpha^T \Sigma \alpha
+    \end{align*} Donde en 1 hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
 
-Donde en 1 hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).\\
-
-$\boxed{\leftarrow}$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = rango(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
+  $\boxed{\impliedby}\,$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = rango(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
 
 %#TODO: Terminar demostración
-
-
-  \end{proof}
+  \end{itemize}
+\end{proof}
 
 %#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
 Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$
-\begin{enumerate}
-\item Si $\Sigma$ es definida positiva ( se nota $\Sigma > 0$), entonces $\Sigma$ es no singular $(|\Sigma| > 0)$, y por tanto $\exists \Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.\\
+\paragraph{Si $\Sigma$ es definida positiva} Se nota $\Sigma > 0$), entonces $\Sigma$ es no singular $(|\Sigma| > 0)$, y por tanto $\exists \Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.\\
 
-  \textbf{Notación.-} Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.\\
+\textbf{Notación.-} Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.\\
 
-  \begin{ndef}[Normalización]
+\begin{ndef}[Normalización]
     Dado un vector aleatorio $X\sim(\mu,\Sigma)$ con $\Sigma>0$, se define su \textbf{normalización} en 'origen' y 'escala' como:
     \[
 \mathcal Z = C^{-1}(X - \mu)
@@ -233,7 +237,7 @@ para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ n
 
   \end{nprop}
 
-\item $\Sigma$ es \textbf{semidefinida positiva} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular ($\nexists \Sigma ^{-1} $ ). Por tanto, se tiene que $rango(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in M_{p\times r}$ y cuyo rango es $r$.\\
+\paragraph{$\Sigma$ es \textbf{semidefinida positiva}} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular ($\nexists \Sigma ^{-1} $ ). Por tanto, se tiene que $rango(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in M_{p\times r}$ y cuyo rango es $r$.\\
 
   \begin{ncor}
     Con probabilidad $1$, las componentes del vector $X = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
@@ -243,10 +247,6 @@ para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ n
     
   Por tanto, toda la variabilidad de $X$ se sitúa en un hiperplano afín (casi seguramente con respecto a la medida $P$)
   \end{ncor}
-
-\end{enumerate}
-
-
 
 Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
 \begin{itemize}
