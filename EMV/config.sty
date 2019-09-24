@@ -135,6 +135,10 @@
 \theoremstyle{remark-style}
 \newtheorem*{nota}{Nota}
 
+% Notación
+\theoremstyle{remark-style}
+\newtheorem*{notacion}{Notación}
+
 % Ejemplos
 \theoremstyle{example-style}
 \newtheorem{ejemplo}{Ejemplo}[section]
@@ -164,6 +168,14 @@
 
 % Línea horizontal.
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Restricción de una aplicación.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
 
 % Letras de conjuntos
 \newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}

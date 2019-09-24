@@ -1,80 +1,92 @@
 \section{Fundamentación probabilística de vectores aleatorios}
 
-\begin{ndef}[Variable Aleatoria]
-    Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Una \textit{variable aleatoria} es una función medible
+En esta sección definimos algunos conceptos bien conocidos de la teoría de la probabilidad,
+a modo de breve repaso y para fijar notación.
+
+% TODO: insertar referencia a apuntes de Análisis Matemático II y Probabilidad.
+
+\begin{ndef}[Vector y variable aleatorios]
+    Sea $(\Omega, \mathscr{A}, P)$ un espacio de probabilidad. Un \emph{vector aleatorio}, $\boldsymbol X = (X_1, \dots, X_p)$ es una función medible
     \begin{align*}
-    X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}, \mathbb{B})\\
-    \omega &\mapsto X(\omega)
-    \end{align*}
-    cuya condición de medibilidad es \(X^{-1}(B) \in \mathcal{F}\) para todo \(B \in \mathbb{B}\).
+      \boldsymbol X:(\Omega, \mathscr{A}) &\rightarrow (\mathbb{R}^p, \mathscr{B}^p)
+    .\end{align*}
+
+     Cuando $p=1$, lo notamos $X$ y decimos que es una \emph{variable aleatoria}.
+    La condición de medibilidad es: \(\boldsymbol X^{-1}(B) \in \mathscr{A}\) para cada \( B \in \mathscr{B}^p\).
 \end{ndef}
+
+
 
 \begin{ndef}[Probabilidad inducida]
-    La \textit{probabilidad inducida} por una variable aleatoria $X$ a partir de $P$ se define como
-    \begin{align*}
-    P_{X}:\mathbb{B} &\rightarrow [0,1] \\
-    B &\mapsto P[X^{-1}(B)].
-    \end{align*}
-\end{ndef}
-
-\begin{ndef}[Vector Aleatorio]
-    Sea $(\Omega, \mathcal{F}, P)$ un espacio de probabilidad. Un \textit{vector aleatorio}, $\boldsymbol X = (X_1, \dots, X_p)$ es una función medible
-    \begin{align*}
-      \boldsymbol X:(\Omega, \mathcal{F}) &\rightarrow (\mathbb{R}^p, \mathbb{B}^p) \\
-    \omega &\mapsto \boldsymbol X(\omega) = (X_1(\omega), \dots, X_p(\omega))
-    \end{align*}
-    cuya condición de medibilidad es \(\boldsymbol X^{-1}(B) \in \mathcal{F}\) para todo \( B \in \mathbb{B}^p\).
-\end{ndef}
-
-\begin{ndef}[Probabilidad inducida]
-    La \textit{probabilidad inducida} por un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ a partir de $P$ se define como
+    La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ se define como
     \[
     P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]
-    .\] para todo \(B \in \mathbb{B}^p\).
+    .\] para todo \(B \in \mathbb{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}$.
 \end{ndef}
 
+\begin{notacion}
+  Cuando escribamos probabilidades de sucesos asociados a un vector aleatorio $\boldsymbol X$, usaremos la siguiente notación:
+  \begin{itemize}
+  \item $P[\boldsymbol X \in A] = P_x[A]$
+  \item $P[X_1 \le x1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$
+  \end{itemize}
+
+  y algunas formas análogas.
+\end{notacion}
+
 \begin{ndef}[Función de distribución]
-    Se define la \textit{función de distribución} asociada a $P_{\boldsymbol X}$ como
+    Se define la \emph{función de distribución} asociada a $P_{\boldsymbol X}$ como
     \begin{align*}
     F_{\boldsymbol X}:\mathbb{R}^p &\rightarrow [0,1] \\
-    \boldsymbol x=(x_1,\dots,x_p) &\mapsto P_{\boldsymbol X}[X_1 \leq x_1, \dots, X_p \leq x_p]\,.
+    (x_1,\dots,x_p) &\mapsto P[X_1 \leq x_1, \dots, X_p \leq x_p]\,.
     \end{align*}
 \end{ndef}
 
 \begin{ndef}[Función de densidad]
-    Si existe una función $f_X$ que sea integrable en el sentido de Lebesgue y tal que
+    Si existe una función $f_{\boldsymbol X} : \R^p \to \R$ que sea integrable en el sentido de Lebesgue y tal que
     \[
-    F_{\boldsymbol X}(x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_{\boldsymbol X}(u_1, \dots,  u_p) \mathop{}\!\mathrm{d}u_1 \dots \mathop{}\!\mathrm{d}u_p \quad \text{para todo } \boldsymbol  x \in \mathbb{R}^p
+    F_{\boldsymbol X}(\boldsymbol x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_{\boldsymbol X}(u_1, \dots,  u_p) \mathop{}\!\mathrm{d}u_1 \dots \mathop{}\!\mathrm{d}u_p \text{ para todo } \boldsymbol  x \in \mathbb{R}^p
     ,\]
-    diremos que $f_{\boldsymbol X}$ es la \textit{función de densidad} asociada a  $F_{\boldsymbol X}$. En el caso en que $f_{\boldsymbol X}$ sea continua, se puede escribir como:
+    diremos que $f_{\boldsymbol X}$ es una \emph{función de densidad} asociada a  $F_{\boldsymbol X}$. En los puntos de continuidad de $f_{\boldsymbol X}$, se puede escribir como:
     \[
     % TODO Añadir lo de las derivadas
     f_{\boldsymbol X}(\boldsymbol x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_{\boldsymbol X}(\boldsymbol x) \quad \text{para todo } \boldsymbol x \in \mathbb{R}^p
     .\]
 \end{ndef}
 
-En general, dado un conjunto producto (también llamado conjunto rectangular) $B \in \mathbb{B}^p$ con
+\subsection{Independencia}
+
+Veamos ahora algunas nociones relativas a la independencia de variables aleatorias.
+
+\begin{ndef}[Conjunto rectangular]
+  Se dice que $B\in \mathscr{B}^p$ es un \emph{conjunto rectangular} si es un producto de $p$ conjuntos de $\mathscr{B}$. Es decir, si
+  
 \[
-    B = B_1 \times \dots \times B_p,\quad B_j \in \mathbb{B}, \quad j = 1, \dots, p
+    B = B_1 \times \dots \times B_p,\quad B_j \in \mathscr{B}, \quad j = 1, \dots, p
 .\]
-se tiene que
+\end{ndef}
+
+En general, dado un conjunto rectangular $B \in \mathscr{B}^p$ se tiene que
 \[
 P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 \]
 
 \begin{ndef}
-    Si en las condiciones anteriores se da la igualdad para todo conjunto producto en \(\mathbb{B}^p\), se dice que \(X_1, \dots, X_p\) son \textit{independientes}.
-
-    Equivalentemente, esto ocurre si y solo si \(
-    F_{\boldsymbol X} (\boldsymbol x) = F_{X_1} (x_1) \cdots F_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\).
-
-    Por último, esto ocurre en el caso continuo si y solo si \(f_{\boldsymbol X} (\boldsymbol x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
+    Si en las condiciones anteriores se da la igualdad para todo conjunto producto en \(\mathbb{B}^p\), se dice que \(X_1, \dots, X_p\) son \emph{independientes}.
 \end{ndef}
+
+\begin{nprop}[Caracterizaciones de independencia]
+  \(X_1, \dots, X_p\) son independientes si, y solo si se da alguna de las siguientes condiciones:
+  \begin{nlist}
+  \item $F_{\boldsymbol X} (\boldsymbol x) = F_{X_1} (x_1) \cdots F_{X_p}(x_p)\,$ para todo \(\boldsymbol x \in \mathbb{R}^p\).
+   \item $\boldsymbol X$ tiene una función de densidad y \(f_{\boldsymbol X} (\boldsymbol x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
+  \end{nlist}
+\end{nprop}
 
 \subsection{Función característica}
 
 \begin{ndef}[Función característica]
-    La \textit{función característica} de un vector aleatorio \(\boldsymbol X = (X_1,\dots,X_p)\) se define como \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right], \quad \boldsymbol t\in \mathbb{R}^p.\]
+    La \emph{función característica} de un vector aleatorio \(\boldsymbol X = (X_1,\dots,X_p)\) se define como \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right], \quad \boldsymbol t\in \mathbb{R}^p.\]
 \end{ndef}
 
 \begin{nth}[Unicidad]
@@ -129,7 +141,7 @@ f_{\boldsymbol X}(x) =  \dfrac{1}{(2\Pi)^p} \int_{\mathbb R^p} e^{- i \boldsymbo
 \subsection{Aspectos generales sobre vectores aleatorios}
 \subsubsection{Esperanza y covarianza}
 \begin{ndef}
-  Sea $\boldsymbol X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \textit{vector de medias} de $\boldsymbol X$ como:
+  Sea $\boldsymbol X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \emph{vector de medias} de $\boldsymbol X$ como:
   \[
   \boldsymbol \mu_{\boldsymbol X} = E[\boldsymbol X] = \begin{bmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{bmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
   \]
@@ -150,7 +162,7 @@ E[W] = \left(E[W_{kl}]\right)_{(kl)} = B \cdot E[X] \cdot C + D\,, \quad \text{c
 \]
 
 \begin{ndef}
-  Se define la \textit{matriz de covarianzas} del vector $\boldsymbol X = (X_1,\dots,X_p)^T$ como:
+  Se define la \emph{matriz de covarianzas} del vector $\boldsymbol X = (X_1,\dots,X_p)^T$ como:
   \[
 \Sigma = \operatorname{Cov}(\boldsymbol X) = E\left[(\boldsymbol X-\boldsymbol \mu)(\boldsymbol X-\boldsymbol \mu)^T\right] = \begin{bmatrix} \sigma_{11} & \dots & \sigma_{1p} \\ \vdots& \ddots & \vdots \\ \sigma_{p1} &  \dots & \sigma_{pp}\end{bmatrix}\,,
 \]
@@ -158,7 +170,7 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
 \end{ndef}
 
 \begin{nota}
-  Los elementos de la diagonal de la matriz de covarianzas se pueden calcular como \[\sigma_{ii}=E\left[(X_i - \mu_i)^2\right] = \operatorname{Var}(X_i) = \sigma_i^2\,,\]siendo $\sigma_i$ la \textit{desviación típica}.
+  Los elementos de la diagonal de la matriz de covarianzas se pueden calcular como \[\sigma_{ii}=E\left[(X_i - \mu_i)^2\right] = \operatorname{Var}(X_i) = \sigma_i^2\,,\]siendo $\sigma_i$ la \emph{desviación típica}.
 \end{nota}
 
 \begin{nprop}[Propiedades elementales]
@@ -172,7 +184,7 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
 %#TODO: demostración (Ejercicio)
 \begin{proof}
   Vamos a ver únicamente la demostración de la propiedad 3.
-  \begin{itemize}
+  \begin{nlist}
     \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha^T \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
       0 \leq Var(\alpha^T X) = E[(\alpha^T X - E[\alpha^T X])^2] &= E[(\alpha^T X - \alpha^T \mu_X)^2] = E[(\alpha^T(X-\mu)^2]\\ 
         &=^{(1)} E[\alpha^T(X-\mu)(X-\mu)^T \alpha] \\
@@ -183,20 +195,20 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
   $\boxed{\impliedby}\,$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
 
 %#TODO: Terminar demostración
-  \end{itemize}
+  \end{nlist}
 \end{proof}
 
 %#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
 Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$.
 
-\paragraph{Si $\Sigma$ es definida positiva} Se nota como $\Sigma > 0$. En este caso $\Sigma$ es \textit{no singular} pues $(|\Sigma| > 0)$, y por tanto existe su inversa, $\Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.
+\paragraph{Si $\Sigma$ es definida positiva} Se nota como $\Sigma > 0$. En este caso $\Sigma$ es \emph{no singular} pues $(|\Sigma| > 0)$, y por tanto existe su inversa, $\Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.
 
 \begin{nota}
   Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.
 \end{nota}
 
 \begin{ndef}[Normalización]
-    Dado un vector aleatorio $\boldsymbol X\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \textit{normalización} en «origen» y «escala» como
+    Dado un vector aleatorio $\boldsymbol X\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \emph{normalización} en «origen» y «escala» como
     \[
   Z = C^{-1}(X - \mu)\,,
 \]
@@ -205,7 +217,7 @@ para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ n
   \end{ndef}
 
 Veamos a continuación algunas de las propiedades de esta variable $Z$.
-  \begin{itemize}
+  \begin{nlist}
     \item
   $
   E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0
@@ -213,10 +225,10 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
 
 \item $\operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]$ y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior : $\operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I \implies Z \sim (0, I_{p\times p}).$
 
-  \end{itemize}
+  \end{nlist}
 
   \begin{ndef}
-    Se define la \textit{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
+    Se define la \emph{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
     \[
     \Delta(X,\mu) = \left\{ (X-\mu)^T \Sigma (X-\mu) \right\} ^{\frac{1}{2}},
     \]
@@ -230,14 +242,14 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
   con norma la euclídea en $\mathbb R^p$. Así, hemos relacionado la distancia con la norma. Recordemos que $\Vert Z\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
 
   \begin{nprop}
-    \begin{itemize}
+    \begin{nlist}
     \item Calcular $E[\Delta^2 (X,\mu)]$
     \item La ecuación $\Delta(X,\mu) = k$ pcon $k\geq 0$ constante, define la \textbf{hipervariedad de contorno} correspondiente a aquellos puntos $x \in \mathbb R^p$ taes que, en el espacio transformado $\mathbb R^p$ por:
       \[
       x \mapsto z = C^{-1}(x-\mu)
       \]
       se sitúan en la esfera (euclídea, $p-$dimensional) de radio $k$ y centro en el origen.
-    \end{itemize}
+    \end{nlist}
 
   \end{nprop}
 
@@ -253,10 +265,10 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
   \end{ncor}
 
 Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
-\begin{itemize}
+\begin{nlist}
 \item $|\Sigma| =  \prod_{j=1}^p \lambda_j$
   \item $tr(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
-\end{itemize}
+\end{nlist}
 
 
 \subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
