@@ -180,50 +180,54 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
         &= \alpha^T \Sigma \alpha
     \end{align*} Donde en 1 hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
 
-  $\boxed{\impliedby}\,$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = rango(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
+  $\boxed{\impliedby}\,$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
 
 %#TODO: Terminar demostración
   \end{itemize}
 \end{proof}
 
 %#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
-Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$
-\paragraph{Si $\Sigma$ es definida positiva} Se nota $\Sigma > 0$), entonces $\Sigma$ es no singular $(|\Sigma| > 0)$, y por tanto $\exists \Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.\\
+Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$.
 
-\textbf{Notación.-} Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.\\
+\paragraph{Si $\Sigma$ es definida positiva} Se nota como $\Sigma > 0$. En este caso $\Sigma$ es \textit{no singular} pues $(|\Sigma| > 0)$, y por tanto existe su inversa, $\Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.
+
+\begin{nota}
+  Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.
+\end{nota}
 
 \begin{ndef}[Normalización]
-    Dado un vector aleatorio $X\sim(\mu,\Sigma)$ con $\Sigma>0$, se define su \textbf{normalización} en 'origen' y 'escala' como:
+    Dado un vector aleatorio $\boldsymbol X\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \textit{normalización} en «origen» y «escala» como
     \[
-\mathcal Z = C^{-1}(X - \mu)
+  Z = C^{-1}(X - \mu)\,,
 \]
-para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ no es única, pues existen infinitas descomposiciones de $\Sigma$ de esa forma.
+para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ no es única, pues existen infinitas descomposiciones de $\Sigma$ de esta forma.
 
   \end{ndef}
-  Para $\mathcal Z$, se tiene que:
+
+Veamos a continuación algunas de las propiedades de esta variable $Z$.
   \begin{itemize}
     \item
   $
-  E[\mathcal Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0
+  E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0
   $
 
-\item $Cov(\mathcal Z) = E[\mathcal Z \mathcal Z ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]$ y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, ,se tiene en la igualdad anterior : $ Cov(\mathcal Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I * I = I \implies \mathcal Z \sim (0, I_{p\times p})$
+\item $\operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]$ y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior : $\operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I \implies Z \sim (0, I_{p\times p}).$
 
   \end{itemize}
 
   \begin{ndef}
-    Se define la \textbf{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como:
+    Se define la \textit{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
     \[
-    \Delta(X,\mu) = \{ (X-\mu)^T \Sigma (X-\mu) \} ^{\frac{1}{2}}
+    \Delta(X,\mu) = \left\{ (X-\mu)^T \Sigma (X-\mu) \right\} ^{\frac{1}{2}},
     \]
     que es una variable aleatoria.
   \end{ndef}
 
   Vamos a interpretar este resultado. Supongamos que tenemos una normalización de $X$:
   \[
-  \Delta(X,\mu) = \{ (X-\mu)^T (CC^T)^{-1}(X-\mu)\}^{\frac{1}{2}} = \{ (X-\mu)^T (C^T)^{-1}C^{-1}(X-\mu)\}^{\frac{1}{2}} = \{\mathcal Z^T \mathcal Z\}^{\frac{1}{2}} = ||\mathcal Z||
+  \Delta(X,\mu) = \left\{ (X-\mu)^T (CC^T)^{-1}(X-\mu)\right\}^{\frac{1}{2}} = \left\{ (X-\mu)^T (C^T)^{-1}C^{-1}(X-\mu)\right\}^{\frac{1}{2}} = \left\{Z^T Z\right\}^{\frac{1}{2}} = \Vert Z\Vert\,,
   \]
-  con norma la euclídea en $\mathbb R^p$. Así, hemos relacionado la distancia con la norma. Recordemos que $||\mathcal Z||$ es una variable aleatoria , pues es una aplicación de una función a un vector aleatorio.
+  con norma la euclídea en $\mathbb R^p$. Así, hemos relacionado la distancia con la norma. Recordemos que $\Vert Z\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
 
   \begin{nprop}
     \begin{itemize}
