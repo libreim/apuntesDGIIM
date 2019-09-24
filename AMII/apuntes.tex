@@ -1143,7 +1143,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 	La expresión de la función $t$ de la proposición anterior no es su descomposición canónica, pues podría darse el caso de que $B_i \cap B_j \neq \emptyset$ para algún $i,j \in \{1,\dots,m\}$, $i\neq j$, y ya no podrían formar una partición de $\Omega$.
 \end{nota}
 
-\begin{nth}[de aproximación de Lebesgue]
+\begin{nth}[de aproximación de Lebesgue] \label{aproximacion_lebesgue}
   Si $\Omega$ es un espacio medible y $f:\Omega \to [0,\infty]$ es una función, son equivalentes las siguientes afirmaciones:
   \begin{nlist}
   \item $f$ es medible
@@ -1264,7 +1264,7 @@ cada $n \ge n_0$ y cada $\omega\in\Omega$.
 \end{ncor}
 
   \begin{proof}
-    Por el \textit{Teorema de aproximación de Lebesgue} sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la \textit{Proposición \ref{propsimples}} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (\textit{Proposición \ref{p1}}).
+	  Por el teorema de aproximación de Lebesgue (\ref{aproximacion_lebesgue}) sabemos que existe una sucesión $\{s_n\}$ y otra $\{t_n\}$ de funciones simples positivas que convergen de forma creciente a $f$ y $g$, respectivamente. Además, por la proposición \ref{propsimples} sabemos que podemos generar una sucesión $\{s_n+t_n\} \to f+g$ de funciones simples positivas, y por tanto $f+g$ es medible, al ser el límite puntual de funciones medibles (proposición \ref{p1}).
 
     La demostración para $ \alpha f$ y $fg$ es análoga.
   \end{proof}
@@ -1279,10 +1279,10 @@ cada $n \ge n_0$ y cada $\omega\in\Omega$.
 Abordamos ahora el problema de definir una integral asociada a funciones medibles positivas. Para ello, formalizaremos el concepto de \textit{medida}, que nos permitirá asignar a cada conjunto medible un número $m \in [0,\infty]$, que entenderemos como la \textit{medida} de ese conjunto.
 
 \begin{ndef}[Medida]
-  Si $(\Omega, \mathscr A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathscr A \rightarrow [0, \infty]$ verificando:
+  Si $(\Omega, \mathscr A)$ es un espacio medible, una medida (positiva) es una función $\mu: \mathscr A \rightarrow [0, \infty]$ que verifica:
   \begin{nlist}
   \item $\mu(\emptyset) = 0$
-  \item \textit{(Aditividad).} $\forall \{A_k\} \subseteq \mathscr A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
+  \item ($\sigma$-aditividad o aditividad numerable). $\forall \{A_k\} \subseteq \mathscr A$ con $A_k\cap A_j = \emptyset,\ k \neq j,$ se tiene que:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \sum_{k=1}^\infty \mu(A_k) $$
   \end{nlist}
   La terna $(\Omega, \mathscr A, \mu)$ se llama \textbf{espacio de medida}.
@@ -1291,13 +1291,13 @@ Abordamos ahora el problema de definir una integral asociada a funciones medible
 \begin{nprop}[Propiedades de una medida] \label{prop_medida} Si $(\Omega, \mathscr A, \mu)$ es un espacio de medida, se verifican las siguientes propiedades:
   \begin{nlist}
   \item (Monotonía). Si $A,B \in \mathscr A,\ A \subseteq B \implies \mu(A) \leq \mu(B)$
-  \item (Subaditividad). $\forall \{A_k\} \subseteq \mathscr A$, se tiene:
+  \item ($\sigma$-subaditividad). $\forall \{A_k\} \subseteq \mathscr A$, se tiene:
     \[
       \mu\left( \bigcup_{k=1}^\infty A_k \right) \leq \sum_{k=1}^\infty \mu(A_k)
     \]
-  \item $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
+  \item (Continuidad desde abajo) $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\subseteq A_2\subseteq \cdots \subseteq A_k \subseteq \cdots,$ se tiene:
     $$\mu \left( \bigcup_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
-  \item $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(A_1) < \infty$ se tiene:
+  \item (Continuidad desde arriba) $\forall \{A_k\} \subseteq \mathscr A$ tal que $A_1\supseteq A_2\supseteq \cdots \supseteq A_k \supseteq \cdots,$ si $\mu(A_1) < \infty$ se tiene:
     $$\mu \left( \bigcap_{k=1}^\infty A_k \right) = \lim_{k \to \infty}\mu(A_k)$$
   \end{nlist}
 \end{nprop}
@@ -1335,7 +1335,7 @@ Entonces, $\bigcup_{k=1}^\infty B_k = \bigcup_{k=1}^\infty A_k$, con $B_k$  disj
 \end{ejemplo}
 
 \begin{ejemplo}[Medida de Dirac]
-Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual (point mass) es la medida $\delta_\omega:\mathscr A \longrightarrow [0,\infty ]$ dada por
+Sea $(\Omega,\ \mathscr A=2^\Omega)$ un espacio medible. Para $\omega\in\Omega$, la medida de Dirac  o masa puntual es la medida $\delta_\omega:\mathscr A \longrightarrow [0,\infty ]$ dada por
  \[
  \delta_\omega (A) = \left\{ \begin{array}{ll}
                                 1, & \text{ si } \omega\in A,
@@ -1366,11 +1366,11 @@ Estamos ya en disposición de definir lo que entenderemos por integral de una fu
 \begin{ndef}[Integral de función simple positiva]
   Si $E \in \mathscr A$ y $s:\Omega \to [0,\infty)$ es simple, i.e, $\displaystyle s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$, entonces definimos la integral de $s$ en $E$ como:
   \[
-    \int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k)
+    \int_E s\, d\mu := \sum_{k=1}^n \alpha_k \mu(E\cap A_k).
   \]
 \end{ndef}
 
-Comprobemos ahora que la definición es consistente, es decir, que el valor de la integral no depende de la representación de $s$. Sea $s = \sum_{j=1}^m \beta_j \rchi_{B_j}$ con $\{B_j\}_{j=1}^m$ medibles y disjuntos, y $\{\beta_1,\dots,\beta_m\} \subseteq [0,\infty)$. Sabemos por la \textit{Proposición \ref{caract_simples}} que $s$ es simple. Además, supongamos que $s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su descomposición canónica.
+Comprobemos ahora que la definición es consistente, es decir, que el valor de la integral no depende de la representación de $s$. Sea $s = \sum_{j=1}^m \beta_j \rchi_{B_j}$ con $\{B_j\}_{j=1}^m$ medibles y disjuntos, y $\{\beta_1,\dots,\beta_m\} \subseteq [0,\infty)$. Sabemos por la proposición \ref{caract_simples} que $s$ es simple. Además, supongamos que $s= \sum_{k=1}^n \alpha_k \rchi_{A_k}$ es su descomposición canónica.
 
 Observemos que puede ocurrir que $\beta_i = \beta_j$ para algún $i\neq j$. Teniendo esto en cuenta, definimos $I_k := \{j \in \{1,\dots,m\} : \beta_j = \alpha_k\}$, y entonces $$A_k = \bigcup_{j\in I_k} B_j$$ Realizando transformaciones algebraicas, tenemos que $$\sum_{j=1}^m \beta_j\mu(E \cap B_j) = \sum_{k=1}^n \sum_{j \in I_k} \beta_j \mu(E \cap B_j) = \sum_{k=1}^n \alpha_k \sum_{j \in I_k} \mu(E \cap B_j) \overset{(*)}{=} \sum_{k=1}^n \alpha_k  \mu \left(\bigcup_{j \in I_k} E \cap B_j \right) = $$
 
@@ -1378,7 +1378,7 @@ $$= \sum_{k=1}^n \alpha_k  \mu \left(E \cap\bigcup_{j \in I_k} B_j \right) = \su
 
 donde la igualdad $(*)$ se da por la \textit{aditividad} de $\mu$, teniendo en cuenta que los conjuntos $\{B_j \cap E\}_{j=1}^m$ son disjuntos dos a dos, por serlo $\{B_j\}_{j=1}^m$.
 
-Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \beta_j \mu(E \cap B_j)$$
+Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \beta_j \mu(E \cap B_j)$$.
 
 %%% TODO: Se puede demostrar que no es necesario que los conjuntos B_j sean disjuntos.
 
@@ -1404,7 +1404,7 @@ Por tanto, queda probado que $$\displaystyle \int_E s\, d\mu = \sum_{j=1}^m \bet
 \begin{ndef}[Integral de función medible positiva]
   Si $E\in \mathscr A$ y $f: \Omega \to [0,\infty]$ es medible, entonces definimos la integral de $f$ en $E$ como:
   \[
-    \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ $s$ es simple positiva}, \ s \leq f\right\}
+    \int_E f\, d\mu := \sup\left\{\int_E s\, d\mu: \text{ $s$ es simple positiva}, \ s \leq f\right\}.
   \]
 
 \end{ndef}
@@ -1416,9 +1416,9 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
 	Sea $s:\W \to [0,\infty)$ simple. Entonces, $\varphi:\mathscr A \to [0,\infty]$ dada por $$\varphi(E) = \int_E s\, d\mu, \quad \forall E \in \mathscr A$$ es una medida.
 \end{lema}
 
-	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\O) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$
+	\begin{proof} En primer lugar, es claro que $\displaystyle \varphi(\emptyset) = \int_\emptyset s\, d\mu = 0$, pues $\mu$ es una medida, y $\mu(\emptyset) = 0$. Por otro lado, dada una sucesión $\{E_k\}$ de conjuntos medibles y disjuntos, se tiene que $$\varphi \left(\bigcup_{k=1}^\infty E_k \right) = \int_{\bigcup_{k=1}^\infty E_k} s\, d\mu \overset{(*)}{=} \sum_{k=1}^\infty \int_{E_k} s\, d\mu = \sum_{k=1}^\infty \varphi(E_k),$$
 
-	donde $(*)$ es consecuencia de la \textit{Proposición \ref{int_simples} ii}. Por tanto, $\varphi$ es aditiva, luego es una medida.
+	donde $(*)$ es consecuencia de la proposición \ref{int_simples} \textit{ii}. Por tanto, $\varphi$ es $\sigma$-aditiva, luego es una medida.
 	    %%% TODO: Estilo de referencias a un apartado en específico de una proposición.
 \end{proof}
 
@@ -1429,7 +1429,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
   \]
 \end{nth}
 
-  \begin{proof} Empezamos observando que $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la \textit{Proposición \ref{p1}}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente. Veamos ahora las dos desigualdades.
+  \begin{proof} Empezamos observando que $\displaystyle f(\omega):= \lim _{n\to \infty} f_n(\omega)$ es medible por la proposición \ref{p1}, teniendo en cuenta que $\{f_n(\omega)\}$ es monótona creciente, y por tanto convergente. Veamos ahora las dos desigualdades.
 
     \boxed{\geq} Como $f_n \leq f_{n+1} \leq f$ por hipótesis, tenemos que:
     \[
@@ -1448,7 +1448,7 @@ Veamos ahora un teorema importante que, dada una sucesión de funciones converge
     \]
     \boxed{\leq} Como
     \[
-      \int_E f\, d \mu = sup \left\{\int_E s\, d\mu : \begin{array}{r} \text{ $s$ es simple positiva}\\
+      \int_E f\, d \mu = \sup \left\{\int_E s\, d\mu : \begin{array}{r} \text{ $s$ es simple positiva}\\
         s \leq f
 
       \end{array}\right\}
