@@ -8,9 +8,8 @@ a modo de breve repaso y para fijar notación.
 \begin{ndef}[Vector y variable aleatorios]
     Sea $(\Omega, \mathscr{A}, P)$ un espacio de probabilidad. Un \emph{vector aleatorio}, $\boldsymbol X = (X_1, \dots, X_p)$ es una función medible
     \begin{align*}
-      \boldsymbol X:(\Omega, \mathscr{A}) &\rightarrow (\mathbb{R}^p, \mathscr{B}^p)
-    .\end{align*}
-
+      \boldsymbol X:(\Omega, \mathscr{A}) &\rightarrow (\mathbb{R}^p, \mathscr{B}^p)\,.
+    \end{align*}
      Cuando $p=1$, lo notamos $X$ y decimos que es una \emph{variable aleatoria}.
     La condición de medibilidad es: \(\boldsymbol X^{-1}(B) \in \mathscr{A}\) para cada \( B \in \mathscr{B}^p\).
 \end{ndef}
@@ -20,17 +19,15 @@ a modo de breve repaso y para fijar notación.
 \begin{ndef}[Probabilidad inducida]
     La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ se define como
     \[
-    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]
-    .\] para todo \(B \in \mathbb{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}$.
+    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathbb{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
 \end{ndef}
 
 \begin{notacion}
   Cuando escribamos probabilidades de sucesos asociados a un vector aleatorio $\boldsymbol X$, usaremos la siguiente notación:
   \begin{itemize}
-  \item $P[\boldsymbol X \in A] = P_x[A]$
-  \item $P[X_1 \le x1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$
+  \item $P[\boldsymbol X \in A] = P_x[A]$,
+  \item $P[X_1 \le x1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$,
   \end{itemize}
-
   y algunas formas análogas.
 \end{notacion}
 
@@ -117,13 +114,13 @@ con $B \in \mathscr{M}_{q\times p}(\R)$ una matriz constante y $\boldsymbol b\in
 \end{nprop}
 %#TODO: escribir la forma matricial
 %#TODO: ¿Está amsmath incluido? Usar bmatrix de amsmath
-  En particular, si $\boldsymbol X= \left( X_{(1)} | X_{(2)}\right)^T :=
+  En particular, si \[\boldsymbol X= \left( X_{(1)} | X_{(2)}\right)^T :=
   \left(\begin{array}{c | c}
     X_{(1)} & 0 \\ \hline
     0 & X_{(2)}
-        \end{array}\right)$, con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría:
+        \end{array}\right)\,,\] con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría que
   \[
-X_{(1)} = \left( I_{k\times k} | 0_{k \times(p-k)} \right)^TX + 0_{k\times 1}
+X_{(1)} = \left( I_{k\times k} | 0_{k \times(p-k)} \right)^TX + 0_{k\times 1}\,,
 \]
 por lo que, para $\boldsymbol t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$
 \[
@@ -340,7 +337,7 @@ Consideremos el logaritmo de la función característica:
   \[
   Y = g(X) = (g_1(X),\dots ,g_p(X))^T
   \]
-  con $g = (g_1,\dots,g_p): S \mapstp \mathcal T$ tal que $x\mapsto y=g(x)$ biyectiva, por lo que $\exists g^{-1}$ transformación inversa $x = g^{-1}(y)$, que la denotaremos como $g^{-1} = h = (h_1,\dots, h_p)^T : \mathcal T \to S$ con $y \mapsto x =h(y) = g^{-1}(y)$.\\
+  con $g = (g_1,\dots,g_p): S \mapsto \mathcal T$ tal que $x\mapsto y=g(x)$ biyectiva, por lo que $\exists g^{-1}$ transformación inversa $x = g^{-1}(y)$, que la denotaremos como $g^{-1} = h = (h_1,\dots, h_p)^T : \mathcal T \to S$ con $y \mapsto x =h(y) = g^{-1}(y)$.\\
 
   Supongamos que existen las derivadas parciales:
   \[
@@ -348,7 +345,7 @@ Consideremos el logaritmo de la función característica:
   \]
   y que son continuas sobre $\mathcal T$.\\
 
-  Entonces, la función de densidad $f_Y(y)$ del vector $Y=(Y_1,\dots,Y_p)^T$ = y(X)$ viene dada por:
+  Entonces, la función de densidad $f_Y(y)$ del vector $Y=(Y_1,\dots,Y_p)^T = y(X)$ viene dada por:
   \[
   f_Y(y) = f_X(g^{-1}(y))*|J_{g^{-1}}(y)|
   \]
