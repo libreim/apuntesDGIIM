@@ -146,7 +146,7 @@ f_{\boldsymbol X}(\boldsymbol x) =  \dfrac{1}{(2\pi)^p} \int_{\mathbb R^p} e^{- 
 \begin{ndef}
   Sea $\boldsymbol X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \emph{vector de medias} de $\boldsymbol X$ como:
   \[
-  \boldsymbol \mu_{\boldsymbol X} = E[\boldsymbol X] = \begin{bmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{bmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
+  \boldsymbol \mu_{\boldsymbol X} = E[\boldsymbol X] = \begin{pmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{pmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
   \]
   siempre que existan \emph{todas} las esperanzas unidimensionales.
   \end{ndef}
@@ -189,13 +189,18 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
   Vamos a ver únicamente la demostración de la propiedad 3.
   \begin{nlist}
     \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha^T \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
-      0 \leq Var(\alpha^T X) = E[(\alpha^T X - E[\alpha^T X])^2] &= E[(\alpha^T X - \alpha^T \mu_X)^2] = E[(\alpha^T(X-\mu)^2]\\ 
-        &=^{(1)} E[\alpha^T(X-\mu)(X-\mu)^T \alpha] \\
-        &= \alpha^T E[(X-\mu)(X-\mu)^T] \alpha \\
+      0 \leq \operatorname{Var}(\alpha^T X) = E\left[\|\alpha^T X - E[\alpha^T X]\|^2\right] &= E\left[\|\alpha^T X - \alpha^T \mu_X\|^2\right] = E\left[\|\alpha^T(X-\mu)\|^2\right]\\ 
+        &=^{(1)} E\left[\alpha^T(X-\mu)(X-\mu)^T \alpha\right] \\
+        &= \alpha^T E\left[(X-\mu)(X-\mu)^T\right] \alpha \\
         &= \alpha^T \Sigma \alpha
-    \end{align*} Donde en 1 hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
+    \end{align*} Donde en $(1)$ hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
 
-  $\boxed{\impliedby}\,$ Sea $\Sigma$ una matriz simétrica, definida no negativa. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$. Entonces, se puede encontrar $\Sigma = C C^T$. donde $C \in M_{p\times r}$. Sea... TERMINAR!
+    $\boxed{\impliedby}\,$ Sea $A$ una matriz simétrica, definida no negativa. Entonces, se puede encontrar una factorización $A = B B^T$. donde $C \in \mathscr{M}_{p}(\R)$.
+    Consideramos un vector aleatorio $\vectX$ cuyas entradas son $p$ variables independientes e idénticamente distribuidas con distribución normal estándar. Entonces, $\Sigma_{\vectX} = I_p$. Esto se puede comprobar usando que $E[XY] = E[X]E[Y]$ si $X$ e $Y$ son variables aleatorias independientes. Consideramos también $\vectY = B\vectX$, entonces:
+
+    \[
+       \Sigma_{\vectY} = B\Sigma_{\vectX} B^T = B B^T = A
+    .\]
 
 %#TODO: Terminar demostración
   \end{nlist}
