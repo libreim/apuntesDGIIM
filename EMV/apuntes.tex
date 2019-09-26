@@ -397,24 +397,31 @@ Algunos aspectos que justifican el estudio de esta distribución en particular:
 
 
 \begin{ndef}
-  Sea $X = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $X$ tiene una Distribución Normal $p-$variante si su densidad es de la forma:
+  Sea $X = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $X$ tiene una distribución dormal $p-$variante si su densidad es de la forma:
   \[
-f_X(x) = \frac{1}{(2\pi)^{p/2}|\Sigma|^{\frac{1}{2}}} exp\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\}
+f_X(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
 \]
-Siendo $\mu = (\mu_1, \dots, \mu_p)^T \in \mathbb R^p$ y $\Sigma$ una matriz escalar $p\times p$ simétrica y definida positiva 
+Siendo $\mu = (\mu_1, \dots, \mu_p)^T \in \mathbb R^p$ y $\Sigma$ una matriz escalar $p\times p$ simétrica y definida positiva.
 \end{ndef}
-Veamos que, en efecto, $f_X(\dot)$ es una función de densidad
+
+Veamos que, en efecto, $f_X$ es una función de densidad
 \begin{enumerate}
-\item $f_X(x) \geq 0, \ \forall x \in \mathbb R$
-\item $\int_{\mathbb R^p} f_X(x) dx = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal C_{p \times p}$  no singular (elegimos $C$ tal que $|C| > 0$). La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación cumple $|C^{-1}| = |C|^{-1}$, y se tiene que $dz = |C|^{-1}dx$ y podemos despejar de ahí $dx$. Por otro lado:
+\item $f_X(x) \geq 0, \ \forall x \in \mathbb R$,
+\item $\int_{\mathbb R^p} f_X(x) \mathrm{d}x = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal \mathscr{M}_{p}(\R), \det(C) > 0$. La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación es $\det\left(C^{-1}\right)$. Por otro lado:
+
+\[
+  (x-\mu)^T \Sigma^{-1}(x-\mu) = zz^T
+\]
+
+Por tanto, podemos escribir:
+
   \[
-  (x-\mu)^T \Sigma^{-1}(x-\mu) = \dots = zz^T
-  \]
-  Por tanto, podemos escribir:
-  \[
-  \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}|\Sigma|^{\frac{1}{2}}} exp\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\} dx =_{c.v.} \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}|C|^{\frac{1}{2}} |C^T|^{\frac{1}{2}}} exp\{ -\frac{1}{2}zz^T\} |C| dz = \int_{\mathbb R^p} \frac{1}{\sqrt{2\pi}^p}exp\{-\frac{1}{2}\sum_{j=1}^p z_j^2\} dz_1 \dots dz_p = \prod_{j=1}^p \int_{\mathbb R} \frac{1}{\sqrt{2\pi}} exp\{- \frac{1}{2} z^2\}dz_j =^{(1)} = \prod_{j=1}^p 1 = 1 
-  \]
-  Donde en $(1)$ hemos usado que cada integral es la densidad de una distribución normal univariante estándar ($N(0,1)$).
+    \begin{split}
+      \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \\
+      =_{c.v.} \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\ = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p = \prod_{j=1}^p \int_{\mathbb R} \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\}\mathrm{d}z_j =^{(1)} \prod_{j=1}^p 1 = 1 
+  \end{split}
+  ,\]
+  donde en $(1)$ hemos usado que cada integral es la densidad de una distribución normal univariante estándar ($N(0,1)$).
 \end{enumerate}
 
 
