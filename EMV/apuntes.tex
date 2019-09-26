@@ -279,31 +279,31 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
 
 Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
 \begin{nlist}
-\item $|\Sigma| =  \prod_{j=1}^p \lambda_j$
-  \item $tr(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
+\item $\det(\Sigma) =  \prod_{j=1}^p \lambda_j$,
+  \item $\traza(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
 \end{nlist}
 
 
 \subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
 
 \begin{nth}
-  Sea $X = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución(conjunta, multidimensional) de $X$, queda unívocamente determinada por las distribuciones univariantes de la forma
+  Sea $\vectX = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución de $\vectX$ queda unívocamente determinada por las distribuciones univariantes de la forma
   \[
-\alpha ^T X, \quad \quad \forall \alpha \in \mathbb R ^p\,.
+\alpha ^T \vectX, \quad \alpha \in \mathbb R ^p\,.
   \]
 \end{nth}
 \begin{proof}
-  Sea $Y_\alpha = \alpha^T X$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por
+  Sea $Y_\alpha = \alpha^T \vectX$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por
   \[
-  \psi_{Y_\alpha}(t) = E\left[e^{itY_\alpha}\right] = E \left[e^{it(\alpha^T X)}\right] \quad \text{para todo } t \in \mathbb R\,.
+  \psi_{Y_\alpha}(t) = E\left[e^{itY_\alpha}\right] = E \left[e^{it(\alpha^T \vectX)}\right] \quad \text{para todo } t \in \mathbb R\,.
   \]
   En particular, si $t=1$
   \[
-  \psi_{Y_\alpha}(1) = E\left[e^{i\alpha^T X}\right] = \psi_X (\alpha)
+  \psi_{Y_\alpha}(1) = E\left[e^{i\alpha^T \vectX}\right] = \psi_{\vectX} (\alpha)
   \]
   Es decir:
   \[
-  \psi_X(t) = \psi_{Y_\alpha}(1), \quad \forall t \in \mathbb R ^p
+  \psi_{\vectX}(t) = \psi_{Y_t}(1), \quad \forall t \in \mathbb R ^p
   \]
 \end{proof}
 
