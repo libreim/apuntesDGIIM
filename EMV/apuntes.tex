@@ -309,25 +309,25 @@ Dicho esto, existen varias \textbf{medidas de variación global}.Podemos disting
 
 \subsection{Momentos y cumulantes}
 
-Sea $X= (X_1,\dots,X_p)^T$ el vector aleatorio con función característica $\phi_X(t)$, para cada $t\in \mathbb R^p$.
+Sea $\vectX= (X_1,\dots,X_p)^T$ un vector aleatorio con función característica $\phi_{\vectX}$.
 \begin{ndef}
   Se define el \textbf{momento} (no centrado) $p-$dimensional de orden $(r_1, \dots, r_p)$ de $X$ como:
   \[
-\mu_{r_1,\dots,r_p}^{1,\dots,p} = E [ X_1^{r_1} \dots X_p^{r_p}]\,.
+\mu_{r_1,\dots,r_p}^{1,\dots,p} = E \left[ X_1^{r_1} \dots X_p^{r_p}\right]\,.
   \]
 \end{ndef}
 
 Los momentos se pueden obtener a partir de la función característica derivándose de su expansión de Taylor(respecto al origen).
 
 \[
-\phi_X(t) = E[e^{it^T X}] = E[\sum_{r=0}^\infty \frac{1}{r!}(i t^T X)^r] = \sum_{r= 0}^\infty \sum _{r_1+\dots + r_p = r} \mu_{r_1 \dots r_p}^{1 \dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
+\phi_X(t) = E\left[e^{it^T X}\right] = E\left[\sum_{r=0}^\infty \frac{1}{r!}(i t^T X)^r\right] = \sum_{r= 0}^\infty \sum _{r_1+\dots + r_p = r} \mu_{r_1 \dots r_p}^{1 \dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
 \]
 En particular, podemos enunciar este teorema:
 \begin{nth}
-  Si $E=[|X_1|^{m_1} \dots |X_p|^{m_p}] < \infty$, entonces la función característica de $X$ es $(m_1, \dots, m_p)$ veces diferenciable y , si $m = m_1 + \dots + m_p$
+  Si $E=\left[|X_1|^{m_1} \dots |X_p|^{m_p}\right] < \infty$, entonces la función característica de $X$ es $(m_1, \dots, m_p)$ veces diferenciable y , si $m = m_1 + \dots + m_p$,
   \[
 \frac{\partial ^m}{\partial t_1^{m_1} \dots \partial t_p^{m_p}} \phi_X(t)| _{t = 0} = i^m \mu_{m_1}^1 \dots \mu_{m_p}^p
-  \]
+  .\]
 \end{nth}
 
 Consideremos el logaritmo de la función característica:
