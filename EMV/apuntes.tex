@@ -344,7 +344,7 @@ Consideremos el logaritmo de la función característica:
 
 \subsubsection{Cambio de variables}
 
-\begin{nth}
+\begin{nth} \label{cambiovariablealeatoria}
   Sea $\vectX = (X_1,\dots,X_n)^T$ un vector aleatorio con función de densidad $f_X(x)$ positiva sobre $S \subseteq \mathbb R^d$ y continua. Sea $Y = (Y_1,\dots,Y_p)^T$ un vector aleatorio con:
   \[
   Y = g(X) = (g_1(X),\dots ,g_p(X))^T
@@ -428,15 +428,15 @@ Por tanto, podemos escribir:
 \subsubsection{Vector de medias y matriz de covarianzas}
 Del cálculo anterior se desprende que el vector aleatorio $$Z = C^{-1}(X-\mu)$$ se distribuye con función de densidad
 \[
-f_Z(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}exp\{-\frac{1}{2}z_i^2\} = \prod_{j=1}^p f_{Z_j}(z_j)
+f_Z(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{1}{2}z_j^2\right\} = \prod_{j=1}^p f_{Z_j}(z_j)
 \]
 Es decir, para cada $j = 1,\dots, p$
 \[
 Z_j \sim N(0,1)
 \]
-siendo $Z_1,\dots,Z_p$ independientes( en particular, incorreladas) $Z \sim N_p(0,I_p)$
+siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $Z \sim N_p(0,I_p)$.
 
-A partir de esto, probamos que $\mu$ y $\Sigma$ representan, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $X \sim N_p(\mu,\Sigma)$
+A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ representan, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $X \sim N_p(\mu,\Sigma)$.
 
 \subsubsection{Propiedades}
 \begin{enumerate}
