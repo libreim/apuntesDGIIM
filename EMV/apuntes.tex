@@ -335,7 +335,7 @@ Consideremos el logaritmo de la función característica:
 \log \phi(t).
 \]
 \begin{ndef}
-  Se definen los \textbf{cumulantes} ($p-$dimensionales) de orden $(r_1 , \dots, r_p)$ como los coeficientes de la correspondiente expansión:
+  Se definen los \emph{cumulantes} ($p-$dimensionales) de orden $(r_1 , \dots, r_p)$ como los coeficientes de la correspondiente expansión:
   \[
   \log \phi_X(t) =  \sum_{r= 0} \sum_{r_1+\dots + r_p = r} \mathcal K_{r_1 \dots r_P}^{1\dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
   .\]
@@ -345,39 +345,38 @@ Consideremos el logaritmo de la función característica:
 \subsubsection{Cambio de variables}
 
 \begin{nth}
-  Sea $X = (X_1,\dots,X_n)^T$ un vector aleatorio con función de densidad $f_X(x)$ positiva sobre $S \subseteq \mathbb R^d$ y continua. Sea $Y = (Y_1,\dots,Y_p)^T$ un vector aleatorio con:
+  Sea $\vectX = (X_1,\dots,X_n)^T$ un vector aleatorio con función de densidad $f_X(x)$ positiva sobre $S \subseteq \mathbb R^d$ y continua. Sea $Y = (Y_1,\dots,Y_p)^T$ un vector aleatorio con:
   \[
   Y = g(X) = (g_1(X),\dots ,g_p(X))^T
   \]
-  con $g = (g_1,\dots,g_p): S \mapsto \mathcal T$ tal que $x\mapsto y=g(x)$ biyectiva, por lo que $\exists g^{-1}$ transformación inversa $x = g^{-1}(y)$, que la denotaremos como $g^{-1} = h = (h_1,\dots, h_p)^T : \mathcal T \to S$ con $y \mapsto x =h(y) = g^{-1}(y)$.\\
+  con $g = (g_1,\dots,g_p): S \to \mathcal T$ biyectiva, por lo que $\exists g^{-1}$, y denotamos $g^{-1} = h = (h_1,\dots, h_p)^T : \mathcal T \to S$.
 
   Supongamos que existen las derivadas parciales:
   \[
-  \frac{\partial x_i}{\partial y_j} = \frac{\partial h_i(y)}{\partial y_j} \quad (i,j = 1,\dots,p)
+    \frac{\partial h_i(y)}{\partial y_j} \quad (i,j = 1,\dots,p)
   \]
-  y que son continuas sobre $\mathcal T$.\\
+  y que son continuas sobre $\mathcal T$.
 
   Entonces, la función de densidad $f_Y(y)$ del vector $Y=(Y_1,\dots,Y_p)^T = y(X)$ viene dada por:
   \[
-  f_Y(y) = f_X(g^{-1}(y))*|J_{g^{-1}}(y)|
-  \]
-  donde $J_{g^{-1}}(y)$ es el determinante de la matriz jacobiana de $g^{-1}$
+  f_Y(y) = f_X(g^{-1}(y))\det(J_{g^{-1}}(y))
+  .\]
   %#TODO: Añadir determinante de jacobiana
 \end{nth}
 
 \begin{ncor}[Caso lineal]
-  Sea $Y = BX + b$ con $B\in \mathcal M_{p\times p}$ y no singular (esto es $|B|\ne 0, \ \exists B^{-1}$). Entonces, $X = B^{-1}(Y-b)$, y la transformación $g: \mathbb R^P \mapsto \mathbb R^P$ tal que $g(x) = BY+b$. Además en este caso,
+  Sea $Y = BX + b$ con $B\in \mathscr{M}_{p}(\R)$ y no singular. En este caso,
   \[
-  J_{g^{-1}}(\dot) = [ J_{g}(y^{-1}(y)]^{-1} = |B|^{-1} = |B^{-1}|
+  J_{g^{-1}}(g(x)) = \left[ J_{g}(x) \right]^{-1} = \det(B)^{-1} = \det\left(B^{-1}\right)
   \]
   y se tiene:
   \[
-  f_Y(y) = f_X(B^{-1}(y-b))\dot abs(|B|^{-1})
-  \]
+  f_Y(y) = f_X\left(B^{-1}(y-b)\right)\left|\det(B)^{-1}\right|
+  .\]
 
 \end{ncor}
 \begin{nota}
-Podemos suponer a partir de ahora que la matriz $H$ siempre tendrá determinante positivo, pues podemos tomarla así tomando la correcta descomposición de $\Sigma = CC^T$
+  Al factorizar una matriz definida positiva, siempre existe una factorización $CC^T$ con $\det(C) > 0$.
   \end{nota}
 
 \subsection{Distribución normal multivariante}
