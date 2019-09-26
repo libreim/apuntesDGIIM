@@ -236,18 +236,18 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
   \end{nlist}
 
   \begin{ndef}
-    Se define la \emph{distancia de Mahalanobis} de $X\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
+    Se define la \emph{distancia de Mahalanobis} de $\vectX\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
     \[
-    \Delta(X,\mu) = \left\{ (X-\mu)^T \Sigma (X-\mu) \right\} ^{\frac{1}{2}},
+    \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T \Sigma (\vectX-\mu) \right\} ^{\frac{1}{2}},
     \]
     que es una variable aleatoria.
   \end{ndef}
 
-  Vamos a interpretar este resultado. Supongamos que tenemos una normalización de $X$:
+  Vamos a interpretar esta definición. Sea $\vectZ$ una normalización de $\vectX$:
   \[
-  \Delta(X,\mu) = \left\{ (X-\mu)^T (CC^T)^{-1}(X-\mu)\right\}^{\frac{1}{2}} = \left\{ (X-\mu)^T (C^T)^{-1}C^{-1}(X-\mu)\right\}^{\frac{1}{2}} = \left\{Z^T Z\right\}^{\frac{1}{2}} = \Vert Z\Vert\,,
+  \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T (CC^T)^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{ (\vectX-\mu)^T (C^T)^{-1}C^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{\vectZ^T \vectZ\right\}^{\frac{1}{2}} = \Vert \vectZ\Vert\,,
   \]
-  con norma la euclídea en $\mathbb R^p$. Así, hemos relacionado la distancia con la norma. Recordemos que $\Vert Z\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
+  con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
 
   \begin{nprop}\hfill
     \begin{nlist}
