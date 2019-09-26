@@ -34,7 +34,7 @@ def pandoc_rule *inputs
         template_name = dir.downcase + ".tex"
         sh %(mkdir -p "#{t.name.split("/")[0...-1].join("/")}")
         Dir.chdir dir
-        sh %(pandoc --latex-engine pdflatex apuntes.md ejercicios.md --template #{template_name} -o #{"../"+t.name.sub("apuntes", dir.downcase)} --listings)
+        sh %(pandoc --pdf-engine=xelatex apuntes.md ejercicios.md --template #{template_name} -o #{"../"+t.name.sub("apuntes", dir.downcase)} --listings)
       rescue StandardError => e
         @error_log << "\e[31mNo se pudo generar #{t.name}\e[m"
       ensure
