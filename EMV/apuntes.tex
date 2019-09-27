@@ -438,10 +438,85 @@ siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $Z \s
 
 A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ representan, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $X \sim N_p(\mu,\Sigma)$.
 
-\subsubsection{Propiedades}
+\textbf{Propiedades:}
+
 \begin{enumerate}
 \item Sobre cambio de variable Lineal. Sea $X \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $Y = BX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
   \[
 Y \sim N_p(B\mu+b, B \Sigma B^T)
   \]
 \end{enumerate}
+
+Caracterización de la DNM en términos de la transformación
+\[
+X = AZ + \mu \quad Z \sim N_p(0,I_p), \quad A_{p\times p}
+\]
+con $A$ no singular.
+
+\begin{nth}
+  Sea $X$ un vector aleatorio $p-$dimensional, sigue una DNM (no singular), de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, i.e. $N_p(\mu,\Sigma), si y solo si
+  \[
+X = AZ + \mu
+\]
+con $A_{p\times p}$ no singular, $AA^T = \Sigma$, $Z \sim N_p(0,I_p)$
+\end{nth}
+%#TODO: Demostración (clase de prácticas)
+
+\subsubsection{Sobre Independencia y Condicionamiento}
+\begin{itemize}
+
+\item Sobre \textbf{Independencia:}
+  \begin{nprop}
+    Sea $X = (X_1,\dots,X_p)^T$ un vector aleatorio con DNM $X \sim N_p(\mu,\Sigma)$, $\Sigma > 0$. Si la matriz $\Sigma$ es diagonal
+    %# TODO: incluir matriz $\sigma_i^2$ diagonal
+    Entonces, las variables aleatorias componetnes del vector, $X_i$ con $i = 1,\dots,p$ son independientes y tienen distribución normal univariante $X_i \sim N(\mu_i, \sigma_i ^2$.
+  \end{nprop}
+  \begin{proof}
+    Por hipótesis, sabemos que:
+    \[
+    f_X(x) = \frac{1}{(2\pi)^{\frac{p}{2}} |\Sigma|^{\frac{1}{2}}}exp\{- \frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\}
+    \]
+    Y además:
+    \begin{itemize}
+    \item $|\Sigma|^{\frac{1}{2}} = (\prod_{i = 1}^p \sigma_i^2)^{\frac{1}{2}} = \prod_{i=1}^p \sigma_i$
+    \item $\Sigma^{-1} = diag((sigma_1^2)^{-1}, \dots , (\sigma_p^2)^{-1}))$
+      \item $(x-\mu)^T diag((sigma_1^2)^{-1}, \dots , (\sigma_p^2)^{-1}))(x-\mu) = \sum_{i=1}^p (x_i-\mu_i)^2 \sigma_i^{-2} = \sum_{i = 1}^p (\frac{x_i-\mu_i}{\sigma_i})^2$
+    \end{itemize}
+    Por tanto, reescribiendo:
+    \[
+    \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} exp \{ -\frac{1}{2}(x-\mu)^T diag((sigma_1^2)^{-1}, \dots , (\sigma_p^2)^{-1}))(x-\mu)  \} =    \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} exp \{ -\frac{1}{2} \sum_{i = 1}^p (\frac{x_i-\mu_i}{\sigma_i})^2  \} = \prod_{i = 1}^p  \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} exp \{ -\frac{1}{2} (\frac{x_i-\mu_i}{\sigma_i})^2  \} = \prod_{i = 1}^p f_{X_i}(x_i)
+    \]
+
+  \end{proof}
+
+\item Sobre \textbf{independencia:}\\
+
+  El recíproco de el último resultado dado es cierto en el siguiente sentido:
+  \begin{nprop}
+    Si $X = (X_1,\dots,X_p)^T$ es un vector aleatorio con componentes \emph{mutuamente} independientes que tienen DNM, $X_i \sim N(\mu_i, \sigma_i)$, con $\sigma > 0$. Entonces, $X$ tiene DNM
+    \[
+    X \sim N_p(\mu, \Sigma)
+    \]
+    con $\mu = (\mu_1,\dots,\mu_p)^T$ y $\Sigma = diag(\sigma_1^2 , \dots , \sigma_p^2) > 0$
+  \end{nprop}
+
+  \begin{ncor}
+    Si $X$ es un vector aleatorio, $X\sim (\mu, \Sigma)$ y $\Sigma \geq 0$ con $|\Sigma| = 0$,
+    con probabilidad 1, las componentes de $X = (X_1,\dots,X_p)^T$ cumplirán una relación de dependencia del tipo:
+    \[
+    \alpha^T X = 0 \quad \quad \alpha^T \in \mathbb R^p - \{ 0\} 
+    \]
+  \end{ncor}
+  \begin{proof}
+    Como $|\Sigma| = 0$, $\exists \alpha \ne 0$ tal que $\alpha^T \Sigma \alpha = 0$. Definimos la variable aleatoria $Y = \alpha^T X$, y se tiene que:
+    \begin{itemize}
+    \item $E[Y] = E[\alpha^T X] = \alpha^T E[X] = \alpha^T \mu =: k$
+    \item $$Var(Y) = E[(Y-k)^2] = E[(\alpha^TX - \alpha^T \mu)^2] = E[(\alpha^T(X-\mu))^2] = E[(\alpha^T(X-\mu))(\alpha^T(X-\mu))] = E[\alpha^T(X-\mu)(X-\mu)^T\alpha]= \alpha^T E[(X-\mu)(X-\mu)^T]\alpha = \alpha^T \Sigma \alpha = 0$$
+      con lo que $Y$ es una variable aleatoria degenerada: $P[Y = k] = 1 \iif \alpha^T X = k c.s.$
+      %#TODO: 1
+      %#TODO: 2
+      %#TODO: los dos anteriorres son para remarcar este, hay que completar esto, no se que estaba pasando, @antcc lo tiene
+      \end{itemize}
+
+  \end{proof}
+\end{itemize}
