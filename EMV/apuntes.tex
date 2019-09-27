@@ -441,7 +441,7 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
 \textbf{Propiedades:}
 
 \begin{enumerate}
-\item Sobre cambio de variable Lineal. Sea $X \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $Y = BX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
+\item Sobre cambio de variable lineal. Sea $X \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $Y = BX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
   \[
 Y \sim N_p(B\mu+b, B \Sigma B^T)
   \]
@@ -454,7 +454,7 @@ X = AZ + \mu \quad Z \sim N_p(0,I_p), \quad A_{p\times p}
 con $A$ no singular.
 
 \begin{nth}
-  Sea $X$ un vector aleatorio $p-$dimensional, sigue una DNM (no singular), de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, i.e. $N_p(\mu,\Sigma), si y solo si
+  Sea $X$ un vector aleatorio $p-$dimensional, sigue una DNM (no singular), de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, i.e. $N_p(\mu,\Sigma)$, si y solo si
   \[
 X = AZ + \mu
 \]
@@ -512,7 +512,7 @@ con $A_{p\times p}$ no singular, $AA^T = \Sigma$, $Z \sim N_p(0,I_p)$
     \begin{itemize}
     \item $E[Y] = E[\alpha^T X] = \alpha^T E[X] = \alpha^T \mu =: k$
     \item $$Var(Y) = E[(Y-k)^2] = E[(\alpha^TX - \alpha^T \mu)^2] = E[(\alpha^T(X-\mu))^2] = E[(\alpha^T(X-\mu))(\alpha^T(X-\mu))] = E[\alpha^T(X-\mu)(X-\mu)^T\alpha]= \alpha^T E[(X-\mu)(X-\mu)^T]\alpha = \alpha^T \Sigma \alpha = 0$$
-      con lo que $Y$ es una variable aleatoria degenerada: $P[Y = k] = 1 \iif \alpha^T X = k c.s.$
+      con lo que $Y$ es una variable aleatoria degenerada: $P[Y = k] = 1 \iff \alpha^T X = k c.s.$
       %#TODO: 1
       %#TODO: 2
       %#TODO: los dos anteriorres son para remarcar este, hay que completar esto, no se que estaba pasando, @antcc lo tiene
