@@ -1,0 +1,452 @@
+%\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+
+% $if(title)$
+% \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+% $endif$
+% $if(subtitle)$
+% \providecommand{\subtitle}[1]{}
+% \subtitle{$subtitle$}
+% $endif$
+% $if(author)$
+% \author{$for(author)$$author$$sep$ \and $endfor$}
+% $endif$
+% $if(institute)$
+% \providecommand{\institute}[1]{}
+% \institute{$for(institute)$$institute$$sep$ \and $endfor$}
+% $endif$
+% \date{$date$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Plantilla para libro de texto de matemáticas.
+%
+% Esta plantilla ha sido desarrollada desde cero, pero utiliza algunas partes
+% del código de la plantilla original utilizada en apuntesDGIIM
+% (https://github.com/libreim/apuntesDGIIM), basada a su vez en las plantillas
+% 'Short Sectioned Assignment' de Frits Wenneker (http://www.howtotex.com),
+% 'Plantilla de Trabajo' de Mario Román y 'Plantilla básica de Latex en Español'
+% de Andrés Herrera Poyatos (https://github.com/andreshp). También recoge
+% ideas de la plantilla 'Multi-Purpose Large Font Title Page' de
+% Frits Wenneker y Vel (vel@latextemplates.com).
+%
+% Licencia:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ---------------------------------------------------------------------------
+% CONFIGURACIÓN BÁSICA DEL DOCUMENTO
+% ---------------------------------------------------------------------------
+
+%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
+\documentclass[10pt, a4paper]{article}
+
+\linespread{1.3}            % Espaciado entre líneas.
+\setlength\parindent{0pt}   % No indentar el texto por defecto.
+\setlength\parskip{7pt}
+
+% ---------------------------------------------------------------------------
+% CONFIGURACIÓN PERSONALIZADA
+% ---------------------------------------------------------------------------
+
+\usepackage{config}
+
+% ---------------------------------------------------------------------------
+% COMANDOS Y PAQUETES UTILIZADOS POR PANDOC
+% ---------------------------------------------------------------------------
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+
+% Ajuste del tamaño de las imágenes
+
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+
+% ---------------------------------------------------------------------------
+% PAQUETES BÁSICOS
+% ---------------------------------------------------------------------------
+
+% IDIOMA
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting]{babel}
+
+% FUENTES
+\usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
+\usepackage{FiraSans}                 % Fuente sans serif
+\usepackage[T1]{fontenc}
+\usepackage[italic]{mathastext}     % Utiliza la fuente del documento
+                                    % en los entornos matemáticos
+
+% MÁRGENES
+\usepackage[margin=2.5cm, top=3cm]{geometry}
+
+%  OTROS
+\usepackage{hyperref}   % Enlaces
+\usepackage{graphicx}   % Permite incluir gráficos en el documento
+
+% ---------------------------------------------------------------------------
+% COLORES
+% ---------------------------------------------------------------------------
+
+\definecolor{sbase00}{HTML}{657B83}
+
+% ---------------------------------------------------------------------------
+% FUENTE DE MATEMÁTICAS ADAPTABLE EN SANS-SERIF
+% ---------------------------------------------------------------------------
+
+\usepackage{sansmath}
+
+\newif\IfInSansMode
+\let\oldsf\sffamily
+\renewcommand*{\sffamily}{\oldsf\sansmath\InSansModetrue}
+
+% ---------------------------------------------------------------------------
+% DISEÑO DE PÁGINA
+% ---------------------------------------------------------------------------
+
+\usepackage{pagecolor}
+\usepackage{afterpage}
+
+% ---------------------------------------------------------------------------
+% CABECERA Y PIE DE PÁGINA
+% ---------------------------------------------------------------------------
+
+\usepackage{fancyhdr}   % Paquete para cabeceras y pies de página
+
+% Indica que las páginas usarán la configuración de fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+
+% Representa la sección de la cabecera
+\renewcommand{\sectionmark}[1]{%
+\markboth{#1}{}}
+
+% Representa la subsección de la cabecera
+\renewcommand{\subsectionmark}[1]{%
+\markright{#1}{}}
+
+% Parte derecha de la cabecera
+\fancyhead[LE,RO]{\sffamily\textsl{\rightmark} \hspace{1em}  \textcolor{500}{\rule[-0.4ex]{0.2ex}{1.2em}} \hspace{1em} \thepage}
+
+% Parte izquierda de la cabecera
+\fancyhead[RE,LO]{\sffamily{\leftmark}}
+
+% Elimina la línea de la cabecera
+\renewcommand{\headrulewidth}{0pt}
+
+% Controla la altura de la cabecera para que no haya errores
+\setlength{\headheight}{14pt}
+
+% ---------------------------------------------------------------------------
+% TÍTULOS DE PARTES Y SECCIONES
+% ---------------------------------------------------------------------------
+
+\usepackage{titlesec}
+
+% Estilo de los títulos de las partes
+\titleformat{\part}[hang]{\Huge\bfseries\sffamily}{\thepart\hspace{20pt}\textcolor{500}{|}\hspace{20pt}}{0pt}{\Huge\bfseries}
+\titlespacing*{\part}{0cm}{-2em}{2em}[0pt]
+
+% Reiniciamos el contador de secciones entre partes (opcional)
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+% Estilo de los títulos de las secciones, subsecciones y subsubsecciones
+\titleformat{\section}
+  {\Large\bfseries\sffamily}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\Large\sffamily}{\thesubsection}{1em}{}[\vspace{.5em}]
+
+\titleformat{\subsubsection}
+  {\sffamily}{\thesubsubsection}{1em}{}
+
+% ---------------------------------------------------------------------------
+% LISTINGS
+% ---------------------------------------------------------------------------
+
+% Listing -> Código fuente
+\renewcommand{\lstlistingname}{Código fuente}
+
+% Ajustes de Listings para el documento
+
+\lstset{
+  frame=leftline,
+  rulecolor=\color{300},
+  framerule=2pt,
+  % Números de línea
+  numbers=left,
+  % Margen adicional para alinear los entornos con el resto de párrafos
+  xleftmargin=0.7em,
+  % Espacio adicional debajo del título
+  belowcaptionskip=1\baselineskip,
+  % Colores
+  basicstyle=\ttfamily\color{sbase00},
+  keywordstyle=\color{700},
+  commentstyle=\color{300},
+  stringstyle=\color{500},
+  numberstyle=\color{500},
+  % Separar líenas largas en varias líneas
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+}
+
+% ---------------------------------------------------------------------------
+% ENTORNOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+\usepackage{mdframed}
+
+%% MARCOS DE LOS ESTILOS
+
+% Configuración general de mdframe, los estilos de los teoremas, etc
+\mdfsetup{
+  skipabove=1em,
+  skipbelow=1em,
+  innertopmargin=1em,
+  innerbottommargin=1em,
+  splittopskip=2\topsep,
+}
+
+% Definimos los marcos de los estilos
+
+\mdfdefinestyle{nth-frame}{
+	linewidth=2pt, %
+	linecolor= 500, %
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0em, %
+	innerleftmargin=1em, %
+  innerrightmargin=1em,
+	rightmargin=0em, %
+}%
+
+\mdfdefinestyle{nprop-frame}{
+	linewidth=2pt, %
+	linecolor= 300, %
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, %
+	innerrightmargin=1em,
+	rightmargin=0pt, %
+}%
+
+\mdfdefinestyle{ndef-frame}{
+	linewidth=2pt, %
+	linecolor= 500, %
+	backgroundcolor= 50,
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, %
+	innerrightmargin=1em,
+	rightmargin=0pt, %
+}%
+
+\mdfdefinestyle{ejer-frame}{
+	linewidth=2pt, %
+	linecolor= 300, %
+	backgroundcolor= 50,
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+	leftmargin=0pt, %
+	innerleftmargin=1em, %
+	innerrightmargin=1em,
+	rightmargin=0pt, %
+}%
+
+\mdfdefinestyle{ejemplo-frame}{
+	linewidth=0pt, %
+	linecolor= 300, %
+	leftline=false, %
+	rightline=false, %
+	leftmargin=0pt, %
+	innerleftmargin=1.3em, %
+	innerrightmargin=1em,
+	rightmargin=0pt, %
+	innertopmargin=0em,%
+	innerbottommargin=0em, %
+	splittopskip=\topskip, %
+}%
+
+% Asignamos los marcos a los estilos
+\surroundwithmdframed[style=nth-frame]{nth}
+\surroundwithmdframed[style=nprop-frame]{nprop}
+\surroundwithmdframed[style=nprop-frame]{ncor}
+\surroundwithmdframed[style=ndef-frame]{ndef}
+\surroundwithmdframed[style=ejer-frame]{ejer}
+\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
+\surroundwithmdframed[style=ejemplo-frame]{sol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------------------------------------------
+% COMIENZO DEL DOCUMENTO
+% ---------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+% PORTADA EXTERIOR
+% ---------------------------------------------------------------------------
+
+\newpagecolor{500}\afterpage{\restorepagecolor} % Color de la página
+\begin{titlepage}
+
+  % Título del documento
+	\parbox[t]{\textwidth}{
+			\raggedright % Texto alineado a la izquierda
+			\fontsize{50pt}{50pt}\selectfont\sffamily\color{white}{
+			  \textbf{\asignatura}
+      }
+	}
+
+	\vfill
+
+	%% Autor e información del documento
+	\parbox[t]{\textwidth}{
+		\raggedright % Texto alineado a la izquierda
+		\sffamily\large\color{white}
+		{\Large \autor }\\[4pt]
+		\grado\\
+		\universidad\\[4pt]
+		\texttt{\enlaceweb}
+	}
+
+\end{titlepage}
+
+% ---------------------------------------------------------------------------
+% PÁGINA DE LICENCIA
+% ---------------------------------------------------------------------------
+
+\thispagestyle{empty}
+\null
+\vfill
+
+%% Información sobre la licencia
+\parbox[t]{\textwidth}{
+  \includegraphics{by-nc-sa.pdf}\\[4pt]
+  \raggedright % Texto alineado a la izquierda
+  \sffamily\large
+  {\Large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
+  Eres libre de distribuir y adaptar el material siempre que reconozcas a los\\
+  autores originales del documento, no lo utilices para fines comerciales\\
+  y lo distribuyas bajo la misma licencia.\\[4pt]
+  \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}
+}
+
+% ---------------------------------------------------------------------------
+% PORTADA INTERIOR
+% ---------------------------------------------------------------------------
+
+\begin{titlepage}
+
+  % Título del documento
+	\parbox[t]{\textwidth}{
+			\raggedright % Texto alineado a la izquierda
+			\fontsize{50pt}{50pt}\selectfont\sffamily\color{500}{
+			  \textbf{\asignatura}
+      }
+	}
+
+	\vfill
+
+	%% Autor e información del documento
+	\parbox[t]{\textwidth}{
+		\raggedright % Texto alineado a la izquierda
+		\sffamily\large
+		{\Large \autor}\\[4pt]
+		\grado\\
+		\universidad\\[4pt]
+		\texttt{\enlaceweb}
+	}
+
+\end{titlepage}
+
+% ---------------------------------------------------------------------------
+% ÍNDICE
+% ---------------------------------------------------------------------------
+
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+% ---------------------------------------------------------------------------
+% PANDOC
+% ---------------------------------------------------------------------------
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+{
+$if(colorlinks)$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$body$
+
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+
+% ---------------------------------------------------------------------------
+% CONTENIDO
+% ---------------------------------------------------------------------------
+
+
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
