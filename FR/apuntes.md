@@ -13,15 +13,16 @@ eficaz si maximiza el uso de los recursos como el ancho de banda entre
 otros y que es transparente si actúa con independencia de las
 diferencias del sistema entre la fuente y el destino.
 
-Una **red** es un un sistema de comunicación con sistemas finales autónomos que facilita el intercambio eficaz y transparente de la información.
+La **información** es el conjunto de datos con significado.
 
+Una **red** es un un sistema de comunicación con sistemas finales (terminales) autónomos (con capacidad de procesar información) que facilita el intercambio eficaz y transparente de la información.
 
 Razones para usar redes:
 
 - Nos permiten compartir recursos
 - Son escalables
-- Son fiables y robustas
-- Permiten ahorrar costes
+- Son fiables y robustas -> Duplicidad (redundancia)
+- Permiten ahorrar costes (computación distribuida)
 
 Podemos clasificar las redes:
 
@@ -29,9 +30,10 @@ Podemos clasificar las redes:
     * LAN (Local Area Network) $\simeq$ 1km
     * MAN (Metropolitan Area Network) $\simeq$ 10km
     * WAN (Wide Area Network) $\geq$ 10km
+
 - Por tecnología de transmisión o uso del canal de comunicación
-    * Difusión
-    * Punto a punto
+    * Difusión o canal compartido (WiFi, Redes de Datos Móviles, BlueTooth...)
+    * Punto a punto (Fibra, ADSL...)
 
 
 Tenemos varios problemas a resolver respecto a la transparencia y
@@ -44,92 +46,149 @@ entrega ordenada de los mensajes; gestión del diálogo o turno de
 palabra; representación o sintaxis de los datos; significado o
 semántica de los datos.
 
-Aprendereos a solucionar todo esto utilizando el modelo OSI(Open
+Aprenderemos a solucionar todo esto utilizando el modelo OSI (Open
 System Interconnection) de la ISO que pese a ser un modelo estándar
 tiene un interés puramente académico. Pese a ello, este modelo de 7
 capas es la base del modelo TCP/IP que es el que realmente se utiliza
 a día de hoy.
 
-
-
 ### Estructura y elementos de una red
 
-Los **hosts** son los sistemas finales autónomos y la *subred* es la
-infraestructura para el transporte de información. Las subredes están
-formadas por nodos que se conectan mediante nodos o elementos de
+- Los **hosts** son los sistemas finales (terminales) autónomos.
+- La *subred* es la infraestructura para el transporte de información. Las subredes están
+formadas por líneas de transmisión y nodos que se conectan mediante nodos o elementos de
 conmutación (routers, switches o estaciones base).
 
 ## Diseño y estandarización de redes
+
+Problemas a resolver por la red (transparencia y eficacia):
+
+- ¿Cómo enviar físicamente la información?
+- Compartición del medio. Segmentación de la información
+- Control de flujo y de errores, salto a salto y también extremo a
+extremo
+- Control del encaminamiento (enrutamiento)
+- Control de congestión
+- Entrega ordenada de los mensajes
+- Gestión del diálogo o turno de palabra
+- Representación (sintaxis) de los datos
+- Significado (semántica) de los datos
+
+Conceptos de diseño en redes:
+
+- Solucionar los problemas en capas
+- Concepto de “Modelo de Referencia” ->
+definición de capas + funcionalidades
+
+Principios de diseño para el modelo de referencia:
+- Funcionalidades distintas deben estar en capas
+distintas
+- Minimizar el flujo de información entre capas
+
+Estándares internacionales:
+
+1. **Modelo OSI** (Open System Interconnection) de la ISO
+2. **TCP/IP** del Internet Engineering Task Force.
+
 
 ### **Modelo OSI**
 
 Grupo 1 de capas:
 
-- Capa Física: Conexión ordenador-punto de acceso. Mueven los bits
+- **Capa Física**: Conexión ordenador-punto de acceso. Mueven los bits
   dentro de la trama de un nodo al siguiente.
 
-- Capa de Enlace: Permite la comunicación entre dos nodos directamente
+- **Capa de Enlace**: Permite la comunicación entre dos nodos directamente
   conectados. Delimita la trama (nombre que se le da a los paquetes de
   la capa de enlace) y controla errores y flujo.
 
+
 Grupo 2:
 
-- Capa de Red: Nos ofrece la capacidad de enrutamiento que permite
+- **Capa de Red**: Nos ofrece la capacidad de enrutamiento que permite
   llevar a los paquetes desde un origen a un destino. Controla además
   la congestión, evitando el envío de paquetes a nodos
   congestionados. Incluye el protocolo IP, que es único y hace que se
   haga referencia a esta capa como la capa IP.
 
-Abstrae toda la comunicación para que únicamente se preocupe del nodo
-inicial y nodo destino como si estuvieran conectados directamente.
+  Abstrae toda la comunicación para que únicamente se preocupe del nodo inicial y nodo destino como si estuvieran conectados directamente.
 
 Grupo 3:
 
-
-- Capa de Transporte: Transporta los mensajes entre los extremos
+- **Capa de Transporte**: Transporta los mensajes entre los extremos
   finales de la comunicación. Existen dos protocolos de transporte,
-  UDP y TCP. Proporciona control de errores y control de flujo.
+  UDP y TCP. Proporciona control de errores y control de flujo. Resuelve problemas de semántica.
 
-- Capa de Sesión: Controla el "turno de palabra" y las tareas de
+- **Capa de Sesión**: Controla el "turno de palabra" y las tareas de
   sincronización, es decir, decide quién y en qué momento envía
   información.
 
-- Capa de Presentación: Permite una traducción desde el "idioma de la
+- **Capa de Presentación**: Permite una traducción desde el "idioma de la
   red" al "idioma de la aplicación", que se puedan entender los datos
   intercambiados. Incluye cifrado y compresión.
 
-- Capa de Aplicación: Son las aplicaciones finales, que tienen su
+- **Capa de Aplicación**: Son las aplicaciones finales, que tienen su
   propio protocolo (http, ftp, por ejemplo). A los paquetes que
   transmite se les conoce como "*mensajes*".
 
-## Terminología y servicios
+### **Modelo de referencia TCP/IP**
+
+Grupo 1:
+
+- **Red subyacente**.
+
+Grupo 2:
+
+- **Capa de Red**.
+
+Grupo 3:
+
+- **Capa de Transporte**.
+- **Capa de aplicación**.
 
 
-## Terminología y servicios:
+## Terminología, conceptos y servicios
 
-Comunicación **virtual** (horizontal) vs **real**(vertical).
+**Modelo OSI**: comunicación real frente a comunicación virtual.
 
-La comunicación virtual es cómo la capa N-ésima de la primera entidad
-que se comunica envía un mensaje a la N-ésima capa de la segunda
-entidad receptora. Mientras que la real refleja como cada capa se
+En la siguiente imagen podemos ver que los routers solo operan hasta la 3ª capa.
+
+**Terminología**:
+
+- **Comunicación real** (vertical): refleja como cada capa se
 comunica con su capa inmediatamente inferior hasta que llega a la capa
 física que transmite la información y se comunica con la capa
 inmediatamente superior hasta llegar a la capa original.
+- **Comunicación virtual** (horizontal): es como la capa N-ésima de la primera entidad que se comunica envía un mensaje a la N-ésima capa de la segunda entidad receptora.
+- **Entidad del nivel N** (N en OSI del 1 = físico al 7 = aplicación)
+- **Entidades pares**: están en la misma capa. Dialogan virtualmente entre ellas.
+- **Protocolo**: conjunto de reglas que regulan el intercambio de información virtual entre entidades pares en un modelo de referencia dado
+- **Interfaz**: división que hay entre las entidades (interfaz de aplicación y presentación)
+- **Servicio**: funcionalidad que ofrece cada capa
+- **Capa proveedora/usuaria del servicio**
+- **Pila de protocolos**: sobre un modelo de referencia, elegir un protocolo para cada capa
+- **Arquitectura de red = Modelo de referencia + Pila de protocolos**. La arquitectura de red es un modelo de referencia al que le asocio una pila de protocolo
+- Compartir una arquitectura de red extremo a extremo garantiza el “intercambio de información transparente” entre hosts.
+- **SAP** (Service Access Point)
+- **SDU** (Service data Unit)
+- **PDU** (Protocol Data Unit)
 
-**Retardos en la comunicación:**
+
+**Retardos en la comunicación:** es una magnitud que caracteriza la interacción entre los host. Mide el tiempo involucrado.
+
 
 El **tiempo de transmisión** es lo que tardan los bits del paquete en
 emitirse. Depende de la velocidad de transmisión y el número de bits a
 enviar.
 
-$$T_t = \frac{P(b)}{V_t (bps)}$$
+$$T_{transmision} (s) = \frac{L(bits)}{V_t (bps)}$$
 
 El **tiempo de propagación** es el tiempo que el primer bit tarda hasta
 llegar a su destino. La velocidad de propagación depende del medio
 físico del enlace y se mide en metros por segundo. (Distancia a
 recorrer entre velocidad de propagación
 
-$$T_p = \frac{D(m)}{V_p(m/s)}$$
+$$T_{propagacion} (s) = \frac{D(m)}{V_p(m/s)} \; -> V_{propagacion} (m/s)$$
 
 La fibra óptica aumenta el ancho de banda para poder transmitir más
 bits a la vez, y por tanto aumenta la velocidad de las transmisiones.
@@ -140,52 +199,56 @@ nodo recibe dicho paquete y procesa su información, y **retardos de
 cola**, cuando el mensaje espera en una cola a que todos los mensajes
 que llegaron antes que él sean enviados.
 
-
 **Servicios:**
-- **Orientado a conexión (OC)**. Tales como TCP, su objetivo es evitar
-  las pérdidas. Se abre una conexión, haciendo que cliente y servidor
+
+- **Orientado a conexión (SOC)**. Tales como TCP, su objetivo es evitar
+  las pérdidas. Se abre una conexión y reserva recursos, haciendo que cliente y servidor
   intercambien información de control antes de que se produzca el
-  intercambio a nivel de aplicación. Se usa en aplicaciones donde se
+  intercambio a nivel de aplicación. Hasta que no conteste el otro extremo, no se puede transmitir información. Se usa en aplicaciones donde se
   quieran evitar las pérdidas de información.
 
-- **No orientado a conexion (NOC)**. Tales como UDP,  proporciona unos
-  servicios básicos, sin establecer una conexión previa, por lo que no
+- **No orientado a conexion (SNOC)**. Tales como UDP,  proporciona unos
+  servicios básicos, sin establecer una conexión previa ni reservar recursos, por lo que no
   garantiza la correcta entrega del mensaje. Se usa en aplicaciones de
   tiempo real.
 
 - **Confirmado (fiable)**. Pueden garantizar la entrega sin errores y
-  en el orden correcto.
+  en el orden correcto. Necesita realimentación positiva y tienen implícito un mecanismo de confirmación
 
 - **No confirmado (no fiable)**. No garantizan la entrega correcta del
-  mensaje.
+  mensaje. No hay puntero
 
-## Internet: arquitectura y direccionamiento
+## Internet: topología y direccionamiento
 
-Existe una jerarquía en el sistema por el cual nos conectamos a
+Existe una topología jerarquica en el sistema por el cual nos conectamos a
 internet:
 
-* Intranets: Wifi, ethernet
+* **Intranets (Ethernet) del usuario**: zona pública + zona privada
 
-* Redes de acceso del ISP (Internet Service Provider): Cable
+* **Redes de acceso (xDSL, RDSI, FTTH...) del ISP (Internet Service Provider)**: Cable
   telefónico (xDLS,ISDN), cable (coax), HFC(Hybrid Fiber Coax),
   FTTH(Fiber-To-The-Home)
 
-* Redes troncales (ATM, SDH, SONET, etc) de grandes operadores de
-  telecomunicaciones.
+* **Redes troncales (ATM, SDH, SONET, etc) de grandes operadores de
+  telecomunicaciones**.
+
+* **Acuerdos de Peering y Tránsito**. En Peering no se paga, en tránsito sí.
+* **Tier1, Tier2 y Tier3**.
+* **Puntos neutros o PoP (Point of Presence) o IXP (Internet eXchange Point)**: garantizan el acceso a muchos Tiers.
 
 
 **Tipos de Tier de ISP:**
 
-* Tier 1: Los grandes proovedores hacen acuerdos de peering para no
+* **Tier 1**: Los grandes proovedores hacen acuerdos de peering para no
   cobrarse los servicios mutuamente, sino que solo gestionan el
   tráfico entre ellos. Sólo tienen acuerdos de peering. Se conocen
-  como redes troncales y tienen cobertura internacional.
+  como redes troncales y tienen cobertura internacional (pueden llegar a cualquier IP).
 
-* Tier 2: Tienen tanto acuerdos de peering como pagos a otros ISP más
+* **Tier 2**: Tienen tanto acuerdos de peering como pagos a otros ISP más
   grandes que puedan gestionar su tráfico. Tienen cobertura
   regional/nacional.
 
-* Tier 3: Pagan por los acuerdos de tránsito. No pueden permitirse
+* **Tier 3**: Pagan por los acuerdos de tránsito. No pueden permitirse
  negociar para hacer peering. Necesitan conectarse a internet a través
  de un ISP de tier 2.
 
@@ -196,35 +259,44 @@ internet:
  lenguaje humano a su correspondiente dirección IP.
 
 
+**Niveles de direccionamiento**: hay uno por cada capa.
+
+- **URL**: capa de aplicación.
+- **Puertos**: identifica el proceso origen y destino -> capa de transporte.
+- **Dirección IP (identifica los hosts)**: capa de red (dirección IP origen y destino).
+
 \newpage
 
 # Tema 2. Servicios y Protocolos de Aplicación en Internet
 
-## Introducción a las aplicaciones web
+## Introducción a las aplicaciones de red
+
+### Protocolos TCP/IP
 
 Todas las aplicaciones finales que usamos se basan en otros
 protocolos. Los protocolos que use la aplicación estarán basados en
 otros de transporte como UDP y TCP y estos a su vez en protocolos de
 internet como IP, que son los que finalmente tienen acceso a la red.
 
+Hay un modelo de referencia y una pila de protocolos. A cada capa (Internet, transporte y aplicación) se le asocia protocolos:
+
+
+### Arquitectura cliente/servidor
+
 Generalmente se comportan de acuerdo a una estructura
 cliente-servidor. En este existe un host que siempre está activo, el
 servidor, con IP permanente y pública. Y este presta un servicio a las
-solicitudos de muchos otros hosts, que son sus clientes, con IP que
+solicitudes de muchos otros hosts, que son sus clientes, con IP que
 puede ser dinámica y privada y no se comunican entre sí. Estos, por su
 parte, pueden estar activos de manera permanente o intermitente.
 
-Los servidores se agrupan en granjas o clústeres, también denominados
-centros de datos, que permiten dar soporte a todas las peticiones de
-sus clientes sin ser desbordados.
+Un **servidor** siempre está en funcionamiento, tiene IP permanente y pública. Se agrupan en granjas o clústeres, también denominados centros de datos, que permiten dar soporte a todas las peticiones de sus clientes sin ser desbordados.
 
-### **Sockets**
+Los **clientes** funcionan intermitentemente, pueden tener IP dinámica y privada, se comunican con el servidor pero no se comunican entre sí.
 
-La comunicación entre diversos hosts se realiza mediante el uso de
-sockets por parte de los procesos que se encuentran tanto en servidor
-como en el cliente.
+### Procesos cliente y servidor
 
-Un socket es la interfaz entre el proceso de la aplicación y el protocolo de la capa de transporte. La aplicación del lado emisor empuja los mensajes a través del socket. En el otro lado del socket, el protocolo de la capa de transporte tiene la responsabilidad de llevar los mensajes hasta el socket de recepción.
+El **proceso cliente** inicia la comunicación y el **proceso servidor** espera a ser contactado (IP permanente y pública).
 
 El proceso cliente es el que inicia la comunicación, mientras que el
 proceso servidor es el que espera a ser contactado. Es por esto por lo
@@ -232,88 +304,79 @@ que necesita tener una IP permanente y pública. Además, para recibir
 mensajes, un proceso debe tener un identificador, compuesto por una IP
 y un puerto.
 
-**Retardo en cola:**
+> Nota: una IP pública es única asignada de forma permanente y solo se puede usar bajo solicitud a la autoridad.
 
-Para estimar los retardos en cola se usa teoría de colas. El retardo
-en cola es:
+Un proceso envía/recibe mensajes a/desde su **socket**. Para recibir mensajes un proceso debe tener un **identificador** (IP +puerto). Por ejemplo: servidor web gaia.cs.umass.edu con IP 128.119.245.12 y número de puerto 80.
+
+
+### La interfaz Socket
+
+La comunicación entre diversos hosts se realiza mediante el uso de
+sockets por parte de los procesos que se encuentran tanto en servidor
+como en el cliente.
+
+Un **socket** es un descriptor de una transmisión a través del
+cual la aplicación puede enviar y/o recibir información hacia y/o desde
+otro proceso de aplicación. Es decir, es la interfaz ("puerta" de acceso) entre la aplicación y los servicios de transporte. La aplicación del lado emisor empuja los mensajes a través del socket. En el otro lado del socket, el protocolo de la capa de transporte tiene la responsabilidad de llevar los mensajes hasta el socket de recepción. En la práctica, un socket es una variable tipo puntero que apunta a una estructura:
+
+### Retardo en cola
+
+Para estimar los retardos (tiempos) en cola se usa teoría de colas: el uso de un servidor se modela con un sistema M/M/1
+
+
+El retardo en cola es:
 
 $$ R = \frac{\lambda (T_s)^2}{1-\lambda T_s} $$
 
-Donde $T_s$ es el tiempo de servicio y $\lambda$ es el ratio de
-llegada de solicitudes.
+Donde $T_s$ (distribución exponencial) es el tiempo de servicio y $\lambda$ (Poisson) es la ratio de llegada de solicitudes.
 
 Esta expresión se puede usar para calcular el retardo en cola en un
 router.
 
 ### Protocolo de aplicación
 
-Una pregunta que nos podemos hacer es qué define a un protocolo. Y
-estos están definidos por el tipo de servicio que sea, el tipo de
-mensaje que emita, su sintaxis, semántica y sus reglas.
+Los protocolos están definidos por el **tipo de servicio** (orientado o no a conexión, o realimentado o no), el **tipo de mensaje** que emita (request, response), su **sintaxis** (definición y estructura de campos en el mensaje. En aplicación generalmente son orientados a texto (HTTP) aunque hay excepciones (DNS) y tienden a usar formato Type-Length-Value), **semántica** (significado de los campos) y sus **reglas** (cuándo los procesos envían mensajes/responden a mensajes).
 
-**Tipos:**
+Los **tipos** de protocolos son:
 
-* Protocolos de dominio público: Definidos en RFCs (Request For
-  Comments). Son tales como HTTP, SMTP, FTP, IP...
+* **Protocolos de dominio público** (definidos en RFCs (Request For
+  Comments), por ejemplo: HTTP, SMTP, FTP, IP...) **versus propietarios** -> (por ejemplo Skype, IGRP).
 
-* Protocolos propietarios. Tales como skype.
+* **Protocolos in-band vs out-of-band**: cuando la gestión se realiza por la misma vía que la comunicación frente a cuando se usa una vía paralela. Envía datos e información de control. In-band solo utilizan una transmisión para enviar datos como control, usa el mismo socket para ambos. Out-of-band indica que la señalización de control va por un lado y la del dato por otro.
 
-* In-band vs out-of-band: Cuando la gestión se realiza por la misma
-  vía que la comunicación frente a cuando se usa una vía paralela.
+* **Protocolos state-full vs stateless**: cuando la aplicación guarda información sobre todo lo que ocurrió desde el inicio de la misma frente a cuando no la guarda. Por ejemplo, cuando descargamos páginas web con HTTP es stateless porque no se fija en mi historial.
 
-* Stateful vs stateless: Cuando la aplicación guarda información sobre
-  todo lo que ocurrió desde el inicio de la misma frente a cuando no
-  la guarda.
+* **Protocolos persistentes vs no-persistentes** (sobre servicios SOC -- Servicios Orientados a conexión): cuando el protocolo hace uso de conexiones persistentes frente a cuando no (hace una para cada objeto).
 
-* Persistentes vs no persistentes: Cuando el protocolo hace uso de
-  conexiones persistentes frente a cuando no.
+### Características de las aplicaciones de red
 
-Normalmente los protocolos son flexibles, tendiendo a tener una
-cabecera fija y una serie de "trozos" que pueden ser opcionales u
-obligatorios. Estos trozos, a su vez, pueden incluir alguna cabecera
-específica más una serie de datos en forma de parámetros que pueden
-ser fijos o de longitud variable, con formato TLV (Un campo para el
-tipo de parámetro, otro para la longitud y otro para el valor del
-parámetro. Es destacable que *todos los parámetros comienzan en
-múltiplos de 4 bytes*, pudiendo requerir relleno.
+Una aplicación debe de tener unos requisitos o características:
 
-<!-- 4/09/2017-->
-Una aplicación debe de tener unos requisitos, entre estos se encuentran:
+* **Tolerancia a pérdidas de datos (errores):** algunas aplicaciones pueden tolerar las pérdidas de datos, tales como streamings de audio/vídeo, pero otras deben de asegurar la fiabilidad de la transferencia (transferencia de archivos, FTP, telnet, HTTP).
 
-* **Pérdidas de datos:** Algunas aplicaciones pueden tolerar las
-  pérdidas de datos, tales como streamings de audio/vídeo, pero otras
-  deben de asegurar la fiabilidad de la transferencia (transferencia de
-  archivos).
+* **Exigencia de requisitos temporales:** también pueden necesitar el mínimo retraso (*delay*) para ser efectivos. Algunas apps denominadas *inelásticas* (telefonía Internet, juegos interactivos) requieren retardo (*delay*) acotado para ser efectivas, otras aplicaciones no. Un streaming también tiene el requisito de que este retraso no sea excesivo, o en los videojuegos es necesaria esa sincronización para evitar el lag.
 
-* **Requisitos temporales:** También pueden necesitar el mínimo
-  retraso (delay) para ser efectivos. Un streaming también tiene el
-  requisito de que este retraso no sea excesivo, o en los videojuegos
-  es necesaria esa sincronización para evitar el lag.
+* **Demanda de ancho de banda (tasa de transmisión o throughput):** algunas apps también necesitan un ritmo determinado de envío de datos (*codec* de vídeo) y otras no.
 
-* **Rendimiento(Throughput):** Algunas apps también necesitan un ritmo
-  determinado de envío de datos.
+* **Nivel de seguridad:** la encriptación, autenticación y no repudio (no puedes negar ser el remitente de un envío de datos) son factores importantes en las aplicaciones.
 
-* **Seguridad:** La encriptación, autenticación y no repudio (no
-  puedes negar ser el remitente de un envío de datos) son
-  factores importantes en las aplicaciones.
+La conclusión es que las distintas aplicaciones tienen requisitos **heterogéneos**.
 
 
 ## Protocolos de transporte
 
 En la capa de transporte existen diversos protocolos:
 
-* **Servicio TCP:** Está orientado a conexión (establecer una conexión
+* **Servicio TCP:** está orientado a conexión (establecer una conexión
   entre los dos involucrados previo al envío), este transporte es
-  fiable ante pérdidas, con control de flujo y de congestión.
+  fiable ante pérdidas (control de errores), con control de flujo y de congestión.
 
-* **Servicio UDP:** No está orientado a conexión, es decir, no se
+* **Servicio UDP:** no está orientado a conexión, es decir, no se
   comprueba que ambos estén preparados para realizar la
-  comunicación. A su vez carece de todas las propiedades que acabamos
-  de destacar sobre TCP.
+  comunicación. El transporte no es fiable, no tiene control de flujo ni de congestión.
 
-Estos al ser usuarios del protocolo IP (Capa de red) no garantizan el
-retardo acotado, las fluctuaciones acotadas, el mínimo throughput y la
-seguridad requerida.
+Estos al ser usuarios del protocolo IP (capa de red) **no garantizan calidad de servicio** (QoS): retardo no acotado, las fluctuaciones no acotadas, no hay una velocidad de transmisión mínima garantizada, no hay una probabilidad de pérdidas acotada ni hay garantías de seguridad.
+
 
 ## Servicios de Nombres de Dominio (DNS)
 
@@ -458,7 +521,7 @@ El principal problema de SMTP es que no requiere autenticación, lo que permite 
 
 ## MIME
 
-MIME (Multipurpose Internet Email Extension) es un estándar de intercambio a través de Internet de todo tipo de archivos. Fue diseñado para e-mails pero finalmente es tambien importante en protocolos de comunicación externos al email. 
+MIME (Multipurpose Internet Email Extension) es un estándar de intercambio a través de Internet de todo tipo de archivos. Fue diseñado para e-mails pero finalmente es tambien importante en protocolos de comunicación externos al email.
 
 Cuando se envía un mensaje con este protocolo, este mensaje tiene una serie de campos para facilitar la comprensión del mensaje, tales como:
 
@@ -726,7 +789,7 @@ reconocimiento para que ambos queden con sus recursos liberados.
 **Otros detalles:**
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 
-La inicialización se inicia por el ISN, que es elegido por el sistema. 
+La inicialización se inicia por el ISN, que es elegido por el sistema.
 Los campos del control de conexión tienen 32 bits, osea $2^{32}$ valores.
 El sistema lo elige, y el estándar sugiere utilizar un contador entero
 incrementado en uno por cada 4 microsegundos. Esto protege de
