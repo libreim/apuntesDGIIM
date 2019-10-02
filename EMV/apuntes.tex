@@ -505,3 +505,65 @@ con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $Z \sim N_p(0,I_p)$
     \]
     con $\mu = (\mu_1,\dots,\mu_p)^T$ y $\Sigma = \diag(\sigma_1^2 , \dots , \sigma_p^2) > 0$.
   \end{nprop}
+
+  \begin{nota}
+Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
+  \end{nota}
+
+  \begin{nprop}
+    Sea $\vectX$ una v.a. $N(0,1)$ y sea $W$ una v.a. con distribución $U(\{-1,1\})$, independiente de X. Consideramos $\vectY = W\vectX$. Entonces, se verifica:
+    \begin{itemize}
+    \item $\vectY \sim N(0,1)$
+    \item $\vectX$ e $\vectY$ son incorreladas
+      \item $\vectX$ e $\vectY$ no son independientes 
+    \end{itemize}
+
+  \end{nprop}
+  Esta proposición es un contraejemplo para ver que , en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
+
+  \begin{nth}
+    Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = (X_{(1)}^T | X_{(2)}^T)^T$ con $X_{(1)} = (X_1,\dots,X_q)^T$ y $X_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
+    \[
+    \mu = (\mu_{(1)}^T | \mu_{(2)}^T)^T \quad , \quad \Sigma = \begin{bmatrix} \Sigma_{(11)} & 0 \\ 0 & \Sigma_{(22)} \end{bmatrix}
+    \]
+    Entonces, $X_{(1)}$ y $X_{(2)}$ son mutuamente independientes y además, $X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)})$ y $X_{(2)} \sim N_{p-q}(\mu_{(2)}, \Sigma_{(22)})$
+  \end{nth}
+
+  \begin{proof}
+    Comenzanos notando que, como $\Sigma = \diag(\Sigma_{(11)},\Sigma_{(22)})$, entonces:
+    \begin{itemize}
+    \item $\det(\Sigma)^{\frac{1}{2}} = \det(\Sigma_{(11)})^{\frac{1}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}}$
+      \item $ \Sigma^{-1} = \diag(\Sigma_{(11)}^{-1}, \Sigma_{(22)}^{-1})$
+    \end{itemize}
+
+    De esta forma, tenemos:
+    \[
+(x-\mu)^T \Sigma^{-1}(x-\mu) = ( (x_{(1)}- \mu_{(1)})^T(x_{(2)}-\mu_{(2)})^T)\begin{bmatrix} \Sigma_{(11)} & 0 \\ 0 & \Sigma_{(22)} \end{bmatrix} \frac{x_{(1)} - \mu_{(1)}}{\x_{(2)} - \mu_{(2)}} =  (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)}) +  (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})
+    \]
+    Podemos factorizar entonces la función de densidad de $X$:
+    \[
+    f_{\vectX}(x) =  \frac{1}{(2\Pi)^{\frac{q}{2}} \det(\Sigma_{(11)})^{\frac{1}{2}} } exp \{ - \frac{1}{2} (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)})\}
+    \frac{1}{(2\Pi)^{\frac{p-q}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}} } exp \{ - \frac{1}{2} (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})\}
+    \]
+  \end{proof}
+
+  El recíproco también es cierto, en el sentido en el que lo era el recíproco del resultado anterior.
+
+  \begin{nth}
+    Sea $\vectX = (X_1, \dots, X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento de $\vectX$ como en el resultado anterior, pero ahora con
+    \[
+\sigma = \begin{bmatrix}  \Sigma_{(11)}} & \Sigma_{(12)} \\ \Sigma_{(21)} & \Sigma_{(22)} \end{bmatrix}
+\]
+Entonces, se tiene:
+\begin{enumerate}
+\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes
+\item $\begin{cases} X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\ X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)} \end{cases}$
+  \item La distribución condicionada de $X_{(2)}$ dado $X_{(1)} = x_{(1)}$ es una DNM $N_{p-q}(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}$
+\end{enumerate}
+  \end{nth}
+  \begin{proof}
+    Sea $C = \begin{bmatrix} I_1 & 0 \\ -\Sigma_{(21)}\Sigma_{(11)}^{-1} & I_2\end{bmatrix}$. Esta es no singular, pues $\det(C) = 1$. Consideramos el cambio lineal $\vectY = C \vectX$:
+      \[
+\vectY = \begin{bmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}}\Sigma_{(11)}^{-1}X_{(1)}\end{bmatrix} := \begin{bmatrix} Y_{(1)} \\ Y_{(2)} \end{bmatrix}
+      \]
+  \end{proof}
