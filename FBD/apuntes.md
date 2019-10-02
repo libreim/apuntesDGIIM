@@ -1,160 +1,137 @@
-# Introducción y definiciones iniciales
+# Tema 1. Introducción y definiciones iniciales
 ## Concepto intuitivo de base de datos
-Concepto: fondo común de información almacenada en una computadora
+**Concepto intuitivo**: fondo común de información almacenada en una computadora
 para que cualquier persona o programa autorizado pueda acceder a ella,
 independientemente del lugar de procedencia y del uso que se
-haga. Operaciones: pedir, modificar, insertar, borrar.
+haga.
+
+**Operaciones**: insertar, obtener, modificar, borrar...
 
 ## Bases de datos y sistemas gestores de bases de datos
 
-Base de datos: conjunto de datos comunes a un proyecto almacenados sin
+**Base de datos**: conjunto de datos comunes a un proyecto almacenados sin
 redundancia para ser útiles a diferentes aplicaciones.
 
-Sistemas gestor de base de datos: conjunto de elementos software con
-capacidad para definir, mantener y utilizar una base de datos. Un
-sistema gestor de bases de datos debe permitir definir estructuras de
-almacenamiento, acceder a datos de forma eficiente y segura, organizar
-la actualización de los datos y el acceso multiusuario...
+**Sistemas de gestión de base de datos (SGDB o DBMS)**: conjunto de elementos software con capacidad para definir, mantener y utilizar una base de datos. Un SGDB debe permitir definir estructuras de almacenamiento, acceder a datos de forma eficiente y segura, organizar la actualización de los datos y el acceso multiusuario...
 
-Elementos de una base de datos:
+**Elementos** de una base de datos:
 
-- Datos: integrados (sin redundancia) y compartidos (útiles a varias
+- **Datos**: integrados (sin redundancia) y compartidos (útiles a varias
   aplicaciones).
-- Hardware: base de datos normal o distribuida.
-- Software: programas para definir las estructuras y gestionar los
-  datos de la base de datos.
-- Usuarios: usuario final, programador de aplicaciones,
+- **Hardware**: base de datos normal o distribuida.
+- **Software**: SGBD, y programas para definir las estructuras y gestionar los datos de la base de datos.
+- **Usuarios**: usuario final, programador de aplicaciones,
   administrador.
 
-Dato operativo: pieza de información que necesita un proyecto
+**Dato operativo**: pieza de información que necesita una organización
 para su funcionamiento.
 
-- Ítem básico: Elemento acerca del que se puede pedir información.
-- Atributo: Características de los ítems básicos.
-- Relaciones: Conexiones lógicas entre ítems.
+- **Ítem básico**: elemento acerca del que se puede pedir información (sustantivo).
+- **Atributo**: características de los ítems básicos (adjetivos).
+- **Relaciones**: conexiones lógicas entre ítems.
 
 Cuando se determinan y clasifican de esta forma todos los datos
 operativos, se obtiene el **esquema lógico** de la base de datos.
 
+**Objetivos** de un SGBD:
+
+- **Independencia** de los datos.
+- **Diseño y utilización** orientada al usuario: los datos y aplicaciones deben ser accesibles a los usuarios de la manera más amigable posible (soportar un modelo de datos teórico, soportar facilidades de definición y soportar lenguajes de acceso y modificación).
+- **Centralización**: los datos deben gestionarse de forma centralizada e independiente de las aplicaciones (figura del ABD, utilidades de gestión...).
+- **No redundancia**: los datos no deben estar duplicados (gestión de accesos concurrentes).
+- **Consistencia**: los datos deben ser consistentes, sin fallos
+  lógicos (mecanismos de mantenimiento de integridad).
+- **Fiabilidad**: los datos deben estar protegidos contra fallos
+  catastróficos (mecanismos de mantenimiento de recuperación y
+  relanzamiento de transacciones).
+- **Seguridad**: no todos los datos deben ser accesibles a todos los
+  usuarios (mecanismos de gestión de usuarios y privilegios,
+  mecanismos de protección de información).
+
+## Ventajas de utilizar un SGBD
+
+Para el usuario:
+
+- **Usuario final**: puede acceder a los datos.
+- **Programador de aplicaciones**: eliminar problemas de diseño lógico y físico, depuración de errores y mantenimiento general.
+- **Administrador de BD**: no existiría.
+- **Para el sistema**: control centralizado (fiabilidad, consistencia, seguridad...), criterios de uniformación, generación de nuevas aplicaciones, equilibrio entre requerimientos conflictivos.
+
 ## Concepto de independencia
 
-Los datos se organizan independientemente de las aplicaciones que los
-vayan a usar y de los ficheros en los que vayan a almacenarse.
+**Independencia**: los datos se organizan independientemente de las aplicaciones que los vayan a usar y de los ficheros en los que vayan a almacenarse.
 
-Independencia física. El diseño lógico de la BD, a todos los niveles,
+**Independencia física**: el diseño lógico de la BD, a todos los niveles,
 debe ser independiente del almacenamiento físico de los datos. Esto
 permite realizar libremente cambios en la estructura física y
 descargar a las aplicaciones de problemas físicos.
 
-Independencia lógica. Existen dos tipos de estructura lógica: esquema
-lógico general(vista global) y vistas de usuario (datos a los que se
+**Independencia lógica**: existen dos tipos de estructura lógica: esquema
+lógico general (vista global) y vistas de usuario (datos a los que se
 deja acceso a un usuario). Cada aplicación debe poder
 organizar los datos según sus propios esquemas y acceder a los datos
-que le son necesarios.
+que le son necesarios y le conciernen. La independencia lógica persigue que los cambios en el esquema lógico general no afecten a las vistas de usuario de manera que las aplicaciones no necesiten ser modificadas. No siempre se puede conseguir.
 
 - Aumento de la seguridad y fiabilidad
 - Menos problemas para las aplicaciones
 - Posibilidad de cambios en los esquemas por parte de las aplicaciones
   y por parte de los administradores.
 
-## Objetivos de un sistema gestor de bases de datos (SGBD)
+\newpage
 
-- Independencia de datos.
-- Diseño y utilización orientada al usuario: los datos y aplicaciones
-deben ser accesibles a los usuarios de la manera más amigable
-posible. Para ello se debe soportar un modelo de datos teórico,
-facilidades de definición y un lenguaje de acceso y modificación.
-- Centralización: los datos deben gestionarse de forma centralizada e
-independiente de las aplicaciones.
-- Para el administrador de la base de datos, utilidades de gestión.
-- No redundancia. Los datos no deben estar duplicados. Gestión de
-  accesos concurrentes.
-- Consistencia. Los datos deben ser consistentes, sin fallos
-  lógicos. Mecanismos de mantenimiento de integridad.
-- Fiabilidad. Los datos deben estar protegidos contra fallos
-  catastróficos. Mecanismos de mantenimiento de recuperación y
-  relanzamiento de transacciones.
-- Seguridad. No todos los datos deben ser accesibles a todos los
-  usuarios. Mecanismos de gestión de usuarios y privilegios,
-  mecanismos de protección de información.
-
-## Ventajas de utilizar un SGBD
-
-Para el usuario:
-
-- Usuario final: puede acceder a los datos.
-- Programador de aplicaciones: eliminar problemas de diseño lógico y
-  físico, depuración de errores y mantenimiento general.
-- Surge la figura del administrador de la base de datos.
-- Para el sistema: control centralizado, criterios de uniformación,
-  generación de nuevas aplicaciones, equilibrio entre requerimientos
-  conflictivos.
-
-# Arquitectura de un sistema gestor de bases de datos
+# Tema 2. Arquitectura de un sistema gestor de bases de datos
 
 ## Una arquitectura con tres niveles
 
-**¿Por qué organizar en niveles?** 
+**¿Por qué organizar en niveles?**
 Los usuarios pueden acceder a los mismos datos desde distintas
 perspectivas. Si un usuario cambia la forma de ver los datos no
 influye al resto.
+
 La organización global de los datos puede cambiarse sin afectar a los
-usuarios. 
+usuarios.
+
 Los usuarios no tienen por qué gestionar aspectos relativos a la
 representación física de los datos. El administrador de la base de
 datos puede cambiar la forma de representar los datos sin influir en
-los usuarios. 
+los usuarios.
 
 La percepción de los datos en un SGBD puede hacerse siguiendo tres
 niveles de abstracción:
 
-- Nivel interno
-- Nivel conceptual
-- Nivel externo
-
-Nivel interno: constituye la representación de la BD más cercana a la
+- **Nivel interno**: constituye la representación de la BD más cercana a la
 estructura de almacenamiento físico. Por tanto, es la capa donde se
 establece la forma en que se implantan las estructuras de datos que
 organizan los niveles superiores.
-
-Nivel conceptual. Supone una abstracción global de la BD que integra y
+- **Nivel conceptual**: supone una abstracción global de la BD que integra y
 aglutina todas las percepciones que los usuarios tienen de ella. Tiene
 una visión global de los datos pero ningún detalle de almacenamiento.
-
-Nivel externo. A este nivel se definen todas las percepciones
+- **Nivel externo**: a este nivel se definen todas las percepciones
 particulares de la BD por parte de los usuarios. Cada usuario puede
 tener su propia visión de la BD.
 
+
 ## Correspondencia entre niveles
 
-Transformación o correspondencia entre niveles: conjunto de normas que
+**Transformación o correspondencia entre niveles**: conjunto de normas que
 establece cómo se definen los datos de un nivel en términos de
 otro. Mecanismo fundamental para el establecimiento de la
 independencia física y lógica.
 
-### Transformación conceptual/interna
-Cómo se organizan las entidades lógicas del nivel conceptual en
-términos de registros y campos almacenados en el nivel
-interno. Independencia física:
+**Transformación interna/conceptual**: cómo se organizan las entidades lógicas del nivel conceptual en términos de registros y campos almacenados en el nivel interno. Independencia física:
 
 - Varía el nivel interno
 - Cambia la correspondencia
 - No varía el nivel conceptual
 
-### Transformación externa/conceptual
-Describe un esquema externo en términos del esquema conceptual
-subyacente.
-Independencia lógica:
+**Transformación externa/conceptual**: describe un esquema externo en términos del esquema conceptual subyacente. Independencia lógica:
 
 - Varía el nivel conceptual
 - Cambia la Correspondencia
 - No varía el nivel externo
 Esta transformación no siempre es posible
 
-### Transformación externa/externa
-Algunos SGBD permiten describir esquemas externos en términos de otros
-esquemas externos.
-Independencia lógica:
+**Transformación externa/externa**: algunos SGBD permiten describir esquemas externos en términos de otros esquemas externos. Independencia lógica:
 
 - Varía el esquema externo subyacente
 - Cambia la correspondencia
@@ -162,109 +139,221 @@ Independencia lógica:
 
 ## Lenguajes de una BD
 
-Recomendación ANSI/SPARC:
+**Recomendación ANSI/SPARC**: disponer de un lenguaje específico orientado a los datos (definición, control, manipulación). Sublenguaje de datos (DSL) implementado en el propio SGBD. Tiene distintas partes:
 
-Disponer de un lenguaje específico orientado a los datos (definición,
-control, manipulación). Sublenguaje de datos (DSL) implementado en el
-propio SGBD. Tiene distintas partes:
-
-- DDL: Data Definition Language. Sublenguaje de definición de
+- **DDL**: Data Definition Language. Sublenguaje de definición de
   datos. Subconjunto del DSL destinado a la definición de estructuras
   de datos y esquemas en la BD.
-- DML: Data Manipulation Lanquage. Sublenguaje de manipulación de
+- **DML**: Data Manipulation Lanquage. Sublenguaje de manipulación de
   datos. Subconjunto del DSL mediante el que podemos introducir datos
   en los esquemas, modificarlos, eliminarlos y consultarlos. También
   debe permitir consultar la estructura de los esquemas definidos en
   la BD.
-- DCL: Sublenguaje de control de datos, que permite gestionar los
+- **DCL**: Sublenguaje de control de datos, que permite gestionar los
   requisitos de acceso a los datos y otras tareas administrativas
   sobre la BD.
+
+ANSI/SPARC recomienda disponer de un DDL, un DML y un DCL para cada nivel de la arquitectura.
 
 En la práctica todos estos sublenguajes se presentan bajo una
 implementación única. Cada sentencia trabaja sobre uno o varios
 niveles. Un sistema de privilegios discrimina quién puede ejecutar
 qué.
 
-El ejemplo más destacado es SQL.
+La industria ha seguido un camino diferente: lenguajes de datos estándares.
 
-## Arquitectura de un SBD
+El ejemplo más destacado es SQL: SQL89, SQL92 y SQL3.
 
-El concepto de SBD ha evolucionado paralelamente al desarrollo del
-informática en la forma de gestionar la información, de ejecutar los
-programas y de interactuar con el usuario.
 
-Inicialmente se utilizaba un sistema centralizado donde toda la carga
-de gestión y procesamiento de información recaía en servidores
-centrales. El usuario accedía mediante terminales. En el ordenador
-principal se entraba pues alojado el SGBD y los programas de
-aplicación. El principal problema de este sistema es el elevado coste
-de los ordenadores principales.
+**Lenguaje anfitrión o de aplicación**: desarrollo de aplicaciones en el SO que trabajen sobre la BD. El propósito general es C/C++, Java, C#. Las herramientas de desarrollo específicas son Developer de Oracle, Oracle Application Express (Oracle APEX), Sybase PowerBuilder, IBM Rational Application Developer... Además, proporciona procesamiento avanzado de datos y gestión de la interfaz de usuario. Hay que establecer un mecanismo para traducir: estructuras de datos y operaciones. Acoplamiento:
 
-Con la aparición del PC, se desplaza la ejecución de los programas de
-usuario y las interacciones a estos dispositivos. Primera aproximación
-cliente servidor. El servidor alojaba la base de datos y un servicio
-de escucha de peticiones, mientras que el cliente, los PCs conectados
-al servidor, tenían los programas de aplicación y el servicio de
-enlace cliente que interactúa con el servicio de escucha del
-servidor. Con el desarrollo de las comunicaciones este enfoque deriva
-en un enfoque distribuido. El principal problema coste del
-mantenimiento de los PCs, que se soluciona separando en las
-aplicaciones la parte que interactúa con el usuario de la parte de
-ejecución lógica del programa.
+- **Débilmente acoplados** (si se pueden distinguir):
+    - Lenguajes de propósito general
+    - El programador puede distinguir:
+        - Sentencias propias del lenguaje anfitrión
+        - Sentencias dispuestas para acceder a la BD a través del DSL
+- **Fuertemente acoplados** (si no se pueden distinguir):
+    - Lenguajes y herramientas de propósito específico
+    - Se parte del DSL como elemento central y se le incorporan características procedimentales para facilitar el desarrollo de aplicaciones.
 
-Actualmente se utiliza una arquitectura articulada entre niveles de
-procesamiento.
+Alternativas para implementar el **acoplamiento débil**:
 
-- Nivel de servidor de datos. Posiblemente distribuido. El SGBD
-  permite organizar la información de la empresa como una BD
-  global. Las peticiones de datos formuladas desde una sede se
-  traducen de forma transparente a peticiones en las sedes donde se
-  encuentran esos datos.
-- Nivel de servidor de aplicaciones. Evolución del servidor web que
-  proporcionan programas de aplicación a clientes ligeros.
-- Nivel de cliente. PCs ligeros dotados de configuraciones basadas en
-  estándares abiertos. Basados en el carácter portátil con que se
-  distribuyen las aplicaciones desde los servidores de
-  aplicaciones. Menos dependencia del hardware y SO a la hora de
-  abordar la ejecución de las aplicaciones.
+- **APIs de acceso a BD**:
+    - ODBC – Open Database Connectivity
+    - JDBC – Java Database Connectivity
+- **DSL inmerso en el código fuente del lenguaje anfitrión**: el programador escribe un código híbrido. Mezcla sentencias del lenguaje anfitrión con sentencias DSL. Hay un preprocesador que luego lo transforma.
 
-Ventajas: Reducción significativa en cuanto al mantenimiento de los
-clientes. Mayor facilidad y flexibilidad para el usuario.
+Alternativas para implementar el **acoplamiento fuerte**: diversas propuestas (la mayoría propietarias): PL/SQL de Oracle (Extensión Procedural para SQL). Por ejemplo: ejecución de Java sobre una máquina virtual implantada en el propio SGBD.
 
-Inconvenientes: Mayor complejidad en la configuración y administración
-de los servidores de aplicaciones. El desarrollo de las aplicaciones
-conforme a este modelo distribuido es más costoso.
+También han aparecido numerosos entornos de desarrollo específicos
+para el desarrollo de aplicaciones de gestión: Diseñadores de informes, diseñadores de formularios...
+
+## Nivel externo
+
+Parte de la BD que es relevante para cada usuario. Sólo aquellas entidades, relaciones y atributos que le son de interés. Representadas de la forma que le interesa al usuario, por ejemplo: nombre completo o nombre y apellidos; fecha o día, mes y año... También hay datos calculados a partir de los que hay: edad, ventas totales...
+
+## Nivel conceptual
+
+Visión global de los datos. Estructura lógica de los datos: qué datos están almacenados y qué relaciones hay entre ellos. Este nivel representa:
+
+- Todas las entidades, atributos y relaciones.
+- Las restricciones que afectan a los datos.
+- Información semántica sobre los datos.
+- Información de seguridad y de integridad.
+
+Además, da soporte a cada vista externa y no debe contener ningún detalle de almacenamiento.
+
+## Nivel interno
+
+Representación física de la BD en el ordenador, es decir, cómo están almacenados los datos. El objetivo es buscar el rendimiento óptimo del sistema. Representa:
+
+- Estructuras de datos.
+- Organizaciones en ficheros.
+- Comunicación con el SO para gestionar el uso de unidades de almacenamiento.
+- Compresión de datos, encriptación...
+
+Parte de las responsabilidades de este nivel las realiza el SO, se le suele llamar nivel físico. No existe una división clara, depende de cada SGBD y de cada SO.
+
+## Ejemplo
+
+Ejemplo de Gestión Docente Universitaria:
+
+- Item básico PROFESOR
+- Identificado por:  Número de registro personal (NRP).
+- Caracterizado por: nombre y apellidos, sueldo y departamento al que pertenece
+- **Visión conceptual**:
+
+```txt
+Profesor = registro de
+NRP
+campo alfanumérico de 10 caracteres,
+Apellidos campo alfanumérico de 30 caracteres,
+Nombre
+campo alfanumérico de 20 caracteres,
+Sueldo
+campo decimal de 8+2 dígitos,
+Departamento
+campo alfanumérico de 30 caracteres
+fin Profesor.
+```
+
+- **Visión externa 1**:
+    - Gestión de personal.
+    - Lenguaje A.
+
+    ```txt
+    TYPE Profesor IS RECORD (
+        NRP VARCHAR2(10),
+        Apellidos VARCHAR2(30),
+        Nombre VARCHAR2(20),
+        Sueldo NUMBER(8,2)
+    );
+    ```
+
+- **Visión externa 2**:
+    - Ordenación académica.
+    - Lenguaje B.
+
+    ```txt
+    TYPE Profesor = RECORD
+        NRP : STRING[10];
+        Apellidos : STRING[30];
+        Nombre : STRING[20];
+        Departamento : STRING[30];
+    END;
+    ```
+
+- **Visión interna**:
+
+```txt
+Profesor_interno BYTES=74
+    NRP TYPE=BYTES(10),OFFSET=0
+    Apellidos TYPE=BYTES(30),OFFSET=10
+    Nombre TYPE=BYTES(20),OFFSET=40
+    Sueldo TYPE=WORD(2),OFFSET=60
+    Departamento TYPE=BYTES(10),OFFSET=64
+```
+
+
 
 ## El administrador de la BD
 
 El DBA es una figura de primordial relevancia en el contexto de los
 SGBD. Algunas de sus funciones son:
 
-- Elaboración del esquema conceptual. Análisis de las necesidades de
+- **Elaboración del esquema conceptual**. Análisis de las necesidades de
   información de la empresa, identificación de los datos operativos,
   elaboración del esquema lógico, implantación del esquema
   conceptual.
-- Decidir la estructura del almacenamiento en nivel interno. Esquema
+- **Decidir la estructura del almacenamiento en nivel interno**. Esquema
   interno. Correspondencia conceptual/interna asociada.
-- Conexión con usuarios. Análisis de requerimientos, diseño lógico,
+- **Conexión con usuarios**. Análisis de requerimientos, diseño lógico,
   codificación del esquema externo, correspondencias
   externo/conceptual.
-- Definir restricciones de integridad. Si es posible, incluir
-  integridad en el esquema conceptual.
-- Definir e implantar política de seguridad. Gestión de usuarios,
+- **Definir restricciones de integridad**. Establecer reglas genéricas ye específicas. Si es posible, incluir integridad en el esquema conceptual.
+- **Definir e implantar política de seguridad**. Gestión de usuarios,
   gestión de privilegios.
-- Definir e implantar la estrategia de recuperación frente a fallos.
-- Optimización del rendimiento. Liberar espacio no utilizado,
+- **Definir e implantar la estrategia de recuperación frente a fallos**. Los SOs y los SGBDs suelen incorporar facilidades para afrontar los fallos: SGBDs redundantes y RAID (Redundant Array of Inexpensive Disks). El DBA puede y debe realizar copias de seguridad de la BD. También gestiona la política de gestión de transacciones (operaciones lógicas que ocurren en la BD).
+- **Optimización del rendimiento**. Liberar espacio no utilizado,
   reorganizar las operaciones para que se ejecuten de forma más
   rápida, determinar la necesidad de nuevos recursos hardware,
   establecer prioridades en el uso de los recursos.
-- Monitorizar el SGBD. Seguimiento continuo de la actividad del
+- **Monitorizar el SGBD**. Seguimiento continuo de la actividad del
   sistema. Auditar el acceso a los usuarios a los diversos recursos de
   la BD. Comprobar los niveles de uso de los sistemas de
   almacenamiento. Evaluar la eficiencia con que se realizan las
   operaciones.
 
-# Modelos de datos
+## Tipos de arquitecturas de implantación
+
+El concepto de SBD ha evolucionado paralelamente al desarrollo del
+informática en la forma de gestionar la información, de ejecutar los
+programas y de interactuar con el usuario.
+
+Inicialmente se utilizaba un sistema **centralizado** donde toda la carga
+de gestión y procesamiento de información recaía en servidores
+centrales. El usuario accedía mediante terminales. En el ordenador
+principal se encontraban el SGBD y los programas de
+aplicación.
+
+El principal problema de este sistema es el elevado coste
+de los ordenadores principales con la aparición del PC. La solución fue desplazar la ejecución de los programas de usuario y las interacciones hasta los PCs (reducción de costes en hardware). Surge la primera aproximación
+**cliente/servidor**. El servidor alojaba la base de datos y un servicio
+de escucha de peticiones, mientras que el cliente, los PCs conectados
+al servidor, tenían los programas de aplicación y el servicio de
+enlace cliente que interactúa con el servicio de escucha instalado en el
+servidor. Con el desarrollo de las comunicaciones este enfoque deriva
+en un enfoque distribuido.
+
+El principal problema es el alto coste del mantenimiento de los PCs (instalación, configuración y actualización), que se soluciona separando en las aplicaciones: la parte que interactúa con el usuario (interfaz) de la parte de ejecución lógica del programa.
+
+Actualmente se utiliza una arquitectura articulada entre niveles de
+procesamiento.
+
+- **Nivel de servidor de datos**. Posiblemente distribuido. El SGBD
+  permite organizar la información de la empresa como una BD
+  global. Las peticiones de datos formuladas desde una sede se
+  traducen de forma transparente a peticiones en las sedes donde se
+  encuentran esos datos.
+- **Nivel de servidor de aplicaciones**. Son evoluciones del servidor web que proporcionan programas de aplicación a clientes ligeros, que disponen de entornos de ejecución de aplicaciones: usando estándares, protocolos de red TCP/IP, protocolo HTTP, despliegue de Applets Java a ejecutar en navegadores con soporte de máquina virtual Java, Servlets, JSP, ASP...
+- **Nivel de cliente**. PCs ligeros dotados de configuraciones basadas en
+  estándares abiertos. Basados en el carácter portátil con que se
+  distribuyen las aplicaciones desde los servidores de
+  aplicaciones. Menos dependencia del hardware y SO a la hora de
+  abordar la ejecución de las aplicaciones.
+
+
+**Ventajas**: reducción significativa en cuanto al mantenimiento de los
+clientes. Mayor facilidad y flexibilidad para el usuario.
+
+**Inconvenientes**: mayor complejidad en la configuración y administración
+de los servidores de aplicaciones. El desarrollo de las aplicaciones
+conforme a este modelo distribuido es más costoso.
+
+\newpage
+
+
+# Tema 3. Modelos de datos
 
 ## Cocepto de modelo de datos
 
@@ -367,7 +456,7 @@ esquema.
 Para describir una relación, se subrayan los atributos que forman su
 clave primaria.
 
-# El modelo de datos relacional
+# Tema 4. El modelo de datos relacional
 
 ## La estructura de datos relacional
 
@@ -491,7 +580,7 @@ El SGBD debe encargarse de mantener las siguientes restricciones:
     referencian o poner valor nulo en la clave externa de todas esas
     tuplas.
 
-# Nivel Interno
+# Tema 5. Nivel Interno
 
 ## Introducción
 
@@ -624,7 +713,7 @@ memoria ocupada por los datos.
 
 Existe un fichero de acceso secuencial donde los registros están
 almacenados consecutivamente y ordenados por una clave y para acceder
-a un registro  debemos pasar por los registros que le preceden. 
+a un registro  debemos pasar por los registros que le preceden.
 
 * Insertar un registro: implica buscar el bloque que le corresponde,
   colocarlo si hay sitio y si no o se crea uno nuevo o se crea uno se
@@ -813,7 +902,7 @@ base.
 
 Estos algoritmos tienen varios problemas:
 
-* Es muy dificil encontrar una transformación que dé un valor entero
+* Es muy difícil encontrar una transformación que dé un valor entero
   positivo en un rango de valores limitado tal que dos claves
   diferentes den siempre valores distintos.
 
@@ -842,7 +931,7 @@ Tendremos como parámetros por tanto:
 
 * Número de cubos
 * Tamaño de los cubos
-* La transformada clave/dirección, que tiene en cuenta la distrubución
+* La transformada clave/dirección, que tiene en cuenta la distribución
   de la clave para que los cubos queden equitativamente rellenos.
 
 
@@ -898,8 +987,4 @@ a 1. Aumenta entonces la profundidad local en uno.
 De este modo, solventamos los problemas del acceso directo, aunque
 tenemos inconvenientes pues tenemos que usar una tabla índice
 adicional( y por tanto acceder más a disco si no cabe en memoria) , y
-el tamaño de la tabla depende de $d$ (primeros dígitos de $k' = h(k)$. 
-
-
-
-
+el tamaño de la tabla depende de $d$ (primeros dígitos de $k' = h(k)$.
