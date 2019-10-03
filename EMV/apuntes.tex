@@ -371,10 +371,9 @@ Consideremos el logaritmo de la función característica:
   \[
   f_Y(y) = f_X(g^{-1}(y))\left|\det(J_{g^{-1}}(y))\right|
   .\]
-  %#TODO: Añadir determinante de jacobiana
 \end{nth}
 
-\begin{ncor}[Caso lineal]
+\begin{ncor}[Caso lineal] \label{cambiocasolineal}
   Sea $Y = BX + b$ con $B\in \mathscr{M}_{p}(\R)$ y no singular. En este caso,
   \[
   J_{g^{-1}}(g(x)) = \left[ J_{g}(x) \right]^{-1} = \det(B)^{-1} = \det\left(B^{-1}\right)
@@ -449,15 +448,27 @@ siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $Z \s
 
 A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ representan, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $X \sim N_p(\mu,\Sigma)$.
 
-\textbf{Propiedades:}
 
-\begin{enumerate}
-\item Sobre cambio de variable lineal. Sea $X \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $Y = BX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
+\begin{nprop}[Transformación afín sobre una normal] \label{afinnormal}
+  Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $\vectY = B\vectX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
   \[
-Y \sim N_p(B\mu+b, B \Sigma B^T)
-  \]
-\end{enumerate}
+     \vectY \sim N_p(B\mu+b, B \Sigma B^T)
+  .\]
+\end{nprop}
 
+\begin{proof}
+  De \ref{cambiocasolineal} se sigue que
+
+  \[
+  \begin{split}
+    f_{\vectY}(y) & = f_{\vectX}(B^{-1}(y-b))\left|\det(B)^{-1}\right| \\
+    & = \frac{1}{(2\pi)^{p/2} \det(\Sigma)^{1/2} \left|\det(B)\right|}
+    \exp\left\{ -\frac{1}{2} \left(B^{-1}(y-c) - \mu\right)^T \Sigma^{-1} \left(B^{-1}(y-c) - \mu \right) \right\} \\
+    & = \frac{1}{(2\pi)^{p/2} \det(B^T\Sigma B)}
+    \exp\left\{ -\frac{1}{2} \left(y-c - B\mu\right)^T (B^T\Sigma B)^{-1} \left(y - c - B\mu \right) \right\}.
+  \end{split}
+  \]
+\end{proof}
 
 \begin{nth}[Caracterización de DNM]
   Sea $\vectX$ un vector aleatorio $p-$dimensional, entonces $\vectX$ sigue una DNM (no singular), de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, i.e. $N_p(\mu,\Sigma)$, si y solo si
@@ -563,19 +574,35 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
 
   \begin{nth}
     Sea $\vectX = (X_1, \dots, X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento de $\vectX$ como en el resultado anterior, pero ahora con
+    
     \[
-\Sigma = \begin{bmatrix}  \Sigma_{(11)} & \Sigma_{(12)} \\ \Sigma_{(21)} & \Sigma_{(22)} \end{bmatrix}
+\Sigma = \begin{pmatrix}  \Sigma_{(11)} & \Sigma_{(12)} \\ \Sigma_{(21)} & \Sigma_{(22)} \end{pmatrix}
 \]
+
 Entonces, se tiene:
 \begin{enumerate}
-\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes
-\item $\begin{cases} X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\ X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)} \end{cases}$
-  \item La distribución condicionada de $X_{(2)}$ dado $X_{(1)} = x_{(1)}$ es una DNM $N_{p-q}(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}$
+\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes,
+\item \[
+  \begin{cases}
+    X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
+    X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}\left(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
+  ,\end{cases}
+  \]
+  
+\item La distribución condicionada de $X_{(2)}$ dado $X_{(1)} = x_{(1)}$ es una DNM
+  
+  \[
+    N_{p-q}\left(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
+  .\]
+  
 \end{enumerate}
   \end{nth}
   \begin{proof}
-    Sea $C = \begin{bmatrix} I_1 & 0 \\ -\Sigma_{(21)}\Sigma_{(11)}^{-1} & I_2\end{bmatrix}$. Esta es no singular, pues $\det(C) = 1$. Consideramos el cambio lineal $\vectY = C \vectX$:
-      \[
-\vectY = \begin{bmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}X_{(1)}\end{bmatrix} := \begin{bmatrix} Y_{(1)} \\ Y_{(2)} \end{bmatrix}
-      \]
+    Sea $C = \begin{pmatrix} I_1 & 0 \\ -\Sigma_{(21)}\Sigma_{(11)}^{-1} & I_2\end{pmatrix}$. $C$ es no singular, pues $\det(C) = 1$. Consideramos el cambio lineal $\vectY = C \vectX$:
+      
+   \[
+      \vectY = \begin{pmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}X_{(1)}\end{pmatrix} := \begin{pmatrix} Y_{(1)} \\ Y_{(2)} \end{pmatrix}.
+   \]
+
+   Por \ref{afinnormal}, $Y \sim N_p\left( C\mu, C^T\Sigma C \right)$
   \end{proof}
