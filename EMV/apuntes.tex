@@ -587,7 +587,7 @@ Entonces, se tiene:
     X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
     X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}\left(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
   ,\end{cases}
-  \]
+  \] \label{distitem}
   
 \item La distribución condicionada de $X_{(2)}$ dado $X_{(1)} = x_{(1)}$ es una DNM
   
@@ -622,7 +622,7 @@ Entonces, se tiene:
       \right),
   \]
 
-  donde $\Sigma_{(22\cdot 1)} := \Sigma_{(22)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\Sigma_{(12)}$. Así, \ref{indepitem} se sigue de \ref{independenciacovbloques}.
+  donde $\Sigma_{(22\cdot 1)} := \Sigma_{(22)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\Sigma_{(12)}$. Así, \ref{indepitem} y \ref{distitem} se siguen de \ref{independenciacovbloques}.
   \end{proof}
 
 
