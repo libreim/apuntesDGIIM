@@ -593,7 +593,7 @@ Entonces, se tiene:
   
   \[
     N_{p-q}\left(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
-  .\]
+  .\] \label{conditem}
   
 \end{enumerate}
   \end{nth}
@@ -623,6 +623,16 @@ Entonces, se tiene:
   \]
 
   donde $\Sigma_{(22\cdot 1)} := \Sigma_{(22)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\Sigma_{(12)}$. Así, \ref{indepitem} y \ref{distitem} se siguen de \ref{independenciacovbloques}.
+
+  Para probar \ref{conditem} escribimos, usando el teorema de Bayes, la expresión de la de función de densidad de la distribución condicionada:
+
+  \[
+  \begin{WithArrows}
+    f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{X_{(1)}, X_{(2)}} (x_{(1)}, x_{(2)})} {f_{X_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de\\
+      variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$\\ ($\det(C) = 1$)} \\
+    & = \frac{f_{Y_{(1)}, Y_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{X_{(1)}}(x_{(1)})}
+  \end{WithArrows}
+  \]
   \end{proof}
 
 
