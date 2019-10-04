@@ -531,7 +531,7 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
   \end{nprop}
   Esta proposición es un contraejemplo para ver que , en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
 
-  \begin{nth}
+  \begin{nth} \label{independenciacovbloques}
     Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = \left(X_{(1)}^T | X_{(2)}^T\right)^T$ con $X_{(1)} = (X_1,\dots,X_q)^T$ y $X_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
     
     \[
@@ -581,7 +581,7 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
 
 Entonces, se tiene:
 \begin{enumerate}
-\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes,
+\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes, \label{indepitem}
 \item \[
   \begin{cases}
     X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
@@ -604,7 +604,25 @@ Entonces, se tiene:
       \vectY = \begin{pmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}X_{(1)}\end{pmatrix} := \begin{pmatrix} Y_{(1)} \\ Y_{(2)} \end{pmatrix}.
    \]
 
-   Por \ref{afinnormal}, $Y \sim N_p\left( C\mu, C^T\Sigma C \right)$
+   Por \ref{afinnormal}, $\vectY \sim N_p\left( C\mu, C^T\Sigma C \right)$. Se tiene:
+
+   \[
+      C\mu = \left(
+      \begin{array}{c}
+        \mu_{(1)} \\ \hline
+        \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)}
+      \end{array}
+      \right),
+      \quad
+      C\Sigma C^T = \left(
+      \begin{array}{c | c}
+        \Sigma_{(11)} & 0 \\ \hline
+        0            & \Sigma_{(22\cdot 1)}
+      \end{array}
+      \right),
+  \]
+
+  donde $\Sigma_{(22\cdot 1)} := \Sigma_{(22)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\Sigma_{(12)}$. Así, \ref{indepitem} se sigue de \ref{independenciacovbloques}.
   \end{proof}
 
 
@@ -621,11 +639,14 @@ Entonces, se tiene:
     \]
    
   \end{ndef}
-  Recordando que si $\Sigma = CC^T$, con $C_{p\times p}$ no singular, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$, eligiendo $C$ tal que $\det(C)>0$, tenemos que $y = C^{-1}(x-\mu) \iif x = Cy + \mu$. Aplicamos ahora esto.\\
+  Recordando que si $\Sigma = CC^T$, con $C_{p\times p}$ no singular, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$, eligiendo $C$ tal que $\det(C)>0$, tenemos que $y = C^{-1}(x-\mu) \iff x = Cy + \mu$. Aplicamos ahora esto.\\
 
  Para $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, tenemos
     \[
-    \Psi_{\vectX}(t) = \int_{\mathbb R^p} e^{it^T x} f_\vectX (x) dx = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} exp \{it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}dx =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} exp \{ it^T(Cy + \mu)- \frac{1}{2}y^Ty\}\det(C)dy = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} exp \{ \sum_{j=1}^p [i\alpha_j y_j -  \frac{1}{2}y_j^2]\} = (*)
+    \Psi_{\vectX}(t) = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) dx
+    = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \{it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}dx
+    =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \} \det(C)dy
+    = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \{ \sum_{j=1}^p [i\alpha_j y_j -  \frac{1}{2}y_j^2] \} = (*)
     \]
     con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, por lo que, si recordamos que:
     \[
@@ -638,7 +659,7 @@ Entonces, se tiene:
     donde en $(1)$ se ha usado que $ \int_{\mathbb R^p} e^{i\alpha_j y_j}\frac{1}{\sqrt{2\Pi}} e^{-\frac{1}{2}y_j^2} d_j = E[e^{i\alpha_j y_j}] = e^{-\frac{1}{2}\alpha_j}$ y que
     \begin{itemize}
     \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$
-      \item $\sum_{j = 1}^p$ \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t
+      \item $\sum_{j = 1}^p \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t$
     \end{itemize}
 
 
@@ -646,7 +667,7 @@ Entonces, se tiene:
     \begin{nprop}
       Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$ con $B_{q\times p}$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
       \[
-\vectY \sim N_q(\B\mu+b,\B\Sigma B^T)
+\vectY \sim N_q(B\mu+b,B\Sigma B^T)
       \]
     \end{nprop}
     \begin{proof}
