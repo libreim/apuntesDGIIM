@@ -604,7 +604,7 @@ Entonces, se tiene:
       \vectY = \begin{pmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}X_{(1)}\end{pmatrix} := \begin{pmatrix} Y_{(1)} \\ Y_{(2)} \end{pmatrix}.
    \]
 
-   Por \ref{afinnormal}, $\vectY \sim N_p\left( C\mu, C^T\Sigma C \right)$. Se tiene:
+   Por \ref{afinnormal}, $\vectY \sim N_p\left( C\mu, C\Sigma C^T \right)$. Se tiene:
 
    \[
       C\mu = \left(
@@ -629,15 +629,47 @@ Entonces, se tiene:
   \[
   \begin{WithArrows}
     f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{X_{(1)}, X_{(2)}} (x_{(1)}, x_{(2)})} {f_{X_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de\\
-      variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$\\ ($\det(C) = 1$)} \\
+      variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, \\$\det(C) = 1$} \\
     & = \frac{f_{Y_{(1)}, Y_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{X_{(1)}}(x_{(1)})}
   \end{WithArrows}
   \]
+
+  Veamos el valor de la forma cuadrática que aparecerá en $f_{Y_{(1)}, Y_{(2)}}$:
+
+  \[
+     \left(
+     \begin{array}{c}
+       x_{(1)} \\ \hline
+       x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}
+     \end{array}
+     \right) - C\mu = \left(
+     \begin{array}{c}
+       x_{(1)} - \mu_{(1)} \\ \hline
+       x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)})
+     \end{array}
+     \right) := D(x_{(2)}),
+   \]
+
+   \[
+   \begin{split}
+     D(x_{(2)})^T (C\Sigma C^T) D(x_{(2)}) = \overbrace{(x_{(1)} - \mu_{(1)})^T \Sigma_{(11)}^{-1} (x_{(1)} - \mu_{(1)})}^{:= A} \\
+     + \underbrace{(x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}))^T \Sigma_{(22\cdot 1)}^{-1}
+       (x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}))}_{:= B(x_{(2)})}
+   \end{split}
+   \]  
+
+   Resultando:
+
+   \[
+   \begin{split}
+     f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
+     { \frac{1}{(2\pi)^{q/2} \det(\Sigma_{(11)})^{1/2}} \exp\left\{ -\frac{1}{2} A \right\} } \\
+     & = \frac{1}{(2\pi)^{\frac{p-1}{2}} \det(\Sigma_{(22\cdot 1)})^{1/2}} \exp\left\{ -\frac{1}{2} B(x_{(2)}) \right\}.
+   \end{split}
+   \]
   \end{proof}
 
 
-
-  %#TODO: completar apuntes del otro día
 
   \subsection{Función característica de la DNM}
 
