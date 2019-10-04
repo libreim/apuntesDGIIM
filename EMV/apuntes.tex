@@ -606,3 +606,57 @@ Entonces, se tiene:
 
    Por \ref{afinnormal}, $Y \sim N_p\left( C\mu, C^T\Sigma C \right)$
   \end{proof}
+
+
+
+  %#TODO: completar apuntes del otro día
+
+  \subsection{Función característica de la DNM}
+
+  %# TODO: revisar estilo de esto y tratar de poner bonito
+  \begin{ndef}
+    Dado $\vectX  = (X_1,\dots,X_p)^T$ un vector aleatorio, se define la función característica de $\vectX$ como:
+    \[
+    \Psi_{\vectX}(t) = E[e^{it^T\vectX}] \quad \forall t \in \mathbb R^p
+    \]
+   
+  \end{ndef}
+  Recordando que si $\Sigma = CC^T$, con $C_{p\times p}$ no singular, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$, eligiendo $C$ tal que $\det(C)>0$, tenemos que $y = C^{-1}(x-\mu) \iif x = Cy + \mu$. Aplicamos ahora esto.\\
+
+ Para $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, tenemos
+    \[
+    \Psi_{\vectX}(t) = \int_{\mathbb R^p} e^{it^T x} f_\vectX (x) dx = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} exp \{it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}dx =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} exp \{ it^T(Cy + \mu)- \frac{1}{2}y^Ty\}\det(C)dy = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} exp \{ \sum_{j=1}^p [i\alpha_j y_j -  \frac{1}{2}y_j^2]\} = (*)
+    \]
+    con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, por lo que, si recordamos que:
+    \[
+    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu} - \frac{1}{2}\sigma^2 t^2 \implies \Psi
+    \]
+    se sigue en $(*)$ de la forma:
+    \[
+    (*) = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) =^{(1)} e^{it^T \mu}- \frac{1}{2}t^T \Sigma t 
+    \]
+    donde en $(1)$ se ha usado que $ \int_{\mathbb R^p} e^{i\alpha_j y_j}\frac{1}{\sqrt{2\Pi}} e^{-\frac{1}{2}y_j^2} d_j = E[e^{i\alpha_j y_j}] = e^{-\frac{1}{2}\alpha_j}$ y que
+    \begin{itemize}
+    \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$
+      \item $\sum_{j = 1}^p$ \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t
+    \end{itemize}
+
+
+ 
+    \begin{nprop}
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$ con $B_{q\times p}$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
+      \[
+\vectY \sim N_q(\B\mu+b,\B\Sigma B^T)
+      \]
+    \end{nprop}
+    \begin{proof}
+      %#TODO: copiar demostración @antcc
+    \end{proof}
+
+    \begin{ncor}[Marginalización]
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Entonces, para todo subvector $\vectX_r = (X_{r_1},\dots, X_{r_q})^T$, $r = (r_1,\dots,r_q)^T$ con $r_1,\dots,r_q \in \{1,\dots,p\}$ y $q \leq p$, se tiene que $X_r \sim N_q(\mu_r, \Sigma_r)$ siendo:
+      \begin{itemize}
+      \item $\mu_r$ el subvector de $\mu$ correspondiente a $r$
+        \item $\Sigma_r$ la submatriz de $\Sigma$ definida por las filas y columnas correspondientes a $r$
+      \end{itemize}
+    \end{ncor}
