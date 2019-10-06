@@ -82,7 +82,7 @@ P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 
 \subsection{Función característica}
 
-\begin{ndef}[Función característica]
+\begin{ndef}[Función característica] \label{funcioncaracteristica}
     La \emph{función característica} de un vector aleatorio \(\boldsymbol X = (X_1,\dots,X_p)\) se define como \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right], \quad \boldsymbol t\in \mathbb{R}^p.\]
 \end{ndef}
 
@@ -673,37 +673,45 @@ Entonces, se tiene:
 
   \subsection{Función característica de la DNM}
 
-  %# TODO: revisar estilo de esto y tratar de poner bonito
-  \begin{ndef}
-    Dado $\vectX  = (X_1,\dots,X_p)^T$ un vector aleatorio, se define la función característica de $\vectX$ como:
-    \[
-    \Psi_{\vectX}(t) = E[e^{it^T\vectX}] \quad \forall t \in \mathbb R^p
-    \]
-   
-  \end{ndef}
-  Recordando que si $\Sigma = CC^T$, con $C_{p\times p}$ no singular, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$, eligiendo $C$ tal que $\det(C)>0$, tenemos que $y = C^{-1}(x-\mu) \iff x = Cy + \mu$. Aplicamos ahora esto.\\
+  Cabe recordar en esta sección la definición \ref{funcioncaracteristica}.
 
- Para $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, tenemos
+  \begin{nprop}[Función característica de la DNM]
+    Sea $\vectX \sim N_p(\mu, \Sigma)$, entonces
+    
     \[
-    \Psi_{\vectX}(t) = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) dx
-    = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \{it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\}dx
-    =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \} \det(C)dy
-    = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \{ \sum_{j=1}^p [i\alpha_j y_j -  \frac{1}{2}y_j^2] \} = (*)
-    \]
-    con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, por lo que, si recordamos que:
+      \psi_{\vectX}(t) = \exp\left\{ it^T\mu - \frac{1}{2} t^T \Sigma t \right\}
+    .\]
+  \end{nprop}
+
+  
+  \begin{proof}
+    Tomamos una descomposición $\Sigma = CC^T$, con $C\in \mathscr{M}_{p}(\R)$ no singular, $\det(C) > 0$, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$.
+    
     \[
-    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu} - \frac{1}{2}\sigma^2 t^2 \implies \Psi
+    \begin{split}
+      \Psi_{\vectX}(t) & = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) \mathrm{d}x \\
+      & = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
+      & =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
+      & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
+      & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
+      & =^{(1)} e^{it^T \mu}- \frac{1}{2}t^T \Sigma t
+    \end{split}
     \]
-    se sigue en $(*)$ de la forma:
+    
+    con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, recordando que:
+    
     \[
-    (*) = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) =^{(1)} e^{it^T \mu}- \frac{1}{2}t^T \Sigma t 
+    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu} - \frac{1}{2}\sigma^2 t^2
     \]
-    donde en $(1)$ se ha usado que $ \int_{\mathbb R^p} e^{i\alpha_j y_j}\frac{1}{\sqrt{2\Pi}} e^{-\frac{1}{2}y_j^2} d_j = E[e^{i\alpha_j y_j}] = e^{-\frac{1}{2}\alpha_j}$ y que
+    
+    y en $(1)$ teniendo en cuenta:
+    
     \begin{itemize}
-    \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$
-      \item $\sum_{j = 1}^p \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t$
+    \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$,
+    \item $\sum_{j = 1}^p \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t$.
     \end{itemize}
 
+  \end{proof}
 
  
     \begin{nprop}
