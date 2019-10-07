@@ -695,14 +695,14 @@ Entonces, se tiene:
       & =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
       & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
       & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
-      & =^{(1)} e^{it^T \mu}- \frac{1}{2}t^T \Sigma t
+      & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\}
     \end{split}
     \]
     
     con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, recordando que:
     
     \[
-    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu} - \frac{1}{2}\sigma^2 t^2
+    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu - \frac{1}{2}\sigma^2 t^2}
     \]
     
     y en $(1)$ teniendo en cuenta:
