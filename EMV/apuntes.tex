@@ -263,28 +263,29 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
 \paragraph{$\Sigma$ es \textbf{semidefinida positiva}} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular ($\nexists \Sigma ^{-1} $ ). Por tanto, se tiene que $\operatorname{rango}(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in \mathscr{M}_{p\times r}(\R)$ y cuyo rango es $r$.\\
 
   \begin{ncor}
-    Con probabilidad $1$, las componentes del vector $X = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
+    Con probabilidad $1$, las componentes del vector $\vectX = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
     \[
-    \alpha^T X = k, \quad \quad \alpha \in \mathbb R^p, \quad \alpha \ne 0 , \quad k \in \mathbb R
+    \alpha^T \vectX = k, \quad \quad \alpha \in \mathbb R^p, \quad \alpha \ne 0 , \quad k \in \R
     \]
     
-  Por tanto, toda la variabilidad de $X$ se sitúa en un hiperplano afín (casi seguramente con respecto a la medida $P$).
+  Por tanto, toda la variabilidad de $\vectX$ se sitúa en un hiperplano afín (casi seguramente con respecto a la medida $P$).
 \end{ncor}
 
   \begin{proof}
-    Como $\det(\Sigma) = 0$, $\exists \alpha \ne 0$ tal que $\alpha^T \Sigma \alpha = 0$. Definimos la variable aleatoria $Y = \alpha^T X$, y se tiene que:
+    Como $\det(\Sigma) = 0$, $\exists \alpha \ne 0$ tal que $\alpha^T \Sigma \alpha = 0$. Definimos la variable aleatoria $\vectY = \alpha^T \vectX$, y se tiene que:
     
     \[
-      E[Y] = E[\alpha^T X] = \alpha^T E[X] = \alpha^T \mu =: k
+      E[\vectY] = E[\alpha^T \vectX] = \alpha^T E[\vectX] = \alpha^T \mu =: k
     ,\] y
     
      \[
         \begin{split}
-          \operatorname{Var}(Y) = E\left[\|Y-k\|^2\right] = E\left[\|\alpha^TX - \alpha^T \mu\|^2\right] = E\left[\|\alpha^T(X-\mu)\|^2\right] =\\
-          E\left[\alpha^T(X-\mu)(X-\mu)^T\alpha\right]= \alpha^T E\left[(X-\mu)(X-\mu)^T\right]\alpha = \alpha^T \Sigma \alpha = 0
+          \operatorname{Var}(\vectY) & = E\left[\|\vectY-k\|^2\right]  = E\left[\|\alpha^T\vectX - \alpha^T \mu\|^2\right] \\
+          & = E\left[\|\alpha^T(\vectX-\mu)\|^2\right] = E\left[\alpha^T(\vectX-\mu)(\vectX-\mu)^T\alpha\right] \\
+          & = \alpha^T E\left[(\vectX-\mu)(\vectX-\mu)^T\right]\alpha = \alpha^T \Sigma \alpha = 0
         \end{split}  
      \]
-      con lo que $Y$ es una variable aleatoria degenerada: $P[Y = k] = 1 \iff \alpha^T X = k$ c.s.
+      con lo que $\vectY$ es una variable aleatoria degenerada: $P[\vectY = k] = 1 \iff \alpha^T \vectX = k$ c.s.
   \end{proof}
 
 Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
