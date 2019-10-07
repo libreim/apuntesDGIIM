@@ -716,13 +716,29 @@ Entonces, se tiene:
 
  
     \begin{nprop}
-      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$ con $B_{q\times p}$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$ con $B\in \mathscr{M}_{q\times p}(\R)$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
+      
       \[
-\vectY \sim N_q(B\mu+b,B\Sigma B^T)
-      \]
+        \vectY \sim N_q(B\mu+b,B\Sigma B^T),
+        \]
+
+        con $B\Sigma B^T > 0$.
     \end{nprop}
     \begin{proof}
-      %#TODO: copiar demostración @antcc
+      Para $t\in \R^q$, se tiene:
+
+      \[
+      \begin{split}
+        \psi_{\vectY}(t) & = E\left[ e^{it^T(B\vectX + b)} \right] \\
+        & = e^{it^Tb} E\left[ i(B^Tt)^T\vectX \right] \\
+        & = e^{it^Tb} \psi_{\vectX}(B^Tt) \\
+        & = e^{it^Tb} \exp\left\{i(B^Tt)^T \mu- \frac{1}{2}(B^Tt)^T \Sigma B^Tt\right\} \\
+        & = \exp\left\{it^T(B\mu + b) - \frac{1}{2}t^T B\Sigma B^Tt\right\},
+      \end{split}
+      \]
+
+      y la correspondencia biunívoca entre funciones características y distribuciones concluye la prueba de la primera afirmación.
+      Además, $B\Sigma B^T > 0$ por ser $\Sigma > 0$ y $B$ de rango máximo.
     \end{proof}
 
     \begin{ncor}[Marginalización]
