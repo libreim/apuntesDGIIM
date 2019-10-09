@@ -748,3 +748,95 @@ Entonces, se tiene:
         \item $\Sigma_r$ la submatriz de $\Sigma$ definida por las filas y columnas correspondientes a $r$.
       \end{itemize}
     \end{ncor}
+
+
+
+    \begin{ndef}
+      Se dice que $A_{p\times p}$ es diagonalizable si existe una matriz $Q_{p \times p}$ no singular tal que:
+      \[
+      Q^{-1}AQ = D
+      \]
+      con $D$ una matriz diagonal
+    \end{ndef}
+
+    \begin{nth}
+      Sea $A$ una matriz $p\times p$. Supongamos que $A$ es diagonalizable por $Q_{p \times p}$ no singular, esto es:
+      \[
+      Q^{-1}AQ = D
+      \]
+      con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= diag(d_1,\dots,d_p)$. Entonces:
+      \begin{enumerate}
+      \item $rango(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0.
+      \item $|A| = \prod_{i = 1}^p d_i$
+      \item $tr(A) = \sum_{i = 1}^p d_i$
+      \item El polinomio característico de $A$ es:
+        \[
+        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p)
+        \]
+
+      \item El espetro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$.
+
+        \item Las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$
+
+          \item Las columnas de $Q$ son autovectores linealmente dependientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $\lambda_i$
+
+          \item Se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
+
+            
+
+      \end{enumerate}
+
+    \end{nth}
+\begin{ncor}
+              $A$ debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica
+\end{ncor}
+
+Ahora, para matrices \textbf{definidas no negativas}:
+\begin{itemize}
+\item $A$ es definida no negativa $\iif$ los autovalores de $A$ son no negativos
+\item $A$ es definida positiva $\iif $ los autovalores de $A$ son positivos
+\end{itemize}
+Y, si $A$ es \textbf{simétrica}:
+\begin{itemize}
+\item $A$ es definida no negativa $\iif$ los autovalores de $A$ son no negativos
+\item $A$ es definida positiva $\iif$ los autovalores de $A$ son positivos
+  \item $A$ es semidefinida positiva $\iif$ los autovalores de $A$ son no negativos y al menos uno es nulo
+
+\end{itemize}
+
+Por último vamos a definir lo siguiente:
+\begin{ndef}
+
+  Sea una matriz $A_{p\times p}$ simétrica y definida no negativa. Entonces, existe una matriz $R_{p\times p}$ simétrica y definida no negativa tal que
+  \[
+  A = R^2 = RR
+  \]
+  Además, $R$ es única y puede expresarse como:
+  \[
+  R = Q diag(\sqrt{d_1}, \dots, \sqrt{d_p}) Q^T
+  \]
+  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa
+\end{ndef}
+
+
+\subsubsection{Matrices de intercambio de filas/columnas}
+
+Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$
+
+%#TODO: Completar esto... dep.
+
+\subsection{Caracterización de la DNM $(\Sigma > 0)$en términos de la normalidad de las combinaciones lineales de las componentes}
+
+Sea $\vectX = (X_1,\dots,X_p)^T$ el vector aleatorio tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
+\[
+\alpha^T \vectX
+\]
+con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada.\\
+
+Hasta ahora, tenemos las siguientes formulaciones equivalentes:
+\begin{itemize}
+\item $[D]$: Definición en términos de la densidad $f_{\vectX}$
+\item $[C-I]$: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$
+\item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$
+\item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$
+\end{itemize}
