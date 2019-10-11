@@ -31,6 +31,9 @@
 \usepackage{amsthm}     % Teoremas
 \usepackage{mathrsfs}   % Fuente para ciertas letras utilizadas en matemáticas
 
+\usepackage{witharrows}
+\WithArrowsOptions{displaystyle}
+
 % LISTAS
 \usepackage{enumitem}       % Mejores listas
 \setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
@@ -55,6 +58,8 @@
 % Títulos de figuras
 \usepackage{capt-of}
 
+\usepackage{lipsum}
+
 % ---------------------------------------------------------------------------
 %  RECURSOS
 % ---------------------------------------------------------------------------
@@ -71,13 +76,13 @@
 % Nuevo estilo para definiciones
 \newtheoremstyle{definition-style}  % Nombre del estilo
 {}                                  % Espacio por encima
-{12pt}                                  % Espacio por debajo
+{}                                  % Espacio por debajo
 {}                                  % Fuente del cuerpo
 {}                                  % Identación
 {\bfseries\sffamily}                      % Fuente para la cabecera
 {.}                                 % Puntuación tras la cabecera
 {.5em}                              % Espacio tras la cabecera
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
+{{\thmname{#1}\thmnumber{ #2}}\thmnote{ (#3)}}  % Especificación de la cabecera
 
 % Nuevo estilo para notas
 \newtheoremstyle{remark-style}
@@ -92,8 +97,8 @@
 
 % Nuevo estilo para teoremas y proposiciones
 \newtheoremstyle{theorem-style}
-{}
-{}
+{12pt}
+{12pt}
 {\itshape}
 {}
 {\bfseries \sffamily}
@@ -135,6 +140,10 @@
 \theoremstyle{remark-style}
 \newtheorem*{nota}{Nota}
 
+% Notación
+\theoremstyle{remark-style}
+\newtheorem*{notacion}{Notación}
+
 % Ejemplos
 \theoremstyle{example-style}
 \newtheorem{ejemplo}{Ejemplo}[section]
@@ -145,6 +154,74 @@
 
 \theoremstyle{remark-style}
 \newtheorem*{sol}{Solución}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Restricción de una aplicación.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+% Letras de conjuntos
+\newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
+
+% Letras en negrita, usadas para denotar vectores
+\newcommand{\vectx}{\boldsymbol{x}}
+\newcommand{\vectX}{\boldsymbol{X}}
+\newcommand{\vectt}{\boldsymbol{t}}
+\newcommand{\vectY}{\boldsymbol{Y}}
+\newcommand{\vectZ}{\boldsymbol{Z}}
+
+% Traza de una matriz
+\newcommand{\traza}{\operatorname{tr}}
+
+% Matrix diagonal a partir de vector
+\newcommand{\diag}{\operatorname{diag}}
+
+% Sucesiones
+\newcommand{\xn}{\{x_n\}}
+\newcommand{\fn}{\{f_n\}}
+
+% Máximo
+\let\max\relax
+\DeclareMathOperator{\max}{\text{máx}}
+
+% Letra griega "chi" en línea con el texto
+\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi
+
+% Letra 'omega'
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
+
+% Conjunto vacío
+\renewcommand{\O}{\emptyset}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
 
 
 % ---------------------------------------------------------------------------

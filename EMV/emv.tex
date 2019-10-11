@@ -34,8 +34,8 @@
 % Fixing pagestyle for pages containing \section command
 \xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
 
-\linespread{1.2}
-\setlength{\parindent}{24pt}
+\linespread{1.1}
+\setlength{\parindent}{18pt}
 \setlength{\parskip}{0pt}
 
 % ---------------------------------------------------------------------------
@@ -52,7 +52,7 @@
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
 
 % FUENTES
-\usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
+\usepackage{XCharter}   % Fuente similar a Palatino
 \usepackage{FiraSans}                 % Fuente sans serif
 \usepackage[T1]{fontenc}
 \usepackage[italic]{mathastext}     % Utiliza la fuente del documento
@@ -88,89 +88,22 @@
 
 %% MARCOS DE LOS ESTILOS
 
-% Configuración general de mdframe, los estilos de los teoremas, etc
-\mdfsetup{
-	skipabove=6pt,
-  skipbelow=12pt,
-  innertopmargin=0em,
-  innerbottommargin=6pt,
-  %splittopskip=2\topsep,
-}
-
 % Definimos los marcos de los estilos
 
 \mdfdefinestyle{nth-frame}{
 	linewidth=2pt, %
 	linecolor= 500, %
-	topline=true, %
+	topline=false, %
 	bottomline=false, %
 	rightline=false,%
-	leftmargin=0em, %
-	innerleftmargin=12pt, %
   innerrightmargin=0pt,
-	rightmargin=0em, %
+	innertopmargin=-12pt,
+	innerbottommargin=0pt,
+	skipabove=0pt,
+	skipbelow=0pt,
 }%
 
-\mdfdefinestyle{nprop-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
-
-\mdfdefinestyle{ndef-frame}{
-	linewidth=2pt, %
-	linecolor= 500, %
-	backgroundcolor= 50,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
-
-\mdfdefinestyle{ejer-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	backgroundcolor= 50,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
-
-\mdfdefinestyle{ejemplo-frame}{
-	linewidth=0pt, %
-	linecolor= 300, %
-	leftline=false, %
-	rightline=false, %
-	leftmargin=0pt, %
-	innerleftmargin=1.3em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-	innertopmargin=0em,%
-	innerbottommargin=0em, %
-	splittopskip=\topskip, %
-}%
-
-% Asignamos los marcos a los estilos
 \surroundwithmdframed[style=nth-frame]{nth}
-%\surroundwithmdframed[style=nprop-frame]{nprop}
-%\surroundwithmdframed[style=nprop-frame]{ncor}
-%\surroundwithmdframed[style=ndef-frame]{ndef}
-\surroundwithmdframed[style=ejer-frame]{ejer}
-\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
-\surroundwithmdframed[style=ejemplo-frame]{sol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---------------------------------------------------------------------------
