@@ -86,15 +86,11 @@
 \renewcommand{\sectionmark}[1]{%
 \markboth{#1}{}}
 
-% Representa la subsección de la cabecera
-\renewcommand{\subsectionmark}[1]{%
-\markright{#1}{}}
-
 % Parte derecha de la cabecera
-\fancyhead[LE,RO]{\sffamily\textsl{\rightmark} \hspace{1em}  \textcolor{500}{\rule[-0.4ex]{0.2ex}{1.2em}} \hspace{1em} \thepage}
+\fancyhead[R]{\sffamily \thepage}
 
 % Parte izquierda de la cabecera
-\fancyhead[RE,LO]{\sffamily{\leftmark}}
+\fancyhead[L]{\sffamily{\leftmark}}
 
 % Elimina la línea de la cabecera
 \renewcommand{\headrulewidth}{0pt}
