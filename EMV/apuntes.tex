@@ -425,14 +425,12 @@ Veamos que, en efecto, $f_X$ es una función de densidad
 
 Por tanto, podemos escribir:
 
-  \[
-    \begin{WithArrows}
+\begin{DispWithArrows*}[fleqn, mathindent = 0cm, wrap-lines]
       \int_{\R^p} f_X(x) \mathrm{d}x & = \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
       & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\
       & = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p\\
       & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j =^{(1)} \prod_{j=1}^p 1 = 1.
-  \end{WithArrows}
-  \]
+\end{DispWithArrows*}
 \end{enumerate}
 
 
@@ -627,13 +625,11 @@ Entonces, se tiene:
 
   Para probar \ref{conditem} escribimos, usando el teorema de Bayes, la expresión de la de función de densidad de la distribución condicionada:
 
-  \[
-  \begin{WithArrows}
-    f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{X_{(1)}, X_{(2)}} (x_{(1)}, x_{(2)})} {f_{X_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de\\
-      variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, \\$\det(C) = 1$} \\
+  \begin{DispWithArrows*}[fleqn, wrap-lines]
+    f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{X_{(1)}, X_{(2)}} (x_{(1)}, x_{(2)})} {f_{X_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, $\det(C) = 1$} \\
     & = \frac{f_{Y_{(1)}, Y_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{X_{(1)}}(x_{(1)})}
-  \end{WithArrows}
-  \]
+  \end{DispWithArrows*}
+
 
   Veamos el valor de la forma cuadrática que aparecerá en $f_{Y_{(1)}, Y_{(2)}}$:
 
