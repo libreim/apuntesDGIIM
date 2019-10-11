@@ -130,8 +130,7 @@
 \fancyhf{}
 
 % Representa la sección de la cabecera
-\renewcommand{\sectionmark}[1]{%
-\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
 
 % Parte derecha de la cabecera
 \fancyhead[R]{\sffamily \thepage}
