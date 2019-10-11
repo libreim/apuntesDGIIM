@@ -19,14 +19,14 @@ a modo de breve repaso y para fijar notación.
 \begin{ndef}[Probabilidad inducida]
     La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ se define como
     \[
-    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathbb{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
+    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathscr{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
 \end{ndef}
 
 \begin{notacion}
   Cuando escribamos probabilidades de sucesos asociados a un vector aleatorio $\boldsymbol X$, usaremos la siguiente notación:
   \begin{itemize}
   \item $P[\boldsymbol X \in A] = P_X[A]$,
-  \item $P[X_1 \le x1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$,
+  \item $P[X_1 \le x_1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$,
   \end{itemize}
   y algunas formas análogas.
 \end{notacion}
@@ -46,8 +46,7 @@ a modo de breve repaso y para fijar notación.
     ,\]
     diremos que $f_{\boldsymbol X}$ es una \emph{función de densidad} asociada a  $F_{\boldsymbol X}$. En los puntos de continuidad de $f_{\boldsymbol X}$, se puede escribir como:
     \[
-    % TODO Añadir lo de las derivadas
-    f_{\boldsymbol X}(\boldsymbol x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_{\boldsymbol X}(\boldsymbol x) \quad \text{para todo } \boldsymbol x \in \mathbb{R}^p
+    f_{\boldsymbol X}(\boldsymbol x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_{\boldsymbol X}(\boldsymbol x)
     .\]
 \end{ndef}
 
@@ -69,7 +68,7 @@ P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \dots  P_{X_p}[B_p].
 \]
 
 \begin{ndef}
-    Si en las condiciones anteriores se da la igualdad para todo conjunto producto en \(\mathbb{B}^p\), se dice que \(X_1, \dots, X_p\) son \emph{independientes}.
+    Si en las condiciones anteriores se da la igualdad para todo conjunto producto en \(\mathscr{B}^p\), se dice que \(X_1, \dots, X_p\) son \emph{independientes}.
 \end{ndef}
 
 \begin{nprop}[Caracterizaciones de independencia]
