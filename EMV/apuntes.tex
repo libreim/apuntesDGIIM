@@ -194,7 +194,7 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
     \item La clase de matrices de covarianzas en dimensión $p\times p$ coincide con la clase de matrices simétricas definidas no negativas.
     \end{enumerate}
   \end{nprop}
-%#TODO: demostración (Ejercicio)
+
 \begin{proof}
   Vamos a ver únicamente la demostración de la propiedad 3.
   \begin{nlist}
@@ -212,7 +212,6 @@ con $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$. Solo
        \Sigma_{\vectY} = B\Sigma_{\vectX} B^T = B B^T = A
     .\]
 
-%#TODO: Terminar demostración
   \end{nlist}
 \end{proof}
 
@@ -235,16 +234,26 @@ para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ n
   \end{ndef}
 
 Veamos a continuación algunas de las propiedades de esta variable $Z$.
-  \begin{nlist}
-    \item
-  $
-  E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0
-  $
+\begin{nprop}
+  Una normalización de un vector aleatorio tiene media $0$ y matriz de covarianzas identidad.
+\end{nprop}
 
-\item $\operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]$ y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior : $\operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I \implies Z \sim (0, I_{p\times p}).$
+\begin{proof} \hfill\\
+    \[
+    E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0,
+    \]
 
-  \end{nlist}
+    \[
+    \operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]
+    \]
 
+    y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior:
+
+    \[
+      \operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I
+    .\]
+
+\end{proof}
   \begin{ndef}
     Se define la \emph{distancia de Mahalanobis} de $\vectX\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
     \[
