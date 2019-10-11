@@ -840,3 +840,50 @@ Hasta ahora, tenemos las siguientes formulaciones equivalentes:
 \item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$
 \item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$
 \end{itemize}
+
+
+\begin{nota}[Descomposición espectral de $\Sigma \geq 0$ simétrica]
+Como $\Sigma$ es simétrica, podemos escribirla como:
+\[
+\Sigma = H \Lambda H^T
+\]
+con $H_{p\times p}$ ortogonal, y $\Lambda_{p \times p}$ diagonal. Sea $r = rango(\Sigma)$ con $r\leq p$.\\
+
+Supongamos que las matrices se eligen de modo que:
+\[
+\Lambda = \begin{pmatrix} D & \\ & \end{pmatrix}
+\]
+con $D_{r\times r} no singular, escribienod entonces:
+\[
+H = \begin{pmatrix} H_1 & H_2 \end{pmatrix}, \quad \quad H_1_{p \times r}, H_2_{p\times (p-r)}
+\]
+Con esto, tenemos:
+\[
+\Sigma = \begin{pmatrix} H_1 & H_2 \end{pmatrix}\begin{pmatrix} D & \\ & \end{pmatrix}\begin{pmatrix} H_1^T  \\ H_2^T \end{pmatrix} = H_1 D H_1^T
+\]
+
+\end{nota}
+
+Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente manera:
+\begin{nprop}
+  Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un v.a. con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
+  \[
+\Phi_{\vectX}(t) = E[e^{it^T \vectX}] = e^{it^T \mu - \frac{1}{2}t^T \Sigma t} \quad \forall t \in \mathbb R^p
+  \]
+
+\end{nprop}
+
+\begin{nprop}[Transformaciones lineales de rango no necesariamente máximo]
+  Sea $\vectX  = (X_1,\dots,X_p)^T = \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definida como $\vectY = B\vectX + b$ con $B_{q\times p}$ de rango $r \leq min \{q,p\}$, y $b_{q \times 1}$.
+
+  Entonces, se tiene que
+  \[
+  \vectY \sim N_q(B\mu+b, B\Sigma B^T)
+  \]
+
+\end{nprop}
+\begin{nota}
+  La única novedad que nos aporta esta nueva proposición respecto a lo que ya teníamos, es que ahora $B\Sigma B^T \geq 0$ (antes teníamos que tenía que se estrictamente mayor).\\
+
+  La demostración es análoga a la del caso $\Sigma > 0$
+\end{nota}
