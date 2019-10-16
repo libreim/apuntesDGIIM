@@ -13,6 +13,7 @@
 \usepackage{upgreek}
 \usepackage{amsthm}     % Teoremas
 \usepackage{mathrsfs}   % Fuente para ciertas letras utilizadas en matemáticas
+\usepackage{mathtools}
 
 \usepackage{witharrows}
 \WithArrowsOptions{displaystyle}
@@ -28,8 +29,8 @@
             bookmarksopen=false,     % true means only level 1
                                      % are displayed.
             colorlinks=true,
-            linkcolor=webgreen,
-            urlcolor=cyan]{hyperref}
+            linkcolor=700,
+            urlcolor=500]{hyperref}
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
@@ -221,10 +222,6 @@
     \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
   {\end{enumerate}}
 
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
 % ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
