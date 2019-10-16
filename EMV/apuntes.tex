@@ -706,8 +706,7 @@ Entonces, se tiene:
   Cabe recordar en esta sección la definición \ref{funcioncaracteristica}.
 
   \begin{nprop}[Función característica de la DNM]
-    Sea $\vectX \sim N_p(\mu, \Sigma)$, entonces
-    
+    Dado un vector aleatorio $\vectX \sim N_p(\mu, \Sigma)$, su función característica viene dada por
     \[
       \psi_{\vectX}(t) = \exp\left\{ it^T\mu - \frac{1}{2} t^T \Sigma t \right\}
     .\]
@@ -716,7 +715,6 @@ Entonces, se tiene:
   
   \begin{proof}
     Tomamos una descomposición $\Sigma = CC^T$, con $C\in \mathscr{M}_{p}(\R)$ no singular, $\det(C) > 0$, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$.
-    
     \[
     \begin{split}
       \Psi_{\vectX}(t) & = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) \mathrm{d}x \\
@@ -724,18 +722,14 @@ Entonces, se tiene:
       & =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
       & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
       & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
-      & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\}
+      & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\},
     \end{split}
     \]
-    
     con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, recordando que:
-    
     \[
     \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu - \frac{1}{2}\sigma^2 t^2}
     \]
-    
     y en $(1)$ teniendo en cuenta:
-    
     \begin{itemize}
     \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$,
     \item $\sum_{j = 1}^p \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t$.
@@ -745,13 +739,11 @@ Entonces, se tiene:
 
  
     \begin{nprop}
-      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$ con $B\in \mathscr{M}_{q\times p}(\R)$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
-      
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$, donde $B\in \mathscr{M}_{q\times p}(\R)$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
       \[
-        \vectY \sim N_q(B\mu+b,B\Sigma B^T),
-        \]
-
-        con $B\Sigma B^T > 0$.
+        \vectY \sim N_q\left(B\mu+b,\, B\Sigma B^T\right),
+      \]
+      con $B\Sigma B^T > 0$.
     \end{nprop}
     \begin{proof}
       Para $t\in \R^q$, se tiene:
@@ -759,63 +751,53 @@ Entonces, se tiene:
       \[
       \begin{split}
         \psi_{\vectY}(t) & = E\left[ e^{it^T(B\vectX + b)} \right] \\
-        & = e^{it^Tb} E\left[ i(B^Tt)^T\vectX \right] \\
-        & = e^{it^Tb} \psi_{\vectX}(B^Tt) \\
-        & = e^{it^Tb} \exp\left\{i(B^Tt)^T \mu- \frac{1}{2}(B^Tt)^T \Sigma B^Tt\right\} \\
+        & = e^{it^Tb} E\left[ i\left(B^Tt\right)^T\vectX \right] \\
+        & = e^{it^Tb} \psi_{\vectX}\left(B^Tt\right) \\
+        & = e^{it^Tb} \exp\left\{i\left(B^Tt\right)^T \mu- \frac{1}{2}\left(B^Tt\right)^T \Sigma B^Tt\right\} \\
         & = \exp\left\{it^T(B\mu + b) - \frac{1}{2}t^T B\Sigma B^Tt\right\},
       \end{split}
       \]
-
       y la correspondencia biunívoca entre funciones características y distribuciones concluye la prueba de la primera afirmación.
-      Además, $B\Sigma B^T > 0$ por ser $\Sigma > 0$ y $B$ de rango máximo.
+      Además, se verifica que $B\Sigma B^T > 0$ por ser tanto $\Sigma > 0$ como $B$ de rango máximo.
     \end{proof}
 
     \begin{ncor}[Marginalización]
-      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Entonces, para todo subvector $\vectX_r = (X_{r_1},\dots, X_{r_q})^T$, $r = (r_1,\dots,r_q)^T$ con $r_1,\dots,r_q \in \{1,\dots,p\}$ y $q \leq p$, se tiene que $\vectX_r \sim N_q(\mu_r, \Sigma_r)$ siendo:
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces para todo subvector $\vectX_r = (X_{r_1},\dots, X_{r_q})^T$ —donde $r = (r_1,\dots,r_q)^T$\, con $r_1,\dots,r_q \in \{1,\dots,p\}$ y $q \leq p$— se tiene que $\vectX_r \sim N_q(\mu_r, \Sigma_r)$, siendo
       \begin{itemize}
-      \item $\mu_r$ el subvector de $\mu$ correspondiente a $r$,
+      \item $\mu_r$ el subvector de $\mu$ correspondiente a $r$,\, y
         \item $\Sigma_r$ la submatriz de $\Sigma$ definida por las filas y columnas correspondientes a $r$.
       \end{itemize}
     \end{ncor}
 
-
-
     \begin{ndef}
       Se dice que $A_{p\times p}$ es diagonalizable si existe una matriz $Q_{p \times p}$ no singular tal que:
       \[
-      Q^{-1}AQ = D
+      Q^{-1}AQ = D,
       \]
-      con $D$ una matriz diagonal
+      con $D$ una matriz diagonal.
     \end{ndef}
 
     \begin{nth}
-      Sea $A$ una matriz $p\times p$. Supongamos que $A$ es diagonalizable por $Q_{p \times p}$ no singular, esto es:
+      Sea $A$ una matriz $p\times p$. Supongamos que $A$ es diagonalizable por otra matriz $Q_{p \times p}$ no singular, esto es
       \[
-      Q^{-1}AQ = D
+      Q^{-1}AQ = D,
       \]
-      con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= diag(d_1,\dots,d_p)$. Entonces:
+      con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= \operatorname{diag}(d_1,\dots,d_p)$. Entonces:
       \begin{enumerate}
-      \item $rango(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0.
+      \item $\operatorname{rango}(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0.
       \item $|A| = \prod_{i = 1}^p d_i$
-      \item $tr(A) = \sum_{i = 1}^p d_i$
+      \item $\operatorname{tr}(A) = \sum_{i = 1}^p d_i$
       \item El polinomio característico de $A$ es:
         \[
-        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p)
+        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p).
         \]
+      \item El espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$.
+      \item Las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$
+      \item Las columnas de $Q$ son autovectores linealmente dependientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $\lambda_i$
+      \item Se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
+    \end{enumerate}
 
-      \item El espetro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$.
-
-        \item Las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$
-
-          \item Las columnas de $Q$ son autovectores linealmente dependientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $\lambda_i$
-
-          \item Se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
-
-            
-
-      \end{enumerate}
-
-    \end{nth}
+\end{nth}
 \begin{ncor}
               $A$ debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica
 \end{ncor}
@@ -854,60 +836,66 @@ Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las fila
 
 %#TODO: Completar esto... dep.
 
-\subsection{Caracterización de la DNM $(\Sigma > 0)$en términos de la normalidad de las combinaciones lineales de las componentes}
+\subsection{Caracterización de la DNM $(\Sigma > 0)$ en términos de la normalidad de las combinaciones lineales de las componentes}
 
-Sea $\vectX = (X_1,\dots,X_p)^T$ el vector aleatorio tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
+Dado un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$, decimos que tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
 \[
 \alpha^T \vectX
 \]
-con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada.\\
+con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada.
 
-Hasta ahora, tenemos las siguientes formulaciones equivalentes:
+Hasta ahora hemos descrito tenemos las siguientes formulaciones equivalentes de DNM:
 \begin{itemize}
-\item $[D]$: Definición en términos de la densidad $f_{\vectX}$
-\item $[C-I]$: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$
-\item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$
-\item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$
+\item $[D]$: Definición en términos de la densidad $f_{\vectX}$,
+\item $[C-I]$: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$,
+\item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$, y
+\item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
 \end{itemize}
 
 
 \begin{nota}[Descomposición espectral de $\Sigma \geq 0$ simétrica]
-Como $\Sigma$ es simétrica, podemos escribirla como:
+Como $\Sigma$ es simétrica, podemos escribirla como
 \[
-\Sigma = H \Lambda H^T
+\Sigma = H \Lambda H^T,
 \]
-con $H_{p\times p}$ ortogonal, y $\Lambda_{p \times p}$ diagonal. Sea $r = rango(\Sigma)$ con $r\leq p$.\\
+con $H_{p\times p}$ ortogonal, y $\Lambda_{p \times p}$ diagonal. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$.\\
 
 Supongamos que las matrices se eligen de modo que:
 \[
-\Lambda = \begin{pmatrix} D & \\ & \end{pmatrix}
+\Lambda = \left(\begin{array}{@{}c|c@{}}
+  D & 0 \\\hline
+  0 & 0
+  \end{array}\right)
 \]
-con $D_{r\times r}$ no singular, escribienod entonces:
+con $D_{r\times r}$ no singular, escribiendo entonces:
 \[
 H = \begin{pmatrix} H_1 & H_2 \end{pmatrix}, \quad \quad H_{1_{p \times r}}, H_{2_{p\times (p-r)}}
 \]
 Con esto, tenemos:
 \[
-\Sigma = \begin{pmatrix} H_1 & H_2 \end{pmatrix}\begin{pmatrix} D & \\ & \end{pmatrix}\begin{pmatrix} H_1^T  \\ H_2^T \end{pmatrix} = H_1 D H_1^T
+\Sigma = \begin{pmatrix} H_1 & H_2 \end{pmatrix}\left(\begin{array}{@{}c|c@{}}
+  D & 0 \\\hline
+  0 & 0
+  \end{array}\right)\begin{pmatrix} H_1^T  \\ H_2^T \end{pmatrix} = H_1 D H_1^T
 \]
 
 \end{nota}
 
 Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente manera:
 \begin{nprop}
-  Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un v.a. con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
+  Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
   \[
-\Phi_{\vectX}(t) = E[e^{it^T \vectX}] = e^{it^T \mu - \frac{1}{2}t^T \Sigma t} \quad \forall t \in \mathbb R^p
+\Phi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = e^{it^T \mu - \frac{1}{2}t^T \Sigma t} \qquad \text{para todo } t \in \mathbb R^p.
   \]
 
 \end{nprop}
 
 \begin{nprop}[Transformaciones lineales de rango no necesariamente máximo]
-  Sea $\vectX  = (X_1,\dots,X_p)^T = \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definida como $\vectY = B\vectX + b$ con $B_{q\times p}$ de rango $r \leq min \{q,p\}$, y $b_{q \times 1}$.
+  Dado un vector aleatorio $\vectX  = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definido como $\vectY = B\vectX + b$, con $B_{q\times p}$ matriz de rango $r \leq \min \{q,p\}$, y $b_{q \times 1}$ un vector.
 
   Entonces, se tiene que
   \[
-  \vectY \sim N_q(B\mu+b, B\Sigma B^T)
+  \vectY \sim N_q(B\mu+b, B\Sigma B^T).
   \]
 
 \end{nprop}
