@@ -52,7 +52,7 @@
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
 
 % FUENTES
-\usepackage{XCharter}   % Fuente similar a Palatino
+\usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
 \usepackage{FiraSans}                 % Fuente sans serif
 \usepackage[T1]{fontenc}
 \usepackage[italic]{mathastext}     % Utiliza la fuente del documento
@@ -103,7 +103,38 @@
 	skipbelow=0pt,
 }%
 
+\mdfdefinestyle{nprop-frame}{
+	linewidth=2pt, %
+	linecolor= 300, %
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+  innerrightmargin=0pt,
+	innertopmargin=-12pt,
+	innerbottommargin=0pt,
+	skipabove=0pt,
+	skipbelow=0pt,
+}%
+
+\mdfdefinestyle{ndef-frame}{
+	linewidth=2pt, %
+	linecolor= 500, %
+	backgroundcolor= 50,
+	topline=false, %
+	bottomline=false, %
+	rightline=false,%
+  %innerrightmargin=0pt,
+	innertopmargin=0pt,
+	innerbottommargin=6pt,
+	skipabove=12pt,
+	skipbelow=12pt,
+	splittopskip=\topskip, %
+}%
+
 \surroundwithmdframed[style=nth-frame]{nth}
+\surroundwithmdframed[style=nprop-frame]{nprop}
+\surroundwithmdframed[style=nprop-frame]{ncor}
+\surroundwithmdframed[style=ndef-frame]{ndef}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---------------------------------------------------------------------------
