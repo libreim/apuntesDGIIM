@@ -904,3 +904,110 @@ Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente man
 
   La demostración es análoga a la del caso $\Sigma > 0$
 \end{nota}
+
+
+Recordemos la $[C-II]$: Sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma > 0$, sii
+\[
+\Psi_\vectX(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} \quad \forall t\in \mathbb R^p
+\]
+Supongamos $\vectX$ un vector aleatorio. Entonces, podemos utilizar una de las caracterizaciones anteriores y escribir:
+\[
+\Psi_\vectX(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} = e^{i^T HH^T \mu - \frac{1}{2}t^T H_1 D H_1^T t} = e^{it^T H_1 H_1^T\mu - \frac{1}{2}t^T H_1DH_1^Tt}* e^{itH_2H_2^T \mu}
+\]
+La forma de la densidad obtenida, sugiere considerar el siguiente cambio de variable: $\vectX = H\vectY$:
+\[
+Y = \begin{pmatrix} H_1^T \\ H_2^T \end{pmatrix} \vectX=\begin{pmatrix} H_1^T \vectX \\ H_2^T\vectX \end{pmatrix} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+\]
+
+Con esto, se tiene:
+\begin{itemize}
+\item $\mu_\vectY = H^T \mu = \begin{pmatrix} H_1^T \mu \\ H_2^T\mu \end{pmatrix} = \begin{pmatrix} \mu_{\vectY_1} \\ \mu_{\vectY_2} \end{pmatrix}$
+  \item $\Sigma_\vectY =  H^T \Sigma H = H^T H \Delta H^T H = \Delta = \begin{pmatrix} D & 0 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} \Sigma_{\vectY_1} = D \\ \Sigma_{\vectY_2} = 0\end{cases}$,
+\end{itemize}
+Y, por tanto:
+\[
+\begin{cases} \vectY_1 \sim N_r(H_1\mu,D) \quad D> 0 \\ \vectY_2 \equiv H_2\mu \quad p.c.s \end{cases}
+\]
+Vamos a dar una \textbf{intrepretación} de $\Psi_\vectX (t)$:
+\[
+\Psi_\vectX(t) = E[e^{it^T\vectX}] = E[e^{it^TH\vectY}] = E[e^{i(H^Tt)^T \vectY}] = \Psi_\vectY(H^T t)
+\]
+%#TODO: revisar la siguiente letra: \nu
+Denotamos
+\[
+\nu = H^T t = \begin{pmatrix} H_1^T \\ H_2^T\end{pmatrix}t = \begin{pmatrix} H_1^Tt \\ H_2^Tt\end{pmatrix} = \begin{pmatrix} \nu_1 \\ \nu_2\end{pmatrix}$
+\]
+Con esto:
+\[
+\Psi_\vectY(\nu) = \Psi_\vectX(t) = e^{i\nu_1\mu_{\vectY_1} - \frac{1}{2} \nu_1^T \Sigma_{\vectY_1}\nu_1}* e^{i\nu_2^T \mu_{\vectY_2}}
+\]
+y en la última igualdad, el primer término es $\Psi_{\vectY_1}(\nu_1)$ y la segunda es $\Psi_{\vectY_2}(\nu_2)$, con $\vectY_1,\vectY_2$ independientes.\\
+
+Aplicamos a $\vectY_1$ la $[C-I]$: tenemos que $\vectY_1$ puede representarse en distribución como
+\[
+Y_1 \equiv^d D^{\frac{1}{2}}Z + H_1^T \mu \quad \quad  Z \sim N_r(0,I) 
+\]
+Para $\vectY_2 \equiv^{p.c.s.} H_2^T \mu \equiv 0*Z + H_2^T \mu$, tenemos, multiplicando por $H$:
+\[
+\vectY = \begin{pmatrix} \vectY_1 \\ \vectY_2 \end{pmatrix} \equiv \begin{pmatrix} D^{\frac{1}{2}} Z + H_1\mu \\ 0Z+ H_2^T \mu\end{pmatrix} = \begin{pmatrix} D^{\frac{1}{2}} \\ 0 \end{pmatrix}Z + H^T \mu
+\]
+Vemos que:
+\[
+\vectX = H\vectY = H\begin{pmatrix} D^{\frac{1}{2}} \\ 0\end{pmatrix} Z + HH^T\mu = H_1D^{\frac{1}{2}}Z + \mu
+\]
+
+Denotando $A= H_1D^{\frac{1}{2}}$ se tiene finalmente:
+\[
+X \equiv^{d} AZ + \mu
+\]
+con $A$ una matriz $p\times r$, con $r\leq p$ de rango $r$ y $Z\sim N_r(0,I)$.\\
+
+Recíprocamente, supongamos que se cumple lo anterior. Tenemos que, por el teorema de inversión de P. Lévy,
+\[
+\Psi_\vectX = \Psi_{AZ + \mu}  = E[e^{it^T(AZ +  \mu)}] = E[e^{it^T(AZ)}]e^{it^T\mu} = E[e^{i(A^t t)^T Z}]e^{it^T \mu} = \Psi_Z(A^Tt)*e^{it^T \mu} = (*)
+\]
+como $\Psi_Z(t) = e^{it^T 0 - \frac{1}{2}t^tIt} = t^{-\frac{1}{2}t^t t}, entonces:
+\[
+(*) = e^{-\frac{1}{2}(A^T t)^T(A^T t)} e^{it^T \mu} = e^{-\frac{1}{2}t^T A A^T t} e^{it^T \mu} = (**)
+\]
+y, como tenemos:
+\begin{itemize}
+\item \mu_\vectX = E[\vectX]=A*0 +\mu = \mu
+  \item \Sigma_\vectX = Cov(\vectX) = AIA^T = AA^T
+\end{itemize}
+Nos queda:
+\[
+(**) = e^{it\mu - \frac{1}{2}t^T(AA^T)t} \implies \vectX \sim N__p(\mu, AA^T) \quad AA^T \geq 0
+\]
+
+Con todo este procedimiento, podemos enunciar la siguiente caracterización, que es una extensión de $[C-I]$.
+\begin{nprop}[$\bar{[C-I]}$]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM de vector de medias $\mu$ y matriz de covarianzas $\Sigma$ (con $\Sigma \geq 0$) , $N_P(\mu,\Sigma)$ si y solo si se puede representar:
+  \[
+\vectX \equiv^{d} AZ + \mu \quad con \quad \begin{cases} A_{p\times r}, \ \ rango(A) = r, \ \ AA^T = \Sigma \\ Z\sim N_r(0,I)\end{cases}
+  \]
+\end{nprop}
+Enunciamos también una nueva versión de $[C-III]$:
+\begin{nprop}[$\bar{[C-III]}$]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM (con $\Sigma \geq 0$) si y solo si toda combinación lineal de las componentes $X_1,\dots,X_p$ de la forama:
+  \[
+\alpha^T X \quad \quad \alpha^T \in \mathbb R^p
+\]
+tiene distribución normal (univariante, posiblemente degenerada)
+\end{nprop}
+\begin{proof}
+Es análoga al caso anterior
+\end{proof}
+
+\begin{ndef}[$\bar{[D]}$]
+  En el subespacio (afín) generado por los autovalores (y correspondientes autovectores) no nulos, se tiene que se puede formular la función de densidad normal multivariante.
+
+\end{ndef}
+
+\begin{nprop}[Normalidad de C.L. de vectores con DNM independientes]
+  Sean $\vectX_k$ con $k = 1,\dots,m$ v.a. $p-$dimensionales independientes con distribución $N_p(\mu_k, \Sigma_k)$ respectivamente. Entonces, para cualquier conjunto de matrices constantes $A_k$ con $k = 1,\dots, m$ de dimensión $q\times p$, se ferifica que:
+  \[
+Y:= \sum_{k=1}^{m} A_k X_k \sim N_q(\sum_{k=1}^m(A_k \mu_k), \sum_{k=1}^m(A_k \Sigma_k A_k^T))
+  \]
+\end{nprop}
+%#TODO: Demostración, es seguir de la definición
