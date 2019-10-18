@@ -55,7 +55,13 @@ Para el usuario:
 - **Usuario final**: puede acceder a los datos.
 - **Programador de aplicaciones**: eliminar problemas de diseño lógico y físico, depuración de errores y mantenimiento general.
 - **Administrador de BD**: no existiría.
-- **Para el sistema**: control centralizado (fiabilidad, consistencia, seguridad...), criterios de uniformación, generación de nuevas aplicaciones, equilibrio entre requerimientos conflictivos.
+
+Para el sistema:
+
+- **Control centralizado**: fiabilidad, consistencia, seguridad...
+- **Criterios de uniformación**.
+- **Generación de nuevas aplicaciones**.
+- **Equilibrio entre requerimientos conflictivos**.
 
 ## Concepto de independencia
 
