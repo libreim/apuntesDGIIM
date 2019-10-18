@@ -1011,3 +1011,34 @@ Y:= \sum_{k=1}^{m} A_k X_k \sim N_q(\sum_{k=1}^m(A_k \mu_k), \sum_{k=1}^m(A_k \S
   \]
 \end{nprop}
 %#TODO: Demostración, es seguir de la definición
+
+\begin{nth}[Cramer]
+  Sean $\vectX_1$ y $\vectX_2$ vectores aleatorios y $p$-dimensionales independientes, con $\vectX_1 \sim N_p(\mu_1, \Sigma_1)$ y $\vectX_2 \sim N_p(\mu_2, \Sigma_2)$. Entonces, se tiene que $\vectX_1 + \vectX_2 \sim N_p(\mu_1 + \mu_2, \Sigma_1 + \Sigma_2)$.
+\end{nth}
+
+La conjetura de Paul Lévy preguntaba si el recíproco de esta afirmación es cierta. Cramer dio una solución para $p=1$ en el año 1936, de la que es sencillo inducir la solución para cualquier $p$. 
+
+\begin{nth}[Recíproco del teorema de Cramer]
+  Sean $\vectX_1$ y $\vectX_2$ vectores aleatorios y $p$-dimensionales independientes, tales que $\vectX_1 + \vectX_2$ tiene DNM. Entonces, $\vectX_1$ y $\vectX_2$ también tienen DNM.
+\end{nth}
+
+\begin{ejer}
+  Suponiendo que este último resultado es cierto para $p=1$, probar que es cierto para cualquier $p$.
+\end{ejer}
+
+% ¿Es esto una sección nueva?
+\subsection{Distribuciones esféricas y elípticas}
+
+\subsubsection{Caracterización en términos de la densidad esférica estándar (C-IV)}
+
+Vamos a comenzar razonando cómo podemos trabajar con coordenadas polares. Sea $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, con $\Sigma > 0$. Para cada $k > 0$ la ecuación \[(\boldsymbol x - \boldsymbol \mu)^T \Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2\] define un elipsoide en $\mathbb R^p$ sobre el que la densidad $f_{\vectX}$ es constante. 
+
+Sea $\Sigma = CC^T$, con $C_{p\times p}$ no singular. Definimos $\boldsymbol Z = C^{-1}(\boldsymbol X - \boldsymbol \mu)$, con $\boldsymbol Z \sim N_p(\boldsymbol 0, \mathcal I_p)$, a partir del cual vamos a definir el vector aleatorio —excepto para el caso $\boldsymbol Z = 0$— \[\boldsymbol U = \frac{\boldsymbol Z}{\Vert \boldsymbol Z \Vert} = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}\,,\] que tiene norma 1. Observamos que $\boldsymbol U$ se distribuye sobre la esfera unidad en $\mathbb R^p$.
+
+Definimos a continuación $H \boldsymbol U$, con $H$ matriz ortogonal. Entonces, \[
+  H \boldsymbol U = H \frac{\boldsymbol Z}{\left(\boldsymbol Z^T \boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\left(\boldsymbol Z^T H^T H\boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\Big((H\boldsymbol Z)^T (H\boldsymbol Z)\Big)^{1/2}}\,.
+\] Observamos que $H \boldsymbol Z \sim N_p(H \boldsymbol 0,\, H \mathcal I_pH^T) = N_p(\boldsymbol 0,\, \mathcal I_p)$. Por tanto tenemos que $\boldsymbol U$ y $H \boldsymbol U$ se distribuyen de igual forma. Ahora, como la distribución de $\boldsymbol U$ no se ve afectada bajo ninguna isometría —multiplicando por una matriz ortogonal—, concluimos que $\boldsymbol U$ se distribuye uniformemente sobre la esfera unidad en $\mathbb R^p$, lo que llamamos \textit{densidad esférica estándar}. Para recuperar la información de $\boldsymbol Z$ a partir de $\boldsymbol U$ necesitamos conocer el «radio» $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2} = \Vert Z \Vert$.
+
+\begin{nprop}
+  El vector aleatorio $\boldsymbol U = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}$ y la variable aleatoria $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2}$ son independientes.
+\end{nprop}
