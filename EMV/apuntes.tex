@@ -281,19 +281,19 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
   \]
   con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
 
-  \begin{nprop}\hfill
+  \begin{nprop} Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces,
     \begin{nlist}
     \item $E[\Delta^2 (X,\mu)] = p$,
-    \item la ecuación $\Delta(X,\mu) = k$ pcon $k\geq 0$ constante, define la \textbf{hipervariedad de contorno} correspondiente a aquellos puntos $x \in \mathbb R^p$ taes que, en el espacio transformado $\mathbb R^p$ por:
+    \item la ecuación $\Delta(X,\mu) = k$ —con $k\geq 0$ constante— define la \textit{hipervariedad de contorno} correspondiente a aquellos puntos $x \in \mathbb R^p$ tales que, en el espacio transformado $\mathbb R^p$ por
       \[
       x \mapsto z = C^{-1}(x-\mu)
       \]
-      se sitúan en la esfera (euclídea, $p-$dimensional) de radio $k$ y centro en el origen.
+      se sitúan en la esfera euclídea $p-$dimensional de radio $k$ y centro en el origen.
     \end{nlist}
 
   \end{nprop}
 
-\paragraph{$\Sigma$ es \textbf{semidefinida positiva}} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular ($\nexists \Sigma ^{-1} $ ). Por tanto, se tiene que $\operatorname{rango}(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in \mathscr{M}_{p\times r}(\R)$ y cuyo rango es $r$.\\
+\paragraph{$\Sigma$ es \textbf{semidefinida positiva}} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular, por lo que no existe $\Sigma ^{-1}$. Por tanto, se tiene que $\operatorname{rango}(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in \mathscr{M}_{p\times r}(\R)$ y cuyo rango es $r$.\\
 
   \begin{ncor}
     Con probabilidad $1$, las componentes del vector $\vectX = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
@@ -824,7 +824,7 @@ Por último vamos a definir lo siguiente:
   \]
   Además, $R$ es única y puede expresarse como:
   \[
-  R = Q diag(\sqrt{d_1}, \dots, \sqrt{d_p}) Q^T
+  R = Q \operatorname{diag}(\sqrt{d_1}, \dots, \sqrt{d_p}) Q^T
   \]
   A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa
 \end{ndef}
@@ -835,6 +835,49 @@ Por último vamos a definir lo siguiente:
 Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$
 
 %#TODO: Completar esto... dep.
+
+% #TODO: revisar el encaje de esto (clase 18-10-19)
+
+\begin{ejer}
+  Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. \begin{enumerate}
+    \item Estudiar el lugar geométrico de los puntos $\Delta(\boldsymbol x, \boldsymbol \mu) = k$ e interpretarlo en funcón de los autovalores de $\Sigma$.
+    \item Si además $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, estudiar el lugar geométrico de los puntos definidos por $f_{\boldsymbol X}(\boldsymbol x) = h$ —con $h \geq 0$— y dar una interpretación geométrica espectral.
+  \end{enumerate}
+\end{ejer}
+
+\begin{sol}
+  Comenzamos dando la solución del apartado (1). Para $k \geq 0$ consideramos \[
+      \Delta(\boldsymbol x, \boldsymbol \mu) = k \iff (\boldsymbol x - \boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2 \iff (\boldsymbol x - \boldsymbol \mu)^T(k^2\Sigma)^{-1}(\boldsymbol x - \boldsymbol \mu) = 1\,.
+      \] Visto así se tiene que los puntos $\boldsymbol x$ solución de esta ecuación definen el \textit{elipsoide} de centro $\boldsymbol \mu$ con ejes principales definidos por los autovectores de $(k^2\Sigma)^{-1}$, siendo la longitud al cuadrado de los semiejes igual a los inversos de los autovalores.
+
+      Descomponiendo $\Sigma = H\Lambda H^T$, podemos escribir \begin{align*}
+        (k^2\Sigma)^{-1} 
+        &= (kH\Lambda H^T k)^{-1} 
+        = k^{-1}(H\Lambda H^T)^{-1} 
+        = k^{-1}(H^T)^{-1}\Lambda^{-1}H^{-1}k^{-1} 
+        = (k^{-1}H)\Lambda^{-1}(k^{-1}H)^T\\
+        % #TODO: añadir anotación HH^T = 1
+        &= H(k^2\Lambda)^{-1}H^T\,.
+      \end{align*}
+
+      Los autovectores vienen definidos por la matriz $H$ —columnas—, dando las direcciones de los ejes del elipsoide. Los autovalores de $(k^2\Sigma)^{-1}$ vienen dados por los elementos diagonales de la matriz diagonal $(k^2\Lambda)^{-1}$, es decir, los inversos de la forma $(k^2\lambda_j)^{-1}$ de los autovalores de la matriz $k^2\Sigma$.
+
+      Las longitudes al cuadrado de los semiejes coinciden con los propios autovalores $k^2\lambda_j$, por lo que las longitudes de los semiejes son los valores $k\lambda_j^{\sfrac{1}{2}}$.
+
+      Procedemos ahora a ver la solución del apartado (2). La ecuación es, por definición, \[
+        f_{\vectX}(\boldsymbol X) 
+        = h \iff \frac{1}{(2\pi)^{\sfrac{p}{2}} |\Sigma|^{\sfrac{1}{2}}}\exp\left\{-\frac{1}{2}(\boldsymbol x - \boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x - \boldsymbol \mu)\right\} 
+        = h\,.\] 
+      Escribimos entonces \[
+        (\boldsymbol x - \boldsymbol \mu)^T \Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) 
+        = - 2\ln\left(2\pi^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}h\right)\,.
+          \]
+      El máximo de $f_{\vectX}(\boldsymbol x)$ se alcanza en $\boldsymbol x = \boldsymbol \mu$, que llamaremos \[
+        M 
+        \vcentcolon= f_{\vectX}(\boldsymbol \mu) 
+        = \frac{1}{(2\pi)^{\sfrac{p}{2}} |\Sigma|^{\sfrac{1}{2}}}\,.
+      \] Así, la ecuación tendrá solución si $0 < h \leq M$. En ese caso, \[(2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h \leq 1\,,\] luego \[\log\left((2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h\right) \leq 0\,.\]
+\end{sol}
 
 \subsection{Caracterización de la DNM $(\Sigma > 0)$ en términos de la normalidad de las combinaciones lineales de las componentes}
 
