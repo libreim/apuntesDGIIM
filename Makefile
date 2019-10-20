@@ -11,7 +11,7 @@ MD_SUBJECTS=$(shell find * -mindepth 1 -maxdepth 1 -name "apuntes.md" -or -name 
 
 template_name = $(1)/$(basename $(notdir $(1))).tex
 latex_args = --shell-escape --interaction=nonstopmode -output-directory=$(OUT)/$(strip $(1)) -jobname=$(strip $(1))
-pandoc_args = --pdf-engine=xelatex --template $(call template_name, $(1)) --listings --resource-path="$(strip $(1))/:"
+pandoc_args = --pdf-engine=xelatex --template plantilla_md.tex --listings --resource-path="$(strip $(1))/:"
 
 
 $(TARGET): $(TEX_SUBJECTS) $(MD_SUBJECTS)
@@ -24,8 +24,8 @@ $(TARGET): $(TEX_SUBJECTS) $(MD_SUBJECTS)
 
 $(TEX_SUBJECTS): % : %/apuntes.tex %/ejercicios.tex
 	mkdir -p $(OUT)/$@
-	TEXINPUTS="$@/:" pdflatex $(call latex_args, $@) $(call template_name, $@)
-	TEXINPUTS="$@/:" pdflatex $(call latex_args, $@) $(call template_name, $@)
+	TEXINPUTS="$@/:" pdflatex $(call latex_args, $@) plantilla_tex.tex
+	TEXINPUTS="$@/:" pdflatex $(call latex_args, $@) plantilla_tex.tex
 	rm -rf $(OUT)/$@/*.log $(OUT)/$@/*.aux $(OUT)/$@/*.toc $(OUT)/$@/*$.out
 
 $(MD_SUBJECTS): % : %/apuntes.md %/ejercicios.md
