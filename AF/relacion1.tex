@@ -1,0 +1,200 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{Análisis Funcional}
+\newcommand\hwnumber{I}                  % <-- homework number
+\newcommand\NetIDa{Antonio Gámiz Delgado}           % <-- NetID of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Relación \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+% COMANDOS DE ANTONIO
+
+% letras caligraficas
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+% norma || ||
+\newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
+% contradiccion
+\newcommand{\contradiccion}{\Rightarrow\!\Leftarrow}
+% cuadrito de queda demostrado
+\newcommand{\cqd}{\hfill\ensuremath{\square}}
+
+\begin{document}
+
+\begin{enumerate}
+  \item[\textbf{Ej 1}] 
+  Probar que dos normas en un mismo espacio vectorial $X$, son equivalentes sí, y solo sí, dan lugar a los mismos conjuntos acotados. 
+  
+  ($\Rightarrow$)
+  Sean $\norm{\cdot}_1$ y $\norm{\cdot}_2$ dos normas en un espacio vectorial $X$. Como son equivalentes, tenemos la siguiente desigualdad $\forall x \in X$: $\alpha \norm{x}_1\leq \norm{x}_2 \leq \beta \norm{x}_1$, para ciertos $\alpha, \beta \in \R^+$.
+  
+  Ahora tomamos un conjunto $A \subset X$ acotado por $\norm{\cdot}_1$, luego $\exists M \in \R^+: \norm{x}_1\leq M \;\forall x \in A$. Por la desigualdad anterior: $\norm{x}_2 \leq \beta M \; \forall x \in A$. Luego $A$ está acotado por $\norm{x}_2$. 
+  
+  Lo restante se hace análogamente.
+  
+  ($\Leftarrow$) Supongamos por reducción al absurdo que no existe ninguna constante $M>0$ tal que $\norm{x}_2\leq M \norm{x}_1$, entonces, $\forall n \in \N \exists x_n \in X$ tal que $\norm{x_n}_2 > M\norm{x}_1$. Ahora tomamos el conjunto $A=\left\{\frac{x_n}{\norm{x_n}_1}, n \in \N\right\}$, que está acotado por $\norm{\cdot}_1$ dado que hemos normalizado el conjunto. Por hipótesis, $\norm{\cdot}_2$ también acota al conjunto, con una constante $C>0$, luego:
+  
+  \[\norm{\frac{x_n}{\norm{x_n}_1}}_2 \leq C \Longrightarrow \norm{x_n}_2 \leq C \norm{x_n}_1 \Longrightarrow \contradiccion\]
+  \cqd
+
+\item[\textbf{Ej 2}] Si $X$ es un espacio normado, para $x \in X$ y $r\in\R^+$, denotamos por $B(x,r)$ a la bola cerrada de centro $x$ y radio $r$. Para $x,y\in X$ y $r,\rho\in\R^+$, probar las siguientes equivalencias:
+
+\begin{enumerate}
+	\item $B(x,r)\cap B(y,\rho) \neq \emptyset \Longleftrightarrow \norm{x-y} \leq r+\rho$
+	
+	($\Rightarrow$) $B(x,r)\cap B(y,\rho) \neq \emptyset \Rightarrow \exists z \in B(x,r)\cap B(y,\rho) \Rightarrow \norm{z-x} \leq r$ y $\norm{z-y} \leq \rho$. Además:
+	\[\norm{x-y}=\norm{x-y+z-z}\leq\norm{x-z}+\norm{z-y}\leq \rho + r\]
+	
+	($\Leftarrow$) Nos tomamos el punto $z=x + \frac{y-x}{\norm{y-x}}r\in X$. Vemos que pertenece a las dos bolas:
+	\begin{enumerate}
+	\item $z\in B(x,r)$ pues $\norm{x-z}=\norm{\frac{y-x}{\norm{y-x}}}r=r$.
+	\item $z\in B(y,\rho)$ ya que tenemos $\norm{x-y}\leq +\rho $. Luego:
+	\[\norm{y-z}=\norm{y-x-\frac{y-x}{\norm{y-x}}r}=\norm{y-x}\norm{1-\frac{r}{\norm{y-x}}}\leq (r+\rho)\left(1-\frac{r}{r+\rho}\right)=\]
+	\[
+	=(r+\rho)\frac{\rho}{r+\rho}=\rho \Rightarrow \norm{y-z}\leq \rho
+	\]
+	\end{enumerate}
+	\item $B(x,r) \subset B(y,\rho) \Longleftrightarrow \norm{x-y} \leq r-\rho$
+	
+	($\Rightarrow$) Tomamos el punto y vemos que $z\in B(x,r)$:
+	\[z=x+\frac{y-x}{\norm{y-x}}r \Rightarrow \norm{x-z}=\frac{r}{\norm{x-y}}\norm{x-y}=r\]
+	
+Por hipótesis, $z\in B(y\rho)$, luego:
+
+\[
+\norm{y-z}= \norm{y-x -\frac{y-x}{\norm{x-y}}r}=\norm{\frac{y-x}{\norm{x-y}}r+y-x}=\norm{\left(\frac{r}{\norm{x-y}}+1\right)(y-x)}=
+\]
+\[
+=\left(\frac{r}{\norm{x-y}}+1\right)\norm{y-x}=r\norm{x-y}\leq \rho \Rightarrow \norm{x-y}\leq \rho -r
+\]
+	
+	($\Leftarrow$) Necesitamos ver que si $z\in B(x,r) \Rightarrow z \in B(y,\rho)$. Vemos que:
+	\[\norm{z-y}=\norm{z-y+x-x}\leq\norm{z-x}+\norm{x-y}\leq r+\rho-r=\rho\] 
+	\cqd
+\end{enumerate}
+
+\item[\textbf{Ej 3}] Sea $X$ un espacio de Banach y $\{B_n \}$ una sucesión de bolas cerradas en $X$, que sea decreciente, es decir, $B_{n+1}\subset B_n$ para todo $n\in \N$. Probar que $\cap^{\infty}_{n=1}B_n\neq\emptyset$.
+
+Primero construimos una sucesión de puntos en el conjunto $\{B_n, \; n\in\N\}$, de forma que $x_n\in B_n$, siendo $x_n$ el centro de la bola. Como $X$ es un espacio de Banach, si probamos que $\{x_n\}_{n\in\N}$ es de Cauchy, entonces será convergente y habremos terminado.
+
+Tomamos $\varepsilon>0$ y $n>m>n_0$, tenemos que comprobar que $\norm{x_n-x_m}$ converge a 0. Para ello vemos que $x_n \in B_n, x_m \in B_m$ y $B_n\subset B_m$ (ya que $n>m$). Denotamos por $a_n$ al radio de la bola $B_n \; \forall n \in\N$. Ahora estamos en condiciones de usar el resultado del ejercicio (2.b) para realizar la siguiente acotación:
+
+\[
+\norm{x_n-x_m} \leq a_n - a_m
+\]
+
+Al tener que $a_n > 0 \;\forall n \in\N$ y $a_{n+1}\leq a_n$, vemos que es una sucesión minorada y decreciente, luego converge a un $r \in\R^+$. Luego $\norm{x_n-x_m}$ tiende a 0 como queríamos.
+
+Como $X$ es completo, entonces $\{x_n\}$ converge a $x\in X$. Los elementos de $\{x_m\}$ con $m\geq n$ están en la bola $B_n$, pues son los centros de las sucesivas bolas, las cuáles están contenidas una dentro de la otra. Además todas las bolas son completas (cerrados de un espacio de Banach). Por tanto, el límite $x$ de $\{x_n\}$ pertenece a todas las bolas, es decir, $x\in\cap_{n=1}^\infty B_n$
+
+\cqd
+
+\item[\textbf{Ej 4}] Probar que, si $X$ es un espacio normado, para cualesquiera $x,y\in X\smallsetminus \{0\}$, se verifica la siguiente desigualdad:
+
+\[
+\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{y}}} \leq \frac{2\norm{x-y}}{max\{\norm{x},\norm{y}\}}
+\]
+
+Sumando y restando $\frac{x}{\norm{y}}$ tenemos:
+
+\[\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{y}}} = 
+\norm{\frac{x}{\norm{x}}-\frac{x}{\norm{y}}+\frac{x}{\norm{y}}-\frac{y}{\norm{y}}}\leq
+\norm{\frac{x}{\norm{x}}-\frac{x}{\norm{y}}}+\norm{\frac{x}{\norm{y}}-\frac{y}{\norm{y}}} =
+\]
+\[
+=\norm{\frac{x\norm{y}-x\norm{x}}{\norm{x}\norm{y}}}+\frac{\norm{x-y}}{\norm{y}}=\norm{x}\frac{|\norm{y}-\norm{x}|}{\norm{x}\norm{y}}+\frac{\norm{x-y}}{\norm{y}}=
+\]
+\[
+=\frac{|\norm{y}-\norm{x}|+\norm{x-y}}{\norm{y}}\leq \frac{\norm{x-y}|+\norm{x-y}}{\norm{y}} =\frac{2\norm{x-y}}{\norm{y}}
+\]
+
+Por otro lado, sumando y restando $\frac{y}{\norm{x}}$ tenemos:
+
+
+\[\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{y}}} = 
+\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{x}}+\frac{y}{\norm{x}}-\frac{y}{\norm{y}}}\leq
+\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{x}}}+\norm{\frac{y}{\norm{x}}-\frac{y}{\norm{y}}} =
+\]
+\[
+=\frac{\norm{x-y}}{\norm{x}}+\norm{\frac{y\norm{y}-y\norm{x}}{\norm{x}\norm{y}}}=\frac{\norm{x-y}}{\norm{x}}+\norm{y}\frac{|\norm{y}-\norm{x}|}{\norm{x}\norm{y}}=
+\]
+\[
+=\frac{\norm{x-y}+|\norm{x}-\norm{y}|}{\norm{x}}\leq \frac{\norm{x-y}|+\norm{x-y}}{\norm{x}} =\frac{2\norm{x-y}}{\norm{x}}
+\]
+
+Luego la única forma de que las dos desigualdades se cumplen al mismo tiempo, es cogiendo el máximo de $\norm{x}$ y $\norm{y}$:
+
+\[
+\norm{\frac{x}{\norm{x}}-\frac{y}{\norm{y}}} \leq \frac{2\norm{x-y}}{max\{\norm{x},\norm{y}\}}
+\]
+
+\cqd
+
+\item[\textbf{Ej 5}] Sean $A$ y $B$ subconjuntos no vacíos de un espacio normado. Probar las siguientes afirmaciones:
+
+\begin{enumerate}
+\item Si $A$ es abierto, entonces $A+B$ es abierto.
+
+Sea $z\in A+B \Rightarrow z=x+y, x\in A,y\in B$. Como $A$ es abierto, entonces $\exists \delta > 0: B(x,\delta)\subset A$. Además, $y+B(x,\delta)=B(x+y,\delta) \subset A+B \Rightarrow \forall z \in A+B, \; \exists B(z,\delta) \subset A+B$, luego $A+B$ es abierto.
+
+\cqd
+
+\item Si $A$ es compacto y $B$ es cerrado, entonces $A+B$ es cerrado.
+
+Tomamos $x\in \overline{A+B}$, sabemos que existe $x_n$, sucesión de puntos de $A+B$ que converge a $x$. Queremos probar que $x$ está en $A+B$, lo que probaría que $A+B$ es cerrado.
+
+Podemos expresar $x_n=a_b+b_n \; \forall n \in\N$ con $a_n\in A$ y $b_n\in B$. Consideramos las sucesiones $\{a_n\}$ y $\{b_n\}$ de puntos de $A$ y $B$ respectivamente. Por ser $A$ compacto, existe $\{a_{\sigma(n)}\}$ sucesión parcial convergente de $\{a_{n}\}$ convergente a $a\in A$. Tomamos sucesiones parciales en $x_n$ y despejamos $b_{\sigma(n)}$, quedando: $b_{\sigma(n)}=x_{\sigma(n)}-a_{\sigma(n)}$, luego $\{b_{\sigma(n)}\}\longrightarrow x-a$. Como $B$ es cerrado, $x-a\in B$, luego $x=a+(x-a)\in A+B$.
+
+\cqd
+
+\item Dar un ejemplo en el que $A$ y $B$ sean cerrados pero $A+B$ no sea cerrado.
+
+Si tomamos $A=\{(x,y)\in\R^2:xy=1\}$ y $B=\{(0,y)\in\R^2:y\in\R\}$, que son cerrados ($A$ es la imagen inversa del 1 de la función continua $(x,y)\mapsto xy$ de $\R^2$ en $\R$ y $B$ es el grafo de una función continua), vemos que $A+B=\R\smallsetminus B$, que no es cerrado ya que podemos encontrar una sucesión de puntos de $A+B$ cuyo límite no esté en $B$.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
