@@ -1,90 +1,81 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Plantilla para libro de texto de matemáticas.
 %
-% Esta plantilla ha sido desarrollada desde cero, pero utiliza algunas partes
-% del código de la plantilla original utilizada en apuntesDGIIM
-% (https://github.com/libreim/apuntesDGIIM), basada a su vez en las plantillas
-% 'Short Sectioned Assignment' de Frits Wenneker (http://www.howtotex.com),
-% 'Plantilla de Trabajo' de Mario Román y 'Plantilla básica de Latex en Español'
-% de Andrés Herrera Poyatos (https://github.com/andreshp). También recoge
-% ideas de la plantilla 'Multi-Purpose Large Font Title Page' de
-% Frits Wenneker y Vel (vel@latextemplates.com).
+% Esta plantilla ha sido desarrollada desde cero para el proyecto apuntesDGIIM
+% de LibreIM.
 %
 % Licencia:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % CONFIGURACIÓN BÁSICA DEL DOCUMENTO
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
-\documentclass[12pt]{scrartcl}
-\KOMAoptions{twoside=false}
-\usepackage[
-  autooneside=false,% use left and right marks with a onesided document
-  automark% set \leftmark and \rightmark automatically by \section and \subsection
-]{scrlayer-scrpage}
-\clearpairofpagestyles
-\chead{\leftmark}
-\cfoot*{\pagemark}
+\documentclass[fontsize=12pt]{scrartcl}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
+\usepackage{graphicx}
 
-\usepackage{xpatch}
-% Fixing pagestyle for pages containing \section command
-\xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
-
-\linespread{1.1}
-\setlength{\parindent}{12pt}
-\setlength{\parskip}{0pt}
-
-% ---------------------------------------------------------------------------
-% CONFIGURACIÓN PERSONALIZADA
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% CONFIGURACIÓN DE ASIGNATURA
+% ------------------------------------------------------------------------------
 
 \usepackage{config}
 
-% ---------------------------------------------------------------------------
-% PAQUETES BÁSICOS
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% TIPOGRAFÍA
+% ------------------------------------------------------------------------------
 
-% IDIOMA
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
-
-% FUENTES
+% Tipografía personalizada
 \usepackage[bitstream-charter]{mathdesign}
-\usepackage{FiraSans}                 % Fuente sans serif
+\usepackage[scale=0.88]{FiraSans}
 \usepackage[T1]{fontenc}
-																		
-\usepackage[activate={true,nocompatibility},final,tracking=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+% Microtype
+\usepackage[activate={true, nocompatibility}, final, tracking=true,factor=1100, stretch=10, shrink=10]{microtype}
 \SetTracking{encoding={*}, shape=sc}{0}
 
-\usepackage{graphicx}   % Permite incluir gráficos en el documento
-
-% ---------------------------------------------------------------------------
-% FUENTE DE MATEMÁTICAS ADAPTABLE EN SANS-SERIF
-% ---------------------------------------------------------------------------
-
+% Matemáticas en sans serif si es necesario
 \usepackage{sansmath}
-
 \newif\IfInSansMode
 \let\oldsf\sffamily
 \renewcommand*{\sffamily}{\oldsf\sansmath\InSansModetrue}
 
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % DISEÑO DE PÁGINA
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
+% Márgenes
+\usepackage[bottom=3.125cm, top=2.5cm, left=2.5cm, right=4.5cm, marginparwidth=70pt]{geometry}
+
+% Párrafos
+\linespread{1.1}
+\setlength{\parindent}{12pt}
+\setlength{\parskip}{0pt}
+
+% Cabeceras
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\chead{\leftmark}
+\cfoot*{\pagemark}
+
+% No mostrar cabecera en páginas de sección
+\usepackage{xpatch}
+\xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
+
+% Páginas de color para portada
 \usepackage{pagecolor}
 \usepackage{afterpage}
 
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
 \usepackage[theorems, skins, breakable]{tcolorbox}
 
-\tcolorboxenvironment{nth}{%'proof'from'amsthm'
+\tcolorboxenvironment{nth}{
 	blanker,
 	breakable,
 	left=12pt,
@@ -94,7 +85,7 @@
 	before upper={\parindent 12pt},
 }
 
-\tcolorboxenvironment{nprop}{%'proof'from'amsthm'
+\tcolorboxenvironment{nprop}{
 	blanker,
 	breakable,
 	left=12pt,
@@ -104,7 +95,7 @@
 	before upper={\parindent 12pt},
 }
 
-\tcolorboxenvironment{ncor}{%'proof'from'amsthm'
+\tcolorboxenvironment{ncor}{
 	blanker,
 	breakable,
 	left=12pt,
@@ -114,7 +105,7 @@
 	before upper={\parindent 12pt},
 }
 
-\tcolorboxenvironment{ndef}{%'proof'from'amsthm'
+\tcolorboxenvironment{ndef}{
 	skin=enhancedmiddle jigsaw,
 	frame hidden,
 	colback=50,
@@ -128,14 +119,33 @@
 	after skip=8pt,  % aquí tenemos espacio adicional por el fondo
 	no borderline,
 	borderline west={2pt}{0pt}{500},
+	borderline east={2pt}{0pt}{50},
 	before upper={\parindent 12pt},
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ---------------------------------------------------------------------------
+\tcolorboxenvironment{ejer}{
+	skin=enhancedmiddle jigsaw,
+	frame hidden,
+	colback=50,
+	breakable = true,
+	break at = -6pt,
+	top = 4pt,       % Estos márgenes están un poco a ojo
+	bottom = 4pt,
+	left= 8pt,
+	right = 8pt,
+	before skip=8pt, % Normalmente dejamos 12pt, pero
+	after skip=8pt,  % aquí tenemos espacio adicional por el fondo
+	no borderline,
+	borderline west={2pt}{0pt}{500},
+	borderline east={2pt}{0pt}{50},
+	before upper={\parindent 12pt},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------------------------------------------------------------------
 % COMIENZO DEL DOCUMENTO
-% ---------------------------------------------------------------------------
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -143,12 +153,12 @@
 % PORTADA EXTERIOR
 % ---------------------------------------------------------------------------
 
-\newpagecolor{500} % Color de la página
+\newpagecolor{500}
 \begin{titlepage}
-
-  % Título del documento
+	\noindent
+	\setlength\fboxsep{0cm}
 	\parbox[t]{\textwidth}{
-			\raggedright % Texto alineado a la izquierda
+			\raggedright
 			\fontsize{50pt}{50pt}\selectfont\sffamily\color{white}{
 			  \textbf{\asignatura}
       }
@@ -156,9 +166,9 @@
 
 	\vfill
 
-	%% Autor e información del documento
-	\parbox[t]{\textwidth}{
-		\raggedright % Texto alineado a la izquierda
+	\noindent
+	\parbox[b]{\textwidth}{
+		\raggedright 
 		\sffamily\large\color{white}
 		{\Large \autor }\\[4pt]
 		\grado\\
@@ -177,10 +187,10 @@
 \null
 \vfill
 
-%% Información sobre la licencia
-\parbox[t]{0.7\textwidth}{
+\noindent
+\parbox[b]{0.7\textwidth}{
   \includegraphics{by-nc-sa.pdf}\\[4pt]
-  \raggedright % Texto alineado a la izquierda
+  \raggedright
   \sffamily
   {\large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
   Eres libre de distribuir y adaptar el material siempre que reconozcas a los autores originales del documento, no lo utilices para fines comerciales y lo distribuyas bajo la misma licencia.\\[4pt]
@@ -193,9 +203,9 @@
 
 \begin{titlepage}
 
-  % Título del documento
+	\noindent
 	\parbox[t]{\textwidth}{
-			\raggedright % Texto alineado a la izquierda
+			\raggedright
 			\fontsize{50pt}{50pt}\selectfont\sffamily\color{500}{
 			  \textbf{\asignatura}
       }
@@ -203,9 +213,9 @@
 
 	\vfill
 
-	%% Autor e información del documento
-	\parbox[t]{\textwidth}{
-		\raggedright % Texto alineado a la izquierda
+	\noindent
+	\parbox[b]{\textwidth}{
+		\raggedright
 		\sffamily\large
 		{\Large \autor}\\[4pt]
 		\grado\\
