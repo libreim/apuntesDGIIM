@@ -125,17 +125,11 @@ Sea $\boldsymbol X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y s
 
   En particular, si \[ \vectX= \left( X_{(1)} | X_{(2)}\right)^T := \left(X_{(1),1}, \dots, X_{(1),k}, X_{(2),1}, \dots, X_{(2),p-k}\right),\] con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría que
   \[
-X_{(1)} = \left(\begin{array}{c | c}
-    I_k & 0 \\ \hline
-    0 & 0
-        \end{array}\right)X + 0_{k\times 1}\,,
+X_{(1)} = \left( I_k | 0_{p-k} \right)X + 0_{k\times 1}\,,
 \]
 por lo que, para $\boldsymbol t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$ la función característica viene determinada por
 \[
-\psi_{X_{(1)}}\left(\boldsymbol t_{(1)}\right) = \underbrace{e^{i\boldsymbol t_{(1)}^T 0}}_{=1} \psi_X\left(\left(\begin{array}{c | c}
-    I_k & 0 \\ \hline
-    0 & 0
-        \end{array}\right)\boldsymbol t_{(1)}\right) = \psi_X\left(\frac{\boldsymbol t_{(1)}}{0_{(p-k)}}\right)\,.
+\psi_{X_{(1)}}\left(\boldsymbol t_{(1)}\right) = \underbrace{e^{i\boldsymbol t_{(1)}^T 0}}_{=1} \psi_X\left(\left( I_k | 0_{p-k} \right)\boldsymbol t_{(1)}\right) = \psi_X\left(\frac{\boldsymbol t_{(1)}}{0_{(p-k)}}\right)\,.
 \]
 
 \subsubsection{Relación con la función de densidad}
@@ -1132,7 +1126,7 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \subsection{Distribuciones elípticas}
 
 \begin{ndef}[Distribución elíptica]
-  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \isim E_p(\boldsymbol \mu, V)$.
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
 \end{ndef}
 
 \begin{nprop}[Caracterización en función de la densidad]
