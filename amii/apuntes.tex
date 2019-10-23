@@ -305,7 +305,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
   $\mathbb{Q}^N = \{r_1, r_2, r_3, \ldots\}$ con
   $r_i \in \mathbb{Q}^N \quad \forall i \in \mathbb{N}$, y usando
   que $\mathbb{Q}^N$ es denso en $\mathbb{R}^N$
- 
+
   \[A \subseteq \mathbb{R}^N = \bigcup\limits_{x \in \mathbb{Q}^N}B(x,
     \varepsilon) = \bigcup\limits_{i=1}^\infty B(r_i, \varepsilon)\]
 
@@ -315,7 +315,7 @@ Si recordamos la prueba en $\mathbb{R}^N$ de que los conjuntos compactos son los
   Entonces, el axioma de elección nos proporciona $c: I \to A$ de forma que $c_i := c(i) \in B\left( r_i, \epsilon \right) \cap A $ para cada $i\in I$.
 
 
-  
+
   Definimos el conjunto
   \[C_m = \{c_i  :   i \in I\} = \{c_i
     \in A \cap B(r_i, {\scriptstyle\frac{1}{m}}) \ : A \cap
@@ -370,7 +370,7 @@ desigualdad triangular deducimos lo que queremos
 
   Dado $x \in A$, $\exists i \in \{1,\ldots,k\}$ tal que
   $x \in B(c_i,\delta)$. Por tanto, $|x-c_i| <\delta$.
-    
+
   \underline{Paso 2:} Vamos a probar que
   $\exists \sigma : \mathbb{N} \to \mathbb{N}$ estrictamente creciente
   tal que $\{f_{\sigma(n)}\} \to f$ puntualmente en $C$. Recordemos
@@ -849,7 +849,7 @@ Las funciones que \textit{sí} se pueden escribir como suma de una serie de pote
 
 \section{Integral asociada a una medida}
 
-Recordemos por un momento la definición de integral de Riemann-Darboux. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior de una función $f$ en $[a,b]$ como: 
+Recordemos por un momento la definición de integral de Riemann-Darboux. Si tenemos una partición $P = \{ a = x_0 < x_1 < \dots < x_n = b\} \in \mathcal P [a,b]$, definimos la integral superior e inferior de una función $f$ en $[a,b]$ como:
 
  $$\underline{\int_a^b} f := \sup_{P \in \mathcal P [a,b]} \ \sum_{i=0}^{n-1} (x_{i+1} - x_i) \inf_{[x_i, x_{i+1}]} f$$
 
@@ -967,7 +967,7 @@ En general, cuando consideremos un espacio $X$ sin decir explícitamente cuál e
 
 \subsubsection{Aritmética de $[0,\infty]$}
 
-Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. En general, cuando hablemos de la recta real extendida, entenderemos que está dotada de la siguiente topología: 
+Antes de continuar con el estudio de las funciones medibles, presentamos un espacio topológico en el que trabajaremos frecuentemente: la \textbf{recta real extendida}, que notaremos como $[-\infty,+\infty]$ ó $\mathbb{R} \cup \{-\infty, +\infty\}$. En general, cuando hablemos de la recta real extendida, entenderemos que está dotada de la siguiente topología:
 
 \begin{ndef}[Topología de la recta real extendida] \label{topologia_real_ext}
 	La dada por la base $\{(a,b): a,b \in \mathbb{R}\} \cup \{[-\infty, a): a \in \mathbb{R}\} \cup \{(a,\infty]: a \in \mathbb{R}\}$.
@@ -1006,7 +1006,7 @@ Una familia muy importante de funciones medibles son aquellas que toman únicame
 	para cada $x\in O$,  $I_x$ en estas condiciones. Por el lema \ref{conjunto_denso},  $O\cap \R$ tiene un conjunto numerable $C$ denso en él. Entonces, es claro que
 	\[
 		O\cap \R = \bigcup_{c\in C}I_c
-	.\] 
+	.\]
 	Si $+\infty\in O$, existe una familia de abiertos básicos $\{B_\lambda\}_{\lambda\in \Lambda}$ de tales que $O = \bigcup_{\lambda\in\Lambda} B_\lambda$, luego existe $\lambda\in\Lambda$ con $+\infty\in B_\lambda$. Definiendo  $I_{+\infty} := B_\lambda$, $O = (O\cap \R) \cup I_{+\infty}$.
 \end{proof}
 
@@ -1033,7 +1033,7 @@ Se hará para el primer caso únicamente. El resto son análogos. Observemos que
 	\left( a,b \right) = [0,b) - [0,a)\quad \text{y}\\
 	(a,+\infty] = [0,+\infty] - \left(\bigcap_{n=1}^\infty[0,a+\frac{1}{n})\right).
 	\end{array}
-\] 
+\]
 
 Luego, $f^{-1}(a,b) = f^{-1}[0,b)\setminus f^{-1}[0,a),\ f^{-1}(a,+\infty] = \Omega - \left(\bigcap_{n=1}^\infty f^{-1}[0,a+\frac{1}{n})\right)$, medibles.
 Ahora, por ser las preimágenes por $f$ de los abiertos básicos medibles, y por ser cada abierto unión numerable de abiertos básicos (lema \ref{abierto_union_numerable}),
@@ -1168,7 +1168,7 @@ $\beta_1,\beta_2,\dots,\beta_m \in[0,\infty)$, entonces $$t:= \sum_{k=1}^{m}  \b
 
   Veamos gráficamente ambos conjuntos, para un $n\in \mathbb{N}$ fijo:
   \begin{center}
-	\includegraphics[ext=.pdf,height=13.5\baselineskip]{thLebesgue.pdf}
+	\includegraphics[ext=.pdf,height=13.5\baselineskip]{img/thLebesgue.pdf}
   \end{center}
   Así, tenemos que:
   \[
@@ -1249,7 +1249,7 @@ Probamos para acabar que $\{ s_n(\omega)\} \to f(\omega) \ \ \forall \omega\in\O
  \implies& s_n(\omega) = \frac{k-1}{2^n} = \frac{E(2^n f(\omega)+1)-1}{2^n} \longrightarrow f(\omega),
  \end{aligned}
   \]
-  porque, notando por $E(x)$ a la parte entera de $x$, 
+  porque, notando por $E(x)$ a la parte entera de $x$,
 
   \[
 	  \displaystyle 0\leq f(\omega) - s_n(\omega) = f(\omega) - \frac{E(2^n f(\omega)+1)-1}{2^n} \quad \stackrel{x-1 \le E( x ) }{\le} \\ f(\omega) - \frac{2^n f(\omega)-1}{2^n}  = \frac{1}{2^n}\longrightarrow 0
@@ -1619,7 +1619,7 @@ Sea $(\Omega , \mathcal{A})$ espacio medible, $X,Y$ espacios topológicos.
     Sea $(\Omega, \mathcal{A}, \mu )$ espacio de medida, $g,f:\Omega\rightarrow\mathbb{R}$ medibles, $E \in\mathcal{A}$
     \begin{nlist}
     \item Si $f$ acotada en $E$ y $\mu(E<\infty$ Entonces $f$ integrable en $E$ y
-    
+
     $\inf_E f\mu(E)\leq\int_E fd\mu\leq\sup_E f\mu(E)$.
     \item $f,g$ integrables en $E$ y $f(\omega)\leq g(\omega)\forall \omega\in E$ entonces $\int_E fd\mu \leq \int_E gd\mu$.
     \item $f,g$ integravles en $E$, $\alpha\in\mathbb{R}$ Entonces $f+g,\alpha f$ integrbales en $E$ con
