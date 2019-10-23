@@ -79,11 +79,11 @@ La \textit{tabla de Cayley} de un grupo describe cómo es su operación. Para un
 \begin{figure}[H]
 \centering
   \begin{tabular}{c|cccc}
-     & \textbf{$x_1$} & \hdots & \textbf{$x_n$} \\
+     & \textbf{$x_1$} & $\hdots$ & \textbf{$x_n$} \\
     \hline
-    \textbf{$x_1$} & $x_1 x_1$ & \hdots & $x_1 x_n$\\
-    \vdots & \vdots & \ddots & \vdots \\
-    \textbf{$x_n$} & $x_n x_1$ & \hdots & $x_n x_n$\\
+    \textbf{$x_1$} & $x_1 x_1$ & $\hdots$ & $x_1 x_n$\\
+    \vdots & $\vdots$ & $\ddots$ & $\vdots$ \\
+    \textbf{$x_n$} & $x_n x_1$ & $\hdots$ & $x_n x_n$\\
   \end{tabular}
   \caption{Tabla de Cayley para un grupo $G$.}
 \end{figure}
@@ -107,7 +107,7 @@ La \textit{tabla de Cayley} de un grupo describe cómo es su operación. Para un
 
 Si $A$ es un anillo entonces $(A,+)$ es un grupo abeliano. Por otro lado, $(U(A),\,\cdot)$ es un grupo que será abeliano si dicha operación producto es conmutativa. Esto nos da ya numerosos ejemplos:
 
-\begin{itemize*}[label=,itemjoin=\hspace{2em},before=\hspace{\zadlen}]
+\begin{itemize*}[label=,itemjoin=\hspace{2em}]
   \item $\mathbb{Z}-\mathcal U\left(\mathbb{Z}\right)=\{-1,1\}$\,,
   \item $\mathbb{Q}-\mathbb{Q}^{*}$\,,
   \item $\mathbb{R}-\mathbb{R}^{*}$\,,
@@ -276,13 +276,12 @@ Para $n \ge 3$ definimos el n-ésimo \textit{grupo diédrico} ($D_n$) como el gr
   
 Este grupo se puede manejar de forma abstracta con las siguientes identidades fundamentales:
 
-\begin{itemize*}[label=,itemjoin=\hspace{2em},before=\hspace{\zadlen}]
+\begin{itemize*}[label=,itemjoin=\hspace{2em}]
   \item $r^n = 1 = s^2$\,,
   \item $sr = r^{-1}s$\,,
 \end{itemize*}\\
 de modo que se suele presentar el grupo $D_n$ en la forma: \begin{equation*}
   D_n = \langle\, r,s : r^n = 1 = s^2,\,sr = r^{-1}s\,\rangle\,.
-
 \end{equation*} Este tipo de notación indica a la izquierda los elementos que generan el grupo (en un sentido que precisaremos más tarde) y a la derecha las reglas de operación en el mismo. Notemos que estos grupos no son conmutativos.
 
 \subsubsection{Grupo de los cuaternios.}
@@ -290,35 +289,35 @@ de modo que se suele presentar el grupo $D_n$ en la forma: \begin{equation*}
 Consideremos el conjunto de matrices invertibles de orden dos y con coeficientes complejos $Q_2 = \{1, -1, i, -i, j, -j, k, -k\}$, donde
 \begin{center}
   \begin{tabular}{cccc}
-    1 =\begin{bmatrix}
+    1 =$\begin{bmatrix}
                 1 & 0  \\
                 0 & 1 
-    \end{bmatrix}\,, & -1 = \begin{bmatrix}
+    \end{bmatrix}$\,, & -1 = $\begin{bmatrix}
                 -1 & 0  \\
                 0 & -1 
-              \end{bmatrix}\,, & i = \begin{bmatrix}
+              \end{bmatrix}$\,, & i = $\begin{bmatrix}
                 0 & 1  \\
                 -1 & 0 
-              \end{bmatrix}\,, & -i = \begin{bmatrix}
+              \end{bmatrix}$\,, & -i = $\begin{bmatrix}
                 0 & -1  \\
                 1 & 0 
-              \end{bmatrix}\,,\\[2em]
-    j = \begin{bmatrix}
+              \end{bmatrix}$\,,\\[2em]
+    j = $\begin{bmatrix}
                 0 & i  \\
                 i & 0 
-              \end{bmatrix}\,, &
-    -j = \begin{bmatrix}
+              \end{bmatrix}$\,, &
+    -j = $\begin{bmatrix}
                 0 & -i  \\
                 -i & 0 
-              \end{bmatrix}\,, &
-    k = \begin{bmatrix}
+              \end{bmatrix}$\,, &
+    k = $\begin{bmatrix}
                 i & 0  \\
                 0 & -i
-              \end{bmatrix}\,, &
-    -k = \begin{bmatrix}
+              \end{bmatrix}$\,, &
+    -k = $\begin{bmatrix}
                 -i & 0  \\
                 0 & i
-              \end{bmatrix}\,.
+              \end{bmatrix}$\,.
   \end{tabular}
 \end{center}
 Este conjunto, unido a la operación dada por el producto usual de matrices forman el \textit{grupo de los cuaternios}. Dibujando la tabla de Cayley podemos ver que de hecho no es un grupo abeliano.
