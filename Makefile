@@ -1,6 +1,15 @@
 TARGET= apuntes.tar.gz
 OUT = .out
 
+# Continuous compilation option
+ifeq ($(CONT), true)
+	CONTARG = -pvc
+else
+	CONTARG =
+endif
+
+
+# Use gfind in macOS
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Linux)
@@ -25,16 +34,15 @@ $(SUBJECTS): % : .out/%.pdf
 
 
 # LaTeX compilation
-latex_args = --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -jobname=$(strip $(1))
+latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -halt-on-error -jobname=$(strip $(1))
 $(OUT)/%.pdf: plantilla_tex.tex %/apuntes.tex %/ejercicios.tex
 	mkdir -p $(OUT)
-	TEXINPUTS="$*/:_assets:" pdflatex $(call latex_args, $*) plantilla_tex.tex
-	TEXINPUTS="$*/:_assets:" pdflatex $(call latex_args, $*) plantilla_tex.tex
+	TEXINPUTS="$*/:_assets:" latexmk $(call latex_args, $*) $(CONTARG) plantilla_tex.tex
 	rm -rf $(OUT)/*.log $(OUT)/*.aux $(OUT)/*.toc $(OUT)/*.out
 
 
 # Markdown compilation
-pandoc_args = --pdf-engine=xelatex --template plantilla_md.tex --listings --resource-path="$(strip $(1))/:_assets:"
+pandoc_args = --pdf-engine=lualatex --template plantilla_md.tex --listings --resource-path="$(strip $(1))/:_assets:"
 $(OUT)/%.pdf: plantilla_md.tex %/apuntes.md %/ejercicios.md
 	mkdir -p $(OUT)
 	TEXINPUTS="$*/:_assets:" pandoc $(call pandoc_args, $*) $*/apuntes.md $*/ejercicios.md -o $@
