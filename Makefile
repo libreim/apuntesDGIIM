@@ -34,7 +34,7 @@ $(SUBJECTS): % : .out/%.pdf
 
 
 # LaTeX compilation
-latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -halt-on-error -jobname=$(strip $(1))
+latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -halt-on-error -file-line-error -jobname=$(strip $(1))
 $(OUT)/%.pdf: plantilla_tex.tex %/apuntes.tex %/ejercicios.tex
 	mkdir -p $(OUT)
 	TEXINPUTS="$*/:_assets:" latexmk $(call latex_args, $*) $(CONTARG) plantilla_tex.tex
