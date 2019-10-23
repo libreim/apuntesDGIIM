@@ -1,11 +1,11 @@
 % Apuntes originales por Santiago de Diego, Braulio Valdivielso y Francisco Luque
 % https://github.com/santidediego/Probabilidad-I-DGIIM
 
-\chapter{Conjuntos y funciones $\sigma$-aditivas}
+\section{Conjuntos y funciones $\sigma$-aditivas}
 
-\section{Introducción: Espacio medible}
+\subsection{Introducción: Espacio medible}
 
-\subsection*{Concepto de $\sigma$-álgebra}
+\subsubsection*{Concepto de $\sigma$-álgebra}
 Definamos primero la estructura de álgebra. Dado un espacio $\Omega$, una clase de subconjuntos de $\Omega$, $\mathcal{Q} \subset P(\Omega)$ tiene estructura de álgebra si y solo si:
 \begin{enumerate}
 	\item $\Omega \in \mathcal{Q}$
@@ -27,13 +27,13 @@ Una $\sigma$-álgebra es una clase de conjuntos cerrada para el complementario y
   \item $\mathcal{A}$ es cerrada para la  intersección numerable.
 \end{itemize}
 
-\subsection*{Espacio medible}
+\subsubsection*{Espacio medible}
 
 Al par ($\Omega$, $\mathcal{A}$) se le llama espacio medible, y a los conjuntos que pertenecen a $\mathcal{A}$ se les denomina conjuntos medibles.
 
-\section{Límites en sucesiones de conjuntos}
+\subsection{Límites en sucesiones de conjuntos}
 
-\subsection{Límites en sucesiones monótonas}
+\subsubsection{Límites en sucesiones monótonas}
 
 Si tomamos la relación de inclusión entre conjuntos ($\subseteq$) como una relación de orden, podemos hablar sin ningún tipo de problema de sucesiones monótonas. En este sentido, una sucesión   $\{A_n\}_{n \in \mathbb{N}}$  creciente de conjuntos cumpliría que $A_i \subseteq A_{i+1}, \forall i \in \mathbb{N}$. De forma análoga para sucesión decreciente de conjuntos.\\
 
@@ -46,7 +46,7 @@ Con una intuición análoga se define el límite de una sucesión decreciente de
 
 $$ \lim_{n\to\infty} A_n = \bigcap_{k=1}^{\infty} A_k $$
 
-\subsection{Límites superiores e inferiores}
+\subsubsection{Límites superiores e inferiores}
 
 No solo se puede hablar de límites en sucesiones monótonas. 
 Para definir los límites en sucesiones arbitrarias de conjuntos tenemos que recurrir a los conceptos de límite inferior y superior. 
@@ -84,7 +84,7 @@ para algún $k$ finito, luego $\omega$ pertenece a una infinidad de $A_n$ y así
 \]
 Por lo que tenemos el resultado.
 
-\subsection{Límite de una sucesión de conjuntos}
+\subsubsection{Límite de una sucesión de conjuntos}
 
 Diremos que una sucesión de conjuntos tiene límite si su límite inferior y superior coinciden, y el límite tendrá dicho  valor. Es decir,
 
@@ -92,7 +92,7 @@ $$ \lim A_n = \liminf A_n = \limsup A_n $$
 
 en caso de que límite superior e inferior coincidan.
 
-\section{Funciones sobre conjuntos}
+\subsection{Funciones sobre conjuntos}
 
 Una vez definidos los conceptos sobre conjuntos con los que vamos a trabajar, pasamos a definir las funciones sobre conjuntos. Vamos entonces a definir lo que es una función de conjunto. Sean los espacios medibles ($\Omega$, $\mathcal{A}$) y($\Omega'$, $\mathcal{A}'$), definimos la función:
 $$ X: \mathcal{A} \to \mathcal{A}'$$
@@ -100,7 +100,7 @@ $$ A \longrightarrow X(A)$$
 
 A raíz de esta definición podemos definir también lo que se conoce como función inversa. Dada una función $X$, la función inversa de $X$, $X^{-1}$, asigna a cada conjunto $A' \in \mathcal{A}'$ el conjunto $A \in \mathcal{A}$ tal que $X(A) = A'$. La propiedad básica que cumplen las funciones inversas es que preservan las operaciones e inclusiones de conjuntos.
 
-\section{Concepto de $\sigma$-aditividad}
+\subsection{Concepto de $\sigma$-aditividad}
 Sea un conjunto $\Omega$ y una $\sigma$-álgebra $\mathcal{A}$ sobre $\Omega$. Definimos la función de conjunto:
 $$\varphi : \mathcal{A} \rightarrow \mathbb{R}$$
 \begin{center}
@@ -116,7 +116,7 @@ Se dice que $\varphi$ es $\sigma$-aditiva si
 \forall \{A_i\}_{n\in N}, \ A_n \in A \text{ con } A_i \cap A_j = \emptyset, \ i \ne j , \varphi( \cup_{i=1}^\infty A_n ) = \sum_{i=1}^\infty \varphi(A_n)
 \]
 
-\subsubsection{Función subaditiva}
+\paragraph{Función subaditiva}
 Sea $\varphi$ definida como antes. Se dice que $\varphi$ es \textbf{subaditiva} si $\varphi(A \cup B) \leq \varphi(A) + \varphi(B)$
 
 \begin{lemma}
@@ -155,7 +155,7 @@ $\varphi(\bigcup_{i} A_i) = \varphi(A_1 + A_1^c A_2 + ... + A_1^cA_2^c...A_n+ ..
 
 \end{proof}
 
-\section{Continuidad en funciones sobre conjuntos}
+\subsection{Continuidad en funciones sobre conjuntos}
 
 Una vez introducido el concepto de límite para una sucesión de conjuntos, vamos a tratar de definir la continuidad para funciones de conjunto. Tendremos tres tipos de continuidad, cada uno relacionado con un tipo de sucesiones de conjuntos de las que hemos definido anteriormente. En esta sección trabajaremos con una función $\varphi : \Omega \to \Omega'$\\
 
@@ -217,9 +217,9 @@ Haciendo tender ahora $n \to +\infty$ y tomando $\displaystyle C = \lim \cup_{k 
 
 \end{proof}
 
-\chapter{Medidas y probabilidades}
+\section{Medidas y probabilidades}
 
-\section{Concepto de medida, media exterior y probabilidad}
+\subsection{Concepto de medida, media exterior y probabilidad}
 Una función de conjuntos $\mu^\circ$ es una \textbf{medida} si verifica:
 \begin{itemize}
 \item Es $\sigma$-aditiva, es decir,  $\mu^\circ (\cup A_j) = \displaystyle \sum \mu^\circ (A_j)$
@@ -278,7 +278,7 @@ Teorema de sucesión
 \end{enumerate}
 \end{proof}
 
-\section{Teorema de extensión de Carathéodory}
+\subsection{Teorema de extensión de Carathéodory}
 
 Una vez vistas las definiciones anteriores de medida y medida exterior, vamos a ver un teorema fundamental, que nos servirá para justificar la forma en la que haremos el cálculo de probabilidades a posteriori. Veamos dos lemas antes que nos serán necesarios para la demostración del teorema principal.\\
 
@@ -357,7 +357,7 @@ $$ \mathcal{A}(\mathcal{C}) \subseteq \mathcal{M} \Rightarrow \mu_1 = \mu_2 \: e
 
 \end{proof}
 
-\chapter{Funciones medibles}
+\section{Funciones medibles}
 
 Antes de nada, vamos a puntualizar unas características básicas de la inversa de una función que podrían pasar desapercibidas:
 
@@ -456,14 +456,14 @@ $$(g(X))^{-1}(B)=X^{-1}(g^{-1}(B))\in \mathcal{A}$$
 
 \end{proof}
 
-\section{Convergencia en probabilidad y convergencia casi segura}
+\subsection{Convergencia en probabilidad y convergencia casi segura}
 
 Vamos a establecer ahora criterios que nos permitan comparar variables aleatorias. Dado un espacio de probabilidad ($\Omega$, $\mathcal{A}$, $\mathcal{P}$), se dice que dos variables aleatorias son equivalentes si:
 $$ X\mathcal{R}Y \Leftrightarrow \mathcal{P}[X = Y] = 1$$
 Análogamente:
 $$X(\omega) = Y(\omega) \hspace{1cm} \forall \omega \in \Omega \setminus \Lambda, \  \mathcal{P}(\Lambda) = 0$$
 
-\subsection{Definición de convergencia en probabilidad}
+\subsubsection{Definición de convergencia en probabilidad}
 
 Si $P[|X_n- X| \geq \varepsilon]\rightarrow 0$, entonces se dice que $X_n\stackrel{\mathbb{P}}{\longrightarrow} X$, es decir, $X_n$ converge en probabilidad a $X$\\
 
@@ -480,7 +480,7 @@ Y por tanto, $X \mathcal{R} Y$
 
 \end{proof}
 
-\subsection{Definición de convergencia uniforme en u}
+\subsubsection{Definición de convergencia uniforme en u}
 
 Se dice que una variable aleatoria $X$ converge uniformemente en $u$ si se cumple que $\mathcal{P}[\mid X_{n+u} - X_n \mid \geq \varepsilon] \to 0$
 
@@ -497,7 +497,7 @@ $$ \Rightarrow \mathcal{P}[\mid X_{n+u} - X_n \mid \geq \varepsilon] \ \leq \ \m
 
 \end{proof}
 
-\subsection{Propiedades}
+\subsubsection{Propiedades}
 
 \begin{enumerate}
 \item $ X_n \stackrel{\mathcal{P}}{\longrightarrow} X \wedge Y_n \stackrel{\mathcal{P}}{\longrightarrow} Y \Longrightarrow X_n + Y_n \stackrel{\mathcal{P}}{\longrightarrow} X + Y$
@@ -528,7 +528,7 @@ $$ AB \subset C \Rightarrow C^c \subset A^c \cup B^c \Rightarrow \mathcal{P}(C^c
 $$ \leq \mathcal{P}[|X| \geq k] + \mathcal{P}[|X_n - X| \geq \delta] \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$$
 \end{proof}
 
-\subsection{Definición de convergencia casi segura}
+\subsubsection{Definición de convergencia casi segura}
 
 Una sucesión de variables aleatorias, ${ X_n }$, converge con probabilidad 1, o de forma casi segura, a una variable aleatoria $X$ (que puede degenerar en una constante K) cuando se cumple que:
 $$P(\lim_{n\rightarrow\infty}X_n=X)=1$$
@@ -567,9 +567,9 @@ $$\lim\mathbb{X}_n(\omega)=\mathbb{X}(\omega)\hspace{0.5cm} \omega \in A$$
 
 \end{proof}
 
-\chapter{Esperanza matemática}
+\section{Esperanza matemática}
 
-\section{Integral de una función de conjunto}
+\subsection{Integral de una función de conjunto}
 
 Para el cálculo de probabilidades, nos será muy útil el concepto de integral sobre funciones de conjunto. Este concepto nos servirá para calcular lo que se conoce como la esperanza matemática de una variable aleatoria $X$. En este apartado trabajaremos sobre el espacio de probabilidad $(\Omega, \mathcal{A}, \mathcal{P})$. Comenzaremos definiendo la integral para las funciones simples, para dar luego una definición de integral para funciones no negativas y por último para funciones cualesquiera.\\
 
@@ -605,9 +605,9 @@ $X \geq Y \rightarrow \displaystyle \int X d\mathcal{P} \geq \int Y d\mathcal{P}
 
 $\displaystyle X \stackrel{c.s}{=} Y \rightarrow \int X d\mathcal{P} = \int Y d\mathcal{P}$\\
 
-\section{Esperanza matemática}
+\subsection{Esperanza matemática}
 
-\subsection{Definición general}
+\subsubsection{Definición general}
 
 Dado un espacio probabilístico $(\Omega, \mathcal{A}, P)$ y una v.a. $X$, se define la esperanza matemática de $X$ como:
 $$E(X)=\int_{\Omega}XdP=\int_{\omega \in \Omega}{X(\omega)dP(\omega)}$$
@@ -617,7 +617,7 @@ $$E(X)=x_1P[X=x_1]+\ldots + x_n P[X=x_n]=\sum_{i=1}^{n}{x_i P(x_i)}$$
 En el caso de una v.a. continua, sea $f(x)$ la función de densidad. Definimos la esperanza matemática como:
 $$E(X)=\int_{-\infty}^{+\infty} {xf(x)dx}$$
 
-\subsection{Teorema de la convergencia monótona}
+\subsubsection{Teorema de la convergencia monótona}
 
 Una vez vista la definición de integral y esperanza matemática y algunas de sus propiedades, vamos a enunciar y demostrar un teorema de convergencia que nos será de mucha utilidad para el estudio de variables aleatorias. Veamos su enunciado y demostración:
 \begin{theorem}
@@ -648,7 +648,7 @@ De donde extraemos que $\lim Y_n = X$ y que $\displaystyle \int X = lim \int X_n
 
 \end{proof}
 
-\subsection{Teorema de Fatou-Lebesgue}
+\subsubsection{Teorema de Fatou-Lebesgue}
 Veamos ahora un resultado que nos da información sobre el límite superior e inferior de una sucesión de variables aleatorias, en caso de que estas estén acotadas por variables aleatorias integrables
 
 \begin{theorem}
@@ -672,7 +672,7 @@ En otro caso:
 
 \end{proof}
 
-\subsection{Teorema de la convergencia dominada}
+\subsubsection{Teorema de la convergencia dominada}
 \begin{theorem}
 Sea $X_n$ una sucesión de variables aleatorias t.q.  $X_n \stackrel{\mathcal{P}}{\rightarrow} X$ o $X_n \stackrel{c.s.}{\rightarrow} X$  . Si $\exists Y \, t.q. \, |X_n |\leq Y$. Entonces se tiene que $X$ es integrable y:
 $$\lim\int X_n\, dP=\int X\, dP$$
@@ -689,7 +689,7 @@ De nuevo, tenemos que $Y_n' \stackrel{\mathcal{P}}{\rightarrow} 0$. Tomando ahor
 
 \end{proof}
 
-\subsection{Desigualdades}
+\subsubsection{Desigualdades}
 
 Vamos a ver algunas desigualdades que nos permitirán a posteriori simplificar el cálculo de carácterísticas asociadas a variables aleatorias.\\
 
@@ -699,7 +699,7 @@ Dado un espacio probabilístico ($\Omega$, $\mathcal{A}$, $\mathcal{P}$) y una v
 $$ EX^r = \int X^r \, d \mathcal{P} $$
 Dicho momento existe si $E|X|^r < \infty$
 
-\subsubsection{Desigualdad $C_r$}
+\paragraph{Desigualdad $C_r$}
 \begin{lemma}
 
 \
@@ -709,16 +709,16 @@ $|a+b|^r\leq C_r |a|^r + C_r |b|^r$ con $C_r=1$ si $r\leq1$ y $C_r=2^{r-1}$ si $
 Entonces se tiene $E|X+Y|^r \leq C_r E|X|^r + C_r E|Y|^r$
 \end{lemma}
 
-\subsubsection{Desigualdad de Hölder}
+\paragraph{Desigualdad de Hölder}
 $E|XY| \leq \left(E|X|^r \right)^{\frac{1}{r}}  \left(E|Y|^s \right)^{\frac{1}{s}}$ con $r>1$ ; $ \dfrac{1}{r}+\dfrac{1}{s}=1$
 
-\subsubsection{Caso particular: Desigualdad de Schwarz}
+\paragraph{Caso particular: Desigualdad de Schwarz}
 $E|XY|\leq \left(E|X|^2 \right)^{\frac{1}{2}} \left(E|Y|^2 \right)^{\frac{1}{2}}$
 
-\subsubsection{Desigualdad de Minkowsky}
+\paragraph{Desigualdad de Minkowsky}
 Si $r \geq 1 \text{, entonces } (E|X+X'|^r)^{\frac{1}{r}} \leq \left(E|X|^r \right)^{\frac{1}{r}} + \left(E|X'|^r \right)^{\frac{1}{r}}$
 
-\subsubsection{Desigualdad básica}
+\paragraph{Desigualdad básica}
 Sea $X$ una v.a. y $g$ una función boreliana no negativa en $\mathbb{R}$, se tiene:
 
 \begin{description}
@@ -742,13 +742,13 @@ $$ g(a)\mathcal{P}(A) \ \leq\ Eg(X) \ \leq \ c.s.\sup g(X)\mathcal{P}(A) + g(a) 
 
 \end{proof}
 
-\subsubsection{Aplicaciones}
+\paragraph{Aplicaciones}
 \begin{enumerate}
 \item Usando la desigualdad básica con $g(X) = X^r$ y $E|X_n - X|^r \to 0 \Rightarrow X_n \stackrel{\mathcal{P}}{\rightarrow} X$
 \item ($\Omega$, $\mathcal{A}$, $\mathcal{P}$) $\stackrel{\mathcal{P}}{\rightarrow}$ ($\mathbb{R}$, $\mathcal{B}$), definimos ahora $\mathcal{P}^X(\mathcal{B}) = \mathcal{P}(X^{-1}(\mathcal{B}))$. $\mathcal{P}^X$ es una probabilidad, ya que $\mathcal{P}^X(\mathbb{R}) = 1, \mathcal{P}^X(\mathcal{B}) \geq 0, \mathcal{P}^X(\sum B_j) = \sum \mathcal{P}^X(B_j)$, y $EX = \displaystyle \int_{x \in \mathbb{R}} x d \mathcal{P}^X(x)$; $Eg(X) = \displaystyle \int_{y \in \mathbb{R}} g d \mathcal{P}^Y(y) = \displaystyle \int_{x \in \mathbb{R}} g(x) d \mathcal{P}^X(x)$
 \end{enumerate}
 
-\section{Convergencia en r-medida}
+\subsection{Convergencia en r-medida}
 Una sucesión de variables aleatorias $X_n$ converge en r-medida a $X$ si:
 $$ E|X_n - X|^r \to 0$$
 Lo notamos como $X_n \stackrel{r}{\rightarrow} X$
@@ -765,11 +765,11 @@ Para $r \leq 1$: $|E|X_n|^r - E|X|^r| \leq E|X_n - X|^r \rightarrow 0$\\
 Para $r \geq 1$: $|(E|X_n|^r)^{\frac{1}{r}} - (E|X|^r)^{\frac{1}{r}}| \leq (E|X_n - X|^r)^{\frac{1}{r}} \rightarrow 0$
 \end{proof}
 
-\section{Función de distribución, distribución inducida y función generatriz de momentos}
-\subsection{Función de distribución}
+\subsection{Función de distribución, distribución inducida y función generatriz de momentos}
+\subsubsection{Función de distribución}
 Función puntual que se define sobre la recta real, no negativa, no decreciente, continua por la izquierda y que cumple que $F(-\infty) = 0$, $F(+\infty) = 1$\\
 
-\subsection{Distribución inducida}
+\subsubsection{Distribución inducida}
 Se conoce como distribución inducida por la variable aleatoria $X$ a ($\mathbb{R}$, $\mathcal{B}$, $\mathcal{P}^X$), donde la medida de probabilidad $\mathcal{P}^X$ se define como:
 $$ \mathcal{P}^X(B) = \mathcal{P}(X^{-1}(B)) = \mathcal{P}[X\in B], \, \forall B \in \mathcal{B} $$
 Tenemos entonces que:
@@ -779,15 +779,15 @@ Tenemos entonces que:
 \item $\displaystyle EX = \int_{\omega \in \Omega} X(\omega) d \mathcal{P(\omega)} = \int_{x \in \mathbb{R}} x d\mathcal{P}^X(x)$
 \end{itemize}
 
-\subsection{Función generatriz de momentos}
+\subsubsection{Función generatriz de momentos}
 Llamamos función generatriz de momentos de la variable aleatoria $X$ a la función:
 $$ M_X(t) = E(e^{tX}) \hspace{1cm} t \in \mathbb{R} $$
-\subsection{Función característica}
+\subsubsection{Función característica}
 Dada una variable aleatoria $X$ continua, definimos su función característica:
 $$\varphi_X(t)=E(e^{itX})=\int_{-\infty}^{\infty}e^{itx}f_{X}(x)=E(cos(tX))+iE(sen(tX))$$
 
-\chapter{Independencia}
-\section{Concepto de independencia}
+\section{Independencia}
+\subsection{Concepto de independencia}
 \textbf{Definición: }Sea un espacio probabilístico $(\Omega,\mathcal{A},\mathcal{P})$. Se dice que los eventos $\{A_t : t\in T \}\in \mathcal{A}$ son independientes si para todo subconjunto finito $(t_1,\ldots ,t_n)\in T$ se tiene que:
 $$P\bigcap_{k=1}^n A_{t_k}=\displaystyle\prod_{k=1}^{n}P\, A_{t_k}$$
 De hecho, el concepto de independencia es relativo a la familia de clases. Una colección de clases de eventos se dice independiente si seleccionando un evento arbitrario de cada clase dichos eventos son independientes. 
@@ -802,8 +802,8 @@ Se tiene que las subclases de clases independientes son independientes.
 	La demostración es trivial puesto que si todos los conjuntos de una clase cumplen la propiedad, también la han de cumplir un subconjunto de esta.
 \end{proof}
 
-\section{Suma de variables aleatorias independientes}
-\subsubsection{Teorema de las funciones Borel}
+\subsection{Suma de variables aleatorias independientes}
+\paragraph{Teorema de las funciones Borel}
 \begin{theorem}
 Las funciones de Borel $g(X_i)$ de funciones aleatorias independientes son independientes.
 \end{theorem}
@@ -820,7 +820,7 @@ Sea $g$ función de Borel $\implies$ $(g \circ X_t)$ son independientes.
 
 \end{proof}
 
-\subsubsection{Teorema de extensión}
+\paragraph{Teorema de extensión}
 \begin{theorem}
 Los $\sigma$-campos minimales sobre clases independientes cerradas para la intersección finita son independientes.
 \end{theorem}
@@ -855,21 +855,21 @@ $PA_1A_2\dots A_n \leftarrow PA_1^mA_2\dots A_n = PA_1^mPA_2\dots PA_n \rightarr
 \end{itemize}
 
 \end{proof}
-\subsubsection{Teorema de composición}
+\paragraph{Teorema de composición}
 \begin{theorem}
 Los $\sigma$-campos compuestos son independientes si y solo si sus $\sigma$-subcampos finitamente compuestos son independientes.
 \end{theorem}
-\subsection{Familia de variables aleatorias}
+\subsubsection{Familia de variables aleatorias}
 Una familia de variables aleatorias $X_{T_s}=\{ X_t : t\in T_s \}$ induce $\sigma$-campos $\mathcal{B}(X_{T_s})$ de eventos.
-\subsubsection{Teorema de las familias}
+\paragraph{Teorema de las familias}
 \begin{theorem}
 Las familias de variables aleatorias son independientes si y solo si sus subfamilias finitas son mutuamente independientes.
 \end{theorem}
-\section{Multiplicación de variables aleatorias independientes}
+\subsection{Multiplicación de variables aleatorias independientes}
 \textbf{Definición: } Las variables aleatorias $X_t\, , \, t\in T$ son independientes si para cada clase finita $(S_{t_1},\ldots , S_{t_n})$ de conjuntos de Borel en $\mathbb{R}$,
 $$P\bigcap_{k=1}^{n}[X_{t_k}\in S{t_k}]=\displaystyle\prod_{k=1}^n P[X_{t_k}\in S_{t_k}]$$
 
-\subsubsection{Lema de la multiplicación}
+\paragraph{Lema de la multiplicación}
 \begin{lemma}
 Si $X_1, \ldots , X_n$ son variables aleatorias independientes no negativas, entonces $E\displaystyle\prod_{k=1}^{n}X_k=\displaystyle\prod_{k=1}^{n} E X_k$
 \end{lemma}
@@ -893,7 +893,7 @@ De donde se extrae por el teorema de la convergencia monótona que $E(XY) = E(X)
 
 \end{proof}
 
-\subsubsection{Teorema de la multiplicación}
+\paragraph{Teorema de la multiplicación}
 \begin{theorem}
 Sean $X_1,\ldots, X_n$ variables aleatorias independientes. Si son integrables, entonces también lo es su producto con: $$E\displaystyle\prod_{k=1}^n X_k=\displaystyle\prod_{k=1}^n E X_k$$
 \\\\
@@ -921,7 +921,7 @@ $E(|X|)$ y $E(|Y|)$ son finitas y, por tanto, $X$ e $Y$ son integrables.
 
 \end{proof}
 
-\subsubsection{Teorema de equivalencia}
+\paragraph{Teorema de equivalencia}
 \begin{theorem}
 Para cada clase finita de conjuntos de Borel $S_t$ y de puntos $x_t, u_y \in \mathbb{R}$, son equivalentes las tres definiciones siguientes de independencia de variables aleatorias $X_t$:
 \begin{enumerate}
@@ -945,7 +945,7 @@ Tenemos que $F_{t_1,...,t_n}([a_{t_1},...,a_{t_n};b_{t_1},...,b_{t_n}]) = F_{t_1
 
 \end{proof}
 
-\subsubsection{Lema de Borel-Cantelli}
+\paragraph{Lema de Borel-Cantelli}
 \begin{lemma}
 Lema de Borel-Cantelli
 \\\\
@@ -969,7 +969,7 @@ Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
 
 \end{proof}
 
-\subsubsection{Criterio cero-uno de Borel}
+\paragraph{Criterio cero-uno de Borel}
 \begin{criterion} 
   \ 
 Sea $(\Omega,\mathcal{A},P) \, , \, A_n \in \mathcal{A}$. Entonces:
@@ -1041,7 +1041,7 @@ $\mathcal{B}(X_n, X_{n+1}, ...), \mathcal{B}(X_{n+1}, X_{n+2}, ...), ... \downar
 
 Dicho límite es un $\sigma$-campo, conocido como el $\sigma$-campo cola, que será equivalente a $\emptyset$ o $\Omega$.
 
-\subsection{Ley 0-1 de Kolmogorov}
+\subsubsection{Ley 0-1 de Kolmogorov}
 Sea $X_n$ una sucesión de variables aleatorias independientes. Entonces los eventos en la cola tienen o bien probabilidad 0 o 1 y las funciones cola son degeneradas.
 \begin{proof}$\,$\\
 $i)$\\
@@ -1059,8 +1059,8 @@ A raíz de esta ley, podemos extraer también un corolario.\\
 \textbf{Corolario. }Sea $X_n$ una sucesión de variables aleatorias independientes, entonces $X_n$ converge c.s. o diverge c.s., igualmente para la serie $\sum_{n\in\mathbb{N}} X_n$
 
 
-\subsection{Variables aleatorias independientes y espacios producto}
-\section{Convergencia y estabilidad de sumas; centramiento y truncamiento}
+\subsubsection{Variables aleatorias independientes y espacios producto}
+\subsection{Convergencia y estabilidad de sumas; centramiento y truncamiento}
 Esta sección está dedicada a la investigación de las sumas de variables aleatorias independientes y especialmente, a sus propiedades en el límite. Primero de todo, consideraremos $S_n=\displaystyle\sum_{k=1}^n X_k$ una suma de variables aleatorias independientes $X_1, X_2,\ldots X_n$
 \\\\
 \textbf{Definición de estabilidad: }Si existe una sucesión $\{a_n\}$ y otra $\{b_n\} \rightarrow \infty$ de forma que $\dfrac{S_n}{b_n}-a_n\stackrel{\mathcal{P}}{\rightarrow}0$ o $\dfrac{S_n}{b_n}-a_n\stackrel{c.s.}{\rightarrow}0$, entonces decimos que la sucesión $S_n$ es estable en probabilidad o c.s. 
@@ -1068,20 +1068,20 @@ Esta sección está dedicada a la investigación de las sumas de variables aleat
 A continuación presentamos una ley que ha marcado el desarrollo de toda la teoría de la probabilidad.
 
 
-\subsection{Ley de Bernouilli de los grandes números} % Pag 244 del Loeve
+\subsubsection{Ley de Bernouilli de los grandes números} % Pag 244 del Loeve
 Sean $X_1,\ldots X_n$ variables aleatorias independientes e idénticamente distribuidas tales que $P[X_n=1]=p$ y $P[X_n=0]=q=1-p$. Entonces se tiene que:
 $$\dfrac{S_n}{n}-p \stackrel{\mathcal{P}}{\longrightarrow}0$$
 El Teorema del Límite Central, que desarrollaremos más adelante, es una consecuencia directa del perfeccionamiento de esta ley por parte de Moivre y Laplace.
 
-\subsection{Ley fuerte de Borel de los grandes números} % Pag 244 del Loeve
+\subsubsection{Ley fuerte de Borel de los grandes números} % Pag 244 del Loeve
 Con las hipótesis anteriores de la ley de Bernouilli de los grandes números, entonces: $$\dfrac{S_n}{n}-p \stackrel{c.s.}{\longrightarrow}0$$
-\subsection{Teorema de aproximación de Weierstrass}
+\subsubsection{Teorema de aproximación de Weierstrass}
 \begin{theorem}
 Sea f(x) continua en $[0,1]$ se aproxima por el polinomio de Berstein $\Rightarrow \exists {B_n(x)}$ tal que $\lim B_n (x) = f(x)$ uniformemente $ \forall x \in [0,1]$.
 \end{theorem}
 \begin{proof}*
 \end{proof}
-\subsection{Centramiento y truncamiento}
+\subsubsection{Centramiento y truncamiento}
 Diremos que centramos $X$ a $c$ si reemplazamos $X$ por $X-c$. Si $X$ es integrable, entonces podemos centrarla a su esperanza $EX$ de forma que $X$ es reemplazada por $X-EX$. Es decir, diremos que una variable aleatoria está centrada a su media si y solo si su media existe y es igual a 0.
 \\\\
 Sea $X$ integrable, llamaremos varianza de $X$ al segundo momento de $X-EX$ (podría ser $\infty$) y lo denotaremos como $\sigma^2 X$. Por consiguiente:
@@ -1169,14 +1169,14 @@ Este último corolario es debido a Tchebichev (cuando $b_n=n$). En el caso de Be
 
 % DESIGUALDADES DE KOLMOGOROV (PAGINAS 31 A 34 DE MARIADEL)
 
-\subsection{Ley débil de los grandes números}
+\subsubsection{Ley débil de los grandes números}
 Sea $\{X_n\}$ una sucesión infinita de variables aleatorias independientes que tienen el mismo valor esperado $\mu$ y varianza $\sigma^2$, entonces 
 $$
  \overline{X}_n = \frac{X_1+\cdots+X_n}{n} 
  \stackrel{P}{\longrightarrow} \mu
 $$
 
-\subsection{Ley fuerte de los grandes números de Kolmogorov}
+\subsubsection{Ley fuerte de los grandes números de Kolmogorov}
 Sea ${X_n}$ una sucesión de variables aleatorias independientes e idénticamente distribuidas con una ley común $\mathcal{L}(X)$. Entonces:
 $$E|X| < \infty
 \Longleftrightarrow 
@@ -1187,9 +1187,9 @@ $$E|X| < \infty
 
 % METODOS DE MONTECARLO
 
-\chapter{El problema central del límite}
+\section{El problema central del límite}
 El problema del límite central en probabilidad es el problema de convergencia de leyes de secuencias de sumas de variables aleatorias.
-\section{Preeliminares}
+\subsection{Preeliminares}
 Consideramos $S_n$ el número de ocurrencias de un evento con probabilidad $p$ en $n$ intentos idénticos e independientes. Para evitar trivialidades asumimos que $pq\neq 0$, donde $q=1-p$. Si $X_k$ denota el indicador del evento en el $k$-ésimo intento, entonces $S_n=\displaystyle\sum_{k=1}^n X_k$ con $n=1,2,\ldots$ donde los sumandos son indicadores independientes e idénticamente distribuidos. Este es el caso de Bernouilli; como $EX_k=p$ y $EX_k^2=p$, entonces $\sigma^2 X_k=p-p^2=pq$ de donde se sigue que:
 $$ES_n=\sum_{k=1}^nEX_k=np \,\,\, , \,\,\, \sigma^2 S_n=\sum_{k=1}^n \sigma^2 X_k=npq$$
 El primer teorema del límite central publicado en 1713 dice que $\dfrac{S_n}{n}\stackrel{\mathcal{P}}{\longrightarrow}p$
@@ -1221,7 +1221,7 @@ $$\prod_{k=1}^{n}(1+\frac{i^2pq}{npq}\frac{t^2}{2}+\ldots)=(1+\frac{-t^2}{2n}+\l
 \item \textbf{Ley de Poisson} $\varphi_X=E(e^{itX})=\displaystyle\sum_{x=0}^{\infty}e^{itX}e^{-\lambda}\frac{\lambda^x}{x!}=e^{-\lambda}\displaystyle\sum_{x=0}^{\infty}\frac{(e^{it}\lambda)}{x!}=e^{\lambda(e^{it}-1)}$
 \end{enumerate}
 Mientras que las dos primeras leyes juegan un papel central en el desarrollo de la teoría de la probabilidad, la de Poisson se ha mantenido ignorada durante mucho tiempo.
-\section{Primer teorema del límite central (Problema clásico)}
+\subsection{Primer teorema del límite central (Problema clásico)}
 En el caso de Bernouilli:
 $$\mathcal{L}\left( \frac{S_n-ES_n}{n}  \right)\rightarrow \mathcal{L}(0) \,\, y \,\, \mathcal{L}\left( \frac{S_n-ES_n}{\sigma S_n}  \right)\rightarrow N(0,1)$$
 y en el caso de Poisson:
@@ -1233,7 +1233,7 @@ Si consideramos variables aleatorias centradas en media, podemos enunciar el sig
 \begin{lemma}
 Si los sumandos son independientes, indénticamente distribuidos y centrados en media, entonces $\mathcal{L} \left( \dfrac{S_n}{n} \right)\rightarrow \mathcal{L}$ y $\mathcal{L} \left( \dfrac{S_n}{s_n} \right)\rightarrow N(0,1)$
 \end{lemma}
-\subsubsection{Teorema de composición y descomposición}
+\paragraph{Teorema de composición y descomposición}
 \begin{theorem}
 Los tipos normales y degenerados son cerrados bajo composiciones y descomposiciones. Lo mismo también se cumple para cada familia de Leyes de Poisson $\mathcal{P}(\lambda ; a,b)$ con el mismo b
 \end{theorem}
@@ -1263,19 +1263,19 @@ Si $S_{nn}=\displaystyle\sum_{k=1}^n X_{nk}$ donde los sumandos son variables al
 \item Si $\dfrac{1}{s_{nn}^3}\displaystyle\sum_{k=1}^n E|X_{nk}|^3\rightarrow 0$ entonces $\mathcal{L} \left( \dfrac{S_{nn}}{s_{nn}} \right)\rightarrow N(0,1)$
 \end{enumerate}
 \end{lemma}
-\subsubsection{Lema de equivalencia de leyes}
+\paragraph{Lema de equivalencia de leyes}
 \begin{lemma}
 Si $X_n - X_n ^{\prime}  \stackrel{\mathbb{P}}{\longrightarrow} 0$ o $P[X_n \neq X_n^{\prime}]\longrightarrow 0$ entonces las sucesiones $\mathcal{L}(X_n)$ y $\mathcal{L}(X_n^{\prime})$ son equivalentes.
 \end{lemma}
 Una vistos estos resultados, ya estamos en posición de poder dar una solución completa al problema clásico del límite central, pero antes enunciaremos:
-\subsubsection{Criterio clásico de convergencia degenerada}
+\paragraph{Criterio clásico de convergencia degenerada}
 Se tiene que $\mathcal{L} \left( \dfrac{S_n}{n} \right)\rightarrow \mathcal{L}(0)$ si y solamente si:
 \begin{enumerate}
 \item $\sum\displaystyle\int_{|x|\geq n}dF_k \rightarrow 0$
 \item $\dfrac{1}{n}\sum\displaystyle\int_{|x|<n} x dF_k \rightarrow 0$
 \item $\dfrac{1}{n^2}\sum\left( \displaystyle\int_{|x|<n}x^2 dF_k - \left(  \displaystyle\int_{|x|<n}x\, dF_k \right)^2 \right)\longrightarrow 0$
 \end{enumerate}
-\subsubsection{Criterio clásico de convergencia normal}
+\paragraph{Criterio clásico de convergencia normal}
 Se tiene $\mathcal{L} \left( \dfrac{S_n}{s_n} \right)\rightarrow N(0,1)$ y $max_{k\leq n}\dfrac{\sigma_k}{s_n}\rightarrow 0$ si y solamente si, $\forall \epsilon >0$:
 $$g_n(\epsilon)=\dfrac{1}{s_n^2}\sum\int_{|x|\geq \epsilon s_n}x^2\, dF_k\longrightarrow 0$$
 \begin{proof}
