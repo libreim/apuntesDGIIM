@@ -18,7 +18,7 @@ Las clases padre e hija comparten un código común que es definido en la clase 
 
 La clase hija es a la vez una extensión de la clase padre, desde el punto de vista de la clase como un módulo, y una especialización o restricción de la clase padre.
 
-Una forma de saber si es conveniente utilizar herencia en cierto caso es mediante el \textit{test de especialización}. Supongamos que tenemos una clase A padre y una clase B que pretendemos que sea hija de A. Si podemos decir que ""B es un A"" entonces podemos establecer una relación de herencia entre A y B.
+Una forma de saber si es conveniente utilizar herencia en cierto caso es mediante el \textit{test de especialización}. Supongamos que tenemos una clase A padre y una clase B que pretendemos que sea hija de A. Si podemos decir que "B es un A" entonces podemos establecer una relación de herencia entre A y B.
 
 \subsubsection{}
 
