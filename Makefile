@@ -1,7 +1,16 @@
 TARGET= apuntes.tar.gz
 OUT = .out
 
-SUBJECTS=$(shell find * -mindepth 1 -maxdepth 1 -name "apuntes.*" -printf "%h\n")
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	FIND := find
+endif
+ifeq ($(UNAME), Darwin)
+	FIND := gfind
+endif
+
+SUBJECTS=$(shell $(FIND) * -mindepth 1 -maxdepth 1 -name "apuntes.*" -printf "%h\n")
 PDFS=$(addprefix $(OUT)/, $(addsuffix .pdf, $(SUBJECTS)))
 
 
