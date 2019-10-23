@@ -75,6 +75,14 @@
 \chead{\leftmark}
 \cfoot*{\pagemark}
 
+% Enlaces
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=500,
+}
+
 % No mostrar cabecera en páginas de sección
 \usepackage{xpatch}
 \xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
@@ -183,11 +191,6 @@
 
 % Paquetes y comandos que utiliza Pandoc para compilar
 
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=500,
-}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{stmaryrd}
@@ -319,7 +322,7 @@ $if(colorlinks)$
 \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
 $endif$
 \setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
+{\hypersetup{linkcolor=black}\tableofcontents}
 }
 $endif$
 $if(lot)$

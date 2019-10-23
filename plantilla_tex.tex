@@ -71,6 +71,12 @@
 \chead{\leftmark}
 \cfoot*{\pagemark}
 
+% Enlaces
+\hypersetup{
+	colorlinks=true,
+	linkcolor=500,
+}
+
 % No mostrar cabecera en páginas de sección
 \usepackage{xpatch}
 \xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
@@ -264,7 +270,7 @@
 % ---------------------------------------------------------------------------
 
 \thispagestyle{empty}
-\tableofcontents
+{\hypersetup{linkcolor=black}\tableofcontents}
 \newpage
 
 % ---------------------------------------------------------------------------
