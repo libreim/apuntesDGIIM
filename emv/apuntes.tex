@@ -125,17 +125,11 @@ Sea $\boldsymbol X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y s
 
   En particular, si \[ \vectX= \left( X_{(1)} | X_{(2)}\right)^T := \left(X_{(1),1}, \dots, X_{(1),k}, X_{(2),1}, \dots, X_{(2),p-k}\right),\] con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría que
   \[
-X_{(1)} = \left(\begin{array}{c | c}
-    I_k & 0 \\ \hline
-    0 & 0
-        \end{array}\right)X + 0_{k\times 1}\,,
+X_{(1)} = \left( I_k | 0_{p-k} \right)X + 0_{k\times 1}\,,
 \]
 por lo que, para $\boldsymbol t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$ la función característica viene determinada por
 \[
-\psi_{X_{(1)}}\left(\boldsymbol t_{(1)}\right) = \underbrace{e^{i\boldsymbol t_{(1)}^T 0}}_{=1} \psi_X\left(\left(\begin{array}{c | c}
-    I_k & 0 \\ \hline
-    0 & 0
-        \end{array}\right)\boldsymbol t_{(1)}\right) = \psi_X\left(\frac{\boldsymbol t_{(1)}}{0_{(p-k)}}\right)\,.
+\psi_{X_{(1)}}\left(\boldsymbol t_{(1)}\right) = \underbrace{e^{i\boldsymbol t_{(1)}^T 0}}_{=1} \psi_X\left(\left( I_k | 0_{p-k} \right)\boldsymbol t_{(1)}\right) = \psi_X\left(\frac{\boldsymbol t_{(1)}}{0_{(p-k)}}\right)\,.
 \]
 
 \subsubsection{Relación con la función de densidad}
@@ -279,7 +273,7 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
   \[
   \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T (CC^T)^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{ (\vectX-\mu)^T (C^T)^{-1}C^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{\vectZ^T \vectZ\right\}^{\frac{1}{2}} = \Vert \vectZ\Vert\,,
   \]
-  con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función a un vector aleatorio.
+  con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función medible a un vector aleatorio.
 
   \begin{nprop} Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces,
     \begin{nlist}
@@ -440,17 +434,17 @@ Algunos aspectos que justifican el estudio de esta distribución en particular:
 
 
 \begin{ndef}
-  Sea $X = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $X$ tiene una distribución dormal $p-$variante si su densidad es de la forma:
+  Sea $\vectX = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $\vectX$ tiene una distribución normal $p-$variante si su densidad es de la forma:
   \[
-f_X(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
+f_{\vectX}(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
 \]
 Siendo $\mu = (\mu_1, \dots, \mu_p)^T \in \mathbb R^p$ y $\Sigma$ una matriz escalar $p\times p$ simétrica y definida positiva.
 \end{ndef}
 
-Veamos que, en efecto, $f_X$ es una función de densidad
+Veamos que, en efecto, $f_{\vectX}$ es una función de densidad
 \begin{enumerate}
-\item $f_X(x) \geq 0, \ \forall x \in \mathbb R$,
-\item $\int_{\mathbb R^p} f_X(x) \mathrm{d}x = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal \mathscr{M}_{p}(\R), \det(C) > 0$. La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación es $\det\left(C^{-1}\right)$. Por otro lado:
+\item $f_{\vectX}(x) \geq 0, \ \forall x \in \mathbb R$,
+\item $\int_{\mathbb R^p} f_{\vectX}(x) \mathrm{d}x = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal \mathscr{M}_{p}(\R), \det(C) > 0$. La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación es $\det\left(C^{-1}\right)$. Por otro lado:
 
 \[
   (x-\mu)^T \Sigma^{-1}(x-\mu) = zz^T
@@ -459,26 +453,26 @@ Veamos que, en efecto, $f_X$ es una función de densidad
 Por tanto, podemos escribir:
 
 \begin{DispWithArrows*}[fleqn, mathindent = 0cm, wrap-lines]
-      \int_{\R^p} f_X(x) \mathrm{d}x & = \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
+      \int_{\R^p} f_{\vectX}(x) \mathrm{d}x & = \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
       & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\
       & = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p\\
-      & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j =^{(1)} \prod_{j=1}^p 1 = 1.
+      & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j = \prod_{j=1}^p 1 = 1.
 \end{DispWithArrows*}
 \end{enumerate}
 
 
 \subsubsection{Vector de medias y matriz de covarianzas}
-Del cálculo anterior se desprende que el vector aleatorio $$Z = C^{-1}(X-\mu)$$ se distribuye con función de densidad
+Del cálculo anterior se desprende que el vector aleatorio \[ \vectZ = C^{-1}(\vectX-\mu) \] se distribuye con función de densidad
 \[
-f_Z(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{1}{2}z_j^2\right\} = \prod_{j=1}^p f_{Z_j}(z_j)
+f_{\vectZ}(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{1}{2}z_j^2\right\} = \prod_{j=1}^p f_{Z_j}(z_j)
 \]
 Es decir, para cada $j = 1,\dots, p$
 \[
 Z_j \sim N(0,1)
 \]
-siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $Z \sim N_p(0,I_p)$.
+siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $\vectZ \sim N_p(0,I_p)$.
 
-A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ representan, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $X \sim N_p(\mu,\Sigma)$.
+A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ son, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $\vectX \sim N_p(\mu,\Sigma)$.
 
 
 \begin{nprop}[Transformación afín sobre una normal] \label{afinnormal}
@@ -503,12 +497,13 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
 \end{proof}
 
 \begin{nth}[Caracterización de DNM]
-  Sea $\vectX$ un vector aleatorio $p-$dimensional, entonces $\vectX$ sigue una DNM (no singular), de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, i.e. $N_p(\mu,\Sigma)$, si y solo si
+  Sea $\vectX$ un vector aleatorio $p-$dimensional, entonces $\vectX$ tiene distribución normal multivariante, de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, si y solo si
   \[
-X = AZ + \mu
+\vectX = A\vectZ + \mu
 \]
-con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $Z \sim N_p(0,I_p)$.
+con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,I_p)$.
 \end{nth}
+
 %#TODO: Demostración (clase de prácticas)
 
 \subsubsection{Sobre Independencia y Condicionamiento}
@@ -541,9 +536,9 @@ con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $Z \sim N_p(0,I_p)$
 
   El recíproco de este último resultado dado es cierto:
   \begin{nprop}
-    Si $X = (X_1,\dots,X_p)^T$ es un vector aleatorio con componentes \emph{mutuamente} independientes que tienen DNM, $X_i \sim N(\mu_i, \sigma_i)$, con $\sigma > 0$. Entonces, $X$ tiene DNM
+    Si $\vectX = (X_1,\dots,X_p)^T$ es un vector aleatorio con componentes \emph{mutuamente} independientes que tienen DNM, $X_i \sim N(\mu_i, \sigma_i)$, con $\sigma > 0$. Entonces, $\vectX$ tiene DNM
     \[
-    X \sim N_p(\mu, \Sigma)
+    \vectX \sim N_p(\mu, \Sigma)
     \]
     con $\mu = (\mu_1,\dots,\mu_p)^T$ y $\Sigma = \diag(\sigma_1^2 , \dots , \sigma_p^2) > 0$.
   \end{nprop}
@@ -564,13 +559,13 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
   Esta proposición es un contraejemplo para ver que , en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
 
   \begin{nth} \label{independenciacovbloques}
-    Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = \left(X_{(1)}^T | X_{(2)}^T\right)^T$ con $X_{(1)} = (X_1,\dots,X_q)^T$ y $X_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
+    Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = \left(\vectX_{(1)}^T | \vectX_{(2)}^T\right)^T$ con $\vectX_{(1)} = (X_1,\dots,X_q)^T$ y $\vectX_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
     
     \[
     \mu = \left(\mu_{(1)}^T | \mu_{(2)}^T\right)^T, \quad \Sigma = \begin{pmatrix} \Sigma_{(11)} & 0 \\ 0 & \Sigma_{(22)} \end{pmatrix}
     .\]
     
-    Entonces, $X_{(1)}$ y $X_{(2)}$ son mutuamente independientes y además, $X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)})$ y $X_{(2)} \sim N_{p-q}(\mu_{(2)}, \Sigma_{(22)})$
+    Entonces, $\vectX_{(1)}$ y $\vectX_{(2)}$ son mutuamente independientes y además, $\vectX_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)})$ y $\vectX_{(2)} \sim N_{p-q}(\mu_{(2)}, \Sigma_{(22)})$.
   \end{nth}
 
   \begin{proof}
@@ -591,12 +586,12 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
       \end{split}
     \]
     
-    Podemos factorizar entonces la función de densidad de $X$:
+    Podemos factorizar entonces la función de densidad de $\vectX$:
     
     \[
     \begin{split}
-    f_{\vectX}(x) =  \frac{1}{(2\Pi)^{\frac{q}{2}} \det(\Sigma_{(11)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)})\right\} \cdot \\
-    \frac{1}{(2\Pi)^{\frac{p-q}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})\right\}
+    f_{\vectX}(x) =  \frac{1}{(2\Pi)^{\frac{q}{2}} \det(\Sigma_{(11)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)})\right\} \\
+    \cdot \frac{1}{(2\Pi)^{\frac{p-q}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})\right\}
     \end{split}
     \]
     
@@ -613,15 +608,15 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
 
 Entonces, se tiene:
 \begin{enumerate}
-\item $X_{(1)}$ y $X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)}$ son independientes, \label{indepitem}
+\item $\vectX_{(1)}$ y $\vectX_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}\vectX_{(1)}$ son independientes, \label{indepitem}
 \item \[
   \begin{cases}
-    X_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
-    X_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}\left(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
+    \vectX_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
+    \vectX_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}\left(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
   ,\end{cases}
   \] \label{distitem}
   
-\item La distribución condicionada de $X_{(2)}$ dado $X_{(1)} = x_{(1)}$ es una DNM
+\item La distribución condicionada de $\vectX_{(2)}$ dado $\vectX_{(1)} = x_{(1)}$ es una DNM
   
   \[
     N_{p-q}\left(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
@@ -633,7 +628,7 @@ Entonces, se tiene:
     Sea $C = \begin{pmatrix} I_1 & 0 \\ -\Sigma_{(21)}\Sigma_{(11)}^{-1} & I_2\end{pmatrix}$. $C$ es no singular, pues $\det(C) = 1$. Consideramos el cambio lineal $\vectY = C \vectX$:
       
    \[
-      \vectY = \begin{pmatrix} X_{(1)} \\ X_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}X_{(1)}\end{pmatrix} := \begin{pmatrix} Y_{(1)} \\ Y_{(2)} \end{pmatrix}.
+      \vectY = \begin{pmatrix} \vectX_{(1)} \\ \vectX_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\vectX_{(1)}\end{pmatrix} := \begin{pmatrix} \vectY_{(1)} \\ \vectY_{(2)} \end{pmatrix}.
    \]
 
    Por \ref{afinnormal}, $\vectY \sim N_p\left( C\mu, C\Sigma C^T \right)$. Se tiene:
@@ -659,12 +654,12 @@ Entonces, se tiene:
   Para probar \ref{conditem} escribimos, usando el teorema de Bayes, la expresión de la de función de densidad de la distribución condicionada:
 
   \begin{DispWithArrows*}[fleqn, wrap-lines]
-    f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{X_{(1)}, X_{(2)}} (x_{(1)}, x_{(2)})} {f_{X_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, $\det(C) = 1$} \\
-    & = \frac{f_{Y_{(1)}, Y_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{X_{(1)}}(x_{(1)})}
+    f_{\vectX_{(2)} | \vectX_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{\vectX_{(1)}, \vectX_{(2)}} (x_{(1)}, x_{(2)})} {f_{\vectX_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, $\det(C) = 1$} \\
+    & = \frac{f_{\vectY_{(1)}, \vectY_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{\vectX_{(1)}}(x_{(1)})}
   \end{DispWithArrows*}
 
 
-  Veamos el valor de la forma cuadrática que aparecerá en $f_{Y_{(1)}, Y_{(2)}}$:
+  Veamos el valor de la forma cuadrática que aparecerá en $f_{\vectY_{(1)}, \vectY_{(2)}}$:
 
   \[
      \left(
@@ -1132,7 +1127,7 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \subsection{Distribuciones elípticas}
 
 \begin{ndef}[Distribución elíptica]
-  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \isim E_p(\boldsymbol \mu, V)$.
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
 \end{ndef}
 
 \begin{nprop}[Caracterización en función de la densidad]
