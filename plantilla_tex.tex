@@ -28,6 +28,8 @@
 \usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
 \usepackage{graphicx}
 
+\usepackage{templatetools}
+
 % ------------------------------------------------------------------------------
 % CONFIGURACIÓN DE ASIGNATURA
 % ------------------------------------------------------------------------------
@@ -150,6 +152,30 @@
 	borderline west={2pt}{0pt}{500},
 	borderline east={2pt}{0pt}{50},
 	before upper={\parindent 12pt},
+}
+
+% ------------------------------------------------------------------------------
+% LISTINGS
+% ------------------------------------------------------------------------------
+
+\IfPackageLoaded{listings}{
+	\renewcommand{\lstlistingname}{Listado}
+
+	\lstset{
+		frame=lines,
+		rulecolor=\color{black},
+		framerule=1pt,
+		numbers=left,
+		belowcaptionskip=1\baselineskip,
+		basicstyle=\ttfamily\color{black},
+		keywordstyle=\bfseries\color{700},
+		commentstyle=\color{300},
+		stringstyle=\color{500},
+		numberstyle=\color{black},
+		breaklines=true,
+		showstringspaces=false,
+		tabsize=2,
+	}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
