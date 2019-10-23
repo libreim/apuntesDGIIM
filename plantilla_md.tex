@@ -299,7 +299,7 @@
 % ---------------------------------------------------------------------------
 
 \thispagestyle{empty}
-\tableofcontents
+{\hypersetup{linkcolor=black}\tableofcontents}
 \newpage
 
 % ---------------------------------------------------------------------------
@@ -316,44 +316,20 @@ $for(include-before)$
 $include-before$
 
 $endfor$
-$if(toc)$
-{
-$if(colorlinks)$
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-$endif$
-\setcounter{tocdepth}{$toc-depth$}
-{\hypersetup{linkcolor=black}\tableofcontents}
-}
-$endif$
+
 $if(lot)$
 \listoftables
 $endif$
 $if(lof)$
 \listoffigures
 $endif$
-$body$
 
-$if(natbib)$
-$if(bibliography)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
-$endif$
 
 % ---------------------------------------------------------------------------
 % CONTENIDO
 % ---------------------------------------------------------------------------
+
+$body$
 
 $for(include-after)$
 
