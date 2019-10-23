@@ -281,7 +281,7 @@ public class Test {
 \end{lstlisting}
 
 La ligadura dinámica del método hablar() de p se realiza en tiempo de ejecución. Por tanto, durante la ejecución se decide qué método hablar se va a utilizar. Como  el tipo dinámico es Persona, se llamará al método hablar() que se implementó en la clase Persona. Se produce la siguiente salida
-\begin{lstlisting}[language=bash, style=terminal
+\begin{lstlisting}[language=bash, style=terminal]
 Soy una persona que habla. Me llamo Pepe
 \end{lstlisting}
 
@@ -292,7 +292,7 @@ p.hablar()
 \end{lstlisting}
 
 Produce como salida:
-\begin{lstlisting}[language=bash, style=terminal
+\begin{lstlisting}[language=bash, style=terminal]
 Soy un alumno que habla, me llamo Pepe
 \end{lstlisting}
 
@@ -311,7 +311,7 @@ Persona p = new Alumno("Pepe");
 
 Compila y produce como salida:
 
-\begin{lstlisting}[language=bash, style=terminal
+\begin{lstlisting}[language=bash, style=terminal]
 Soy un alumno que estudia
 \end{lstlisting}
 
@@ -323,12 +323,12 @@ Persona var4 = new Profesor("Pedro");
 \end{lstlisting}
 
 El error obtenido es este:
-\begin{lstlisting}[language=bash, style=terminal
+\begin{lstlisting}[language=bash, style=terminal]
 Exception in thread "main" java.lang.ClassCastException: polimorfismo.Profesor cannot be cast to polimorfismo.Alumno
 \end{lstlisting}
 
 Nótese que el tipo estático era Persona. Si ahora decidimos que el tipo estático es Profesor, obtenemos un error de compilación. NetBeans nos notifica con el siguiente error:
-\begin{lstlisting}[language=bash, style=terminal
+\begin{lstlisting}[language=bash, style=terminal]
 incompatible types: Profesor cannot be converted to Alumno
 \end{lstlisting}
 
