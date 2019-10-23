@@ -34,7 +34,7 @@ $(OUT)/%.pdf: plantilla_tex.tex %/apuntes.tex %/ejercicios.tex
 
 
 # Markdown compilation
-pandoc_args = --pdf-engine=xelatex --template plantilla_md.tex --listings --resource-path="$(strip $(1))/:_assets:"
+pandoc_args = --pdf-engine=lualatex --template plantilla_md.tex --listings --resource-path="$(strip $(1))/:_assets:"
 $(OUT)/%.pdf: plantilla_md.tex %/apuntes.md %/ejercicios.md
 	mkdir -p $(OUT)
 	TEXINPUTS="$*/:_assets:" pandoc $(call pandoc_args, $*) $*/apuntes.md $*/ejercicios.md -o $@
