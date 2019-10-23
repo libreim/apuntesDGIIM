@@ -1,225 +1,192 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Plantilla para libro de texto de matemáticas.
 %
-% Esta plantilla ha sido desarrollada desde cero, pero utiliza algunas partes
-% del código de la plantilla original utilizada en apuntesDGIIM
-% (https://github.com/libreim/apuntesDGIIM), basada a su vez en las plantillas
-% 'Short Sectioned Assignment' de Frits Wenneker (http://www.howtotex.com),
-% 'Plantilla de Trabajo' de Mario Román y 'Plantilla básica de Latex en Español'
-% de Andrés Herrera Poyatos (https://github.com/andreshp). También recoge
-% ideas de la plantilla 'Multi-Purpose Large Font Title Page' de
-% Frits Wenneker y Vel (vel@latextemplates.com).
+% Esta plantilla ha sido desarrollada desde cero para el proyecto apuntesDGIIM
+% de LibreIM.
 %
-% Licencia:
-% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%	Copyright (C) 2019 LibreIM
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU Affero General Public License as
+% published by the Free Software Foundation, either version 3 of the
+% License, or (at your option) any later version.
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU Affero General Public License for more details.
+% You should have received a copy of the GNU Affero General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % CONFIGURACIÓN BÁSICA DEL DOCUMENTO
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
-%\documentclass[11pt, a4paper, twoside]{article} % Usar para imprimir
-\documentclass[10pt, a4paper]{article}
+\documentclass[fontsize=12pt]{scrartcl}
+\usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
+\usepackage{graphicx}
 
-\linespread{1.3}            % Espaciado entre líneas.
-\setlength\parindent{0pt}   % No indentar el texto por defecto.
-\setlength\parskip{7pt}
+\usepackage{templatetools}
 
-% ---------------------------------------------------------------------------
-% CONFIGURACIÓN PERSONALIZADA
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% CONFIGURACIÓN DE ASIGNATURA
+% ------------------------------------------------------------------------------
 
 \usepackage{config}
 
-% ---------------------------------------------------------------------------
-% PAQUETES BÁSICOS
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% TIPOGRAFÍA
+% ------------------------------------------------------------------------------
 
-% IDIOMA
-\usepackage[spanish, es-tabla, es-lcroman, es-noquoting, es-minimal]{babel}
-
-% FUENTES
-\usepackage{newpxtext, newpxmath}   % Fuente similar a Palatino
-\usepackage{FiraSans}                 % Fuente sans serif
+% Tipografía personalizada
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[scale=0.88, type1]{FiraSans}
+\usepackage[scale=0.88, type1]{FiraMono}
 \usepackage[T1]{fontenc}
-\usepackage[italic]{mathastext}     % Utiliza la fuente del documento
-                                    % en los entornos matemáticos
 
-% MÁRGENES
-\usepackage[margin=2.5cm, top=3cm]{geometry}
+% Microtype
+\usepackage[activate={true, nocompatibility}, final, tracking=true,factor=1100, stretch=10, shrink=10]{microtype}
+\SetTracking{encoding={*}, shape=sc}{0}
 
-%  OTROS
-\usepackage{hyperref}   % Enlaces
-\usepackage{graphicx}   % Permite incluir gráficos en el documento
-\usepackage{datetime}
-
-% ---------------------------------------------------------------------------
-% FUENTE DE MATEMÁTICAS ADAPTABLE EN SANS-SERIF
-% ---------------------------------------------------------------------------
-
-\usepackage{sansmath}
-
-\newif\IfInSansMode
-\let\oldsf\sffamily
-\renewcommand*{\sffamily}{\oldsf\sansmath\InSansModetrue}
-
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % DISEÑO DE PÁGINA
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
+% Márgenes
+\usepackage[bottom=3.125cm, top=2.5cm, left=2.5cm, right=4.5cm, marginparwidth=70pt]{geometry}
+
+% Párrafos
+\linespread{1.1}
+\setlength{\parindent}{12pt}
+\setlength{\parskip}{0pt}
+
+% Listas
+\setlist{noitemsep}
+
+% Cabeceras
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+\chead{\leftmark}
+\cfoot*{\pagemark}
+
+% Enlaces
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=500,
+}
+
+% No mostrar cabecera en páginas de sección
+\usepackage{xpatch}
+\xpretocmd{\section}{\vspace*{1cm}\thispagestyle{plain}}{}{}
+
+% Páginas de color para portada
 \usepackage{pagecolor}
 \usepackage{afterpage}
 
-% ---------------------------------------------------------------------------
-% CABECERA Y PIE DE PÁGINA
-% ---------------------------------------------------------------------------
-
-\usepackage{fancyhdr}   % Paquete para cabeceras y pies de página
-
-% Indica que las páginas usarán la configuración de fancyhdr
-\pagestyle{fancy}
-\fancyhf{}
-
-% Representa la sección de la cabecera
-\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad #1}{}}
-
-% Parte derecha de la cabecera
-\fancyhead[R]{\sffamily \thepage}
-
-% Parte izquierda de la cabecera
-\fancyhead[L]{\sffamily{\leftmark}}
-
-% Elimina la línea de la cabecera
-\renewcommand{\headrulewidth}{0pt}
-
-% Controla la altura de la cabecera para que no haya errores
-\setlength{\headheight}{14pt}
-
-% ---------------------------------------------------------------------------
-% TÍTULOS DE PARTES Y SECCIONES
-% ---------------------------------------------------------------------------
-
-\usepackage{titlesec}
-
-% Estilo de los títulos de las partes
-\titleformat{\part}[hang]{\Huge\bfseries\sffamily}{\thepart\hspace{20pt}\textcolor{500}{|}\hspace{20pt}}{0pt}{\Huge\bfseries}
-\titlespacing*{\part}{0cm}{-2em}{2em}[0pt]
-
-% Reiniciamos el contador de secciones entre partes (opcional)
-\makeatletter
-\@addtoreset{section}{part}
-\makeatother
-
-% Estilo de los títulos de las secciones, subsecciones y subsubsecciones
-\titleformat{\section}
-  {\Large\bfseries\sffamily}{\thesection}{1em}{}
-
-\titleformat{\subsection}
-  {\Large\sffamily}{\thesubsection}{1em}{}[\vspace{.5em}]
-
-\titleformat{\subsubsection}
-  {\sffamily}{\thesubsubsection}{1em}{}
-
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
-% ---------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 
-\usepackage{mdframed}
+\usepackage[theorems, skins, breakable]{tcolorbox}
 
-%% MARCOS DE LOS ESTILOS
-
-% Configuración general de mdframe, los estilos de los teoremas, etc
-\mdfsetup{
-  skipabove=1em,
-  skipbelow=1em,
-  innertopmargin=1em,
-  innerbottommargin=1em,
-  splittopskip=2\topsep,
+\tcolorboxenvironment{nth}{
+	blanker,
+	breakable,
+	left=12pt,
+	before skip=12pt,
+	after skip=12pt,
+	borderline west={2pt}{0pt}{500},
+	before upper={\parindent 12pt},
 }
 
-% Definimos los marcos de los estilos
+\tcolorboxenvironment{nprop}{
+	blanker,
+	breakable,
+	left=12pt,
+	before skip=12pt,
+	after skip=12pt,
+	borderline west={2pt}{0pt}{300},
+	before upper={\parindent 12pt},
+}
 
-\mdfdefinestyle{nth-frame}{
-	linewidth=2pt, %
-	linecolor= 500, %
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0em, %
-	innerleftmargin=1em, %
-  innerrightmargin=1em,
-	rightmargin=0em, %
-}%
+\tcolorboxenvironment{ncor}{
+	blanker,
+	breakable,
+	left=12pt,
+	before skip=12pt,
+	after skip=12pt,
+	borderline west={2pt}{0pt}{300},
+	before upper={\parindent 12pt},
+}
 
-\mdfdefinestyle{nprop-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
+\tcolorboxenvironment{ndef}{
+	skin=enhancedmiddle jigsaw,
+	frame hidden,
+	colback=50,
+	breakable = true,
+	break at = -6pt,
+	top = 4pt,       % Estos márgenes están un poco a ojo
+	bottom = 4pt,
+	left= 8pt,
+	right = 8pt,
+	before skip=8pt, % Normalmente dejamos 12pt, pero
+	after skip=8pt,  % aquí tenemos espacio adicional por el fondo
+	no borderline,
+	borderline west={2pt}{0pt}{500},
+	borderline east={2pt}{0pt}{50},
+	before upper={\parindent 12pt},
+}
 
-\mdfdefinestyle{ndef-frame}{
-	linewidth=2pt, %
-	linecolor= 500, %
-	backgroundcolor= 50,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
+\tcolorboxenvironment{ejer}{
+	skin=enhancedmiddle jigsaw,
+	frame hidden,
+	colback=50,
+	breakable = true,
+	break at = -6pt,
+	top = 4pt,       % Estos márgenes están un poco a ojo
+	bottom = 4pt,
+	left= 8pt,
+	right = 8pt,
+	before skip=8pt, % Normalmente dejamos 12pt, pero
+	after skip=8pt,  % aquí tenemos espacio adicional por el fondo
+	no borderline,
+	borderline west={2pt}{0pt}{500},
+	borderline east={2pt}{0pt}{50},
+	before upper={\parindent 12pt},
+}
 
-\mdfdefinestyle{ejer-frame}{
-	linewidth=2pt, %
-	linecolor= 300, %
-	backgroundcolor= 50,
-	topline=false, %
-	bottomline=false, %
-	rightline=false,%
-	leftmargin=0pt, %
-	innerleftmargin=1em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-}%
+% ------------------------------------------------------------------------------
+% LISTINGS
+% ------------------------------------------------------------------------------
 
-\mdfdefinestyle{ejemplo-frame}{
-	linewidth=0pt, %
-	linecolor= 300, %
-	leftline=false, %
-	rightline=false, %
-	leftmargin=0pt, %
-	innerleftmargin=1.3em, %
-	innerrightmargin=1em,
-	rightmargin=0pt, %
-	innertopmargin=0em,%
-	innerbottommargin=0em, %
-	splittopskip=\topskip, %
-}%
+\IfPackageLoaded{listings}{
+	\renewcommand{\lstlistingname}{Listado}
 
-% Asignamos los marcos a los estilos
-\surroundwithmdframed[style=nth-frame]{nth}
-\surroundwithmdframed[style=nprop-frame]{nprop}
-\surroundwithmdframed[style=nprop-frame]{ncor}
-\surroundwithmdframed[style=ndef-frame]{ndef}
-\surroundwithmdframed[style=ejer-frame]{ejer}
-\surroundwithmdframed[style=ejemplo-frame]{ejemplo}
-\surroundwithmdframed[style=ejemplo-frame]{sol}
+	\lstset{
+		frame=lines,
+		rulecolor=\color{black},
+		framerule=1pt,
+		numbers=left,
+		belowcaptionskip=1\baselineskip,
+		basicstyle=\ttfamily\color{black},
+		keywordstyle=\bfseries\color{700},
+		commentstyle=\color{300},
+		stringstyle=\color{500},
+		numberstyle=\color{black},
+		breaklines=true,
+		showstringspaces=false,
+		tabsize=2,
+	}
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ---------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------------------------------------------------------------------
 % COMIENZO DEL DOCUMENTO
-% ---------------------------------------------------------------------------
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -227,12 +194,12 @@
 % PORTADA EXTERIOR
 % ---------------------------------------------------------------------------
 
-\newpagecolor{500}\afterpage{\restorepagecolor} % Color de la página
+\newpagecolor{500}
 \begin{titlepage}
-
-  % Título del documento
+	\noindent
+	\setlength\fboxsep{0cm}
 	\parbox[t]{\textwidth}{
-			\raggedright % Texto alineado a la izquierda
+			\raggedright
 			\fontsize{50pt}{50pt}\selectfont\sffamily\color{white}{
 			  \textbf{\asignatura}
       }
@@ -240,9 +207,9 @@
 
 	\vfill
 
-	%% Autor e información del documento
-	\parbox[t]{\textwidth}{
-		\raggedright % Texto alineado a la izquierda
+	\noindent
+	\parbox[b]{\textwidth}{
+		\raggedright 
 		\sffamily\large\color{white}
 		{\Large \autor }\\[4pt]
 		\grado\\
@@ -251,6 +218,7 @@
 	}
 
 \end{titlepage}
+\restorepagecolor
 
 % ---------------------------------------------------------------------------
 % PÁGINA DE LICENCIA
@@ -260,18 +228,14 @@
 \null
 \vfill
 
-%% Información sobre la licencia
-\parbox[t]{\textwidth}{
+\noindent
+\parbox[b]{0.7\textwidth}{
   \includegraphics{by-nc-sa.pdf}\\[4pt]
-  \raggedright % Texto alineado a la izquierda
-  \sffamily\large
-  {\Large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
-  Eres libre de distribuir y adaptar el material siempre que reconozcas a los\\
-  autores originales del documento, no lo utilices para fines comerciales\\
-  y lo distribuyas bajo la misma licencia.\\[4pt]
-  \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}\\
-  \vspace{1em}
-  {\small\ttfamily Compilación: \today, \currenttime} 
+  \raggedright
+  \sffamily
+  {\large Este libro se distribuye bajo una licencia CC BY-NC-SA 4.0.}\\[4pt]
+  Eres libre de distribuir y adaptar el material siempre que reconozcas a los autores originales del documento, no lo utilices para fines comerciales y lo distribuyas bajo la misma licencia.\\[4pt]
+  \texttt{creativecommons.org/licenses/by-nc-sa/4.0/}
 }
 
 % ---------------------------------------------------------------------------
@@ -280,9 +244,9 @@
 
 \begin{titlepage}
 
-  % Título del documento
+	\noindent
 	\parbox[t]{\textwidth}{
-			\raggedright % Texto alineado a la izquierda
+			\raggedright
 			\fontsize{50pt}{50pt}\selectfont\sffamily\color{500}{
 			  \textbf{\asignatura}
       }
@@ -290,9 +254,9 @@
 
 	\vfill
 
-	%% Autor e información del documento
-	\parbox[t]{\textwidth}{
-		\raggedright % Texto alineado a la izquierda
+	\noindent
+	\parbox[b]{\textwidth}{
+		\raggedright
 		\sffamily\large
 		{\Large \autor}\\[4pt]
 		\grado\\
@@ -307,7 +271,7 @@
 % ---------------------------------------------------------------------------
 
 \thispagestyle{empty}
-\tableofcontents
+{\hypersetup{linkcolor=black}\tableofcontents}
 \newpage
 
 % ---------------------------------------------------------------------------

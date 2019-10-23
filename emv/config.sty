@@ -1,6 +1,23 @@
 \ProvidesPackage{config}
 
 % ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\usepackage{xcolor}     % Permite definir y utilizar colores
+
+\definecolor{50}{HTML}{EFEBE9}
+\definecolor{100}{HTML}{D7CCC8}
+\definecolor{200}{HTML}{BCAAA4}
+\definecolor{300}{HTML}{A1887F}
+\definecolor{400}{HTML}{8D6E63}
+\definecolor{500}{HTML}{795548}
+\definecolor{600}{HTML}{6D4C41}
+\definecolor{700}{HTML}{5D4037}
+\definecolor{800}{HTML}{4E342E}
+\definecolor{900}{HTML}{3E2723}
+
+% ---------------------------------------------------------------------------
 %  PAQUETES
 % ---------------------------------------------------------------------------
 
@@ -21,7 +38,6 @@
 
 % LISTAS
 \usepackage{enumitem}       % Mejores listas
-\setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
 
 % Enlaces y referencias
 \usepackage[bookmarks=true,
@@ -31,7 +47,7 @@
                                      % are displayed.
             colorlinks=true,
             linkcolor=700,
-            urlcolor=500]{hyperref}
+            urlcolor=700]{hyperref}
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
@@ -43,29 +59,14 @@
 % Títulos de figuras
 \usepackage{capt-of}
 
+\usepackage{lipsum}
+
 % ---------------------------------------------------------------------------
 %  RECURSOS
 % ---------------------------------------------------------------------------
 
 % Ruta donde buscar gráficos
 \graphicspath{{../_assets/}, {_assets/}, {./img/}, {EMV/img/}, {EMV/}}
-
-% ---------------------------------------------------------------------------
-%  COLORES
-% ---------------------------------------------------------------------------
-
-\usepackage{xcolor}     % Permite definir y utilizar colores
-
-\definecolor{50}{HTML}{EFEBE9}
-\definecolor{100}{HTML}{D7CCC8}
-\definecolor{200}{HTML}{BCAAA4}
-\definecolor{300}{HTML}{A1887F}
-\definecolor{400}{HTML}{8D6E63}
-\definecolor{500}{HTML}{795548}
-\definecolor{600}{HTML}{6D4C41}
-\definecolor{700}{HTML}{5D4037}
-\definecolor{800}{HTML}{4E342E}
-\definecolor{900}{HTML}{3E2723}
 
 % ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
@@ -82,12 +83,12 @@
 {\bfseries\sffamily}                      % Fuente para la cabecera
 {.}                                 % Puntuación tras la cabecera
 {.5em}                              % Espacio tras la cabecera
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
+{{\thmname{#1}\thmnumber{ #2}}\thmnote{ (#3)}}  % Especificación de la cabecera
 
 % Nuevo estilo para notas
 \newtheoremstyle{remark-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
 {\itshape \sffamily}
@@ -97,9 +98,9 @@
 
 % Nuevo estilo para teoremas y proposiciones
 \newtheoremstyle{theorem-style}
-{}
-{}
-{}
+{12pt}
+{12pt}
+{\itshape}
 {}
 {\bfseries \sffamily}
 {.}
@@ -108,8 +109,8 @@
 
 % Nuevo estilo para ejemplos
 \newtheoremstyle{example-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
 {\bfseries \sffamily}
@@ -220,16 +221,16 @@
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
 {\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+    \renewcommand\labelenumi{\emph{(\roman{enumi})}}}
   {\end{enumerate}}
 
 % ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
 % Título del documento.
-\newcommand{\asignatura}{Estadística\\Multivariante}
+\newcommand{\asignatura}{Estadística Multivariante}
 % Autor del documento.
 \newcommand{\autor}{LibreIM}
-\newcommand{\grado}{Doble Grado de Informática y Matemáticas}
+\newcommand{\grado}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\universidad}{Universidad de Granada}
 \newcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
