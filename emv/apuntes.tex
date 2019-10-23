@@ -1085,3 +1085,63 @@ Definimos a continuación $H \boldsymbol U$, con $H$ matriz ortogonal. Entonces,
 \begin{nprop}
   El vector aleatorio $\boldsymbol U = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}$ y la variable aleatoria $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2}$ son independientes.
 \end{nprop}
+
+% 23-10-19
+
+\begin{nprop}
+  Un vector aleatorio $\vectX = (X_1, \dots, X_n)$ tiene DNM $N_p(\boldsymbol \mu, \Sigma)$ con $\Sigma > 0$ si, y solo si, $\vectX$ es un vector aleatorio correspondiente al siguiente «experimento»:
+
+  \begin{enumerate}
+    \item Obtener el valor de una variable aleatoria $R^2 \vcentcolon= V \sim \chi_p^2$. Se identifica $V = v$.
+    \item Elegir un punto aleatoriamente —es decir, según la distribución uniforme— en la esfera $p$-dimensional de radio $r = \sqrt{v}$. \[\vectZ = (Z_1, \dots, Z_p)^T = (z_1, \dots, z_p)^T = \boldsymbol z\,.\]
+    \item Dado el vector de medias $\boldsymbol \mu$ y la matriz de covarianzas $\Sigma > 0$, elegir $C$ (no singular) tal que $\Sigma = CC^T$ y obtener el valor de $\vectX$ mediante la expresión $X\vcentcolon= C\vectZ + \boldsymbol \mu$. De nuevo se identifica $\vectX = \boldsymbol x = C\boldsymbol z + \boldsymbol \mu$.
+  \end{enumerate}
+\end{nprop}
+
+\begin{proof}
+  Veamos la justificación de la implicación ($\implies$). Por la caracterización (C-I) sabemos que podemos escribir $\vectX = C\vectZ + \boldsymbol \mu$, con $\vectZ \sim N_p(\boldsymbol 0, I_p)$.
+
+  Escribimos, para $\vectZ \neq 0$, \[\vectZ = \left(\vectZ^T\vectZ\right)^{\sfrac{1}{2}} \cdot \frac{\vectZ}{\left(\vectZ^T\vectZ\right)^{\sfrac{1}{2}}} = R \cdot \boldsymbol U\,,\] siendo $R$ y $\boldsymbol U$ independientes.
+
+  Ahora tenemos que: \begin{itemize}
+    \item \[R^2 = \vectZ^T\vectZ = Z_1^2 + \cdots + Z_p^2 \sim \chi_p^2\]al ser $Z_1, \dots, Z_p$ independientes con $Z_i \sim N_p(0, 1)$ para $i = 1, \dots, p$,
+    \item $\boldsymbol U$ tiene distribución uniforme sobre la esfera unidad.
+  \end{itemize}
+
+  A partir de la expresión $\vectX = C \cdot R \cdot \boldsymbol U + \boldsymbol \mu$ se tiene que para generar los valores de $\vectX$ se puede seguir el procedimiento del enunciado.
+\end{proof}
+
+\section{Distribuciones esféricas y elípticas}
+
+\subsection{Distribuciones esféricas}
+
+\begin{ndef}
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene una distribución \textit{esférica} si $\vectX$ y $H\vectX$ tienen la misma distribución para toda matriz ortogonal $H$.
+\end{ndef}
+
+Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
+
+\begin{nprop}[Caracterización en términos de la densidad]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si $f_{\vectX}$ puede expresarse como $g(\boldsymbol x^T \boldsymbol x)$ para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\begin{nprop}[Caracterización en términos de la función característica]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma $\xi(\boldsymbol t^T \boldsymbol t)$ para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\subsection{Distribuciones elípticas}
+
+\begin{ndef}[Distribución elíptica]
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \isim E_p(\boldsymbol \mu, V)$.
+\end{ndef}
+
+\begin{nprop}[Caracterización en función de la densidad]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución elítica si y solo si $f_{\vectX}$ puede expresarse como \[|V|^{-\sfrac{1}{2}}g\left((\boldsymbol x - \boldsymbol \mu)V^{-1}(\boldsymbol x - \boldsymbol \mu)\right)\] para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\begin{nprop}[Caracterización en términos de la función característica]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma \[e^{i \boldsymbol t^T \boldsymbol \mu}\xi(\boldsymbol t^T V \boldsymbol t)\] para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+% TODO: Falta observaciones sobre la distribución elíptica
+% TODO: Falta lo siguiente a esto
