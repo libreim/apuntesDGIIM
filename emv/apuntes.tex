@@ -687,7 +687,7 @@ Entonces, se tiene:
 
    \[
    \begin{split}
-     f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
+     f_{\vectX_{(2)} | \vectX_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
      { \frac{1}{(2\pi)^{q/2} \det(\Sigma_{(11)})^{1/2}} \exp\left\{ -\frac{1}{2} A \right\} } \\
      & = \frac{1}{(2\pi)^{\frac{p-1}{2}} \det(\Sigma_{(22\cdot 1)})^{1/2}} \exp\left\{ -\frac{1}{2} B(x_{(2)}) \right\}.
    \end{split}
@@ -713,8 +713,8 @@ Entonces, se tiene:
     \[
     \begin{split}
       \Psi_{\vectX}(t) & = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) \mathrm{d}x \\
-      & = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
-      & =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
+      & = \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
+      & =  \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
       & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
       & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
       & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\},
