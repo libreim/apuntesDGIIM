@@ -2,7 +2,7 @@
     padding: .7em;
     border: 1px solid #111;
 
-    font-family: "Alegreya Sans";
+    font-family: "Fira Sans";
 
     -webkit-transition: background .25s ease-out;
     -moz-transition: background .25s ease-out;
@@ -61,7 +61,7 @@
     outline: none;
     transition: 0.4s;
 
-    font-family: "Alegreya Sans";
+    font-family: "Fira Sans";
     font-size: 1.4rem;
 
     border-bottom: 1px solid #111;

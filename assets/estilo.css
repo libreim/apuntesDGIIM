@@ -12,12 +12,13 @@
 }
 
 .example-type {
-    font-family: "Alegreya Sans SC";
+    font-family: "Fira Sans";
+    font-variant: small-caps;
     font-weight: 700;
 }
 
 .nth-header {
-    font-family: "Alegreya Sans";
+    font-family: "Fira Sans";
     font-weight: 700;
 }
 
