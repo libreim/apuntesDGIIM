@@ -6,4 +6,6 @@ Recursos/Plantillas/by-nc-sa-eps-converted-to.pdf
 *.aux
 *.out
 *.toc
+*.fdb_latexmk
+*.fls
 .DS_Store

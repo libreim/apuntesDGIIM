@@ -1,0 +1,902 @@
+
+\section{Primeras definiciones}
+
+En esta asignatura estudiaremos ecuaciones diferenciales, es decir, ecuaciones que relacionan una función $x \in \mathscr{C}^k(I)$
+con sus derivadas. Para formalizar este concepto, vamos a dar algunas definiciones.
+
+\begin{ndef}[Dominio]
+  Sea $D \subseteq \R^N$. Diremos que es un dominio si es abierto y conexo.
+\end{ndef}
+
+\begin{nota}
+Ya sabemos que un dominio, por ser abierto y conexo, es conexo por arcos.	
+\end{nota}
+
+Durante todo el desarrollo de los apuntes, reservaremos la letra $D$ para representar un dominio. Por un lado, necesitamos poder derivar, por lo que es natural exigir que $D$ sea abierto. Por otro, muchos de los resultados que se aplican a funciones continuas exigen la conexión, por lo que es también una propiedad deseable.
+
+\begin{ndef}[Ecuación diferencial]
+  Sean $D \subseteq \R^{k+2}$ un dominio y $\upphi : D \to \R$ continua.
+
+  Entonces la relación
+  \[\upphi\left(t, x(t), x'(t), \dots, x^{k)}(t)\right) = 0\]
+  es una ecuación diferencial de orden $k$.
+\end{ndef}
+
+Pensamos en $t$ como la variable independiente, y en $x=x(t)$ como una función que representa la incógnita de nuestra ecuación (también llamada variable dependiente).
+
+\begin{ndef}[Solución de una ecuación diferencial]
+  Sean 
+  \begin{itemize}
+  \item $\exists x^{i)}(t), \ \forall t \in I, \ \forall i=1,\dots,k$
+  \item $(t, x(t), x'(t), \dots, x^{k)}(t)) \in D, \ \forall t \in I$
+  \item $\upphi(t, x(t), x'(t), \dots, x^{k)}(t)) = 0, \ \forall t \in I$
+  \end{itemize}
+
+  Entonces, $x$ es solución de la ecuación diferencial dada por $\upphi$ si
+
+  \[
+    \upphi(t, x(t), x^{(1)}(t), \dots, x^{(k)}(t)) = 0 \ \forall t \in I
+  \]
+\end{ndef}
+
+\begin{ndef}[Problema de valores iniciales]
+  Dada una ecuación diferencial $\upphi:D \subseteq \R\times\R^{k+1}$, un problema de valores iniciales es un sistema de ecuaciones
+
+  \[
+  \begin{cases}
+    \upphi\left(t, x(t), x'(t), \dots, x^{k)}(t)\right) = 0 \\
+    \left(x(t_0),x'(t_0),\dots,x^{k-1)}(t_0)\right) = x_0
+  \end{cases}
+  \]
+  %%% REVIEW
+
+  Donde $(t_0,x_0) \in$ ???? es un punto dado, llamado \textbf{condición inicial}.
+\end{ndef}
+
+\begin{nota} Cuando $k\ge2$, se tiene que $x_0=(x_{01},x_{02},\dots,x_{0k})$
+	
+\end{nota}
+
+\section{Ecuaciones diferenciales de primer orden}
+
+\begin{ndef}[Forma normal de una ecuación diferencial de primer orden]
+Una ecuación diferencial de primer orden está en forma normal cuando la derivada aparece despejada, es decir, existe $F : D\subseteq \R^2 \to \R$ tal que podemos expresar la ecuación como
+  \[
+    x' = F\left(t,x\right)
+  \]
+
+  Se dice que (2) es la forma normal de (1).
+  
+\end{ndef}
+
+\begin{nota} Al pasar una ecuación diferencial a forma normal se podrían perder soluciones.
+	
+\end{nota}
+
+Vamos a ver algunos ejemplos de ecuaciones diferenciales de primer orden y soluciones suyas (marcadas con subíndices).
+
+\begin{ejemplo}
+\[x(t)^2 + x'(t)^2 = 4, \text{ o equivalentemente,} \]
+\[ \upphi(t,x,y) = x^2+y^2 -4\]
+Algunas soluciones son:
+\[ 
+\begin{array}{ll}
+  x_1(t) = 2 & x_2(t) = -2 \\
+  x_3(t) = \sqrt{2}\sin t & x_4(t) = \sqrt{2}\cos t \\
+  x_5(t) = \sqrt{2}\cos(t+\alpha) \text{ con } \alpha\in\R
+\end{array}
+\]
+\end{ejemplo}
+
+\begin{ejemplo}
+
+\[ x'(t) = 7x(t), \text{ o equivalentemente,}\]
+\[ \upphi(t,x,y) = y - 7x \]
+Soluciones:
+\[ x_1(t) = e^{7t}, \quad  x_2(t) = Ke^{7t} \text{ con } K \in \R \] 
+
+\end{ejemplo}
+
+
+\begin{ejemplo}
+La ecuación $x(t)x'(t) = 1$ está dada por $\upphi(t,x,y) = xy - 1$. ¿Es $\varphi(t) = \sqrt{2t+1}$ una solución de la ecuación?
+
+$\varphi$ está definida en $[-1/2, \infty)$ y es derivable en $I = (-1/2, \infty)$
+
+\begin{itemize}
+\item $I$ es abierto de $\R$
+\item $\exists \varphi'(t) = \frac{1}{\sqrt{2t+1}}, \forall t \in I$
+\item $(t, \varphi(t), \varphi'(t)) \in D = \R^3, \forall t \in I$
+\item $\upphi\left(t, \varphi(t), \varphi'(t)\right) = 0$
+\end{itemize}
+
+Comprobamos que por tanto que es solución.
+
+También se puede despejar $x'$ de la ecuación para hallar la forma normal:
+
+\[ x' = \frac{1}{x} \implies \upphi(t, x, y) = y-\frac{1}{x} \]
+
+Y podemos elegir entonces dos dominios distintos:
+
+\[ 
+\begin{array}{l}
+  D_1 = \R \times (0,+\infty )\times \R \\
+  D_2 = \R \times (-\infty ,0)\times \R
+\end{array}
+\]
+
+Nótese que al dividir por $x$, hemos eliminado la solución cero, pero como no era solución son la misma ecuación.
+
+
+\end{ejemplo}
+
+\subsection{Modelos de tasa de crecimiento}
+
+Podemos pensar en una función $x(t)$ que represente una cantidad o proporción de población en el instante $t$ respecto de algún tiempo inicial. Entonces, definimos la tasa de crecimiento como
+\[
+\frac{x'(t)}{x(t)}
+\]
+
+Veamos dos modelos que se ajustan a este problema, donde la tasa de crecimiento será constante en uno y variable en otro.
+
+\subsubsection{Ecuación de crecimiento constante}
+Si la tasa de crecimiento es constante, digamos $k \in \R$, la ecuación queda como sigue:
+\begin{equation}
+	x' = kx, \label{cre_const} \tag{E}
+\end{equation} 
+
+\begin{nth}
+  Sean $I \subseteq \R$ un intervalo abierto y $\varphi(t)$ una solución de \eqref{cre_const}. Entonces,
+  \[\varphi (t) = Ae^{kt}, \ \forall t \in I\]
+
+  para algún $A\in \R$.
+
+\end{nth}
+
+\begin{proof}
+  Sea $\varphi(t)$ solución de $x'(t) = kx(t)$ definida en $I$. Para cada $t\in I$ considero $e^{-kt}\varphi (t)$, que es derivable y su derivada viene dada por:
+  \[
+  \begin{array}{l}
+    (e^{-kt}\varphi (t))' = -ke^{-kt}\varphi (t) + e^{-kt}\varphi' (t) = -ke^{-kt}\varphi (t) + e^{-kt}k\varphi (t) = e^{-kt}\varphi (t) (-k+k) = 0, \ \forall t \in I
+  \end{array}
+  \]
+
+  Por tanto, como $I$ es conexo y $e^{-kt}\varphi(t)$ es continua en $I$, se tiene que:
+  \[
+      e^{-kt}\varphi(t) = A, \ A\in \R \implies \varphi(t) = Ae^{kt}
+  \]
+  
+\end{proof}
+
+\subsubsection{Ecuación logística o de Verhulst}
+
+El problema de considerar una tasa de crecimiento constante es que, si es positiva, las soluciones (la población) crecen de forma indefinida. Una forma más adecuada de enfocar el problema es considerar un parámetro $b$ que represente la capacidad del hábitat en cuestión, y pensar que la rapidez con la que varía la población es proporcional al número de individuos que hay en un instante y al número de individuos que faltan para alcanzar $b$.
+\[
+x'(t) = ax(t)(b-x(t)), \ a,b > 0
+\]
+
+Para resolver esta ecuación, emplearemos la técnica de resolución de ecuaciones de variables separadas, que veremos a continuación. 
+% En cualquier caso, una solución general puede consultarse en el \textbf{Ejercicio \ref{logistica}}.
+
+%%% TODO: hacer ejercicio y referenciar.
+
+
+\section{Métodos elementales de integración}
+
+
+\subsection{Variables separadas}
+
+
+Consideramos la ecuación
+
+\[
+x' = f(t)g(x)
+\]
+
+con $\ f:(a,b)\to \R \ $ y $\ g:(c,d) \to \R$ continuas.
+
+Sabemos que $x(t) = k$, $k \in \R$ es una familia de soluciones, para las que $x' = 0$. Ahora, si suponemos que $x$
+no es constante, vamos a dar condiciones bajo las cuales la solución a un problema de valores iniciales dado por esa
+ecuación es única.
+
+Suponemos además que $g(x) \neq 0 \ \forall x\in (c,d)$.
+
+Sea $x(t)$ solución de la ecuación $\implies x:I \to \R$ tal que $I\subset (a,b),$ con $ x(t)\in (c,d), \forall t \in I$
+
+Entonces $\dfrac{x'(t)}{g(x(t))} = f(t), \forall t \in I$
+
+Fijado $t_0 \in I$, tal que $x(t_0) = x_0$
+
+\[\int_{t_0}^{t}\frac{x'(t)}{g(x(t))} ds = \int_{t_0}^{t} f(s) ds, \forall t \in I \implies G(x(t)) - G(x(t_0)) = \int_{t_0}^{t}f(s) ds\]
+
+Donde $G$ es una primitiva de $\dfrac{1}{g}$. $G'(u) = \dfrac{1}{g(u)}$ tiene signo constante, luego $G$ es estrictamente monótona. Por el teorema de la función inversa, existe $G^{-1}$ y por tanto:
+
+\[x(t) = G^{-1}\left(G(x_0) + \int_{t_0}^{t}f(s) ds\right), \forall t \in I\]
+
+Por tanto, dado un problema de valores iniciales para una ecuación de esta forma, con $g$ no nula en ningún punto, las soluciones son de esta forma. Veamos ahora la unicidad de la solución.
+
+\begin{nth}
+  Sea $f\in \mathscr{C}(a,b), g\in \mathscr{C}(c,d)$, con $g(u) \neq 0, \forall u \in (c,d)$. Entonces dado $t_0 \in (a,b), x_0 \in (c,d)$, existe una única solución de $x' = f(t)g(x)$ que cumple que $x(t_0) = x_0$.
+  
+Si $x_1$ es otra solución $\implies x_1 = x|_{I_1}$ con $I_1\subset I$.
+
+\end{nth}
+
+% TODO: revisar prueba.
+
+
+\begin{proof}
+
+Hemos visto que si $x$ es una solución definida en un intervalo $\tilde{I}$, es de la forma
+
+\[
+x(t) = G^{-1}\left(G(x_0) + \int_{t_0}^t f(s)ds\right),\ t\in I
+\]  
+  
+\[g(u) \neq 0 \ \forall u \in (c,d) \ \implies \ \frac{1}{g} \in \mathscr{C}(c,d) \ \implies \ G \text{ una primitiva de } \frac{1}{g}, \ G\in \mathscr{C}^{1}(c,d)\]
+
+\[G'(u) = \frac{1}{g(u)} \neq 0, \ \forall u \in (c,d) \ \implies \ \exists G^{-1}:V\subset \R \to \R, \ G^{-1} \text{ derivable}\]
+
+Con $V$ un abierto y $G(x_0) \in V$.
+Sean $x_0 \in (c,d)$ y $\ F(t) = \displaystyle\int_{t_0}^t f(s) ds$, $\ F(t_0) = 0$.
+
+Como $V$ es abierto y $F$ es continua, existe $\tilde{I} \ni t_0$ tal que
+
+\[t \mapsto G(x_0)+\int_{t_0}^t f(s) ds  \in V \text{ cuando } t\in \tilde{I}\]
+
+Por tanto, $x(t) = G^{-1}\left(G(x_0) + F(t)\right), \ \forall t \in \tilde{I}$ está bien definida y por el teorema de la función inversa:
+
+\[x'(t) = \frac{F'(t)}{G'(G^{-1}(G(x_0) + F(t)))} \stackrel{\text{TFC}}{=} g\left(G^{-1}\left(G(x_0) + F(t)\right)\right)f(t) = g(x(t))f(t),\ t\in \tilde{I}\]
+
+y
+
+\[x(t_0) = x_0,\ t\in \tilde{I}\]
+
+
+\end{proof}
+
+  
+\subsection{Cambio de variable en ecuaciones diferenciales}
+El objetivo del cambio de variable será transformar una ecuación en una más fácilmente resoluble.
+Vamos a estudiar el caso de las ecuaciones diferenciales de primer orden.
+
+% TODO: definir difeomorfismo. ¿En esta sección?
+
+Consideramos una ecuación de este tipo en forma normal:
+
+\[
+  x' = F(t, x),\ F : D \subseteq \R^2 \to \R \ \ \ \ (E)
+  \]
+
+  y un difeomorfismo
+
+  \[
+  \begin{array}{lll}
+    \varphi : & D \to \widetilde{D} \\ 
+  \end{array}
+  \]
+
+  de forma que, si $\widetilde{F} = F \circ \varphi$, la ecuación
+  \[ \dfrac{dy}{ds} = \widetilde{F}(s, y) \ \ \ \ (\widetilde{E})\]
+  es equivalente a la que estamos considerando.
+
+
+\begin{nprop}
+
+Dado $\varphi = (\varphi _1, \varphi _2) : D \to \widetilde{D}$ un difeomorfismo, tal que 
+\[
+\frac{d\varphi_1}{dt} = \dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t)) F(t,x(t)) \neq 0 \ \forall (t,x) \in D
+\]
+
+Entonces el cambio de variable:
+\[
+\begin{array}{l}
+  s := \varphi _1(t,x)\\
+  y := \varphi _2 (t,x)
+\end{array}
+\]
+transforma (E) en otra equivalente $(\widetilde{E}) \ \ \ \ \frac{dy}{ds} = \widetilde{F}(s,y)$ en el sentido de que para cualquier solución $x = x(t)$ de (E) definida en un intervalo I, existe una función $y=y(s)$ solución de ($\widetilde{E}$) definida en un intervalo $J$ y $\varphi(t, x(t)) = (s(t), \ \ y(s(t))) \ \forall t \in I$ y recíprocamente.
+\end{nprop}
+
+\begin{proof}
+
+  De una parte, sabemos que $\dfrac{dy}{ds} = \dfrac{dy}{dt}\dfrac{dt}{ds}$. De otra, si $x(t)$
+  es solución de la ecuación
+
+  % WARNING: justificar el uso del teorema de la función inversa
+  
+  \[
+  \begin{cases}
+    \dfrac{ds(t)}{dt} = \dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t))x'(t) = \dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t))F(t, x) \\ \\
+
+ \dfrac{dy(t)}{dt} = \dfrac{\partial \varphi_2}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_2}{\partial x}(t, x(t))x'(t) = \dfrac{\partial \varphi_2}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_2}{\partial x}(t, x(t))F(t, x)
+   
+  \end{cases}
+  \]
+  Con lo cual
+  \[
+  \dfrac{dy}{ds} = \dfrac{dy}{dt}\dfrac{dt}{ds} = \dfrac{\dfrac{\partial \varphi_2}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_2}{\partial x}(t, x(t))F(t, x)}{\dfrac{\partial \varphi_1}{\partial t}(t, x(t)) + \dfrac{\partial \varphi_1}{\partial x}(t, x(t))F(t, x)}
+  = \dfrac{\dfrac{\partial \varphi_2}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_2}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))}{\dfrac{\partial \varphi_1}{\partial t}(\varphi^{-1}(s, y(s))) + \dfrac{\partial \varphi_1}{\partial x}(\varphi^{-1}(s, y(s)))F(\varphi^{-1}(s, y))} = \widetilde{F}(s,y)
+  \]
+
+  % TODO: insertar ejemplo de uso
+
+\end{proof}
+
+\subsection{Ecuación homogénea}
+
+Sea $f:(a,b) \to \R$ continua. Tenemos una ecuación diferencial de la forma
+
+\[x' = f\left(\frac{x}{t}\right) \ \implies \ F\left(t,x\right) = f\left(\frac{x}{t}\right)\]
+
+con $t \neq 0,\ f: I \text{ intervalo} \to \R, \dfrac{x}{t} \in (a,b)$.
+
+\[Dom(F) = \left\{(t,x)\in \R ^2 : t \neq 0, \ \frac{x}{t} \in (a,b)\right\}\]
+
+Podemos dividir el dominio de F en dos dominios (abiertos y conexos):\\
+\[
+\begin{array}{l}
+  D_1 = \{(t,x) \in \R ^2 : t > 0, \ at < x < bt\}\\
+  D_2 = \{(t,x) \in \R ^2 : t < 0, \ at > x > bt\}
+\end{array}
+\]
+
+Realizamos un cambio de variable:
+\[
+\begin{array}{l}
+  s = t\\
+  y = \dfrac{x}{t}
+\end{array}
+\]
+
+Los nuevos dominios son:
+\[
+\begin{array}{l}
+  \widetilde{D}_1 = \{s > 0, a < y < b\}\\
+  \widetilde{D}_2 = \{s < 0, a > y > b\}
+\end{array}
+\]
+
+La ecuación diferencial queda como una ecuación de variables separadas:
+
+$$y' = \frac{1}{s}\left(f(y) - y\right)$$
+
+que sabemos resolver.
+
+\subsubsection{Ecuaciones reducibles a homogéneas}
+
+Tenemos una ecuación diferencial de la forma: 
+\[
+F(t,x) = f\left( \frac{ax+bt+c}{a'x+b't+c'} \right)
+\]
+
+Donde si $c,c' = 0$ entonces la ecuación ya es homogénea (diviendo entre $t$ numerador y denominador).
+
+Supongamos que las rectas del plano $ax + bt+c=0$ y $a'x+b't+c'=0$ tienen un punto de corte en $(\alpha, \beta ) \in \R^2$. Este punto verifica:
+
+\[
+\begin{cases}
+  a\beta + b\alpha + c = 0\\
+  a'\beta + b'\alpha + c' = 0
+\end{cases}
+\]
+
+Entonces tomamos el cambio de variable:
+\begin{align*}
+s &= t-\alpha \\
+y &= x - \beta
+\end{align*}
+
+Que verifica que $\frac{ds}{dt} = 1 \ne 0$. Tenemos: 
+\[
+\frac{dy}{ds} = \frac{dx}{dt} = f\Big( \frac{a(y+\beta ) + b (s+\alpha ) + c}{a'(y+\beta ) + b'(s+ \alpha ) + c'} \Big)
+\]
+\[
+y' = f \bigg( \frac{a \frac{y}{s} + b}{a'\frac{y}{s} + b'} \bigg) = g\Big( \frac{y}{s}\Big)
+\]
+
+\subsection{La ecuación lineal de orden 1}
+
+En este caso, tenemos una ecuación diferencial de la forma
+\[x' = F(x,t) = \alpha (t)x + \beta ( t) \tag{E} \label{eclineal} \]
+
+con $\alpha , \beta \in \mathscr{C}(a,b)$, donde es inmediato que $F:(a,b)\times \R \to \R$ es lineal en $x$.
+
+Tomamos la ecuación homogénea asociada:
+\[
+x' = \alpha (t) x
+\]
+
+Sabemos que las soluciones de esta ecuación son:
+\[
+x(t) = A e^{\int_{t_0}^{t} \alpha (s) ds}  \ \forall t \in (a,b), \ A \in \R
+\]
+
+Supongamos que $\varphi _1$ y $\varphi _2 $ son dos soluciones de la ecuación diferencial inicial en $I$. Entonces, sea $x := \varphi _1  - \varphi _2  \ \implies \ x' = \alpha x$.
+
+Por tanto, toda solución es $\varphi (t) + A e^{\int_{t_0}^{t} \alpha (s) ds}$, con $\varphi$ una solución concreta de la ecuación.
+
+Eso quiere decir que nuestro problema se reduce a buscar una única solución, para ello lo que vamos a hacer es que nuestra constante ($A$) dependa de $t$, $\varphi (t) = A(t) e^{\int_{t_0}^{t} \alpha (s) ds}$ (método de variación de las constantes).
+
+Si existen $I \subseteq (a,b)$ intervalo y $A \in \mathscr{C}^1(I)$ tal que
+$\varphi(t) = A(t) e^{\int_{t_0}^t \alpha(s)ds}$ es solución de \eqref{eclineal}, debe darse que
+
+\[
+ \varphi'(t) = A'(t)e^{\int_{t_0}^t \alpha(s) ds} + A(t)\alpha(t)e^{\int_{t_0}^t \alpha(s) ds} = A'(t)e^{\int_{t_0}^t \alpha(s) ds} + \alpha(t)\varphi(t)
+ \]
+
+ Luego, basta que $A'(t)e^{\int_{t_0}^t \alpha(s) ds} = \beta(t) \ \forall t \in I$, es decir,
+
+ \[
+ A'(t) = e^{-\int_{t_0}^t \alpha(s) ds}\beta(t) \implies A(t) = \int_{t_0}^t e^{-\int_{t_0}^t \alpha(s) ds}\beta(t)
+ \]
+
+
+
+\begin{nprop}
+Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$, si $\exists F\in \mathscr{C}^1 (D)$ tal que $\frac{\partial F}{\partial t} = P \ \ \frac{\partial F}{\partial x} = Q$, entonces, $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+\end{nprop}
+
+\begin{proof}
+\[
+P,Q \in \mathscr{C}^1 (D) \ \implies F \in \mathscr{C}^2 (D) \ \implies \frac{\partial ^2 F}{\partial t \partial x} = \frac{\partial Q}{\partial t} = \frac{\partial P}{\partial x} = \frac{\partial ^2 F}{\partial x \partial t}
+\]
+\end{proof}
+
+\begin{ndef}
+Se dice que $D \subseteq \R ^n$ es estrellado si $\exists x_0 \in D$ tal que $\forall x \in D \ \ [x_0, x] \subset D$
+\end{ndef}
+
+\begin{nth}
+Sean $P,Q \in \mathscr{C}^1(D)$ con $D$ dominio de $\R^2$ y estrellado, con $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+Entonces $\exists F \in \mathscr{C}^2 (D)$ tal que $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+\end{nth}
+
+\begin{proof}
+Tomamos el punto que hace $D$ estrellado como origen.
+\[
+F(t,x) := t \int _0 ^1 P(\lambda t, \lambda x) d\lambda + x \int _0 ^1 Q(\lambda t, \lambda x ) d\lambda
+\]
+
+La función esta bien definida en las integrales por ser $D$ estrellado.
+
+En el siguiente desarrollo usaremos la siguiente proposición:
+
+\begin{nprop}
+  Sean $D \subseteq \R^n$ un dominio y $g: D\times [a,b] \to \R \in \mathscr{C}^1(D\times [a,b])$
+
+Sea $f$ una función tal que: 
+\[
+f(x_1,\dots,x_n) = \int _a ^b g(x_1,\dots,x_n,t) \ dt
+\]
+Entonces $f$ es de clase 1 y $\dfrac{\partial f}{\partial x_i} = \displaystyle\int _a ^b \dfrac{\partial g}{\partial x_i}$
+
+
+\end{nprop}
+
+\[
+\begin{array}{l}
+  \frac{\partial F}{\partial t} (t,x) = \int _0 ^1 P(\lambda t, \lambda x) d\lambda + t \int _0 ^1 \lambda \frac{\partial P}{\partial t}(\lambda t, \lambda x) d\lambda + x\int _0 ^1 \lambda \frac{\partial Q}{\partial t}(\lambda t, \lambda x) d\lambda =\\
+  \int_0^1 P(\lambda t, \lambda x)d\lambda + \left[\int_0^1 \lambda\left( t\frac{\partial P}{\partial t}(\lambda t, \lambda x)d\lambda + x\frac{\partial P}{\partial x}(\lambda t, \lambda x)d\lambda \right) \right] = P
+\end{array}
+\]
+ % TODO: Completar los ...
+\[
+\frac{\partial F}{\partial x} (t,x) =  = Q
+\]
+
+\end{proof}
+
+A esta función $F$ se la suele llamar una función potencial $\nabla F = (P,Q)$
+
+\begin{ndef}
+Sean $P,Q \in \mathscr{C}^1 (D)$ considero la ecuación $P(t,x) + Q(t,x) x' = 0$. Se dice que es exacta si $\frac{\partial P}{\partial x} = \frac{\partial Q}{\partial t}$ en $D$.
+\end{ndef}
+
+Supongamos una ecuación como la de la proposición anterior, con $(t_0, x_0) \in D$ t.q. $Q(t_0, x_0) \neq 0$. Entonces $\exists \varepsilon > 0$ t.q. $B  := B( (t_0 x_0 ), \varepsilon) \subset D$ es un subconjunto estrellado $\implies \ \exists F \in \mathscr{C}^2 (B)$ t.q. $\frac{\partial F}{\partial t} = P$ y $\frac{\partial F}{\partial x} = Q$
+
+Entonces considero  $F(x,t) = F(x_0, t_0)$ que define $x=x(t)$ en un entorno $I$ de $t_0$
+
+% TODO: Ejemplo de uso
+
+\begin{ndef}
+Sean $P,Q \in \mathscr{C}^1 (D)$ con $P(t,x) + Q(t,x) x' = 0$ no exacta. Se dice que $\mu (t,x)$ es un factor integrante para la ecuación si:
+\begin{enumerate}
+\item $\mu(t,x) \neq 0 \ \forall (t,x) \in D$
+\item $\mu \in \mathscr{C}^1 (D)$
+\item $\mu (t,x)P(t,x) + \mu (t,x)Q(t,x) x' = 0$ es una ecuación exacta.
+\end{enumerate}
+
+%%% TODO: justificar esta nota
+\begin{nota}
+  Siempre existe un factor integrante.
+\end{nota}
+
+\end{ndef}
+
+\newpage
+
+\section{La ecuación lineal de orden superior}
+
+Son ecuaciones de la forma: 
+
+\begin{equation}
+  x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = b(t) \tag{L} \label{eclinealsup}
+\end{equation}
+\begin{equation}
+  x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x = 0 \tag{H} \label{eclinhom}
+\end{equation}
+
+Con $I$ un intervalo abierto de $\R$, $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$.
+Si $b = 0$, se dice que la ecuación es homogénea. En otro caso, es completa.
+
+\begin{nth} \label{unicidadeclinsup}
+  Sean $a_i \in \mathscr{C}(I), \ i=0,\dots,k-1$ y $b\in \mathscr{C}(I)$. Dado $t_0\in I$, y dados $\alpha_i\in\R, \ i=0,\dots,k-1$,
+  existe una única función $x\in\mathscr{C}^k(I)$ que verifica \eqref{eclinealsup} y tal que $x^{i)}(t_0) = \alpha_i$.
+\end{nth}
+
+\begin{proof}
+  Este teorema se verá como un caso particular del teorema para sistemas de ecuaciones lineales.
+\end{proof}
+
+\subsubsection{Independencia lineal de funciones}
+Si $f_0, \dots, f_n\in \mathscr{C}^n(I)$, consideramos
+
+\[
+\left\{\begin{array}{lcl}
+  \alpha_0 f_0(t) + \dots + \alpha_n f_n(t) & = & 0\\
+  \vdots\\
+  \alpha_0 f^{n)}_0(t) + \dots + \alpha_n f^{n)}_n(t) & = & 0
+\end{array}\right.
+\]
+
+que para cada $t\in I$ da un sistema de ecuaciones lineal homogéneo con $n+1$ ecuaciones e incógnitas. Si para
+algún $t\in I$ la única solución es la trivial, la única solución válida para todo $t\in I$ será también la trivial.
+
+Por tanto, una condición suficiente para la independencia lineal es
+
+\[
+\mathcal{W}(f_0,\dots,f_n)(t) = \begin{vmatrix}
+  f_0(t) & \dots & f_n(t)\\
+  \vdots &  & \vdots\\
+  f_0^{n)}(t) & \cdots & f_n^{n)}(t)
+\end{vmatrix} \ne 0 \text{ para algún } t\in I
+\]
+
+A $\mathcal{W}(f_0,\dots,f_n)$ se le llama \emph{wronskiano} de $f_0,\dots,f_n$. Cabe notar que esta no es condición necesaria.
+
+\subsubsection{Estructura del conjunto de soluciones}
+Observamos que
+
+\[ \{ t, t^2, \dots, t^n \} \text{ son l.i. } \ \forall n\in \N \]
+
+luego $\dim \mathscr{C}^k(I) = \infty$.
+
+Ahora, consideramos el operador lineal
+
+\[
+\begin{array}{llll}
+  L: & \mathscr{C}^k(I) & \to & \mathscr{C}(I)\\
+    & x & \mapsto & x^{k)} + a_{k-1}(t)x^{k-1)} + \dots + a_1(t)x' + a_0(t)x
+\end{array}
+\]
+
+y vemos que el conjunto de soluciones de \eqref{eclinhom} es $\ker L$, y por tanto tiene
+estructura de subespacio vectorial. Por otro lado, consideramos el operador lineal
+
+\[
+\begin{array}{llll}
+  \Phi_{t_0}: & \ker L & \to & \R^k\\
+    & x & \mapsto & 
+  \begin{pmatrix}
+    x(t_0)\\
+    \vdots\\
+    x^{k-1)}(t_0)
+  \end{pmatrix}
+\end{array}
+\]
+
+que es:
+
+\begin{itemize}
+\item Inyectivo por la unicidad de soluciones dados $t_0$ y $\alpha_i$, dada por \ref{unicidadeclinsup}.
+\item Sobreyectivo por la existencia dada por el mismo teorema.
+\end{itemize}
+
+Es decir, es un isomorfismo de espacios vectoriales y concluimos que $\dim \ker L = k$.
+
+\begin{ndef}[Sistema fundamental de soluciones]
+  Un \emph{sistema fundamental de soluciones} de \eqref{eclinhom} es una base del espacio vectorial de soluciones de \eqref{eclinhom}.
+
+  \begin{nota}
+    En ocasiones usaremos las siglas SFS.
+  \end{nota}
+\end{ndef}
+
+\begin{nprop}
+  Sean $I$ un intervalo y $\{\varphi_1,\dots,\varphi_n\}$ soluciones de \eqref{eclinhom}. Son equivalentes:
+  \begin{nlist}
+  \item $\{\varphi_1,\dots,\varphi_n\}$ son un SFS.
+  \item $\mathcal{W}(\varphi_0,\dots,\varphi_n)(t) \ne 0 \ \ \forall t\in I$
+  \item $\exists t_0\in I \ \ \mathcal{W}(\varphi_0,\dots,\varphi_n)(t_0) \ne 0$
+  \end{nlist}
+\end{nprop}
+
+\begin{proof}
+  $ii)\implies iii)$ es trivial y $iii)\implies i)$ está probado en la sección anterior. Probemos $i) \implies ii)$.
+
+  Si $\sum_i \alpha_i \varphi_i = 0 \implies \alpha_i = 0 \ \ \forall i=1,\dots,n$ y tenemos
+
+  \[
+  \left\{\begin{array}{lcl}
+    \sum_i \alpha_i \varphi_i(t_0) & = & 0\\
+    \vdots\\
+    \sum_i \alpha_i \varphi^{n-1)}_i(t_0) & = & 0
+  \end{array}\right.
+  \]
+
+  buscamos la solución que en $t_0\in I$ verifica $x^{i)}(t_0) = 0 \ \forall i=0,\dots,n-1$. La solución $x = 0$
+  lo verifica y es la única por \ref{unicidadeclinsup}. Entonces, $x = \sum_i \alpha_i \varphi_i = 0 \implies \alpha_i = 0$ y
+  el sistema solo tiene la solución trivial para todo $t_0\in I$.
+  \end{proof}
+
+\begin{nprop}[Fórmula de Liouville]
+  Sean $\{\varphi_1,...,\varphi_k\}$ soluciones de L[$x$]=0. Entonces, dado $t_0 \in I$ se cumple
+  \[
+  \mathcal{W}(\varphi_1,...,\varphi_k)(t) = \mathcal{W}(\varphi_1,...,\varphi_k)(t_0) e^{- \int_{t_0}^t \! a_{k-1}(s) \, \mathrm{d}s } \qquad \forall t \in I
+  \]
+\end{nprop}
+
+%%% TODO: Añadir la demostración
+
+\subsubsection{Encontrar un SFS}
+\begin{itemize}
+\item Caso 1: Coeficientes constantes\\
+  Sabemos que $L\left[e^{rt}\right] = \left(r^k + a_{k-1}r^{k-1}+\dots+a_1r+a_0\right)e^{rt},\ r \in \R$ y el polinomio característico asociado a \ref{eclinhom} es $p(\lambda) = \lambda^k +a_{k-1}\lambda^{k-1}+\dots+a_1\lambda+a_0$. Utilizando ambas cosas enunciaremos una serie de proposiciones que nos permitirán hallar un SFS de una ecuación homogénea.
+
+  \begin{nprop}
+    Si $r$ es raíz de $p(\lambda)=0$, entonces $e^{rt}$ es solución de $L[x] = 0$.
+  \end{nprop}
+
+  \begin{proof}
+    Si $p(r)=0$, entonces $L\left[e^{rt}\right] = 0$ y, por tanto, $e^{rt} \in kerL$.
+  \end{proof}
+
+  \begin{nota}
+    Si las raíces son simples, entonces $\{e^{r_1t},\dots,e^{r_kt}\}$ es un SFS.
+  \end{nota}
+  
+  \begin{nprop}
+    Si $r$ es raíz de $p(\lambda)$ de multiplicidad $m$, entonces $\{e^{rt}, te^{rt},\dots,t^{m-1}e^{rt}\} \subseteq kerL$.
+  \end{nprop}
+
+  \begin{ncor}
+    Si $p(\lambda)$ tiene $k$ raíces reales, donde $s$ de ellas son distintas, entonces un SFS es
+    \[
+    \left\{e^{r_1t},\dots,t^{m_1-1}e^{r_1t},e^{r_2t},\dots,e^{r_St},\dots,t^{m_s-1}e^{r_st}\right\}
+    \]
+  \end{ncor}
+
+  Si las raíces son complejas, $r = a+ib$ ($a-ib$ también es raíz),  entonces $L\left[e^{(a+ib)t}\right] = 0$. Sabemos que $e^{(a+ib)t} = e^{at}(\cos(bt)+i\sin(bt))$ y por la linealidad de $L$ tenemos: $L\left[e^{(a+ib)t}\right] = L\left[e^{at}\cos(bt)\right] + iL\left[e^{at}\sin(bt)\right] = 0$. $e^{at}\cos(bt)$ y $e^{at}\sin(bt)$
+  son soluciones de \ref{eclinhom} y además son linealmente independientes.
+  \begin{ncor}
+    Si $p(\lambda)$ tiene $k$ raíces complejas de multiplicidad $m_i$, un SFS es:
+    \[
+    \left\{e^{a_1t}\cos(b_1t), e^{a_1t}\sin(b_1t), te^{a_1t}\cos(b_1t), te^{a_1t}\sin(b_1t),\dots,t^{m_1-1}e^{a_1t}\cos(b_1t), t^{m-1}e^{a_1t}\sin(b_1t), e^{a_2t}\cos(b_2t),\dots\right\}
+    \]
+  \end{ncor}
+\item Caso 2: Ecuaciones de orden $k$ donde conocemos $k-1$ soluciones\\
+  Si conocemos $k-1$ soluciones, para encontrar la solución que nos falta para tener un SFS utilizaremos el método de \textbf{rebajamiento de orden}. Si $\varphi \in \mathscr{C}^k(I)$ es solución, el cambio $x = u\varphi$ transforma \ref{eclinhom} en otra ecuación homogénea de orden $k-1$.
+\end{itemize}
+
+\subsubsection{La ecuación de Euler}
+Un caso particular de ecuación homogénea que también podemos resolver es la siguiente ecuación:
+\[
+t^kx^{k)}+a_{k-1}t^{k-1}x^{k-1)}+\dots+a_1tx'+a_0x=0
+\]
+
+Para resolver esta ecuación realizaremos el cambio de variable:
+\[
+\begin{cases}
+  t=e^s,\quad t>0\\
+  t=-e^s,\quad t<0
+\end{cases}
+\]
+
+Con este cambio llevamos la ecuación de partida a otra donde los coeficientes son constantes. Por ejemplo, en el caso $k=2$:
+\[
+t^2x''+atx'+bx = 0 \leadsto y''+(a-1)y'+by = 0
+\]
+
+\subsubsection{La ecuación completa}
+
+Ahora, vamos a estudiar el conjunto de soluciones de la ecuación completa \eqref{eclinealsup}.
+Llamamos
+
+\[ Z_b = \{\text{soluciones de \eqref{eclinealsup}}\} = L^{-1}(b) = x_p + \ker L \]
+
+Por lo que $Z_b$ tiene estructura de subespacio afín.
+
+\begin{nprop}[Principio de superposición]
+  Si $x_i$ es solución de L$[x] = b_i$, $i=1,...,n$ entonces $x = \sum_{i=1}^n\alpha_ix_i$ es una solución de L[x] = $b$ con $b = \sum_{i=1}^n\alpha_ib_i$.
+\end{nprop}
+
+Para hallar la solución particular $x_p$, usamos el \textbf{método de variación de las constantes}.
+
+Conociendo un SFS de la ecuación homogénea asociada hallaremos $x_p$. Sea $x_p(t) = \sum_{i=1}^n c_i(t) \varphi_i(t)$, con $c_i \in \mathscr{C}(I)$. Buscamos $c_i$ tales que $x_p(t) \in Z_b$. Veremos que es suficiente con que verifiquen las siguientes condiciones:
+
+\[ 
+\left\{\begin{array}{>{\displaystyle}l}
+  \sum_{i=1}^k c_i'(t) \varphi_i(t) = 0\\
+  \sum_{i=1}^k c_i'(t) \varphi_i'(t) = 0\\
+  \vdots\\
+  \sum_{i=1}^k c_i'(t) \varphi_i^{k-2)}(t) = 0\\
+  \sum_{i=1}^k c_i'(t) \varphi_i^{k-1)}(t) = b(t)
+\end{array} \tag{C} \label{cond}\right.
+\]
+
+Entonces,
+
+
+\begin{align*}
+  x_p'(t) & = \cancelto{0}{\sum_{i=1}^k c_i'(t) \varphi_i(t)} + \sum_{i=1}^k c_i(t) \varphi_i'(t)\\
+  x_p''(t) & = \cancelto{0}{\sum_{i=1}^k c_i'(t) \varphi_i'(t)} + \sum_{i=1}^k c_i(t) \varphi_i''(t)\\
+  \vdots\\
+  x_p^{k)}(t) & = b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t)\\
+\end{align*}
+
+
+Las condiciones dadas en \eqref{cond}, para cada $t\in I$, forman un sistema compatible determinado, por ser $\mathcal{W}(\varphi_1,\dots,\varphi_k)(t) \ne 0 \ \forall t\in I$.
+Por la regla de Cramer:
+
+\[
+c_i'(t) = 
+\frac{\begin{vmatrix}
+  \varphi_1(t) & \dots & \stackrel{i)}{0} & \dots & \varphi_k(t)\\
+  \varphi_1' & \dots & 0 & \dots & \varphi_k'(t)\\
+  \vdots & & \vdots & & \vdots\\
+  \varphi_1^{k-1)}(t) & \dots & b(t) & \dots & \varphi_k^{k-1)}(t)\\
+\end{vmatrix}}{\mathcal{W}(\varphi_1,\dots,\varphi_k)(t)} \in \mathscr{C}(I)
+\]
+
+y por ser $c_i'$ las soluciones a este sistema, se tiene que $x_p$ es, efectivamente, solución de \eqref{eclinealsup}, como queríamos:
+
+\begin{align*}
+  x_p^{k)} + a_{k-1}(t)x_p^{k-1)} + \dots + a_1(t)x_p' + a_0(t)x_p =\\
+  b(t) + \sum_{i=1}^k c_i(t) \varphi_i^{k)}(t) + a_{k-1}(t)\sum_{i=1}^k c_i(t) \varphi_i^{k-1)}(t) + \dots + a_{0}(t)\sum_{i=1}^k c_i(t) \varphi_i(t) =\\
+  b(t) + \sum_{i=1}^k c_i(t) \underbrace{ \left( \varphi_i^{k)} + \sum_{j=1}^{k-1}a_j \varphi_i^{j)} + a_0\varphi_i\right)}_{=0 \text{ ($\varphi_i$ solución de \eqref{eclinhom})} }  
+\end{align*}
+
+El método de variación de las constantes es universal, se aplica a cualquier función continua $b(t)$, sin embargo, los cálculos pueden ser muy largos. Existe un segundo método, \textbf{coeficientes indeterminados} que nos permite encontrar una solución particular para la ecuación de coeficientes constantes. En este método, cuando $b(t) = p(t)e^{at}\cos(bt) + q(t)e^{at}\sin(bt)$, donde $p$ y $q$ son polinomios en $t$ de grado $n$ ($n$ es el mayor de los dos grados), si el polinomio característico no tiene raíces complejas, buscamos una solución particular que sea de la misma forma, su estructura será: $x_p = p_1(t)e^{at}\cos(bt) + q_1(t)e^{at}\sin(bt)$. Derivando $x_p$ y sustituyendo en \eqref{eclinealsup} podemos despejar $p_1$ y $q_1$. Si tenemos una raíz compleja de multiplicidad $m$, la solución particular será de la forma $x_p = \left(p_1(t)e^{at}\cos(bt) + q_1(t)e^{at}\sin(bt)\right)t^m$.
+
+\section{Sistemas lineales de ecuaciones diferenciales}
+
+Vamos a estudiar la ecuación diferencial
+
+\[x' = Ax+b \tag{S} \label{sistemaedf} \]
+
+con $A\in \mathscr{C}(I, \mathscr{M}_N(\R))$ y $b\in \mathscr{C}(I, \R^N)$, de la que buscaremos soluciones $x\in \mathscr{C}^1(I, \R^N)$.
+
+\begin{nota} Sabemos del álgebra lineal que:
+
+  \begin{enumerate}
+  \item $\mathscr{M}_n (\R) \cong \R ^{n^2}$
+  \item $\mathscr{M}_n (\R) \cong \mathscr{L}(\R^n)$
+  \end{enumerate}
+
+  Y que en $\mathscr{M}_n(\R)$ se puede definir una norma mediante
+  \[
+  \|M\| = \max { \|Mx\| : x \in \R ^n , \ |x| = 1}
+  \]
+
+  Propiedades:
+
+  \begin{itemize}
+  \item $\|I_n \| = 1$
+  \item $ \|Mx\| \leq \|M\| |x|$
+  \item $ \|MA\| \leq \|M\| \|A\|$
+  \end{itemize}
+
+\end{nota}
+
+\begin{ndef}
+
+  Una solución de la ecuación es una función $x \in \mathscr{C}^1 (I, \R ^n )$ tal que
+
+  \[x'(t) = A(t) x(t) + b(t) \ \forall t \in I\]
+
+\end{ndef}
+
+\begin{ndef}
+  Sea $f\in \mathscr{C}([a,b], \R ^n )$, con componentes integrables. Definimos
+  \[ \int_a ^b f(t) dt = \left(\int _a ^b f_i (t) dt\right) _{i = 1..n} \]
+\end{ndef}
+
+\begin{nprop}
+  En las condiciones de la definición anterior,
+  \[ \left\|\int _a ^b f(t) dt\right\| \leq \int_a ^b \|f(t)\| dt \]
+\end{nprop}
+
+\begin{proof}
+\begin{align*}
+  \left\|\int _a ^b f(t) dt\right\| &=  \left\| \lim_n \sum_{k=1}^n f(t_{n,k})(t_{n,k} - t_{n,k-1}) \right\|\\
+  & = \lim_n \left\|  \sum_{k=1}^n f(t_{n,k})(t_{n,k} - t_{n,k-1}) \right\|\\
+  & \le \lim_n  \sum_{k=1}^n \left\| f(t_{n,k}) \right\|(t_{n,k} - t_{n,k-1})\\
+  & = \int_a ^b \|f(t)\| dt
+\end{align*}
+\end{proof}
+
+\begin{nth}
+
+  Dado $t_0 \in I$, $x_0 \in \R ^n $, $\exists ! x $ solución de $x' = A(t)x+b(t)$ que cumple $x(t_0) = x_0 $
+
+\end{nth}
+
+\begin{proof}
+
+  Supongamos $x \in \mathscr{C}^1 (I, \R ^n) $ tal que $x' = A(t) x + b(t) \forall t \in I$ y $x(t_0) = x_0$.
+
+ \begin{equation}
+   \int _{t_0} ^t x'(s) = \int _{t_0} ^t (A(s)x(s) + b(s)) \implies x(t) = x_0 + \int _{t_0} ^t (A(s)x(s) + b(s)) \ \forall t \in I (1)
+ \end{equation}
+
+  Hemos visto que toda solución del sistema cumple (1).
+\[
+  \begin{rcases}
+    \text{Supongamos ahora } x \in C (I, \R ^n) \text{que cumple (1)}.\\
+    A(s)x(s) + b(s) \in C (I, \R ^n )
+  \end{rcases}
+\]
+  	
+  $\overset{\text{T.F.C}}{\implies} x \in C ^1 (I, \R^n), \ x'(t) = A(t)x(t) + b(t) \ \forall t \in I, \ x(t_0 ) x_0 $
+  Ahora tenemos que si una función cumple $(1)$ entonces es solución.
+
+
+\end{proof}
+
+Ahora nuestro problema se reduce a buscar una función $x \in C (I , \R ^n)$ que cumpla $(1)$ y $x(t_0) = x_0 $.
+Para ello defininimos:
+
+\[
+x_{k+1} (t) = x_0 + \int _{t_0} ^t A(s)x_k (s) + b(s) ds \ \forall t \in I
+\]
+
+Esto recibe el nombre de iteraciones de Picard o aproximaciones sucesivas.
+
+Sea $J \subset I$ con $t_0 \in J$ compacto. Entonces la sucesión ${x_k}$ converge uniformemente en $J$ y $x(t) = x_0 + \int A(s)x(s) + b(s) de $
+
+\begin{proof}
+
+  Fijo $J$ compacto tal que $t_0 \in J$.\\
+\[
+  \begin{rcases}
+    J \text{compacto}\\
+    A \in C ( I, M_n (\R))
+  \end{rcases}
+\]
+  $\implies \underset{t \in J}{\max} || A(t) || = A_J , \ \ \underset{t \in J}{max} |b(t)| = b_J $
+
+  Tenemos que $x_k = x_0 + \sum_{j=0}^{k-1} (x_{j+1} - x_j)$
+
+  Sabemos que $x_k$ converge $\iff \ \sum_{j=0}^{\infty} (x_{j+1} - x_j )$ converge. Para ver que la serie converge vamos a utilizar el criterio de Weierstrass. Para ello vamos a acotar $|x_{j+1} - x_j |$. Se puede probar por inducción que:
+  \[
+  |x_{k+1} (t) - x_k (t) | \leq (A_J |x_0| + b_J) (A_J )^k \frac{|t-t_0| ^{k-1}}{(k+1)!} \ t \in J\\
+  \sum_{k=0}^{\infty} x_{k+1} (t) - x_k (t) \leq \sum_{k=0} ^{\infty} (A_J |x_0| + b_J) A_J ^k \frac{|t-t_0|^{k+1}}{(k+1)!} = (A_J |x_0| + b_J) \frac{1}{A_J} (e^{A_J (t-t_0)}-1)
+  \]
+  Como la serie converge, $x_k$ converge uniformemente en $J$.
+
+  Veamos ahora la unicidad de la solución.
+
+  Supongamos $y \in C(I,\R ^n)$ solución de $(1)$. Sea $\tilde{I} = \{ t \in I \ : x(t) = y(t) \}$. El procedimiento va a ser, utilizar que $I$ es conexo y que $\tilde{I}$ es abierto y cerrado para ver que $I=\tilde{I}$. $\widetilde{I}$ es cerrado trivialmente, veamos que es abierto:
+
+  Sea $t_1 \in \tilde{I}, \{t_0 , t\} \in \mathring{J}$, $\delta > 0$ tal que $(t_1 - \delta , t_1 + \delta ) \subset J$ y $\delta A_J < 1$.\\
+  Sea $t \in [t_1 - \delta, t_1 + \delta]$ $x(t) = x(t_1 ) + \int_{t_1} ^{t} A(s)x(s)+b(s) ds$
+
+  \[
+  |x(t) - y(t)| = \abs{\inf _{t_1} ^t A(s)(x(s) - y(s)) ds} \leq \abs{\int _{t_1} ^t A_J (x(s) - y(s)) ds} \leq A_J \delta \underset{[t_1 - \delta , t_1 + \delta]}{max} |x(t) - y(t)| 
+  \]
+
+  Sea $t^*$ el valor donde se alcanza el máximo anterior, si $t=t^* \implies x(t^*) = y(^*)$
+
+  
+\end{proof}

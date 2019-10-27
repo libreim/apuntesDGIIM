@@ -1,0 +1,1187 @@
+\section{Fundamentación probabilística de vectores aleatorios}
+
+En esta sección definimos algunos conceptos bien conocidos de la teoría de la probabilidad,
+a modo de breve repaso y para establecer la notación que utilizaremos en todo el libro.
+
+% TODO: insertar referencia a apuntes de Análisis Matemático II y Probabilidad.
+
+\begin{ndef}[Vector y variable aleatorios]
+    Sea $(\Omega, \mathscr{A}, P)$ un espacio de probabilidad. Un \emph{vector aleatorio}, $\boldsymbol X = (X_1, \dots, X_p)$ es una función medible
+    \begin{align*}
+      \boldsymbol X:(\Omega, \mathscr{A}) &\rightarrow (\mathbb{R}^p, \mathscr{B}^p)\,.
+    \end{align*}
+     Cuando $p=1$, lo notamos $X$ y decimos que es una \emph{variable aleatoria}.
+    La condición de medibilidad es: \(\boldsymbol X^{-1}(B) \in \mathscr{A}\) para cada \( B \in \mathscr{B}^p\).
+\end{ndef}
+
+
+
+\begin{ndef}[Probabilidad inducida]
+    La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ se define como la función
+    \[
+    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathscr{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
+\end{ndef}
+
+\begin{notacion}
+  Cuando escribamos probabilidades de sucesos asociados a un vector aleatorio $\boldsymbol X$, usaremos la siguiente notación:
+  \begin{itemize}
+  \item $P[\boldsymbol X \in A] = P_X[A]$,
+  \item $P[X_1 \le x_1, \dots, X_p \le x_p] = P_X[(-\infty, x_1]\times \dots \times (-\infty, x_p]]$,
+  \end{itemize}
+  y algunas formas análogas.
+\end{notacion}
+
+\begin{ndef}[Función de distribución]
+    Se define la \emph{función de distribución} asociada a $P_{\boldsymbol X}$ como
+    \begin{align*}
+    F_{\boldsymbol X}:\mathbb{R}^p &\rightarrow [0,1] \\
+    (x_1,\dots,x_p) &\mapsto P[X_1 \leq x_1, \dots, X_p \leq x_p]\,.
+    \end{align*}
+\end{ndef}
+
+\begin{ndef}[Función de densidad]
+    Si existe una función $f_{\boldsymbol X} : \R^p \to \R$ que sea integrable en el sentido de Lebesgue y tal que
+    \[
+    F_{\boldsymbol X}(\boldsymbol x) = \int^{x_1}_{-\infty} \dots \int^{x_p}_{-\infty} f_{\boldsymbol X}(u_1, \dots,  u_p) \mathop{}\!\mathrm{d}u_1 \dots \mathop{}\!\mathrm{d}u_p\quad \text{para todo } \boldsymbol  x \in \mathbb{R}^p
+    ,\]
+    diremos que $f_{\boldsymbol X}$ es una \emph{función de densidad} asociada a  $F_{\boldsymbol X}$. En los puntos de continuidad de $f_{\boldsymbol X}$, la podemos escribir como:
+    \[
+    f_{\boldsymbol X}(\boldsymbol x) = \frac{\partial^p}{\partial x_1 \dots \partial x_p} F_{\boldsymbol X}(\boldsymbol x)
+    .\]
+\end{ndef}
+
+\subsection{Independencia}
+
+Veamos ahora algunas nociones relativas a la independencia de variables aleatorias.
+
+\begin{ndef}[Conjunto rectangular]
+  Se dice que $B\in \mathscr{B}^p$ es un \emph{conjunto rectangular} si es un producto de $p$ conjuntos de $\mathscr{B}$. Es decir, si
+\[
+    B = B_1 \times \dots \times B_p,\quad\text{con }B_j \in \mathscr{B} \quad\text{para } j = 1, \dots, p
+.\]
+\end{ndef}
+
+Observamos que en general, dado un conjunto rectangular $B \in \mathscr{B}^p$ y un vector aleatorio $\boldsymbol X$ se tiene que
+\[
+P_{\boldsymbol X}[B] \neq P_{X_1}[B_1] \cdots  P_{X_p}[B_p],
+\]
+lo que motiva la siguiente definición.
+
+\begin{ndef}[Independencia]
+    Sea $\boldsymbol X = (X_1, \dots, X_p)$ un vector aleatorio. Si para todo conjunto rectangular $B \in \mathscr{B}^p$ se verifica que \[
+      P_{\boldsymbol X}[B] = P_{X_1}[B_1] \cdots  P_{X_p}[B_p],
+      \] se dice que las variables aleatorias \(X_1, \dots, X_p\) son \emph{independientes}.
+\end{ndef}
+
+\begin{nprop}[Caracterizaciones de independencia]
+  Dado un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ sus componentes son independientes si, y solo si se da alguna de las siguientes condiciones:
+  \begin{nlist}
+  \item La función de distribución verifica $F_{\boldsymbol X} (\boldsymbol x) = F_{X_1} (x_1) \cdots F_{X_p}(x_p)\,$ para todo \(\boldsymbol x \in \mathbb{R}^p\).
+   \item $\boldsymbol X$ tiene una función de densidad y \(f_{\boldsymbol X} (\boldsymbol x) = f_{X_1}(x_1) \cdots f_{X_p}(x_p)\,\) para todo \(\boldsymbol x \in \mathbb{R}^p\), salvo, a lo sumo, en un conjunto de medida de Lebesgue nula.
+  \end{nlist}
+\end{nprop}
+
+\subsection{Función característica}
+
+\begin{ndef}[Función característica] \label{funcioncaracteristica}
+    La \emph{función característica} de un vector aleatorio \(\boldsymbol X = (X_1,\dots,X_p)\) se define como la función \[\psi_{\boldsymbol X}(\boldsymbol t)=E\left[e^{i\boldsymbol t^T\boldsymbol X}\right], \quad\text{para } \boldsymbol t\in \mathbb{R}^p.\]
+\end{ndef}
+
+\begin{nth}[Unicidad]
+  La función característica de un vector aleatorio determina de forma única su distribución.
+\end{nth}
+
+El siguiente resultado nos proporciona otra caracterización de la independencia de las componentes de un vector aleatorio, análoga a las descritas anteriormente pero ahora utilizando la función característica recién definida.
+
+\begin{nprop}
+  Las componentes de \(\boldsymbol X=(X_1,\dots,X_p)^T\) son independientes si, y solo si
+
+  \[
+    \psi_{\boldsymbol X}(\boldsymbol t) = \prod_{k=1}^p\psi_{X_k}(t_k)\,
+  .\]
+\end{nprop}
+
+\begin{nprop}
+  Si las componentes de \(\boldsymbol X=(X_1,\dots, X_p)\) son independientes, entonces la función característica de la variable $Y=\sum_{k=1}^p X_k$ es
+
+  \[
+    \psi_{Y}(t) = \prod_{k=1}^p\psi_{X_k}(t)
+  .\]
+\end{nprop}
+
+\subsubsection{Transformaciones lineales}
+
+A continuación estudiaremos qué forma tiene la función característica de un vector aleatorio cuando éste es el resultado de someter otro vector aleatorio a transformaciones lineales.
+
+Sea $\boldsymbol X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $\boldsymbol Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como $\boldsymbol Y = B\boldsymbol X + \boldsymbol b$, con $B \in \mathscr{M}_{q\times p}(\R)$ una matriz constante y $\boldsymbol b\in \mathbb R ^n$ un vector también constante.
+
+\begin{nprop}
+  La función característica de $\boldsymbol Y$ se obtiene como:
+  
+  \[
+  \psi_{\boldsymbol Y}(\boldsymbol t) = e^{i\boldsymbol t^T \boldsymbol b} \psi_{\boldsymbol X}(B^T \boldsymbol t)\,, \quad \text{para }\boldsymbol t = (t_1,\dots,t_q)^T \in \mathbb R^q\,.
+  \]
+\end{nprop}
+
+  En particular, si \[ \vectX= \left( X_{(1)} | X_{(2)}\right)^T := \left(X_{(1),1}, \dots, X_{(1),k}, X_{(2),1}, \dots, X_{(2),p-k}\right),\] con $X_{(1)}$ de dimensión $(k\times1)$ y $X_{(2)}$ de dimensión $(p-k) \times 1$, se tendría que
+  \[
+X_{(1)} = \left( I_k | 0_{p-k} \right)X + 0_{k\times 1}\,,
+\]
+por lo que, para $\boldsymbol t_{(1)} = (t_1,\dots,t_k)^T \in \mathbb R^k$ la función característica viene determinada por
+\[
+\psi_{X_{(1)}}\left(\boldsymbol t_{(1)}\right) = \underbrace{e^{i\boldsymbol t_{(1)}^T 0}}_{=1} \psi_X\left(\left( I_k | 0_{p-k} \right)\boldsymbol t_{(1)}\right) = \psi_X\left(\frac{\boldsymbol t_{(1)}}{0_{(p-k)}}\right)\,.
+\]
+
+\subsubsection{Relación con la función de densidad}
+
+La función de densidad (en el caso continuo) de un vector aleatorio $\boldsymbol X = (X_1,\dots,X_p)^T$ y la correspondiente función característica constituyen un par de \emph{transformadas de Fourier}, de forma que
+\[
+\psi_{\boldsymbol X}(\boldsymbol t) = \int_{\mathbb R ^p} e^{i \boldsymbol t^T \boldsymbol x} f_X(\boldsymbol x) \mathop{}\!\mathrm{d}\boldsymbol x\,,
+\]
+y por otro lado
+\[
+f_{\boldsymbol X}(\boldsymbol x) =  \dfrac{1}{(2\pi)^p} \int_{\mathbb R^p} e^{- i \boldsymbol t^T x} \psi_{\boldsymbol X}(t) \mathop{}\!\mathrm{d}\boldsymbol t\,.
+\]
+
+
+\subsection{Aspectos generales sobre vectores aleatorios}
+
+En este apartado definiremos y estudiaremos algunas de las propiedades de los vectores aleatorios con las que trabajaremos habitualmente.
+
+\subsubsection{Esperanza y covarianza}
+
+Para definir la esperanza de un vector aleatorio partimos de la definición de esperanza de una variable aleatoria y la extendemos de forma natural al caso multivariante.
+
+\begin{ndef}
+  Sea $\boldsymbol X=(X_1,\dots,X_n)^T$ un vector aleatorio. Se define el \emph{vector de medias} de $\boldsymbol X$ como:
+  \[
+  \boldsymbol \mu_{\boldsymbol X} = E[\boldsymbol X] = \begin{pmatrix}  E[X_1] \\ \dots \\ E[X_p] \end{pmatrix} = \begin{bmatrix} \mu_1 \\ \dots \\ \mu_p \end{bmatrix}
+  \]
+  siempre que existan \emph{todas} las esperanzas unidimensionales.
+  \end{ndef}
+
+  Observamos a continuación que la propiedad de linealidad de la esperanza en las variables aleatorias se traslada trivialmente al caso multivariante.
+
+\begin{nprop}[Propiedad de linealidad]
+  Sea $\boldsymbol Y = B\boldsymbol X + \boldsymbol b$ con $B \in M_{q\times p}$ constante y $\boldsymbol b \in \mathbb R^q$ constante. Entonces,
+  \[
+    \boldsymbol \mu_{\boldsymbol Y} = E[\boldsymbol Y] = BE[\boldsymbol X] + \boldsymbol b = B\boldsymbol \mu_{\boldsymbol X} + \boldsymbol b\,.
+\]
+\end{nprop}
+%#TODO: Demostración(ejercicio)
+
+Podemos incluso seguir iterando este proceso y extender esta propiedad al caso de matrices aleatorias. Sea $X\in \mathcal M_{p\times q}$ es una matriz aleatoria, y $B\in \mathcal M_{m\times p}$ , $C \in \mathcal M_{q\times n}$ , $D \in \mathcal M_{m \times n}$ matrices constantes. Entonces, para $W = BXC + D$, una matriz aleatoria de dimensión $m\times n$, la matriz de medias viene dada por
+\[
+E[W] = \left(E[W_{kl}]\right)_{(kl)} = B \cdot E[X] \cdot C + D\,, \quad \text{con } E[X] = \left(E[X_{ij}]\right)_{(ij)}\,.
+\]
+
+Como comprobaremos a continuación, la definición de la matriz de covarianzas no es más que una extensión al caso multivariante de la definición de covarianza de dos variables aleatorias.
+
+\begin{ndef}
+  Se define la \emph{matriz de covarianzas} del vector $\boldsymbol X = (X_1,\dots,X_p)^T$ como:
+  \[
+\Sigma = \operatorname{Cov}(\boldsymbol X) = E\left[(\boldsymbol X-\boldsymbol \mu)(\boldsymbol X-\boldsymbol \mu)^T\right] = \begin{bmatrix} \sigma_{11} & \dots & \sigma_{1p} \\ \vdots& \ddots & \vdots \\ \sigma_{p1} &  \dots & \sigma_{pp}\end{bmatrix}\,,
+\]
+donde $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$ es la covarianza de las variables aleatorias $X_i$ y $X_j$. Solo puede definirse si existen todas las covarianzas. 
+\end{ndef}
+
+\begin{nota}
+  Los elementos de la diagonal de la matriz de covarianzas se pueden calcular como \[\sigma_{ii}=E\left[(X_i - \mu_i)^2\right] = \operatorname{Var}(X_i) = \sigma_i^2\,,\]siendo $\sigma_i$ la \emph{desviación típica}.
+\end{nota}
+
+\begin{nota}
+  La desigualdad de Cauchy-Schwarz nos dice que existen todas las esperanzas si, y solo si existen las varianzas de cada componente.
+\end{nota}
+
+\begin{nprop}[Propiedades elementales]
+  La matriz de covarianzas verifica las siguientes propiedades elementales:
+  \begin{enumerate}
+    \item Es simétrica.
+    \item Los elementos de su diagonal son no negativos.
+    \item La clase de matrices de covarianzas en dimensión $p\times p$ coincide con la clase de matrices simétricas definidas no negativas.
+    \end{enumerate}
+  \end{nprop}
+
+\begin{proof}
+  La comprobación de las dos primeras propiedades es inmediata, por lo que vamos a ver únicamente la demostración de la propiedad 3.
+  \begin{nlist}
+    \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha^T \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
+      0 \leq \operatorname{Var}(\alpha^T X) = E\left[\|\alpha^T X - E[\alpha^T X]\|^2\right] &= E\left[\|\alpha^T X - \alpha^T \mu_X\|^2\right] = E\left[\|\alpha^T(X-\mu)\|^2\right]\\ 
+        &=^{(1)} E\left[\alpha^T(X-\mu)(X-\mu)^T \alpha\right] \\
+        &= \alpha^T E\left[(X-\mu)(X-\mu)^T\right] \alpha \\
+        &= \alpha^T \Sigma \alpha
+    \end{align*} Donde en $(1)$ hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
+
+    $\boxed{\impliedby}\,$ Sea $A$ una matriz simétrica, definida no negativa. Entonces, se puede encontrar una factorización $A = B B^T$. donde $C \in \mathscr{M}_{p}(\R)$.
+    Consideramos un vector aleatorio $\vectX$ cuyas entradas son $p$ variables independientes e idénticamente distribuidas con distribución normal estándar. Entonces, $\Sigma_{\vectX} = I_p$. Esto se puede comprobar usando que $E[XY] = E[X]E[Y]$ si $X$ e $Y$ son variables aleatorias independientes. Consideramos también $\vectY = B\vectX$, entonces:
+
+    \[
+       \Sigma_{\vectY} = B\Sigma_{\vectX} B^T = B B^T = A
+    .\]
+
+  \end{nlist}
+\end{proof}
+
+%#TODO: revisar el estilo de esta parte, quizá añadir una subsección?
+Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matriz $\Sigma$.
+
+\paragraph{Si $\Sigma$ es definida positiva} Se nota como $\Sigma > 0$. En este caso $\Sigma$ es \emph{no singular} pues $(|\Sigma| > 0)$, y por tanto existe su inversa, $\Sigma^{-1}$. Esto es interesante pues nos permite normalizar el vector aleatorio de manera que tenga un vector de medias cero y una matriz de covarianzas que sea la identidad.
+
+\begin{nota}
+  Usaremos la notación $X\sim(\mu,\Sigma)$ para denotar que la media y la matriz de covarianzas están bien definidas.
+\end{nota}
+
+\begin{ndef}[Normalización]
+    Dado un vector aleatorio $\boldsymbol X\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \emph{normalización} en «origen» y «escala» como
+    \[
+  Z = C^{-1}(X - \mu)\,,
+\]
+para cualquier matriz $C\in M_{p\times p}$ tal que $E = CC^T$. Esta matriz $C$ no es única, pues existen infinitas descomposiciones de $\Sigma$ de esta forma.
+
+  \end{ndef}
+
+Veamos a continuación algunas de las propiedades de esta variable $Z$.
+\begin{nprop}
+  Una normalización de un vector aleatorio tiene media $0$ y matriz de covarianzas identidad.
+\end{nprop}
+
+\begin{proof} \hfill\\
+    \[
+    E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0,
+    \]
+
+    \[
+    \operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]
+    \]
+
+    y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior:
+
+    \[
+      \operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I
+    .\]
+
+\end{proof}
+  \begin{ndef}
+    Se define la \emph{distancia de Mahalanobis} de $\vectX\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
+    \[
+    \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T \Sigma (\vectX-\mu) \right\} ^{\frac{1}{2}},
+    \]
+    que es una variable aleatoria.
+  \end{ndef}
+
+  Vamos a interpretar esta definición. Sea $\vectZ$ una normalización de $\vectX$:
+  \[
+  \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T (CC^T)^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{ (\vectX-\mu)^T (C^T)^{-1}C^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{\vectZ^T \vectZ\right\}^{\frac{1}{2}} = \Vert \vectZ\Vert\,,
+  \]
+  con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función medible a un vector aleatorio.
+
+  \begin{nprop} Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces,
+    \begin{nlist}
+    \item $E[\Delta^2 (X,\mu)] = p$,
+    \item la ecuación $\Delta(X,\mu) = k$ —con $k\geq 0$ constante— define la \textit{hipervariedad de contorno} correspondiente a aquellos puntos $x \in \mathbb R^p$ tales que, en el espacio transformado $\mathbb R^p$ por
+      \[
+      x \mapsto z = C^{-1}(x-\mu)
+      \]
+      se sitúan en la esfera euclídea $p-$dimensional de radio $k$ y centro en el origen.
+    \end{nlist}
+
+  \end{nprop}
+
+\paragraph{$\Sigma$ es \textbf{semidefinida positiva}} (esto es, $\Sigma \geq 0$ con $|\Sigma| = 0$).  En este caso $\Sigma$ es singular, por lo que no existe $\Sigma ^{-1}$. Por tanto, se tiene que $\operatorname{rango}(\Sigma) = r < p$ y $\Sigma = C C^T$ con $C \in \mathscr{M}_{p\times r}(\R)$ y cuyo rango es $r$.\\
+
+  \begin{ncor}
+    Con probabilidad $1$, las componentes del vector $\vectX = (X_1, \dots, X_n)$ cumplirán una relación de dependencia lineal del tipo:
+    \[
+    \alpha^T \vectX = k, \quad \quad \alpha \in \mathbb R^p, \quad \alpha \ne 0 , \quad k \in \R
+    \]
+    
+  Por tanto, toda la variabilidad de $\vectX$ se sitúa en un hiperplano afín (casi seguramente con respecto a la medida $P$).
+\end{ncor}
+
+  \begin{proof}
+    Como $\det(\Sigma) = 0$, $\exists \alpha \ne 0$ tal que $\alpha^T \Sigma \alpha = 0$. Definimos la variable aleatoria $\vectY = \alpha^T \vectX$, y se tiene que:
+    
+    \[
+      E[\vectY] = E[\alpha^T \vectX] = \alpha^T E[\vectX] = \alpha^T \mu =: k
+    ,\] y
+    
+     \[
+        \begin{split}
+          \operatorname{Var}(\vectY) & = E\left[\|\vectY-k\|^2\right]  = E\left[\|\alpha^T\vectX - \alpha^T \mu\|^2\right] \\
+          & = E\left[\|\alpha^T(\vectX-\mu)\|^2\right] = E\left[\alpha^T(\vectX-\mu)(\vectX-\mu)^T\alpha\right] \\
+          & = \alpha^T E\left[(\vectX-\mu)(\vectX-\mu)^T\right]\alpha = \alpha^T \Sigma \alpha = 0
+        \end{split}  
+     \]
+      con lo que $\vectY$ es una variable aleatoria degenerada: $P[\vectY = k] = 1 \iff \alpha^T \vectX = k$ c.s.
+  \end{proof}
+
+Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
+\begin{nlist}
+\item $\det(\Sigma) =  \prod_{j=1}^p \lambda_j$,
+  \item $\traza(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
+\end{nlist}
+
+
+\subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
+
+\begin{nth}
+  Sea $\vectX = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución de $\vectX$ queda unívocamente determinada por las distribuciones univariantes de la forma
+  \[
+\alpha ^T \vectX, \quad \alpha \in \mathbb R ^p\,.
+  \]
+\end{nth}
+\begin{proof}
+  Sea $Y_\alpha = \alpha^T \vectX$ (variable aleatoria unidimensional), para cada $\alpha \in \mathbb R^p$. La función característica de $Y_\alpha$ viene dada por
+  \[
+  \psi_{Y_\alpha}(t) = E\left[e^{itY_\alpha}\right] = E \left[e^{it(\alpha^T \vectX)}\right] \quad \text{para todo } t \in \mathbb R\,.
+  \]
+  En particular, si $t=1$
+  \[
+  \psi_{Y_\alpha}(1) = E\left[e^{i\alpha^T \vectX}\right] = \psi_{\vectX} (\alpha)
+  \]
+  Es decir:
+  \[
+  \psi_{\vectX}(t) = \psi_{Y_t}(1), \quad \forall t \in \mathbb R ^p
+  \]
+\end{proof}
+
+\subsection{Momentos y cumulantes}
+
+Sea $\vectX= (X_1,\dots,X_p)^T$ un vector aleatorio con función característica $\phi_{\vectX}$.
+\begin{ndef}
+  Se define el \textbf{momento} (no centrado) $p-$dimensional de orden $(r_1, \dots, r_p)$ de $X$ como:
+  \[
+\mu_{r_1,\dots,r_p}^{1,\dots,p} = E \left[ X_1^{r_1} \dots X_p^{r_p}\right]\,.
+  \]
+\end{ndef}
+
+Los momentos se pueden obtener a partir de la función característica derivándose de su expansión de Taylor(respecto al origen).
+
+\[
+\phi_X(t) = E\left[e^{it^T X}\right] = E\left[\sum_{r=0}^\infty \frac{1}{r!}(i t^T X)^r\right] = \sum_{r= 0}^\infty \sum _{r_1+\dots + r_p = r} \mu_{r_1 \dots r_p}^{1 \dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
+\]
+En particular, podemos enunciar este teorema:
+\begin{nth}
+  Si $E=\left[|X_1|^{m_1} \dots |X_p|^{m_p}\right] < \infty$, entonces la función característica de $X$ es $(m_1, \dots, m_p)$ veces diferenciable y , si $m = m_1 + \dots + m_p$,
+  \[
+\frac{\partial ^m}{\partial t_1^{m_1} \dots \partial t_p^{m_p}} \phi_X(t)| _{t = 0} = i^m \mu_{m_1}^1 \dots \mu_{m_p}^p
+  .\]
+\end{nth}
+
+Consideremos el logaritmo de la función característica:
+\[
+\log \phi(t).
+\]
+\begin{ndef}
+  Se definen los \emph{cumulantes} ($p-$dimensionales) de orden $(r_1 , \dots, r_p)$ como los coeficientes de la correspondiente expansión:
+  \[
+  \log \phi_X(t) =  \sum_{r= 0} \sum_{r_1+\dots + r_p = r} \mathcal K_{r_1 \dots r_P}^{1\dots p} \frac{(it_1)^{r_1} \dots (it_p)^{r_p}}{r_1 ! \dots r_p !}
+  .\]
+\end{ndef}
+
+
+\subsubsection{Cambio de variables}
+
+\begin{nth} \label{cambiovariablealeatoria}
+  Sea $\vectX = (X_1,\dots,X_n)^T$ un vector aleatorio con función de densidad $f_X(x)$ positiva sobre $S \subseteq \mathbb R^d$ y continua. Sea $Y = (Y_1,\dots,Y_p)^T$ un vector aleatorio con:
+  \[
+  Y = g(X) = (g_1(X),\dots ,g_p(X))^T
+  \]
+  con $g = (g_1,\dots,g_p): S \to \mathcal T$ biyectiva, por lo que $\exists g^{-1}$, y denotamos $g^{-1} = h = (h_1,\dots, h_p)^T : \mathcal T \to S$.
+
+  Supongamos que existen las derivadas parciales:
+  \[
+    \frac{\partial h_i(y)}{\partial y_j} \quad (i,j = 1,\dots,p)
+  \]
+  y que son continuas sobre $\mathcal T$.
+
+  Entonces, la función de densidad $f_Y(y)$ del vector $Y=(Y_1,\dots,Y_p)^T = y(X)$ viene dada por:
+  \[
+  f_Y(y) = f_X(g^{-1}(y))\left|\det(J_{g^{-1}}(y))\right|
+  .\]
+\end{nth}
+
+\begin{ncor}[Caso lineal] \label{cambiocasolineal}
+  Sea $Y = BX + b$ con $B\in \mathscr{M}_{p}(\R)$ y no singular. En este caso,
+  \[
+  J_{g^{-1}}(g(x)) = \left[ J_{g}(x) \right]^{-1} = \det(B)^{-1} = \det\left(B^{-1}\right)
+  \]
+  y se tiene:
+  \[
+  f_Y(y) = f_X\left(B^{-1}(y-b)\right)\left|\det(B)^{-1}\right|
+  .\]
+
+\end{ncor}
+\begin{nota}
+  Al factorizar una matriz definida positiva, siempre existe una factorización $CC^T$ con $\det(C) > 0$.
+  \end{nota}
+
+\subsection{Distribución normal multivariante (en el caso $\Sigma > 0$)}
+  En esta sección estudiamos la distribución normal multivariante, refiriéndonos siempre al caso en el que tiene matriz de covarianzas definida positiva.
+Algunos aspectos que justifican el estudio de esta distribución en particular:
+\begin{itemize}
+\item es la distribución multivariante más estudiada, y existen infinidad de resultados acerca de la misma,
+\item DNM es la base de muchas técnicas del análisis multivariante confirmatorio o inferencial,
+\item DNM es una extensión \emph{natural} de la DNM univariante al caso multivariante,
+\item las distribuciones marginales de cualquier orden en una DNM son también normales,
+\item las distribuciones condicionadas (internamente) en una DNM también son normales y se obtienen de forma sencilla,
+\item la familia de DNM es cerrada bajo transformaciones lineales,
+\item la familia de DNM es cerrada bajo combinaciones lineales de vectores (mutuamente) independientes,
+\item la DNM viene determinada por los momentos de primer y segundo orden (media y matriz de covarianzas),
+  \item si dos subvectores de un vector aleatorio con DNM tienen correlaciones cruzadas nulas, entonces dichos subvectores son (mutuamente) independientes.
+
+\end{itemize}
+
+
+\begin{ndef}
+  Sea $\vectX = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $\vectX$ tiene una distribución normal $p-$variante si su densidad es de la forma:
+  \[
+f_{\vectX}(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
+\]
+Siendo $\mu = (\mu_1, \dots, \mu_p)^T \in \mathbb R^p$ y $\Sigma$ una matriz escalar $p\times p$ simétrica y definida positiva.
+\end{ndef}
+
+Veamos que, en efecto, $f_{\vectX}$ es una función de densidad
+\begin{enumerate}
+\item $f_{\vectX}(x) \geq 0, \ \forall x \in \mathbb R$,
+\item $\int_{\mathbb R^p} f_{\vectX}(x) \mathrm{d}x = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal \mathscr{M}_{p}(\R), \det(C) > 0$. La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación es $\det\left(C^{-1}\right)$. Por otro lado:
+
+\[
+  (x-\mu)^T \Sigma^{-1}(x-\mu) = zz^T
+\]
+
+Por tanto, podemos escribir:
+
+\begin{DispWithArrows*}[fleqn, mathindent = 0cm, wrap-lines]
+      \int_{\R^p} f_{\vectX}(x) \mathrm{d}x & = \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
+      & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\
+      & = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p\\
+      & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j = \prod_{j=1}^p 1 = 1.
+\end{DispWithArrows*}
+\end{enumerate}
+
+
+\subsubsection{Vector de medias y matriz de covarianzas}
+Del cálculo anterior se desprende que el vector aleatorio \[ \vectZ = C^{-1}(\vectX-\mu) \] se distribuye con función de densidad
+\[
+f_{\vectZ}(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{1}{2}z_j^2\right\} = \prod_{j=1}^p f_{Z_j}(z_j)
+\]
+Es decir, para cada $j = 1,\dots, p$
+\[
+Z_j \sim N(0,1)
+\]
+siendo $Z_1,\dots,Z_p$ independientes (en particular, incorreladas), luego $\vectZ \sim N_p(0,I_p)$.
+
+A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $\Sigma$ son, respectivamente, el vector de medias y la matriz de covarianzas del vector aleatorio $\vectX \sim N_p(\mu,\Sigma)$.
+
+
+\begin{nprop}[Transformación afín sobre una normal] \label{afinnormal}
+  Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $\vectY = B\vectX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector aleatorio escalar $p\times 1$. Entonces, se tiene que:
+  \[
+     \vectY \sim N_p(B\mu+b, B \Sigma B^T)
+  .\]
+\end{nprop}
+
+\begin{proof}
+  De \ref{cambiocasolineal} se sigue que
+
+  \[
+  \begin{split}
+    f_{\vectY}(y) & = f_{\vectX}(B^{-1}(y-b))\left|\det(B)^{-1}\right| \\
+    & = \frac{1}{(2\pi)^{p/2} \det(\Sigma)^{1/2} \left|\det(B)\right|}
+    \exp\left\{ -\frac{1}{2} \left(B^{-1}(y-c) - \mu\right)^T \Sigma^{-1} \left(B^{-1}(y-c) - \mu \right) \right\} \\
+    & = \frac{1}{(2\pi)^{p/2} \det(B^T\Sigma B)}
+    \exp\left\{ -\frac{1}{2} \left(y-c - B\mu\right)^T (B^T\Sigma B)^{-1} \left(y - c - B\mu \right) \right\}.
+  \end{split}
+  \]
+\end{proof}
+
+\begin{nth}[Caracterización de DNM]
+  Sea $\vectX$ un vector aleatorio $p-$dimensional, entonces $\vectX$ tiene distribución normal multivariante, de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, si y solo si
+  \[
+\vectX = A\vectZ + \mu
+\]
+con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,I_p)$.
+\end{nth}
+
+%#TODO: Demostración (clase de prácticas)
+
+\subsubsection{Sobre Independencia y Condicionamiento}
+
+  \begin{nprop}
+    Sea $\vectX = (X_1,\dots,X_p)^T$ un vector aleatorio con DNM $\vectX \sim N_p(\mu,\Sigma)$, $\Sigma > 0$. Si la matriz $\Sigma$ es diagonal,
+    entonces las variables aleatorias componentes del vector son independientes y tienen distribución normal univariante $X_i \sim N\left(\mu_i, \sigma_i^2\right)$.
+  \end{nprop}
+  \begin{proof}
+    Por hipótesis, sabemos que:
+    \[
+    f_X(x) = \frac{1}{(2\pi)^{\frac{p}{2}} \det(\Sigma)^{\frac{1}{2}}}\exp\left\{- \frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
+    \]
+    Y además:
+    \begin{itemize}
+    \item $\det(\Sigma)^{\frac{1}{2}} = \left(\prod_{i = 1}^p \sigma_i^2\right)^{\frac{1}{2}} = \prod_{i=1}^p \sigma_i$,
+    \item $\Sigma^{-1} = \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right)$,
+      \item $(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu) = \sum_{i=1}^p (x_i-\mu_i)^2 \sigma_i^{-2} = \sum_{i = 1}^p \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2$.
+    \end{itemize}
+    Por tanto, reescribiendo:
+    \[
+      \begin{split}
+        f_X(x) = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2}(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu)  \right\} =\\
+        \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \sum_{i = 1}^p \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} = \prod_{i = 1}^p  \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} = \prod_{i = 1}^p f_{X_i}(x_i)
+    \end{split}
+    \]
+
+  \end{proof}
+
+
+  El recíproco de este último resultado dado es cierto:
+  \begin{nprop}
+    Si $\vectX = (X_1,\dots,X_p)^T$ es un vector aleatorio con componentes \emph{mutuamente} independientes que tienen DNM, $X_i \sim N(\mu_i, \sigma_i)$, con $\sigma > 0$. Entonces, $\vectX$ tiene DNM
+    \[
+    \vectX \sim N_p(\mu, \Sigma)
+    \]
+    con $\mu = (\mu_1,\dots,\mu_p)^T$ y $\Sigma = \diag(\sigma_1^2 , \dots , \sigma_p^2) > 0$.
+  \end{nprop}
+
+  \begin{nota}
+Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
+  \end{nota}
+
+  \begin{nprop}
+    Sea $\vectX$ una v.a. $N(0,1)$ y sea $W$ una v.a. con distribución $U(\{-1,1\})$, independiente de $\vectX$. Consideramos $\vectY = W\vectX$. Entonces, se verifica:
+    \begin{itemize}
+    \item $\vectY \sim N(0,1)$,
+    \item $\vectX$ e $\vectY$ son incorreladas,
+      \item $\vectX$ e $\vectY$ no son independientes. 
+    \end{itemize}
+
+  \end{nprop}
+  Esta proposición es un contraejemplo para ver que , en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
+
+  \begin{nth} \label{independenciacovbloques}
+    Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = \left(\vectX_{(1)}^T | \vectX_{(2)}^T\right)^T$ con $\vectX_{(1)} = (X_1,\dots,X_q)^T$ y $\vectX_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
+    
+    \[
+    \mu = \left(\mu_{(1)}^T | \mu_{(2)}^T\right)^T, \quad \Sigma = \begin{pmatrix} \Sigma_{(11)} & 0 \\ 0 & \Sigma_{(22)} \end{pmatrix}
+    .\]
+    
+    Entonces, $\vectX_{(1)}$ y $\vectX_{(2)}$ son mutuamente independientes y además, $\vectX_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)})$ y $\vectX_{(2)} \sim N_{p-q}(\mu_{(2)}, \Sigma_{(22)})$.
+  \end{nth}
+
+  \begin{proof}
+    Comenzamos notando que, como $\Sigma = \diag(\Sigma_{(11)},\Sigma_{(22)})$, entonces:
+    \begin{itemize}
+    \item $\det(\Sigma)^{\frac{1}{2}} = \det(\Sigma_{(11)})^{\frac{1}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}}$
+      \item $ \Sigma^{-1} = \diag(\Sigma_{(11)}^{-1}, \Sigma_{(22)}^{-1})$
+    \end{itemize}
+
+    De esta forma, tenemos:
+    
+    \[
+    \begin{split}
+      (x-\mu)^T \Sigma^{-1}(x-\mu) & = \left( (x_{(1)}- \mu_{(1)})^T | (x_{(2)}-\mu_{(2)})^T \right) \begin{bmatrix} \Sigma_{(11)} & 0 \\ 0 & \Sigma_{(22)} \end{bmatrix}
+      \left(\begin{array}{c} x_{(1)} - \mu_{(1)} \\ \hline
+        x_{(2)} - \mu_{(2)} \end{array}\right) \\
+       & = (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)}) +  (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})
+      \end{split}
+    \]
+    
+    Podemos factorizar entonces la función de densidad de $\vectX$:
+    
+    \[
+    \begin{split}
+    f_{\vectX}(x) =  \frac{1}{(2\Pi)^{\frac{q}{2}} \det(\Sigma_{(11)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(1)}- \mu_{(1)})^T \Sigma_{(11)}^{-1}  (x_{(1)}- \mu_{(1)})\right\} \\
+    \cdot \frac{1}{(2\Pi)^{\frac{p-q}{2}} \det(\Sigma_{(22)})^{\frac{1}{2}} } \exp \left\{ - \frac{1}{2} (x_{(2)}- \mu_{(2)})^T \Sigma_{(22)}^{-1}  (x_{(2)}- \mu_{(2)})\right\}
+    \end{split}
+    \]
+    
+  \end{proof}
+
+  El recíproco también es cierto, en el sentido en el que lo era el recíproco del resultado anterior.
+
+  \begin{nth}
+    Sea $\vectX = (X_1, \dots, X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento de $\vectX$ como en el resultado anterior, pero ahora con
+    
+    \[
+\Sigma = \begin{pmatrix}  \Sigma_{(11)} & \Sigma_{(12)} \\ \Sigma_{(21)} & \Sigma_{(22)} \end{pmatrix}
+\]
+
+Entonces, se tiene:
+\begin{enumerate}
+\item $\vectX_{(1)}$ y $\vectX_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}\vectX_{(1)}$ son independientes, \label{indepitem}
+\item \[
+  \begin{cases}
+    \vectX_{(1)} \sim N_q(\mu_{(1)}, \Sigma_{(11)}) \\
+    \vectX_{(2)} - \Sigma_{(21)} \Sigma_{(11)}^{-1}X_{(1)} \sim N_{p-q}\left(\mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)} \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
+  ,\end{cases}
+  \] \label{distitem}
+  
+\item La distribución condicionada de $\vectX_{(2)}$ dado $\vectX_{(1)} = x_{(1)}$ es una DNM
+  
+  \[
+    N_{p-q}\left(\mu_{(2)} + \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}) \ , \ \Sigma_{(22)} - \Sigma_{(21)} \Sigma_{(11)}^{-1} \Sigma_{(12)}\right)
+  .\] \label{conditem}
+  
+\end{enumerate}
+  \end{nth}
+  \begin{proof}
+    Sea $C = \begin{pmatrix} I_1 & 0 \\ -\Sigma_{(21)}\Sigma_{(11)}^{-1} & I_2\end{pmatrix}$. $C$ es no singular, pues $\det(C) = 1$. Consideramos el cambio lineal $\vectY = C \vectX$:
+      
+   \[
+      \vectY = \begin{pmatrix} \vectX_{(1)} \\ \vectX_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\vectX_{(1)}\end{pmatrix} := \begin{pmatrix} \vectY_{(1)} \\ \vectY_{(2)} \end{pmatrix}.
+   \]
+
+   Por \ref{afinnormal}, $\vectY \sim N_p\left( C\mu, C\Sigma C^T \right)$. Se tiene:
+
+   \[
+      C\mu = \left(
+      \begin{array}{c}
+        \mu_{(1)} \\ \hline
+        \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\mu_{(1)}
+      \end{array}
+      \right),
+      \quad
+      C\Sigma C^T = \left(
+      \begin{array}{c | c}
+        \Sigma_{(11)} & 0 \\ \hline
+        0            & \Sigma_{(22\cdot 1)}
+      \end{array}
+      \right),
+  \]
+
+  donde $\Sigma_{(22\cdot 1)} := \Sigma_{(22)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}\Sigma_{(12)}$. Así, \ref{indepitem} y \ref{distitem} se siguen de \ref{independenciacovbloques}.
+
+  Para probar \ref{conditem} escribimos, usando el teorema de Bayes, la expresión de la de función de densidad de la distribución condicionada:
+
+  \begin{DispWithArrows*}[fleqn, wrap-lines]
+    f_{\vectX_{(2)} | \vectX_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{f_{\vectX_{(1)}, \vectX_{(2)}} (x_{(1)}, x_{(2)})} {f_{\vectX_{(1)}}(x_{(1)})} \Arrow{usando el teorema de cambio de variable \ref{cambiocasolineal} con $\vectX = C^{-1}\vectY$, $\det(C) = 1$} \\
+    & = \frac{f_{\vectY_{(1)}, \vectY_{(2)}}\left(x_{(1)}, x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}\right)} {f_{\vectX_{(1)}}(x_{(1)})}
+  \end{DispWithArrows*}
+
+
+  Veamos el valor de la forma cuadrática que aparecerá en $f_{\vectY_{(1)}, \vectY_{(2)}}$:
+
+  \[
+     \left(
+     \begin{array}{c}
+       x_{(1)} \\ \hline
+       x_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}x_{(1)}
+     \end{array}
+     \right) - C\mu = \left(
+     \begin{array}{c}
+       x_{(1)} - \mu_{(1)} \\ \hline
+       x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)})
+     \end{array}
+     \right) := D(x_{(2)}),
+   \]
+
+   \[
+   \begin{split}
+     D(x_{(2)})^T (C\Sigma C^T) D(x_{(2)}) = \overbrace{(x_{(1)} - \mu_{(1)})^T \Sigma_{(11)}^{-1} (x_{(1)} - \mu_{(1)})}^{:= A} \\
+     + \underbrace{(x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}))^T \Sigma_{(22\cdot 1)}^{-1}
+       (x_{(2)} - \mu_{(2)} - \Sigma_{(21)}\Sigma_{(11)}^{-1}(x_{(1)} - \mu_{(1)}))}_{:= B(x_{(2)})}
+   \end{split}
+   \]  
+
+   Resultando:
+
+   \[
+   \begin{split}
+     f_{\vectX_{(2)} | \vectX_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
+     { \frac{1}{(2\pi)^{q/2} \det(\Sigma_{(11)})^{1/2}} \exp\left\{ -\frac{1}{2} A \right\} } \\
+     & = \frac{1}{(2\pi)^{\frac{p-1}{2}} \det(\Sigma_{(22\cdot 1)})^{1/2}} \exp\left\{ -\frac{1}{2} B(x_{(2)}) \right\}.
+   \end{split}
+   \]
+  \end{proof}
+
+
+
+  \subsection{Función característica de la DNM}
+
+  Cabe recordar en esta sección la definición \ref{funcioncaracteristica}.
+
+  \begin{nprop}[Función característica de la DNM]
+    Dado un vector aleatorio $\vectX \sim N_p(\mu, \Sigma)$, su función característica viene dada por
+    \[
+      \psi_{\vectX}(t) = \exp\left\{ it^T\mu - \frac{1}{2} t^T \Sigma t \right\}
+    .\]
+  \end{nprop}
+
+  
+  \begin{proof}
+    Tomamos una descomposición $\Sigma = CC^T$, con $C\in \mathscr{M}_{p}(\R)$ no singular, $\det(C) > 0$, y aplicamos el cambio de variable $\vectY = C^{-1}(\vectX - \mu)$.
+    \[
+    \begin{split}
+      \Psi_{\vectX}(t) & = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) \mathrm{d}x \\
+      & = \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
+      & =  \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
+      & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
+      & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
+      & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\},
+    \end{split}
+    \]
+    con $\alpha_j = t^T c_{.j}$, y $c_{.j}$ la columna $j-$ésima de la matriz $C$, recordando que:
+    \[
+    \Psi_{N(\mu,\sigma^2)}(t) = e^{it\mu - \frac{1}{2}\sigma^2 t^2}
+    \]
+    y en $(1)$ teniendo en cuenta:
+    \begin{itemize}
+    \item $ \sum_{j=1}^p t_j \mu_j = t^T \mu$,
+    \item $\sum_{j = 1}^p \alpha_j^2 = \alpha^T \alpha = t^T CC^T t = t^T \Sigma t$.
+    \end{itemize}
+
+  \end{proof}
+
+ 
+    \begin{nprop}
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$, donde $B\in \mathscr{M}_{q\times p}(\R)$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
+      \[
+        \vectY \sim N_q\left(B\mu+b,\, B\Sigma B^T\right),
+      \]
+      con $B\Sigma B^T > 0$.
+    \end{nprop}
+    \begin{proof}
+      Para $t\in \R^q$, se tiene:
+
+      \[
+      \begin{split}
+        \psi_{\vectY}(t) & = E\left[ e^{it^T(B\vectX + b)} \right] \\
+        & = e^{it^Tb} E\left[ i\left(B^Tt\right)^T\vectX \right] \\
+        & = e^{it^Tb} \psi_{\vectX}\left(B^Tt\right) \\
+        & = e^{it^Tb} \exp\left\{i\left(B^Tt\right)^T \mu- \frac{1}{2}\left(B^Tt\right)^T \Sigma B^Tt\right\} \\
+        & = \exp\left\{it^T(B\mu + b) - \frac{1}{2}t^T B\Sigma B^Tt\right\},
+      \end{split}
+      \]
+      y la correspondencia biunívoca entre funciones características y distribuciones concluye la prueba de la primera afirmación.
+      Además, se verifica que $B\Sigma B^T > 0$ por ser tanto $\Sigma > 0$ como $B$ de rango máximo.
+    \end{proof}
+
+    \begin{ncor}[Marginalización]
+      Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces para todo subvector $\vectX_r = (X_{r_1},\dots, X_{r_q})^T$ —donde $r = (r_1,\dots,r_q)^T$\, con $r_1,\dots,r_q \in \{1,\dots,p\}$ y $q \leq p$— se tiene que $\vectX_r \sim N_q(\mu_r, \Sigma_r)$, siendo
+      \begin{itemize}
+      \item $\mu_r$ el subvector de $\mu$ correspondiente a $r$,\, y
+        \item $\Sigma_r$ la submatriz de $\Sigma$ definida por las filas y columnas correspondientes a $r$.
+      \end{itemize}
+    \end{ncor}
+
+    \begin{ndef}
+      Se dice que $A_{p\times p}$ es diagonalizable si existe una matriz $Q_{p \times p}$ no singular tal que:
+      \[
+      Q^{-1}AQ = D,
+      \]
+      con $D$ una matriz diagonal.
+    \end{ndef}
+
+    \begin{nth}
+      Sea $A$ una matriz $p\times p$. Supongamos que $A$ es diagonalizable por otra matriz $Q_{p \times p}$ no singular, esto es
+      \[
+      Q^{-1}AQ = D,
+      \]
+      con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= \operatorname{diag}(d_1,\dots,d_p)$. Entonces:
+      \begin{enumerate}
+      \item $\operatorname{rango}(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0.
+      \item $|A| = \prod_{i = 1}^p d_i$
+      \item $\operatorname{tr}(A) = \sum_{i = 1}^p d_i$
+      \item El polinomio característico de $A$ es:
+        \[
+        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p).
+        \]
+      \item El espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$.
+      \item Las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$
+      \item Las columnas de $Q$ son autovectores linealmente dependientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $\lambda_i$
+      \item Se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
+    \end{enumerate}
+
+\end{nth}
+\begin{ncor}
+              $A$ debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica
+\end{ncor}
+
+Ahora, para matrices \textbf{definidas no negativas}:
+\begin{itemize}
+\item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
+\item $A$ es definida positiva $\iff $ los autovalores de $A$ son positivos
+\end{itemize}
+Y, si $A$ es \textbf{simétrica}:
+\begin{itemize}
+\item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
+\item $A$ es definida positiva $\iff$ los autovalores de $A$ son positivos
+  \item $A$ es semidefinida positiva $\iff$ los autovalores de $A$ son no negativos y al menos uno es nulo
+
+\end{itemize}
+
+Por último vamos a definir lo siguiente:
+\begin{ndef}
+
+  Sea una matriz $A_{p\times p}$ simétrica y definida no negativa. Entonces, existe una matriz $R_{p\times p}$ simétrica y definida no negativa tal que
+  \[
+  A = R^2 = RR
+  \]
+  Además, $R$ es única y puede expresarse como:
+  \[
+  R = Q \operatorname{diag}(\sqrt{d_1}, \dots, \sqrt{d_p}) Q^T
+  \]
+  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa
+\end{ndef}
+
+
+\subsubsection{Matrices de intercambio de filas/columnas}
+
+Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$
+
+%#TODO: Completar esto... dep.
+
+% #TODO: revisar el encaje de esto (clase 18-10-19)
+
+\begin{ejer}
+  Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. \begin{enumerate}
+    \item Estudiar el lugar geométrico de los puntos $\Delta(\boldsymbol x, \boldsymbol \mu) = k$ e interpretarlo en funcón de los autovalores de $\Sigma$.
+    \item Si además $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, estudiar el lugar geométrico de los puntos definidos por $f_{\boldsymbol X}(\boldsymbol x) = h$ —con $h \geq 0$— y dar una interpretación geométrica espectral.
+  \end{enumerate}
+\end{ejer}
+
+\begin{sol}
+  Comenzamos dando la solución del apartado (1). Para $k \geq 0$ consideramos \[
+      \Delta(\boldsymbol x, \boldsymbol \mu) = k \iff (\boldsymbol x - \boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2 \iff (\boldsymbol x - \boldsymbol \mu)^T(k^2\Sigma)^{-1}(\boldsymbol x - \boldsymbol \mu) = 1\,.
+      \] Visto así se tiene que los puntos $\boldsymbol x$ solución de esta ecuación definen el \textit{elipsoide} de centro $\boldsymbol \mu$ con ejes principales definidos por los autovectores de $(k^2\Sigma)^{-1}$, siendo la longitud al cuadrado de los semiejes igual a los inversos de los autovalores.
+
+      Descomponiendo $\Sigma = H\Lambda H^T$, podemos escribir \begin{align*}
+        (k^2\Sigma)^{-1} 
+        &= (kH\Lambda H^T k)^{-1} 
+        = k^{-1}(H\Lambda H^T)^{-1} 
+        = k^{-1}(H^T)^{-1}\Lambda^{-1}H^{-1}k^{-1} 
+        = (k^{-1}H)\Lambda^{-1}(k^{-1}H)^T\\
+        % #TODO: añadir anotación HH^T = 1
+        &= H(k^2\Lambda)^{-1}H^T\,.
+      \end{align*}
+
+      Los autovectores vienen definidos por la matriz $H$ —columnas—, dando las direcciones de los ejes del elipsoide. Los autovalores de $(k^2\Sigma)^{-1}$ vienen dados por los elementos diagonales de la matriz diagonal $(k^2\Lambda)^{-1}$, es decir, los inversos de la forma $(k^2\lambda_j)^{-1}$ de los autovalores de la matriz $k^2\Sigma$.
+
+      Las longitudes al cuadrado de los semiejes coinciden con los propios autovalores $k^2\lambda_j$, por lo que las longitudes de los semiejes son los valores $k\lambda_j^{\sfrac{1}{2}}$.
+
+      Procedemos ahora a ver la solución del apartado (2). La ecuación es, por definición, \[
+        f_{\vectX}(\boldsymbol X) 
+        = h \iff \frac{1}{(2\pi)^{\sfrac{p}{2}} |\Sigma|^{\sfrac{1}{2}}}\exp\left\{-\frac{1}{2}(\boldsymbol x - \boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x - \boldsymbol \mu)\right\} 
+        = h\,.\] 
+      Escribimos entonces \[
+        (\boldsymbol x - \boldsymbol \mu)^T \Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) 
+        = - 2\ln\left(2\pi^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}h\right)\,.
+          \]
+      El máximo de $f_{\vectX}(\boldsymbol x)$ se alcanza en $\boldsymbol x = \boldsymbol \mu$, que llamaremos \[
+        M 
+        \vcentcolon= f_{\vectX}(\boldsymbol \mu) 
+        = \frac{1}{(2\pi)^{\sfrac{p}{2}} |\Sigma|^{\sfrac{1}{2}}}\,.
+      \] Así, la ecuación tendrá solución si $0 < h \leq M$. En ese caso, \[(2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h \leq 1\,,\] luego \[\log\left((2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h\right) \leq 0\,.\]
+\end{sol}
+
+\subsection{Caracterización de la DNM $(\Sigma > 0)$ en términos de la normalidad de las combinaciones lineales de las componentes}
+
+Dado un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$, decimos que tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
+\[
+\alpha^T \vectX
+\]
+con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada.
+
+Hasta ahora hemos descrito tenemos las siguientes formulaciones equivalentes de DNM:
+\begin{itemize}
+\item $[D]$: Definición en términos de la densidad $f_{\vectX}$,
+\item $[C-I]$: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$,
+\item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$, y
+\item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
+\end{itemize}
+
+
+\begin{nota}[Descomposición espectral de $\Sigma \geq 0$ simétrica]
+Como $\Sigma$ es simétrica, podemos escribirla como
+\[
+\Sigma = H \Lambda H^T,
+\]
+con $H_{p\times p}$ ortogonal, y $\Lambda_{p \times p}$ diagonal. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$.\\
+
+Supongamos que las matrices se eligen de modo que:
+\[
+\Lambda = \left(\begin{array}{@{}c|c@{}}
+  D & 0 \\\hline
+  0 & 0
+  \end{array}\right)
+\]
+con $D_{r\times r}$ no singular, escribiendo entonces:
+\[
+H = \begin{pmatrix} H_1 & H_2 \end{pmatrix}, \quad \quad H_{1_{p \times r}}, H_{2_{p\times (p-r)}}
+\]
+Con esto, tenemos:
+\[
+\Sigma = \begin{pmatrix} H_1 & H_2 \end{pmatrix}\left(\begin{array}{@{}c|c@{}}
+  D & 0 \\\hline
+  0 & 0
+  \end{array}\right)\begin{pmatrix} H_1^T  \\ H_2^T \end{pmatrix} = H_1 D H_1^T
+\]
+
+\end{nota}
+
+Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente manera:
+\begin{nprop}
+  Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
+  \[
+\Phi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = e^{it^T \mu - \frac{1}{2}t^T \Sigma t} \qquad \text{para todo } t \in \mathbb R^p.
+  \]
+
+\end{nprop}
+
+\begin{nprop}[Transformaciones lineales de rango no necesariamente máximo]
+  Dado un vector aleatorio $\vectX  = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definido como $\vectY = B\vectX + b$, con $B_{q\times p}$ matriz de rango $r \leq \min \{q,p\}$, y $b_{q \times 1}$ un vector.
+
+  Entonces, se tiene que
+  \[
+  \vectY \sim N_q(B\mu+b, B\Sigma B^T).
+  \]
+
+\end{nprop}
+\begin{nota}
+  La única novedad que nos aporta esta nueva proposición respecto a lo que ya teníamos, es que ahora $B\Sigma B^T \geq 0$ (antes teníamos que tenía que se estrictamente mayor).\\
+
+  La demostración es análoga a la del caso $\Sigma > 0$
+\end{nota}
+
+
+Recordemos la $[C-II]$: Sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma > 0$, sii
+\[
+\Psi_{\vectX}(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} \quad \forall t\in \mathbb R^p
+\]
+Supongamos $\vectX$ un vector aleatorio. Entonces, podemos utilizar una de las caracterizaciones anteriores y escribir:
+\[
+\Psi_{\vectX}(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} = e^{i^T HH^T \mu - \frac{1}{2}t^T H_1 D H_1^T t} = e^{it^T H_1 H_1^T\mu - \frac{1}{2}t^T H_1DH_1^Tt}* e^{itH_2H_2^T \mu}
+\]
+La forma de la densidad obtenida, sugiere considerar el siguiente cambio de variable: $\vectX = H\vectY$:
+\[
+Y = \begin{pmatrix} H_1^T \\ H_2^T \end{pmatrix} \vectX=\begin{pmatrix} H_1^T \vectX \\ H_2^T\vectX \end{pmatrix} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
+\]
+
+Con esto, se tiene:
+\begin{itemize}
+\item $\mu_{\vectY} = H^T \mu = \begin{pmatrix} H_1^T \mu \\ H_2^T\mu \end{pmatrix} = \begin{pmatrix} \mu_{\vectY_1} \\ \mu_{\vectY_2} \end{pmatrix}$
+  \item $\Sigma_{\vectY} =  H^T \Sigma H = H^T H \Delta H^T H = \Delta = \begin{pmatrix} D & 0 \\ 0 & 0 \end{pmatrix} \implies \begin{cases} \Sigma_{\vectY_1} = D \\ \Sigma_{\vectY_2} = 0\end{cases}$,
+\end{itemize}
+Y, por tanto:
+\[
+\begin{cases} \vectY_1 \sim N_r(H_1\mu,D) \quad D> 0 \\ \vectY_2 \equiv H_2\mu \quad p.c.s \end{cases}
+\]
+Vamos a dar una \textbf{intrepretación} de $\Psi_{\vectX} (t)$:
+\[
+\Psi_{\vectX}(t) = E[e^{it^T\vectX}] = E[e^{it^TH\vectY}] = E[e^{i(H^Tt)^T \vectY}] = \Psi_{\vectY}(H^T t)
+\]
+%#TODO: revisar la siguiente letra: \nu
+Denotamos
+\[
+\nu = H^T t = \begin{pmatrix} H_1^T \\ H_2^T\end{pmatrix}t = \begin{pmatrix} H_1^Tt \\ H_2^Tt\end{pmatrix} = \begin{pmatrix} \nu_1 \\ \nu_2\end{pmatrix}
+\]
+Con esto:
+\[
+\Psi_{\vectY}(\nu) = \Psi_{\vectX}(t) = e^{i\nu_1\mu_{\vectY_1} - \frac{1}{2} \nu_1^T \Sigma_{\vectY_1}\nu_1}* e^{i\nu_2^T \mu_{\vectY_2}}
+\]
+y en la última igualdad, el primer término es $\Psi_{\vectY_1}(\nu_1)$ y la segunda es $\Psi_{\vectY_2}(\nu_2)$, con $\vectY_1,\vectY_2$ independientes.\\
+
+Aplicamos a $\vectY_1$ la $[C-I]$: tenemos que $\vectY_1$ puede representarse en distribución como
+\[
+Y_1 \equiv^d D^{\frac{1}{2}}Z + H_1^T \mu \quad \quad  Z \sim N_r(0,I) 
+\]
+Para $\vectY_2 \equiv^{p.c.s.} H_2^T \mu \equiv 0*Z + H_2^T \mu$, tenemos, multiplicando por $H$:
+\[
+\vectY = \begin{pmatrix} \vectY_1 \\ \vectY_2 \end{pmatrix} \equiv \begin{pmatrix} D^{\frac{1}{2}} Z + H_1\mu \\ 0Z+ H_2^T \mu\end{pmatrix} = \begin{pmatrix} D^{\frac{1}{2}} \\ 0 \end{pmatrix}Z + H^T \mu
+\]
+Vemos que:
+\[
+\vectX = H\vectY = H\begin{pmatrix} D^{\frac{1}{2}} \\ 0\end{pmatrix} Z + HH^T\mu = H_1D^{\frac{1}{2}}Z + \mu
+\]
+
+Denotando $A= H_1D^{\frac{1}{2}}$ se tiene finalmente:
+\[
+X \equiv^{d} AZ + \mu
+\]
+con $A$ una matriz $p\times r$, con $r\leq p$ de rango $r$ y $Z\sim N_r(0,I)$.\\
+
+Recíprocamente, supongamos que se cumple lo anterior. Tenemos que, por el teorema de inversión de P. Lévy,
+\[
+\Psi_{\vectX} = \Psi_{AZ + \mu}  = E[e^{it^T(AZ +  \mu)}] = E[e^{it^T(AZ)}]e^{it^T\mu} = E[e^{i(A^t t)^T Z}]e^{it^T \mu} = \Psi_Z(A^Tt)*e^{it^T \mu} = (*)
+\]
+como $\Psi_Z(t) = e^{it^T 0 - \frac{1}{2}t^tIt} = t^{-\frac{1}{2}t^t t}$, entonces:
+\[
+(*) = e^{-\frac{1}{2}(A^T t)^T(A^T t)} e^{it^T \mu} = e^{-\frac{1}{2}t^T A A^T t} e^{it^T \mu} = (**)
+\]
+y, como tenemos:
+\begin{itemize}
+  \item $\mu_{\vectX} = E[\vectX]=A*0 +\mu = \mu$
+  \item $\Sigma_{\vectX} = Cov(\vectX) = AIA^T = AA^T$
+\end{itemize}
+Nos queda:
+\[
+(**) = e^{it\mu - \frac{1}{2}t^T(AA^T)t} \implies \vectX \sim N_p(\mu, AA^T) \quad AA^T \geq 0
+\]
+
+Con todo este procedimiento, podemos enunciar la siguiente caracterización, que es una extensión de $[C-I]$.
+\begin{nprop}[$\bar{[C-I]}$]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM de vector de medias $\mu$ y matriz de covarianzas $\Sigma$ (con $\Sigma \geq 0$) , $N_P(\mu,\Sigma)$ si y solo si se puede representar:
+  \[
+\vectX \equiv^{d} AZ + \mu \quad con \quad \begin{cases} A_{p\times r}, \ \ rango(A) = r, \ \ AA^T = \Sigma \\ Z\sim N_r(0,I)\end{cases}
+  \]
+\end{nprop}
+Enunciamos también una nueva versión de $[C-III]$:
+\begin{nprop}[$\bar{[C-III]}$]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM (con $\Sigma \geq 0$) si y solo si toda combinación lineal de las componentes $X_1,\dots,X_p$ de la forama:
+  \[
+\alpha^T X \quad \quad \alpha^T \in \mathbb R^p
+\]
+tiene distribución normal (univariante, posiblemente degenerada)
+\end{nprop}
+\begin{proof}
+Es análoga al caso anterior
+\end{proof}
+
+\begin{ndef}[$\bar{[D]}$]
+  En el subespacio (afín) generado por los autovalores (y correspondientes autovectores) no nulos, se tiene que se puede formular la función de densidad normal multivariante.
+
+\end{ndef}
+
+\begin{nprop}[Normalidad de C.L. de vectores con DNM independientes]
+  Sean $\vectX_k$ con $k = 1,\dots,m$ v.a. $p-$dimensionales independientes con distribución $N_p(\mu_k, \Sigma_k)$ respectivamente. Entonces, para cualquier conjunto de matrices constantes $A_k$ con $k = 1,\dots, m$ de dimensión $q\times p$, se ferifica que:
+  \[
+Y:= \sum_{k=1}^{m} A_k X_k \sim N_q(\sum_{k=1}^m(A_k \mu_k), \sum_{k=1}^m(A_k \Sigma_k A_k^T))
+  \]
+\end{nprop}
+%#TODO: Demostración, es seguir de la definición
+
+\begin{nth}[Cramer]
+  Sean $\vectX_1$ y $\vectX_2$ vectores aleatorios y $p$-dimensionales independientes, con $\vectX_1 \sim N_p(\mu_1, \Sigma_1)$ y $\vectX_2 \sim N_p(\mu_2, \Sigma_2)$. Entonces, se tiene que $\vectX_1 + \vectX_2 \sim N_p(\mu_1 + \mu_2, \Sigma_1 + \Sigma_2)$.
+\end{nth}
+
+La conjetura de Paul Lévy preguntaba si el recíproco de esta afirmación es cierta. Cramer dio una solución para $p=1$ en el año 1936, de la que es sencillo inducir la solución para cualquier $p$. 
+
+\begin{nth}[Recíproco del teorema de Cramer]
+  Sean $\vectX_1$ y $\vectX_2$ vectores aleatorios y $p$-dimensionales independientes, tales que $\vectX_1 + \vectX_2$ tiene DNM. Entonces, $\vectX_1$ y $\vectX_2$ también tienen DNM.
+\end{nth}
+
+\begin{ejer}
+  Suponiendo que este último resultado es cierto para $p=1$, probar que es cierto para cualquier $p$.
+\end{ejer}
+
+% ¿Es esto una sección nueva?
+\subsection{Distribuciones esféricas y elípticas}
+
+\subsubsection{Caracterización en términos de la densidad esférica estándar (C-IV)}
+
+Vamos a comenzar razonando cómo podemos trabajar con coordenadas polares. Sea $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, con $\Sigma > 0$. Para cada $k > 0$ la ecuación \[(\boldsymbol x - \boldsymbol \mu)^T \Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2\] define un elipsoide en $\mathbb R^p$ sobre el que la densidad $f_{\vectX}$ es constante. 
+
+Sea $\Sigma = CC^T$, con $C_{p\times p}$ no singular. Definimos $\boldsymbol Z = C^{-1}(\boldsymbol X - \boldsymbol \mu)$, con $\boldsymbol Z \sim N_p(\boldsymbol 0, \mathcal I_p)$, a partir del cual vamos a definir el vector aleatorio —excepto para el caso $\boldsymbol Z = 0$— \[\boldsymbol U = \frac{\boldsymbol Z}{\Vert \boldsymbol Z \Vert} = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}\,,\] que tiene norma 1. Observamos que $\boldsymbol U$ se distribuye sobre la esfera unidad en $\mathbb R^p$.
+
+Definimos a continuación $H \boldsymbol U$, con $H$ matriz ortogonal. Entonces, \[
+  H \boldsymbol U = H \frac{\boldsymbol Z}{\left(\boldsymbol Z^T \boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\left(\boldsymbol Z^T H^T H\boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\Big((H\boldsymbol Z)^T (H\boldsymbol Z)\Big)^{1/2}}\,.
+\] Observamos que $H \boldsymbol Z \sim N_p(H \boldsymbol 0,\, H \mathcal I_pH^T) = N_p(\boldsymbol 0,\, \mathcal I_p)$. Por tanto tenemos que $\boldsymbol U$ y $H \boldsymbol U$ se distribuyen de igual forma. Ahora, como la distribución de $\boldsymbol U$ no se ve afectada bajo ninguna isometría —multiplicando por una matriz ortogonal—, concluimos que $\boldsymbol U$ se distribuye uniformemente sobre la esfera unidad en $\mathbb R^p$, lo que llamamos \textit{densidad esférica estándar}. Para recuperar la información de $\boldsymbol Z$ a partir de $\boldsymbol U$ necesitamos conocer el «radio» $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2} = \Vert Z \Vert$.
+
+\begin{nprop}
+  El vector aleatorio $\boldsymbol U = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}$ y la variable aleatoria $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2}$ son independientes.
+\end{nprop}
+
+% 23-10-19
+
+\begin{nprop}
+  Un vector aleatorio $\vectX = (X_1, \dots, X_n)$ tiene DNM $N_p(\boldsymbol \mu, \Sigma)$ con $\Sigma > 0$ si, y solo si, $\vectX$ es un vector aleatorio correspondiente al siguiente «experimento»:
+
+  \begin{enumerate}
+    \item Obtener el valor de una variable aleatoria $R^2 \vcentcolon= V \sim \chi_p^2$. Se identifica $V = v$.
+    \item Elegir un punto aleatoriamente —es decir, según la distribución uniforme— en la esfera $p$-dimensional de radio $r = \sqrt{v}$. \[\vectZ = (Z_1, \dots, Z_p)^T = (z_1, \dots, z_p)^T = \boldsymbol z\,.\]
+    \item Dado el vector de medias $\boldsymbol \mu$ y la matriz de covarianzas $\Sigma > 0$, elegir $C$ (no singular) tal que $\Sigma = CC^T$ y obtener el valor de $\vectX$ mediante la expresión $X\vcentcolon= C\vectZ + \boldsymbol \mu$. De nuevo se identifica $\vectX = \boldsymbol x = C\boldsymbol z + \boldsymbol \mu$.
+  \end{enumerate}
+\end{nprop}
+
+\begin{proof}
+  Veamos la justificación de la implicación ($\implies$). Por la caracterización (C-I) sabemos que podemos escribir $\vectX = C\vectZ + \boldsymbol \mu$, con $\vectZ \sim N_p(\boldsymbol 0, I_p)$.
+
+  Escribimos, para $\vectZ \neq 0$, \[\vectZ = \left(\vectZ^T\vectZ\right)^{\sfrac{1}{2}} \cdot \frac{\vectZ}{\left(\vectZ^T\vectZ\right)^{\sfrac{1}{2}}} = R \cdot \boldsymbol U\,,\] siendo $R$ y $\boldsymbol U$ independientes.
+
+  Ahora tenemos que: \begin{itemize}
+    \item \[R^2 = \vectZ^T\vectZ = Z_1^2 + \cdots + Z_p^2 \sim \chi_p^2\]al ser $Z_1, \dots, Z_p$ independientes con $Z_i \sim N_p(0, 1)$ para $i = 1, \dots, p$,
+    \item $\boldsymbol U$ tiene distribución uniforme sobre la esfera unidad.
+  \end{itemize}
+
+  A partir de la expresión $\vectX = C \cdot R \cdot \boldsymbol U + \boldsymbol \mu$ se tiene que para generar los valores de $\vectX$ se puede seguir el procedimiento del enunciado.
+\end{proof}
+
+\subsection{Distribuciones esféricas y elípticas}
+
+\subsubsection{Distribuciones esféricas}
+
+\begin{ndef}
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene una distribución \textit{esférica} si para toda matriz ortogonal $H$ los vectores aleatorios $\vectX$ y $H\vectX$ tienen la misma distribución.
+\end{ndef}
+
+Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
+
+\begin{nprop}[Caracterización en términos de la densidad]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si $f_{\vectX}$ puede expresarse como $g(\boldsymbol x^T \boldsymbol x)$ para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\begin{nprop}[Caracterización en términos de la función característica]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma $\xi(\boldsymbol t^T \boldsymbol t)$ para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\subsubsection{Distribuciones elípticas}
+
+\begin{ndef}[Distribución elíptica]
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
+\end{ndef}
+
+\begin{nprop}[Caracterización en función de la densidad]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución elítica si y solo si $f_{\vectX}$ puede expresarse como \[|V|^{-\sfrac{1}{2}}g\left((\boldsymbol x - \boldsymbol \mu)V^{-1}(\boldsymbol x - \boldsymbol \mu)\right)\] para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+\begin{nprop}[Caracterización en términos de la función característica]
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma \[e^{i \boldsymbol t^T \boldsymbol \mu}\xi(\boldsymbol t^T V \boldsymbol t)\] para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+\end{nprop}
+
+% TODO: Falta observaciones sobre la distribución elíptica
+% TODO: Falta lo siguiente a esto
+
+\begin{nprop}
+  Sea $X \sim E_p(\boldsymbol \mu, V)$, con $V$ diagonal. Si $X_1, \dots, X_p$ son uniformemente independientes entonces $X$ tiene distribución normal multivariante.
+\end{nprop}
+
+\begin{nprop}
+  Dado un vector aleatorio $\vectZ$ con distribución esférica —y $P[\vectZ = 0] = 0$— entonces $U = \frac{\vectZ}{\Vert\vectZ\vert}$ y $R = \Vert\vectZ\Vert$ son independientes.
+\end{nprop}
+
+\begin{proof}
+  \begin{align*}
+    H\boldsymbol U = \frac{H\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}
+      = \frac{H\vectZ}{(\vectZ^TH^TH\vectZ)^{\sfrac{1}{2}}}
+      = \frac{H\vectZ}{((H\vectZ)^T(H\vectZ))^{\sfrac{1}{2}}}
+      = \frac{\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}\\
+      = \boldsymbol U,
+  \end{align*} luego $\boldsymbol U$ se distribuye uniformemente en la esfera unidad en $\mathbb R^p$.
+
+  A continuación probamos la independencia de $\boldsymbol U$ y $R$. Para cada $C \in \mathcal B(\mathbb R^+)$ tal que $P[R \in C] \neq 0$ queremos probar que $\mu = P[\boldsymbol U \in B | R \in C] = P[\boldsymbol U \in B]$ para cada $B \in \mathcal B(S_p)$.
+
+  Por definición, \begin{align*}
+    P[\boldsymbol U \in B \mid R \in C] = \frac{P[(\boldsymbol U \in B) \land (R \in C)]}{P[R \in C]} = \frac{P[\vectZ \in B \cdot C]}{P[R \in C]},
+  \end{align*} con $B \cdot C = \left\{\boldsymbol z \in \mathbb R^p - \{\boldsymbol 0\} : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\}$. Luego, \begin{align*}
+    \frac{P[\vectZ \in B \cdot C]}{P[R \in C]} = \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]}
+  \end{align*} para cualquier matriz $H$ ortogonal por ser la distribución de $\vectZ$ esférica. Vemos que $H^T\vectZ \in B \cdot C$ si y solo si $\vectZ \in (H(B)) \cdot C$. En efecto, $H^T\vectZ \in B \cdot C$ si y solo si $H(H^T\vectZ) \in H(B \cdot C)$, siendo \begin{align*}
+    H(B\cdot C) &= \left\{H \boldsymbol z : \boldsymbol z \in B \cdot C\right\} = \left\{H \boldsymbol z : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\} \\
+      &= \left\{H \boldsymbol z : \frac{H \boldsymbol z}{\Vert H \boldsymbol z\Vert} \in HB, \Vert H\boldsymbol z\Vert \in C\right\}\\
+      \shortintertext{y llamando $\boldsymbol w = H\boldsymbol z$,}
+      &= \left\{\boldsymbol w : \frac{\boldsymbol w}{\Vert \boldsymbol w\Vert} \in HB, \Vert \boldsymbol w\Vert \in C\right\}\\
+      &= H(B) \cdot C,
+  \end{align*} probando entonces esta última afirmación.
+
+  Tenemos entonces \begin{align*}
+    \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]} &= \frac{P[\vectZ \in (H(B)) \cdot C]}{P[R \in C]}
+       = \frac{P[(\boldsymbol U \in H(B)) \land (R \in C)]}{P[R \in C]} \\
+      &= P[\boldsymbol U \in H(B) \mid R \in C] \\
+      &= \mu(H(B)).
+  \end{align*}
+\end{proof}
+
+\subsection{Formas cuadráticas basadas en vectores aleatorios normales}
+
+Los resultados presentados en esta subsección nos serán de utilidad cuando nos adentremos en la inferencia en la sección siguiente.
+
+El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \dots, X_p)^T$ un vector aleatorio y sea $A$ una matriz constante $p \times p$. Consideremos la forma cuadrática $\vectX^T A \vectX$ —que es un vector aleatorio—. En particular, si $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$ bajo ciertas condiciones sobre $A$ se tendrá que la distribución de $\vectX^TA\vectX$ es una distribución $\chi^2$ no centrada.

@@ -1,6 +1,23 @@
 \ProvidesPackage{config}
 
 % ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\usepackage{xcolor}     % Permite definir y utilizar colores
+
+\definecolor{50}{HTML}{EFEBE9}
+\definecolor{100}{HTML}{D7CCC8}
+\definecolor{200}{HTML}{BCAAA4}
+\definecolor{300}{HTML}{A1887F}
+\definecolor{400}{HTML}{8D6E63}
+\definecolor{500}{HTML}{795548}
+\definecolor{600}{HTML}{6D4C41}
+\definecolor{700}{HTML}{5D4037}
+\definecolor{800}{HTML}{4E342E}
+\definecolor{900}{HTML}{3E2723}
+
+% ---------------------------------------------------------------------------
 %  PAQUETES
 % ---------------------------------------------------------------------------
 
@@ -13,10 +30,24 @@
 \usepackage{upgreek}
 \usepackage{amsthm}     % Teoremas
 \usepackage{mathrsfs}   % Fuente para ciertas letras utilizadas en matemáticas
+\usepackage{mathtools}
+\usepackage{xfrac}
+
+\usepackage{witharrows}
+\WithArrowsOptions{displaystyle}
 
 % LISTAS
 \usepackage{enumitem}       % Mejores listas
-\setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
+
+% Enlaces y referencias
+\usepackage[bookmarks=true,
+            bookmarksnumbered=false, % true means bookmarks in
+                                     % left window are numbered
+            bookmarksopen=false,     % true means only level 1
+                                     % are displayed.
+            colorlinks=true,
+            linkcolor=700,
+            urlcolor=700]{hyperref}
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
@@ -28,29 +59,14 @@
 % Títulos de figuras
 \usepackage{capt-of}
 
+\usepackage{lipsum}
+
 % ---------------------------------------------------------------------------
 %  RECURSOS
 % ---------------------------------------------------------------------------
 
 % Ruta donde buscar gráficos
-\graphicspath{{../_assets/}, {_assets/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
-
-% ---------------------------------------------------------------------------
-%  COLORES
-% ---------------------------------------------------------------------------
-
-\usepackage{xcolor}
-
-\definecolor{50}{HTML}{ECEFF1}
-\definecolor{100}{HTML}{CFD8DC}
-\definecolor{200}{HTML}{B0BEC5}
-\definecolor{300}{HTML}{90A4AE}
-\definecolor{400}{HTML}{78909C}
-\definecolor{500}{HTML}{607D8B}
-\definecolor{600}{HTML}{546E7A}
-\definecolor{700}{HTML}{455A64}
-\definecolor{800}{HTML}{37474F}
-\definecolor{900}{HTML}{263238}
+\graphicspath{{../_assets/}, {_assets/}, {./img/}, {EMV/img/}, {EMV/}}
 
 % ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
@@ -67,12 +83,12 @@
 {\bfseries\sffamily}                      % Fuente para la cabecera
 {.}                                 % Puntuación tras la cabecera
 {.5em}                              % Espacio tras la cabecera
-{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
+{{\thmname{#1}\thmnumber{ #2}}\thmnote{ (#3)}}  % Especificación de la cabecera
 
 % Nuevo estilo para notas
 \newtheoremstyle{remark-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
 {\itshape \sffamily}
@@ -82,9 +98,9 @@
 
 % Nuevo estilo para teoremas y proposiciones
 \newtheoremstyle{theorem-style}
-{}
-{}
-{}
+{12pt}
+{12pt}
+{\itshape}
 {}
 {\bfseries \sffamily}
 {.}
@@ -93,8 +109,8 @@
 
 % Nuevo estilo para ejemplos
 \newtheoremstyle{example-style}
-{10pt}
-{10pt}
+{12pt}
+{12pt}
 {}
 {}
 {\bfseries \sffamily}
@@ -124,6 +140,10 @@
 % Notas
 \theoremstyle{remark-style}
 \newtheorem*{nota}{Nota}
+
+% Notación
+\theoremstyle{remark-style}
+\newtheorem*{notacion}{Notación}
 
 % Ejemplos
 \theoremstyle{example-style}
@@ -155,12 +175,37 @@
 % Línea horizontal.
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 
+% Restricción de una aplicación.
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
 % Letras de conjuntos
 \newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
+
+% Letras en negrita, usadas para denotar vectores
+\newcommand{\vectx}{\boldsymbol{x}}
+\newcommand{\vectX}{\boldsymbol{X}}
+\newcommand{\vectt}{\boldsymbol{t}}
+\newcommand{\vectY}{\boldsymbol{Y}}
+\newcommand{\vectZ}{\boldsymbol{Z}}
+
+% Traza de una matriz
+\newcommand{\traza}{\operatorname{tr}}
+
+% Matrix diagonal a partir de vector
+\newcommand{\diag}{\operatorname{diag}}
 
 % Sucesiones
 \newcommand{\xn}{\{x_n\}}
 \newcommand{\fn}{\{f_n\}}
+
+% Máximo
+\let\max\relax
+\DeclareMathOperator{\max}{\text{máx}}
 
 % Letra griega "chi" en línea con el texto
 \DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
@@ -176,60 +221,16 @@
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
 {\begin{enumerate}
-    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+    \renewcommand\labelenumi{\emph{(\roman{enumi})}}}
   {\end{enumerate}}
-
-% División por casos con llave a la derecha.
-\newenvironment{rcases}
-{\left.\begin{aligned}}
-    {\end{aligned}\right\rbrace}
-
-% ---------------------------------------------------------------------------
-% LISTINGS
-% ---------------------------------------------------------------------------
-
-\usepackage{listings}
-
-\lstset{
-    inputencoding = utf8,  % Input encoding
-    extendedchars = true,  % Extended ASCII
-    mathescape    = true   % Mathematical expressions between
-    captionpos    = b,     % Caption position
-    literate      =        % Support additional characters
-      {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
-      {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
-      {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
-      {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
-      {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
-      {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
-      {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
-      {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
-      {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
-      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {å}{{\r a}}1 {Å}{{\r A}}1
-      {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
-      % ¿ and ¡ are not correctly displayed if inconsolata font is used
-      % together with the lstlisting environment. Consider typing code in
-      % external files and using \lstinputlisting to display them instead.
-  }
-
-% Ajustes para que funcionen bien las tildes de los comentarios
-
-\lstset{
-  inputencoding=utf8
-}
 
 % ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
-
 % Título del documento.
-\newcommand{\asignatura}{Asignatura de\\nombre largo\\}
-
+\newcommand{\asignatura}{Estadística Multivariante}
 % Autor del documento.
 \newcommand{\autor}{LibreIM}
-
-\newcommand{\grado}{Doble Grado de Informática y Matemáticas}
-
+\newcommand{\grado}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\universidad}{Universidad de Granada}
-
 \newcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}

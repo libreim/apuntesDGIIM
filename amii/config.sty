@@ -18,6 +18,9 @@
 \usepackage{enumitem}       % Mejores listas
 \setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
 
+% Enlaces y referencias
+\usepackage{hyperref}
+
 % Dibujos Tikz
 \usepackage{pgf,tikz}
 \usepackage{tkz-euclide}
@@ -33,24 +36,18 @@
 % ---------------------------------------------------------------------------
 
 % Ruta donde buscar gráficos
-\graphicspath{{../_assets/}, {_assets/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
+\graphicspath{{../_assets/}, {_assets/}, {./img/}, {amii/img/}, {amii/}}
 
 % ---------------------------------------------------------------------------
 %  COLORES
 % ---------------------------------------------------------------------------
 
-\usepackage{xcolor}
+\usepackage{xcolor}     % Permite definir y utilizar colores
 
-\definecolor{50}{HTML}{ECEFF1}
-\definecolor{100}{HTML}{CFD8DC}
-\definecolor{200}{HTML}{B0BEC5}
-\definecolor{300}{HTML}{90A4AE}
-\definecolor{400}{HTML}{78909C}
-\definecolor{500}{HTML}{607D8B}
-\definecolor{600}{HTML}{546E7A}
-\definecolor{700}{HTML}{455A64}
-\definecolor{800}{HTML}{37474F}
-\definecolor{900}{HTML}{263238}
+\definecolor{50}{HTML}{E8F5E9}
+\definecolor{300}{HTML}{81C784}
+\definecolor{500}{HTML}{4CAF50}
+\definecolor{700}{HTML}{388E3C}
 
 % ---------------------------------------------------------------------------
 % ENTORNOS PERSONALIZADOS
@@ -162,6 +159,11 @@
 \newcommand{\xn}{\{x_n\}}
 \newcommand{\fn}{\{f_n\}}
 
+% Máximo
+\let\max\relax
+\DeclareMathOperator{\max}{\text{máx}}
+
+
 % Letra griega "chi" en línea con el texto
 \DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -185,45 +187,11 @@
     {\end{aligned}\right\rbrace}
 
 % ---------------------------------------------------------------------------
-% LISTINGS
-% ---------------------------------------------------------------------------
-
-\usepackage{listings}
-
-\lstset{
-    inputencoding = utf8,  % Input encoding
-    extendedchars = true,  % Extended ASCII
-    mathescape    = true   % Mathematical expressions between
-    captionpos    = b,     % Caption position
-    literate      =        % Support additional characters
-      {á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1
-      {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1
-      {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1
-      {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1
-      {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1
-      {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1
-      {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1
-      {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1
-      {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
-      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {å}{{\r a}}1 {Å}{{\r A}}1
-      {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
-      % ¿ and ¡ are not correctly displayed if inconsolata font is used
-      % together with the lstlisting environment. Consider typing code in
-      % external files and using \lstinputlisting to display them instead.
-  }
-
-% Ajustes para que funcionen bien las tildes de los comentarios
-
-\lstset{
-  inputencoding=utf8
-}
-
-% ---------------------------------------------------------------------------
 %  PORTADA
 % ---------------------------------------------------------------------------
 
 % Título del documento.
-\newcommand{\asignatura}{Asignatura de\\nombre largo\\}
+\newcommand{\asignatura}{Análisis\\Matemático II}
 
 % Autor del documento.
 \newcommand{\autor}{LibreIM}
