@@ -386,8 +386,8 @@ Clasificación:
 
 Utilización:
 
-- Registros y físicos: nivel externo y conceptual.
-- Físimos: nivel interno.
+- Basados en registros y objetos: nivel externo y conceptual.
+- Físicos: nivel interno.
 
 ## Modelos de datos basados en registros
 
