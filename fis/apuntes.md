@@ -340,7 +340,7 @@ Actividades durante el análisis:
 - Negociación de los requisitos.
 
 #### Análisis orientado a objetos
-El análisis orientado a objetos examina y representa los requisitos desde la perspectiva de los objetos que se encuentran en el dominio del problema. Los métodos de anaĺsis orientado a objetos se centran en obtener dos tipos de modelos:
+El análisis orientado a objetos examina y representa los requisitos desde la perspectiva de los objetos que se encuentran en el dominio del problema. Los métodos de análisis orientado a objetos se centran en obtener dos tipos de modelos:
 - Estático o de estructura
 - Dinámico o de comportamiento
 ¿Por qué usar análisis orientado a objetos?
@@ -631,7 +631,7 @@ Modelar la arquitectura software:
 - Realizar el diagrama de despliegue.
 Diseñar la arquitectura en un diagrama de paquetes. Los doagramas de paquetes permite modelar una primera estructuración del sistema en base a uno o más paquetes.
 - Cada paquete agrupa a un conjunto de clases relacionadas semánticamente.
-- Los paquetes peuden guiar en la identificaićon de los subsistemas y/o componentes reutilizables.
+- Los paquetes pueden guiar en la identificación de los subsistemas y/o componentes reutilizables.
 Al identificar los paquetes hay que tener en cuenta lo siguientes aspectos:
 - Identificar paquetes cohesivos y con poca interacción con otros paquetes de acuerdo con la arquitectura planteada.
 - Diseñar paquetes que se puedan reutlilzar en otros proyectos.
