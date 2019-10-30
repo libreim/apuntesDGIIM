@@ -1185,3 +1185,190 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 Los resultados presentados en esta subsección nos serán de utilidad cuando nos adentremos en la inferencia en la sección siguiente.
 
 El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \dots, X_p)^T$ un vector aleatorio y sea $A$ una matriz constante $p \times p$. Consideremos la forma cuadrática $\vectX^T A \vectX$ —que es un vector aleatorio—. En particular, si $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$ bajo ciertas condiciones sobre $A$ se tendrá que la distribución de $\vectX^TA\vectX$ es una distribución $\chi^2$ no centrada.
+
+
+\subsection{Distribuciones $\chi^2$ y $F$ no centradas}
+\subsubsection{Distribución $\chi^2$ no centrada}
+
+\begin{ndef}[Distribución $\chi^2$ centrada]
+  La distribución $\chi^2$ centrada se define como la distribución de la suma de cuadrados de v.a. independientes con distribución normal estándar $N(0,1)$:
+  \begin{align}
+    Z = (Z_1, \dots, Z_n)^T \sim N_n(0,I_n)
+    \mapsto Y = \sum_{i = 1}^n Z_i^2 \sim \chi^2_n, \quad ||Z||^2 = Z Z
+\end{align}
+
+  tenemos entonces que su función de densidad es:
+  \[
+f_\vectY(y) = \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} y^{\frac{n}{2} - 2} e^{-\frac{y}{2}}, \quad y > 0
+\]
+y su función de distribución es:
+\[
+F_\vectY(y) = \frac{\gamma(\frac{n}{2}, \frac{y}{2}}{\Gamma(\frac{n}{2})}, \quad y > 0
+\]
+Donde, la función gamma está definida:
+\[
+\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} dt, \quad \forall z \in \mathbb C, Re(z)>0
+\]
+y las funciones gamma incompletas son:
+\begin{itemize}
+\item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} dt
+  \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} dt$ con $v>0$
+\end{itemize} 
+\end{ndef}
+
+\begin{ndef}[Distribución $\chi^2 no centrada]
+  Sea $\vectX = (X_1,\dots,X_n)^T\sim N_n(\mu,I_n)$. Entonces, la v.a. $\vectY = \vectX \vectX^T$ tiene la función de densidad:
+  \[
+f_\vectY(y) = e^{\frac{\delta}{2}} {}_0 F_1(\frac{1}{2}n; \frac{1}{4}\delta y) \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} e^{-\frac{y}{2}} y^{\frac{n}{2} - 1}, \quad y > 0
+\]
+siendo $\delta = \mu^T \mu$. Se dice que $\vectY$ tiene distribución $\chi^2$ no centrada con $n$ grados de libertad y parámetro de no centralidad $\delta$, denotándose $\chi_n^2(\delta)$
+\end{ndef}
+
+\begin{nota}
+${}_0F_1$ es la función hipergeométrica generalizada de órdenes 0 y 1, también llamada función hipergeométrica confluente límite.
+\end{nota}
+
+\begin{nprop}[Momentos de primer y segundo orden]
+  \begin{itemize}
+  \item $E[\vectY] = n+\delta
+  \item $Var(\vectY) = 2n + 4\delta
+    \end{itemize}
+\end{nprop}
+\begin{nota}
+$\Psi_\vectY ^{(k)}(0) = \frac{d^k \Psi_\vectY(t)}{dt^k}|_{t= 0} = i^k E[\vectY^k]$
+\end{nota}
+
+\begin{nprop}
+  Si $Z_1$ y $Z_2$ son dos v.a. independientes con
+  \begin{align}Z_1 \sim \chi_{n_1}^2(\delta_1) \\
+    Z_2 \sim \chi_{n_2)^2 (\delta_2)
+  \end{align}
+  entonces, se tiene que:
+  \[
+ Z_1 + Z_2 \sim \chi_{n_1+n_2}^2 (\delta_1 + \delta_2)
+  \]
+\end{nprop}
+
+\subsubsection{Funciones hipergométricas generalizadas}
+
+\begin{ndef}[Función hipergeométrica generalizada]
+ 
+  Se denomina función (serie) hipergeométrica generalizada de órdenes p y q a
+  \[
+{}_pF_q(a_1,\dots,a_p;b_1,\dots,b_q:z) = \sum_{k = 0}^\infty \frac{(a_1)_k \dots (a_p)_k}{(b_1)_k \dots (b_q)_k} \frac{z^k}{k!}
+\]
+donde $(a)_k = a(a+1)\dots(a+k-1)$ con $a_1,\dots,b_1,\dots,b_q$ parámetros (posiblemente complejos) y $z\in \mathbb C$ el argumento
+\end{ndef}
+
+\begin{nota}
+  \begin{itemize}
+  \item Ningún parámetro $b_j$ puede ser cero o entero negativo
+  \item Si algún parámetro en el numerador es cero o un entero negativo, los términos de la serie se anulan a partir de un $k$ y queda un polinomio en $z$
+  \item La serie converge para todo $z$ si $p \leq q$, converge para $|z| < 1$ y diverte para $|z|> $ si $p = q+1$ y diverge para todo $z\ne 0$ si $p>q+1$
+
+  \item Caso particular: ${}_2F_1$ es la función hipergeométrica clásica o gaussiana
+    \item Caso particular: ${}_1F_1$ es la función hipergeométrica confluente
+  \end{itemize}
+  \item ${}_0F_1$ se define como ${}_0F_1(;b;z) = \lim_{a\to \infty} {}_1F_1(a;b;z)$
+\end{nota}
+
+
+Función característica de la distribución $\chi_n^2(\delta)$:
+\[
+\Psi_{\chi_n^2(\delta)}(t) = (1-2it)^{-\frac{n}{2}} e^{\frac{it\delta}{1-2it}} \quad \forall t \in \mathbb R
+\]
+$\vectX \sim N(\mu,\sigma^2) \to \Psi_{\vectX^2}(t) = \frac{1}{(1-2i\sigma^2 t)^{\frac{1}{2}}} e^{\frac{it\mu^2}{1-2i\sigma^2 t}}$
+
+
+
+
+\subsubsection{Distribución $F$ Snedecor no centrada}
+
+\begin{ndef}[Distribución $F$ de Snedecor centrada]
+  Si $\vectY_1\sim \chi_{n_1}$,$\vectY_2 \sim \chi_{n_2}$ centradas e independientes,la distribución $F$ centrada se define como la distribución del cociente:
+  \[
+  F = \frac{\vectY_1 / n_1}{\vectY_2 / n_2}
+  \]
+  Se denota $F_{n_1,n_2}$ o $F(n_1,n_2)$
+\end{ndef}
+También puede verse como:
+\[
+F = \frac{\sum_{k=1}^{n_1} Z_{1k}^2}{\sum_{l=1}^{n_2} Z_{2l}^2}
+\]
+con
+\begin{itemize}
+\item $Z_1 = (Z_{11},\dots, Z_{1n})^T \sim N_{n_1}(0,I_{n_1})$
+\item $Z_2 = (Z_{21},\dots, Z_{2n})^T \sim N_{n_2}(0,I_{n_2})$
+  \item $Z_1,Z_2$ independientes
+\end{itemize}
+o , equivalentemente:
+\[
+Z = \begin{bmatrix}Z_1 \\ Z_2 \end{bmatrix} \sim N_{n_1+n_2}(0,I_{n_1+n_2})
+\]
+
+  Su función de densidad viene dada por
+  \[
+  g_F(f) = \frac{1}{f \ B(\frac{n_1}{2}, \frac{n_2}{2})} (\frac{n_1 f}{n_1 f + n_2})^{\frac{n_1}{2}} (1- \frac{n_1f}{n_1f + n_2})^{\frac{n_2}{2}}
+  \]
+  para $f \geq 0$ con $n_1,n_2 \in \mathbb N -\{0\}$.\\
+
+  La función de distribución viene dada por:
+  \[
+G_F(f) = I_{\frac{n_1f}{n_1f + n2}}(\frac{n_1}{2},\frac{n_2}{2})
+\]
+
+Donde esta $I$ es la función beta incompleta regularizada, que definimos ahora.
+
+\begin{ndef}[Función Beta]
+  La función beta viene dada por:
+  \[
+B(x,y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x+y)} = \int_0^1 t^{x-1} (1-t)^{y-1) dt
+  \]
+  donde $x,y \in \mathbb C$, $Re(x),Re(y) > 0$.
+\end{ndef}
+\begin{ndef}[Función Beta Regularizada]
+  Esta función viene dada por:
+  \[
+B(x;a,b) = \int_0^x t^{a-1}(a-t)^{b-1} dt
+\]
+con $x \in [0,1]$, $a,b\in \mathbb C$, $Re(a),Re(b) > 0$.
+\end{ndef}
+Con estas dos funciones, definimos:
+\begin{ndef}[Función beta incompleta regularizada]
+  \[
+I_X(a,b) = \frac{B(x;a,b)}{B(a,b)}
+  \]
+\end{ndef}
+
+\begin{nprop}[Función característica de $F$]
+  La función característica viene dada por:
+
+  \[
+\Psi_{F_{n_1,n_2}}(t) = \frac{\Gamma(\frac{n_1+n_2}{2})}{\Gamma(\frac{n_2}{2})} U(\frac{n_1}{2},1-\frac{n_2}{2}; -\frac{n_2}{n_2}it)
+\]
+donde $U$ es la función hipergeométrica confluente de segunda especie:
+\[
+U(a,b;z) = \frac{\Gamma(1-b)}{\Gamma(a+1-b)}{}_1F_1(a,b;z) + \frac{\Gamma(b-1)}{\Gamma(a)}z^{1-b}{}_1F_1(a+1-b,2-b;z)
+\]
+\end{nprop}
+
+\begin{nprop}[Momentos de primer y segundo orden]
+  \begin{itemize}
+  \item $E[F] = \frac{n_2}{n_2-2}$ para $n_2 > 2$
+  \item $Var(F) = \frac{2 n_2^2(n_1+n_2 - 2)}{n_1(n_2-2)^2 (n_2-4)}$ para $n_2 > 4$.\\
+
+    Si $n_2\in [0,2]$ no está definida. Para $n_2 \in (2,4]$, la varianza es infinita.
+  \end{itemize}
+\end{nprop}
+
+
+\begin{ndef}
+  Sea $\vectY_1 \sim \chi_{n_1}^2(\delta)$ e $\vectY_2 \sim \chi_{n_2}^2$ independientes.Entonces, la variable
+  \[
+F = \frac{Y_1 / n_1}{Y_2 / n_2}
+\]
+tiene función de densidad:
+\[
+g_F(t) = e^{-\frac{\delta}{2}} {}_1F_1(\frac{1}{2}(n_1+n_2); \frac{1}{2}n_1; \frac{\frac{1}{2} \frac{n_1}{n_2}}{}
+\]
+\end{ndef}
