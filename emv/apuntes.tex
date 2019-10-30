@@ -687,7 +687,7 @@ Entonces, se tiene:
 
    \[
    \begin{split}
-     f_{X_{(2)} | X_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
+     f_{\vectX_{(2)} | \vectX_{(1)} = x_{(1)}}(x_{(2)}) & = \frac{ \frac{1}{(2\pi)^{p/2} (\det(\Sigma_{(11)})\det(\Sigma_{(22\cdot 1)}))^{1/2}} \exp\left\{ -\frac{1}{2} (A + B(x_{(2)}))  \right\} }
      { \frac{1}{(2\pi)^{q/2} \det(\Sigma_{(11)})^{1/2}} \exp\left\{ -\frac{1}{2} A \right\} } \\
      & = \frac{1}{(2\pi)^{\frac{p-1}{2}} \det(\Sigma_{(22\cdot 1)})^{1/2}} \exp\left\{ -\frac{1}{2} B(x_{(2)}) \right\}.
    \end{split}
@@ -713,8 +713,8 @@ Entonces, se tiene:
     \[
     \begin{split}
       \Psi_{\vectX}(t) & = \int_{\mathbb R^p} e^{it^T x} f_{\vectX} (x) \mathrm{d}x \\
-      & = \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
-      & =  \int_{R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
+      & = \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^Tx - \frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \right\}\mathrm{d}x \\
+      & =  \int_{\R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}\det(\Sigma)^{\frac{1}{2}}} \exp \left\{ it^T(Cy + \mu)- \frac{1}{2}y^Ty \right\} \det(C)\mathrm{d}y \\
       & = e^{it^T\mu} \int_{\mathbb R^p} \frac{1}{(2\Pi)^{\frac{p}{2}}} \exp \left\{ \sum_{j=1}^p i\alpha_j y_j -  \frac{1}{2}y_j^2 \right\} \\
       & = \prod_{j=1}^p e^{it_j\mu_j}\Psi_{Y_j}(\alpha_j) \\
       & =^{(1)} \exp\left\{it^T \mu- \frac{1}{2}t^T \Sigma t\right\},
@@ -1106,12 +1106,12 @@ Definimos a continuación $H \boldsymbol U$, con $H$ matriz ortogonal. Entonces,
   A partir de la expresión $\vectX = C \cdot R \cdot \boldsymbol U + \boldsymbol \mu$ se tiene que para generar los valores de $\vectX$ se puede seguir el procedimiento del enunciado.
 \end{proof}
 
-\section{Distribuciones esféricas y elípticas}
+\subsection{Distribuciones esféricas y elípticas}
 
-\subsection{Distribuciones esféricas}
+\subsubsection{Distribuciones esféricas}
 
 \begin{ndef}
-  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene una distribución \textit{esférica} si $\vectX$ y $H\vectX$ tienen la misma distribución para toda matriz ortogonal $H$.
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene una distribución \textit{esférica} si para toda matriz ortogonal $H$ los vectores aleatorios $\vectX$ y $H\vectX$ tienen la misma distribución.
 \end{ndef}
 
 Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
@@ -1124,7 +1124,7 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
   Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma $\xi(\boldsymbol t^T \boldsymbol t)$ para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
 \end{nprop}
 
-\subsection{Distribuciones elípticas}
+\subsubsection{Distribuciones elípticas}
 
 \begin{ndef}[Distribución elíptica]
   Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
@@ -1140,3 +1140,48 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 
 % TODO: Falta observaciones sobre la distribución elíptica
 % TODO: Falta lo siguiente a esto
+
+\begin{nprop}
+  Sea $X \sim E_p(\boldsymbol \mu, V)$, con $V$ diagonal. Si $X_1, \dots, X_p$ son uniformemente independientes entonces $X$ tiene distribución normal multivariante.
+\end{nprop}
+
+\begin{nprop}
+  Dado un vector aleatorio $\vectZ$ con distribución esférica —y $P[\vectZ = 0] = 0$— entonces $U = \frac{\vectZ}{\Vert\vectZ\vert}$ y $R = \Vert\vectZ\Vert$ son independientes.
+\end{nprop}
+
+\begin{proof}
+  \begin{align*}
+    H\boldsymbol U = \frac{H\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}
+      = \frac{H\vectZ}{(\vectZ^TH^TH\vectZ)^{\sfrac{1}{2}}}
+      = \frac{H\vectZ}{((H\vectZ)^T(H\vectZ))^{\sfrac{1}{2}}}
+      = \frac{\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}\\
+      = \boldsymbol U,
+  \end{align*} luego $\boldsymbol U$ se distribuye uniformemente en la esfera unidad en $\mathbb R^p$.
+
+  A continuación probamos la independencia de $\boldsymbol U$ y $R$. Para cada $C \in \mathcal B(\mathbb R^+)$ tal que $P[R \in C] \neq 0$ queremos probar que $\mu = P[\boldsymbol U \in B | R \in C] = P[\boldsymbol U \in B]$ para cada $B \in \mathcal B(S_p)$.
+
+  Por definición, \begin{align*}
+    P[\boldsymbol U \in B \mid R \in C] = \frac{P[(\boldsymbol U \in B) \land (R \in C)]}{P[R \in C]} = \frac{P[\vectZ \in B \cdot C]}{P[R \in C]},
+  \end{align*} con $B \cdot C = \left\{\boldsymbol z \in \mathbb R^p - \{\boldsymbol 0\} : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\}$. Luego, \begin{align*}
+    \frac{P[\vectZ \in B \cdot C]}{P[R \in C]} = \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]}
+  \end{align*} para cualquier matriz $H$ ortogonal por ser la distribución de $\vectZ$ esférica. Vemos que $H^T\vectZ \in B \cdot C$ si y solo si $\vectZ \in (H(B)) \cdot C$. En efecto, $H^T\vectZ \in B \cdot C$ si y solo si $H(H^T\vectZ) \in H(B \cdot C)$, siendo \begin{align*}
+    H(B\cdot C) &= \left\{H \boldsymbol z : \boldsymbol z \in B \cdot C\right\} = \left\{H \boldsymbol z : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\} \\
+      &= \left\{H \boldsymbol z : \frac{H \boldsymbol z}{\Vert H \boldsymbol z\Vert} \in HB, \Vert H\boldsymbol z\Vert \in C\right\}\\
+      \shortintertext{y llamando $\boldsymbol w = H\boldsymbol z$,}
+      &= \left\{\boldsymbol w : \frac{\boldsymbol w}{\Vert \boldsymbol w\Vert} \in HB, \Vert \boldsymbol w\Vert \in C\right\}\\
+      &= H(B) \cdot C,
+  \end{align*} probando entonces esta última afirmación.
+
+  Tenemos entonces \begin{align*}
+    \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]} &= \frac{P[\vectZ \in (H(B)) \cdot C]}{P[R \in C]}
+       = \frac{P[(\boldsymbol U \in H(B)) \land (R \in C)]}{P[R \in C]} \\
+      &= P[\boldsymbol U \in H(B) \mid R \in C] \\
+      &= \mu(H(B)).
+  \end{align*}
+\end{proof}
+
+\subsection{Formas cuadráticas basadas en vectores aleatorios normales}
+
+Los resultados presentados en esta subsección nos serán de utilidad cuando nos adentremos en la inferencia en la sección siguiente.
+
+El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \dots, X_p)^T$ un vector aleatorio y sea $A$ una matriz constante $p \times p$. Consideremos la forma cuadrática $\vectX^T A \vectX$ —que es un vector aleatorio—. En particular, si $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$ bajo ciertas condiciones sobre $A$ se tendrá que la distribución de $\vectX^TA\vectX$ es una distribución $\chi^2$ no centrada.

@@ -1062,7 +1062,7 @@ Rate Monotonic Scheduling es un método de planificación estático on-line con 
 - Esta asignación de prioridades es óptima en el caso de que todas las tareas sean periódicas, y el plazo de respuesta máxima D coincida con el periodo.
 
 ##### Test de planificabilidad
-Los test de planificabilidad permiten determinar si el conjunto de tareas del sistema es planificable según un algoritmo de planificación antes de su ejecución. Existen diversos tipos de test aplicables seǵun el algoritmo de planificación:
+Los test de planificabilidad permiten determinar si el conjunto de tareas del sistema es planificable según un algoritmo de planificación antes de su ejecución. Existen diversos tipos de test aplicables según el algoritmo de planificación:
 - Test de planificación suficientes: en caso de exito en la aplciación del test el sistema es planificable. En caso contrario no tentmos información, podría ser planificable o no.
 - Test de planificación exactos: en caso de exito la aplicación es planificable. En caso contrario el sistema no es planificable.
 
