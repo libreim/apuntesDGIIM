@@ -1372,3 +1372,164 @@ tiene función de densidad:
 g_F(t) = e^{-\frac{\delta}{2}} {}_1F_1(\frac{1}{2}(n_1+n_2); \frac{1}{2}n_1; \frac{\frac{1}{2} \frac{n_1}{n_2}}{}
 \]
 \end{ndef}
+
+
+\subsubsection{Resultados sobre formas cuadráticas}
+
+Sea $\vectX^T A \vectX$ una forma cuadrática con $\vectX \sim N_p(\mu,\Sigma)$. Podemos hacer un estudio directo sobre $E[\vectX^T A \vectX]$ y $Var(\vectX^T A \vectX)$.
+\begin{nprop}
+  Sea $\vectX \sim N(\mu,\Sigma)$, con $\Sigma > 0$ y $A$ una matriz $p\times p$ simétrica. Entonces:
+  \begin{enumerate}
+  \item $E[\vectX^T A \vectX] = tr(A\Sigma) + \mu^T A \mu$
+    \item $Var(\vectX^T A \vectX) = 2tr((A\Sigma)^2) + 4\mu^T A \Sigma A \mu
+  \end{enumerate}
+
+\end{nprop}
+\begin{proof}
+  Vamos a probar el primer elemento de los dos, pues puede que su demostración nos sera útil más adelante.\\
+
+  \[
+    E[\vectX^T A \vectX] = E[tr(\vectX^T A \vectX)] = E[tr(A\vectX \vectX^T)] = tr(E[A \vectX \vectX^T]) = tr(A \ E[\vectX \vectX^T]) = (*)
+  \]
+  Donde en la primera igualdad hemso usado que $\vectX^T A \vectX$ es $D\times 1$ y en la segunda hemos usado una propiedad de las matrices que dice que si $C_{m\times n}$, $B_{n\times m}$, entonces $tr(BC) = tr(CB)$. En las siguientes, hemos usado la linealidad de la esperanza. Ahora como sabemos que:
+  \[
+  \Sigma = E[(\vectX- \mu)(\vectX - \mu)^T] = \dots = E[\vectX \vectX^T] - \mu \mu^T
+  \]
+  Y usando esto en la igualdad anterior, tenemos:
+
+  \begin{align}
+    (*) = tr(A [ E \mu\mu^T]) = tr(A\Sigma + A \mu\mu^T) = tr(A\Sigma) + tr(A\mu\mu^T) = \\
+    = tr(A\Sigma) + tr(\mu^T A \mu) = tr(A\Sigma) + \mu^T A \mu
+  \end{align}
+\end{proof}
+
+Llegamos pues al siguiente teorema:
+\begin{nth}
+  Sea $\vectX \sim N_p (\mu,\Sigma)$ con $\Sigma > 0$. Entonces:
+  \begin{enumerate}
+  \item $(\vectX - \mu)^T \Sigma^{-1} (\vectX-\mu) \sim \chi^2_p$
+    \item $\vectX^T \Sigma^{-1}\vectX \sim \chi^2_P (\delta)$ con $\delta = \mu^T \Sigma^{-1} \mu$
+  \end{enumerate}
+\end{nth}
+\begin{proof}
+  \begin{enumerate}
+  \item Hacemos el cambio $\vectY = C^{-1}(\vectX - \mu)$ con $\Sigma = CC^T$. Tenemos entonces que $\vectY \sim N_p(0,I_p)$. Por tanto, podemos escribir:
+    \[
+    (\vectX - \mu)^T \Sigma^{-1} (\vectX - \mu ) = (\vectX - \mu)^T(CC^T)^{-1} (\vectX - \mu) = \dots = (C^{-1}(\vectX - \mu))^T(C^{-1}(\vectX - \mu)) = \vectY \vectY^T \sim \chi^p_p
+    \]
+
+  \item En este caso, tomamos el cambio $V  =C^{-1}\vectX$ con $\Sigma = CC^T$. Entonces, se tiene que
+    \[
+    V \sim N_p(C^{-1}\mu, C^{-1}\Sigma(C^{-1})^T) \equiv N_p(C^{-1}\mu, C^{-1}CC^T(C^{-1})^T) \equiv N_p(C^{-1}\mu, I_p)
+    \]
+    Y por tanto, escribimos:
+    \[
+    \vectX \Sigma^{1} \vectX = \vectX^T (CC^T)^{-1} = \dots = (C^{-1} \vectX)^T(C^{-1}\vectX) = V^T V \sim \chi_p^2(\mu^T(C^{-1})^T(C^{-1}\mu)) \equiv \chi_p^t(\mu^T \Sigma \mu)
+    \]
+
+  \end{enumerate}
+\end{proof}
+
+\begin{nth}
+  Sea $\vectX \sim N_p(\mu, I_p)$ y sea $B_{p\times p}$ simétrica. Entonces, $\vectX^T B \vectX$ tiene una distribución $\chi^2$ no centrada si y solo si $B$ es idempotente ( i.e. , $B^2 = B$), en cuyo caso los grados de libertad y el parámetro de no centralidad son, respectivamente
+  \begin{align}
+    k = rango(B) = tr(B)\\
+    \delta = \mu^T B \mu
+  \end{align}
+\end{nth}
+\begin{proof}
+  \boxed{\rightarrow} Supongamos que $\vectX^T B \vectX \sim X_k(\delta)$. Sea $r=rango(B)$. Como $B$ es simétrica, se puede descomponer como
+  \[
+  H^T B H = D \mapsto B = HDH^T
+  \]
+  con $H_{p\times p}$ ortogonal y $D_{p\times p}$ diagonal, que tiene en las $r$ rpimeras filas, los $\lambda_i \ne 0$ con $i = 1\dots r$. Hacemos entonces el cambio $V = H^T \vectX$. Entonces:
+  \[
+  \nu \sim N_p(H^T \mu,H^TI_p H) \equiv N_p(H^T \mu,I_p) \equiv N_p(D,I_p)
+  \]
+  donde hemos denotado $\nu = H^T\mu$. Podemos escribir:
+  \[
+  \vectX^T B \vectX = \vectX^T H D H^T \vectX = (H^T \vectX)^T D (H^T \vectX) = V^T D V =  \sum_{j = 0}^r \lambda_j \nu_j^2
+  \]
+  donde $nu_j^2\sim \chi_1^2(\nu_j^2)$ y siendo $nu_1^2,\dots,\nu_r^2$ independientes. La función característica de $\vectX^T B X$ se obtiene como
+  \[
+\Psi_{\vectX^T B \vectX}(t) = \Psi_{\sum_{j=1}^r \lambda_j \nu_j^2}(t) = \prod_{j=1}\Psi_{\lambda_j \nu_j^2}(t) = \prod_j \Psi_{\nu_j^2}(\lambda_j t)
+\]
+y, como cada F.C. individual $\Psi_{\nu_j^2}(\dot)$ tiene la forma
+\[
+\Psi_{\chi^2_1}(s) = (1-2is)^{-\frac{1}{2}} exp \{ \frac{is\delta}{1-2is}\} \quad \quad \delta = \nu_j^2
+\]
+luego, conjuntamente, se tiene:
+\[
+\Psi_{\vectX^T B \vectX}(t) = \prod_{j = 1}^r (1-2i \lambda_jt)^{-\frac{1}{2}} exp \{ \frac{i\lambda_j t \nu^2_j}{1-2i\lambda_jt}\} = exp\{it \sum_{j = 1}^r \frac{\lambda_j \nu_j^2}{1-2i\lambda_jt} \}\prod_{j = 1}^r(1-2i\lambda_j t)^{\frac{1}{2}} \forall t \in \mathbb R
+\]
+Por otra parte, por hipótesis $\vectX^T B \vectX \sim \chi_k^2(\delta)$, con F.C:
+\[
+\Psi_{\vectX ^T B \vectX}(t) =  exp \{ \frac{it\delta}{1-2it}\}(1-2it)^{-\frac{k}{2}} \quad \forall t \in \mathbb R
+\]
+
+Así que comparando ambas expresiones, puesto que deben ser iguales $\forall t \in \mathbb R$, han de ser:
+\begin{itemize}
+\item $\lambda_j = 1$ con $ j = 1,\dots,r$
+\item $\delta = \sum_{j = 1}^r \lambda_j \nu_j^2 = \sum_{j = 1}^r \nu_j^2 = \nu^T D \nu = (\mu^TH)DH^T\mu = \mu^THDH^T\mu$
+  \item $r = k$
+\end{itemize}
+En consecuencia, podemos escribir:
+\[
+H^T B H = D = \begin{pmatrix} I_k & 0 \\ 0 & 0 \end{pmatrix}
+\]
+pues es una matriz idempotente, es decir:
+\[
+(H^T B H) (H^T B H) = H^T B H
+\]
+pero multiplicando a la izquierda por $H$ y a la derecha por $H^T$ (con $H^TH = HH^T = I), se tiene que la identidad anterior es:
+\[
+H^T B^2 H = H^T B H \implies B^2  = B
+\]
+
+\boxed{\leftarrow} Supongamos ahora que $B$ es idempotente. Se puede escribir:
+\[
+H^T B H = \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix}
+\]
+para cierta matriz ortogonal $H^T$. Recordamos que una matriz simétrica es idempotente si y solo si sus autovalores son ceros o unos. Ahora, definimos  $V = H^T \vectX$. Se tiene que:
+\[
+V \Sim N_p(H^T \mu, H^T I_p H) \equiv N_p(H^T \mu, I_p)
+\]
+por lo que
+\[
+\vectX^T B \vectX = \vectX^T H  \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} H^T \vectX = V^T  \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} V = \sum_{j = 1}^k V_j^2
+\]
+    y , puesto que $V_j$, con $j = 1,\dots,k$ son independientes, se tiene que
+    \[
+    \vectX^T B \vectX \sim \chi_k^2(\delta)
+    \]
+    con
+    \begin{align}
+      $\delta = \sum_{j = 1} (E[V_j])^2 = E[V^T] \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[V] = \\
+
+        = E[\vectX^T H]\begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[H^T \vectX] = \\
+          = E[\vectX^T] H \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} H^T E[\vectX] = \mu^T B \mu
+    \end{align}
+    
+
+\end{proof}
+
+\begin{nth}
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento:
+  \[
+ \vectX = \begin{pmatrix} \vectX_1 \\ \vectX_2 \end{pmatrix} \ \ ; \ \ \mu = \mu_1 \\ \mu_2 \end{pmatrix} \ \ ; \ \ \Sigma = \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}
+  \]
+  con $\vectX_1$ y $\mu_1$ son $q\times 1$, y $\Sigma_{11}$ es $q\times q$. Entonces:
+  \[
+  Q = (\vectX- \mu)^T\Sigma^{-1}(\vectX - \mu) - (\vectX_1-\mu_1)^T \Sigma_{11}^{-1}(\vectX_1-\mu_1) \sim \chi^2_{p-q}
+  \]
+  \end{nth}
+\begin{nota}
+Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vectX_2$.
+\end{nota}
+
+\begin{nth}
+  Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ y $B_{p\times p}$ simétrica. Entonces, $\vectX^T B \vectX$ tiene una distribución $\chi_k^2(\delta)$ donde $k = rango(B)$ y $\delta = \mu^T B \mu$ si y solo si $B\Sigma$ es idempotente.
+  \begin{nota}
+    $B\SigmaB\Sigma = B\Sigma \iif B\Sigma B = B$
+  \end{nota}
+\end{nth}
