@@ -1508,6 +1508,7 @@ por lo que
 
         = E[\vectX^T H]\begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[H^T \vectX] = \\
           = E[\vectX^T] H \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} H^T E[\vectX] = \mu^T B \mu
+
     \end{align}
     
 
@@ -1526,10 +1527,62 @@ por lo que
 \begin{nota}
 Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vectX_2$.
 \end{nota}
+\begin{proof}
+  Sea $C_{p\times p}$ no singular tal que $\Sigma = CC^T$. Podemos escribir $C = \begin{pmatrix}C_1 \\ C_2 \end{pmatrix}$ con $C_1 q\times p$, $C_2 (p-q)\times p$. Dado que
+  \[
+  CC^T = \begin{pmatrix} C_1 \\ C_2 \end{pmatrix}(C_1^T C_2^T) = \begin{pmatrix} C_1C_1^T & C_1C_2^T \\ C_2C_1^T & C_2C_2^T\end{pmatrix}
+    \]
+    identificamos $\Sigma_{11} = C_1C_1^T$ y hacemos el cambio $U = C^{-1}(\vectX - \mu)$, que es lo mismo que $\vectX = CU + \mu$. Así: $X_1 = C_1U + \mu_1$.\\
 
+    Sabemos también que $U \sim N_p(0,I_p)$, por lo que:
+    \[
+    Q = U^T U - U^TC_1^T(C_1C_1^T)^{-1}C_1U = U^T [I - C_1^T(C_1C_1^T)^{-1}C_1]U
+    \]
+    Ahora, aplicando el teorema anterior al vector $U$ y la matriz $B = I - C_1^t(C_1C_1^T)^{-1}C_1$, tenemos que $U^TBU$ tiene una distribución $\chi^2$ no centrada ( con parámetro de no centralidad $\delta = 0^TB0=0$, es decir, centrado), si y solo si $B$ es idempotente.
+    \[
+    BB = [I - C_1^T(C_1 C_1^T)^{-1}C_1][I - C_1^T(C_1 C_1^T)^{-1}C_1] = I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T(C_1C_1^T)^{-1}(C_1C_1^T)(C_1C_1^T)^{-1}C_1 =  I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T( C_1C_1^T)^{-1}C_1 =  I - C_1^T(C_1C_1^T)^{-1} = B
+    \]
+    Por lo que $B$ es idempotente. Ahora, $rango(B) = tr(B) = tr(I_p - C_1^T(C_1C_1^T)^{-1}C_1)$ y vamos que:
+    \[
+    tr(I_p) - tr(C_1^T(C_1C_1^T)C_1) = tr(I_p) - tr((C_1C_1^T)^{-1}C_1C_1^T) = tr(I_p) - tr(I_q) = p-q
+    \]
+    Por lo que $Q \sim \chi_{p-q}^²$.
+\end{proof}
 \begin{nth}
   Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ y $B_{p\times p}$ simétrica. Entonces, $\vectX^T B \vectX$ tiene una distribución $\chi_k^2(\delta)$ donde $k = rango(B)$ y $\delta = \mu^T B \mu$ si y solo si $B\Sigma$ es idempotente.
   \begin{nota}
     $B\SigmaB\Sigma = B\Sigma \iif B\Sigma B = B$
   \end{nota}
 \end{nth}
+\begin{proof}
+  Sea $C_{p\times p }$ no singular tal que $\Sigma = C C^T$ y sea $Y = C^T \vectX$. Se tiene que
+  \[
+  \vectY \sim N_p(C^{-1}\mu, C^{-1}(CC^T)(C^{-1})^T) \equiv N_p(C^{-1}\mu, I_p)
+  \]
+  por lo que
+  \[
+  \vectX^T B \vectX = (C\vectY)^TB(C\vectY) = \vectY^T C^T B C \vectY
+  \]
+  Aplicando un teorema anterior, tenemos que $\vectX^T B \vectX$ tiene una distribución $\chi^2_k$ no centrada si y solo si la matriz $C^T B C$ es idempotente. La prueba se reduce a probar que $B\Sigma$ es idempotente si y solo si $C^T B C$ es idempotente. Veamoslo:\\
+
+  \boxed{\rightarrow} Supongamos que $B\Sigma$ es idempotente, es decir, $B\Sigma B = B$. Entonces:
+  \[
+  (C^TBC)(C^TBC) = C^TBCC^TBC = C^TB\Sigma BC = C^TBC \implies idempotente
+  \]
+  \boxed{\leftarrow} Supongamos ahora que $C^TBC$ es idempotente. Entonces:
+  \[
+  C^TBC = (C^TBC)(C^TBC) = C^TB\Sigma B C
+  \]
+  Multiplicamos a la izquierda por $(C^T)^{-1}$ y a la derecha por $C^{-1}$
+  \[
+  (C^T)^{-1}C^TBCC^{-1} = B = B\Sigma B = (C^T)^{-1}(C^T B \Sigma B C)C^{-1} \implies B \Sigma \ \ idempotente
+  \]
+
+  En cuanto a $k$ y $\delta$, por el mismo teorema anterior tenemos que
+  \[
+  k = rango(C^T B C) = tr(C^TBC) = tr(BCC^T) = tr(B\Sigma) = rango(B\Sigma) = rango(B)
+  \], donde en las dos últimas igualdades hemos usado que $B\Sigma$ es idempotente y $\Sigma$ es no singular. Veamos $\delta$
+  \[
+  \delta = (C^{-1} \mu)(C^T B C)(C^{-1}\mu) = \mu(C^T)^{-1}C^T B CC^{-1}\mu = \mu^T B \mu^T
+  \]
+\end{proof}
