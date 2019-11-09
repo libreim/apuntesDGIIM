@@ -416,7 +416,7 @@ Consideremos el logaritmo de la función característica:
   Al factorizar una matriz definida positiva, siempre existe una factorización $CC^T$ con $\det(C) > 0$.
   \end{nota}
 
-\subsection{Distribución normal multivariante (en el caso $\Sigma > 0$)}
+\section{Distribución normal multivariante (en el caso $\Sigma > 0$)}
   En esta sección estudiamos la distribución normal multivariante, refiriéndonos siempre al caso en el que tiene matriz de covarianzas definida positiva.
 Algunos aspectos que justifican el estudio de esta distribución en particular:
 \begin{itemize}
@@ -461,7 +461,7 @@ Por tanto, podemos escribir:
 \end{enumerate}
 
 
-\subsubsection{Vector de medias y matriz de covarianzas}
+\subsection{Vector de medias y matriz de covarianzas}
 Del cálculo anterior se desprende que el vector aleatorio \[ \vectZ = C^{-1}(\vectX-\mu) \] se distribuye con función de densidad
 \[
 f_{\vectZ}(z) = \prod_{j = 1}^p \frac{1}{\sqrt{2\pi}}\exp\left\{-\frac{1}{2}z_j^2\right\} = \prod_{j=1}^p f_{Z_j}(z_j)
@@ -506,7 +506,7 @@ con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,
 
 %#TODO: Demostración (clase de prácticas)
 
-\subsubsection{Sobre Independencia y Condicionamiento}
+\subsubsection{Sobre independencia y condicionamiento}
 
   \begin{nprop}
     Sea $\vectX = (X_1,\dots,X_p)^T$ un vector aleatorio con DNM $\vectX \sim N_p(\mu,\Sigma)$, $\Sigma > 0$. Si la matriz $\Sigma$ es diagonal,
@@ -764,65 +764,77 @@ Entonces, se tiene:
       \end{itemize}
     \end{ncor}
 
+    \subsection{Algunas descomposiciones matriciales. Diagonalización.}
+    
     \begin{ndef}
-      Se dice que $A_{p\times p}$ es diagonalizable si existe una matriz $Q_{p \times p}$ no singular tal que:
+      Se dice que $A\in \mathscr{M}_{p}(\R)$ es diagonalizable si existe una matriz $Q\in \mathscr{M}_{p}(\R)$ no singular tal que:
+      
       \[
       Q^{-1}AQ = D,
       \]
+      
       con $D$ una matriz diagonal.
     \end{ndef}
 
     \begin{nth}
-      Sea $A$ una matriz $p\times p$. Supongamos que $A$ es diagonalizable por otra matriz $Q_{p \times p}$ no singular, esto es
+      Sea $A\in \mathscr{M}_{p}(\R)$. Supongamos que $A$ es diagonalizable por otra matriz $Q\in \mathscr{M}_{p}(\R)$ no singular, esto es
+      
       \[
       Q^{-1}AQ = D,
       \]
+      
       con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= \operatorname{diag}(d_1,\dots,d_p)$. Entonces:
+      
       \begin{enumerate}
-      \item $\operatorname{rango}(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0.
-      \item $|A| = \prod_{i = 1}^p d_i$
-      \item $\operatorname{tr}(A) = \sum_{i = 1}^p d_i$
-      \item El polinomio característico de $A$ es:
+      \item $\operatorname{rango}(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0,
+      \item $\det(A) = \prod_{i = 1}^p d_i$,
+      \item $\operatorname{tr}(A) = \sum_{i = 1}^p d_i$,
+      \item el polinomio característico de $A$ es:
         \[
-        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p).
+        p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p),
         \]
-      \item El espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$.
-      \item Las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$
-      \item Las columnas de $Q$ son autovectores linealmente dependientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $\lambda_i$
-      \item Se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
+      \item el espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$,
+      \item las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$,
+      \item las columnas de $Q$ son autovectores linealmente independientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $d_i$),
+      \item se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
     \end{enumerate}
 
 \end{nth}
 \begin{ncor}
-              $A$ debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica
+              Si $A$ es diagonalizable ortogonalmente, debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica.
 \end{ncor}
 
-Ahora, para matrices \textbf{definidas no negativas}:
-\begin{itemize}
-\item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
-\item $A$ es definida positiva $\iff $ los autovalores de $A$ son positivos
-\end{itemize}
-Y, si $A$ es \textbf{simétrica}:
-\begin{itemize}
-\item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
-\item $A$ es definida positiva $\iff$ los autovalores de $A$ son positivos
+\begin{nprop}\hfill\\
+  \begin{itemize}
+  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
+  \item $A$ es definida positiva $\iff $ los autovalores de $A$ son positivos
+  \end{itemize}
+
+  Y, si $A$ es \textbf{simétrica}:
+  \begin{itemize}
+  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
+  \item $A$ es definida positiva $\iff$ los autovalores de $A$ son positivos
   \item $A$ es semidefinida positiva $\iff$ los autovalores de $A$ son no negativos y al menos uno es nulo
+  \end{itemize}
+\end{nprop}
 
-\end{itemize}
 
-Por último vamos a definir lo siguiente:
-\begin{ndef}
-
-  Sea una matriz $A_{p\times p}$ simétrica y definida no negativa. Entonces, existe una matriz $R_{p\times p}$ simétrica y definida no negativa tal que
+El concepto de raíz cuadrada de una matriz nos será útil:
+\begin{nprop}
+  Sea una matriz $A\in \mathscr{M}_{p}(\R)$ simétrica y definida no negativa. Entonces, existe una matriz $R\in \mathscr{M}_{p}(\R)$ simétrica y definida no negativa tal que
+  
   \[
   A = R^2 = RR
   \]
+  
   Además, $R$ es única y puede expresarse como:
+
   \[
-  R = Q \operatorname{diag}(\sqrt{d_1}, \dots, \sqrt{d_p}) Q^T
+  R = Q \operatorname{diag}\left(\sqrt{d_1}, \dots, \sqrt{d_p}\right) Q^T
   \]
-  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa
-\end{ndef}
+  
+  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa.
+\end{nprop}
 
 
 \subsubsection{Matrices de intercambio de filas/columnas}
