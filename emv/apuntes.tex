@@ -1199,11 +1199,11 @@ El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \d
 
   tenemos entonces que su función de densidad es:
   \[
-f_\vectY(y) = \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} y^{\frac{n}{2} - 2} e^{-\frac{y}{2}}, \quad y > 0
+f_{\vectY}(y) = \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} y^{\frac{n}{2} - 2} e^{-\frac{y}{2}}, \quad y > 0
 \]
 y su función de distribución es:
 \[
-F_\vectY(y) = \frac{\gamma(\frac{n}{2}, \frac{y}{2}}{\Gamma(\frac{n}{2})}, \quad y > 0
+F_{\vectY}(y) = \frac{\gamma(\frac{n}{2}, \frac{y}{2}}{\Gamma(\frac{n}{2})}, \quad y > 0
 \]
 Donde, la función gamma está definida:
 \[
@@ -1211,15 +1211,15 @@ Donde, la función gamma está definida:
 \]
 y las funciones gamma incompletas son:
 \begin{itemize}
-\item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} dt
+\item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} dt$
   \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} dt$ con $v>0$
 \end{itemize} 
 \end{ndef}
 
-\begin{ndef}[Distribución $\chi^2 no centrada]
+\begin{ndef}[Distribución $\chi^2$ no centrada]
   Sea $\vectX = (X_1,\dots,X_n)^T\sim N_n(\mu,I_n)$. Entonces, la v.a. $\vectY = \vectX \vectX^T$ tiene la función de densidad:
   \[
-f_\vectY(y) = e^{\frac{\delta}{2}} {}_0 F_1(\frac{1}{2}n; \frac{1}{4}\delta y) \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} e^{-\frac{y}{2}} y^{\frac{n}{2} - 1}, \quad y > 0
+f_{\vectY}(y) = e^{\frac{\delta}{2}} {}_0 F_1(\frac{1}{2}n; \frac{1}{4}\delta y) \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} e^{-\frac{y}{2}} y^{\frac{n}{2} - 1}, \quad y > 0
 \]
 siendo $\delta = \mu^T \mu$. Se dice que $\vectY$ tiene distribución $\chi^2$ no centrada con $n$ grados de libertad y parámetro de no centralidad $\delta$, denotándose $\chi_n^2(\delta)$
 \end{ndef}
@@ -1230,18 +1230,18 @@ ${}_0F_1$ es la función hipergeométrica generalizada de órdenes 0 y 1, tambi�
 
 \begin{nprop}[Momentos de primer y segundo orden]
   \begin{itemize}
-  \item $E[\vectY] = n+\delta
-  \item $Var(\vectY) = 2n + 4\delta
+  \item $E[\vectY] = n+\delta$
+  \item $Var(\vectY) = 2n + 4\delta$
     \end{itemize}
 \end{nprop}
 \begin{nota}
-$\Psi_\vectY ^{(k)}(0) = \frac{d^k \Psi_\vectY(t)}{dt^k}|_{t= 0} = i^k E[\vectY^k]$
+$\Psi_{\vectY} ^{(k)}(0) = \frac{d^k \Psi_{\vectY}(t)}{dt^k}|_{t= 0} = i^k E[\vectY^k]$
 \end{nota}
 
 \begin{nprop}
   Si $Z_1$ y $Z_2$ son dos v.a. independientes con
   \begin{align}Z_1 \sim \chi_{n_1}^2(\delta_1) \\
-    Z_2 \sim \chi_{n_2)^2 (\delta_2)
+    Z_2 \sim \chi_{n_2}^2 (\delta_2)
   \end{align}
   entonces, se tiene que:
   \[
@@ -1322,7 +1322,7 @@ Donde esta $I$ es la función beta incompleta regularizada, que definimos ahora.
 \begin{ndef}[Función Beta]
   La función beta viene dada por:
   \[
-B(x,y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x+y)} = \int_0^1 t^{x-1} (1-t)^{y-1) dt
+B(x,y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x+y)} = \int_0^1 t^{x-1} (1-t)^{y-1} dt
   \]
   donde $x,y \in \mathbb C$, $Re(x),Re(y) > 0$.
 \end{ndef}
@@ -1381,7 +1381,7 @@ Sea $\vectX^T A \vectX$ una forma cuadrática con $\vectX \sim N_p(\mu,\Sigma)$.
   Sea $\vectX \sim N(\mu,\Sigma)$, con $\Sigma > 0$ y $A$ una matriz $p\times p$ simétrica. Entonces:
   \begin{enumerate}
   \item $E[\vectX^T A \vectX] = tr(A\Sigma) + \mu^T A \mu$
-    \item $Var(\vectX^T A \vectX) = 2tr((A\Sigma)^2) + 4\mu^T A \Sigma A \mu
+    \item $Var(\vectX^T A \vectX) = 2tr((A\Sigma)^2) + 4\mu^T A \Sigma A \mu$
   \end{enumerate}
 
 \end{nprop}
@@ -1481,7 +1481,7 @@ pues es una matriz idempotente, es decir:
 \[
 (H^T B H) (H^T B H) = H^T B H
 \]
-pero multiplicando a la izquierda por $H$ y a la derecha por $H^T$ (con $H^TH = HH^T = I), se tiene que la identidad anterior es:
+pero multiplicando a la izquierda por $H$ y a la derecha por $H^T$ (con $H^TH = HH^T = I$), se tiene que la identidad anterior es:
 \[
 H^T B^2 H = H^T B H \implies B^2  = B
 \]
@@ -1492,7 +1492,7 @@ H^T B H = \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix}
 \]
 para cierta matriz ortogonal $H^T$. Recordamos que una matriz simétrica es idempotente si y solo si sus autovalores son ceros o unos. Ahora, definimos  $V = H^T \vectX$. Se tiene que:
 \[
-V \Sim N_p(H^T \mu, H^T I_p H) \equiv N_p(H^T \mu, I_p)
+V \sim N_p(H^T \mu, H^T I_p H) \equiv N_p(H^T \mu, I_p)
 \]
 por lo que
 \[
@@ -1504,21 +1504,19 @@ por lo que
     \]
     con
     \begin{align}
-      $\delta = \sum_{j = 1} (E[V_j])^2 = E[V^T] \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[V] = \\
-
-        = E[\vectX^T H]\begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[H^T \vectX] = \\
+      \delta = \sum_{j = 1} (E[V_j])^2 = E[V^T] \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[V] = \\
+  = E[\vectX^T H]\begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} E[H^T \vectX] = \\
           = E[\vectX^T] H \begin{pmatrix} I_k & 0 \\ 0 & 0\end{pmatrix} H^T E[\vectX] = \mu^T B \mu
-
-    \end{align}
+     \end{align}
     
 
 \end{proof}
 
 \begin{nth}
   Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento:
-  \[
- \vectX = \begin{pmatrix} \vectX_1 \\ \vectX_2 \end{pmatrix} \ \ ; \ \ \mu = \mu_1 \\ \mu_2 \end{pmatrix} \ \ ; \ \ \Sigma = \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}
-  \]
+ %%  \[
+ %% \vectX = \begin{pmatrix} \vectX_1 \\ \vectX_2 \end{pmatrix} \ \ ; \ \ \mu = \mu_1 \\ \mu_2 \end{pmatrix} \ \ ; \ \ \Sigma = \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}
+ %%  \]
   con $\vectX_1$ y $\mu_1$ son $q\times 1$, y $\Sigma_{11}$ es $q\times q$. Entonces:
   \[
   Q = (\vectX- \mu)^T\Sigma^{-1}(\vectX - \mu) - (\vectX_1-\mu_1)^T \Sigma_{11}^{-1}(\vectX_1-\mu_1) \sim \chi^2_{p-q}
@@ -1532,7 +1530,7 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
   \[
   CC^T = \begin{pmatrix} C_1 \\ C_2 \end{pmatrix}(C_1^T C_2^T) = \begin{pmatrix} C_1C_1^T & C_1C_2^T \\ C_2C_1^T & C_2C_2^T\end{pmatrix}
     \]
-    identificamos $\Sigma_{11} = C_1C_1^T$ y hacemos el cambio $U = C^{-1}(\vectX - \mu)$, que es lo mismo que $\vectX = CU + \mu$. Así: $X_1 = C_1U + \mu_1$.\\
+    identificamos $\Sigma_{11} = C_1C_1^T$ y hacemos el cambio $U = C^{-1}(\vectX - \mu)$, que es lo mismo que $\vectX = CU + \mu$. Así: $X_1 = C_1U + \mu_1$.
 
     Sabemos también que $U \sim N_p(0,I_p)$, por lo que:
     \[
@@ -1546,12 +1544,14 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
     \[
     tr(I_p) - tr(C_1^T(C_1C_1^T)C_1) = tr(I_p) - tr((C_1C_1^T)^{-1}C_1C_1^T) = tr(I_p) - tr(I_q) = p-q
     \]
-    Por lo que $Q \sim \chi_{p-q}^²$.
+    
+    Por lo que $Q \sim \chi_{p - q}^2$.
 \end{proof}
+
 \begin{nth}
   Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ y $B_{p\times p}$ simétrica. Entonces, $\vectX^T B \vectX$ tiene una distribución $\chi_k^2(\delta)$ donde $k = rango(B)$ y $\delta = \mu^T B \mu$ si y solo si $B\Sigma$ es idempotente.
   \begin{nota}
-    $B\SigmaB\Sigma = B\Sigma \iif B\Sigma B = B$
+    $B\Sigma B\Sigma = B\Sigma \iff B\Sigma B = B$
   \end{nota}
 \end{nth}
 \begin{proof}
