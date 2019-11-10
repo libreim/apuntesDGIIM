@@ -111,7 +111,7 @@ El siguiente resultado nos proporciona otra caracterización de la independencia
 
 \subsubsection{Transformaciones lineales}
 
-A continuación estudiaremos qué forma tiene la función característica de un vector aleatorio cuando éste es el resultado de someter otro vector aleatorio a transformaciones lineales.
+A continuación estudiaremos qué forma tiene la función característica de un vector aleatorio cuando este es el resultado de someter otro vector aleatorio a transformaciones lineales.
 
 Sea $\boldsymbol X = (X_1, \dots X_p)^T$ un vector aleatorio $p-$dimensional y sea $\boldsymbol Y = (Y_1,\dots,Y_q)^T$ otro vector aleatorio $q-$dimensional definido como $\boldsymbol Y = B\boldsymbol X + \boldsymbol b$, con $B \in \mathscr{M}_{q\times p}(\R)$ una matriz constante y $\boldsymbol b\in \mathbb R ^n$ un vector también constante.
 
@@ -324,7 +324,7 @@ Dicho esto, existen varias \textbf{medidas de variación global}.Podemos disting
 
 \subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
 
-\begin{nth}
+\begin{nth} \label{dist_univ}
   Sea $\vectX = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución de $\vectX$ queda unívocamente determinada por las distribuciones univariantes de la forma
   \[
 \alpha ^T \vectX, \quad \alpha \in \mathbb R ^p\,.
@@ -433,11 +433,13 @@ Algunos aspectos que justifican el estudio de esta distribución en particular:
 \end{itemize}
 
 
-\begin{ndef}
+\begin{ndef} \label{posvar:defnormal}
   Sea $\vectX = (X_1,\dots, X_p)^T$ un vector aleatorio. Se dice que $\vectX$ tiene una distribución normal $p-$variante si su densidad es de la forma:
+  
   \[
-f_{\vectX}(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
-\]
+    f_{\vectX}(x) = \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\}
+  \]
+
 Siendo $\mu = (\mu_1, \dots, \mu_p)^T \in \mathbb R^p$ y $\Sigma$ una matriz escalar $p\times p$ simétrica y definida positiva.
 \end{ndef}
 
@@ -496,11 +498,13 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
   \]
 \end{proof}
 
-\begin{nth}[Caracterización de DNM]
+\begin{nth}[Caracterización de DNM] \label{posvar:car-i}
   Sea $\vectX$ un vector aleatorio $p-$dimensional, entonces $\vectX$ tiene distribución normal multivariante, de vector de medias $\mu$ y matriz de covarianzas $\Sigma > 0$, si y solo si
+  
   \[
-\vectX = A\vectZ + \mu
-\]
+    \vectX = A\vectZ + \mu
+  \]
+    
 con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,I_p)$.
 \end{nth}
 
@@ -700,8 +704,9 @@ Entonces, se tiene:
 
   Cabe recordar en esta sección la definición \ref{funcioncaracteristica}.
 
-  \begin{nprop}[Función característica de la DNM]
+  \begin{nprop}[Función característica de la DNM] \label{posvar:car-ii}
     Dado un vector aleatorio $\vectX \sim N_p(\mu, \Sigma)$, su función característica viene dada por
+    
     \[
       \psi_{\vectX}(t) = \exp\left\{ it^T\mu - \frac{1}{2} t^T \Sigma t \right\}
     .\]
@@ -733,7 +738,7 @@ Entonces, se tiene:
   \end{proof}
 
  
-    \begin{nprop}
+    \begin{nprop} \label{linealesrangomaximo}
       Sea $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\vectY = (Y_1,\dots,Y_q)^T$ definido como $\vectY = B\vectX + b$, donde $B\in \mathscr{M}_{q\times p}(\R)$ de rango $q \leq p$, y $b \in \mathbb R^q$. Entonces, se tiene que
       \[
         \vectY \sim N_q\left(B\mu+b,\, B\Sigma B^T\right),
@@ -1011,57 +1016,71 @@ Ahora estamos en disposición de acometer este ejercicio:
       \] Así, la ecuación tendrá solución si $0 < h \leq M$. En ese caso, \[(2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h \leq 1\,,\] luego \[\log\left((2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h\right) \leq 0\,.\]
 \end{sol}
 
-\subsection{Caracterización de la DNM $(\Sigma > 0)$ en términos de la normalidad de las combinaciones lineales de las componentes}
+\subsection{Distribución normal multivariante en el caso $\Sigma \ge 0$.}
 
-Dado un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$, decimos que tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
-\[
-\alpha^T \vectX
-\]
-con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada.
+Dado un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$, \ref{afinnormal} y \ref{dist_univ} nos permiten deducir la siguiente caracterización de la DNM:
+
+\begin{nprop} \label{posvar:car-iii}
+  $\vectX$ tiene DNM si y solo si toda combinación lineal de las componentes $X_1,\dots,X_P$ de la forma
+
+  \[
+     \alpha^T \vectX
+  \]
+
+  con $\alpha\in \mathbb R^P -\{0\}$, tiene DN univariante no degenerada, necesariamente de media $\alpha^T \mu_{\vectX}$
+  y varianza $\alpha^T \Sigma_{\vectX} \alpha$.
+\end{nprop}
+
 
 Hasta ahora hemos descrito tenemos las siguientes formulaciones equivalentes de DNM:
 \begin{itemize}
-\item $[D]$: Definición en términos de la densidad $f_{\vectX}$,
-\item $[C-I]$: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$,
-\item $[C-II]$: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$, y
-\item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
+\item \hyperref[posvar:defnormal]{[D]}: definición en términos de la densidad $f_{\vectX}$,
+\item \hyperref[posvar:car-i]{[C-I]}: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$,
+\item \hyperref[posvar:car-ii]{[C-II]}: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$, y
+\item \hyperref[posvar:car-iii]{[C-III]}: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
 \end{itemize}
 
 
-Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente manera:
-\begin{nprop}
+Podemos usar \hyperref[posvar:car-ii]{[C-II]} para definir la DNM en el caso general de la siguiente manera:
+
+\begin{ndef} \label{general:car-ii}
   Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
   \[
-\Phi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = e^{it^T \mu - \frac{1}{2}t^T \Sigma t} \qquad \text{para todo } t \in \mathbb R^p.
+    \Phi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = \exp\left\{it^T \mu - \frac{1}{2}t^T \Sigma t\right\} \text{ para todo } t \in \mathbb R^p.
   \]
 
-\end{nprop}
+\end{ndef}
 
 \begin{nprop}[Transformaciones lineales de rango no necesariamente máximo]
-  Dado un vector aleatorio $\vectX  = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definido como $\vectY = B\vectX + b$, con $B_{q\times p}$ matriz de rango $r \leq \min \{q,p\}$, y $b_{q \times 1}$ un vector.
+  Dado un vector aleatorio $\vectX  = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma \geq 0$. Sea $\vectY = (Y_1,\dots,Y_p)^T$ definido como $\vectY = B\vectX + b$, con $B\in \mathscr{M}_{q\times p}(\R)$ una matriz de rango $r \leq \min \{q,p\}$, y $b \in \R^q$.
 
   Entonces, se tiene que
   \[
-  \vectY \sim N_q(B\mu+b, B\Sigma B^T).
+    \vectY \sim N_q(B\mu+b, B\Sigma B^T).
   \]
-
 \end{nprop}
-\begin{nota}
-  La única novedad que nos aporta esta nueva proposición respecto a lo que ya teníamos, es que ahora $B\Sigma B^T \geq 0$ (antes teníamos que tenía que se estrictamente mayor).\\
 
-  La demostración es análoga a la del caso $\Sigma > 0$
+\begin{nota}
+  La única novedad que nos aporta esta nueva proposición respecto a lo que ya teníamos (\ref{linealesrangomaximo}), es que ahora $B\Sigma B^T \geq 0$ (antes teníamos que tenía que se estrictamente mayor).
+La demostración es análoga a la del caso $\Sigma > 0$.
 \end{nota}
 
 
-Recordemos la $[C-II]$: Sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma > 0$, sii
+Vamos a extender la \hyperref[posvar:car-i]{[C-I]} a partir de la definición que acabamos de dar para el caso general:
+sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma \ge 0$, es
+
 \[
 \Psi_{\vectX}(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} \quad \forall t\in \mathbb R^p
 \]
+
 Supongamos $\vectX$ un vector aleatorio. Entonces, podemos utilizar una de las caracterizaciones anteriores y escribir:
+
 \[
 \Psi_{\vectX}(t) = e^{it^T\mu - \frac{1}{2}t^T\Sigma t} = e^{i^T HH^T \mu - \frac{1}{2}t^T H_1 D H_1^T t} = e^{it^T H_1 H_1^T\mu - \frac{1}{2}t^T H_1DH_1^Tt}* e^{itH_2H_2^T \mu}
 \]
+
 La forma de la densidad obtenida, sugiere considerar el siguiente cambio de variable: $\vectX = H\vectY$:
+
 \[
 Y = \begin{pmatrix} H_1^T \\ H_2^T \end{pmatrix} \vectX=\begin{pmatrix} H_1^T \vectX \\ H_2^T\vectX \end{pmatrix} = \begin{pmatrix} Y_1 \\ Y_2 \end{pmatrix}
 \]
