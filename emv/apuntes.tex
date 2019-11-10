@@ -764,8 +764,64 @@ Entonces, se tiene:
       \end{itemize}
     \end{ncor}
 
-    \subsection{Algunas descomposiciones matriciales. Diagonalización.}
+\subsection{Algunas descomposiciones matriciales. Diagonalización.}
     
+\begin{nprop}
+  Sea $A$ una matriz simétrica y definida positiva. Entonces, $\|x\|_A := (x^TAx)^{1/2}$ es una norma en $\R^p$.
+\end{nprop}
+
+\subsubsection{Descomposición $U^TDU$ de matrices simétricas definidas no negativas.}
+
+Consideramos $A\in \mathscr{M}_p(\R)$ simétrica y definida no negativa.
+
+\begin{nth}[Descomposición $U^TDU$]
+  Existe una matriz $U$ triangular superior, con los elementos de la diagonal todos 1,
+  tal que
+
+  \[ A = U^TDU, \]
+
+  con $D$ una matriz diagonal con elementos de la diagonal no negativos, única.
+\end{nth}
+
+\begin{ncor}[Descomposición de Cholesky]
+  Sea $r$ el rango de $A$, entonces existe una única matriz triangular superior $T$
+  con $r$ elementos diagonales positivos y $p-r$ filas nulas, tal que
+
+  \[ A = T^TT, \]
+
+  y, de hecho, se tiene
+
+  \[ T = D^{1/2}U \]
+
+  si $D$ y $U$ son las de la descomposición $U^TDU$.
+\end{ncor}
+
+\subsubsection{Descomposición espectral de matrices simétricas definidas no negativas.}
+
+En esta sección no exigimos que $A$ sea simétrica ni definida no negativa.
+
+\begin{ndef}[Polinomio característico]
+  Se llama \emph{polinomio característico} de $A$ al definido por:
+
+  \[
+    p(\lambda) = \det(A - \lambda I)
+  .\] 
+\end{ndef}
+
+\begin{nprop}
+  Las raíces reales del polinomio característico de $A$ son los valores propios de $A$.
+\end{nprop}
+
+\begin{ndef}[Multiplicidades algebraica y geométrica]
+  Sea $\lambda \in \R$ un valor propio de $A$. Se llama \emph{multiplicidad algebraica de $\lambda$} a la multiplicidad
+  de $\lambda$ como raíz del polinomio característico. Se llama \emph{multiplicidad geométrica de $\lambda$} a la dimensión
+  del subespacio que generan los vectores propios asociados a $\lambda$.
+\end{ndef}
+
+\paragraph{Diagonalización.}\hfill
+
+Vamos a recordar algunos resultados relativos a la diagonalización de matrices, que nos llevarán a la descomposición espectral.
+
     \begin{ndef}
       Se dice que $A\in \mathscr{M}_{p}(\R)$ es diagonalizable si existe una matriz $Q\in \mathscr{M}_{p}(\R)$ no singular tal que:
       
@@ -785,7 +841,7 @@ Entonces, se tiene:
       
       con $D$ una matriz diagonal. Denotemos $Q = (q_1,\dots,q_p)$, y $D= \operatorname{diag}(d_1,\dots,d_p)$. Entonces:
       
-      \begin{enumerate}
+      \begin{nlist}
       \item $\operatorname{rango}(A) = $ número de elementos de la diagonal de $D$ que son distintos de 0,
       \item $\det(A) = \prod_{i = 1}^p d_i$,
       \item $\operatorname{tr}(A) = \sum_{i = 1}^p d_i$,
@@ -796,25 +852,28 @@ Entonces, se tiene:
       \item el espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$,
       \item las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$,
       \item las columnas de $Q$ son autovectores linealmente independientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $d_i$),
-      \item se dice que $A$ es diagonalizable ortogonalmente si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
-    \end{enumerate}
-
+    \end{nlist}
 \end{nth}
-\begin{ncor}
-              Si $A$ es diagonalizable ortogonalmente, debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$. El recíproco es cierto: A es diagonalizable ortogonalmente si y solo si $A$ es simétrica.
+
+\begin{ndef}
+      Se dice que $A$ es \emph{diagonalizable ortogonalmente} si es diagonalizable por una matriz ortogonal, esto es, $A = QDQ^T$, con $Q^T = Q^{-1}$, $QQ^T = Q^TQ = I$.
+\end{ndef}
+    
+\begin{ncor} \label{diag-ort-sim}
+              Si $A$ es diagonalizable ortogonalmente, debe ser simétrica, pues $A^T = (QDQ^T)^T = (Q^T)^T D^T Q^T = QDQ^T = A$.
 \end{ncor}
 
-\begin{nprop}\hfill\\
+\begin{nprop}\hfill
   \begin{itemize}
-  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
-  \item $A$ es definida positiva $\iff $ los autovalores de $A$ son positivos
+  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos,
+  \item $A$ es definida positiva $\iff $ los autovalores de $A$ son positivos.
   \end{itemize}
 
   Y, si $A$ es \textbf{simétrica}:
   \begin{itemize}
-  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos
-  \item $A$ es definida positiva $\iff$ los autovalores de $A$ son positivos
-  \item $A$ es semidefinida positiva $\iff$ los autovalores de $A$ son no negativos y al menos uno es nulo
+  \item $A$ es definida no negativa $\iff$ los autovalores de $A$ son no negativos,
+  \item $A$ es definida positiva $\iff$ los autovalores de $A$ son positivos,
+  \item $A$ es semidefinida positiva $\iff$ los autovalores de $A$ son no negativos y al menos uno es nulo.
   \end{itemize}
 \end{nprop}
 
@@ -833,17 +892,83 @@ El concepto de raíz cuadrada de una matriz nos será útil:
   R = Q \operatorname{diag}\left(\sqrt{d_1}, \dots, \sqrt{d_p}\right) Q^T
   \]
   
-  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa.
+  A $R$  se le llama raíz cuadrada de una matriz simétrica y definida no negativa. La notamos $A^{1/2}$.
 \end{nprop}
 
+\paragraph{Descomposición espectral de una matriz simétrica definida no negativa.}\hfill
 
-\subsubsection{Matrices de intercambio de filas/columnas}
+Dada $A\in \mathscr{M}_{p}(\R)$ simétrica y definida no negativa, vamos a definir su \emph{descomposición espectral}.
 
-Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$
+\begin{ndef}
+  Se llama \emph{descomposición espectral} de $A$ a la descomposición en la forma:
 
-%#TODO: Completar esto... dep.
+  \[
+  A = H\Lambda H^T,
+  \]
 
-% #TODO: revisar el encaje de esto (clase 18-10-19)
+  toda vez que se verifique que:
+  \begin{nlist}
+  \item $H\in \mathscr{M}_{p}(\R)$ es ortogonal,
+  \item $\Lambda\in \mathscr{M}_{p}(\R)$ es diagonal,
+  \end{nlist}
+
+  es decir, que $A$ sea diagonalizable ortogonalmente por $H$ y $\Lambda$.
+\end{ndef}
+
+Y, en efecto, el recíproco del corolario \ref{diag-ort-sim} es cierto y siempre existe tal descomposición:
+
+\begin{nth}
+  A es diagonalizable ortogonalmente si y solo si $A$ es simétrica.
+\end{nth}
+
+Sea $r \le p$ el rango de $A$. Si elegimos $H$ y $\Lambda$ de forma que $\Lambda$ tiene las filas distintas de cero
+al principio:
+
+\[
+  \Lambda = 
+  \begin{pmatrix}
+    D & 0 \\
+    0 & 0
+  \end{pmatrix},
+\]
+
+con $D \in \mathscr{M}_r(\R)$, y escribimos $H = (H_1 | H_2)$, con $H_1\in \mathscr{M}_{p\times r}(\R), H_2\in \mathscr{M}_{p\times (p-r)}(\R)$,
+entonces:
+
+\[
+  A = (H_1 | H_2)^T \begin{pmatrix}
+    D & 0 \\
+    0 & 0
+  \end{pmatrix} (H_1 | H_2) = H_1 D H_1^T.
+\]
+
+\subsubsection{Matrices de intercambio de filas/columnas.}
+
+Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$. Dada $A\in \mathscr{M}_{p}(\R)$,
+
+\begin{itemize}
+\item $I_{(r,s)}A$ es la matriz obtenida intercambiando en $A$ las filas $r$ y $s$,
+\item $AI_{(r,s)}$ es la matriz obtenida intercambiando en $A$ las columnas $r$ y $s$.
+\end{itemize}
+
+\begin{nprop}[Propiedades] \hfill
+  \begin{nlist}
+  \item Si $r\ne s$, $\det(I_{(r,s)}) = -1$,
+  \item $I_{(r,s)}$ es simétrica y ortogonal.
+  \end{nlist}
+\end{nprop}
+
+En la descomposición espectral de una matriz simétrica y definida no negativa, tenemos unicidad de $D$
+salvo reordenación de los elementos de la diagonal y la correspondiente reordenación de las columnas de $Q$:
+
+\[
+  A = QDQ^T = (QI_{(r,s)})(I_{(r,s)}DI_{(r,s)})(I_{(r,s)}Q^T)
+\]
+
+
+\paragraph{Inciso - interpretación geométrica de la distancia de Mahalanobis y la densidad de la DNM.}\hfill
+
+Ahora estamos en disposición de acometer este ejercicio:
 
 \begin{ejer}
   Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. \begin{enumerate}
@@ -902,34 +1027,6 @@ Hasta ahora hemos descrito tenemos las siguientes formulaciones equivalentes de 
 \item $[C-III]$: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
 \end{itemize}
 
-
-\begin{nota}[Descomposición espectral de $\Sigma \geq 0$ simétrica]
-Como $\Sigma$ es simétrica, podemos escribirla como
-\[
-\Sigma = H \Lambda H^T,
-\]
-con $H_{p\times p}$ ortogonal, y $\Lambda_{p \times p}$ diagonal. Sea $r = \operatorname{rango}(\Sigma)$ con $r\leq p$.\\
-
-Supongamos que las matrices se eligen de modo que:
-\[
-\Lambda = \left(\begin{array}{@{}c|c@{}}
-  D & 0 \\\hline
-  0 & 0
-  \end{array}\right)
-\]
-con $D_{r\times r}$ no singular, escribiendo entonces:
-\[
-H = \begin{pmatrix} H_1 & H_2 \end{pmatrix}, \quad \quad H_{1_{p \times r}}, H_{2_{p\times (p-r)}}
-\]
-Con esto, tenemos:
-\[
-\Sigma = \begin{pmatrix} H_1 & H_2 \end{pmatrix}\left(\begin{array}{@{}c|c@{}}
-  D & 0 \\\hline
-  0 & 0
-  \end{array}\right)\begin{pmatrix} H_1^T  \\ H_2^T \end{pmatrix} = H_1 D H_1^T
-\]
-
-\end{nota}
 
 Utilizando lo que acabamos de ver, podemos escribir $[C-II]$ de la siguiente manera:
 \begin{nprop}
