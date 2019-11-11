@@ -538,8 +538,10 @@ con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,
     Por tanto, reescribiendo:
     \[
       \begin{split}
-        f_X(x) = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2}(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu)  \right\} =\\
-        \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \sum_{i = 1}^p \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} = \prod_{i = 1}^p  \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} = \prod_{i = 1}^p f_{X_i}(x_i)
+        f_X(x) & = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2}(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu)  \right\} \\
+        & = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \sum_{i = 1}^p \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} \\
+        & = \prod_{i = 1}^p  \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} \\
+        & = \prod_{i = 1}^p f_{X_i}(x_i)
     \end{split}
     \]
 
