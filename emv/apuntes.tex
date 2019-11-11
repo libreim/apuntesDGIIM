@@ -17,9 +17,14 @@ a modo de breve repaso y para establecer la notación que utilizaremos en todo e
 
 
 \begin{ndef}[Probabilidad inducida]
-    La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\boldsymbol X = (X_1, \dots, X_p)$ se define como la función
+    La \emph{probabilidad inducida por} o \emph{distribución de} un vector aleatorio $\vectX = (X_1, \dots, X_p)$ se define como la función
     \[
-    P_{\boldsymbol X}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathscr{B}^p\). Es decir, $P_X = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
+    P_{\vectX}[B] := P[\boldsymbol X^{-1}(B)]\,.\] para todo \(B \in \mathscr{B}^p\). Es decir, $P_{\vectX} = P \circ \restr{\boldsymbol X^{-1}}{\mathscr{B}}\,.$
+\end{ndef}
+
+\begin{ndef}
+  Cuando, para dos vectores aleatorios $\vectX$ y $\vectY$ se tenga $P_{\vectX} = P_{\vectY}$, diremos que
+  son \emph{iguales en distribución} y lo notaremos $\vectX \eqd \vectY$.
 \end{ndef}
 
 \begin{notacion}
@@ -508,7 +513,10 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
 con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,I_p)$.
 \end{nth}
 
-%#TODO: Demostración (clase de prácticas)
+\begin{proof}
+  Supuesto que $\vectX = A\vectZ + \mu$, de \ref{afinnormal} se deduce que $\vectX \sim N_p(\mu, \Sigma)$. Supuesto que $\vectX \sim N_p(\mu, \Sigma)$,
+  sin más que definir $\vectZ := A^{-1}(\vectX - \mu)$ se tiene la igualdad, y claramente $\vectZ \sim N_p(0, I_p)$.
+\end{proof}
 
 \subsubsection{Sobre independencia y condicionamiento}
 
@@ -1036,7 +1044,7 @@ Hasta ahora hemos descrito tenemos las siguientes formulaciones equivalentes de 
 \begin{itemize}
 \item \hyperref[posvar:defnormal]{[D]}: definición en términos de la densidad $f_{\vectX}$,
 \item \hyperref[posvar:car-i]{[C-I]}: $\vectX = AZ + \mu$ con $A$ no singular, $\Sigma = AA^T$,
-\item \hyperref[posvar:car-ii]{[C-II]}: $\Psi_{\vectX} = e^{it^T\mu - \frac{1}{2}t^T \Sigma t}$, y
+\item \hyperref[posvar:car-ii]{[C-II]}: $\Psi_{\vectX} = \exp\left\{it^T\mu - \frac{1}{2}t^T \Sigma t\right\}$, y
 \item \hyperref[posvar:car-iii]{[C-III]}: $\alpha^T \vectX \sim N(\alpha^T \mu, \alpha^T \Sigma \alpha), \forall \alpha \in \mathbb R^p - \{0\}$.
 \end{itemize}
 
@@ -1073,7 +1081,7 @@ sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma \ge 0$, es
 \Psi_{\vectX}(t) = \exp\left\{it^T\mu - \frac{1}{2}t^T\Sigma t\right\} \quad \forall t\in \mathbb R^p
 \]
 
-Supongamos $\vectX$ un vector aleatorio. Entonces, podemos utilizar una de las caracterizaciones anteriores y escribir:
+Descomponiendo $\Sigma = H^T\Lambda H = H_1 D H_1^T$, podemos escribir:
 
 \[
 \begin{split}
@@ -1099,13 +1107,13 @@ Con esto, se tiene:
 Y, por tanto:
 
 \[
-\begin{cases} \vectY_1 \sim N_r(H_1\mu,D),\, D> 0 \\ \vectY_2 \equiv H_2\mu \quad c.s. \end{cases}
+\begin{cases} \vectY_1 \sim N_r(H_1\mu,D),\, D> 0, \\ \vectY_2 = H_2\mu \quad c.s. \end{cases}
 \]
 
 Observamos, por \ref{fc:translineal}:
 
 \[
-\Psi_{\vectX}(t) = E[e^{it^T\vectX}] = E[e^{it^TH\vectY}] = E[e^{i(H^Tt)^T \vectY}] = \Psi_{\vectY}(H^T t)
+\Psi_{\vectX}(t) = \Psi_{\vectY}(H^T t)
 \]
 
 Denotamos
@@ -1120,12 +1128,12 @@ Con esto:
 \Psi_{\vectY}(\nu) = \Psi_{\vectX}(t) = \exp\left\{ i\nu_1\mu_{\vectY_1} - \frac{1}{2} \nu_1^T \Sigma_{\vectY_1}\nu_1 \right\} \cdot \exp\left\{i\nu_2^T \mu_{\vectY_2}\right\}
 \]
 
-y en la última igualdad, el primer término es $\Psi_{\vectY_1}(\nu_1)$ y el segundo es $\Psi_{\vectY_2}(\nu_2)$, con $\vectY_1,\vectY_2$ independientes.
+y en la última igualdad, el primer término es $\Psi_{\vectY_1}(\nu_1)$ y el segundo es $\Psi_{\vectY_2}(\nu_2)$, luego $\vectY_1,\vectY_2$ son independientes.
 
 %% TODO: puntualizar en la primera caracterización que la igualdad es en distribución.
-Aplicamos a $\vectY_1$ la \hyperref[posvar:c-i]{[C-I]}: tenemos que $\vectY_1$ puede representarse en distribución como
+Aplicamos a $\vectY_1$ la \hyperref[posvar:car-i]{[C-I]}: tenemos que $\vectY_1$ puede representarse en distribución como
 \[
-Y_1 \equiv^d D^{\frac{1}{2}}Z + H_1^T \mu \quad \quad  Z \sim N_r(0,I) 
+Y_1 \eqd D^{\frac{1}{2}}Z + H_1^T \mu \quad \quad  Z \sim N_r(0,I) 
 \]
 Para $\vectY_2 \equiv^{p.c.s.} H_2^T \mu \equiv 0*Z + H_2^T \mu$, tenemos, multiplicando por $H$:
 \[
