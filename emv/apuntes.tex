@@ -1656,9 +1656,11 @@ por lo que
 
 \begin{nth}
   Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos el particionamiento:
- %%  \[
- %% \vectX = \begin{pmatrix} \vectX_1 \\ \vectX_2 \end{pmatrix} \ \ ; \ \ \mu = \mu_1 \\ \mu_2 \end{pmatrix} \ \ ; \ \ \Sigma = \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}
- %%  \]
+  
+ \[
+   \vectX = \begin{pmatrix} \vectX_1 \\ \vectX_2 \end{pmatrix} \ \ ; \ \ \mu = \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix} \ \ ; \ \ \Sigma = \begin{pmatrix} \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}
+  \]
+  
   con $\vectX_1$ y $\mu_1$ son $q\times 1$, y $\Sigma_{11}$ es $q\times q$. Entonces:
   \[
   Q = (\vectX- \mu)^T\Sigma^{-1}(\vectX - \mu) - (\vectX_1-\mu_1)^T \Sigma_{11}^{-1}(\vectX_1-\mu_1) \sim \chi^2_{p-q}
