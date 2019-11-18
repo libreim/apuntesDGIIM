@@ -538,7 +538,7 @@ con $A\in \mathscr{M}_{p}(\R)$ no singular, $AA^T = \Sigma$, $\vectZ \sim N_p(0,
     Por tanto, reescribiendo:
     \[
       \begin{split}
-        f_X(x) & = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2}(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu)  \right\} \\
+        f_{\vectX}(x) & = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2}(x-\mu)^T \diag\left(\left(\sigma_1^2\right)^{-1}, \dots , \left(\sigma_p^2\right)^{-1}\right) (x-\mu)  \right\} \\
         & = \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \sum_{i = 1}^p \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} \\
         & = \prod_{i = 1}^p  \frac{1}{(2\pi)^{\frac{p}{2}} \prod \sigma_i} \exp \left\{ -\frac{1}{2} \left(\frac{x_i-\mu_i}{\sigma_i}\right)^2  \right\} \\
         & = \prod_{i = 1}^p f_{X_i}(x_i)
@@ -1077,7 +1077,7 @@ La demostración es análoga a la del caso $\Sigma > 0$.
 
 
 Vamos a extender la \hyperref[posvar:car-i]{[C-I]} a partir de la definición que acabamos de dar para el caso general:
-sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma \ge 0$, es
+sea $\vectX = (X_1,\dots,X_p)^T\sim N_p(\mu,\Sigma)$, con $\Sigma \ge 0$, es decir,
 
 \[
 \Psi_{\vectX}(t) = \exp\left\{it^T\mu - \frac{1}{2}t^T\Sigma t\right\} \quad \forall t\in \mathbb R^p
@@ -1132,64 +1132,71 @@ Con esto:
 
 y en la última igualdad, el primer término es $\Psi_{\vectY_1}(\nu_1)$ y el segundo es $\Psi_{\vectY_2}(\nu_2)$, luego $\vectY_1,\vectY_2$ son independientes.
 
-%% TODO: puntualizar en la primera caracterización que la igualdad es en distribución.
-Aplicamos a $\vectY_1$ la \hyperref[posvar:car-i]{[C-I]}: tenemos que $\vectY_1$ puede representarse en distribución como
+Aplicamos a $\vectY_1$ la \hyperref[posvar:car-i]{[C-I]}: tenemos que $\vectY_1$ puede representarse como
+
 \[
-Y_1 \eqd D^{\frac{1}{2}}Z + H_1^T \mu \quad \quad  Z \sim N_r(0,I) 
+\vectY_1 = D^{\frac{1}{2}}\vectZ + H_1^T \mu, \quad \vectZ \sim N_r(0,I) 
 \]
-Para $\vectY_2 \equiv^{p.c.s.} H_2^T \mu \equiv 0*Z + H_2^T \mu$, tenemos, multiplicando por $H$:
+
+Multiplicando por $H$:
+
 \[
-\vectY = \begin{pmatrix} \vectY_1 \\ \vectY_2 \end{pmatrix} \equiv \begin{pmatrix} D^{\frac{1}{2}} Z + H_1\mu \\ 0Z+ H_2^T \mu\end{pmatrix} = \begin{pmatrix} D^{\frac{1}{2}} \\ 0 \end{pmatrix}Z + H^T \mu
+\vectY = \begin{pmatrix} \vectY_1 \\ \vectY_2 \end{pmatrix} \equiv \begin{pmatrix} D^{\frac{1}{2}} \vectZ + H_1\mu \\ 0\vectZ+ H_2^T \mu\end{pmatrix} = \begin{pmatrix} D^{\frac{1}{2}} \\ 0 \end{pmatrix}\vectZ + H^T \mu
 \]
+
 Vemos que:
+
 \[
-\vectX = H\vectY = H\begin{pmatrix} D^{\frac{1}{2}} \\ 0\end{pmatrix} Z + HH^T\mu = H_1D^{\frac{1}{2}}Z + \mu
+\vectX = H\vectY = H\begin{pmatrix} D^{\frac{1}{2}} \\ 0\end{pmatrix} \vectZ + HH^T\mu = H_1D^{\frac{1}{2}}\vectZ + \mu
 \]
 
 Denotando $A= H_1D^{\frac{1}{2}}$ se tiene finalmente:
-\[
-X \equiv^{d} AZ + \mu
-\]
-con $A$ una matriz $p\times r$, con $r\leq p$ de rango $r$ y $Z\sim N_r(0,I)$.\\
 
-Recíprocamente, supongamos que se cumple lo anterior. Tenemos que, por el teorema de inversión de P. Lévy,
 \[
-\Psi_{\vectX} = \Psi_{AZ + \mu}  = E[e^{it^T(AZ +  \mu)}] = E[e^{it^T(AZ)}]e^{it^T\mu} = E[e^{i(A^t t)^T Z}]e^{it^T \mu} = \Psi_Z(A^Tt)*e^{it^T \mu} = (*)
+\vectX = A\vectZ + \mu
 \]
-como $\Psi_Z(t) = e^{it^T 0 - \frac{1}{2}t^tIt} = t^{-\frac{1}{2}t^t t}$, entonces:
+con $A$ una matriz $p\times r$, con $r\leq p$, de rango $r$ y $\vectZ\sim N_r(0,I)$.
+
+Recíprocamente, supongamos que se cumple lo anterior. Usando \ref{fc:translineal},
+
 \[
-(*) = e^{-\frac{1}{2}(A^T t)^T(A^T t)} e^{it^T \mu} = e^{-\frac{1}{2}t^T A A^T t} e^{it^T \mu} = (**)
+\Psi_{\vectX}(t) = \Psi_{A\vectZ + \mu}(t)  = \exp\left\{it^T \mu\right\}\Psi_Z(A^Tt)
+\]
+como $\Psi_{\vectZ}(t) = \exp\left\{-\frac{1}{2}t^T t\right\}$, entonces:
+\[
+ \Psi_{\vectX}(t) = \exp\left\{-\frac{1}{2}(A^T t)^T(A^T t)\right\} \exp\left\{it^T \mu\right\} = \exp\left\{-\frac{1}{2}t^T A A^T t\right\} \exp\left\{it^T \mu\right\} 
 \]
 y, como tenemos:
 \begin{itemize}
   \item $\mu_{\vectX} = E[\vectX]=A*0 +\mu = \mu$
-  \item $\Sigma_{\vectX} = Cov(\vectX) = AIA^T = AA^T$
+  \item $\Sigma_{\vectX} = \operatorname{Cov}(\vectX) = AIA^T = AA^T$
 \end{itemize}
 Nos queda:
 \[
-(**) = e^{it\mu - \frac{1}{2}t^T(AA^T)t} \implies \vectX \sim N_p(\mu, AA^T) \quad AA^T \geq 0
+ \Psi_{\vectX}(t)= e^{it\mu - \frac{1}{2}t^T(AA^T)t} \implies \vectX \sim N_p(\mu, AA^T), \quad AA^T \geq 0
 \]
 
-Con todo este procedimiento, podemos enunciar la siguiente caracterización, que es una extensión de $[C-I]$.
-\begin{nprop}[$\bar{[C-I]}$]
-  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM de vector de medias $\mu$ y matriz de covarianzas $\Sigma$ (con $\Sigma \geq 0$) , $N_P(\mu,\Sigma)$ si y solo si se puede representar:
+Con todo este procedimiento, podemos enunciar la siguiente caracterización, que es una extensión de \hyperref[posvar:car-i]{[C-I]}.
+\begin{nprop}[Caracterización I]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM de vector de medias $\mu$ y matriz de covarianzas $\Sigma$ (con $\Sigma \geq 0$), si y solo si se puede representar:
   \[
-\vectX \equiv^{d} AZ + \mu \quad con \quad \begin{cases} A_{p\times r}, \ \ rango(A) = r, \ \ AA^T = \Sigma \\ Z\sim N_r(0,I)\end{cases}
-  \]
+  \vectX = A\vectZ + \mu
+  \] con $A\in \mathscr{M}_{p\times r}(\R)$, de rango $r$, $AA^T = \Sigma,\, \vectZ\sim N_r(0,I)$.
 \end{nprop}
-Enunciamos también una nueva versión de $[C-III]$:
-\begin{nprop}[$\bar{[C-III]}$]
-  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM (con $\Sigma \geq 0$) si y solo si toda combinación lineal de las componentes $X_1,\dots,X_p$ de la forama:
-  \[
-\alpha^T X \quad \quad \alpha^T \in \mathbb R^p
+
+Enunciamos también una nueva versión de \hyperref[posvar:car-iii]{C-III}:
+\begin{nprop}[Caracterización III]
+  Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM (con $\Sigma \geq 0$) si y solo si toda combinación lineal de las componentes $X_1,\dots,X_p$ de la forma:
+\[
+  \alpha^T X, \quad \alpha^T \in \mathbb R^p
 \]
 tiene distribución normal (univariante, posiblemente degenerada)
 \end{nprop}
 \begin{proof}
-Es análoga al caso anterior
+Es análoga al caso anterior.
 \end{proof}
 
-\begin{ndef}[$\bar{[D]}$]
+\begin{ndef}
   En el subespacio (afín) generado por los autovalores (y correspondientes autovectores) no nulos, se tiene que se puede formular la función de densidad normal multivariante.
 
 \end{ndef}
