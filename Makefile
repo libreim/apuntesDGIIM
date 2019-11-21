@@ -1,5 +1,14 @@
+## VARIABLES ##
+
+# Output .tar.gz
 TARGET= apuntes.tar.gz
+
+# Output directory
 OUT = .out
+
+# Templates
+TEX_TEMPLATE=plantilla_tex.tex
+MD_TEMPLATE=plantilla_md.tex
 
 # Continuous compilation option
 ifeq ($(CONT), true)
@@ -35,15 +44,15 @@ $(SUBJECTS): % : $(OUT)/%.pdf
 
 # LaTeX compilation
 latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -halt-on-error -file-line-error -jobname=$(1)
-$(OUT)/%.pdf: plantilla_tex.tex %/config.sty %/apuntes.tex %/ejercicios.tex
+$(OUT)/%.pdf: $(TEX_TEMPLATE) %/config.sty %/apuntes.tex %/ejercicios.tex
 	mkdir -p $(OUT)
-	TEXINPUTS="$*:_assets:" latexmk $(call latex_args,$*) $(CONTARG) plantilla_tex.tex
+	TEXINPUTS="$*:_assets:" latexmk $(call latex_args,$*) $(CONTARG) $(TEX_TEMPLATE)
 	latexmk -c -output-directory=$(OUT) $*
 
 
 # Markdown compilation
-pandoc_args = --pdf-engine=lualatex --template plantilla_md.tex --listings --resource-path="$(1):_assets:"
-$(OUT)/%.pdf: plantilla_md.tex %/config.sty %/apuntes.md %/ejercicios.md
+pandoc_args = --pdf-engine=lualatex --template $(MD_TEMPLATE) --listings --resource-path="$(1):_assets:"
+$(OUT)/%.pdf: $(MD_TEMPLATE) %/config.sty %/apuntes.md %/ejercicios.md
 	mkdir -p $(OUT)
 	TEXINPUTS="$*:_assets:" pandoc $(call pandoc_args,$*) $*/apuntes.md $*/ejercicios.md -o $@
 
