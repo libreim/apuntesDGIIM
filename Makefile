@@ -30,7 +30,7 @@ $(OUT)/$(TARGET): $(PDFS)
 
 # individual phony subjects rules
 .PHONY: $(SUBJECTS) clean publish
-$(SUBJECTS): % : .out/%.pdf
+$(SUBJECTS): % : $(OUT)/%.pdf
 
 
 # LaTeX compilation

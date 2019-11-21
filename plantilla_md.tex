@@ -62,7 +62,7 @@
 % ------------------------------------------------------------------------------
 
 % Márgenes
-\usepackage[bottom=3.125cm, top=2.5cm, left=2.5cm, right=4.5cm, marginparwidth=70pt]{geometry} 
+\usepackage[bottom=3.125cm, top=2.5cm, left=2.5cm, right=4.5cm, marginparwidth=70pt]{geometry}
 
 % Párrafos
 \linespread{1.1}
@@ -200,7 +200,7 @@
 
 \providecommand{\tightlist}{%
 	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-	
+
 \newcommand{\passthrough}[1]{#1}
 
 \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
@@ -212,6 +212,9 @@
 \makeatother
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+
+% Compatibilidad de pandoc 2.7.x con texlive2019
+\renewcommand{\linethickness}{0.5pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ------------------------------------------------------------------------------
@@ -240,7 +243,7 @@
 
 	\noindent
 	\parbox[b]{\textwidth}{
-		\raggedright 
+		\raggedright
 		\sffamily\large\color{white}
 		{\Large \autor }\\[4pt]
 		\grado\\
