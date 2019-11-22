@@ -49,7 +49,7 @@ latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(O
 $(OUT)/%.pdf: $(TEX_TEMPLATE) %/config.sty %/apuntes.tex %/ejercicios.tex
 	mkdir -p $(OUT)
 	TEXINPUTS="$*:_assets:" latexmk $(call latex_args,$*) $(CONTARG) $(TEX_TEMPLATE)
-#	latexmk -c -output-directory=$(OUT) $*
+	latexmk -c -output-directory=$(OUT) $*
 
 
 # Markdown compilation
