@@ -195,7 +195,7 @@ donde $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$ es 
 \end{nota}
 
 \begin{nota}
-  La desigualdad de Cauchy-Schwarz nos dice que existen todas las esperanzas si, y solo si existen las varianzas de cada componente.
+  La desigualdad de Cauchy-Schwarz nos dice que existen todas las covarianzas si, y solo si existen las varianzas de cada componente.
 \end{nota}
 
 \begin{nprop}[Propiedades elementales]
@@ -210,7 +210,7 @@ donde $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$ es 
 \begin{proof}
   La comprobación de las dos primeras propiedades es inmediata, por lo que vamos a ver únicamente la demostración de la propiedad 3.
   \begin{nlist}
-    \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha^T \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
+    \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
       0 \leq \operatorname{Var}(\alpha^T X) = E\left[\|\alpha^T X - E[\alpha^T X]\|^2\right] &= E\left[\|\alpha^T X - \alpha^T \mu_X\|^2\right] = E\left[\|\alpha^T(X-\mu)\|^2\right]\\ 
         &=^{(1)} E\left[\alpha^T(X-\mu)(X-\mu)^T \alpha\right] \\
         &= \alpha^T E\left[(X-\mu)(X-\mu)^T\right] \alpha \\
@@ -237,9 +237,9 @@ Vamos a ver ahora diferentes \textbf{casos} que se pueden dar respecto a la matr
 \end{nota}
 
 \begin{ndef}[Normalización]
-    Dado un vector aleatorio $\boldsymbol X\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \emph{normalización} en «origen» y «escala» como
+    Dado un vector aleatorio $\vectX\sim(\mu,\Sigma)$, con $\Sigma>0$, se define su \emph{normalización} en «origen» y «escala» como
     \[
-  Z = C^{-1}(X - \mu)\,,
+  \vectZ = C^{-1}(\vectX - \mu)\,,
 \]
 para cualquier matriz $C\in M_{p\times p}$ tal que $\Sigma = CC^T$. Esta matriz $C$ no es única, pues existen infinitas descomposiciones de $\Sigma$ de esta forma.
 
