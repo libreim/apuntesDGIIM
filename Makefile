@@ -39,7 +39,9 @@ $(OUT)/$(TARGET): $(PDFS)
 
 # individual phony subjects rules
 .PHONY: $(SUBJECTS) clean publish
+.PRECIOUS: $(PDFS)
 $(SUBJECTS): % : $(OUT)/%.pdf
+
 
 
 # LaTeX compilation
