@@ -211,11 +211,12 @@ donde $\sigma_{ij} = E\left[(X_i - \mu_i)(X_j - \mu_j)\right] = \sigma_{ji}$ es 
   La comprobación de las dos primeras propiedades es inmediata, por lo que vamos a ver únicamente la demostración de la propiedad 3.
   \begin{nlist}
     \item[3.] $\boxed{\implies}\,$ Supongamos que $\Sigma$ es la matriz de covarianza de un vector aleatorio $\boldsymbol X$, y $\boldsymbol \mu_{\boldsymbol X}$ es su vector de medias. Sea $\boldsymbol \alpha \in \mathbb R^p$. Tenemos que probar que $\boldsymbol \alpha^T \Sigma \boldsymbol \alpha \geq 0$. Consideramos la variable aleatoria $\boldsymbol \alpha^T \boldsymbol X$. \begin{align*}
-      0 \leq \operatorname{Var}(\alpha^T X) = E\left[\|\alpha^T X - E[\alpha^T X]\|^2\right] &= E\left[\|\alpha^T X - \alpha^T \mu_X\|^2\right] = E\left[\|\alpha^T(X-\mu)\|^2\right]\\ 
+      0 \leq \operatorname{Var}(\alpha^T X) = E\left[\|\alpha^T X - E[\alpha^T X]\|^2\right] &= E\left[\|\alpha^T X - \alpha^T \mu_X\|^2\right] \\ 
+        &= E\left[\|\alpha^T(X-\mu)\|^2\right]\\ 
         &=^{(1)} E\left[\alpha^T(X-\mu)(X-\mu)^T \alpha\right] \\
         &= \alpha^T E\left[(X-\mu)(X-\mu)^T\right] \alpha \\
-        &= \alpha^T \Sigma \alpha
-    \end{align*} Donde en $(1)$ hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
+        &= \alpha^T \Sigma \alpha,
+    \end{align*} donde en $(1)$ hemos separado el cuadrado y hemos traspuesto uno de los términos (el resultado es el mismo, un escalar).
 
     $\boxed{\impliedby}\,$ Sea $A$ una matriz simétrica, definida no negativa. Entonces, se puede encontrar una factorización $A = B B^T$. donde $C \in \mathscr{M}_{p}(\R)$.
     Consideramos un vector aleatorio $\vectX$ cuyas entradas son $p$ variables independientes e idénticamente distribuidas con distribución normal estándar. Entonces, $\Sigma_{\vectX} = I_p$. Esto se puede comprobar usando que $E[XY] = E[X]E[Y]$ si $X$ e $Y$ son variables aleatorias independientes. Consideramos también $\vectY = B\vectX$, entonces:
@@ -251,22 +252,17 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
 \end{nprop}
 
 \begin{proof} \hfill\\
-    \[
-    E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0,
-    \]
-
-    \[
-    \operatorname{Cov}(Z) = E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]
-    \]
-
-    y, por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$, se tiene en la igualdad anterior:
-
-    \[
-      \operatorname{Cov}(Z) = C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I = I
-    .\]
-
+  Para la esperanza tenemos, \[
+  E[Z] = E[C^{-1}(X-\mu)] = C^{-1}E[(X-\mu)] = C^{-1}(E[X] - \mu) = C^{-1}(\mu - \mu ) = 0,
+  \] y para la matriz de covarianzas, \begin{align*}
+    \operatorname{Cov}(Z) &= E[ZZ ^T] = E[C^{-1}(X-\mu)(X-\mu)^T(C^{-1})^T]\\
+    \intertext{y por la propiedad de las matrices que nos dice que $(C^{-1})^T = (C^T)^{-1}$,}
+      &= C^{-1}E[(X-\mu)(X-\mu)^T](C^T)^{-1} = C^{-1} \Sigma (C^T)^{-1} = C^{-1}CC^T(C^T)^{-1} = I \cdot I\\ 
+      &= I.\qedhere
+  \end{align*}
 \end{proof}
-  \begin{ndef}
+
+\begin{ndef}
     Se define la \emph{distancia de Mahalanobis} de $\vectX\sim(\mu,\Sigma)$ con $\Sigma > 0$ con respecto a su vector de medias como
     \[
     \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T \Sigma (\vectX-\mu) \right\} ^{\frac{1}{2}},
@@ -274,11 +270,10 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
     que es una variable aleatoria.
   \end{ndef}
 
-  Vamos a interpretar esta definición. Sea $\vectZ$ una normalización de $\vectX$:
-  \[
-  \Delta(\vectX,\mu) = \left\{ (\vectX-\mu)^T (CC^T)^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{ (\vectX-\mu)^T (C^T)^{-1}C^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{\vectZ^T \vectZ\right\}^{\frac{1}{2}} = \Vert \vectZ\Vert\,,
-  \]
-  con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función medible a un vector aleatorio.
+  Vamos a interpretar esta definición. Sea $\vectZ$ una normalización de $\vectX$: \begin{align*}
+    \Delta(\vectX,\mu) &= \left\{ (\vectX-\mu)^T (CC^T)^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}} = \left\{ (\vectX-\mu)^T (C^T)^{-1}C^{-1}(\vectX-\mu)\right\}^{\frac{1}{2}}\\
+      &= \left\{\vectZ^T \vectZ\right\}^{\frac{1}{2}} = \Vert \vectZ\Vert\,,
+  \end{align*} con norma la euclídea en $\mathbb R^p$. Así, esta distancia es la norma de cualquier normalización de $\vectX$. Recordemos que $\Vert \vectZ\Vert$ es una variable aleatoria, pues es una aplicación de una función medible a un vector aleatorio.
 
   \begin{nprop} Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. Entonces,
     \begin{nlist}
@@ -320,17 +315,16 @@ Veamos a continuación algunas de las propiedades de esta variable $Z$.
       con lo que $\vectY$ es una variable aleatoria degenerada: $P[\vectY = k] = 1 \iff \alpha^T \vectX = k$ c.s.
   \end{proof}
 
-Dicho esto, existen varias \textbf{medidas de variación global}.Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
+Dicho esto, existen varias \textbf{medidas de variación global}. Podemos distinguir, dado $\Sigma$, y $\lambda_j$ con $j = 1,\dots,p$ los autovalores de $\Sigma$:
 \begin{nlist}
 \item $\det(\Sigma) =  \prod_{j=1}^p \lambda_j$,
-  \item $\traza(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$
+  \item $\traza(\Sigma) = \sum_{j = 1}^p \sigma_j^2 = \sum_{j=1}^p \lambda_j$.
 \end{nlist}
-
 
 \subsection{Caracterización de la distribución de un v.a. en términos de las distribuciones univariantes de c.l. de sus componentes}
 
 \begin{nth} \label{dist_univ}
-  Sea $\vectX = (X_1,\dots, X_n)^T$ un vector aleatorio. Se tiene que la distribución de $\vectX$ queda unívocamente determinada por las distribuciones univariantes de la forma
+  Sea $\vectX = (X_1,\dots, X_n)^T$ un vector aleatorio. La distribución de $\vectX$ queda unívocamente determinada por las distribuciones univariantes de la forma
   \[
 \alpha ^T \vectX, \quad \alpha \in \mathbb R ^p\,.
   \]
@@ -460,10 +454,12 @@ Veamos que, en efecto, $f_{\vectX}$ es una función de densidad
 Por tanto, podemos escribir:
 
 \begin{DispWithArrows*}[fleqn, mathindent = 0cm, wrap-lines]
-      \int_{\R^p} f_{\vectX}(x) \mathrm{d}x & = \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
+      \int_{\R^p} f_{\vectX}&(x) \mathrm{d}x \\
+      &= \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
       & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\
       & = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p\\
-      & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j = \prod_{j=1}^p 1 = 1.
+      & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j \\
+      &= \prod_{j=1}^p 1 = 1.
 \end{DispWithArrows*}
 \end{enumerate}
 
@@ -916,17 +912,14 @@ Dada $A\in \mathscr{M}_{p}(\R)$ simétrica y definida no negativa, vamos a defin
 
 \begin{ndef}
   Se llama \emph{descomposición espectral} de $A$ a la descomposición en la forma:
-
   \[
   A = H\Lambda H^T,
   \]
-
   toda vez que se verifique que:
   \begin{nlist}
   \item $H\in \mathscr{M}_{p}(\R)$ es ortogonal,
   \item $\Lambda\in \mathscr{M}_{p}(\R)$ es diagonal,
   \end{nlist}
-
   es decir, que $A$ sea diagonalizable ortogonalmente por $H$ y $\Lambda$.
 \end{ndef}
 
@@ -959,17 +952,17 @@ entonces:
 
 \subsubsection{Matrices de intercambio de filas/columnas.}
 
-Sea $I_{(r,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$. Dada $A\in \mathscr{M}_{p}(\R)$,
+Sea $I_{(r,\,s)}$ la matriz obtenida intercambiando en la identidad $I_p$ las filas $r$ y $s$. Dada $A\in \mathscr{M}_{p}(\R)$,
 
 \begin{itemize}
-\item $I_{(r,s)}A$ es la matriz obtenida intercambiando en $A$ las filas $r$ y $s$,
-\item $AI_{(r,s)}$ es la matriz obtenida intercambiando en $A$ las columnas $r$ y $s$.
+\item $I_{(r,\,s)}\,A$ es la matriz obtenida intercambiando en $A$ las filas $r$ y $s$,
+\item $AI_{(r,\,s)}$ es la matriz obtenida intercambiando en $A$ las columnas $r$ y $s$.
 \end{itemize}
 
 \begin{nprop}[Propiedades] \hfill
   \begin{nlist}
-  \item Si $r\ne s$, $\det(I_{(r,s)}) = -1$,
-  \item $I_{(r,s)}$ es simétrica y ortogonal.
+  \item Si $r\ne s$, $\det(I_{(r,\,s)}) = -1$,
+  \item $I_{(r,\,s)}$ es simétrica y ortogonal.
   \end{nlist}
 \end{nprop}
 
@@ -977,7 +970,7 @@ En la descomposición espectral de una matriz simétrica y definida no negativa,
 salvo reordenación de los elementos de la diagonal y la correspondiente reordenación de las columnas de $Q$:
 
 \[
-  A = QDQ^T = (QI_{(r,s)})(I_{(r,s)}DI_{(r,s)})(I_{(r,s)}Q^T)
+  A = QDQ^T = (QI_{(r,\,s)})(I_{(r,\,s)}DI_{(r,\,s)})(I_{(r,\,s)}Q^T)
 \]
 
 
@@ -987,7 +980,7 @@ Ahora estamos en disposición de acometer este ejercicio:
 
 \begin{ejer}
   Sea $\vectX = (X_1, \dots, X_p)^T \sim (\boldsymbol \mu, \Sigma)$ un vector aleatorio con $\Sigma > 0$. \begin{enumerate}
-    \item Estudiar el lugar geométrico de los puntos $\Delta(\boldsymbol x, \boldsymbol \mu) = k$ e interpretarlo en funcón de los autovalores de $\Sigma$.
+    \item Estudiar el lugar geométrico de los puntos $\Delta(\boldsymbol x, \boldsymbol \mu) = k$, e interpretarlo en funcón de los autovalores de $\Sigma$.
     \item Si además $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, estudiar el lugar geométrico de los puntos definidos por $f_{\boldsymbol X}(\boldsymbol x) = h$ —con $h \geq 0$— y dar una interpretación geométrica espectral.
   \end{enumerate}
 \end{ejer}
@@ -996,20 +989,18 @@ Ahora estamos en disposición de acometer este ejercicio:
   Comenzamos dando la solución del apartado (1). Para $k \geq 0$ consideramos \[
       \Delta(\boldsymbol x, \boldsymbol \mu) = k \iff (\boldsymbol x - \boldsymbol \mu)^T\Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2 \iff (\boldsymbol x - \boldsymbol \mu)^T(k^2\Sigma)^{-1}(\boldsymbol x - \boldsymbol \mu) = 1\,.
       \] Visto así se tiene que los puntos $\boldsymbol x$ solución de esta ecuación definen el \textit{elipsoide} de centro $\boldsymbol \mu$ con ejes principales definidos por los autovectores de $(k^2\Sigma)^{-1}$, siendo la longitud al cuadrado de los semiejes igual a los inversos de los autovalores.
-
       Descomponiendo $\Sigma = H\Lambda H^T$, podemos escribir \begin{align*}
         (k^2\Sigma)^{-1} 
         &= (kH\Lambda H^T k)^{-1} 
         = k^{-1}(H\Lambda H^T)^{-1} 
-        = k^{-1}(H^T)^{-1}\Lambda^{-1}H^{-1}k^{-1} 
-        = (k^{-1}H)\Lambda^{-1}(k^{-1}H)^T\\
+        = k^{-1}(H^T)^{-1}\Lambda^{-1}H^{-1}k^{-1}\\
+        &= (k^{-1}H)\Lambda^{-1}(k^{-1}H)^T
         % #TODO: añadir anotación HH^T = 1
-        &= H(k^2\Lambda)^{-1}H^T\,.
+        = H(k^2\Lambda)^{-1}H^T\,.
       \end{align*}
 
-      Los autovectores vienen definidos por la matriz $H$ —columnas—, dando las direcciones de los ejes del elipsoide. Los autovalores de $(k^2\Sigma)^{-1}$ vienen dados por los elementos diagonales de la matriz diagonal $(k^2\Lambda)^{-1}$, es decir, los inversos de la forma $(k^2\lambda_j)^{-1}$ de los autovalores de la matriz $k^2\Sigma$.
-
-      Las longitudes al cuadrado de los semiejes coinciden con los propios autovalores $k^2\lambda_j$, por lo que las longitudes de los semiejes son los valores $k\lambda_j^{\sfrac{1}{2}}$.
+      Los autovectores vienen definidos por la matriz $H$ —columnas—, dando las direcciones de los ejes del elipsoide. Por otro lado, los autovalores de $(k^2\Sigma)^{-1}$ vienen dados por los elementos diagonales de la matriz diagonal $(k^2\Lambda)^{-1}$, es decir, los inversos de la forma $(k^2\lambda_j)^{-1}$ de los autovalores de la matriz $k^2\Sigma$.
+      Finalmente, las longitudes al cuadrado de los semiejes coinciden con los propios autovalores $k^2\lambda_j$, por lo que las longitudes de los semiejes son los valores $k\lambda_j^{\sfrac{1}{2}}$.
 
       Procedemos ahora a ver la solución del apartado (2). La ecuación es, por definición, \[
         f_{\vectX}(\boldsymbol X) 
