@@ -448,7 +448,7 @@ Veamos que, en efecto, $f_{\vectX}$ es una función de densidad
 \item $\int_{\mathbb R^p} f_{\vectX}(x) \mathrm{d}x = 1$. En efecto, como $\Sigma$ es una matriz simétrica y definida positiva, podemos descomponerla de la forma $\Sigma = C C^T$ con $C \in \mathcal \mathscr{M}_{p}(\R), \det(C) > 0$. La forma de la densidad sugiere el cambio de variable $Z = C^{-1}(x-\mu)$.  El determinante del jacobiano de la transformación es $\det\left(C^{-1}\right)$. Por otro lado:
 
 \[
-  (x-\mu)^T \Sigma^{-1}(x-\mu) = zz^T
+  (x-\mu)^T \Sigma^{-1}(x-\mu) = z^Tz
 \]
 
 Por tanto, podemos escribir:
@@ -456,7 +456,7 @@ Por tanto, podemos escribir:
 \begin{DispWithArrows*}[fleqn, mathindent = 0cm, wrap-lines]
       \int_{\R^p} f_{\vectX}&(x) \mathrm{d}x \\
       &= \int_{\mathbb R^p} \frac{1}{(2\pi)^{p/2}\det(\Sigma)^{\frac{1}{2}}} \exp\left\{- \dfrac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu)\right\} \mathrm{d}x \Arrow{cambio de variable} \\
-      & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}zz^T\right\} \det(C) \mathrm{d}z\\
+      & = \int _{\mathbb R^p} \frac{1}{(2\pi)^{\frac{p}{2}}\det(C)^{\frac{1}{2}} \det(C^T)^{\frac{1}{2}}} \exp\left\{ -\frac{1}{2}z^Tz\right\} \det(C) \mathrm{d}z\\
       & = \int_{\mathbb R^p} \frac{1}{\left(\sqrt{2\pi}\right)^p}\exp\left\{-\frac{1}{2}\sum_{j=1}^p z_j^2\right\} \mathrm{d}z_1 \dots \mathrm{d}z_p\\
       & = \prod_{j=1}^p \int_{\mathbb R} \underbrace{ \frac{1}{\sqrt{2\pi}} \exp\left\{- \frac{1}{2} z^2\right\} }_{\text{densidad de una $N(0,1)$}} \mathrm{d}z_j \\
       &= \prod_{j=1}^p 1 = 1.
@@ -1017,8 +1017,9 @@ Ahora estamos en disposición de acometer este ejercicio:
       \] Así, la ecuación tendrá solución si $0 < h \leq M$. En ese caso, \[(2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h \leq 1\,,\] luego \[\log\left((2\pi)^{\sfrac{p}{2}}|\Sigma|^{\sfrac{1}{2}}\,h\right) \leq 0\,.\]
 \end{sol}
 
-\subsection{Distribución normal multivariante en el caso $\Sigma \ge 0$.}
+\section{Distribución normal multivariante en el caso general $\Sigma \ge 0$.}
 
+\subsection{Definición y caracterizaciones.}
 Dado un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$, \ref{afinnormal} y \ref{dist_univ} nos permiten deducir la siguiente caracterización de la DNM:
 
 \begin{nprop} \label{posvar:car-iii}
@@ -1047,7 +1048,7 @@ Podemos usar \hyperref[posvar:car-ii]{[C-II]} para definir la DNM en el caso gen
 \begin{ndef} \label{general:car-ii}
   Dado $\vectX = (X_1,\dots,X_p)^T \sim N_p(\mu,\Sigma)$ un vector aleatorio con $\Sigma \geq 0$, se dice que tiene una DNM si su función característica viene dada por:
   \[
-    \Phi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = \exp\left\{it^T \mu - \frac{1}{2}t^T \Sigma t\right\} \text{ para todo } t \in \mathbb R^p.
+    \Psi_{\vectX}(t) = E\left[e^{it^T \vectX}\right] = \exp\left\{it^T \mu - \frac{1}{2}t^T \Sigma t\right\} \text{ para todo } t \in \mathbb R^p.
   \]
 
 \end{ndef}
@@ -1164,7 +1165,7 @@ y, como tenemos:
 \end{itemize}
 Nos queda:
 \[
- \Psi_{\vectX}(t)= e^{it\mu - \frac{1}{2}t^T(AA^T)t} \implies \vectX \sim N_p(\mu, AA^T), \quad AA^T \geq 0
+ \Psi_{\vectX}(t)= \exp\left\{it\mu - \frac{1}{2}t^T(AA^T)t\right\} \implies \vectX \sim N_p(\mu, AA^T), \quad AA^T \geq 0
 \]
 
 Con todo este procedimiento, podemos enunciar la siguiente caracterización, que es una extensión de \hyperref[posvar:car-i]{[C-I]}.
@@ -1175,7 +1176,7 @@ Con todo este procedimiento, podemos enunciar la siguiente caracterización, que
   \] con $A\in \mathscr{M}_{p\times r}(\R)$, de rango $r$, $AA^T = \Sigma,\, \vectZ\sim N_r(0,I)$.
 \end{nprop}
 
-Enunciamos también una nueva versión de \hyperref[posvar:car-iii]{C-III}:
+Enunciamos también una nueva versión de \hyperref[posvar:car-iii]{[C-III]}:
 \begin{nprop}[Caracterización III]
   Un vector aleatorio $\vectX = (X_1,\dots,X_p)^T$ tiene DNM (con $\Sigma \geq 0$) si y solo si toda combinación lineal de las componentes $X_1,\dots,X_p$ de la forma:
 \[
