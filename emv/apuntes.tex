@@ -479,7 +479,7 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
 
 
 \begin{nprop}[Transformación afín sobre una normal] \label{afinnormal}
-  Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $\vectY = B\vectX+b$ con $B$ matriz escalar $p\times p$ no singular y $b$ un vector escalar $p\times 1$. Entonces, se tiene que:
+  Sea $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ e $\vectY = B\vectX+b$ con $B$ matriz escalar $p\times p$ no singular y $b\in\R^p$. Entonces, se tiene que:
   \[
      \vectY \sim N_p(B\mu+b, B \Sigma B^T)
   .\]
@@ -1188,15 +1188,14 @@ Es análoga al caso anterior.
 \end{proof}
 
 \begin{ndef}
-  En el subespacio (afín) generado por los autovalores (y correspondientes autovectores) no nulos, se tiene que se puede formular la función de densidad normal multivariante.
-
+  En el subespacio afín generado por los autovectores correspondientes a autovalores no nulos, se tiene que se puede formular la función de densidad normal multivariante.
 \end{ndef}
 
 \begin{nprop}[Normalidad de C.L. de vectores con DNM independientes]
-  Sean $\vectX_k$ con $k = 1,\dots,m$ v.a. $p-$dimensionales independientes con distribución $N_p(\mu_k, \Sigma_k)$ respectivamente. Entonces, para cualquier conjunto de matrices constantes $A_k$ con $k = 1,\dots, m$ de dimensión $q\times p$, se ferifica que:
+  Sean $\vectX_k$ con $k = 1,\dots,m$ v.a. $p-$dimensionales independientes con distribución $N_p\left(\mu_k, \Sigma_k\right)$ respectivamente. Entonces, para cualquier conjunto de matrices constantes $A_k$ con $k = 1,\dots, m$ de dimensión $q\times p$, se verifica que:
   \[
-Y:= \sum_{k=1}^{m} A_k X_k \sim N_q(\sum_{k=1}^m(A_k \mu_k), \sum_{k=1}^m(A_k \Sigma_k A_k^T))
-  \]
+Y:= \sum_{k=1}^{m} A_k X_k \sim N_q\left(\sum_{k=1}^m\left(A_k \mu_k\right), \sum_{k=1}^m\left(A_k \Sigma_k A_k^T\right)\right)
+  .\]
 \end{nprop}
 %#TODO: Demostración, es seguir de la definición
 
@@ -1221,11 +1220,11 @@ La conjetura de Paul Lévy preguntaba si el recíproco de esta afirmación es ci
 
 Vamos a comenzar razonando cómo podemos trabajar con coordenadas polares. Sea $\vectX \sim N_p(\boldsymbol \mu, \Sigma)$, con $\Sigma > 0$. Para cada $k > 0$ la ecuación \[(\boldsymbol x - \boldsymbol \mu)^T \Sigma^{-1}(\boldsymbol x - \boldsymbol \mu) = k^2\] define un elipsoide en $\mathbb R^p$ sobre el que la densidad $f_{\vectX}$ es constante. 
 
-Sea $\Sigma = CC^T$, con $C_{p\times p}$ no singular. Definimos $\boldsymbol Z = C^{-1}(\boldsymbol X - \boldsymbol \mu)$, con $\boldsymbol Z \sim N_p(\boldsymbol 0, \mathcal I_p)$, a partir del cual vamos a definir el vector aleatorio —excepto para el caso $\boldsymbol Z = 0$— \[\boldsymbol U = \frac{\boldsymbol Z}{\Vert \boldsymbol Z \Vert} = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}\,,\] que tiene norma 1. Observamos que $\boldsymbol U$ se distribuye sobre la esfera unidad en $\mathbb R^p$.
+Sea $\Sigma = CC^T$, con $C_{p\times p}$ no singular. Definimos $\boldsymbol Z = C^{-1}(\boldsymbol X - \boldsymbol \mu)$, con $\boldsymbol Z \sim N_p(\boldsymbol 0, I_p)$, a partir del cual vamos a definir el vector aleatorio —excepto para el caso $\boldsymbol Z = 0$— \[\boldsymbol U = \frac{\boldsymbol Z}{\Vert \boldsymbol Z \Vert} = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}\,,\] que tiene norma 1. Observamos que $\boldsymbol U$ se distribuye sobre la esfera unidad en $\mathbb R^p$.
 
 Definimos a continuación $H \boldsymbol U$, con $H$ matriz ortogonal. Entonces, \[
   H \boldsymbol U = H \frac{\boldsymbol Z}{\left(\boldsymbol Z^T \boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\left(\boldsymbol Z^T H^T H\boldsymbol Z\right)^{1/2}} = \frac{H\boldsymbol Z}{\Big((H\boldsymbol Z)^T (H\boldsymbol Z)\Big)^{1/2}}\,.
-\] Observamos que $H \boldsymbol Z \sim N_p(H \boldsymbol 0,\, H \mathcal I_pH^T) = N_p(\boldsymbol 0,\, \mathcal I_p)$. Por tanto tenemos que $\boldsymbol U$ y $H \boldsymbol U$ se distribuyen de igual forma. Ahora, como la distribución de $\boldsymbol U$ no se ve afectada bajo ninguna isometría —multiplicando por una matriz ortogonal—, concluimos que $\boldsymbol U$ se distribuye uniformemente sobre la esfera unidad en $\mathbb R^p$, lo que llamamos \textit{densidad esférica estándar}. Para recuperar la información de $\boldsymbol Z$ a partir de $\boldsymbol U$ necesitamos conocer el «radio» $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2} = \Vert Z \Vert$.
+\] Observamos que $H \boldsymbol Z \sim N_p(H \boldsymbol 0,\, H I_pH^T) = N_p(\boldsymbol 0,\, I_p)$. Por tanto tenemos que $\boldsymbol U$ y $H \boldsymbol U$ se distribuyen de igual forma. Ahora, como la distribución de $\boldsymbol U$ no se ve afectada bajo ninguna isometría —multiplicando por una matriz ortogonal—, concluimos que $\boldsymbol U$ se distribuye uniformemente sobre la esfera unidad en $\mathbb R^p$, lo que llamamos \textit{densidad esférica estándar}. Para recuperar la información de $\boldsymbol Z$ a partir de $\boldsymbol U$ necesitamos conocer el «radio» $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2} = \Vert Z \Vert$.
 
 \begin{nprop}
   El vector aleatorio $\boldsymbol U = \frac{\boldsymbol Z}{(\boldsymbol Z^T \boldsymbol Z)^{1/2}}$ y la variable aleatoria $R = (\boldsymbol Z^T \boldsymbol Z)^{1/2}$ son independientes.
@@ -1271,13 +1270,13 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \end{nprop}
 
 \begin{nprop}[Caracterización en términos de la función característica]
-  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma $\xi(\boldsymbol t^T \boldsymbol t)$ para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma $\xi(\boldsymbol t^T \boldsymbol t)$ para alguna función escalar $\xi: \mathbb R_0^+ \to \mathbb R_0^+$.
 \end{nprop}
 
 \subsubsection{Distribuciones elípticas}
 
 \begin{ndef}[Distribución elíptica]
-  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu (p \times 1)$ y $V (p \times p)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
+  Se dice que un vector aleatorio $\vectX = (X_1, \dots, X_p)^T$ tiene \textit{distribución elíptica} de parámetros $\boldsymbol \mu\in\R^p$ y $V\in\mathscr{M}_p(\R)$ —simétrica y definida positiva— si se puede expresar de la forma $\vectX = A\vectZ + \boldsymbol \mu$, con $V = AA^T$ y $\vectZ$ un vector aleatorio con distribución esférica. Se denota como $\vectX \sim E_p(\boldsymbol \mu, V)$.
 \end{ndef}
 
 \begin{nprop}[Caracterización en función de la densidad]
@@ -1285,14 +1284,14 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \end{nprop}
 
 \begin{nprop}[Caracterización en términos de la función característica]
-  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma \[e^{i \boldsymbol t^T \boldsymbol \mu}\xi(\boldsymbol t^T V \boldsymbol t)\] para alguna función escalar $\xi: \mathbb R_o^+ \to \mathbb R_0^+$.
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución esférica si y solo si su función característica tiene la forma \[e^{i \boldsymbol t^T \boldsymbol \mu}\xi(\boldsymbol t^T V \boldsymbol t)\] para alguna función escalar $\xi: \mathbb R_0^+ \to \mathbb R_0^+$.
 \end{nprop}
 
 % TODO: Falta observaciones sobre la distribución elíptica
 % TODO: Falta lo siguiente a esto
 
 \begin{nprop}
-  Sea $X \sim E_p(\boldsymbol \mu, V)$, con $V$ diagonal. Si $X_1, \dots, X_p$ son uniformemente independientes entonces $X$ tiene distribución normal multivariante.
+  Sea $X \sim E_p(\boldsymbol \mu, V)$, con $V$ diagonal. Si $X_1, \dots, X_p$ son mutuamente independientes entonces $X$ tiene distribución normal multivariante.
 \end{nprop}
 
 \begin{nprop}
