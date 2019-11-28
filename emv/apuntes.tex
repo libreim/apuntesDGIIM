@@ -490,11 +490,12 @@ A partir de esto, usando \ref{cambiovariablealeatoria}, se obtiene que $\mu$ y $
 
   \[
   \begin{split}
-    f_{\vectY}(y) & = f_{\vectX}(B^{-1}(y-b))\left|\det(B)^{-1}\right| \\
+    f_{\vectY} & (y) \\
+    & = f_{\vectX}(B^{-1}(y-b))\left|\det(B)^{-1}\right| \\
     & = \frac{1}{(2\pi)^{p/2} \det(\Sigma)^{1/2} \left|\det(B)\right|}
     \exp\left\{ -\frac{1}{2} \left(B^{-1}(y-b) - \mu\right)^T \Sigma^{-1} \left(B^{-1}(y-b) - \mu \right) \right\} \\
-    & = \frac{1}{(2\pi)^{p/2} \det(B^T\Sigma B)}
-    \exp\left\{ -\frac{1}{2} \left(y-b - B\mu\right)^T (B^T\Sigma B)^{-1} \left(y - b - B\mu \right) \right\}.
+    & = \frac{1}{(2\pi)^{p/2} \det(B\Sigma B^T)^{1/2}}
+    \exp\left\{ -\frac{1}{2} \left(y-b - B\mu\right)^T (B\Sigma B^T)^{-1} \left(y - b - B\mu \right) \right\}.
   \end{split}
   \]
 \end{proof}
