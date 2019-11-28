@@ -757,7 +757,7 @@ Entonces, se tiene:
       \[
       \begin{split}
         \psi_{\vectY}(t) & = E\left[ e^{it^T(B\vectX + b)} \right] \\
-        & = e^{it^Tb} E\left[ i\left(B^Tt\right)^T\vectX \right] \\
+        & = e^{it^Tb} E\left[ e^{i\left(B^Tt\right)^T\vectX} \right] \\
         & = e^{it^Tb} \psi_{\vectX}\left(B^Tt\right) \\
         & = e^{it^Tb} \exp\left\{i\left(B^Tt\right)^T \mu- \frac{1}{2}\left(B^Tt\right)^T \Sigma B^Tt\right\} \\
         & = \exp\left\{it^T(B\mu + b) - \frac{1}{2}t^T B\Sigma B^Tt\right\},
