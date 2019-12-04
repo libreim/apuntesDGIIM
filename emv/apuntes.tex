@@ -1738,3 +1738,61 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
   \delta = (C^{-1} \mu)(C^T B C)(C^{-1}\mu) = \mu(C^T)^{-1}C^T B CC^{-1}\mu = \mu^T B \mu^T
   \]
 \end{proof}
+
+
+%% FALTAN MUCHOS APUNTES
+
+\section{Parte 2}
+
+\subsection{Estimadores de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
+
+\begin{ndef}[Función Verosimilitud]
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra simple. Para una realización $\{ x_\alpha : \alpha = 1,ºdots, N\}$ se tiene que la función verosimilitud es
+  \[
+  L(\mu,\Sigma;x_1,\dots,x_p) = \mathcal F_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N \mathcal F_{(\mu,\Sigma)}(x_\alpha)
+  \]
+
+\end{ndef}
+
+Ahora, consideramos la función $logL(\mu,\Sigma)$:
+\[
+logL(\mu,\Sigma) = -\frac{pN}{2}ln(2\pi) - \frac{N}{2}ln(\det(\Sigma)) - \frac{1}{2}tr(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
+\]
+
+\begin{nprop}[EMV de $\mu$ y $\Sigma$]
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma> 0$ y sea $\{ X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. de dicha población. Entonces, los $EMV$ de $\mu$ y de $\Sigma$ son:
+  \[
+  \hat{\mu} = \vectX \quad \quad \quad \hat{\Sigma} = \frac{A}{N} = S_N
+  \]
+\end{nprop}
+\begin{proof}
+  Primero, maximizamos $L(\mu,\Sigma)$ en $\mu$.
+
+  Como $\Sigma > 0 \implies \Sigma^{-1}>0$ así que $(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu) \geq 0$, que de hecho es igual a cero si y solo si $\mu = \vectX$. Luego el EMV de $\mu = \vectX$ ya que el valor que maximiza a $L(\mu,\Sigma)$ es $\mu = \vectX$.
+
+  Ahora, maximizamos $lnL(\mu,\Sigma)$ en $\Sigma$.
+
+  \begin{lema}[Lema de Watson]
+    Sea $f(G) = -N ln(\det(G)) - tr(G^{-1}D)$ con $G$ el argumento y $D$, ambas matrices simétricas definidas positivas. Entonces, existe el máximo de $f$ respecto $G$ y se alcanza en $G = \frac{D}{N}$.
+  \end{lema}
+\end{proof}
+\begin{ejercicio}
+Usando el Th. Dykstra, demostrar el lema de Watson y hallar el EMV de $\Sigma$.
+\end{ejercicio}
+
+
+\begin{nth}[Teorema de Fisher (multivariante)]
+  Dada $\{\vectX_\alpha: \alpha = 1,\dots,N\}$ una m.a.s. de una población $N_p(\mu,\Sigma)$, el vector de medias $\bar{\vectX}$ se distribuye según una $N_p(\mu,\frac{\Sigma}{N})$ y la matriz de dispersiones $A$ (EMV de $\Sigma$) se distribuye como lo haga
+  \[
+\sum_{\alpha =1}^{N-1} Z_\alpha Z_\alpha^T
+\]
+con los vectores $Z_\alpha$ independientes e idénticamente distribuidos según $N_p(0,\Sigma)$ siendo $A$ y $\bar{\vectX}$ independientes.
+\end{nth}
+
+\begin{nth}[Teorema de Dykstra]
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, y sea $\{X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. extraída de la población y sea
+  \[
+A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T
+\]
+matriz de dispersiones muestral. Entonces $A$ es definida positiva con probabilidad 1 si y solo si $p<n$.
+\end{nth}
