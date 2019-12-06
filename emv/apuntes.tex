@@ -1739,10 +1739,76 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
   \]
 \end{proof}
 
+\
 
 %% FALTAN MUCHOS APUNTES
 
-\section{Parte 2}
+\section{Parte 2. Inferencia en la DNM}
+\subsection{Introducción}
+
+Supongamos un vector aleatorio $\vectX = (X_1,\dots,X_p)\sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Se dispone de una m.a.s. (observaciones independientes idénticamente distribuidas) que denotaremos
+\[
+\{\vectX_\alpha: \alpha= 1 ,\dots,N\}
+\]
+$N$ es el tamaño muestral, $\vectX_{\alpha_i}$ la componente i-ésima (correspondiente a $\vectX_i$ de la observación $\alpha$-esima.
+
+Nuestro objetivo inicial será estimar $\mu$ y $\Sigma$. El enfoque que tomaremos será la maximización de la función de verosimilitud.
+
+\begin{ndef}[Media muestral]
+  Se llama media muestral al vector de $\R^p$ construido de la forma:
+  \[
+  \bar{\vectX}:= \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_\alpha = \begin{pmatrix}\frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_1} \\ \vdots \\ \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_p}\end{pmatrix} = \begin{pmatrix}\bar{\vectX_1} \\ \vdots \bar{\vectX_p} \end{pmatrix}
+  \]
+\end{ndef}
+
+\begin{ndef}[Matriz de dispersiones muestral]
+  Sea llama matriz de dispersiones muestral con respecto a $\bar{\vectX}$ a
+  \[
+  A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T
+  \]
+\end{ndef}
+
+A partir de esta definición, obtenemos también las siguientes
+\begin{itemize}
+\item Matriz de covarianzas muestral $S_N = \frac{A}{N}$
+\item Matriz de quasi-covarianzas nuestral $S_N = \frac{A}{N-1}$
+  \item Matriz de correlaciones muestral $R =D^{-frac{1}{2}}S_N D^{-\frac{1}{2}} $ con $D = diag(S_{11},\dots, S_{pp})$, y $D^{-\frac{1}{2}} = diag(\frac{1}{\sqrt{S_{11}}},\dots,\frac{1}{\sqrt{S_{pp}}}$
+\end{itemize}
+
+\begin{lema}
+  Sea $\{\vectX_\alpha: \alpha = 1,\dots , N\}$ una muestra de una población p-dimensional y sea $\bar{\vectX}$ su media muestral. Entonces, para cualquier $b\in \mathbb R^p$ se verifica que
+  \[
+\sum_{\alpha = 1}^N(\vectX_\alpha - b)(\vectX_\alpha - b)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N(\bar{\vectX} - b)(\bar{\vectX} - b)^T
+\]
+En particular, si 
+
+\begin{itemize}
+\item $b = \mu$, si existe,$\sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N(\bar{\vectX} - \mu)(\bar{\vectX} - \mu)^T$
+
+  \item $b = 0$, entonces $\sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N\bar{\vectX}\bar{\vectX}^T$
+\end{itemize}
+\end{lema}
+
+\subsection{EMV de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
+
+\begin{ndef}[Función de verosimilitud]
+  La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
+  \[
+L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
+  \]
+\end{ndef}
+
+
+
+%% Aqui faltan apuntes. Fotos de sofía 3-7. cuidado con cosas repetidas.
+
+
+
+
+
+
+
+
 
 \subsection{Estimadores de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
 
