@@ -1732,7 +1732,7 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
 
   En cuanto a $k$ y $\delta$, por el mismo teorema anterior tenemos que
   \[
-  k = rango(C^T B C) = tr(C^TBC) = tr(BCC^T) = tr(B\Sigma) = rango(B\Sigma) = rango(B)
+  k = \operatorname{rango}(C^T B C) = \operatorname{tr}(C^TBC) = \operatorname{tr}(BCC^T) = \operatorname{tr}(B\Sigma) = \operatorname{rango}(B\Sigma) = \operatorname{rango}(B)
   \], donde en las dos últimas igualdades hemos usado que $B\Sigma$ es idempotente y $\Sigma$ es no singular. Veamos $\delta$
   \[
   \delta = (C^{-1} \mu)(C^T B C)(C^{-1}\mu) = \mu(C^T)^{-1}C^T B CC^{-1}\mu = \mu^T B \mu^T
@@ -1757,14 +1757,14 @@ Nuestro objetivo inicial será estimar $\mu$ y $\Sigma$. El enfoque que tomaremo
 \begin{ndef}[Media muestral]
   Se llama media muestral al vector de $\R^p$ construido de la forma:
   \[
-  \bar{\vectX}:= \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_\alpha = \begin{pmatrix}\frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_1} \\ \vdots \\ \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_p}\end{pmatrix} = \begin{pmatrix}\bar{\vectX_1} \\ \vdots \bar{\vectX_p} \end{pmatrix}
+  \bar{\vectX}:= \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_\alpha = \begin{pmatrix}\frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_1} \\ \vdots \\ \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_p}\end{pmatrix} = \begin{pmatrix}\bar{\vectX_1} \\ \vdots \\ \bar{\vectX_p} \end{pmatrix}
   \]
 \end{ndef}
 
 \begin{ndef}[Matriz de dispersiones muestral]
   Sea llama matriz de dispersiones muestral con respecto a $\bar{\vectX}$ a
   \[
-  A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T
+  A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T.
   \]
 \end{ndef}
 
@@ -1772,7 +1772,7 @@ A partir de esta definición, obtenemos también las siguientes
 \begin{itemize}
 \item Matriz de covarianzas muestral $S_N = \frac{A}{N}$
 \item Matriz de quasi-covarianzas nuestral $S_N = \frac{A}{N-1}$
-  \item Matriz de correlaciones muestral $R =D^{-frac{1}{2}}S_N D^{-\frac{1}{2}} $ con $D = diag(S_{11},\dots, S_{pp})$, y $D^{-\frac{1}{2}} = diag(\frac{1}{\sqrt{S_{11}}},\dots,\frac{1}{\sqrt{S_{pp}}}$
+  \item Matriz de correlaciones muestral $R =D^{-\frac{1}{2}}S_N D^{-\frac{1}{2}} $ con $D = \operatorname{diag}(S_{11},\dots, S_{pp})$, y $D^{-\frac{1}{2}} = \operatorname{diag}\left(\frac{1}{\sqrt{S_{11}}},\dots,\frac{1}{\sqrt{S_{pp}}}\right)$
 \end{itemize}
 
 \begin{lema}
@@ -1813,42 +1813,42 @@ L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
 \subsection{Estimadores de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
 
 \begin{ndef}[Función Verosimilitud]
-  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra simple. Para una realización $\{ x_\alpha : \alpha = 1,ºdots, N\}$ se tiene que la función verosimilitud es
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra simple. Para una realización $\{ x_\alpha : \alpha = 1, dots, N\}$ se tiene que la función verosimilitud es
   \[
   L(\mu,\Sigma;x_1,\dots,x_p) = \mathcal F_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N \mathcal F_{(\mu,\Sigma)}(x_\alpha)
   \]
 
 \end{ndef}
 
-Ahora, consideramos la función $logL(\mu,\Sigma)$:
+Ahora, consideramos la función $\log L(\mu,\Sigma)$:
 \[
-logL(\mu,\Sigma) = -\frac{pN}{2}ln(2\pi) - \frac{N}{2}ln(\det(\Sigma)) - \frac{1}{2}tr(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
+\log L(\mu,\Sigma) = -\frac{pN}{2}\log(2\pi) - \frac{N}{2}\log(\det(\Sigma)) - \frac{1}{2}\operatorname{tr}(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
 \]
 
 \begin{nprop}[EMV de $\mu$ y $\Sigma$]
-  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma> 0$ y sea $\{ X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. de dicha población. Entonces, los $EMV$ de $\mu$ y de $\Sigma$ son:
+  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma> 0$ y sea $\{ X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. de dicha población. Entonces, los estadísticos máximo verosímiles de $\mu$ y de $\Sigma$ son:
   \[
-  \hat{\mu} = \vectX \quad \quad \quad \hat{\Sigma} = \frac{A}{N} = S_N
+  \hat{\mu} = \vectX \quad \text{y} \quad \hat{\Sigma} = \frac{A}{N} = S_N.
   \]
 \end{nprop}
 \begin{proof}
   Primero, maximizamos $L(\mu,\Sigma)$ en $\mu$.
 
-  Como $\Sigma > 0 \implies \Sigma^{-1}>0$ así que $(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu) \geq 0$, que de hecho es igual a cero si y solo si $\mu = \vectX$. Luego el EMV de $\mu = \vectX$ ya que el valor que maximiza a $L(\mu,\Sigma)$ es $\mu = \vectX$.
+  Como $\Sigma > 0$, se tiene que $\Sigma^{-1}>0$ así que $(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu) \geq 0$, que de hecho es igual a cero si y solo si $\mu = \vectX$. Luego el estadístico máximo versosímil de $\mu = \vectX$ ya que el valor que maximiza a $L(\mu,\Sigma)$ es $\mu = \vectX$.
 
-  Ahora, maximizamos $lnL(\mu,\Sigma)$ en $\Sigma$.
+  Ahora, maximizamos $\log L(\mu,\Sigma)$ en $\Sigma$.
 
   \begin{lema}[Lema de Watson]
-    Sea $f(G) = -N ln(\det(G)) - tr(G^{-1}D)$ con $G$ el argumento y $D$, ambas matrices simétricas definidas positivas. Entonces, existe el máximo de $f$ respecto $G$ y se alcanza en $G = \frac{D}{N}$.
+    Sea $f(G) = -N \log(\det(G)) - \operatorname{tr}(G^{-1}D)$ con $G$ el argumento y $D$, ambas matrices simétricas definidas positivas. Entonces, existe el máximo de $f$ respecto $G$ y se alcanza en $G = \sfrac{D}{N}$.
   \end{lema}
 \end{proof}
-\begin{ejercicio}
+\begin{ejer}
 Usando el Th. Dykstra, demostrar el lema de Watson y hallar el EMV de $\Sigma$.
-\end{ejercicio}
+\end{ejer}
 
 
-\begin{nth}[Teorema de Fisher (multivariante)]
-  Dada $\{\vectX_\alpha: \alpha = 1,\dots,N\}$ una m.a.s. de una población $N_p(\mu,\Sigma)$, el vector de medias $\bar{\vectX}$ se distribuye según una $N_p(\mu,\frac{\Sigma}{N})$ y la matriz de dispersiones $A$ (EMV de $\Sigma$) se distribuye como lo haga
+\begin{nth}[Teorema de Fisher multivariante]
+  Dada $\{\vectX_\alpha: \alpha = 1,\dots,N\}$ una m.a.s. de una población $N_p(\mu,\Sigma)$, el vector de medias $\bar{\vectX}$ se distribuye según una $N_p\left(\mu,\sfrac{\Sigma}{N}\right)$ y la matriz de dispersiones $A$ (EMV de $\Sigma$) se distribuye como lo haga
   \[
 \sum_{\alpha =1}^{N-1} Z_\alpha Z_\alpha^T
 \]
@@ -1860,5 +1860,107 @@ con los vectores $Z_\alpha$ independientes e idénticamente distribuidos según 
   \[
 A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T
 \]
-matriz de dispersiones muestral. Entonces $A$ es definida positiva con probabilidad 1 si y solo si $p<n$.
+la matriz de dispersiones muestral. Entonces $A$ es definida positiva con probabilidad 1 si y solo si $p<n$.
 \end{nth}
+
+\subsection{Distribuciones asintóticas de $A_n$ y \(X_n\) para una población cualquiera}
+
+\begin{nprop}
+  Sea \(\{X_{\alpha}\}_{\alpha \geq 1}\) una sucesión de vectores \(p\)-dimensionales independientes e idéncitcamente distribuidos con media \(\boldsymbol \mu\) desconocida y matriz de covarianzas \(\Sigma\). Sea \[
+    \overline{\vectX}_N = \frac{1}{N}\sum_{\alpha = 1}^{N}\vectX_{\alpha} \quad \text{para todo } N \geq 1.
+  \]
+  Entonces, cuando \(N \to \infty\), \[
+    N^{\sfrac{1}{2}}(\overline{\vectX}_N - \boldsymbol \mu) = N^{-\sfrac{1}{2}}\sum_{\alpha = 1}^{N}(\overline{\vectX}_{\alpha} - \boldsymbol \mu) \sim N_p(\boldsymbol 0, \Sigma).
+  \]
+\end{nprop}
+
+\begin{proof}
+  La demostración se basa en el teorema central del límite.
+  Sea \[
+  \vectY_N = N^{-\sfrac{1}{2}} \sum_{\alpha = 1}^N (\vectX_{\alpha} - \boldsymbol \mu).
+  \]
+  Por el teorema de continuidad de las funciones características es suficiente demostrar que la función característica \(\Psi_{\vectY_N}(t)\) converge a \(\exp\{-\sfrac{1}{2}\boldsymbol t^T\Sigma\boldsymbol t\}\).
+  Sabemos que para todo \(\boldsymbol t \in \mathbb R \) se tiene que \(\Psi_{\vectY_N}(\boldsymbol t) = \Psi_{\boldsymbol t^T\vectY_N}(1)\) y tenemos que ver que cómo es \(\Psi_{\boldsymbol t^T \vectY_N}(s)\) para \(s \in \mathbb R\).
+  Tenemos \[
+    \boldsymbol t^T\vectY_N = N^{-\sfrac{1}{2}}\sum_{\alpha = 1}^{N}\left(\boldsymbol t^T\vectX_{\alpha} - \boldsymbol t^T\boldsymbol\mu\right),
+  \]
+  donde sabemos que \(\boldsymbol t^T \vectX_{\alpha} - \boldsymbol t^T \boldsymbol \mu \sim (\boldsymbol 0, \boldsymbol t^T\Sigma \boldsymbol t)\) para todo \(\alpha = 1, \dots, N\).
+  Aplicando el teorema central del límite tenemos \[
+    \frac{\sum_{\alpha = 1}^{N}\left(\boldsymbol t^T\vectX_{\alpha} - \boldsymbol t^T\boldsymbol\mu\right)}{N^{\sfrac{1}{2}}\sqrt{\boldsymbol t^T\Sigma \boldsymbol t}} 
+    = \frac{N^{-\sfrac{1}{2}}\sum_{\alpha = 1}^{N}\left(\boldsymbol t^T\vectX_{\alpha} - \boldsymbol t^T\boldsymbol\mu\right)}{\sqrt{\boldsymbol t^T\Sigma \boldsymbol t}}
+    = \frac{\boldsymbol t^T \vectY_N}{\sqrt{\boldsymbol t^T\Sigma \boldsymbol t}}
+    \sim N_p(0, 1).
+  \]
+  Luego \(\boldsymbol t^T\vectY_N \sim N_p(\boldsymbol 0, \boldsymbol t^T \Sigma \boldsymbol t)\). 
+  Por el teorema de continuidad de las funciones características se tiene que para todo \(s \in \mathbb R\), cuando \(N\) tiende a infinito, \(\Psi_{\boldsymbol t^T\vectY_N}(s)\) tiende a \(\exp\{-\sfrac{1}{2}\,s^2(\boldsymbol t^T\Sigma \boldsymbol t)\}\).
+\end{proof}
+
+\begin{nprop}[Distribución asintótica de la matriz de dispersión]
+  Sea \(\{X_{\alpha}\}_{\alpha \geq 1}\) una sucesión de vectores aleatorios independientes e idénticamente distribuidos, con vector de medias \(\boldsymbol \mu\) y matriz de covarianzas \(\Sigma\).
+  Además suponemos que los vectores \(\vectX_{\alpha}\) tienen momentos de cuarto orden finitos.
+  Consideremos, para cada \(N\) fijo,
+  \[
+    \overline{\vectX}_N = \frac{1}{N}\sum_{\alpha = 1}^N \vectX_{\alpha}
+    \quad
+    \text{y}
+    \quad
+    A_N = \sum_{\alpha = 1}^N (\vectX_{\alpha} - \overline{\vectX}_N)(\vectX_{\alpha} - \overline{\vectX}_N)^T.
+  \]
+  Entonces, \[
+    N^{-\sfrac{1}{2}}(A_N - N\Sigma) \sim N_p(\boldsymbol 0, V),
+  \] cuando \(N \to \infty\); en el sentido de que \[
+    N^{-\sfrac{1}{2}}\left(\operatorname{Vec}(A_N) - N\operatorname{Vec}(\Sigma)\right) \sim N_p(\boldsymbol 0, V),
+  \] de nuevo cuando \(N \to \infty\) y con \[
+    V = \operatorname{Cov}\left(\operatorname{Vec}\left((\vectX_{\alpha - \boldsymbol \mu})(\vectX_{\alpha - \boldsymbol \mu})^T\right)\right).
+  \]
+\end{nprop}
+
+\begin{proof}
+  Por la fórmula de los momentos, \[
+    A_N = \sum_{\alpha = 1}^N(\vectX_{\alpha} - \boldsymbol \mu)(\vectX_{\alpha} - \boldsymbol \mu)^T - N(\overline{\vectX}_N - \boldsymbol \mu)(\overline{\vectX}_N - \boldsymbol \mu)^T.
+  \]
+  Llamamos \[
+    Z_{\alpha} = (\vectX_{\alpha} - \boldsymbol \mu)(\vectX_{\alpha} - \boldsymbol \mu)^T
+    \quad
+    \text{y}
+    \quad
+    B_N = (\overline{\vectX}_N - \boldsymbol \mu)(\overline{\vectX}_N - \boldsymbol \mu)^T,
+  \] de forma que \[
+    A = \sum_{\alpha = 1}^NZ_{\alpha} - NB_N.
+  \]
+  Vectorizando tenemos \[
+    \operatorname{Vec}(A) = \sum_{\alpha = 1}^N \operatorname{Vec}(Z_{\alpha}) - N\operatorname{Vec}(B_N).
+  \]
+  Entonces, \[
+    N^{-\sfrac{1}{2}}\left(\operatorname{Vec}(A) - N\operatorname{Vec}(\Sigma)\right)
+    = N^{-\sfrac{1}{2}}\left(\sum_{\alpha = 1}^N\left(\operatorname{Vec}(Z_{\alpha}) - \operatorname{Vec}(\Sigma)\right)\right) - N^{\sfrac{1}{2}} \operatorname{Vec}(B_N).
+  \]
+  Vamos a estudiar el comportamiento asintótico de los dos sumandos de la última igualdad. 
+  Observamos primero que \[
+    \operatorname{E}[Z_{\alpha}] = \operatorname{E}[(\vectX_{\alpha} - \boldsymbol \mu)(\vectX_{\alpha} - \boldsymbol \mu)^T] = \Sigma,
+  \] es decir, \(\operatorname{E}[\operatorname{Vec}(Z_{\alpha})] = \operatorname{Vec}(\Sigma)\).
+  Para el primer sumando, los vectores \(\operatorname{Vec}(Z_{\alpha})\), con \(\alpha = 1, \dots, N\), constituyen una sucesión de vectores aleatorios independientes e indénticmente distribuidos (de dimensión \(p^2 \times 1\)) con vector de medias \(\operatorname{Vec}(\Sigma)\) y matriz de covarianzas \(V\).
+  Aplicando el resultado anterior vemos que \[
+    N^{-\sfrac{1}{2}}\left(\sum_{\alpha = 1}^N\left(\operatorname{Vec}(Z_{\alpha}) - \operatorname{Vec}(\Sigma)\right)\right)
+  \] sigue una distribución \(N_{p^2}(\boldsymbol 0, V)\) cuando \(N \to \infty\).
+  Para el segundo sumando, podemos escribir \begin{align*}
+    N^{\sfrac{1}{2}} \operatorname{Vec}(B_N) 
+    &= N^{\sfrac{1}{2}} \operatorname{Vec}\left((\overline{\vectX}_N - \boldsymbol \mu)(\overline{\vectX}_N - \boldsymbol \mu)^T\right)\\
+    &= \operatorname{Vec}\left(\frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right) \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right)^T\right).
+  \end{align*}
+  Aplicando el resultado sobre el comportamiento asintótico de \(\overline{\vectX}_N\), se tiene que \(N^{\sfrac{1}{2}}(\overline{\vectX}_N - \boldsymbol \mu) \sim N_p(\boldsymbol 0, \Sigma)\) cuando \(N \to \infty\).
+  Tenemos entonces que tanto \[
+    \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right)
+    \quad
+    \text{como}
+    \quad
+    \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)^T\right)
+  \] convergen en probabilidad a \(\boldsymbol 0\).
+  % Ejercicio: demostrar con la desigualdad de Markov \[
+  % \operatorname{P}[|X| \geq a] \leq \frac{\operatorname{E}|X|}{a}.
+  % \]
+  % Ejercicio: demostrar también que es convergencia en distribución usando la desigueldad de Chebushev.
+  Luego \[
+    \operatorname{Vec}\left(\frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right) \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right)^T\right)
+  \] converge en probabilidad al vector \(\boldsymbol 0\).
+\end{proof}
