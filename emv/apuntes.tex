@@ -566,7 +566,7 @@ Exigimos $\sigma_i > 0, \ \forall i = 1,\dots, p$, y entonces $\Sigma > 0$.
     \end{itemize}
 
   \end{nprop}
-  Esta proposición es un contraejemplo para ver que , en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
+  Esta proposición es un contraejemplo para ver que, en general, incorrelación no implica independencia (aunque alguna de las marginales sea una normal).
 
   \begin{nth} \label{independenciacovbloques}
     Sea $\vectX = (X_1, \dots ,X_p)^T \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Supongamos que las componentes de $\vectX$ están ordenadas de tal modo que, por la partición del vector $\vectX = \left(\vectX_{(1)}^T | \vectX_{(2)}^T\right)^T$ con $\vectX_{(1)} = (X_1,\dots,X_q)^T$ y $\vectX_{(2)} = (X_{q+1},\dots,X_p)^T$, se tiene
@@ -861,7 +861,7 @@ Vamos a recordar algunos resultados relativos a la diagonalización de matrices,
         p(\lambda) = (-1)^p (\lambda-d_1)\dots(\lambda-d_p),
         \]
       \item el espectro de $A$ comprende los escalares distintos incluidos en la diagonal de $D$,
-      \item las multiplicdades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$,
+      \item las multiplicidades algebraicas y geométricas de un autovalor $\lambda$ de $A$ coinciden y son iguales al número de elementos diagonales de $D$ que igualan $\lambda$,
       \item las columnas de $Q$ son autovectores linealmente independientes de $A$ (la columna $q_i$ es un autovector correspondiente al autovalor $d_i$),
     \end{nlist}
 \end{nth}
@@ -1744,121 +1744,168 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
 \section{Inferencia en la DNM}
 \subsection{Introducción}
 
-Supongamos un vector aleatorio $\vectX = (X_1,\dots,X_p)\sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Se dispone de una m.a.s. (observaciones independientes idénticamente distribuidas) que denotaremos
+Consideremos una población que sigue una distribución normal multivariante $N_p(\mu,\Sigma)$ con $\Sigma > 0$. Para poder realizar la inferencia será necesario tomar una muestra aleatoria simple de dicha población, esto es, observaciones independientes idénticamente distribuidas. La denotaremos por
 \[
-\{\vectX_\alpha: \alpha= 1 ,\dots,N\}
+\{\vectX_\alpha: \alpha= 1 ,\dots,N\},
 \]
-$N$ es el tamaño muestral, $\vectX_{\alpha_i}$ la componente i-ésima (correspondiente a $\vectX_i$ de la observación $\alpha$-esima.
+donde $N$ es el tamaño muestral y $\vectX_{\alpha_i}$, la componente i-ésima correspondiente al vector $\vectX_i$ de la observación $\alpha$-ésima.
 
 Nuestro objetivo inicial será estimar $\mu$ y $\Sigma$. El enfoque que tomaremos será la maximización de la función de verosimilitud.
 
 \begin{ndef}[Media muestral]
-  Se llama media muestral al vector de $\R^p$ construido de la forma:
+  Llamamos \textit{media muestral} al vector de $\R^p$ construido de la forma:
   \[
-  \bar{\vectX}:= \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_\alpha = \begin{pmatrix}\frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_1} \\ \vdots \\ \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_p}\end{pmatrix} = \begin{pmatrix}\bar{\vectX_1} \\ \vdots \\ \bar{\vectX_p} \end{pmatrix}
+  \overline{\vectX} = \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_\alpha 
+  = \begin{pmatrix}
+      \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_1} \\ 
+      \vdots \\ 
+      \frac{1}{N} \sum_{\alpha = 1 }^N \vectX_{\alpha_p}
+    \end{pmatrix} 
+  = \begin{pmatrix}
+      \overline{\vectX}_1 \\ 
+      \vdots \\ 
+      \overline{\vectX}_p 
+    \end{pmatrix}
   \]
 \end{ndef}
 
 \begin{ndef}[Matriz de dispersiones muestral]
-  Sea llama matriz de dispersiones muestral con respecto a $\bar{\vectX}$ a
+  Llamamos \textit{matriz de dispersiones muestral} con respecto a $\overline{\vectX}$ a la matriz
   \[
-  A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T.
+    A = \sum_{\alpha = 1}^N (\vectX_\alpha - \overline{\vectX})(\vectX_\alpha - \overline{\vectX})^T.
   \]
 \end{ndef}
+A partir de la definición de matriz de dispersiones muestral podemos realizar las siguientes definiciones.
+\begin{ndef}
+  Definimos:
+  \begin{itemize}
+    \item La \textit{matriz de covarianzas muestral}, $S_N = A/N$.
+    \item La \textit{matriz de quasi-covarianzas nuestral}, $S_N = A/(N-1)$.
+    \item La \textit{matriz de correlaciones muestral}, 
+    \[
+      R =D^{-1/2}S_N D^{-1/2},
+    \] donde 
+    \[
+      D = \operatorname{diag}(S_{11},\dots, S_{pp}) 
+      \quad \text{y} \quad 
+      D^{-1/2} = \operatorname{diag}\left(
+        \frac{1}{\sqrt{S_{11}}},\dots,\frac{1}{\sqrt{S_{pp}}}
+      \right).
+    \]
+    \end{itemize}
+\end{ndef}
 
-A partir de esta definición, obtenemos también las siguientes
-\begin{itemize}
-\item Matriz de covarianzas muestral $S_N = \frac{A}{N}$
-\item Matriz de quasi-covarianzas nuestral $S_N = \frac{A}{N-1}$
-  \item Matriz de correlaciones muestral $R =D^{-\frac{1}{2}}S_N D^{-\frac{1}{2}} $ con $D = \operatorname{diag}(S_{11},\dots, S_{pp})$, y $D^{-\frac{1}{2}} = \operatorname{diag}\left(\frac{1}{\sqrt{S_{11}}},\dots,\frac{1}{\sqrt{S_{pp}}}\right)$
-\end{itemize}
+El siguiente resultado nos será últil en desarrollos posteriores y es independiente de la distribución multivariante que se esté considerando.
 
 \begin{lema}
-  Sea $\{\vectX_\alpha: \alpha = 1,\dots , N\}$ una muestra de una población p-dimensional y sea $\bar{\vectX}$ su media muestral. Entonces, para cualquier $b\in \mathbb R^p$ se verifica que
+  Sea $\{\vectX_\alpha: \alpha = 1,\dots , N\}$ una muestra de una población \(p\)-dimensional y sea $\overline{\vectX}$ su media muestral. Entonces, para cualquier vector $b\in \mathbb R^p$ se verifica que
   \[
-\sum_{\alpha = 1}^N(\vectX_\alpha - b)(\vectX_\alpha - b)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N(\bar{\vectX} - b)(\bar{\vectX} - b)^T
-\]
-En particular, si 
-
-\begin{itemize}
-\item $b = \mu$, si existe,$\sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N(\bar{\vectX} - \mu)(\bar{\vectX} - \mu)^T$
-
-  \item $b = 0$, entonces $\sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T = \sum_{\alpha = 1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T + N\bar{\vectX}\bar{\vectX}^T$
-\end{itemize}
+    \sum_{\alpha = 1}^N(\vectX_\alpha - b)(\vectX_\alpha - b)^T 
+    = \sum_{\alpha = 1}^N(\vectX_\alpha - \overline{\vectX})(\vectX_\alpha - \overline{\vectX})^T + N(\overline{\vectX} - b)(\overline{\vectX} - b)^T.
+  \]
+  En particular, si tomamos
+  \begin{itemize}
+    \item el vector $b = \mu$ (si existe), entonces
+    \[
+      \sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T 
+      = \sum_{\alpha = 1}^N(\vectX_\alpha - \overline{\vectX})(\vectX_\alpha - \overline{\vectX})^T + N(\overline{\vectX} - \mu)(\overline{\vectX} - \mu)^T.
+    \]
+    \item el vector $b = 0$, entonces
+    \[
+      \sum_{\alpha = 1}^N(\vectX_\alpha - \mu)(\vectX_\alpha - \mu)^T 
+      = \sum_{\alpha = 1}^N(\vectX_\alpha - \overline{\vectX})(\vectX_\alpha - \overline{\vectX})^T + N\overline{\vectX}\overline{\vectX}^T.
+    \]
+  \end{itemize}
 \end{lema}
 
-\subsection{EMV de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
+% FIXME: repetido? incompleto?
+% \subsection{EMV de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
-\begin{ndef}[Función de verosimilitud]
-  La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
-  \[
-L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
-  \]
-\end{ndef}
+% \begin{ndef}[Función de verosimilitud]
+%   La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
+%   \[
+% L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
+%   \]
+% \end{ndef}
 
-
-
-%% Aqui faltan apuntes. Fotos de sofía 3-7. cuidado con cosas repetidas.
-
-
-
-
-
-
-
-
+% FIXME: Aqui faltan apuntes. Fotos de sofía 3-7. cuidado con cosas repetidas.
 
 \subsection{Estimadores de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
-\begin{ndef}[Función Verosimilitud]
-  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra simple. Para una realización $\{ x_\alpha : \alpha = 1, dots, N\}$ se tiene que la función verosimilitud es
+\begin{ndef}[Función de verosimilitud]
+  Sea el vector aleatorio $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$ y sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra aleatoria simple.
+  Para una realización muestral $\{ x_\alpha : \alpha = 1, \dots, N\}$, definimos la \textit{función de verosimilitud} como
   \[
-  L(\mu,\Sigma;x_1,\dots,x_p) = \mathcal F_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N \mathcal F_{(\mu,\Sigma)}(x_\alpha)
+  L(\mu,\Sigma;x_1,\dots,x_p) = f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N f_{(\mu,\Sigma)}(x_\alpha).
   \]
 
 \end{ndef}
 
-Ahora, consideramos la función $\log L(\mu,\Sigma)$:
-\[
-\log L(\mu,\Sigma) = -\frac{pN}{2}\log(2\pi) - \frac{N}{2}\log(\det(\Sigma)) - \frac{1}{2}\operatorname{tr}(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
-\]
-
-\begin{nprop}[EMV de $\mu$ y $\Sigma$]
-  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma> 0$ y sea $\{ X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. de dicha población. Entonces, los estadísticos máximo verosímiles de $\mu$ y de $\Sigma$ son:
+\begin{nprop}[Estadísticos máximo versosímiles del vector de medias y de la matriz de covarianzas]
+  \label{nprop:emv-medias-covarianzas}
+  Sea el vector aleatorio $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma> 0$ y sea $\{ X_\alpha : \alpha = 1,\dots, N\}$ una muestra aleatoria simple de dicha población. 
+  Entonces, los estadísticos máximo verosímiles del vector de medias $\mu$ y de la matriz de covarianzas $\Sigma$ son, respectivamente,
   \[
-  \hat{\mu} = \vectX \quad \text{y} \quad \hat{\Sigma} = \frac{A}{N} = S_N.
+  \hat{\mu} = \vectX \quad \text{y} \quad \widehat{\Sigma} = \frac{A}{N} = S_N.
   \]
 \end{nprop}
+
+Para poder demostrar esta proposición necesitamos primero el siguiente lema.
+
+\begin{lema}[Lema de Watson]
+  \label{lema:watson}
+  Sea $f(G) = -N \log(\det(G)) - \operatorname{tr}(G^{-1}D)$ con $G$ el argumento y $D$, ambas matrices simétricas definidas positivas. Entonces, existe el máximo de $f$ respecto $G$ y se alcanza en $G = D/N$.
+\end{lema}
+
 \begin{proof}
-  Primero, maximizamos $L(\mu,\Sigma)$ en $\mu$.
-
-  Como $\Sigma > 0$, se tiene que $\Sigma^{-1}>0$ así que $(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu) \geq 0$, que de hecho es igual a cero si y solo si $\mu = \vectX$. Luego el estadístico máximo versosímil de $\mu = \vectX$ ya que el valor que maximiza a $L(\mu,\Sigma)$ es $\mu = \vectX$.
-
-  Ahora, maximizamos $\log L(\mu,\Sigma)$ en $\Sigma$.
-
-  \begin{lema}[Lema de Watson]
-    Sea $f(G) = -N \log(\det(G)) - \operatorname{tr}(G^{-1}D)$ con $G$ el argumento y $D$, ambas matrices simétricas definidas positivas. Entonces, existe el máximo de $f$ respecto $G$ y se alcanza en $G = \sfrac{D}{N}$.
-  \end{lema}
+  Se deja como ejercicio para el lector. Como pista, utilizar el teorema de Dykstra.
 \end{proof}
-\begin{ejer}
-Usando el Th. Dykstra, demostrar el lema de Watson y hallar el EMV de $\Sigma$.
-\end{ejer}
 
+Ya estamos en condiciones de demostrar la proposición \ref{nprop:emv-medias-covarianzas}.
+
+\begin{proof}[Demostración (Proposición \ref{nprop:emv-medias-covarianzas})]
+  Consideremos primero el logaritmo de la función de verosimilitud, dado por
+  \[
+    \log L(\mu,\Sigma) = -\frac{pN}{2}\log(2\pi) - \frac{N}{2}\log\left(\det(\Sigma)\right) - \frac{1}{2}\operatorname{tr}\left(\Sigma^{-1}A\right) - \frac{N}{2}(\overline{\vectX} - \mu)^T \Sigma^{-1}(\overline{\vectX} - \mu).
+  \]
+  Ahora vayamos por partes. Al maximizar dicha función en \(\mu\), se maximizará donde se minimice la forma cuadrática
+  \[
+    (\overline{\vectX} - \mu)^T \Sigma^{-1}(\overline{\vectX} - \mu).
+  \]
+  Como $\Sigma > 0$, se tiene que $\Sigma^{-1} > 0$ así que $(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu) \geq 0$, que de hecho es igual a cero si y solo si $\mu = \vectX$. 
+  Luego el estadístico máximo verosímil de $\mu$ es $\vectX$, ya que el valor que maximiza a $L(\mu,\Sigma)$ es $\mu = \vectX$.
+
+  Por otro lado, para maximizar $\log L(\mu,\Sigma)$ en $\Sigma$ hemos de maximizar la función
+  \[
+    -\frac{pN}{2}\log(2\pi) + \frac{1}{2}f(\Sigma), \quad \text{con} \quad f(\Sigma) = -N\log(\operatorname{det}(\Sigma)) - \operatorname{tr(\Sigma^{-1}A)}.
+  \]
+  Tomando \(G = \Sigma\) y \(D = A\) en el lema de Watson (\ref{lema:watson}), el máximo se alcanza en \(A/N = S_N\), que es la matriz de covarianzas muestral.
+\end{proof}
+
+\subsection{Distribuciones de la media muestral y de la matriz de dispersiones}
+
+A continuación vamos a obtener tanto la distribución exacta del vector media muestral, como de la matriz de dispersiones \(A = NS\), bajo la hipótesis de normalidad.
+El resultado clave para hallar dichas distribuciones es el Teorema de Fisher, que nos proporcionará ambas distribuciones, además de la independencia entre ambas. 
+
+Conocer la forma en que se distribuye la matriz de dispersiones es fundamental para demostrar el carácter definido positivo de la misma. 
+Esto, junto con las condiciones bajo las que se verifica estarán recogidas en el Teorema de Dykstra.
 
 \begin{nth}[Teorema de Fisher multivariante]
-  Dada $\{\vectX_\alpha: \alpha = 1,\dots,N\}$ una m.a.s. de una población $N_p(\mu,\Sigma)$, el vector de medias $\bar{\vectX}$ se distribuye según una $N_p\left(\mu,\sfrac{\Sigma}{N}\right)$ y la matriz de dispersiones $A$ (EMV de $\Sigma$) se distribuye como lo haga
+  Dada una muestra aleatoria $\{\vectX_\alpha: \alpha = 1,\dots,N\}$ de una población $N_p(\mu,\Sigma)$, el vector de medias $\overline{\vectX}$ se distribuye según una distribución $N_p\left(\mu,\Sigma/N\right)$.
+  La matriz de dispersiones $A$ (EMV de $\Sigma$) se distribuye como lo haga
   \[
-\sum_{\alpha =1}^{N-1} Z_\alpha Z_\alpha^T
-\]
-con los vectores $Z_\alpha$ independientes e idénticamente distribuidos según $N_p(0,\Sigma)$ siendo $A$ y $\bar{\vectX}$ independientes.
+    \sum_{\alpha =1}^{N-1} Z_\alpha Z_\alpha^T,
+  \]
+  siendo los vectores $Z_\alpha$ independientes e idénticamente distribuidos según $N_p(0,\Sigma)$.
+  Ambas distribuciones, $A$ y $\overline{\vectX}$, son independientes.
 \end{nth}
 
 \begin{nth}[Teorema de Dykstra]
-  Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, y sea $\{X_\alpha : \alpha = 1,\dots,N\}$ una m.a.s. extraída de la población y sea
+  Sea el vector aleatorio $\vectX \sim N_p(\mu,\Sigma)$, con $\Sigma > 0$, y sea $\{X_\alpha : \alpha = 1,\dots,N\}$ una muestra aleatoria extraída de la población. La matriz de dispersiones muestral
   \[
-A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vectX})^T
-\]
-la matriz de dispersiones muestral. Entonces $A$ es definida positiva con probabilidad 1 si y solo si $p<n$.
+    A = \sum_{\alpha = 1}^N (\vectX_\alpha - \overline{\vectX})(\vectX_\alpha - \overline{\vectX})^T
+  \]
+  es definida positiva con probabilidad 1 si y solo si $p<N$.
 \end{nth}
 
 \subsection{Distribuciones asintóticas de \texorpdfstring{$\boldsymbol A_{\boldsymbol n}$}{An} y \texorpdfstring{$\boldsymbol X_{\boldsymbol n}$}{Xn} para una población cualquiera}
@@ -2100,6 +2147,6 @@ Veamos a continuación algunas propiedades de la Ley de Wishart.
 \end{proof}
 
 \begin{nprop}[Distribución de la matriz de cuasi-covarianzas muestral, \(\boldsymbol S_{\boldsymbol N \boldsymbol - \boldsymbol 1}\)]
-  Sea \(S_n = \frac{A}{n}\), con \(n = N - 1\), la matrz de cuasi-covarianzas muestral que procede de la muestra aleatoria simple con población \(N_p(\boldsymbol \mu, \Sigma)\).
-  Entonces, \(S_n \sim W_p(n, \frac{\Sigma}{n})\) y además, \(S_N \sim W_p(N-1, \frac{\Sigma}{N})\), con \(S_N = \frac{A}{N}\).
+  Sea \(S_n = A/n\) (con \(n = N - 1\)) la matrz de cuasi-covarianzas muestral que procede de la muestra aleatoria simple con población \(N_p(\boldsymbol \mu, \Sigma)\).
+  Entonces, \(S_n \sim W_p(n, \Sigma/n)\) y además, \(S_N \sim W_p(N-1, \Sigma/N)\), con \(S_N = A/N\).
 \end{nprop}
