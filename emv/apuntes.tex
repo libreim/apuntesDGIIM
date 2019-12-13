@@ -1431,7 +1431,7 @@ $\vectX \sim N(\mu,\sigma^2) \to \Psi_{\vectX^2}(t) = \frac{1}{(1-2i\sigma^2 t)^
 
 
 
-\subsubsection{Distribución $F$ Snedecor no centrada}
+\subsubsection{Distribución \texorpdfstring{$\boldsymbol F$}{F} de Snedecor no centrada}
 
 \begin{ndef}[Distribución $F$ de Snedecor centrada]
   Si $\vectY_1\sim \chi_{n_1}$,$\vectY_2 \sim \chi_{n_2}$ centradas e independientes,la distribución $F$ centrada se define como la distribución del cociente:
@@ -1504,7 +1504,7 @@ U(a,b;z) = \frac{\Gamma(1-b)}{\Gamma(a+1-b)}{}_1F_1(a,b;z) + \frac{\Gamma(b-1)}{
 \begin{nprop}[Momentos de primer y segundo orden]
   \begin{itemize}
   \item $E[F] = \frac{n_2}{n_2-2}$ para $n_2 > 2$
-  \item $Var(F) = \frac{2 n_2^2(n_1+n_2 - 2)}{n_1(n_2-2)^2 (n_2-4)}$ para $n_2 > 4$.\\
+  \item $\operatorname{Var}(F) = \frac{2 n_2^2(n_1+n_2 - 2)}{n_1(n_2-2)^2 (n_2-4)}$ para $n_2 > 4$.
 
     Si $n_2\in [0,2]$ no está definida. Para $n_2 \in (2,4]$, la varianza es infinita.
   \end{itemize}
@@ -1717,11 +1717,11 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
   \]
   Aplicando un teorema anterior, tenemos que $\vectX^T B \vectX$ tiene una distribución $\chi^2_k$ no centrada si y solo si la matriz $C^T B C$ es idempotente. La prueba se reduce a probar que $B\Sigma$ es idempotente si y solo si $C^T B C$ es idempotente. Veamoslo:\\
 
-  \boxed{\rightarrow} Supongamos que $B\Sigma$ es idempotente, es decir, $B\Sigma B = B$. Entonces:
+  \boxed{\implies} Supongamos que $B\Sigma$ es idempotente, es decir, $B\Sigma B = B$. Entonces:
   \[
   (C^TBC)(C^TBC) = C^TBCC^TBC = C^TB\Sigma BC = C^TBC \implies idempotente
   \]
-  \boxed{\leftarrow} Supongamos ahora que $C^TBC$ es idempotente. Entonces:
+  \boxed{\impliedby} Supongamos ahora que $C^TBC$ es idempotente. Entonces:
   \[
   C^TBC = (C^TBC)(C^TBC) = C^TB\Sigma B C
   \]
@@ -1739,11 +1739,9 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
   \]
 \end{proof}
 
-\
-
 %% FALTAN MUCHOS APUNTES
 
-\section{Parte 2. Inferencia en la DNM}
+\section{Inferencia en la DNM}
 \subsection{Introducción}
 
 Supongamos un vector aleatorio $\vectX = (X_1,\dots,X_p)\sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Se dispone de una m.a.s. (observaciones independientes idénticamente distribuidas) que denotaremos
@@ -1789,7 +1787,7 @@ En particular, si
 \end{itemize}
 \end{lema}
 
-\subsection{EMV de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
+\subsection{EMV de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
 \begin{ndef}[Función de verosimilitud]
   La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
@@ -1810,7 +1808,7 @@ L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
 
 
 
-\subsection{Estimadores de máxima verosimilitud de $\mu$ y $\Sigma$ en una DNM}
+\subsection{Estimadores de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
 \begin{ndef}[Función Verosimilitud]
   Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. Sea $\{X_\alpha : \alpha =1,\dots,N \}$ una muestra simple. Para una realización $\{ x_\alpha : \alpha = 1, dots, N\}$ se tiene que la función verosimilitud es
@@ -1863,7 +1861,7 @@ A = \sum_{\alpha = 1}^N (\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{\vec
 la matriz de dispersiones muestral. Entonces $A$ es definida positiva con probabilidad 1 si y solo si $p<n$.
 \end{nth}
 
-\subsection{Distribuciones asintóticas de $A_n$ y \(X_n\) para una población cualquiera}
+\subsection{Distribuciones asintóticas de \texorpdfstring{$\boldsymbol A_{\boldsymbol n}$}{An} y \texorpdfstring{$\boldsymbol X_{\boldsymbol n}$}{Xn} para una población cualquiera}
 
 \begin{nprop}
   Sea \(\{X_{\alpha}\}_{\alpha \geq 1}\) una sucesión de vectores \(p\)-dimensionales independientes e idéncitcamente distribuidos con media \(\boldsymbol \mu\) desconocida y matriz de covarianzas \(\Sigma\). Sea \[
@@ -1955,12 +1953,153 @@ la matriz de dispersiones muestral. Entonces $A$ es definida positiva con probab
     \text{como}
     \quad
     \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)^T\right)
-  \] convergen en probabilidad a \(\boldsymbol 0\).
-  % Ejercicio: demostrar con la desigualdad de Markov \[
+  \] 
+  convergen en probabilidad a \(\boldsymbol 0\).
+  % Ejercicio: demostrar esto último con la desigualdad de Markov: \[
   % \operatorname{P}[|X| \geq a] \leq \frac{\operatorname{E}|X|}{a}.
   % \]
-  % Ejercicio: demostrar también que es convergencia en distribución usando la desigueldad de Chebushev.
+  % Ejercicio: demostrar también que es convergencia en distribución usando la desigualdad de Chebyshev.
   Luego \[
     \operatorname{Vec}\left(\frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right) \frac{1}{N^{\sfrac{1}{4}}}\left(N^{-\sfrac{1}{2}}(\vectX_N - \boldsymbol \mu)\right)^T\right)
-  \] converge en probabilidad al vector \(\boldsymbol 0\).
+  \] 
+  converge en probabilidad al vector \(\boldsymbol 0\).
 \end{proof}
+
+\begin{nprop}
+  Sea \(\{X_{\alpha}\}_{\alpha \in \mathbb N}\) una sucesión de variables aleatorias tal que cuando \(\alpha\) tiende a infinito, \(X_{\alpha}\) converge a \(X\) en distribución. 
+  Sea \(\{Y_{\alpha}\}_{\alpha \in \mathbb N}\) una sucesión de variables aleatorias tal que
+  \[
+    Y_{\alpha} \xrightarrow[\alpha \to \infty]{d}\boldsymbol 0 \; \left(\iff Y_{\alpha} \xrightarrow[\alpha \to \infty]{P} \boldsymbol 0 \right).
+  \]
+  Entonces, \(X_{\alpha} + Y_{\alpha} \xrightarrow[\alpha \to \infty]{d} X\).
+\end{nprop}
+
+% Utilizamos esto en lo último de la demostración de la proposición anterior
+
+\subsection{Distribución de Wishart}
+
+Wishart, 1928.
+
+Motivación. Según el Teorema de Fisher (multivariante) para una muestra aleatoria simple \(\vectX_1, \dots, \vectX_n\) de una distribución normal multivariante \(N_p(\boldsymbol \mu, \Sigma)\) con \(\Sigma > 0\) se tiene que \(A = \sum_{\alpha = 1}^{N}(\vectX_{\alpha} - \overline{\vectX})(\vectX_{\alpha} - \overline{\vectX})^T\) se distribuye como lo hace \(\sum_{\alpha = 1}^N \vectZ_{\alpha}\vectZ_{\alpha}^T\), con \(\vectZ_{\alpha}\) variables aleatorias independientes e idénticamente distribuidas según una distribución \(N_p(0, \Sigma)\).
+
+% FIXME: indicar que las Z_alpha estas son X_alpha - \overline{X_alpha}.
+
+\begin{ndef}
+  Sean \(\vectZ_1, \dots, \vectZ_n\) vectores aleatorios independientes e idénticamente distribuidos según una distribución \(N_p(\boldsymbol 0, \Sigma)\) con \(\Sigma > 0\) y con \(n \geq P\).
+  Se define la \textit{distribución de Wishart centrada con \(n\) grados de libertad} como la distribución de la matriz aleatoria \(\sum_{\alpha = 1}^N \vectZ_{\alpha}\vectZ_{\alpha}^T\).
+  Se denota por \(W_p(n, \Sigma)\).
+\end{ndef}
+
+Como consecuencia, dada una muestra aleatoria simple de una población que sigue una distribución \(N_p(\boldsymbol 0, \Sigma)\) con \(\Sigma > 0\) tenemos que
+\[
+  A = NS_N = (N-1)S_{N-1} \sim W_p(n, \Sigma).
+\]
+En el caso \(\Sigma > 0\), la distribución de Wishart tiene la función de densidad:
+\[
+  f(A) = \frac{
+    |A|^{\sfrac{n-p-1}{2}}\exp\{-\frac{1}{2}\operatorname{tr}(\Sigma^{-1}A)\}
+  }{
+    2^{\sfrac{np}{2}}|\Sigma|^{\sfrac{n}{2}}\pi^{\sfrac{p(p-1)}{4}}\prod_{i=1}^p\Gamma(\frac{n+1-i}{2})
+  }.
+\]
+Para \(A\) matriz simétrica definida positiva , tener \(n \geq P\) nos garantiza que \(A > 0\).
+Usando la función gamma multivariante,
+\[
+ \Gamma_m(z) = \pi^{\textstyle \frac{m(m-1)}{4}}\prod_{i=1}^m \Gamma\left(z - \frac{i-1}{z}\right) 
+\]
+para \(z \in \mathbb C\) con \(\operatorname{Re}(z) \geq 0\),
+\[
+  f(A) = \frac{
+    |A|^{\textstyle\sfrac{n-p-1}{2}}\exp\left\{-\frac{1}{2}\operatorname{tr}(\Sigma^{-1}A)\right\}
+  }{
+    2^{\textstyle\sfrac{np}{2}}|\Sigma|^{\textstyle\sfrac{n}{2}}\Gamma_p\left(\frac{n}{2}\right)
+  }.
+\]
+
+\begin{nprop}[Ley de Wishart]
+  \label{nprop:ley-wishart}
+  Si \(a \sim W_1(n, \sigma^2)\) entonces \(\frac{a}{\sigma^2} \sim \chi^2_n\).
+\end{nprop}
+
+\begin{ejer}
+  Demostrar  la proposición \ref{nprop:ley-wishart}. Para ello hay que hacer un cambio de variable en \(a\).
+\end{ejer}
+
+\begin{nprop}[Función característica de una matriz aleatoria]
+  La función característica de una matriz aleatoria \(Y_{r \times s}\) se define como
+  \[
+    \Psi_Y(\Theta) = \operatorname{E}\left[\exp\left\{i \operatorname{tr}\left(\Theta^TY\right)\right\}\right]
+  \]
+  para toda \(\Theta\) en el espacio de matrices de orden \(r \times s\).
+\end{nprop}
+
+\begin{proof}
+  Vemos inmediatamente que
+  \begin{align*}
+    \Psi_{\operatorname{vec}(Y)}\left(\operatorname{vec}(\Theta)\right)
+    &= \operatorname{E}\left[
+      \exp\left\{
+        i[\operatorname{vec}(\Theta)^T]\operatorname{vec}(Y)
+        \right\}
+      \right]\\
+    &= \operatorname{E}\left[
+      \exp\left\{
+        i\sum_{k=1}^s
+          \left(
+            \sum_{l=1}^r \Theta_{lk}Y_{lk}
+          \right)
+        \right\}
+      \right]\\
+    &= \operatorname{E}\left[\exp\left\{i \operatorname{tr}\left(\Theta^T Y\right)\right\}\right].
+  \end{align*}
+\end{proof}
+
+% TODO: no se qué de una función característica restringida con una Y tilde
+
+Veamos a continuación algunas propiedades de la Ley de Wishart.
+
+\begin{nprop}[Momentos de primer y segundo orden]
+  Sea \(A \sim W_p(n, \Sigma)\). Entonces, \begin{itemize}
+    \item \(\operatorname{E}[A] = A\Sigma\).
+    \item \(\operatorname{Cov}(a_{ij}, a_{kl}) = n(\sigma_{ik}\sigma_{jl}+ \sigma_{il}\sigma_{jk})\).
+  \end{itemize}
+\end{nprop}
+
+\begin{nprop}[Reproductividad respecto de los grados de libertad]
+  Sean \(A_1, \dots, A_q\) matrices aleatorias independientes, con \(A \sim W_p(n_{j}, \Sigma)\), con \(j = 1, \dots, q\).
+  Entonces,
+  \[
+    A = \sum_{j=1}^q A_j \sim W_p\left(\sum_{j=1}^q n_j, \Sigma\right).
+  \]
+\end{nprop}
+
+\begin{nprop}[Transformaciones lineales <<rectangulares>>]
+  Sea \(A\) una matriz aleatoria tal que \(A \sim W_q(n, \Sigma)\) y sea \(M_{k\times p}\) una matriz no aleatoria de rango \(k \leq p\). 
+  Entonces, 
+  \[
+    MAM^T \sim W_k(n, M\Sigma M^T).
+  \]
+  Análogamente,
+  \[
+    MA^{-1}M^T \sim W_k\left(n-m+k, \left(M\Sigma^{-1} M^T\right)^{-1}\right),
+  \]
+  donde \(m\) es... 
+  %TODO: ¿qué es m? El profesor no lo sabe
+\end{nprop}
+
+\begin{proof}
+  Por definición \(A = \sum_{\alpha = 1}^n \vectZ_{\alpha}\vectZ_{\alpha}^T\), con \(\vectZ_{\alpha} \sim N_p(\boldsymbol 0, \Sigma)\), independientes para cada \(\alpha\).
+  Consideremos las transformaciones lineales
+  \[
+    \vectY_{\alpha} = M\vectZ_{\alpha} \quad \text{para}\quad \alpha = 1, \dots, n
+  \]
+  de tal forma que \(\vectY_{\alpha} \sim N_k(\boldsymbol 0, M\Sigma M^T)\).
+  Entonces, por definición, \begin{align*}
+    B = \sum_{\alpha = 1}^n \vectY_{\alpha}\vectY_{\alpha}^T = \dots = MAM^T \sim W_k(n, M\Sigma M^T).
+  \end{align*}
+\end{proof}
+
+\begin{nprop}[Distribución de la matriz de cuasi-covarianzas muestral, \(\boldsymbol S_{\boldsymbol N \boldsymbol - \boldsymbol 1}\)]
+  Sea \(S_n = \frac{A}{n}\), con \(n = N - 1\), la matrz de cuasi-covarianzas muestral que procede de la muestra aleatoria simple con población \(N_p(\boldsymbol \mu, \Sigma)\).
+  Entonces, \(S_n \sim W_p(n, \frac{\Sigma}{n})\) y además, \(S_N \sim W_p(N-1, \frac{\Sigma}{N})\), con \(S_N = \frac{A}{N}\).
+\end{nprop}
