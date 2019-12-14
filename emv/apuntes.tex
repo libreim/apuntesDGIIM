@@ -1345,29 +1345,29 @@ El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \d
 \subsubsection{Distribución $\chi^2$ no centrada}
 
 \begin{ndef}[Distribución $\chi^2$ centrada]
-  La distribución $\chi^2$ centrada se define como la distribución de la suma de cuadrados de variables aleatorias independientes con distribución normal estándar $N(0,1)$:
-  \begin{align}
-    Z = (Z_1, \dots, Z_n)^T \sim N_n(0,I_n)
-    \mapsto Y = \sum_{i = 1}^n Z_i^2 \sim \chi^2_n, \quad ||Z||^2 = Z Z.
-\end{align}
-  Tenemos entonces que su función de densidad es:
+  Sea $Y$ una variable aleatoria. Decimos que $Y$ sigue una \textit{distribución $\chi^2$ centrada} si es la suma de los cuadrados de variables aleatorias independientes con distribución normal estándar $N(0,1)$. Es decir, dado $\vectZ = (Z_1, \dots, Z_n)^T \sim N_n(0,I_n)$ tal que $||Z||^2 = Z Z$,
   \[
-    f_{\vectY}(y) = \frac{1}{2^{n/2} \Gamma(n/2)} y^{(n/2) - 2} e^{-y/2}, \quad y > 0
+    Y = \sum_{i = 1}^n Z_i^2 \sim \chi^2_n.
   \]
-  y su función de distribución es:
+  Su función de densidad es
   \[
-    F_{\vectY}(y) = \frac{\gamma(n/2, y/2)}{\Gamma(n/2)}, \qquad y > 0.
+    f_{\vectY}(y) = \frac{1}{2^{n/2} \Gamma(n/2)} y^{(n/2) - 2} e^{-y/2}, \quad \text{para }y > 0,
   \]
-  La función gamma está definida como:
+  y su función de distribución,
   \[
-    \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t, \qquad \text{para todo } z \in \mathbb C \text{ tal que } \operatorname{Re}(z)>0.
+    F_{\vectY}(y) = \frac{\gamma(n/2, y/2)}{\Gamma(n/2)}, \quad\text{para } y > 0.
   \]
-  Las funciones gamma incompletas son:
-  \begin{itemize}
-    \item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$.
-    \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$ con $v>0$.
-  \end{itemize} 
 \end{ndef}
+
+Recordemos que la función gamma está definida como:
+\[
+  \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t, \quad \text{para } z \in \mathbb C \text{ tales que } \!\operatorname{Re}(z)>0.
+\]
+Además, las funciones gamma incompletas son:
+\begin{itemize}
+  \item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$.
+  \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$ con $v>0$.
+\end{itemize} 
 
 \begin{ndef}[Distribución $\chi^2$ no centrada]
   Sea $\vectX = (X_1,\dots,X_n)^T\sim N_n(\mu,I_n)$. Entonces, la v.a. $\vectY = \vectX \vectX^T$ tiene la función de densidad:
