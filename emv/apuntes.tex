@@ -1280,7 +1280,7 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \end{ndef}
 
 \begin{nprop}[Caracterización en función de la densidad]
-  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución elítica si y solo si $f_{\vectX}$ puede expresarse como \[|V|^{-\sfrac{1}{2}}g\left((\boldsymbol x - \boldsymbol \mu)V^{-1}(\boldsymbol x - \boldsymbol \mu)\right)\] para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
+  Dado un $\vectX$ un vector aleatorio $p$-dimensional con función de densidad $f_{\vectX}$ tiene distribución elítica si y solo si $f_{\vectX}$ puede expresarse como \[|V|^{-1/2}g\left((\boldsymbol x - \boldsymbol \mu)V^{-1}(\boldsymbol x - \boldsymbol \mu)\right)\] para alguna función escalar $g : \mathbb R_0^+ \to \mathbb R_0^+$.
 \end{nprop}
 
 \begin{nprop}[Caracterización en términos de la función característica]
@@ -1295,35 +1295,40 @@ Veamos a continuación dos caracterizaciones de las distribuciones esféricas.
 \end{nprop}
 
 \begin{nprop}
-  Dado un vector aleatorio $\vectZ$ con distribución esférica —y $P[\vectZ = 0] = 0$— entonces $U = \frac{\vectZ}{\Vert\vectZ\vert}$ y $R = \Vert\vectZ\Vert$ son independientes.
+  Sea $\vectZ$ un vector aleatorio con distribución esférica tal que $P[\vectZ = 0] = 0$. Entonces $U = \vectZ/\Vert\vectZ\Vert$ y $R = \Vert\vectZ\Vert$ son independientes.
 \end{nprop}
 
 \begin{proof}
+  Comenzamos viendo que dada una matriz $H$ ortogonal cualquiera,
   \begin{align*}
-    H\boldsymbol U = \frac{H\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}
-      = \frac{H\vectZ}{(\vectZ^TH^TH\vectZ)^{\sfrac{1}{2}}}
-      = \frac{H\vectZ}{((H\vectZ)^T(H\vectZ))^{\sfrac{1}{2}}}
-      = \frac{\vectZ}{(\vectZ^T\vectZ)^{\sfrac{1}{2}}}\\
+    H\boldsymbol U = \frac{H\vectZ}{(\vectZ^T\vectZ)^{1/2}}
+      = \frac{H\vectZ}{(\vectZ^TH^TH\vectZ)^{1/2}}
+      = \frac{H\vectZ}{((H\vectZ)^T(H\vectZ))^{1/2}}
+      = \frac{\vectZ}{(\vectZ^T\vectZ)^{1/2}}
       = \boldsymbol U,
   \end{align*} luego $\boldsymbol U$ se distribuye uniformemente en la esfera unidad en $\mathbb R^p$.
 
-  A continuación probamos la independencia de $\boldsymbol U$ y $R$. Para cada $C \in \mathcal B(\mathbb R^+)$ tal que $P[R \in C] \neq 0$ queremos probar que $\mu = P[\boldsymbol U \in B | R \in C] = P[\boldsymbol U \in B]$ para cada $B \in \mathcal B(S_p)$.
-
+  A continuación probamos la independencia de $\boldsymbol U$ y $R$. Para cada $C \in \mathcal B(\mathbb R^+)$ tal que $P[R \in C] \neq 0$ queremos probar que $\mu = P[\boldsymbol U \in B \mid R \in C] = P[\boldsymbol U \in B]$ para todo $B \in \mathcal B(S_p)$.
   Por definición, \begin{align*}
-    P[\boldsymbol U \in B \mid R \in C] = \frac{P[(\boldsymbol U \in B) \land (R \in C)]}{P[R \in C]} = \frac{P[\vectZ \in B \cdot C]}{P[R \in C]},
-  \end{align*} con $B \cdot C = \left\{\boldsymbol z \in \mathbb R^p - \{\boldsymbol 0\} : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\}$. Luego, \begin{align*}
+    P[\boldsymbol U \in B \mid R \in C] 
+    = \frac{P[(\boldsymbol U \in B) \land (R \in C)]}{P[R \in C]} 
+    = \frac{P[\vectZ \in B \cdot C]}{P[R \in C]},
+  \end{align*} 
+  donde $B \cdot C = \left\{\boldsymbol z \in \mathbb R^p - \{\boldsymbol 0\} : \boldsymbol z/\Vert \boldsymbol z \Vert \in B, \Vert \boldsymbol z \Vert \in C\right\}$. 
+  Luego, \begin{align*}
     \frac{P[\vectZ \in B \cdot C]}{P[R \in C]} = \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]}
-  \end{align*} para cualquier matriz $H$ ortogonal por ser la distribución de $\vectZ$ esférica. Vemos que $H^T\vectZ \in B \cdot C$ si y solo si $\vectZ \in (H(B)) \cdot C$. En efecto, $H^T\vectZ \in B \cdot C$ si y solo si $H(H^T\vectZ) \in H(B \cdot C)$, siendo \begin{align*}
-    H(B\cdot C) &= \left\{H \boldsymbol z : \boldsymbol z \in B \cdot C\right\} = \left\{H \boldsymbol z : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\} \\
+  \end{align*} para cualquier matriz $H$ ortogonal por ser la distribución de $\vectZ$ esférica. 
+  Vemos que $H^T\vectZ \in B \cdot C$ si y solo si $\vectZ \in (H(B)) \cdot C$. En efecto, $H^T\vectZ \in B \cdot C$ si y solo si $H(H^T\vectZ) \in H(B \cdot C)$, siendo \begin{align*}
+    H(B\cdot C) &= \left\{H \boldsymbol z : \boldsymbol z \in B \cdot C\right\}\\
+      &= \left\{H \boldsymbol z : \frac{\boldsymbol z}{\Vert \boldsymbol z \Vert} \in B, \Vert \boldsymbol z \Vert \in C\right\} \\
       &= \left\{H \boldsymbol z : \frac{H \boldsymbol z}{\Vert H \boldsymbol z\Vert} \in HB, \Vert H\boldsymbol z\Vert \in C\right\}\\
       \shortintertext{y llamando $\boldsymbol w = H\boldsymbol z$,}
       &= \left\{\boldsymbol w : \frac{\boldsymbol w}{\Vert \boldsymbol w\Vert} \in HB, \Vert \boldsymbol w\Vert \in C\right\}\\
       &= H(B) \cdot C,
   \end{align*} probando entonces esta última afirmación.
-
-  Tenemos entonces \begin{align*}
-    \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]} &= \frac{P[\vectZ \in (H(B)) \cdot C]}{P[R \in C]}
-       = \frac{P[(\boldsymbol U \in H(B)) \land (R \in C)]}{P[R \in C]} \\
+  Concluimos entonces que \begin{align*}
+    \frac{P[H^T\vectZ \in B \cdot C]}{P[R \in C]} &= \frac{P[\vectZ \in (H(B)) \cdot C]}{P[R \in C]}\\
+      &= \frac{P[(\boldsymbol U \in H(B)) \land (R \in C)]}{P[R \in C]} \\
       &= P[\boldsymbol U \in H(B) \mid R \in C] \\
       &= \mu(H(B)).
   \end{align*}
@@ -1340,29 +1345,28 @@ El resultado que motiva esta subsección es el siguiente. Sea $\vectX = (X_1, \d
 \subsubsection{Distribución $\chi^2$ no centrada}
 
 \begin{ndef}[Distribución $\chi^2$ centrada]
-  La distribución $\chi^2$ centrada se define como la distribución de la suma de cuadrados de v.a. independientes con distribución normal estándar $N(0,1)$:
+  La distribución $\chi^2$ centrada se define como la distribución de la suma de cuadrados de variables aleatorias independientes con distribución normal estándar $N(0,1)$:
   \begin{align}
     Z = (Z_1, \dots, Z_n)^T \sim N_n(0,I_n)
-    \mapsto Y = \sum_{i = 1}^n Z_i^2 \sim \chi^2_n, \quad ||Z||^2 = Z Z
+    \mapsto Y = \sum_{i = 1}^n Z_i^2 \sim \chi^2_n, \quad ||Z||^2 = Z Z.
 \end{align}
-
-  tenemos entonces que su función de densidad es:
+  Tenemos entonces que su función de densidad es:
   \[
-f_{\vectY}(y) = \frac{1}{2^{\frac{n}{2}} \Gamma(\frac{n}{2})} y^{\frac{n}{2} - 2} e^{-\frac{y}{2}}, \quad y > 0
-\]
-y su función de distribución es:
-\[
-F_{\vectY}(y) = \frac{\gamma(\frac{n}{2}, \frac{y}{2}}{\Gamma(\frac{n}{2})}, \quad y > 0
-\]
-Donde, la función gamma está definida:
-\[
-\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} dt, \quad \forall z \in \mathbb C, Re(z)>0
-\]
-y las funciones gamma incompletas son:
-\begin{itemize}
-\item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} dt$
-  \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} dt$ con $v>0$
-\end{itemize} 
+    f_{\vectY}(y) = \frac{1}{2^{n/2} \Gamma(n/2)} y^{(n/2) - 2} e^{-y/2}, \quad y > 0
+  \]
+  y su función de distribución es:
+  \[
+    F_{\vectY}(y) = \frac{\gamma(n/2, y/2)}{\Gamma(n/2)}, \qquad y > 0.
+  \]
+  La función gamma está definida como:
+  \[
+    \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t, \qquad \text{para todo } z \in \mathbb C \text{ tal que } \operatorname{Re}(z)>0.
+  \]
+  Las funciones gamma incompletas son:
+  \begin{itemize}
+    \item $\Gamma(z,v) = \int_v ^\infty t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$.
+    \item $\gamma(0,v) = \int_0^v t^{z-1} e^{-t} \mathop{}\!\mathrm{d}t$ con $v>0$.
+  \end{itemize} 
 \end{ndef}
 
 \begin{ndef}[Distribución $\chi^2$ no centrada]
@@ -1741,7 +1745,7 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
 
 %% FALTAN MUCHOS APUNTES
 
-\section{Inferencia en la DNM}
+\section{Inferencia en la Distribución Normal Multivariante}
 \subsection{Introducción}
 
 Consideremos una población que sigue una distribución normal multivariante $N_p(\mu,\Sigma)$ con $\Sigma > 0$. Para poder realizar la inferencia será necesario tomar una muestra aleatoria simple de dicha población, esto es, observaciones independientes idénticamente distribuidas. La denotaremos por
