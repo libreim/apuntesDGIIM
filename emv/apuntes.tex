@@ -2232,3 +2232,52 @@ Veamos a continuación algunas propiedades de la Ley de Wishart.
   \]
   siendo independiente de \(\overline{\vectX}\).
 \end{ncor}
+
+\subsection{Estadístico \(T^2\) de Hotelling}
+
+Contraste de hipótesis sobre \(\boldsymbol \mu\) cuando \(\Sigma\) es conocida.
+
+\begin{ndef}
+  \label{ndef:t2-hotelling}
+  Sea \(\vectX \sim N_p(\boldsymbol \mu, \Sigma)\), con \(\Sigma > 0\). y sea \(B\) una matriz aleatoria \((p\times q)\)-dimensional con \(B \sim W_p(n, \Sigma)\).
+  Suponemos además que \(\vectX\) y \(B\) son independientes.
+  Definimos entonces 
+  %el \textit{estadístico \(T^2\) de Hotelling} como la distribución de la variable aleatoria dada por
+  \[
+    T^2 = n\vectX^T B\vectX.
+  \]
+\end{ndef}
+
+\begin{nprop}
+  Bajo las condiciones de la definición \ref{ndef:t2-hotelling}, se tiene que
+  \[
+    \frac{T^2}{n}\frac{n-p+1}{p} \sim F_{p, n-p+1}(\delta),
+  \]
+  con condición de no centralidad \(\delta = \boldsymbol \mu^T \Sigma \boldsymbol \mu\).
+\end{nprop}
+
+% TODO: falta demostración
+
+Veamos el estadístico \(T^2\) de Hotelling asociado al muestreo de una problación con distribución normal multivariante.
+
+\begin{ndef}
+  \label{ndef:t2-hotelling-muestreo}
+  Sea \(\{X_\alpha : \alpha = 1,\dots,N\}\) una muestra aleatoria simple de una población con distribución \(\vectX \sim N_p(\boldsymbol \mu, \Sigma)\), con \(\Sigma > 0\). 
+  Sean \(\overline{\vectX}, S_N, S_n\), donde \(n = N-1\).
+  Se define el \textit{estadístico \(T^2\) de Hotelling} basado en la muestra anterior como
+  \[
+    T^2 = n\overline{\vectX}^TS_N^{-1}\overline{\vectX} = N\overline{\vectX}^TS_n^{-1}\overline{\vectX} = nN\overline{\vectX}^TA^{-1}\overline{\vectX}.
+  \]
+\end{ndef}
+
+\begin{nprop}
+  Bajo las condiciones de la definición \ref{ndef:t2-hotelling-muestreo}, se tiene que
+  \[
+    \frac{T^2}{n}\frac{n-p+1}{p} \sim F_{p, n-p+1}(\delta),
+  \]
+  con condición de no centralidad \(\delta = \boldsymbol \mu^T \Sigma \boldsymbol \mu\).
+\end{nprop}
+
+\begin{proof}
+  Análoga a la demostración anterior, teniendo  en cuenta que \(\overline{\vectX} \sim N_p(\boldsymbol \mu, \Sigma/N)\) y \(S_N \sim W_p(n, \Sigma/N)\) son independientes.
+\end{proof}
