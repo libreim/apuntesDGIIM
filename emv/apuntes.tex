@@ -2150,7 +2150,85 @@ Veamos a continuación algunas propiedades de la Ley de Wishart.
   \end{align*}
 \end{proof}
 
-\begin{nprop}[Distribución de la matriz de cuasi-covarianzas muestral, \(\boldsymbol S_{\boldsymbol N \boldsymbol - \boldsymbol 1}\)]
-  Sea \(S_n = A/n\) (con \(n = N - 1\)) la matrz de cuasi-covarianzas muestral que procede de la muestra aleatoria simple con población \(N_p(\boldsymbol \mu, \Sigma)\).
-  Entonces, \(S_n \sim W_p(n, \Sigma/n)\) y además, \(S_N \sim W_p(N-1, \Sigma/N)\), con \(S_N = A/N\).
+\begin{nprop}[Distribución de la matriz de cuasi-covarianzas muestral]
+  Sea \(S_{n-1} = A/n\) (con \(n = N - 1\)) la matrz de cuasi-covarianzas muestral que procede de la muestra aleatoria simple con población \(N_p(\boldsymbol \mu, \Sigma)\).
+  Entonces, \(S_{n-1} \sim W_p(n, \Sigma/n)\) y además, \(S_N \sim W_p(N-1, \Sigma/N)\), con \(S_N = A/N\).
 \end{nprop}
+
+\begin{proof}
+  Sabemos que \(A \sim W_p(n, \Sigma)\). Tomamos \(M = 1/\sqrt{n} Z_p\) y tenemos que
+  \[
+    S_n = MAM^T \qquad \text{y} \qquad M\Sigma M^T = \Sigma/n.
+  \]
+  Entonces, \(S_n \sim W_p(n, \Sigma / n)\).
+\end{proof}
+
+\subsection{Marginalización y condicionamiento}
+
+\begin{nprop}
+  Sea \(A \sim W_p(n, \Sigma)\). Entonces,
+  \[
+    \frac{a_{ii}}{\sigma_i^2} \sim \chi_n^2 \quad\text{para } i = 1, \dots, p.
+  \]
+\end{nprop}
+
+\begin{proof}
+  Tomando \(M = \boldsymbol e_i^T = (0, \dots, 0, \underbrace{1}_i, 0, \dots, 0)\), podemos escribir \(a_{ii} = MAM^T\) y \(\sigma_i^2 = \sigma_{ii} = M\Sigma M^T\). Por lo tanto, \(a_{ii} \sim W_1(n, \sigma^2)\), por lo que \(a_{ii}/\sigma_i^2 \sim \chi_n^2\).
+\end{proof}
+
+\begin{nprop}
+  Sea \(A \sim W_p(n, \Sigma)\), particionado de la forma
+  \[
+    A = \begin{pmatrix}
+      A_{11} & A_{12} \\ A_{21} & A_{22}
+    \end{pmatrix}
+    \quad \text{y} \quad
+    \Sigma = \begin{pmatrix}
+      \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}
+    \end{pmatrix},
+  \]
+  donde \(A_{11}\) tiene dimensión \((q \times q)\) y \(A_{22}\), dimensión \((p-q)\times(p-q)\). Entonces,
+  \begin{enumerate}
+    \item \(A_{11} \sim W_q(n, \Sigma_{11})\), \(A_{22} \sim W_{p-q}(n, \Sigma_{22})\).
+    \item Si además \(\Sigma_{12} = \Sigma_{21} = 0\), entoncess \(A_{11}\) y \(A_{21}\) son independientes.
+    \item Sean \(A_{11.2} = A_{11} - A_{12}A_{22}^{-1}A_{21}\), \(A_{22.1} = A_{22} - A_{21}A_{11}^{-1}A_{12}\), \(\Sigma_{11.2} = \Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\), \(\Sigma_{22.1} = \Sigma_{22} - \Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}\). Entonces,
+    \begin{enumerate}
+      \item \(A_{11.2} \sim W_q(n-(p-q), \Sigma_{11.2})\) y es independiente de \(A_{12}\) y de \(A_{22}\).
+      \item \(A_{22.1} \sim W_{p-q}(n-q, \Sigma_{22.1})\) y es independiente de \(A_{21}\) y de \(A_{11}\).
+      \item \(A_{12}\mid A_{22} \sim N_{(p-q)\times q}(\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{11.2 \otimes A_{22}})\), donde \(\otimes\) es el producto de Kronecker.
+    \end{enumerate}
+  \end{enumerate}
+\end{nprop}
+
+\begin{nprop}[Relacionando con la distribución de Hotelling]
+  Sea \(A \sim W_p(n, \Sigma)\) y sea \(\vectY\) un vector aleatorio \(p\)-dimensional independiente de \(A\) tal que \(P[\vectY = \boldsymbol 0] = 0\).
+  Entonces,
+  \[
+    \frac{\vectY^T A\vectY}{\vectY^T\Sigma\vectY} \sim \chi_n^2,
+  \]
+  que además, es independiente de \(\vectY\).
+  Análogamente, 
+  \[
+    \frac{\vectY^T A^{-1}\vectY}{\vectY^T\Sigma^{-1}\vectY} \sim \chi_{n-p+1}^2,
+  \]
+  que también es independiente de \(\vectY\).
+\end{nprop}
+
+\begin{proof}
+  %FIXME: citar propiedad
+  Tomamos una realización muestral \(\boldsymbol y^T\) y aplicamos la propiedad de las transformaciones lineales con \(M = \boldsymbol y^T\). 
+  Entonces, \(\boldsymbol y^T A \boldsymbol y \sim W_1(n, \boldsymbol y^T\Sigma \boldsymbol y)\). 
+  Como \(\chi_n^2\) no depende de \(\boldsymbol y\), también
+  \[
+    \frac{\vectY^T A\vectY}{\vectY^T\Sigma\vectY} \sim \chi_n^2.
+  \]
+\end{proof}
+
+\begin{ncor}
+  Sea \(\{\vectX_{\alpha}, \alpha = 1, \dots, N\}\) una muestra aleatoria simple de una población \(N_p(\boldsymbol \mu, \Sigma)\). 
+  Entonces tenemos que, con \(n = N -1\),
+  \[
+    n\frac{\overline{\vectX}^T S_n \overline{\vectX}}{\overline{\vectX}^{-1}\Sigma\overline{\vectX}} \sim \chi_n^2,
+  \]
+  siendo independiente de \(\overline{\vectX}\).
+\end{ncor}
