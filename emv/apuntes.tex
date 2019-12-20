@@ -2281,3 +2281,77 @@ Veamos el estadístico \(T^2\) de Hotelling asociado al muestreo de una problaci
 \begin{proof}
   Análoga a la demostración anterior, teniendo  en cuenta que \(\overline{\vectX} \sim N_p(\boldsymbol \mu, \Sigma/N)\) y \(S_N \sim W_p(n, \Sigma/N)\) son independientes.
 \end{proof}
+
+\subsubsection{Aplicaciones al problema de contraste sobre el vector de medias}
+
+Vamos a ver dos casos para este problema:
+\begin{itemize}
+\item Si $\Sigma$ es conocida, entonces resolveremos con la distribución de $\chi^2$
+  \item Si $\Sigma$ es desconocida, resolveremos con la distribución $T^2$
+\end{itemize}
+
+El planteamiento del problema es el siguiente:\\
+
+Sea $\vectX\sim N_p(\mu,\Sigma)$, con $\Sigma > 0$, y sea $\{X_1,\dots,X_N\}$ con $N>p$, una m.a.s. Denotamos $X$ a esta m.a.s. El problema de contraste
+\[
+\begin{cases}
+  H_0 : \mu = \mu_0\\
+  H_1 : \mu \ne \mu_0\\
+\end{cases}
+\]
+con $\mu_0 \in \mathbb R ^p$ dado.
+
+\begin{nth}
+  Si $\Sigma$ es conocida, entonces $U:\mathbb R^{N-p} \to \mathbb R^+_0$ dada por $U(X) = N(\bar{\vectX} - \mu_0)^T \Sigma^{-1} (\bar{\vectX} - \mu_0) \sim \chi_p^2(\sigma)$, con $\sigma = N(\mu - \mu_0)^T \Sigma^{-1}(\mu - \mu_0)$, y la función test para resolver el problema de contraste es:
+  \[
+  \phi(X) = \begin{cases}
+           1 \quad u(x) > \chi^2_{p,\alpha} \\
+           0 \quad u(x) \leq \chi^2_{p,\alpha}
+            \end{cases}
+  \]
+  para todo $x\in \mathbb R^{NP}$.
+\end{nth}
+\begin{proof}
+  Como $\bar{\vectX}\sim N_p(\mu,\Sigma/N)$, tenemos que $\sqrt{N}(\bar{\vectX} - \mu_0) \sim N_p(\sqrt{N}(\mu-\mu_0),\Sigma)$. Bajo la hipótesis nula, $H_0$, se tiene $\sigma = 0$ y $U\sim \chi_p^2(\sigma)$, es decir, la función test se formula como:
+   \[
+  \phi(X) = \begin{cases}
+           1 \quad u > c \\
+           0 \quad u \leq c
+            \end{cases}
+  \]
+  donde $c$ se calcula para que el test tenga tamaño $\alpha$. Así,
+  \[
+\alpha = \sup_{H_0}E[\phi(\vectX)] = P_{H_0}[u>c] = P[\chi_p^2 > c]
+\]
+por lo que $c = \chi^2_{p,\alpha}$.
+\end{proof}
+\begin{nota}
+  El test construido coincide con el que se habría obtenido mediante el método de la razón de verosimilitudes.
+\end{nota}
+Vamos a ver ahora el caso en el que $\Sigma$ es desconocida:
+\begin{nth}
+  Si $\Sigma$ es desconocida, el estadístico de contraste es $ \mathbb T^2 = N(\bar{\vectX} -\mu_0)^TS_{N-1}^{-1}(\bar{\vectX} -\mu_0)$, verificándose
+  \[
+\frac{\mathbb T^2}{n}\frac{n-p+1}{p} \sim F_{p;n-p+1}(\sigma) , \qquad \sigma = N(\mu-\mu_0)^T \Sigma^{-1}(\mu - \mu_0)
+\]
+y la función de test para resolver el problema de contraste es:
+\[
+\phi(X) = \begin{cases}
+  1 \quad t> npF_{p;n-p+1,\alpha}/(n-p+1)\\
+  0 \quad t \leq npF_{p;n-p+1,\alpha}/(n-p+1)
+\end{cases}
+\]
+siendo $F_{p;n-p+1,\alpha}$ el valor de una distribución $F$ de Snedecord con $p$ grados de libertad que deja a su derecha una probabilidad $\alpha$, $X$ una realización de la muestra aleatoria y $t$ el valor que toma el estadístico $\mathbb T^2$.
+\end{nth}
+\begin{proof}
+  Como $\bar{\vectX} \sim N_p(\mu,\Sigma/N)$, tenemos que $\sqrt{N}(\bar{\vectX} - \mu_0) \sim N_p(\sqrt{N}(\mu-\mu_0),\Sigma)$. Por otro lado, $A\sim W_p(n,\Sigma)$ y es independiente de $\bar{\vectX}$, por lo que podemos definir $\mathbb T^2 = N(\bar{\vectX} - \mu_0)^T S_{N-1}^{-1} (\bar{\vectX} - \mu_0)$, verificándose $\frac{\mathbb T^2}{n}\frac{n-p+1}{p} \sim F_{p;n-p+1}(\sigma)$.
+
+  En consecuencia, bajo la hipótesis nula, el estadístico se distribuye como una $F$ centrada con $p$ y $n-p+1$ grados de libertad y constituye el estadístico de referencia para realizar el contraste. Por lo tanto, la función test es:
+  \[
+  \phi(X) = \begin{cases}
+    1 \qquad t(n-p+1)/np > c
+    0 \qquad t(n-p+1)/np \leq c
+  \end{cases}
+  \]
+  Finalmente, $\alpha = \sup_{H_0}E[\phi(\vectX)] = P_{H_0}(\frac{\mathbb T^2}{n}\frac{n-p+1}{p} > c) = P(F_{p,n-p+1} > c)$ por lo que $c = F_{p,n-p+1,\alpha}$.
+\end{proof}
