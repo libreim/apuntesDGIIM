@@ -1822,15 +1822,134 @@ El siguiente resultado nos será últil en desarrollos posteriores y es independ
   \end{itemize}
 \end{lema}
 
-% FIXME: repetido? incompleto?
-% \subsection{EMV de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
-% \begin{ndef}[Función de verosimilitud]
-%   La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
-%   \[
-% L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
-%   \]
-% \end{ndef}
+ \subsection{EMV de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
+
+ \begin{ndef}[Función de verosimilitud]
+   La función de verosimilitud se expresa como la función de $\mu$ y $\Sigma$ dada por:
+   \[
+ L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N)
+   \]
+ \end{ndef}
+
+ Trabajamos ahora con esta función de verosilmilitud:
+
+
+\[  L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N f_{(\mu_i,\Sigma_i)}(\vectX _\alpha) = \prod_{\alpha = 1}^N \frac{1}{(2\Pi)^{pN/2}\det(\Sigma)^{\frac{N}{2}}}exp\{-\frac{1}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\}}
+= \frac{1}{(2\Pi)^{\frac{pN}{2}\det(\Sigma)^{\frac{N}{2}}}\{-\frac{1}{2}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1} (\vectX _\alpha - \mu)\}
+\]
+
+Por conveniencia, expresamos la suma de forma cuadrática en el exponente de la forma siguiente:
+\[
+\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu) = tr(\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu))
+= \sum_{\alpha = 1}^N tr((\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu))
+= \sum_{\alpha = 1}^N tr(\Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
+= tr(\sum_{\alpha = 1}^N \Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
+= tr(\Sigma^{-1}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
+= tr(\Sigma^{-1}[A+N(\vectX - \mu)(\vectX - \mu)^T]) = tr(\Sigma^{-1}A) + N*tr(\Sigma^{-1}(\vectX - \mu)(\vectX - \mu)^T)=
+= tr(\Sigma^{-1}A) + N*tr((X-\mu)^T \Sigma^{-1}(\vectX - \mu)) = tr(\Sigma^{-1}A) + N(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
+\]
+Así, tenemos que:
+\[
+L(\mu,\Sigma) = \frac{1}{(2\Pi)^{\frac{pN}{2}\det{\Sigma}^{\frac{N}{2}}}exp\{-\frac{1}{2} tr(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\}
+
+\]
+por lo que
+\[
+ln L(\mu,\Sigma) = -\frac{pN}{2}ln(2\Pi) - \frac{N}{2}ln(\det{\Sigma}) - \frac{1}{2}tr(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T\Sigma^{-1}(\vectX - \mu)
+\]
+
+\begin{nprop}
+Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, y sea $\{\vectX_{\alpha} : \alpha = 1,\dots, N\}$ una m.a.s. de $\vectX$. Entonces, los EMV de $\mu$ y $\Sigma$ son, respectivamente $\bar{\vectX}$ y $S_N = \frac{A}{N}$, bajo la condición de que $A$ sea definida positiva.
+\end{nprop}
+
+
+\begin{Lema}[Watson]
+  Sea $f(G) = -N ln(|G|) - tr(G^{-1}D)$, $G$ es una matriz simétrica definida positiva, $D$ una matriz simétrica definida positiva. Entonces, el máximo de $f$ se alcanza en $G = (\frac{1}{N}D)$ y su valor es $f(\frac{1}{D}) = pN*ln(N) - N*ln(|D|) - pN
+\end{Lema}
+La demostración de este resultado se puede encontrar en la página 50 del libro de Raón Gutiérrez.
+
+Nos interesa ahora maximizar $L(\mu,\Sigma)$, que es lo mismo que maximizar $ln[L(\mu,\Sigma)]$, con $\Sigma > 0$, para maximizar en función de $\mu$ solo atendemos al término:
+\[
+-\frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
+\]
+este es negativo , y en valor máximo sería 0, alcanzado en $\bar{\vectX} = \mu$
+\[
+ln(L(\bar{\vectX},\Sigma) = -\frac{pN}{2} ln(2\Pi) - \frac{N}{2}ln(|\Sigma|) - \frac{1}{2}tr(\Sigma^{-1}A) + 0 = -\frac{pN}{2}ln(2\Pi) - \frac{1}{2}f(\Sigma)
+\]
+donde en la última igualdad se ha usado el lema de Watson. Esto alcanza el mínimo en $\frac{D}{N} = \frac{A}{N} = S_N$\\
+
+En principio A no tiene por qué ser definida positiva, pero tenemos el teorema de Dijkstra que dice lo siguiente:
+
+\begin{nth}[Teorema de Dijkstra]
+Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$. $\{\vectX_{\alpha} : \alpha = 1,\dots, N\}$ y sea $A = \sum_{k  =1}^N(\vectX_\alpha - \bar{\vectX})(\vectX_\alpha - \bar{vectX})^T$. Entonces, $A$ es definida positiva con probabilidad 1 si y solo si $N> p$.
+  \end{nth}
+\begin{nota}
+Con este teorema, queremos decir que basta tomar un número de muestras mayor al número de variables a estudiar
+\end{nota}
+
+\subsection{Estimación de los coeficientes de correlación}
+
+A continuación, veremos el enunciado del teorema de Zehna que será aplicado en numerosas situaciones:
+
+\begin{nth}[Zehna]
+Sea $P = \{P_\theta : \theta \in \Theta\}$ una función de medidas de probablidad sobre $(\mathcal X, \mathcal B)$. Consideramos $g: \Theta \to \Omega$ una función de $\Theta$ sobre un intervalo $\Omega$ de un espacio euclídeo $r-$dimensional. Entonces, si $\cap{\theta}$ es un estimador máximo verosimil de $\theta$, $g(\cap{\theta})$ lo es de $g(\theta)$.
+\end{nth}
+
+Podemos aplicar este resultado para calcular los estimadores de máxima verosimilitud de los diversos coeficientes de correlación. Consideremos $\vectX = (\vectX_{(1)}^T | \vectX_{(2)}^T)^T$ y las dos correspondientes particiones indicadas en $\mu$ y $\Sigma$:
+\[
+\mu = \begin{pmatrix} \mu_{(1)} \\ \mu_{(2)}\end{pmatrix}, \qquad \Sigma = (\sigma_{ij}) =  \begin{pmatrix} \Sigma_{(11)} & \Sigma_{(12)} \\ \Sigma_{(21)} & \Sigma_{(22)}\end{pmatrix}
+\]
+particiones que vamos a considerar también en el vector de medias $\bar{\vectX}$ y en las matrices de dispersiones muestral $A$ y de covarianzas muestral $S$, con $A = NS$, esto es:
+\[
+\bar{\vectX} =  \begin{pmatrix}\bar{\vectX_{(1)}} \\ \bar{\vectX_{(2)}}\end{pmatrix}
+\qquad A = (a_{ij)) = \begin{pmatrix}A_{(11)} & A_{(12)} \\ A_{(21)} & A_{(22)} \end{pmatrix}
+  \qquad S = (s_{ij)) = \begin{pmatrix}S_{(11)} & S_{(12)} \\ S_{(21)} & S_{(22)} \end{pmatrix}
+    \]
+
+    Sean $e_i = (0,\dots_{(i)},1,\dots,0)^T$ y $e_j = (0,\dots_{(j)},\dots,0)^T$. Entones, $\mu_i = e_i^T \mu$ y $\Sigma_{ij} = e_i^T \Sigma e_j$. Por tanto, aplicando el th. de Zehna se verificará que:
+    \begin{itemize}
+    \item $\cap{\mu_i} ) e_i^T \cap{\mu} = e_i^T \bar{\vectX} = \bar{\vectX_i}$ para $i = 1,\dots,p$.
+      \item $\cap{\sigma_{ij}} = e_i^T \cap{\Sigma}e_j = e_i^T \frac{A}{N}e_j = \frac{a_{ij}}{N} = s_{ij}$ para $i,j = 1,\dots,p$
+    \end{itemize}
+
+    Del mismo modo, si llamamos $E_1 =[ I_q | O_{q\times (p-q)}]$ y $E_2 = [O_{(p-q)\times q} | I_{p-q}]$, tenemos :
+    \[
+\Sigma_{(11)} = E_1 \Sigma E_1^T, \quad \Sigma_{(22)} = E_2 \Sigma E_2^T, \quad \Sigma_{(12)} = E_1 \Sigma E_2^T, \quad  \Sigma_{(22)} = E_2 \Sigma E_1^T
+\]
+Y, aplicando el teorema de Zehna tenemos:
+\[
+\begin{cases}
+  \cap{\Sigma_{(11)}} = E_1 \Sigma E_1^T = E_1\frac{A}{N}E_1^T = \frac{A_{11}}{N} = S_{11} \\
+  \cap{\Sigma_{(22)}} = E_2 \Sigma E_2^T = E_2\frac{A}{N}E_2^T = \frac{A_{22}}{N} = S_{22} \\
+
+  \cap{\Sigma_{(12)}} = E_1 \Sigma E_2^T = E_1\frac{A}{N}E_2^T = \frac{A_{12}}{N} = S_{12} \\
+  \cap{\Sigma_{(21)}} = E_2 \Sigma E_1^T = E_2\frac{A}{N}E_1^T = \frac{A_{21}}{N} = S_{21} \\
+  \end{cases}
+\]
+
+
+\begin{ndef}[Coeficiente de correlación lineal de Pearson]
+  El coeficiente de correlación lineal de Pearson, $p_{ij}$, es $p_{ij} = \frac{\sigma_{ij}}{\sigma_i \sigma_j}$ , y su estimador máximo verosimil es:
+  \[
+\cap{p_{ij}} = \frac{\cap{\sigma_{ij}}{\cap{\sigma_i}\cap{\sigma_j}} = \frac{s_{ij}}{s_i s_j} = r_{ij}
+  \]
+\end{ndef}
+
+% FIXME : cambiar lo necesario 
+Además, si notamos por $algo$ a la fila $i-$ésima de la matriz $algo$, entonces $algo$, con lo cual, por el teorema de Zehna, $algo$, siendo $algo$ y $algo$ las filas $i-$ésimas de $A$ y $S$ respectivamente.
+
+Por tanto, dado el coeficiente de correlación lineal múltiple $algo$, se verificará:
+\[
+algo
+\]
+
+
+
+
+
+
+
 
 % FIXME: Aqui faltan apuntes. Fotos de sofía 3-7. cuidado con cosas repetidas.
 
