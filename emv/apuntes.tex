@@ -1909,8 +1909,8 @@ particiones que vamos a considerar también en el vector de medias $\bar{\vectX}
 
     Sean $e_i = (0,\dots_{(i)},1,\dots,0)^T$ y $e_j = (0,\dots_{(j)},\dots,0)^T$. Entones, $\mu_i = e_i^T \mu$ y $\Sigma_{ij} = e_i^T \Sigma e_j$. Por tanto, aplicando el th. de Zehna se verificará que:
     \begin{itemize}
-    \item $\cap{\mu_i} ) e_i^T \cap{\mu} = e_i^T \bar{\vectX} = \bar{\vectX_i}$ para $i = 1,\dots,p$.
-      \item $\cap{\sigma_{ij}} = e_i^T \cap{\Sigma}e_j = e_i^T \frac{A}{N}e_j = \frac{a_{ij}}{N} = s_{ij}$ para $i,j = 1,\dots,p$
+    \item $\hat{\mu_i} ) e_i^T \hat{\mu} = e_i^T \bar{\vectX} = \bar{\vectX_i}$ para $i = 1,\dots,p$.
+      \item $\hat{\sigma_{ij}} = e_i^T \hat{\Sigma}e_j = e_i^T \frac{A}{N}e_j = \frac{a_{ij}}{N} = s_{ij}$ para $i,j = 1,\dots,p$
     \end{itemize}
 
     Del mismo modo, si llamamos $E_1 =[ I_q | O_{q\times (p-q)}]$ y $E_2 = [O_{(p-q)\times q} | I_{p-q}]$, tenemos :
@@ -1920,11 +1920,11 @@ particiones que vamos a considerar también en el vector de medias $\bar{\vectX}
 Y, aplicando el teorema de Zehna tenemos:
 \[
 \begin{cases}
-  \cap{\Sigma_{(11)}} = E_1 \Sigma E_1^T = E_1\frac{A}{N}E_1^T = \frac{A_{11}}{N} = S_{11} \\
-  \cap{\Sigma_{(22)}} = E_2 \Sigma E_2^T = E_2\frac{A}{N}E_2^T = \frac{A_{22}}{N} = S_{22} \\
+  \hat{\Sigma_{(11)}} = E_1 \Sigma E_1^T = E_1\frac{A}{N}E_1^T = \frac{A_{11}}{N} = S_{11} \\
+  \hat{\Sigma_{(22)}} = E_2 \Sigma E_2^T = E_2\frac{A}{N}E_2^T = \frac{A_{22}}{N} = S_{22} \\
 
-  \cap{\Sigma_{(12)}} = E_1 \Sigma E_2^T = E_1\frac{A}{N}E_2^T = \frac{A_{12}}{N} = S_{12} \\
-  \cap{\Sigma_{(21)}} = E_2 \Sigma E_1^T = E_2\frac{A}{N}E_1^T = \frac{A_{21}}{N} = S_{21} \\
+  \hat{\Sigma_{(12)}} = E_1 \Sigma E_2^T = E_1\frac{A}{N}E_2^T = \frac{A_{12}}{N} = S_{12} \\
+  \hat{\Sigma_{(21)}} = E_2 \Sigma E_1^T = E_2\frac{A}{N}E_1^T = \frac{A_{21}}{N} = S_{21} \\
   \end{cases}
 \]
 
@@ -1932,26 +1932,17 @@ Y, aplicando el teorema de Zehna tenemos:
 \begin{ndef}[Coeficiente de correlación lineal de Pearson]
   El coeficiente de correlación lineal de Pearson, $p_{ij}$, es $p_{ij} = \frac{\sigma_{ij}}{\sigma_i \sigma_j}$ , y su estimador máximo verosimil es:
   \[
-\cap{p_{ij}} = \frac{\cap{\sigma_{ij}}{\cap{\sigma_i}\cap{\sigma_j}} = \frac{s_{ij}}{s_i s_j} = r_{ij}
+\hat{p_{ij}} = \frac{\hat{\sigma_{ij}}{\hat{\sigma_i}\hat{\sigma_j}} = \frac{s_{ij}}{s_i s_j} = r_{ij}
   \]
 \end{ndef}
 
-% FIXME : cambiar lo necesario 
-Además, si notamos por $algo$ a la fila $i-$ésima de la matriz $algo$, entonces $algo$, con lo cual, por el teorema de Zehna, $algo$, siendo $algo$ y $algo$ las filas $i-$ésimas de $A$ y $S$ respectivamente.
+Además, si notamos por $B_{(i)}^T$ a la fila $i-$ésima de la matriz $\Sigma_{(21)}$, entonces $B_{(i)}^T = e_i^T \Sigma_{(21)}$, con lo cual, por el teorema de Zehna, $\hat{B_{(i)}} = e_i^T \hat{\Sigma_{(21)}} = e_i^T \frac{A}{N} = \frac{a_{(i)}^T}{N} = s_i^T $, siendo $a_i^T$ y $s_i^T$ las filas $i-$ésimas de $A$ y $S$ respectivamente.
 
-Por tanto, dado el coeficiente de correlación lineal múltiple $algo$, se verificará:
+Por tanto, dado el coeficiente de correlación lineal múltiple $R_{q+i | 1,\dots,q} = \frac{\sqrt{B_{(i)}^T \Sigma_{(11)}^{-1} B_{(i)}}}{\sigma_{q+i}}$, se verificará:
 \[
-algo
+\hat{R_{q+i | 1,\dots,q}} = \frac{\sqrt{\hat{B_{(i)}^T}\hat{ \Sigma_{(11)}^{-1}} \hat{B_{(i)}} } } {\hat{\sigma_{q+i}}} =  \frac{\sqrt{\frac{a_i^T}{N} (\frac{A_{11}}{N})^{-1} \frac{a_i}{N}   }}{\sqrt{\frac{a_{q+i,q+i}}{N}}} = \frac{\sqrt{a_i^T A_{11}^{-1} a_i       }}{a_{q+i,q+i}} = \frac{\sqrt{S_i^T S_{11}^{-1} S_i}}{S_{q+i}}
 \]
 
-
-
-
-
-
-
-
-% FIXME: Aqui faltan apuntes. Fotos de sofía 3-7. cuidado con cosas repetidas.
 
 \subsection{Estimadores de máxima verosimilitud de \texorpdfstring{$\boldsymbol \mu$}{mu} y \texorpdfstring{$\boldsymbol \Sigma$}{sigma} en una DNM}
 
