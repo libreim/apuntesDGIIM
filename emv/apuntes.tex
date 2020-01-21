@@ -1835,19 +1835,29 @@ El siguiente resultado nos será últil en desarrollos posteriores y es independ
  Trabajamos ahora con esta función de verosilmilitud:
 
 
-\[  L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N f_{(\mu_i,\Sigma_i)}(\vectX _\alpha) = \prod_{\alpha = 1}^N \frac{1}{(2\Pi)^{pN/2}\det(\Sigma)^{\frac{N}{2}}}exp\{-\frac{1}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\} = \frac{1}{(2\Pi)^{\frac{pN}{2}}\det(\Sigma)^{\frac{N}{2}}}\{-\frac{1}{2}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1} (\vectX _\alpha - \mu)\}
+ \[
+ \begin{aligned}
+ L(\mu,\Sigma;x_1,\dots,x_\alpha) = \\
+ f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \\
+ \prod_{\alpha = 1}^N f_{(\mu_i,\Sigma_i)}(\vectX _\alpha) = \\
+ \prod_{\alpha = 1}^N \frac{1}{(2\Pi)^{pN/2}\det(\Sigma)^{\frac{N}{2}}} exp\{-\frac{1}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\} = \\
+ \frac{1}{(2\Pi)^{\frac{pN}{2}} \det(\Sigma)^{\frac{N}{2}}} exp\{-\frac{1}{2}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1} (\vectX _\alpha - \mu)\}
+ \end{aligned}
 \]
 
 Por conveniencia, expresamos la suma de forma cuadrática en el exponente de la forma siguiente:
-\[
-\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu) = tr(\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu))
-= \sum_{\alpha = 1}^N tr((\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu))
-= \sum_{\alpha = 1}^N tr(\Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
-= tr(\sum_{\alpha = 1}^N \Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
-= tr(\Sigma^{-1}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T)
-= tr(\Sigma^{-1}[A+N(\vectX - \mu)(\vectX - \mu)^T]) = tr(\Sigma^{-1}A) + N*tr(\Sigma^{-1}(\vectX - \mu)(\vectX - \mu)^T)=
-= tr(\Sigma^{-1}A) + N*tr((X-\mu)^T \Sigma^{-1}(\vectX - \mu)) = tr(\Sigma^{-1}A) + N(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
-\]
+$$
+\begin{aligned}
+\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu) = tr(\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu)) \\
+= \sum_{\alpha = 1}^N tr((\vectX_\alpha - \mu)^T \Sigma^{-1}(\vectX_\alpha - \mu)) \\
+= \sum_{\alpha = 1}^N tr(\Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T) \\
+= tr(\sum_{\alpha = 1}^N \Sigma^{-1}(\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T) \\
+= tr(\Sigma^{-1}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu) (\vectX_\alpha - \mu)^T) \\
+= tr(\Sigma^{-1}[A+N(\vectX - \mu)(\vectX - \mu)^T]) = tr(\Sigma^{-1}A) + N*tr(\Sigma^{-1}(\vectX - \mu)(\vectX - \mu)^T) \\ 
+= tr(\Sigma^{-1}A) + N*tr((X-\mu)^T \Sigma^{-1}(\vectX - \mu)) = \\
+tr(\Sigma^{-1}A) + N(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)
+\end{aligned}
+$$
 Así, tenemos que:
 \[
 L(\mu,\Sigma) = \frac{1}{(2\Pi)^{\frac{pN}{2}\det{\Sigma}^{\frac{N}{2}}}exp\{-\frac{1}{2} tr(\Sigma^{-1}A) - \frac{N}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\}
