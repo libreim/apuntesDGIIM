@@ -1694,7 +1694,11 @@ Como vemos, no se está exigiendo ninguna independencia entre $\vectX_1$ y $\vec
     \]
     Ahora, aplicando el teorema anterior al vector $U$ y la matriz $B = I - C_1^t(C_1C_1^T)^{-1}C_1$, tenemos que $U^TBU$ tiene una distribución $\chi^2$ no centrada ( con parámetro de no centralidad $\delta = 0^TB0=0$, es decir, centrado), si y solo si $B$ es idempotente.
     \[
-    BB = [I - C_1^T(C_1 C_1^T)^{-1}C_1][I - C_1^T(C_1 C_1^T)^{-1}C_1] = I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T(C_1C_1^T)^{-1}(C_1C_1^T)(C_1C_1^T)^{-1}C_1 =  I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T( C_1C_1^T)^{-1}C_1 =  I - C_1^T(C_1C_1^T)^{-1} = B
+    \begin{aligned}
+      BB = [I - C_1^T(C_1 C_1^T)^{-1}C_1][I - C_1^T(C_1 C_1^T)^{-1}C_1] = \\
+      I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T(C_1C_1^T)^{-1}(C_1C_1^T)(C_1C_1^T)^{-1}C_1 = \\
+      I - 2C_1^T(C_1C_1^T)^{-1}C_1 + C_1^T( C_1C_1^T)^{-1}C_1 =  I - C_1^T(C_1C_1^T)^{-1} = B
+      \end{aligned}
     \]
     Por lo que $B$ es idempotente. Ahora, $rango(B) = tr(B) = tr(I_p - C_1^T(C_1C_1^T)^{-1}C_1)$ y vamos que:
     \[
@@ -1872,9 +1876,9 @@ Sea $\vectX \sim N_p(\mu,\Sigma)$ con $\Sigma > 0$, y sea $\{\vectX_{\alpha} : \
 \end{nprop}
 
 
-\begin{Lema}[Watson]
-  Sea $f(G) = -N ln(|G|) - tr(G^{-1}D)$, $G$ es una matriz simétrica definida positiva, $D$ una matriz simétrica definida positiva. Entonces, el máximo de $f$ se alcanza en $G = (\frac{1}{N}D)$ y su valor es $f(\frac{1}{D}) = pN*ln(N) - N*ln(|D|) - pN
-\end{Lema}
+\begin{lema}[Watson]
+  Sea $f(G) = -N ln(|G|) - tr(G^{-1}D)$, $G$ es una matriz simétrica definida positiva, $D$ una matriz simétrica definida positiva. Entonces, el máximo de $f$ se alcanza en $G = (\frac{1}{N}D)$ y su valor es $f(\frac{1}{D}) = pN*ln(N) - N*ln(|D|) - pN$
+\end{lema}
 La demostración de este resultado se puede encontrar en la página 50 del libro de Raón Gutiérrez.
 
 Nos interesa ahora maximizar $L(\mu,\Sigma)$, que es lo mismo que maximizar $ln[L(\mu,\Sigma)]$, con $\Sigma > 0$, para maximizar en función de $\mu$ solo atendemos al término:
@@ -1911,9 +1915,9 @@ Podemos aplicar este resultado para calcular los estimadores de máxima verosimi
 particiones que vamos a considerar también en el vector de medias $\bar{\vectX}$ y en las matrices de dispersiones muestral $A$ y de covarianzas muestral $S$, con $A = NS$, esto es:
 \[
 \bar{\vectX} =  \begin{pmatrix}\bar{\vectX_{(1)}} \\ \bar{\vectX_{(2)}}\end{pmatrix}
-\qquad A = (a_{ij)) = \begin{pmatrix}A_{(11)} & A_{(12)} \\ A_{(21)} & A_{(22)} \end{pmatrix}
-  \qquad S = (s_{ij)) = \begin{pmatrix}S_{(11)} & S_{(12)} \\ S_{(21)} & S_{(22)} \end{pmatrix}
-    \]
+\qquad A = (a_{ij}) = \begin{pmatrix}A_{(11)} & A_{(12)} \\ A_{(21)} & A_{(22)} \end{pmatrix}
+  \qquad S = (s_{ij}) = \begin{pmatrix}S_{(11)} & S_{(12)} \\ S_{(21)} & S_{(22)} \end{pmatrix}
+\]
 
     Sean $e_i = (0,\dots_{(i)},1,\dots,0)^T$ y $e_j = (0,\dots_{(j)},\dots,0)^T$. Entones, $\mu_i = e_i^T \mu$ y $\Sigma_{ij} = e_i^T \Sigma e_j$. Por tanto, aplicando el th. de Zehna se verificará que:
     \begin{itemize}
@@ -1940,7 +1944,7 @@ Y, aplicando el teorema de Zehna tenemos:
 \begin{ndef}[Coeficiente de correlación lineal de Pearson]
   El coeficiente de correlación lineal de Pearson, $p_{ij}$, es $p_{ij} = \frac{\sigma_{ij}}{\sigma_i \sigma_j}$ , y su estimador máximo verosimil es:
   \[
-\hat{p_{ij}} = \frac{\hat{\sigma_{ij}}{\hat{\sigma_i}\hat{\sigma_j}} = \frac{s_{ij}}{s_i s_j} = r_{ij}
+\hat{p_{ij}} = \frac{\hat{\sigma_{ij}}{\hat{\sigma_i}\hat{\sigma_j}}} = \frac{s_{ij}}{s_i s_j} = r_{ij}
   \]
 \end{ndef}
 
