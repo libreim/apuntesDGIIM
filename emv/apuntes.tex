@@ -1835,8 +1835,7 @@ El siguiente resultado nos será últil en desarrollos posteriores y es independ
  Trabajamos ahora con esta función de verosilmilitud:
 
 
-\[  L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N f_{(\mu_i,\Sigma_i)}(\vectX _\alpha) = \prod_{\alpha = 1}^N \frac{1}{(2\Pi)^{pN/2}\det(\Sigma)^{\frac{N}{2}}}exp\{-\frac{1}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\}}
-= \frac{1}{(2\Pi)^{\frac{pN}{2}\det(\Sigma)^{\frac{N}{2}}}\{-\frac{1}{2}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1} (\vectX _\alpha - \mu)\}
+\[  L(\mu,\Sigma;x_1,\dots,x_\alpha) = f_{(\mu,\Sigma)}(x_1,\dots,x_N) = \prod_{\alpha = 1}^N f_{(\mu_i,\Sigma_i)}(\vectX _\alpha) = \prod_{\alpha = 1}^N \frac{1}{(2\Pi)^{pN/2}\det(\Sigma)^{\frac{N}{2}}}exp\{-\frac{1}{2}(\vectX - \mu)^T \Sigma^{-1}(\vectX - \mu)\} = \frac{1}{(2\Pi)^{\frac{pN}{2}}\det(\Sigma)^{\frac{N}{2}}}\{-\frac{1}{2}\sum_{\alpha = 1}^N (\vectX_\alpha - \mu)^T \Sigma^{-1} (\vectX _\alpha - \mu)\}
 \]
 
 Por conveniencia, expresamos la suma de forma cuadrática en el exponente de la forma siguiente:
