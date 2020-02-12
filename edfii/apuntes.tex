@@ -1,0 +1,24 @@
+\section{Ecuaciones Lineales: Teoremas de Existencia y Unicidad}
+
+
+\begin{ndef}[Ecuación diferencial lineal.]
+Sea $(\alpha,\beta)\subseteq \R^N$ un intervalo abierto y sean $A:(\alpha,\beta)\to \M (\R)$ y $b:(\alpha,\beta)\to \R^d$ funciones continuas. Entonces una ecuación diferencial lineal es de la forma:
+
+\begin{equation}
+x'=A(t)x+b(t) \tag{C} \label{completa}
+\end{equation}
+\end{ndef}
+
+\begin{nth}[Teorema de existencia y unicidad de la solución.]
+Dados $t_0\in(\alpha,\beta)$ y $x_0 \in \R^d$ y consideramos el Problema de Valores Intermedios (PVI):
+\begin{equation}
+\left\{\begin{array}{lcl}
+x'=A(t)x+b(t) \\
+x(t_0)=x_0
+\end{array}\right.
+\tag{PVI}\label{PVI}
+\end{equation}
+Entonces $\exists ! \varphi : (\alpha,\beta)\to\R^d \; \; \varphi \in \C ^ 1(\R)$ que verifica
+$$\varphi ' (t)=A(t)x+ b(t) \qquad \forall t \in (\alpha,\beta)$$
+y además $\varphi(t_0)=x_0$.
+\end{nth}
