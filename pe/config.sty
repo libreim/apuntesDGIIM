@@ -1,0 +1,101 @@
+\ProvidesPackage{config}
+
+% ---------------------------------------------------------------------------
+%  RECURSOS
+% ---------------------------------------------------------------------------
+
+% Ruta donde buscar gráficos
+\graphicspath{{../_assets/}, {_assets/}, {./img/}, {GEOIII/img/}, {GEOIII/}}
+
+% ---------------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------------
+
+% Título del documento.
+\renewcommand{\asignatura}{Asignatura de\\Proecsos Estocásticos\\}
+
+% Autor del documento.
+\renewcommand{\autor}{LibreIM}
+
+\renewcommand{\grado}{Doble Grado de Informática y Matemáticas}
+
+\renewcommand{\universidad}{Universidad de Granada}
+
+\renewcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
+
+% ---------------------------------------------------------------------------
+%  PAQUETES
+% ---------------------------------------------------------------------------
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+
+% Títulos de figuras
+\usepackage{capt-of}
+
+% ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\definecolor{50}{HTML}{ECEFF1}
+\definecolor{100}{HTML}{CFD8DC}
+\definecolor{200}{HTML}{B0BEC5}
+\definecolor{300}{HTML}{90A4AE}
+\definecolor{400}{HTML}{78909C}
+\definecolor{500}{HTML}{607D8B}
+\definecolor{600}{HTML}{546E7A}
+\definecolor{700}{HTML}{455A64}
+\definecolor{800}{HTML}{37474F}
+\definecolor{900}{HTML}{263238}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Letras de conjuntos
+\newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
+
+% Sucesiones
+\newcommand{\xn}{\{x_n\}}
+\newcommand{\fn}{\{f_n\}}
+
+% Letra griega "chi" en línea con el texto
+\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi
+
+% Letra 'omega'
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
+
+% Conjunto vacío
+\renewcommand{\O}{\emptyset}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
