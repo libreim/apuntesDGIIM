@@ -1,0 +1,209 @@
+\section{Ecuaciones Lineales: Teoremas de Existencia y Unicidad}
+
+
+\begin{ndef}[Ecuación diferencial lineal.]
+Sea $(\alpha,\beta)\subseteq \R^N$ un intervalo abierto y sean $A:(\alpha,\beta)\to \M (\R)$ y $b:(\alpha,\beta)\to \R^d$ funciones continuas. Entonces una ecuación diferencial lineal es de la forma:
+
+\begin{equation}
+x'=A(t)x+b(t) \tag{C} \label{completa}
+\end{equation}
+\begin{equation}
+x'=A(t)x \tag{H} \label{homogenea}
+\end{equation}
+\end{ndef}
+
+\begin{nth}[Teorema de existencia y unicidad de la solución.]
+Dados $t_0\in(\alpha,\beta)$ y $x_0 \in \R^d$ y consideramos el Problema de Valores Intermedios (PVI):
+\begin{equation}
+\left\{\begin{array}{lcl}
+x'=A(t)x+b(t) \\
+x(t_0)=x_0
+\end{array}\right.
+\tag{PVI}\label{PVI}
+\end{equation}
+Entonces $\exists ! \varphi : (\alpha,\beta)\to\R^d \; \; \varphi \in \C ^ 1(\R)$ que verifica
+$$\varphi ' (t)=A(t)x+ b(t) \qquad \forall t \in (\alpha,\beta)$$
+y además $\varphi(t_0)=x_0$.
+\end{nth}
+
+%% CLASE LUNES 17
+
+\begin{nth}{Proposición 2}
+Las siguientes afirmaciones son equivalentes
+\begin{itemize}
+\item Todas las soluciones de \eqref{completa} son atractores
+\item Existe una solución de \eqref{completa} que es un atractor
+\item La solución trivial $y \equiv 0$ de \ eqref{homogenea} es un atractor
+\item Todas las soluciones de \ eqref{homogenea} convergen hacia el vector O cuando $t \to +\infty$
+\item La matriz fundamental de \ eqref{homogenea} principal en $t_0$ converge hacia la matriz $O$ cuando $t \to +\infty$
+\end{itemize}
+\end{nth}
+
+\begin{ncor}
+Los atratores de la ecuación \ eqref{homogenea} son asintóticamente estables.
+\end{ncor}
+
+\begin{ndef}
+\begin{itemize}
+\item Se dice que la ecuación \ eqref{completa} es estable si todas su soluciones son estables
+\item Se dice que la ecuación \ eqref{completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
+\end{itemize}
+\end{ndef}
+
+No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos en el caso escalar donde sí podemos calcularla.
+
+\begin{subsection}{Estabilidad de ecuaciones lineales escalares}
+Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \eqref{completa} y sea $t_0\in(\alpha,+\infty)$.
+La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \eqref{completa} controlando una primitiva del coeficiente $a(t)$.
+\begin{nth}{Proposicion 3}
+\begin{itemize}
+\item La ecuación de \ eqref{completa} es estable sii la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty]$.
+\item La ecuación \ eqref{completa} es a.e. sii la función $a(t)$ tiene una primitiva que converge hacia $-\infty$ [....]
+\end{itemize}
+\end{nth}
+Ejemplo 1:
+- Inestable
+- A.E.
+- estable
+-
+- Inestable
+- estable
+- estable
+-
+
+
+Estable $-> \lambda <= 0$
+A.E. $-> \lambda < 0$
+Inestable $-> \lambda > 0$
+
+\begin{subsection}{Estabilidad de ecuaciones lineales con coeficientes constantes}
+Sea $A \in \M_d(\R)$ una matriz cuadrada.  Usaremos la siguiente notación:
+NOTACIÓN:
+\begin{ndef}{Espectro de $A$}
+El espectro de $A$ es el conjunto de valores propios de $A$, tanto reales como complejos, $\sigma(A)={\lambda_1,...,\lambda_d}$, contados con su multiplicidad en nuestro caso.
+\end{ndef}
+\begin{ndef}{Multiplicidad del valor propio $\lambda_j$}
+$m(\lambda_j) \forall \lambda_j \in \sigma{A}$
+\end{ndef}
+\begin{ndef}{Dimensión de cada subespacio propio $E_{\lambda_j}$}
+$dim E_{\lambda_j} = dim ker(A-\lambda_{jI})= d-rango(A-\lambda I)$
+\end{ndef}
+\begin{ndef}
+Los valores propios de A cuya parte real es 0 son:
+$\sigma_0(A)={\lambda \in \sigma(A) \ Re(\lambda)=0}$
+\end{ndef}
+
+Consideramos la EDO lineal homogénea y autónoma $x'=Ax x\in\R^d$. El principal indicador para determinar la estabilidad de * es el máximo de las partes reales de los valores propios de A:
+$\mu(A)=máx{Re(\lambda : \lambda\in\sigma(A))}$
+
+\begin{nth}
+\begin{enumerate}
+\item Si $\mu(A)<0$ entonces la EDO lineal * es A.E.
+\item Si $\mu(A)=0$ y $m(\lambda)=dimE_\lambda \forall \lambda \in \sigma_0(A)$, entonces la EDO lineal * es estable (pero no A.E.)
+\item Si $\mu(A)=0$ y $\exists \lambda \in \sigma_0(A)$ tal que $m(\lambda) != dim E_lambda$, entonces la EDO lineal * es inestable.
+\item Si $\mu(A)>0$ entonces la EDO lineal * es inestable.
+\end{enumerate}
+\end{nth}
+
+A continuación, haremos una serie de ejemplos y proseguiremos con un poquito de teoría para poder producir la demostración de este enunciado.
+Ejemplo 1:
+{
+\begin{equation}
+\left\{\begin{array}{lcl}
+x_1'=2x_1+3x_2\\
+x_2'=5x_1-x_2
+\end{array}\right.
+\end{equation}
+()=()()
+\begin{equation}
+\left\{\begin{array}{lcl}
+x_1' = -2 3   x_1'
+x_2'= 5 -1    x_2'
+\end{array}\right.
+\end{equation}
+
+EC. $\lambda^2-traza(A)\lambda + det(A=0)$
+$\lambda+3\lambda-13=0$
+$\sigma(A)={\frac{-3+\sqrt{61}}{2},\frac{-3-\sqrt{61}}{2}}={2.4...,5.4...}$
+$\mu(A)>2.4 >0$
+La ecuación es inestable.
+
+
+%% MARTES 18
+
+Recordemos la forma canónica de Jordan.
+
+Sea $A \in \M_d(\R) \exists P, J \in \M_d(\C) tales que:$
+\begin{itemize}
+\item $P$ es regular (invertible)
+\item $J$ es diagonal por bloques:
+\begin{equation}
+J=diag(J_1,...,J_k) J_j matriz diagonal \forall j=1,...,k
+\end{equation}
+\item $A=P\cdot J\cdot P^{-1}$
+Para calcular $J$ se usan:
+\item $\sigma(A)={\lambda_1,...\lambda_d}$
+\item $m(\lambda_j)$
+\item $dim E_{\lambda_j}$
+\item $\nu(\lambda_j)=min{k\in\mathbb{Z}^+: BORRA}$
+Los bloques de $J$ pueden ser:
+\item de orden 1: $J_k=(\lambda_k) \lambda_k \in \sigma(A)$
+\item de orden mayor que 1: $J_k=diag(\lambda_k,...\lambda_k) (1...1 encima de la diag) con \lambda_k \in \sigma(A)$
+\item el orden $(J_k) \leq \nu(\lambda_k)$
+\item la suma de los órdenes de todos los bloques asociados aun mismo valor propio es igual a la multiplicidad de ese valor propio
+\end{itemize}
+
+INSERTE EJEMPLO DE CAJA DE JORDAN
+
+Con estos datos, podemos hacer el siguiente cálculo de la exponencial:
+
+$$A=P\cdot J \cdot P^{-1} \implies A^n=P \cdot J^n \cdot P^{-1} \implies e^A=P \cdot e^J \cdot P^{-1}$$
+
+Y de manera análoga:
+\begin{itemize}
+\item $e^{At}=P \cdot e^{Jt} \cdot P^{-1}$
+\item $e^{Jt}=diag(e^{J_1t},...,e^{J_rt} )$
+\end{itemize}
+
+%% Inserte ejemplo
+
+\begin{lema}
+$$|||e^{Jt}|||_1=max{|||e^{J_1t}|||_1,|||e^J_rt|||_1}$$
+\end{lema}
+
+\begin{lema}
+$\exists T \geq 0 $ tal que :
+$$|||e^{Jt}|||_1=(1+...+\frac{t^n}{n!})\cdot e^{\mu t} \qquad \forall t \geq T$$
+donde:
+$$\mu=max{Re(\lambda_j):\lambda_j\in \sigma(A)}$$
+$$n=max{\nu(\lambda_j)-1 : \lambda_j\in \sigma(A) y Re(\lambda_j)=\mu}$$
+\end{lema}
+
+Usando el lema anterior:
+%%\begin{equation}
+%%|||e^{Jt}|||_1=max
+%%\left\{\(\begin{array}{lcl}
+%%1+...+\frac{t^{\nu(\lambda_j)-1}}{(\nu (\lambda_j)-1)!}
+%%\end{array}\right\)
+%%\cdot e^{Re(\lambda_j)t} : \lambda_j \in \sigma(A) \right\}
+%%\tag{cosarara}\label{cosarara}
+%%\end{equation}
+%%$\exists T \geq 0$ tal que:
+%%\begin{equation}
+%%(1+...+\frac{t^{\nu(\lambda_j)-1}}{\nu(\lambda_j - 1})\cdot e^{Re(\lambda_j)t} \leq (1+...1+\frac{t^n}{n!}e^{\mu t})
+%%\end{equation}
+
+Finalmente, podemos demostrar el teorema anterior:
+
+\begin{proof}
+$\exists P, J \in \M_d(\C)$ tales que $P$ es inestable, $J$ es diagonal por bloques y $A=P\cdot J \cdot P^{-1}$. Por tanto $$e^{At}=P\cdot e^{Jt} \cdot P^{-1}$$.
+Defino en $\M_d(\C)$ la norma matricial:
+$$|||B|||=|||P\cdot J \cdot P^{-1}|||_1$$.
+Así, tenemos que:
+\begin{enumerate}
+\item Si $\mu < 0 \implies \lim_{t\to\infty}|||e^{At}|||=0\implies x'=Ax$ es A.E.
+\item Si $\mu = 0 y dimE_j=m(\lambda)' \forall \lambda \in \sigma_0(A)\implies n=0 \implies |||e^{At}|||=1\implies|||e^{At}||| es estable pero no A.E.$
+\item Si $\mu = 0 y \exists \lambda in \sigma_0(A) \nu(A)>1 \implies n\geq 1\implies |||e^{At}|||\geq 1+t$ no es acotada en $[0,+\infty)$
+\item Si $\mu > 0 \qquad |||e^{At}|||\geq e^{\mu t}\to \infty$ no es acotada en $[0,+\infty)$
+\end{enumerate}
+\end{proof}

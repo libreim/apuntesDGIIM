@@ -1,0 +1,199 @@
+\ProvidesPackage{config}
+
+% ---------------------------------------------------------------------------
+%  PAQUETES
+% ---------------------------------------------------------------------------
+
+% IDIOMA
+\usepackage[utf8]{inputenc}
+
+% MATEMÁTICAS
+\usepackage{amsmath}    % Paquete básico de matemáticas
+\usepackage{amssymb}	% Fuentes matemáticas
+\usepackage{upgreek}
+\usepackage{amsthm}     % Teoremas
+\usepackage{mathrsfs}   % Fuente para ciertas letras utilizadas en matemáticas
+
+% LISTAS
+\usepackage{enumitem}       % Mejores listas
+\setlist{leftmargin=.5in}   % Especifica la indentación para las listas.
+
+% Dibujos Tikz
+\usepackage{pgf,tikz}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+
+% Títulos de figuras
+\usepackage{capt-of}
+
+% Tachado con cero
+\usepackage{cancel}
+
+% ---------------------------------------------------------------------------
+%  RECURSOS
+% ---------------------------------------------------------------------------
+
+% Ruta donde buscar gráficos
+\graphicspath{{../_assets/}, {_assets/}, {./img/}, {EDFI/img/}, {EDFI/}}
+
+% ---------------------------------------------------------------------------
+%  COLORES
+% ---------------------------------------------------------------------------
+
+\usepackage{xcolor}     % Permite definir y utilizar colores
+
+\definecolor{50}{HTML}{E3F2FD}
+\definecolor{100}{HTML}{BBDEFB}
+\definecolor{200}{HTML}{90CAF9}
+\definecolor{300}{HTML}{64B5F6}
+\definecolor{400}{HTML}{42A5F5}
+\definecolor{500}{HTML}{2196F3}
+\definecolor{600}{HTML}{1E88E5}
+\definecolor{700}{HTML}{1976D2}
+\definecolor{800}{HTML}{1565C0}
+\definecolor{900}{HTML}{0D47A1}
+
+% ---------------------------------------------------------------------------
+% ENTORNOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+%% DEFINICIONES DE LOS ESTILOS
+
+% Nuevo estilo para definiciones
+\newtheoremstyle{definition-style}  % Nombre del estilo
+{}                                  % Espacio por encima
+{}                                  % Espacio por debajo
+{}                                  % Fuente del cuerpo
+{}                                  % Identación
+{\bfseries\sffamily}                      % Fuente para la cabecera
+{.}                                 % Puntuación tras la cabecera
+{.5em}                              % Espacio tras la cabecera
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}  % Especificación de la cabecera
+
+% Nuevo estilo para notas
+\newtheoremstyle{remark-style}
+{10pt}
+{10pt}
+{}
+{}
+{\itshape \sffamily}
+{.}
+{.5em}
+{}
+
+% Nuevo estilo para teoremas y proposiciones
+\newtheoremstyle{theorem-style}
+{}
+{}
+{}
+{}
+{\bfseries \sffamily}
+{.}
+{.5em}
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+
+% Nuevo estilo para ejemplos
+\newtheoremstyle{example-style}
+{10pt}
+{10pt}
+{}
+{}
+{\bfseries \sffamily}
+{}
+{.5em}
+{\thmname{#1}\thmnumber{ #2.}\thmnote{ #3.}}
+
+% Nuevo estilo para la demostración
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape\sffamily#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+%% ASIGNACIÓN DE LOS ESTILOS
+
+% Teoremas, proposiciones y corolarios
+\theoremstyle{theorem-style}
+\newtheorem{nth}{Teorema}[section]
+\newtheorem{nprop}{Proposición}[section]
+\newtheorem{ncor}{Corolario}[section]
+\newtheorem{lema}{Lema}[section]
+
+% Definiciones
+\theoremstyle{definition-style}
+\newtheorem{ndef}{Definición}[section]
+
+% Notas
+\theoremstyle{remark-style}
+\newtheorem*{nota}{Nota}
+
+% Ejemplos
+\theoremstyle{example-style}
+\newtheorem{ejemplo}{Ejemplo}[section]
+
+% Ejercicios y solución
+\theoremstyle{definition-style}
+\newtheorem{ejer}{Ejercicio}[section]
+
+\theoremstyle{remark-style}
+\newtheorem*{sol}{Solución}
+
+% ---------------------------------------------------------------------------
+% COMANDOS PERSONALIZADOS
+% ---------------------------------------------------------------------------
+
+% Redefinir letra griega épsilon.
+\let\epsilon\upvarepsilon
+
+% Valor absoluto: \abs{}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+
+% Fracción grande: \ddfrac{}{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Texto en negrita en modo matemática: \bm{}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+
+% Línea horizontal.
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Letras de conjuntos
+\newcommand{\R}{\mathbb{R}} \newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{\mathscr{M}} \newcommand{\C}{\mathscr{C}}
+
+% Sucesiones
+\newcommand{\xn}{\{x_n\}}
+\newcommand{\fn}{\{f_n\}}
+
+% Letra griega "chi" en línea con el texto
+\DeclareRobustCommand{\rchi}{{\Large \mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{0.4\depth}{$#1\chi$}} % inner command, used by \rchi
+
+% Letra 'omega'
+\newcommand{\W}{\Omega}
+\newcommand{\w}{\omega}
+
+% Conjunto vacío
+\renewcommand{\O}{\emptyset}
+
+% Listas ordenadas con números romanos (i), (ii), etc.
+\newenvironment{nlist}
+{\begin{enumerate}
+    \renewcommand\labelenumi{(\emph{\roman{enumi})}}}
+  {\end{enumerate}}
+
+% División por casos con llave a la derecha.
+\newenvironment{rcases}
+{\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
+% ---------------------------------------------------------------------------
+%  PORTADA
+% ---------------------------------------------------------------------------
+% Título del documento.
+\newcommand{\asignatura}{Ecuaciones\\Diferenciales II}
+% Autor del documento.
+\newcommand{\autor}{LibreIM}
+\newcommand{\grado}{Doble Grado de Informática y Matemáticas}
+\newcommand{\universidad}{Universidad de Granada}
+\newcommand{\enlaceweb}{libreim.github.io/apuntesDGIIM}
