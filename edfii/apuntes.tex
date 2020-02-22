@@ -1,46 +1,57 @@
-\section{Ecuaciones Lineales: Teoremas de Existencia y Unicidad}
+\section{Ecuaciones lineales: teoremas de existencia y unicidad.}
 
 
-\begin{ndef}[Ecuación diferencial lineal.]
-Sea $(\alpha,\beta)\subseteq \R^N$ un intervalo abierto y sean $A:(\alpha,\beta)\to \M (\R)$ y $b:(\alpha,\beta)\to \R^d$ funciones continuas. Entonces una ecuación diferencial lineal es de la forma:
+\begin{ndef}[Ecuación diferencial lineal]
+Sea $(\alpha,\beta)\subseteq \R$ un intervalo abierto y sean $A:(\alpha,\beta)\to \M_d(\R)$ y $b:(\alpha,\beta)\to \R^d$ funciones continuas. Entonces una ecuación diferencial lineal es de la forma:
 
 \begin{equation}
-x'=A(t)x+b(t) \tag{C} \label{completa}
-\end{equation}
+x'=A(t)x+b(t) \tag{C} \label{lin:completa}
+,\end{equation}
+
+y se dice \emph{completa}, o bien
+
 \begin{equation}
-x'=A(t)x \tag{H} \label{homogenea}
-\end{equation}
+x'=A(t)x \tag{H} \label{lin:homogenea}
+,\end{equation}
+
+y en este caso se dice \emph{homogénea}.
 \end{ndef}
 
-\begin{nth}[Teorema de existencia y unicidad de la solución.]
-Dados $t_0\in(\alpha,\beta)$ y $x_0 \in \R^d$ y consideramos el Problema de Valores Intermedios (PVI):
+\begin{nth}[Teorema de existencia y unicidad de la solución]
+Dados $t_0\in(\alpha,\beta)$ y $x_0 \in \R^d$ y consideramos el \emph{problema de valores intermedios} (PVI):
+
 \begin{equation}
 \left\{\begin{array}{lcl}
 x'=A(t)x+b(t) \\
 x(t_0)=x_0
 \end{array}\right.
-\tag{PVI}\label{PVI}
+\tag{PVI}\label{lin:PVI}
 \end{equation}
-Entonces $\exists ! \varphi : (\alpha,\beta)\to\R^d \; \; \varphi \in \C ^ 1(\R)$ que verifica
-$$\varphi ' (t)=A(t)x+ b(t) \qquad \forall t \in (\alpha,\beta)$$
-y además $\varphi(t_0)=x_0$.
+
+Entonces, existe una única solución $\varphi : (\alpha,\beta)\to\R^d$, con $\varphi \in \C ^ 1(\R)$, que verifica
+
+\[
+\varphi'(t) = A(t)\varphi(t) + b(t) \qquad \forall t \in (\alpha,\beta)
+\]
+
+y que además cumple $\varphi(t_0)=x_0$, es decir, una única solución de \ref{lin:PVI}.
 \end{nth}
 
 %% CLASE LUNES 17
 
-\begin{nth}{Proposición 2}
-Las siguientes afirmaciones son equivalentes
-\begin{itemize}
-\item Todas las soluciones de \eqref{completa} son atractores
-\item Existe una solución de \eqref{completa} que es un atractor
-\item La solución trivial $y \equiv 0$ de \ eqref{homogenea} es un atractor
-\item Todas las soluciones de \ eqref{homogenea} convergen hacia el vector O cuando $t \to +\infty$
-\item La matriz fundamental de \ eqref{homogenea} principal en $t_0$ converge hacia la matriz $O$ cuando $t \to +\infty$
-\end{itemize}
-\end{nth}
+\begin{nprop}
+Las siguientes afirmaciones son equivalentes:
+\begin{nlist}
+\item Todas las soluciones de \eqref{lin:completa} son atractores.
+\item Existe una solución de \eqref{lin:completa} que es un atractor.
+\item La solución trivial $y = 0$ de \eqref{lin:homogenea} es un atractor.
+\item Todas las soluciones de \eqref{lin:homogenea} convergen hacia el vector 0 cuando $t \to +\infty$.
+\item La matriz fundamental de \eqref{lin:homogenea} principal en $t_0$ converge hacia la matriz 0 cuando $t \to +\infty$.
+\end{nlist}
+\end{nprop}
 
 \begin{ncor}
-Los atratores de la ecuación \ eqref{homogenea} son asintóticamente estables.
+Los atractores de la ecuación \eqref{lin:homogenea} son asintóticamente estables.
 \end{ncor}
 
 \begin{ndef}
@@ -52,7 +63,7 @@ Los atratores de la ecuación \ eqref{homogenea} son asintóticamente estables.
 
 No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos en el caso escalar donde sí podemos calcularla.
 
-\begin{subsection}{Estabilidad de ecuaciones lineales escalares}
+\subsection{Estabilidad de ecuaciones lineales escalares}
 Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \eqref{completa} y sea $t_0\in(\alpha,+\infty)$.
 La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \eqref{completa} controlando una primitiva del coeficiente $a(t)$.
 \begin{nth}{Proposicion 3}
@@ -76,7 +87,7 @@ Estable $-> \lambda <= 0$
 A.E. $-> \lambda < 0$
 Inestable $-> \lambda > 0$
 
-\begin{subsection}{Estabilidad de ecuaciones lineales con coeficientes constantes}
+\subsection{Estabilidad de ecuaciones lineales con coeficientes constantes}
 Sea $A \in \M_d(\R)$ una matriz cuadrada.  Usaremos la siguiente notación:
 NOTACIÓN:
 \begin{ndef}{Espectro de $A$}
