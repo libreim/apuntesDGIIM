@@ -21,9 +21,9 @@ y en este caso se dice \emph{homogénea}.
 Dados $t_0\in(\alpha,\beta)$ y $x_0 \in \R^d$ y consideramos el \emph{problema de valores intermedios} (PVI):
 
 \begin{equation}
-\left\{\begin{array}{lcl}
-x'=A(t)x+b(t) \\
-x(t_0)=x_0
+\left\{\begin{array}{rl}
+x' &=A(t)x+b(t), \\
+x(t_0)&=x_0.
 \end{array}\right.
 \tag{PVI}\label{lin:PVI}
 \end{equation}
@@ -36,6 +36,56 @@ Entonces, existe una única solución $\varphi : (\alpha,\beta)\to\R^d$, con $\v
 
 y que además cumple $\varphi(t_0)=x_0$, es decir, una única solución de \ref{lin:PVI}.
 \end{nth}
+
+Aplicando el teorema al PVI
+
+\[
+\begin{cases}
+  x' = Ax, \\
+  x(t_0) = e_j.
+\end{cases}
+\tag{PVI$_j$} \label{lin:PVIj}
+\]
+
+para cada $j=1,\dots,d$, obtenemos soluciones $\varphi_j$. Sea $x_0\in \R^d$, y consideramos $\varphi = \sum_{j=1}^d \langle x_0,e_j \rangle\varphi_j$.
+Es inmediato comprobar que $\varphi$ es solución de \eqref{lin:PVI} con $b=0$. Por tanto, hemos probado:
+
+\begin{ncor}
+  Las soluciones de \eqref{lin:homogenea} son un espacio vectorial de dimensión $d$.
+\end{ncor}
+
+Ahora, consideremos $\varphi$ la solución de \eqref{lin:PVI}, para $x_0\in\R^d$ arbitrario, es decir, una solución cualquiera de \eqref{lin:completa}.
+Sean $\varphi_c$ la solución de
+
+\begin{equation}
+\left\{\begin{array}{rl}
+x' &=A(t)x+b(t), \\
+x(t_0)&=x_0',
+\end{array}\right.
+\end{equation}
+
+con $x_0'\in\R^d$ arbitrario, y $\varphi_h$ la de
+
+\begin{equation}
+\left\{\begin{array}{rl}
+x' &=A(t)x, \\
+x(t_0)&=x_0 - x_0',
+\end{array}\right.
+\end{equation}
+
+y ahora es rutinario comprobar que $\varphi = \varphi_c + \varphi_h$. Además, para cualquier otra solución $\psi_{h}$ de \eqref{lin:homogenea}, $\varphi_c + \psi_h$
+es solución de \eqref{lin:completa}.
+En esta ocasión, hemos probado:
+
+\begin{ncor}
+  El conjunto $S_c$ de soluciones de \eqref{lin:completa}, dada cualquier solución $\varphi$ de la misma, es el espacio afín
+
+  \[
+    S_c = \varphi + S_h,
+    \]
+
+    con $S_h$ el conjunto de soluciones de \eqref{lin:homogenea}.
+\end{ncor}
 
 %% CLASE LUNES 17
 
