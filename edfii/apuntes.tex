@@ -87,6 +87,60 @@ En esta ocasión, hemos probado:
     con $S_h$ el conjunto de soluciones de \eqref{lin:homogenea}.
 \end{ncor}
 
+Otra consecuencia inmediata de la aplicación del teorema a \ref{lin:PVIj} es la siguiente:
+
+\begin{ncor}[Existencia y unicidad de m.f.p.]
+  Existe una única función de clase 1 $\Phi: (\alpha, \beta) \to \M_d(\R)$ tal que $\Phi' = A\Phi$, y
+  además $\Phi(t_0) = I_d$.
+\end{ncor}
+
+\section{Estabilidad en el sentido de Lyapunov.}
+
+En esta sección, con arreglo a definir los conceptos básicos de la teoría de estabilidad
+de Lyapunov, consideramos un problema de valores iniciales más general:
+
+\begin{equation}
+\left\{\begin{array}{rl}
+x' &=f(t,x), \\
+x(t_0)&=x_0,
+\end{array}\right.
+\tag{P} \label{est:PVI}
+\end{equation}
+
+con $D \subseteq \R \times \R^d$, $f: D \to \R^d$ continua y tal que haya unicidad de soluciones en \ref{est:PVI}.
+Notamos, para cada $x_0\in \R^d$ tal que $(t_0,x_0) \in D$, $\varphi_{x_0} : (\alpha, +\infty) \to \R^d$ a la solución maximal de \ref{est:PVI}.
+
+\begin{ndef}
+  $\varphi_{x_0}$ es \emph{estable} si, para cada $\varepsilon > 0$, existe $\delta > 0$ tal que
+
+  \[
+    (t_0, \bar{x_0}) \in D \text{ y } \|x_0 - \bar{x_0}\| < \delta \implies 
+  \begin{cases}
+    \text{ $\varphi_{\bar{x_0}}$ está definida en $(t_0, +\infty)$}, \\
+    \|\varphi_{x_0}(t) - \varphi_{\bar{x_0}}(t)\| < \varepsilon \text{ para cada $t \ge t_0$}.
+  \end{cases}
+  \]
+
+  $\varphi_{x_0}[t_0, +\infty)+(-\varepsilon, \varepsilon)$ se llama \emph{entorno tubular} de $\varphi_{x_0}$.
+\end{ndef}
+
+\begin{ndef}
+  Una solución se dice \emph{inestable} si no es estable.
+\end{ndef}
+
+%%% TODO: poner algunos ejemplos de PVI con soluciones estables e inestables.
+
+Negando la definición de estabilidad, obtenemos:
+
+\begin{nprop}[Caracterización de soluciones inestables]
+  $\varphi_{x_0}$ es inestable si, y solo si, existen $\varepsilon_0 > 0, \xn \subseteq\R^d$ con
+  $(t_0,x_n)\in D$, $x_n \to x_0$ y existe, para cada $n\in\N$, $t_n \ge t_0$ tal que
+
+  \[
+    \| \varphi_{x_n}(t_n) - \varphi_{x_0}(t_n) \| \ge \varepsilon_0
+  .\]
+\end{nprop}
+
 %% CLASE LUNES 17
 
 \begin{nprop}
