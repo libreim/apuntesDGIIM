@@ -87,6 +87,37 @@ En esta ocasión, hemos probado:
     con $S_h$ el conjunto de soluciones de \eqref{lin:homogenea}.
 \end{ncor}
 
+\subsection{Matriz Fundamental Principal en un punto}
+\begin{ndef}
+Dada una Ecuación Diferencial Ordinaria (EDO) lineal y homogénea con coeficientes constantes:
+\[
+\begin{cases}
+x'=A(t)x\\
+x(t_0)=x_0
+\end{cases}
+\]
+Definimos la matriz fundamental principal(m.f.p) en $t_0$ como: $$ \phi(t)=e^{A(t-t_0)} \qquad \forall t \in (\alpha,\beta)$$
+\end{ndef}
+
+Ahora nos preguntamos cómo se calcula la m.f.p. cuando la matriz $A$ es diagonalizable. En este caso, $\exists P, D \in \M_d(\C)$ tales que $det(P)\neq 0, \quad D=diag(\lambda_1,...\lambda_d)$ y $A=P\cdot D \cdot P^{-1}$. En cuyo caso, la matriz fundamental principal será:
+$$e^{At}=P\cdot e^{Dt}\cdot P^{-1}=P \cdot  \begin{pmatrix}e^{\lambda_1 t} & \cdots & 0 \\ \vdots & \ddots & \vdots \\0 & \cdots & e^{\lambda_d t}\end{pmatrix} \cdot P^{-1}$$
+
+
+Cuando $A$ no sea diagonalizable tendremos que utilizar la forma canónica de Jordan. En este caso, $\exists P,J\in \M_d(\C)$ tales que $det(P) \neq 0 $ y $J$ diagonal por bloques:
+$$\begin{pmatrix}J_1 & & \\
+ & & \\
+ & & J_r \end{pmatrix}$$
+ donde $orden(J_k)=1 \quad \forall =1,...,r \implies J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$ o si $orden(J_k)>1$,
+ $$J_k=
+ \begin{pmatrix}
+ \lambda_k & 1  &\cdots & 0 \\
+  0 & \lambda_k & \ddots & \vdots \\
+  \vdots & \ddots & \ddots & 1 \\
+  0 & \cdots & 0 & \lambda_k
+\end{pmatrix}$$
+
+FIXME : POR TERMINAR
+\subsection{Estabilidad en el sentido de Lyapunov}
 %% CLASE LUNES 17
 
 \begin{nprop}
@@ -106,8 +137,8 @@ Los atractores de la ecuación \eqref{lin:homogenea} son asintóticamente establ
 
 \begin{ndef}
 \begin{itemize}
-\item Se dice que la ecuación \ eqref{completa} es estable si todas su soluciones son estables
-\item Se dice que la ecuación \ eqref{completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
+\item Se dice que la ecuación \eqref{lin:completa} es estable si todas su soluciones son estables
+\item Se dice que la ecuación \eqref{lin:completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
 \end{itemize}
 \end{ndef}
 
