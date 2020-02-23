@@ -1,0 +1,481 @@
+\section{Teoría general de procesos estocásticos}
+
+\subsection{Definición y propiedades generales}
+
+\subsubsection{Teoría de la medida}
+
+Veremos primero nociones básicas sobre la teoría de la medida.
+
+\begin{ndef}[$\sigma$-álgebra]
+  Una \emph{$\sigma$-álgebra} $\A$ sobre un conjunto $\Omega$ es una familia de subconjuntos de $\Omega$ ($\A \subset P(\Omega)$) que cumple:
+
+  \begin{nlist}
+    \item $\forall A \in \A \implies \overline{A} \in \A$
+    \item $\forall \{A_n\}_{n \in \N} \subset \A \implies \bigcup \limits^\infty_{n = 1} A_n \in \A$
+  \end{nlist}
+\end{ndef}
+
+\begin{nota}
+  $P(\Omega)$ son las partes de $\Omega$, es decir, todos los subconjuntos posibles de $\Omega$.
+\end{nota}
+
+La pertenencia del total, vacío y ser cerado para intersecciones se deduce de las condiciones de la definición.
+
+\begin{ndef}[Espacio medible]
+  Un \emph{espacio medible} es una tupla $(\Omega, \A)$ donde $\Omega$ es un conjunto y $\A$ es una $\sigma$-álgebra.
+\end{ndef}
+
+Para la teoría de la probabilidad tiene especial interés los espacios Borel, en los que toman valores las variables aleatorias.
+
+\begin{ejemplo}
+  $(\R, \B)$, $(\R^n, \B^n)$.
+\end{ejemplo}
+
+\begin{ndef}[$\sigma$-álgebra Borel]
+  La \emph{$\sigma$-álgebra de Borel} es la generada por las semirrectas:
+
+  $$\B^n = \sigma(\mathfrak{I}^n), \; \mathfrak{I}^n = \{ (-\infty, x]: x \in \R^n \}$$
+\end{ndef}
+
+\begin{nota}
+  $\sigma(D)$ es la $\sigma$-álgebra minimal generada por D.
+\end{nota}
+
+\begin{ndef}[$\sigma$-álgebra Borel restringida]
+  Sea un subconjunto $E \subset \R$, la \emph{$\sigma$-álgebra restringida a E} es $$\B_E = \{ B \cap E : B \in \B \},$$
+\end{ndef}
+
+\begin{ndef}[Espacio Borel restringido]
+  Sea un subconjunto $E \subset \R$, el \emph{espacio Borel restringido a E} es $(E, \B_E)$.
+\end{ndef}
+
+Ahora veamos que pasa con las aplicaciones y funciones medibles.
+
+\begin{ndef}[Aplicación medible]
+  Sean dos espacios medibles $(\Omega_1, \A_1)$, $(\Omega_2, \A_2)$ una aplicación $f : \Omega_1 \to \Omega_2$ se dice \emph{aplicación medible} $\iff \forall A \in \A_2$, $f^{-1}(A)\in \A_2 \iff f^{-1}(\A_2) \subset \A_1$.
+\end{ndef}
+
+\begin{nprop}[Caracterización de aplicaciones medibles]
+  Una aplicación entre espacios medibles $f : (\Omega_1, \A_1) \to (\Omega_2, \A_2)$ es aplicación medible $\iff f^{-1}(D) \subset \A_1$ siendo $D \subset P(\Omega_2)$ y $\sigma(D) = \A_2$.
+\end{nprop}
+
+\begin{nprop}[Composición de aplicaciones medibles]
+  Sean dos aplicaciones medibles $f : (\Omega_1, \A_1) \to (\Omega_2, \A_2)$, $g : (\Omega_2, \A_2) \to (\Omega_3, \A_3)$ entre tres espacios medibles. Entonces la composición $g \circ f : (\Omega_1, \A_1) \to (\Omega_3, \A_3)$ es una aplicación medible.
+\end{nprop}
+
+\begin{proof}
+  $(g \circ f)^{-1}(\A_3) = f(g^{-1}(\A_3)) \in \A_1$ porque f es aplicación medible y $g^{-1}(\A_3) \in \A_2$ (g es aplicación medible).
+\end{proof}
+
+
+\begin{ndef}[Función medible]
+  Una \emph{función medible} es una aplicación medible cuyo espacio de llegada es un espacio de Borel.
+\end{ndef}
+
+\begin{nota}
+  Si el espacio Borel es $\R$ se denomina función medible \emph{finita} (no toman valores en $\pm \infty$).
+\end{nota}
+
+\begin{nprop}[Caracterización de funciones medibles (1)]
+  Una función entre un espacio medible y espacio Borel $f : (\Omega, \A) \to (\R^n, \B^n)$ es función medible $\iff f^{-1}(\B^n) \subset \A$.
+\end{nprop}
+
+\begin{nota}
+  Para $n = 1$ se dice función medible (\emph{unidimensional}), para $n>1$ se denomina función medible \emph{multidimensional}.
+\end{nota}
+
+\begin{nprop}[Caracterización de funciones medibles (2)]
+  Una función entre un espacio medible y espacio Borel $f : (\Omega, \A) \to (\R^n, \B^n)$ es función medible $\iff f^{-1}((-\infty, x]) \in \A, \; \forall x \in \R$.
+\end{nprop}
+
+\begin{nota}
+  $f^{-1}(B) = \{ \w \in \Omega : f(\w) \in B \} = [f \in B]$.
+
+  $f^{-1}((-\infty, x]) = \{ \w \in \Omega : f(\w) \leq x \} = [f \leq x]$.
+\end{nota}
+
+\begin{ndef}[Función medible Borel]
+  Una \emph{función medible Borel} es una función medible cuyo espacio inicial también es espacio de Borel.
+\end{ndef}
+
+Ejemplos de funciones medibles:
+
+\begin{ejemplo}
+  $\forall A \in \A$, función indicadora $1_A(\omega) =
+    \begin{cases}
+      1, \; \w \in A \\
+      0, \; \w \notin A
+    \end{cases}$
+\end{ejemplo}
+
+\begin{ejemplo}
+  Función constante $f(\w) = c \in \R$.
+\end{ejemplo}
+
+\begin{ejemplo}
+  Sean $A_1, \ldots, A_n \in \A, x_1, \ldots, x_n \in \R$, función simple $f(\w) = \sum \limits^n_{i = 1} x_i 1_{A_i}(\w)$.
+\end{ejemplo}
+
+\begin{nota}
+  Cualquier función que parte del espacio medible $(\W, P(\W))$ es medible.
+\end{nota}
+
+Veamos que la medibilidad de una función depende de la $\sigma$-álgebra del espacio de partida:
+
+\begin{ejemplo}
+  $f(\w) = \w$ es medible si $f : (\R, \B) \to (\R, \B)$, pero no lo es si $f : (\R, \A) \to (\R, \B)$ con $\A = \{ A \subset \R : A \text{ o } \overline{A} \text{ es numerable} \}$.
+\end{ejemplo}
+
+Finalmente sobre medidas y espacios medibles:
+
+\begin{ndef}[Función $\sigma$-aditiva]
+  Una \emph{función de conjunto $\sigma$-aditiva definida sobre $\A$} es una función $\varphi : \A \to \R$ que cumple:
+
+  $$ \forall \{A_n\}_{n \in \N}, \, A_i \cap A_j = \emptyset \, \forall i \neq j, \; \varphi(\bigcup \limits^{\infty}_{n = 1} A_n) = \sum \limits^{\infty}_{n = 1} \varphi(A_n) $$
+\end{ndef}
+
+\begin{ndef}[Medida]
+  Una \emph{medida} $\mu$ es una función $\sigma$-aditiva \emph{no negativa}, es decir que $\forall A \in \A \; \; \mu(A) \geq 0$.
+\end{ndef}
+
+\begin{ndef}[Espacio de medida]
+  Un \emph{espacio de medida} es una terna $(\W, \A, \mu)$ formada por un espacio medible y una medida sobre dicho espacio.
+\end{ndef}
+
+\begin{ndef}[Integral en espacio de medida]
+  Sea una función medible $f: (\W, \A, \mu) \to (\R, \B)$ entonces definimos la \emph{integral de $f$} en este espacio como:
+
+  $$\int f d\mu := \int_{\W} f d\mu = \int_A f \mu = \int f \chi_A d\mu$$
+\end{ndef}
+
+\subsubsection{Teoría de la probabilidad}
+La teoría de la probabilidad se desarrolla sobre un tipo especial de espacios de medida llamados \emph{espacios de probabilidad}, a los elementos de la $\sigma$-álgebra se les llama \emph{sucesos}; y a la medida \emph{probabilidad}.
+
+\begin{ndef}[Probabilidad]
+  Una función $P: \A \to \R$ se dice que es una \emph{probabilidad} si cumple con los tres axiomas de Kolmogorov:
+  \begin{nlist}
+    \item $\forall A \in \A$, $P(A) \geq 0$ (no negativa).
+    \item $\forall \{A_n\}_{n \in \N} \subset \A$ disjuntos $\implies P(\bigcup \limits^\infty_{n = 1} A_n) = \sum \limits^\infty_{n = 1} P(A_n)$ ($\sigma$-aditividad).
+    \item $P(\W) = 1$ (normalización).
+  \end{nlist}
+  Luego una probabilidad es una medida normalizada.
+\end{ndef}
+
+\begin{ndef}[Variable aleatoria]
+  Una \emph{variable aleatoria}(v.a) $X : \W \to \R$, $\w \mapsto X(\w)$ es una función medible de un espacio de probabilidad en un espacio Borel; es decir:
+
+  $$X : (\W, \A, P) \to (\R, \B), \, \, \forall B \in \B \; \; X^{-1}(B) \in \A$$
+\end{ndef}
+
+\begin{nprop}[Caracterización de variables aleatorias]
+  $X$ es una variable aleatoria $\iff \forall x \in \R \; \; X^{-1}((-\infty, x]) = [X \leq x] \subset \A$.
+\end{nprop}
+
+\begin{ndef}[Vector aleatorio]
+  Un \emph{vector aleatorio}(v.a) $X : \W \to \R^n$, $\w \mapsto X(\w)$, es una función medible multidimensional de un espacio de probabilidad en un espacio Borel (multidimensional).
+\end{ndef}
+
+La caracterización anterior es válida para vectores aleatorios, pero además veamos otra:
+
+\begin{ndef}[Caracterización de vectores aleatorios]
+  $X$ es un vector aleatorio $\iff \forall i = 1, \ldots, n, \; X_i : (\W, \A, P) \to (\R, \B)$ es una variable aleatoria.
+\end{ndef}
+
+% TODO: Ejercicio - demostrar esta caracterización
+\begin{proof}
+  Se deja propuesto como ejercicio.
+\end{proof}
+
+
+\begin{ndef}[Distribución de probabilidad]
+  Se llama \emph{distribución de probabilidad} de una variable aleatoria a una función de probabilidad definida en el espacio de Borel:
+  \begin{align*}
+    P_X : \B & \to \R \\
+    B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
+  \end{align*}
+\end{ndef}
+
+% TODO: Ejercicio - Comprobar que P_X es probabilidad
+
+El teorema de correspondencia nos dice que la función de conjunto $P_X$ puede ponerse en correspondencia biunívoca con la función de distribución $F_X$.
+
+\begin{ndef}[Función de distribución]
+  La \emph{función de distribución} es la función de puntos:
+  \begin{align*}
+    F: \R & \to \R \\
+    x & \mapsto  F_X(x) = P_X((-\infty, x]) = P[X \leq x]
+  \end{align*}
+\end{ndef}
+
+El teorema de correspondencia nos permite también establecer una correspondencia biunívoca entre la función de distribución y la función característica $\varphi_X$.
+
+\begin{ndef}[Función característica]
+  La \emph{función característica} se define como $\varphi_X(t) = E[e^{itX}], \; \; \forall t \in \R$.
+\end{ndef}
+
+La correspondencia entre estos tres tipos de funciones se llama \emph{ley de la variable aleatoria} y existe también la versión análoga para vectores aleatorios.
+
+\begin{ndef}[Función masa de probabilidad]
+  Sea $X$ una v.a discreta, se define la \emph{función masa de probabilidad} como $f(x) = P[X = x], \; \; \forall x \in \B_X$.
+\end{ndef}
+
+Su función característica asociada es $\varphi_X(t) = \sum \limits_{x \in \B_X} e^{itx} P[X = x]$, $\forall t \in \R$.
+
+\begin{ndef}[Función de densidad]
+  Sea $X$ una v.a continua, la \emph{función de densidad} es la que cumple $F_X(x) = \int^x_{-\infty} f(y) dy, \; \; \forall x \in \R $
+\end{ndef}
+
+Su función característica asociada es $\varphi_X(t) = \int e^{it} f(x) dx$, $\forall t \in \R$.
+
+\subsubsection{Definición de proceso estocástico}
+
+Veamos que es un proceso estocástico y ciertas definiciones sobre él:
+
+\begin{ndef}[Proceso estocástico]
+  Un \emph{proceso estocástico}(p.e) es una familia de variables aleatorias ${\{X_t\}}_{t \in T}$, donde $T$ un conjunto ordenado arbitrario y cada v.a está definida sobre un espacio de probabilidad $(\W, \A, P)$.
+\end{ndef}
+
+\begin{nota}
+  En algunas ocasiones llamaremos al proceso estocástico como proceso.
+\end{nota}
+
+\begin{ndef}[Espacio paramétrico]
+  Se llama \emph{espacio paramétrico} al conjunto ordenado arbitrario $T$: en el caso discreto se suele tomar $\N \cup \{0\}$, y en el continuo $[0, +\infty)$.
+\end{ndef}
+
+\begin{ndef}[Proceso estocástico real]
+  Un p.e se dice que es \emph{real} si $\forall t \in T$, $X_t : (\W, \A, P) \to (\R, \B)$.
+\end{ndef}
+
+\begin{nota}
+  En este curso son los procesos estocásticos que consideraremos, junto tambien a los p.e multidimensionales (espacio Borel de llegada muldimensional).
+\end{nota}
+
+\begin{ndef}[Espacio de estados]
+  Se llama \emph{espacio de estados} al espacio Borel donde toman valores las v.a. En general, sea $E \subset \R$ con la $\sigma$-álgebra Borel restringida $\B_E$, el espacio de estados es $(E, \B_E)$,
+\end{ndef}
+
+\begin{nota}
+  Si no se especifica uno diferente, se considera $(\R, \B)$.
+\end{nota}
+
+\begin{ndef}[Trayectoria]
+  $\forall \w \in \W$ fijo, definimos la \emph{trayectoria} asociada a $\w$ como
+  \begin{align*}
+    X(w): T & \to \R \\
+    t & \mapsto X_t(w).
+  \end{align*}
+\end{ndef}
+
+\begin{ejemplo}
+  Proceso de recuento:
+  \begin{itemize}
+    \item $X_t \equiv$ número de veces que ocurre un suceso en el intervalo $[0, t)$.
+    \item $T = [0, + \infty]$.
+    \item $E = \N \cup \{0\}$.
+    \item $s \leq t \in T \implies X_s \leq X_t$ trayectorias crecientes a saltos.
+  \end{itemize}
+\end{ejemplo}
+
+\begin{ejemplo}
+  Recorrido aleatorio:
+  \begin{itemize}
+    \item $X_n \equiv$ posición de la particula en el instante n.
+    \item $T = \N \cup \{0\}$.
+    \item $E = \mathbb{Z}$.
+  \end{itemize}
+\end{ejemplo}
+
+\subsubsection{Algunas características de procesos estocásticos}
+
+Sea $\{X_t\}_{t \in T}$ p.e definido sobre el espacio de probabilidad $(\Omega, A, P)$, suponemos que existen las esperanzas de las siguientes definiciones:
+
+\begin{ndef}[Función media]
+  La \emph{función media} es una función que asigna a cada t la esperanza de la variable aleatoria asociada a t, es decir:
+  \begin{align*}
+    \mu: T & \to \R \\
+    t & \mapsto \mu(t) = \mu_t = E[X_t]
+  \end{align*}
+\end{ndef}
+
+\begin{nota}
+  Para que la definición sea válida se debe tener $\forall t \in T$, $E[|X_t|] < \infty$.
+\end{nota}
+
+\begin{ndef}[Proceso centrado]
+  Un p.e se dice \emph{centrado} si se cumple $\mu(t) = 0$, $\forall t \in T$.
+\end{ndef}
+
+\begin{ndef}[Momentos no centrados de orden k]
+  El \emph{momento no centrado de orden k} se define como:
+  \begin{align*}
+    \mu_k : T & \to \R \\
+    t & \mapsto \mu_k(t) = E[X^k_t]
+  \end{align*}
+\end{ndef}
+
+\begin{ndef}[Momentos centrados de orden k]
+  El \emph{momento centrado de orden k} se define como:
+  \begin{align*}
+    m_k : T & \to \R \\
+    t & \mapsto m_k(t) = E[(X_t - \mu_t)^k]
+  \end{align*}
+\end{ndef}
+
+\begin{ndef}[Función varianza]
+  La \emph{función varianza} es $\sigma^2_t = m_2(t)$
+\end{ndef}
+
+\begin{ndef}[Función correlación]
+  La \emph{función correlación} se define como:
+  \begin{align*}
+    R : T \times T & \to \R \\
+    (s,t) & \mapsto R(s,t) = E[X_s X_t]
+  \end{align*}
+\end{ndef}
+
+\begin{ndef}[Función covarianza]
+  La \emph{función covarianza} se define como:
+  \begin{align*}
+    C: T \times T & \to \R \\
+    (s,t) & \mapsto C(s,t) = E[(X_s - \mu_s)(X_t - \mu_t)] = R(s,t) - \mu_s \mu_t
+  \end{align*}
+\end{ndef}
+
+\begin{nota}
+  Consideraciones:
+  \begin{itemize}
+    \item $R(t,t) = \sigma^2_t$.
+    \item Si el proceso es centrado entonces la correlación y la covarianza coinciden.
+  \end{itemize}
+\end{nota}
+
+\begin{ndef}[Procesos de segundo orden]
+  Un p.e $\{X_t\}_{t \in T}$ se dice de \emph{segundo orden} si $\forall t \in T, \, E[X^2_t] < \infty$ (las v.a son cuadrado integrables).
+\end{ndef}
+
+\subsection{Clasificación de los procesos estocásticos}
+
+\subsubsection{Clasificación atendiendo al $T$ y $E$}
+Sea $\{X_t\}_{t \in T}$ p.e definido sobre el espacio de probabilidad $(\W, A, P)$ con espacio de estados $(E, \B_E)$.
+
+\begin{ndef}[Procesos en tiempo discreto]
+  Un p.e es en \emph{tiempo discreto} si $T$ es discreto, es decir, $T \subset \mathbb{Z}$.
+\end{ndef}
+
+Nota: para TD usaremos $T = \N \cup \{ 0 \}$ y notamos $\{X_n\}_{n \in \N^*}$ (sucesiónes de v.a).
+
+\begin{ndef}[Procesos en tiempo continuo]
+  Un p.e es en \emph{tiempo continuo} si $T$ es continuo, es decir, $T \subset \R$.
+\end{ndef}
+
+Nota: para TC usaremos $T = [0, +\infty]$ y notamos $\{X_t\}_{t \in \R^+}$.
+
+\begin{ndef}[Procesos discretos]
+  Un p.e es \emph{discreto} si $E$ es discreto, es decir, $E$ es conjunto numerable.
+\end{ndef}
+
+Nota: también se les denota como Cadenas.
+
+\begin{ndef}[Procesos continuos]
+  Un p.e es en \emph{continuo} si $E$ es continuo, es decir $E$ es conjunto no numerable.
+\end{ndef}
+
+Veamos unos ejemplos:
+
+\begin{ejemplo}[PDTD]
+  Resultado de lanzar un dado en el n-ésimo lanzamiento.
+
+  $T = \N$, $E = \{1,2,3,4,5,6\}$.
+\end{ejemplo}
+
+\begin{ejemplo}[PCTD]
+  Cantidad de lluvia en el n-ésimo día.
+
+  $T = \N$, $E = \R^+_0$.
+\end{ejemplo}
+
+\begin{ejemplo}[PDTC]
+  Cantidad de clientes en el instante t.
+
+  $T = [0, +\infty)$, $E = \N \cup \{0\}$.
+\end{ejemplo}
+
+\begin{ejemplo}[PCTC]
+  Cantidad de lluvia en el instante t.
+
+  $T = [0, +\infty)$, $E = \R^+_0$.
+\end{ejemplo}
+
+\subsubsection{Clasificación atendiendo a la relación entre las variables del proceso}
+
+Sea $\{X_t\}_{t \in T}$ p.e definido sobre el espacio de probabilidad $(\Omega, \A, P)$.
+
+\begin{ndef}[Proceso independiente]
+  Un p.e es \emph{independiente} si $\forall n > 1, t_1, \ldots, t_n \in T$ $$X_{t_1}, \ldots, X_{t_n} \text{ son v.a independientes.}$$
+\end{ndef}
+
+\begin{ndef}[Proceso con incrementos independientes]
+  Un p.e tiene \emph{incrementos independientes} si $\forall n > 1, \forall t_1 < \ldots < t_n \in T$ $$X_{t_1}, X_{t_2} - X_{t_1}, \ldots, X_{t_n} - X_{t_{n-1}} \text{son v.a independientes.}$$
+\end{ndef}
+
+\begin{ndef}[Proceso con incrementos estacionarios]
+  Un p.e tiene \emph{incrementos estacionarios} si $\forall s < t \in T, \forall h$  $$(X_t - X_s) \sim (X_{t+h} - X_{s+h}).$$
+\end{ndef}
+
+\begin{nota}
+  $X \sim Y$ indica que $X$ sigue la misma distribución que $Y$.
+\end{nota}
+
+\begin{ndef}[Proceso estacionario]
+  Un p.e es \emph{estrictamente estacionario} si $\forall n, \forall t_1 < \ldots < t_n \in T, \forall h$ $$(X_{t_1}, \ldots, X_{t_n}) \sim (X_{t_1 + h}, \ldots, X_{t_n + h}).$$
+\end{ndef}
+
+\begin{ndef}[Proceso débilmente estacionario]
+  Un p.e de 2º orden es \emph{débilmente estacionario} si cumple
+  \begin{nlist}
+    \item Su función media es constante
+    \item $C(s,t) = C(s+h, t+h) = C(0, t-s), \; \forall s,t \in T$.
+  \end{nlist}
+\end{ndef}
+
+\begin{nota}
+  Todos procesos de \emph{2º orden} estrictamente estacionarios son débilmente estacionarios.
+\end{nota}
+
+\begin{ndef}[Martingala (tiempo discreto)]
+  Un p.e es una \emph{martingala} si $\forall n \in \N$ $$E[X_{n+1} | \, X_1, \ldots, X_n] = X_n \; \; c.s$$
+\end{ndef}
+
+\begin{ndef}[Procesos de Markov]
+  Un p.e es un \emph{Proceso de Markov} si  $\forall s<t \in T, \forall B \in \B$ $$P[X_t \in B | \, X_n, \; n \leq s] = P[X_t \in B | \, X_s] \; \; c.s$$
+\end{ndef}
+
+\subsection{Procesos estocásticos en tiempo discreto (PETD): Trayectorias y distribución}
+
+Consideramos el espacio de probabilidad $(\W, \A, P)$, espacio paramétrico discreto $T \equiv \N$, y espacios de estados $(\R, \B)$.
+
+\begin{ndef}[Proceso estocástico en tiempo discreto]
+  Un \emph{p.e en tiempo discreto}(PETD) es una sucesión $\{X_n\}_{n \in \N}$ de v.a definidas en $(\W, \A, P)$ t.q $\forall n \in \N$:
+
+  $$X^{-1}(B) \in \A, \forall B \in \B \iff [X \leq x] \in \A, \forall x \in \R$$
+\end{ndef}
+
+\begin{ndef}[Trayectoria (PETD)]
+  Sea un PETD $\{X_n\}_{n \in \N}$, fijando $\w \in \W$ definimos la \emph{trayectoria} de $\w$ como:
+  \begin{align*}
+    X(\w): \N & \to \R \\
+    n & \mapsto X_n(\w)
+  \end{align*}
+
+\end{ndef}
+
+Vemos que $\{X_n(\w)\}_{n\in\N}$ es una sucesión de números reales. Así, definiendo $\R^\N = \{ \{x_n\}_{n \in \N} : x_n \in \R, n \in \N\}$, tenemos que $\{X_n(\w)\}_{n \in \N} \in \R^\N$.
+
+\begin{ndef}[Trayectoria asociada (PETD)]
+  Sea un PETD $\{X_n\}_{n \in \N}$, definimos la \emph{trayectoria asociada} como la función que asigna a cada elemento su trayectoria:
+  \begin{align*}
+    \chi : (\W, \A) & \to (\R^\N, \B^\N) \\
+    \w & \mapsto X(\w) = \{X_n(\w)\}_{n \in \N}
+  \end{align*}
+\end{ndef}
