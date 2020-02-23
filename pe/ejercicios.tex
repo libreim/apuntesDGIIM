@@ -1,0 +1,68 @@
+\section{Tema 1}
+
+\begin{ejer}
+  Definir la distribución de probabilidad, función de distribución y función característica de una variable aleatoria y expresar dichas funciones en términos de la función masa de probabilidad o la función de densidad, según que la variable sea de tipo discreto o continuo, respectivamente.
+\end{ejer}
+
+\begin{sol}
+  La \emph{distribución de probabilidad} de una variable aleatoria es una función de probabilidad definida en el espacio de Borel:
+  \begin{align*}
+    P_X : \B & \to \R \\
+    B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
+  \end{align*}
+
+  La \emph{función de distribución} es la función de puntos definida como:
+  \begin{align*}
+    F: \R & \to \R \\
+    x & \mapsto  F_X(x) = P_X((-\infty, x]) = P[X \leq x]
+  \end{align*}
+
+  La \emph{función característica} es la función definida como $\varphi_X(t) = E[e^{itX}], \; \; \forall t \in \R$.
+
+  \begin{itemize}
+    \item Caso discreto:
+    \begin{multline*}
+      \forall x \in \R, \; F_X(x) = P_X[(-\infty, x]] = P_X[\{x_1, \ldots, x_n, \ldots \}] = P[X \in \{x_1,  \ldots, x_n, \ldots \}] = \\
+      = P[\bigcup \limits^\infty_{n = 1} (X = x_n)] = \sum \limits^\infty_{i = 1} P[X = x_i] = \sum \limits^\infty_{i = 1} f(x_i)
+    \end{multline*}
+
+    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \sum \limits^\infty_{i = 1} e^{itx_i}P[X = x_i] = \sum \limits^\infty_{i = 1} e^{itx_i} f(x_i)$$
+
+    \item Caso continuo:
+    $$\forall x \in \R, F_X(x) = P_X[(-\infty,x]] = P[X \in (-\infty, x]] = P[X \leq x] = \int^x_{-\infty} f(y)dy$$
+
+    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \int_\R e^{itx} f(x) dx$$
+  \end{itemize}
+  Donde $f(x)$ representa la función masa de probabilidad en el caso discreto, y la función densidad en el caso continuo.
+\end{sol}
+
+\begin{ejer}
+  Demostrar que la distribución de probabilidad de una variable aleatoria es una medida de probabilidad definida sobre la $\sigma$-álgebra de Borel.
+\end{ejer}
+
+\begin{sol}
+  Veamos si
+  \begin{align*}
+    P_X : \B & \to \R \\
+    B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
+  \end{align*}
+  cumple con los tres Axiomas de Kolmogorov, usando que P es una probabilidad:
+
+  \begin{nlist}
+    \item $P_X(B) = P[X \in B] \geq 0$, $\forall B \in \B$.
+    \item $\forall \{B_n\}_{n \in \N} \subset \B$ disjuntos $$ P_X(\bigcup \limits^\infty_{n = 1} B_n) = P[X \in \bigcup \limits^\infty_{n = 1} B_n] = P[\bigcup \limits^\infty_{n = 1} (X \in B_n)] = \sum \limits^\infty_{n = 1} P[X \in B_n] = \sum \limits^\infty_{n = 1} P_X(B_n)$$
+    \item $P_X(\B) = P[X^{-1}(\B)] = P[\A] = 1$
+  \end{nlist}
+\end{sol}
+
+\begin{ejer}
+  Demostrar la caracterización de vectores aleatorios mediante variables aleatorias.
+\end{ejer}
+
+\begin{sol}
+  Sea $X = (X_1, \ldots, X_n) : (\W, \A, P) \to (\R^n, \B^n)$, entonces $X$ es vector aleatorio $\iff$ $X_1, \ldots, X_n$ son variables aleatorias.
+
+  \begin{multline*}
+    X \text{ v.a} \iff \forall x = (x_1, \ldots, x_n) \in \R^n, \; X^{-1}((-\infty, x]) = [X \leq x] = \\ =  [X_1 \leq x_1, \ldots, X_n \leq x_n] = \bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset \A \iff \forall i \in \{1, \ldots, n\}, \; \forall x_i \in \R \\ \A \supset [X_i \leq x_i] = X^{-1}((-\infty, x_i]) \iff X_1, \ldots, X_n \text{ v.a }
+  \end{multline*}
+\end{sol}
