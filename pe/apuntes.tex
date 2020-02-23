@@ -462,7 +462,7 @@ Consideramos el espacio de probabilidad $(\W, \A, P)$, espacio paramétrico disc
 \end{ndef}
 
 \begin{ndef}[Trayectoria (PETD)]
-  Sea un PETD, fijando $\w \in \W$ definimos la \emph{trayectoria} de $\w$ como:
+  Sea un PETD $\{X_n\}_{n \in \N}$, fijando $\w \in \W$ definimos la \emph{trayectoria} de $\w$ como:
   \begin{align*}
     X(\w): \N & \to \R \\
     n & \mapsto X_n(\w)
@@ -472,12 +472,10 @@ Consideramos el espacio de probabilidad $(\W, \A, P)$, espacio paramétrico disc
 
 Vemos que $\{X_n(\w)\}_{n\in\N}$ es una sucesión de números reales. Así, definiendo $\R^\N = \{ \{x_n\}_{n \in \N} : x_n \in \R, n \in \N\}$, tenemos que $\{X_n(\w)\}_{n \in \N} \in \R^\N$.
 
-Ahora definimos la función que asigna cada elemento a su trayectoria:
-
-\begin{align*}
-  \chi : (\W, \A) & \to (\R^\N, \B^\N) \\
-  \w & \mapsto X(\w) = \{X_n(\w)\}_{n \in \N}
-\end{align*}
-
-
-$$, \text{ } $$
+\begin{ndef}[Trayectoria asociada (PETD)]
+  Sea un PETD $\{X_n\}_{n \in \N}$, definimos la \emph{trayectoria asociada} como la función que asigna a cada elemento su trayectoria:
+  \begin{align*}
+    \chi : (\W, \A) & \to (\R^\N, \B^\N) \\
+    \w & \mapsto X(\w) = \{X_n(\w)\}_{n \in \N}
+  \end{align*}
+\end{ndef}
