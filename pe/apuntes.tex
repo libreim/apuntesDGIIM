@@ -85,7 +85,7 @@ Ahora veamos que pasa con las aplicaciones y funciones medibles.
 \end{nota}
 
 \begin{nprop}[Caracterización de funciones medibles (2)]
-  Una función entre un espacio medible y espacio Borel $f : (\Omega, \A) \to (\R^n, \B^n)$ es función medible $\iff f^{-1}((-\infty, ]) \in \A, \; \forall x \in \R$.
+  Una función entre un espacio medible y espacio Borel $f : (\Omega, \A) \to (\R^n, \B^n)$ es función medible $\iff f^{-1}((-\infty, x]) \in \A, \; \forall x \in \R$.
 \end{nprop}
 
 \begin{nota}
@@ -155,7 +155,7 @@ La teoría de la probabilidad se desarrolla sobre un tipo especial de espacios d
   Una función $P: \A \to \R$ se dice que es una \emph{probabilidad} si cumple con los tres axiomas de Kolmogorov:
   \begin{nlist}
     \item $\forall A \in \A$, $P(A) \geq 0$ (no negativa).
-    \item $\forall \{A_n\}_{n \in \N} \subset \A$ disjuntos $\implies P(\bigcup \limits^\infty_{n = 1}) = \sum \limits^\infty_{n = 1} P(A_n)$ ($\sigma$-aditividad).
+    \item $\forall \{A_n\}_{n \in \N} \subset \A$ disjuntos $\implies P(\bigcup \limits^\infty_{n = 1} A_n) = \sum \limits^\infty_{n = 1} P(A_n)$ ($\sigma$-aditividad).
     \item $P(\W) = 1$ (normalización).
   \end{nlist}
   Luego una probabilidad es una medida normalizada.

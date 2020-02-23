@@ -1,0 +1,116 @@
+\section{Tema 1}
+
+\begin{ejer}
+  Definir la distribución de probabilidad, función de distribución y función característica de una variable aleatoria y expresar dichas funciones en términos de la función masa de probabilidad o la función de densidad, según que la variable sea de tipo discreto o continuo, respectivamente.
+\end{ejer}
+
+\begin{sol}
+  La \emph{distribución de probabilidad} de una variable aleatoria es una función de probabilidad definida en el espacio de Borel:
+  \begin{align*}
+    P_X : \B & \to \R \\
+    B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
+  \end{align*}
+
+  La \emph{función de distribución} es la función de puntos definida como:
+  \begin{align*}
+    F: \R & \to \R \\
+    x & \mapsto  F_X(x) = P_X((-\infty, x]) = P[X \leq x]
+  \end{align*}
+
+  La \emph{función característica} es la función definida como $\varphi_X(t) = E[e^{itX}], \; \; \forall t \in \R$.
+
+  \begin{itemize}
+    \item Caso discreto:
+    \begin{multline*}
+      \forall x \in \R, \; F_X(x) = P_X[(-\infty, x]] = P_X[\{x_1, \ldots, x_n, \ldots \}] = P[X \in \{x_1,  \ldots, x_n, \ldots \}] = \\
+      = P[\bigcup \limits^\infty_{n = 1} (X = x_n)] = \sum \limits^\infty_{i = 1} P[X = x_i] = \sum \limits^\infty_{i = 1} f(x_i)
+    \end{multline*}
+
+    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \sum \limits^\infty_{i = 1} e^{itx_i}P[X = x_i] = \sum \limits^\infty_{i = 1} e^{itx_i} f(x_i)$$
+
+    \item Caso continuo:
+    $$\forall x \in \R, F_X(x) = P_X[(-\infty,x]] = P[X \in (-\infty, x]] = P[X \leq x] = \int^x_{-\infty} f(y)dy$$
+
+    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \int_\R e^{itx} f(x) dx$$
+  \end{itemize}
+  Donde $f(x)$ representa la función masa de probabilidad en el caso discreto, y la función densidad en el caso continuo.
+\end{sol}
+
+\begin{ejer}
+  Demostrar que la distribución de probabilidad de una variable aleatoria es una medida de probabilidad definida sobre la $\sigma$-álgebra de Borel.
+\end{ejer}
+
+\begin{sol}
+  Veamos si
+  \begin{align*}
+    P_X : \B & \to \R \\
+    B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
+  \end{align*}
+  cumple con los tres Axiomas de Kolmogorov, usando que P es una probabilidad:
+
+  \begin{nlist}
+    \item $P_X(B) = P[X \in B] \geq 0$, $\forall B \in \B$.
+    \item $\forall \{B_n\}_{n \in \N} \subset \B$ disjuntos $$ P_X(\bigcup \limits^\infty_{n = 1} B_n) = P[X \in \bigcup \limits^\infty_{n = 1} B_n] = P[\bigcup \limits^\infty_{n = 1} (X \in B_n)] = \sum \limits^\infty_{n = 1} P[X \in B_n] = \sum \limits^\infty_{n = 1} P_X(B_n)$$
+    \item $P_X(\B) = P[X^{-1}(\B)] = P[\A] = 1$
+  \end{nlist}
+\end{sol}
+
+\begin{ejer}
+  Demostrar la caracterización de vectores aleatorios mediante variables aleatorias.
+\end{ejer}
+
+\begin{sol}
+  Sea $X = (X_1, \ldots, X_n) : (\W, \A, P) \to (\R^n, \B^n)$, entonces $X$ es vector aleatorio $\iff$ $X_1, \ldots, X_n$ son variables aleatorias.
+
+  \begin{multline*}
+    X \text{ v.a} \iff \forall x = (x_1, \ldots, x_n) \in \R^n, \; X^{-1}((-\infty, x]) = [X \leq x] = \\ =  [X_1 \leq x_1, \ldots, X_n \leq x_n] = \bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset \A \iff \forall i \in \{1, \ldots, n\}, \; \forall x_i \in \R \\ \A \supset [X_i \leq x_i] = X^{-1}((-\infty, x_i]) \iff X_1, \ldots, X_n \text{ v.a }
+  \end{multline*}
+
+  Es fácil ver la penúltima implicación tomando $x_i = \infty$ en $\bigcup \limits^n_{i = 1} [X_i \leq x_i] \subset \A \implies [X_i \leq x_i] \subset \A$, y al revés sabiendo que $\bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset [X_i \leq x_i] \subset \A$.
+\end{sol}
+
+\begin{ejer}
+  Sean $X$ e $Y$ variables aleatorias independientes tales que $E[X] = 0$, $Var(X) = 1$ y la variable $Y$ tiene distribución uniforme en $[-\pi, \pi]$. Consideremos el proceso estocástico $\{X_t\}_{t \geq 0}$ definido por
+
+  $$X_t = X \cos{t + Y}$$
+
+  Calcular las funciones media y covarianza y decir si el proceso es débilmente estacionario.
+\end{ejer}
+
+\begin{sol}
+\end{sol}
+
+\begin{ejer}
+  Ejemplos de procesos estocásticos atendiendo a la clasificación según el espacio de estados y espacio paramétrico.
+\end{ejer}
+
+\begin{sol}
+\end{sol}
+
+\begin{ejer}
+  Demostrar que si las componentes del vector aleatorio $X = (X_1, \ldots, X_n)^T$ son independientes, entonces la funcion característica del vector $X$ es igual al producto de las funciones características de las variables $X_k$, $k = 1, \ldots, n$.
+\end{ejer}
+
+\begin{sol}
+\end{sol}
+
+\begin{ejer}
+  Demostrar que para un proceso con incrementos independientes las distribuciones finito dimensionales del proceso (esto es, las distribuciones de los vectores ($X_{t_1}, X_{t_2}, \ldots, X_{t_n})^T$, $\forall t_1 < t_2 < \ldots < t_n$) están determinadas por las distribuciones marginales unidimensionales ($X_{t_1}$) y por las distribuciones de los incrementos ($X_{t_i} - X_{t_1 - 1}$, $i = 2, \ldots, n$).
+\end{ejer}
+
+\begin{sol}
+\end{sol}
+
+\begin{ejer}
+  Demostrar que la clase de rectángulos medibles $\mathcal{C}^\N$ es una semi-álgebra.
+\end{ejer}
+
+\begin{sol}
+\end{sol}
+
+\begin{ejer}
+  Demostrar el Teorema de medibilidad para procesos estocásticos en tiempo discreto.
+\end{ejer}
+
+\begin{sol}
+\end{sol}
