@@ -78,6 +78,14 @@
 \end{ejer}
 
 \begin{sol}
+  Primero veamos que efectivamente $\{X_t\}_{t \geq 0}$ es un proceso estocástico. Para $t \geq 0$, tenemos que $X_t : (\W, \A, P) \to (\R, \B)$, luego falta ver que es medible. Es fácil verlo ya que la suma es una función continua luego medible, $\cos$ por lo mismo y finalmente el producto también igual.
+
+  Función media: $\mu(t) = E[X_t] = E[X \cos(t + Y)]$, como $\cos(t + Y)$ es composición de funciones medibles, $X$ y $\cos(t + Y)$ siguen siendo medibles, luego $E[X \cos(t + Y)] = E[X] E[\cos(t + Y)] = 0$. Luego $\mu(t) = 0$, $\forall t \geq 0$.
+
+  Función covarianza: $C(s,t) = R(s,t) - \mu_t \mu_s = R(s,t) = E[X_t X_s] = E[X^2 \cos(t + Y) \cos(s + Y)]$, por la independencia otra vez, $E[X^2 \cos(t + Y) \cos(s + Y)] = E[X^2] E[\cos(t + Y) \cos(s + Y)] = Var(X) E[\cos(t + Y) \cos(s + Y)] = E[\cos(t + Y) \cos(s + Y)]$, resolvemos la integral $\frac{1}{2\pi}\int^\pi_{-\pi} \cos(t + y) \cos(s + y) dy$ y tenemos que $C(s,t) = \pi \cos(s - t)$.
+
+
+  Este pe. es débilmente estacionario ya que su función media es constante, $\mu(t) = 0$, $\forall t \geq 0$; y la función covarianza cumple $C(s,t) = \pi \cos(s - t) = \pi \cos(s + h - t - h) = C(s + h, t + h)$, $\forall t,s \geq 0$.
 \end{sol}
 
 \begin{ejer}
@@ -85,6 +93,14 @@
 \end{ejer}
 
 \begin{sol}
+  Ejemplos:
+
+  \begin{itemize}
+    \item PDTD: Cantidad de material en el almacén en el día n-ésimo.
+    \item PCTD: Velocidad de un coche en el minuto n-ésimo.
+    \item PDTC: Nº de coches en el instante $t$.
+    \item PCTC: Posición de una particula en el instante $t$.
+  \end{itemize}
 \end{sol}
 
 \begin{ejer}
@@ -92,6 +108,7 @@
 \end{ejer}
 
 \begin{sol}
+  Sea un vector aleatorio $X = (X_1, \ldots, X_n)$, la función característica del vector $X$ es $\varphi_X(t) = E[e^{it^tX}] = E[e^{i(t_1 X_1 + \ldots + t_n X_n)}] = E[e^{i t_1 X_1 + \ldots + i t_n X_n}] = E[\prod \limits^n_{i = 1} e^{i t_i x_i}] = \prod \limits^n_{i = 1} E[e^{i t_i x_i}] = \prod \limits^n_{i = 1} \varphi_{X_i} (t_i)$. Podemos separar las esperanzas ya que $X_1, \ldots, X_n$ son independientes y $e^{itx}$ es función medible; y por tanto $e^{itX_i}, \; i = 1, \ldots, n$, siguen siendo independientes.
 \end{sol}
 
 \begin{ejer}
