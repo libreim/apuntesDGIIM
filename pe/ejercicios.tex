@@ -51,7 +51,7 @@
   \begin{nlist}
     \item $P_X(B) = P[X \in B] \geq 0$, $\forall B \in \B$.
     \item $\forall \{B_n\}_{n \in \N} \subset \B$ disjuntos $$ P_X(\bigcup \limits^\infty_{n = 1} B_n) = P[X \in \bigcup \limits^\infty_{n = 1} B_n] = P[\bigcup \limits^\infty_{n = 1} (X \in B_n)] = \sum \limits^\infty_{n = 1} P[X \in B_n] = \sum \limits^\infty_{n = 1} P_X(B_n)$$
-    \item $P_X(\B) = P[X^{-1}(\B)] = P[\A] = 1$
+    \item $P_X(\R) = P[X^{-1}(\R)] = P[\W] = 1$
   \end{nlist}
 \end{sol}
 
@@ -66,18 +66,26 @@
     X \text{ v.a} \iff \forall x = (x_1, \ldots, x_n) \in \R^n, \; X^{-1}((-\infty, x]) = [X \leq x] = \\ =  [X_1 \leq x_1, \ldots, X_n \leq x_n] = \bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset \A \iff \forall i \in \{1, \ldots, n\}, \; \forall x_i \in \R \\ \A \supset [X_i \leq x_i] = X^{-1}((-\infty, x_i]) \iff X_1, \ldots, X_n \text{ v.a }
   \end{multline*}
 
-  Es fácil ver la penúltima implicación tomando $x_i = \infty$ en $\bigcup \limits^n_{i = 1} [X_i \leq x_i] \subset \A \implies [X_i \leq x_i] \subset \A$, y al revés sabiendo que $\bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset [X_i \leq x_i] \subset \A$.
+  Vemos la penúltima implicación tomando $x_j = \infty \forall j \neq i$ en $\bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset \A \implies [X_i \leq x_i] \subset \A$, y al revés sabiendo que $\bigcap \limits^n_{i = 1} [X_i \leq x_i] \subset [X_i \leq x_i] \subset \A$.
 \end{sol}
 
 \begin{ejer}
   Sean $X$ e $Y$ variables aleatorias independientes tales que $E[X] = 0$, $Var(X) = 1$ y la variable $Y$ tiene distribución uniforme en $[-\pi, \pi]$. Consideremos el proceso estocástico $\{X_t\}_{t \geq 0}$ definido por
 
-  $$X_t = X \cos{t + Y}$$
+  $$X_t = X \cos(t + Y)$$
 
   Calcular las funciones media y covarianza y decir si el proceso es débilmente estacionario.
 \end{ejer}
 
 \begin{sol}
+  Primero veamos que efectivamente $\{X_t\}_{t \geq 0}$ es un proceso estocástico. Para $t \geq 0$, tenemos que $X_t : (\W, \A, P) \to (\R, \B)$, luego falta ver que es medible, pero funciones Borel de variables aleatorias son medibles y el producto de funciones medibles es medible.
+
+  Función media: $\mu(t) = E[X_t] = E[X \cos(t + Y)]$, como $\cos(t + Y)$ es función medible por composición de funciones medibles junto a que $X$ y $Y$ son independientes, entonces $X$ y $\cos(t + Y)$ son independientes; luego $E[X \cos(t + Y)] = E[X] E[\cos(t + Y)] = 0$. Luego $\mu(t) = 0$, $\forall t \geq 0$.
+
+  Función covarianza: $C(s,t) = R(s,t) - \mu_t \mu_s = R(s,t) = E[X_t X_s] = E[X^2 \cos(t + Y) \cos(s + Y)]$, por la independencia otra vez, $E[X^2 \cos(t + Y) \cos(s + Y)] = E[X^2] E[\cos(t + Y) \cos(s + Y)] = Var(X) E[\cos(t + Y) \cos(s + Y)] = E[\cos(t + Y) \cos(s + Y)]$, resolvemos la integral $\frac{1}{2\pi}\int^\pi_{-\pi} \cos(t + y) \cos(s + y) dy$ y tenemos que $C(s,t) = \frac{1}{2} \cos(s - t)$.
+
+
+  Este pe. es débilmente estacionario ya que su función media es constante, $\mu(t) = 0$, $\forall t \geq 0$; y la función covarianza cumple $C(s,t) = \frac{1}{2} \cos(s - t) = \frac{1}{2} \cos(s + h - t - h) = C(s + h, t + h) = C(0, t - s)$, $\forall t,s \geq 0$.
 \end{sol}
 
 \begin{ejer}
@@ -85,6 +93,14 @@
 \end{ejer}
 
 \begin{sol}
+  Ejemplos:
+
+  \begin{itemize}
+    \item PDTD: Cantidad de material en el almacén en el día n-ésimo.
+    \item PCTD: Velocidad de un coche en el minuto n-ésimo.
+    \item PDTC: Nº de coches en el instante $t$.
+    \item PCTC: Posición de una particula en el instante $t$.
+  \end{itemize}
 \end{sol}
 
 \begin{ejer}
@@ -92,6 +108,7 @@
 \end{ejer}
 
 \begin{sol}
+  Sea un vector aleatorio $X = (X_1, \ldots, X_n)$, la función característica del vector $X$ es $\varphi_X(t) = E[e^{it^TX}] = E[e^{i(t_1 X_1 + \ldots + t_n X_n)}] = E[e^{i t_1 X_1 + \ldots + i t_n X_n}] = E[\prod \limits^n_{k = 1} e^{i t_k x_k}] = \prod \limits^n_{k = 1} E[e^{i t_k x_k}] = \prod \limits^n_{k = 1} \varphi_{X_k} (t_k)$. Podemos separar las esperanzas ya que $X_1, \ldots, X_n$ son independientes y $e^{itx}$ es función Borel de variable aleatoria; y por tanto $e^{itX_k}, \; k = 1, \ldots, n$, siguen siendo independientes.
 \end{sol}
 
 \begin{ejer}
@@ -99,6 +116,14 @@
 \end{ejer}
 
 \begin{sol}
+  Tenemos un $\{X_t\}_{t \in T}$ p.e con incrementos independientes, entonces $\forall t_1 < \ldots < t_n \in T$, $X_{t_1}, X_{t_2} - x_{t_1}, \ldots, X_{t_n} - X_{t_{n-1}}$ son v.a independientes.
+
+  Definimos $S_1 = X_{t_1}$, $S_2 = X_{t_2} - X_{t_1} \implies X_{t_2} = S_1 + S_2$
+
+  $S_3 = X_{t_3} - X{t_2} \implies X_{t_3} = S_1 + S_2 + S_3$, por tanto $X_{t_k} = \sum \limits^k_{j = 1} S_j$.
+
+  $\phi_{(X_{t_1}, \ldots, X_{t_n})}(u_1, \ldots, u_n) = \phi_{(s_1, \ldots, s_n)}(v_1, \ldots, v_n)$
+
 \end{sol}
 
 \begin{ejer}
@@ -106,6 +131,22 @@
 \end{ejer}
 
 \begin{sol}
+  Sean los espacios medibles $(\W_n, \A_n), \; \forall n \in \N$, definimos $$\mathcal{C}^\N = \{\prod \limits^\infty_{n = 1} A_n : A_n \in \A_n \}$$.
+
+  Veamos que $\mathcal{C}^\N$ es una semi-álgebra.
+  \begin{nlist}
+    \item $\W, \emptyset \in \mathcal{C}^\N$.
+
+    Como $\emptyset, \W_i \in \A_n \; \forall n \in \N$ ($\A_n$ es $\sigma$-álgebra) $\implies \emptyset, \W \in \mathcal{C}^\N$.
+
+    \item $\forall A, B \in \mathcal{C}^\N \implies A \cap B \in \mathcal{C}^\N$.
+
+    Sean $A, B \in \mathcal{C}^\N$, $A \cap B = (\prod \limits^\infty_{n = 1} A_n) \cap (\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \cap B_n) \in \mathcal{C}^\N$, ya que $A_i, B_i \in \A_i \implies A_i \cap B_i \in \A_i$ (por ser $\A_i$ $\sigma$-álgebra).
+
+    \item $\forall A, B \in \mathcal{C}^\N$, $\exists \{C_i\}^n_{i = 1} \subset \mathcal{C}^\N$ disjuntos dos a dos tal que $A \setminus B = \bigcup \limits^n_{i = 1} C_i$.
+
+    Sean $A, B \in \mathcal{C}^\N$, $A \setminus B = (\prod \limits^\infty_{n = 1} A_n) \setminus(\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \setminus B_n) = C \in \mathcal{C}^\N$, ya que $\emptyset \in \A_i$ y $A_i \setminus B_i = A_i \cap \overline{B_i} \in A_i$ ($\A_i$ es $\sigma$-álgebra).
+  \end{nlist}
 \end{sol}
 
 \begin{ejer}
@@ -113,4 +154,10 @@
 \end{ejer}
 
 \begin{sol}
+  Sea la función \begin{align*}
+    \chi : (\W, \A) & \to (\R^\N, \B^\N) \\
+    \w & \mapsto X(\w) = \{X_n(\w)\}_{n \in \N}
+  \end{align*}
+
+  Entonces $\chi$ es medible $\iff \{X_n\}_{n \in \N}$ son medibles.
 \end{sol}
