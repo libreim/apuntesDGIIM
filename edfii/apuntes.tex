@@ -405,22 +405,156 @@ x_2 \\
 \end{pmatrix}
 \end{equation}
 
+%%%%%%%% Definiciones para los diagramas de fase. http://www.texample.net/tikz/examples/poincare/
+
+\newcommand\newtemplate[4][0.4]%
+ {\newsavebox#2%
+   \savebox#2%
+   {\begin{tabular}{@{}c@{}}
+      \\[2#1ex]
+      \begin{tikzpicture}[scale=#1]
+      #4
+      \end{tikzpicture}\\[4#1ex]
+      %% \templatecaption{#3}\\[-1ex]
+     \end{tabular}%
+   }%
+ }
+\newcommand\template[1]{\usebox{#1}}             % use the Code stored in box #1
+\newcommand\templatecaption[1]{{\sffamily\scriptsize#1}}       % typeset caption
+\newcommand\Tr{\mathop{\mathrm{tr}}}
+
+\newtemplate\sink{sink}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (\sx4,0) -- (0,0);        %   draw half of horizontal axis
+    \draw[flow] (0,\sx4) -- (0,0);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b in {2/1,3/0.44}      %     draw two half-parabolas
+        \draw[flow,domain=\sx\a:0] plot (\x, {\sy\b*\x*\x});
+   }
+ }
+
+\newtemplate\source{source}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (0,0) -- (\sx4,0);        %   draw half of horizontal axis
+    \draw[flow] (0,0) -- (0,\sx4);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b in {2/1,3/0.44}      %     draw two half-parabolas
+        \draw[flow,domain=0:\sx\a] plot (\x, {\sy\b*\x*\x});
+   }
+ }
+
+\newtemplate\stablefp{line of stable fixed points}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \foreach \sy in {+,-}                   % for upper/lower half do:
+   {\draw[flow] (0,\sy4) -- (0,0);        %   draw half of vertical axis
+    \foreach \x in {-3,-2,-1,1,2,3}       %   draw six vertical half-lines
+      \draw[flow] (\x,\sy3) -- (\x,0);
+   }
+ }
+
+\newtemplate\unstablefp{line of unstable fixed points}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \foreach \sy in {+,-}                   % for upper/lower half do:
+   {\draw[flow] (0,0) -- (0,\sy4);        %   draw half of vertical axis
+    \foreach \x in {-3,-2,-1,1,2,3}       %   draw six vertical half-lines
+      \draw[flow] (\x,0) -- (\x,\sy3);
+   }
+ }
+
+\newtemplate\spiralsink{spiral sink}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \draw [samples=100,smooth,domain=27:7]  % draw spiral
+       plot ({\x r}:{0.005*\x*\x});       % Using "flow" here gives "Dimension
+  \def\x{26}                              %        too large", so we draw a tiny
+  \draw[->] ({\x r}:{0.005*\x*\x}) -- +(0.01,-0.01);%     tangent for the arrow.
+ }
+
+\newtemplate\spiralsource{spiral source}%
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \draw [samples=100,smooth,domain=10:28] % draw spiral
+       plot ({-\x r}:{0.005*\x*\x});      % Using "flow" here gives "Dimension
+  \def\x{27.5}                            %        too large", so we draw a tiny
+  \draw[<-] ({-\x r}:{0.005*\x*\x}) -- +(0.01,-0.008);%   tangent for the arrow.
+ }
+
+\newtemplate[0.15]\centre{center}% British spelling since \center is in use
+ {\draw (-4,0) -- (4,0);                  % draw horizontal axis
+  \draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \r in {1,2,3}                  % draw three circles
+    \draw[flow=0.63] (\r,0) arc (0:-360:\r cm);
+ }
+
+\newtemplate\saddle{saddle}%
+ {\foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (\sx4,0) -- (0,0);        %   draw half of horizontal axis
+    \draw[flow] (0,0) -- (0,\sx4);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b/\c/\d in {2.8/0.3/0.7/0.6, 3.9/0.4/1.3/1.1}
+        \draw[flow] (\sx\a,\sy\b)         %     draw two bent lines
+          .. controls (\sx\c,\sy\d) and (\sx\d,\sy\c)
+          .. (\sx\b,\sy\a);
+   }
+ }
+
+\newtemplate\degensink{degenerate sink}%
+ {\draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \s in {+,-}                    % for upper/lower half do:
+   {\draw[flow] (\s4,0) -- (0,0);         %   draw half of horizontal axis
+    \foreach \a/\b/\c/\d in {3.5/4/1.5/1, 2.5/2/1/0.8}
+      \draw[flow] (\s-3.5,\s\a)           %   draw two bent lines
+        .. controls (\s\b,\s\c) and (\s\b,\s\d)
+        .. (0,0);
+   }
+ }
+
+\newtemplate\degensource{degenerate source}%
+ {\draw (0,-4) -- (0,4);                  % draw vertical axis
+  \foreach \s in {+,-}                    % for upper/lower half do:
+   {\draw[flow] (0,0) -- (\s4,0);         %   draw half of horizontal axis
+    \foreach \a/\b/\c/\d in {3.5/4/1.5/1, 2.5/2/1/0.8}
+      \draw[flow] (0,0)                   %   draw two bent lines
+        .. controls (\s\b,\s\d) and (\s\b,\s\c)
+        .. (\s-3.5,\s\a);
+   }
+ }
+
+
+%%%%%%%%
+
+
 \begin{itemize}
 \item Caso 1: Cuando los valores propios de la matriz A son reales: $\sigma(A)={\lambda_1,\lambda_2}\subset \R$
 \begin{enumerate}
-\item Son reales, positivos y distintos: $0<\lambda_1<\lambda_2 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ \tr(A)>0 \\ \det(A) > 0 \end{array}\right.$
-Inserte dibujito de fuente (flechas hacia fuera)\\
+\item Son reales, positivos y distintos: $0<\lambda_1<\lambda_2 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ \tr(A)>0 \\ \det(A) > 0 \end{array}\right.$.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[line cap=round,line join=round, scale=0.5]
+   \foreach \sx in {+,-}                   % for right/left half do:
+   {\draw[flow] (0,0) -- (\sx4,0);        %   draw half of horizontal axis
+    \draw[flow] (0,0) -- (0,\sx4);        %   draw half of vertical axis
+    \foreach \sy in {+,-}                 %   for upper/lower quadrant do:
+      \foreach \a/\b in {2/1,3/0.44}      %     draw two half-parabolas
+        \draw[flow,domain=0:\sx\a] plot (\x, {\sy\b*\x*\x});
+        }
+    \end{tikzpicture}
+    \caption{Una fuente.}
+    
+  \end{figure}
+  
 $x(t)=c_1 e^{\lambda_1t}v_1+c_2 e^{\lambda_2t}v_2 \qquad v_j \in E_{\lambda_j}$
-\item Sonreales, negativos y distintos: $\lambda_2 < \lambda_1 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ traza(A) < 0 \\ det(A)>0\end{array}\right.$
+\item Sonreales, negativos y distintos: $\lambda_2 < \lambda_1 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ \tr(A) < 0 \\ \det(A)>0\end{array}\right.$
 Inserte dibujito de sumidero (flechas hacia dentro)
-\item Son reales, no nulos y con distinto signo : $\lambda_1 < 0 < \lambda_2 \Leftrightarrow det(A)<0$
+\item Son reales, no nulos y con distinto signo : $\lambda_1 < 0 < \lambda_2 \Leftrightarrow \det(A)<0$
 Inserte dibujito de punto hiperbólico o punto silla
-\item Son reales, positivos e iguales : $\lambda_1=\lambda_2>0 \Leftrightarrow \left\{ \begin{array}{ll} \Delta = 0 \\ traza(A)>0\end{array}\right.$.
+\item Son reales, positivos e iguales : $\lambda_1=\lambda_2>0 \Leftrightarrow \left\{ \begin{array}{ll} \Delta = 0 \\ \tr(A)>0\end{array}\right.$.
 \begin{enumerate}
 \item Si $A$ es diagonalizable : En este caso tendremos todo el espacio y volveremos a tener una fuente.
 \item Si $A$ no es diagonalizable : Nos encontramos con una fuente degenerada.
 \end{enumerate}
-\item Son reales, negativos e iguales : $\lambda_1=\lambda_2<0 \Leftrightarrow \left\{ \begin{array}{ll} \Delta = 0 \\ traza(A)<0\end{array}\right.$.
+\item Son reales, negativos e iguales : $\lambda_1=\lambda_2<0 \Leftrightarrow \left\{ \begin{array}{ll} \Delta = 0 \\ \tr(A)<0\end{array}\right.$.
 \begin{enumerate}
 \item Si $A$ es diagonalizable : En este caso tendremos todo el espacio y volveremos a tener un sumidero.
 \item Si $A$ no es diagonalizable : Nos encontramos con un sumidero degenerado.
@@ -429,7 +563,7 @@ Inserte dibujito de punto hiperbólico o punto silla
 Inserte dibujito rectas paralelas y perpendiculares a una única recta generada por el 0(Hacia dentro). Rectas  de puntos de equilibrio estables
 \item Un valor propio es 0 y el otro negativo: $\lambda<0 $ \\
 Inserte dibujito rectas paralelas y perpendiculares a una única recta generada por el 0(Hacia fuera). Rectas  de puntos de equilibrio inestables
-\item Dos valores propios iguales a 0: $\lambda_1=\lambda_2=0 \Leftrightarrow \left\{ \begin{array}{ll}\Delta=0 \\ traza(A)=0 \\ det(A)=0\end{array}\right.$
+\item Dos valores propios iguales a 0: $\lambda_1=\lambda_2=0 \Leftrightarrow \left\{ \begin{array}{ll}\Delta=0 \\ \tr(A)=0 \\ \det(A)=0\end{array}\right.$
 \begin{enumerate}
 \item Si $A$ es diagonalizable $A=0$
 \item Si $A$ no es diagonalizable.

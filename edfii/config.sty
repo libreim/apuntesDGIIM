@@ -24,6 +24,19 @@
 \usetkzobj{all}
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows, calc,intersections,through,backgrounds}
+\usetikzlibrary{decorations.markings}
+
+\tikzset
+ {every pin/.style = {pin edge = {<-}},    % pins are arrows from label to point
+  > = stealth,                            % arrow tips look like stealth bombers
+  flow/.style =    % everything marked as "flow" will be decorated with an arrow
+   {decoration = {markings, mark=at position #1 with {\arrow{>}}},
+    postaction = {decorate}
+   },
+  flow/.default = 0.5,          % default position of the arrow is in the middle
+  main/.style = {line width=1pt}                    % thick lines for main graph
+ }
+
 
 % Títulos de figuras
 \usepackage{capt-of}
@@ -182,6 +195,10 @@
 {\begin{enumerate}
     \renewcommand\labelenumi{(\emph{\roman{enumi}})}}
   {\end{enumerate}}
+
+% Traza de una matriz
+
+\DeclareMathOperator{\tr}{tr}  
 
 % División por casos con llave a la derecha.
 \newenvironment{rcases}
