@@ -104,9 +104,9 @@ $$e^{At}=P\cdot e^{Dt}\cdot P^{-1}=P \cdot  \begin{pmatrix}e^{\lambda_1 t} & \cd
 
 
 Cuando $A$ no sea diagonalizable tendremos que utilizar la forma canónica de Jordan. En este caso, $\exists P,J\in \M_d(\C)$ tales que $det(P) \neq 0 $ y $J$ diagonal por bloques:
-$$\begin{pmatrix}J_1 & & \\
- & & \\
- & & J_r \end{pmatrix}$$
+$$\begin{pmatrix}J_1 & \cdots & 0\\
+ \vdots & \ddots & \vdots \\
+ 0& \cdots & J_r \end{pmatrix}$$
  donde $orden(J_k)=1 \quad \forall =1,...,r \implies J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$ o si $orden(J_k)>1$,
  $$J_k=
  \begin{pmatrix}
@@ -147,12 +147,12 @@ No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos
 \subsection{Estabilidad de ecuaciones lineales escalares}
 Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \eqref{completa} y sea $t_0\in(\alpha,+\infty)$.
 La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \eqref{completa} controlando una primitiva del coeficiente $a(t)$.
-\begin{nth}{Proposicion 3}
+\begin{nprop}
 \begin{itemize}
 \item La ecuación de \ eqref{completa} es estable sii la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty]$.
 \item La ecuación \ eqref{completa} es a.e. sii la función $a(t)$ tiene una primitiva que converge hacia $-\infty$ [....]
 \end{itemize}
-\end{nth}
+\end{nprop}
 Ejemplo 1:
 - Inestable
 - A.E.
@@ -197,29 +197,37 @@ $\mu(A)=máx{Re(\lambda : \lambda\in\sigma(A))}$
 \end{enumerate}
 \end{nth}
 
-A continuación, haremos una serie de ejemplos y proseguiremos con un poquito de teoría para poder producir la demostración de este enunciado.
-Ejemplo 1:
-{
+A continuación, haremos una serie de ejemplos y proseguiremos con un poquito de teoría para poder producir la demostración de este enunciado.\\
+\begin{ejemplo}
 \begin{equation}
 \left\{\begin{array}{lcl}
 x_1'=2x_1+3x_2\\
 x_2'=5x_1-x_2
 \end{array}\right.
 \end{equation}
-()=()()
+
 \begin{equation}
-\left\{\begin{array}{lcl}
-x_1' = -2 3   x_1'
-x_2'= 5 -1    x_2'
-\end{array}\right.
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}'=
+\begin{pmatrix}
+-2 & 3\\
+5 & -1
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2
+\end{pmatrix}
 \end{equation}
+
 
 EC. $\lambda^2-traza(A)\lambda + det(A=0)$
 $\lambda+3\lambda-13=0$
 $\sigma(A)={\frac{-3+\sqrt{61}}{2},\frac{-3-\sqrt{61}}{2}}={2.4...,5.4...}$
 $\mu(A)>2.4 >0$
 La ecuación es inestable.
-
+\end{ejemplo}
 
 %% MARTES 18
 
@@ -260,30 +268,30 @@ Y de manera análoga:
 %% Inserte ejemplo
 
 \begin{lema}
-$$|||e^{Jt}|||_1=max{|||e^{J_1t}|||_1,|||e^J_rt|||_1}$$
+$$|||e^{Jt}|||_1=\max{|||e^{J_1t}|||_1,|||e^J_rt|||_1}$$
 \end{lema}
 
 \begin{lema}
 $\exists T \geq 0 $ tal que :
-$$|||e^{Jt}|||_1=(1+...+\frac{t^n}{n!})\cdot e^{\mu t} \qquad \forall t \geq T$$
+$$|||e^{Jt}|||_1=\left(1+...+\frac{t^n}{n!}\right)\cdot e^{\mu t} \qquad \forall t \geq T$$
 donde:
-$$\mu=max{Re(\lambda_j):\lambda_j\in \sigma(A)}$$
-$$n=max{\nu(\lambda_j)-1 : \lambda_j\in \sigma(A) y Re(\lambda_j)=\mu}$$
+$$\mu=\max{Re(\lambda_j):\lambda_j\in \sigma(A)}$$
+$$n=\max{\nu(\lambda_j)-1 : \lambda_j\in \sigma(A) y Re(\lambda_j)=\mu}$$
 \end{lema}
 
 Usando el lema anterior:
-%%\begin{equation}
-%%|||e^{Jt}|||_1=max
-%%\left\{\(\begin{array}{lcl}
-%%1+...+\frac{t^{\nu(\lambda_j)-1}}{(\nu (\lambda_j)-1)!}
-%%\end{array}\right\)
-%%\cdot e^{Re(\lambda_j)t} : \lambda_j \in \sigma(A) \right\}
-%%\tag{cosarara}\label{cosarara}
-%%\end{equation}
-%%$\exists T \geq 0$ tal que:
-%%\begin{equation}
-%%(1+...+\frac{t^{\nu(\lambda_j)-1}}{\nu(\lambda_j - 1})\cdot e^{Re(\lambda_j)t} \leq (1+...1+\frac{t^n}{n!}e^{\mu t})
-%%\end{equation}
+\begin{equation}
+|||e^{Jt}|||_1=\max
+\left\{ {\left(
+1+...+\frac{t^{\nu(\lambda_j)-1}}{(\nu (\lambda_j)-1)!}
+\right) }
+\cdot e^{Re(\lambda_j)t} : \lambda_j \in \sigma(A) \right\}
+\tag{cosarara}\label{cosarara}
+\end{equation}
+$\exists T \geq 0$ tal que:
+\begin{equation}
+(1+...+\frac{t^{\nu(\lambda_j)-1}}{\nu(\lambda_j - 1})\cdot e^{Re(\lambda_j)t} \leq (1+...1+\frac{t^n}{n!}e^{\mu t})
+\end{equation}
 
 Finalmente, podemos demostrar el teorema anterior:
 
@@ -330,7 +338,7 @@ x_2 \\
 \item Caso 1: Cuando los valores propios de la matriz A son reales: $\sigma(A)={\lambda_1,\lambda_2}\subset \R$
 \begin{enumerate}
 \item Son reales, positivos y distintos: $0<\lambda_1<\lambda_2 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ traza(A)>0 \\ det(A) > 0 \end{array}\right.$
-Inserte dibujito de fuente (flechas hacia fuera)
+Inserte dibujito de fuente (flechas hacia fuera)\\
 $x(t)=c_1 e^{\lambda_1t}v_1+c_2 e^{\lambda_2t}v_2 \qquad v_j \in E_{\lambda_j}$
 \item Sonreales, negativos y distintos: $\lambda_2 < \lambda_1 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ traza(A) < 0 \\ det(A)>0\end{array}\right.$
 Inserte dibujito de sumidero (flechas hacia dentro)
@@ -346,20 +354,20 @@ Inserte dibujito de punto hiperbólico o punto silla
 \item Si $A$ es diagonalizable : En este caso tendremos todo el espacio y volveremos a tener un sumidero.
 \item Si $A$ no es diagonalizable : Nos encontramos con un sumidero degenerado.
 \end{enumerate}
-\item Un valor propio es 0 y el otro positivo $\lambda>0$
+\item Un valor propio es 0 y el otro positivo: $\lambda>0$ \\
 Inserte dibujito rectas paralelas y perpendiculares a una única recta generada por el 0(Hacia dentro). Rectas  de puntos de equilibrio estables
-\item Un valor propio es 0 y el otro negativo $\lambda<0 $
+\item Un valor propio es 0 y el otro negativo: $\lambda<0 $ \\
 Inserte dibujito rectas paralelas y perpendiculares a una única recta generada por el 0(Hacia fuera). Rectas  de puntos de equilibrio inestables
-\item Dos valores propios iguales a 0 $\lambda_1=\lambda_2=0 \Leftrightarrow \left\{ \begin{array}{ll}\Delta=0 \\ traza(A)=0 \\ det(A)=0\end{array}\right.$
+\item Dos valores propios iguales a 0: $\lambda_1=\lambda_2=0 \Leftrightarrow \left\{ \begin{array}{ll}\Delta=0 \\ traza(A)=0 \\ det(A)=0\end{array}\right.$
 \begin{enumerate}
 \item Si $A$ es diagonalizable $A=0$
 \item Si $A$ no es diagonalizable.
 \end{enumerate}
 \end{enumerate}
-\item Caso 2: Cuando los valores propios de la matriz A no son reales : $\sigma(A)={\lambda_1,\lambda_2}\subset \mathbb{C} - \R \quad \lambda_1=a+bi \; \lambda_2=a-bi$
+\item Caso 2: Cuando los valores propios de la matriz A no son reales : $\sigma(A)={\lambda_1,\lambda_2}\subset \mathbb{C} - \R, \quad \lambda_1=a+bi$ y $ \lambda_2=a-bi$.
 \begin{enumerate}
-\item Tiene parte real positiva $\Delta < 0 \\ traza(A) > 0$ Fuente en espiral
-\item Tiene parte real negativa $\Delta < 0 \\ traza(A) < 0$ Sumidero en espiral
+\item Tiene parte real positiva $\left\{\begin{array}{ll} \Delta < 0 \\ traza(A) > 0 \end{array}\right.$ Fuente en espiral
+\item Tiene parte real negativa $\left\{\begin{array}{ll} \Delta < 0 \\ traza(A) < 0 \end{array}\right.$ Sumidero en espiral
 \item Tiene parte real igual a 0. Diagrama de Poincaré
 \end{enumerate}
 \end{itemize}
