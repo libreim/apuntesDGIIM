@@ -78,9 +78,9 @@
 \end{ejer}
 
 \begin{sol}
-  Primero veamos que efectivamente $\{X_t\}_{t \geq 0}$ es un proceso estocástico. Para $t \geq 0$, tenemos que $X_t : (\W, \A, P) \to (\R, \B)$, luego falta ver que es medible. Es fácil verlo ya que la suma es una función continua luego medible, $\cos$ por lo mismo y finalmente el producto también igual.
+  Primero veamos que efectivamente $\{X_t\}_{t \geq 0}$ es un proceso estocástico. Para $t \geq 0$, tenemos que $X_t : (\W, \A, P) \to (\R, \B)$, luego falta ver que es medible. ...
 
-  Función media: $\mu(t) = E[X_t] = E[X \cos(t + Y)]$, como $\cos(t + Y)$ es composición de funciones medibles, $X$ y $\cos(t + Y)$ siguen siendo medibles, luego $E[X \cos(t + Y)] = E[X] E[\cos(t + Y)] = 0$. Luego $\mu(t) = 0$, $\forall t \geq 0$.
+  Función media: $\mu(t) = E[X_t] = E[X \cos(t + Y)]$, como $\cos(t + Y)$ es función medible por composición de funciones medibles junto a que $X$ y $Y$ son independientes, entonces $X$ y $\cos(t + Y)$ son independientes; luego $E[X \cos(t + Y)] = E[X] E[\cos(t + Y)] = 0$. Luego $\mu(t) = 0$, $\forall t \geq 0$.
 
   Función covarianza: $C(s,t) = R(s,t) - \mu_t \mu_s = R(s,t) = E[X_t X_s] = E[X^2 \cos(t + Y) \cos(s + Y)]$, por la independencia otra vez, $E[X^2 \cos(t + Y) \cos(s + Y)] = E[X^2] E[\cos(t + Y) \cos(s + Y)] = Var(X) E[\cos(t + Y) \cos(s + Y)] = E[\cos(t + Y) \cos(s + Y)]$, resolvemos la integral $\frac{1}{2\pi}\int^\pi_{-\pi} \cos(t + y) \cos(s + y) dy$ y tenemos que $C(s,t) = \pi \cos(s - t)$.
 
