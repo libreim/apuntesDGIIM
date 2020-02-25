@@ -7,7 +7,7 @@
 Veremos primero nociones básicas sobre la teoría de la medida.
 
 \begin{ndef}[$\sigma$-álgebra]
-  Una \emph{$\sigma$-álgebra} $\A$ sobre un conjunto $\Omega$ es una familia de subconjuntos de $\Omega$ ($\A \subset P(\Omega)$) que cumple:
+  Una \emph{$\sigma$-álgebra} $\A$ sobre un conjunto $\Omega$ es una familia de subconjuntos de $\Omega$ ($\A \subset \Part(\Omega)$) que cumple:
 
   \begin{nlist}
     \item $\forall A \in \A \implies \overline{A} \in \A$
@@ -16,7 +16,7 @@ Veremos primero nociones básicas sobre la teoría de la medida.
 \end{ndef}
 
 \begin{nota}
-  $P(\Omega)$ son las partes de $\Omega$, es decir, todos los subconjuntos posibles de $\Omega$.
+  $\Part(\Omega)$ son las partes de $\Omega$, es decir, todos los subconjuntos posibles de $\Omega$.
 \end{nota}
 
 La pertenencia del total, vacío y ser cerado para intersecciones se deduce de las condiciones de la definición.
@@ -454,6 +454,8 @@ Sea $\{X_t\}_{t \in T}$ p.e definido sobre el espacio de probabilidad $(\Omega, 
 
 \subsection{Procesos estocásticos en tiempo discreto (PETD): Trayectorias y distribución}
 
+\subsubsection{Definición de PETD}
+
 Consideramos el espacio de probabilidad $(\W, \A, P)$, espacio paramétrico discreto $T \equiv \N$, y espacios de estados $(\R, \B)$.
 
 \begin{ndef}[Proceso estocástico en tiempo discreto]
@@ -461,6 +463,8 @@ Consideramos el espacio de probabilidad $(\W, \A, P)$, espacio paramétrico disc
 
   $$X^{-1}(B) \in \A, \forall B \in \B \iff [X \leq x] \in \A, \forall x \in \R$$
 \end{ndef}
+
+\subsubsection{Trayectorias en un PETD}
 
 \begin{ndef}[Trayectoria (PETD)]
   Sea un PETD $\{X_n\}_{n \in \N}$, fijando $\w \in \W$ definimos la \emph{trayectoria} de $\w$ como:
@@ -480,3 +484,57 @@ Vemos que $\{X_n(\w)\}_{n\in\N}$ es una sucesión de números reales. Así, defi
     \w & \mapsto X(\w) = \{X_n(\w)\}_{n \in \N}
   \end{align*}
 \end{ndef}
+
+Necesitamos saber como es el espacio Borel $(\R^\N, \B^\N)$, para ello veamos unas definiciones:
+
+\begin{ndef}[Rectángulo]
+  Dados $B_1, \ldots, B_n \subset \R$ llamamos un \emph{rectángulo} de lados $B_1, \ldots, B_n$ a $\{ \{a_n\}_{n \in \N} \in \R^\N : \; x_1 \in B_1, \ldots, x_n \in B_n\} = B_1 \times B_2 \times \ldots \times B_n \times \R \times \ldots.$
+\end{ndef}
+
+\begin{ndef}[Rectángulo medible]
+  Un \emph{rectángulo medible} es un rectángulo donde $B_1, \ldots, B_n \in \B$.
+\end{ndef}
+
+\begin{ndef}[Clase de rectángulos medibles]
+  Denotamos por $\C^\N$ la \emph{clase de rectángulos medibles}.
+\end{ndef}
+
+\begin{ndef}[Semi-álgebra]
+  Una \emph{semi-álgebra} sobre $\W$ es un conjunto $\C \in \Part(\W)$ verificando:
+  \begin{nlist}
+    \item $\W \in \C$
+    \item $\forall A, B \in \C \implies A \cap B \in \C$
+    \item $\forall A \in \C \implies \overline{A}$ es unión finita disjunta de elementos de $\C$.
+  \end{nlist}
+\end{ndef}
+
+No hay ningún método constructivo para hallar la $\sigma$-álgebra minimal asociada a un conjunto, pero si tenemos una semi-álgebra solo nos falta comprobar que estén los complementarios, o lo que es lo mismo, que las uniones finitas disjuntas estén.
+
+\begin{ndef}[$\sigma$-álgebra de rectángulos medibles]
+  El \emph{$\sigma$-álgebra de rectángulos medibles} es el $\sigma$-álgebra minimal generada por los rectangulos medibles, es decir, $\sigma(\C^\N)$.
+\end{ndef}
+
+\begin{ndef}[$\sigma$-álgebra Borel sobre $\R^\N$]
+  La \emph{$\sigma$-álgebra Borel sobre $\R^\N$} es $\B^\N$ que es la $\sigma$-álgebra sobre la clase $\C^\N$, es decir $\B^\N \equiv \sigma(\C^\N)$.
+\end{ndef}
+
+\begin{nth}[Teorema de medibilidad (Caracterización de PETD)]
+  Sea $(\W, \A, P)$ espacio de probabilidad, $T \equiv \N$, consideramos $\forall n \in \N$, $X_n : (\W, \A) \to (\R, \B)$ y
+  \begin{align*}
+    \chi : \W & \to \R^\N \\
+    w & \mapsto \{X_n(w)\}_{n \in \N}
+  \end{align*}
+  Entonces, $\chi : (\W, \A, P) \to (\R^\N, \B^\N)$ es función medible $\iff \forall n \in \N, X_n$ es función medible $\iff \{X_n\}_{n \in \N}$ es PETD.
+\end{nth}
+
+\subsubsection{Distribución de un PETD}
+
+\begin{ndef}[Distribución de un PETD]
+  Sea $\{X_n\}_{n \in \N}$ un PETD definido sobre $(\W, \A, P)$, la \emph{distribución del PETD} es:
+  \begin{align*}
+    P_\chi : \B^\N & \to [0, 1] \\
+    B & \mapsto P(\chi^{-1}(B)) = P[\chi \in B]
+  \end{align*}
+\end{ndef}
+
+$P_\chi$ está bien definida porque $\chi^{-1}(B) \in \A$ al ser $\chi$ función medible (T. medibilidad), y es una probabilidad (se puede comprobar facilmente).

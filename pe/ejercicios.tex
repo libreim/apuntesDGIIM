@@ -127,25 +127,25 @@
 \end{sol}
 
 \begin{ejer}
-  Demostrar que la clase de rectángulos medibles $\mathcal{C}^\N$ es una semi-álgebra.
+  Demostrar que la clase de rectángulos medibles $\C^\N$ es una semi-álgebra.
 \end{ejer}
 
 \begin{sol}
-  Sean los espacios medibles $(\W_n, \A_n), \; \forall n \in \N$, definimos $$\mathcal{C}^\N = \{\prod \limits^\infty_{n = 1} A_n : A_n \in \A_n \}$$.
+  Sean los espacios medibles $(\W_n, \A_n), \; \forall n \in \N$, definimos $$\C^\N = \{\prod \limits^\infty_{n = 1} A_n : A_n \in \A_n \}$$.
 
-  Veamos que $\mathcal{C}^\N$ es una semi-álgebra.
+  Veamos que $\C^\N$ es una semi-álgebra.
   \begin{nlist}
-    \item $\W, \emptyset \in \mathcal{C}^\N$.
+    \item $\W, \emptyset \in \C^\N$.
 
-    Como $\emptyset, \W_i \in \A_n \; \forall n \in \N$ ($\A_n$ es $\sigma$-álgebra) $\implies \emptyset, \W \in \mathcal{C}^\N$.
+    Como $\emptyset, \W_i \in \A_n \; \forall n \in \N$ ($\A_n$ es $\sigma$-álgebra) $\implies \emptyset, \W \in \C^\N$.
 
-    \item $\forall A, B \in \mathcal{C}^\N \implies A \cap B \in \mathcal{C}^\N$.
+    \item $\forall A, B \in \C^\N \implies A \cap B \in \C^\N$.
 
-    Sean $A, B \in \mathcal{C}^\N$, $A \cap B = (\prod \limits^\infty_{n = 1} A_n) \cap (\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \cap B_n) \in \mathcal{C}^\N$, ya que $A_i, B_i \in \A_i \implies A_i \cap B_i \in \A_i$ (por ser $\A_i$ $\sigma$-álgebra).
+    Sean $A, B \in \C^\N$, $A \cap B = (\prod \limits^\infty_{n = 1} A_n) \cap (\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \cap B_n) \in \C^\N$, ya que $A_i, B_i \in \A_i \implies A_i \cap B_i \in \A_i$ (por ser $\A_i$ $\sigma$-álgebra).
 
-    \item $\forall A, B \in \mathcal{C}^\N$, $\exists \{C_i\}^n_{i = 1} \subset \mathcal{C}^\N$ disjuntos dos a dos tal que $A \setminus B = \bigcup \limits^n_{i = 1} C_i$.
+    \item $\forall A, B \in \C^\N$, $\exists \{C_i\}^n_{i = 1} \subset \C^\N$ disjuntos dos a dos tal que $A \setminus B = \bigcup \limits^n_{i = 1} C_i$.
 
-    Sean $A, B \in \mathcal{C}^\N$, $A \setminus B = (\prod \limits^\infty_{n = 1} A_n) \setminus(\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \setminus B_n) = C \in \mathcal{C}^\N$, ya que $\emptyset \in \A_i$ y $A_i \setminus B_i = A_i \cap \overline{B_i} \in A_i$ ($\A_i$ es $\sigma$-álgebra).
+    Sean $A, B \in \C^\N$, $A \setminus B = (\prod \limits^\infty_{n = 1} A_n) \setminus(\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \setminus B_n) = C \in \C^\N$, ya que $\emptyset \in \A_i$ y $A_i \setminus B_i = A_i \cap \overline{B_i} \in A_i$ ($\A_i$ es $\sigma$-álgebra).
   \end{nlist}
 \end{sol}
 
@@ -160,4 +160,9 @@
   \end{align*}
 
   Entonces $\chi$ es medible $\iff \{X_n\}_{n \in \N}$ son medibles.
+
+  $\boxed \implies$
+
+
+  $\boxed \impliedby$
 \end{sol}
