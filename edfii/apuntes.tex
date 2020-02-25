@@ -148,7 +148,7 @@ Notamos, para cada $x_0\in \R^d$ tal que $(t_0,x_0) \in D$, $\varphi_{x_0} : (\a
   $\varphi_{x_0}$ es \emph{estable} si, para cada $\varepsilon > 0$, existe $\delta > 0$ tal que
 
   \[
-    (t_0, \bar{x_0}) \in D \text{ y } \|x_0 - \bar{x_0}\| < \delta \implies 
+    (t_0, \bar{x_0}) \in D \text{ y } \|x_0 - \bar{x_0}\| < \delta \implies
   \begin{cases}
     \text{ $\varphi_{\bar{x_0}}$ está definida en $(t_0, +\infty)$}, \\
     \|\varphi_{x_0}(t) - \varphi_{\bar{x_0}}(t)\| < \varepsilon \text{ para cada $t \ge t_0$}.
@@ -374,7 +374,7 @@ Así, tenemos que:
 \begin{enumerate}
 \item Si $\mu < 0 \implies \lim_{t\to\infty}|||e^{At}|||=0\implies x'=Ax$ es A.E.
 \item Si $\mu = 0 y dimE_j=m(\lambda)' \forall \lambda \in \sigma_0(A)\implies n=0 \implies |||e^{At}|||=1\implies|||e^{At}||| es estable pero no A.E.$
-\item Si $\mu = 0 y \exists \lambda in \sigma_0(A) \nu(A)>1 \implies n\geq 1\implies |||e^{At}|||\geq 1+t$ no es acotada en $[0,+\infty)$
+\item Si $\mu = 0 y \exists \lambda \in \sigma_0(A) \nu(A)>1 \implies n\geq 1\implies |||e^{At}|||\geq 1+t$ no es acotada en $[0,+\infty)$
 \item Si $\mu > 0 \qquad |||e^{At}|||\geq e^{\mu t}\to \infty$ no es acotada en $[0,+\infty)$
 \end{enumerate}
 \end{proof}
@@ -541,9 +541,9 @@ x_2 \\
         }
     \end{tikzpicture}
     \caption{Una fuente.}
-    
+
   \end{figure}
-  
+
 $x(t)=c_1 e^{\lambda_1t}v_1+c_2 e^{\lambda_2t}v_2 \qquad v_j \in E_{\lambda_j}$
 \item Sonreales, negativos y distintos: $\lambda_2 < \lambda_1 \Leftrightarrow \left\{ \begin{array}{ll}\Delta > 0 \\ \tr(A) < 0 \\ \det(A)>0\end{array}\right.$
 Inserte dibujito de sumidero (flechas hacia dentro)
@@ -569,10 +569,93 @@ Inserte dibujito rectas paralelas y perpendiculares a una única recta generada 
 \item Si $A$ no es diagonalizable.
 \end{enumerate}
 \end{enumerate}
-\item Caso 2: Cuando los valores propios de la matriz A no son reales : $\sigma(A)={\lambda_1,\lambda_2}\subset \mathbb{C} - \R, \quad \lambda_1=a+bi$ y $ \lambda_2=a-bi$.
+\item Caso 2: Cuando los valores propios de la matriz A no son reales : $\sigma(A)={\lambda_1,\lambda_2}\subset \mathbb{C} - \R, \; \lambda_1=a+bi$ y $ \lambda_2=a-bi$.
 \begin{enumerate}
-\item Tiene parte real positiva $\left\{\begin{array}{ll} \Delta < 0 \\ traza(A) > 0 \end{array}\right.$ Fuente en espiral
-\item Tiene parte real negativa $\left\{\begin{array}{ll} \Delta < 0 \\ traza(A) < 0 \end{array}\right.$ Sumidero en espiral
+\item Tiene parte real positiva $\left\{\begin{array}{ll} \Delta < 0 \\ tr(A) > 0 \end{array}\right.$ Fuente en espiral
+\item Tiene parte real negativa $\left\{\begin{array}{ll} \Delta < 0 \\ tr(A) < 0 \end{array}\right.$ Sumidero en espiral
 \item Tiene parte real igual a 0. Diagrama de Poincaré
 \end{enumerate}
 \end{itemize}
+
+%% MARTES 25
+
+\begin{ejemplo}
+\end{ejemplo}
+
+PREGUNTA EXAMEN PARCIAL: Representar el diagrama de fases
+
+\begin{nota}
+Recuerda que si $\lambda \in \sigma(A)$ y $v \in E_\lambda$ tal que $A\cdot v =\lambda\cdot v$ entonces $\varphi(t)=k\cdot e^{\lambda t}\cdot v \quad \forall t \in \R$ es solución de $x'=Ax$ y si $\varphi(t)\in E_\lambda \quad t \in \R \implies E_\lambda$ es invariante. De manera análoga $E_{\lambda_1}\oplus E_{\lambda_2} \quad k_1 e^{\lambda_1 t}v_1+k_2 e^{\lambda_2 t}v_2$ es también invariante.\\
+El subespacio propio generalizado sería $\lambda\in\sigma(A) \quad \hat{E}_\lambda = \cup_{k\in\N}Ker(A-\lambda I)^k=Ker(A-\lambda I)^{\nu(\lambda) }$ con $\dim \hat{E}_\lambda=m(\lambda)$.\\
+Se puede hacer la siguiente descomposición de $\R^d$.\\
+Se definen:
+$$E=\bigoplus_{ \begin{array}{c}\lambda\in\sigma(A)\\ Re(\lambda)<0\end{array}}\hat{E}_\lambda$$
+$$\mho=\bigoplus_{\begin{array}{c}\lambda\in\sigma(A) \\ Re(\lambda)>0\end{array}}\hat{E}_\lambda$$
+$$\mathcal{Z}=\bigoplus_{\begin{array}{c}\lambda\in\sigma_0(A)\end{array}}\hat{E}_\lambda$$
+\end{nota}
+
+
+entonces para $x'=Ax$:
+
+$$\R^d=E\oplus\mathcal{Z}\oplus\mho$$
+
+\begin{ejer}
+Estudia la estabilidad del sistema lineal:
+\[
+\left\{\begin{array}{ll}
+x'=-2tx \\
+y'=e^tx-2ty
+\end{array}\right.
+\]
+\end{ejer}
+\begin{ejer}
+Estudia la estabilidad del sistema lineal:
+\[
+\left\{\begin{array}{ll}
+x'=-2x+5y\\
+y'=-3x+4y
+\end{array}\right.
+\]
+Comenzamos calculando la traza y el determinante de la matriz $A=\begin{pmatrix}-2 & 5 \\ -3 & 4 \end{pmatrix}$. Tenemos entonces que:
+$$tr(A)=2=\lambda_1+\lambda_2=2 Re \lambda_1 >0$$
+$$det(A)=7=\lambda_1 \cdot \lambda_2$$
+$Re\lambda_1, Re\lambda_2>0$ luego si son reales será inestable y como $2 Re \lambda_1 >0$ entonces si son complejos también será inestable.
+\end{ejer}
+
+\begin{ejer}
+\[
+\left\{\begin{array}{ll}
+x'=-2x+y-z\\
+y'=2x-3y+z\\
+z'=4x-4y+2z
+\end{array}\right.
+\]
+
+Tras unos cálculos, tenemos que: $\sigma(A)={-2,-1,0}$ luego es estable pero no asintóticamente estable.
+\end{ejer}
+
+\begin{nota}
+ El polinomio característico de $A\in\M(\mathbb{C})$ es $-\lambda^3+tr(A)\lambda^2-tr(adj(A))\lambda+det(A)$.
+\end{nota}
+
+\begin{ejer}
+Estudia la estabilidad (FALTA)
+\end{ejer}
+
+\begin{ejer}
+Representa el diagrama de fases de la EDO lineal:
+\[
+\left\{\begin{array}{ll}
+x'=-x+3y\\
+y'=2x-4y
+\end{array}\right.
+\]
+Sus valores propios son:
+$$\lambda_1=\frac{1}{2}(-5-\sqrt{33})\approx -5.37$$
+$$\lambda_2=\frac{1}{2}(-5+\sqrt{33})\approx 0.37$$
+Y sus vectores propios serían:
+$$v_1=\begin{pmatrix}-0.68 \\ 1 \end{pmatrix} $$
+$$v_2=\begin{pmatrix}2.19 \\ 1 \end{pmatrix} $$
+
+%%\includegraphics{streamplotwolframalpha.gif}
+\end{ejer}
