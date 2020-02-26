@@ -1,5 +1,7 @@
 \section{Tema 1}
 
+\subsection{Ejercicios mandados}
+
 \begin{ejer}
   Definir la distribución de probabilidad, función de distribución y función característica de una variable aleatoria y expresar dichas funciones en términos de la función masa de probabilidad o la función de densidad, según que la variable sea de tipo discreto o continuo, respectivamente.
 \end{ejer}
@@ -7,28 +9,33 @@
 \begin{sol}
   La \emph{distribución de probabilidad} de una variable aleatoria es una función de probabilidad definida en el espacio de Borel:
   \begin{align*}
-    P_X : \B & \to \R \\
+    P_X : \B & \to [0, 1] \\
     B & \mapsto P_X(B) = P(X^{-1}(B)) = P[X \in B]
   \end{align*}
 
   La \emph{función de distribución} es la función de puntos definida como:
   \begin{align*}
-    F: \R & \to \R \\
+    F: \R & \to [0, 1] \\
     x & \mapsto  F_X(x) = P_X((-\infty, x]) = P[X \leq x]
   \end{align*}
 
-  La \emph{función característica} es la función definida como $\varphi_X(t) = E[e^{itX}], \; \; \forall t \in \R$.
+  La \emph{función característica} es la función definida como
+  \begin{align*}
+    \varphi_X: \R & \to \mathbb{C} \\
+    t & \mapsto \varphi_X(t) = E[e^{itX}]
+  \end{align*}
 
   \begin{itemize}
     \item Caso discreto:
-    \begin{multline*}
-      \forall x \in \R, \; F_X(x) = P_X[(-\infty, x]] = P_X[\{x_1, \ldots, x_n, \ldots \}] = P[X \in \{x_1,  \ldots, x_n, \ldots \}] = \\
-      = P[\bigcup \limits^\infty_{n = 1} (X = x_n)] = \sum \limits^\infty_{i = 1} P[X = x_i] = \sum \limits^\infty_{i = 1} f(x_i)
-    \end{multline*}
+    $$\forall B \in \B, \; P_X(B) = \sum \limits_{x \in B \cap E_X} P[X = x] = \sum \limits_{x \in B \cap E_X} f(x) $$
 
-    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \sum \limits^\infty_{i = 1} e^{itx_i}P[X = x_i] = \sum \limits^\infty_{i = 1} e^{itx_i} f(x_i)$$
+    $$\forall x \in \R, \; F_X(x) = P_X[(-\infty, x]] = \sum \limits_{x \in E_X, x \leq y} P[X = x] = \sum \limits_{x \in E_X, x \leq y} f(x)$$
+
+    $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \sum \limits_{x \in E_X} e^{itx}P[X = x] = \sum \limits_{x \in E_X} e^{itx} f(x)$$
 
     \item Caso continuo:
+    $$\forall B \in \B, \; P_X(B) = \int_\B f(x) dx$$
+
     $$\forall x \in \R, F_X(x) = P_X[(-\infty,x]] = P[X \in (-\infty, x]] = P[X \leq x] = \int^x_{-\infty} f(y)dy$$
 
     $$\forall t \in \R, \; \varphi_X(t) = E[e^{itX}] = \int_\R e^{itx} f(x) dx$$
@@ -96,10 +103,18 @@
   Ejemplos:
 
   \begin{itemize}
-    \item PDTD: Cantidad de material en el almacén en el día n-ésimo.
-    \item PCTD: Velocidad de un coche en el minuto n-ésimo.
-    \item PDTC: Nº de coches en el instante $t$.
-    \item PCTC: Posición de una particula en el instante $t$.
+    \item PDTD: Nº de productos fabricados al día $\equiv X_n$
+
+    $T \equiv \N$(días), $E = \N \cup \{0\}$(nº productos).
+    \item PCTD: Nota media por curso $\equiv X_n$
+
+    $T = \{1,2,3,4,5\}$(curso), $E = [0, 10]$(nota media).
+    \item PDTC: Nº de lanzamientos hechos en el instante $t \equiv X_t$
+
+    $T = \R^+_0$(tiempo), $E = \N \cap \{0\}$(lanzamientos).
+    \item PCTC: Temperatura en una ciudad en el instant $t \equiv X_t$
+
+    $T = \R^+_0$(tiempo), $E = \R^+_0$(Kelvin).
   \end{itemize}
 \end{sol}
 
@@ -131,21 +146,21 @@
 \end{ejer}
 
 \begin{sol}
-  Sean los espacios medibles $(\W_n, \A_n), \; \forall n \in \N$, definimos $$\C^\N = \{\prod \limits^\infty_{n = 1} A_n : A_n \in \A_n \}$$.
+  Tenemos que $$\C^\N = \{\prod \limits^\infty_{i = 1} A_i : n \in \N, \;A_i \in \B, \; A_{j} = \R, \; 1 \leq i \leq n, \; j > n\}$$.
 
   Veamos que $\C^\N$ es una semi-álgebra.
   \begin{nlist}
-    \item $\W, \emptyset \in \C^\N$.
+    \item $\R^\N \in \C^\N$.
 
-    Como $\emptyset, \W_i \in \A_n \; \forall n \in \N$ ($\A_n$ es $\sigma$-álgebra) $\implies \emptyset, \W \in \C^\N$.
+    Como $\R \in \B$ ($\B$ es $\sigma$-álgebra) $\implies \R^\N \in \C^\N$.
 
     \item $\forall A, B \in \C^\N \implies A \cap B \in \C^\N$.
 
-    Sean $A, B \in \C^\N$, $A \cap B = (\prod \limits^\infty_{n = 1} A_n) \cap (\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \cap B_n) \in \C^\N$, ya que $A_i, B_i \in \A_i \implies A_i \cap B_i \in \A_i$ (por ser $\A_i$ $\sigma$-álgebra).
+    Sean $A, B \in \C^\N$, $A \cap B = (\prod \limits^\infty_{n = 1} A_n) \cap (\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \cap B_n) \in \C^\N$, ya que $A_i, B_i \in \B \implies A_i \cap B_i \in \B$ (por ser $\B$ $\sigma$-álgebra).
 
     \item $\forall A, B \in \C^\N$, $\exists \{C_i\}^n_{i = 1} \subset \C^\N$ disjuntos dos a dos tal que $A \setminus B = \bigcup \limits^n_{i = 1} C_i$.
 
-    Sean $A, B \in \C^\N$, $A \setminus B = (\prod \limits^\infty_{n = 1} A_n) \setminus(\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \setminus B_n) = C \in \C^\N$, ya que $\emptyset \in \A_i$ y $A_i \setminus B_i = A_i \cap \overline{B_i} \in A_i$ ($\A_i$ es $\sigma$-álgebra).
+    Sean $A, B \in \C^\N$, $A \setminus B = (\prod \limits^\infty_{n = 1} A_n) \setminus(\prod \limits^\infty_{n = 1} B_n) = \prod \limits^\infty_{n = 1} (A_n \setminus B_n) = C \in \C^\N$, ya que $A_i \setminus B_i = A_i \cap \overline{B_i} \in \B$ ($\B$ es $\sigma$-álgebra).
   \end{nlist}
 \end{sol}
 
@@ -165,4 +180,74 @@
 
 
   $\boxed \impliedby$
+\end{sol}
+
+
+\subsection{Ejercicios en clase}
+
+\begin{ejer}
+  Sea el espacio de probabilidad $([-1, 1], \B_{[-1, 1]}, U[-1, 1])$ y
+
+  $$\forall n \in \N, \; X_n(\w) =
+    \begin{cases}
+      -1, \w \in [-1, \frac{-1}{n}] \\
+      0, \w \in [\frac{-1}{n}, \frac{1}{n}] \\
+      1, \w \in [\frac{1}{n}, 1]
+    \end{cases}$$
+
+  Y las trayectorias:
+
+  \begin{equation*}
+    \w \in [-1, 0) \rightarrow \chi(\w) =
+  \begin{cases}
+        0, & n \leq \frac{-1}{\w} \\
+        -1, & n \geq \frac{-1}{w}
+  \end{cases}
+  \end{equation*}
+
+  \begin{equation*}
+    \w \in [0, 1] \rightarrow \chi(\w) =
+  \begin{cases}
+        0, & n < \frac{1}{\w} \\
+        1, & n \geq \frac{1}{w}
+  \end{cases}
+  \end{equation*}
+\end{ejer}
+
+\begin{sol}
+  Los pasos a seguir son:
+  \begin{nlist}
+    \item Demostrar que tenemos un PETD (p.e)
+    \item Obtener las trayectorias
+    \item Obtener la distribución basandonos en la trayectoria
+    \item Ver que la distribución queda dada por distribuciones finito dimensionales
+  \end{nlist}
+
+  Veamos la distribución:
+
+  $P[X_1 = 0] = P((-1, 1)) = 1$
+
+  $P[X_1 = 0, X_2 = 0] = P[(-1, 1) \cap (\frac{-1}{2}, \frac{1}{2})] = P[(\frac{-1}{2}, \frac{1}{2})] = \frac{1}{2}$
+
+  $P[X_1 = 0, X_2 = 1] = P[(-1, 1) \cap [-1, \frac{-1}{2})] = P[(-1, \frac{-1}{2}]] = \frac{1}{4}$
+
+  $P[X_1 = 0, X_2 = 2] = P[(-1, 1) \cap (\frac{1}{2}, 1]] = P[[\frac{1}{2}, 1]] = \frac{1}{4}$
+
+
+  $P[X_1 = 0, \ldots, X_n = 0] = P[(-1, 1) \cap (\frac{-1}{2}, \frac{1}{2}) \cap \ldots \cap (\frac{-1}{n}, \frac{1}{n})] = P((\frac{-1}{n}, \frac{1}{n})) = \frac{1}{n}$.
+
+  $P[X_1 = 0, \ldots, X_{k-1} = 0, X_k = -1, \ldots, X_n = -1] = P((-1, 1) \cap \ldots \cap (\frac{-1}{k -1}, \frac{1}{k-1}) \cap [-1, \frac{-1}{k}] \cap \ldots \cap [-1, \frac{-1}{n}]) = P((\frac{-1}{k-1}, \frac{1}{k-1}) \cap [-1, \frac{-1}{k}]) = \frac{1}{2k(k-1)}$
+
+  $P[X_1 = 0, \ldots, X_{k-1} = 0, X_k = 1, \ldots, X_n = 1] = P((-1, 1) \cap \ldots \cap [\frac{1}{k-1}, 1]  \cap \ldots \cap [\frac{1}{n}, 1]) = P((\frac{-1}{k-1}, \frac{1}{k-1}) \cap [\frac{1}{k}, 1]) = \frac{1}{2k(k-1)}$
+
+  Comprobamos que es una probabilidad (viendo que suma):
+
+  $$\frac{1}{n} + \sum \limits^n_{k = 2} \frac{1}{2k(k-1)} + \sum \limits^n_{k = 2} \frac{1}{2k(k-1)} = \frac{1}{n} + \sum \limits^n_{k = 2} \frac{1}{k(k-1)}, \; k = 2, 3, \ldots, n$$
+
+  Por ejemplo por $n = 3, 4$:
+
+  $n = 3 \rightarrow \frac{1}{3} + \frac{1}{2} + \frac{1}{6} = 1$.
+
+  $n = 4 \rightarrow \frac{1}{4} + \frac{1}{2} + \frac{1}{6} + \frac{1}{12} = 1$.
+
 \end{sol}
