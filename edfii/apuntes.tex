@@ -109,22 +109,37 @@ La matriz cuya existencia garantiza \ref{lin:cormfp} (la \emph{matriz fundamenta
 
 \[ \Phi(t)=e^{A(t-t_0)} \qquad \forall t \in (\alpha,\beta) \]
 
-Ahora nos preguntamos cómo se calcula la m.f.p. cuando la matriz $A$ es diagonalizable. En este caso, $\exists P, D \in \M_d(\C)$ tales que $det(P)\neq 0, \quad D=diag(\lambda_1,...\lambda_d)$ y $A=P\cdot D \cdot P^{-1}$. En cuyo caso, la matriz fundamental principal será:
-$$e^{At}=P\cdot e^{Dt}\cdot P^{-1}=P \cdot  \begin{pmatrix}e^{\lambda_1 t} & \cdots & 0 \\ \vdots & \ddots & \vdots \\0 & \cdots & e^{\lambda_d t}\end{pmatrix} \cdot P^{-1}$$
+Ahora nos preguntamos cómo se calcula la m.f.p. cuando la matriz $A$ es constante y diagonalizable (sobre $\mathbb{C}$). En este caso, existen $P, D \in \M_d(\mathbb{C})$ regulares y tales que $D=\diag(\lambda_1, \dots, \lambda_d)$ y $A=P D  P^{-1}$. En cuyo caso, la matriz fundamental principal será:
+
+\[
+  e^{At}=P\cdot e^{Dt}\cdot P^{-1}=P \cdot  \begin{pmatrix}e^{\lambda_1 t} & \cdots & 0 \\ \vdots & \ddots & \vdots \\0 & \cdots & e^{\lambda_d t}\end{pmatrix} \cdot P^{-1}.
+\]
+
+\begin{nota}
+  Recordando la definición de exponencial de una matriz $A$: $e^A = \sum_{k=0}^\infty \frac{1}{k!} A^k$, obtenemos que, para cada matriz regular $P$,
+
+  \[ e^{PAP^{-1}} =  \sum_{k=0}^\infty \frac{1}{k!} (PAP^{-1})^k = \sum_{k=0}^\infty \frac{1}{k!} PA^kP^{-1} = Pe^AP^{-1}. \]
+\end{nota}
 
 
-Cuando $A$ no sea diagonalizable tendremos que utilizar la forma canónica de Jordan. En este caso, $\exists P,J\in \M_d(\C)$ tales que $det(P) \neq 0 $ y $J$ diagonal por bloques:
-$$\begin{pmatrix}J_1 & \cdots & 0\\
+Cuando $A$ no sea diagonalizable tendremos que utilizar la forma canónica de Jordan. En este caso, existen $P,J\in \M_d(\mathbb{C})$ regulares, y con $J$ diagonal por bloques:
+
+\[
+  J = \begin{pmatrix}J_1 & \cdots & 0\\
  \vdots & \ddots & \vdots \\
- 0& \cdots & J_r \end{pmatrix}$$
- donde $orden(J_k)=1 \quad \forall =1,...,r \implies J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$ o si $orden(J_k)>1$,
- $$J_k=
+ 0& \cdots & J_r \end{pmatrix}
+\]
+
+ donde, si el orden de $J_k$ es 1, entonces $J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$, y en otro caso:
+ 
+ \[J_k=
  \begin{pmatrix}
  \lambda_k & 1  &\cdots & 0 \\
   0 & \lambda_k & \ddots & \vdots \\
   \vdots & \ddots & \ddots & 1 \\
   0 & \cdots & 0 & \lambda_k
-\end{pmatrix}$$
+ \end{pmatrix}.
+ \]
 
 %% FIXME : POR TERMINAR
 
