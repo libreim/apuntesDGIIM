@@ -127,21 +127,32 @@ Cuando $A$ no sea diagonalizable tendremos que utilizar la forma canónica de Jo
 \[
   J = \begin{pmatrix}J_1 & \cdots & 0\\
  \vdots & \ddots & \vdots \\
- 0& \cdots & J_r \end{pmatrix}
+ 0& \cdots & J_r \end{pmatrix},
+ \quad
+ e^J = \begin{pmatrix}e^{J_1} & \cdots & 0\\
+ \vdots & \ddots & \vdots \\
+ 0& \cdots & e^{J_r} \end{pmatrix}
 \]
 
- donde, si el orden de $J_k$ es 1, entonces $J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$, y en otro caso:
+ donde, si el orden de $J_k$ es 1, entonces $J_k=(\lambda_k)$ con $\lambda_k$ valor propio de $A$, y en otro caso, si lo llamamos $r$:
  
  \[J_k=
  \begin{pmatrix}
- \lambda_k & 1  &\cdots & 0 \\
-  0 & \lambda_k & \ddots & \vdots \\
-  \vdots & \ddots & \ddots & 1 \\
-  0 & \cdots & 0 & \lambda_k
+ \lambda_k & 1  & \cdots & 0 \\
+  0        & \lambda_k & \ddots & \vdots \\
+  \vdots   & \ddots & \ddots & 1 \\
+  0        & \cdots & 0 & \lambda_k
+ \end{pmatrix},
+ \quad
+ e^{J_k} = e^{\lambda_k t}\begin{pmatrix}
+ 1       & t & \cdots & t^r/r! \\
+  0      & 1 & \ddots & \vdots \\
+  \vdots & \ddots & \ddots & t \\
+  0      & \cdots & 0 & 1
  \end{pmatrix}.
  \]
 
-%% FIXME : POR TERMINAR
+%% FIXME: insertar (aquí o en la sección de ejercicios y referenciado aquí) ejemplos de cálculo de la matriz fundamental.
 
 \section{Estabilidad en el sentido de Lyapunov.}
 
