@@ -48,13 +48,13 @@ Aplicando el teorema al PVI
 \]
 
 para cada $j=1,\dots,d$, obtenemos soluciones $\varphi_j$. Sea $x_0\in \R^d$, y consideramos $\varphi = \sum_{j=1}^d \langle x_0,e_j \rangle\varphi_j$.
-Es inmediato comprobar que $\varphi$ es solución de \eqref{lin:PVI} con $b=0$. Por tanto, hemos probado:
+Es inmediato comprobar que $\varphi$ es solución de \ref{lin:PVI} con $b=0$. Por tanto, hemos probado:
 
 \begin{ncor}
-  Las soluciones de \eqref{lin:homogenea} son un espacio vectorial de dimensión $d$.
+  Las soluciones de \ref{lin:homogenea} son un espacio vectorial de dimensión $d$.
 \end{ncor}
 
-Ahora, consideremos $\varphi$ la solución de \eqref{lin:PVI}, para $x_0\in\R^d$ arbitrario, es decir, una solución cualquiera de \eqref{lin:completa}.
+Ahora, consideremos $\varphi$ la solución de \ref{lin:PVI}, para $x_0\in\R^d$ arbitrario, es decir, una solución cualquiera de \ref{lin:completa}.
 Sean $\varphi_c$ la solución de
 
 \begin{equation}
@@ -73,18 +73,18 @@ x(t_0)&=x_0 - x_0',
 \end{array}\right.
 \end{equation}
 
-y ahora es rutinario comprobar que $\varphi = \varphi_c + \varphi_h$. Además, para cualquier otra solución $\psi_{h}$ de \eqref{lin:homogenea}, $\varphi_c + \psi_h$
-es solución de \eqref{lin:completa}.
+y ahora es rutinario comprobar que $\varphi = \varphi_c + \varphi_h$. Además, para cualquier otra solución $\psi_{h}$ de \ref{lin:homogenea}, $\varphi_c + \psi_h$
+es solución de \ref{lin:completa}.
 En esta ocasión, hemos probado:
 
 \begin{ncor}
-  El conjunto $S_c$ de soluciones de \eqref{lin:completa}, dada cualquier solución $\varphi$ de la misma, es el espacio afín
+  El conjunto $S_c$ de soluciones de \ref{lin:completa}, dada cualquier solución $\varphi$ de la misma, es el espacio afín
 
   \[
     S_c = \varphi + S_h,
     \]
 
-    con $S_h$ el conjunto de soluciones de \eqref{lin:homogenea}.
+    con $S_h$ el conjunto de soluciones de \ref{lin:homogenea}.
 \end{ncor}
 
 Otra consecuencia inmediata de la aplicación del teorema a \ref{lin:PVIj} es la siguiente:
@@ -194,34 +194,34 @@ Negando la definición de estabilidad, obtenemos:
 \begin{nprop}
 Las siguientes afirmaciones son equivalentes:
 \begin{nlist}
-\item Todas las soluciones de \eqref{lin:completa} son atractores.
-\item Existe una solución de \eqref{lin:completa} que es un atractor.
-\item La solución trivial $y = 0$ de \eqref{lin:homogenea} es un atractor.
-\item Todas las soluciones de \eqref{lin:homogenea} convergen hacia el vector 0 cuando $t \to +\infty$.
-\item La matriz fundamental de \eqref{lin:homogenea} principal en $t_0$ converge hacia la matriz 0 cuando $t \to +\infty$.
+\item Todas las soluciones de \ref{lin:completa} son atractores.
+\item Existe una solución de \ref{lin:completa} que es un atractor.
+\item La solución trivial $y = 0$ de \ref{lin:homogenea} es un atractor.
+\item Todas las soluciones de \ref{lin:homogenea} convergen hacia el vector 0 cuando $t \to +\infty$.
+\item La matriz fundamental de \ref{lin:homogenea} principal en $t_0$ converge hacia la matriz 0 cuando $t \to +\infty$.
 \end{nlist}
 \end{nprop}
 
 \begin{ncor}
-Los atractores de la ecuación \eqref{lin:homogenea} son asintóticamente estables.
+Los atractores de la ecuación \ref{lin:homogenea} son asintóticamente estables.
 \end{ncor}
 
 \begin{ndef}
 \begin{itemize}
-\item Se dice que la ecuación \eqref{lin:completa} es estable si todas su soluciones son estables
-\item Se dice que la ecuación \eqref{lin:completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
+\item Se dice que la ecuación \ref{lin:completa} es estable si todas su soluciones son estables
+\item Se dice que la ecuación \ref{lin:completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
 \end{itemize}
 \end{ndef}
 
 No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos en el caso escalar donde sí podemos calcularla.
 
 \subsection{Estabilidad de ecuaciones lineales escalares}
-Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \eqref{completa} y sea $t_0\in(\alpha,+\infty)$.
-La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \eqref{completa} controlando una primitiva del coeficiente $a(t)$.
+Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \ref{lin:completa} y sea $t_0\in(\alpha,+\infty)$.
+La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \ref{lin:completa} controlando una primitiva del coeficiente $a(t)$.
 \begin{nprop}
 \begin{itemize}
-\item La ecuación de \ eqref{completa} es estable sii la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty]$.
-\item La ecuación \ eqref{completa} es a.e. sii la función $a(t)$ tiene una primitiva que converge hacia $-\infty$ [....]
+\item La ecuación de \ref{lin:completa} es estable sii la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty]$.
+\item La ecuación \ref{lin:completa} es a.e. sii la función $a(t)$ tiene una primitiva que converge hacia $-\infty$ [....]
 \end{itemize}
 \end{nprop}
 Ejemplo 1:
@@ -242,13 +242,13 @@ Inestable $-> \lambda > 0$
 \subsection{Estabilidad de ecuaciones lineales con coeficientes constantes}
 Sea $A \in \M_d(\R)$ una matriz cuadrada.  Usaremos la siguiente notación:
 NOTACIÓN:
-\begin{ndef}{Espectro de $A$}
+\begin{ndef}[Espectro de $A$]
 El espectro de $A$ es el conjunto de valores propios de $A$, tanto reales como complejos, $\sigma(A)={\lambda_1,...,\lambda_d}$, contados con su multiplicidad en nuestro caso.
 \end{ndef}
-\begin{ndef}{Multiplicidad del valor propio $\lambda_j$}
+\begin{ndef}[Multiplicidad del valor propio $\lambda_j$]
 $m(\lambda_j) \forall \lambda_j \in \sigma{A}$
 \end{ndef}
-\begin{ndef}{Dimensión de cada subespacio propio $E_{\lambda_j}$}
+\begin{ndef}[Dimensión de cada subespacio propio $E_{\lambda_j}$]
 $dim E_{\lambda_j} = dim ker(A-\lambda_{jI})= d-rango(A-\lambda I)$
 \end{ndef}
 \begin{ndef}
@@ -668,12 +668,82 @@ x'=-x+3y\\
 y'=2x-4y
 \end{array}\right.
 \]
+\end{ejer}
+
+\begin{sol}
 Sus valores propios son:
 $$\lambda_1=\frac{1}{2}(-5-\sqrt{33})\approx -5.37$$
 $$\lambda_2=\frac{1}{2}(-5+\sqrt{33})\approx 0.37$$
 Y sus vectores propios serían:
 $$v_1=\begin{pmatrix}-0.68 \\ 1 \end{pmatrix} $$
 $$v_2=\begin{pmatrix}2.19 \\ 1 \end{pmatrix} $$
+\end{sol}
 
 %%\includegraphics{streamplotwolframalpha.gif}
-\end{ejer}
+
+\section{Ecuaciones no lineales: generalidades sobre existencia y unicidad de la solución}
+
+\begin{ndef}[Solución de una EDO]
+Dados un conjunto abierto $D \subset \R \times \R^d$ y una función continua $f:D\to \R^d$, consideramos la ecuación diferencial ordinaria (EDO):
+\begin{equation}
+x'=f(t,x) \tag{EDO}\label{nolin:EDO}
+\end{equation}
+Una \emph{solución} de una \ref{nolin:EDO} en un intervalo abierto $\varphi:J\to\R^d$ que verifica:
+\begin{itemize}
+\item $\varphi$ continua y derivable en $J$
+\item $\varphi'(t)=f(t,\varphi(t)) \quad \forall t \in J$
+\end{itemize}
+\end{ndef}
+
+\begin{ndef}[Solución Prolongable]
+Una solución $\varphi : J \to \R^d$ es \emph{prolongable} si existe otra solución $\hat{\varphi} : \hat{J}\to\R^d$ tal que:
+\begin{itemize}
+\item $J\subsetneq \hat{J}$.
+\item $\hat{\varphi}_{|J} = \varphi$.
+\end{itemize}
+\end{ndef}
+
+\begin{ndef}[Solución Maximal]
+Una solución que no es prolongable recibe el nombre de \emph{maximal}.
+\end{ndef}
+
+Dadas dos soluciones de la \ref{nolin:EDO}:
+$$\varphi_1:J_1\to \R^d \qquad \varphi_2 : J_2 \to \R^d$$
+tales que existe $\tau \in J_1 \bigcap J_2 $ tal que $\varphi_1(\tau)=\varphi_2(\tau)$ y se verifica que la función definida a trozos:
+$$
+\phi : J_1 \bigcup J_2 \to \R^d, \quad \phi(t)=\left \{ \begin{array}{lcr}
+\varphi_1(t) & si & t\leq \tau \\
+\varphi_2(t) &  si & t\geq \tau
+\end{array}
+\right .
+$$
+también es solución de la \ref{nolin:EDO}.
+Dados un conjunto abierto $D \subset \R \times \R^d$, un punto $(t_0,x_0)\in D$ y una función continua $f:D\to\R^d$, consideramos el problema de valores iniciales:
+\begin{equation}
+\left\{\begin{array}{rl}
+x' &=f(t,x), \\
+x(t_0)&=x_0.
+\end{array}\right.
+\tag{PVI}\label{nolin:PVI}
+\end{equation}
+\begin{ndef}[Solución de un \ref{nolin:PVI}]
+Es una función $\varphi : J \to \R^d$ donde:
+\begin{enumerate}
+\item $J\subset \R$ es un intervalo abierto tal que $t_0\in J$,
+\item $\varphi(t_0)=x_0$,
+\item $\varphi$ es solución de la EDO $x'=f(t,x)$.
+\end{enumerate}
+\end{ndef}
+
+Existen varios conceptos de unicidad:
+
+\begin{ndef}[Unicidad Global]
+El \ref{nolin:EDO} verifica la propiedad de \emph{unicidad glopal} si para cualquier par de solución del \ref{nolin:PVI}
+$$\varphi_1:J\to\R^d \qquad \varphi_2\to\R^d$$
+se cumple $\forall t \in J_1 \bigcap J_2$ que $\phi_1(t)=\phi_2(t)$.
+\end{ndef}
+\begin{ndef}[Unicidad Local]
+
+\end{ndef}
+
+Faltan más conceptos de unicidad.

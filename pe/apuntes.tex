@@ -510,6 +510,8 @@ Necesitamos saber como es el espacio Borel $(\R^\N, \B^\N)$, para ello veamos un
 
 No hay ningún método constructivo para hallar la $\sigma$-álgebra minimal asociada a un conjunto, pero si tenemos una semi-álgebra solo nos falta comprobar que estén los complementarios, o lo que es lo mismo, que las uniones finitas disjuntas estén.
 
+%TODO mirar esto
+
 \begin{ndef}[$\sigma$-álgebra de rectángulos medibles]
   El \emph{$\sigma$-álgebra de rectángulos medibles} es el $\sigma$-álgebra minimal generada por los rectangulos medibles, es decir, $\sigma(\C^\N)$.
 \end{ndef}
@@ -538,3 +540,26 @@ No hay ningún método constructivo para hallar la $\sigma$-álgebra minimal aso
 \end{ndef}
 
 $P_\chi$ está bien definida porque $\chi^{-1}(B) \in \A$ al ser $\chi$ función medible (T. medibilidad), y es una probabilidad (se puede comprobar facilmente).
+
+Por los Teoremas de extensión podemos conocer la medida en el $\sigma$-álgebra conociendo solo la medida finita en el semi-álgebra, ya que se extiende de forma única a una medida sobre el álgebra minimal sobre la semi-álgebra (sumatoria de los conjuntos); que a su vez se extiende de forma única sobre la $\sigma$-álgebra minimal sobre la álgebra (que desconocemos).
+
+\begin{nth}[Teorema de consistencia de Kolmogorov]
+  Sea $\forall n \in \N$, $P_n$ medida en $(\R^n, \B^n)$ verificando la \emph{propiedad de consistencia}: $$ P_n(B_1 \times \ldots \times B_n) = P_{n+1}(B_1 \times \ldots \times B_n \times \R), \; \forall B_1, \ldots, B_n \in \B $$
+
+  Entonces:
+  $$\exists! \; \hat{P} : \B^\N \to [0,1], \;\hat{P}(\{(x_n)_{n \in \N} : \; x_1 \in B_1, \ldots, x_n \in B_n \}) = P_n(B_1 \times \ldots \times B_n)$$
+\end{nth}
+
+\begin{ncor}
+  La distribución de probabilidad $P_\chi$ está determinada por las distribuciones finito dimensionales, $\forall n \in \N$, $dist(X_1, \ldots, X_n) = P_n = P_{(X_1, \ldots, X_n)}(B_1 \times \ldots \times B_n) = P[X_1 \in B_1, \ldots, X_n \in B_n]$.
+\end{ncor}
+
+\begin{proof}
+  Veamos que $\{P_{(X_1, \ldots, X_n)}\}_{n \in \N}$ es sucesión de distribuciones de probabilidad que verifican la propiedad de consistencia.
+
+  Se verifica ya que $P_{(X_1, \ldots, X_n)}(B_1 \times \ldots \times B_n) = P[X_1 \in B_1, \ldots, X_n \in B_n] = P[X_1 \in B_1, \ldots, X_n \in B_n, X_{n+1} \in \R] = P_{(X_1, \ldots, X_n, X_{n+1})}(B_1 \times \ldots \times B_n \times R)$.
+
+  Ahora veamos que $P_\chi \equiv \hat{P}$.
+
+  Sea $S \in \C^\N$, $P_\chi(S) = P(\chi^{-1}(S)) = P\{w \in \W : \; \chi(\w) \in S\} = P \{\w \in \W : \; \{X_n(w)\}_{n \in \N} \in S\} = P[X_1 \in B, \ldots, X_n \in B_n] = P_{(X_1, \ldots, X_n)}(B_1 \times \ldots \times B_n) = \hat{P}(S)$
+\end{proof}
