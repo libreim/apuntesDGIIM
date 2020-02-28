@@ -217,6 +217,42 @@ Negando la definición de estabilidad, obtenemos:
 
 %% CLASE LUNES 17
 
+\subsection{Estabilidad en EDO lineales.}
+
+\begin{nprop}
+  Las siguientes afirmaciones son equivalentes:
+
+  \begin{nlist}
+  \item Todas las soluciones de \ref{lin:PVI} son estables, 
+  \item existe una solución de \ref{lin:PVI} que es estable,
+  \item la solución trivial ($\varphi = 0$) de \ref{lin:PVIH} es estable,
+  \item todas las soluciones de \ref{lin:PVIH} son acotadas en $[t_0, +\infty)$,
+  \item la m.f.p. en $t_0$ de \ref{lin:PVIH} es acotada en $[t_0, +\infty)$.
+  \end{nlist}
+\end{nprop}
+
+\begin{proof}\hfill\\
+  
+  \implication{i)}{ii)} Evidente.
+  
+  \implication{ii)}{iii)} Sean $\varepsilon > 0$, $\esol{x_0}$ solución estable de \ref{lin:PVI},
+  y $\delta$ el dado por la estabilidad de $\esol{x_0}$ para $\varepsilon$.
+    
+  Sea $\psi$ solución de \ref{lin:PVIH} con $\| \psi(t_0) \| < \delta$. Entonces, $y := \psi + \esol{x_0}$ es solución de \ref{lin:PVI} y
+  $\| y(t_0) - \esol{x_0}(t_0) \| = \| \psi(t_0) \| < \delta $, y por la estabilidad, $\| \psi(t) \| < \varepsilon$ para cada $t \in [t_0, +\infty)$.
+    
+  \implication{iii)}{iv)} Sea $\esol{x_0}$ una solución cualquiera de \ref{lin:PVIH}, y sea $\lambda \in \R^+$ tal que $\| \lambda x_0 \| < \delta$, con $\delta$
+    el dado por la estabilidad para $\varepsilon = 1$. Entonces, como $\lambda\esol{x_0}$ es solución, $\| \esol{x_0}(t) \| < 1 / \lambda$ para cada $t \in [t_0, +\infty)$.
+
+  \implication{iv)}{v)} Se deduce usando la norma del supremo tanto en $\R^d$ como en $\M_d(\R)$, y teniendo en cuenta que la m.f.p. está formada por soluciones por columnas. En general,
+  basta usar cualquier par de normas tales que la matricial sea compatible con la que se usa en $\R^d$, en el sentido de que $\| Av \| \le \| A \| \|v\|$.
+
+  \implication{v)}{i)} Sean $M$ la cota de la m.f.p., que notamos $\Phi$, y $\varepsilon > 0$.
+  Sea $\delta > 0$ tal que $\delta M < \varepsilon$, y $\esol{x_0}, \barsol{x_0}$ soluciones de \ref{lin:PVI} tales que $\| x_0 - \bar{x_0} \| < \delta$.
+  
+  Teniendo en cuenta que $\esol{x_0} = \barsol{x_0} + \Phi(x_0 - \bar{x_0})$, obtenemos $\| \esol{x_0}(t) - \barsol{x_0}(t) \| \le \| \Phi(t) \| \| x_0 - \bar{x_0} \| < M\delta < \varepsilon$.
+\end{proof}
+
 \begin{nprop}
 Las siguientes afirmaciones son equivalentes:
 \begin{nlist}
@@ -232,7 +268,7 @@ Las siguientes afirmaciones son equivalentes:
 Los atractores de la ecuación \ref{lin:homogenea} son asintóticamente estables.
 \end{ncor}
 
-\begin{ndef}
+\begin{ndef}\hfill\\
 \begin{itemize}
 \item Se dice que la ecuación \ref{lin:completa} es estable si todas su soluciones son estables
 \item Se dice que la ecuación \ref{lin:completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
@@ -241,7 +277,7 @@ Los atractores de la ecuación \ref{lin:homogenea} son asintóticamente estables
 
 No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos en el caso escalar donde sí podemos calcularla.
 
-\subsection{Estabilidad de ecuaciones lineales escalares}
+\subsubsection{Estabilidad de ecuaciones lineales escalares}
 Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \ref{lin:completa} y sea $t_0\in(\alpha,+\infty)$.
 La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \ref{lin:completa} controlando una primitiva del coeficiente $a(t)$.
 \begin{nprop}
@@ -265,7 +301,7 @@ Estable $-> \lambda <= 0$
 A.E. $-> \lambda < 0$
 Inestable $-> \lambda > 0$
 
-\subsection{Estabilidad de ecuaciones lineales con coeficientes constantes}
+\subsubsection{Estabilidad de ecuaciones lineales con coeficientes constantes.}
 Sea $A \in \M_d(\R)$ una matriz cuadrada.  Usaremos la siguiente notación:
 NOTACIÓN:
 \begin{ndef}[Espectro de $A$]

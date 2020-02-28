@@ -124,6 +124,10 @@
 \renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\itshape\sffamily#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
 \makeatother
 
+\newcommand{\implication}[2]{
+  \fbox{#1 $\implies$ #2}
+}
+
 %% ASIGNACIÓN DE LOS ESTILOS
 
 % Teoremas, proposiciones y corolarios
@@ -203,6 +207,11 @@
 % Matriz diagonal
 
 \DeclareMathOperator{\diag}{diag}
+
+% Solución dado un valor inicial
+
+\newcommand{\esol}[1]{\varphi_{#1}}
+\newcommand{\barsol}[1]{\varphi_{\bar{#1}}}
 
 % División por casos con llave a la derecha.
 \newenvironment{rcases}
