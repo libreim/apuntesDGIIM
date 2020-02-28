@@ -5,6 +5,7 @@ TARGET= apuntes.tar.gz
 
 # Output directory
 OUT = .out
+OUT_AUX = $(OUT)/.aux
 
 # Templates
 TEX_TEMPLATE=plantilla_tex.tex
@@ -43,12 +44,17 @@ $(OUT)/$(TARGET): $(PDFS)
 $(SUBJECTS): % : $(OUT)/%.pdf
 
 
-
 # LaTeX compilation
-latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT) -halt-on-error -file-line-error -jobname=$(1)
+latex_args = -pdf --shell-escape --interaction=nonstopmode -output-directory=$(OUT_AUX) -halt-on-error -file-line-error -jobname=$(1)
 $(OUT)/%.pdf: $(TEX_TEMPLATE) %/config.sty %/apuntes.tex %/ejercicios.tex
+	mkdir -p $(OUT_AUX)
 	mkdir -p $(OUT)
 	TEXINPUTS="$*:_assets:" latexmk $(call latex_args,$*) $(CONTARG) $(TEX_TEMPLATE)
+	mv $(OUT_AUX)/*.pdf $(OUT)
+
+ifneq ($(KEEP_AUX), true)
+	rm -rf $(OUT_AUX)
+endif
 
 
 # Markdown compilation
