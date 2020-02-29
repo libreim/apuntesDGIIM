@@ -277,12 +277,19 @@ No siempre podemos calcular la matriz fundamental, pero nos centraremos en casos
 
 \subsubsection{Estabilidad de ecuaciones lineales escalares.}
 
-Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \ref{lin:completa} y sea $t_0\in(\alpha,+\infty)$.
+Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar
+
+\[
+  x' = ax, \label{lin:escalar} \tag{l.e.}
+\]
+
+y sea $t_0\in(\alpha,+\infty)$.
+
 La matriz fundamental principal en $t_0$ en $\phi(t)=\exp\left(\int^t_{t_0} a(s)ds\right)$ y por tanto podemos caracterizar la estabilidad de \ref{lin:completa} controlando una primitiva del coeficiente $a(t)$.
 \begin{nprop}\hfill
 \begin{nlist}
-\item La ecuación \ref{lin:completa} es estable si, y solo si la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty)$.
-\item La ecuación \ref{lin:completa} es a.e. si, y solo si $\lim_{t\to +\infty} \int^t_{t_0} a(s) ds = -\infty$.
+\item La ecuación \ref{lin:escalar} es estable si, y solo si la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty)$.
+\item La ecuación \ref{lin:escalar} es a.e. si, y solo si $\lim_{t\to +\infty} \int^t_{t_0} a(s) ds = -\infty$.
 \end{nlist}
 \end{nprop}
 Ejemplo 1:
@@ -316,11 +323,21 @@ El \emph{espectro} de $A$ es el conjunto de valores propios de $A$, tanto reales
 Los valores propios de A cuya parte real es 0: \[ \sigma_0(A)=\{\lambda \in \sigma(A) : \mathrm{Re}(\lambda)=0\}. \]
 \end{notacion}
 
-Consideramos la EDO lineal homogénea y autónoma \ref{lin:homogenea}. El principal indicador para determinar la estabilidad de esta es el máximo de las partes reales de los valores propios de A:
+Fijamos $b: (\alpha, \beta) \to \R^d$ y consideramos las EDO lineales
+
+\[
+  x' = Ax \label{lin:cons:thom} \tag{l.c.h.},
+\]
+
+\[
+  x' = Ax + b \label{lin:cons:tcom} \tag{l.c.c.}
+\]
+
+El principal indicador para determinar la estabilidad de esta es el máximo de las partes reales de los valores propios de A:
 
 \[ \mu(A)=\max\{\mathrm{Re}(\lambda) : \lambda\in\sigma(A)\}. \]
 
-\begin{nth} Las siguientes afirmaciones son verdaderas:
+\begin{nth} Las siguientes afirmaciones son verdaderas: \label{lin:const:}
 \begin{nlist}
 \item si $\mu(A)<0$ entonces \ref{lin:completa} es a.e.,
 \item si $\mu(A)=0$ y $m(\lambda)=\dim(E_\lambda)$ para cada $ \lambda \in \sigma_0(A)$, entonces \ref{lin:completa} es estable (pero no a.e.),
@@ -329,41 +346,29 @@ Consideramos la EDO lineal homogénea y autónoma \ref{lin:homogenea}. El princi
 \end{nlist}
 \end{nth}
 
-A continuación, haremos una serie de ejemplos y proseguiremos con un poquito de teoría para poder producir la demostración de este enunciado.\\
+A continuación, veremos una serie de ejemplos y proseguiremos con la teoría necesaria para abordar la demostración de este enunciado.
+
+
 \begin{ejemplo}
-\begin{equation}
+\[
 \left\{\begin{array}{lcl}
 x_1'=2x_1+3x_2\\
 x_2'=5x_1-x_2
 \end{array}\right.
-\end{equation}
-
-\begin{equation}
-\begin{pmatrix}
-x_1 \\
-x_2
-\end{pmatrix}'=
-\begin{pmatrix}
--2 & 3\\
-5 & -1
-\end{pmatrix}
-\begin{pmatrix}
-x_1 \\
-x_2
-\end{pmatrix}
-\end{equation}
+\]
 
 
-EC. $\lambda^2-traza(A)\lambda + det(A=0)$
-$\lambda+3\lambda-13=0$
-$\sigma(A)={\frac{-3+\sqrt{61}}{2},\frac{-3-\sqrt{61}}{2}}={2.4...,5.4...}$
-$\mu(A)>2.4 >0$
-La ecuación es inestable.
+La ecuación característica de $A$ de orden 2 es $\lambda^2-\tr(A)\lambda + \det(A) = 0$. En este caso,
+$\lambda+3\lambda-13=0$. Por tanto,
+
+\[ \sigma(A)=\left\{ \frac{-3+\sqrt{61}}{2},\frac{-3-\sqrt{61}}{2} \right\} = \{2.4\dots, 5.4\dots \}, \]
+
+luego $\mu(A)>2.4 >0$, y por tanto la ecuación es inestable.
 \end{ejemplo}
 
 %% MARTES 18
 
-Recordemos la forma canónica de Jordan.
+Vistos los ejemplos, con el objetivo de demostrar el teorema, recordemos la forma canónica de Jordan.
 
 Sea $A \in \M_d(\R) \exists P, J \in \M_d(\C) tales que:$
 \begin{itemize}
