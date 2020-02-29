@@ -301,32 +301,32 @@ A.E. $-> \lambda < 0$
 Inestable $-> \lambda > 0$
 
 \subsubsection{Estabilidad de ecuaciones lineales con coeficientes constantes.}
-Sea $A \in \M_d(\R)$ una matriz cuadrada.  Usaremos la siguiente notación:
-NOTACIÓN:
-\begin{ndef}[Espectro de $A$]
-El espectro de $A$ es el conjunto de valores propios de $A$, tanto reales como complejos, $\sigma(A)={\lambda_1,...,\lambda_d}$, contados con su multiplicidad en nuestro caso.
-\end{ndef}
-\begin{ndef}[Multiplicidad del valor propio $\lambda_j$]
-$m(\lambda_j) \forall \lambda_j \in \sigma{A}$
-\end{ndef}
-\begin{ndef}[Dimensión de cada subespacio propio $E_{\lambda_j}$]
-$dim E_{\lambda_j} = dim ker(A-\lambda_{jI})= d-rango(A-\lambda I)$
-\end{ndef}
-\begin{ndef}
-Los valores propios de A cuya parte real es 0 son:
-$\sigma_0(A)={\lambda \in \sigma(A) \ Re(\lambda)=0}$
-\end{ndef}
+Sea $A \in \M_d(\R)$ una matriz cuadrada. Fijamos alguna notación:
 
-Consideramos la EDO lineal homogénea y autónoma $x'=Ax x\in\R^d$. El principal indicador para determinar la estabilidad de * es el máximo de las partes reales de los valores propios de A:
-$\mu(A)=\max{Re(\lambda : \lambda\in\sigma(A))}$
+\begin{notacion}[Multiplicidad (aritmética)]
+  Notamos por $m(\lambda)$ a la \emph{multiplicidad} del valor propio $\lambda$, es decir, la multiplicidad
+  de $\lambda$ como raíz del polinomio característico de $A$.
+\end{notacion}
 
-\begin{nth}
-\begin{enumerate}
-\item Si $\mu(A)<0$ entonces la EDO lineal * es A.E.
-\item Si $\mu(A)=0$ y $m(\lambda)=dimE_\lambda \forall \lambda \in \sigma_0(A)$, entonces la EDO lineal * es estable (pero no A.E.)
-\item Si $\mu(A)=0$ y $\exists \lambda \in \sigma_0(A)$ tal que $m(\lambda) != dim E_lambda$, entonces la EDO lineal * es inestable.
-\item Si $\mu(A)>0$ entonces la EDO lineal * es inestable.
-\end{enumerate}
+\begin{notacion}[Espectro]
+El \emph{espectro} de $A$ es el conjunto de valores propios de $A$, tanto reales como complejos, $\sigma(A)=\{\lambda_1,\dots,\lambda_d\}$, contados con su multiplicidad.
+\end{notacion}
+
+\begin{notacion}
+Los valores propios de A cuya parte real es 0: \[ \sigma_0(A)=\{\lambda \in \sigma(A) : \mathrm{Re}(\lambda)=0\}. \]
+\end{notacion}
+
+Consideramos la EDO lineal homogénea y autónoma \ref{lin:homogenea}. El principal indicador para determinar la estabilidad de esta es el máximo de las partes reales de los valores propios de A:
+
+\[ \mu(A)=\max\{\mathrm{Re}(\lambda) : \lambda\in\sigma(A)\}. \]
+
+\begin{nth} Las siguientes afirmaciones son verdaderas:
+\begin{nlist}
+\item si $\mu(A)<0$ entonces \ref{lin:completa} es a.e.,
+\item si $\mu(A)=0$ y $m(\lambda)=\dim(E_\lambda)$ para cada $ \lambda \in \sigma_0(A)$, entonces \ref{lin:completa} es estable (pero no a.e.),
+\item si $\mu(A)=0$ y existe $\lambda \in \sigma_0(A)$ tal que $m(\lambda) \ne \dim(E_\lambda)$, entonces \ref{lin:completa} es inestable,
+\item si $\mu(A)>0$ entonces \ref{lin:completa} es inestable.
+\end{nlist}
 \end{nth}
 
 A continuación, haremos una serie de ejemplos y proseguiremos con un poquito de teoría para poder producir la demostración de este enunciado.\\
