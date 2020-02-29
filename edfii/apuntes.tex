@@ -265,26 +265,25 @@ Las siguientes afirmaciones son equivalentes:
 \end{nprop}
 
 \begin{ncor}
-Los atractores de la ecuación \ref{lin:homogenea} son asintóticamente estables.
+Los atractores de la ecuación \ref{lin:completa} son asintóticamente estables.
 \end{ncor}
 
-\begin{ndef}\hfill\\
-\begin{itemize}
-\item Se dice que la ecuación \ref{lin:completa} es estable si todas su soluciones son estables
-\item Se dice que la ecuación \ref{lin:completa} es asintóticamente estable si todas sus soluciones son asintóticamente estables.
-\end{itemize}
+\begin{ndef}
+Se dice que la ecuación \ref{lin:completa} es \emph{estable} si todas su soluciones son estables,
+y, analógamente, la ecuación \ref{lin:completa} se dice \emph{asintóticamente estable} si todas sus soluciones son asintóticamente estables.
 \end{ndef}
 
-No siempre podemos calcular la matriz fundamental, pero nosotros nos centraremos en el caso escalar donde sí podemos calcularla.
+No siempre podemos calcular la matriz fundamental, pero nos centraremos en casos donde sí podemos calcularla.
 
-\subsubsection{Estabilidad de ecuaciones lineales escalares}
+\subsubsection{Estabilidad de ecuaciones lineales escalares.}
+
 Sean $a,b:(\alpha,+\infty)\to \R$ continuas. Se considera la ecuación diferencial lineal escalar \ref{lin:completa} y sea $t_0\in(\alpha,+\infty)$.
-La matriz fundamental principal en $t_0$ en $\phi(t)=exp(\int^t_{t_0} a(s)ds)$ y por tanto podemos caracterizar la estabilidad de \ref{lin:completa} controlando una primitiva del coeficiente $a(t)$.
-\begin{nprop}
-\begin{itemize}
-\item La ecuación de \ref{lin:completa} es estable sii la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty]$.
-\item La ecuación \ref{lin:completa} es a.e. sii la función $a(t)$ tiene una primitiva que converge hacia $-\infty$ [....]
-\end{itemize}
+La matriz fundamental principal en $t_0$ en $\phi(t)=\exp\left(\int^t_{t_0} a(s)ds\right)$ y por tanto podemos caracterizar la estabilidad de \ref{lin:completa} controlando una primitiva del coeficiente $a(t)$.
+\begin{nprop}\hfill
+\begin{nlist}
+\item La ecuación \ref{lin:completa} es estable si, y solo si la función $a(t)$ tiene una primitiva acotada superiormente en $[t_0,+\infty)$.
+\item La ecuación \ref{lin:completa} es a.e. si, y solo si $\lim_{t\to +\infty} \int^t_{t_0} a(s) ds = -\infty$.
+\end{nlist}
 \end{nprop}
 Ejemplo 1:
 - Inestable
