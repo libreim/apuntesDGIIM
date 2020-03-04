@@ -524,15 +524,15 @@ No hay ningún método constructivo para hallar la $\sigma$-álgebra minimal aso
   Sea $(\W, \A, P)$ espacio de probabilidad, $T \equiv \N$, consideramos $\forall n \in \N$, $X_n : (\W, \A) \to (\R, \B)$ y
   \begin{align*}
     \chi : \W & \to \R^\N \\
-    w & \mapsto \{X_n(w)\}_{n \in \N}
+    \w & \mapsto \{X_n(\w)\}_{n \in \N}
   \end{align*}
-  Entonces, $\chi : (\W, \A, P) \to (\R^\N, \B^\N)$ es función medible $\iff \forall n \in \N, X_n$ es función medible $\iff \{X_n\}_{n \in \N}$ es PETD.
+  Entonces, $\chi : (\W, \A, P) \to (\R^\N, \B^\N)$ es función medible $\iff \forall n \in \N, X_n$ es v.a $\iff \{X_n\}_{n \in \N}$ es PETD.
 \end{nth}
 
 \subsubsection{Distribución de un PETD}
 
 \begin{ndef}[Distribución de un PETD]
-  Sea $\{X_n\}_{n \in \N}$ un PETD definido sobre $(\W, \A, P)$, la \emph{distribución del PETD} es:
+  Sea $\{X_n\}_{n \in \N}$ un PETD definido sobre $(\W, \A, P)$, la \emph{distribución del PETD} es una probabilidad definida:
   \begin{align*}
     P_\chi : \B^\N & \to [0, 1] \\
     B & \mapsto P(\chi^{-1}(B)) = P[\chi \in B]
@@ -563,3 +563,72 @@ Por los Teoremas de extensión podemos conocer la medida en el $\sigma$-álgebra
 
   Sea $S \in \C^\N$, $P_\chi(S) = P(\chi^{-1}(S)) = P\{w \in \W : \; \chi(\w) \in S\} = P \{\w \in \W : \; \{X_n(w)\}_{n \in \N} \in S\} = P[X_1 \in B, \ldots, X_n \in B_n] = P_{(X_1, \ldots, X_n)}(B_1 \times \ldots \times B_n) = \hat{P}(S)$
 \end{proof}
+
+\subsection{Procesos estocásticos en tiempo continuo (PETC): Trayectorias y distribución}
+
+\subsubsection{Definición de PETC}
+
+\begin{ndef}[Proceso estocástico en tiempo continuo]
+  Sea espacio de probabilidad $(\W, \A, P)$ y un intervalo $T \subseteq R$, un \emph{proceso estocástico en tiempo continuo}(PETC) $\{X_t\}_{t \in T}$ es una familia de v.a definidas sobre $(\W, \A, P)$, es decir:
+
+  \begin{equation}
+    \forall t \in T, \; X_t : (\W, \A, P) \to (\R, \B) \text{ es medible }
+    \iff X^{-1}_t(B) \in \A, \; \forall B \in \B \iff X_t^{-1}((-\infty, x]) \in \A, \; \forall x \in \R
+  \end{equation}
+\end{ndef}
+
+\subsubsection{Trayectorias}
+
+\begin{ndef}[Trayectoria(PETC)]
+  Sea $\w \in \W$, definimos la \emph{trayectoria} de $\w$ como
+  \begin{align*}
+    X(\w) : T & \to \R \\
+    t & \mapsto X_t(\w)
+  \end{align*}
+\end{ndef}
+
+Tenemos que ver ahora si la función que asocia elementos a sus trayectorias es medible:
+\begin{align*}
+  \chi : \W & \to \R^T \\
+  \w & \mapsto \{ X_t(\w) \}_{t \in T}
+\end{align*}
+
+\begin{ndef}[$\R^T$]
+  Definimos \emph{$\R^T$} como $\R^T = \{ f : T \to \R \}$ (trayectorias).
+\end{ndef}
+
+Necesitamos un $\sigma$-álgebra con $\R^T$, veamos como la definimos:
+
+\begin{ndef}[Rectángulo en $\R^T$]
+  Definimos el \emph{rectángulo de lados $B_1, \ldots, B_n$} con $B_i \subseteq \R$ como $R = \{ f \in \R^T : f(t_1) \in B_1, \ldots, f(t_n) \in B_n, \; \forall t_1, \ldots, t_n \in T \}$.
+\end{ndef}
+
+
+\begin{ndef}[$\sigma$-álgebra Borel $\B^T$]
+  Definimos \emph{la $\sigma$-álgebra Borel $\B^T$} como el $\sigma$-álgebra minimal sobre el álgebra de rectángulo medibles, es decir, $\B^T = \sigma(\text{Álg. de rect. medibles}) = \sigma(\C^T)$.
+\end{ndef}
+
+\begin{ndef}[Teorema de medibilidad(PETC)]
+  Sea un espacio de probabilidad $(\W, \A, P)$, un intervalo $T \subseteq \R$, $\forall t \in T$, las funciones $X_t : \W \to \R$, y la función
+  \begin{align*}
+    \chi : \W & \to \R^T \\
+    \w & \mapsto \{X_t(\w)\}_{t \in T}
+  \end{align*}.
+  Entonces $\chi : (\W, \A, P) \to (\R^T, \B^T)$ es medible $\iff \forall t \in T, \; X_t : (\W, \A, P) \to (\R, \B)$ es v.a $\iff \{X_t\}_{t \in T}$ es un PETC.
+\end{ndef}
+
+\subsubsection{Distribución de un PETC}
+
+\begin{ndef}[Distribución de un PETD]
+  La \emph{distribución de un PETD} $\{X_t\}_{t \in T}$ definido sobre el espacio de probabilidad $(\W, \A, P)$ es una probabilidad definida como:
+  \begin{align*}
+    P_\chi : \B^T & \to [0, 1] \\
+    B & \mapsto P_\chi(B) = P(\chi^{-1}(B)) = P[\chi \in \B]
+  \end{align*}
+\end{ndef}
+
+Está bien definida por ser $\chi$ medible, y es una probabilidad (comprobable fácilmente).
+
+
+% TODO: demostrar que $\C^T$ es semiálgebra
+% TODO: demostrar Teoremas de medibilidad
