@@ -629,6 +629,85 @@ Necesitamos un $\sigma$-álgebra con $\R^T$, veamos como la definimos:
 
 Está bien definida por ser $\chi$ medible, y es una probabilidad (comprobable fácilmente).
 
-
 % TODO: demostrar que $\C^T$ es semiálgebra
 % TODO: demostrar Teoremas de medibilidad
+
+\subsubsection{Equivalencia de procesos}
+
+Sea $(\W, \A, P)$ el espacio de probabilidad, espacio paramétrico $T \subseteq \R$ y $\{X_t\}_{t \in T}$, $\{Y_t\}_{t \in T}$ dos PETC con distribuciones $P_\chi$ y $P_y$ respectivamente.
+
+\begin{ndef}[Equivalencia en sentido amplio de procesos]
+  Dos PETC $\{X_t\}_{t \in T}$ y $\{Y_t\}_{t \in T}$ son \emph{equivalentes en sentido amplio} si y solo si tienen la misma distribución, es decir, $P_\chi \equiv P_y$ o lo que es lo mismo:
+
+  $$P_\chi(B) = P_y(B), \; \forall B \in \B^T$$
+\end{ndef}
+
+Para esta definición no es necesario que los dos procesos estén definidos en el mismo espacio de probabilidad.
+
+\begin{nprop}[Caracterización de equivalencia]
+    Dos PETC $\{X_t\}_{t \in T}$ y $\{Y_t\}_{t \in T}$ son \emph{equivalentes en sentido amplio} si y solo si sus distribuciones finito-dimensional son iguales, es decir:
+
+    \begin{multline*}
+      P[X_{t_1} \in B_1, \ldots, X_{t_n} \in B_n] = P[Y_{t_1} \in B_1, \ldots, Y_{t_n} \in B_n], \\
+      \; \forall n \in \N, \; \forall t_1, \ldots, t_n \in T, \; \forall B_1, \ldots, B_n \in \B
+    \end{multline*}
+\end{nprop}
+
+\begin{ndef}[Equivalencia de procesos]
+  Dos PETC $\{X_t\}_{t \in T}$ y $\{Y_t\}_{t \in T}$ son \emph{equivalente} si y solo si todas sus v.a son iguales casi seguramente, es decir: $$P[X_t = Y_t] = 1, \; \forall t \in T$$
+\end{ndef}
+
+
+\begin{ndef}[Indistinguibilidad de procesos]
+  Dos PETC $\{X_t\}_{t \in T}$ y $\{Y_t\}_{t \in T}$ son \emph{indistinguibles} si y solo si
+
+  $$[X_t - Y_t] \in \A, \; P[X_t = Y_t, t \in T] = 1$$
+\end{ndef}
+
+\begin{nprop}
+  Sean las siguientes definiciones:
+  \begin{nlist}
+    \item Equivalentes en sentido amplio
+    \item Equivalentes
+    \item Indistinguibles
+  \end{nlist}
+
+  Entonces $3 \Rightarrow 2 \Rightarrow 1$, pero $1 \nRightarrow 2 \nRightarrow 3$.
+\end{nprop}
+
+\begin{proof}
+
+$\boxed{3 \Rightarrow 2}$
+
+$1 = P[X_t = Y_t, \; t \in T] \leq P[X_t = Y_t] \leq 1 \implies P[X_t = Y_t] = 1, \forall t \in T$.
+
+
+
+$\boxed{2 \Rightarrow 1}$
+
+
+Denotamos $A_j = [X_{t_j} = Y_{t_j}]$, tenemos que
+
+\begin{multline*}
+  1 \geq P[X_{t_1} = Y_{t_1}, \ldots, X_{t_n} = Y_{t_n}] = P[\bigcap \limits^n_{j = 1} A_j] = 1 - P(\bigcup \limits^n_{j = 1} \overline{A_j}) \geq 1 - \sum \limits^n_{j = 1} P(\overline{A_j}) = 1
+\end{multline*}
+
+Luego tenemos que $P[X_t = Y_t] = 1 \implies P[X_{t_1} = Y_{t_1}, \ldots, X_{t_n} = Y_{t_n}] = 1$.
+
+$P[X_{t_1} \in B_1, \ldots, X_{t_n} \in B_n] = P$
+
+
+$\boxed{2 \nRightarrow 3}$
+
+Sea el espacio de probabilidad $([0, 1], \B_{[0,1]}, P \equiv \text{Lebesgue})$, con $T = [0,1]$, consideramos las v.a $\forall t \in T, \forall \w \in \W$, $X_t(\w) = 0$ y $Y_t(\w) = \begin{cases} 0, \; \w \neq t \\ 1, \; \w = t \end{cases}$
+
+Entonces $P[X_t \neq Y_t] = P\{ \w \in \W : \; X_t(\w) \neq Y_t(\w)\} = P\{w = t\} = 0$, por lo que los PETC son equivalentes, pero $P\{\w \in \W : \; X_t(w) = Y_t(w), \; t \in T\} = P(\emptyset) = 0$, luego no son indistinguibles.
+
+$\boxed{1 \nRightarrow 2}$
+
+$P[X_t = Y_t] = P[X_t = 0, Y_t = 0] + P[X_t = 1, Y_t = 1] = P[X_t = 0]P[X_t = 0] + P[X_t = 1]P[Y_t = 1] = \frac{1}{2} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{2}$, luego no son equivalentes.
+\end{proof}
+
+\begin{nota}
+  Para PETD se define exactamente igual y todo es igual, excepto para la indistinguibilidad que el conjunto pertenezca a la $\sigma$-álgebra ya se cumple por ser un conjunto numerable.
+\end{nota}
