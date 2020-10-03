@@ -1,0 +1,580 @@
+\section{Introducción}
+
+En esta sección, definimos el concepto de \emph{variedad diferenciable}. Para
+ello, comenzamos definiendo el de \emph{superficie diferenciable} que ha podido
+verse en otras asignaturas, para después generalizarlo.
+\begin{ndef}[Superficie diferenciable]
+  Una \emph{superficie de $\R^{3}$} es un subconjunto $S\subset \R^{3}$ tal que,
+  para cada $p\in S$, existen $U\subseteq \R^{2}, V\subset \R^{3}$ abiertos, con
+  $p\in V$, y existe $X: U\to \R^{3}$ diferenciable, de manera que:
+  \begin{nlist}
+  \item
+    $X(U) = V\cap S$,
+  \item
+    $X: U\to V\cap S$ es un homeomorfismo, y
+  \item
+    para cada $q\in U$, $\d X_{q}: \R^{2} \to \R^{3}$ es inyectiva.
+  \end{nlist}
+\end{ndef}
+\begin{nota}
+  Si eliminamos el requisito de que $X$ sea diferenciable, la definición es la
+  de \emph{superficie topológica}.
+\end{nota}
+Cuando trabajamos con la diferencial $\d f$ de una aplicación diferenciable $f:
+O\subseteq \R^{n} \to \R^{m}$, solemos representarla matricialmente respecto de
+las bases canónicas de los espacios euclídeos, y escribimos:
+\[
+  \d f_{p} = \left(\frac{\partial f_{i}}{\partial x_{j}}\right)_{ij}(p)
+.\]
+Esta definición depende de la elección de las bases canónicas. Por ello, no se
+puede generalizar directamente al caso en que intervengan espacios que no posean
+una.
+
+Para subsanar este defecto, damos la siguiente definición.
+\begin{ndef}
+  Sea $\alpha: (-\epsilon,\epsilon) \to O\subseteq \R^{n}$ diferenciable, con
+  $\alpha(0) = p$, $\alpha'(0) = v$. Entonces, la diferencial de $f$ evaluada en
+  $v$ es
+  \[
+    \d f_{p}(v) := \restr{\frac{\d}{\d t}}{t=0} (f\circ \alpha)(t)
+  .\]
+\end{ndef}
+De la aplicación de la regla de la cadena resulta que la diferencial no depende
+de la elección de $\alpha$, y que esta definición es equivalente a la
+representación matricial.
+
+Ahora, generalizamos la definición de superficie diferenciable para definir una
+subvariedad de dimensión arbitraria $n$, todavía dentro de un espacio euclídeo.
+\begin{ndef}
+  Una subvariedad $n$-dimensional de $\R^{N}$ ($n<N$) es un subconjunto
+  $M\subset \R^{N}$ tal que, para cada $p\in M$, existen
+  $U\subseteq \R^{n}, V\subseteq \R^{N}$ abiertos, con $p\in V$, y existe
+  $X: U\to \R^{N}$ diferenciable, de manera que:
+  \begin{nlist}
+  \item
+    $X(U) = V\cap M$,
+  \item
+    $X: U\to V\cap M$ es un homeomorfismo, y
+  \item
+    para cada $q\in U$, $\d X_{q}: \R^{n} \to \R^{N}$ es inyectiva.
+  \end{nlist}
+\end{ndef}
+
+Veamos algunos ejemplos de subvariedades de dimensión superior.
+\begin{ejemplo}[Grafos]
+  Sea $F: O\subseteq\R^{n}\to \R^{N-n}$ ($n<N$) diferenciable. Entonces, el
+  grafo de $F$ viene dado por
+  \[
+    \operatorname{Gr}(F) := \left\{ (x,F(x)) : x\in O \right\} \subseteq \R^{N}
+  .\]
+$\operatorname{Gr}(F)$ es una subvariedad $n$-dimensional de $\R^{N}$: tomando en
+la definición $U=O, V=\R^{N}$ para cada $p\in \operatorname{Gr}(F)$, y $X: U\to
+\R^{N}$ dada por $X(x) = (x, F(x))$.
+
+La primera condición se cumple claramente: $X(U) = \operatorname{Gr}(F)$.  Para
+la segunda, basta observar que la proyección de las $n$ primeras componentes
+restringida $\operatorname{Gr}(F)$ es la inversa de $X$. Para la tercera, la
+diferencial de $X$ viene dada por
+\[ %% TODO: mejorar esto.
+  \d X_{q} = \left(
+    \begin{array}{c}
+      \begin{array}{c|c}
+      I_{n} &  0_{n\times (N-n)}
+      \end{array}
+\\[2pt]\hline
+      \frac{\partial F_{i}}{\partial x_{j}}
+    \end{array}
+     \right) 
+,\]
+lo que define un monomorfismo.   
+
+En este ejemplo, obtenemos que $\operatorname{Gr}(F)$ es homeomorfa a un
+abierto. Por tanto, una subvariedad compacta jamás aparecerá como un grafo.
+\end{ejemplo}
+
+El concepto de \emph{valor regular}, y el siguiente teorema, cuya demostración
+diferimos, nos permiten dar algunos ejemplos de subvariedades de espacios
+euclídeos.
+\begin{ndef}[Valor regular]
+  Sea $f: O\subseteq\R^{N} \to \R^{m}$ diferenciable, con $m\le N$. Dado
+  $a\in\R^{m}$, diremos que es un \emph{valor regular de $f$} si, para cada
+  $p\in f^{-1}(a)$, $\d f_{p}$ es sobreyectiva.
+\end{ndef}
+\begin{nth} \label{thm:valores-regulares}
+  Sean $f: \R^{N}\to \R^{N-n}$, $a\in\R^{N}$ un valor regular de $f$. Si
+$f^{-1}(a) \ne \emptyset$, entonces $M=f^{-1}(a)$ es una subvariedad
+$n$-dimensional de $\R^{N}$.
+\end{nth}
+Vamos a construir algunas subvariedades como preimágenes de valores regulares, y
+probaremos que lo son apoyándonos en este teorema.
+
+\begin{ejemplo}[Esfera de centro $p$, radio $r>0$]
+  La esfera $n$-dimensional de centro $p$ y radio $r>0$,
+  \[
+    \mathbb{S}^{n}(r,p) = \left\{ x\in\R^{n+1} : \|x-p\|_{2}^{2} = r^{2} \right\}
+  ,\] es una subvariedad de codimensión 1.
+
+    Definimos
+      \begin{alignat*}{2}
+      f: \R^{n+1} & \to  \R \\
+          x & \mapsto  \|x-p\|^{2} = \langle x-p,x-p \rangle.
+      \end{alignat*}
+
+    Tomamos $x\in\mathbb{S}^{n}(r,p)$, $v\in\R^{n}$, y $\alpha:
+    (-\epsilon,\epsilon)\to\R^{n+1}$, con $\alpha(0)=x$, $\alpha'(0) = v$.
+    Entonces,
+      \begin{align*}
+      \d f_{x}(v) &= \restr{\frac{\d}{\d t}}{t=0} \langle \alpha(t) -
+                    p,\alpha(t) - p \rangle \\
+                  &= 2\langle \alpha'(0), \alpha(0) - p \rangle \\
+        &= 2\langle v, x-p \rangle,
+      \end{align*}
+  sobreyectiva.
+\end{ejemplo}
+\begin{ejemplo}[Toros $n$-dimensionales]
+  El toro $n$-dimensional,
+  \[
+    \mathbb{T}^{n} = \left\{ (x_{1},y_{1},\dots,x_{n},y_{n})\in\R^{2n} :
+      \begin{array}{lll}
+        x_{1}^{2}+y_{1}^{2}& = & r_{1}^{2} \\
+                           & \vdots & \\
+        x_{n}^{2} + y_{n}^{2} & = & r_{n}^{2}
+      \end{array}
+\right\} = \prod_{i=1}^{n} \mathbb{S}^{1}(r_{i})
+  ,\]
+es también una subvariedad $n$-dimensional, de $\R^{2n}$ en este caso.
+
+Definimos
+\begin{alignat*}{2}
+f: \R^{2n} & \to  \R^{n} \\
+    (x_{1},y_{1},\dots,x_{n},y_{n}) & \mapsto (x_{1}^{2} + y_{1}^{2}, \dots, x_{n}^{2} + y_{n}^{2}),
+\end{alignat*}
+y así $\mathbb{T}^{n} = f^{-1}(r_{1}^{2}, \dots, r_{n}^{2}) \ne \emptyset$.
+
+Ahora, tomamos $x\in f^{-1}(r_{1}^{2}, \dots, r_{n}^{2})$, y consideramos $\d
+f_{x}: \R^{2n}\to\R^{n}$. Tomamos $v = (w_{1}, z_{1}, \dots, w_{n},
+z_{n})\in\R^{2n}$, $\alpha(t) = (\beta_{1}(t), \gamma_{1}(t), \dots,
+\beta_{n}(t), \gamma_{n}(t))$ con $\alpha(0) = x, \alpha'(0) = v$. Tenemos
+\begin{align*}
+  \restr{\frac{\d}{\d t}}{t = 0} (f\circ \alpha)(t) = & \\
+    = & \restr{\frac{\d}{\d t}}{t = 0}
+        (\beta_{1}^{2}(t) +
+        \gamma_{1}^{2}(t),
+        \dots, \beta_{n}^{2}(t)
+        + \gamma_{n}^{2}(t))\\
+    = & 2(x_{1}w_{1} + y_{1}z_{1}, \dots, x_{n}w_{n}+y_{n}z_{n}),
+\end{align*}
+trivialmente inyectiva.
+
+\begin{nota}
+  A la hora de calcular la diferencial en ejercicios, una buena práctica es
+  comprobar que sea, efectivamente, lineal.
+\end{nota}
+\end{ejemplo}
+
+\begin{proof}[Demostración del teorema \ref{thm:valores-regulares}]
+  Sea $x_{0}\in f^{-1}(a)$. Suponemos $\d f_{x_{0}}: \R^{N}\to \R^{N-n}$
+sobreyectiva. Viene representada por
+  \[
+    \d f_{x_{0}} = \left(
+      \begin{array}{c|c}
+        \displaystyle\frac{\partial f_{i}}{\partial x_{j}} & \displaystyle\frac{\partial f_{i}}{\partial x_{k}}
+      \end{array}
+\right)_{\substack{i=1,\dots,N-n \\ j=1,\dots,n \\ k=n+1,\dots,N}}(x_{0})
+  \]
+El teorema de Rouché-Frobenius nos asegura que $\d f_{x_{0}}$ posee un menor de
+orden $(N-n)\times (N-n)$ con determinante no nulo. Supongamos, sin pérdida de
+generalidad, que este es
+\[
+  \begin{pmatrix}
+    \displaystyle \frac{\partial f_{i}}{\partial x_{k}}
+  \end{pmatrix}_{\substack{i=1,\dots,N-n \\ k=n+1,\dots,N}}(x_{0})
+.\]
+Ahora, definimos
+\begin{alignat*}{2}
+    G: O \subseteq \R^{N} & \to \R^{N} \\
+    x & \mapsto  (x_{1}, \dots, x_{n}, f_{1}(x), \dots, f_{N-n}(x)),
+\end{alignat*}
+y la diferencial de $G$ viene dada por
+\[
+  \d G = \left(
+    \begin{array}{c|c}
+      I_{n} & 0_{n\times N-n} \\ \hline
+      \frac{\partial f_{i}}{\partial x_{j}} & \frac{\partial f_{i}}{\partial x_{k}}
+    \end{array}
+\right)
+,\]
+luego $\det(\d G(x_{0})) = \det(I_{n})\det\left(\frac{\partial f_{i}}{\partial
+x_{k}}\right) \ne 0$. Aplicamos el teorema de la función inversa a $G$, y
+obtenemos $V\subseteq O$ abierto, con $x_{0}\in V$, de manera que $G: V \to W :=
+G(V)$ es un difeomorfismo.
+
+Ahora,
+\[
+  G(f^{-1}(a)) = \left\{ (x_{1}, \dots, x_{n}, a) : x\in f^{-1}(a) \right\}
+,\]
+luego
+\[
+  G: V\cap f^{-1}(a)\to \hat{W} = W\cap G(f^{-1}(a)) = \left\{ x\in W : (x_{n+1}, \dots, x_{N}) = a \right\}
+.\]
+$V\cap f^{-1}(a)$ es abierto en $f^{-1}(a)$, luego $\hat{W} = G(V\cap
+f^{-1}(a))$ es abierto en $G(f^{-1}(a)) = \left\{ (x,a) : x\in f^{-1}(a)
+\right\} = f^{-1}(a)\times \{a\}$.
+
+Definiendo $\pi: G(f^{-1}(a)) \to \R^{n}$ como la proyección sobre las $n$
+primeras coordenadas, observamos que $\pi$ es una aplicación abierta, al ser una
+proyección de un espacio topológico producto a una de sus componentes. Por
+tanto, $U := \pi(\hat{W})$ es abierto, y
+\begin{alignat*}{2}
+    X: U \subseteq \R^{n} & \to \R^{N} \\
+    x & \mapsto G(x,a)
+\end{alignat*}
+es la parametrización buscada. En efecto,
+\[
+  \d X_{q} = \underbrace{\d G_{-}}_{\text{isomorfismo}}\circ \underbrace{\d(x\mapsto (x,a))}_{\text{inyectiva}}
+.\]
+\end{proof}
+
+Continuamos con algunos ejemplos más de subvariedades de espacios euclídeos que
+se obtienen mediante este teorema. Los siguientes ejemplos aparecerán como
+grupos de Lie de matrices. Para abordarlos, introducimos la notación
+  \[
+    \gl(n,\R) := \mathscr{M}_{n}(\R)
+  \]
+  para el espacio vectorial de matrices de orden $n$.
+\begin{ejemplo}[Grupo ortogonal]
+  Vamos a ver que
+  \[
+    O(n) := \left\{ A\in\gl(n,\R) : AA^{T} = I \right\}
+  \]
+  es una subvariedad de $\gl(n,\R)$. Las matrices simétricas
+  \[
+    \Sim(n,\R) := \left\{ A\in\gl(n,\R) : A = A^{T} \right\}
+  \]
+  son un subespacio de dimensión $\frac{n^{2}+n}{2}$ de $\gl(n,\R)$.
+  Definimos
+\begin{alignat*}{2}
+    f: \gl(n,\R) & \to \Sim(n,\R) \\
+    A & \mapsto AA^{T}
+\end{alignat*}
+y veamos que $I$ es un valor regular de $f$:
+\[
+  \d f_{A}(B) = AB^{T} + BA^{T}
+,\]
+sobreyectiva, tomando $B = \frac{CA}{2}$ para obtener $\d f_{A}(B) = C$. Por
+tanto, $O(n)$ es una subvariedad de dimensión $\frac{n(n-1)}{2}$ de $\gl(n,\R)$.
+\end{ejemplo}
+
+\begin{ejemplo}[Grupo especial lineal]
+  El grupo especial lineal
+  \[
+    \Sl(n,\R) = \left\{ A\in \gl(n,\R) : \det(A) = 1 \right\}
+  \]
+  es una hipersuperficie (subvariedad de codimensión 1) de $\gl(n,\R)$. Para
+  probarlo, vamos a ver que $1$ es un valor regular del determinante.
+
+  Sea $A\in\det^{-1}(1)$, y consideramos la curva $A(t) = (1+t)A$ --la curva
+  \emph{que pasa a velocidad $A$ por $A$ en el cero}--, para obtener
+  \begin{align*}
+    \d (\det)_{A}(A) &= \restr{\frac{\d}{\d t}}{t = 0} \det((1+t)A)\\
+                   &= \restr{\frac{\d}{\d t}}{t = 0}(1+t)^{n}\det(A)\\
+    &= n\det(A) \ne 0.
+  \end{align*}
+\end{ejemplo}
+
+\section{Definición de variedad diferenciable}
+
+En esta sección, vamos a construir la definición de variedad diferenciable a
+partir de aproximaciones a ella. Veremos los problemas que presenta cada
+aproximación, hasta dar con la definición correcta.
+
+El principal objetivo de esta definición será liberarnos del espacio euclídeo
+ambiente, para poder estudiar variedades definidas en espacios más generales.
+
+\subsection{Primera aproximación}
+
+Empezamos con el concepto de variedad topológica, y ya podemos hablar de
+diferenciabilidad de aplicaciones que nacen en una subvariedad de $\R^{N}$.
+\begin{ndef}[Variedad topológica]
+  Sea $M^{n}$ un espacio topológico Haussdorf, tal que para cada $p\in M$, existen
+  $U\subseteq \R^{n}, V\subseteq M$ abiertos, y $X: U\to V$ tales que
+  \begin{nlist}
+  \item
+    $X: U \to V$ es un homeomorfismo.
+  \end{nlist}
+\end{ndef}
+
+Esta definición presenta cierta estructura diferenciable, es decir, podemos
+hablar de funciones diferenciables.
+\begin{ndef}
+  Sea $f: M^{n} \to \R$, con $M^{n}$ una subvariedad $n$-dimensional de
+$\R^{N}$. Diremos que $f$ es diferenciable si, para cada $p\in M^{n}$, existe
+una parametrización $X: U\to M^{n}$ tal que $f\circ X: U\to \R$ es
+diferenciable.
+\end{ndef}
+Se puede probar que, con esta definición, la diferenciabilidad no depende de la
+parametrización escogida.
+
+Esta definición dota a las variedades de estructura topológica, pero no
+diferenciable, en el sentido de que no se exige diferenciabilidad a las
+parametrizaciones.
+
+Además, solo tenemos garantía de que la diferenciabilidad es invariante ante
+cambios de parametrizaciones para subvariedades de $\R^{N}$, como ilustra el
+siguiente ejemplo. Esto nos impide extender la definición anterior a variedades
+topológicas arbitrarias.
+\begin{ejemplo}
+  Tomamos la variedad topológica $\R$ con la parametrización
+\[
+    X(t) =
+  \begin{cases}
+    t & t < 0,\\
+    2t & t \ge 0.
+  \end{cases}
+\]
+La aplicación $X^{-1}$ es diferenciable, en el sentido de la definición
+anterior, con la parametrización $X$, pero no con la identidad.
+\end{ejemplo}
+
+\subsection{Segunda aproximación}
+
+Para intentar capturar la invarianza de la diferenciabilidad por cambios de
+parametrizaciones, podemos añadir la siguiente propiedad a la definición anterior:
+\begin{nlist}
+\setcounter{enumi}{1}
+\item
+  para cada par de parametrizaciones $X: U \to M, \tilde{X}: \tilde{U}\to M$,
+  con $X(U)\cap \tilde{X}(\tilde{U}) = W \ne \emptyset$, la aplicación
+  $\tilde{X}^{-1}\circ X: X^{-1}(W)\to \tilde{X}^{-1}(W)$ es de clase $\mathscr{C}^{\infty}$,
+\end{nlist}
+y considerar cada variedad con un conjunto de parametrizaciones fijo.
+
+Sin embargo, esto tampoco es suficiente.
+\begin{ejemplo}
+  Consideramos de nuevo la variedad $\R$, con las parametrizaciones $X =
+\mathrm{id}$ y $\hat{X}(t) = t^{3}$. Estas dos parametrizaciones verifican la
+propiedad añadida --cada una por separado--, y sin embargo, $f(t) = t^{1/3}$
+sería diferenciable con $\hat{X}$ y no con $X$.
+\end{ejemplo}
+
+\subsection{Definición}
+
+Pasamos ya a presentar la definición correcta de variedad diferenciable.
+\begin{ndef}[Estructura diferenciable]
+  Sea $M$ un espacio topológico Haussdorf. Una \emph{estructura diferenciable
+    $n$-dimensional sobre $M$} es una familia $\mathscr{D} = \left\{ (V_{i},
+    \phi_{i}) \right\}_{i\in I}$ que verifica
+  \begin{nlist}
+  \item
+    $\left\{ V_{i} \right\}_{i\in I}$ es un recubrimiento abierto de $M$,
+  \item para cada $i\in I$, $\phi_{i}: V_{i} \to \phi_{i}(V_{i})$,
+  $\phi_{i}(V_{i})$ es abierto, y $\phi_{i}$ es un homeomorfismo,
+  \item
+    Si $V_{i}\cap V_{j}\ne\emptyset$, entonces $\phi_{j}\circ \phi_{i}^{-1}:
+    \phi_{i}(V_{i}\cap V_{j})\to \phi_{j}(V_{i}\cap V_{j})$ es un difeomorfismo, y
+  \item
+    $\mathscr{D}$ es maximal entre las familias que verifican las propiedades anteriores.
+  \end{nlist}
+\end{ndef}
+
+\begin{ndef}[Variedad diferenciable]
+  Una \emph{variedad diferenciable $n$-dimensional} es un par $(M, \mathscr{D})$.
+\end{ndef}
+\begin{notacion}
+  En ocasiones, usaremos la notación $M^{n}$ para una variedad diferenciable
+  $n$-dimensional $M$, para indicar su dimensión.
+\end{notacion}
+
+Llamamos a cada par $(V,\phi)$ de una estructura diferenciable \emph{carta} o
+\emph{entorno coordenado}.
+
+\begin{ndef}[Atlas]
+  Llamamos \emph{atlas} a una estructura que verifique las tres primeras
+  propiedades de la definición de estructura diferenciable.
+\end{ndef}
+
+Algunas propiedades de las cartas de una estructura diferenciable:
+\begin{nprop}
+  Sea $(V,\phi)\in\mathscr{D}$. Se verifican
+  \begin{nlist}
+  \item
+    si $W\subseteq V$ abierto, entonces
+$(W,\restr{\phi}{W})\in\mathscr{D}$,
+  \item 
+    si $\psi: \phi(V) \subseteq \R^{n} \to O\subseteq\R^{N}$ es un
+    difeomorfismo, entonces $(V, \psi\circ\phi)\in\mathscr{D}$.
+  \end{nlist}
+\end{nprop}
+
+Y algunas propiedades de los atlas:
+\begin{nprop}
+  Sea $\mathscr{A}$ un atlas $n$-dimensional en $M$. Se verifican
+  \begin{nlist}
+  \item
+    existe una única estructura diferenciable $\mathscr{D}(\mathscr{A})$ con
+    $\mathscr{A}\subseteq \mathscr{D}(\mathscr{A})$,
+  \item
+    si $\mathscr{A}'$ es otro atlas $n$-dimensional con $\psi\circ\phi^{-1}$
+    para cada par $\psi\in \mathscr{A}'$, $\phi\in \mathscr{A}$, entonces
+    $\mathscr{D}(\mathscr{A}) = \mathscr{D}(\mathscr{A}')$.
+  \end{nlist}
+\end{nprop}
+
+\subsection{Ejemplos de variedades diferenciables}
+
+\begin{ejemplo}[$\R^{n}$]
+  $\mathscr{A} = \left\{ (\R^{n}, \mathrm{id}) \right\}$ es un atlas de esta
+  variedad. La estructura diferenciable asociada contiene todos los
+  difeomorfismos entre abiertos de $\R^{n}$.
+\end{ejemplo}
+
+\begin{ejemplo}[Abierto de una variedad]
+  Sea $O\subseteq M^{n}$ abierto. Entonces, la restricción de la estructura
+  diferenciable
+  \[
+    \restr{\mathscr{D}}{O} = \left\{ (V\cap O, \restr{\phi}{V\cap O}) \right\}
+  \]
+  es una estructura diferenciable en $O$. El hecho de que $O$ sea abierto es
+  necesario para garantizar la tercera condición en la definición de estructura diferenciable.
+\end{ejemplo}
+
+\begin{ejemplo}[Subvariedades]
+  Cualquier subvariedad de $\R^{N}$ es una variedad diferenciable, considerando en
+  ella el atlas
+  \[
+    \mathscr{A} = \left\{ (V\cap M, \restr{X^{-1}}{V\cap M})\, | \, X: U\subseteq
+      \R^{n}\to V\subseteq\R^{N} \text{ parametrización} \right\}
+  .\]
+\end{ejemplo}
+
+\begin{ejemplo}[Variedad producto]
+  Sean $M_{1}^{n_{1}}, M_{2}^{n_{2}}$ variedades diferenciables. En $M_{1}\times
+  M_{2}$ consideramos, con su topología producto,
+  \[
+    \left\{ (V_{1}\times V_{2}, \phi_{1}\times\phi_{2}) : (V_{i}, \phi_{i})\in \mathscr{D}_{i} \right\}
+  ,\]
+que es un atlas.
+\end{ejemplo}
+
+\begin{ejemplo}[Cocientes]
+  Los cocientes de variedades \textbf{no} producen, en general,
+  variedades. Basta pensar en la relación de equivalencia por la que se obtiene
+  un cono a partir de un cilindro.
+\end{ejemplo}
+
+\begin{ejemplo}[Espacio proyectivo real]
+  El espacio proyectivo real es un cociente
+  \[
+    \mathbb{RP}^{n} = \frac{\R^{n+1}-\{0\}}{\mathrm{R}}
+  ,\]
+con $R$ la relación de equivalencia $x\mathrm{R}y \iff x=\lambda y, \lambda\ne
+0$. Este es un caso particular de cociente de una variedad que \textbf{sí} es
+una variedad. Para verlo, vamos a construir un atlas.
+
+Recordemos que la topología de un cociente $\frac{X}{\mathrm{R}}$ viene dada
+de la siguiente forma: $O\subseteq \frac{X}{\mathrm{R}}$ es abierto si
+$\pi^{-1}(O)$ es abierto en $X$.
+
+Ahora, sean los abiertos de $\R^{n+1}$
+\[
+  O_{i} = \left\{ x\in\R^{n+1} : x_{i} \ne 0 \right\}
+\]
+para $i=1,\dots,n+1$. Estos abiertos forman un recubrimiento de $\R^{n+1}$, y
+además tienen la siguiente propiedad: $x\in O_{i}$ implica que $\pi(x)\subseteq
+O_{i}$. Esta propiedad implica que $V_{i} := \pi(O_{i})$ son abiertos. Además,
+recubren a $\mathbb{RP}^{n}$. Para construir las cartas, vamos a contruir
+aplicaciones $\psi_{i}: O_{i}\to \R^{n}$, y vamos a usarlas para inducir
+aplicaciones $\phi_{i}$ que hagan conmutativo el diagrama
+\[
+  \begin{tikzcd}
+    O_{i} \arrow{r}{\psi_{i}} \arrow{d}{\pi_{i}} & \R^{n}\\
+    V_{i} \arrow[dashed]{ur}{\phi_{i}}
+  \end{tikzcd}
+\]
+Recordemos que $\psi_{i}$ induce una tal aplicación si $x\mathrm{R}y$ implica
+$\psi_{i}(x) = \psi_{i}(y)$, y que dicha aplicación será un homeomorfismo si
+$\psi_{i}$ es una identificación. Una condición suficiente para que $\psi_{i}$
+sea una identificación es que tenga una inversa continua a derecha. Pues bien,
+vamos a definir $\psi_{i}$ y ver que cumple estas propiedades.
+\begin{alignat*}{2}
+    \psi_{i}: O_{i} & \to \R^{n} \\
+    (x_{1},\dots,x_{n+1}) & \mapsto \frac{1}{x_{i}}(x_{1},\dots,x_{i-1},x_{i+1},\dots,x_{n+1}).
+\end{alignat*}
+  Es inmediato que respeta la relación de equivalencia $\mathrm{R}$ y que
+  $h_{i}(y_{1},\dots,y_{n}) = (y_{1},\dots,y_{i-1},1,y_{i+1},\dots,y_{n})$ es su
+  inversa a derecha. 
+\end{ejemplo}
+
+\section{Aplicaciones diferenciables entre variedades}
+
+Consideramos una aplicación $F: M^{m}\to N^{n}$ continua entre dos variedades
+diferenciables $M$ y $N$.
+\begin{ndef}
+  $F$ es \emph{diferenciable} si, para cada $p\in M$, existe $(V,\phi)$ carta de
+  $M$ con $p\in V$, y además existe $(W,\psi)$ carta de $N$ con $F(p)\in W$
+  tales que
+  \[
+    \psi\circ F\circ \phi^{-1}: \phi(F^{-1}(W)\cap V)\to \psi(W)
+  \]
+  es diferenciable.
+\end{ndef}
+De la definición se desprende el siguiente hecho: si $(\hat{V},\hat{\phi}),
+(\hat{W},\hat{\psi})$ son otras cartas, entonces
+\[
+  \hat{\psi}\circ F\circ\hat{\phi}^{-1} = \underbrace{\hat{\psi}\circ\psi^{-1}}_{\text{dif.}}\circ\underbrace{\psi\circ
+  F \circ \phi^{-1}}_{\text{dif.}}\circ \underbrace{\phi \circ \hat{\phi}^{-1}}_{\text{dif.}}
+,\]
+restringiendo las aplicaciones a un abierto más pequeño si fuera necesario. Es
+decir, se verifica la siguiente proposición.
+\begin{nprop}
+  $\psi\circ F\circ \phi^{-1}$ es diferenciable para cualesquiera cartas
+  $(V,\phi), p\in V$, $(W,\psi), F(p)\in W$, si y solo si existe un par de
+  cartas para el que sea diferenciable.
+\end{nprop}
+
+Podemos trasladar también el concepto de difeomorfismo.
+\begin{ndef}[Difeomorfismo]
+  $F$ es un difeomorfismo si tiene inversa $F^{-1}$ y ambas son diferenciables.
+\end{ndef}
+\begin{nota}
+  Esto implica $m=n$.
+\end{nota}
+
+\begin{ejemplo}
+  Consideramos en $\R$ dos atlas: $\mathscr{A} = \left\{ (\R,\mathrm{id})
+  \right\}$, y $\mathscr{A}' = \left\{ (\R,t\mapsto t^{1/3}) \right\}$. Además,
+  consideramos la aplicación
+\begin{alignat*}{2}
+    F: (\R,\mathscr{D}(\mathscr{A})) & \to (\R, \mathscr{D}(\mathscr{A}')) \\
+    t & \mapsto t^{3}.
+\end{alignat*}
+  Claramente, $(t^{1/3})\circ F\circ \mathrm{id}^{-1} = \mathrm{id}$ y
+  $\mathrm{id}\circ F^{-1}\circ (t^{1/3})^{-1} = \mathrm{id}$ son
+  diferenciables, luego $F$ es un difeomorfismo con estas estructuras
+  diferenciables, aunque no lo sea con la usual.
+\end{ejemplo}
+
+\begin{nprop}[Propiedades de las aplicaciones diferenciables]
+  \hfill
+  \begin{nlist}
+  \item
+    $F:M^{m}\to N^{n}$ constante es diferenciable,
+  \item
+    la aplicación identidad en un variedad es diferenciable,
+  \item
+    la composición de aplicaciones diferenciables es diferenciable,
+  \item
+    la composición de difeomorfismos es diferenciable,
+  \item
+    si $O\subseteq M$ es abierto, la inclusión en $M$ es diferenciable. Por
+    tanto, las restricciones a abiertos de aplicaciones diferenciables son
+    diferenciables,
+  \item \label{item:carta-difeo}
+    si $(V,\phi)$ es una carta de $M$, y $\phi: V\to \phi(V)$ es un difeomorfismo.
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  (vi): considerando en $\R^{n}$ la estructura diferenciable
+  usual, $(\phi(V),\mathrm{id})$ es una carta suya. $\mathrm{id}\circ
+  \phi\circ\phi^{-1}$ es diferenciable, y también lo es su inversa.
+\end{proof}
