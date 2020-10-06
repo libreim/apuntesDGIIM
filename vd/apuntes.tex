@@ -574,7 +574,80 @@ Podemos trasladar también el concepto de difeomorfismo.
   \end{nlist}
 \end{nprop}
 \begin{proof}
-  (vi): considerando en $\R^{n}$ la estructura diferenciable
+  \ref{item:carta-difeo}: considerando en $\R^{n}$ la estructura diferenciable
   usual, $(\phi(V),\mathrm{id})$ es una carta suya. $\mathrm{id}\circ
   \phi\circ\phi^{-1}$ es diferenciable, y también lo es su inversa.
+\end{proof}
+
+Algunas propiedades que serán útiles cuando tratemos con subvariedades del euclídeo.
+\begin{nprop}
+  Sean $M^{n}\subset\R^{N}$ una subvariedad, y $N^{n}$ una variedad
+  diferenciable. Entonces,
+  \begin{nlist}
+  \item \label{item:inc}
+    la inclusión $i: M\to\R^{N}$ es diferenciable,
+  \item \label{item:inc-2}
+    $F: N\to M$ es diferenciable si, y solo si, $i\circ F: N\to\R^{N}$ es
+    diferenciable,
+  \item \label{item:restr-dif}
+    si $O\subseteq\R^{N}$ es un abierto, con $M\subset O$, y $F: O\to N$ es
+    diferenciable, entonces $\restr{F}{M}$ es diferenciable.
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  \ref{item:inc}: tomando $p\in M$, $(V,\phi)$ una carta de $M$ con $p\in V$, y
+  llamando $X=\phi^{-1}$, el siguiente diagrama conmuta:
+\[
+  \begin{tikzcd}
+    V \arrow{r}{i} \arrow[shift left=1ex]{d}{\phi} & \R^{N} \arrow{d}{\mathrm{id}}\\
+    U:=\phi(V)\subseteq\R^{N} \arrow{r}{X} \arrow[shift left=1ex]{u}{X} & \R^{N}
+  \end{tikzcd}
+\]
+
+\ref{item:inc-2}: tomamos $p\in N$, $(W,\psi)$ una carta con $p\in W$; y
+$(V,\phi)$ una carta en $M$ con $F(p)\in V$. Llamamos $U := \phi(V)$,
+$X:=\phi^{-1}$.
+Tenemos el diagrama
+\[
+  \begin{tikzcd}
+    W \arrow{r}{F} \arrow{d}{\psi} & V \arrow[shift left=1ex]{d}{\phi} \arrow{r}{i} & \R^{N}\\
+    \R^{m} & U\subseteq\R^{n} \arrow[shift left=1ex]{u}{X}
+  \end{tikzcd}
+\]
+y tenemos que $i\circ F$ es diferenciable. Por tanto, dada una parametrización
+$G$ de $\R^{N}$, $G^{-1}\circ i\circ F\circ \psi^{-1}$ será diferenciable, y lo
+será $G^{-1}\circ i \circ X \circ \phi \circ F \circ \psi^{-1}$. Si elegimos $G$
+de forma que $G^{-1}\circ i \circ X = x\mapsto (x,0)$, obtendremos el resultado,
+pues tendremos
+\[
+  \underbrace{\underbrace{G^{-1}\circ i \circ X}_{x\mapsto (x,0)} \circ \phi
+    \circ F \circ \psi^{-1}}_{\text{diferenciable}}
+.\]
+
+Definamos
+\begin{alignat*}{2}
+  G: U\times\R^{N-n} & \to \R^{N} \
+ (x,y) & \mapsto X(x) + (0,y).
+\end{alignat*}
+Entonces, la diferencial de $G$ viene representada matricialmente de la forma
+\[
+  \d G =
+  \left(
+  \begin{array}{c|c}
+    \frac{\partial X_{i}}{\partial x_{j}} & 0\\ \hline
+    \frac{\partial X_{k}}{\partial x_{j}} & I
+  \end{array}\right)
+,\]
+y por ser $X$ una parametrización de una subvariedad, este determinante será no
+nulo, luego $G$ será un difeomorfismo en un entorno $\hat{U}\times B(0,\epsilon)$
+de $\phi(F(p))$, y por tanto conmutará
+\[
+  \begin{tikzcd}
+    W \arrow{r}{F} \arrow{d}{\psi} & V \arrow[shift left=1ex]{d}{\phi}
+    \arrow{r}{i} & \R^{N} \arrow{d}{G^{-1}}\\
+    \R^{m} & U\subseteq\R^{n} \arrow[shift left=1ex]{u}{X} \arrow{r}{x\mapsto (x,0)} & \R^{N}
+  \end{tikzcd}
+\]
+
+\ref{item:restr-dif}: $\restr{F}{M} = F\circ i$.
 \end{proof}

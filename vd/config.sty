@@ -51,9 +51,8 @@
 
 % Dibujos Tikz
 \usepackage{pgf,tikz}
-\usepackage{tikz-cd}
+\usetikzlibrary{arrows, calc,intersections,through,backgrounds,cd}
 \usepackage{mathrsfs}
-\usetikzlibrary{arrows, calc,intersections,through,backgrounds}
 
 \usepackage{todonotes}
 
@@ -227,7 +226,7 @@
 
 % Listas ordenadas con números romanos (i), (ii), etc.
 \newenvironment{nlist}
-{\begin{enumerate}
+{\begin{enumerate}[ref={(\roman{enumi})}]
     \renewcommand\labelenumi{\emph{(\roman{enumi})}}}
   {\end{enumerate}}
 
