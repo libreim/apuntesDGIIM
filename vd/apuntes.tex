@@ -462,10 +462,10 @@ que es un atlas.
   un cono a partir de un cilindro.
 \end{ejemplo}
 
-\begin{ejemplo}[Espacio proyectivo real]
+\begin{ejemplo}[Espacio proyectivo real] \label{ejemplo:proyectivo}
   El espacio proyectivo real es un cociente
   \[
-    \mathbb{RP}^{n} = \frac{\R^{n+1}-\{0\}}{\mathrm{R}}
+    \RP^{n} = \frac{\R^{n+1}-\{0\}}{\mathrm{R}}
   ,\]
 con $R$ la relación de equivalencia $x\mathrm{R}y \iff x=\lambda y, \lambda\ne
 0$. Este es un caso particular de cociente de una variedad que \textbf{sí} es
@@ -482,7 +482,7 @@ Ahora, sean los abiertos de $\R^{n+1}$
 para $i=1,\dots,n+1$. Estos abiertos forman un recubrimiento de $\R^{n+1}$, y
 además tienen la siguiente propiedad: $x\in O_{i}$ implica que $\pi(x)\subseteq
 O_{i}$. Esta propiedad implica que $V_{i} := \pi(O_{i})$ son abiertos. Además,
-recubren a $\mathbb{RP}^{n}$. Para construir las cartas, vamos a contruir
+recubren a $\RP^{n}$. Para construir las cartas, vamos a contruir
 aplicaciones $\psi_{i}: O_{i}\to \R^{n}$, y vamos a usarlas para inducir
 aplicaciones $\phi_{i}$ que hagan conmutativo el diagrama
 \[
@@ -554,7 +554,7 @@ Podemos trasladar también el concepto de difeomorfismo.
   diferenciables, aunque no lo sea con la usual.
 \end{ejemplo}
 
-\begin{nprop}[Propiedades de las aplicaciones diferenciables]
+\begin{nprop}[Propiedades de las aplicaciones diferenciables] \label{prop:propiedades-dif}
   \hfill
   \begin{nlist}
   \item
@@ -564,7 +564,10 @@ Podemos trasladar también el concepto de difeomorfismo.
   \item
     la composición de aplicaciones diferenciables es diferenciable,
   \item
-    la composición de difeomorfismos es diferenciable,
+    la composición de difeomorfismos es un difeomorfismo,
+  \item \label{item:prod-dif}
+    si $f,g: M\to\R$ son diferenciabeles, entonces $fg: M\to\R$ es
+    diferenciable,
   \item
     si $O\subseteq M$ es abierto, la inclusión en $M$ es diferenciable. Por
     tanto, las restricciones a abiertos de aplicaciones diferenciables son
@@ -574,6 +577,11 @@ Podemos trasladar también el concepto de difeomorfismo.
   \end{nlist}
 \end{nprop}
 \begin{proof}
+  \ref{item:prod-dif}: sea $(V,\phi)$ una carta alrededor de $p\in M$. Entonces,
+  $f\circ \phi^{-1}$ y $g\circ \phi^{-1}$, de $\R^{n}$ a $\R$, son
+  diferenciables. Solo queda observar que
+  $(fg)\circ\phi^{-1} = (f\circ\phi^{-1})(g\circ\phi^{-1})$.
+  
   \ref{item:carta-difeo}: considerando en $\R^{n}$ la estructura diferenciable
   usual, $(\phi(V),\mathrm{id})$ es una carta suya. $\mathrm{id}\circ
   \phi\circ\phi^{-1}$ es diferenciable, y también lo es su inversa.
@@ -650,4 +658,125 @@ de $\phi(F(p))$, y por tanto conmutará
 \]
 
 \ref{item:restr-dif}: $\restr{F}{M} = F\circ i$.
+\end{proof}
+
+\begin{ejer}
+  Sean $M_{1}^{n_{1}}$ y $M_{2}^{n_{2}}$ variedades diferenciables. Probar:
+  \begin{nlist}
+  \item
+    Las proyecciones $\pi_{1}$ y $\pi_{2}$ de la variedad producto $M_{1}\times
+    M_{2}$ son diferenciables,
+  \item
+    si $(p_{0},q_{0})\in M_{1}\times M_{2}$, entonces $i_{q_{0}}: M_{1}\to
+    M_{1}\times M_{2}$ dada por $i(p) = (p,q_{0})$ es diferenciable.
+  \end{nlist}
+\end{ejer}
+\begin{sol}
+  Ver en Ejercicios (\ref{ejer:1}).
+\end{sol}
+
+La siguiente proposición caracteriza la diferenciabilidad de aplicaciones que
+nacen en espacios proyectivos.
+\begin{nprop}
+  Sea $M^{m}$ una variedad diferenciable, $F: \RP^{n}\to M$, y $\pi:
+  \R^{n+1}-\{0\}\to\RP^{n}$ la proyección del proyectivo. Entonces, $F$ es
+  diferenciable si, y solo si, $F\circ \pi$ es diferenciable.
+\end{nprop}
+\begin{proof}
+  \textbf{Supuesto que $F$ es diferenciable:} se sigue de que $\pi$ es diferenciable,
+  veámoslo. Usamos la notación introducida en la demostración del ejemplo
+  \ref{ejemplo:proyectivo}. Sea $x\in\R^{n+1}-\{0\}$, entonces $x\in O_{i}$ para cierto
+  $i$. Queda el diagrama
+  \[
+    \begin{tikzcd}
+      O_{i} \arrow{r}{\pi} \arrow{d}{\mathrm{id}} & \pi(O_{i})
+      \arrow{d}{\phi_{i}}\\
+      O_{i} \arrow{r}{\phi_{i}\circ\pi} & \R^{n}
+    \end{tikzcd}
+  \]
+  con $\phi_{i}\circ\pi(x_{1},\dots,x_{n+1}) =
+  \frac{1}{x_{i}}(x_{1},\dots,x_{i-1},x_{i+1},\dots,x_{n+1})$, diferenciable.
+
+  \textbf{Supuesto que $F\circ\pi$ es diferenciable:} tomando de nuevo $x\in
+  O_{i}$, y $(W, \psi)$ una carta de $F(p)$, tenemos el siguiente diagrama:
+  \[
+    \begin{tikzcd}
+      O_{i} \arrow{r}{\pi} \arrow{d}{\mathrm{id}} & \pi(O_{i})
+      \arrow{d}{\phi_{i}} & W \arrow{d}{\psi}\\
+      O_{i} \arrow{r}{\phi_{i}\circ\pi} & \R^{n} & \psi(W)
+    \end{tikzcd}
+  \]
+  $F\circ\pi$ es diferenciable, luego lo es $\psi\circ F\circ\pi$. Observando
+  que $\phi_{1}^{-1}(y_{1},\dots,y_{n}) =
+  \pi(y_{1},\dots,y_{i-1},1,y_{i},\dots,y_{n})$, se obtiene que $\psi\circ F
+  \circ \phi_{i}^{-1}$ es diferenciable.
+\end{proof}
+
+\subsection{Funciones meseta}
+
+En esta sección, probamos la existencia de funciones diferenciables no triviales
+que nacen en variedades diferenciables arbitrarias y toman valores reales.
+
+\begin{lema} \label{lema:meseta}
+ Sean $r_{1}$, $r_{2}\in\R^{+}$ con $r_{2}> r_{1}$. Entonces, existe $h:
+ \R^{n}\to\R$ diferenciable con
+ \begin{nlist}
+ \item
+   $\restr{h}{B(0,r_{1})} = 1$,
+ \item
+   $\restr{h}{\R^{n}-B(0,r_{2})} = 0$, y
+ \item
+   $\restr{h}{B(0,r_{2})-B(0,r_{1})}\in[0,1]$.
+ \end{nlist}
+\end{lema}
+
+\begin{nprop}[Funciones meseta en una variedad]
+  Sean $M$ una variedad diferenciable, $p\in M$ y $O\subset M$ un
+  abierto. Entonces, existen $f: M\to \R$ diferenciable y $V_{p}$ un abierto
+  relativamente compacto --es decir, con adherencia compacta--, con
+  $p\in\bar{V_{p}}\subset O$, tales que:
+  \begin{nlist}
+  \item
+    $\restr{f}{V_{p}} = 1$, y
+  \item
+    $\sop(f) = \overline{\left\{ x\in M : f(x)\ne 0 \right\}}$ es
+      compacto y contenido en $O$.
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  Sea $(W,\phi)$ una carta de $M$ con $p\in W\subset O$ y $\phi(p) = 0$, lo cual
+  se puede suponer sin pérdida de generalidad, componiendo con una
+  traslación. Sean $r_{1},r_{2}\in\R^{+}$ con $r_{1}<r_{2}$,
+  $\bar{B}(0,r_{2})\subset\phi(O)$, y $h$ la función dada por el lema
+  \ref{lema:meseta}.
+
+  Definimos ya $f: M \to \R$: $\restr{f}{W} = h\circ \phi$, $\restr{f}{M-W} =
+  0$. Además, definimos $V_{p} := \phi^{-1}(B(0,r_{1}))$, y de esta forma:
+  \begin{itemize}
+  \item $\overline{V_{p}} = \phi^{-1}(\overline{B(0,r_{1})})$ es compacto y está
+    contenido en $W\subset O$,
+  \item $\sop(f) = \phi^{-1}(\sop(h))$ es compacto y
+    está contenido $W\subset O$.
+  \end{itemize}
+
+  Por tanto, $\restr{f}{W-\phi^{-1}(\overline{B(0,r_{2})})} = 0$, y $f$ es
+  diferenciable.
+\end{proof}
+
+\begin{ncor}
+  Sean $M$ una variedad diferenciable, $K\subseteq M$ un compacto, y $O\subseteq
+  M$ un abierto con $K\subseteq O$. Entonces, existe $f:M\to\R$ diferenciable,
+  con $\restr{f}{K} = 1$, $\sop(f)\subseteq O$.
+\end{ncor}
+\begin{proof}
+  Para cada $p\in K$, sean $f_{p}$ y $V_{p}$ los dados por el teorema anterior
+  para $p$ y $O$. Entonces, $\left\{ V_{p} \right\}_{p\in K}$ es un
+  recubrimiento por abiertos de $K$. Extraigamos un subrecubrimiento finito
+  $\left\{ V_{p_{i}} \right\}_{i=1,\dots,r}$. Definiendo
+  \[
+    f = 1 - \prod_{i=1}^{r}(1-f_{p_{i}})
+  \]
+  se obtiene la función deseada. El producto de aplicaciones diferenciables es
+  diferenciable (proposición \ref{prop:propiedades-dif}). El soporte de $f$ es
+  compacto: es la intersección de los soportes de las $f_{p_{i}}$.
 \end{proof}

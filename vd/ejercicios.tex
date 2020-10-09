@@ -1,0 +1,39 @@
+\section{Aplicaciones diferenciables entre variedades}
+
+\begin{ejer} \label{ejer:1}
+  Sean $M_{1}^{n_{1}}$ y $M_{2}^{n_{2}}$ variedades diferenciables. Probar:
+  \begin{nlist}
+  \item \label{ejer-item:proy}
+    Las proyecciones $\pi_{1}$ y $\pi_{2}$ de la variedad producto $M_{1}\times
+    M_{2}$ son diferenciables,
+  \item \label{ejer-item:incl}
+    si $(p_{0},q_{0})\in M_{1}\times M_{2}$, entonces $i_{q_{0}}: M_{1}\to
+    M_{1}\times M_{2}$ dada por $i(p) = (p,q_{0})$ es diferenciable.
+  \end{nlist}
+\end{ejer}
+\begin{sol}
+  \ref{ejer-item:proy}: Tomando $(x,y)\in M_{1}\times M_{2}$, y $(V_{1}\times V_{2},
+  \phi_{1}\times\phi_{2})$ una carta en $(x,y)$, el siguiente diagrama ilustra
+  la situación:
+  \[
+    \begin{tikzcd}
+      V_{1}\times V_{2} \arrow{r}{\pi_{1}} \arrow{d}{\phi_{1}\times\phi_{2}} &
+      V_{1} \arrow{d}{\phi_{1}}\\
+      \R^{n_{1}+n_{2}} & \R^{n_{1}}
+    \end{tikzcd}
+  \]
+  Ahora, es claro que $\phi_{1}\circ\pi_{1}\circ(\phi_{1}\times\phi_{2})^{-1}$
+  actúa como la proyección $(\phi_{1}(x),\phi_{2}(y))\mapsto \phi_{1}(x) :
+  \phi_{1}(V_{1})\times\phi_{2}(V_{2})\to \phi_{1}(V_{1})$.
+
+  \ref{ejer-item:incl}: en este caso, tendríamos un diagrama parecido:
+  \[
+    \begin{tikzcd}
+      V_{1} \arrow{r}{i_{q_{0}}} \arrow{d}{\phi_{1}} &
+      V_{1}\times V_{2} \arrow{d}{\phi_{1}\times\phi_{2}}\\
+      \R^{n_{1}} & \R^{n_{1}+n_{2}}
+    \end{tikzcd}
+  \]
+  y la composición $(\phi_{1}\times\phi_{2})\circ i_{q_{0}}\circ \phi_{1}^{-1}$
+  llevaría puntos $\phi_{1}(x)$ en $(\phi_{1}(x), \phi_{2}(q_{0}))$.
+\end{sol}
