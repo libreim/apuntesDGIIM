@@ -780,3 +780,82 @@ que nacen en variedades diferenciables arbitrarias y toman valores reales.
   diferenciable (proposición \ref{prop:propiedades-dif}). El soporte de $f$ es
   compacto: es la intersección de los soportes de las $f_{p_{i}}$.
 \end{proof}
+
+\section{Diferencial de una aplicación}
+
+En esta sección, definimos el espacio tangente de una variedad diferenciable $M$
+en un punto $p\in M$, y la diferencial de una aplicación diferenciable entre
+variedades diferenciables.
+
+Para entender cómo la siguiente definición generaliza a la ya conocida para
+funciones diferenciables entre espacios euclídeos, vamos a hacer algunas
+observaciones sobre este último concepto. Sea $f:\R^{n}\to\R$ diferenciable, y
+sea $p\in\R^{n}$. La diferencial de $f$ en $p$ viene dada por la forma lineal
+\begin{alignat*}{2}
+  \d f_{p}: \R^{n} & \to \R \\
+  v & \mapsto \restr{\frac{\d}{\d t}}{t = 0}f(p+tv).
+\end{alignat*}
+En esta definición, cada vector $v\in \R^{n}$ está jugando el papel de operador
+de derivación. Podemos formalizar esto de la siguiente forma: definimos
+\begin{alignat*}{3}
+  \lambda: \R^{n} & \to && (\Cinf(\R^{n})\to\R)   \\
+               v & \mapsto && \hat{v}: f \mapsto \d f_{p}(v).
+\end{alignat*}
+y $\hat{v} = \lambda(v)$ sería $v$ visto como operador de derivación. En la
+definición de $\lambda$, usamos $(\Cinf(\R^{n})\to\R)$ para notar el conjunto de
+funciones de $\Cinf(\R^{n})$ a $\R$.
+
+La linealidad de la derivada y la regla del producto para la derivación nos
+permiten afirmar que la imagen de $\lambda$ está contenida en el subconjunto
+\[
+  \mathscr{W}^{p} := \left\{ \alpha\in(\Cinf(\R^{n})\to\R) :
+    \begin{array}{l}
+      \alpha\text{ es lineal} \\
+      \alpha\text{ verifica la regla del producto en $p$}
+    \end{array}
+\right\}
+,\]
+donde esta segunda restricción debe entenderse del siguiente modo:
+\[
+  \alpha(fg) = \alpha(f)g(p) + f(p)\alpha(g)
+\]
+para cada $f,g\in\Cinf(\R^{n})$.
+
+Vamos a probar lo siguiente:
+\begin{nth}
+  $\mathscr{W}^{p}$ es un espacio vectorial de dimensión $n$ y $\lambda$ es un
+  isomorfismo de espacios vectoriales.
+\end{nth}
+\begin{proof}
+  Que $\mathscr{W}$ es un espacio vectorial con la suma y el producto por
+  escalares usuales se puede comprobar rutinariamente. Que $\lambda$ es lineal
+  se obtiene de la linealidad de la diferencial en un punto. Asimismo, es
+  inmediato comprobar que el núcleo de $\lambda$ es trivial. La dificultad de la
+  demostración reside en comprobar que $\lambda$ es sobreyectiva.
+
+  Sean $\alpha\in \mathscr{W}^{p}$, $x\in \R^{n}$ y
+  $f\in\Cinf(\R^{n})$. Primero, observamos que
+  \[
+    \alpha(1) = \alpha(1)\cdot 1 + 1\cdot\alpha(1) = 2\alpha(1)
+  .\]
+  Por linealidad, $\alpha(c) = 0$ para cualquier función constante $c$.
+
+  Segundo, observamos que es posible desarrollar $f$ de la siguiente forma:
+  \[
+    f(x)-f(p) = \int_{0}^{1} \restr{\frac{\d}{\d t}}{t = s}f(tx+(1-t)p)\d s =
+    \sum_{i=1}^{n}(x_{i}-p_{i})\underbrace{\int_{0}^{1}\frac{\partial}{\partial
+        x_{i}}f(sx + (1-s)p)\d s}_{g_{i}(x)}
+  .\]
+
+Por tanto, por linealidad, por la regla del producto y por ser cero en funciones
+constantes,
+\[
+  \alpha(f) = \sum_{i=1}^{n} \alpha(x_{i}-p_{i})g_{i}(p) = \sum_{i=1}^{n} \alpha(x_{i})g_{i}(p)
+.\]
+
+Tomando $v = (\alpha(x_{1}), \dots, \alpha(x_{n}))$,
+\[
+  \lambda(v)(f) = \d f_{p}(\alpha(x_{1}),\dots,\alpha(x_{n})) = \sum_{i=1}^{n}
+  \alpha(x_{i})\underbrace{\frac{\partial}{\partial x_{i}}f(p)}_{=g_{i}(p)} = \alpha(f)
+.\]
+\end{proof}
