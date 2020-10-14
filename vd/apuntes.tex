@@ -730,7 +730,7 @@ que nacen en variedades diferenciables arbitrarias y toman valores reales.
  \end{nlist}
 \end{lema}
 
-\begin{nprop}[Funciones meseta en una variedad]
+\begin{nprop}[Funciones meseta en una variedad] \label{prop:meseta}
   Sean $M$ una variedad diferenciable, $p\in M$ y $O\subset M$ un
   abierto. Entonces, existen $f: M\to \R$ diferenciable y $V_{p}$ un abierto
   relativamente compacto --es decir, con adherencia compacta--, con
@@ -859,3 +859,172 @@ Tomando $v = (\alpha(x_{1}), \dots, \alpha(x_{n}))$,
   \alpha(x_{i})\underbrace{\frac{\partial}{\partial x_{i}}f(p)}_{=g_{i}(p)} = \alpha(f)
 .\]
 \end{proof}
+
+\subsection{Espacio tangente}
+
+Motivados por la exposición anterior, podemos dar las siguientes definiciones,
+notando $\Cinf(M) := \left\{ f\in(M\to\R) : f\text{ es diferenciable} \right\}$.
+
+\begin{ndef}[Derivación]
+  Se llama \emph{derivación (en $p$)} a un funcional $v: \Cinf(M)\to\R$ lineal y que
+  respete la regla del producto en $p$.
+\end{ndef}
+
+\begin{ndef}[Espacio tangente]
+  Sean $M$ una variedad diferenciable, y $p\in M$. Llamamos \emph{espacio
+tangente de $M$ en $p$} al conjunto
+  \[
+    \T_{p}M := \left\{ v\in(\Cinf(M)\to\R) :
+        v\text{ es una derivación en $p$}
+\right\}
+  .\]
+A los elementos de $\T_{p}M$ se les llama \emph{vectores tangentes}.
+\end{ndef}
+
+Es inmediato comprobar que $\T_{p}M$ tiene la estructura de espacio vectorial
+natural. Ahora, vamos a extender el conjunto de derivaciones que consideramos,
+para poder obtener diferenciales de funciones que no estén definidas en toda la
+variedad $M$, sino solamente en un abierto de la misma. Para ello, vamos a
+servirnos del siguiente lema.
+\begin{lema} \label{lema:derivacion-local}
+  Se verifican:
+  \begin{nlist}
+  \item \label{item:dif-local}
+    Sean $f,g\in\Cinf(M)$, $p\in M$ y $O$ un entorno abierto suyo, tales que
+    $\restr{f}{O} = \restr{g}{O}$. Entonces, para cada $v\in \T_{p}M$, $v(f)=v(g)$.
+  \item
+    Si $c:M\to\R$ es constante, entonces $v(c) = 0$ para cada $v\in \T_{p}M$.
+  \end{nlist}
+\end{lema}
+\begin{proof}
+  \ref{item:dif-local}: sea $h: M\to\R$ la función dada por la proposición
+  \ref{prop:meseta} para $p$ y $O$. Entonces, $h(f-g)$ es la función
+  constantemente cero, por lo que
+  \begin{align*}
+    0 &= v(h(f-g)) \\
+    & = v(h)\underbrace{(f-g)(p)}_{=0} + h(p)v(f-g) = v(f-g) 
+  \end{align*}
+\end{proof}
+
+Para considerar funciones que sean diferenciables en un entorno de $p$, no
+tenemos por qué restringirnos a un entorno concreto. El siguiente conjunto
+también goza de estructura de álgebra de manera natural:
+\[
+  \Cinf(p) := \left\{ f\in(O\to\R) : O\text{ es un entorno de $p$ y } f\text{ es diferenciable} \right\}
+.\]
+La suma y el producto vienen dados por la suma y el producto usuales de las
+funciones restringidas a la intersección de sus dominios. Además, es claro que
+$\Cinf(M)\subseteq\Cinf(p)$.
+
+Este espacio nos permite considerar otra variante del espacio tangente:
+\[
+  \hat{\T}_{p}(M) := \left\{ v\in(\Cinf(p)\to\R) :
+        v\text{ es una derivación en $p$}
+\right\}
+.\]
+Pues bien,
+\begin{nth}
+  $\hat{\T}_{p}M$ y $\T_{p}M$ son isomorfos como espacios vectoriales.
+\end{nth}
+\begin{proof}
+  Basta dar un isomorfismo $\Phi:\hat{\T}_{p}M\to \T_{p}M$. $\Phi(v) =
+  \restr{v}{\Cinf(M)}$. En el otro sentido, para definir $\Phi^{-1}$, hemos de
+  extender un funcional $\hat{v}: \Cinf(M)\to\R$ a $\Cinf(p)$. Para ello, dada
+  una función $f\in\Cinf(p)$, la extendemos a una función $F\in\Cinf(M)$, y
+  definimos $\Phi^{-1}(\hat{v})(f) = \hat{v}(F)$. El lema
+  \ref{lema:derivacion-local} implica que esta definición no depende de la
+  extensión tomada.
+
+  Sea $O$ el dominio de $f$, y sea $h:M\to\R$ la dada por la proposicion
+  \ref{prop:meseta} para $p$ y $O$. Definiendo $\restr{F}{O} = hf$ y
+  $\restr{F}{M-O} = 0$, se tiene el resultado.
+\end{proof}
+A partir de este momento, notaremos por $\T_{p}M$ al espacio extendido
+$\hat{\T}_{p}M$.
+
+\paragraph{Vectores tangentes a curvas}
+Ya estamos listos para generalizar un concepto que nos es familiar del estudio
+de superficies diferenciables: el vector tangente a una curva.
+\begin{ndef}
+  Sean $\alpha:(a,b)\to M$ diferenciable, y $t_{0}\in(a,b)$. El \emph{vector
+    tangente a $\alpha$ en $t_{0}$} es la aplicación
+    \begin{alignat*}{2}
+      \alpha'(t_{0}): \Cinf(p) & \to \R \\
+      f & \mapsto \restr{\frac{\d}{\d t}}{t = t_{0}}(f\circ\alpha)(t).
+    \end{alignat*}
+\end{ndef}
+Es inmediato comprobar que $\alpha'(t_{0})\in \T_{\alpha(t_{0})}M$.
+
+\begin{nprop}[Cambio de parámetros]
+  Sean $h:(c,d)\to(a,b)$ un difeomorfismo, y $\alpha:(c,d)\to M$
+  diferenciable. Entonces,
+  \[
+    (\alpha\circ h)'(s_{0}) = h'(s_{0})\alpha'(h(s_{0}))
+  .\]
+\end{nprop}
+
+Otro resultado esperable, al menos en parte, es el siguiente:
+\begin{nth} \label{thm:base-parciales}
+  $\T_{p}M$ tiene dimensión $n$ (la de la variedad). Dada una carta $(V,\phi)$
+  con $p\in V$, una base es $\left\{ \diffop{x_{i}}{p} : i=1,\dots,n \right\}$, donde
+  \begin{alignat*}{2}
+    \diffop{x_{i}}{p}: \Cinf(p)  & \to \R \\
+    f & \mapsto \frac{\partial}{\partial r_{i}}(f\circ \phi^{-1})(q),
+  \end{alignat*}
+  $q = \phi(p)$, y $\frac{\partial}{\partial r_{i}}$ son las derivadas parciales usuales.
+\end{nth}
+\begin{proof}
+  Solo es necesario probar la segunda afirmación. Probamos que es un sistema
+  linealmente independiente. Llamando $x_{i} = r_{i}\circ\phi$, con $r_{i}$ las
+  proyecciones de $\R^{n}$:
+  \[
+    \left( \sum_{i=1}^{n} \lambda_{i} \diffop{x_{i}}{p} \right)(x_{j}) = \lambda_{j}
+  ,\]
+  por lo que si los coeficientes son tales que $\sum_{i=1}^{n} \diffop{x_{i}}{p}
+  = 0$, han de ser nulos todos.
+
+  Ahora, veamos que es sistema de generadores. Sean $v\in \T_{p}M$, y
+  $f\in\Cinf(p)$. Desarrollamos
+  \[
+    (f\circ \phi^{-1})(r) = (f\circ \phi^{-1})(q) + \sum_{i=1}^{n}(r_{i}-q_{i})g_{i}(r)
+  \]
+  en una bola alrededor de $q$. Llamando $\phi^{-1}(r) = x$, obtenemos el
+  desarrollo
+  \[
+    f(x) = f(p) + \sum_{i=1}^{n} (x_{i}(x) - q_{i})(\underbrace{g_{i}\circ\phi}_{\hat{g}_{i}})(x)
+  .\]
+  Dado este desarrollo, vemos que $v$ actúa sobre $f$ de la forma
+  \begin{align*}
+    v(f) & = \sum_{i=1}^{n}\left( v(x_{i}-q)\hat{g}_{i}(p) +
+           \underbrace{(x_{i}(p) - q_{i})}_{=0}v(\hat{g}_{i}) \right) \\
+    & = \sum_{i=1}^{n} v(x_{i})\hat{g}_{i}(p).
+  \end{align*}
+  Solo queda ver que $v(x_{i})$ son las coordenadas de $v$ respecto de este
+  sistema:
+  \begin{align*}
+    \left[ \sum_{i=1}^{n} v(x_{i}) \diffop{x_{i}}{p} \right](f) & =
+                                                                  \sum_{i=1}^{n}
+                                                                  v(x_{i})
+                                                                  \diffop{x_{i}}{p}(f)
+    \\
+    & = \sum_{i=1}^{n} v(x_{i}) \underbrace{\sum_{j=1}^{n} \diffop{x_{i}}{p}(x_{j})
+    \hat{g}_{j}(p)}_{\delta_{ij}\hat{g}_{j}(p)} \\
+    & = \sum_{i=1}^{n} v(x_{i})\hat{g}_{i}(p).
+  \end{align*}
+\end{proof}
+
+De la demostración anterior se desprende cuáles son las coordenadas de un vector
+tangente respecto de una base de este tipo. En particular, cuáles son las
+coordenadas de los elementos de otra base.
+\begin{notacion}
+  En ocasiones, notaremos a una carta $(V,\phi,x_{i})$ para indicar
+  explícitamente sus coordenadas $x_{i} = r_{i}\circ \phi$.
+\end{notacion}
+\begin{nprop}[Cambio de coordenadas]
+  Dadas dos cartas $(V, \phi, x_{i})$, $(W,\psi,y_{i})$, y sus bases dadas por
+  el teorema \ref{thm:base-parciales} $B$ y $B'$, la matriz de cambio de base
+  entre ellas es
+  \[
+    M(B,B') = \left( \diffop{y_{i}}{p}(x_{i}) \right)_{ij}
+  .\]
+\end{nprop}
