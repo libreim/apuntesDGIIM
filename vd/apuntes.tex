@@ -108,7 +108,7 @@ $n$-dimensional de $\R^{N}$.
 Vamos a construir algunas subvariedades como preimágenes de valores regulares, y
 probaremos que lo son apoyándonos en este teorema.
 
-\begin{ejemplo}[Esfera de centro $p$, radio $r>0$]
+\begin{ejemplo}[Esfera de centro $p$, radio $r>0$] \label{ejemplo:esfera}
   La esfera $n$-dimensional de centro $p$ y radio $r>0$,
   \[
     \mathbb{S}^{n}(r,p) = \left\{ x\in\R^{n+1} : \|x-p\|_{2}^{2} = r^{2} \right\}
@@ -242,7 +242,7 @@ grupos de Lie de matrices. Para abordarlos, introducimos la notación
     \gl(n,\R) := \mathscr{M}_{n}(\R)
   \]
   para el espacio vectorial de matrices de orden $n$.
-\begin{ejemplo}[Grupo ortogonal]
+\begin{ejemplo}[Grupo ortogonal] \label{ejemplo:ortogonal}
   Vamos a ver que
   \[
     O(n) := \left\{ A\in\gl(n,\R) : AA^{T} = I \right\}
@@ -798,7 +798,7 @@ sea $p\in\R^{n}$. La diferencial de $f$ en $p$ viene dada por la forma lineal
 En esta definición, cada vector $v\in \R^{n}$ está jugando el papel de operador
 de derivación. Podemos formalizar esto de la siguiente forma: definimos
 \begin{alignat*}{3}
-  \lambda: \R^{n} & \to && (\Cinf(\R^{n})\to\R)   \\
+  \lambda = \lambda_{p}: \R^{n} & \to && (\Cinf(\R^{n})\to\R)   \\
                v & \mapsto && \hat{v}: f \mapsto \d f_{p}(v).
 \end{alignat*}
 y $\hat{v} = \lambda(v)$ sería $v$ visto como operador de derivación. En la
@@ -827,7 +827,7 @@ Vamos a probar lo siguiente:
   isomorfismo de espacios vectoriales.
 \end{nth}
 \begin{proof}
-  Que $\mathscr{W}$ es un espacio vectorial con la suma y el producto por
+  Que $\mathscr{W}^{p}$ es un espacio vectorial con la suma y el producto por
   escalares usuales se puede comprobar rutinariamente. Que $\lambda$ es lineal
   se obtiene de la linealidad de la diferencial en un punto. Asimismo, es
   inmediato comprobar que el núcleo de $\lambda$ es trivial. La dificultad de la
@@ -902,7 +902,7 @@ servirnos del siguiente lema.
   constantemente cero, por lo que
   \begin{align*}
     0 &= v(h(f-g)) \\
-    & = v(h)\underbrace{(f-g)(p)}_{=0} + h(p)v(f-g) = v(f-g) 
+    & = v(h)\underbrace{(f-g)(p)}_{=0} + h(p)v(f-g) = v(f-g).
   \end{align*}
 \end{proof}
 
@@ -945,11 +945,11 @@ $\hat{\T}_{p}M$.
 \paragraph{Vectores tangentes a curvas}
 Ya estamos listos para generalizar un concepto que nos es familiar del estudio
 de superficies diferenciables: el vector tangente a una curva.
-\begin{ndef}
+\begin{ndef} \label{def:diferencial-curva}
   Sean $\alpha:(a,b)\to M$ diferenciable, y $t_{0}\in(a,b)$. El \emph{vector
     tangente a $\alpha$ en $t_{0}$} es la aplicación
     \begin{alignat*}{2}
-      \alpha'(t_{0}): \Cinf(p) & \to \R \\
+      \alpha'(t_{0}): \Cinf(\alpha(t_{0})) & \to \R \\
       f & \mapsto \restr{\frac{\d}{\d t}}{t = t_{0}}(f\circ\alpha)(t).
     \end{alignat*}
 \end{ndef}
@@ -980,7 +980,7 @@ Otro resultado esperable, al menos en parte, es el siguiente:
   \[
     \left( \sum_{i=1}^{n} \lambda_{i} \diffop{x_{i}}{p} \right)(x_{j}) = \lambda_{j}
   ,\]
-  por lo que si los coeficientes son tales que $\sum_{i=1}^{n} \diffop{x_{i}}{p}
+  por lo que si los coeficientes son tales que $\sum_{i=1}^{n} \lambda_{i}\diffop{x_{i}}{p}
   = 0$, han de ser nulos todos.
 
   Ahora, veamos que es sistema de generadores. Sean $v\in \T_{p}M$, y
@@ -1028,3 +1028,326 @@ coordenadas de los elementos de otra base.
     M(B,B') = \left( \diffop{y_{i}}{p}(x_{i}) \right)_{ij}
   .\]
 \end{nprop}
+
+\begin{nprop}
+  Para cada $v\in \T_{p}M$, existe $\alpha: (-\epsilon,\epsilon)\to M$ curva
+  diferenciable tal que $\alpha(0)=p$, $\alpha'(0)=v$.
+\end{nprop}
+\begin{proof}
+  Sea $(V,\phi,x_{i})$ una carta en $p$, entonces $v = \sum_{i=1}^{n} v(x_{i})
+  \diffop{x_{i}}{p}$. Llamando $w := (v(x_{1}), \dots, v(x_{n}))\in
+  \R^{n}$, y definiendo $\alpha(t) = \phi^{-1}(\phi(p)+tw)$,
+  \begin{align*}
+    \alpha'(0)(f) & = \restr{\frac{\d}{\d t}}{t = 0}(f\circ \alpha)(t) \\
+    & = \restr{\frac{\d}{\d t}}{t = 0}(f\circ \phi^{-1})(\phi(p)+tw) \\
+    & = \sum_{i=1}^{n} w_{i} \underbrace{\frac{\partial}{\partial r_{i}}(f\circ\phi^{-1})(\phi(p))}_{\diffop{x_{i}}{p}(f)}.
+  \end{align*}
+\end{proof}
+
+\subsection{Diferencial de una aplicación diferenciable}
+
+Pasamos ya a definir la diferencial de una aplicación.
+\begin{ndef}[Diferencial de una aplicación]
+  Sea $f:M^{m}\to N^{n}$ diferenciable. Si $p\in M$, entonces la \emph{diferencial de
+  $f$ en $p$}, que notamos $\d f_{p}: \T_{p}M\to \T_{f(p)}N$, se define como
+  \[
+    (\d f_{p}(v))(g) = v(g\circ f) .\]
+\end{ndef}
+
+La siguiente proposición nos permite asegurar que la diferencial está bien definida.
+\begin{nprop}
+  Para cada $p\in M$, $\d f_{p}$ es una derivación.
+\end{nprop}
+\begin{proof}
+  \begin{align*}
+    (\d f_{p})(g_{1}g_{2}) &= v((g_{1}g_{2})\circ f) \\
+                           & = v(g_{1}\circ f)g_{2}(f(p)) + g_{1}(f(p))v(g_{2}\circ f)\\
+    & = \d f_{p}(g_{1})g_{2}(f(p)) + g_{1}(f(p))\d f_{p}(g_{2}).
+  \end{align*}
+\end{proof}
+\begin{nprop}[Propiedades de la diferencial] \label{prop:propiedades-dif}
+  Se verifican:
+  \begin{nlist}
+  \item
+    La diferencial es lineal,
+  \item
+    si $f$ es constante, entonces $\d f_{p} = 0$ para cada $p\in M$,
+  \item
+    $\d (\mathrm{id})_{p} = \mathrm{id}$,
+  \item \label{item:cadena}
+    regla de la cadena: $\d (G\circ F)_{p} = \d G_{F(p)}\circ \d F_{p}$,
+  \item
+    si $F: M^{n}\to N^{n}$ es un difeomorfismo, entonces para cada $p\in M$, $\d F_{p}$
+    es un isomorfismo y su inversa es $(\d F_{p})^{-1} = \d F^{-1}_{p}$,
+  \item \label{item:generaliza-dif}
+    Sea $F: \R^{n}\to \R^{m}$ diferenciable. Notando por $\d F_{p}^{*}$ a la
+    diferencial en el sentido clásico del análisis real, el siguiente diagrama es
+    conmutativo:
+    \[
+      \begin{tikzcd}
+        \R^{n} \arrow{d}{\lambda_{p}} \arrow{r}{\d F_{p}^{*}} & \R^{m} \arrow{d}{\lambda_{F(p)}} \\
+        \T_{p}\R^{n} \arrow{r}{\d F_{p}} & \T_{F(p)}\R^{m}
+      \end{tikzcd}
+    \]
+    donde $\lambda_{p}$ es el isomorfismo definido al comienzo de esta sección.
+  \item
+    si $f$ es diferenciable, $p\in M$, $v\in \T_{p}M$, y $\alpha:
+    (-\epsilon,\epsilon)\to M$ es cualquier curva que verifique $\alpha(0) = p$
+    y $\alpha'(0) = v$, entonces
+    \[
+      \d f_{p}(v) = \restr{\frac{\d}{\d t}}{t = 0}(f\circ\alpha)(t)
+      ,\]
+    entendiendo la derivada a la derecha de la igualdad en el sentido de la definición \ref{def:diferencial-curva}.
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  \ref{item:cadena}:
+  \begin{align*}
+    \d (G\circ F)_{p}(v)(g) &= v(g\circ G\circ F) \\
+                            &= (\d F_{p})(v)(g\circ G) \\
+    &= \d G_{F(p)}(\d F_{p}(v))(g).
+  \end{align*}
+
+  \ref{item:generaliza-dif}: 
+  Por un lado,
+  \begin{align*}
+    \lambda_{F(p)}(\d F_{p}^{*}(v)) & = (g \mapsto \d g_{F(p)} (\d F_{p}^{*}(v)))
+    \\
+    & = (g \mapsto \d (g\circ F)_{p}(v)).
+  \end{align*}
+  Por otro,
+  \begin{align*}
+    \d F_{p}(\lambda_{p}(v)) & = (g \mapsto \lambda(v)(g\circ F)) & \text{por
+                                                                definición de
+                                                                $\d F_{p}$} \\
+    & = (g \mapsto \d (g\circ F)_{p}(v)) & \text{por definición de $\lambda_{p}$}.
+  \end{align*}
+\end{proof}
+
+\subsection{Expresión matricial de la diferencial}
+
+Fijadas dos cartas $(V,\phi,x_{i})$ con $p\in M$, $(W,\psi,y_{j})$ con $F(p)\in
+N$, hemos visto que podemos obtener sendas bases de los espacios tangentes: la
+base de $\T_{p}M$
+\[
+  \left\{ \diffop{x_{i}}{p} : i=1,\dots,m \right\}
+,\]
+y la base de $\T_{F(p)}N$
+\[
+  \left\{ \diffop{y_{j}}{f(p)} : j=1,\dots,n \right\}
+.\]
+Esto nos permite expresar la diferencial $\d F_{p}$ matricialmente:
+\begin{align*}
+\d F_{p}\diffop{x_{i}}{p} &= \sum_{j=1}^{n} \left( \d F_{p}\diffop{x_{i}}{p}
+                              \right)(y_{j})\diffop{y_{j}}{F(p)} \\
+  & = \sum_{j=1}^{n}\diffop{x_{i}}{p}(y_{j}\circ F)\diffop{y_{j}}{F(p)},
+\end{align*}
+por lo que la matriz jacobiana asociada es
+\[
+  \d F_{p} =
+  \begin{pmatrix}
+    \diffop{x_{i}}{p}(y_{j}\circ F)
+  \end{pmatrix}_{ij}
+.\]
+
+\subsection{El espacio tangente en subvariedades del euclídeo}
+
+En esta sección vamos a establecer una forma práctica de trabajar con el espacio
+tangente de subvariedades del euclídeo. Para ello, lo identificaremos con un
+cierto subespacio de $\R^{N}$.
+
+Hemos visto que si $M^{n}\subset \R^{N}$ es una subvariedad, entonces la
+inclusión es diferenciable. Además, su diferencial es inyectiva:
+\begin{nprop}
+  Para cada $p\in M$, $\d i_{p}$ es inyectiva.
+\end{nprop}
+\begin{proof}
+  Sea $(V,\phi,x_{i})$ una carta en $p$, y $X: U\subseteq \R^{n}\to V\subseteq
+  \R^{N}$ una parametrización tal que $\restr{X^{-1}}{V\cap M} = \phi$.
+  \[
+    \d X_{\phi(p)} = \d
+      i_{p} \circ \d \phi^{-1}_{\phi(p)},
+  \]
+  con $\d X_{\phi(p)}$ inyectiva y $\d \phi^{-1}_{\phi(p)}$ un isomorfismo.
+\end{proof}
+
+Esto nos da la siguiente cadena de aplicaciones lineales:
+\[
+  \begin{tikzcd}
+    \T_{p}M \arrow{r}{\d i_{p}} & \T_{p}\R^{N} \arrow{r}{\lambda_{p}^{-1}} & \R^{N}
+  \end{tikzcd}
+\]
+Trabajaremos identificando en lo sucesivo $\T_{p}M$ con $V_{p} :=
+\lambda^{-1}_{p}(\d i_{p}(T_{p}M))$ mediante $\lambda_{p}^{-1}\circ \d i_{p}$,
+que es una aplicación lineal inyectiva, y por tanto ambos espacios tienen la
+misma dimensión.
+
+Una observación adicional que será útil:
+\begin{nprop} \label{prop:inversa-lambda}
+  La inversa de $\lambda_{p}$ viene dada por
+  \begin{alignat*}{2}
+    \lambda_{p}^{-1}: \T_{p}\R^{N} & \to \R^{N} \\
+   v & \mapsto (v(r_{1}),\dots,v(r_{N})),
+ \end{alignat*}
+ con $r_{i}$ las proyecciones usuales de $\R^{N}$.
+\end{nprop}
+
+Esta identificación es natural en el siguiente sentido: sea $v\in \T_{p}M$, y
+sea $\alpha:(-\epsilon,\epsilon)\to M$ una curva diferenciable con $\alpha(0)=p$
+y $\alpha'(0)=v$. Podríamos haber elegido identificar $v$ con el vector tangente
+a la curva vista como una curva en $\R^{N}$, es decir, con $(i\circ\alpha)'(0)$,
+en el sentido de la derivada clásica del análisis. Pues bien, esto es
+equivalente a la identificación que hemos hecho:
+\begin{align*}
+  (i\circ\alpha)'(0) & = \restr{\frac{\d}{\d t}}{t = 0}(i\circ\alpha)(t) \\
+                     & = (\alpha'(0)(i_{1}),\dots,\alpha'(0)(i_{N})) & \text{en
+                                                                       el
+                                                                       sentido
+                                                                       de \ref{def:diferencial-curva}} \\
+                     & = (v(i_{1}),\dots,v(i_{N})) \\
+                     & = \lambda_{p}^{-1}(\d i_{p}(v)) & \text{por la
+                                                          proposición \ref{prop:inversa-lambda}}.
+\end{align*}
+
+En suma, esta identificación nos permite determinar el espacio tangente mediante
+el siguiente procedimiento: consideramos curvas diferenciables en $M$ que pasen
+por $p$ en $0$, y las derivamos de la manera usual, tratándolas como curvas en
+el espacio ambiente. Los vectores que obtengamos de esta forma comformarán el
+espacio tangente.
+
+\begin{ejemplo}[Esfera]
+Calculemos el espacio tangente de la esfera (ejemplo \ref{ejemplo:esfera}). Sea
+$\alpha :(-\epsilon,\epsilon)\to\mathbb{S}^{n}(a,R)$. Entonces, $\alpha$
+verifica la ecuación $\|\alpha-a\|^{2} = R^{2}$. Derivando,
+\[
+  \langle \alpha'(0), \alpha(0)-a \rangle = \langle v, p-a \rangle = 0
+,\]
+lo que nos da la condición $V_{p} \perp p-a$. Por tanto, $V_{p}\subseteq
+(p-a)^{\perp}$, pero $(p-a)^{\perp}$ tiene dimensión $n$, luego se da la igualdad.
+\end{ejemplo}
+
+\begin{ejemplo}[Grupo ortogonal]
+  Recordamos el grupo ortogonal del ejemplo \ref{ejemplo:ortogonal}. Pues bien,
+  sea $A$ una curva diferenciable en $O(n)$, con $A(0) = I$ y $A'(0)=B$. $A$
+  verifica
+  \[
+    AA^{T} = I
+  ,\]
+luego derivando
+\[
+  A'(0)A(0)^{T}+A(0)A'(0)^{T} = B+B^{T} = 0
+.\]
+Razonando como en el ejemplo anterior, el espacio tangente a $O(n)$ en $I$ es el
+espacio de las matrices antisimétricas.
+
+Para obtener el espacio tangente en una matriz $A\in O(n)$ cualquiera, vamos a
+emplear una técnica que se puede extender a cualquier grupo de Lie. Consideramos
+las traslaciones a izquierda y derecha $l_{A},r_{A}: O(n)\to O(n)$ dadas por
+$l_{A}(B) = AB$ y $r_{A}(B) = BA$. Es inmediato que son difeomorfismos. Por
+tanto, $(\d l_{A})_{I}, (\d r_{A})_{I}: \T_{I}O(n)\to \T_{A}O(n)$ son isomorfismos.
+Ahora,
+\[
+  (\d l_{A})_{I}(B) = AA'(0) = AB
+,\]
+luego
+\[
+  \T_{A}O(n) = \left\{ AB : B+B^{T} = 0 \right\}
+.\]
+\end{ejemplo}
+
+\begin{ejemplo}
+  Razonando como en el ejemplo anterior, podemos llegar a
+  \[
+    \T_{A}\Sl(n,\R) = \left\{ AB : \traza(B) = 0 \right\}
+  .\]
+\end{ejemplo}
+
+\begin{ejemplo}
+  Retomamos la notación del ejemplo \ref{ejemplo:proyectivo}. Vamos a hallar el
+  espacio tangente a un punto $p=\pi(x)$, con $x\in O_{i}$, a través de la
+  diferencial
+  \[
+      \d\pi_{x}: \T_{x}\R^{n+1}  \to \T_{p}\RP^{n}.
+  \]
+  Como nace en un espacio de dimensión $n+1$ y toma valores en uno de dimensión
+  $n$, es obvio que tiene núcleo. Calculémoslo.
+
+  Sea $v\in\ker(\d\pi_{x})$, lo cual se verifica si y solo si
+  \[
+    v(f\circ\pi) = 0
+  \]
+  para cada $f\in\Cinf(p)$. Consideramos $f = r_{j}\circ \phi_{i}$, con $i\ne
+  j$. Entonces
+  \begin{align*}
+    (f \circ\pi)(x_{1}, \dots, x_{n+1}) & =
+                                          (r_{j}\circ\psi_{i})(x_{1},\dots,x_{n+1})
+    \\
+    & = \frac{x_{j}}{x_{i}}.
+  \end{align*}
+  Veamos qué vale $v(x_{j}/x_{i})$:
+  \begin{align*}
+    v \left( \frac{x_{j}}{x_{i}} \right) & = \left( \sum_{k=1}^{n+1} v(x_{k})
+                                           \diffop{x_{k}}{x} \right)\left(
+                                           \frac{x_{j}}{x_{i}} \right) \\
+    & = \sum_{k=1}^{n+1} v(x_{k}) \left( \frac{x_{i}\delta_{jk} -
+      x_{j}\delta_{ik}}{x_{i}^{2}} \right) \\
+                                         & = \frac{v(x_{j})}{x_{i}} -
+                                           \frac{v(x_{i})x_{j}}{x_{i}^{2}} \\
+                                           & = 0.
+  \end{align*}
+
+  Esto implica que, si notamos $v = (v_{1}, \dots, v_{n+1})$ en coordenadas de
+  $\left\{ \diffop{x_{k}}{x} \right\}_{k=1}^{n+1}$, $v =
+  \frac{v_{i}}{x_{i}}x$. Por tanto, en dichas coordenadas,
+  \[
+    \ker(\d\pi_{x}) = \langle x  \rangle 
+    .\]
+
+  Ahora, aplicando el primer teorema de isomorfía para espacios vectoriales,
+  \[
+    \frac{\T_{x}\R^{n+1}}{\ker(\d\pi_{x})} \cong \im(\d\pi_{x}) = \T_{p}\RP^{n}
+    .\]
+  Por otro lado, mediante el isomorfismo
+  \begin{alignat*}{2}
+       \frac{\T_{x}\R^{n+1}}{\ker(\d\pi_{x})} &\to \ker(\d\pi_{x})^{\perp} \\
+    z + \ker(\d\pi_{x}) & \mapsto P_{\ker(\d\pi_{x})^{\perp}}(z),
+  \end{alignat*}
+  con $P_{\ker(\d\pi_{x})^{\perp}}$ la proyección ortogonal sobre
+  $\ker(\d\pi_{x})^{\perp}$, podemos identificar
+  \[
+    \T_{p}\RP^{n} \cong \ker(\d\pi_{x})^{\perp} \cong \langle x  \rangle^{\perp}
+  .\]
+\end{ejemplo}
+
+\subsection{Difeomorfismos locales}
+
+Vamos a extender el concepto de difeomorfismo local al contexto de
+diferenciabilidad entre variedades.
+\begin{ndef}
+  $F:M^{m}\to N^{m}$ es un \emph{difeomorfismo local} si, para cada $p\in M$,
+  existen entornos abiertos $O$ y $O'$ de $p$ y $F(p)$ tal que $F: O \to O'$ es
+  un difeomorfismo.
+\end{ndef}
+
+% TODO: ejemplo: proyección de la esfera al proyectivo
+
+\begin{nprop}
+  Si, para cada $p\in M$, $\d F_{p}$ es un isomorfismo, entonces $F$ es un
+  difeomorfismo local.
+\end{nprop}
+\begin{proof}
+  La demostración se basa en trasladar el problema a abiertos de $\R^{m}$
+  mediante cartas en $p$ y $F(p)$ y aplicar allí el teorema de la función
+  inversa. Sean $(V, \phi)$ y $(W, \psi)$ cartas en $p$ y $F(p)$. Entonces, las
+  diferenciales hacen conmutativo el diagrama
+  \[
+  \begin{tikzcd}
+    \T_{p}M \arrow{r}{\d F_{p} (\cong)} \arrow{d}{\d\phi_{p} (\cong)} &
+    \T_{F(p)}N \arrow{d}{\d\psi_{F(p)}} \\
+    \R^{n} \arrow{r}{\d(\psi\circ F \circ\phi^{-1})}
+  \end{tikzcd}
+\]
+luego todas las aplicaciones del diagrama son isomorfismos. Aplicando el teorema
+de la función inversa a $\psi\circ F \circ\phi^{-1}$ y notando que $\psi$ y
+$\phi$ son difeomorfismos se obtiene el resultado.
+\end{proof}
