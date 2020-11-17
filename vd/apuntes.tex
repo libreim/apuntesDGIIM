@@ -394,10 +394,10 @@ Llamamos a cada par $(V,\phi)$ de una estructura diferenciable \emph{carta} o
 \end{ndef}
 
 Algunas propiedades de las cartas de una estructura diferenciable:
-\begin{nprop}
+\begin{nprop} \label{prop:cartas}
   Sea $(V,\phi)\in\mathscr{D}$. Se verifican
   \begin{nlist}
-  \item
+  \item \label{item:rest-cartas}
     si $W\subseteq V$ abierto, entonces
 $(W,\restr{\phi}{W})\in\mathscr{D}$,
   \item 
@@ -407,7 +407,7 @@ $(W,\restr{\phi}{W})\in\mathscr{D}$,
 \end{nprop}
 
 Y algunas propiedades de los atlas:
-\begin{nprop}
+\begin{nprop} \label{prop:unicidad-atlas}
   Sea $\mathscr{A}$ un atlas $n$-dimensional en $M$. Se verifican
   \begin{nlist}
   \item
@@ -566,7 +566,7 @@ Podemos trasladar también el concepto de difeomorfismo.
   \item
     la composición de difeomorfismos es un difeomorfismo,
   \item \label{item:prod-dif}
-    si $f,g: M\to\R$ son diferenciabeles, entonces $fg: M\to\R$ es
+    si $f,g: M\to\R$ son diferenciables, entonces $fg: M\to\R$ es
     diferenciable,
   \item
     si $O\subseteq M$ es abierto, la inclusión en $M$ es diferenciable. Por
@@ -588,7 +588,7 @@ Podemos trasladar también el concepto de difeomorfismo.
 \end{proof}
 
 Algunas propiedades que serán útiles cuando tratemos con subvariedades del euclídeo.
-\begin{nprop}
+\begin{nprop} \label{prop:prop-dif-sub}
   Sean $M^{n}\subset\R^{N}$ una subvariedad, y $N^{n}$ una variedad
   diferenciable. Entonces,
   \begin{nlist}
@@ -634,26 +634,30 @@ pues tendremos
 
 Definamos
 \begin{alignat*}{2}
-  G: U\times\R^{N-n} & \to \R^{N} \
+  G: U\times\R^{N-n} & \to \R^{N} \\
  (x,y) & \mapsto X(x) + (0,y).
 \end{alignat*}
-Entonces, la diferencial de $G$ viene representada matricialmente de la forma
+Entonces, es claro que $G(x,0) = X(x)$, luego, supuesta invertible,
+$G^{-1}(X(x)) = (x,0)$.  Además, la diferencial de $G$ en $\phi(F(p))$ viene
+representada matricialmente en la forma
 \[
-  \d G =
+  \d G_{\phi(F(p))} =
   \left(
   \begin{array}{c|c}
     \frac{\partial X_{i}}{\partial x_{j}} & 0\\ \hline
     \frac{\partial X_{k}}{\partial x_{j}} & I
-  \end{array}\right)
-,\]
-y por ser $X$ una parametrización de una subvariedad, este determinante será no
-nulo, luego $G$ será un difeomorfismo en un entorno $\hat{U}\times B(0,\epsilon)$
-de $\phi(F(p))$, y por tanto conmutará
+  \end{array}\right)((\phi\circ F)(p))
+,\] y por ser $X$ una parametrización de una subvariedad, su determinante será
+no nulo, luego $G$ será un difeomorfismo en un entorno
+$\hat{U}\times B(0,\epsilon)$ de $\phi(F(p))$. Además, por continuidad, podemos
+suponer que $G(\hat{U}\times B(0,\epsilon))\subseteq V$, y tomando $V$ más
+pequeño (proposición \ref{prop:cartas}-\ref{item:rest-cartas}), suponemos la
+igualdad, y por tanto conmutará
 \[
   \begin{tikzcd}
     W \arrow{r}{F} \arrow{d}{\psi} & V \arrow[shift left=1ex]{d}{\phi}
-    \arrow{r}{i} & \R^{N} \arrow{d}{G^{-1}}\\
-    \R^{m} & U\subseteq\R^{n} \arrow[shift left=1ex]{u}{X} \arrow{r}{x\mapsto (x,0)} & \R^{N}
+    \arrow{r}{i} & V \arrow{d}{G^{-1}}\\
+    \R^{m} & U\subseteq\R^{n} \arrow[shift left=1ex]{u}{X} \arrow{r}{x\mapsto (x,0)} & \hat{U}\times B(0,\epsilon)
   \end{tikzcd}
 \]
 
@@ -702,7 +706,7 @@ nacen en espacios proyectivos.
   \[
     \begin{tikzcd}
       O_{i} \arrow{r}{\pi} \arrow{d}{\mathrm{id}} & \pi(O_{i})
-      \arrow{d}{\phi_{i}} & W \arrow{d}{\psi}\\
+      \arrow{d}{\phi_{i}} \arrow{r}{F} & W \arrow{d}{\psi}\\
       O_{i} \arrow{r}{\phi_{i}\circ\pi} & \R^{n} & \psi(W)
     \end{tikzcd}
   \]
@@ -778,7 +782,7 @@ que nacen en variedades diferenciables arbitrarias y toman valores reales.
   \]
   se obtiene la función deseada. El producto de aplicaciones diferenciables es
   diferenciable (proposición \ref{prop:propiedades-dif}). El soporte de $f$ es
-  compacto: es la intersección de los soportes de las $f_{p_{i}}$.
+  compacto: es la unión de los soportes de las $f_{p_{i}}$.
 \end{proof}
 
 \section{Diferencial de una aplicación}
@@ -823,7 +827,7 @@ para cada $f,g\in\Cinf(\R^{n})$.
 
 Vamos a probar lo siguiente:
 \begin{nth}
-  $\mathscr{W}^{p}$ es un espacio vectorial de dimensión $n$ y $\lambda$ es un
+  $\mathscr{W}^{p}$ es un espacio vectorial de dimensión $n$ y $\lambda_{p}$ es un
   isomorfismo de espacios vectoriales.
 \end{nth}
 \begin{proof}
@@ -1065,7 +1069,7 @@ La siguiente proposición nos permite asegurar que la diferencial está bien def
     & = \d f_{p}(g_{1})g_{2}(f(p)) + g_{1}(f(p))\d f_{p}(g_{2}).
   \end{align*}
 \end{proof}
-\begin{nprop}[Propiedades de la diferencial] \label{prop:propiedades-dif}
+\begin{nprop}[Propiedades de la diferencial] \label{prop:propiedades-diferencial}
   Se verifican:
   \begin{nlist}
   \item
@@ -1150,7 +1154,7 @@ por lo que la matriz jacobiana asociada es
   \end{pmatrix}_{ij}
 .\]
 
-\subsection{El espacio tangente en subvariedades del euclídeo}
+\subsection{El espacio tangente en subvariedades del euclídeo} \label{sec:tan-subv}
 
 En esta sección vamos a establecer una forma práctica de trabajar con el espacio
 tangente de subvariedades del euclídeo. Para ello, lo identificaremos con un
@@ -1343,7 +1347,7 @@ diferenciabilidad entre variedades.
   \[
   \begin{tikzcd}
     \T_{p}M \arrow{r}{\d F_{p} (\cong)} \arrow{d}{\d\phi_{p} (\cong)} &
-    \T_{F(p)}N \arrow{d}{\d\psi_{F(p)}} \\
+    \T_{F(p)}N \arrow{d}{\d\psi_{F(p)} (\cong)} \\
     \R^{m} \arrow{r}{\d(\psi\circ F \circ\phi^{-1})} & \R^{m}
   \end{tikzcd}
 \]
