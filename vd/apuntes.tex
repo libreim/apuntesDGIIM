@@ -1355,3 +1355,226 @@ luego todas las aplicaciones del diagrama son isomorfismos. Aplicando el teorema
 de la función inversa a $\psi\circ F \circ\phi^{-1}$ y notando que $\psi$ y
 $\phi$ son difeomorfismos se obtiene el resultado.
 \end{proof}
+
+\subsection{Particiones de la unidad}
+
+Vamos a estudiar el concepto de \emph{partición de la unidad}, que nos servirá
+para extender funciones diferenciables en variedades.
+
+A partir de ahora, exigiremos a las variedades que consideremos que sean, además
+de Haussdorf, segundo axioma de numerabilidad, es decir, que su topología posea
+una base numerable. Esta propiedad se hereda en subespacios, productos y
+funciones continuas y sobreyectivas.
+
+Pues bien, pasamos a definir el concepto:
+\begin{ndef}[Partición de la unidad]
+  Una \emph{partición de la unidad en $M$} es una familia $\left\{ \theta_{n}:
+    M\to \R \right\}_{n\in\N}$ de funciones diferenciables que verifican:
+  \begin{nlist}
+  \item
+    \emph{Finitud local}: para cada $p\in M$, existe un entorno abierto $O$ de
+    $p$ tal que $\sop(\theta_{n})\cap O = \emptyset$ excepto para un subconjunto
+    finito de la familia,
+  \item
+    $0\leq \theta_{n}\leq 1$ para cada $n\in\N$,
+  \item
+    $\sum_{n=1}^{\infty} \theta_{n} = 1$.
+  \end{nlist}
+\end{ndef}
+
+Los siguientes lemas nos permitirán probar la existencia de particiones de la unidad
+no triviales (del tipo $\left\{ 1/2, 1/2 \right\}$) y justificarán el requisito
+de ser ANII.
+\begin{lema} \label{lema:base-rel-compactos}
+  Sea $M$ una variedad diferenciable. Entonces, la topología de $M$ admite una
+  base numerable de abiertos relativamente compactos.
+\end{lema}
+\begin{proof}
+  Sea $\mathscr{B}$ una base numerable de la topología de $M$. Definimos
+  \[
+    \mathscr{B}' = \left\{ B\in \mathscr{B} : \overline{B} \text{ es compacto} \right\}
+  ,\]
+  y vamos a ver que es también una base de la topología.
+
+  Sean $p\in M$, $V\subseteq O\subseteq M$ abiertos con $p\in V$, y $(V,\phi)$
+  una carta de $M$. Podemos suponer que $V$ es difeomorfo a una bola y que
+  $\overline{V}\subset O$, luego $\overline{V}$ es compacto.
+
+  Por ser $\mathscr{B}$ base, existe $B\in\mathscr{B}$ con $p\in B\subseteq V$,
+  luego $\overline{B}\subseteq\overline{V}$, compacto, es decir, $B\in\mathscr{B}'$.
+\end{proof}
+\begin{lema} \label{lema:rel-compactos}
+  Sea $M$ una variedad diferenciable. Entonces, existe una familia
+  $\left\{ G_{n} \right\}_{n\in\N}$ de subconjuntos de $M$ que verifica:
+  \begin{nlist}
+  \item
+    $\overline{G}_{n}$ es compacto para cada $n\in\N$,
+  \item
+    $\overline{G}_{n}\subseteq G_{n+1}$ para cada $n\in\N$,
+  \item
+    $\bigcup_{n=1}^{\infty} G_{n} = M$.
+  \end{nlist}
+\end{lema}
+\begin{proof}
+  Sea, por el lema \ref{lema:base-rel-compactos},
+  $\mathscr{B} = \left\{ B_{n} \right\}_{n\in\N}$ una base numerable de la
+  topología compuesta por abiertos relativamente compactos. Definimos,
+  inductivamente:
+  \begin{nlist}
+  \item
+    $G_{1} := B_{1}$,
+  \item
+    supuesto que $G_{n}$ está definido, observamos que $\mathscr{B}$ recubre a
+    $\overline{G_{n}}$, y tomamos un subrecubrimiento finito $\left\{ B_{n_{k}}
+    \right\}_{k=1}^{N}$. Entonces, definimos
+    \[
+      G_{n+1} := \bigcup_{k=1}^{N} B_{n_{k}} \cup B_{n}
+    .\]
+  \end{nlist}
+\end{proof}
+
+El siguiente teorema nos da particiones de la unidad no triviales.
+\begin{nth} \label{thm:part-recub}
+  Sean $M$ una variedad diferenciable, y
+  $U = \left\{ U_{\alpha} \right\}_{\alpha\in A}$ un recubrimiento abierto de
+  $M$. Entonces, existe una partición de la unidad
+  $\left\{ \theta_{n} \right\}_{n\in\N}$ de forma que se verifica, para cada
+  $n\in\N$:
+  \begin{nlist}
+  \item
+    $\theta_{n}$ tiene soporte compacto,
+  \item
+    existe $\alpha_{n}\in A$ tal que $\sop(\theta_{n})\subseteq U_{\alpha_{n}}$.
+  \end{nlist}
+\end{nth}
+\begin{proof}
+  Sea $\left\{ G_{n} \right\}_{n\in\N}$ una familia dada por el lema
+  \ref{lema:rel-compactos}. Además, llamemos $G_{0} = \emptyset$. Consideramos
+  \[
+    A_{n} := \overline{G_{n+1}}-G_{n}
+    .\]
+  Observamos:
+  \begin{nlist}
+  \item
+    $A_{n}$ es un cerrado en un compacto, luego compacto,
+  \item
+    $\left\{ A_{n} \right\}_{n\in\N}$ recubre a $M$,
+  \item
+    $A_{n} = \overline{G_{n+1}}-G_{n} \subseteq G_{n+2}-\overline{G_{n-1}}$, que
+    es abierto.
+  \end{nlist}
+  Ahora, si $p\in A_{n}$, entonces existe $\alpha_{p}$ con $p\in
+  U_{\alpha_{p}}$, luego $p\in (G_{n+2}-\overline{G_{n-1}})\cap U_{\alpha_{p}}$.
+  Por el lema \ref{prop:meseta}, existen $f_{p}: M\to \R$ una función meseta y
+  $V_{p}$ un entorno abierto relativamente compacto de $p$ de manera que:
+  \begin{nlist}
+  \item
+    $\sop(f_{p}) \subseteq (G_{n+2}-\overline{G_{n-1}})\cap U_{\alpha_{p}}$ y es
+    compacto,
+  \item
+    $\restr{f_{p}}{V_{p}} = 1$.
+  \end{nlist}
+
+  De este modo, $\left\{ V_{p} : p\in A_{n} \right\}$ es un recubrimiento
+  abierto de $A_{n}$. Tomamos un subrecubrimiento finito que recubra a $A_{n}$,
+  y las funciones correspondientes. Repitiendo esta construcción para cada
+  $n\in\N$, obtenemos --recordamos que la unión numerable de conjuntos
+  numerables es numerable-- una familia numerable de funciones diferenciables
+  $\left\{ f_{n} \right\}_{n\in\N}$, y cada una verifica las propiedades
+  anteriores. Además, sus soportes recubren a $M$. Podemos definir ya
+  \[
+    \theta_{n} = \frac{f_{n}}{\sum_{m=1}^{\infty} f_{m}}
+    .\]
+  Es inmediato comprobar que la suma del denominador es finita y no nula, y que
+  la familia así definida verifica las propiedades del enunciado.
+\end{proof}
+
+\begin{ncor}
+  Sean $F\subseteq M$ cerrado y $O\subseteq M$ abierto, con $F\subseteq
+  O$. Entonces, existe $f: M\to \R$ diferenciable con $0\leq f \leq 1$,
+  $\restr{f}{F} = 1$, y $\sop(f) \subseteq O$.
+\end{ncor}
+\begin{proof}
+  Tomamos el recubrimiento $U = \left\{ M-F, O \right\}$ de $M$, y $\left\{
+    \theta_{n} \right\}_{n\in\N}$ la partición de la unidad dada por el teorema
+  para $U$. Consideramos $\left\{ \theta_{k} : k\in I \right\}$ la subfamilia de
+  las funciones que verifican
+  \begin{nlist}
+  \item
+    $\sop(\theta_{k})\not\subseteq M-F$,
+  \item
+    $\sop(\theta_{k})\cap F \ne \emptyset$.
+  \end{nlist}
+  Por tanto, verifican $\sop(\theta_{k})\subseteq O$. Definimos
+  \[
+    f := \sum_{k\in I} \theta_{k}
+    .\]
+  Claramente, $0\leq f \leq 1$ y $\sop(f)\subseteq O$. Además,
+  \[
+    \restr{f}{F} = \sum_{k\in I} \restr{\theta_{k}}{F} = \sum_{n\in\N} \restr{\theta_{n}}{F} = 1
+    ,\]
+  pues el soporte de las que se añaden en la segunda sumatoria está en $M-F$.
+\end{proof}
+
+El siguiente corolario nos dice que, en cierto sentido, no hay funciones
+diferenciables exclusivas de las subvariedades.
+\begin{lema} \label{lema:extension-subv}
+  Sean $p\in M$, y $f:M\to \R$ diferenciable. Existen un entorno abierto $W_{p}\subseteq \R^{N}$ de $p$ y una
+  función diferenciable $\tilde{f}_{p}: W_{p}\to \R$ tales que
+  $\restr{\tilde{f_{p}}}{W_{p}\cap M} = \restr{f}{W_{p}\cap M}$.
+\end{lema}
+\begin{proof}
+  Vamos a usar una construcción como la que se empleó en la demostración de la
+  proposición \ref{prop:prop-dif-sub}-\ref{item:inc-2}. Sea $(V,\phi)$ una carta
+  de $M$ con $p\in V$, y obtenemos, como se hizo allí, una carta $(W_{p},\psi)$ de $\R^{N}$ tal
+  que $\psi\circ i\circ\phi^{-1} = (x\mapsto (x,0))$.
+
+  Definimos
+  \[
+    \tilde{f}_{p} = f\circ \phi^{-1} \circ\pi\circ\psi
+    ,\]
+  con $\pi$ la proyección sobre las primeras $n$ componentes, y así
+  $\tilde{f}_{p}$ es diferenciable. Además, si $v\in V$, entonces
+  \[
+    (\psi\circ i)(v) = (\psi\circ i \circ\phi^{-1})(\phi(v)) = (\phi(v), 0)
+    ,\]
+  luego
+  \[
+    (\pi\circ\psi\circ i)(v) = \phi(v)
+    ,\]
+  y por último
+  \[
+    (\phi^{-1}\circ\pi\circ\psi\circ i)(v) = v
+    .\]
+  Es decir, $\restr{\phi^{-1}\circ\pi\circ\psi}{V} = \mathrm{id}$. Por tanto,
+  $\restr{\tilde{f}_{p}}{W_{p}\cap M} = \restr{f}{W_{p}\cap M}$.
+\end{proof}
+\begin{ncor} \label{cor:ext-fun-subv}
+  Sean $M\subseteq \R^{N}$ una subvariedad del euclídeo, cerrada en $\R^{N}$, y
+  $f:M\to\R$ diferenciable. Entonces, existe $F:\R^{N}\to\R$ diferenciable que
+  extiende a $f$.
+\end{ncor}
+\begin{proof}
+  Sean, para $p\in M$, $W_{p}$ el entorno de $p$ y $\tilde{f}_{p}$ la función
+  dados por el lema \ref{lema:extension-subv}. Consideramos el recubrimiento de
+  $\R^{N}$:
+  \[
+    U := \left\{ W_{p} \right\}_{p\in M} \cup \left\{ \R^{N}-M \right\}
+    .\]
+  Aplicamos el teorema \ref{thm:part-recub} y obtenemos una partición de la
+  unidad $\left\{ \theta_{n} \right\}_{n\in\N}$ para $U$. De esta familia,
+  consideramos la subfamilia $\left\{ \theta_{k} \right\}_{k\in I}$ de las
+  $\theta_{k}$ que verifiquen $\sop(\theta_{k})\cap M \ne \emptyset$, lo que
+  implica $\sop(\theta_{k}) \subseteq w_{p_{k}}$ para cierto $p_{k}\in M$.
+
+  Definimos, para cada $k\in I$,
+  \[
+    \hat{f}_{k} :=
+    \begin{cases}
+      \theta_{k}\tilde{f}_{p_{k}} & \text{ en $W_{p_{k}}$}, \\
+      0 & \text{ en $\R^{N}-W_{p_{k}}$},
+    \end{cases}
+  \]
+  y $F := \sum_{k\in I} \hat{f}_{k}$. Es inmediato que es una extensión
+  diferenciable de $f$.
+\end{proof}
