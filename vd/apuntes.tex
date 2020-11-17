@@ -1694,3 +1694,137 @@ $a_{i}: V\to\R$, con lo cual
     \sum_{i=1}^{n} a_{i} \Diffop{x_{i}} \right)_{p}
 ,\]
 es decir, $X = \sum_{i=1}^{n}a_{i}\Diffop{x_{i}}$.
+
+\subsection{Estructura del fibrado tangente}
+
+Para proporcionar una definición de campo de vectores \emph{diferenciable}, que
+será el concepto que nos interese, primero hemos de dotar al fibrado tangente de
+estructura de variedad diferenciable.
+
+Vamos a emplear el siguiente lema:
+\begin{lema} \label{lema:est-dif}
+  Sean $M$ un conjunto, $\left\{ U_{\alpha} \right\}_{\alpha\in A}$ una familia
+  de subconjuntos de $M$, y $\phi_{\alpha}: U_{\alpha}\to \R^{n}$ inyectiva para
+  cada $\alpha\in A$, tales que:
+  \begin{nlist}
+  \item \label{item:abierto}
+    $\phi_{\alpha}(U_{\alpha}\cap U_{\beta})\subseteq \R^{n}$ es abierto para
+    cualesquiera $\alpha,\beta\in A$,
+  \item \label{item:diff}
+    si $U_{\alpha}\cap U_{\beta}\ne \emptyset$, entonces
+    $\phi_{\beta}\circ\phi_{\alpha}^{-1}: \phi_{\alpha}(U_{\alpha}\cap
+    U_{\beta})\to \phi_{\beta}(U_{\alpha}\cap U_{\beta})$ es $\Cinf$,
+  \item \label{item:recubre}
+    hay una subfamilia numerable de $\left\{ U_{\alpha} \right\}_{\alpha\in A}$ que
+    recubre a $M$,
+  \item
+    para cualesquiera $p,q\in M$ distintos, existe $U_{\alpha}$ que contiene a
+    ambos, o existen $U_{\alpha}$, $U_{\beta}$ disjuntos con $p\in U_{\alpha}$,
+    $q\in U_{\beta}$.
+  \end{nlist}
+  Entonces, existen una única topología y estructura diferenciable en $M$ tales
+  que $(U_{\alpha},\phi_{\alpha})$ es una carta diferenciable para cada $\alpha\in A$.
+\end{lema}
+\begin{proof}
+  La topología en $M$ será la dada por la base
+  \[
+     \mathscr{B} = \left\{ \phi_{\alpha}^{-1}(V) : \alpha\in A, V\subseteq
+      \phi_{\alpha}(U_{\alpha}) \text{ abierto} \right\}
+    .\]
+  Veamos que es una base. Por la inyectividad de las funciones $\phi_{\alpha}$ y
+  la propiedad \ref{item:recubre}, $\mathscr{B}$ recubre a $M$. Sean
+  $\phi_{\alpha}^{-1}(V)$ y $\phi_{\beta}^{-1}(W)$ dos abiertos básicos no
+  disjuntos. Las propiedades \ref{item:abierto} y \ref{item:diff} implican que
+  \[
+    \phi_{\alpha}\circ\phi_{\beta}^{-1}: \phi_{\beta}(U_{\alpha}\cap
+    U_{\beta})\to \phi_{\alpha}(U_{\alpha}\cap U_{\beta})
+  \]
+  es un difeomorfismo. Por tanto, $\phi_{\alpha}\circ\phi_{\beta}^{-1}(W)$ es
+  abierto, y
+  \[
+    \phi_{\alpha}^{-1}(V\cap\phi_{\alpha}\circ\phi_{\beta}^{-1}(W)) = \phi_{\alpha}^{-1}(V)\cap\phi_{\beta}^{-1}(W)
+  \]
+  es un abierto básico.
+
+  Ahora, con esta topología es claro que las funciones $\phi_{\alpha}$ son
+  homeomorfismos en sus imágenes. Por tanto, cada abierto $U_{\alpha}$ es
+  ANII. La propiedad $\ref{item:recubre}$ implica entonces que $M$ es ANII,
+  tomando una unión numerable de bases numerables.
+
+  Si $p,q\in M$ son distintos y existe $U_{\alpha}$ con $p,q\in U_{\alpha}$,
+  por ser $\phi_{\alpha}$ homemomorfismo $U_{\alpha}$ es Hausdorff, luego $p$ y
+  $q$ se pueden separar por abiertos de $U_{\alpha}$ y $M$ es Hausdorff.
+
+  Para la unicidad de la topología: cualquier topología que verifique la tesis
+  del lema debe hacer a $\phi_{\alpha}$ homeomorfa en su imagen. Entonces, los
+  abiertos de la base $\mathscr{B}$ son los únicos posibles en $U_{\alpha}$.
+
+  Para la unicidad de la estructura diferenciable: la familia $\left\{
+    (U_{\alpha},\phi_{\alpha}) \right\}_{\alpha\in A}$ es un atlas con la
+  topología que hemos dado, con lo que la unicidad se sigue de la proposición
+  \ref{prop:unicidad-atlas}.
+\end{proof}
+
+Ya podemos construir la estructura diferenciable en $\T M$:
+\begin{nprop} \label{prop:est-dif-tan}
+  $\T M$ está dotado de una topología y una estructura diferenciable que lo
+  hacen una variedad diferenciable $2n$-dimensional y hacen la proyección $\Pi$ diferenciable.
+\end{nprop}
+\begin{proof}
+  Vamos a emplear el lema \ref{lema:est-dif}. Para ello, vamos a definir las
+  familias de abiertos y funciones necesarias. Dada una carta $(U,\phi,x_{i})$ en $M$,
+  definimos
+  \begin{alignat*}{2}
+    \Phi: \Pi^{-1}(U) & \to \R^{2n} \\
+   (p,v) & \mapsto (\phi(p), v_{1}, \dots, v_{n}),
+  \end{alignat*}
+  con $v_{i}$ las coordenadas de $v$ respecto de $\diffop{x_i}{p}$. La imagen de
+  $\Phi$ es $\Phi(\Pi^{-1}(U)) = \phi(U)\times \R^{n}$, abierto de $\R^{2n}$.
+  Es invertible, con inversa
+  \[
+    \Phi(x,v) = \left(\phi^{-1}(x), \sum_{i=1}^{n}v_{i} \diffop{x_{i}}{\phi^{-1}(x)}\right)
+    .\]
+
+  Ahora, sean $(\Pi^{-1}(U),\Phi)$ y $(\Pi^{-1}(V),\Psi)$ asociadas a
+  $(U,\phi,x_{i})$ y $(V,\psi,y_{i})$. $\Phi(\Pi^{-1}(U)\cap\Pi^{-1}(V)) =
+  \phi(U\cap V)\times \R^{n}$ es abierto. Además,
+  \begin{alignat*}{2}
+    \Psi\circ\Phi^{-1}: \phi(U\cap V) & \to \psi(U\cap V) \\
+   (x,v) & \mapsto (\psi\circ\phi^{-1}(x), v_{1}',\dots,v_{n}'),
+  \end{alignat*}
+  con $v_{i}'$ las coordenadas de $\sum_{i=1}^{n}v_{i}\diffop{x_{i}}{p}$
+  respecto de $\left\{ \diffop{y_{i}}{p} \right\}$. Claramente, es diferenciable.
+
+  Visto esto, eligiendo un recubrimiento numerable $\left\{ U_{n}
+  \right\}_{n\in\N}$ por abiertos coordenados de $M$, obtenemos un recubrimiento
+  $\left\{ \Pi^{-1}(U_{n}) \right\}_{n\in\N}$ de $\T M$, con una familia de
+  funciones asociada que verifica las tres primeras condiciones del lema. Es
+  inmediato que también verifican la última.
+
+  Si $(p,v)\in \T M$, y $\Pi^{-1}(U)$ es un entorno coordenado de $(p,v)$,
+  entonces $\phi\circ\Pi\circ\Phi^{-1}(x,v) = x$, diferenciable.
+\end{proof}
+
+\subsection{Campos diferenciables}
+
+\begin{ndef}
+  Un campo $X$ en $M$ se dice \emph{diferenciable} si es diferenciable como
+  aplicación entre las variedades $M$ y $\T M$.
+\end{ndef}
+
+Notamos por $\mathscr{X}(M)$ al conjunto de campos diferenciables en $M$.
+
+\begin{nprop}
+  $X$ es diferenciable en $p$ si, y solo si, existe un entorno $V$ de $p$ tal
+  que, expresado $X$ en coordenadas como $\restr{X}{V} =
+  \sum_{i=1}^{n}a_{i}\Diffop{x_{i}}$, estas son diferenciables.
+\end{nprop}
+\begin{proof}
+  Se comprueba tomando cartas $(V,\phi)$ y $(\Pi^{-1}(V), \Phi)$, y escribiendo
+  la condición de diferenciabilidad.
+\end{proof}
+
+\begin{ejemplo}
+  Sea $(V,\phi,x_{i})$ una carta en $M$. Entonces, $\Diffop{x_{i}}$ es un campo
+  diferenciable en $V$.
+\end{ejemplo}
