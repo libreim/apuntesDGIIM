@@ -1828,3 +1828,320 @@ Notamos por $\mathscr{X}(M)$ al conjunto de campos diferenciables en $M$.
   Sea $(V,\phi,x_{i})$ una carta en $M$. Entonces, $\Diffop{x_{i}}$ es un campo
   diferenciable en $V$.
 \end{ejemplo}
+
+\subsection{Campos y derivaciones}
+
+En esta sección, vamos a dar una identificación entre los campos diferenciables
+sobre una variedad, y un concepto de \emph{derivaciones} más amplio que el visto
+hasta ahora.
+
+Consideramos el conjunto
+\[
+  \mathcal{D} = \left\{ \alpha\in (\Cinf(M)\to\Cinf(M)) :
+    \begin{array}{l}
+      \alpha\text{ es lineal} \\
+      \alpha(fg) = \alpha(f)g + f\alpha(g),\, f,g\in\Cinf(M)
+    \end{array}
+\right\},
+\]
+y llamamos a sus elementos \emph{derivaciones}. Si $\alpha$ es una derivación en
+este sentido, y notamos $\alpha_{p}(f) := \alpha(f)(p)$, entonces $\alpha_{p}$
+es una derivación en $p$. Consideramos $\mathcal{D}$ como $\Cinf(M)$-módulo con
+el producto $(g\alpha)(f) = g\alpha(f)$.
+
+En la demostración de esta proposición daremos la identificación anunciada.
+\begin{nprop}
+  $\mathscr{X}(M)$ y $\mathcal{D}$ son isomorfos como espacios vectoriales
+  reales y como $\Cinf(M)$-módulos.
+\end{nprop}
+\begin{proof}
+  Definimos
+  \begin{alignat*}{2}
+    F: \mathscr{X}(M) & \to \mathcal{D} \\
+    X & \mapsto \left( \alpha_{X} : f\mapsto X_{-}(f) \right)
+  \end{alignat*}
+  y vamos a ver que $F$ es un isomorfismo de espacios vectoriales y de módulos.
+
+  Primero, veamos que está bien definida, es decir, para cada $X\in
+  \mathscr{X}(M)$, $\alpha_{X}$ es una derivación. Sea una carta
+  $(V,\phi,x_{i})$, y expresamos
+  \[
+    \restr{X}{V} = \sum_{i=1}^{n} a_{i} \Diffop{x_{i}}
+    .\] Entonces,
+  \[
+    \alpha_{X}(f) = \sum_{i=1}^{n} a_{i} \Diffop{x_{i}}(f)
+    ,\] diferenciable: $(\Diffop{x_{i}}f)\circ\phi^{-1} =
+  \Diffop{r_{i}}(f\circ\phi^{-1})\circ\phi\circ\phi^{-1}$. Además,
+  $\alpha_{X}(\cdot)(p) = X_{p}$ es una derivación en $p$.
+
+  Veamos que es isomorfismo. Es inmediato que es lineal y morfismo de
+  módulos. Hay que ver que tiene núcleo trivial y que es sobreyectivo. Núcleo trivial:
+  \begin{align*}
+    & \alpha_{X} = 0 \\
+    \iff & \alpha_{X}(f) = 0 \text{ para cada } f\in\Cinf(M) \\
+    \iff & X_{p}(f) = 0 \text{ para cada } p\in M, f\in\Cinf(M).
+  \end{align*}
+
+  Si $\alpha\in \mathcal{D}$, tomando $X$ dado por $X_{p}(g) = \alpha(g)(p)$,
+  se tiene $\alpha_{X} = \alpha$.
+\end{proof}
+
+Tenemos así dos formas de interpretar un campo diferenciable $X$: como una
+aplicación diferenciable $X: M \to \T M$, o como una derivación $X:\Cinf(M)\to
+\Cinf(M)$, dada por $X(f)(p) = X_{p}(f)$. Vamos a aprovechar esta identificación
+para dar una estructura de álgebra de Lie sobre $\mathscr{X}(M)$, mediante el
+corchete de Lie:
+\begin{alignat*}{2}
+  [-,-]: \mathscr{X}(M)^{2} & \to \mathscr{X}(M) \\
+ (X,Y) & \mapsto [X,Y]: (f\mapsto X(Y(f))-Y(X(f))).
+\end{alignat*}
+Desarrollando $[X,Y](fg)$, es inmediato comprobar que está bien definido.
+
+\begin{nprop}
+  Se verifican:
+  \begin{nlist}
+  \item
+    $[X,Y]=-[Y,X]$,
+  \item
+    $[X,X] = 0$,
+  \item
+    $[-,-]$ es bilineal,
+  \item
+    $[fX,gY] = fg[X,Y] + fX(g)Y - gY(f)X$,
+  \item
+    la \emph{identidad de Jacobi}:
+    \[
+      [[X,Y],Z] + [[Z,X],Y] + [[Y,Z],X] = 0
+    .\]
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  Todas las propiedades se siguen de la definición, desarrollando cuando sea necesario.
+\end{proof}
+
+\begin{nprop}
+  Sea $F:M\to N$ un difeomorfismo. Sea $F_{*}:\mathscr{X}(M)\to
+  \mathscr{X}(M)$ dado por $F_{*}(X)_{F(p)} = \d F_{p}(X_{p})$. Entonces,
+  $F_{*}$ es un isomorfismo de álgebras de Lie.
+\end{nprop}
+\begin{proof}
+  Comenzamos probando que es homomorfismo de álgebras de Lie.
+  \begin{align*}
+    F_{*}([X,Y])_{F(p)}(f) & = \d F_{p}([X,Y]_{p})(f) \\
+                           & = [X,Y]_{p}(f\circ F) \\
+                           & = X_{p}(Y(f\circ F)) - Y_{p}(X(f\circ F)).
+  \end{align*}
+  Ahora,
+  \begin{align*}
+    X_{p}(Y(f\circ F)) & = X_{p}(Y(f\circ F)\circ F^{-1} \circ F) \\
+                       & = \d F_{p}(X_{p})(Y(f\circ F)\circ F^{-1}) \\
+    & = F_{*}(X)_{F(p)}(Y(f\circ F)\circ F^{-1}),
+  \end{align*}
+  y además,
+  \begin{align*}
+    F_{*}(X)(f)(F(p)) & = \d F_{p} (Y_{p})(f) \\
+                      & = Y_{p}(f\circ F) \\
+                      & = Y(f\circ F)(p),
+  \end{align*}
+  luego $F_{*}(Y)(f) = Y(f\circ F)\circ F^{-1}$. Uniendo todo esto tenemos:
+  \begin{align*}
+    F_{*}([X,Y])_{F(p)}(f) & = F_{*}(X)_{F(p)}(F_{*}(Y)(f)) -
+                             F_{*}(Y)_{F(p)}(F_{*}(X)(f)) \\
+                           & = [F_{*}(X), F_{*}(Y)]_{F(p)}(f).
+  \end{align*}
+
+  Para ver que $F_{*}$ es invertible y su inversa es un homomorfismo de álgebras
+  de Lie, basta ver que su inversa es $\left( F^{-1} \right)_{*}$:
+  \begin{align*}
+    \left( F^{-1} \right)_{*}(F_{*}(X))_{p} & = \left( \d F^{-1}
+                                              \right)_{F(p)}\left(
+                                              F_{*}(X)_{F(p)} \right) \\
+                                            & = \left( \d F^{-1} \right)_{F(p)}\left( \d F_{p}(X_{p}) \right) \\
+                                            & = \d (\mathrm{id})_{p} (X_{p}) \\
+                                            & = X_{p}.
+  \end{align*}
+  y análogamente con la composición a la derecha.
+\end{proof}
+
+\begin{nprop}[Propiedades de $F_{*}$]
+  Se verifican:
+  \begin{nlist}
+  \item
+    $F_{*}$ es lineal,
+  \item
+    $F_{*}(fX) = (f\circ F^{-1})F_{*}(X)$, para cada $f\in\Cinf(M)$,
+  \item
+    propiedad de funtorialidad: $(G\circ F)_{*} = G_{*}\circ F_{*}$,
+  \item
+    $(F^{-1})_{*} = (F_{*})^{-1}$.
+  \end{nlist}
+\end{nprop}
+
+\subsection{Campos diferenciables en subvariedades}
+
+Vamos a relacionar el concepto de campo diferenciable con el concepto clásico
+visto en $\R^{n}$. Sea $O\subseteq \R^{n}$ un abierto. Entonces, los campos
+$\left\{ \Diffop{r_{1}},\dots, \Diffop{r_{n}} \right\}$ están globalmente
+definidos.
+
+Así, cualquier campo $X\in \mathscr{X}(O)$ se expresa en coordenadas como $X =
+\sum_{i=1}^{n} X_{i}\Diffop{r_{i}}$. La aplicación dada por
+\begin{alignat*}{2}
+   \mathscr{X}(O) & \to \Cinf(O,\R^{n}) \\
+  X & \mapsto (X_{1}, \dots, X_{n}) 
+\end{alignat*}
+es un isomorfismo de espacios vectoriales y de $\Cinf(O)$-módulos.
+
+Ahora, consideramos $M^{n}\subseteq \R^{N}$ una subvariedad cerrada. Recordamos
+la identificación de $\T_{p}M$ con un subespacio $V_{p}$ de $\R^{N}$ mediante
+$\lambda_{p}^{-1}\circ\d i_{p}$, y definimos
+\begin{alignat*}{2}
+  T: \mathscr{X}(M) & \to \left\{ F\in\Cinf(M,\R^{N}) : F(p)\in V_{p}\text{ para
+      cada } p\in M \right\} \\
+ X & \mapsto \left(p\mapsto (\lambda_{p}^{-1}\circ\d i_{p})(X_{p}) \right).
+\end{alignat*}
+Tenemos de nuevo:
+\begin{nprop}
+  La aplicación $T$ definida en el párrafo anterior es un isomorfismo de
+  espacios vectoriales y $\Cinf(M)$-módulos.
+\end{nprop}
+\begin{proof}
+  \begin{align*}
+    \d i_{p}(X_{p}) & = \sum_{j=1}^{N} \left(\d i_{p}(X_{p})\right)(r_{j})
+                      \diffop{r_{j}}{p} \\
+                    & = \sum_{j=1}^{N}X_{p}(r_{j}\circ i) \diffop{r_{j}}{p} \\
+                    & = \sum_{j=1}^{N} X_{p}\left(\restr{r_{j}}{M}\right) \diffop{r_{j}}{p}
+    \\
+                    & = \left( \sum_{j=1}^{N}X\left(\restr{r_{j}}{M}\right)\Diffop{r_{j}} \right)_{p},
+  \end{align*}
+  por lo que $\lambda_{p}^{-1}(\d i_{p}(X_{p})) = \left(X_{p}\left(\restr{r_{1}}{M}\right),
+  \dots, X_{p}\left(\restr{r_{N}}{M}\right)\right)$, y por tanto
+  \[
+    T(X) = \left(X\left(\restr{r_{1}}{M}\right), \dots, X\left(\restr{r_{N}}{M}\right)\right)
+    .\]
+  Es inmediato que $T$ es lineal y homomorfismo de $\Cinf(M)$-módulos.
+
+  Es inyectiva: $X\in\ker(T)$ si y solo si $\d i_{p}(X_{p})$ tiene coordenadas
+  nulas para cada $p\in M$, y $\d i_{p}$ es inyectiva. 
+
+  Es sobreyectiva: si $F\in\Cinf(M,\R^{N})$, entonces definiendo
+  \[
+    X_{p} = (\d i_{p})^{-1}(\lambda_{p}(F(p)))
+  \]
+  se tiene $T(X)=F$. Solo queda ver que $X$ así definido es diferenciable. Sea
+  $f\in\Cinf(M)$, y sea $\tilde{f}\in\Cinf(\R^{N})$ una extensión de
+  $f$. Entonces, $\d i_{p}(X_{p}) = \lambda_{p}(F(p))$, por lo que
+  \begin{align*}
+    \d i_{p}(X_{p})(\tilde{f}) & = \lambda_{p}(F(p))(\tilde{f}) \\
+                    & = \sum_{i=1}^{N}F_{i}(p) \diffop{r_{i}}{p}(\tilde{f}) \\
+                    & = X_{p}(\tilde{f}\circ i) \\
+                    & = X_{p}(f).
+  \end{align*}
+\end{proof}
+
+\begin{ejemplo}
+  Para la esfera unidad $n$-dimensional $\mathbb{S}^{n}$, habíamos identificado
+  $\T_{p}\mathbb{S}^{n} \cong \langle p\rangle^{\perp}$. Así, identificamos
+  \[
+    \mathscr{X}(M) \cong \left\{ X\in\Cinf(\mathbb{S}^{n}, \R^{n+1}) : \langle
+      X_{p}, p\rangle = 0,\, p\in\mathbb{S}^{n} \right\}
+  .\]
+Entonces, es sencillo comprobar que los siguientes son campos diferenciables en
+esferas:
+\begin{nlist}
+\item
+  $X_{p} = a - \langle p, a\rangle p$, para $a\in \R^{n+1}$,
+\item
+  El producto vectorial $X_{p} = p\times a$, en $\mathbb{S}^{2}$,
+\item
+  En $\mathbb{S}^{2n+1}$, $X_{p} = (-p_{2},p_{1}, \dots, -p_{2n+2},
+  p_{2n+1})$. Este es un campo sin ceros.
+\end{nlist}
+\end{ejemplo}
+
+\subsubsection{Campos diferenciables en la esfera}
+
+Consideramos el difeomorfismo antípoda
+\begin{alignat*}{2}
+  A: \mathbb{S}^{n} & \to \mathbb{S}^{n} \\
+ p & \mapsto -p,
+\end{alignat*}
+que verifica $A\circ A = \mathrm{id}$. Así, $A_{*}$ es un automorfismo de
+$\mathscr{X}(\mathbb{S}^{n})$, que verifica $A_{*}\circ A_{*} = (A\circ A)_{*} =
+\mathrm{id}$, luego $A_{*}$ tiene dos valores propios: $1$ y $-1$. Llamando
+$\mathscr{X}_{+}(\mathbb{S}^{n})$ y $\mathscr{X}_{-}(\mathbb{S}^{n})$ a los subespacios propios de $1$ y $-1$,
+\[
+  \mathscr{X}(\mathbb{S}^{n}) = \mathscr{X}_{+}(\mathbb{S}^{n})\oplus \mathscr{X}_{-}(\mathbb{S}^{n})
+  .\]
+Además, la descomposición viene dada, para cada $X\in
+\mathscr{X}(\mathbb{S}^{n})$, de la siguiente forma:
+\[
+  X = \underbrace{\frac{X+A_{*}(X)}{2}}_{\in \mathscr{X}_{+}(\mathbb{S}^{n})} +
+  \underbrace{\frac{X-A_{*}(X)}{2}}_{\in \mathscr{X}_{-}(\mathbb{S}^{n})}
+.\]
+
+$A_{*}$ verifica lo siguiente:
+\[
+  A_{*}(X)_{-p} = A_{*}(X)_{A(p)} = \d A_{p}(X_{p}) = -X_{p}.
+\]
+Así, podemos caracterizar $\mathscr{X}_{+}(\mathbb{S}^{n})$ y $\mathscr{X}_{-}(\mathbb{S}^{n})$ de la siguiente
+forma: $X\in \mathscr{X}_{+}(\mathbb{S}^{n}) \iff X_{-p} = -X_{p}$, mientras que $X\in
+\mathscr{X}_{-}(\mathbb{S}^{n}) \iff X_{-p} = X_{p}$.
+
+\subsubsection{Campos diferenciables en el proyectivo}
+
+Vamos a identificar $\mathscr{X}(\RP^{n})$ con
+$\mathscr{X}_{+}(\mathbb{S}^{n})$. Hemos visto que la proyección $\pi:
+\mathbb{S}^{n}\to \RP^{n}$ es un isomorfismo local. Definimos
+\begin{alignat*}{2}
+  T: \mathscr{X}(\RP^{n}) & \to \mathscr{X}_{+}(\mathbb{S}^{n}) \\
+ Y & \mapsto (p\mapsto (\d\pi_{p})^{-1}(Y_{\pi(p)})),
+\end{alignat*}
+y es inmediato ver que está bien definido y es un isomorfismo de espacios
+vectoriales y de módulos.
+
+\subsection{Extensión de campos diferenciables}
+
+Algunos resultados que permiten extender campos diferenciables:
+\begin{nprop}
+  Sea $M$ una variedad diferenciable. Se verifican:
+  \begin{nlist}
+  \item \label{item:ext-camp-1}
+    si $O\subseteq M$ es abierto, y $X\in \mathscr{X}(O)$, entonces para cada
+    $p\in O$ existen $\tilde{O}\subseteq O$ entorno abierto de $p$ y
+    $\tilde{X}\in \mathscr{X}(M)$ tales que $\restr{\tilde{X}}{\tilde{O}} =
+    \restr{X}{\tilde{O}}$,
+  \item \label{item:ext-camp-2}
+    para cada $p\in M$ y $v\in \T_{p}M$, existe $X\in \mathscr{X}(M)$ tal que
+    $X_{p}=v$,
+  \item \label{item:ext-camp-3}
+    si $M\subseteq \R^{N}$ es una subvariedad cerrada, y $X\in \mathscr{X}(M)$,
+    entonces existe $\tilde{X}\in \mathscr{X}(\R^{N})$ tal que
+    $\restr{\tilde{X}}{M} = X$.
+  \end{nlist}
+\end{nprop}
+\begin{proof}
+  \ref{item:ext-camp-1}: aplicando la proposición \ref{prop:meseta} a $p$ y $O$,
+  obtenemos $V_{p}\subseteq O$ abierto y relativamente compacto, y
+  $\psi\in\Cinf(M)$ con $\sop(\psi)\subseteq O$ compacto, $\restr{\psi}{V_{p}} =
+  1$. Llamando $\tilde{O} = V_{p}$ y
+  \[
+    \tilde{X}(f) =
+    \begin{cases}
+      \psi X(\restr{f}{O}) & \text{ en $O$}, \\
+      0 & \text{ en $M-O$},
+    \end{cases}
+    \] se obtiene el resultado.
+
+    \ref{item:ext-camp-2}: sea $(V,\phi,x_{i})$ una carta de $M$ con $p\in
+    V$. Ponemos $v$ en coordenadas como $v =
+    \sum_{i=1}^{n}\lambda_{i}\diffop{x_{i}}{p}$. Definimos $X:=
+    \sum_{i=1}^{n}\lambda_{i}\Diffop{x_{i}}$ y aplicamos $\ref{item:ext-camp-1}$
+    a $X$ y $V$.
+
+    \ref{item:ext-camp-3}: viendo $X$ como función diferenciable de $M$ a
+    $\R^{N}$, sean $X_{1}, \dots, X_{n}$ sus componentes. Por ser $M$ cerrada,
+    existen extensiones diferenciables de esas componentes (corolario
+    \ref{cor:ext-fun-subv}). El campo cuyas componentes son estas extensiones es
+    una extensión de $X$ a $\R^{N}$.
+\end{proof}
