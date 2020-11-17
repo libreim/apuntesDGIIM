@@ -2145,3 +2145,105 @@ Algunos resultados que permiten extender campos diferenciables:
     \ref{cor:ext-fun-subv}). El campo cuyas componentes son estas extensiones es
     una extensión de $X$ a $\R^{N}$.
 \end{proof}
+
+\section{Formas diferenciables}
+
+\begin{ndef}[Espacio cotangente]
+Dada una variedad diferenciable $M$, y un punto $p\in M$, llamamos \emph{espacio
+cotangente} a $\T_{p}^{*}M$, el dual del espacio tangente a $M$ en $p$.
+\end{ndef}
+
+También hacemos la construcción análoga al fibrado tangente:
+\begin{ndef}[Fibrado cotangente]
+  Se llama \emph{fibrado cotangente} a
+  \[
+    \T^{*}M := \bigsqcup_{p\in M} \T^{*}_{p}M
+  .\]
+\end{ndef}
+
+El fibrado cotangente también está provisto de una proyección natural
+\begin{alignat*}{2}
+  \Pi: \T^{*}M & \to M \\
+ (p,\omega) & \mapsto p.
+\end{alignat*}
+
+Consideramos a $\T^{*}M$ dotado de estructura de variedad $2n$-dimensional, como
+se hizo en la proposición \ref{prop:est-dif-tan}, y usando, en lugar de $\left\{
+  \diffop{x_{i}}{p} \right\}$, su base dual.
+
+\begin{ndef}[1-forma]
+  Una 1-forma es una aplicación $\omega: M\to \T^{*}M$ tal que $\Pi\circ\omega =
+  \mathrm{id}$.
+\end{ndef}
+
+\begin{ejemplo}
+  Si $f\in\Cinf(M)$, entonces $\d f_{p}: \T_{p}M \to \T_{f(p)}\R\cong \R$, luego
+  podemos considerar $\d f$ una 1-forma sobre $M$.
+\end{ejemplo}
+
+Una observación que será instrumental en lo sucesivo:
+\begin{nprop}
+  Con la identificación de $\T_{p}\R \cong V_{p}$ dada en la sección
+  \ref{sec:tan-subv}, si $(V,\phi,x_{i})$ es una carta en $M$, y $p\in V$,
+  \[
+    (\d x_{i})_{p}\left( \diffop{x_{j}}{p} \right) = \delta_{ij}
+  .\]
+\end{nprop}
+\begin{proof}
+  Para cada $f\in\Cinf(\R)$,
+  \begin{align*}
+    (\d x_{i})_{p}\left( \diffop{x_{j}}{p} \right)(f) & = \diffop{x_{i}}{p}(f\circ
+                                                     x_{i}) \\
+                                                   & = \Diffop{r_{j}}(f\circ
+                                                     x_{i}\circ
+                                                     \phi^{-1})(\phi(p)) \\
+                                                   & = \Diffop{r_{j}} (f\circ
+                                                     r_{i})(\phi(p)) \\
+                                                   & = f'(\phi_{i}(p))
+                                                     \left(\Diffop{r_{j}}
+                                                     r_{i}\right)(\phi(p)) \\
+                                                   & = f'(\phi_{i}(p))\delta_{ij}.
+  \end{align*}
+  En particular,
+  \[
+   (\d x_{i})_{p}\left( \diffop{x_{j}}{p} \right)(r) = \delta_{ij}
+  .\]
+\end{proof}
+
+\begin{ejemplo}
+  Sean $(V,\phi,x_{i})$ una carta de $M$, y $p\in V$. La proposición anterior
+  nos dice que $\left\{ (\d x_{i})_{p} \right\}_{i=1}^{n}$ es la base dual de $\left\{ \diffop{x_{i}}{p} \right\}_{i=1}^{n}$.
+\end{ejemplo}
+
+\begin{nprop}
+  Sean $\omega$ una 1-forma sobre $M$, $(V,\phi,x_{i})$ una carta de $M$ y $p\in
+  M$. Entonces,
+  \[
+    \left(\restr{\omega}{V}\right)_{p} = \sum_{i=1}^{n} \left( \restr{\omega}{V} \right)_{p}\left( \diffop{x_{i}}{p} \right) (\d x_{i})_{p}
+  .\]
+\end{nprop}
+\begin{proof}
+  Hemos visto que $\left\{ (\d x_{i})_{p} \right\}_{i=1}^{n}$ es una base de
+  $\T_{p}^{*}M$, por lo que
+  \[
+    \restr{\omega}{V} = \sum_{i=1}^{n}a_{i}\d x_{i}
+    .\]
+  Queda observar que
+  \[
+    \left(\restr{\omega}{V}\right)_{p}\left( \diffop{x_{j}}{p} \right) =
+    \sum_{i=1}^{n}a_{i}(p)\delta_{ij} = a_{j}(p)
+  .\]
+\end{proof}
+
+\begin{ndef}[1-forma diferenciable]
+  Decimos que $\omega: M\to\T^{*}M$ es una \emph{1-forma diferenciable} si lo es como
+  aplicación entre variedades diferenciables.
+\end{ndef}
+
+\begin{nprop}[Caracterización de la diferenciabilidad]
+  $\omega$ es diferenciable si, y solo si, $a_{i}\in\Cinf(V)$ para cada carta
+  $(V,\phi,x_{i})$ de un atlas.
+\end{nprop}
+
+Notaremos $\Omega^{1}(M) := \left\{ \omega : \text{$\omega$ es una 1-forma
+    diferenciable sobre $M$} \right\}$.
