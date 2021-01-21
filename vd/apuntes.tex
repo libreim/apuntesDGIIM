@@ -1591,61 +1591,6 @@ diferenciable un vector tangente a la variedad en ese punto.
   .\]
 \end{ndef}
 
-También se puede definir el fibrado tangente con la unión usual --no
-disjunta--. En este caso, el cero es común a todos los tangentes, pero salvo
-esta excepción, la unión es disjunta.
-\begin{lema} \label{lema:union-subesp}
-  Sean $V$ un espacio vectorial, y $U$ y $W$ subespacios propios. Entonces,
-  $U\cup W\ne V$.
-\end{lema}
-\begin{proof}
-  Razonamos por contradicción, suponiendo que $U\cup W = V$. Observamos que
-  $U\cap W \ne U$: si se da la igualdad, $U\subseteq W$, luego $U\cup W = W \ne
-  V$. Análogamente para $W$. Tomamos $v\in U -U\cap W$, $v'\in W - U\cap W$.
-
-  Entonces, $v+v'\in V$, luego $v+v'\in U$ o $v+v'\in W$. Sin pérdida de
-  generalidad, suponemos que $v+v'\in U$. Entonces, $v+v'-v = v'\in U$,
-  contradicción.
-\end{proof}
-\begin{nprop}
-  Si $M$ es una variedad diferenciable, $p,q\in M$, y $p\ne q$, entonces
-  $\T_{p}M \cap \T_{q}M = \{0\}$.
-\end{nprop}
-\begin{proof}
-  Sea $v: \Cinf(M)\to\R$ lineal y no nula, y supongamos que $v\in \T_{p}M$,
-  $v\in \T_{q}M$. Entonces, para cada $f,g\in\Cinf(M)$,
-  \begin{align*}
-    v(fg) & = v(f)g(p) + f(p)v(g) \\
-    & = v(f)g(q) + f(q)v(g),
-  \end{align*}
-  luego
-  \[
-    v(f)(g(p)-g(q)) + v(g)(f(p)-f(q)) = 0
-    .\]
-  En particular, tomando $f=g$,
-  \[
-    2v(f)(f(p)-f(q)) = 0
-  \]
-  para cada $f\in\Cinf(M)$, luego, si $f\in\Cinf(M)$, entonces
-  \begin{equation}
-    \label{eq:case-split-1}
-    \tag{$*$}
-    \begin{cases}
-      f\in\ker(v) & \text{ o} \\
-      f(p) = f(q).
-    \end{cases}
-  \end{equation}
-  Definimos $L:\Cinf(M)\to\R$ por $L(f) = f(p)-f(q)$, lineal. Podemos traducir
-  \eqref{eq:case-split-1} como
-  \[
-    \ker(v)\cup\ker(L) = \Cinf(M)
-    .\]
-  
-  Ahora, por ser dos funcionales lineales no nulos, ninguno de sus núcleos es el
-  espacio completo. Por tanto, su unión no puede ser el espacio completo (lema
-  \ref{lema:union-subesp}), y hemos llegado a contradicción.
-\end{proof}
-
 La siguiente proyección será relevante al definir los campos de vectores.
 \begin{ndef}
   La \emph{proyección natural} del fibrado tangente de una variedad es
