@@ -949,11 +949,11 @@ Si $\lambda \ne 1$, una dilatación es una homotecia. En otro caso, es una trasl
 
 % Dibujamos las alturas
 \begin{pgfinterruptboundingbox}
-\tkzDrawAltitude[dashed,color=900](B,C)(A)
+\tkzDrawAltitude[dashed,color=900](B,A,C)
 \tkzGetPoint{A3}
-\tkzDrawAltitude[dashed,color=900](A,C)(B)
+\tkzDrawAltitude[dashed,color=900](A,B,C)
 \tkzGetPoint{B3}
-\tkzDrawAltitude[dashed,color=900](A,B)(C)
+\tkzDrawAltitude[dashed,color=900](A,C,B)
 \tkzGetPoint{C3}
 \end{pgfinterruptboundingbox}
 
