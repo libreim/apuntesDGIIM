@@ -1677,12 +1677,12 @@ de vectorial y de módulo sobre las funciones $(M\to \R)$, de la siguiente forma
 \begin{ejemplo}
   Una carta $(V,\phi,x_{i})$ en $M$ permite dar un campo en $V$ mediante
   \begin{alignat*}{2}
-    \Diffop{x_{i}}: V  & \to \T M \\
+    \diffop{x_{i}}: V  & \to \T M \\
     p & \mapsto \diffop{x_{i}}{p}.
   \end{alignat*}
 \end{ejemplo}
 Este campo de vectores nos permite expresar, localmente, cualquier otro campo en
-coordenadas respecto de $\left\{ \Diffop{x_{i}} : i=1,\dots,n \right\}$: si $X:
+coordenadas respecto de $\left\{ \diffop{x_{i}} : i=1,\dots,n \right\}$: si $X:
 V \to \T M$ es un campo de vectores, entonces
 \[
   \sum_{i=1}^{n} a_{i}(p)\diffop{x_{i}}{p}
@@ -1690,10 +1690,10 @@ V \to \T M$ es un campo de vectores, entonces
 para ciertos coeficientes $a_{i}(p)$. Así, estos coeficientes definen funciones
 $a_{i}: V\to\R$, con lo cual
 \[
-  X_{p} = \sum_{i=1}^{n}\left( a_{i}\Diffop{x_{i}} \right)_{p} = \left(
-    \sum_{i=1}^{n} a_{i} \Diffop{x_{i}} \right)_{p}
+  X_{p} = \sum_{i=1}^{n}\left( a_{i}\diffop{x_{i}}{} \right)_{p} = \left(
+    \sum_{i=1}^{n} a_{i} \diffop{x_{i}}{} \right)_{p}
 ,\]
-es decir, $X = \sum_{i=1}^{n}a_{i}\Diffop{x_{i}}$.
+es decir, $X = \sum_{i=1}^{n}a_{i}\diffop{x_{i}}{}$.
 
 \subsection{Estructura del fibrado tangente}
 
@@ -1817,7 +1817,7 @@ Notamos por $\mathscr{X}(M)$ al conjunto de campos diferenciables en $M$.
 \begin{nprop}
   $X$ es diferenciable en $p$ si, y solo si, existe un entorno $V$ de $p$ tal
   que, expresado $X$ en coordenadas como $\restr{X}{V} =
-  \sum_{i=1}^{n}a_{i}\Diffop{x_{i}}$, estas son diferenciables.
+  \sum_{i=1}^{n}a_{i}\diffop{x_{i}}{}$, estas son diferenciables.
 \end{nprop}
 \begin{proof}
   Se comprueba tomando cartas $(V,\phi)$ y $(\Pi^{-1}(V), \Phi)$, y escribiendo
@@ -1825,7 +1825,7 @@ Notamos por $\mathscr{X}(M)$ al conjunto de campos diferenciables en $M$.
 \end{proof}
 
 \begin{ejemplo}
-  Sea $(V,\phi,x_{i})$ una carta en $M$. Entonces, $\Diffop{x_{i}}$ es un campo
+  Sea $(V,\phi,x_{i})$ una carta en $M$. Entonces, $\diffop{x_{i}}{}$ es un campo
   diferenciable en $V$.
 \end{ejemplo}
 
@@ -1866,12 +1866,12 @@ En la demostración de esta proposición daremos la identificación anunciada.
   \mathscr{X}(M)$, $\alpha_{X}$ es una derivación. Sea una carta
   $(V,\phi,x_{i})$, y expresamos
   \[
-    \restr{X}{V} = \sum_{i=1}^{n} a_{i} \Diffop{x_{i}}
+    \restr{X}{V} = \sum_{i=1}^{n} a_{i} \diffop{x_{i}}
     .\] Entonces,
   \[
-    \alpha_{X}(f) = \sum_{i=1}^{n} a_{i} \Diffop{x_{i}}(f)
-    ,\] diferenciable: $(\Diffop{x_{i}}f)\circ\phi^{-1} =
-  \Diffop{r_{i}}(f\circ\phi^{-1})\circ\phi\circ\phi^{-1}$. Además,
+    \alpha_{X}(f) = \sum_{i=1}^{n} a_{i} \diffop{x_{i}}(f)
+    ,\] diferenciable: $(\diffop{x_{i}}f)\circ\phi^{-1} =
+  \diffop{r_{i}}(f\circ\phi^{-1})\circ\phi\circ\phi^{-1}$. Además,
   $\alpha_{X}(\cdot)(p) = X_{p}$ es una derivación en $p$.
 
   Veamos que es isomorfismo. Es inmediato que es lineal y morfismo de
@@ -1981,11 +1981,11 @@ Desarrollando $[X,Y](fg)$, es inmediato comprobar que está bien definido.
 
 Vamos a relacionar el concepto de campo diferenciable con el concepto clásico
 visto en $\R^{n}$. Sea $O\subseteq \R^{n}$ un abierto. Entonces, los campos
-$\left\{ \Diffop{r_{1}},\dots, \Diffop{r_{n}} \right\}$ están globalmente
+$\left\{ \diffop{r_{1}}{},\dots, \diffop{r_{n}}{} \right\}$ están globalmente
 definidos.
 
 Así, cualquier campo $X\in \mathscr{X}(O)$ se expresa en coordenadas como $X =
-\sum_{i=1}^{n} X_{i}\Diffop{r_{i}}$. La aplicación dada por
+\sum_{i=1}^{n} X_{i}\diffop{r_{i}}{}$. La aplicación dada por
 \begin{alignat*}{2}
    \mathscr{X}(O) & \to \Cinf(O,\R^{n}) \\
   X & \mapsto (X_{1}, \dots, X_{n}) 
@@ -2012,7 +2012,7 @@ Tenemos de nuevo:
                     & = \sum_{j=1}^{N}X_{p}(r_{j}\circ i) \diffop{r_{j}}{p} \\
                     & = \sum_{j=1}^{N} X_{p}\left(\restr{r_{j}}{M}\right) \diffop{r_{j}}{p}
     \\
-                    & = \left( \sum_{j=1}^{N}X\left(\restr{r_{j}}{M}\right)\Diffop{r_{j}} \right)_{p},
+                    & = \left( \sum_{j=1}^{N}X\left(\restr{r_{j}}{M}\right)\diffop{r_{j}}{} \right)_{p},
   \end{align*}
   por lo que $\lambda_{p}^{-1}(\d i_{p}(X_{p})) = \left(X_{p}\left(\restr{r_{1}}{M}\right),
   \dots, X_{p}\left(\restr{r_{N}}{M}\right)\right)$, y por tanto
@@ -2136,7 +2136,7 @@ Algunos resultados que permiten extender campos diferenciables:
     \ref{item:ext-camp-2}: sea $(V,\phi,x_{i})$ una carta de $M$ con $p\in
     V$. Ponemos $v$ en coordenadas como $v =
     \sum_{i=1}^{n}\lambda_{i}\diffop{x_{i}}{p}$. Definimos $X:=
-    \sum_{i=1}^{n}\lambda_{i}\Diffop{x_{i}}$ y aplicamos $\ref{item:ext-camp-1}$
+    \sum_{i=1}^{n}\lambda_{i}\diffop{x_{i}}{}$ y aplicamos $\ref{item:ext-camp-1}$
     a $X$ y $V$.
 
     \ref{item:ext-camp-3}: viendo $X$ como función diferenciable de $M$ a
@@ -2194,13 +2194,13 @@ Una observación que será instrumental en lo sucesivo:
   \begin{align*}
     (\d x_{i})_{p}\left( \diffop{x_{j}}{p} \right)(f) & = \diffop{x_{i}}{p}(f\circ
                                                      x_{i}) \\
-                                                   & = \Diffop{r_{j}}(f\circ
+                                                   & = \diffop{r_{j}}{}(f\circ
                                                      x_{i}\circ
                                                      \phi^{-1})(\phi(p)) \\
-                                                   & = \Diffop{r_{j}} (f\circ
+                                                   & = \diffop{r_{j}}{} (f\circ
                                                      r_{i})(\phi(p)) \\
                                                    & = f'(\phi_{i}(p))
-                                                     \left(\Diffop{r_{j}}
+                                                     \left(\diffop{r_{j}}{}
                                                      r_{i}\right)(\phi(p)) \\
                                                    & = f'(\phi_{i}(p))\delta_{ij}.
   \end{align*}
