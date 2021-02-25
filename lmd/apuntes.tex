@@ -1,0 +1,65 @@
+\section{Inducción y Recurrencia}
+\subsection{Axiomática de Peano}
+Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto se llaman números naturales.
+\begin{ndef}[Axiomas de Peano]
+Los axiomas que definen a $\nat$ son los siguientes:
+\begin{enumerate}[label=\emph{A\arabic*}]
+\item\label{a1} El cero es un número natural. $0 \in \mathbb{N}$
+\item\label{a2} El siguiente de un número natural es un número natural. Si $n \in \mathbb{N} \Rightarrow \sigma(n) \in \mathbb{N}$
+\item\label{a3} Cero no es el siguiente de ningún número natural. $\forall n \in \mathbb{N}$, $\sigma(n) \neq 0$
+\item\label{a4} Si los siguientes de dos números naturales son iguales, entonces los números naturales son iguales. $\forall m,n \in \mathbb{N}, \sigma(n) = \sigma(m) \Rightarrow m = n$
+\item\label{a5} Si un subconjunto de números naturales tiene el cero y siempre que tiene un número tiene a su siguiente, entonces el subconjunto son todos los números naturales.
+\end{enumerate}
+\end{ndef}
+
+\begin{nth}
+Todo número natural es distinto del siguiente. $\forall n \in \nat n \neq \sigma(n)$
+\end{nth}
+\begin{proof}
+Sea $A = \{x \in \nat : x \neq \sigma(x)\}$: \\
+Como $0 \neq \sigma(0)$, resulta $0 \in A$.
+Supongamos ahora $n \in A$, es decir, $n \neq \sigma(n)$, luego $\sigma(n) \neq \sigma(\sigma(n))$, por tanto, $\sigma(n) \in A$.
+Luego $A = \nat$.
+\end{proof}
+
+\begin{nth}
+Para cada número natural distinto de cero, existe un único número natural del que es su siguiente. $\forall n \in \nat (n \neq 0 \Rightarrow \exists! m \in \nat$ tal que $x = \sigma(m))$
+\end{nth}
+\begin{proof}
+Sea $A = \{x \in \nat : x = 0$ o $m \in \nat$ tal que $x = \sigma(m)\}$:\\
+Como $0 = 0$, resulta $0 \in A$. Supongamos ahora $n \in A$, es decir, $n = 0$ o $n = \sigma(m)$. En cualquier caso, $\sigma(n) = \sigma(n)$, por tanto $\sigma(n) \in A$. Luego $A = \nat$. \\
+La unicidad es consecuencia de $A4$.
+\end{proof}
+
+\subsection{Aritmética natural}
+\subsubsection{Suma de naturales}
+\begin{nth}
+Existe una única $+ : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
+\begin{itemize}
+\item $m + 0 = m$
+\item $m + \sigma(n) = \sigma(m + n)$
+\end{itemize}
+\end{nth}
+\smallskip
+\noindent
+\begin{properties}
+Para todo $m,n,p \in \nat$ se cumple:
+\begin{enumerate}
+\item Todo número natural es 0 o es el siguiente de un número natural.
+\item $m + 0 = 0 + m = m$.
+\item $m + 1 = 1 + m = \sigma(m)$.
+\item $(m + n) + p = m + (n + p)$.
+\item $m + n = n + m$.
+\item Si $m + p = n + p$, entonces $m = n$.
+\item Si $m + n = 0$, entonces $m = n = 0$.
+\end{enumerate}
+\end{properties}
+
+\subsubsection{Producto de naturales}
+\begin{nth}
+Existe una única $\cdot : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
+\begin{itemize}
+\item $m \cdot 0 = 0$
+\item $m \cdot \sigma(n) =  m \cdot n + m$
+\end{itemize}
+\end{nth}
