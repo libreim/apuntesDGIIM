@@ -1,8 +1,45 @@
-\section{}
+\section{Conceptos básicos}
 
-\section{}
+\subsection{Definiciones de conceptos}
 
-\section{}
+En esta primera sección del temario se introducirán conceptos relacionados con la programación orientada  a objetos, al igual que sus definiciones y explicaciones. Los conceptos a tener en cuenta son los siguientes:
+
+\begin{itemize}
+\item \textbf{Objeto:} entidad perfectamente delimitada, queencapsula estado y funcionamiento y posee una identidad. Otra definición sería: elemento, unidad o entidad individual e identificable, real o abstracta, con un papel bien definido en el dominio del problema.
+
+\item \textbf{Clase:} la clase, entre otras cosas, actúa de molde o plantilla para la creación de objetos y crea un tipo de dato. En algunos lenguajes las clases son también objetos a todos los efectos. Los objetos creados a partir de una clase se denominan \textbf{instancias} de esa clase.
+
+\item \textbf{Identidad:} la identidad la define la posición de memoria. Independientemente de su estado, objetos distintos residirán en zonas de memoria distintas. Cada instancia tiene su propia identidad.
+
+\item \textbf{Estado y Comportamiento:} el \textbf{estado} de un objeto vendrá definido por los valores de sus atributos. Cada objeto tiene unazona de memoria propia para el almacenamiento de sus atributos. Los objetos exhiben textbf{comportamiento}. Disponen de una serie de métodos (funciones o procedimientos) que pueden ser llamados/invocados.
+
+\item \textbf{Paradigma:} teoría o conjunto de teorías cuyo núcleo central se acepta sin cuestionar y que suministra la base y modelo para resolver problemas y avanzar en el conocimiento.
+
+\item \textbf{Paradigma de programación:} conjunto de reglas que indican como desarrollar software.
+
+\item \textbf{Base de la orientación a objetos:} se unen los datos y el procesamiento en entidades denominadas objetos.
+
+\end{itemize}
+
+En la \textbf{Programación Orientada a Objetos (POO)}, los objetos son las entidades que se manejan en el software. \textbf{Programar} consiste en modelar el problema mediante un universo dinámico de objetos. Cada objeto pertenece a una clase y tiene una responsabilidad en la aplicación. El \textbf{funcionamiento del programa} se consigue mediante el envío de mensajes a otros objetos para que realicen la ejecución de métodos. El objetivo es obtener \textbf{alta cohesión} y \textbf{bajo acoplamiento}.
+
+\bigskip
+
+El diseño de objetos no es una tarea sencilla, pero siempre se trata de que las clases cumplan las siguientes propiedades:
+
+\begin{itemize}
+
+\item Deben tener una \textbf{responsabilidad muy concreta}.
+
+\item Deben ser, en cierta medida, \textbf{autónomas}, es decir, tener poca dependencia de otras clases.
+
+\item Deben ser \textbf{introvertidas y no altruistas}, es decir, su estado solo puede modificarse desde la misma clase y no debe realizar funciones que ya estén implementadas aparte.
+
+\end{itemize}
+
+\section{Clases, objetos y mensajes}
+
+\section{Reutilización y polimorfismo}
 
 \subsection{Mecanismos de reutilización}
 
@@ -75,10 +112,10 @@ En Java las interfaces se utilizan para simular \textit{herencia múltiple}.
   public class Interaces {
 
     public static void main(String[] args) {
-
+    
       B b = new Prueba();
       b.met1();
-
+    
     }
 
   }
@@ -124,28 +161,28 @@ public class Tienda<T> {
     String nombre;
     ArrayList<T> stock;
     float ganancias;
-
+    
     Tienda (String n) {
-
+    
       nombre=n;
       stock = new ArrayList();
       ganancia=0;
     }
-
+    
     public void comprarAProveedr(T objeto, float precioCoste) {
-
+    
       stock.add(objeto);
       ganancias = ganancias-precioCoste;
-
+    
     }
-
+    
     public void venderACliente(T objeto, float pvp) {
-
+    
       stock.remove(objeto);
       ganancias=ganancias+pvp;
-
+    
     }
-
+    
     public float getGanancias() {
       return ganancias
     }
