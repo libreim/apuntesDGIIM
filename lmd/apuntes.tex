@@ -1,65 +1,179 @@
 \section{Inducción y Recurrencia}
+\subsection{Introducción a los naturales}
+En el estudio de los números naturales es necesario establecer un punto de partida y a partir de ahí, podremos definir operaciones básicas como la suma, el producto o el orden. Para ello, usaremos de punto de partida los axiomas de Peano y de esta forma llegaremos a todo lo que conocemos sobre los números naturales.
 \subsection{Axiomática de Peano}
 Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto se llaman números naturales.
 \begin{ndef}[Axiomas de Peano]
-Los axiomas que definen a $\nat$ son los siguientes:
-\begin{enumerate}[label=\emph{A\arabic*}]
-\item\label{a1} El cero es un número natural. $0 \in \mathbb{N}$
-\item\label{a2} El siguiente de un número natural es un número natural. Si $n \in \mathbb{N} \Rightarrow \sigma(n) \in \mathbb{N}$
-\item\label{a3} Cero no es el siguiente de ningún número natural. $\forall n \in \mathbb{N}$, $\sigma(n) \neq 0$
-\item\label{a4} Si los siguientes de dos números naturales son iguales, entonces los números naturales son iguales. $\forall m,n \in \mathbb{N}, \sigma(n) = \sigma(m) \Rightarrow m = n$
-\item\label{a5} Si un subconjunto de números naturales tiene el cero y siempre que tiene un número tiene a su siguiente, entonces el subconjunto son todos los números naturales.
-\end{enumerate}
+    Los axiomas que definen a $\nat$ son los siguientes:
+    \begin{enumerate}[label=\emph{A\arabic*}]
+        \item\label{a1} El cero es un número natural. $0 \in \mathbb{N}$
+        \item\label{a2} El siguiente de un número natural es un número natural. Si $n \in \mathbb{N} \Rightarrow \sigma(n) \in \mathbb{N}$
+        \item\label{a3} Cero no es el siguiente de ningún número natural. $\forall n \in \mathbb{N}$, $\sigma(n) \neq 0$
+        \item\label{a4} Si los siguientes de dos números naturales son iguales, entonces los números naturales son iguales. $\forall m,n \in \mathbb{N}, \sigma(n) = \sigma(m) \Rightarrow m = n$
+        \item\label{a5} Si un subconjunto de números naturales tiene el cero y siempre que tiene un número tiene a su siguiente, entonces el subconjunto son todos los números naturales.
+    \end{enumerate}
 \end{ndef}
 
 \begin{nth}
-Todo número natural es distinto del siguiente. $\forall n \in \nat n \neq \sigma(n)$
+    Todo número natural es distinto del siguiente. $\forall n \in \nat n \neq \sigma(n)$
 \end{nth}
 \begin{proof}
-Sea $A = \{x \in \nat : x \neq \sigma(x)\}$: \\
-Como $0 \neq \sigma(0)$, resulta $0 \in A$.
-Supongamos ahora $n \in A$, es decir, $n \neq \sigma(n)$, luego $\sigma(n) \neq \sigma(\sigma(n))$, por tanto, $\sigma(n) \in A$.
-Luego $A = \nat$.
+    Sea $A = \{x \in \nat : x \neq \sigma(x)\}$: \\
+    Como $0 \neq \sigma(0)$, resulta $0 \in A$.
+    Supongamos ahora $n \in A$, es decir, $n \neq \sigma(n)$, luego $\sigma(n) \neq \sigma(\sigma(n))$, por tanto, $\sigma(n) \in A$.
+    Luego $A = \nat$.
 \end{proof}
 
 \begin{nth}
-Para cada número natural distinto de cero, existe un único número natural del que es su siguiente. $\forall n \in \nat (n \neq 0 \Rightarrow \exists! m \in \nat$ tal que $x = \sigma(m))$
+    Para cada número natural distinto de cero, existe un único número natural del que es su siguiente. $\forall n \in \nat (n \neq 0 \Rightarrow \exists! m \in \nat$ tal que $x = \sigma(m))$
 \end{nth}
 \begin{proof}
-Sea $A = \{x \in \nat : x = 0$ o $m \in \nat$ tal que $x = \sigma(m)\}$:\\
-Como $0 = 0$, resulta $0 \in A$. Supongamos ahora $n \in A$, es decir, $n = 0$ o $n = \sigma(m)$. En cualquier caso, $\sigma(n) = \sigma(n)$, por tanto $\sigma(n) \in A$. Luego $A = \nat$. \\
-La unicidad es consecuencia de $A4$.
+    Sea $A = \{x \in \nat : x = 0$ o $m \in \nat$ tal que $x = \sigma(m)\}$:\\
+    Como $0 = 0$, resulta $0 \in A$. Supongamos ahora $n \in A$, es decir, $n = 0$ o $n = \sigma(m)$. En cualquier caso, $\sigma(n) = \sigma(n)$, por tanto $\sigma(n) \in A$. Luego $A = \nat$. \\
+    La unicidad es consecuencia de $A4$.
 \end{proof}
 
 \subsection{Aritmética natural}
 \subsubsection{Suma de naturales}
 \begin{nth}
-Existe una única $+ : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
-\begin{itemize}
-\item $m + 0 = m$
-\item $m + \sigma(n) = \sigma(m + n)$
-\end{itemize}
+    Existe una única $+ : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
+    \begin{itemize}
+        \item $m + 0 = m$
+        \item $m + \sigma(n) = \sigma(m + n)$
+    \end{itemize}
 \end{nth}
-\smallskip
-\noindent
 \begin{properties}
-Para todo $m,n,p \in \nat$ se cumple:
-\begin{enumerate}
-\item Todo número natural es 0 o es el siguiente de un número natural.
-\item $m + 0 = 0 + m = m$.
-\item $m + 1 = 1 + m = \sigma(m)$.
-\item $(m + n) + p = m + (n + p)$.
-\item $m + n = n + m$.
-\item Si $m + p = n + p$, entonces $m = n$.
-\item Si $m + n = 0$, entonces $m = n = 0$.
-\end{enumerate}
+    Para todo $m,n,p \in \nat$ se cumple:
+    \begin{enumerate}
+        \item Todo número natural es 0 o es el siguiente de un número natural.
+        \item $m + 0 = 0 + m = m$.
+        \item $m + 1 = 1 + m = \sigma(m)$.
+        \item $(m + n) + p = m + (n + p)$.
+        \item $m + n = n + m$.
+        \item Si $m + p = n + p$, entonces $m = n$.
+        \item Si $m + n = 0$, entonces $m = n = 0$.
+    \end{enumerate}
 \end{properties}
 
 \subsubsection{Producto de naturales}
 \begin{nth}
-Existe una única $\cdot : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
-\begin{itemize}
-\item $m \cdot 0 = 0$
-\item $m \cdot \sigma(n) =  m \cdot n + m$
-\end{itemize}
+    Existe una única $\cdot : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
+    \begin{itemize}
+        \item $m \cdot 0 = 0$
+        \item $m \cdot \sigma(n) =  m \cdot n + m$
+    \end{itemize}
 \end{nth}
+
+\begin{properties}
+    Para todo $m,n,p \in \nat$ se cumple:
+    \begin{enumerate}
+        \item $0 \cdot m = m \cdot 0 = 0$.
+        \item $1 \cdot m = m \cdot 1 = m$.
+        \item $(m + n) \cdot p = m \cdot p + n \cdot p$.
+        \item $m \cdot n = n \cdot m$.
+        \item Si $(m \cdot n) \cdot p = m \cdot (n \cdot p)$.
+        \item Si $m \cdot n = 0$, entonces $m = 0$ o $n = 0$.
+    \end{enumerate}
+\end{properties}
+
+\subsubsection{Potencias de naturales}
+\begin{nth}
+    Existe una única $\square^{\square} : \nat \times \nat \rightarrow \nat$ tal que $\forall m,n \in \nat$ verifica:
+    \begin{itemize}
+        \item $m^{0} = 1$
+        \item $m^{\sigma(n)} =  m^{n} \cdot m$
+    \end{itemize}
+\end{nth}
+
+\begin{properties}
+    Para todo $m,n,p \in \nat$ se cumple:
+    \begin{enumerate}
+        \item $0^{0} = 1$.
+        \item $0^{n} = 0$ para $1 \leq n$.
+        \item $1^{n} = 1$.
+        \item $m^{n+p} = m^{n} \cdot m^{p}$.
+        \item Si $m^{n \cdot p} = (m^{n})^{p}$.
+    \end{enumerate}
+\end{properties}
+
+\subsubsection{El orden de los naturales}
+\begin{ndef}[Orden]
+    Dados $m,n \in \nat$ definimos m es menor o igual que n $(m \leq n)$ si $\exists x \in \nat$ tal que $m + x = n$.
+\end{ndef}
+
+\begin{properties}
+    Para todo $m,n,p \in \nat$ se cumple:
+    \begin{enumerate}
+        \item $m \leq m$.
+        \item Si $m \leq n$ y $n \leq m$, entonces $m = n$.
+        \item Si $m \leq n$ y $n \leq p$, entonces $m \leq p$.
+        \item $m \leq n$ o $n \leq m$.
+        \item Si $m \leq n$, entonces $\exists! p \in \nat m + p = n$ y lo llamamos n menos m $(n - m)$.
+        \item Si $m \leq n$, entonces $m + p \leq n + p$.
+        \item Si $m \leq n$, entonces $m \cdot p \leq n \cdot p$.
+        \item Si $m \cdot p \leq n \cdot p$ y $p \neq 0$, entonces $m \leq n$.
+        \item Si $m \cdot p = n \cdot p$ y $p \neq 0$, entonces $m = n$.
+    \end{enumerate}
+\end{properties}
+
+\subsubsection{Divisibilidad en $\nat$}
+\begin{ndef}[Divisibilidad]
+    Dados $m,n \in \nat$ definimimos m divide a n $(m|n)$ si $\exists x \in \nat$ tal que $m \cdot x = n$.
+\end{ndef}
+
+\begin{properties}
+    Para todo $m,n,p \in \nat$ se cumple:
+    \begin{enumerate}
+        \item $m|m$.
+        \item Si $m|n$ y $n|m$, entonces $m = n$.
+        \item Si $m|n$ y $n|p$, entonces $m|p$.
+        \item Si $m|n$, entonces $\exists! p \in \nat$ tal que $m \cdot p = n$ y lo llamamos n partido por m $\left( \frac{n}{m} \right)$.
+    \end{enumerate}
+\end{properties}
+
+\subsection{Principio de inducción}
+\begin{nth}
+    Las tres propiedades que siguen son equivalentes:
+    \begin{enumerate}
+        \item \textbf{Principio de inducción}. Si $A \subseteq \nat$ cumple $0 \in A$ y $(n \in A \Rightarrow n + 1 \in A)$, entonces $A = \nat$.
+        \item \textbf{Principio del buen orden}. Todo subconjunto no vacío de números naturales tiene mínimo.
+        \item \textbf{Principio de inducción completa}. Si $A \subseteq \nat$ cumple $0 \in A$ y si $(\{0,1,...,n\} \subseteq A \Rightarrow n + 1 \in A)$, entonces $A = \nat$.
+    \end{enumerate}
+\end{nth}
+
+\subsection{Ecuaciones en recurrencia. Ejemplos}
+\begin{ejemplo}
+    Número de regiones del plano determinadas por $n$ rectas no paralelas y que por cualquier punto del plano pasan como máximo dos de ellas.
+    \\
+    Condiciones iniciales: $a_{1} = 2, a_{2} = 4, a_{3} = 7, a_{4} = 11$.
+    \begin{center}
+        $a_{n} = a_{n-1} + n$  para  $2 \leq n$
+    \end{center}
+\end{ejemplo}
+
+\begin{ejemplo}
+    Torres de Hanoi.
+    \\
+    Condiciones iniciales: $a_{1} = 1.$
+    \begin{center}
+        $a_{n} = 2a_{n-1} + 1$  para  $2 \leq n$
+    \end{center}
+\end{ejemplo}
+
+\begin{ejemplo}
+    Llamemos $a_{n}$ al número de listas de longitud $n$ formadas con ceros y unos que no tienen unos consecutivos.
+    \\
+    Condiciones iniciales: $a_{1} = 2$, $a_{2} = 3.$
+    \begin{center}
+        $a_{n} = a_{n-1} + a_{n-2}$  para  $3 \leq n$
+    \end{center}
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sucesión de Fibonacci.
+    \\
+    Condiciones iniciales: $F_{1} = 1$, $F_{2} = 1$, $F_{3} = 2.$
+    \begin{center}
+        $F_{n} = F_{n-1} + F_{n-2}$  para  $3 \leq n$
+    \end{center}
+\end{ejemplo}
