@@ -14,6 +14,10 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
     \end{enumerate}
 \end{ndef}
 
+\begin{nota}
+    Podemos definir $\sigma(n) = n + 1$ $\forall n \in \nat$.
+\end{nota}
+
 \begin{nth}
     Todo número natural es distinto del siguiente. $\forall n \in \nat n \neq \sigma(n)$
 \end{nth}
@@ -108,7 +112,7 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
         \item Si $m \leq n$ y $n \leq m$, entonces $m = n$.
         \item Si $m \leq n$ y $n \leq p$, entonces $m \leq p$.
         \item $m \leq n$ o $n \leq m$.
-        \item Si $m \leq n$, entonces $\exists! p \in \nat m + p = n$ y lo llamamos n menos m $(n - m)$.
+        \item Si $m \leq n$, entonces $\exists! p \in \nat$ tal que $m + p = n$ y lo llamamos n menos m $(n - m)$.
         \item Si $m \leq n$, entonces $m + p \leq n + p$.
         \item Si $m \leq n$, entonces $m \cdot p \leq n \cdot p$.
         \item Si $m \cdot p \leq n \cdot p$ y $p \neq 0$, entonces $m \leq n$.
@@ -145,7 +149,7 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
 \begin{ejemplo}
     Número de regiones del plano determinadas por $n$ rectas no paralelas y que por cualquier punto del plano pasan como máximo dos de ellas.
     \\
-    Condiciones iniciales: $a_{1} = 2, a_{2} = 4, a_{3} = 7, a_{4} = 11$.
+    Condiciones iniciales: $a_{1} = 2$, $a_{2} = 4$, $a_{3} = 7$, $a_{4} = 11$.
     \begin{center}
         $a_{n} = a_{n-1} + n$  para  $2 \leq n$
     \end{center}
