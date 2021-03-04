@@ -145,7 +145,12 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
     \end{enumerate}
 \end{nth}
 
-\subsection{Ecuaciones en recurrencia. Ejemplos}
+\subsection{Ecuaciones en recurrencia}
+\begin{ndef}
+    Una \textbf{ecuación en recurrencia} es un tipo específico de relación de recurrencia. Una relación de recurrencia es una sucesión $\{a_{n}\}$ que relaciona $a_{n}$ con
+    alguno de sus predeesores $a_{0}$, $a_{1}$, ... , $a_{n-1}$ para $n \in \nat$. Las condiciones iniciales para la sucesión $\{a_{n}\}$ son valores dados en forma explícita
+    para un número finito de términos de la sucesión.
+\end{ndef}
 \begin{ejemplo}
     Número de regiones del plano determinadas por $n$ rectas no paralelas y que por cualquier punto del plano pasan como máximo dos de ellas.
     \\
@@ -176,8 +181,29 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
 \begin{ejemplo}
     Sucesión de Fibonacci.
     \\
-    Condiciones iniciales: $F_{1} = 1$, $F_{2} = 1$, $F_{3} = 2.$
+    Condiciones iniciales: $F_{1} = 0$, $F_{2} = 1.$
     \begin{center}
         $F_{n} = F_{n-1} + F_{n-2}$  para  $3 \leq n$
     \end{center}
+\end{ejemplo}
+
+\subsubsection{Recurrencias homogéneas}
+\begin{ndef}
+    Una \textbf{ecuación de recurrencia lineal homogénea} de orden $k$ con coeficientes constantes es una relación $c_{n}a_{n} + c_{n-1}a_{n-1} + ... + c_{n-k}a_{n-k} = 0$
+    con $k \leq n$, donde $c_{n}, c_{n-1}, ... , c_{n-k}$ son constantes con $c_{n} \neq 0$ y $c_{n-k} \neq 0$.
+\end{ndef}
+
+\begin{ejemplo}[Raíces simples] $a_{n} + a_{n-1} -6a_{n-2} = 0$ para $n \geq 2$ \\
+    Condiciones iniciales: $a_{0} = 1$, $a_{1} = 2$.\\
+    Solución general: $s_{n} = A \cdot 2^{n} + B \cdot (-3)^{n}$ \\
+    Solución particular: la hallamos resolviendo el sistema \\
+    \begin{center}
+        $\left.
+        \begin{aligned}
+            1 = A + B \\
+            2 = 2A - 3B
+        \end{aligned} \right \}
+        \Rightarrow A = -1, \ B = 5 \text{ de donde } a_n = 2^n$
+    \end{center}
+
 \end{ejemplo}

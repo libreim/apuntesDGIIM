@@ -37,6 +37,30 @@ El diseño de objetos no es una tarea sencilla, pero siempre se trata de que las
 
 \end{itemize}
 
+\subsection{Atributos y Métodos}
+
+\subsubsection{Atributos y Métodos de Instancia}
+
+Los \textbf{atributos de instancia} son variables que están asociadas acada objeto. Cada instancia tiene su propio espacio de atributos de instancia, teniendo así los mismos atributos que cualquier otra instancia de la clase pero en zonas de memoria distintas. El \textbf{estado} de cada instancia es descrito por los valores de estos atributos.
+
+De la misma forma, los \textbf{métodos de instancia} son funciones definidos en una clase y que estarán asociados a los objetos de dicha clase. Estos métodos pueden acceder a los atributos de instancia de ese mismo objeto.
+
+EJEMPLO:
+
+\subsubsection{Atributos y Métodos de Clase}
+
+Los \textbf{atributos de clase} almacenan información asociada \textbf{a la propia clase}, no a cada instancia y por tanto, son globales a todas las instancias de la clase. Estos deberán usarse cuando haya información que sea común a todas las instancias de la clase, como lo pueden ser un contador de instancias o constantes.
+
+\begin{nota}
+
+Para cualquier número que se vaya a utilizar (exceptuando 0, 1 o -1 para índices, inicializar una variable vacía o casos similares), es muy recomendable declararlo como constante, pues no sabemos cuando podrán volver a necesitarse en un futuro y mejora la legibilidad del código.
+
+\end{nota}
+
+Los \textbf{métodos de clase}, al igual que los atributos de clase, son funciones y procedimientos asociados a la propia clase.  Estos métodos pueden acceder y modificar los atributos de clase.
+
+EJEMPLOS Y RUBY/JAVA
+
 \section{Clases, objetos y mensajes}
 
 \section{Reutilización y polimorfismo}
