@@ -2,13 +2,17 @@
 
 ## Lección 1. Clasificación del paralelismo implícito en una aplicación.
 
+### Que es el paralelismo implícito
+
+El paralelismo implícito consiste en ejecutar ejecutar tareas a la vez de forma oculta. Buscaremos tareas independientes en el codigo para poder aplicarlo. Tambien se conoce como paralelismo oculto.
+
 ### Clasificación del paralelismo
 
 Según su naturaleza, podemos clasificar el paralelismo implícito en tres categorías.
 
 #### Nivel de paralelismo implícito
 
-El paralelismo puede darse a diferentes niveles: a nivel de programa, a nivel de funciones, a nivel de bloques, a nivel de operaciones, etc.
+El paralelismo implícito puede darse a diferentes niveles: a nivel de programa, a nivel de funciones, a nivel de bloques, a nivel de operaciones, etc. Estos niveles corresponden con granulanidad de grano grueso, grano medio, grano medio-fino y grano fino respectivamente.
 
 #### Granularidad
 
@@ -19,6 +23,8 @@ Es el volumen de trabajo, y será más fina o más gruesa si el volumen de traba
 No es lo mismo trabajar en paralelo únicamente con datos, únicamente con tareas, o mezclando ambos.
 
 El paralelismo de tareas se encuentra extrayendo la estructura lógica de funciones. Es por esto que está relacionado con el paralelismo *a nivel de función*. El paralelismo de datos se encuentra implícito en las operaciones con estructuras de datos, y relacionado con el paralelismo a nivel del *bucle*.
+
+Cabe decir que esta clasificacion no cubre todos los tipos de paralelismo que nos podemos encontrar. Sin embargo sirve para esta asignatura.
 
 ### Condiciones de paralelismo
 
@@ -35,11 +41,34 @@ Podemos clasificar la dependencia de datos en tres tipos, según la secuencia de
 
 **RAW (Read After Write)**: dependencia verdadera. No se puede evitar.
 
+```cpp
+// En este caso estos dos bloques tienen dependencia RAW por a
+a=b+c
+...    // Codigo que no usa a
+d=a+c
+```
+
 **WAW (Write After Write)**: dependencia de salida. Podría evitarse guardando la variable inicial en una variable temporal.
+
+```cpp
+//Ejemplo de dependencia WAW por a
+a=b+c
+... //se lee a
+a=d+e
+.. //se lee a
+```
 
 **WAR (Write After Read)**: antidependencia. Podría evitarse realizando la lectura en una variable temporal que contuviese la variable inicial.
 
-El caso *RAR (Read After Read)* no presenta dependencia, ya que simplemente se consulta el dato, sin modificarlo en ningún caso.
+```cpp
+//Ejemplo de dependencia WAR
+b=a+1
+...
+a=d+e
+... //se lee a
+```
+
+**RAR (Read After Read)**: no presenta dependencia, ya que simplemente se consulta el dato, sin modificarlo en ningún caso.
 
 ### Paralelismo explícito
 
@@ -49,6 +78,10 @@ Un computador puede aprovechar el paralelismo entre diferentes entidades de form
 - Hebras (*threads*).
 - Procesos.
 
+El poder aprovechar estas entidades depende de la arquitectura del computador. El paralelismo de operacion se puede hacer visible mediante instrucciones, de bucle se puede hacer visible con instrucciones vectoriales o hebras (en este nivel se encuentran las GPUs), de funcion se puede hacer visible mediante hebras y de programas se puede hacer visible mediante procesos. 
+
+En caso de que nuestro ordenador no pudiese manejar distintas hebras se podrian usar tambien procesos en su lugar.
+
 #### Hebras vs procesos
 
 Un **proceso** comprende el código del programa, y todo lo necesario para su ejecución (datos en pila, segmentos, registros, tabla de páginas, ...). Para comunicar procesos hay que usar llamadas al SO.
@@ -56,9 +89,6 @@ Un **proceso** comprende el código del programa, y todo lo necesario para su ej
 Un proceso puede constar de múltibles **hebras** que controlan el flujo de control. Cada hebra tiene su propia pila, y también el contenido de los registros. Para comunicarse entre ellos, utilizan la memoria que comparten.
 
 En general, las operaciones de creación, destrucción, conmutación y comunicación en las hebras consumen menos tiempo.
-
-
-
 
 ## Lección 2. Clasificación de estructuras paralelas
 
@@ -105,7 +135,6 @@ Existe un único flujo de datos y una única instrucción a ejecutar en
 cada instante. Corresponde a los computadores uni-procesador.
 **<!- (algo de único flujo de datos y una única instrucción, completar) -->**
 
-
 ##### SIMD
 
 Single Instruction, Multiple Data.
@@ -114,7 +143,6 @@ la misma para todos), donde se le indica de dónde tiene que captar los
 datos, hace tantas operaciones como unidades de procesamiento se
 tengan. Por tanto, aprovecha el paralelismo de datos.
 
-
 ##### MISD
 
 Multiple Instruction, Single Data.
@@ -122,19 +150,17 @@ No es un sistema que se implemente en la realidad, cada unidad de
 control estaría conectada con una única unidad de procesamiento con
 cada flujo de datos.
 
-
 ##### MIMD
 
 Multiple Instruction, Multiple Data.
 Múltiples flujos de datos que permiten realizar múltiples instrucciones. Aprovecha, además del paralelismo de datos, el paralelismo funcional.
 **<!- (algo de múltiples flujos de datos y múltiples instrucciones, completar) -->**
 
-
 #### Sistema de memoria
 
 Existen dos tipos de máquinas según esta clasificación: multiprocesadores y multicomputadores.
 
-En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. Tienen mayor latencia y son poco escalables. Tienen comunicación implícita mediante variables compartidas y los datos no duplicados están en memoria principal. Es necesario implementar primitivas de sincronización, no es necesaria la distribución de código y datos entre procesadores y su programación es mas sencilla.
+En los **multiprocesadores** todos los procesadores comparten el mismo espacio de direcciones, el programador no necesita conocer dónde están almacenados los datos. Tienen mayor latencia debido a que solo un procesador a la vez puede acceder a la red de interconexion y son poco escalables. Tienen comunicación implícita mediante variables compartidas y los datos no duplicados están en memoria principal. Es necesario implementar primitivas de sincronización, no es necesaria la distribución de código y datos entre procesadores y su programación es mas sencilla.
 
 En los **multicomputadores** cada procesador tiene su propio espacio de direcciones. Están compuestos por computadores completos conectados entre sí por una interfaz de red. El programador necesita conocer donde están almacenados los datos. Tienen menor latencia y son escalables. Tienen comunicación explícita mediante software para paso de mensajes y los datos duplicados están en memoria principal. Su sincronización es mediante un software específico de comunicación, es necesaria la distribución de código y datos entre procesadores y su programación es más difícil.
 
@@ -156,12 +182,13 @@ Se debe aumentar la caché del procesador, usar redes de menor latencia y mayor 
 ![Clasificación](./img/Clasificacion.png "Clasificación completa de computadores según el sistema de memoria")
 
 ##### Arquitecturas con DLP, ILP y TLP
+
 *(Thread=Flujo de control)*
 
 ![Arquitecturas](./img/Arquitecturas.png "Arquitecturas con DLP, ILP y TLP")
 
-
 ## Lección 3. Evaluación de prestaciones de una arquitectura
+
 ### Tiempos de CPU
 
 #### Tiempo de CPU
@@ -181,7 +208,6 @@ Así vemos que hay varias formas de calcular el tiempo de CPU:
 
 **Tcpu = (Nºoperaciones/OPI) * CPI * Tºciclo**
 
-
 *OPI:* Número de operaciones que puede codificar una instruccion
 
 *CPE:* Número mínimo de ciclos transcurridos entre los
@@ -193,7 +219,6 @@ ejecución) cada vez que se produce dicha emisión
 #### MIPS
 
 MIPS: Millones de intrucciones por segundo
-
 
 MIPS=NI/(Tcpu * 10^6)=Frecuencia/(CPI * 10^6)
 
@@ -208,7 +233,9 @@ MFLOPS= Operaciones en coma flotante/(Tcpu * 10^6)
 No es una medida adecuada para todos los programas. El conjunto de operaciones en coma flotante no es constante en máquinas diferentes y la potencia de las operaciones en coma flotante no es igual para todas las operaciones
 
 ### Conjunto de programas de prueba (Benchmark)
+
 #### Tipos
+
 + De bajo nivel o microbenchmark
 + Kernels
 + Sintéticos
@@ -216,6 +243,7 @@ No es una medida adecuada para todos los programas. El conjunto de operaciones e
 + Aplicaciones diseñadas
 
 ### Ganancia en prestaciones
+
 #### Speed-Up
 
 El incremento de velocidad que se consigue en la nueva situación con
@@ -230,6 +258,7 @@ T1 Tiempo de ejecución en la máquina base
 Tp Tiempo de ejecución en la máquina mejorada
 
 #### Ley de Amdahl
+
 La mejora de velocidad, *S*, que se puede obtener cuando se mejora
 un recurso de una máquina en un factor *p* está limitada por:
 
@@ -256,6 +285,7 @@ código secuencial que no puede paralelizarse, los procesadores no se podrían u
 Las arquitecturas con TLP(Thread Level Parallelism) son:
 
 ### Multiprocesador:
+
 Varios threads en paralelo en un **computador** con varios procesadores, cada thread en un core/procesador distinto.
 
 Hay dos tipos:
@@ -264,32 +294,34 @@ Hay dos tipos:
 
 2. Memoria distribuida (*NUMA*: Non Uniform Memory Access), en el que cada procesador tiene su zona de memoria y se conectan mediante una red de interconexión. Tienen menor latencia y son escalables, pero requieren para ello distribución de datos y código.
 
-
 ### Multiprocesador en un chip o multicore:
+
 Ejecutan varios threads en paralelo en un **chip de procesamiento** multicore (cada thread en un core distinto). Existen distintas posibilidades en cuanto a la distribución de las cachés:
+
 + Los cores tengan cachés independientes y /todos/ tengan alguna caché común.
 + Agrupados para que todos los cores del mismo grupo tengan (a parte de sus cachés independientes) alguna caché común.
 + No tengan ninguna caché común y se conectan directamente al conmutador
 
 ### Core multithread:
+
 Modifican su estructura ILP(Instruction level parallelism) para ejecutar threads concurrentemente o en paralelo.
 
 1. Los procesadores segmentados ejecutan instrucciones concurrentemente segmentando el uso de sus componentes.
 
 2. Los procesadores VLIW(very large Instruction Word) y superescalares ejecutan instrucciones concurrentemente (segmentación) y en paralelo(emitiendo múltiples instrucciones a sus múltiples unidades funcionales).
 + VLIW:
-    + Las instrucciones que se ejecutan en paralelo se captan juntas en memoria.
-    + Este conjunto de instrucciones conforman la palabra de instrucción muy larga a la que hace referencia la denominación VLIW.
-    + El hardware presupone que las instrucciones de una palabra son independientes: no tiene que encontrar instrucciones que pueden emitirse y ejecutarse en paralelo.
+  + Las instrucciones que se ejecutan en paralelo se captan juntas en memoria.
+  + Este conjunto de instrucciones conforman la palabra de instrucción muy larga a la que hace referencia la denominación VLIW.
+  + El hardware presupone que las instrucciones de una palabra son independientes: no tiene que encontrar instrucciones que pueden emitirse y ejecutarse en paralelo.
 + Superescalares:
-    + Tienen que encontrar instrucciones que puedan emitirse y ejecutarse en paralelo (disponen de hardware para extraer paralelismo a nivel de instrucción).
+  + Tienen que encontrar instrucciones que puedan emitirse y ejecutarse en paralelo (disponen de hardware para extraer paralelismo a nivel de instrucción).
 
 ### Clasificación de cores multithread:
 
 a. Temporal multithreading(TMT): Un core ejecuta varios threads, y la comunicación entre éstas la controla el hardware, emitiendo instrucciones de un único thread por ciclo. A su vez, estos pueden ser:
 
     1. Fine-grain multithreading, la conmutación entre threads la hace el hardware sin coste, se hacen por turno rotatorio y por eventos de cierta latencia combinado con alguna técnica de planificación.
-
+    
     2. Coarse-grain multithreading, la conmutación la decide el hardware con algún coste (varía entre 0 y varios ciclos), tras intervalos de tiempo prefijados o por eventos de cierta latencia. Pueden ser :
         + Estáticos: tienen instrucciones explícitas para conmutar e implícitas (instrucciones de carga, almacenamiento, salto) y cambio de coste bajo como ventaja, pero produce cambios de contexto innecesarios.
         + Dinámicos:  conmutan cuando hay fallos de caché o interrupciones. Tiene como ventaja que reduce los cambios de contexto innecesarios pero aumenta la sobrecarga al cambiar de contexto
@@ -325,8 +357,9 @@ El *directorio de memoria principal* está dentro de un nodo de cómputo y tiene
 ### Protocolos de mantenimiento de coherencia
 
 Los protocolos utilizados para mantener la coherencia de memoria son de tres tipos:
+
 - Protocolos de espionaje (snoopy). Para sistemas con una difusión eficiente (buses, número pequeño de nodos o red con difusión).
--  Protocolos basados en directorios. Para redes sin difusión o escalables.
+- Protocolos basados en directorios. Para redes sin difusión o escalables.
 - Esquemas jerárquicos. Para redes jerárquicas: jerarquía de buses, jerarquía de redes escalables, redes escalables-buses.
 
 Existen diferentes facetas a tener en cuenta a la hora de diseñar un protocolo para mantener la coherencia de memoria. Estas son:
@@ -336,6 +369,7 @@ Existen diferentes facetas a tener en cuenta a la hora de diseñar un protocolo 
 - Describir compotamiento: Definir posibles estados de los bloques en cache y memoria, definir transferencias a genenrar entre eventos y definir transiciones de estados para un bloque en cache y en memoria.
 
 #### Protocolo de espionaje de tres estados MSI
+
 - Estados de un bloque en cache:
   - Modificado (M): es la única copia del bloque válida en el sistema.
   - Compartido (C, S): está válido, también válido en memoria y puede que haya copia válida en otras caches.
@@ -350,6 +384,7 @@ Existen diferentes facetas a tener en cuenta a la hora de diseñar un protocolo 
   - Respuesta con bloque (RpBloque): al tener en estado modificado el bloque solicita una PtLec o PtLecEx recibida.
 
 #### Protocolo de espionaje de cuatro estados MESI
+
 - Estado de un bloque en cache:
   - Modificado (M): es la única copia del bloque válida en todo el sistema.
   - Exclusivo (E): es la única copia válida del bloque en caches, la memoria también está actualizada.
@@ -360,6 +395,7 @@ Existen diferentes facetas a tener en cuenta a la hora de diseñar un protocolo 
   - Inválido: habrá una copia válida en una cache.
 
 #### Protocolo MSI con directorios sin difusión
+
 - Estado de un bloque de cache:
   - Modificado (M)
   - Compartido (C)
@@ -381,31 +417,40 @@ Especifica las restricciones en el orden en el cual las operaciones de memoria (
 En un procesador (o sistema uniprocesador), el orden en el que deben parecer haberse ejecutado los accesos a memoria es el orden secuencial especificado por el programador, denominado **orden del programa**.
 
 #### Consistencia secuencial
+
 Todas las operaciones de un único procesador parecen ejecutarse en el orden descrito por el programa de entrada al procesador. Todas las operaciones de memoria parecen ser ejecutadas una a la vez. Presenta el sistema de memoria a los programadores como una memoria global conectada a todos los procesadores a través de un conmutador central.
 Informalmente, diríamos que el modelo de consistencia secuencial require que todas las operaciones de memoria parezcan ser ejecutadas *una vez* (ejecución *atómica*) y que las instrucciones de un único porcesador (proceso) parezcan ejecutarse en el *orden descrito por el programa* de entrada al procesador.
 
 #### Modelos de consistencia relajados
+
 Relajan requisitos (orden, atomicidad) de consistencia de memoria para aumentar prestaciones.
+
 + **Orden del programa**. Los modelos pueden permitir que en el código ejecutado en un procesador se relaje en el orden entre dos accesos a distintas direcciones. Difieren en cuanto a los órdenes que permiten relajar; pueden permitir alterar el orden entre escrituras (W->W), entre lecturas (R->R), entre una lectura y una escritura posterior (W->R) o entre una escritura y una lectura posterior (W->R).
 + **Atomicidad**. Hay modelos que permiten que un procesaodr pueda leer el valor escrito por otro procesador antes de que esta escritura se haga visible para el resto de procesadores.
 
 ##### Modelo que relaja W->R
+
 Permiten que una lectura pueda adelantar a una escritura precia en el orden del programa, pero evita dependencia RAW. Lo implementan los sistemas con buffer de escritura para los procesadores. Generalmente permiten que el procesador pueda leer una dirección directamente del buffer. Hay sistemas en los que se permite que un procesador pueda leer la escritura de otro antes que el resto.
 
 ##### Modelo que relaja W->R y W->W
+
 Tiene buffer de escritura que permite que lecturas adelanten a escrituras en buffer. Permiten que el hardware solape escrituras a memoria en distintas direcciones, de forma que pueden llegar a la memoria principal o a caches de todos los procesadores fuera del orden del programa.
 
 ##### Modelo de ordenación débil
+
 Relaja W->R, W->W y R->W.
 
 ### Sincronización
 
 #### Cerrojos
+
 Permiten sincronizar mediante dos operaciones:
+
 - Cierre del cerrojo (lock(k)): intenta adquirir el derecho a acceder a una sección crítica. Si varios procesos intentan adquisición a la vez, solo uno de ellos lo debe conseguir, el resto debe pasar a una etapa de espera. Todos los procesos que ejecuten lock() con el cerrojo cerrado deben quedar en espera.
 - Apertura del cerrojo (unlock(k)): libera a uno de los threads que esperan el acceso a una sección crítica. SI no hay threads en espera, permitirá que el siguiente thread que ejecute lock() adquiera el cerrojo k sin espera.
 
 ##### Componentes en un código para sincronización
+
 - Método de adquisición. Método por el que un thread trata de adquirir el derecho a pasar a utilizar unas direcciones compartidas.
 - Método de espera. Método por el que un thread espera a adquirir el derecho a pasar a utilizar unas direcciones compartidas.
 - Método de liberación. Método utilizado por un thread para liberar uno o varios threads en espera.
@@ -502,7 +547,6 @@ renombramiento**, que son consultados al captar los operandos para
 conocer si se han escrito en otros registros y que no ha habido
 renombramiento.
 
-
 ## Lección 12. Consistencia del procesador y Procesamiento de saltos
 
 ### Consistencia. Reordenamiento
@@ -570,6 +614,7 @@ usuarios.
 Esto es posible mediante **TORQUE**, un gestor de colas y recursos.
 
 ## Comandos para TORQUE
+
 Usamos comandos en atc mediante **ssh** para poder realizar los trabajos
 que queramos en él. Además, para subir nuestros archivos al front-end
 necesitamos comunicarnos con el servidor mediante **sftp**. Siempre
@@ -578,14 +623,15 @@ conectarse a la VPN con openconnect).
 
 * psbnodes: Información sobre los nodos.
 * qsub: Enviar un trabajo a ejecutar, devuelve la salida en un
-fichero output(\*.o) y otro error (\*.e).
+  fichero output(\*.o) y otro error (\*.e).
 
 **Ejemplos de uso:**
 
 * "echo 'hello' | qsub -q ac" $\rightarrow$ Envía el trabajo(programa)
-hello por la cola ac
+  hello por la cola ac
+
 * "qstat" $\rightarrow$ Muestra los trabajos ejecutándose y los que
-están en las colas
+  están en las colas
 
 * "echo 'hello/trabajoMiTrabajo' | qsub -q ac -N “NombreMiNombre” "
 
@@ -602,12 +648,12 @@ Una **directiva** es "una marca" en nuestro archivo fuente que es sustituida por
 el preprocesador del compilador por otro código que permite realizar
 una tarea determinada sin tener que definirla nosotros explícitamente.
 
-
 ## Sintaxsis de las directivas C/C++
 
 ```c
 #pragma omp <nombre_directiva> [<cláusula(s)>] <\n(newline)>
 ```
+
 Donde:
 
 * \#pragma omp es necesario para indicar que estamos usando una directiva de openmp.
@@ -615,17 +661,17 @@ Donde:
 * <nombre_directiva> es el nombre de la acción que realiza la directiva.
 
 * <cláusula> es opcional, modifica o aporta información para la
-ejecución de la directiva, pueden combinarse.
+  ejecución de la directiva, pueden combinarse.
 
 * <\\n(newline)> es el salto de línea necesario.
 
 **Compilación:** Compilamos usando gcc -fopenmp para poder usar estas
 directivas.
 
-
 ## Directivas
 
 ### Parallel
+
 Especifica qué cálculos se realizarán en paralelo. Un thread master
 crea un conjunto de threads cuando llega a esta directiva. El código
 contenido en esta región es ejecutado por cada thread. No reparte las
@@ -635,7 +681,7 @@ forma anidada.
 ```c
 #pragma omp parallel
 {
-	//Code
+    //Code
 }
 ```
 
@@ -643,39 +689,43 @@ forma anidada.
 
 **Paralelismo de datos(for):** Para distribuir las iteraciones de un bucle
 entre los diversos hilos usamos:
+
 ```c
 #pragma omp for
 {
-	//Code
+    //Code
 }
 ```
 
 **Paralelismo de tareas(sections):** Para distribuir trozos de código que son
 independientes entre sí.
+
 ```c
 #pragma omp sections
 {
-	#pragma omp section
-	{
-		//Codeblock 1
-	}
+    #pragma omp section
+    {
+        //Codeblock 1
+    }
 
-	#pragma omp section
-	{
-		//Codeblock 2
-	}
+    #pragma omp section
+    {
+        //Codeblock 2
+    }
 }
 ```
 
 **Ejecución única(single):** Para que sólo un hilo ejecute un trozo de código
 (lo cual interesa por ejemplo para pedir/mostrar datos al usuario del programa
 una única vez en una situación de paralelismo).
+
 ```c
 #pragma omp single
 {
-	//Code
+    //Code
 }
 ```
+
 ### Combinando parallel con worksharing
 
 Es posible, además del uso de las directivas de worksharing tras el
@@ -686,31 +736,32 @@ prestaciones.
 ```c
 #pragma omp parallel for
 {
-	//For loop
+    //For loop
 }
 ```
 
 ```c
 #pragma omp parallel sections
 {
-	#pragma omp section
-	{
-		//Codeblock 1
-	}
+    #pragma omp section
+    {
+        //Codeblock 1
+    }
 
-	#pragma omp section
-	{
-		//Codeblock 2
-	}
+    #pragma omp section
+    {
+        //Codeblock 2
+    }
 }
 ```
+
 ### Directivas básicas de comunicación y sincronización
+
 En diversas ocasiones nos interesa que la *lectura/escritura* de una
 variable se hiciese en exclusión mutua (secuencial) para evitar que se
 modifique o use un valor de manera incorrecta. Para esto veremos las
 directivas **critical y atomic** y la directiva de “control”
 **barrier**.
-
 
 **Barrier:** Es una barrera que se situa en el punto en el que
 esperamos que todos los threads lleguen ahí. Lo usamos cuando
@@ -724,11 +775,11 @@ los accesos de otros threads a la misma variable.
 **Atomic:** Da una respuesta más eficiente que “*Critical*”.
 
 ### Directiva master
+
 Es similar a la directiva single, pero en este caso la hebra que
 ejecutará el bloque de código será la *thread master* o "*hebra 0*".
 
 \newpage
-
 
 # Seminario 2. Cláusulas OpenMP
 
@@ -752,6 +803,7 @@ las variables declaradas *static*, que son privados y “públicas”
 respectivamente.
 
 ### Shared
+
 ```c
 #pragma omp parallel for shared(a,b,...,N)```
 
@@ -765,26 +817,26 @@ El ejemplo es meramente ilustrativo, la utilidad de usar shared en este caso es 
 ~~~c
 #include <stdio.h>
 #ifdef _OPENMP
-	#include <omp.h>
+    #include <omp.h>
 #endif
 
 
 int main() {
-	int n = 7;
-	int a[n];
+    int n = 7;
+    int a[n];
 
-	for(int i = 0; i < n; ++i)
-		a[i] = i+1;
+    for(int i = 0; i < n; ++i)
+        a[i] = i+1;
 
-	//Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
-	#pragma omp parallel for shared(a)
-	for(int i = 0; i < n; ++i)
-		a[i] += i;
+    //Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
+    #pragma omp parallel for shared(a)
+    for(int i = 0; i < n; ++i)
+        a[i] += i;
 
-	printf("Después del parallel for:\n");
+    printf("Después del parallel for:\n");
 
-	for(int i = 0; i < n; ++i)
-		printf("a[%d] = %d\n",i,a[i]);
+    for(int i = 0; i < n; ++i)
+        printf("a[%d] = %d\n",i,a[i]);
 }
 ~~~
 La cláusula gana algo de sentido cuando la combinamos con la cláusula default, por lo que retomaremos este ejemplo cuando se explique dicha cláusula.
@@ -806,62 +858,59 @@ En el siguiente ejemplo, queremos que cada hebra i imprima i. Como declaramos el
 
 Realizamos 3 iteraciones en cada hebra para poder apreciar algún fallo (puede darse que el resultado sea correcto, pero eso depende de las casuísticas a la hora de la ejecución).
 
-
-~~~c
+```c
 #include <stdio.h>
 #ifdef _OPENMP
-	#include <omp.h>
+    #include <omp.h>
 #endif
 
 
 int main() {
-	int nthread = 0;
-	int valor = 0;
+    int nthread = 0;
+    int valor = 0;
 
-	#pragma omp parallel sections shared(valor) private(nthread)
-	{
-		#pragma omp section
-		{
-			nthread = omp_get_thread_num();
-			valor = nthread;
+    #pragma omp parallel sections shared(valor) private(nthread)
+    {
+        #pragma omp section
+        {
+            nthread = omp_get_thread_num();
+            valor = nthread;
 
-			for(int i = 0; i < 3; ++i)
-				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
-		}
+            for(int i = 0; i < 3; ++i)
+                printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+        }
 
-		#pragma omp section
-		{
-			nthread = omp_get_thread_num();
-			valor = nthread;
-			for(int i = 0; i < 3; ++i)
-				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
-		}
+        #pragma omp section
+        {
+            nthread = omp_get_thread_num();
+            valor = nthread;
+            for(int i = 0; i < 3; ++i)
+                printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+        }
 
-		#pragma omp section
-		{
-			nthread = omp_get_thread_num();
-			valor = nthread;
-			for(int i = 0; i < 3; ++i)
-				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
-		}
+        #pragma omp section
+        {
+            nthread = omp_get_thread_num();
+            valor = nthread;
+            for(int i = 0; i < 3; ++i)
+                printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+        }
 
-		#pragma omp section
-		{
-			nthread = omp_get_thread_num();
-			valor = nthread;
-			for(int i = 0; i < 3; ++i)
-				printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
-		}
-	}
+        #pragma omp section
+        {
+            nthread = omp_get_thread_num();
+            valor = nthread;
+            for(int i = 0; i < 3; ++i)
+                printf("Soy la hebra %d, debo imprimir %d\n", nthread, valor);
+        }
+    }
 
 }
-~~~
-
-
+```
 
 Si ejecutamos el código anterior, observamos que algunas hebras imprimen un número que no se corresponde con ellas. Esto se debe a que otra hebra ha escrito antes de que la hebra actual imprima, produciéndose condiciones de carrera.
 
-~~~
+```
 victor@victor-GL552VW:~/Documentos/Universidad/2º Cuatrimestre/AC/Practicas/codi
 gos_apuntes$ export OMP_SET_NUM_THREADS=4
 victor@victor-GL552VW:~/Documentos/Universidad/2º Cuatrimestre/AC/Practicas/codi
@@ -878,11 +927,12 @@ Soy la hebra 1, debo imprimir 2
 Soy la hebra 3, debo imprimir 3
 Soy la hebra 3, debo imprimir 2
 Soy la hebra 3, debo imprimir 2
-~~~
+```
 
 Si en lugar de declarar valor como shared, lo hacemos como private, el resultado de la ejecución es correcto.
 
 ### Lastprivate
+
 ```c
 #pragma omp parallel for lastprivate(a,b,...,N)
 ```
@@ -891,6 +941,7 @@ Cada hilo tiene una copia local del dato. La copia global será actualizada por 
 Después de explicar la siguiente directiva veremos un ejemplo combinado
 
 ### Firstprivate
+
 ```c
 #pragma omp parallel for firstprivate(a,b,...,N)
 ```
@@ -903,7 +954,7 @@ Cada hilo tiene una copia local del dato. La copia local se inicializa con el va
 
 Útil para no olvidar la inicialización dentro de la región paralela cuando usamos variables private.
 
-~~~c
+```c
 #include <stdio.h>
 #ifdef _OPENMP
 #include <omp.h>
@@ -911,26 +962,27 @@ Cada hilo tiene una copia local del dato. La copia local se inicializa con el va
 #define omp_get_thread_num() 0
 #endif
 int main() {
-	int i, n = 7;
-	int a[n], suma=0;
-	for (i=0; i<n; i++)
-		a[i] = i;
-	#pragma omp parallel for firstprivate(suma) lastprivate(suma)
-		for (i=0; i<n; i++)
-		{
-			suma = suma + a[i];
-			printf(" thread %d suma a[%d] suma=%d \n",
-			omp_get_thread_num(),i,suma);
-		}
-		printf("\nFuera de la construcción parallel suma=%d\n",suma);
+    int i, n = 7;
+    int a[n], suma=0;
+    for (i=0; i<n; i++)
+        a[i] = i;
+    #pragma omp parallel for firstprivate(suma) lastprivate(suma)
+        for (i=0; i<n; i++)
+        {
+            suma = suma + a[i];
+            printf(" thread %d suma a[%d] suma=%d \n",
+            omp_get_thread_num(),i,suma);
+        }
+        printf("\nFuera de la construcción parallel suma=%d\n",suma);
 }
-~~~
+```
 
 En el seminario, se plantea si siempre se imprime el mismo valor fuera de la región parallel. Al declarar suma como firstprivate, cada hebra se inicializa a 0, ya que es el valor que tenía antes de entrar a la región paralelizada. Al declararla también como lastprivate, el valor que le asigne la última hebra a suma será el que se imprima fuera. Una explicación más detallada:
 
 Lo que se imprime fuera de la región parallel, va a ser el valor suma que tenga la última hebra que realiza ejecuciones en orden secuencial. Como tenemos 7 iteraciones y 4 hebras disponibles, las 3 primeras hacen 2 iteraciones cada una, y la última hebra realiza la última iteración, que es un 6, por lo que la suma fuera del parallel se imprime un 6. Si ahora limitamos la ejecución a 3 hebras con export OMP_NUM_THREADS=3, la primera hebra hace 3 iteraciones, la segunda dos y la tercera, que es la última, también hace 2 iteraciones, las dos últimas. Estas dos  últimas suman 5 y 6, 11 en total, por lo que la suma de la última hebra es un 11 y pone la suma global, la que está fuera del parallel, a 11, imprimiendo así un 11.
 
 ### Default
+
 Con `default(<none/shared>)` podemos alterar el comportamiento por
 defecto de las variables (sólo se puede usar una única vez. En caso de
 `none` habrá que especififcar el alcance de todas las variables usadas
@@ -941,39 +993,39 @@ compartición que hemos visto hasta ahora.
 
 Si se utiliza shared como default, estamos indicando que todas las variables que se utilicen en la sección paralelizada son compartidas por defecto. Si queremos que una en concreto es privada, tendremos que especificarlo con private. Por otro lado, si utilizamos none, hay que especificar el ámbito de todas las variables. Si no se hace con todas, el compilador producirá un error.
 
-
 El siguiente código es el mismo que hemos utilizado para explicar la cláusula shared, pero situando delante default(none). Si lo compilamos, se produce un error, ya que no se declara el ámbito de la variable n. Para el índice del bucle no hay problema ya que como habíamos comentado, por defecto los índices de los bucles son privados al paralelizar con for.
 
 Se soluciona cambiando shared(a) por shared(a,n).
-~~~c
+
+```c
 #include <stdio.h>
 #ifdef _OPENMP
-	#include <omp.h>
+    #include <omp.h>
 #endif
 
 
 int main() {
-	int n = 7;
-	int a[n];
+    int n = 7;
+    int a[n];
   int i;
 
-	for(int i = 0; i < n; ++i)
-		a[i] = i+1;
+    for(int i = 0; i < n; ++i)
+        a[i] = i+1;
 
-	//Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
-	#pragma omp parallel for default(none) shared(a)
-	for(i = 0; i < n; ++i)
-		a[i] += i;
+    //Paralelizamos las interaciones de los bucles entre las hebras, siendo a común a las hebras
+    #pragma omp parallel for default(none) shared(a)
+    for(i = 0; i < n; ++i)
+        a[i] += i;
 
-	printf("Después del parallel for:\n");
+    printf("Después del parallel for:\n");
 
-	for(i = 0; i < n; ++i)
-		printf("a[%d] = %d\n",i,a[i]);
+    for(i = 0; i < n; ++i)
+        printf("a[%d] = %d\n",i,a[i]);
 }
-~~~
-
+```
 
 ### Reduction
+
 ```c
 #pragma omp parallel for reduction(operator:list)
 ```
@@ -990,7 +1042,6 @@ Al entrar en la región paralelizada cambia el valor al que dice la tabla, indep
 **Operadores reduction (v3.0)**
 
 C/C++
-
 
 +------+-------+
 | tipo |Valor  |
@@ -1013,17 +1064,17 @@ C/C++
 |  ||  |   0   |
 +------+-------+
 
-
 ### Copyprivate
+
 ```c
 #pragma omp parallel
 {
 // init list vars
 
-	#pragma omp single copyprivate(list)
-	{
-		//Codeblock
-	}
+    #pragma omp single copyprivate(list)
+    {
+        //Codeblock
+    }
 }
 ```
 
@@ -1035,37 +1086,35 @@ threads. Esto es usado comúnmente en lecturas o peticiones al usuario
 
 En el siguiente ejemplo, la hebra que realiza el single inicializa el valor de la variable a. El resto de hebras tomarán dicho valor para la variable, que la tienen como privada, lo que haga cada hebra no afecta a otras.
 
-~~~c
+```c
 #include <stdio.h>
 #include <omp.h>
 
 int main() {
-	int n = 9, i, b[n];
-	for (i=0; i<n; i++)
-	b[i] = -1;
-	#pragma omp parallel
-	{ int a;
-		#pragma omp single copyprivate(a)
-		{
-		printf("\nIntroduce valor de inicialización a: ");
-		scanf("%d", &a );
-		printf("\nSingle ejecutada por el thread %d\n",
-		omp_get_thread_num());
-		}
-		#pragma omp for
-		for (i=0; i<n; i++) b[i] = a;
-	}
-	printf("Depués de la región parallel:\n");
-	for (i=0; i<n; i++) printf("b[%d] = %d\t",i,b[i]);
-	printf("\n");
+    int n = 9, i, b[n];
+    for (i=0; i<n; i++)
+    b[i] = -1;
+    #pragma omp parallel
+    { int a;
+        #pragma omp single copyprivate(a)
+        {
+        printf("\nIntroduce valor de inicialización a: ");
+        scanf("%d", &a );
+        printf("\nSingle ejecutada por el thread %d\n",
+        omp_get_thread_num());
+        }
+        #pragma omp for
+        for (i=0; i<n; i++) b[i] = a;
+    }
+    printf("Depués de la región parallel:\n");
+    for (i=0; i<n; i++) printf("b[%d] = %d\t",i,b[i]);
+    printf("\n");
 }
-~~~
-
+```
 
 # Seminario 3. Variables de OpenMP
 
 ##Variables de control
-
 
 1. *dyn-var* controla el ajuste dinámico del nº de threads.
 2. *nthreads-var* controla el nº de threads en la siguiente ejecución paralela.
@@ -1091,12 +1140,11 @@ de que sólo se usarán cuando estemos usando -fopenmp
 3. *thread-limit-var* omp_get_thread_limit()
 4. *nest-var* omp_get_nested() omp_set_nested()
 5. *run-sched-var* omp_get_schedule(&kind, &modifier) omp_set_schedule(kind, modifier)
-
 - omp_get_thread_num() - Devuelve al thread su identificador dentro del grupo de thread.
 - omp_get_num_threads() - Obtiene el nº de threads que se están usando en una región paralela.
 - omp_get_num_procs() - Devuelve el nº de procesadores disponibles para el programa en el momento de la ejecución.
 - omp_in_parallel() -  Devuelve true si se llama a la rutina dentro de una región
-parallel activa.
+  parallel activa.
 
 ##Clausulas para interactuar con el entorno
 
