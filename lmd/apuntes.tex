@@ -394,7 +394,7 @@ De manera similar, la siguiente proposición dice así:
     \begin{center}
         $\left.
             \begin{aligned}
-                1 = C \\
+                1 = C         \\
                 2 = A + B + C \\
                 4 = 4A + 2B + C
             \end{aligned} \right \}
@@ -405,7 +405,7 @@ De manera similar, la siguiente proposición dice así:
     \begin{center}
         $\left.
             \begin{aligned}
-                a = C \\
+                a = C             \\
                 a + 1 = A + B + C \\
                 a + 3 = 4A + 2B + C
             \end{aligned} \right \}
@@ -414,7 +414,7 @@ De manera similar, la siguiente proposición dice así:
 \end{ejemplo}
 \smallskip
 
-Otro tipo de ecuaciones en recurrencia no homogéneas más generales con las que vamos a trabajar son $\sum_{j=0}^k a_jx_{n-j} = a_0x_n + a_1x_{n-1} + \ldots + a_kx_{n-k} = \sum_{i=1}^r b_i^np_i(n)$, para $k \leq n$, 
+Otro tipo de ecuaciones en recurrencia no homogéneas más generales con las que vamos a trabajar son $\sum_{j=0}^k a_jx_{n-j} = a_0x_n + a_1x_{n-1} + \ldots + a_kx_{n-k} = \sum_{i=1}^r b_i^np_i(n)$, para $k \leq n$,
 de donde $a_0, a_1, \cdots, a_k$ son constantes con $a_k \neq 0 \ y \ a_{n-k} \neq 0$, $b_i$ otra constante y $p_i(n)$ un polinomio en $n$ de grado $r_i$.
 
 \begin{ejemplo} $a_{n} = 2a_{n-1} + n + 2^n$ para $n \geq 1$ \\
@@ -427,8 +427,8 @@ de donde $a_0, a_1, \cdots, a_k$ son constantes con $a_k \neq 0 \ y \ a_{n-k} \n
     \begin{center}
         $\left.
             \begin{aligned}
-                0 = B + D \\
-                3 = 2A + 2B + C + D \\
+                0 = B + D             \\
+                3 = 2A + 2B + C + D   \\
                 12 = 8A + 4B + 2C + D \\
                 35 = 24A + 8B + 3C + D
             \end{aligned} \right \}
@@ -439,12 +439,12 @@ de donde $a_0, a_1, \cdots, a_k$ son constantes con $a_k \neq 0 \ y \ a_{n-k} \n
     \begin{center}
         $\left.
             \begin{aligned}
-                a = B + D \\
-                2a+3 = 2A + 2B + C + D \\
+                a = B + D                \\
+                2a+3 = 2A + 2B + C + D   \\
                 4a+12 = 8A + 4B + 2C + D \\
                 8a+35 = 24A + 8B + 3C + D
             \end{aligned} \right \}
-            \Rightarrow A = 1, \ B = a+2, \ C = -1, \ D = -2 \text{ de donde } s_n = (n+a+2)\cdot 2^n - (n+2)$ 
+            \Rightarrow A = 1, \ B = a+2, \ C = -1, \ D = -2 \text{ de donde } s_n = (n+a+2)\cdot 2^n - (n+2)$
     \end{center}
 \end{ejemplo}
 \smallskip
@@ -631,3 +631,157 @@ Una forma muy útil de representar un conjunto ordenado es a través de su \text
 \begin{nota}
     Denotamos por $A_x$ al conjunto de elementos de $A$ menores o iguales que x.
 \end{nota}
+
+\begin{ejemplo}
+    Los átomos de $\mathbb{B}^n$ son aquellos que tienen todas las coordenadas nulas menos una.
+\end{ejemplo}
+\begin{ejemplo}
+    Los átomos del álgebra de Boole de $\mathcal{P}(X)$ son los conjuntos unitarios.
+\end{ejemplo}
+
+\begin{ndef}[Álgebra de Boole atómica]
+    Un álgebra de Boole $B$ es atómica si para todo $x \in B \textbackslash \{0\}$ existe un átomo $a$ tal que $a \leq x$.
+\end{ndef}
+\begin{nth}
+    Todo álgebra de Boole finita es atómica.
+\end{nth}
+\begin{nth}
+    En todo álgebra de Boole $B$ son equivalentes:
+    \begin{enumerate}
+        \item $a \in At(B)$
+        \item $\forall x \in B, a \leq x \ o \ a \leq \overline{x}$
+        \item $0 < a \ y \ \forall x,y \in B \ (a \leq x \lor y \Leftrightarrow a \leq x \ o \ a \leq y)$
+    \end{enumerate}
+\end{nth}
+\begin{nth}
+    Sea $B$ un álgebra de Boole finita  y $x \in B$, entonces $x = \bigvee \{a \in At(B): a \leq x\}$
+\end{nth}
+\begin{nth}
+    Sea $B$ un álgebra de Boole finita  y $x \in B$, entonces $x = \bigwedge \{a \in coAt(B): a \leq x\}$
+\end{nth}
+
+\begin{ncor}
+    Toda álgebra de Boole finita es isomorfa al álgebra de Boole de partes de sus átomos.
+    \begin{center} $B \cong \mathcal{P} (At(B))$ \end{center}
+\end{ncor}
+
+\begin{ncor}
+    Toda  álgebra de Boole finita B tiene $2^n$ elementos, donde $n$ es el número de átomos de $B$.
+\end{ncor}
+
+\begin{nth}
+    Si dos álgebras de Boole finitas $A$, $B$ tienen el mismo número de elementos, entonces son isomorfas:
+    \begin{center}
+        $A \cong B$
+    \end{center}
+\end{nth}
+
+\subsection{Funciones booleanas elementales}
+\begin{ndef}[Función booleana]
+    Una función booleana con $n$ variables es una aplicación $f: \mathbb{B}^n \rightarrow \mathbb{B}$.
+    Denotaremos por $F_n$ al conjunto de las funciones booleanas con $n$ variables. Es decir,
+    \begin{center}
+        $F_n = \{f:\mathbb{B}^n \rightarrow \mathbb{B}, \ f$ es una aplicación$\}$
+    \end{center}
+\end{ndef}
+\begin{ndef}[Puerta lógica]
+    Una puerta lógica con $n$ entradas es una función booleana elemental de $n$ variables, es decir, un elemento del álgebra de Boole
+    $F_n = Ap(\mathbb{B}^n, \mathbb{B})$.
+\end{ndef}
+
+\subsubsection{Funciones booleanas de una variable}
+Para $n=1$, $f: \{0,1\} \rightarrow \{0,1\}$ tenemos 4 aplicaciones:
+\begin{center}
+    \begin{tabular}{ |c||c|c|c|c|  }
+        \hline
+        $x$ & $f_0^1$ & $f_1^1$ & $f_2^1$ & $f_3^1$ \\
+        \hline
+        0   & 0       & 0       & 1       & 1       \\
+        1   & 0       & 1       & 0       & 1       \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{tabular}{ll}
+    \tabitem \textbf{Función constante 0:} & $f_0^1(x)=0$            \\
+    \tabitem \textbf{Función identidad:}   & $f_1^1(x)=x$            \\
+    \tabitem \textbf{Función complemento:} & $f_2^1(x)=\overline{x}$ \\
+    \tabitem \textbf{Función constante 1:} & $f_3^1(x)=1$            \\
+\end{tabular}
+\begin{nota}
+    La función complemento \textbf{NOT} se representa en circuitos mediante la siguiente figura: \smallskip
+    \begin{center}
+        \begin{circuitikz}
+            \draw (0,0) node[not port] (mynot) {};
+        \end{circuitikz}
+        \\ NOT
+    \end{center}
+\end{nota}
+
+\subsubsection{Funciones booleanas de dos variables}
+Para $n=2$, $f: \{0,1\} \rightarrow \{0,1\}$ tenemos 16 aplicaciones:
+\begin{center}
+    \begin{tabular}{ |c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|  }
+        \hline
+        $x$   & $f_0^2$ & $f_1^2$ & $f_2^2$ & $f_3^2$ & $f_4^2$ & $f_5^2$ & $f_6^2$ & $f_7^2$ & $f_8^2$ & $f_9^2$ & $f_{10}^2$ & $f_{11}^2$ & $f_{12}^2$ & $f_{13}^2$ & $f_{14}^2$ & $f_{15}^2$ \\
+        \hline
+        (0,0) & 0       & 0       & 0       & 0       & 0       & 0       & 0       & 0       & 1       & 1       & 1          & 1          & 1          & 1          & 1          & 1          \\
+        (0,1) & 0       & 0       & 0       & 0       & 1       & 1       & 1       & 1       & 0       & 0       & 0          & 0          & 1          & 1          & 1          & 1          \\
+        (1,0) & 0       & 0       & 1       & 1       & 0       & 0       & 1       & 1       & 0       & 0       & 1          & 1          & 0          & 0          & 1          & 1          \\
+        (1,1) & 0       & 1       & 0       & 1       & 0       & 1       & 0       & 1       & 0       & 1       & 0          & 1          & 0          & 1          & 0          & 1          \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{tabular}{ll}
+    \tabitem \textbf{Función constante 0:}            & $f_0^2(x,y)=0$                                                     \\
+    \tabitem \textbf{Función AND:}                    & $f_1^2(x,y)=x \cdot y$                                             \\
+    \tabitem                                          & $f_2^2(x,y)=x \cdot \overline{y}$                                  \\
+    \tabitem \textbf{Función proyección de x:}        & $f_3^2(x,y)=\pi_1(x,y) = x$                                        \\
+    \tabitem                                          & $f_4^2(x,y)=\overline{x} \cdot y$                                  \\
+    \tabitem \textbf{Función proyección de y:}        & $f_5^2(x,y)=\pi_2(x,y) = y$                                        \\
+    \tabitem \textbf{Función XOR:}                    & $f_6^2(x,y)=x \oplus y$                                            \\
+    \tabitem \textbf{Función OR:}                     & $f_7^2(x,y)=x + y$                                                 \\
+    \tabitem \textbf{Función NOR:}                    & $f_8^2(x,y)=x \downarrow y = \overline{x} \cdot \overline{y}$      \\
+    \tabitem \textbf{Función XNOR:}                   & $f_9^2(x,y)=x \leftrightarrow y = \overline{x} \cdot \overline{y}$ \\
+    \tabitem \textbf{Función proyección negada de y:} & $f_{10}^2(x,y)=\overline{\pi}_2(x,y) = \overline{y}$               \\
+    \tabitem                                          & $f_{11}^2(x,y)= x \leftarrow y$                                    \\
+    \tabitem \textbf{Función proyección negada de x:} & $f_{12}^2(x,y)=\overline{\pi}_1(x,y) = \overline{x}$               \\
+    \tabitem                                          & $f_{13}^2(x,y)= x \rightarrow y = \overline{x} + y$                \\
+    \tabitem \textbf{Función NAND:}                   & $f_{14}^2(x,y)=x \uparrow y$                                       \\
+    \tabitem \textbf{Función constante 1:}            & $f_{15}^2(x,y)=1$                                                  \\
+\end{tabular}
+\begin{nota}
+    En electrónica, estas son las figuras para las siguientes puertas lógicas: \\
+    \centering
+    \begin{tabular}{llllll}
+        \\
+        \begin{circuitikz}
+            \draw (0,0) node[and port] (myand) {};
+        \end{circuitikz}
+            &
+        \begin{circuitikz}
+            \draw (0,0) node[xor port] (myxor) {};
+        \end{circuitikz}
+            &
+        \begin{circuitikz}
+            \draw (0,0) node[or port] (myor) {};
+        \end{circuitikz}
+            &
+        \begin{circuitikz}
+            \draw (0,0) node[nor port] (mynor) {};
+        \end{circuitikz}
+            &
+        \begin{circuitikz}
+            \draw (0,0) node[xnor port] (myxnor) {};
+        \end{circuitikz}
+            &
+        \begin{circuitikz}
+            \draw (0,0) node[nand port] (mynand) {};
+        \end{circuitikz}
+        \\
+        AND & XOR & OR & NOR & XNOR & NAND
+    \end{tabular}
+\end{nota}
+
+\subsection{Formas de dar una función}
