@@ -37,6 +37,69 @@ El diseño de objetos no es una tarea sencilla, pero siempre se trata de que las
 
 \end{itemize}
 
+\subsection{Atributos y Métodos}
+
+\subsubsection{Atributos y Métodos de Instancia}
+
+Los \textbf{atributos de instancia} son variables que están asociadas acada objeto. Cada instancia tiene su propio espacio de atributos de instancia, teniendo así los mismos atributos que cualquier otra instancia de la clase pero en zonas de memoria distintas. El \textbf{estado} de cada instancia es descrito por los valores de estos atributos.
+
+De la misma forma, los \textbf{métodos de instancia} son funciones definidos en una clase y que estarán asociados a los objetos de dicha clase. Estos métodos pueden acceder a los atributos de instancia de ese mismo objeto.
+
+EJEMPLO:
+
+\subsubsection{Atributos y Métodos de Clase}
+
+Los \textbf{atributos de clase} almacenan información asociada \textbf{a la propia clase}, no a cada instancia y por tanto, son globales a todas las instancias de la clase. Estos deberán usarse cuando haya información que sea común a todas las instancias de la clase, como lo pueden ser un contador de instancias o constantes.
+
+\begin{nota}
+
+Para cualquier número que se vaya a utilizar (exceptuando 0, 1 o -1 para índices, inicializar una variable vacía o casos similares), es muy recomendable declararlo como constante, pues no sabemos cuando podrán volver a necesitarse en un futuro y mejora la legibilidad del código.
+
+\end{nota}
+
+Los \textbf{métodos de clase}, al igual que los atributos de clase, son funciones y procedimientos asociados a la propia clase.  Estos métodos pueden acceder y modificar los atributos de clase.
+
+EJEMPLOS Y RUBY/JAVA
+
+\subsubsection{Pseudovariables}
+
+Las \textbf{pseudovariables} son palabras reservadas que referencian al propio objeto o a la propia clase. Las más comunes en la mayoría de los lenguajes son \textbf{this} (Java, C++, C#...) y \textbf{self} (Ruby, Python, Rust...).
+
+EJEMPLO
+
+\subsubsection{Especificadores de acceso (Visibilidad)}
+
+A pesar de que en este aspecto hay diferencias notables entre distintos lenguajes, podemos distinguir distintos niveles de acceso a atributos y métodos.
+
+En general son:
+\begin{itemize}
+\item \textbf{Privado:} no se puede acceder desde otras instancias o clases.
+\item \textbf{Público:} no tiene ningún tipo de restricción de acceso.
+\item \textbf{Paquete:} no tiene restricciones en un mismo paquete.
+\end{itemize}
+
+En concreto en Java, se puede acceder a elementos privados desde una instancia a otra de la misma clase, desde el ámbito de clase a una instancia de la clase y desde el ámbito de instancia a la clase de la que se es instancia. Sin embargo, en Ruby ninguna de estas acciones están permitidas y los atributos son siempre privados.
+
+A la hora de elegir el tipo de visibilidad a utilizar, siempre deberemos usar \textbf{la más restrictiva} según su necesidad; los \textbf{atributos} deberán ser \textbf{privados}, se accederán a ellos con un \textbf{consultor (getter) con visibilidad de paquete o público} y los que se modifiquen desde fuera de la clase se deberá crear un \textbf{modificador (setter)}; los \textbf{atributos de objetos} sólo se podrán \textbf{modificar por métodos del propio objeto} y sólo \textbf{se crearán los consultores y modificadores necesarios.}
+
+\subsection{Construcción de Objetos}
+
+Los lenguajes orientados a objetos suelen disponer de unos métodos especiales denominados **constructores**. Estos métodos solo se encargan de la **inicialización de las instancias**. Se deben inicializar **todos los atributos** de instancia. No son métodos de instancia y no especifican ningún tipo de retorno. Existen diferencias importantes a este respecto en los distintos lenguajes de programación orientados a objetos.
+
+\subsubsection{Clases-plantilla / Clases-objeto}
+
+[ENTENDER QUE SON]Clases-plantilla I En muchos casos tienen el mismo nombre de la clase. Son invocados automáticamente utilizando la palabra reservada new. Clases-objeto I Pueden tener un nombre arbitrario. Suelen ser métodos de clase.
+
+En **Java**, el constructor tiene el mismo nombre que la clase y no devuelve ningún valor; se usa para inicializar los atributos; se pueden sobrecargar y reutilizar un constructor desde otro; podemos construir un objeto con ***new*** *NombreClase* y si no se crea uno, Java tiene un constructor por defecto sin parámetros.
+
+En **Ruby**, el equivalente al constructor es el método ***initialize***, el cual es un método de instancia privado que es llamado por el método de clase ***new***. Crea e inicializa los atributos de instancia, y aunque cualquier método de instancia pueda crearlos, es recomendable hacerlo solo en el constructor. **No se pueden sobrecargar**, si se declaran varios solo se tendrá en cuenta el último declarado. La única forma de crear varios constructores es crear métodos de clase que actúen como *new* o haciendo que initialize admita un número variable de argumentos (se hace poniendo **nombreArgumento*).
+
+EJEMPLOS
+
+\subsubsection{Memoria Dinámica y Pila}
+
+En Java y Ruby todos los objetos se crean en **memoria dinámica** (heap). En ambos, **las variables referencian a objetos** (es decir, son punteros), excepto los tipos primitivos de Java (int ,float, double...) y los strings, por lo que es algo a tener en cuenta. Si no queremos que sea modificable, una solución es devolver una copia del valor referenciado. La memoria se libera automáticamente, gracias al recolector de basura que libera automáticamente la memoria de los objetos no referenciados.
+
 \section{Clases, objetos y mensajes}
 
 \section{Reutilización y polimorfismo}
