@@ -2,15 +2,13 @@
 
 ## Rama o departamento del que proviene
 
-### LibreIM
-
 
 
 Descripción de la asignatura
 
 
 
-### Tabla de contenidos:
+## Tabla de contenidos:
 
 |          Tema          |       Estado       | Observaciones                                              |
 | :--------------------: | :----------------: | :--------------------------------------------------------- |
@@ -23,20 +21,14 @@ Descripción de la asignatura
 |          ...           | :heavy_minus_sign: | Falta x                                                    |
 |   n: Nombre del tema   |                    | ...                                                        |
 
-#### Leyenda tabla de contenidos:
+### Leyenda tabla de contenidos:
 
 - :heavy_check_mark: : Tema completo.
 - :question: : Tema pendiente de revisión.
 - :heavy_minus_sign: : Tema incompleto o con errores.
 - :x: : Tema sin realizar.
 
-### Órdenes y Paquetes LaTeX de la asignatura:
-
-|   Orden   |                   Descripción                    |
-| :-------: | :----------------------------------------------: |
-| \orden_x  |                    Imprime x                     |
-| \orden_x2 | Simplificación del siguiente comando: \mathbb{R} |
-| \orden_xn |                       ...                        |
+## Órdenes y Paquetes LaTeX de la asignatura:
 
 | Paquete | Descripción |
 | :-----: | :---------: |
@@ -44,19 +36,15 @@ Descripción de la asignatura
 |         |             |
 |         |             |
 
+|   Orden   |                   Descripción                    |
+| :-------: | :----------------------------------------------: |
+| \orden_x  |                    Imprime x                     |
+| \orden_x2 | Simplificación del siguiente comando: \mathbb{R} |
+| \orden_xn |                       ...                        |
 
-
-### Esquema de colores HTML: 'color'
-
-|           Elemento            | Color HTML |
-| :---------------------------: | :--------: |
-|      Relleno definición       |   C323F5   |
-| Borde corolario y proposición |   00000F   |
-|            Portada            |   FFFF4A   |
-|              ¿?               |   FDE241   |
-|  Borde definición y teorema   |   ABB581   |
+## Esquema de colores HTML: `<color de la asignatura>`
 
 
 
-### Observaciones:
+## Observaciones:
 
