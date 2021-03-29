@@ -105,7 +105,7 @@ Primero definamos en qué consiste una relación de orden:
 \begin{ndef}
     Sea $(A,R)$ un par ordenado con $A$ un conjunto no vacío y $R$ una relación binaria definida en $A$, entonces se dice que $R$ es una \textbf{relación de orden} si es:
     \begin{itemize}
-        \item \textbf{Reflexiva}: Todo elemento de $A$ A está relacionado consigo mismo. Es decir, $\forall x\in A,\ xRx$.
+        \item \textbf{Reflexiva}: Todo elemento de $A$ está relacionado consigo mismo. Es decir, $\forall x\in A,\ xRx$.
         \item \textbf{Antisimétrica}: Si dos elementos de $A$ se relacionan entre sí, entonces ellos son iguales. Es decir, $\forall x,y\in A,\ xRy,\ yRx \ \Rightarrow \ x=y$.
         \item \textbf{Transitiva}: Si un elemento de $A$ está relacionado con otro, y ese otro a su vez se relaciona con un tercero, entonces el primero estará relacionado también con este último. Es decir, $\forall x,y,z\in A,\;xRy,yRz\Rightarrow xRz$.
     \end{itemize}
@@ -447,7 +447,6 @@ de donde $a_0, a_1, \cdots, a_k$ son constantes con $a_k \neq 0 \ y \ a_{n-k} \n
             \Rightarrow A = 1, \ B = a+2, \ C = -1, \ D = -2 \text{ de donde } s_n = (n+a+2)\cdot 2^n - (n+2)$
     \end{center}
 \end{ejemplo}
-\smallskip
 
 \newpage
 \section{Álgebras de Boole}
@@ -459,7 +458,7 @@ de donde $a_0, a_1, \cdots, a_k$ son constantes con $a_k \neq 0 \ y \ a_{n-k} \n
         \item\label{a0} \textbf{Asociatividad} $a \lor (b \lor c) = (a \lor b) \lor c$, $a \land (b \land c) = (a \land b) \land c$
         \item\label{a1} \textbf{Conmutatividad} $a \lor b = b \lor a$, $a \land b = b \land a$
         \item\label{a2} \textbf{Distributividad} $a \lor (b \land c) = (a \lor b) \land (a \lor c)$, $a \land (b \lor c) = (a \land b) \lor (a \land c)$
-        \item\label{a3} \textbf{Complementación} $a \lor \overline{x} = 1$, $a \land \overline{x} = 0$
+        \item\label{a3} \textbf{Complementación} $a \lor \overline{a} = 1$, $a \land \overline{a} = 0$
         \item\label{a4} \textbf{Identidad} $a \lor 0 = a$, $a \land 1 = a$
     \end{enumerate}
 \end{ndef}
@@ -620,11 +619,21 @@ Una forma muy útil de representar un conjunto ordenado es a través de su \text
 \end{ndef}
 \begin{ndef}[Átomo]
     Sea $B$ un álgebra de Boole y $a \in B$. Se dice que $a$ es un \textbf{átomo} si $a$ es un elemento minimal de $B \textbackslash \{0\}$. Es decir,
-    $\forall a \in B \textbackslash \{0\} \ (x \leq a \implies x = a)$.
+    $\forall a \in B \textbackslash \{0\} \ (x \leq a \implies x = a)$. Denotaremos al conjunto que contiene a los átomos de B por $At(B)$.
 \end{ndef}
+\begin{ndef}[Coátomo]
+    Sea $B$ un álgebra de Boole y $a \in B$ un átomo de $B$. Diremos entonces que $\overline{a}$ es un \textbf{coátomo}.
+    Denotaremos al conjunto que contiene a los coátomos de B por $coAt(B)$.
+\end{ndef}
+
 \begin{nth}
     Sea $B$ un álgebra de Boole finita y $x \in X \textbackslash \{0\}$. Entonces $x$ se expresa de forma única como supremo de átomos.
 \end{nth}
+Este teorema tiene su versión dual que dice así:
+\begin{nth}
+    Sea $B$ un álgebra de Boole finita y $x \in X \textbackslash \{0\}$. Entonces $x$ se expresa de forma única como ínfimo de coátomos.
+\end{nth}
+
 \begin{lema}
     Sea $B$ un álgebra de Boole finita y $x \in X \textbackslash \{0\}$. Entonces existe $a \in B$ átomo tal que $a \leq x$.
 \end{lema}
@@ -633,7 +642,7 @@ Una forma muy útil de representar un conjunto ordenado es a través de su \text
 \end{nota}
 
 \begin{ejemplo}
-    Los átomos de $\mathbb{B}^n$ son aquellos que tienen todas las coordenadas nulas menos una.
+    Los átomos de $\mathbb{B}^n$ son aquellos que tienen todas las coordenadas nulas menos una y sus coátomos son los elementos que tienen tan solo una coordenada nula.
 \end{ejemplo}
 \begin{ejemplo}
     Los átomos del álgebra de Boole de $\mathcal{P}(X)$ son los conjuntos unitarios.
@@ -784,4 +793,334 @@ Para $n=2$, $f: \{0,1\} \rightarrow \{0,1\}$ tenemos 16 aplicaciones:
     \end{tabular}
 \end{nota}
 
-\subsection{Formas de dar una función}
+\subsection{Maneras de expresar una función}
+\subsubsection{Expresiones booleanas}
+Para listar las diferentes formas de dar una función booleana, usaremos el siguiente ejemplo en todos los casos: $\{f:\mathbb{B}^3 \rightarrow \mathbb{B} \ / \ f(x,y,z) = (\overline{x} \cdot y) + (\overline{y} \cdot z)\}$.
+A esta manera de denominar una función booleana se le conoce como \textbf{expresión booleana}.
+\begin{ndef}[Expresión booleana]
+    Sea $X = \{x_1,x_2,\cdots,x_n\}$ un conjunto de variables. Se definen las expresiones booleanas sobre el conjunto $X$  de forma recursiva como sigue:
+    \begin{enumerate}
+        \item Si $x \in X \cup \{0,1\}$ entonces $x$ es una expresión booleana.
+        \item Si $e_1,e_2$ son expresiones booleanas, entonces lo son $e_1+e_2, \ e_1 \cdot e_2$ y $\overline{e_1}$.
+    \end{enumerate}
+\end{ndef}
+\begin{ndef}[Literal]
+    Denominaremos literales a las expresiones booleanas que sean variables o sus complementos.
+\end{ndef}
+\begin{ndef}
+    Dos expresiones booleanas son equivalentes si las correspondientes funciones booleanas son iguales.Si $e_1$ e $e_2$ son expresiones booleanas equivalentes emplearemos el símbolo $e_1=e_2$.
+\end{ndef}
+\begin{nprop}
+    Sean $e_1,e_2, e_3$ expresiones booleanas en $n \in \nat$ variables. Entonces se cumple:
+
+    \begin{tabular}{ll}
+        \tabitem $e_1 + (e_2 + e_3) = (e_1 + e_2) + e_3$                        & $e_1 \cdot (e_2 \cdot e_3) = (e_1 \cdot e_2) \cdot e_3$      \\
+        \tabitem $e_1 + e_2 = e_2 + e_1$                                        & $e_1 \cdot e_2 = e_2 \cdot e_1$                              \\
+        \tabitem $e_1 + e_1 = e_1$                                              & $e_1 \cdot e_1 = e_1$                                        \\
+        \tabitem $e_1 \cdot (e_2 + e_3) = e_1 \cdot e_2 + e_1 \cdot e_3$        & $e_1 + (e_2 \cdot e_3) = (e_1 + e_2) \cdot (e_1 + e_3)$      \\
+        \tabitem   $\overline{e_1 + e_2} = \overline{e_1} \cdot \overline{e_2}$ & $\overline{e_1 \cdot e_2} = \overline{e_1} + \overline{e_2}$ \\
+        \tabitem $e_1 + \overline{e_1} = 1$                                     & $e_1 \cdot \overline{e_1} = 0$                               \\
+        \tabitem $e_1 + 1 = 1$                                                  & $e_1 \cdot 0 = 0$                                            \\
+        \tabitem $e_1 + 0 = e_1$                                                & $e_1 \cdot 1 = e_1$                                          \\
+        \tabitem $\overline{1} = 0$                                             & $\overline{0} = 1$                                           \\
+    \end{tabular}
+\end{nprop}
+
+\subsubsection{Tablas de la verdad}
+Podemos elaborar una tabla a partir de una función dada. Esta tabla se llama \textbf{tabla de la verdad}. En el caso de $f$, sería así:
+\begin{center}
+    \begin{tabular}{ |c|c|c||c|  }
+        \hline
+        $x$ & $y$ & $z$ & $f(x,y,z)$ \\
+        \hline
+        0   & 0   & 0   & 0          \\
+        0   & 0   & 1   & 1          \\
+        0   & 1   & 0   & 1          \\
+        0   & 1   & 1   & 1          \\
+        1   & 0   & 0   & 0          \\
+        1   & 0   & 1   & 1          \\
+        1   & 1   & 0   & 0          \\
+        1   & 1   & 1   & 0          \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{Enumeración}
+Otra forma de dar dicha función es mencionando su número de variables y el número binario que forman. Este número, dado $r$, debe cumplir $0 \leq r < 2^{2^n}$.
+En nuestro ejemplo, tendríamos que $2^6+2^5+2^4+2^2 = 116$. La llamaríamos la función 116 de tres variables.
+
+\subsubsection{Mapas de Karnaugh}
+Los mapas de Karnaugh son una disposición plana en forma de cuadrícula de la tabla de una función booleana quenos ayudará a obtener los implicantes primos y las formas no redundantes de la función.
+El mapa de Karnaugh de $f$ sería:
+\begin{center}
+    \begin{Karnaugh_2x4}
+        \minterms{1,4,5,6}
+    \end{Karnaugh_2x4}
+\end{center}
+
+\subsection{Formas canónicas}
+A la hora de identificar una expresión booleana, existen 2 métodos: la \textbf{forma canónica conjuntiva} y la \textbf{forma canónica disyuntiva}.
+En el caso de la forma canónica disyuntiva, es necesario obtener las \textbf{conjunciones fundamentales} y para ello, definamos previamente varios conceptos:
+
+Para la próxima definición, definimos las potencias de $a$ como $a^i = a^*$ si $i = *$, $a^i = 1$ si $i = 0$ y $a^i = a$ si $i = 1$:
+\begin{ndef}[Conjunción fundamental o monomio]
+    Una conjunción (fundamental) en $n$ variables es una expresión booleana de la forma $\mu = x_1^{e_1} \land x_2^{e_2} \land \cdots \land x_n^{e_n}$ donde $e_i \in \{0,1,\overline{\square}\}$. $\mu$ es una conjunción o monomio fundamental con elementos de $X$.
+    El número de conjunciones fundamentales de $n$ variables distintas es $3^n$.
+\end{ndef}
+
+\begin{ndef}[Mintérmino]
+    Una conjunción elemental o mintérmino en $n$ variables es una expresión booleana de la forma $m = x_1^{e_1} \land x_2^{e_2} \land \cdots \land x_n^{e_n}$ donde $e_i \in \{1,\overline{\square}\}$.
+\end{ndef}
+\begin{ndef}[Maxtérmino]
+    Una disyunción elemental o maxtérmino en $n$ variables es una expresión booleana de la forma $M = x_1^{e_1} \lor x_2^{e_2} \lor \cdots \lor x_n^{e_n}$ donde $e_i \in \{0,\overline{\square}\}$.
+\end{ndef}
+\begin{nota}
+    Es decir, los minterm son las funciones que valen 1 para una única combinación de valores de sus variables y los maxterm las que valen 0.
+\end{nota}
+El número de mintérminos (y de maxtérminos) en $n$ variables es $2^n$.
+\begin{ejemplo}[Visual]
+    Tomemos las funciones conjunción de tres variables, por tanto hay $3^3 = 27$ conjunciones.
+    De aquí, obtenemos todas las funciones posibles según el número de literales posibles: \\
+    \begin{tabular}{ll}
+        \tabitem \textbf{3 literales:} & $\overline{x} \cdot \overline{y}\cdot \overline{z}, \overline{x} \cdot \overline{y}\cdot z, \overline{x} \cdot y \cdot \overline{z}, x \cdot \overline{y} \cdot \overline{z}, \overline{x} \cdot y \cdot z, x \cdot \overline{y} \cdot z, x \cdot y \cdot \overline{z}, x \cdot y \cdot z$. \\
+        \tabitem \textbf{2 literales:} & $\overline{x} \cdot \overline{y}, \overline{x} \cdot y, x \cdot \overline{y}, x \cdot y, \overline{x} \cdot \overline{z}, \overline{x} \cdot z, x \cdot \overline{z}, x \cdot z, \overline{y} \cdot \overline{z}, \overline{y} \cdot z, y \cdot \overline{z}, y \cdot z$.                   \\
+        \tabitem \textbf{1 literal:}   & $\overline{x}, x, \overline{y}, y, \overline{z}, z$.                                                                                                                                                                                                                                        \\
+        \tabitem \textbf{0 literales:} & 1
+    \end{tabular}
+    \begin{center}
+        \begin{tikzpicture}[x=0.5cm,y=0.5cm,z=0.3cm,>=stealth,thick]
+            % Ejes
+            \draw[->] (xyz cs:x=0) -- (xyz cs:x=6) node[above] {};
+            \draw[->] (xyz cs:y=0) -- (xyz cs:y=6) node[right] {};
+            \draw[->] (xyz cs:z=0) -- (xyz cs:z=-6) node[above] {};
+
+            % Líneas
+            \draw[thick]
+            (xyz cs:z=-3) --
+            +(0,3) coordinate (u) --
+            (xyz cs:y=3) --
+            +(3,0) --
+            ++(xyz cs:x=3,z=-3) coordinate (v) --
+            +(0,-3) coordinate (w) --
+            cycle;
+            \draw[thick] (u) -- (v);
+            \draw[thick] (3,0) -- (w);
+            \draw[thick] (3,0) |- (0,3);
+            \draw[thick] (8,1) -- (10,1);
+
+            % Puntos
+            \node[fill,circle,inner sep=1.5pt] at (xyz cs:z=-3) {};
+            \node[fill,circle,inner sep=1.5pt] at (u) {};
+            \node[fill,circle,inner sep=1.5pt] at (v) {};
+            \node[fill,circle,inner sep=1.5pt] at (w) {};
+            \node[fill,circle,inner sep=1.5pt] at (0,0) {};
+            \node[fill,circle,inner sep=1.5pt] at (3,0) {};
+            \node[fill,circle,inner sep=1.5pt] at (0,3) {};
+            \node[fill,circle,inner sep=1.5pt] at (3,3) {};
+            \node[fill,circle,inner sep=1.5pt, label={below:0}] at (8,1) {};
+            \node[fill,circle,inner sep=1.5pt, label={below:1}] at (10,1) {};
+            % Aplicación
+            \draw [dashed] (v) to[bend left] node {} (10,1);
+        \end{tikzpicture}
+    \end{center}
+
+    Como podemos ver en ésta representación gráfica, en el caso dado podemos apreciar que la función booleana definida por un mintérmino aplica un vértice del n-cubo en el 1 y el resto en el 0.
+    En el caso de 2 literales, aplica una arista (2 vértices) al 1 y el resto al 0. En el caso de 1 literal, aplica una cara (4 vértices) en el uno, etc.
+\end{ejemplo}
+
+A partir del ejemplo deducimos que si faltan $r$ variables, se aplican $2^r$ vértices contiguos, denominados \textbf{hipercaras de dimensión $r$}, en el 1. El número de conjunciones
+hipercaras de dimensión $r$ es $\binom{n}{n-r} \cdot 2^{n-r}$.
+\begin{nota}
+    $\mu_1 < \mu_2$ si, y sólo si, $\mu_2$ se obtiene suprimiendo literales de $\mu_1$.
+\end{nota}
+
+\begin{ejemplo}
+    Estas conjunciones se pueden representar fácilmente en un mapa de Karnaugh. Veamos la representación de las conjunciones de 3 variables $\overline{x} \cdot z$ (arista) y $x$ (cara):
+    \begin{center}
+        \begin{Karnaugh_2x4}
+            \minterms{2,3,4,5,6,7}
+            \implicant{3}{6}{green}
+            \implicant{4}{5}{}
+        \end{Karnaugh_2x4}
+    \end{center}
+\end{ejemplo}
+
+\subsubsection{Forma canónica disyuntiva}
+\begin{ndef}
+    Una forma disyuntiva es una suma de conjunciones.
+\end{ndef}
+\begin{nth}
+    Los mintérminos (conjunciones elementales) son los átomos del álgebra de Boole $F_n$.
+\end{nth}
+\begin{nth}[de la forma canónica disyuntiva]
+    Toda función booleana elemental se puede expresar de forma única como suma (disyunción, supremo) de mintérminos.
+\end{nth}
+\begin{ncor}
+    Toda función booleana elemental se puede expresar como suma de conjunciones.
+\end{ncor}
+El número de formas disyuntivas expresados de manera similar a los polinomios es de $2^{3^n}$, que dividido entre el número de funciones elementales $2^{2^n}$, nos da un promedio de $2^{3^n-2^n}$ formas disyuntivas para una determinada función.
+De entre ellas, la que nos interesa es la canónica.
+
+\subsubsection{Algoritmo de la forma canónica disyuntiva}
+El algoritmo consta de los siguientes pasos:
+\begin{enumerate}
+    \item Partimos de una expresión booleana de la función.
+    \item Mediante las leyes de De Morgan y la ley de doble complemento interiorizamos el complemento ($\overline{\square}$) hasta que sólo afecte a las variables.
+    \item Distribuimos el producto (ínfimo) sobre la suma (supremo) hasta que nos quede una suma de conjunciones fundamentales.
+    \item (Optativo) Simplificamos las expresión por absorción de conjunciones fundamentales.
+    \item Hacemos uso de la igualdad $\mu = \mu \cdot 1 = \mu \cdot (x + \overline{x}) = \mu \cdot x + \mu \cdot \overline{x}$ para lograr que todas las variables aparezcan en todos los monomios de la expresión. Partiendo de la forma disyuntiva obtenida
+          seleccionamos un monomio en el que falte una variable y lo sustituimos por la suma de dos monomios donde ya faltará una variable menos.
+    \item Cuando todos los monomios sean mintérminos, eliminamos repeticiones por idempotencia y obtenemos la forma canónica disyuntiva.
+\end{enumerate}
+Otra manera más sencilla de llegar a la misma solución es mediante el \textbf{método de la tabla}, donde para cada fila de la función que vale 1, escribimos el mintérmino asociado.
+\begin{ejemplo}
+    Apliquemos el algoritmo con $f(x,y,z) = xy \cdot (\overline{z} + y)$: \\
+    $f(x,y,z) = xy \cdot (\overline{z} + y) = xy\overline{z} + xy = xy\overline{z} + xyz + xy\overline{z} = xy\overline{z} + xyz = m_6 + m_7$
+    Ahora, si usamos el método de la tabla, veremos que obtenemos la misma solución:
+    \begin{center}
+        \begin{tabular}{ |c|c|c||c|  }
+            \hline
+            $x$ & $y$ & $z$ & $f(x,y,z)$ \\
+            \hline
+            0   & 0   & 0   & 0          \\
+            0   & 0   & 1   & 0          \\
+            0   & 1   & 0   & 0          \\
+            0   & 1   & 1   & 0          \\
+            1   & 0   & 0   & 0          \\
+            1   & 0   & 1   & 0          \\
+            1   & 1   & 0   & 1          \\
+            1   & 1   & 1   & 1          \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \centering $f(x,y,z) = xy \cdot (\overline{z}+y) = m_6 + m_7 = xy\overline{z} + xyz$
+\end{ejemplo}
+Sin embargo, aunque la forma canónica resulte interesante de obtener, luego en la práctica no suele ser la manera más óptima, lo que nos llevará a buscar simplificaciones.
+
+\subsubsection{Forma canónica conjuntiva}
+De manera similar a la forma canónica disyuntiva, tenemos por dualidad que:
+\begin{ndef}
+    Una forma conjuntiva es un producto de disyunciones.
+\end{ndef}
+\begin{nth}
+    Los maxtérminos (disyunciones elementales) son los coátomos del álgebra de Boole $F_n$.
+\end{nth}
+\begin{nth}[de la forma canónica conjuntiva]
+    Toda función booleana elemental se puede expresar de forma única como producto (conjunción, ínfimo) de maxtérminos.
+\end{nth}
+\begin{ncor}
+    Toda función booleana elemental se puede expresar como producto de disyunciones.
+\end{ncor}
+\begin{nota}
+    Los algóritmos y métodos de obtención de la forma canónica conjuntiva son análogos a la forma canónica disyuntiva.
+\end{nota}
+
+\subsection{Simplificación}
+Como hemos dicho antes, muchas veces nos va a interesar obtener una simplificación de ésta forma canónica disyuntiva. Para ello aplicaremos dos reglas:
+\begin{itemize}
+    \item \textbf{Eliminación de un monomio.} Si $f = \mu + R = R$, entonces podemos eliminar $\mu \Longleftrightarrow \mu R = \mu$ .
+    \item \textbf{Eliminación de un literal en un monomio.} Si $f = \mu + R = \mu ' + R$, podemos sustituir $\mu$ por $\mu ' \Longleftrightarrow \mu < \mu ' \Longleftrightarrow \mu ' f = \mu '$.
+\end{itemize}
+A este proceso lo llamremos \textbf{simplificación}. A las formas disyuntivas que no la admitan las llamaremos \textbf{formas disyuntivas no redundantes, irredundantes o no simplificables}.
+
+\subsubsection{Algoritmo de simplificación}
+Se parte de una forma disyuntiva arbitraria de la función. Se ordenan los monomios y dentro de los monomios se ordenan los literales y aplicamos las siguientes reglas a cada uno de los monomios en el orden dado.
+\begin{enumerate}
+    \item Se intenta suprimir el monomio correspondiente viendo si es menor que otro de los que intervienen en la forma.
+    \item Si no se suprime el monomio se prueba a suprimir los literales del monomio en el orden dado.
+    \item Cuando no se pueda simplificar más se pasa al monomio siguiente.
+\end{enumerate}
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+
+\begin{ndef}[Implicante]
+    Un implicante de una función es un monomio fundamental que es menor o igual que la función.
+\end{ndef}
+
+\begin{ndef}[Implicante primo, simple o maximal]
+    Un implicante primo de una función es un implicante de la función en el que al suprimir un literal deja de ser implicante.
+\end{ndef}
+
+\begin{ndef}[Implicante primo esencial]
+    Un implicante primo esencial es aquel que contiene mintérminos 1 no contenidos dentro de ningún otro implicante primo.
+\end{ndef}
+
+\begin{nota}
+    Todos los implicantes que aparecen en una forma disyuntiva no redundante son implicantes primos.
+\end{nota}
+
+\subsection{Forma reducida}
+Como hemos visto, nos interesa obtener una forma más reducida que la canónica y para ello deberemos encontrar todos los implicantes primos y así encontrar la forma reducida más óptima para la medida considerada.
+\begin{ndef}[Forma reducida]
+    Llamamos forma disyuntiva reducida de una función a la suma de sus implicantes maximales.
+\end{ndef}
+\begin{nth}
+    La suma de todos los implicantes primos de una función es una forma disyuntiva de la función.
+\end{nth}
+
+\subsubsection{Algoritmo de Quine para la obtención de los implicantes primos}
+Se parte de la forma canónica disyuntiva (suma de mintérminos). Presenta la ventaja de poderse aplicar a cualquier número de generadores y ser programable, sin embargo, es pesado de llevar a cabo.
+\begin{enumerate}
+    \item Se clasifican los mintérminos según el número de variables que aparecen complementadas.
+    \item En cada paso intentamos encontrar dos monomios en grupos adyacentes que difieran en un literal solamente
+          (todas las variables excepto una con igual exponente) y que dan lugar a otro monomio sin el literal considerado,
+          es decir, a partir de $x\mu$ y $\overline{x}\mu$ generamos $\mu$, siendo $x$ cualquier variable. La disposición hace que sólo se compare
+          cada monomio con todos los del grupo siguiente de todas las formas posibles. Los que se agrupan se marcan
+          con un aspa y a los que dan lugar se ponen en otra tabla. De esta forma los monomios en los que faltan una
+          variable estarán en la tabla segunda.
+    \item A continuación tenemos que comparar los monomios de la segunda tabla entre sí. Obteniendo la tabla siguiente con monomios en los que faltan dos variables y agrupados por numero de variables complementadas.
+    \item Al finalizar los monomios que no estén marcados no pueden ser menores que otros y por tanto estos serán los implicantes maximales o primos.
+\end{enumerate}
+
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+
+\subsubsection{Mapas de Karnaugh}
+Este método consiste en buscar los implicantes primos a ojo mediante agrupaciones de unos contiguos. Para ello, buscaremos las hipercaras y tras ellas, variedades de orden inferior de manera descendente.
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+
+\subsubsection{Método de los consensos}
+Se parte de cualquier forma disyuntiva de la función y está basado en la siguiente igualdad del álgebra de Boole: $x\mu_1 + \overline{x}\mu_2 = x\mu_1 + \overline{x}\mu_2 + \mu_1\mu_2$, siendo $x$ cualquier variable.
+Al monomio $\mu_1\mu_2$ se le llama \textbf{consenso en $x$} de los monomios $x\mu_1$ y $x\mu_2$. \smallskip
+Partiendo de cualquier forma disyuntiva, se van añadiendo los consensos en todas las variables de todas las parejas de monomios posibles (incluidos los que van apareciendo) y simplificando por absorción (monomios incluidos en otros).
+Cuando no aparecen más consensos y se han hecho todas las absorciones, se obtiene la forma normal reducida, que es la suma de todos los implicantes maximales.
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+
+\subsubsection{Método de la forma canónica conjuntiva o producto de maxtérminos}
+Se halla la forma canónica conjuntiva. Se distribuye el producto sobre la suma y se realizan todas las absorciones con lo que se obtiene la forma canónica reducida.
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+
+\subsection{Formas no redundantes}
+En la forma reducida, por ser todos los implicantes primos, no se puede simplificar con la segunda regla pero en general, sí se puede con la primera. Para obtenerla, usaremos la \textbf{cuadrícula de Mac-Cluskey} y el \textbf{algoritmo de Petrick}.
+\subsubsection{Cuadrícula de Mac-Cluskey y algoritmo de Petrick}
+A partir de los implicantes maximales de una función vamos a contruir todas las formas disyuntivas irredundantes.
+\begin{enumerate}
+    \item Reducir la tabla (Cuadrícula de Mac-Cluskey) de implicantes primos eliminando las filas de implicantes primos esenciales y las columnas correspondientes.
+    \item Etiquetar las filas de la tabla de implicantes primos reducida $P_ {1}, P_ {2}, P_ {3}, P_ {4}$, etc.
+    \item Formar una función lógica que sea verdadera cuando se cubran todas las columnas. P consiste en un producto de sumas donde cada término de suma tiene la forma, donde cada uno representa una columna que cubre una fila. Es decir, $P = \prod_{i=0}^N(P _ {{i0}} + P _ {{i1}} +\cdots + P _ {{iN}})$.
+    \item Reducir a la mínima suma de productos multiplicando y aplicando la ley de absorción. $X + XY = X$.
+    \item Cada término del resultado representa una solución, es decir, un conjunto de filas que cubre todos los términos mínimos de la tabla. Para determinar las soluciones mínimas, primero encuentre aquellos términos que contengan un número mínimo de implicantes primos.
+    \item Luego, para cada uno de los términos encontrados en el paso cinco, cuente el número de literales en cada implicante principal y encuentre el número total de literales.
+    \item Elegir el término o términos compuestos por el número total mínimo de literales y escribir las sumas correspondientes de implicantes primos.
+\end{enumerate}
+\begin{ejemplo}
+    AÑADIR
+\end{ejemplo}
+\begin{nota}
+    Aunque no se hayan usado a lo largo del tema, los siguientes dos términos son muy utilizados en el ámbito del álgebra de Boole y conviene conocerlos:
+    \begin{itemize}
+        \item \textbf{POS:} Producto de sumas \textit{(product of sums)}.
+        \item \textbf{SOP:} Suma de productos (\textit{sum of products)}.
+    \end{itemize}
+\end{nota}
+
+\newpage
+\section{Grafos y árboles}
