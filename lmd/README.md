@@ -57,4 +57,4 @@ Lógica y Métodos Discretos es una asignatura del Grado en Ingeniería Infórma
 
 ## Observaciones: 
 
-El temario del primer y segundo está completo, sin embargo, no estaría de más añadir algunas demostraciones o ejercicios.
+El temario del primer y segundo tema está completo, sin embargo, no estaría de más añadir algunas demostraciones o ejercicios.
