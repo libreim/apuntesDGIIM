@@ -49,7 +49,7 @@
 %#1 - Optional. Space between node and grouping line. Default=0
 %#2 - node
 %#3 - filling color
-\newcommand{\implicantsol}[3][0]{
+\newcommand{\involving_sol}[3][0]{
     \draw[rounded corners=3pt, fill=#3, opacity=0.3] ($(#2.north west)+(135:#1)$) rectangle ($(#2.south east)+(-45:#1)$);
     }
 
@@ -59,7 +59,7 @@
 %#2 - top left node
 %#3 - bottom right node
 %#4 - filling color
-\newcommand{\implicant}[4][0]{
+\newcommand{\involving}[4][0]{
     \draw[rounded corners=3pt, fill=#4, opacity=0.3] ($(#2.north west)+(135:#1)$) rectangle ($(#3.south east)+(-45:#1)$);
     }
 
@@ -68,7 +68,7 @@
 %#2 - top left node
 %#3 - bottom right node
 %#4 - filling color
-\newcommand{\implicantcostats}[4][0]{
+\newcommand{\involving_sides}[4][0]{
     \draw[rounded corners=3pt, fill=#4, opacity=0.3] ($(rf.east |- #2.north)+(90:#1)$)-| ($(#2.east)+(0:#1)$) |- ($(rf.east |- #3.south)+(-90:#1)$);
     \draw[rounded corners=3pt, fill=#4, opacity=0.3] ($(cf.west |- #2.north)+(90:#1)$) -| ($(#3.west)+(180:#1)$) |- ($(cf.west |- #3.south)+(-90:#1)$);
 }
@@ -78,7 +78,7 @@
 %#2 - top left node
 %#3 - bottom right node
 %#4 - filling color
-\newcommand{\implicantdaltbaix}[4][0]{
+\newcommand{\involving_tb}[4][0]{
     \draw[rounded corners=3pt, fill=#4, opacity=0.3] ($(cf.south -| #2.west)+(180:#1)$) |- ($(#2.south)+(-90:#1)$) -| ($(cf.south -| #3.east)+(0:#1)$);
     \draw[rounded corners=3pt, fill=#4, opacity=0.3] ($(rf.north -| #2.west)+(180:#1)$) |- ($(#3.north)+(90:#1)$) -| ($(rf.north -| #3.east)+(0:#1)$);
 }
@@ -86,7 +86,7 @@
 %group corners
 %#1 - Optional. Space between node and grouping line. Default=0
 %#2 - filling color
-\newcommand{\implicantcantons}[2][0]{
+\newcommand{\involving_corner}[2][0]{
     \draw[rounded corners=3pt, opacity=.3] ($(rf.east |- 0.south)+(-90:#1)$) -| ($(0.east |- cf.south)+(0:#1)$);
     \draw[rounded corners=3pt, opacity=.3] ($(rf.east |- 8.north)+(90:#1)$) -| ($(8.east |- rf.north)+(0:#1)$);
     \draw[rounded corners=3pt, opacity=.3] ($(cf.west |- 2.south)+(-90:#1)$) -| ($(2.west |- cf.south)+(180:#1)$);
