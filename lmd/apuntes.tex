@@ -1262,10 +1262,6 @@ Sería así cómo se originaría la \textbf{teoría de grafos}.
     Un \textbf{grafo dirigido, orientado o digrafo} es un par $(V,E)$, donde $V$ y $E$ son conjuntos, junto con dos aplicaciones $s,t : E \rightarrow V$. Las aplicaciones $s$ y $t$ se denominan respectivamente \textbf{aplicaciones dominio} y \textbf{aplicaciones codominio} \textit{("source" \& "target")}.
 \end{ndef}
 
-\begin{ndef}[Grafo nulo]
-    Denominaremos \textbf{grafo nulo} de orden $n$ al grafo $N_n$ que tiene por conjunto de vértices $\{v_1,v_1,\cdots,v_n\}$ y ninguna arista.
-\end{ndef}
-
 \begin{ndef}[Subgrafo]
     Sea $G = (V,E)$ un grafo con aplicación de incidencia $\gamma_G$. Un \textbf{subgrafo} $G'$ de $G$ es un nuevo grafo $G'=(V',E')$ donde $V' \subseteq V, \ E' \subseteq E$ y se verifica que $\gamma_{G'}(e) = \gamma_G(e)$ para cualquier $e \in E'$.
 \end{ndef}
@@ -1349,5 +1345,123 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \end{obs}
 
 \subsection{Isomorfismo de grafos}
+\begin{ndef}
+    Sean $G=(V,E)$ y $G'=(V',E')$ dos grafos con aplicaciones de incidencia $\gamma_G$ y $\gamma_{G'}$.
+    Se dice que $G$ y $G'$ son isomorfos si existen dos biyecciones $h_V: V \rightarrow V'$ y $h_E:E \rightarrow E'$ tales que para cada
+    lado $e \in E$ se verifica que $\gamma_G(h_E(e))=\{h_V(u), h_V(v)\}$ donde $\{u,v\}=\gamma_G(e)$.
+    En tal caso diremos que las aplicaciones $h_V$ y $h_E$ forman un \textbf{isomorfismo} de $G$ a $G'$.
+\end{ndef}
 
-% EJEMPLO DEF 75 GRAFOS colores p(K_n,x) = x(x-1) \cdots (x-n+1) = x^\subline{n} = x elevado a n descendente
+\begin{ndef}
+    Una propiedad se dice invariante por isomorfismo si dados dos grafos isomorfos $G$ y $G'$, uno satisface la prpiedad si, y sólo si, la satisface el otro.
+\end{ndef}
+
+\begin{ndef}
+    Sea $G$ un grafo y $v$ un vértice de $G$. Se define el grado de $v$, y lo denotaremos como $gr(v)$,
+    como al número de lados (no lazos) de $G$ que son incidentes en $v$ más 2 veces el número de lazos incidentes en $v$.
+    Denotaremos por $D_k(G)$ al número de vértices de $V$ que tienen grado igual a $k$. De la misma forma, llamaremos \textbf{sucesión de grados} a la sucesión $D_0(G), D_1(G), \cdots, D_k(G), \cdots$.
+\end{ndef}
+
+\subsection{Algunas familias de grafos}
+
+\begin{ndef}[Grafo nulo]
+    Denominaremos \textbf{grafo nulo} de orden $n$ al grafo $N_n$ que tiene por conjunto de vértices $\{v_1,v_1,\cdots,v_n\}$ y ninguna arista.
+\end{ndef}
+
+\begin{ndef}[Grafo camino]
+    Def \textbf{P$_n$}.
+\end{ndef}
+
+\begin{ndef}[Grafo regular]
+    Def .
+\end{ndef}
+
+\begin{ndef}[Grafo circular]
+    Def circular o poligonal \textbf{C$_n$}
+\end{ndef}
+
+\begin{ndef}[Grafo completo]
+    Def \textbf{K$_n$}.
+\end{ndef}
+
+\begin{ndef}[Grafo estrella]
+    Def \textbf{S$_n$} = \textbf{K$_{1,n}$}.
+\end{ndef}
+
+\begin{ndef}[Grafo rueda]
+    Def \textbf{W$_n$}.
+\end{ndef}
+
+\begin{ndef}[Grafo bipartido completo]
+    Def \textbf{K$_{r,s}$}.
+\end{ndef}
+
+\subsection{Sucesiones gráficas}
+\begin{ndef}
+    Sean $d_1,d_2,\cdots,d_n \in \nat$. Decimos que la sucesión $d_1,d_2,\cdots,d_n$ es una \textbf{sucesión gráfica} si existe un grafo $G$
+    sin lazos ni lados paralelos, con conjunto de vértices $V = \{v_1,v_2,\cdots,v_n\}$ tal que $d_i = gr(v_i)$.
+    Si $d_1,d_2,\cdots,d_n$ es una sucesión gráfica y $G$ es un grafo con $n$ vértices cuyos grados son los términos de la sucesión, diremos que $G$ es una \textbf{realización de la sucesión} $d_1,d_2,\cdots,d_n$.
+\end{ndef}
+\begin{obs}
+    Dos condiciones necesarias para que una sucesión sea gráfica son que el la suma de los elementos de la sucesión sea par y que cualquier elemento de la sucesión debe ser menor que el número de elementos de ella.
+\end{obs}
+
+\begin{nth}[Havel-Hakimi]
+    Sea $d_1,d_2,\cdots,d_n \in \nat$ una sucesión. Supongamos que están ordenados en orden decreciente, es decir, $d_1 \geq d_2 \geq \cdots \geq d_n$ y que $d_1 < n$.
+    Entonces esta sucesión es gráfica si, y sólo si, lo es la sucesión $d_2 -1, \cdots, d_{d_1+1}-1, d_{d_1+2}-1, \cdots, d_n$.
+\end{nth}
+
+A la hora de aplicar este teorema, se suelen utilizar los siguientes algoritmos:
+
+\subsubsection{Algoritmo de demolición}
+Decide si una sucesión finita es una sucesión gráfica generando un número finito de sucesiones finitas.
+\begin{enumerate}
+    \item ¿Son todos los elementos de la sucesión 0? En caso afirmativo la sucesión es gráfica y hemos acabado.
+    \item ¿Existe un número en la sucesión que es mayor o igual que el número de elementos no nulos de la sucesión? En caso afirmativo la sucesión no es gráfica y hemos acabado.
+    \item Elige un vértice que cumpla que no hay ninguno en la sucesión con mayor grado y márcalo (pivote). Si elgrado marcado esr, elige r vértices que cumplan que entre los no elegidos no hay uno con mayor grado que alguno de los elegidos.
+    \item Genera una nueva sucesión poniendo a cero el marcado (pivote) y disminuyendo en una unidad los elegidos.
+    \item Vuelve a 1 con la nueva sucesión.
+\end{enumerate}
+
+\subsubsection{Algoritmo de reconstrucción paso a paso}
+Si el algoritmo de demolición da como salida sucesión gráfica, se construye un grafo para cada fila del algoritmo de demolición leyendo las filas de abajo hacia arriba.
+\begin{enumerate}
+    \item Partimos del grafo nulo con n vértices que corresponde a la última fila de todos ceros.
+    \item Pasamos de una fila a la superior añadiendo al grafo de la filarlados que conectan el vértice marcado en la fila superior con los elegidos (los que aumentan el grado en1).
+\end{enumerate}
+
+\subsection{Grafos de Euler}
+\begin{ndef}
+    Sea $G$ un grafo conexo. Un \textbf{camino de Euler} es un recorrido en el que aparecen todos los lados. Un \textbf{circuito de Euler} es un camino de Euler que es cerrado. Un \textbf{grafo de Euler} es un grafo con un circuito de Euler.
+\end{ndef}
+
+\begin{nprop}
+    Sea $G$ un grafo. Entonces si $G$ tiene un circuito de Euler, el grado de cada vértice es par, mientras que si $G$ tiene un camino de Euler, $G$ tiene exactamente dos vértices de grado impar (que son donde empieza y donde acaba el camino).
+\end{nprop}
+
+\begin{nth}
+    Sea $G$ un grafo conexo. Entonces $G$ es un grafo de Euler si, y sólo si, el grado de cada vértice es par.
+\end{nth}
+
+\begin{lema}
+    Sea $G$ un grafo en el que cada vértice tiene grado mayor que 1. Entonces $G$ contiene un circuito (y por tanto un ciclo).
+\end{lema}
+
+\begin{ncor}
+    Sea $G$ un grafo conexo. Entonces $G$ tiene un camino de Euler si, y sólo si, $G$ tiene exactamente dos vértices de grado impar.
+\end{ncor}
+
+\subsubsection{Algoritmo de Fleury}
+Como entrada tenemos un grafo $G$ y como salida, dos sucesiones $S_V$ y $S_E$, siendo éstas las sucesiones de vértices y lados del camino buscado.
+\begin{enumerate}
+    \item Si todos los vértices son de grado par, elegimos un vértice cualquiera $v$. Si $G$ tiene dos vértices de grado impar, elegimos uno de estos vértices.
+    \item Hacemos $S_V = v$ y $S_E = [\ ]$.
+    \item Si $G$ tiene sólo a $v$, devuelve $S_V$ y $S_E$, y termina.
+    \item Si hay un único lado $e$ que incida en $v$, llamamos $w$ al otro vértice donde incida el lado $e$; quitamos de $G$ el vértice $v$ y el lado $e$ y vamos al paso 6.
+    \item Si hay más de un lado $e$ que incida en $v$, elegimos uno de estos de forma que al quitarlo el grafo $G$ siga siendo conexo. Llamamos $e$ a dicho lado y $w$ al otro vértice en el que incide $e$.
+    \item Añadimos $w$ al final de $S_V$ y $e$ al final de $S_E$.
+    \item Cambiamos $v$ por $w$ y volvemos al paso 3.
+\end{enumerate}
+
+\subsection{Grafos de Hamilton}
+
