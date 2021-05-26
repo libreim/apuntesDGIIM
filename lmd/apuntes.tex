@@ -1302,7 +1302,7 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \end{nprop}
 
 \begin{nprop}
-    Sea $G$ un grafo y sean $u$ y $v$ dos vértices distintos. Supongamos que tenemos dos caminos simples distintos de $u$ a $v$. Entonces existe un ciclo en $G$.    
+    Sea $G$ un grafo y sean $u$ y $v$ dos vértices distintos. Supongamos que tenemos dos caminos simples distintos de $u$ a $v$. Entonces existe un ciclo en $G$.
 \end{nprop}
 
 \begin{ndef}[Conexión]
@@ -1329,7 +1329,7 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \end{obs}
 
 \begin{nprop}
-    Sea $G$ un grafo cuyo conjunto de vértices es $\{v_1,v_2,\cdots,v_n\}$ y sea $A$ su matriz de adyacencia. Entonces el coeficiente $(i,j)$ de $A^n$ es igual es igual al número de caminos de longitud $n$ que unen $v_i$ con $v_j$. 
+    Sea $G$ un grafo cuyo conjunto de vértices es $\{v_1,v_2,\cdots,v_n\}$ y sea $A$ su matriz de adyacencia. Entonces el coeficiente $(i,j)$ de $A^n$ es igual es igual al número de caminos de longitud $n$ que unen $v_i$ con $v_j$.
 \end{nprop}
 
 \begin{ndef}
@@ -1367,34 +1367,201 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \begin{ndef}[Grafo nulo]
     Denominaremos \textbf{grafo nulo} de orden $n$ al grafo $N_n$ que tiene por conjunto de vértices $\{v_1,v_1,\cdots,v_n\}$ y ninguna arista.
 \end{ndef}
+\begin{ejemplo} $N_1$, $N_3$ y $N_5$ respectivamente:
+\begin{center}
+    \begin{tikzpicture}[main/.style = {draw, circle}] 
+        \node[main] (1) {}; 
+    \end{tikzpicture}
+    \quad\quad\quad\quad
+    \begin{tikzpicture}[main/.style = {draw, circle}] 
+        \node[main] (3) [below right of=1] {}; 
+        \node[main] (4) [above right of=3] {}; 
+        \node[main] (6) [below right of=4] {};
+    \end{tikzpicture}
+    \quad\quad\quad\quad
+    \begin{tikzpicture}[main/.style = {draw, circle}] 
+        \node[main] (2) [above right of=1] {};
+        \node[main] (3) [below right of=1] {}; 
+        \node[main] (4) [above right of=3] {};
+        \node[main] (5) [above right of=4] {}; 
+        \node[main] (6) [below right of=4] {};
+    \end{tikzpicture}
+\end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo camino]
-    Def \textbf{P$_n$}.
+    Denominaremos \textbf{grafo camino} de orden $n$ al grafo \textbf{P$_n$} el cual tiene un único camino que pasa por todos sus vértices.
 \end{ndef}
+\begin{ejemplo} $P_1$, $P_3$ y $P_5$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) [below right of=1] {}; 
+            \node[main] (2) [above right of=3] {}; 
+            \node[main] (3) [below right of=4] {};
+            \draw (1) -- (2) -- (3);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {};
+            \node[main] (2) [above left of=1] {}; 
+            \node[main] (3) [above right of=1] {};
+            \node[main] (4) [below right of=1] {}; 
+            \node[main] (5) [below left of=1] {};
+            \draw (1) -- (2) -- (3) -- (4) -- (5);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo regular]
-    Def .
+    Diremos que un \textbf{grafo regular} es aquel en el cual todos los vértices tienen el mismo grado.
 \end{ndef}
 
 \begin{ndef}[Grafo circular]
-    Def circular o poligonal \textbf{C$_n$}
+    \textbf{Grafo circular o poligonal} \textbf{C$_n$}. Determinado por los vértices de un polígono regular. Los lados son los del polígono.
 \end{ndef}
+\begin{ejemplo} $P_3$ y $P_5$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+            \node[main] (2) [below left of=1] {}; 
+            \node[main] (3) [below right of=1] {};
+            \draw (1) -- (2) -- (3) -- (1);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {};
+            \node[main] (2) [above left of=1] {}; 
+            \node[main] (3) [above right of=1] {};
+            \node[main] (4) [below right of=1] {}; 
+            \node[main] (5) [below left of=1] {};
+            \draw (1) -- (2) -- (3) -- (4) -- (5) -- (1);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo completo]
-    Def \textbf{K$_n$}.
+    Un \textbf{grafo completo} \textbf{K$_n$} es un grafo simple donde cada par de vértices está conectado por una arista. 
 \end{ndef}
+\begin{ejemplo} $P_4$ y $P_5$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+            \node[main] (2) [left of=1] {}; 
+            \node[main] (3) [below of=2] {};
+            \node[main] (4) [below of=1] {};
+            \draw (1) -- (2) -- (3) -- (4) -- (1) -- (3) -- (2) -- (4);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {};
+            \node[main] (2) [above left of=1] {}; 
+            \node[main] (3) [above right of=1] {};
+            \node[main] (4) [below right of=1] {}; 
+            \node[main] (5) [below left of=1] {};
+            \draw (2) -- (3) -- (4) -- (5) -- (2);
+            \draw (1) -- (2);
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+            \draw (1) -- (5);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo estrella]
-    Def \textbf{S$_n$} = \textbf{K$_{1,n}$}.
+    Un \textbf{grafo estrella} \textbf{S$_n$} = \textbf{K$_{1,n}$} está determinado por los vértices de un polígono regular y su centro. Los lados son losque unen el centro con cada uno de los vértices del polígono.
 \end{ndef}
+\begin{ejemplo} $S_3$ y $S_4$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+            \node[main] (2) [above of=1] {}; 
+            \node[main] (3) [below left of=1] {};
+            \node[main] (4) [below right of=1] {};
+            \draw (1) -- (2);
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {};
+            \node[main] (2) [above left of=1] {}; 
+            \node[main] (3) [above right of=1] {};
+            \node[main] (4) [below right of=1] {}; 
+            \node[main] (5) [below left of=1] {};
+            \draw (1) -- (2);
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+            \draw (1) -- (5);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo rueda]
-    Def \textbf{W$_n$}.
+    Grafo rueda \textbf{W$_n$}. Determinado por los vértices de un polígono regular y su centro. Los lados son los del polígono y los que unen el centro con cada uno de los vértices del polígono.
 \end{ndef}
+\begin{ejemplo} $W_4$ y $W_5$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+            \node[main] (2) [above of=1] {}; 
+            \node[main] (3) [below left of=1] {};
+            \node[main] (4) [below right of=1] {};
+            \draw (1) -- (2);
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+            \draw (2) -- (3) -- (4) -- (2);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {};
+            \node[main] (2) [above left of=1] {}; 
+            \node[main] (3) [above right of=1] {};
+            \node[main] (4) [below right of=1] {}; 
+            \node[main] (5) [below left of=1] {};
+            \draw (1) -- (2);
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+            \draw (1) -- (5);
+            \draw (2) -- (3) -- (4) -- (5) -- (2);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \begin{ndef}[Grafo bipartido completo]
-    Def \textbf{K$_{r,s}$}.
+    \textbf{Grafo bipartido completo} \textbf{K$_{r,s}$}. Determinado por dos grupos de vértices, con $r$ y $s$ vértices respectivamente. Los lados unen cada vértice de un grupo con todos los demás vértices del otro grupo.
 \end{ndef}
+\begin{ejemplo} $K_{2,2}$ y $K_{2,3}$ respectivamente:
+    \begin{center}
+        \begin{tikzpicture}[main/.style = {draw, circle}] 
+            \node[main] (1) {}; 
+            \node[main] (2) [right of=1] {}; 
+            \node[main] (3) [below of=2] {};
+            \node[main] (4) [left of=3] {};
+            \draw (1) -- (4);
+            \draw (1) -- (3);
+            \draw (2) -- (3);
+            \draw (2) -- (4);
+        \end{tikzpicture}
+        \quad\quad\quad\quad
+        \begin{tikzpicture}[main/.style = {draw, circle}]
+            \node[main] (3) {};
+            \node[main] (1) [below left of=3] {};
+            \node[main] (2) [below right of=3] {}; 
+            \node[main] (4) [left of=3] {}; 
+            \node[main] (5) [right of=3] {};
+            \draw (1) -- (3);
+            \draw (1) -- (4);
+            \draw (1) -- (5);
+            \draw (2) -- (3);
+            \draw (2) -- (4);
+            \draw (2) -- (5);
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
 
 \subsection{Sucesiones gráficas}
 \begin{ndef}
@@ -1464,4 +1631,652 @@ Como entrada tenemos un grafo $G$ y como salida, dos sucesiones $S_V$ y $S_E$, s
 \end{enumerate}
 
 \subsection{Grafos de Hamilton}
+\begin{ndef}
+    Sea $G$ un grafo. Un \textbf{camino de Hamilton} es un camino que recorre todos los vértices una sola vez.
+\end{ndef}
+Un \textbf{circuito de Hamilton} es un camino cerrado que recorre todos los vértices una sola vez (salvo los extremos). Un grafo con un circuito de Hamilton se denomina \textbf{grafo de Hamilton} o \textbf{grafo hamiltoniano}.
+\begin{obs}
+    Si hay un vértice de grado 1, entonces el grafo no es de Hamilton.
+\end{obs}
+\begin{nth}
+    Sea $G$ un grafo con $n$ vértices. Entonces:
+    \begin{enumerate}
+        \item Si el número de lados es mayor o igual que $\frac{1}{2}(n-1)(n-2) + 2$ entonces el grafo es hamiltoniano.
+        \item Si $n\geq 3$ y para cada par de vértices no adyacentes se verifica que $gr(v) +gr(w)\geq n$, entonces $G$ es un grafo de Hamilton.
+    \end{enumerate}
+\end{nth}
 
+\subsection{Grafos bipartidos}
+\begin{ndef}
+    Sea $G= (V, E)$ un grafo. Se dice que $G$ es bipartido si podemos descomponer $V$ en dos subconjuntos disjuntos $V_1$ y $V_2$ de forma que todo lado incide en un vértice de $V_1$ y en un vértice de $V_2$. Un grafo $G= (V, E)$ se dice bipartido completo si es bipartido, y para cada $v_1 \in V_1$ y $v_2\ \in V_2$ existe un único lado $e \in E$ tal que $\gamma_G(e) =\{v1, v2\}$.
+\end{ndef}
+Un grafo bipartido completo está completamente determinado por el cardinal de $V_1$ y $V_2$. Si $G$ es un grafo bipartido completo en el que $V_1$ tiene cardinal $m$ y $V_2$ tiene cardinal $n$, entonces denotaremos a $G$ como $K_{m,n}$.
+\begin{nth}
+    Sea $G= (V, E)$ un grafo. Entonces $G$ es bipartido si, y sólo si, $G$ no contiene ciclos de longitud impar.
+\end{nth}
+\begin{lema}
+    Sea $G$ un grafo bipartido con partición del conjunto de vértices $V = V_1 \cup V_2$. Supongamos qu $v_1v_2\cdots v_m$ es un camino en $G$ y que $v_1 \in V_1$. Entonces $\{v_1,v_3,v_5,\cdots\} \subseteq V_1$ y $\{v_2,v_4,\cdots\} \subseteq V_2$.
+\end{lema}
+\begin{nprop}
+    Sea $G$ un grafo bipartido con partición $V_1$ y $V_2$. Supongamos que $|V_1|=n$ y $|V_2|=m$. Entonces:
+    \begin{itemize}
+        \item Si $G$ tiene un camino de Hamilton, entonces $|n-m| \leq 1$.
+        \item Si $G$ es un grafo de Hamilton, entonces $n=m$.
+        \item Si $G$ es completo y $|n-m|\leq 1$ entonces $G$ tiene un camino de Hamilton.
+        \item Si $G$ es completo y $n=m$ entonces $G$ es un grafo de Hamilton.
+    \end{itemize}
+\end{nprop}
+
+\subsection{Grafos planos}
+\begin{ndef}
+    Sea $G$ un grafo. Una representación de $G$ se dice plana si los vértices y los lados se encuentran todos en un plano, y las líneas que representan dos lados distintos no se cortan.
+\end{ndef}
+Un grafo se dice \textbf{plano} si admite una representación plana.
+
+\begin{nth}[Característica de Euler]
+    Sea $G$ un grafo plano y conexo. Llamemos $v$ al número de vértices, $l$ al número de lados y $c$ al número de caras de una representación plana. Entonces $v-l+c= 2$. En general, si $G$ es un grafo plano, y $\chi$ es el número de componentes conexas entonces $v-l+c= 1+\chi $.
+\end{nth}
+\begin{ncor}
+    En un poliedro, si $v$ es el número de vértices; $l$ es el número de aristas y $c$ es el número de caras entonces $v-l+c= 2$.
+\end{ncor}
+\begin{ncor}
+    Sea $G$ un grafo plano, conexo, sin lazos ni lados paralelos. Entonces $3c\leq 2e$ y $e \leq 3v-6$.
+\end{ncor}
+\begin{ndef}
+    Sea $G$ un grafo. Una contracción simple de $G$ es el resultado de indentificar en $G$ dos vértices adyacentes.
+\end{ndef}
+\begin{nota}
+    Una contracción de $G$ es una cadena de contracciones simples.
+\end{nota}
+\begin{nth}[Kuratowski]
+    Sea $G$ un grafo. Entonces $G$ es plano si, y sólo si, ningún subgrafo suyo puede contraerse a $K_5$ ni a $K_{3,3}$.
+\end{nth}
+
+\subsection{Coloración de grafos}
+\begin{ndef}
+    Sea $G= (V, E)$ un grafo. Una \textbf{coloración} $G$ es una aplicación $f:V\to C$, donde $C$ es un conjunto, de tal forma que para cualquier $e\in E$, si $\gamma_G(e) =\{v, w\}$ con $v \neq w$ entonces $f(u)\neq f(v)$.
+\end{ndef}
+\begin{ndef}
+    Sea $G$ un grafo y $x\in\nat$. Vamos a denotar por $p(G, x)$ al número de coloraciones distintas, con $n$ colores, que tiene el grafo $G$.
+\end{ndef}
+A partir de aquí denotaremos las \textbf{potencias descendentes} $p(K_n,x) = x^{\underline{n}} = x(x-1)\cdots(x-n+1)$.
+
+\subsubsection{Algoritmo de la suma}
+La fórmula $p(G_e,x)=p(G,x) + p(G'_e,x)$ nos indica que dado un grafo simple $G_e$ hallar su polinomio cromático se reduce a sumar los polinomios cromáticos de los grafos $G$ y $G'_e$. $G$ tiene un lado más que $G_e$ (lado que une dos vértices no adyacentes de $G_e$) y $G'_e$ tiene un vértice menos que $G_e$. En un número finito de pasos todos los grafos obtenidos serán completos que es la condición de parada.
+
+\subsubsection{Algoritmo de la resta}
+La fórmula anterior podemos escribirla como $p(G,x)=p(G_e,x) - p(G'_e,x)$ que nos permite reducir el cálculo del polinomio cromático de un grafo al cálculo de polinomios cromáticos de grafos más pequeños (con menos lados o con menos vértices). La condición de parada es ambigua. Paramos cuando obtengamos grafos de los que conozcamos sus polinomios cromáticos.
+
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsection{Árboles}
+Los árboles son un tipo especial de grafos estudiados por primera vez por Kirchhoff en 1847 en su trabajo de redes eléctricas y actualmente es una de las estructuras más utilizadas en distintas disciplinas.
+\begin{ndef}[Árbol]
+    Un \textbf{árbol} es un grafo conexo y acíclico.
+\end{ndef}
+\begin{ndef}[Bosque]
+    Un \textbf{bosque} es un grafo acíclico.
+\end{ndef}
+\begin{ejemplo} En el siguiente ejemplo, tenemos tres árboles que en su conjunto conforman un bosque:
+    \begin{center}
+    \begin{tikzpicture}[nodes={draw, circle}, -]
+        \node {}
+        child {node {}}
+        child {node {}};
+    \end{tikzpicture}
+    \quad\quad\quad
+    \begin{tikzpicture}[nodes={draw, circle}, -]
+        \node{}
+    child { node {} 
+        child { node {} }
+        child { node {} }
+        child { node {} }
+    }
+    child { node {} };
+    \end{tikzpicture}
+    \quad\quad\quad
+    \begin{tikzpicture}[nodes={draw, circle}, -]
+        \node {};
+    \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
+
+
+\begin{nth}
+    Todo árbol es un grafo plano.
+\end{nth}
+\begin{ncor}
+    Sea $G$ un grafo conexo con $n$ vértices. Entonces $G$ es un árbol si, y sólo si, $G$ tiene $n-1$ lados.
+\end{ncor}
+\begin{nth}
+    Sea $G$ un grafo con $n$ vértices, sin lados paralelos ni lazos. Entonces son equivalentes:
+    \begin{enumerate}
+        \item $G$ es un árbol.
+        \item $G$ es acíclico y tiene $n-1$ lados.
+        \item $G$ es conexo y tiene $n-1$ lados.
+        \item $G$ es conexo, pero si le quitamos un lado deja de serlo, es decir, todos los lados son puentes.
+        \item $G$ Dos vértices cualesquiera están unidos por un único camino simple.
+        \item $G$ no tiene ciclos, pero si le añadimos un lado aparece un sólo ciclo.
+    \end{enumerate}
+\end{nth}
+\begin{ncor}
+    Si $G$ es un bosque con $n$ vértices y $k$ componentes, entonces $G$ tiene $n-k$ lados.
+\end{ncor}
+
+\subsubsection{Árboles generadores}
+\begin{ndef}
+    Un \textbf{árbol generador} (de expansión, abarcador) de un grafo conexo es un subgrafo que tiene todos los vértices del grafo y es un árbol.
+\end{ndef}
+\begin{lema}
+    SeaGun grafo conexo que contiene un ciclo. Entonces, si quitamos uno de los lados del ciclo el grafosigue siendo conexo.
+\end{lema}
+\begin{nprop}
+    Todo grafo conexo tiene un árbol generador.
+\end{nprop}
+
+\subsubsection{Estrategias de obtención de árboles generadores}
+\textbf{\underline{Obtención de árboles generadores no ponderados}} \\
+
+Dado un grafo conexo con $n$ vértices y $l$ lados hay dos estrategias para obtener un árbol generador:
+\begin{itemize}
+\item\textbf{Building-up (constructiva):} \\
+Se eligen $n-1$ lados de uno en uno de forma que cada uno no forme ciclos con los anteriormente elegidos.
+\item\textbf{Cutting-down (destructiva):} \\
+Se descartan $l-(n-1) =l-n+ 1$ lados de uno en uno de forma que cada uno de los que se descartan rompa un ciclo (forme parte de un ciclo) del grafo que va quedando.
+\end{itemize}
+\textbf{\underline{Obtención de árboles generadores de peso mínimo}} \\
+
+Se utilizan para dado un grafo ponderado conexo encontrar un árbol generador de peso mínimo:
+\begin{itemize}
+    \item\textbf{Algoritmo de Kruskal (constructivo):} \\
+    Aplicación de la estrategia building-up a una sucesión de aristas de pesos no decrecientes.
+    \item\textbf{Algoritmo de Kruskal (destructivo):} \\
+    Aplicación de la estrategia cutting-down a una sucesión de aristas de pesos no crecientes.
+    \item\textbf{Algoritmo de Prim:} \\
+    Se trabaja con vértices y lados. Se parte de un vértice arbitrario $v$ que pasa al conjunto de los elegidos $T = \{v\}$ t $E=\{\}$. En cada paso, se añade un vértice $u$ a $T$ y un lado $e$ a $E$ con las condiciones:
+    \begin{enumerate}
+        \item que $u$ sea un vértice que no esté en $T$.
+        \item  que $u$ sea adyacente mediante el lado $e$ a uno de $T$.
+        \item que el lado $e$ no forme ciclo con los lados de $E$.
+        \item que $e$ sea de peso mínimo entre los que cumplen las condiciones anteriores.
+    \end{enumerate}
+    Este proceso acaba cuando se han elegido $n-1$ lados.
+\end{itemize}
+
+\subsubsection{Árboles con raíz}
+A continuación vamos a definir una serie de conceptos acerca de los árboles con raíz:
+\begin{ndef}[Árbol con raíz]
+    Un árbol en el que se elige un vértice es un árbol con raíz.
+\end{ndef}
+\begin{ndef}[Raíz]
+    El vértice elegido se llama raíz.
+\end{ndef}
+\begin{ndef}[Nodo]
+    Los vértices de un árbol con raíz se llaman nodos.
+\end{ndef}
+\begin{ndef}[Nivel]
+    El nivel o profundidad de un nodo es la longitud del único camino simple que existe de la raíz al nodo.
+\end{ndef}
+\begin{ndef}[Hijo]
+    Se llaman hijos de un nodo a los nodos adyacentes con mayor nivel.
+\end{ndef}
+\begin{ndef}[Descendiente]
+    Los descendientes de un nodo son sus hijos y los descendientes de sus hijos.
+\end{ndef}
+\begin{ejemplo} En el siguiente árbol con raíz:
+    \begin{center}
+        \begin{tikzpicture}[nodes={draw, circle}, ->]
+            \node{r}
+            child { node {a} 
+                child { node {c} }
+                child { node {d} }
+                child { node {e} }
+            }
+            child [missing]
+            child [missing]
+            child {node {b} 
+                child { node {f} }
+                child { node {g} }
+                child { node {h} }
+            };
+            \end{tikzpicture}
+    \end{center}
+    La raíz es $r$; $a$ tiene nivel 1; $h$ tiene nivel 2; los hijos de $b$ son $f$, $g$ y $h$; $r$ es padre de $a$ y $b$, y todos los nodos son descendientes de $r$ menos él mismo.
+\end{ejemplo}
+
+\begin{ndef}[Hoja]
+    Una hoja es un nodo sin descendientes.
+\end{ndef}
+\begin{ndef}[Altura de un árbol]
+    La altura de un árbol es el mayor de los niveles de sus nodos.
+\end{ndef}
+\begin{ndef}[Subárbol con raíz]
+    El subárbol con raíz un nodo es el subárbol formado por el nodo y sus descendientes.
+\end{ndef}
+\begin{ndef}[Altura de un nodo]
+    La altura de un nodo es la altura del subárbol que lo tiene como raíz.
+\end{ndef}
+\begin{ndef}[Rango de un nodo]
+    El rango de un nodo es una cualidad del nodo que sirve para compararlo con los que tienen el mismo nivel. Un nodo tiene rango menor que otro si está a su izquierda.
+\end{ndef}
+
+\begin{ejemplo} En el árbol del ejemplo anterior, las hojas eran $c,d,e,f,g$ y $h$. La altura del árbol es 2. El subárbol con raíz $a$ es:
+    \begin{center}
+        \begin{tikzpicture}[nodes={draw, circle}, ->]
+            \node{a}
+            child { node {c} }
+            child { node {d} }
+            child { node {e} };
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
+
+\subsubsection{Recorrido de árboles con raíz}
+A la hora de recorrer un árbol podemos hacerlo en función de su nivel o profundidad, su altura o su rango. Estos son los recorridos que estudiaremos:
+\begin{itemize}
+    \item\textbf{Recorrido en Preorden:} 
+    Primero se recorre la raíz y después se recorren los subárboles hijos en preorder en orden creciente del rango de sus raíces.
+    \item\textbf{Recorrido en Postorden:} 
+    Primero se recorren los subárboles hijos en postorder en orden creciente del rango de sus raíces y después se recorre la raíz.
+    \item\textbf{Recorrido en Inorden.} 
+    Primero se recorre el subárbol hijo de menor rango en inorder después la raíz y por último se recorren en inorder el resto de subárboles hijos en orden creciente del rango de sus raíces. Algunos autores sólo consideran este recorrido para árboles binarios.
+    \item\textbf{Recorrido Top-Down:} 
+    Se recorren los nodos en orden creciente de profundidad o nivel y dentro de un nivel en orden creciente de rangos. Es el recorrido en anchura usual y es trivial en el sentido de que es el orden de lectura de izquierda a derecha y de arriba hacia abajo.
+    \item\textbf{Recorrido Bottom-up:} 
+    Es el más complejo y difícil. Se recorren los nodos en orden creciente de altura, dentro de los de misma altura en orden creciente de profundidad y dentro de los de la misma altura y profundidad en orden creciente de rango.
+\end{itemize}
+\begin{ejemplo}
+    A partir del anterior ejemplo, los recorridos serían:
+    \begin{itemize}
+        \item\textbf{Preorden:} $r,a,c,d,e,b,f,g,h$.
+        \item\textbf{Postorden:} $c,d,e,a,f,g,h,b,r$.
+        \item\textbf{Inorden:} $c,a,d,e,r,f,b,g,h$.
+        \item\textbf{Top-Down:} $r,a,b,c,d,e,f,g,h$.
+        \item\textbf{Bottom-up:} $c,d,e,f,g,h,a,b,r$.
+    \end{itemize}
+\end{ejemplo}
+
+\subsubsection{Árboles etiquetados}
+\begin{ndef}[Árbol etiquetado]
+    Un árbol etiquetado es un árbol connvértices en que los vértices tienen como etiquetas los números naturales $\{1,2,\cdots,n\}$.
+\end{ndef}
+\begin{ndef}[Isomorfismo]
+    Dos árboles etiquetados son isomorfos si tienen el mismo número de vértices y la aplicación identidad es un isomorfismo de grafos.
+\end{ndef}
+\begin{nth}
+    El número de árboles etiquetados con $n$ vértices es $n^{n-2}$.
+\end{nth}
+
+\subsubsection{Códigos de Prüfer}
+Suponemos los árboles etiquetados con los números naturales de $1$ a $n$. Llamamos \textbf{código de Prüfer} de un árbol etiquetado a la sucesión de longitud $n-2$ obtenida de la siguiente forma:
+\begin{enumerate}
+    \item Se parte de la sucesión vacía (código vacío) y del árbol etiquetado $T$.
+    \item Si $T$ tiene dos vértices se devuelve el código y fin.
+    \item Se determina la hoja con menor etiqueta del árbol $T$ se añade al código la etiqueta del adyacente a la hoja seleccionada y $T$ pasa a ser el árbol con la hoja seleccionada suprimida.
+    \item Vuelve a $2$ con el nuevo código y el nuevo árbol.
+\end{enumerate}
+\textbf{Generación de un árbol etiquetado con un código dado:}
+\begin{enumerate}
+    \item Se parte del código $c$ de longitud $n-2$, del conjunto $V=\{1,2,\cdots,n\}$ y $T$ el grafo vacío con $n$ vértices etiquetado.
+    \item Si $c$ es vacío y $V$ tiene dos vértices se pone un lado entre los vértices de $V$, se devuelve $T$ y se acaba.
+    \item Se determina el menor número de $V$ que no está en $c$ se añade a $T$ un lado entre ese menor número y el primer elemento del código. Se quita de $V$ el elemento seleccionado y de $c$ su primer elemento.
+    \item Vuelve a $2$ con el nuevo código, el nuevo conjunto $V$ y el nuevo grafo $T$.
+\end{enumerate}
+\begin{ejemplo}
+    Vamos a hallar el árbol con código de Prüfer (6,4,3,3). Tiene 6 vértices y 5 lados. Aplicando el álgoritmo los lados son 6-1, 4-2, 3-4, 3-5 y 3-6, resultando
+    \begin{center}
+        \begin{tikzpicture}[new set=import nodes]
+            \begin{scope}[nodes={set=import nodes}] % make all nodes part of this set
+            \node [black] (5) at (2,1) {$5$};
+            \end{scope}
+            \graph {
+            (import nodes);
+            % "import" the nodes
+            1 -- 6 -- 3 -- 5 -- 3 -- 4 -- 2;
+            };
+
+        \end{tikzpicture}
+    \end{center}
+\end{ejemplo}
+
+
+\newpage
+\section{Lógica proposicional}
+\subsection{Lenguaje proposicional}
+La \textbf{lógica proposicional}, también llamada lógica de enunciados o de orden cero, es un sistema formal cuyos elementos más simples representan proposiciones o enunciados, y cuyas constantes lógicas, llamadas conexiones lógicas, representan operaciones sobre proposiciones, capaces de formar otras proposiciones de mayor complejidad.
+
+\subsubsection{Conexiones lógicas}
+Las \textbf{conexiones lógicas}, también conocidas como conectivas o constantes lógicas, son símbolos o palabras que se utilizan para conectar dos \textbf{enunciados, proposiciones o sentencias} (atómicas o moleculares), de modo que el valor de verdad de la fórmula compuesta depende del valor de verdad de las fórmulas componentes.
+Diremos que una sentencia es \textbf{atómica} cuando los enunciados del lenguaje no se puedan dividir en otros.
+\begin{nota}
+    Usaremos las primeras letras minúsculas del alfabeto griego para simbolizar los enunciados atómicos y las letras minúsculas a partir de la $p$ para representar los enunciados de lo que nos interesa conocer el significado.
+\end{nota}
+
+Para dos enunciados $\alpha,\ \beta$, las partículas conectivas que emplearemos son:
+\begin{itemize}
+    \item \textbf{Negación} ($\neg \alpha$): el \textit{no} se antepone a un enunciado y da lugar a otro enunciado.
+          \begin{center}
+              \begin{tabular}{ |c|c|  }
+                  \hline
+                  $\alpha$ & $\neg \alpha$ \\
+                  \hline
+                  0        & 1             \\
+                  1        & 0             \\
+                  \hline
+              \end{tabular}
+          \end{center}
+
+    \item \textbf{Conjunción} ($\alpha \wedge \beta$): la \textit{y} se corresponde con su sentido más usual en el lenguaje natural.
+          \begin{center}
+              \begin{tabular}{ |c|c|c|  }
+                  \hline
+                  $\alpha$ & $\beta$ & $\alpha \wedge \beta$ \\
+                  \hline
+                  0        & 0       & 0                     \\
+                  0        & 1       & 0                     \\
+                  1        & 0       & 0                     \\
+                  1        & 1       & 1                     \\
+                  \hline
+              \end{tabular}
+          \end{center}
+
+    \item \textbf{Disyunción} ($\alpha \vee \beta$): la \textit{o} se corresponde con uno de los dos sentidos más usuales en el lenguaje natural.
+          \begin{center}
+              \begin{tabular}{ |c|c|c|  }
+                  \hline
+                  $\alpha$ & $\beta$ & $\alpha \vee \beta$ \\
+                  \hline
+                  0        & 0       & 0                   \\
+                  0        & 1       & 1                   \\
+                  1        & 0       & 1                   \\
+                  1        & 1       & 1                   \\
+                  \hline
+              \end{tabular}
+          \end{center}
+
+    \item \textbf{Implicación} ($\alpha \rightarrow \beta$): el \textit{cuando} puede emplearse en sentido condicional como el \textit{si...entonces...} y otras veces en sentido temporal.
+          \begin{center}
+              \begin{tabular}{ |c|c|c|  }
+                  \hline
+                  $\alpha$ & $\beta$ & $\alpha \rightarrow \beta$ \\
+                  \hline
+                  0        & 0       & 1                          \\
+                  0        & 1       & 1                          \\
+                  1        & 0       & 0                          \\
+                  1        & 1       & 1                          \\
+                  \hline
+              \end{tabular}
+          \end{center}
+
+    \item \textbf{Doble implicación} ($\alpha \leftrightarrow \beta$): el \textit{si, y solo si,} sucede cuando se cumple $\alpha \rightarrow \beta$ y $\beta \rightarrow \alpha$.
+          \begin{center}
+              \begin{tabular}{ |c|c|c|  }
+                  \hline
+                  $\alpha$ & $\beta$ & $\alpha \leftrightarrow \beta$ \\
+                  \hline
+                  0        & 0       & 1                              \\
+                  0        & 1       & 0                              \\
+                  1        & 0       & 0                              \\
+                  1        & 1       & 1                              \\
+                  \hline
+              \end{tabular}
+          \end{center}
+\end{itemize}
+
+\subsubsection{Elementos del lenguaje proposicional}
+Como hemos dicho anteriormente, los elementos de la lógica proposicional son los enunciados. Para desgranarlos y comprenderlos, usaremos la estructura en árbol.
+Así, una fórmula sería un árbol queen las hojas tiene las fórmulas atómicas que intervienen y en el resto de los nodos las conectivas.
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsection{Semántica de la lógica proposicional}
+\subsubsection{Interpretaciones}
+\begin{ndef}[Interpretación]
+    Dado un lenguaje proposicional construido sobre el conjunto $X$, una \textbf{valoración, interpretación o mundo posible}, es una aplicación $v: X \rightarrow \mathbb{Z}_2$.
+\end{ndef}
+Dicha aplicación asigna un valor de la verdad a cada proposición atómica.
+Para una valoración $v$ y una fórmula atómica $a$, para $v(a)=0$ diremos que $v$ es \textbf{falsa} en el mundo $v$ y para $v(a)=1$ diremos que $v$ es \textbf{verdadera} en el mundo $v$.
+
+Una forma muy útil de expresar el valor de la verdad de una proposición es a través de su \textbf{polinomio de Gegalkine}. Éste es el anillo de polinomios sobre $\mathbb{Z}_2$. Para obtenerlo (aunque formalmente sea incorrecto), sustituiremos las siguientes expresiones proposicionales por su equivalente en el polinomio:
+\begin{align*}
+    \alpha \lor \beta = v(\alpha) + v(\beta) + v(\alpha) \cdot v(\beta) \\
+    \alpha \land \beta = v(\alpha) \cdot v(\beta)                       \\
+    \alpha \rightarrow \beta = 1 + v(\alpha) + v(\alpha) \cdot v(\beta) \\
+    \alpha \leftrightarrow \beta = 1 + v(\alpha) + v(\beta)             \\
+    \neg \alpha = 1 + v(\alpha)
+\end{align*}
+
+Otra forma de expresar una fórmula proposicional es mediante su \textbf{tabla de la verdad}. Para ella, podemos crear una tabla con $2^n$ mundos posibles.
+
+\begin{ejemplo}
+    Para la fórmula $\alpha = \neg (a \rightarrow b) \rightarrow (\neg a \rightarrow \neg b)$, hagámoslo por partes:
+    \begin{center}
+        $\neg (a \rightarrow b) = 1 + a \rightarrow b = 1 + 1 + a + ab = a + ab$ \\
+        $\neg a \rightarrow \neg b = 1 + \neg a + (\neg a)(\neg b) = 1 + 1 + a + (1 + a)(1 + b) = a +1 +a +b +ab = 1 + b + ab$ \\
+        $\alpha = 1 + \neg (a \rightarrow b) + \neg (a \rightarrow b) (\neg a \rightarrow \neg b) = 1 +a+ab+ (a+ab)(1 +b+ab) = 1 +a+ab+a+ab+ab+ab+ab+ab = 1$
+    \end{center}
+
+    Por otro lado, su tabla de la verdad sería:
+    \begin{center}
+        \begin{tabular}{|c|c||c|c|c|c|c|c|}
+            \hline
+            $a$ & $b$ & $a \rightarrow b$ & $\neg(a \rightarrow b)$ & $\neg a$ & $\neg b$ & $\neg a \rightarrow \neg b$ & $\neg (a \rightarrow b) \rightarrow (\neg a \rightarrow \neg b)$ \\
+            \hline
+            0   & 0   & 1                 & 0                       & 1        & 1        & 1                           & 1                                                                \\
+            0   & 1   & 1                 & 0                       & 1        & 0        & 0                           & 1                                                                \\
+            1   & 0   & 0                 & 1                       & 0        & 1        & 1                           & 1                                                                \\
+            1   & 1   & 1                 & 0                       & 0        & 0        & 1                           & 1                                                                \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Vemos que en ambos casos la solución es constantemente igual a 1.
+\end{ejemplo}
+
+A las fórmulas cuyo valor de la verdad sea constantemente 1 las llamaremos \textbf{tautologías}. Si la fórmula es cierta en, al menos, algún mundo posible, diremos que es \textbf{satisfacible}.
+Por otro lado, las que son constantemente igual a 0 las llamaremos \textbf{contradicciones}.
+\begin{nota}
+    El uso de la palabra tautología de dicha clasificación de fórmulas fue usada por primera vez por \textbf{Ludwig Josef Johann Wittgenstein}.
+\end{nota}
+
+Cuando trabajemos con fórmulas lógicas, es conveniente conocer ciertas tautologías y equivalencias lógicas que nos ayudarán a identificar fórmulas con mayor facilidad.
+
+\subsection{Consecuencia lógica}
+\subsubsection{Conjuntos satisfacibles e insatisfacibles}
+\begin{ndef}
+    Sea $\Gamma = \{\gamma_1, \gamma_2, \cdots, \gamma_n\}$ un conjunto de fórmulas de un lenguaje proposicional. Se dice que $\Gamma$ es \textbf{satisfacible} si existe un mundo en que todas son verdaderas.
+    Es decir, existe $v$ tal que $v(\gamma_1) = v(\gamma_2) = \cdots = v(\gamma_n) = 1$.
+\end{ndef}
+\begin{nota}
+    Si $\Gamma = \emptyset$, entonces $\Gamma$ es satisfacible.
+\end{nota}
+Cuando un conjunto de fórmulas no sea satisfacible, diremos que es \textbf{insatisfacible}.
+
+\begin{nth}
+    Sea $\Gamma = \{\gamma_1, \gamma_2, \cdots, \gamma_n\}$ un conjunto de fórmulas. Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\Gamma$ es insatisfacible.
+        \item $\gamma_1 \land \gamma_2 \land \cdots \land \gamma_n$ es contradicción.
+        \item Para cualquier valoración $v$, $\prod^n_{i=1} v(\gamma_i) = 0$.
+    \end{enumerate}
+\end{nth}
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsubsection{Implicación semántica}
+\begin{ndef}
+    Dado un conjunto de fórmulas $\Gamma$ —posiblemente vacío— y una fórmula $\varphi$ decimos que $\Gamma$ \textbf{implica semánticamente a $\varphi$}, abreviadamente $\Gamma \models \varphi$, si para toda valoración $v$ se tiene $v(\varphi) = 1$ siempre que para toda fórmula $\gamma$ de $\Gamma$ valga $v(\gamma) = 1$.
+    Si $\Gamma$ consta solamente de las fórmulas $\gamma_1, \gamma_2, \cdots, \gamma_n$, en lugar de$\{\gamma_1, \gamma_2, \cdots, \gamma_n\} \models \varphi$ escribimos $\gamma_1, \gamma_2, \cdots, \gamma_n \models \varphi$ y cuando $\Gamma = \emptyset$ escribimos simplemente $\models \varphi$ en lugar de $\emptyset \models \varphi$.
+\end{ndef}
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsubsection{Teorema de la deducción}
+Ahora presentaremos un \textbf{metateorema} (teorema acerca de teoremas formales y deducciones formales), que expresa simbólicamente una forma de razonamiento que frecuentemente empleamos cuando discurrimos informalmente en matemáticas.
+\begin{nth}[de la Deducción]
+    Sea $\Gamma$ un conjunto de fórmulas (que podría ser vacío) de un lenguaje proposicional, y $\alpha,\beta$, otras dos fórmulas. Entonces las siguientes afirmaciones son equivalentes:
+    \begin{enumerate}
+        \item $\Gamma \models \alpha \to \beta$
+        \item $\Gamma \cup \{\alpha\} \models \beta$
+    \end{enumerate}
+\end{nth}
+\begin{nota}
+    Este teorema se menciona para poder realizar los ejercicios. Sin embargo, no vamos a profundizar mucho en él.
+\end{nota}
+
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsection{Forma clausulada de una fórmula}
+\begin{ndef}
+    Una fórmula se dice que está en \textbf{forma clausulada} si está escrita como conjunción de cláusulas.
+\end{ndef}
+
+\begin{nth}
+    Sea $\alpha$ una fórmula que no es tautología. Entonces existe otra fórmula $\beta$, lógicamente equivalente a $\alpha$ y que está en forma clausulada.
+\end{nth}
+\subsubsection{Algoritmo de la forma clausulada}
+Vamos a dar un método para transformar una proposición $\delta$ en otra que sea lógicamente equivalente y que esté en forma clausulada. Para esto, podemos seguir los siguientes pasos:
+\begin{enumerate}
+    \item Eliminación del bicondicional. Si tenemos una subfórmula de la forma $\alpha_1 \leftrightarrow \alpha_2$, la sustituimos por $(\alpha_1 \rightarrow \alpha_2) \land (\alpha_2 \rightarrow \alpha_1)$.
+    \item Eliminación del condicional. Si tenemos una subfórmula de la forma$\alpha_1 \rightarrow \alpha_2$ la sustituimos por $\neg\alpha_1 \lor \alpha_2$.
+    \item Interiorización de la negación. Cualquier subfórmula de la forma:
+          \begin{itemize}
+              \item $\neg\neg \alpha$ la sustituimos por $\alpha$.
+              \item $\neg (\alpha_1 \lor \alpha_2)$ la sustituimos por $\neg\alpha_1 \land \neg\alpha_2$.
+              \item $\neg (\alpha_1 \land \alpha_2)$ la sustituimos por $\neg\alpha_1 \lor \neg\alpha_2$.
+          \end{itemize}
+          Llegados aquí, nos encontraremos una proposición en la que sólo intervienen las conectivas $\lor$,$\land$ y $\neg$. Además,esta última solo actua sobre las fórmulas atómicas.
+    \item Distribución de la $\lor$ sobre la $\land$.Si tenemos una subfórmula de la forma $\alpha_1 \lor (\beta_1 \land \beta_2)$ la sustituimos por $(\alpha_1 \lor \beta_1) \land (\alpha_1 \lor \beta_2)$. Y lo mismo, si la subfórmula es de la forma $(\alpha1 \lor \alpha_2) \land \beta_1$ la sustituimos por $(\alpha_1 \lor \beta_1) \land (\alpha_2 \lor \beta_1)$.
+    \item Eliminación de redundancias. Dentro de una cláusula eliminación de literales por idempotencia. Absorción de cláusulas más grandes por las mas chicas.
+\end{enumerate}
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsection{El problema de la implicación semántica}
+Ahora vamos a estudiar si un conjunto de fórmulas es satisfacible o no.
+\begin{nth}
+    Sea $\Gamma$ un conjunto de fórmulas; $\Gamma'$ un conjunto de fórmulas que se obtiene sustituyendo cada fórmula de $\Gamma$ por una forma clausular de esa fórmula, y $\Gamma''$ el conjunto que resulta de sustituir cada fórmula de $\Gamma'$ por las cláusulas que la forman. Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\Gamma$ es instisfacible.
+        \item $\Gamma'$ es instisfacible.
+        \item $\Gamma''$ es instisfacible.
+    \end{enumerate}
+\end{nth}
+
+\subsubsection{Algoritmo de Davis-Putnam}
+\begin{enumerate}
+    \item Sea $\Sigma$ un conjunto de cláusulas. Supongamos que en $\Sigma$ hay una \textbf{cláusula unit} $\lambda$. Entonces $\Sigma$ es insatisfacible si, y sólo si, $\Sigma_\lambda$ es insatisfacible.
+    \item Sea $\Sigma$ un conjunto de cláusulas. Supongamos que en $\Sigma$ aparece un \textbf{literal puro} $\lambda$. Es decir, hay al menos una cláusula en la que aparece el literal $\lambda$ y el literal $\lambda^c$ no aparece en ninguna. Entonces $\Sigma$ es insatisfacible si, y sólo si, $\Sigma_\lambda$ es insatisfacible.
+    \item Sea $\Sigma$ un conjunto de cláusulas, y sea $\lambda$ un literal que aparece en alguna cláusula de $\Sigma$. Entonces: $\Sigma$ es insatisfacible si, y sólo si, $\Sigma_\lambda$ y $\Sigma_{\lambda^c}$ son insatisfacibles.
+\end{enumerate}
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\subsubsection{Método de resolución}
+\begin{nth}
+    Sean $\alpha,\beta,\gamma$ tres fórmulas en un lenguaje proposicional. Entonces $\{\alpha \lor \beta, \neg \alpha \lor \gamma\} \models \beta \lor \gamma$.
+\end{nth}
+Para poder aplicar dicho método, definamos previamente el concepto de resolvente. Para ello, denotaremos $C - \lambda$ a la cláusula resultante de eliminar el literal $\lambda$ de la cláusula $C$. Dicho esto:
+\begin{ndef}
+    Sean $C_1$ y $C_2$ dos cláusulas. Supongamos que $\lambda$ es un literal tal que aparece en la cláusula $C_1$ y $\lambda^c$ aparece en $C_2$. Una cláusula que sea equivalente a $(C_1 - \lambda) \lor (C_2 - \lambda^c)$ es lo que se denomina una \textbf{resolvente} de $C_1$ y $C_2$.
+\end{ndef}
+\begin{obs} En la definición de resolvente debemos tener en cuenta 2 casos especiales:
+    \begin{enumerate}
+        \item Si $(C_1-\lambda)\lor(C_2-\lambda)$ es una tautología, consideraremos $(C_1-\lambda)\lor(C_2-\lambda)$ una resolvente.
+        \item Si $C_1=\lambda$ y $C_2=\lambda^c$, entonces la resolvente es $\square$.
+    \end{enumerate}
+\end{obs}
+\begin{ndef}
+    Sea $\Gamma$ un conjunto de cláusulas, y $C$ una cláusula. Una \textbf{deducción} (por resolución) de $C$ a partir de $\Gamma$ es una sucesión de cláusulas $C_1,C_2,\cdots,C_n$ donde:
+    \begin{itemize}
+        \item $C_n = C$.
+        \item $C_i \in \Gamma$ o $C_i$ es una resolvente de dos cláusulas del conjunto $\{C_1,\cdots,C_{i-1}\}$.
+    \end{itemize}
+\end{ndef}
+\begin{nth}[Principio de resolución]
+    Sea $\Gamma$ un conjunto de cláusulas. Entonces $\Gamma$ es insatisfacible si, y sólo si, hay una deducción por resolución de la cláusula vacía.
+\end{nth}
+\begin{ejemplo}
+    e
+\end{ejemplo}
+A partir del anterior teorema, podemos saber si un conjunto es insatisfacible. No obstante, podría darse que no podamos deducir la cláusula vacía. En ese caso, usaremos varias estrategias para calcular resolventes:
+
+\subsubsection{Estrategias de resolución}
+\underline{\textbf{Estrategia de saturación}}
+\begin{enumerate}
+    \item Esto, en realidad no es una estrategia. Se trata de calcular resolventes. Paramos, bien cuando encontremos la cláusula vacía, bien cuando no se puedan calcular más resolventes.
+    \item Puesto que el número posible de cláusulas para un conjunto de $n$ fórmulas atómicas es $3^n$, este método siempre acaba, pero puede ser muy largo.
+    \item Para seguir un cierto orden, partimos de nuestro conjunto de cláusulas, que llamaremos$\Sigma_0$.
+    \item En una primera etapa calculamos todas las resolventes que podemos hacer con estas cláusulas, y las añadimos al conjunto. Tenemos así un nuevo conjunto $\Sigma_1$.
+    \item En la siguiente etapa calculamos todas las resolventes que podemos hacer con las cláusulas de $\Sigma_1$. Al nuevo conjunto lo llamamos $\Sigma_2$.
+    \item De esta forma, vamos obteniendo una sucesión de conjuntos de cláusulas $\Sigma_0 \subseteq \Sigma_1 \subseteq \Sigma_2 \subseteq \cdots$ que en algún momento tiene que estabilizarse. Si llegamos a ese momento sin haber obtenido la cláusula vacía el conjunto $\Sigma$ es satisfacible.
+\end{enumerate}
+
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\underline{\textbf{Resolución Lineal}} \\
+
+Una deducción por resolución de una cláusula es \textbf{lineal} si es una sucesión de pasos de resolución que cumple que en cada paso de resolución que no sea el primero se utiliza la resolvente del paso anterior. Esto da lugar a un árbol con una estructura muy peculiar. \\
+En los ejemplos que hemos hecho de resolución observamos que en todos ellos (salvo el segundo de los ejemplos 4.20) cada resolvente que hemos obtenido (a excepción de la primera) provenía de hacer una resolvente con una cláusula obtenida en el paso inmediatamente anterior junto con otra cláusula. Esto daba lugar a que en la representación que hacíamos de las resolventes, todas aparecieran formando una línea.
+
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\underline{\textbf{Estrategias input}} \\
+
+Dado un conjunto de cláusulas $\Sigma$, una deducción a partir de $\Sigma$ (por resolución) es \textbf{input} si al menos una de lasdos cláusulas que se usan para calcular cada una de las resolventes pertenece al conjunto $\Sigma$.
+
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\begin{ndef}
+    Dado un lenguaje proposicional construido sobre el conjunto $X$:
+    \begin{enumerate}
+        \item Un literal es \textbf{positivo} si es una fórmula atómica (es decir, si pertenece a $X$).
+        \item Un literal es \textbf{negativo} si es el negado de una fórmula atómica.
+        \item Una cláusula es \textbf{negativa} si todos los literales que aparecen en ella son literales negativos.
+        \item Una cláusula es cláusula de \textbf{Horn} si tiene exactamente un literal positivo.
+        \item Un conjunto de cláusulas es un \textbf{conjunto de Horn} si tiene exactamente una cláusula negativa, y el resto de las cláusulas son cláusulas de Horn.
+    \end{enumerate}
+\end{ndef}
+
+\begin{nth}
+    Sea $\Sigma$ un conjunto de cláusulas de un lenguaje proposicional que es un conjunto de Horn. Entonces $\Sigma$ es insatisfacible si, y sólo si, existe una deducción lineal-input de la cláusula vacía que se inicia en la cláusula negativa.
+\end{nth}
+\begin{obs} Del teorema anterior extraemos que:
+    \begin{enumerate}
+        \item \textbf{Un conjunto formado por cláusulas de Horn no es un conjunto de Horn}. En el primero no hay cláusulas negativas y es satisfacible mientras que en el segundo hay una.
+        \item \textbf{Los conjuntos de Horn no son necesariamente insatisfacibles}, sino que para los que lo son sse puede encontrar una deducción lineal-input de la cláusula vacía.
+        \item \textbf{La resolvente de una cláusula de Horn y una cláusula negativa vuelve a ser una cláusula negativa}.
+        \item \textbf{Para que nos dé la cláusula vacía como resolvente de una cláusula negativa y una cláusula de Horn, la única posibilidad es que ambas cláusulas tengan sólo un literal}. Por tanto, para que un conjunto de Horn sea insatisfacible es necesario (pero no suficiente) que haya al menos una cláusula que seauna fórmula atómica.
+        \item \textbf{Hay conjuntos de cláusulas para los que hay una deducción lineal-input de la cláusula vacía pero que no son conjuntos de Horn.}
+    \end{enumerate}
+\end{obs}
+Denominaremos \textbf{cláusula objetivo} a la cláusula negativa de un conjunto de Horn, a las cláusulas de Horn que constan de un único literal las llamaremos \textbf{hechos} y a las de más de un literal \textbf{reglas}.
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+Ahora buscaremos si podemos transformar un conjunto de cláusulas en uno de Horn. Para ello, elegiremos una cláusula que después de la transformación será la cláusula negativa, y vamos sustituyendo los literales que nos hagan falta para que esta cláusula sea negativa, y el resto sean cláusulas de Horn. Si conseguimos que el conjunto se transforme en un conjunto de Horn ya lo tenemos. Si no es posible, probamos con otra cláusula como cláusula negativa.
+\begin{ejemplo}
+    e
+\end{ejemplo}
+
+\newpage
+\section{Lógica de primer orden}
+
+
+\newpage
+\section{Unificación y resolución}
