@@ -611,6 +611,20 @@ Una forma muy útil de representar un conjunto ordenado es a través de su \text
         \item $x \land y \leq z \Longleftrightarrow x \leq \overline{y} \lor z$.
     \end{itemize}
 \end{properties}
+\begin{ejemplo}
+    Algunos ejemplos de álgebras de Boole a parte de los vistos anteriormente, destacar el álgebra de Boole de partes de un conjunto o el de divisores de $n$,
+    $D_n$, bajo ciertas condiciones.
+\end{ejemplo}
+
+\begin{nprop}
+    Sea $D_n$ los divisores de $n$. Si $n$ cumple que $\forall k > 1$, $k^2$ no divide a $n$, entonces todo $x \in D_n$ tiene complemento $\overline{x} = \frac{n}{x}$.
+\end{nprop}
+\begin{nprop}
+    Sea $n \in \nat$, $n > 1$. $D_n$ es un álgebra de Boole si y sólo si $n$ es libre de cuadrados.
+\end{nprop}
+\begin{nota}
+    Diremos que $n$ es libre de cuadrados cuando en su factorización como producto de números primos, todos tienen exponente 1.
+\end{nota}
 
 \subsection{Átomos de un Álgebra}
 \begin{ndef}[Maximal y minimal]
@@ -684,6 +698,7 @@ Este teorema tiene su versión dual que dice así:
         $A \cong B$
     \end{center}
 \end{nth}
+
 
 \subsection{Funciones booleanas elementales}
 \begin{ndef}[Función booleana]
