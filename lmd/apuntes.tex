@@ -19,7 +19,7 @@ Supongamos que existe un conjunto $\mathbb{N}$. Los elementos de este conjunto s
 \end{nota}
 
 \begin{nth}
-    Todo número natural es distinto del siguiente. $\forall n \in \nat n \neq \sigma(n)$
+    Todo número natural es distinto del siguiente. $\forall n \in \nat,\ n \neq \sigma(n)$
 \end{nth}
 \begin{proof}
     Sea $A = \{x \in \nat : x \neq \sigma(x)\}$: \\
@@ -153,6 +153,11 @@ Primero definamos en qué consiste una relación de orden:
         \item \textbf{Principio de inducción completa}. Si $A \subseteq \nat$ cumple $0 \in A$ y si $(\{0,1,...,n\} \subseteq A \Rightarrow n + 1 \in A)$, entonces $A = \nat$.
     \end{enumerate}
 \end{nth}
+\begin{nota}
+Para realizar una demostración por inducción, debemos comprobar que la condición dada se cumple para el primer elemento del conjunto. Una vez visto que se cumple para éste,
+suponemos entonces que se cumple para $n$ y procedemos a comprobar si se cumple para $n+1$. Para ello, una forma de proceder es conseguir la expresión inicial de $n$ para, aplicando
+la hipótesis de inducción, llegar a que se cumple también para $n+1$.
+\end{nota}
 
 \subsection{Ecuaciones en recurrencia}
 \begin{ndef}
@@ -239,7 +244,7 @@ entonces $x_n = b_1\alpha_1^n + b_2\alpha_2^n + \ldots + b_k\alpha_k^n$ es soluc
             \end{aligned} \right \}
             \Rightarrow a_n - a_{n-1} = 2n -n$
     \end{center}
-    Esta sucesión es una sucesión en recurrencia pero no es homogénea, que es lo que nos interesa. Por ello, repetiremos este proceso hasta obtener la ecuación deseada:
+    Esta sucesión es una sucesión en recurrencia pero no es homogénea, que es lo que nos interesa. Por ello, repetiremos este proceso aplicando los ajustes necesarios (como por ejemplo, multiplicando la ecuación por escalares o sumando en vez de restando) hasta obtener la ecuación deseada:
     \begin{center}
         $\left.
             \begin{aligned}
@@ -603,7 +608,7 @@ Una forma muy útil de representar un conjunto ordenado es a través de su \text
 \end{ejemplo}
 \smallskip
 \begin{properties}
-    Sea $(B, \lor, \land, \overline{\square}, 0, 1)$ un álgebra de Boole. Entonces $\forall x,y,z \in A$:
+    Sea $(B, \lor, \land, \overline{\square}, 0, 1)$ un álgebra de Boole. Entonces $\forall x,y,z \in B$:
     \begin{itemize}
         \item $0 \leq x \leq 1$.
         \item Isotonía: Si $x \leq y$, entonces $x \lor z \leq y$ y $x \land z \leq y \land z$.
@@ -865,7 +870,7 @@ Otra forma de dar dicha función es mencionando su número de variables y el nú
 En nuestro ejemplo, tendríamos que $2^6+2^5+2^4+2^2 = 116$. La llamaríamos la función 116 de tres variables.
 
 \subsubsection{Mapas de Karnaugh}
-Los mapas de Karnaugh son una disposición plana en forma de cuadrícula de la tabla de una función booleana quenos ayudará a obtener los implicantes primos y las formas no redundantes de la función.
+Los mapas de Karnaugh son una disposición plana en forma de cuadrícula de la tabla de una función booleana que nos ayudará a obtener los implicantes primos y las formas no redundantes de la función.
 El mapa de Karnaugh de $f$ sería:
 \begin{center}
     \begin{Karnaugh_2x4}
@@ -950,7 +955,7 @@ hipercaras de dimensión $r$ es $\binom{n}{n-r} \cdot 2^{n-r}$.
 \end{nota}
 
 \begin{ejemplo}
-    Estas conjunciones se pueden representar fácilmente en un mapa de Karnaugh. Veamos la representación de las conjunciones de 3 variables $\overline{x} \cdot z$ (arista) y $x$ (cara):
+    Estas conjunciones se pueden representar fácilmente en un mapa de Karnaugh. Veamos la representación de las conjunciones de 3 variables $\overline{y} \cdot x$ (arista) y $y$ (cara):
     \begin{center}
         \begin{Karnaugh_2x4}
             \minterms{2,3,4,5,6,7}
@@ -1043,30 +1048,28 @@ Se parte de una forma disyuntiva arbitraria de la función. Se ordenan los monom
     \item Cuando no se pueda simplificar más se pasa al monomio siguiente.
 \end{enumerate}
 \begin{ejemplo}
-    Apliquemos el algoritmo a $f(x,y,z) =\overline{x}\overline{y}\overline{z}+z\overline{x}\overline{y}+y\overline{x}z+xyz+\overline{z}xy+x\overline{y}\overline{z}$:
+    Apliquemos el algoritmo a $f(x,y,z) =\bar{x}\bar{y}\bar{z}+z\bar{x}\bar{y}+y\bar{x}z+xyz+\bar{z}xy+x\bar{y}\bar{z}$:
     \begin{center}
         \begin{tabular}{ |c|c|c|  }
             \hline
             Forma disyuntiva                                                                                                             & Conjunción                             & Operación                        \\
             \hline
-            $\overline{x}\overline{y}\overline{z}+z\overline{x}\overline{y}+y\overline{x}z+xyz+\overline{z}xy+x\overline{y}\overline{z}$ & $\overline{x}\overline{y}\overline{z}$ & $sup(\overline{x})$              \\
-            $\overline{y}\overline{z}+z\overline{x}\overline{y}+y\overline{x}z+xyz+\overline{z}xy+x\overline{y}\overline{z}$             & $z\overline{x}\overline{y}$            & $sup(z)$                         \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+y\overline{x}z+xyz+\overline{z}xy+x\overline{y}\overline{z}$              & $y\overline{x}\overline{z}$            & $sup(y)$                         \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+\overline{x}z+xyz+\overline{z}xy+x\overline{y}\overline{z}$               & $xyz$                                  & $sup(x)$                         \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+\overline{x}z+yz+\overline{z}xy+x\overline{y}\overline{z}$                & $\overline{z}xy$                       & $sup(\overline{z})$              \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+\overline{x}z+yz+xy+x\overline{y}\overline{z}$                            & $x\overline{y}\overline{z}$            & $sup(x\overline{y}\overline{z})$ \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+\overline{x}z+yz+xy$                                                      &                                        &                                  \\
+            $\bar{x}\bar{y}\bar{z}+z\bar{x}\bar{y}+y\bar{x}z+xyz+\bar{z}xy+x\bar{y}\bar{z}$ & $\bar{x}\bar{y}\bar{z}$ & $sup(\bar{x})$              \\
+            $\bar{y}\bar{z}+z\bar{x}\bar{y}+y\bar{x}z+xyz+\bar{z}xy+x\bar{y}\bar{z}$             & $z\bar{x}\bar{y}$            & $sup(z)$                         \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+y\bar{x}z+xyz+\bar{z}xy+x\bar{y}\bar{z}$              & $y\bar{x}\bar{z}$            & $sup(y)$                         \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+\bar{x}z+xyz+\bar{z}xy+x\bar{y}\bar{z}$               & $xyz$                                  & $sup(x)$                         \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+\bar{x}z+yz+\bar{z}xy+x\bar{y}\bar{z}$                & $\bar{z}xy$                       & $sup(\bar{z})$              \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+\bar{x}z+yz+xy+x\bar{y}\bar{z}$                            & $x\bar{y}\bar{z}$            & $sup(x\bar{y}\bar{z})$ \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+\bar{x}z+yz+xy$                                                      &                                        &                                  \\
             Segunda pasada                                                                                                               &                                        &                                  \\
-            $\overline{y}\overline{z}+\overline{x}\overline{y}+\overline{x}z+yz+xy$                                                      & $\overline{x}\overline{y}$             & $sup(\overline{x}\overline{y})$  \\
-            $\overline{y}\overline{z}+\overline{x}z+yz+xy$                                                                               & $yz$                                   & $sup(yz)$                        \\
-            $\overline{y}\overline{z}+\overline{x}z+xy$                                                                                  &                                        &                                  \\
+            $\bar{y}\bar{z}+\bar{x}\bar{y}+\bar{x}z+yz+xy$                                                      & $\bar{x}\bar{y}$             & $sup(\bar{x}\bar{y})$  \\
+            $\bar{y}\bar{z}+\bar{x}z+yz+xy$                                                                               & $yz$                                   & $sup(yz)$                        \\
+            $\bar{y}\bar{z}+\bar{x}z+xy$                                                                                  &                                        &                                  \\
             \hline
         \end{tabular}
     \end{center}
-    Donde la forma no redundante es $f(x,y,z) =\overline{y}\overline{z}+\overline{x}z+xy$.
-    \begin{nota}
-        El suprarayado $\overline{\square}$ se está aplicando de manera individual a cada variable.
-    \end{nota}
+    Donde la forma no redundante es $f(x,y,z) =\bar{y}\bar{z}+\bar{x}z+xy$.
+
     \begin{obs}
         El orden de los monomios y factores altera la forma no redundante obtenida.
     \end{obs}
@@ -1368,7 +1371,7 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \end{ndef}
 
 \begin{ndef}
-    Una propiedad se dice invariante por isomorfismo si dados dos grafos isomorfos $G$ y $G'$, uno satisface la prpiedad si, y sólo si, la satisface el otro.
+    Una propiedad se dice \textbf{invariante por isomorfismo} si dados dos grafos isomorfos $G$ y $G'$, uno satisface la propiedad si, y sólo si, la satisface el otro.
 \end{ndef}
 
 \begin{ndef}
@@ -1378,6 +1381,10 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \end{ndef}
 
 \subsection{Algunas familias de grafos}
+
+\begin{ndef}[Grafo regular]
+    Diremos que un \textbf{grafo regular} es aquel en el cual todos los vértices tienen el mismo grado.
+\end{ndef}
 
 \begin{ndef}[Grafo nulo]
     Denominaremos \textbf{grafo nulo} de orden $n$ al grafo $N_n$ que tiene por conjunto de vértices $\{v_1,v_1,\cdots,v_n\}$ y ninguna arista.
@@ -1431,14 +1438,10 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
     \end{center}
 \end{ejemplo}
 
-\begin{ndef}[Grafo regular]
-    Diremos que un \textbf{grafo regular} es aquel en el cual todos los vértices tienen el mismo grado.
-\end{ndef}
-
 \begin{ndef}[Grafo circular]
     \textbf{Grafo circular o poligonal} \textbf{C$_n$}. Determinado por los vértices de un polígono regular. Los lados son los del polígono.
 \end{ndef}
-\begin{ejemplo} $P_3$ y $P_5$ respectivamente:
+\begin{ejemplo} $C_3$ y $C_5$ respectivamente:
     \begin{center}
         \begin{tikzpicture}[main/.style = {draw, circle}] 
             \node[main] (1) {}; 
@@ -1461,7 +1464,10 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
 \begin{ndef}[Grafo completo]
     Un \textbf{grafo completo} \textbf{K$_n$} es un grafo simple donde cada par de vértices está conectado por una arista. 
 \end{ndef}
-\begin{ejemplo} $P_4$ y $P_5$ respectivamente:
+\begin{nota}
+    Los grafos completos verifican la fórmula $l=\frac{n(n-1)}{2}$, donde $l$ es el número de lados y $n$ el número de vértices.
+\end{nota}
+\begin{ejemplo} $K_4$ y $K_5$ respectivamente:
     \begin{center}
         \begin{tikzpicture}[main/.style = {draw, circle}] 
             \node[main] (1) {}; 
@@ -1473,21 +1479,23 @@ Consideraremos camino de longitud cero de $v$ a $v$ aquel cuya sucesión de vér
         \quad\quad\quad\quad
         \begin{tikzpicture}[main/.style = {draw, circle}] 
             \node[main] (1) {};
-            \node[main] (2) [above left of=1] {}; 
-            \node[main] (3) [above right of=1] {};
-            \node[main] (4) [below right of=1] {}; 
-            \node[main] (5) [below left of=1] {};
+            \node[main] (2) [below left of=1] {}; 
+            \node[main] (3) [below right of=1] {};
+            \node[main] (4) [below of=3] {}; 
+            \node[main] (5) [below of=2] {};
             \draw (2) -- (3) -- (4) -- (5) -- (2);
             \draw (1) -- (2);
             \draw (1) -- (3);
             \draw (1) -- (4);
             \draw (1) -- (5);
+            \draw (2) -- (4);
+            \draw (3) -- (5);
         \end{tikzpicture}
     \end{center}
 \end{ejemplo}
 
 \begin{ndef}[Grafo estrella]
-    Un \textbf{grafo estrella} \textbf{S$_n$} = \textbf{K$_{1,n}$} está determinado por los vértices de un polígono regular y su centro. Los lados son losque unen el centro con cada uno de los vértices del polígono.
+    Un \textbf{grafo estrella} \textbf{S$_n$} = \textbf{K$_{1,n}$} está determinado por los vértices de un polígono regular y su centro. Los lados son los que unen el centro con cada uno de los vértices del polígono.
 \end{ndef}
 \begin{ejemplo} $S_3$ y $S_4$ respectivamente:
     \begin{center}
@@ -1600,7 +1608,7 @@ Decide si una sucesión finita es una sucesión gráfica generando un número fi
 \begin{enumerate}
     \item ¿Son todos los elementos de la sucesión 0? En caso afirmativo la sucesión es gráfica y hemos acabado.
     \item ¿Existe un número en la sucesión que es mayor o igual que el número de elementos no nulos de la sucesión? En caso afirmativo la sucesión no es gráfica y hemos acabado.
-    \item Elige un vértice que cumpla que no hay ninguno en la sucesión con mayor grado y márcalo (pivote). Si elgrado marcado esr, elige r vértices que cumplan que entre los no elegidos no hay uno con mayor grado que alguno de los elegidos.
+    \item Elige un vértice que cumpla que no hay ninguno en la sucesión con mayor grado y márcalo (pivote). Si el grado marcado es $r$, elige $r$ vértices que cumplan que entre los no elegidos no hay uno con mayor grado que alguno de los elegidos.
     \item Genera una nueva sucesión poniendo a cero el marcado (pivote) y disminuyendo en una unidad los elegidos.
     \item Vuelve a 1 con la nueva sucesión.
 \end{enumerate}
@@ -1609,7 +1617,7 @@ Decide si una sucesión finita es una sucesión gráfica generando un número fi
 Si el algoritmo de demolición da como salida sucesión gráfica, se construye un grafo para cada fila del algoritmo de demolición leyendo las filas de abajo hacia arriba.
 \begin{enumerate}
     \item Partimos del grafo nulo con n vértices que corresponde a la última fila de todos ceros.
-    \item Pasamos de una fila a la superior añadiendo al grafo de la filarlados que conectan el vértice marcado en la fila superior con los elegidos (los que aumentan el grado en1).
+    \item Pasamos de una fila a la superior añadiendo al grafo de la fila $r$ lados que conectan el vértice marcado en la fila superior con los elegidos (los que aumentan el grado en 1).
 \end{enumerate}
 
 \subsection{Grafos de Euler}
@@ -1630,14 +1638,14 @@ Si el algoritmo de demolición da como salida sucesión gráfica, se construye u
 \end{lema}
 
 \begin{ncor}
-    Sea $G$ un grafo conexo. Entonces $G$ tiene un camino de Euler si, y sólo si, $G$ tiene exactamente dos vértices de grado impar.
+    Sea $G$ un grafo conexo. Entonces $G$ tiene un camino de Euler si, y sólo si, $G$ tiene exactamente dos vértices de grado impar. A dicho grafo lo denominamos \textbf{grafo semieuleriano}.
 \end{ncor}
 
 \subsubsection{Algoritmo de Fleury}
 Como entrada tenemos un grafo $G$ y como salida, dos sucesiones $S_V$ y $S_E$, siendo éstas las sucesiones de vértices y lados del camino buscado.
 \begin{enumerate}
     \item Si todos los vértices son de grado par, elegimos un vértice cualquiera $v$. Si $G$ tiene dos vértices de grado impar, elegimos uno de estos vértices.
-    \item Hacemos $S_V = v$ y $S_E = [\ ]$.
+    \item Hacemos $S_V = [v]$ y $S_E = [\ ]$.
     \item Si $G$ tiene sólo a $v$, devuelve $S_V$ y $S_E$, y termina.
     \item Si hay un único lado $e$ que incida en $v$, llamamos $w$ al otro vértice donde incida el lado $e$; quitamos de $G$ el vértice $v$ y el lado $e$ y vamos al paso 6.
     \item Si hay más de un lado $e$ que incida en $v$, elegimos uno de estos de forma que al quitarlo el grafo $G$ siga siendo conexo. Llamamos $e$ a dicho lado y $w$ al otro vértice en el que incide $e$.
@@ -1663,7 +1671,7 @@ Un \textbf{circuito de Hamilton} es un camino cerrado que recorre todos los vér
 
 \subsection{Grafos bipartidos}
 \begin{ndef}
-    Sea $G= (V, E)$ un grafo. Se dice que $G$ es bipartido si podemos descomponer $V$ en dos subconjuntos disjuntos $V_1$ y $V_2$ de forma que todo lado incide en un vértice de $V_1$ y en un vértice de $V_2$. Un grafo $G= (V, E)$ se dice bipartido completo si es bipartido, y para cada $v_1 \in V_1$ y $v_2\ \in V_2$ existe un único lado $e \in E$ tal que $\gamma_G(e) =\{v1, v2\}$.
+    Sea $G= (V, E)$ un grafo. Se dice que $G$ \textbf{es bipartido} si podemos descomponer $V$ en dos subconjuntos disjuntos $V_1$ y $V_2$ de forma que todo lado incide en un vértice de $V_1$ y en un vértice de $V_2$. Un grafo $G= (V, E)$ se dice \textbf{bipartido completo} si es bipartido, y para cada $v_1 \in V_1$ y $v_2\ \in V_2$ existe un único lado $e \in E$ tal que $\gamma_G(e) =\{v_1, v_2\}$.
 \end{ndef}
 Un grafo bipartido completo está completamente determinado por el cardinal de $V_1$ y $V_2$. Si $G$ es un grafo bipartido completo en el que $V_1$ tiene cardinal $m$ y $V_2$ tiene cardinal $n$, entonces denotaremos a $G$ como $K_{m,n}$.
 \begin{nth}
@@ -1697,6 +1705,9 @@ Un grafo se dice \textbf{plano} si admite una representación plana.
 \begin{ncor}
     Sea $G$ un grafo plano, conexo, sin lazos ni lados paralelos. Entonces $3c\leq 2e$ y $e \leq 3v-6$.
 \end{ncor}
+\begin{nota}
+    Sea $G$ un grafo plano, entonces se cumple que $\sum_{i=0}^n gr(v_i)=2l$.
+\end{nota}
 \begin{ndef}
     Sea $G$ un grafo. Una contracción simple de $G$ es el resultado de indentificar en $G$ dos vértices adyacentes.
 \end{ndef}
@@ -1711,10 +1722,16 @@ Un grafo se dice \textbf{plano} si admite una representación plana.
 \begin{ndef}
     Sea $G= (V, E)$ un grafo. Una \textbf{coloración} $G$ es una aplicación $f:V\to C$, donde $C$ es un conjunto, de tal forma que para cualquier $e\in E$, si $\gamma_G(e) =\{v, w\}$ con $v \neq w$ entonces $f(u)\neq f(v)$.
 \end{ndef}
-\begin{ndef}
-    Sea $G$ un grafo y $x\in\nat$. Vamos a denotar por $p(G, x)$ al número de coloraciones distintas, con $n$ colores, que tiene el grafo $G$.
+\begin{ndef}[Polinomio cromático]
+    Sea $G$ un grafo y $k\in\nat$. Llamaremos polinomio cromático de $G$ a la función $p(G, k)$ que nos da el número de coloraciones distintas, con $k$ colores, que tiene el grafo $G$.
 \end{ndef}
-A partir de aquí denotaremos las \textbf{potencias descendentes} $p(K_n,x) = x^{\underline{n}} = x(x-1)\cdots(x-n+1)$.
+\begin{ndef}[Número cromático]
+    Llamaremos número cromático de $G$ al menor número de colores necesarios para pintar dicho grafo.
+\end{ndef}
+\begin{nota}
+    Cuando descompongamos el grafo según los próximos algoritmos, el número cromático será el grado del sumando de menor grado (en $K_n$ es $n$).
+\end{nota}
+    A partir de aquí denotaremos las \textbf{potencias descendentes} $p(K_n,x) = x^{\underline{n}} = x(x-1)\cdots(x-n+1)$.
 
 \subsubsection{Algoritmo de la suma}
 La fórmula $p(G_e,x)=p(G,x) + p(G'_e,x)$ nos indica que dado un grafo simple $G_e$ hallar su polinomio cromático se reduce a sumar los polinomios cromáticos de los grafos $G$ y $G'_e$. $G$ tiene un lado más que $G_e$ (lado que une dos vértices no adyacentes de $G_e$) y $G'_e$ tiene un vértice menos que $G_e$. En un número finito de pasos todos los grafos obtenidos serán completos que es la condición de parada.
@@ -1785,7 +1802,7 @@ Los árboles son un tipo especial de grafos estudiados por primera vez por Kirch
     Un \textbf{árbol generador} (de expansión, abarcador) de un grafo conexo es un subgrafo que tiene todos los vértices del grafo y es un árbol.
 \end{ndef}
 \begin{lema}
-    SeaGun grafo conexo que contiene un ciclo. Entonces, si quitamos uno de los lados del ciclo el grafosigue siendo conexo.
+    Sea $G$ un grafo conexo que contiene un ciclo. Entonces, si quitamos uno de los lados del ciclo el grafosigue siendo conexo.
 \end{lema}
 \begin{nprop}
     Todo grafo conexo tiene un árbol generador.
@@ -2042,7 +2059,7 @@ Para dos enunciados $\alpha,\ \beta$, las partículas conectivas que emplearemos
 
 \subsubsection{Elementos del lenguaje proposicional}
 Como hemos dicho anteriormente, los elementos de la lógica proposicional son los enunciados. Para desgranarlos y comprenderlos, usaremos la estructura en árbol.
-Así, una fórmula sería un árbol queen las hojas tiene las fórmulas atómicas que intervienen y en el resto de los nodos las conectivas.
+Así, una fórmula sería un árbol que en las hojas tiene las fórmulas atómicas que intervienen y en el resto de los nodos las conectivas.
 \begin{ejemplo}
     e
 \end{ejemplo}
@@ -2123,7 +2140,7 @@ Cuando un conjunto de fórmulas no sea satisfacible, diremos que es \textbf{insa
 
 \subsubsection{Implicación semántica}
 \begin{ndef}
-    Dado un conjunto de fórmulas $\Gamma$ —posiblemente vacío— y una fórmula $\varphi$ decimos que $\Gamma$ \textbf{implica semánticamente a $\varphi$}, abreviadamente $\Gamma \models \varphi$, si para toda valoración $v$ se tiene $v(\varphi) = 1$ siempre que para toda fórmula $\gamma$ de $\Gamma$ valga $v(\gamma) = 1$.
+    Dado un conjunto de fórmulas $\Gamma$ —posiblemente vacío— y una fórmula $\varphi$, decimos que $\Gamma$ \textbf{implica semánticamente a $\varphi$}, abreviadamente $\Gamma \models \varphi$, si para toda valoración $v$ se tiene $v(\varphi) = 1$, siempre que para toda fórmula $\gamma$ de $\Gamma$ valga $v(\gamma) = 1$.
     Si $\Gamma$ consta solamente de las fórmulas $\gamma_1, \gamma_2, \cdots, \gamma_n$, en lugar de$\{\gamma_1, \gamma_2, \cdots, \gamma_n\} \models \varphi$ escribimos $\gamma_1, \gamma_2, \cdots, \gamma_n \models \varphi$ y cuando $\Gamma = \emptyset$ escribimos simplemente $\models \varphi$ en lugar de $\emptyset \models \varphi$.
 \end{ndef}
 \begin{ejemplo}
@@ -2179,9 +2196,9 @@ Ahora vamos a estudiar si un conjunto de fórmulas es satisfacible o no.
 \begin{nth}
     Sea $\Gamma$ un conjunto de fórmulas; $\Gamma'$ un conjunto de fórmulas que se obtiene sustituyendo cada fórmula de $\Gamma$ por una forma clausular de esa fórmula, y $\Gamma''$ el conjunto que resulta de sustituir cada fórmula de $\Gamma'$ por las cláusulas que la forman. Entonces son equivalentes:
     \begin{enumerate}
-        \item $\Gamma$ es instisfacible.
-        \item $\Gamma'$ es instisfacible.
-        \item $\Gamma''$ es instisfacible.
+        \item $\Gamma$ es insatisfacible.
+        \item $\Gamma'$ es insatisfacible.
+        \item $\Gamma''$ es insatisfacible.
     \end{enumerate}
 \end{nth}
 
