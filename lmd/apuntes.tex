@@ -2059,7 +2059,7 @@ Para dos enunciados $\alpha,\ \beta$, las partículas conectivas que emplearemos
 
 \subsubsection{Elementos del lenguaje proposicional}
 Como hemos dicho anteriormente, los elementos de la lógica proposicional son los enunciados. Para desgranarlos y comprenderlos, usaremos la estructura en árbol.
-Así, una fórmula sería un árbol que en las hojas tiene las fórmulas atómicas que intervienen y en el resto de los nodos las conectivas.
+Así, una fórmula sería un árbol queen las hojas tiene las fórmulas atómicas que intervienen y en el resto de los nodos las conectivas.
 \begin{ejemplo}
     e
 \end{ejemplo}
@@ -2140,7 +2140,7 @@ Cuando un conjunto de fórmulas no sea satisfacible, diremos que es \textbf{insa
 
 \subsubsection{Implicación semántica}
 \begin{ndef}
-    Dado un conjunto de fórmulas $\Gamma$ —posiblemente vacío— y una fórmula $\varphi$, decimos que $\Gamma$ \textbf{implica semánticamente a $\varphi$}, abreviadamente $\Gamma \models \varphi$, si para toda valoración $v$ se tiene $v(\varphi) = 1$, siempre que para toda fórmula $\gamma$ de $\Gamma$ valga $v(\gamma) = 1$.
+    Dado un conjunto de fórmulas $\Gamma$ —posiblemente vacío— y una fórmula $\varphi$ decimos que $\Gamma$ \textbf{implica semánticamente a $\varphi$}, abreviadamente $\Gamma \models \varphi$, si para toda valoración $v$ se tiene $v(\varphi) = 1$ siempre que para toda fórmula $\gamma$ de $\Gamma$ valga $v(\gamma) = 1$.
     Si $\Gamma$ consta solamente de las fórmulas $\gamma_1, \gamma_2, \cdots, \gamma_n$, en lugar de$\{\gamma_1, \gamma_2, \cdots, \gamma_n\} \models \varphi$ escribimos $\gamma_1, \gamma_2, \cdots, \gamma_n \models \varphi$ y cuando $\Gamma = \emptyset$ escribimos simplemente $\models \varphi$ en lugar de $\emptyset \models \varphi$.
 \end{ndef}
 \begin{ejemplo}
@@ -2290,9 +2290,9 @@ Dado un conjunto de cláusulas $\Sigma$, una deducción a partir de $\Sigma$ (po
 \begin{obs} Del teorema anterior extraemos que:
     \begin{enumerate}
         \item \textbf{Un conjunto formado por cláusulas de Horn no es un conjunto de Horn}. En el primero no hay cláusulas negativas y es satisfacible mientras que en el segundo hay una.
-        \item \textbf{Los conjuntos de Horn no son necesariamente insatisfacibles}, sino que para los que lo son sse puede encontrar una deducción lineal-input de la cláusula vacía.
+        \item \textbf{Los conjuntos de Horn no son necesariamente insatisfacibles}, sino que para los que lo son se puede encontrar una deducción lineal-input de la cláusula vacía.
         \item \textbf{La resolvente de una cláusula de Horn y una cláusula negativa vuelve a ser una cláusula negativa}.
-        \item \textbf{Para que nos dé la cláusula vacía como resolvente de una cláusula negativa y una cláusula de Horn, la única posibilidad es que ambas cláusulas tengan sólo un literal}. Por tanto, para que un conjunto de Horn sea insatisfacible es necesario (pero no suficiente) que haya al menos una cláusula que seauna fórmula atómica.
+        \item \textbf{Para que nos dé la cláusula vacía como resolvente de una cláusula negativa y una cláusula de Horn, la única posibilidad es que ambas cláusulas tengan sólo un literal}. Por tanto, para que un conjunto de Horn sea insatisfacible es necesario (pero no suficiente) que haya al menos una cláusula que sea una fórmula atómica.
         \item \textbf{Hay conjuntos de cláusulas para los que hay una deducción lineal-input de la cláusula vacía pero que no son conjuntos de Horn.}
     \end{enumerate}
 \end{obs}
