@@ -53,39 +53,39 @@ Sea $X$ un conjunto no vacío.
 
 Sea $\R^n$ el conjunto definido tal que $\R^n=\{(x_1,\cdots,x_n):x_i \in \R, \ i=1,\cdots,n\}$
 \begin{ndef}[Norma]
-  Una \textbf{norma} en $\R^n$ es una aplicación $||\cdot||: \R^n \to \R$ con las siguientes propiedades:
+  Una \textbf{norma} en $\R^n$ es una aplicación $\|\cdot\|: \R^n \to \R$ con las siguientes propiedades:
   \begin{enumerate}[label=N{{\arabic*}}]
-    \item $||x||=0 \Leftrightarrow x=0 \quad \forall x \in \R^n$
-    \item $||\lambda x||=|\lambda| \cdot ||x||\quad \forall x \in \R^n, \forall \lambda \in \R$
-    \item $||x+y|| \le ||x||+||y|| \quad \forall x,y \in \R^n$
+    \item $\|x\|=0 \Leftrightarrow x=0 \quad \forall x \in \R^n$
+    \item $\|\lambda x\|=|\lambda| \cdot \|x\|\quad \forall x \in \R^n, \forall \lambda \in \R$
+    \item $\|x+y\| \le \|x\|+\|y\| \quad \forall x,y \in \R^n$
   \end{enumerate}
 \end{ndef}
 \begin{exmp}
-  Tomando el producto escalar usual de $\R^n$, con $x,y \in \R^n$ \[\langle (x_1, \cdots, x_n), (y_1,\cdots,y_n)\rangle=x_1y_1+\cdots+x_ny_n\] su norma asociada es \[||x||=\langle x,x\rangle^{1/2}= \left(\sum^n_{i=1}x^2_i\right)^{1/2}=(x^2_1+\cdots+x^2_n)^{1/2}\]
-  a la que llamamos \textbf{norma Euclídea} y denotaremos $||\cdot||$ o $||\cdot||_2$. Otras normas en $\R^n$ que no proceden del producto escalar son la \textbf{norma 1} $||x||_1=|x_1|+\cdots+|x_n|$ o la \textbf{norma infinito} $||x||_\infty = \max_{1 \leq i \leq n} \{|x_i|\}$.
+  Tomando el producto escalar usual de $\R^n$, con $x,y \in \R^n$ \[\langle (x_1, \cdots, x_n), (y_1,\cdots,y_n)\rangle=x_1y_1+\cdots+x_ny_n\] su norma asociada es \[\|x\|=\langle x,x\rangle^{1/2}= \left(\sum^n_{i=1}x^2_i\right)^{1/2}=(x^2_1+\cdots+x^2_n)^{1/2}\]
+  a la que llamamos \textbf{norma euclídea} y denotaremos $\|\cdot\|$ o $\|\cdot\|_2$. Otras normas en $\R^n$ que no proceden del producto escalar son la \textbf{norma 1} $\|x\|_1=|x_1|+\cdots+|x_n|$ o la \textbf{norma infinito} $\|x\|_\infty = \max_{1 \leq i \leq n} \{|x_i|\}$.
 \end{exmp}
 
 \begin{nprop}
-  Toda norma $||\cdot||$ en $\R^n$ induce una distancia $d$ tal que $d(x,y)=||x-y|| \ \forall x,y \in \R^n$.
+  Toda norma $\|\cdot\|$ en $\R^n$ induce una distancia $d$ tal que $d(x,y)=\|x-y\| \ \forall x,y \in \R^n$.
 \end{nprop}
 \begin{proof} Probemos que se cumplen la propiedades de una distancia:
   \begin{enumerate}[label=D{{\arabic*}}]
-    \item $d(x,y)=0 \Leftrightarrow ||x-y||=0 \stackrel{N1}{\Leftrightarrow} x-y=0 \Leftrightarrow x=y \quad \forall x,y \in \R^n$
-    \item $d(x,y)=||x-y||=||(-1)\cdot(x-y)||\stackrel{N2}{=} |-1|\cdot||y-x||=||y-x||=d(y,x) \quad \forall x,y \in \R^n$
-    \item $d(x,y)=||x-y||=||x-z+z-y|| \le ||x-z||+||z-y||=d(x,z)+d(z,y) \quad \forall x,y,z \in \R^n$
+    \item $d(x,y)=0 \Leftrightarrow \|x-y\|=0 \stackrel{N1}{\Leftrightarrow} x-y=0 \Leftrightarrow x=y \quad \forall x,y \in \R^n$
+    \item $d(x,y)=\|x-y\|=\|(-1)\cdot(x-y)\|\stackrel{N2}{=} |-1|\cdot\|y-x\|=\|y-x\|=d(y,x) \quad \forall x,y \in \R^n$
+    \item $d(x,y)=\|x-y\|=\|x-z+z-y\| \le \|x-z\|+\|z-y\|=d(x,z)+d(z,y) \quad \forall x,y,z \in \R^n$
   \end{enumerate}
   Por tanto, $d$ es una distancia en $\R^n$.
 \end{proof}
 \begin{exmp}
-  En el caso del ejemplo anterior, $||\cdot||_2$ induce a $d_2$, $||\cdot||_1$ a $d_1$ y $||\cdot||_\infty$ a $d_\infty$, tal y como indica la proposición.
+  En el caso del ejemplo anterior, $\|\cdot\|_2$ induce a $d_2$, $\|\cdot\|_1$ a $d_1$ y $\|\cdot\|_\infty$ a $d_\infty$, tal y como indica la proposición.
 \end{exmp}
 
 \begin{properties}
   La distancia discreta en $\R^n$ no procede de ninguna norma, es decir, no existe ninguna norma en $\R^n$ cuya distancia asociada sea la discreta.
 \end{properties}
 \begin{proof}
-  Sea $d$ una distancia que procede de una norma $||\cdot||$ en $\R^n$. Tomamos $x=0$, $y\neq0$. Como $y \neq 0 \implies ||y|| \neq 0$. Ahora, tomemos $\lambda\in\R$ y vemos que $d(x,\lambda y) = ||\lambda y|| = |\lambda|\cdot||y||\neq 0$.
-  Si $|\lambda| > \frac{1}{||y||}$, entonces $d(x,\lambda y) = |\lambda| \cdot ||y|| > \frac{1}{||y||} \cdot ||y||=1$. Luego $d(x,\lambda y) > 1$. Por tanto, $d$ no puede ser la distancia discreta, ya que en la distancia discreta, dos puntos están a lo sumo a distancia 1.
+  Sea $d$ una distancia que procede de una norma $\|\cdot\|$ en $\R^n$. Tomamos $x=0$, $y\neq0$. Como $y \neq 0 \implies \|y\| \neq 0$. Ahora, tomemos $\lambda\in\R$ y vemos que $d(x,\lambda y) = \|\lambda y\| = |\lambda|\cdot\|y\|\neq 0$.
+  Si $|\lambda| > \frac{1}{\|y\|}$, entonces $d(x,\lambda y) = |\lambda| \cdot \|y\| > \frac{1}{\|y\|} \cdot \|y\|=1$. Luego $d(x,\lambda y) > 1$. Por tanto, $d$ no puede ser la distancia discreta, ya que en la distancia discreta, dos puntos están a lo sumo a distancia 1.
 \end{proof}
 Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, existen puntos a distancia arbitrariamente grande.
 
@@ -102,7 +102,7 @@ Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, 
 \begin{ndef}[Bolas en un espacio métrico]
   Sea $(X,d)$ un espacio métrico, con $a \in X$,
   \begin{enumerate}
-    \item La \textbf{bola abierta} de centro $a$ y radio $r$ es el conjunto $B(a,r)= \{x \in X : d(x,a) \leq r\}$.
+    \item La \textbf{bola abierta} de centro $a$ y radio $r$ es el conjunto $B(a,r)= \{x \in X : d(x,a) < r\}$.
     \item La \textbf{bola cerrada} de centro $a$ y radio $r$ es el conjunto $\overline{B}(a,r)= \{x \in X : d(  x,a) \leq r\}$.
     \item La \textbf{esfera} de centro $a$ y radio $r$ es el conjunto $S(a,r)= \{x \in X : d(  x,a) = r\}$.
   \end{enumerate}
@@ -135,7 +135,11 @@ Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, 
 
 \begin{exmp}
   En $\R^2$ con la distancia Euclídea, las bolas descritas serían de la siguiente forma en el espacio métrico $(\R^2,d_2)$:
-  DIBUJO
+  \begin{center}
+  \begin{tikzpicture}
+    \draw (2,2) circle (1cm);
+  \end{tikzpicture}
+\end{center}
 \end{exmp}
 
 \begin{properties} Estas son algunas propiedades de las bolas:
@@ -151,7 +155,7 @@ Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, 
   Sea $(X,d)$ un espacio métrico, diremos que $A \subset X$ es \textbf{abierto} en $(X,d)$ si, para todo $a \in A$, $\exists r > 0$ (que depende de $a$) tal que $B(a,r) \subset A$.
 \end{ndef}
 \begin{note}
-    Siempre supondremos que $A = \varnothing$ es abierto.
+    Siempre supondremos que $A = \varnothing$ es abierto, ya que la condición se cumple trivialmente, al ser un "para todo" sobre el vacío.
 \end{note}
 \begin{properties}
   Las bolas abiertas en un espacio métrico son conjuntos abiertos.
@@ -181,8 +185,7 @@ Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, 
   Dem
 \end{proof}
 
-\begin{exmp}
-  Ejemplo intersección de abiertos no  tiene por qué ser abierto:
+\begin{exmp}[La intersección de abiertos no tiene por qué ser un abierto]
   Sea $(\R,d)$ un espacio métrico de los reales con la distancia usual, fijamos $x=0,\ \forall r>0,\ (-r,+r) \in T$. Si tomamos $\cap_{r>0}(-r,r)=\{0\}$. El $\{0\}$ no es abierto porque no existe $s>0$ tal que $B(0,s)=(-s,s) \subset \{0\}$.
 \end{exmp}
 
@@ -198,8 +201,27 @@ Con esto queda probado que si una distancia $d$ en $\R^n$ procede de una norma, 
 \end{properties}
 \begin{exmp}
   En $\R^n$, $d_1,\ d_2$ y $d_\infty$ son distancias métricamente equivalentes.
+  \begin{table}[t]
+    \begin{center}
+    \begin{tabular}{  c  c  c  }
+    \begin{tikzpicture}
+      \draw (2,2) circle (1cm);
+    \end{tikzpicture}
+    & 
+    \begin{tikzpicture}
+      \draw (1,0) -- (2,1) -- (1,2) -- (0,1) -- (1,0);
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}
+      \draw (0,0) -- (2,0) -- (2,2) -- (0,2) -- (0,0);
+    \end{tikzpicture} \\
+     $\|\cdot\|_2$ & $\|\cdot\|_1$ & $\|\cdot\|_{\infty}$ \\
+    \end{tabular}
+    \caption{Comparación de bolas}
+    \label{tab:bolas}
+    \end{center}
+    \end{table} 
 \end{exmp}
-DIBUJO
 
 \begin{nprop}
   Sea $(X,d)$ un espacio métrico. Entonces todo conjunto abierto no vacío es unión de bolas abiertas.
@@ -653,7 +675,7 @@ Entonces para $A \subset X$, denotaremos:
 \end{properties}
 
 \begin{exmp}
-  Sea $(\R^n, ||\cdot||)$ un espacio normado en $\R^n$ con la distancia asociada $d(x,y)=||x-y||$. Entonces se tiene que la clausura de la bola abierta es igual a la bola cerrada y el interior de la bola cerrada es igual a la bola abierta. Es decir, $\overline{B(x,r)}=\overline{B}(x,r)$ y $int(\overline{B}(x,r))=B(x,r)$.
+  Sea $(\R^n, \|\cdot\|)$ un espacio normado en $\R^n$ con la distancia asociada $d(x,y)=\|x-y\|$. Entonces se tiene que la clausura de la bola abierta es igual a la bola cerrada y el interior de la bola cerrada es igual a la bola abierta. Es decir, $\overline{B(x,r)}=\overline{B}(x,r)$ y $int(\overline{B}(x,r))=B(x,r)$.
 \end{exmp}
 Para que la propiedad del ejemplo se cumpla, la distancia debe proceder de una norma.
 \begin{exmp}
@@ -880,7 +902,8 @@ En el anterior ejemplo, no podemos cambiar $U_{\alpha} \in T$ por la hipótesis 
 \begin{ndef}[Aplicación cerrada]
   Sean $(X,T), (Y,T')$ dos espacios topológicos y $f:X \to Y$ una aplicación. Diremos que $f$ es una \textbf{aplicación cerrada} si $f(C) \in C_{T'}\ \forall C \in C_T$.
 \end{ndef}
-\begin{ndef}[Hoemomorfismo]
+
+\begin{ndef}[Homeomorfismo]
   Sean $(X,T),(Y,T')$ dos espacios toopológicos y $f:X \to Y$ una aplicación, diremos que $f$ es un \textbf{homeomorfismo} si es biyectiva, continua y su inversa $f^{-1}$ es continua.
 \end{ndef}
 Si $f$ es biyectiva, entonces $f^{-1}:(Y,T') \to (X,T)$ es una aplicación bien definida. $f^{-1}$ es continua $\Leftrightarrow \forall U \in T,\ (f^{-1})^{-1}(U) \in T' \Leftrightarrow \forall U \in T, f(U) \in T' \Leftrightarrow f$ es abierta.
@@ -939,7 +962,7 @@ Sabemos que $T$ es una topología en $X$ tal que $f: (X,T) \to (Y,T')$ es contin
 
 Ahora, sea $(X_i,T_i)$ una familia de espacios topológicos, $X$ un conjunto, $f_i: X \to X_i$ una familia de aplicaciones. ¿Existe en $X$ una topología $T$ con la menor cantidad posible de abiertos tal que las aplicaciones $f_i:(X,T) \to (X_i,T_i)$ sean continuas? Para ello, si $U_i \in T_i$, entonces $f^{-1}_i(U_i)$ debe pertenecer a $T$. \\
 
-Entonces, definimos $S=\{f^{-1}_i(U_i) : U_i \in T_i, i \in I\}$, donde $S$ es subbase. Llamamos $T=T(S)$ a la topología generada por $S$, cuya base es $\mathcal{B} = \{{f^{-1}_i}_1({U_i}_1) \cap \dots \cap {f^{-1}_i}_k({U_i}_k) : U_i_k \in T_i_k, i_k \in I, k \in \N\}$. $T$ es la menor topología que contiene a $S$ en $X$ y $f_i:(X,T) \to (X_i,T_i)$ son continuas. $U_i \in T_i \Rightarrow f^{-1}_i(U_i) \in S \subset \mathcal{B} \subset T$. \\
+Entonces, definimos $S=\{f^{-1}_i(U_i) : U_i \in T_i, i \in I\}$, donde $S$ es subbase. Llamamos $T=T(S)$ a la topología generada por $S$, cuya base es $\mathcal{B} = \{{f^{-1}_i}_1({U_i}_1) \cap \dots \cap {f^{-1}_i}_k(U_{i_k}) : U_{i_k} \in T_{i_k}, i_k \in I, k \in \N\}$. $T$ es la menor topología que contiene a $S$ en $X$ y $f_i:(X,T) \to (X_i,T_i)$ son continuas. $U_i \in T_i \Rightarrow f^{-1}_i(U_i) \in S \subset \mathcal{B} \subset T$. \\
 
 Si $\tilde{T}$ es otra topología en $X$ tal que $f_i:(X,\tilde{T}) \to (X_i,T_i)$ son continuas, entonces $T \subset \tilde{T}$.
 
@@ -999,9 +1022,10 @@ donde $\mathcal{B}$ está formada por productos de abiertos.
 \begin{exmp}
     Las proyecciones no son, en general, aplicaciones cerradas.
 \end{exmp}
-EJEMPLO TOCHO DE DISTANCIAS.
+
+%FALTA UN EJEMPLO IMPORTANTE DE DISTANCIAS%
 \begin{exmp}
-    En $\R^n$, la topología asociada a $||\cdot||_2$ es la topología usual, generalmente denotada por $T_u$. A veces, cuando sea necesario indicar que es la topología usual de $\R^n$, la denotaremos por $T^n_u$, donde $T^n_u$ es la topología asociada a $||\cdot||_2$ o a cualquier distancia equivalente, por ejemplo, $||\cdot||_{\infty}$ o $||\cdot||_1$.
+    En $\R^n$, la topología asociada a $\|\cdot\|_2$ es la topología usual, generalmente denotada por $T_u$. A veces, cuando sea necesario indicar que es la topología usual de $\R^n$, la denotaremos por $T^n_u$, donde $T^n_u$ es la topología asociada a $\|\cdot\|_2$ o a cualquier distancia equivalente, por ejemplo, $\|\cdot\|_{\infty}$ o $\|\cdot\|_1$.
 \end{exmp}
 
 \begin{properties}
@@ -1033,13 +1057,13 @@ EJEMPLO TOCHO DE DISTANCIAS.
 \end{proof}
 
 \subsection{Espacios cociente}
-MUCHO TEMA
+%FALTA CONTENIDO%
 
 
-\begin{ndef}[Conjunto f-saturado]
-  Sea $f: X \to Y$ una aplicación. Diremos que $U \subset X$ es \textbf{f-saturado} si $U=f^{-1}(f(U))$.
+\begin{ndef}[Conjunto $\mathit{f}$-saturado]
+  Sea $f: X \to Y$ una aplicación. Diremos que $U \subset X$ es \textbf{$\mathit{f}$-saturado} si $U=f^{-1}(f(U))$.
 \end{ndef}
-$x \in U \Rightarrow f(x) \in f(U) \Rightarrow x \in f^{-1}(f(U)) \quad$ ($U \subset f^{-1}(f(U))$). En la definición de conjunto f-saturado, la parte relevante es $f^{-1}(f(U)) \subset U$. Si $U$ es f-saturado, entonces $U=f^{-1}(f(U))=f^{-1}\left( \bigcup_{x \in U} f(\{x\}) \right) = \bigcup_{x \in U} f^{-1}\left( f(\{x\}) \right)$. Es decir, si $x \in U$, todos los puntos de $X$ con la misma imagen que $x$ pertenecen a $U$.
+$x \in U \Rightarrow f(x) \in f(U) \Rightarrow x \in f^{-1}(f(U)) \quad$ ($U \subset f^{-1}(f(U))$). En la definición de conjunto $\mathit{f}$-saturado, la parte relevante es $f^{-1}(f(U)) \subset U$. Si $U$ es f-saturado, entonces $U=f^{-1}(f(U))=f^{-1}\left( \bigcup_{x \in U} f(\{x\}) \right) = \bigcup_{x \in U} f^{-1}\left( f(\{x\}) \right)$. Es decir, si $x \in U$, todos los puntos de $X$ con la misma imagen que $x$ pertenecen a $U$.
 
 \begin{ndef}[Aplicación casi-abierta]
   $f:(X,T) \to (Y,T')$ es \textbf{casi-abierta} si la imagen de todo $U \in T$ f-saturado es abierto en T'.
@@ -1096,7 +1120,7 @@ La aplicación $\tilde{f}$ siempre es inyectiva. Por otro lado, $\tilde{f}$ es s
     Dem
 \end{proof}
 
-VARIOS EJEMPLOS
+%FALTAN VARIOS EJEMPLOS%
 
 \begin{ndef}[Intervalo]
     Un subconjunto $I \subset \R$ es un intervalos para todo para de puntos $x,y \in I$, se tiene que $[x,y] \subset I$.

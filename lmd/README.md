@@ -10,14 +10,14 @@ Lógica y Métodos Discretos es una asignatura del Grado en Ingeniería Infórma
 
 ## Tabla de contenidos:
 
-|            Tema             |       Estado       | Observaciones           |
-| :-------------------------: | :----------------: | :---------------------- |
-| 1: Inducción y Recurrencia  | :heavy_check_mark: | Tema completo           |
-|    2: Álgebras de Boole     | :heavy_check_mark: | Añadir algunos ejemplos |
-|          3: Grafos          | :heavy_minus_sign: | Tema recién comenzado   |
-|   4: Lógica Proposicional   |        :x:         | Tema sin comenzar       |
-|  5: Lógica de Primer Orden  |        :x:         | Tema sin comenzar       |
-| 6: Unificación y Resolución |        :x:         | Tema sin comenzar       |
+|            Tema             |       Estado       | Observaciones     |
+| :-------------------------: | :----------------: | :---------------- |
+| 1: Inducción y Recurrencia  | :heavy_check_mark: | Tema completo     |
+|    2: Álgebras de Boole     | :heavy_check_mark: | Tema completo     |
+|          3: Grafos          |     :question:     | Tema completo     |
+|   4: Lógica Proposicional   |     :question:     | Faltan ejemplos   |
+|  5: Lógica de Primer Orden  |        :x:         | Tema sin comenzar |
+| 6: Unificación y Resolución |        :x:         | Tema sin comenzar |
 
 ### Leyenda tabla de contenidos:
 
@@ -36,6 +36,7 @@ Lógica y Métodos Discretos es una asignatura del Grado en Ingeniería Infórma
 
 |             Orden              |                         Descripción                          |
 | :----------------------------: | :----------------------------------------------------------: |
+|             \coat              |              Operador para declarar un coátomo               |
 |          \begin{obs}           |                   Entorno para observación                   |
 |       \begin{properties}       |                   Entorno para propiedades                   |
 |            \tabitem            |                  Puntos itemize para tablas                  |
